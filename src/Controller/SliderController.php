@@ -213,5 +213,10 @@ class SliderController extends AppController
 		}
 		$this->set('sliders_info',$sliders_info);
 	}
+
+	function sukhdev(){
+
+		
+	}
 }
 ?>
