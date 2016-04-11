@@ -1,0 +1,28 @@
+Dear Varun,
+ 
+As discussed with Gemmatoday,We have done with most of the points under Checkout Issue 21Dec.doc. Kindly find the attached document for the status for the tasks under Checkout issues. Completed tasks are marked as green and which are in progress are marked in red color.
+
+Points which are done are: 
+1. Update functionality for the items under cart or checkout process
+2. Points mentioned under point "Account Set Up and Order Placement" in Checkout issues 21 Dec 
+3. Points mentioned under point "Review and Submit Your Order " in Checkout issues 21 Dec
+4. Points mentioned under point "Partial Payment Fee Icon (circled in image bellow)" in Checkout issues 21 Dec
+5. SAT & ACT search flow 
+6. Search Results for Austin & Northern Virginia on the basis of the zip code are working absolutely fine, the results are not getting displayed because the radius is set to the 100 miles due to which the system is not accepting these 2 under results as these are not lying under the 100 miles radius.
+ 
+Authorize. Net and Reoccuring Payments
+Please verify that Authorize.net has already been connected with the website. We need this done ASAP due to the fact that we need to start testing this functionality soon. Make sure reoccuring payment is set up and works properly. 
+ 
+Reply@24Dec: Yes, Authorize.net and Reccuring payments are working fine with Monthly. Also by default Authorize.net provides daily,weekly, monthly payment options. But we need to check the rest Biweekly,Bimonthly options & update you on our next updates.
+ 
+Also the documents which you have shared today are in progress & will update you on this asap.
+ 
+Merry Christmas :)
+ 
+With Regards
+
+
+
+
+
+

@@ -1,0 +1,321 @@
+@charset "utf-8";
+
+.no-bdr{ border:0px !important;}
+
+/* CSS Document */
+.content-wrap{ width:100%; float:left; background:#ffffff;}
+
+/*Leading css Start*/
+.leading-area{ width:100%; float:left; padding:70px 0 0 0;}
+.leading-area .lead-area{ width:100%; float:left;}
+
+.head-box{ width:100%; float:left; text-align:center; margin:0 0 65px 0;}
+.head-box h2,h3,h4{ font-size:35px; font-weight:400;}
+.head-box p{ font-size:18px; padding:15px 0 0 0;}
+.head-box .head-bot{ width:290px; background:url(../images/heading-bgr.png) repeat-x center;  display:block; margin:7px auto 0;}
+.head-box .head-bot b{ width:42px; height:24px; background:#ffffff url(../images/search-icons.png) no-repeat ; background-position:2px -391px ; display:block; text-align:center; margin:0 auto; }
+
+.lsw-area{width:100%; float:left;}
+.lsw-area .lswb-area{width:100%; float:left; border:#e5e5e5 1px solid;}
+.lsw-area .lswb-area .img-area{ width:100%; float:left;  padding:15px 15px 0 15px; border-bottom:#e5e5e5 1px solid;}
+.lsw-area .lswb-area .img-area .img-box{ width:100%; float:left; }
+.lsw-area .lswb-area .img-area .img-box img{ width:100%; height:100%;}
+.lsw-area .lswb-area .img-area .img-bot{ width:100%; float:left; padding:10px 0;}
+.lsw-area .lswb-area .img-area .img-bot p.per-day{ font-size:16px;}
+.lsw-area .lswb-area .img-area .img-bot .rating-area{ width:100%; float:left;}
+.lsw-area .lswb-area .img-area .img-bot .rating-area .like-box{ width:30%; float:left;}
+.lsw-area .lswb-area .img-area .img-bot .rating-area .rating-box{ width:70%; float:left;}
+.lsw-area .lswb-area .img-area .img-bot .rating-area img{ float:right;}
+.lsw-area .lswb-area .dcl-area{ width:100%; float:left; padding:10px 15px;}
+.lsw-area .lswb-area .dcl-area p.head{ color:#59aae1; font-size:20px; text-align: left; padding:0 0 7px 0;}
+.lsw-area .lswb-area .dcl-area p.head span{ color:#404040; font-size:14px; float:right; margin:7px 0 0 0;}
+.lsw-area .lswb-area .dcl-area p.txt{ font-size:13px; padding:3px 0;}
+.lsw-area .lswb-area .dcl-area p.txt .icon{ display:block; width:13px; height:12px; background:url(../images/search-icons.png) no-repeat; float:left; background-position:-21px -141px; margin:3px 5px 0 0;}
+.lsw-area .lswb-area .dcl-area p.txt .icon2{ display:block; width:13px; height:12px; background:url(../images/search-icons.png) no-repeat; float:left; background-position:-39px -141px; margin:3px 5px 0 0;}
+
+.lsw-area .lswb-area .lswb-bot{ width:100%; float:left; height:38px; border-top:#e5e5e5 1px solid;}
+.lsw-area .lswb-area .lswb-bot ul{ margin:0px; padding:0px; list-style-type:none;}
+.lsw-area .lswb-area .lswb-bot ul li{ float:left; width:20%; border-right:#e5e5e5 1px solid; display:block; height:38px; text-align:center; line-height:36px;}
+.lsw-area .lswb-area .lswb-bot ul li:last-child{ border:0px;}
+.lsw-area .lswb-area .lswb-bot ul li a.night{ width:18px; height:14px; display:block; background:url(../images/search-icons.png) no-repeat; background-position:0px -161px; margin:10px auto 0;}
+.lsw-area .lswb-area .lswb-bot ul li a.night:hover, .lsw-area .lswb-area .lswb-bot ul li a.night:focus{background:url(../images/search-icons.png) no-repeat; background-position:-19px -161px;}
+.lsw-area .lswb-area .lswb-bot ul li a.day{ width:18px; height:16px; display:block; background:url(../images/search-icons.png) no-repeat; background-position:0px -177px; margin:10px auto 0;}
+.lsw-area .lswb-area .lswb-bot ul li a.day:hover, .lsw-area .lswb-area .lswb-bot ul li a.day:focus{ background:url(../images/search-icons.png) no-repeat; background-position:-19px -177px;}
+.lsw-area .lswb-area .lswb-bot ul li a.walking{ width:18px; height:16px; display:block; background:url(../images/search-icons.png) no-repeat; background-position:0px -195px; margin:10px auto 0;}
+.lsw-area .lswb-area .lswb-bot ul li a.walking:hover, .lsw-area .lswb-area .lswb-bot ul li a.walking:focus{ background:url(../images/search-icons.png) no-repeat; background-position:-19px -195px;}
+.lsw-area .lswb-area .lswb-bot ul li a.chat{ width:18px; height:13px; display:block; background:url(../images/search-icons.png) no-repeat; background-position:0px -213px; margin:12px auto 0;}
+.lsw-area .lswb-area .lswb-bot ul li a.chat:hover, .lsw-area .lswb-area .lswb-bot ul li a.chat:focus{ background:url(../images/search-icons.png) no-repeat; background-position:-19px -213px;}
+
+.bot-btn-area{ width:100%; float:left; margin:70px 0 0 0;}
+.bot-btn-area a.bot-more{ width:100%; max-width:545px; height:55px; line-height:55px; color:#ffffff; text-align:center; text-decoration:none; font-size:22px; display:block; margin:0 auto; background:#59aae1;}
+.bot-btn-area a.bot-more:hover{background:#2c80b9;}
+
+.leading-area .more-sitter{ width:100%; float:left; background:#f0f0f0;  margin:70px 0 0 0; padding:80px 0 40px 0;}
+.leading-area .more-sitter .ms-area{ width:100%; float:left;}
+.leading-area .more-sitter .ms-area ul{ margin:0px; padding:0px; list-style-type:none;}
+.leading-area .more-sitter .ms-area ul li{ float:left; width:16.6%; text-align:center; }
+.leading-area .more-sitter .ms-area ul li a{ text-decoration:none; display:block;}
+.leading-area .more-sitter .ms-area ul li a img{ margin:0 0 8px 0;}
+.leading-area .more-sitter .ms-area ul li a p.name{ font-size:18px; color:#59aae1; font-weight:300;}
+.leading-area .more-sitter .ms-area ul li a p.loc{ color:#2d2d2d; font-size:16px; margin:0px 0 0 0; font-weight:300;}
+.leading-area .more-sitter .ms-area ul li a p.r-star img{ margin:0px;}
+.leading-area .more-sitter .ms-area ul li a p span{ display:block; font-size:13px; font-weight:300;}
+/*Leading css End*/
+
+/*Why Choose Us*/
+.why-choose-us{ width:100%; float:left; padding:70px 0 0 0;}	
+.why-choose-us .wcu-area{ width:100%; float:left;}
+.wcub-area{ width:100%; float:left; margin:20px 0 0 0;}
+.wcub-area .wcu-box{ width:100%; float:left; min-height:335px; border:#dbdbdb 1px solid; padding:0 18px; }
+.wcub-area .wcu-box .img-box{ width:78px; height:78px; background:url(../images/search-icons.png) no-repeat; background-position:-61px 0px; display:block; margin:-38px auto 0px; }
+.wcub-area .wcu-box .img-box-2{ background:url(../images/search-icons.png) no-repeat; background-position:-61px -79px;}
+.wcub-area .wcu-box .img-box-3{ background:url(../images/search-icons.png) no-repeat; background-position:-61px -158px; }
+.wcub-area .wcu-box .img-box-4{ background:url(../images/search-icons.png) no-repeat; background-position:-61px -237px; }
+.wcub-area .wcu-box p.txt-head{ font-size:22px; color:#404040; text-align:center; padding:20px 0 10px 0; }
+.wcub-area .wcu-box p{ font-size:13px; color:#404040; line-height:30px; text-align:center;  padding:0px;}
+.wcub-area .wcu-box p b{ font-weight:normal; display:block; }
+
+.wcu-bot{ width:100%; float:left; background:#59aae1; padding:75px 0; margin:80px 0 0 0;}
+.wcu-bot .wcub-box{ width:100%; float:left; text-align:center; border-right:#8eb3cc 1px solid;}
+.wcu-bot .wcub-box .img-box{ width:60px; height:50px; display:block; margin:0 auto; background:url(../images/search-icons.png) no-repeat; background-position:0px -230px;}
+.wcu-bot .wcub-box .img-box-2{background:url(../images/search-icons.png) no-repeat; background-position:0px -280px;}
+.wcu-bot .wcub-box .img-box-3{background:url(../images/search-icons.png) no-repeat; background-position:0px -330px;}
+.wcu-bot .wcub-box p.txt-head{ font-size:20px; color:#ffffff; padding:15px 0 0px 0; font-weight:300; }
+.wcu-bot .wcub-box p{ color:#ffffff; font-size:16px; font-weight:200; padding:10px 0 0 0;}
+.wcu-bot .wcub-box p span{ display:block;}
+/*Why Choose Us*/
+
+/*Fun News*/
+.fun-news{ width:100%; float:left; padding:70px 0 0 0;}
+.fun-news .fn-area{ width:100%; float:left;}
+.fun-news .fn-area .fnb-area{ width:100%; float:left;}
+.fnb-outer{ width:100%; float:left; border:#dbdbdb 1px solid; min-height:460px; padding:0 15px 15px 15px;}
+.fnb-outer .imgb-area{ width:100%; float:left;}
+
+.fnb-outer .imgb-area .img{ width:100%; float:left;}
+.fnb-outer .imgb-area .img img{ width:100%; height:auto;}
+.fnb-outer .imgb-area .date{ width:215px; height:35px; line-height:35px; text-align:center; background:#ffffff; margin:-19.5px auto 0;}
+.fnb-outer .p-area{ width:100%; float:left; text-align:center;}
+.fnb-outer .p-area .p-img{ width:100%; float:left; text-align:center;}
+.fnb-outer .p-area .p-img img{ margin:12px 0 10px 0;}
+.fnb-outer .p-area .p-img p{ font-size:16px; text-align:center;  }
+.fnb-outer .p-area ul{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left; margin:20px 0;}
+.fnb-outer .p-area ul li{ float:left; text-align:center; border-right:#939393 1px solid; padding:0 20px;}
+.fnb-outer .p-area ul li a{ font-size:13px; color:#939393; display:inline-block; text-decoration:none;}
+.fnb-outer .p-area ul li a:hover{ color:#2c80b9;}
+.fnb-outer .p-area ul li a .fa{ margin:0 8px 0 0; font-size:12px;}
+.fnb-outer .p-area ul li:last-child{ border:0px;}
+.fnb-outer .p-area p{ font-size:13px; text-align:center; font-weight:300; }
+
+.fun-news .fn-bot{ width:100%; float:left; margin:90px 0 0 0;}
+.fun-news .fn-bot ul{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left;  }
+.fun-news .fn-bot ul li{ width:20%; float:left; }
+.fun-news .fn-bot ul li .fn-outer{ width:100%;  float:left; display:block; position:relative;  }
+.fun-news .fn-bot ul li .fn-outer .img-box { width:100%; float:left;}
+.fun-news .fn-bot ul li .fn-outer .img-box img{ width:100%; }
+.fun-news .fn-bot ul li .fn-outer .ho-box{ width:100%; height:100%; background:rgba(0, 0, 0, 0.8); position:absolute; display:block; top:0px; display:none; }  
+.fun-news .fn-bot ul li .fn-outer:hover .ho-box{ display:block;}
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ width:100%; float:left; margin:170px 0 0 0; text-align:center; padding:0 40px; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner p.txt-head{ font-size:28px; color:#ffffff; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner p{ font-size:14px; line-height:22px; color:#ffffff; padding:25px 0 0 0;}
+/*Fun News*/
+
+
+/*===================================================================================Media Query =======================================================================*/
+
+@media (min-width:1200px) and (max-width:1440px){
+/*Fun - News*/
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:70px 0 0 0;  padding:0 0px; }
+/*Fun - News*/
+}
+
+@media (min-width:1200px) and (max-width:1366px){
+/*Fun - News*/
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:40px 0 0 0;  padding:0 0px; }
+/*Fun - News*/
+}
+@media (min-width:1025px) and (max-width:1199px){
+/*Why choose us*/
+.why-choose-us{ padding:25px 0 0 0;}
+.wcub-area .wcu-box{ margin:50px 0 0 0;}
+/*Why choose us*/
+
+/*Fun - News*/
+.fnb-outer{ margin:35px 0 0 0;}
+.fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
+.fnb-outer .p-area ul li{ width:100%; padding:0px;}
+.fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
+.fnb-outer .p-area ul li a{ display:block; }
+
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:20px 0 0 0; padding:0 0px; }
+/*Fun - News*/
+}
+
+@media (min-width:992px) and (max-width:1024px){
+.leading-area{ padding:45px 0;}
+.head-box{ margin:0 0 30px 0;}		
+.head-box h2,h3,h4{ font-size:28px; line-height:28px;}
+.head-box p{ font-size:18px;}
+.bot-btn-area { margin:0px;}
+.bot-btn-area a.bot-more{ font-size:18px; max-width:100%; margin:30px 0 0 0;}
+.leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
+.leading-area .more-sitter .ms-area ul li{ width:33.3%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0; min-height:240px;}
+/*leading css*/
+
+/*Why choose us*/
+.why-choose-us{ padding:25px 0 0 0;}
+.wcub-area .wcu-box{ margin:50px 0 0 0;}
+.wcu-bot{ margin:15px 0 0 0; padding:0px;}
+.wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
+.wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
+/*Why choose us*/
+
+/*Fun - News*/
+.fnb-outer{ margin:35px 0 0 0;}
+.fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
+.fnb-outer .p-area ul li{ width:100%; padding:0px;}
+.fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
+.fnb-outer .p-area ul li a{ display:block; }
+.fun-news .fn-bot{ margin:15px 0 0 0;}
+.fun-news .fn-bot ul li{ width:100%; height:auto; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:55% 0 0 0;}
+
+/*Fun - News*/
+}
+
+@media (min-width:768px) and (max-width:991px){
+.leading-area{ padding:45px 0 0 0;}
+.head-box{ margin:0 0 20px 0;}		
+.head-box h2,h3,h4{ font-size:28px; line-height:28px;}
+.head-box p{ font-size:18px;}
+.lsw-area .lswb-area{ margin:0 0 15px 0;}	
+.bot-btn-area { margin:0px;}
+.bot-btn-area a.bot-more{ font-size:18px; max-width:100%;}		
+.leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
+.leading-area .more-sitter .ms-area ul li{ width:33.3%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0; min-height:240px;}
+/*leading css*/
+
+/*Why choose us*/
+.why-choose-us{ padding:25px 0 0 0;}
+.wcub-area .wcu-box{ margin:50px 0 0 0;}
+.wcu-bot{ margin:15px 0 0 0; padding:0px;}
+.wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
+.wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
+/*Why choose us*/
+
+/*Fun - News*/
+.fnb-outer{ margin:35px 0 0 0;}
+.fnb-outer .p-area ul{ margin:20px 0 20px 0;}
+.fnb-outer .p-area ul li{ width:33.3%; padding:0px;}
+.fun-news .fn-bot{ margin:15px 0 0 0;}
+.fun-news .fn-bot ul li{ width:100%; height:auto; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:55% 0 0 0;}
+/*Fun - News*/
+}
+
+@media (min-width:641px) and (max-width:767px){
+.leading-area{ padding:40px 0 0 0;}
+.head-box{ margin:0 0 20px 0;}		
+.head-box h2,h3,h4{ font-size:28px; line-height:28px;}
+.head-box p{ font-size:18px;}
+.lsw-area .lswb-area{ margin:0 0 15px 0;}	
+.bot-btn-area { margin:0px;}
+.bot-btn-area a.bot-more{ font-size:18px; max-width:100%;}	
+.leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
+.leading-area .more-sitter .ms-area ul li{ width:50%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0; min-height:240px;}
+/*leading css*/
+
+/*Why choose us*/
+.why-choose-us{ padding:25px 0 0 0;}
+.wcub-area .wcu-box{ margin:50px 0 0 0;}
+.wcu-bot{ margin:15px 0 0 0; padding:0px;}
+.wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
+.wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
+/*Why choose us*/
+
+/*Fun - News*/
+.fnb-outer{ margin:35px 0 0 0;}
+.fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
+.fnb-outer .p-area ul li{ width:100%; padding:0px;}
+.fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
+.fnb-outer .p-area ul li a{ display:block;}
+.fun-news .fn-bot{ margin:15px 0 0 0;}
+.fun-news .fn-bot ul li{ width:100%; height:auto; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:55% 0 0 0;}
+
+/*Fun - News*/
+
+}
+
+@media (min-width:481px) and (max-width:640px){
+.leading-area{ padding:25px 0 0 0;}		
+.head-box{ margin:0 0 20px 0;}
+.head-box h2,h3,h4{ font-size:23px; line-height:28px;}
+.head-box p{ font-size:16px;}	
+.lsw-area .lswb-area{ margin:0 0 15px 0;}	
+.bot-btn-area { margin:0px;}
+.bot-btn-area a.bot-more{ font-size:16px; max-width:100%;}
+.leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
+.leading-area .more-sitter .ms-area ul li{ width:100%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0;}
+/*leading css*/
+
+/*Why choose us*/
+.why-choose-us{ padding:25px 0 0 0;}
+.wcub-area .wcu-box{ margin:50px 0 0 0;}
+.wcu-bot{ margin:15px 0 0 0; padding:0px;}
+.wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
+.wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
+/*Why choose us*/
+
+/*Fun - News*/
+.fnb-outer{ margin:35px 0 0 0;}
+.fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
+.fnb-outer .p-area ul li{ width:100%; padding:0px;}
+.fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
+.fnb-outer .p-area ul li a{ display:block; }
+.fun-news .fn-bot{ margin:15px 0 0 0;}
+.fun-news .fn-bot ul li{ width:100%; height:auto; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:45% 0 0 0;}
+/*Fun - News*/
+
+}
+
+@media (min-width:320px) and (max-width:480px){	
+.leading-area{ padding:25px 0 0 0;}
+.head-box{ margin:0 0 20px 0;}
+.head-box h2,h3,h4{ font-size:18px; line-height:28px;}
+.head-box p{ font-size:14px;}
+.lsw-area .lswb-area{ margin:0 0 15px 0;}	
+.lsw-area .lswb-area .img-area .img-bot p.per-day{ font-size:14px;}
+.lsw-area .lswb-area .img-area .img-bot .rating-area .like-box{ width:15%; float:left;}
+.lsw-area .lswb-area .img-area .img-bot .rating-area .rating-box{ width:85%; float:left;}
+.bot-btn-area { margin:0px;}
+.bot-btn-area a.bot-more{ font-size:13px; }
+.leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
+.leading-area .more-sitter .ms-area ul li{ width:100%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0;}
+
+/*leading css*/
+
+/*Why choose us*/
+.why-choose-us{ padding:25px 0 0 0;}
+.wcub-area .wcu-box{ margin:50px 0 0 0;}
+.wcu-bot{ margin:15px 0 0 0; padding:0px;}
+.wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:35px 0 35px 0;}
+.wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
+
+/*Why choose us*/
+
+/*Fun - News*/
+.fnb-outer{ margin:35px 0 0 0;}
+.fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
+.fnb-outer .p-area ul li{ width:100%; padding:0px;}
+.fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
+.fnb-outer .p-area ul li a{ display:block; }
+.fun-news .fn-bot{ margin:15px 0 0 0;}
+.fun-news .fn-bot ul li{ width:100%; height:auto; }
+.fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:30% 0 0 0;}
+/*Fun - News*/
+
+}
+
+

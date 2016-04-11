@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.privacyt-page {background:#fff !important;}
+
+
+.privacyt-page .fun-news {
+    float: left;
+    padding: 0px 0 0 !important;
+    width: 100%;
+}
+
+
+ .privacy-top h2{color:#72a105 !important; font-size:25px; font-weight:500; text-align:left; padding-top:60px !important;}
+
+
+/*Banner inner pages starts*/
+.banner-area-privacy {background:url(../images/privacy.jpg) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+
+.banner-area-privacy h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-privacy p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/
+
+#privacy p{font-size:13px; padding:25px 30px 0px 30px !important; line-height:25px; }
+
+.outer-one {border:1px solid #e6e6e6 !important;  padding-bottom:25px;}
+
+#privacy h3 {font-size:18px; color:#72a105; font-family: 'Raleway', sans-serif;  padding-left:30px; padding-top:30px;}
+
+.box-marg {margin-top:50px;}

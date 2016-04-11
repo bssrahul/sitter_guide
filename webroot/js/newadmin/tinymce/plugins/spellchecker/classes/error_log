@@ -1,0 +1,4 @@
+[10-Jan-2011 23:08:09] PHP Fatal error:  Class 'SpellChecker' not found in /home/zaytoon/public_html/app/webroot/js/tinyMce/plugins/spellchecker/classes/PSpellShell.php on line 9
+[10-Jan-2011 23:08:10] PHP Fatal error:  Class 'SpellChecker' not found in /home/zaytoon/public_html/app/webroot/js/tinyMce/plugins/spellchecker/classes/GoogleSpell.php on line 9
+[10-Jan-2011 23:08:10] PHP Fatal error:  Class 'SpellChecker' not found in /home/zaytoon/public_html/app/webroot/js/tinyMce/plugins/spellchecker/classes/PSpell.php on line 9
+[10-Jan-2011 23:08:10] PHP Fatal error:  Class 'SpellChecker' not found in /home/zaytoon/public_html/app/webroot/js/tinyMce/plugins/spellchecker/classes/EnchantSpell.php on line 11

@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body {overflow-x:hidden; background:#fff;}
+.contact-page .fun-news {
+    float: left;
+    padding: 0px 0 0 !important;
+    width: 100%;
+}
+
+
+.contact-page .fun-news .fn-bot {
+    float: left;
+    margin: 0px 0 0;
+    width: 100%;
+}
+
+#contact {background:#fff;}
+
+#contact .our-location  h3 {color:#72a105; font-size:25px; font-weight:500; text-align:left; padding-top:60px;}
+
+
+#contact .our-location  .country {color:#404040; font-size:16px; font-weight:500; text-align:left; padding-top:40px;}
+#contact .our-location  h5 {color:#404040; font-size:14px; font-weight:500; text-align:left; padding-top:10px; font-family: 'Open Sans', sans-serif;}
+#contact .our-location  h5 a{color:#404040;  font-weight:500; text-align:left; text-decoration:none; outline:none; padding-top:10px; font-family: 'Open Sans', sans-serif;}
+#contact .our-location  h5 span {color:#59aae1; font-size:14px; font-weight:300; text-align:left; padding-top:10px; font-family: 'Raleway', sans-serif;}
+#contact .f16 {font-size:15px;}
+
+#contact .maps { background:#fff;}
+
+#contact .maps .map {padding-top:60px;}
+
+.padding-left3px {padding-left:3px;}
+.padding-right3px {padding-right:3px}
+
+.padding-left0px {padding-left:0px;}
+.padding-right0px {padding-right:0px;}
+#contact .getintouch {padding-bottom:30px;}
+
+#contact .getintouch  h3 {color:#72a105; font-size:25px; font-weight:500; text-align:left; padding-top:60px;}
+
+
+#contact .getintouch select {
+    -moz-appearance: none;
+    background: #eaeaea url("../images/arw.png") no-repeat scroll right 10px center;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    box-shadow: none;
+    height: 31px;
+	width:154px; color:#404040; font-weight:500;
+}
+
+
+#contact .getintouch .location-select {padding-top:60px; float:right; padding-bottom:57px;}
+
+#contact .getintouch input {height:45px;}
+#contact .getintouch .form-group {
+    margin-bottom: 30px;
+}
+
+#contact .getintouch input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #bbbbbb;
+}
+#contact .getintouch input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #bbbbbb;
+   opacity:  1;
+}
+#contact .getintouch input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #bbbbbb;
+   opacity:  1;
+}
+#contact .getintouch input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #bbbbbb;
+}
+
+#contact .getintouch textarea {height:197px;}
+
+#contact .getintouch textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #bbbbbb;
+}
+#contact .getintouch textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #bbbbbb;
+   opacity:  1;
+}
+#contact .getintouch textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #bbbbbb;
+   opacity:  1;
+}
+#contact .getintouch textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #bbbbbb;
+}
+
+#contact .getintouch .send-message {background:#72a105; color:#fff; height:50px; width:196px;  font-size:16px;}
+
+
+
+
+
+
+
+/*Banner inner pages starts*/
+.banner-area-contact {background:url(../images/contact-banner.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+
+.banner-area-contact h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-contact p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/
+
+
+.mapactive { border-top:4px solid #72A105;}
+
+
+
+
+
+
+
+@media (min-width:320px) and (max-width:480px){
+	
+	#contact .our-location  h3 {color:#72a105; font-size:20px; font-weight:500; text-align:left; padding-top:55px;}
+	#contact .getintouch  h3 {color:#72a105; font-size:20px; font-weight:500; text-align:left; padding-top:30px;}
+	
+	#contact .getintouch .location-select {
+    float: right;
+    padding-bottom: 57px;
+    padding-top: 30px;
+}
+	}
+	
+	
+	@media  (max-width:767px){
+		
+		#contact .maps .map {
+    padding-top: 20px;
+}
+		
+		}

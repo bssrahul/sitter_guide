@@ -1,0 +1,256 @@
+<?php ?>
+<!--[.innerpage-conent Area start]-->
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<?php 
+	echo $this->Html->css(['Front/jquery-ui.css']); 
+	echo $this->Html->script(['Front/jquery-ui.js']);
+?>
+<div class="innerpage-conent">
+    <!--[.signup-wrapper Area start]-->
+    <div class="signup-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-offset-3 col-sm-offset-2 col-md-offset-2 col-xs-offset-0 col-lg-6 col-sm-8 col-md-8 col-xs-12">
+                    <div class="signup-container">
+                        <h2><?php echo __('Sign Up for Sitter Guide');?></h2>
+                        <div class="signup-email">
+                           <a href="javascript:void(0)" id="signUpEmail"> <i class="fa fa-envelope"></i><?php echo __('Sign Up with Email');?></a>
+                        </div>
+                        
+                        <!--START SINGN UP Form-->  
+						  <?php echo $this->Form->create(null, [
+							'url' => ['controller' => 'guests', 'action' => 'signup'],
+							'id'=>'addUsers',
+							'enctype'=>'multipart/form-data',
+							'role'=>'form',
+							'style'=>'display:none'
+						  ]);
+						  
+						  echo $this->Form->input('Users.title',[
+							'templates' => ['inputContainer' => '<div class="form-group">{{content}}</div>'],
+							'type'=>'select',
+							'options'=>[''=>'Choose Title','Mr'=>'Mr','Mrs'=>'Mrs','Ms'=>'Ms'],
+							'class' =>'form-control'
+							]);
+						 ?>
+                        <div class="form-part">
+                        	<div class="form-group">
+							<?php 
+								echo $this->Form->input('Users.first_name',[                
+								 'class'=>'form-control',
+								 'templates' => ['inputContainer' => '{{content}}']
+								  ]);
+								 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
+								  ?>
+							</div>	  
+							<div class="form-group">
+								<?php 
+								 echo $this->Form->input('Users.last_name',[               
+								  'class'=>'form-control',
+								   'templates' => ['inputContainer' => '{{content}}']
+								]);
+								echo '<em class="signup_error error">'.__(@$loginerror['last_name'][0]).'</em>';
+							?>
+						    </div>
+                         </div>
+                         <div class="form-part">
+                         <div class="form-group">	
+                         <?php 
+                                echo $this->Form->input('Users.country',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'select',
+                                  'options'=>[''=>'Choose Country','Australia'=>'Australia','Austria'=>'Austria','Belbium'=>'Belbium','Canada'=>'Canada','Denmark'=>'Denmark','Finland'=>'Finland','France'=>'France','Germany'=>'Germany','Hong Kong S.A.R., China'=>'Hong Kong S.A.R., China','Ireland'=>'Ireland','Italy'=>'Italy','Japan'=>'Japan'],
+                                  'class' =>'form-control'
+                                  ]);
+                                 echo '<em class="signup_error error">'.__(@$loginerror['country'][0]).'</em>';
+                            ?>
+                         </div>
+							<div class='form-group'>
+								<label for="zip"><?php echo __('Post/Zip Code');?></label>
+							    <?php  
+								echo $this->Form->input('Users.zip',[
+								'templates' => ['inputContainer' => '{{content}}'],               
+									'class'=>'form-control',
+									'label'=>false
+									]);
+									echo '<em class="signup_error error">'.__(@$loginerror['zip'][0]).'</em>';
+								?>
+							</div>
+                        </div>
+                       
+                       <div class='form-group'>
+						<?php 
+							echo $this->Form->input('Users.email',[
+							'templates' => ['inputContainer' => '{{content}}'],
+							'class' =>'form-control'
+							]);
+							echo '<em class="signup_error error">'.__(@$loginerror['email'][0]).'</em>';
+						?>
+					   </div>
+                        <div class="form-part">
+                            <div class="form-group">
+							<?php 
+                              echo $this->Form->input('Users.create_password',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'password',
+                                  'class' =>'form-control'
+                                ]);
+                              echo '<em class="signup_error error">'.__(@$loginerror['create_password'][0]).'</em>';
+                             ?>
+                       
+                             </div>
+							  <div class="form-group">
+								<label for="re_password"><?php echo __('Repeat Password');?></label>
+								  <?php 
+									echo $this->Form->input('Users.re_password',[
+										'label'=>false,
+										'type'=>'password',
+										'class' =>'form-control'
+									  ]);
+									echo '<em class="signup_error error">'.__(@$loginerror['re_password'][0]).'</em>';
+								   ?>
+								    
+							   </div>
+                        </div>
+                        <div class="form-group">
+								  <label for="pwd"><?php echo __('Where did you hear about us?');?></label>
+								  <?php 
+									echo $this->Form->input('Users.hear_from',[
+									  'type'=>'select',
+									  'label'=>false,
+									  'options'=>['Radio'=>'Radio','TV'=>'TV','earch eg. Google or Bing'=>'earch eg. Google or Bing','Someone told me about Sitter Guide'=>'Someone told me about Sitter Guide','YouTube'=>'YouTube','Facebook'=>'Facebook','Twitter'=>'Twitter','Instagram'=>'Instagram','Pinterest'=>'Pinterest','Sitter Guide Posts'=>'Sitter Guide Posts','Other'=>'Other'],
+									  'class' =>'form-control'
+									  ]);
+								?>
+							</div>
+                        
+                        <div class="form-part">
+							<div class='form-group dobDiv'>
+								<label for="birth_date"><?php echo __('Date of Birth');?></label>
+								<?php  
+								echo $this->Form->input('Users.birth_date',[               
+								'class'=>'form-control dob',
+								'label'=>false,
+								'readonly'=>true,
+								'div'=>false,
+								'placeholder'=>'DD/MM/YYYY', 
+								]);
+								?> 
+								<?php echo '<em class="signup_error error">'.__(@$loginerror['birth_date'][0]).'</em>'; ?>
+								<i class="fa fa-calendar"></i>
+							</div>
+                           <div class="form-group">
+								  <label for="pwd"><?php echo __('Have A Reference Code?');?></label>
+								  <?php 
+								echo $this->Form->input('Users.reference_code',[								
+								'label' => false,
+								'type' => "text",
+								'class'=>'form-control',
+							]);
+							echo '<em class="signup_error error">'.__(@$loginerror['reference_code'][0]).'</em>';
+								?>
+							</div>
+							 
+                      </div> 
+                         
+                            
+                        <div class="form-group">
+                          <label for="pwd"><?php echo __('Verification');?></label>
+                          
+							<span class="cap-img">
+								<div class="g-recaptcha" data-sitekey="<?php echo CAPTCHA_SITE_KEY; ?>"></div>
+								<br/><label generated="true" class="error"><?php echo isset($captchErr)?$captchErr:''; ?></label>
+							</span>
+						
+
+                        </div>
+                        
+                        <div class="checkbox">
+
+                         <!--<label><input type="checkbox" name="Users[term_condition]"><?php echo __('Terms & Conditions');?></label>
+                          <label for="Users[term_condition]" generated="true" class="error"></label>-->
+                        
+                          <?php
+                            echo $this->Form->input('Users.term_condition',[			
+                            	//'label'=>'Terms & Conditions',
+                            	 'templates' => [
+							        'inputContainer' => '{{content}}'
+							    ],
+                            	'label'=>false,
+                            	'type' => "checkbox"
+							]);
+                           ?>
+                        <label for="users-term-condition" style="position:relative"><?php echo __('Terms & Conditions');?></label>  
+                        </div>
+ 
+						<!--<input type="submit" class="signup-submit btn btn-default" id="sign-up" name="signup-submit" value="Sign Up">-->
+                       <?php
+                            echo $this->Form->submit('Sign Up',[
+                                'name'=>'signup-submit',			
+                            	'label'=>false,
+                            	'class'=>'signup-submit btn btn-default',
+                            	'id'=>'sign-up',
+                            	'type' => 'submit'
+                            	
+							]);
+                           ?>
+						<p><span class="c-red c-red-bar"><?php echo __('OR');?></span></p>
+                        
+                        <a href="#" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo __('Sign Up with Facebook');?></a>
+                          <p class="line-signin"><?php echo __('Not a Member?');?> 
+							<span class="signup-color">
+							  <a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo __('Sign In');?> </a>
+							 </span>
+                         </p>
+                    
+                    </form>
+                         <!--END SIGN UP FORM-->
+                     <div id="loginFacebook">
+                        <div class="top-sp">
+                            <span><?php echo __('- or -');?></span>
+                        </div>
+                        <div class="signup-facebook">
+                          <!-- <?php 
+                           echo $signupWithFacebook; ?> -->
+                        </div>
+                        <p><span class="signup-line"><?php echo __("By signing up, I agree to Sitter Guide Terms of Service and <br/> confirm that I am 18 years of age or older.");?></span></p>
+                        <p><?php echo __('Already a member?');?> <span class="signup-color"><a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo __('Sign In Now');?></a></span></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--[.signup-wrapper Area start]-->
+</div>
+<!--[.innerpage-conent Area end]-->
+
+<?php 
+	if(isset($captchErr) && $captchErr !=""){
+		
+?>
+<script>
+	$( document ).ready(function() {
+		setTimeout(
+			function(){
+				$('#signUpEmail').trigger('click');
+			},100
+		);
+		
+		
+	});
+</script>
+<?php 
+}
+?>
+<script>
+	$( document ).ready(function() {
+		$("#users-birth-date").datepicker(
+           {
+		     changeMonth: true,
+		     changeYear: true
+		   }
+			);
+		$(".fa-calendar").click(function(){ $("#users-birth-date").focus();});
+	});
+</script>

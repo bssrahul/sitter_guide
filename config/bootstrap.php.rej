@@ -1,0 +1,10 @@
+diff a/config/bootstrap.php b/config/bootstrap.php	(rejected hunks)
+@@ -213,7 +213,7 @@
+ 
+ define("WEBROOT_PATH",$_SERVER['DOCUMENT_ROOT']."/".ROOT_PATH."/app/webroot/");
+ 
+-define("SITE_TITLE",'Sitter Guider');
++define("SITE_TITLE",'Sitter Guide');
+ define('HTTP_ROOT','http://'.$_SERVER['HTTP_HOST'].'/'.$rootPath."/");
+ define("DATE_FORMAT",'M d, Y');
+ define("AUTHENTICATION_FAILED",'Authentication Failed! Please try again.');

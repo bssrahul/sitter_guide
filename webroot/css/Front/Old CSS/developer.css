@@ -1,0 +1,55 @@
+em.signup_error {
+  color: #ff5a5f;
+  font-size: 13px;
+  font-style: normal;
+  margin-left: 5px;
+}
+
+label.error {
+    color: #ff5a5f !important;
+    font-size: 12px !important;
+    font-weight: normal !important;
+}
+
+.response_msg_container {
+    position: relative !important;
+    top: 7px !important;
+}
+
+.success_msg{
+  background: #4F9709 none repeat scroll 0 0;
+  color: #fff !important;
+  float: left !important;
+  opacity: 0.9 !important;
+  text-align: center !important;
+  z-index: 9999 !important;
+  cursor:pointer !important;
+}
+
+.error_msg{
+  background: #DF1C2A none repeat scroll 0 0;
+  color: #fff !important;
+  float: left !important;
+  opacity: 0.9 !important;
+  text-align: center !important;
+  z-index: 9999 !important;
+  cursor:pointer !important;
+}
+
+p.successMessage {
+    color: #4F9709;
+    font-size: 13px;
+    position: relative;
+    top: 7px;
+}
+p.errorMessage {
+    color: #DF1C2A;
+    font-size: 13px;
+    position: relative;
+    top: 7px;
+}
+
+label.error {
+  position: relative;
+  top: -5px;
+}

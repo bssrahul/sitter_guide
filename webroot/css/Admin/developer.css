@@ -1,0 +1,39 @@
+label.error{
+    clear: both;
+    color: #c92434;
+    display: inline-block;
+    float: left;
+    font-style: italic;
+    position: relative;
+    width: 100%;
+   font-weight:normal;
+   font-size:12px;
+   
+}
+form#edituser label.error{
+	padding-bottom: 7px !important;
+    position: absolute !important;
+}
+div.success {
+	background: #4f9709 none repeat scroll 0 0;
+    border-radius: 5px;
+    bottom: 10px;
+    color: #fff !important;
+    cursor: pointer !important;
+    float: right !important;
+    height: 30px;
+    opacity: 0.9 !important;
+    padding: 5px 15px;
+    position: fixed !important;
+    right: 7px;
+    text-align: center !important;
+    z-index: 9999 !important;
+    content: none !important;
+}
+div.message:before {
+    content: none !important;
+}
+div.has-feedback{
+	padding:0px 10px 5px 10px !important;
+
+}

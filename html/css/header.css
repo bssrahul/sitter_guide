@@ -1,0 +1,506 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
+header {width: 100%; border-bottom:#72a105 5px solid; height:75px; position:fixed; top:0; left:0;   z-index:20;background-color: #ffffff;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition:
+ height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
+.head-wrap{ width:100%; float:left;}
+header .logo-area { width:100%; float:left; width:100%; max-width:252px; border-right:#b7b7b7 1px solid; height:70px; }
+header .desk-logo a{ margin:25px 0 0 7px; float:left; -webkit-transition: all 0.3s;  -moz-transition: all 0.3s;  -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;  } 
+header .logo-area .mob-logo{ margin:20px 0 0 0; float:left ; display:none; } 
+header .top-search{ width:100%; max-width:500px; float:left; min-height:70px; background:#ffffff; -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
+header .top-search .search-box{ width:100%; max-width:475px; float:left;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
+header .top-search .search-box .search-input{ width:100%; float:left; background: url(../images/serach-icon.png) no-repeat center left; height:70px; border:0px; line-height:70px;  color:#666666; padding:0 0 0 44px;
+color:#c0c0c0; font-style:italic; font-size:16px; margin:0 0 0 29px; -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
+header .topnav-area{ width:100%; float:left;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s;}
+header .topnav-area .navbar{ margin-bottom:0px; border-radius:0px; float:right; border:0px;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s;  }
+header .topnav-area .navbar li{ padding:18px 9px; -webkit-transition: padding 0.3s; -moz-transition: padding 0.3s; -ms-transition: padding 0.3s; -o-transition: padding 0.3s;  transition: padding 0.3s;}
+header .topnav-area .navbar li.dd-country{padding:15.5px 9px;}
+header .topnav-area .navbar li a{ color:#646464; padding:8px 10px; font-size:15px; font-weight:300;  }
+header .topnav-area .navbar li a:hover, header .topnav-area .navbar li a:focus{ color:#72a105; background:none ;}
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover{ background:none;}
+header .topnav-area .navbar li.select a{ background:url(../images/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:3px; padding:7px 25px; }
+header .topnav-area .nav li.select a:hover{background:url(../images/select-bgr-x.png) repeat-x  center; color:#000000;}
+header .topnav-area .navbar li a .badge{ background:#ff0000; margin:-15px 0 0 0; width:25px; height:25px; border:2px solid #ffffff; border-radius:50%; padding:0px; box-shadow:#c7c7c7 0px 2px 0px; line-height:20px;}
+header.smaller .topnav-area .navbar li a .badge{ margin:-11px 0 0 0;}
+
+
+.topnav-area .navbar-nav li .currency-drop{padding:10px 15px 0 15px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:250px; float:left; left:auto; right:0px;  }
+.topnav-area .navbar-nav li .drop-profile{ left:0px;}
+.topnav-area .navbar-nav li .currency-drop .cd-box { width:100%; float:left; background:#ffffff; border:#d6d6d6 1px solid; border-radius:2px; overflow:visible !important;  }
+.topnav-area .navbar-nav li .currency-drop .cd-box ul{ margin:0px; padding:0px; list-style-type:none;}
+.topnav-area .navbar-nav li .currency-drop .cd-box ul li{ width:50%; float:left; padding:0px; text-align:center;}
+.topnav-area .navbar-nav li .currency-drop .cd-box ul li a{ padding:0px; line-height:28px; display:block; font-size:15px; text-decoration:none;}
+.topnav-area .navbar-nav li .currency-drop .cd-box ul li.current a{ background:#8eb60f; color:#ffffff; }
+.topnav-area .navbar-nav li .currency-drop ul.c-list{ margin:5px 0 0 0; padding:0px; list-style-type:none; width:100%; float:left;}
+.topnav-area .navbar-nav li .currency-drop ul.c-list li{ padding:0px; line-height:33px; background:url(../images/c-list-bgr-x.png) repeat-x bottom;}
+.topnav-area .navbar-nav li .currency-drop ul.c-list li a{  padding:0px; color:#646464; text-decoration:none; }
+.topnav-area .navbar-nav li .currency-drop ul.c-list li a:hover, .topnav-area .navbar-nav li .currency-drop ul.c-list li a:focus{ color:#72a105;}
+.topnav-area .navbar-nav li .currency-drop ul.c-list li a img{ float:left; margin:5px 12px 0 0;}
+.topnav-area .navbar-nav li .currency-drop ul.c-list li:last-child{ background:none;}
+.topnav-area .navbar-nav li .currency-drop ul.c-list-2{ margin:0px;}
+.topnav-area .navbar-nav li .currency-drop ul.c-list-2 li a .fa{ margin:0 10px 0 0; color:#737373;}
+
+.topnav-area .navbar-nav li .login-drop{padding:15px 15px 15px 15px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:300px; float:left; left:auto; right:0px;  }
+.topnav-area .navbar-nav li .login-drop a.lwfb{ background:#4063b3; border:#3c599d 1px solid; color:#ffffff; line-height:25px; height:40px; text-align:center; text-decoration:none; width:100%; float:left; border-radius:3px;
+display:block; margin:10px 0 0 0;}
+.topnav-area .navbar-nav li .login-drop a.lwfb:hover{ background:#3557a4;}
+.topnav-area .navbar-nav li .login-drop a.lwfb .fa{ margin:0 5px 0 0; font-size:15px;} 
+.topnav-area .navbar-nav li .login-drop p{ font-size:18px; text-align:center; font-weight:200; padding:5px 0; margin:0px; clear:left; }
+.topnav-area .navbar-nav li .login-drop .form-group{ margin:0px;}
+.topnav-area .navbar-nav li .login-drop .form-group .form-control{ margin:0 0 5px 0;}
+.topnav-area .navbar-nav li .login-drop .form-group label{ font-size:14px; font-size:13px; font-weight:300; margin:0 0 5px 0;}
+.topnav-area .navbar-nav li .login-drop .form-group .btn-success{ width:100%; margin:10px 0 0 0;}
+.topnav-area .navbar-nav li .login-drop p.forget{ font-size:13px; line-height:18px; color:#404040;}
+.topnav-area .navbar-nav li .login-drop p.forget a{ font-size:13px; text-decoration:none; color:#2c80b9;}
+.topnav-area .navbar-nav li .login-drop p.forget a:hover{ color:#3b8bc2;}
+
+
+.topnav-area .navbar-toggle { background:#72a105;}
+.topnav-area .navbar-toggle .icon-bar{ background:#ffffff;}
+.topnav-area .navbar-collapse{ padding-right:0px;}
+
+
+/*Resize css*/
+header.smaller { height:50px ;   }
+header.smaller .logo-area{ height:45px;}
+header.smaller .desk-logo a{ margin:13px 0 0 25px;  -webkit-transition: all 0.3s;  -moz-transition: all 0.3s;  -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .top-search .search-box{ height:45px;}
+header.smaller .top-search .search-box .search-input{height:45px; border:0px; line-height:50px;}
+header.smaller .topnav-area .navbar li{ padding:5.3px 9px 10.3px 9px;  }
+header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-size:15px;}
+header.smaller .topnav-area .navbar li.select a{ background:url(../images/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:4px; padding:7px 25px; }
+
+/*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
+
+/*========================================================Banner css start=====================================================*/
+
+.banner-area{ width:100%; float:left; background:url(../images/home-banner.png) no-repeat; height:900px; background-size:cover; background-position: center center;}
+.banner-area .ban-txt{ width:100%; float:left;margin:160px 0 0 0; text-align:center;}
+.banner-area .ban-txt h1{font-family: "Century Gothic"; font-size:80px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:58px 0 0 0;}
+.banner-area .ban-txt p{font-size:25px; font-family: "Century Gothic";  color:#ffffff; padding:30px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ;}
+.banner-area .ban-txt .hworks{ width:225px; height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; font-family:"Century Gothic"; background:#59aae1; margin:65px auto 0;
+ border-radius:1px;}
+ .banner-area .ban-txt .hworks:hover{ background:#2c80b9;}
+.banner-area .ban-txt .hworks .fa{ margin:0 12px 0 0;}
+
+.ban-search-area{ width:100%; float:left; margin:110px 0 0 0; }
+.ban-search-area .bs-box{ width:100%; float:left; background-color:rgba(255, 255, 255, 0.6); min-height:250px; border-radius:5px; padding:24px;}
+.ban-search-area .bs-box .top-srch{ width:100%; float:left;}
+.ban-search-area .bs-box .top-srch p{ font-size:18px; color:#404040; margin:0 0 20px 0;}
+.ban-search-area .bs-box .top-srch .ts-lft{ width:100%; max-width:540px;  float:left;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ width:100%; max-width:350px;  float:right;}
+.ban-search-area ul.search-list{ margin:0px; padding:0px; list-style-type:none;}
+.ban-search-area ul.search-list li{ float:left; width:165px; height:70px;  background-color:rgba(255, 255, 255, 0.6); border:#a6a6a6 1px solid; margin:0 20px 0 0; border-radius:3px; text-align:center; padding:12px 0 0 0; }
+.ban-search-area ul.search-list li a{ font-size:14px; color:#404040; text-decoration:none; display:block;}
+.ban-search-area ul.search-list li a .nc{ background:url(../images/search-icons.png) no-repeat top left; width:27px; height:26px; display:block; text-align:center; margin:0 auto;  }
+.ban-search-area ul.search-list li a .db{ background:url(../images/search-icons.png) no-repeat 0px -26px; width:27px; height:26px; display:block; text-align:center; margin:0 auto;  }
+.ban-search-area ul.search-list li a .div{ background:url(../images/search-icons.png) no-repeat 0px -52px; width:27px; height:26px; display:block; text-align:center; margin:0 auto;  }
+.ban-search-area ul.search-list li a .dc{ background:url(../images/search-icons.png) no-repeat 0px -78px; width:27px; height:26px; display:block; text-align:center; margin:0 auto;  }
+.ban-search-area ul.search-list li a .dw{ background:url(../images/search-icons.png) no-repeat 0px -104px; width:27px; height:26px; display:block; text-align:center; margin:0 auto;  }
+.ban-search-area ul.search-list li:hover{ border-color:#72a105; }
+.ban-search-area ul.search-list li:hover a{ color:#72a105;}
+.ban-search-area ul.search-list li a:focus { color:#72a105;}
+.ban-search-area ul.search-list li:hover .nc{  background:url(../images/search-icons.png) no-repeat -27px 0px; }
+.ban-search-area ul.search-list li:hover .db{  background:url(../images/search-icons.png) no-repeat -27px -26px; }
+.ban-search-area ul.search-list li:hover .div{ background:url(../images/search-icons.png) no-repeat -27px -52px; }
+.ban-search-area ul.search-list li:hover .dc{  background:url(../images/search-icons.png) no-repeat -27px -78px; }
+.ban-search-area ul.search-list li:hover .dw{  background:url(../images/search-icons.png) no-repeat -27px -104px;   }
+.ban-search-area ul.search-list li:last-child{ margin:0px;}
+
+.bot-search{ width:100%; float:left; margin:30px 0 0 0;}
+.bot-search ul.form-group{ margin:0px; padding:0px; list-style-type:none;}
+.bot-search ul.form-group li{float:left; }
+.bot-search ul.form-group li .form-control{ width:100%; border-radius:0px; background:#ffffff; border:0px; height:50px;}
+.bot-search ul.form-group li.search{ width:37%; border-right:#cacaca 1px solid; }
+.bot-search ul.form-group li.drop{ width:15%; border-right:#cacaca 1px solid;}
+.bot-search ul.form-group li.pick{ width:15%; border-right:#cacaca 1px solid;}
+.bot-search ul.form-group li.size{ width:15%; }
+.bot-search ul.form-group li.search-btn{ width:18%;}
+
+.bot-search ul.form-group li.size select{ -moz-appearance:none;}
+.bot-search ul.form-group li.size select option{ font-size:14px; color:#404040;}
+.bot-search ul.form-group li.search-btn .btn-success{ background:#59abe3; width:100%; height:50px; line-height:35px; font-size:20px; text-transform:uppercase; border-radius:0px; border:0px;}
+.bot-search ul.form-group li.search-btn .btn-success:hover{ background:#2c80b9;}
+/*top drop content*/
+#panel{padding:0px 0px; text-align: center;  z-index:19; display:none; background:#131212 ;}
+#panel .topdrop-area{ width:100%; float:left; padding:125px 0 100px 0;}
+#panel .topdrop-area .close{width:100%; float:left; margin:0 0 50px 0;}
+#panel .topdrop-area .close a{float:right; color:#ffffff;}
+#panel .topdrop-area .close a:hover{color:#ffffff;}
+#panel .topdrop-area .td-box{ width:100%; float:left; text-align:center;}
+#panel .topdrop-area .td-box .td-img{ width:80px; height:80px; background:url(../images/search-icons.png) no-repeat; background-position:-140px 0px; display:block; margin:0 auto 20px; border:#ffffff 3px solid; border-radius:50%;}
+#panel .topdrop-area .td-box .td-img-2{ background:url(../images/search-icons.png) no-repeat; background-position:-140px -80px;}
+#panel .topdrop-area .td-box .td-img-3{ background:url(../images/search-icons.png) no-repeat; background-position:-140px -160px;}
+#panel .topdrop-area .td-box:hover .td-img{background:url(../images/search-icons.png) no-repeat; background-position:-221px 0px; border:#59a9e1 3px solid; }
+#panel .topdrop-area .td-box-2:hover .td-img{background:url(../images/search-icons.png) no-repeat; background-position:-221px -80px; border:#59a9e1 3px solid; }
+#panel .topdrop-area .td-box-3:hover .td-img{background:url(../images/search-icons.png) no-repeat; background-position:-221px -160px; border:#59a9e1 3px solid; }
+
+#panel .topdrop-area .td-box p.txt-head{ font-size:20px; color:#ffffff;}
+#panel .topdrop-area .td-box p{font-size:13px; color:#ffffff; padding:10px 10px 0 10px; }
+#panel .topdrop-area a.td-more{text-decoration:none; color:#ffffff; margin:100px auto 0; display:inline-block; border:#ffffff 1px solid; display:block; max-width:300px; padding:15px 0; border-radius:50px; text-transform:uppercase;}
+#panel .topdrop-area a.td-more:hover{color:#59a9e1; border:#59a9e1 1px solid;}
+
+
+/*top drop content*/
+
+/*=========================================================Banner css End======================================================*/
+@media (min-width:1601px) and (max-width:1900px){
+/*top head*/	
+header{ height:75px;}
+header .logo-area { width:35%; max-width:252px; height:70px;}
+header .top-search{ width:65%; min-height:70px; max-width:100%; }
+header .top-search .search-box{ max-width:100%; }
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display: block;}
+header .logo-area .mob-logo{ display: none;}
+header.smaller { height:55px;}
+header.smaller .logo-area{ height:50px;}
+header.smaller .top-search{ min-height:50px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:right; width:100%;  border-top:#f0f0f0 1px solid; margin:0 -15px 0 0;}
+header .topnav-area .navbar .navbar-nav{ float:right; }
+header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
+/*top head*/
+}
+@media (min-width:1441px) and (max-width:1600px){
+/*top head*/	
+header{ height:75px;}
+header .logo-area { width:35%; max-width:252px; height:70px;}
+header .top-search{ width:65%; min-height:70px; max-width:100%; }
+header .top-search .search-box{ max-width:100%;}
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display: block;}
+header .logo-area .mob-logo{ display: none;}
+header.smaller { height:auto;}
+header.smaller .logo-area{ height:50px;}
+header.smaller .top-search{ min-height:50px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:right; width:100%;  border-top:#f0f0f0 1px solid;}
+header .topnav-area .navbar .navbar-nav{ float:right; }
+header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
+/*top head*/
+.banner-area{ height:100vh;}
+.ban-search-area{ margin:70px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+}
+@media (min-width:1337px) and (max-width:1440px){
+/*top head*/	
+header{ height:75px;}
+header .logo-area { width:35%; max-width:252px; height:70px;}
+header .top-search{ width:65%; min-height:70px; max-width:100%; }
+header .top-search .search-box{ max-width:100%;}
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display:block;}
+header .logo-area .mob-logo{ display: none;}
+header.smaller { height:auto;}
+header.smaller .logo-area{ height:50px;}
+header.smaller .top-search{ min-height:50px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:right; width:100%;  border-top:#f0f0f0 1px solid;}
+header .topnav-area .navbar .navbar-nav{ float:right; }
+header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
+/*top head*/
+.banner-area{ height:100vh;}	
+.ban-search-area{ margin:70px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+}
+
+@media (min-width:1200px) and (max-width:1366px){
+/*top head*/	
+header{ height:75px;}
+header .logo-area { width:45%; max-width:252px; height:70px;}
+header .top-search{ width:55%; min-height:70px; max-width:100%; }
+header .top-search .search-box{ max-width:100%;}
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display:block;}
+header .logo-area .mob-logo{ display: none;  text-align:center; width:100%; margin:25px 0 0 0;}
+header.smaller { height:50px;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:right; width:100%;  border-top:#f0f0f0 1px solid;}
+header .topnav-area .navbar .navbar-nav{ float:right; }
+header .topnav-area .navbar .nav-logout li{ padding:18px 4px;}
+header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
+/*top head*/
+.banner-area{ height:100vh;}
+.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:20px auto 0;}
+.ban-search-area{ margin:50px 0 0 0;}
+
+}
+@media (min-width:1025px) and (max-width:1199px){
+/*top head*/	
+header{ height:75px;}
+header .logo-area { width:15%; max-width:252px; height:70px;}
+header .top-search{ width:85%; min-height:70px; max-width:100%; }
+header .top-search .search-box{ max-width:100%;}
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display:none;}
+header .logo-area .mob-logo{ display:block;  text-align:center; width:100%; margin:25px 0 0 0;}
+header.smaller { height:50px;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:right; width:100%;  border-top:#f0f0f0 1px solid;}
+header .topnav-area .navbar .navbar-nav{ float:right; }
+header .topnav-area .navbar .nav-logout li{ padding:18px 0px;}
+header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
+/*top head*/	
+	
+/*Banner*/
+.banner-area{ height:100vh; padding:125px 0;}
+.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:30px 0 0 0; }
+.ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
+.ban-search-area ul.search-list{ width:100%; float:left;}
+.ban-search-area ul.search-list li{ width:32%; margin:0 2% 0 0; height:auto; padding:10px 0;}
+/*Banner*/	
+}
+
+@media (min-width:992px) and (max-width:1024px){
+/*top head*/	
+header{ height:75px;}
+header .logo-area { width:15%; max-width:252px; height:70px;}
+header .top-search{ width:85%; min-height:70px; max-width:100%; }
+header .top-search .search-box{ max-width:100%;}
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:14px;}
+header .logo-area .desk-logo{ display:none;}
+header .logo-area .mob-logo{ display:block;  text-align:center; width:100%; margin:25px 0 0 0;}
+header.smaller { height:50px;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:right; width:100%;  border-top:#f0f0f0 5px solid;}
+header .topnav-area .navbar .navbar-nav{float: right;}
+header .topnav-area .navbar .nav-logout li{ padding:14px 0px;}
+header.smaller .topnav-area .navbar .nav-logout li{ padding:0px 0px 7px 0;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px;}
+/*top head*/	
+	
+/*Banner*/
+.banner-area{ height:auto; padding:85px 0 50px 0;}
+.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:25px 0 0 0; }
+.ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
+.ban-search-area ul.search-list{ width:100%; float:left;}
+.ban-search-area ul.search-list li{ width:32%; margin:0 2% 0 0; height:auto; padding:10px 0;}
+
+#panel .topdrop-area{ padding:125px 0 25px 0;}
+#panel .topdrop-area .td-box{ margin:0 0 30px 0; padding:40px 0;}
+#panel .topdrop-area .td-box .td-img{ margin:0 auto 10px;}
+#panel .topdrop-area a.td-more{ margin:0px 0 0 0;}
+/*Banner*/
+	
+}
+@media (min-width:901px) and (max-width:991px){
+header .topnav-area .navbar .navbar-nav li{ padding:6px 4.6%;}
+header .topnav-area .navbar .nav-logout li{ padding:6px 2.5%;}
+}
+@media (min-width:851px) and (max-width:900px){
+header .topnav-area .navbar .navbar-nav li{ padding:6px 3.7%;}
+header .topnav-area .navbar .nav-logout li{ padding:6px 2.2%;}
+}
+@media (min-width:801px) and (max-width:850px){
+header .topnav-area .navbar .navbar-nav li{ padding:6px 3.7%;}
+header .topnav-area .navbar .nav-logout li{ padding:6px 1.8%;}
+}
+@media (min-width:768px) and (max-width:800px){
+header .topnav-area .navbar .navbar-nav li{ padding:6px 3%;}
+header .topnav-area .navbar .nav-logout li{ padding:6px 1.3%;}
+}
+
+@media (min-width:768px) and (max-width:991px){
+/*top head*/	
+header{ height:auto;}
+header .logo-area { width:15%; max-width:252px; height:50px;}
+header .top-search{ width:85%; min-height:50px; max-width:100%; }
+header .top-search .search-box .search-input{ height:50px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display:none;}
+header .logo-area .mob-logo{ display:block;  text-align:center; width:100%; margin:15px 0 0 0;}
+header.smaller { height:auto;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:12px 0 0 0;}
+header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px solid;}
+header .topnav-area .navbar .navbar-nav{ width:100%;}
+/*top head*/
+
+/*Banner*/
+.banner-area{ height:auto; padding:100px 0 50px 0;}
+.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:25px 0 0 0; }
+.ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
+.ban-search-area ul.search-list{ width:100%; float:left;}
+.ban-search-area ul.search-list li{ width:100%; margin:0 0 15px 0; height:auto; padding:10px 0;}
+.ban-search-area ul.search-list li a span{ display:none !important;}
+
+#panel .topdrop-area{ padding:125px 0 25px 0;}
+#panel .topdrop-area .td-box{ margin:0 0 30px 0; border-bottom:#202020 1px solid; padding:40px 0;}
+#panel .topdrop-area .td-box .td-img{ margin:0 auto 10px;}
+#panel .topdrop-area a.td-more{ margin:0px 0 0 0;}
+/*Banner*/
+
+}
+
+@media (min-width:641px) and (max-width:767px){
+	/*top head*/	
+header{ height:auto;}
+header .logo-area { width:15%; max-width:252px; height:50px;}
+header .top-search{ width:85%; min-height:50px; max-width:100%; }
+header .top-search .search-box .search-input{ height:50px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .logo-area .desk-logo{ display:none;}
+header .logo-area .mob-logo{ display:block;  text-align:center; width:100%; margin:15px 0 0 0;}
+header.smaller { height:auto;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px solid;}
+
+.topnav-area .navbar-nav li .currency-drop{ width:100%;}
+.topnav-area .navbar-nav li .login-drop{width:100%; padding:15px;}
+.topnav-area .navbar-collapse{ padding-right:15px;}
+.topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left;}
+/*top head*/
+
+/*Banner*/
+.banner-area{ height:auto; padding:100px 0 15px 0;}
+.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:25px 0 0 0; }
+.ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
+.ban-search-area ul.search-list{ width:100%; float:left;}
+.ban-search-area ul.search-list li{ width:100%; margin:0 0 15px 0; height:auto; padding:10px 0;}
+.ban-search-area ul.search-list li a span{ display:none !important;}
+
+.bot-search ul.form-group li{ width:100% !important; float:none; margin:0 0 15px 0;}
+.bot-search ul.form-group li .form-control{ height:auto; padding:10px 0 10px 10px; border:#a6a6a6 1px solid; border-radius:3px;}
+
+#panel .topdrop-area{ padding:125px 0 25px 0;}
+#panel .topdrop-area .td-box{ margin:0 0 30px 0; border-bottom:#202020 1px solid; padding:40px 0;}
+#panel .topdrop-area .td-box-3{ border-bottom:0px; }
+#panel .topdrop-area .td-box .td-img{ margin:0 auto 10px;}
+#panel .topdrop-area a.td-more{ margin:0px auto 0;}
+
+/*Banner*/
+
+}
+
+@media (min-width:481px) and (max-width:640px){
+/*top head*/	
+header{ height:auto;}
+header .logo-area { width:15%; max-width:252px; height:50px;}
+header .top-search{ width:85%; ; min-height:50px;}
+header .top-search .search-box .search-input{ height:50px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:13px;}
+header .logo-area .desk-logo{ display:none;}
+header .logo-area .mob-logo{ display:block;  text-align:center; width:100%; margin:15px 0 0 0;}
+header.smaller { height:auto;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px solid;}
+
+.topnav-area .navbar-nav li .currency-drop{ width:100%;}
+.topnav-area .navbar-nav li .login-drop{width:100%; padding:15px;}
+.topnav-area .navbar-collapse{ padding-right:15px;}
+.topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left;}
+
+/*top head*/
+
+/*Banner*/
+.banner-area{ height:auto; padding:85px 0 15px 0;}
+.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:25px 0 0 0; }
+.ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
+.ban-search-area ul.search-list{ width:100%; float:left;}
+.ban-search-area ul.search-list li{ width:100%; margin:0 0 15px 0; height:auto; padding:10px 0;}
+.ban-search-area ul.search-list li a span{ display:none !important;}
+
+.bot-search ul.form-group li{ width:100% !important; float:none; margin:0 0 15px 0;}
+.bot-search ul.form-group li .form-control{ height:auto; padding:10px 0 10px 10px; border:#a6a6a6 1px solid; border-radius:3px;}
+
+#panel .topdrop-area{ padding:125px 0 25px 0;}
+#panel .topdrop-area .td-box{ margin:0 0 20px 0; border-bottom:#202020 1px solid; padding:30px 0;}
+#panel .topdrop-area .td-box-3{ border-bottom:0px; }
+#panel .topdrop-area .td-box .td-img{ margin:0 auto 10px;}
+#panel .topdrop-area a.td-more{ margin:0px auto 0;}
+
+/*Banner*/
+
+}
+
+@media (min-width:320px) and (max-width:480px){
+/*----top head----*/	
+header{ height:auto;}
+header .logo-area { width:20%; max-width:252px; height:50px;}
+header .top-search{ width:80%;  min-height:50px;}
+header .top-search .search-box .search-input{ height:50px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:12px;}
+header .logo-area .desk-logo{ display:none;}
+header .logo-area .mob-logo{ display:block;  text-align:center; width:100%; margin:15px 0 0 0;}
+header.smaller { height:auto;}
+header.smaller .logo-area{ height:45px;}
+header.smaller .top-search{ min-height:45px;}
+header.smaller .logo-area .mob-logo{ margin:10px 0 0 0;}
+header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px solid;}
+
+.topnav-area .navbar-nav li{ width:100%; clear:left;}
+.topnav-area .navbar-nav li .currency-drop{ width:100%;}
+.topnav-area .navbar-nav li .login-drop{width:100%; padding:15px;}
+.topnav-area .navbar-collapse{ padding-right:15px;}
+.topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left; overflow-y:scroll;}
+/*--top head---*/
+	
+/*Banner*/
+.banner-area{ height:auto; padding:85px 0 15px 0;}
+.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:16px; padding:15px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:25px 0 0 0; }
+.ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
+.ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
+.ban-search-area ul.search-list{ width:100%; float:left;}
+.ban-search-area ul.search-list li{ width:100%; margin:0 0 15px 0; height:auto; padding:10px 0;}
+.ban-search-area ul.search-list li a span{ display:none !important;}
+
+.bot-search ul.form-group li{ width:100% !important; float:none; margin:0 0 15px 0;}
+.bot-search ul.form-group li .form-control{ height:auto; padding:10px 0 10px 10px; border:#a6a6a6 1px solid; border-radius:3px;}
+
+#panel .topdrop-area{ padding:125px 0 25px 0;}
+#panel .topdrop-area .td-box{ margin:0 0 10px 0; border-bottom:#202020 1px solid; padding:20px 0;}
+#panel .topdrop-area .td-box-3{ border-bottom:0px; }
+#panel .topdrop-area .td-box .td-img{ margin:0 auto 10px;}
+#panel .topdrop-area a.td-more{ margin:0px auto 0;}
+/*Banner*/
+}
+
+
+
+

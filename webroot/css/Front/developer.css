@@ -1,0 +1,121 @@
+em.signup_error {
+  color: #ff5a5f;
+  font-size: 13px;
+  font-style: normal;
+  margin-left: 5px;
+}
+
+label.error {
+    color: #ff5a5f !important;
+    font-size: 12px !important;
+    font-weight: normal !important;
+}
+
+.response_msg_container {
+    position: relative !important;
+    top: 7px !important;
+}
+p.successMessage {
+    color: #4F9709;
+    font-size: 12px !important;
+    position: relative;
+    top: 0px;
+}
+p.errorMessage {
+    color: #DF1C2A;
+   font-size: 12px !important;
+    position: relative;
+    top: 0px;
+}
+.success_msg{
+  background: #4F9709 none repeat scroll 0 0;
+    bottom: 10px;
+    color: #fff !important;
+    cursor: pointer !important;
+    float: right !important;
+    opacity: 0.9 !important;
+    padding: 5px;
+    position: fixed !important;
+    right: 7px;
+    text-align: center !important;
+    z-index: 9999 !important;
+}
+
+.error_msg {
+    background: #df1c2a none repeat scroll 0 0;
+    bottom: 10px;
+    color: #fff !important;
+    cursor: pointer !important;
+    float: right !important;
+    opacity: 0.9 !important;
+    padding: 5px;
+    position: fixed !important;
+    right: 7px;
+    text-align: center !important;
+    z-index: 9999 !important;
+}
+
+
+label.error {
+  position: relative;
+  top: -5px;
+}
+/*For sign up*/
+.signup-color > a{
+    font-size: 13px;
+
+}
+
+/*End sing up*/
+
+/*CSS for footer subscribe error message*/
+footer label.error {
+margin: 6px 0px 0px 2px;
+font-size: 12px !important;
+}
+
+/*CSS for Header language tabber*/
+.topnav-area .navbar-nav li .currency-drop ul.c-list li a img {
+float: left;
+margin: 10px 25px 0 0 !important;
+}
+
+.signup-submit{
+	background: #72a105 none repeat scroll 0 0;
+	border: 1px solid #72a105;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 16px;
+	padding: 13px 0;
+	width: 100%;
+}
+
+#users-title, #users-hear-from, #users-country {
+	border: 1px solid #aaaaaa;
+	border-radius: 2px;
+	box-shadow: none;
+	height: 47px;
+}
+
+.dob{width:100% !important;}
+.dobDiv > .text{width:85% !important;width: 80% !important;float: left;}
+
+
+label.error{margin-top:5px;}
+
+.radio label, .checkbox>input{
+    margin-left:3px !important;
+}
+/*CSS MODEL DIALOG*/
+.addBgColor{
+    background-color:#EAEAEA !important;
+}
+.modal-backdrop{
+    z-index:1 !important;
+}
+.modal-dialog{
+    z-index: 999 !important;
+}
+.booking{
+    margin-left:15px !important;
+}

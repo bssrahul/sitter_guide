@@ -1,0 +1,2 @@
+msgid "Manage CMS Pages"
+msgstr "Manage CMS Pages"

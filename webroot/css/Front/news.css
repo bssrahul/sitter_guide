@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+
+.news-page {background:#fff !important;}
+
+
+.news-page .fun-news {
+    float: left;
+    padding: 0px 0 0 !important;
+    width: 100%;
+}
+
+
+
+
+
+
+/*Banner inner pages starts*/
+.banner-area-news { background:url(../images/news.jpg) repeat; background-position:center; height:350px;  width:100%; margin-top:75px; margin-bottom:30px;}
+
+.banner-area-news h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-news p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/
+
+.news-box {border:1px solid #e6e6e6; height:auto; margin-top:25px;}
+
+.news-box .news-dummy-logo {padding-top:60px;}
+
+
+
+
+.news-box .box-lr-padd {padding-left:30px; padding-right:45px;}
+
+.news-box h4 { color:#72a105; font-size:18px; font-family: 'Raleway', sans-serif; padding-top:30px; padding-bottom:20px;}
+.news-box h5 { color:#666; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:300}
+
+.news-box p { color:#666; font-size:13px; font-family: 'Raleway', sans-serif; font-weight:300; padding-top:30px; padding-bottom:30px;}
+
+.news-box .readmorebtn {background:#72a105; color:#fff; font-size:13px; height:37px; width:99px; margin-bottom:35px;}
+
+@media (max-width:767px) {
+
+
+	
+.news-box {  height:auto !important; margin-top:25px;}
+
+.news-box .news-dummy-logo {padding-top:10px;}
+
+
+
+
+.news-box .box-lr-padd {padding-left:30px; padding-right:45px;}
+
+.news-box h4 { color:#72a105; font-size:18px; font-family: 'Raleway', sans-serif; padding-top:30px; padding-bottom:20px;}
+.news-box h5 { color:#666; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:300}
+
+.news-box p { color:#666; font-size:13px; font-family: 'Raleway', sans-serif; font-weight:300; padding-top:30px; padding-bottom:30px;}
+
+.news-box .readmorebtn {background:#72a105; color:#fff; font-size:13px; height:37px; width:99px; margin-bottom:35px;}
+
+	
+	
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@media ( min-width: 768px ) {
+		
+	
+		
+   .news-box .grid-divider {
+        position: relative;
+        padding: 0;
+    }
+ .news-box   .grid-divider>[class*='col-'] {
+        position: static;
+    }
+  .news-box  .grid-divider>[class*='col-']:nth-child(n+2):before {
+        content: "";
+        border-left: 1px solid #e5e5e5;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+  .news-box  .col-padding {
+        padding: 0 15px;
+    }
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

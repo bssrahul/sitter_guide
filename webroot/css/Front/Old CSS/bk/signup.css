@@ -1,0 +1,220 @@
+/****signup***/
+.innerpage-conent { float: left; margin-top: 75px; width: 100%; }
+.signup-container {border-top: 1px solid #adadad; border-left: 1px solid #adadad; border-right: 1px solid #adadad; border-bottom: 4px solid #74a208;width: 100%; margin-top: 70px; margin-bottom: 70px; border-radius: 2px; text-align: center; background: #fff;}
+.signup-container h2 {font-size: 25px; color: #565656; padding: 20px 0; margin:0; text-align: center; font-weight: 300;border-bottom: 1px solid #adadad; }
+.signup-container div {text-align: center;}
+.signup-container a:hover { text-decoration: none; }
+/*.signup-container a { font-size: 16px; background: #f1f1f1;}*/
+.signup-email a {border: 1px solid #cdcdcd;  border-radius: 2px; color: #404040;display: inline-block; max-width: 450px; padding: 15px; width: 100%; margin-top: 50px;}
+.signup-facebook a:hover {color: #fff;}
+.signup-facebook a{ border: 1px solid #4063b3; border-radius: 2px; color: #fff; display: inline-block;max-width: 450px; padding: 15px; width: 100%; background: #4063b3; margin-top: 35px;}
+.signup-container i {margin-right: 12px;}
+.signup-container p {color: #404040; font-size: 13px; margin-top: 25px; margin-bottom: 25px;}
+span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  padding-bottom: 25px;  }
+.signup-color { color: #1277bb; }
+
+#login_user .form-group, #forgotPasswordForm .form-group , #resetPasswordForm .form-group{
+    position: relative;
+}
+/****sigin***/ 
+.signup-container form {
+    margin: auto;
+    max-width: 450px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    margin-top: 35px; 
+}
+.top-sp {
+    margin-top:35px;
+}
+.signup-container form label {
+    font-family: raleway;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.signup-container form button {
+    background: #72a105 none repeat scroll 0 0;
+    border: 1px solid #72a105;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 16px;
+    padding: 13px 0;
+    width: 100%;
+}
+a.signup-fb {
+    background: #4063b3;
+    border: 1px solid #4063b3;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 16px;
+    padding: 13px 0;
+    width: 100%;
+    display: inline-block;
+}
+a.signup-fb:hover {
+    color: #fff;
+}
+.line-signin {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 45px;
+}
+.signup-container form button:hover {background:#515151 ; color: #fff;}
+.signup-container input.form-control{height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none; position: relative; /*z-index: 1000000;*/}
+/*.signin-wrapper select {
+    height: 47px; 
+    border-radius: 2px; 
+    border: 1px solid #aaaaaa;
+    box-shadow: none;
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
+   background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;
+}*/
+
+/*.signin-wrapper select {
+    -moz-appearance: none;
+    background: #fff url("../images/arw.png") no-repeat scroll right 10px center;
+    border: 1px solid #aaaaaa !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
+    height: 47px !important;
+}*/
+
+.signup-container p.line-signin {
+    border-bottom: medium none;
+    border-top: 1px solid #ccc;
+   
+    padding-bottom: 0;
+    padding-top: 45px;
+}
+.c-red {
+    color: #d61a1a;
+    position: relative;
+}
+.c-red-bar::after {
+    border-top: 1px solid #d61a1a;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: 8px;
+    width: 20px;
+}
+.c-red-bar::before {
+    border-top: 1px solid;
+    content: "";
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    width: 20px;
+}
+.form-group.radio span {
+    float: left;
+    margin: 0 20px 10px 0;
+}
+#addUsers .form-part div.form-group {
+    float: left;
+    width: 48%;
+}
+#addUsers .form-part div.form-group:nth-child(2){
+    float: right;
+}
+p.cap {
+    float: left;
+    margin: 0 0 15px;
+    width: 100%;
+}
+p.cap span {
+    float: left;
+    text-align: left;
+    width: 80%;
+}
+.cap-img img {
+    width: 100%;
+}
+
+.cap-sr i {
+    background: #fff;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    color: #a7a7a7;
+    font-size: 24px;
+    margin: 0 10px;
+    padding: 9px 10px;
+    text-align: center;
+}
+
+.form-part {
+    width: 100%;
+    float: left;
+}
+.calender {
+    position: relative;
+}
+.calender i {
+    left: 0;
+    position: absolute;
+    top: 48px;
+}
+
+.icon-input i {
+    font-size: 17px;
+    left: 13px;
+    position: absolute;
+    top: 49px;
+}
+.icon-input input {
+    padding-left: 40px;
+}
+
+
+#users-title,#users-hear-from {
+    appearance:none;
+  -moz-appearance: none;
+  -webkit-appearance:none; /* Safari and Chrome */
+  background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;
+  border: 1px solid #aaaaaa;
+  border-radius: 2px;
+  box-shadow: none;
+  height: 47px;
+}
+#users-country {
+      appearance:none;
+  -moz-appearance: none;
+  -webkit-appearance:none; /* Safari and Chrome */
+  background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;
+}
+#addUsers .form-group {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+.signup-container form label.error {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 12px;
+}
+#addUsers .checkbox {
+    float: left;
+    width: 100%;
+    margin-top: 0;
+}
+.form-part .dobDiv i {
+    font-size: 17px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+}
+.signup-container form div.checkbox label.error {
+    top: 0;
+}
+
+@media screen and (max-width: 480px) {
+    .signup-container form , .signup-email a, .signup-facebook a{max-width: 250px;}
+    #addUsers .form-part div.form-group {width: 100%;}
+    .signup-line br {display: none;}
+}

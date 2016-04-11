@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* this Stylesheet only use to give universal styling for all webpages */
+@import 'bootstrap.min.css';
+@import 'header.css';
+@import 'content.css';
+@import 'footer.css';
+
+@font-face {
+	font-family: 'Conv_Raleway-Regular';
+	src: url('../fonts/Raleway-Regular.eot');
+	src: local('☺'), url('../fonts/Raleway-Regular.woff') format('woff'),
+	 url('../fonts/Raleway-Regular.ttf') format('truetype'),
+	  url('../fonts/Raleway-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+body{ margin:0px; padding:0px;  font-family: 'Raleway', sans-serif;}
+p,h1,h2,h3,h4,h5,h6{ margin:0px; padding:0px;}
+a:focus, a:hover{ outline:none;}
+
+a.btn-1{ width:128px; height:38px; display:block; text-decoration:none; color:#404040; line-height:38px; border:#dbdbdb 1px solid; text-align:center; margin:25px auto 0; font-size:13px; text-transform:uppercase; }
+a.btn-1 .fa{ font-size:14px; margin:0 0 0 5px;}
+a.btn-1:hover, a.btn-1:focus{ background:#72a105; border:0px; color:#ffffff;}
+
+a.btn-2{ width:128px; height:38px; display:block; text-decoration:none; color:#ffffff; line-height:38px; background:#59aae1; text-align:center; margin:25px auto 0; font-size:13px; text-transform:uppercase; }
+a.btn-2 .fa{ font-size:14px; margin:0 0 0 5px;}
+a.btn-2:hover, a.btn-2:focus{ background:#2c80b9; border:0px; color:#ffffff;}

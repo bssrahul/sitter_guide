@@ -1,0 +1,1694 @@
+msgid "Manage CMS Pages"
+msgstr "Gérer les pages CMS"
+
+
+msgid "CMS Management"
+msgstr "gestion CMS"
+
+
+msgid "CMS Pages"
+msgstr "pages CMS"
+
+
+msgid "Contact Requests"
+msgstr "Contacts Demandes"
+
+
+msgid "Content Management"
+msgstr "Gestion de contenu"
+
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+
+msgid "Email Template"
+msgstr "modèle de courrier électronique"
+
+
+msgid "Manage Users"
+msgstr "gérer les utilisateurs"
+
+
+msgid "Users"
+msgstr "utilisateurs"
+
+
+msgid "Welcome"
+msgstr "Bienvenue"
+
+
+msgid "Sitter Guide"
+msgstr "Guide sitter"
+
+
+msgid "Sitter.Guide"
+msgstr "Guide.sitter"
+
+msgid "Sitter Guide"
+msgstr "Guide Sitter"
+
+
+msgid "Welcome"
+msgstr "Bienvenue"
+
+
+msgid "Administrator"
+msgstr "Administrateur"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+
+msgid "Control Panel"
+msgstr "Panneau de contrôle"
+
+
+msgid "CMS Pages"
+msgstr "Pages CMS"
+
+msgid " De-active Pages"
+msgstr "Pages De-actifs"
+
+
+msgid "Active Pages"
+msgstr "Pages actives"
+
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Contact Requests"
+msgstr "Contacts demandes"
+
+
+msgid "Administrator Detail"
+msgstr "administrateur Détail"
+
+
+msgid "Name"
+msgstr "prénom"
+
+msgid "User Name"
+msgstr "Nom d'utilisateur"
+
+
+msgid "email"
+msgstr "email"
+
+
+msgid "Status"
+msgstr "statut"
+
+msgid "Last Login"
+msgstr "Dernière connexion"
+
+
+msgid "Date Added"
+msgstr "date ajoutée"
+
+
+msgid "Action"
+msgstr "action"
+
+msgid "Manage Users "
+msgstr "gérer les utilisateurs"
+
+
+msgid "Users Listing"
+msgstr "utilisateurs Liste"
+
+
+msgid "entries"
+msgstr "entrées"
+
+msgid "Show"
+msgstr "Montrer"
+
+
+msgid "Show entries"
+msgstr "Afficher les entrées"
+
+
+msgid "Search all columns:"
+msgstr "Rechercher toutes les colonnes:"
+
+msgid "Sr.No."
+msgstr "Sr.No."
+
+
+msgid "First Name"
+msgstr "Prénom"
+
+
+msgid "Last Name"
+msgstr "Nom de famille"
+
+msgid "Email"
+msgstr "Email"
+
+
+msgid "Phone"
+msgstr "Téléphone"
+
+
+msgid "Added Date"
+msgstr "date d'ajout"
+
+msgid "Status"
+msgstr "statut"
+
+
+msgid "Action"
+msgstr "action"
+
+
+msgid "Showing"
+msgstr "présentation"
+
+msgid "to"
+msgstr "à"
+
+
+msgid "of"
+msgstr "à"
+
+
+msgid "entries"
+msgstr "entrées"
+
+msgid "Showing to of entries"
+msgstr "Affichage à des entrées"
+
+
+msgid "First"
+msgstr "Premier"
+
+
+msgid "Previous"
+msgstr "précédent"
+
+msgid "Next"
+msgstr "Prochain"
+
+
+msgid "Last"
+msgstr "Dernier"
+
+
+msgid "CMS Management"
+msgstr "gestion CMS"
+
+msgid "Content Management"
+msgstr "Gestion de contenu"
+
+
+msgid "Email Template"
+msgstr "modèle de courrier électronique"
+
+
+msgid "Contact Requests"
+msgstr "Contacts demandes"
+
+msgid "How Works"
+msgstr "comment fonctionne"
+
+
+msgid "Why Choose"
+msgstr "Pourquoi choisir"
+
+
+msgid "Manage Categories "
+msgstr "Gérer les catégories"
+
+msgid "Manage Promocode "
+msgstr "Gérer Promocode"
+
+
+msgid "Currency Management "
+msgstr "Gestion des devises"
+
+
+msgid "Slider Management "
+msgstr "gestion curseur"
+
+msgid "Blogs"
+msgstr "Blogs"
+
+
+msgid "Subscribes"
+msgstr "souscrit"
+
+
+msgid "Blogs Listing"
+msgstr "Blogs Liste"
+
+msgid "Sitter Guide developed by Beta-soft systems. |  Sitter Guide"
+msgstr "Guide Sitter développé par les systèmes de bêta-soft. | Guide Sitter"
+
+
+msgid "Image"
+msgstr "image"
+
+
+msgid "Name"
+msgstr "prénom"
+
+msgid "Page name"
+msgstr "Nom de la page"
+
+msgid "Page content"
+msgstr "Contenu de la page"
+
+msgid "Manage CMS Pages"
+msgstr "Gérer les pages CMS"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Subject"
+msgstr "Assujettir"
+
+msgid "Alias"
+msgstr "Alias"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Contact Requests"
+msgstr "Contacts demandes"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Description"
+msgstr "La description"
+
+msgid "Status"
+msgstr "statut"
+
+msgid "Created Date"
+msgstr "date de création"
+
+msgid "How Works Listing"
+msgstr "Comment Fonctionne Listing"
+
+msgid "Choose Us Listing"
+msgstr "Choisissez-nous Inscription"
+
+msgid "Add Choose Us"
+msgstr "Ajouter Choisissez-nous"
+
+msgid "News Updates Listing"
+msgstr "Nouvelles mises à jour Listing"
+
+msgid "Add News Updates"
+msgstr "Ajouter Nouvelles mises à jour"
+
+msgid "Slug"
+msgstr "Limace"
+
+msgid "Add Category"
+msgstr "ajouter une catégorie"
+
+msgid "Category Listing"
+msgstr "Liste des catégories"
+
+msgid "Promo code Listing"
+msgstr "Code Promo Listing"
+
+msgid "Add Promo code"
+msgstr "Ajouter code promo"
+
+msgid "Promo Code"
+msgstr "Code promo"
+
+msgid "Coupon Type"
+msgstr "Type de coupon"
+
+msgid "Discount"
+msgstr "Remise"
+
+msgid "Start Date"
+msgstr "Date de début"
+
+msgid "Expire Date"
+msgstr "Date d'expiration"
+
+msgid "Currencies Listing"
+msgstr "Devises Liste"
+
+msgid "Country Name"
+msgstr "Nom du pays"
+
+msgid "Currency Name"
+msgstr "Nom de la devise"
+
+msgid "Locale"
+msgstr "Lieu"
+
+msgid "Currency Code"
+msgstr "Code de devise"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+msgid "Media"
+msgstr "Médias"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Added Date"
+msgstr "date d'ajout"
+
+msgid "Manage Slides"
+msgstr "Gérer les diapositives"
+
+msgid "Blogs Listing"
+msgstr "Blogs Liste"
+
+msgid "Added Date"
+msgstr "date d'ajout"
+
+msgid "Subscribers Listing"
+msgstr "Les abonnés Liste"
+
+msgid "Send News Latter"
+msgstr "Envoyer Nouvelles Derniers"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "News Latter"
+msgstr "Nouvelles Derniers"
+
+msgid "Subscriber's List"
+msgstr "Liste des Abonnés"
+
+msgid "Hello Subscriber,"
+msgstr "Bonjour abonné,"
+
+msgid "Write your message here..."
+msgstr "Ecrivez votre message ici..."
+
+msgid "Regards,"
+msgstr "Cordialement,"
+
+msgid "Team Sitter Guide"
+msgstr "Guide de l'équipe Sitter"
+
+msgid "Note: This is a system generated email, please do not reply"
+msgstr "Note: Ceci est un système généré email, s'il vous plaît ne répond pas"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Account Activated"
+msgstr "compte Activé"
+
+msgid "Sitter Guide- Account Activated"
+msgstr "Sitter compte Guide- Activé"
+
+msgid "{full_name}"
+msgstr "{nom complet}"
+
+msgid "noreply@sitterguide.com"
+msgstr "noreply@sitterguide.com"
+
+msgid "Sitter Guide"
+msgstr "Guide Sitter"
+
+msgid "Short Codes (Note: Don't change short codes in description)"
+msgstr "Short Codes (Note: Ne pas modifier les codes courts dans la description)"
+
+msgid "Sitter Guide- Account Activated"
+msgstr "Sitter compte Guide- Activé"
+
+msgid "Hello {full_name},"
+msgstr "Bonjour {full_name},"
+
+msgid "Your account has been activated successfully. Thanks for being a member of Sitter Guide."
+msgstr "Votre compte a été activé avec succès. Merci d'être membre du Guide Sitter."
+
+msgid "If you any query please let us know straight away at: info@sitterguide.com"
+msgstr "Si vous toute question s'il vous plaît laissez-nous savoir immédiatement à: info@sitterguide.com"
+
+msgid "Notice: The information in this email and in any attachments is confidential and intended solely for the attention and use of the named addressee. This information may be subject to legal professional or other privilege or may otherwise be protected by work product immunity or other legal rules. It must not be disclosed to any person without authorization. If you are not the intended recipient, or a person responsible for delivering it to the intended recipient, you are not authorized to and must not disclose, copy, distribute, or retain this message or any part of it."
+msgstr "Les informations contenues dans cet e-mail et les pièces jointes sont confidentiels et destinés exclusivement à l'attention et l'utilisation du destinataire désigné. Cette information peut être soumise à un autre professionnel ou juridique privilège ou peut autrement être protégé par l'immunité du produit du travail ou d'autres règles juridiques. Il ne doit pas être divulgués à toute personne sans autorisation. Si vous n'êtes pas le destinataire prévu, ou une personne responsable de la livraison au destinataire, vous n'êtes pas autorisé à et ne doit pas divulguer, copier, distribuer, ou conserver ce message ou une partie de celui-ci."
+
+msgid "Write your message here..."
+msgstr "Ecrivez votre message ici...."
+
+msgid "Note: This is a system generated email, please do not reply"
+msgstr "Note: Ceci est un système généré email, s'il vous plaît ne répond pas"
+
+msgid "Contact Request Reply"
+msgstr "Contact Demande Répondre"
+
+msgid "New Password"
+msgstr "nouveau mot de passe"
+
+msgid "Confirm Password"
+msgstr "Confirmez le mot de passe"
+
+msgid "Update Admin Password"
+msgstr "Mise à jour Admin Password"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "User name"
+msgstr "Nom d'utilisateur"
+
+msgid "admin"
+msgstr "administrateur"
+
+msgid "Administrator"
+msgstr "Administrateur"
+
+msgid "Edit Admin Detail"
+msgstr "Modifier Administrateur Détail"
+
+msgid "Profile Settings"
+msgstr "Paramètres de profil"
+
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+msgid "Profile Picture"
+msgstr "Image de profil"
+
+msgid "Main Settings"
+msgstr "Paramètres principaux"
+
+msgid "Site Name"
+msgstr "Nom du site"
+
+msgid "Site Contact Email"
+msgstr "Site Contact Email"
+
+msgid "Logo, Banner & Footer Settings"
+msgstr "Réglages Logo, bannière et pied de page"
+
+msgid "Site Logo"
+msgstr "site Logo"
+
+msgid "Favicon"
+msgstr "Favicon"
+
+msgid "Footer Content"
+msgstr "Pied de page de contenu"
+
+msgid "SEO Settings"
+msgstr "Paramètres de référencement"
+
+msgid "Meta Title"
+msgstr "Meta Titre"
+
+msgid "Meta Keywords "
+msgstr "meta Keywords"
+
+msgid "Meta Description"
+msgstr "Meta Description"
+
+msgid "Social Settings"
+msgstr "Paramètres sociaux"
+
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+msgid "Twitter URL"
+msgstr "Twitter URL"
+
+msgid "Google+ URL"
+msgstr "Google+ URL"
+
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+msgid "Youtube URL"
+msgstr "Youtube URL"
+
+msgid "Edit User"
+msgstr "Modifier l'utilisateur"
+
+msgid "Basic Info"
+msgstr "Informations de base"
+
+msgid "First Name"
+msgstr "Prénom"
+
+msgid "Last Name"
+msgstr "Nom de famille"
+
+msgid "Gender"
+msgstr "Le genre"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Zone"
+msgstr "Zone"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "About User"
+msgstr "A propos de l'utilisateur"
+
+msgid "Profile Image "
+msgstr "Photo de profil"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Name"
+msgstr "prénom"
+
+msgid "Breed"
+msgstr "Race"
+
+msgid "Gender"
+msgstr "Le genre"
+
+msgid "Weight"
+msgstr "Poids"
+
+msgid "Age"
+msgstr "Âge"
+
+msgid "No records found"
+msgstr "Aucun enregistrement trouvé"
+
+msgid "Pet Listing"
+msgstr "Pet Listing"
+
+///////////////////////////////////// end manage user ///////////////////
+msgid "Page Name "
+msgstr "Nom de la page"
+
+msgid "Page URL"
+msgstr "URL de la page"
+
+msgid "Page Content"
+msgstr "contenu de la page"
+
+msgid "About Us"
+msgstr "À propos de nous"
+
+msgid "about-us"
+msgstr "à propos de nous"
+
+msgid "Welcome to Sitter Guide"
+msgstr "Bienvenue au Guide Sitter"
+
+msgid "Test Sitter Guide content."
+msgstr "Guide contenu Sitter Test."
+
+msgid "*Subject to Terms and Conditions*"
+msgstr "* Sous réserve de Termes et Conditions *"
+
+msgid "CMS Page Edit"
+msgstr "CMS page Modifier"
+
+msgid "Contact Request View"
+msgstr "Contact Demande Voir"
+
+msgid "Phone No"
+msgstr "Pas de téléphone"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Contact Request Reply"
+msgstr "Contact Demande Répondre"
+
+msgid "Write your message here..."
+msgstr "Ecrivez votre message ici..."
+
+msgid "Inactive"
+msgstr "Inactif"
+
+msgid "Active"
+msgstr "actif"
+
+msgid "Discount Rate/Fixed"
+msgstr "Taux d'actualisation / fixe"
+
+msgid "Start Date"
+msgstr "Date de début"
+
+msgid "Expire Date"
+msgstr "Date d'expiration"
+
+msgid "Edit User Detail"
+msgstr "Modifier l'utilisateur Détail"
+
+msgid "Promo code Listing"
+msgstr "Code Promo Listing"
+
+msgid "Currencies Listing"
+msgstr "Devises Liste"
+
+msgid "Video"
+msgstr "Vidéo"
+
+msgid "Blogs Listing"
+msgstr "Blogs Liste"
+
+msgid "Edit Blog"
+msgstr "Modifier Blog"
+
+msgid "Subscribers Listing"
+msgstr "Les abonnés Liste"
+
+msgid "Send News Latter"
+msgstr "Envoyer Nouvelles Derniers"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Edit Works"
+msgstr "Modifier Works"
+
+msgid "Faqs"
+msgstr "Faqs"
+
+msgid "Edit News Updates"
+msgstr "Modifier Nouvelles mises à jour"
+
+msgid "News Updates Listing"
+msgstr "Nouvelles mises à jour Listing"
+
+msgid "Add News Updates"
+msgstr "Ajouter Nouvelles mises à jour"
+
+msgid "Edit Chosse Us"
+msgstr "Modifier Chosse nous"
+
+msgid "Choose Us Listing"
+msgstr "Choisissez-nous Inscription"
+
+msgid "Add Choose Us"
+msgstr "Ajouter Choisissez-nous"
+
+msgid "How Works Listing"
+msgstr "Comment Fonctionne Listing"
+
+msgid "Edit Works"
+msgstr "Modifier Works"
+
+msgid "Contact Requests"
+msgstr "Contacts demandes"
+
+msgid "Contact Request Reply"
+msgstr "Contact Demande Répondre"
+
+msgid "Email templates"
+msgstr "Modèles de courriel"
+
+msgid "Email Template Edit"
+msgstr "Modèle de courrier électronique Modifier"
+
+msgid "Administrator Login"
+msgstr "Connexion administrateur"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Login"
+msgstr "S'identifier"
+
+msgid "Lost your password ?"
+msgstr "Mot de passe perdu ?"
+
+msgid "View Website"
+msgstr "Voir le site web"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Search Home Sitter"
+msgstr "Rechercher Accueil Sitter"
+
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+msgid "Screen Lock"
+msgstr "Verrouillage d'écran"
+
+msgid "Log Out"
+msgstr "Se déconnecter"
+
+msgid "Enter password and hit enter to unlock..."
+msgstr "Entrez le mot de passe et appuyez sur Entrée pour déverrouiller ..."
+
+msgid "Go!"
+msgstr "Aller!"
+
+
+msgid "Locked"
+msgstr "Fermé à clef"sgid "Page content"
+msgstr "Contenu de la page"
+
+msgid "Manage CMS Pages"
+msgstr "Gérer les pages CMS"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Subject"
+msgstr "Assujettir"
+
+msgid "Alias"
+msgstr "Alias"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Contact Requests"
+msgstr "Contacts demandes"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Description"
+msgstr "La description"
+
+msgid "Status"
+msgstr "statut"
+
+msgid "Created Date"
+msgstr "date de création"
+
+msgid "How Works Listing"
+msgstr "Comment Fonctionne Listing"
+
+msgid "Choose Us Listing"
+msgstr "Choisissez-nous Inscription"
+
+msgid "Add Choose Us"
+msgstr "Ajouter Choisissez-nous"
+
+msgid "News Updates Listing"
+msgstr "Nouvelles mises à jour Listing"
+
+msgid "Add News Updates"
+msgstr "Ajouter Nouvelles mises à jour"
+
+msgid "Slug"
+msgstr "Limace"
+
+msgid "Add Category"
+msgstr "ajouter une catégorie"
+
+msgid "Category Listing"
+msgstr "Liste des catégories"
+
+msgid "Promo code Listing"
+msgstr "Code Promo Listing"
+
+msgid "Add Promo code"
+msgstr "Ajouter code promo"
+
+msgid "Promo Code"
+msgstr "Code promo"
+
+msgid "Coupon Type"
+msgstr "Type de coupon"
+
+msgid "Discount"
+msgstr "Remise"
+
+msgid "Start Date"
+msgstr "Date de début"
+
+msgid "Expire Date"
+msgstr "Date d'expiration"
+
+msgid "Currencies Listing"
+msgstr "Devises Liste"
+
+msgid "Country Name"
+msgstr "Nom du pays"
+
+msgid "Currency Name"
+msgstr "Nom de la devise"
+
+msgid "Locale"
+msgstr "Lieu"
+
+msgid "Currency Code"
+msgstr "Code de devise"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+msgid "Media"
+msgstr "Médias"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Added Date"
+msgstr "date d'ajout"
+
+msgid "Manage Slides"
+msgstr "Gérer les diapositives"
+
+msgid "Blogs Listing"
+msgstr "Blogs Liste"
+
+msgid "Added Date"
+msgstr "date d'ajout"
+
+msgid "Subscribers Listing"
+msgstr "Les abonnés Liste"
+
+msgid "Send News Latter"
+msgstr "Envoyer Nouvelles Derniers"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "News Latter"
+msgstr "Nouvelles Derniers"
+
+msgid "Subscriber's List"
+msgstr "Liste des Abonnés"
+
+msgid "Hello Subscriber,"
+msgstr "Bonjour abonné,"
+
+msgid "Write your message here..."
+msgstr "Ecrivez votre message ici..."
+
+msgid "Regards,"
+msgstr "Cordialement,"
+
+msgid "Team Sitter Guide"
+msgstr "Guide de l'équipe Sitter"
+
+msgid "Note: This is a system generated email, please do not reply"
+msgstr "Note: Ceci est un système généré email, s'il vous plaît ne répond pas"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Account Activated"
+msgstr "compte Activé"
+
+msgid "Sitter Guide- Account Activated"
+msgstr "Sitter compte Guide- Activé"
+
+msgid "{full_name}"
+msgstr "{nom complet}"
+
+msgid "noreply@sitterguide.com"
+msgstr "noreply@sitterguide.com"
+
+msgid "Sitter Guide"
+msgstr "Guide Sitter"
+
+msgid "Short Codes (Note: Don't change short codes in description)"
+msgstr "Short Codes (Note: Ne pas modifier les codes courts dans la description)"
+
+msgid "Sitter Guide- Account Activated"
+msgstr "Sitter compte Guide- Activé"
+
+msgid "Hello {full_name},"
+msgstr "Bonjour {full_name},"
+
+msgid "Your account has been activated successfully. Thanks for being a member of Sitter Guide."
+msgstr "Votre compte a été activé avec succès. Merci d'être membre du Guide Sitter."
+
+msgid "If you any query please let us know straight away at: info@sitterguide.com"
+msgstr "Si vous toute question s'il vous plaît laissez-nous savoir immédiatement à: info@sitterguide.com"
+
+msgid "Notice: The information in this email and in any attachments is confidential and intended solely for the attention and use of the named addressee. This information may be subject to legal professional or other privilege or may otherwise be protected by work product immunity or other legal rules. It must not be disclosed to any person without authorization. If you are not the intended recipient, or a person responsible for delivering it to the intended recipient, you are not authorized to and must not disclose, copy, distribute, or retain this message or any part of it."
+msgstr "Les informations contenues dans cet e-mail et les pièces jointes sont confidentiels et destinés exclusivement à l'attention et l'utilisation du destinataire désigné. Cette information peut être soumise à un autre professionnel ou juridique privilège ou peut autrement être protégé par l'immunité du produit du travail ou d'autres règles juridiques. Il ne doit pas être divulgués à toute personne sans autorisation. Si vous n'êtes pas le destinataire prévu, ou une personne responsable de la livraison au destinataire, vous n'êtes pas autorisé à et ne doit pas divulguer, copier, distribuer, ou conserver ce message ou une partie de celui-ci."
+
+msgid "Write your message here..."
+msgstr "Ecrivez votre message ici...."
+
+msgid "Note: This is a system generated email, please do not reply"
+msgstr "Note: Ceci est un système généré email, s'il vous plaît ne répond pas"
+
+msgid "Contact Request Reply"
+msgstr "Contact Demande Répondre"
+
+msgid "New Password"
+msgstr "nouveau mot de passe"
+
+msgid "Confirm Password"
+msgstr "Confirmez le mot de passe"
+
+msgid "Update Admin Password"
+msgstr "Mise à jour Admin Password"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "User name"
+msgstr "Nom d'utilisateur"
+
+msgid "admin"
+msgstr "administrateur"
+
+msgid "Administrator"
+msgstr "Administrateur"
+
+msgid "Edit Admin Detail"
+msgstr "Modifier Administrateur Détail"
+
+msgid "Profile Settings"
+msgstr "Paramètres de profil"
+
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+msgid "Profile Picture"
+msgstr "Image de profil"
+
+msgid "Main Settings"
+msgstr "Paramètres principaux"
+
+msgid "Site Name"
+msgstr "Nom du site"
+
+msgid "Site Contact Email"
+msgstr "Site Contact Email"
+
+msgid "Logo, Banner & Footer Settings"
+msgstr "Réglages Logo, bannière et pied de page"
+
+msgid "Site Logo"
+msgstr "site Logo"
+
+msgid "Favicon"
+msgstr "Favicon"
+
+msgid "Footer Content"
+msgstr "Pied de page de contenu"
+
+msgid "SEO Settings"
+msgstr "Paramètres de référencement"
+
+msgid "Meta Title"
+msgstr "Meta Titre"
+
+msgid "Meta Keywords "
+msgstr "meta Keywords"
+
+msgid "Meta Description"
+msgstr "Meta Description"
+
+msgid "Social Settings"
+msgstr "Paramètres sociaux"
+
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+msgid "Twitter URL"
+msgstr "Twitter URL"
+
+msgid "Google+ URL"
+msgstr "Google+ URL"
+
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+msgid "Youtube URL"
+msgstr "Youtube URL"
+
+msgid "Edit User"
+msgstr "Modifier l'utilisateur"
+
+msgid "Basic Info"
+msgstr "Informations de base"
+
+msgid "First Name"
+msgstr "Prénom"
+
+msgid "Last Name"
+msgstr "Nom de famille"
+
+msgid "Gender"
+msgstr "Le genre"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Zone"
+msgstr "Zone"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "About User"
+msgstr "A propos de l'utilisateur"
+
+msgid "Profile Image "
+msgstr "Photo de profil"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Name"
+msgstr "prénom"
+
+msgid "Breed"
+msgstr "Race"
+
+msgid "Gender"
+msgstr "Le genre"
+
+msgid "Weight"
+msgstr "Poids"
+
+msgid "Age"
+msgstr "Âge"
+
+msgid "No records found"
+msgstr "Aucun enregistrement trouvé"
+
+msgid "Pet Listing"
+msgstr "Pet Listing"
+
+///////////////////////////////////// end manage user ///////////////////
+msgid "Page Name "
+msgstr "Nom de la page"
+
+msgid "Page URL"
+msgstr "URL de la page"
+
+msgid "Page Content"
+msgstr "contenu de la page"
+
+msgid "About Us"
+msgstr "À propos de nous"
+
+msgid "about-us"
+msgstr "à propos de nous"
+
+msgid "Welcome to Sitter Guide"
+msgstr "Bienvenue au Guide Sitter"
+
+msgid "Test Sitter Guide content."
+msgstr "Guide contenu Sitter Test."
+
+msgid "*Subject to Terms and Conditions*"
+msgstr "* Sous réserve de Termes et Conditions *"
+
+msgid "CMS Page Edit"
+msgstr "CMS page Modifier"
+
+msgid "Contact Request View"
+msgstr "Contact Demande Voir"
+
+msgid "Phone No"
+msgstr "Pas de téléphone"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Contact Request Reply"
+msgstr "Contact Demande Répondre"
+
+msgid "Write your message here..."
+msgstr "Ecrivez votre message ici..."
+
+msgid "Inactive"
+msgstr "Inactif"
+
+msgid "Active"
+msgstr "actif"
+
+msgid "Discount Rate/Fixed"
+msgstr "Taux d'actualisation / fixe"
+
+msgid "Start Date"
+msgstr "Date de début"
+
+msgid "Expire Date"
+msgstr "Date d'expiration"
+
+msgid "Edit User Detail"
+msgstr "Modifier l'utilisateur Détail"
+
+msgid "Promo code Listing"
+msgstr "Code Promo Listing"
+
+msgid "Currencies Listing"
+msgstr "Devises Liste"
+
+msgid "Video"
+msgstr "Vidéo"
+
+msgid "Blogs Listing"
+msgstr "Blogs Liste"
+
+msgid "Edit Blog"
+msgstr "Modifier Blog"
+
+msgid "Subscribers Listing"
+msgstr "Les abonnés Liste"
+
+msgid "Send News Latter"
+msgstr "Envoyer Nouvelles Derniers"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Edit Works"
+msgstr "Modifier Works"
+
+msgid "Faqs"
+msgstr "Faqs"
+
+msgid "Edit News Updates"
+msgstr "Modifier Nouvelles mises à jour"
+
+msgid "News Updates Listing"
+msgstr "Nouvelles mises à jour Listing"
+
+msgid "Add News Updates"
+msgstr "Ajouter Nouvelles mises à jour"
+
+msgid "Edit Chosse Us"
+msgstr "Modifier Chosse nous"
+
+msgid "Choose Us Listing"
+msgstr "Choisissez-nous Inscription"
+
+msgid "Add Choose Us"
+msgstr "Ajouter Choisissez-nous"
+
+msgid "How Works Listing"
+msgstr "Comment Fonctionne Listing"
+
+msgid "Edit Works"
+msgstr "Modifier Works"
+
+msgid "Contact Requests"
+msgstr "Contacts demandes"
+
+msgid "Contact Request Reply"
+msgstr "Contact Demande Répondre"
+
+msgid "Email templates"
+msgstr "Modèles de courriel"
+
+msgid "Email Template Edit"
+msgstr "Modèle de courrier électronique Modifier"
+
+msgid "Administrator Login"
+msgstr "Connexion administrateur"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Login"
+msgstr "S'identifier"
+
+msgid "Lost your password ?"
+msgstr "Mot de passe perdu ?"
+
+msgid "View Website"
+msgstr "Voir le site web"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+msgid "Screen Lock"
+msgstr "Verrouillage d'écran"
+
+msgid "Log Out"
+msgstr "Se déconnecter"
+
+msgid "Enter password and hit enter to unlock..."
+msgstr "Entrez le mot de passe et appuyez sur Entrée pour déverrouiller ..."
+
+msgid "Go!"
+msgstr "Aller!"
+
+
+msgid "Locked"
+msgstr "Fermé à clef"
+////////////////////////////////////////////////
+
+msgid "Search home sitter for your loving dog"
+msgstr "Recherche maison sitter pour votre chien aimant"
+
+msgid "Get Free Sitting or Minding"
+msgstr "Obtenez séance gratuite ou Minding"
+
+msgid "Become a sitter"
+msgstr "Devenir une gardienne"
+
+msgid "Sign Up"
+msgstr "S'inscrire"
+
+msgid "Login"
+msgstr "S'identifier"
+
+msgid "Help"
+msgstr "Aidez-moi"
+
+msgid "Worry Free Pet Sitting"
+msgstr "Worry gratuit Pet Sitting"
+
+msgid "& Dog Boarding Services"
+msgstr "& Dog Boarding services"
+
+msgid "How It Works"
+msgstr "Comment cela fonctionne"
+
+msgid "Leading Sitting And Walkers In Your Area"
+msgstr "Leading Sitting Et Walkers dans votre région"
+
+msgid "For When You’re Away"
+msgstr "Pour quand vous êtes loin"
+
+msgid "Night Care"
+msgstr "Soin de Nuit"
+
+msgid "Dog Boarding"
+msgstr "Boarding Dog"
+
+msgid "Drop-In-Visit"
+msgstr "Drop-In-visite"
+
+msgid "Day Care"
+msgstr "Garderie"
+
+msgid "Dog Walking"
+msgstr "Promener le chien"
+
+msgid "Where do you want to go?"
+msgstr "Où veux-tu aller"
+
+msgid "Drop Off"
+msgstr "Déposer"
+
+msgid "Pick Up"
+msgstr "Ramasser"
+
+msgid "Pet Size"
+msgstr "Taille de l'animal"
+
+msgid "Small"
+msgstr "Petit"
+
+msgid "Medium"
+msgstr "Moyen"
+
+msgid "Large"
+msgstr "Grand"
+
+msgid "Submit"
+msgstr "Soumettre"
+ 
+msgid "Leading  Sitting And Walkers In Your Area"
+msgstr "Leading Sitting Et Walkers dans votre région"
+
+msgid "Meet some of our ledaing sitters & walkers"
+msgstr "Rencontrez certains de nos ledaing sitters et marcheurs"
+
+msgid "Find Loving, Trusted, Insured pet sitter near you"
+msgstr "Trouver Amoureux, de confiance, assuré pet sitter près de chez vous"
+
+msgid "Why Choose us?"
+msgstr "Pourquoi nous choisir?"
+
+msgid "Find some of the funniest pet pics & videos along with news updates here"
+msgstr "Trouver quelques-uns des plus drôles les photos et vidéos animaux ainsi que de nouvelles mises à jour ici"
+
+msgid "More News & Updates"
+msgstr "Plus Nouvelles et mises à jour"
+
+msgid "Fun & News"
+msgstr "Fun & Nouvelles"
+
+msgid "Find some of the funniest pet pics & videos along with news updates here"
+msgstr "Trouver quelques-uns des plus drôles les photos et vidéos animaux ainsi que de nouvelles mises à jour ici"
+
+msgid "About Sitter Guide"
+msgstr "A propos de Guide Sitter"
+
+msgid "Top pet sitting cities"
+msgstr "Top animaux assis villes"
+
+msgid "Learn More"
+msgstr "Apprendre encore plus"
+
+msgid "Need Help"
+msgstr "Besoin d'aide"
+
+msgid "About Us"
+msgstr "À propos de nous"
+
+msgid "Partners"
+msgstr "Les partenaires"
+
+msgid "In The News"
+msgstr "Dans les nouvelles"
+
+msgid "Privacy Policy"
+msgstr "Politique de confidentialité"
+
+msgid "About Us"
+msgstr "À propos de nous"
+
+msgid "Pet Sitters Sydney"
+msgstr "Pet Sitters Sydney"
+
+msgid "Pet Sitters Melbourne"
+msgstr "Pet Sitters Melbourne"
+
+msgid "Pet Sitters Brisbane"
+msgstr "Pet Sitters Brisbane"
+
+msgid "Pet Sitters Perth"
+msgstr "Pet Sitters Perth"
+
+msgid "Pet Sitters Adelaide"
+msgstr "Pet Sitters Adelaide"
+
+msgid "Pet Sitters Canberra"
+msgstr "Pet Sitters Canberra"
+
+msgid "How does Sitter Guide Work"
+msgstr "Comment fonctionne Guide Sitter travail"
+
+msgid "Insurance & Refunds"
+msgstr "Assurance et remboursements"
+
+msgid "House Rules"
+msgstr "règles de la maison"
+
+msgid "Safety"
+msgstr "sécurité"
+
+msgid "Benefits of sittings"
+msgstr "Avantages des séances"
+
+msgid "Help Center"
+msgstr "Centre d'aide"
+
+msgid "Contact Us"
+msgstr "Contactez nous"
+
+msgid "Subscribe to Newsletter"
+msgstr "S'inscrire à la Newsletter"
+
+msgid "Enter your email here"
+msgstr "Entrez votre e-mail ici"
+
+msgid "Subscribe"
+msgstr "Souscrire"
+
+msgid "Join The Sitter Guide Pack"
+msgstr "Inscrivez-vous Le Guide Sitter pack"
+
+msgid "It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum."
+msgstr "Il a non seulement survécu à cinq siècles, mais aussi le saut dans la composition électronique, restant Ipsum."
+
+
+msgid "© 2015 Sitter Guide Pty Ltd. All Rights Reserved."
+msgstr "© 2015 Guide Sitter Pty Ltd. Tous droits réservés."
+
+
+msgid "READ MORE"
+msgstr "LIRE LA SUITE"
+
+msgid "Reviews"
+msgstr "Avis"
+
+////////////////////////////// signup//////////////////////////////////
+
+msgid "Sign In for Sitter Guide"
+msgstr "Connectez-vous pour le Guide Sitter"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+
+msgid "Forgot your password? "
+msgstr "Mot de passe oublié"
+
+msgid "Click Here"
+msgstr "Cliquez ici"
+
+msgid "Sign Up with Facebook"
+msgstr "Inscription avec Facebook"
+
+
+msgid "Enter your email here"
+msgstr "Entrez votre e-mail ici"
+
+msgid "Sign In for Sitter Guide"
+msgstr "Connectez-vous pour le Guide Sitter"
+
+msgid "Want to go back at"
+msgstr "Vous voulez revenir au"
+
+
+msgid "Sign Up for Sitter Guide"
+msgstr "Inscrivez-vous pour Guide Sitter"
+
+msgid "Sign Up with Email"
+msgstr "Inscription avec Email"
+
+msgid "Title"
+msgstr "Titre"
+
+
+msgid "First Name"
+msgstr "Prénom"
+
+msgid "Last Name"
+msgstr "Nom de famille"
+
+msgid "Country"
+msgstr "Pays"
+
+
+msgid "Australia"
+msgstr "Australie"
+
+msgid "Austria"
+msgstr "Autriche"
+
+msgid "Belbium"
+msgstr "Belbium"
+
+
+msgid "Canada"
+msgstr "Canada"
+
+msgid "Denmark"
+msgstr "Danemark"
+
+msgid "Finland"
+msgstr "Finlande"
+
+
+msgid "France"
+msgstr "France"
+
+msgid "Germany"
+msgstr "Allemagne"
+
+msgid "Hong Kong S.A.R., China"
+msgstr "Hong Kong SAR, Chine"
+
+msgid "Ireland"
+msgstr "Irlande"
+
+msgid "Italy"
+msgstr "Italie"
+
+msgid "Japan"
+msgstr "Japon"
+
+
+msgid "Post/Zip Code"
+msgstr "Post / Zip Code"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Create Password"
+msgstr "Créer un mot de passe"
+
+
+msgid "Repeat Password"
+msgstr "Répéter le mot de passe"
+
+msgid "Date of Birth"
+msgstr "Date de naissance"
+
+msgid "Where did you hear about us?"
+msgstr "Où avez vous entendu parler de nous?"
+
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "TV"
+msgstr "la télé"
+
+msgid "earch eg. Google or Bing"
+msgstr "echerche par exemple. Google ou Bing"
+
+
+msgid "Someone told me about Sitter Guide"
+msgstr "Quelqu'un m'a parlé Guide Sitter"
+
+msgid "YouTube"
+msgstr "Youtube"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+
+msgid "Twitter"
+msgstr "Gazouillement"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "Pinterest"
+msgstr "Pinterest"
+
+msgid "Sitter Guide Posts"
+msgstr "Sitter Guide Messages"
+
+msgid "Other"
+msgstr "Autre"
+
+
+msgid "Verification"
+msgstr "Vérification"
+
+msgid "I'm not a robot"
+msgstr "Je ne suis pas un robot"
+
+msgid "Terms & Conditions"
+msgstr "termes et conditions"
+
+
+msgid "OR"
+msgstr "OU"
+
+msgid "Not a Member?"
+msgstr "Pas un membre?"
+
+msgid "Sign In "
+msgstr "Se connecter"
+
+msgid "Forgot your Password? "
+msgstr "Mot de passe oublié"
+
+msgid "This field is required"
+msgstr "Ce champ est requis"
+
+
+
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+msgid "Reduced Visibility"
+msgstr "Visibilité réduite"
+
+msgid "Toggle Dropdown"
+msgstr "Basculer Dropdown"
+
+msgid "Action"
+msgstr "action"
+
+msgid "Another action"
+msgstr "une autre action"
+
+msgid "Something else here"
+msgstr "Quelque chose d'autre ici"
+
+msgid "Separated link"
+msgstr "Séparé lien"
+
+msgid "Account Balance"
+msgstr "Solde du compte"
+
+
+msgid "Links"
+msgstr "Des liens"
+
+msgid "Other Link"
+msgstr "Autre lien"
+
+msgid "View Profile"
+msgstr "Voir le profil"
+
+msgid "Guest"
+msgstr "Se déconnecter"
+
+
+msgid "Promote"
+msgstr "Promouvoir"
+
+msgid "Inbox"
+msgstr "Boîte de réception"
+
+msgid "Booking"
+msgstr "Réservation"
+
+msgid "Calendar"
+msgstr "Calendrier"
+
+msgid "Services"
+msgstr "Prestations de service"
+
+msgid "rates"
+msgstr "tarifs"
+
+msgid "Review"
+msgstr "La revue"
+
+msgid "Communication"
+msgstr "la communication"
+
+msgid "Recent Activities"
+msgstr "Activités récentes"
+
+
+
+

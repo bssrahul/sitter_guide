@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+
+.owl-item {
+  color: #000;
+}
+
+.item {
+  text-align: center;
+}
+
+
+.owl-nav {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.owl-prev, .owl-next {
+	float:left;
+	margin:5px;
+}
+

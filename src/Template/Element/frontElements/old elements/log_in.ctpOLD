@@ -1,0 +1,82 @@
+<!--Login with facebook Modal Start-->
+<div class="modal fade" id="myModal_log_in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog oter-sign-up" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        <h4 class="modal-title search-title-1">Log In</h4>
+      </div>
+      <div class="modal-body">
+        <div class="signup_wrap">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="facebook">
+                <p><a href="#" class="btn btn-primary" role="button"><i class="fa fa-facebook"></i>Log in With Facebook</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="signup-or-separator"> <span class="h6 signup-or-separator--text">or</span>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 name">
+              <input type="text" name="Email" placeholder="E-mail Address on" class="email_icon">
+              <input type="text" name="Email" placeholder="Password" class="password_icon">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="checkin">
+                <input type="checkbox" name="Email" checked="unchecked">
+                <p>Remember me</p>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="paswrd">
+                <!--<p><a href="#">Forgot password?</a></p>-->
+				 <p><a class="page-scroll" id="forgotPassword" href="#" data-toggle="modal" data-target="#myModal_forgot_password">Forgot Password</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="facebook mar-top-msg">
+                <p><a href="#" class="btn btn-primary msg_box" role="button"></i>Log In </a></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="fotrborder border_top_sign"> </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="member">
+                <p> Don’t have an account? <span>
+				<!--<a href="#">Sign Up</a>-->
+				 <a class="page-scroll" id="sign_Up" href="#" data-toggle="modal" data-target="#myModal_sign">Sign Up</a></span>
+				</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Login with facebook Modal End--> 
+<script>
+$(document).ready(function(){
+    $("#forgotPassword").click(function(){
+	     $('#myModal_log_in').modal('hide');
+	});
+	$("#sign_Up").click(function(){
+	     $('#myModal_log_in').modal('hide');
+	});
+});
+</script>

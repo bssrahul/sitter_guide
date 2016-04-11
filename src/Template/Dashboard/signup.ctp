@@ -1,0 +1,1 @@
+<?php echo $this->element('frontElements/sign_up'); ?>

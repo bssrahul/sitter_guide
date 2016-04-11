@@ -1,0 +1,1143 @@
+msgid "Manage CMS Pages"
+msgstr "Gestionați pagini CMS"
+
+
+msgid "CMS Pages"
+msgstr "pagini CMS"
+
+
+msgid "CMS Management"
+msgstr "Managementul CMS"
+
+
+msgid "Contact Requests"
+msgstr "Cereri Contact"
+
+
+msgid "Content Management"
+msgstr "Management de continut"
+
+
+msgid "Dashboard"
+msgstr "Bord"
+
+
+msgid "Email Template"
+msgstr "Format e-mail"
+
+
+msgid "Manage Users"
+msgstr "Gestionați utilizatorilor"
+
+
+msgid "Users"
+msgstr "utilizatorilor"
+
+
+msgid "Welcome"
+msgstr "Bine ati venit"
+
+
+msgid "Sitter Guide"
+msgstr "sitter Ghid"
+
+
+msgid "Sitter.Guide"
+msgstr "sitter.Ghid"
+
+msgid "Sitter Guide"
+msgstr "Ghidul sitter"
+
+
+msgid "Welcome"
+msgstr "Bine ati venit"
+
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Dashboard"
+msgstr "Bord"
+
+
+msgid "Control Panel"
+msgstr Panou de control"
+
+
+msgid "CMS Pages"
+msgstr "Pagini CMS"
+
+msgid " De-active Pages"
+msgstr "Pagini de active"
+
+
+msgid "Active Pages"
+msgstr "Pagini active"
+
+
+msgid "Users"
+msgstr "utilizatori"
+
+msgid "Contact Requests"
+msgstr "Cereri Contact"
+
+
+msgid "Administrator Detail"
+msgstr "administrator Detalii"
+
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "User Name"
+msgstr "Nume de utilizator"
+
+
+msgid "email"
+msgstr "e-mail"
+
+
+msgid "Status"
+msgstr "stare"
+
+msgid "Last Login"
+msgstr "Ultima logare"
+
+
+msgid "Date Added"
+msgstr "Data adaugata"
+
+
+msgid "Action"
+msgstr "Acțiune"
+
+msgid "Manage Users "
+msgstr "gestionaţi utilizatorii"
+
+
+msgid "Users Listing"
+msgstr "Listarea utilizatori"
+
+
+msgid "entries"
+msgstr "intrările"
+
+msgid "Show"
+msgstr "Spectacol"
+
+
+msgid "Show entries"
+msgstr "Afișați intrările"
+
+
+msgid "Search all columns:"
+msgstr "Căutare toate coloanele:"
+
+msgid "Sr.No."
+msgstr "Sr.No."
+
+
+msgid "First Name"
+msgstr "Primul nume"
+
+
+msgid "Last Name"
+msgstr "Numele de familie"
+
+
+msgid "Phone"
+msgstr "Telefon"
+
+
+msgid "Added Date"
+msgstr "Data adăugării"
+
+msgid "Status"
+msgstr "stare"
+
+
+msgid "Action"
+msgstr "Acțiune"
+
+
+msgid "Showing"
+msgstr "Se afișează"
+
+msgid "to"
+msgstr "la"
+
+
+msgid "of"
+msgstr "de"
+
+
+msgid "entries"
+msgstr "intrările"
+
+msgid "Showing to of entries"
+msgstr "Se afișează la înregistrări"
+
+
+msgid "First"
+msgstr "Primul"
+
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Următor →"
+
+
+msgid "Last"
+msgstr "Ultimul"
+
+
+msgid "CMS Management"
+msgstr "Managementul CMS"
+
+msgid "Content Management"
+msgstr "Management de continut"
+
+
+msgid "Email Template"
+msgstr "Format e-mail"
+
+
+msgid "Contact Requests"
+msgstr "Cereri Contact"
+
+msgid "How Works"
+msgstr "cum functioneaza"
+
+
+msgid "Why Choose"
+msgstr "De ce să alegeți"
+
+
+msgid "Manage Categories "
+msgstr "gestionaţi Categorii"
+
+msgid "Manage Promocode "
+msgstr "gestionaţi Promocodul"
+
+
+msgid "Currency Management "
+msgstr "Managementul valutei"
+
+
+msgid "Slider Management "
+msgstr "Managementul glisor"
+
+msgid "Blogs"
+msgstr "Blog-uri"
+
+
+msgid "Subscribes"
+msgstr "abonează"
+
+
+msgid "Blogs Listing"
+msgstr "Blog-uri Listarea"
+
+msgid "Sitter Guide developed by Beta-soft systems. |  Sitter Guide"
+msgstr "Locțiitor Ghid dezvoltat de sisteme Beta-moi. | Ghidul sitter"
+
+
+msgid "Image"
+msgstr "Imagine"
+
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Page name"
+msgstr "numele paginii"
+
+msgid "Page content"
+msgstr "Page content"
+
+msgid "Manage CMS Pages"
+msgstr "Gestionați pagini CMS"
+
+msgid "Title"
+msgstr "Titlu"
+
+msgid "Subject"
+msgstr "Subiect"
+
+msgid "Alias"
+msgstr "Alias"
+
+
+msgid "Country"
+msgstr "Țară"
+
+msgid "Contact Requests"
+msgstr "Cereri Contact"
+
+
+msgid "Description"
+msgstr "Descriere"
+
+msgid "Created Date"
+msgstr "data creata"
+
+msgid "How Works Listing"
+msgstr "Modul de funcționare Listarea"
+
+msgid "Choose Us Listing"
+msgstr "Alege-ne Listing"
+
+msgid "Add Choose Us"
+msgstr "AAdauga o Alege-ne"
+
+msgid "News Updates Listing"
+msgstr "Actualizări de știri Listarea"
+
+msgid "Add News Updates"
+msgstr "Adăugați știri Actualizări"
+
+msgid "Slug"
+msgstr "Melc"
+
+msgid "Add Category"
+msgstr "adăugaţi o categorie"
+
+msgid "Category Listing"
+msgstr "categoria Listarea"
+
+msgid "Promo code Listing"
+msgstr "Cod promoțional Listing"
+
+msgid "Add Promo code"
+msgstr "Adăugați un cod promoțional"
+
+msgid "Promo Code"
+msgstr "Cod promoțional"
+
+msgid "Coupon Type"
+msgstr "Tip cupon"
+
+msgid "Discount"
+msgstr "Reducere"
+
+msgid "Start Date"
+msgstr "Data de început"
+
+msgid "Expire Date"
+msgstr "Data de expirare"
+
+msgid "Currencies Listing"
+msgstr "Listarea valute"
+
+msgid "Country Name"
+msgstr "Numele tarii"
+
+msgid "Currency Name"
+msgstr "Nume monedă"
+
+msgid "Locale"
+msgstr "localizare"
+
+msgid "Currency Code"
+msgstr "Codul valutei"
+
+msgid "Price"
+msgstr "Preț"
+
+msgid "Submit"
+msgstr "A depune"
+
+msgid "Media"
+msgstr "Mass-media"
+
+msgid "Title"
+msgstr "Titlu"
+
+msgid "Added Date"
+msgstr "Data adăugării"
+
+msgid "Manage Slides"
+msgstr "gestionaţi Slide-uri"
+
+msgid "Blogs Listing"
+msgstr "Blog-uri Listarea"
+
+msgid "Added Date"
+msgstr "Data adăugării"
+
+msgid "Subscribers Listing"
+msgstr "Listarea de abonați"
+
+msgid "Send News Latter"
+msgstr "Transmiterea urmă"
+
+msgid "News Latter"
+msgstr "Știrile din urmă"
+
+msgid "Subscriber's List"
+msgstr "Lista de abonat"
+
+msgid "Hello Subscriber,"
+msgstr "Bună ziua Abonat,"
+
+msgid "Write your message here..."
+msgstr "Scrie mesajul aici ..."
+
+msgid "Regards,"
+msgstr "Salutari,"
+
+msgid "Team Sitter Guide"
+msgstr "Ghidul echipei Sitter"
+
+msgid "Note: This is a system generated email, please do not reply"
+msgstr "Notă: Acesta este un sistem generat de e-mail, vă rugăm să nu răspundeți"
+
+msgid "Cancel"
+msgstr "Anulare"
+
+msgid "Account Activated"
+msgstr "ontul activat"
+
+msgid "Sitter Guide- Account Activated"
+msgstr "Contul Sitter activat Ghid-"
+
+msgid "{full_name}"
+msgstr "{Numele complet}"
+
+msgid "noreply@sitterguide.com"
+msgstr "noreply@sitterguide.com"
+
+msgid "Short Codes (Note: Don't change short codes in description)"
+msgstr "Codurile scurte (Notă: Nu modificați codurile scurte în descriere)"
+
+msgid "Hello {full_name},"
+msgstr "Bună ziua {FULL_NAME},"
+
+msgid "Your account has been activated successfully. Thanks for being a member of Sitter Guide."
+msgstr "Contul dvs. a fost activat cu succes. Vă mulțumim pentru a fi un membru al Ghidului Sitter."
+
+msgid "If you any query please let us know straight away at: info@sitterguide.com"
+msgstr "Dacă ați orice interogare, vă rugăm să ne anunțați imediat la: info@sitterguide.com"
+
+msgid "Notice: The information in this email and in any attachments is confidential and intended solely for the attention and use of the named addressee. This information may be subject to legal professional or other privilege or may otherwise be protected by work product immunity or other legal rules. It must not be disclosed to any person without authorization. If you are not the intended recipient, or a person responsible for delivering it to the intended recipient, you are not authorized to and must not disclose, copy, distribute, or retain this message or any part of it."
+msgstr "Observație: Informațiile din acest e-mail și în orice atașamente sunt confidențiale și destinate în mod exclusiv atenția și utilizarea destinatarului numit. Aceste informații pot fi supuse legal secretului profesional sau de altă sau altfel pot fi protejate de imunitate pentru produsul de muncă sau a altor norme juridice. Aceasta nu trebuie să fie divulgate oricărei persoane fără autorizație Daca nu sunteti destinatarul, sau o persoană responsabilă pentru livrarea acesteia, destinatarul dorit, nu sunt autorizate să și nu trebuie să prezinte, copia, distribui sau de a menține acest mesaj sau orice parte a acestuia. "
+
+msgid "Write your message here..."
+msgstr "Scrie mesajul aici ..."
+
+msgid "Note: This is a system generated email, please do not reply"
+msgstr "Notă: Acesta este un sistem generat de e-mail, vă rugăm să nu răspundeți"
+
+msgid "Contact Request Reply"
+msgstr "Cerere de contact Răspuns"
+
+msgid "New Password"
+msgstr "Parolă Nouă"
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "Update Admin Password"
+msgstr "Actualizare Admin Password"
+
+msgid "Full name"
+msgstr "Numele complet"
+
+msgid "User name"
+msgstr "Nume de utilizator"
+
+msgid "admin"
+msgstr "admin"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Edit Admin Detail"
+msgstr "Editați detaliile Admin"
+
+msgid "Profile Settings"
+msgstr "Setări de profil"
+
+msgid "Email Address"
+msgstr Adresa de email"
+
+msgid "Profile Picture"
+msgstr "Poză de profil"
+
+msgid "Main Settings"
+msgstr "Setări principale"
+
+msgid "Site Name"
+msgstr "Numele site-ului"
+
+msgid "Site Contact Email"
+msgstr "Site Contact Email"
+
+msgid "Logo, Banner & Footer Settings"
+msgstr "Setări Logo, Banner & Footer"
+
+msgid "Site Logo"
+msgstr "Logo-ul site-ului"
+
+msgid "Favicon"
+msgstr "favicon"
+
+msgid "Footer Content"
+msgstr "Conținut de subsol"
+
+msgid "SEO Settings"
+msgstr "Setări SEO"
+
+msgid "Meta Title"
+msgstr "Titlu meta"
+
+msgid "Meta Keywords "
+msgstr "Cuvinte cheie meta"
+
+msgid "Meta Description"
+msgstr "Descriere meta"
+
+msgid "Social Settings"
+msgstr "Setări sociale"
+
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+msgid "Twitter URL"
+msgstr "URL-ul Twitter"
+
+msgid "Google+ URL"
+msgstr "URL-ul Google+"
+
+msgid "Instagram URL"
+msgstr "instagram URL-ul"
+
+msgid "Youtube URL"
+msgstr "YouTube URL-ul"
+
+msgid "Edit User"
+msgstr "edita utilizator"
+
+msgid "Basic Info"
+msgstr "Informatii de baza"
+
+msgid "First Name"
+msgstr "Primul nume"
+
+msgid "Last Name"
+msgstr "Numele de familie"
+
+msgid "Gender"
+msgstr "Gen"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Zone"
+msgstr "Zona"
+
+msgid "About User"
+msgstr "despre utilizator"
+
+msgid "Profile Image "
+msgstr "profilul Imagine"
+
+msgid "Type"
+msgstr "Tip"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Breed"
+msgstr "Rasă"
+
+msgid "Weight"
+msgstr "Greutate"
+
+msgid "Age"
+msgstr "Vârstă"
+
+msgid "No records found"
+msgstr "Nu au fost găsite"
+
+msgid "Pet Listing"
+msgstr "animale de companie Listing"
+
+///////////////////////////////////// end manage user ///////////////////
+msgid "Page Name "
+msgstr "Numele paginii"
+
+msgid "Page URL"
+msgstr "URL-ul paginii"
+
+msgid "Page Content"
+msgstr "Conținut pagina"
+
+msgid "About Us"
+msgstr "Despre noi"
+
+msgid "about-us"
+msgstr "despre noi"
+
+msgid "Welcome to Sitter Guide"
+msgstr "Bine ați venit la Ghidul Sitter"
+
+msgid "Test Sitter Guide content."
+msgstr "conținut de testare Sitter Ghid."
+
+msgid "*Subject to Terms and Conditions*"
+msgstr "* In conformitate cu termenii și condițiile *"
+
+msgid "CMS Page Edit"
+msgstr "CMS Editare pagină"
+
+msgid "Contact Request View"
+msgstr "Cerere de contact View"
+
+msgid "Phone No"
+msgstr "Phone No"
+
+msgid "Message"
+msgstr "Mesaj"
+
+msgid "Contact Request Reply"
+msgstr "Cerere de contact Răspuns"
+
+msgid "Write your message here..."
+msgstr "Scrie mesajul aici ..."
+
+msgid "Inactive"
+msgstr "Inactiv"
+
+msgid "Active"
+msgstr "Activ"
+
+msgid "Discount Rate/Fixed"
+msgstr "Rata de actualizare / fix"
+
+msgid "Expire Date"
+msgstr "Data de expirare"
+
+msgid "Edit User Detail"
+msgstr "Edit Detalii despre utilizatori"
+
+msgid "Promo code Listing"
+msgstr "Cod promoțional Listing"
+
+msgid "Currencies Listing"
+msgstr "Listarea valute"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Blogs Listing"
+msgstr "Blog-uri Listarea"
+
+msgid "Edit Blog"
+msgstr "edita blog"
+
+msgid "Subscribers Listing"
+msgstr "Listarea de abonați"
+
+msgid "Send News Latter"
+msgstr "Transmiterea urmă"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Edit Works"
+msgstr "Editați Lucrări"
+
+msgid "Faqs"
+msgstr "faqs"
+
+msgid "Edit News Updates"
+msgstr "Edita Știri Actualizări"
+
+msgid "News Updates Listing"
+msgstr "Actualizări de știri Listarea"
+
+msgid "Add News Updates"
+msgstr "Adăugați știri Actualizări"
+
+msgid "Edit Chosse Us"
+msgstr "Edita Chosse-ne"
+
+msgid "Choose Us Listing"
+msgstr "Alege-ne Listing"
+
+msgid "Add Choose Us"
+msgstr "Adauga o Alege-ne"
+
+msgid "How Works Listing"
+msgstr "Modul de funcționare Listarea"
+
+msgid "Contact Requests"
+msgstr "Cereri Contact"
+
+msgid "Contact Request Reply"
+msgstr "Cerere de contact Răspuns"
+
+msgid "Email templates"
+msgstr "template-uri de e-mail"
+
+msgid "Email Template Edit"
+msgstr "E-mail Editare șablon"
+
+msgid "Administrator Login"
+msgstr "Conectare administrator"
+
+msgid "Username"
+msgstr "Nume de utilizator"
+
+msgid "Password"
+msgstr "Parola"
+
+msgid "Login"
+msgstr "Logare"
+
+msgid "Lost your password ?"
+msgstr "Ti-ai pierdut parola ?"
+
+msgid "View Website"
+msgstr "Vezi site-ul"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Search Home Sitter"
+msgstr "Căutare Acasă Sitter"
+
+msgid "Guest"
+msgstr "Oaspete"
+
+msgid "Change Password"
+msgstr "Schimbaţi parola"
+
+msgid "Screen Lock"
+msgstr "Blocare ecran"
+
+msgid "Log Out"
+msgstr "Ieși"
+
+msgid "Enter password and hit enter to unlock..."
+msgstr "Introduceți parola și apăsați enter pentru a debloca ..."
+
+msgid "Go!"
+msgstr "Merge!"
+
+
+msgid "Locked"
+msgstr "blocat"
+
+/////////////////////////////////////////////////////////////
+........................................................................
+////////////////////////////// signup//////////////////////////////////
+
+msgid "Sign In for Sitter Guide"
+msgstr "Conectați-vă pentru Ghidul Sitter"
+
+msgid "Submit"
+msgstr "A depune"
+
+
+msgid "Forgot your password? "
+msgstr "Ti-ai uitat parola"
+
+msgid "Click Here"
+msgstr "Click aici"
+
+msgid "Sign Up with Facebook"
+msgstr "Înregistrează-te cu Facebook"
+
+
+msgid "Enter your email here"
+msgstr Introduceți adresa de email aici"
+
+msgid "Sign In for Sitter Guide"
+msgstr "Conectați-vă pentru Ghidul Sitter"
+
+msgid "Want to go back at"
+msgstr "Vrei să te întorci la"
+
+
+msgid "Sign Up for Sitter Guide"
+msgstr "Înregistrează-te pentru Ghidul Sitter"
+
+msgid "Sign Up with Email"
+msgstr "Înregistrează-te cu e-mail"
+
+msgid "Title"
+msgstr "Titlu"
+
+msgid "Australia"
+msgstr "Australia"
+
+msgid "Austria"
+msgstr "Austria"
+
+msgid "Belbium"
+msgstr "Belbium"
+
+
+msgid "Canada"
+msgstr "Canada"
+
+msgid "Denmark"
+msgstr "Danemarca"
+
+msgid "Finland"
+msgstr "Finlanda"
+
+
+msgid "France"
+msgstr "Franţa"
+
+msgid "Germany"
+msgstr "Germany"
+
+msgid "Hong Kong S.A.R., China"
+msgstr "RAS Hong Kong, China"
+
+msgid "Ireland"
+msgstr "Ireland"
+
+msgid "Italy"
+msgstr "Italia"
+
+msgid "Japan"
+msgstr "Japonia"
+
+
+msgid "Post/Zip Code"
+msgstr "Post / Cod postal"
+
+msgid "Create Password"
+msgstr "Creați Passworde"
+
+
+msgid "Repeat Password"
+msgstr "Repeta parola"
+
+msgid "Date of Birth"
+msgstr "Data de nastere"
+
+msgid "Where did you hear about us?"
+msgstr "de unde ai aflat despre noi?"
+
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "TV"
+msgstr "televizor"
+
+msgid "earch eg. Google or Bing"
+msgstr "earch de ex. Google sau Bing"
+
+
+msgid "Someone told me about Sitter Guide"
+msgstr "Cineva mi-a spus despre Ghidul Sitter"
+
+msgid "YouTube"
+msgstr "YouTube"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+
+msgid "Twitter"
+msgstr "Stare de nervozitate"
+
+msgid "Instagram"
+msgstr "instagram"
+
+msgid "Pinterest"
+msgstr "pinterest"
+
+msgid "Sitter Guide Posts"
+msgstr "Ghidul Sitter Mesaje"
+
+msgid "Other"
+msgstr "Alte"
+
+
+msgid "Verification"
+msgstr "Verificare"
+
+msgid "I'm not a robot"
+msgstr "Eu nu sunt un robot"
+
+msgid "Terms & Conditions"
+msgstr "termeni si conditii"
+
+
+msgid "OR"
+msgstr "SAU"
+
+msgid "Not a Member?"
+msgstr "Nu e un membru?"
+
+msgid "Sign In "
+msgstr "Conectare"
+
+
+msgid "Forgot your Password? "
+msgstr "Ti-ai uitat parola"
+
+msgid "This field is required"
+msgstr "Acest câmp este obligatoriu"
+
+msgid "Search home sitter for your loving dog"
+msgstr "Căutare sitter acasă pentru câinele tău iubitor"
+
+msgid "Get Free Sitting or Minding"
+msgstr "Beneficiați gratuit de zi sau Minding"
+
+msgid "Become a sitter"
+msgstr "Inregistreaza-sitter"
+
+msgid "Sign Up"
+msgstr "Inscrie-te"
+
+msgid "Login"
+msgstr "Logare"
+
+msgid "Help"
+msgstr "Ajutor"
+
+msgid "Worry Free Pet Sitting"
+msgstr "Vă faceți griji Gratuit Pet Sitting"
+
+msgid "& Dog Boarding Services"
+msgstr "& Dog Pensiuni Servicii"
+
+msgid "How It Works"
+msgstr "Cum functioneaza"
+
+msgid "Leading Sitting And Walkers In Your Area"
+msgstr "De conducere de zi și pietoni în zona ta"
+
+msgid "For When You’re Away"
+msgstr "Pentru Când sunteți departe"
+
+msgid "Night Care"
+msgstr "Îngrijire de noapte"
+
+msgid "Dog Boarding"
+msgstr "câine de îmbarcare"
+
+msgid "Drop-In-Visit"
+msgstr "Drop-In-Vizita"
+
+msgid "Day Care"
+msgstr "Îngrijire de zi"
+
+msgid "Dog Walking"
+msgstr "Mersul pe jos câine"
+
+msgid "Where do you want to go?"
+msgstr "Unde vrei să mergi"
+
+msgid "Drop Off"
+msgstr "Adormi"
+
+msgid "Pick Up"
+msgstr "Ridica"
+
+msgid "Pet Size"
+msgstr "animale de companie Dimensiune"
+
+msgid "Small"
+msgstr "Mic"
+
+msgid "Medium"
+msgstr "Mediu"
+
+msgid "Large"
+msgstr "Mare"
+
+msgid "Submit"
+msgstr "A depune"
+ 
+msgid "Leading  Sitting And Walkers In Your Area"
+msgstr "De conducere de zi și pietoni în zona ta"
+
+msgid "Meet some of our ledaing sitters & walkers"
+msgstr "Faceți cunoștință cu unele dintre ledaing sitteri și pietoni noastre"
+
+msgid "Find Loving, Trusted, Insured pet sitter near you"
+msgstr "Loving găsi, de încredere, Asiguratul sitter pentru animale de companie din apropiere"
+
+msgid "Why Choose us?"
+msgstr "De ce noi?"
+
+msgid "Find some of the funniest pet pics & videos along with news updates here"
+msgstr "Găsi unele dintre cele mai amuzante poze si videoclipuri pentru animale de companie, împreună cu actualizări de știri aici"
+
+msgid "More News & Updates"
+msgstr "Mai multe știri și actualizări"
+
+msgid "Fun & News"
+msgstr "Distracție și știri"
+
+msgid "Find some of the funniest pet pics & videos along with news updates here"
+msgstr "Găsi unele dintre cele mai amuzante poze si videoclipuri pentru animale de companie, împreună cu actualizări "
+
+msgid "About Sitter Guide"
+msgstr "Ghid despre Sitter"
+
+msgid "Top pet sitting cities"
+msgstr "orașe pentru animale de companie de zi"
+
+msgid "Learn More"
+msgstr "Află mai multe"
+
+msgid "Need Help"
+msgstr "Nevoie de ajutor"
+
+msgid "About Us"
+msgstr "Despre noi"
+
+msgid "Partners"
+msgstr "parteneri"
+
+msgid "In The News"
+msgstr "La stiri"
+
+msgid "Partners"
+msgstr "parteneri"
+
+msgid "Privacy Policy"
+msgstr "Politica de confidentialitate"
+
+msgid "About Us"
+msgstr "Despre noi"
+
+msgid "Pet Sitters Sydney"
+msgstr "Sydney pentru animale de companie Sitters"
+
+msgid "Pet Sitters Melbourne"
+msgstr "Animale de companie Sitters Melbourne"
+
+msgid "Pet Sitters Brisbane"
+msgstr "Animale de companie Sitters Brisbane"
+
+msgid "Pet Sitters Perth"
+msgstr "Animale de companie Sitters Perth"
+
+msgid "Pet Sitters Adelaide"
+msgstr "Animale de companie Sitters Adelaide"
+
+msgid "Pet Sitters Canberra"
+msgstr "Canberra Sitters pentru animale de companie"
+
+msgid "How does Sitter Guide Work"
+msgstr "Cum Ghid de lucru Sitter"
+
+msgid "Insurance & Refunds"
+msgstr "Asigurari & Rambursări"
+
+msgid "House Rules"
+msgstr "regulile casei"
+
+msgid "Safety"
+msgstr "Siguranță"
+
+msgid "Benefits of sittings"
+msgstr "Beneficiile ședințelor"
+
+msgid "Help Center"
+msgstr "Centru de ajutor"
+
+msgid "Contact Us"
+msgstr "Contacteaza-ne"
+
+msgid "Subscribe to Newsletter"
+msgstr "Aboneaza-te la Newsletter"
+
+msgid "Enter your email here"
+msgstr "Introduceți adresa de email aici"
+
+msgid "Subscribe"
+msgstr "subscrie"
+
+msgid "Join The Sitter Guide Pack"
+msgstr "Alăturați-vă Supervizorul Ghidul Pack"
+
+msgid "It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum."
+msgstr "Ea a supraviețuit, nu numai cinci secole, dar, de asemenea, saltul în tipografia electronică, rămase Ipsum."
+
+
+msgid "© 2015 Sitter Guide Pty Ltd. All Rights Reserved."
+msgstr "© 2015 Sitter Ghid Pty Ltd. Toate drepturile rezervate."
+
+
+msgid "READ MORE"
+msgstr "CITESTE MAI MULT"
+
+msgid "Reviews"
+msgstr "Review-uri"
+
+
+
+msgid "Toggle navigation"
+msgstr "Comutare navigare"
+
+msgid "Reduced Visibility"
+msgstr "Vizibilitate redusă"
+
+msgid "Toggle Dropdown"
+msgstr "toggle Dropdown"
+
+msgid "Action"
+msgstr "Acțiune"
+
+msgid "Another action"
+msgstr "O altă acțiune"
+
+msgid "Something else here"
+msgstr "Altceva aici"
+
+msgid "Separated link"
+msgstr "Link separat"
+
+msgid "Account Balance"
+msgstr "Balanța contului"
+
+msgid "Links"
+msgstr "Link-uri"
+
+msgid "Other Link"
+msgstr "Alte link-ul"
+
+msgid "View Profile"
+msgstr "Vezi profil"
+
+msgid "Promote"
+msgstr "Promova"
+
+msgid "Booking"
+msgstr "Rezervare"
+
+msgid "Services"
+msgstr "Servicii"
+
+msgid "rates"
+msgstr "tarife"
+
+msgid "Review"
+msgstr "Revizuire"
+
+msgid "Communication"
+msgstr "Comunicare"
+
+msgid "Recent Activities"
+msgstr "Activități recente"
+
+
+
+
+
