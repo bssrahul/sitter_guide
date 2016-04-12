@@ -72,8 +72,22 @@
 .gp-icon{ width:110px; height:110px; background:url(../../img/search-icons.png) no-repeat -300px 0px; margin:15px auto 0;}
 .sh-icon{ width:110px; height:110px; background:url(../../img/search-icons.png) no-repeat -300px -113px; margin:15px auto 0;}
 
-.cross-icon{ width:20px; height:20px; background:url(../../img/search-icons.png) no-repeat -9px -442px; margin: 0 10px 0 auto; display:inline-block;}
-.check-icon{ width:20px; height:20px; background:url(../../img/search-icons.png) no-repeat -9px -421px;margin: 0 10px 0 auto;  display:inline-block;}
+.cross-icon{ width:20px; height:20px; background:url(../../img/search-icons.png) no-repeat -9px -442px; margin: 0 10px 0 auto; display:inline-block; position:relative; top:4px;}
+.check-icon{ width:20px; height:20px; background:url(../../img/search-icons.png) no-repeat -9px -421px;margin: 0 10px 0 auto; display:inline-block; position:relative; top:4px;}
 @media (min-width:1200px) and (max-width:1336px) {
   .stylish-panel .carrot {background:#e17f59; height:47px; padding-top:5px; border-radius:5px 5px 0px 0px;}
   }
+
+
+.foot-wrap {
+    background: #ededed none repeat scroll 0 0;
+border-top: 1px solid #cfcece !important;
+float: left;
+width: 100%;
+}
+    
+    @media (min-width:320px) and (max-width:1440px) {
+    .stylish-panel li { padding-top:15px; margin-left:20px; margin-right:20px; padding-bottom:15px; border-bottom:1px solid #ebebeb; font-size:13px;
+}
+
+    }

@@ -230,7 +230,7 @@ class PartnersController extends AppController
 					//CODE FOR MULTILIGUAL END
 					if($partnersModel->save($partnersData))
 					{
-						$this->displaySuccessMessage("New faqs have been added Successfully");
+						$this->displaySuccessMessage("New faqs has been added Successfully");
 						return $this->redirect(['controller' => 'partners', 'action' => 'viewpartners-listing']);
 						
 					}
@@ -289,7 +289,7 @@ class PartnersController extends AppController
 				//Update user data
 				
 				if($partnersModel->save($partnersData)){
-					$this->displaySuccessMessage("Records have been updated successfully");
+					$this->displaySuccessMessage("Records has been updated successfully");
 					return $this->redirect(['controller'=>'partners','action'=>'viewpartners-listing']);
 				}
 			 }else{

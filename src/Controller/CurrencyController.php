@@ -74,7 +74,7 @@ function addCurrency(){
 		if(!$currencyData->errors()){
 			//Save Category data
 			if($CurrenciesModel->save($currencyData)){
-			   $this->displaySuccessMessage("Currency have been added Successfully");
+			   $this->displaySuccessMessage("Currency has been added Successfully");
 			   return $this->redirect(['controller' => 'currency', 'action' => 'currencies-listing']);
 			}	
 		}else{
@@ -107,7 +107,7 @@ function updateCurrencies(){
 			//$CurrenciesModel->create();
 		}
 				
-		$this->displaySuccessMessage("Records have been updated successfully");
+		$this->displaySuccessMessage("Records has been updated successfully");
 		return $this->redirect(['controller'=>'currency','action'=>'currencies-listing']);
 		
 	}else{

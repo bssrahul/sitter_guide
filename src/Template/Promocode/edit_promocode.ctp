@@ -51,6 +51,7 @@
 												'value'=>$promocodeInfo->coupon_type != '' ?$promocodeInfo->coupon_type:'']);
 										 ?>
 									</div>-->
+									<?php //echo $promocodeInfo->coupon_type;  die;?>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="coupon_type">Coupon Type<span class="required">*</span>
 										</label>
@@ -59,7 +60,7 @@
 												'PromoCodes.coupon_type',
 												['discounted_coupon'=>"Discounted Coupon",'fixed_coupon'=>"Fixed Coupon"],
 												['class'=>'form-control col-md-7 col-xs-12','id'=>'c_type',
-												'value'=>$promocodeInfo->coupon_type != '' ?$promocodeInfo->coupon_type:''
+												'value'=>$promocodeInfo->coupon_type
 												]);?>
 										</div>
 									</div>
@@ -110,8 +111,8 @@
 										 
 										 ?>
 
-										     <span class="discounted_coupon <?php echo $addClassFc; ?>" >%</span>
-										   <span class="fixed_coupon <?php echo $addClass; ?>" >$</span>
+										     <span class="discounted_coupon <?php echo $addClass; ?>" >%</span>
+										   <span class="fixed_coupon <?php echo $addClassFc; ?>" >$</span>
 									
 
 									</div>
@@ -188,7 +189,7 @@
 		 $(document).ready(function(){
 			//AT VERY FIRST ON DOCUMENT LOAD
 			
-			setTimeout(firstload, 500);
+			//setTimeout(firstload, 500);
 
 
 			
