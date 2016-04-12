@@ -63,8 +63,7 @@
 									 <!--<input type="checkbox" class="tableflat">-->
 									 Sr.No.
 								</th>
-								<th class="column-title">F Name</th>
-								<th class="column-title">L Name</th>
+								<th class="column-title">Name</th>
 								<th class="column-title">Email</th>
 								<th class="column-title">Phone</th>
 								<th class="column-title">Created</th>
@@ -91,8 +90,7 @@
 									<input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;" />
 									
 									<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>--></td>
-									<td class=" "><?php echo $user_info->first_name; ?></td>
-									<td class=" "><?php echo $user_info->last_name; ?></td>
+									<td class=" "><?php echo $user_info->first_name." ".$user_info->last_name; ?></td>
 									<td class=" "><?php 
 												echo $user_info->email;
 									?></td>
@@ -100,7 +98,7 @@
 												echo $user_info->phone;
 									?></td>
 									<td class=" "><?php 
-												echo $user_info->date_added;
+												echo date("F j,Y h:i A",strtotime($user_info->date_added));
 									?></td>
 									 <td><?php echo $user_info->status == 1?'Active':'Inactive';	?></td>
 									<?php $target = ['0'=>'1','1'=>'0'];?>

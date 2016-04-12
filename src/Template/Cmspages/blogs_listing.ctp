@@ -69,7 +69,7 @@
 								</th>
 								<th class="text-center column-title">Image</th>
 								<!--<th class="column-title"><?php echo __('Name'); ?></th>-->
-								<th class="column-title">Description</th>
+								<th style="width:300px" class="column-title">Description</th>
 								<th class="column-title">Status</th>
 								<th class="column-title">Created</th>
 								<th class="column-title no-link last"><span class="nobr">Action</span>
@@ -103,7 +103,7 @@
 									</div>
 								</td>
 								<!--<td class=" "><?php echo ($blog_info->user->first_name)." ".($blog_info->user->last_name); ?></td>-->
-								<td><?php echo $blog_info->description; ?></td>
+								<td style="width:400px"><?php echo $blog_info->description; ?></td>
 								<td><?php echo $blog_info->status == 1?'Active':'Inactive';	?></td>
 								<td><?php 	echo date("F  j,Y",strtotime($blog_info->created_date)); ?></td>
 								

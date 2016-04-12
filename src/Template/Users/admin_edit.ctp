@@ -64,8 +64,10 @@
 												  'label' => false,
 												  'class'=>'form-control col-md-7 col-xs-12']);
 											?>
-											
-											<img alt="Image not found" style="margin:5px" height="100px"; width="100px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($admininfo->admin_img != ''?$admininfo->admin_img:'prof_photo.png'); ?>"/>
+											<div class="text-centerimage view-first customImg">
+												<img class="img-circle profile_img catImg"src="<?php echo HTTP_ROOT.'img/uploads/'.($admininfo->admin_img != ''?$admininfo->admin_img:'prof_photo.png'); ?>"/>
+											</div>
+									
 										</div>
 									</div>
 									<span class="section">Main Settings</span>
@@ -103,8 +105,10 @@
 												  'label' => false,
 												  'class'=>'form-control col-md-7 col-xs-12']);
 											?>
+											<div class="text-centerimage view-first customImg">
+												<img class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($siteinfo->site_logo != ''?$siteinfo->site_logo:'logo_demo.jpg'); ?>"/>
+											</div>
 											
-											<img  style="margin:5px" height="100px"; width="100px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($siteinfo->site_logo != ''?$siteinfo->site_logo:'logo_demo.jpg'); ?>"/>
 										</div>
 									</div>
 									<div class="item form-group">
@@ -116,8 +120,11 @@
 												  'label' => false,
 												  'class'=>'form-control col-md-7 col-xs-12']);
 											?>
-										   <img  style="margin:5px" height="50px"; width="50px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($siteinfo->site_favicon != ''?$siteinfo->site_favicon:'favicon_demo.png'); ?>"/>
-										</div>
+											<div class="text-centerimage view-first customImg">
+												<img class="img-circle profile_img catImg"  src="<?php echo HTTP_ROOT.'img/uploads/'.($siteinfo->site_favicon != ''?$siteinfo->site_favicon:'favicon_demo.png'); ?>"/>
+											</div>
+											</div>
+										  
 									</div>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_footer">Footer Content <span class="required">*</span>
@@ -168,7 +175,7 @@
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="facebook_link">Facebook URL <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.facebook_link',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://facebook.com</b></em></div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$siteinfo->facebook_link !='' ?$siteinfo->facebook_link:'']);
@@ -178,7 +185,7 @@
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="twitter_link">Twitter URL<span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.twitter_link',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://twitter.com</b></em></div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$siteinfo->twitter_link != ''?$siteinfo->twitter_link:'']);
@@ -199,7 +206,7 @@
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.linkedin_link',[
 												'templates' => [
-													'inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+													'inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://linkedin.com</b></em></div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$siteinfo->linkedin_link != '' ?$siteinfo->linkedin_link:'']);
@@ -209,7 +216,7 @@
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="instagram_link">Instagram URL<span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.instagram_link',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://instagram.com</b></em></div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$siteinfo->instagram_link != '' ?$siteinfo->instagram_link:'']);
@@ -219,7 +226,7 @@
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="youtube_link">Youtube URL<span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.youtube_link',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://youtube.com</b></em></div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$siteinfo->youtube_link != ''?$siteinfo->youtube_link:'']);
@@ -289,3 +296,21 @@
 				});*/
 	});
 	</script>
+	<style>
+		.customImg {
+			width: 100px;
+			top: 10px;
+			bottom: 10px;
+			margin-bottom: 10px;
+			clear: both;
+			position: relative;
+		}
+		
+		em {
+			float: left;
+			position: absolute;
+			width: 100%;
+			margin-left: 5px;
+			margin-top: 7px;
+		}		
+	</style>

@@ -98,7 +98,7 @@ class SliderController extends AppController
 				$this->i18translation($sliderData);
 				//CODE FOR MULTILIGUAL END
 				if($SlidersModel->save($sliderData)){
-				$this->displaySuccessMessage("Slider have been added Successfully");
+				$this->displaySuccessMessage("Slider has been added Successfully");
 				return $this->redirect(['controller' => 'slider', 'action' => 'sliders-listing']);
 				}	
 			}else{
@@ -175,7 +175,7 @@ class SliderController extends AppController
 				}
 				$sliderData = $slidersModel->patchEntity($sliderData, $this->request->data['Sliders'],['validate'=>'update']);
 		        if ($slidersModel->save($sliderData)) {
-					$this->displaySuccessMessage("Record have been update Successfully");
+					$this->displaySuccessMessage("Record has been updated Successfully");
 					return $this->redirect(['controller'=>'slider','action'=>'sliders-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));

@@ -71,7 +71,9 @@
 							<li>
 							   <a href="<?php echo HTTP_ROOT."slider/sliders-listing" ?>"><i class="fa fa-video-camera"></i> <span><?php echo __("Manage Slider"); ?> </span></a>
 							</li>
-							 
+							<li>
+								<a href="<?php echo HTTP_ROOT."cmspages/strings-listing" ?>"><i class="fa fa-plus-circle"></i>  <?php echo __("Manage  Strings"); ?></a>
+							</li> 
 						</ul>
                     </li>
 					

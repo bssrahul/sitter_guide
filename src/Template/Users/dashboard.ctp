@@ -93,10 +93,12 @@
 								?></td>
 								<td><?php echo $admin_info->status == 1?'Active':'Inactive';	?></td>
 								<td class=" "><?php 
-											echo $admin_info->last_login;
+											echo date("F j, Y h:i A", strtotime($admin_info->last_login));
 								?></td>
-								<td class=" "><?php 
-											echo $admin_info->date_added;
+								<td class=" ">
+									<?php 
+											echo date("F j, Y h:i A", strtotime($admin_info->date_added));
+											
 								?></td>
 							
 								<?php $target = ['0'=>'1','1'=>'0'];?>

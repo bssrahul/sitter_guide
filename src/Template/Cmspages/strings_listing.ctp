@@ -57,12 +57,12 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>How Works Listing</h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-works'; ?>"><button class="btn btn-success addUser" type="button">Add Work</button></a></h2>-->
+					<h2>Strings Listing</h2><h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-string'; ?>"><button class="btn btn-success addUser" type="button">Add String</button></a></h2>
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
 				
-				<div class="x_content table-responsive">
+					<div class="x_content table-responsive">
                         <table id="example" class="table table-bordered responsive-utilities jambo_table">
 						<thead>
 							<tr class="headings">
@@ -70,22 +70,20 @@
 									 <!--<input type="checkbox" class="tableflat">-->
 									 Sr.No.
 								</th>
-								<th class="text-center column-title">Image</th>
-								<!--<th class="column-title"><?php echo $this->Paginator->sort('Howitworks.category', 'Category')?> </th>-->
-								<th class="column-title">Title</th>
-								<th style="width:300px;" class="column-title">Description</th> 
-							   <th class="column-title">Status</th>
-							   <th class="column-title">Created</th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<!--<th class="text-center column-title"><?php echo $this->Paginator->sort('StaticStrings.page_name', 'Page Name')?></th>-->
+								<th style="width:300px;"   class="column-title">Slug</th>
+								<th style="width:300px;"   class="column-title">Value</th> 
+								<th class="column-title">Created</th>
+							    <th class="column-title no-link last"><span class="nobr">Action</span>
 								</th>
 							</tr>
 						</thead>
                         <tbody>
-						 <?php if(sizeof(@$works_info) > 0) {
+						 <?php if(sizeof(@$strings_info) > 0) {
 						    $i=1;
 							
 						 ?>
-							<?php foreach($works_info as $work_info) { 
+							<?php foreach($strings_info as $string_info) { 
 							if($i%2==0){$class="even pointer";}else{$class="odd pointer";}
 							?>
 							<tr class="<?php echo $class; ?>">
@@ -94,31 +92,19 @@
 								<input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;">
                                 <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>-->
 								</td>
-								<td class="text-center">
-									<div class="text-centerimage view-first customImg">
-										<img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($work_info->image != ''?$work_info->image:'dummy.jpg'); ?>"/>
-									</div>
-								</td>
-								<!--<td class=" "><?php 
-							echo strtoupper(str_replace("_"," ",$work_info->category));
-								?></td>-->
-								<td class=" "><?php echo $work_info->title; ?></td>
+								<!--<td class=" "><?php echo $string_info->page_name; ?></td>-->
 								
-								<td style="width:300px;"  class=" "><?php 
-										echo $work_info->description;
+								<td style="width:300px;"   class=" "><?php 
+										echo $string_info->constant_slug;
 								?></td>
-								
-								 <td><?php echo $work_info->status == 1?'Active':'Inactive';	?></td>
+								<td style="width:300px;"   class=" "><?php 
+										echo $string_info->value;
+								?></td>
 								 <td class=" "><?php 
-										echo date("F  j,Y",strtotime($work_info->created_date));
+										echo date("F  j,Y",strtotime($string_info->created_date));
 								?></td>
-								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
-								   <a title="<?php echo($work_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'HowWorks'.'/'.base64_encode(convert_uuencode($work_info->id)).'/'.$target[$work_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($work_info->status ==0?'-o':'') ?>"></span></a>
-								 
-								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-works/".$work_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
-								   
-								   <!--<a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'HowWorks'.'/'.base64_encode(convert_uuencode($work_info->id));?>" onclick="if(!confirm('Are you sure to delete this User?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>-->
+								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-string/".$string_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								</td>
 							</tr>
 							<?php $i++;
@@ -159,13 +145,9 @@
                     "oLanguage": {
                         "sSearch": "Search all columns:"
                     },
-					"fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-
-						var numStart = 0;
-
-						var index = numStart +  iDisplayIndexFull + 1;
-						$("td:first", nRow).html(index);
-						return nRow;
+					"fnRowCallback" : function(nRow, aData, iDisplayIndex){
+						$("td:first", nRow).html(iDisplayIndex +1);
+					   return nRow;
 					},
                     "aoColumnDefs": [
                         {

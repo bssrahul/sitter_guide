@@ -312,10 +312,19 @@ $(function () {
 /** ******  scrollview  *********************** **/
 $(document).ready(function () {
   
-            $(".scroll-view").niceScroll({
-                touchbehavior: true,
-                cursorcolor: "rgba(42, 63, 84, 0.35)"
-            });
+	 $.validator.addMethod("nourl", 
+      function(value, element) {
+			return !/http\:\/\/|www\.|link\=|url\=/.test(value);
+        
+            }, 
+         "Kindly provide valid url"
+      );
+
+
+		$(".scroll-view").niceScroll({
+			touchbehavior: true,
+			cursorcolor: "rgba(42, 63, 84, 0.35)"
+		});
 
 
 
@@ -516,32 +525,49 @@ $(document).ready(function () {
                  "SiteConfigurations[facebook_link]":
                 {
                     required: true,
-                    url: true
+                    nourl: true
                 },
                  "SiteConfigurations[twitter_link]":
                 {
                     required: true,
-                    url: true
+					url: true,
+                    nourl: true
                 },
                  "SiteConfigurations[google_link]":
                 {
                     required: true,
-                    url: true
+					url: true,
+                    nourl: true
                 },
                  "SiteConfigurations[linkedin_link]":
                 {
                     required: true,
-                    url: true
+					url: true,
+                    nourl: true
                 },
                  "SiteConfigurations[instagram_link]":
                 {
                     required: true,
-                    url: true
+					url: true,
+                    nourl: true
                 },
                  "SiteConfigurations[youtube_link]":
                 {
                     required: true,
-                    url: true
+					url: true,
+                    nourl: true
+                },
+                 "admin_img":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
+                },
+                 "site_logo":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
+                },
+                 "site_favicon":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
                 }
             },
             messages: {             
@@ -607,6 +633,18 @@ $(document).ready(function () {
                  "SiteConfigurations[youtube_link]":
                 {
                     required : "This field is required"
+                },
+                 "admin_img":
+                {
+                   accept: "Only png, jpg, jpeg, gif files allowed"
+                },
+                 "site_logo":
+                {
+                   accept: "Only png, jpg, jpeg, gif files allowed"
+                },
+                 "site_favicon":
+                {
+                   accept: "Only png, jpg, jpeg, gif files allowed"
                 }
             }/*,
              errorPlacement: function (error, element) {
@@ -855,12 +893,20 @@ $(document).ready(function () {
                 "UserBlogs[description]":
                 {
                     required: true
+                },
+                 "UserBlogs[image]":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
                 }
             },
             messages: {             
                  "UserBlogs[description]":
                 {
                     required : "This field is required."
+                },
+                 "UserBlogs[image]":
+                {
+                    accept : "Only png, gif, jpg files are allowed."
                 }
             }/*,
              errorPlacement: function (error, element) {
@@ -1050,8 +1096,8 @@ $(document).ready(function () {
                 "PromoCodes[discount_rate]":
                 {
                     required: "This field is required",
-                    number:"Discount rate should be in numbers",
-                    min:"Discount rate should be greater then 0",
+                    number:"Discounted value should be in numbers",
+                    min:"Discounted value should be greater then 0",
                 }
             }/*,
              errorPlacement: function (error, element) {
@@ -1106,9 +1152,9 @@ $(document).ready(function () {
                 "PromoCodes[discounted_coupon]":
                 {
                     required: "This field is required",
-                    number:"Discount rate should be in numbers",
-                    min:"Discount rate should be greater then 0",
-                    max:"Discount coupon should be less then 100"
+                    number:"Discounted value should be in numbers",
+                    min:"Discounted value should be greater then 0",
+                    max:"Discounted value should be less then 100"
                 },
                 "PromoCodes[fixed_coupon]":
                 {

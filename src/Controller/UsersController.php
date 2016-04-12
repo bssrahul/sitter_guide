@@ -521,6 +521,7 @@ class UsersController extends AppController
 				}
 				//Update user data
 				$userData->date_modified = date('Y-m-d h:i:s');
+				$userData->modified = date('Y-m-d h:i:s');
 				if($UsersModel->save($userData)){
 					
 				}
@@ -543,7 +544,8 @@ class UsersController extends AppController
 				/////////////////////
 			}
 		}else{
-			$userInfo = $UsersModel->get($id);			            $zonesData = $ZonesModel->find('list',[
+			$userInfo = $UsersModel->get($id);			           
+			$zonesData = $ZonesModel->find('list',[
 			       'keyField' => 'zone_id',	
 				   'valueField' => 'zone_name']);           
 			$zonesData = $zonesData->toArray();	
@@ -571,11 +573,11 @@ class UsersController extends AppController
 			'Users.date_modified' =>$data['Users']['user_id']],
 			'limit' => 10,
 			'order' => [
-			'Users.date_modified' => 'desc']]);
+			'Users.modified' => 'desc']]);
 		}else{
 			$users_info = $this->Paginator->paginate($UsersModel,[ 'limit' => 200,
 			'order' => [
-			'Users.date_modified' => 'desc']]);
+			'Users.modified' => 'desc']]);
 		}
 		$this->set('users_info',$users_info);
 		//pr($users_info);die;
@@ -761,9 +763,9 @@ class UsersController extends AppController
 
 		$modelEntity->id = $id;
 		$modelEntity->status = $target;
-		
+		$modelEntity->modified = date('Y-m-d h:i:s');
 		if($loadModel->save($modelEntity)){
-			$this->displaySuccessMessage("Status has been updated successfully");
+			$this->Flash->success(__('Status has been updated Successfully'));
 		}
 		$this->redirect($this->referer());
 	}
