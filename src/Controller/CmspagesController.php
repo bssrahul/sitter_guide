@@ -17,12 +17,7 @@ class CmspagesController extends AppController
 {
 	//echo "okokok";die;
   public $helpers = ['Form'];
-   public $paginate = [
-         'limit' => 25,
-         'order' => [
-         'Userss.email' => 'asc'
-         ]];
-   //$this->loadComponent('Resize');
+   
    //Function for check admin session
     public function beforeFilter(Event $event)
     {
@@ -61,7 +56,7 @@ class CmspagesController extends AppController
 			   ],
 			   'limit' => 10,
 			   'order' => [
-					'CmsPages.pagename' => 'asc'
+					'CmsPages.modified' => 'desc'
 				]
 			]);
 		 }
@@ -69,7 +64,7 @@ class CmspagesController extends AppController
 		{
 			$cmsPages = $this->Paginator->paginate($CmsPagesModel,[ 'limit' => 200,
 			   'order' => [
-					'CmsPages.pagename' => 'asc'
+					'CmsPages.modified' => 'desc'
 				]
 			]);
 		}
@@ -95,6 +90,7 @@ class CmspagesController extends AppController
 			
 			$cmsPage = (object)$this->request->data['CmsPages'];
 			if (!$cmsPageData->errors()){
+				$cmsPageData->modified = date('Y-m-d h:i:s');
 				if ($CmsPagesModel->save($cmsPageData)) 
 				{
 					//$this->displaySuccessMessage('CMS Page updated successfully');
@@ -140,9 +136,8 @@ class CmspagesController extends AppController
 			   'conditions' => [
 					'EmailTemplates.title LIKE' => '%'.$data['EmailTemplates']['title'].'%',
 			   ],
-			   'limit' => 10,
 			   'order' => [
-					'EmailTemplates.title' => 'asc'
+					'EmailTemplates.modified' => 'desc'
 				]
 			]);
 		 }
@@ -150,7 +145,7 @@ class CmspagesController extends AppController
 		{
 			$emailTemplates = $this->Paginator->paginate($EmailTemplateModel,[ 'limit' => 200,
 			   'order' => [
-					'EmailTemplates.title' => 'asc'
+					'EmailTemplates.modified' => 'desc'
 				]
 			]);
 		}
@@ -178,6 +173,7 @@ class CmspagesController extends AppController
 					$this->i18translation($emailTemplateModel);
 					$this->i18translation($emailTemplateData);
 					//CODE FOR MULTILIGUAL END
+					$emailTemplateData->modified = date('Y-m-d h:i:s');
 					if ( $emailTemplateModel->save($emailTemplateData)) 
 					{
 						//$this->displaySuccessMessage('Template has been updated Successfully');
@@ -298,6 +294,53 @@ class CmspagesController extends AppController
 				$this->set('contactRequest', $contactRequest);
 		}
 	}
+	
+	/**
+       Function for add blog
+	*/
+	function addBlog()
+	{
+
+		 $this->viewBuilder()->layout('admin_dashboard');
+		   //Load model
+			$UserBlogsModel = TableRegistry::get("UserBlogs");
+			$UserBlogData = $UserBlogsModel->newEntity();
+			if(isset($this->request->data) && !empty($this->request->data) )
+		   {
+			//pr($this->request->data); die;
+			$UserBlogData = $UserBlogsModel->patchEntity($UserBlogData,$this->request->data['UserBlogs']);
+			$imagename = $this->request->data['UserBlogs']['image']['name'];
+			//Upload image
+				if($imagename!=''){
+					$blogImg = $this->admin_upload_file('categoryImg',$this->request->data['UserBlogs']['image']);
+				
+					$blogImg = explode(':',$blogImg);
+					if($blogImg[0]=='error')
+					{
+					   $this->displayErrorMessage($blogImg[1]);
+					   return $this->redirect($this->referer());
+					}
+					
+					else{
+						$UserBlogData->image = $blogImg[1];
+					}				
+				}else{
+				   unset($UserBlogData->image);
+				}
+				//CODE FOR MULTILIGUAL START
+				$this->i18translation($UserBlogsModel);
+				$this->i18translation($UserBlogData);
+				//CODE FOR MULTILIGUAL END
+				//Save data
+				
+				if($UserBlogsModel->save($UserBlogData)){
+				  $this->Flash->success(__('Record has been added Successfully'));
+				   return $this->redirect(['controller' => 'cmspages', 'action' => 'blogs-listing']);
+				}else{
+				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
+			   }	
+		}$this->set('blog_info', $UserBlogData);
+	}
 	/**
    function for listing blogs 
    */
@@ -311,9 +354,16 @@ class CmspagesController extends AppController
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UserBlogsModel);
 		$blogs_info = $UserBlogsModel->find('all',[
-			                     'contain'=>['Users'=>[
-			                            'fields'=>
-			                              ['id','first_name','last_name']]]]);
+													'contain'=>['Users'=>[
+																			'fields'=>
+																			['id','first_name','last_name']
+																		]
+																],
+																'order' => [
+																	'UserBlogs.modified' => 'desc'
+																]
+													]
+											);
 		$this->set('blogs_info',$blogs_info);
 	}
 	/**
@@ -355,7 +405,7 @@ class CmspagesController extends AppController
 				//CODE FOR MULTILIGUAL END
 				//Update user data
 				if($UserBlogsModel->save($UserBlogData)){
-					$this->displaySuccessMessage("Records have been updated successfully");
+					$this->Flash->success(__('Record has been updated Successfully'));
 					return $this->redirect(['controller'=>'cmspages','action'=>'blogs-listing']);
 				}
 			}else{
@@ -384,7 +434,9 @@ class CmspagesController extends AppController
 		
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($SubscribesModel);
-		$subscribes_info = $SubscribesModel->find('all');
+		$subscribes_info = $SubscribesModel->find('all',['order' => [
+										'Subscribes.modified' => 'desc'
+									]]);
 
 		$this->set('subscribes_info',$subscribes_info);
 		//pr($subscribes_info);die;
@@ -419,7 +471,8 @@ class CmspagesController extends AppController
 			//CODE FOR MULTILIGUAL START
 			 $this->i18translation($SubscribesModel);
 			//CODE FOR MULTILIGUAL END
-	         $this->displaySuccessMessage('News latter sent successfully');
+				$this->Flash->success(__('News letter sent Successfully'));
+	         //$this->displaySuccessMessage('News latter sent successfully');
 			 return $this->redirect(['controller'=>'cmspages','action' => 'subscribes-listing']);
 			                                                                
 		}else{
@@ -463,11 +516,11 @@ class CmspagesController extends AppController
 			'HowWorks.id LIKE' => '%'.$data['HowWorks']['id'].'%'],
 			'limit' => 10,
 			'order' => [
-			'HowWorks.id' => 'desc']]);
+			'HowWorks.modified' => 'desc']]);
 		}else{
 			$works_info = $this->Paginator->paginate($HowWorksModel,[ 'conditions' => ['HowWorks.category'=>'how_it_works'],'limit' => 200,
 			'order' => [
-			'HowWorks.id' => 'desc']]);
+			'HowWorks.modified' => 'desc']]);
 		}
 		$this->set('works_info',$works_info);
 	}
@@ -510,7 +563,7 @@ class CmspagesController extends AppController
 				//Save data
 				echo "okokokok";die;
 				if($HowWorksModel->save($workData)){
-				   $this->displaySuccessMessage("Record have been added Successfully");
+				   $this->displaySuccessMessage("Record has been added Successfully");
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'works-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -546,8 +599,8 @@ class CmspagesController extends AppController
 				}
                 $workData = $HowWorksModel->patchEntity($workData, $this->request->data['HowWorks'],['validate'=>'update']);
 		        if ($HowWorksModel->save($workData)) {
-					//$this->displaySuccessMessage("Record have been update Successfully");
-					$this->Flash->success(__('Record have been update Successfully.'));
+					//$this->Flash->success(__('Record has been added Successfully'));
+					$this->Flash->success(__('Record has been updated Successfully.'));
 					return $this->redirect(['controller'=>'cmspages','action'=>'works-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -578,11 +631,11 @@ class CmspagesController extends AppController
 			'HowWorks.id LIKE' => '%'.$data['HowWorks']['id'].'%'],
 			'limit' => 10,
 			'order' => [
-			'HowWorks.id' => 'desc']]);
+			'HowWorks.modified' => 'desc']]);
 		}else{
 			$works_info = $this->Paginator->paginate($HowWorksModel,[ 'conditions' => ['HowWorks.category'=>'why_choose_us'],'limit' => 200,
 			'order' => [
-			'HowWorks.id' => 'desc']]);
+			'HowWorks.modified' => 'desc']]);
 		}
 		$this->set('works_info',$works_info);
 	}
@@ -626,7 +679,7 @@ class CmspagesController extends AppController
                	$workData->category = trim($workData->category);
 				if($HowWorksModel->save($workData)){
 					// echo "<pre>";print_r($workData);die;
-				   $this->displaySuccessMessage("Record have been added Successfully");
+				   $this->displaySuccessMessage("Record has been added Successfully");
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'choose-us-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -660,7 +713,7 @@ class CmspagesController extends AppController
 				}
                 $workData = $HowWorksModel->patchEntity($workData, $this->request->data['HowWorks'],['validate'=>'update']);
 		        if ($HowWorksModel->save($workData)) {
-					$this->displaySuccessMessage("Record have been update Successfully");
+					$this->Flash->success(__('Record has been updated Successfully'));
 					return $this->redirect(['controller'=>'cmspages','action'=>'choose-us-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -696,11 +749,11 @@ class CmspagesController extends AppController
 			'HowWorks.id LIKE' => '%'.$data['HowWorks']['id'].'%'],
 			'limit' => 10,
 			'order' => [
-			'HowWorks.id' => 'desc']]);
+			'HowWorks.modified' => 'desc']]);
 		}else{
 			$works_info = $this->Paginator->paginate($HowWorksModel,[ 'conditions' => ['HowWorks.category'=>'news_updates'],'limit' => 200,
 			'order' => [
-			'HowWorks.id' => 'desc']]);
+			'HowWorks.modified' => 'desc']]);
 		}
 		$this->set('works_info',$works_info);
 	}
@@ -743,8 +796,8 @@ class CmspagesController extends AppController
 				//Save data
 				//echo "okokokok";die;
 				if($HowWorksModel->save($workData)){
-				   //$this->displaySuccessMessage("Record have been added Successfully");
-				    $this->Flash->success(__('Record have been added Successfully'));
+				   //$this->displaySuccessMessage("Record has been added Successfully");
+				    $this->Flash->success(__('Record has been added Successfully'));
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'news-updates-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -779,7 +832,7 @@ class CmspagesController extends AppController
 				}
                 $workData = $HowWorksModel->patchEntity($workData, $this->request->data['HowWorks'],['validate'=>'update']);
 		        if ($HowWorksModel->save($workData)) {
-					$this->displaySuccessMessage("Record have been update Successfully");
+					$this->Flash->success(__('Record has been updated Successfully'));
 					return $this->redirect(['controller'=>'cmspages','action'=>'news-updates-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -811,13 +864,13 @@ class CmspagesController extends AppController
 			$works_info = $this->Paginator->paginate($StaticStringsModel,[
 			'conditions' => [
 			'StaticStrings.id LIKE' => '%'.$data['StaticStrings']['id'].'%'],
-			'limit' => 10,
+			'limit'=>500,
 			'order' => [
-			'StaticStrings.id' => 'desc']]);
+			'StaticStrings.modified' => 'desc']]);
 		}else{
-			$strings_info = $this->Paginator->paginate($StaticStringsModel,['limit' => 200,
+			$strings_info = $this->Paginator->paginate($StaticStringsModel,['limit'=>500,
 			'order' => [
-			'StaticStrings.id' => 'desc']]);
+			'StaticStrings.modified' => 'desc']]);
 		}
 		$this->set('strings_info',$strings_info);
 	}
@@ -843,7 +896,7 @@ class CmspagesController extends AppController
 				//echo "<pre>";print_r($stringData);die;
                	if($StaticStringsModel->save($stringData)){
 					// echo "<pre>";print_r($stringData);die;
-				   $this->displaySuccessMessage("Record have been added Successfully");
+				   $this->displaySuccessMessage("Record has been added Successfully");
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'strings-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -864,8 +917,9 @@ class CmspagesController extends AppController
 		    $stringData = $StaticStringsModel->newEntity();
           
                 $stringData = $StaticStringsModel->patchEntity($stringData, $this->request->data['StaticStrings'],['validate'=>'update']);
+		        $stringData->modified = date('Y-m-d h:i:s');
 		        if ($StaticStringsModel->save($stringData)) {
-					$this->displaySuccessMessage("Record have been update Successfully");
+					$this->Flash->success(__('Record has been updated Successfully'));
 					return $this->redirect(['controller'=>'cmspages','action'=>'choose-us-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));

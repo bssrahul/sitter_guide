@@ -60,11 +60,11 @@ class PartnersController extends AppController
 			'Partners.id LIKE' => '%'.$data['partners']['id'].'%'],
 			'limit' => 10,
 			'order' => [
-			'Partners.id' => 'desc']]);
+			'Partners.modified' => 'desc']]);
 		}else{
 			$partners_info = $this->Paginator->paginate($partnersModel,[ 'limit' => 200,
 			'order' => [
-			'Partners.id' => 'desc']]);
+			'Partners.modified' => 'desc']]);
 		}
 		$this->set('partners_info',$partners_info);
 		
@@ -108,7 +108,7 @@ class PartnersController extends AppController
 				//CODE FOR MULTILIGUAL END
 				//Save data
 				if($partnersModel->save($partnersData)){
-				   $this->displaySuccessMessage("Record have been added Successfully");
+				   $this->displaySuccessMessage("Record has been added Successfully");
 				   return $this->redirect(['controller' => 'partners', 'action' => 'partners-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -149,7 +149,7 @@ class PartnersController extends AppController
 		       // $partnersData->id = $promocodeId = convert_uudecode(base64_decode($this->request->data['howId']));
 				//pr($partnersData);die;
 				if ($partnersModel->save($partnersData)) {
-					$this->displaySuccessMessage("Record have been update Successfully");
+					$this->Flash->success(__('Record has been updated Successfully'));
 					return $this->redirect(['controller'=>'partners','action'=>'partners-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));

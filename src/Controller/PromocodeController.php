@@ -128,11 +128,11 @@ class PromocodeController extends AppController
 			'PromoCodes.id LIKE' => '%'.$data['PromoCodes']['id'].'%'],
 			'limit' => 10,
 			'order' => [
-			'PromoCodes.id' => 'desc']]);
+			'PromoCodes.modified' => 'desc']]);
 		}else{
 			$promocodes_info = $this->Paginator->paginate($PromocodesModel,[ 'limit' => 200,
 			'order' => [
-			'PromoCodes.id' => 'desc']]);
+			'PromoCodes.modified' => 'desc']]);
 		}
 		$this->set('promocodes_info',$promocodes_info);
 	}

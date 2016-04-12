@@ -131,11 +131,11 @@ function currenciesListing(){
 		'Currencies.id LIKE' => '%'.$data['Currencies']['id'].'%'],
 		'limit' => 10,
 		'order' => [
-		'Currencies.country_name' => 'asc']]);
+		'Currencies.modified' => 'desc']]);
 	}else{
 		$currencies_info = $this->Paginator->paginate($CategoriesModel,[ 'limit' => 200,
 		'order' => [
-		'Currencies.country_name' => 'asc']]);
+		'Currencies.modified' => 'desc']]);
 	}
 	$this->set('currencies_info',$currencies_info);
 	//pr($currencies_info);die;

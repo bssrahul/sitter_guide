@@ -78,9 +78,9 @@ class CategoryController extends AppController
 				//CODE FOR MULTILIGUAL START
 				$this->i18translation($CategoriesModel);
 				$this->i18translation($categoryData);
-				//CODE FOR MULTILIGUAL END
+				//CODE FOR MULTILIGUAL END 
 				if($CategoriesModel->save($categoryData)){
-				$this->displaySuccessMessage("New Category have been added Successfully");
+				$this->Flash->success(__('Record has been added Successfully'));
 				return $this->redirect(['controller' => 'category', 'action' => 'categories-listing']);
 				}	
 			}else{
@@ -126,8 +126,9 @@ class CategoryController extends AppController
 				$this->i18translation($categoryData);
 				//CODE FOR MULTILIGUAL END
 				//Update user data
+				$categoryData->date_modified = date('Y-m-d h:i:s');
 				if($CategoriesModel->save($categoryData)){
-					$this->displaySuccessMessage("Records have been updated successfully");
+					$this->Flash->success(__('Record has been added Successfully'));
 					return $this->redirect(['action'=>'categories-listing','controller'=>'Category']);
 				}
 			}else{
@@ -163,11 +164,11 @@ class CategoryController extends AppController
 			'Categories.id LIKE' => '%'.$data['Categories']['id'].'%'],
 			'limit' => 10,
 			'order' => [
-			'Categories.id' => 'desc']]);
+			'Categories.modified' => 'desc']]);
 		}else{
 			$categories_info = $this->Paginator->paginate($CategoriesModel,[ 'limit' => 200,
 			'order' => [
-			'Categories.id' => 'desc']]);
+			'Categories.modified' => 'desc']]);
 		}
 		$this->set('categories_info',$categories_info);
 	}
