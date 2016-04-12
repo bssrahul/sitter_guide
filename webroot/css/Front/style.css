@@ -10,7 +10,8 @@
 
 @import 'dashboard.css';
 @import 'signup.css';
-@import 'profile-view.css';
+
+@import 'db-profile.css';
 
 
 @font-face {

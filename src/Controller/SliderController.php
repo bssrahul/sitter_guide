@@ -143,7 +143,7 @@ class SliderController extends AppController
 				//CODE FOR MULTILIGUAL END
 				//Update user data
 				if($SlidersModel->save($sliderData)){
-					$this->displaySuccessMessage("Records have been updated successfully");
+					$this->displaySuccessMessage("Records has been updated successfully");
 					return $this->redirect(['action'=>'sliders-listing','controller'=>'Slider']);
 				}
 			}else{

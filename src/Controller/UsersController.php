@@ -387,9 +387,9 @@ class UsersController extends AppController
 					$replace = array('{name}','{password}');
 					$with = array($session->read('Admin.full_name'),$data['Admin']['password']);
 					$this->send_email('',$replace,$with,'admin_change_password',$session->read('Admin.email'));
-					//$this->displaySuccessMessage('Your password have been updated Successfully!.');
+					//$this->displaySuccessMessage('Your password has been updated Successfully!.');
 					//Flash
-					$this->Flash->success(__('Your password have been updated Successfully!.'));
+					$this->Flash->success(__('Your password has been updated Successfully!.'));
 					
 					return $this->redirect(['controller' => 'users', 'action' => 'dashboard']);
 				}else{
@@ -474,7 +474,7 @@ class UsersController extends AppController
 				}
 				//Save user data
 				if($UsersModel->save($userData)){
-				$this->displaySuccessMessage("New user have been added Successfully");
+				$this->displaySuccessMessage("New user has been added Successfully");
 				return $this->redirect(['controller' => 'users', 'action' => 'users-listing']);
 				}	
 			}else{
@@ -525,8 +525,8 @@ class UsersController extends AppController
 				if($UsersModel->save($userData)){
 					
 				}
-				//$this->displaySuccessMessage("Records have been updated successfully");
-				$this->Flash->success(__('Records have been updated successfully'));
+				//$this->displaySuccessMessage("Records has been updated successfully");
+				$this->Flash->success(__('Records has been updated successfully'));
 			    return $this->redirect(['controller'=>'users','action'=>'users-listing']);
 			}else{
 				$userInfo = $UsersModel->get($userId);
@@ -660,7 +660,7 @@ class UsersController extends AppController
 				
 				
 				}
-				$this->displaySuccessMessage("Records have been updated successfully");
+				$this->displaySuccessMessage("Records has been updated successfully");
 				return $this->redirect('/users/user-pet-view/'.base64_encode(convert_uuencode($userId)));
 			}else{
 				$petInfo = $UserPetsModel->get($petId);
@@ -736,8 +736,8 @@ class UsersController extends AppController
 		//Not allowing sub admin to delete, type => 1 for sub admin
 		$adminType = $session->read('Admin.type');
 		if ($adminType == 1){
-			//$this->displayErrorMessage("You don't have the privilege to delete records. Only admin can perform this action.");
-			$this->Flash->success(__('You don\'t have the privilege to delete records. Only admin can perform this action.'));
+			//$this->displayErrorMessage("You don't has the privilege to delete records. Only admin can perform this action.");
+			$this->Flash->success(__('You don\'t has the privilege to delete records. Only admin can perform this action.'));
 			$this->redirect($this->referer());
 		}else{
 			$record = $loadModel->get($id);

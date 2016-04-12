@@ -1,5 +1,23 @@
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 
+
+
+
+
+
+
+
+.db-top-bar-header { border-bottom:1px solid #ccc;}
+
+.db-top-bar-header h3 {color:#222d3d; font-size:20px; padding-top:15px; margin-bottom:15px; margin-top: 0px;}
+
+
+.db-top-bar-header .breadcrumb {background-color:transparent; padding-top:20px; margin-bottom:0px !important;}
+
+.margin-right-0 {margin-right:0px !important}
+.margin-left-0 {margin-leftt:0px !important}
+
+
 .custom {	height: 100vh;	background: #222d3d;}
  body {background-color: #eaeaea !important;}
 .navbar {	margin-bottom: 0px;}

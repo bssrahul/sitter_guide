@@ -92,7 +92,7 @@ class PromocodeController extends AppController
 				//CODE FOR MULTILIGUAL END
 				//echo "<pre>";print_r($promocodeData);die;
 				if($PromocodesModel->save($promocodeData)){
-					$this->displaySuccessMessage("Records have been updated successfully");
+					$this->displaySuccessMessage("Records has been updated successfully");
 					return $this->redirect(['action'=>'promocodes-listing','controller'=>'promocode']);
 				}
 			}else{
