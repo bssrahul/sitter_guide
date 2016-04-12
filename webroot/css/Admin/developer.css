@@ -1,13 +1,13 @@
 label.error{
-    clear: both;
-    color: #c92434;
-    display: inline-block;
-    float: left;
-    font-style: italic;
-    position: relative;
-    width: 100%;
-   font-weight:normal;
-   font-size:12px;
+		clear: both;
+		color: #c92434;
+		display: inline-block;
+		float: left;
+		font-style: italic;
+		position: relative;
+		width: 100%;
+		font-weight:normal;
+		font-size:12px;
    
 }
 form#edituser label.error{
@@ -17,7 +17,7 @@ form#edituser label.error{
 div.success {
 	background: #4f9709 none repeat scroll 0 0;
     border-radius: 5px;
-    bottom: 10px;
+    top: 60px;
     color: #fff !important;
     cursor: pointer !important;
     float: right !important;
@@ -35,5 +35,45 @@ div.message:before {
 }
 div.has-feedback{
 	padding:0px 10px 5px 10px !important;
+
+}
+
+div.error {
+	top: 60px;
+    
+}
+div.message {
+	top: 60px !important;
+	
+}
+
+div.customImg > img.img-circle {
+    border-radius: 5px !important;
+}
+
+.catImg{
+	height:75px;
+	width:60% !important;
+}
+.img-circle.profile_img {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid rgba(52, 73, 94, 0.44);
+	margin-left: 0px !important;
+	margin-top: 0px !important;
+	position: inherit;
+	z-index: 1000;
+}
+.paging_full_numbers {
+	height: 50px !important;
+	line-height: 22px;
+	width: 400px;
+}
+.text-centerimage img {
+	width: 75px !important;
+}
+
+body.nav-sm .container.body .left_col {
+
+    overflow-y: scroll !important;
 
 }

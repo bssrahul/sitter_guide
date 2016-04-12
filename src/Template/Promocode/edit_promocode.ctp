@@ -168,20 +168,38 @@
                 </div>
 				
 		 <script>
+		function firstload(){
+			var couponval = $("#c_type").val();
+			if(couponval == 'discounted_coupon'){
+				$(".fixed_coupon").hide();
+				$( ".fixed_coupon" ).prop( "disabled", true );
+
+				$(".discounted_coupon").show();
+				$( ".discounted_coupon" ).prop( "disabled",false );
+			}else{
+				$(".discounted_coupon").hide();
+				$( ".discounted_coupon" ).prop( "disabled", true );
+
+				$(".fixed_coupon").show();
+				$( ".fixed_coupon" ).prop( "disabled",false );
+			}
+		}	
 		
 		 $(document).ready(function(){
-		 
-		      /* $( "#c_type" ).change(function() {
-					$(".ct").hide();
-					$("#"+$(this).val()).show();
-				});*/
+			//AT VERY FIRST ON DOCUMENT LOAD
+			
+			setTimeout(firstload, 500);
+
+
+			
+			
 		   $(".dc").hide();
-		   //$(".fc").hide();
+		 
 		   $( ".dc" ).prop( "disabled", true );
-		   //$( ".fc" ).prop( "disabled", true );
+		 
 
 				$("#c_type").change(function() {
-					//alert("kokk");
+					
 					$("."+$(this).val()).show();
 					$("."+$(this).val()).show();
 					 var couponval = $(this).val();

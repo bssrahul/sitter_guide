@@ -70,7 +70,7 @@
 								<th class="text-center column-title">Image</th>
 								<!--<th class="column-title"><?php echo $this->Paginator->sort('Howitworks.category', 'Category')?> </th>-->
 								<th class="column-title">Title</th>
-								<th class="column-title">Description</th> 
+								<th style="width:300px;"  class="column-title">Description</th> 
 							   <th class="column-title">Status</th>
 							   <th class="column-title">Created</th>
 								<th class="column-title no-link last"><span class="nobr">Action</span>
@@ -101,7 +101,7 @@
 								?></td>-->
 								<td class=" "><?php echo $work_info->title; ?></td>
 								
-								<td class=" "><?php 
+								<td style="width:300px;"  class=" "><?php 
 										echo $work_info->description;
 								?></td>
 								
