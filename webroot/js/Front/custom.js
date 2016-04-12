@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
+	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	/*FUNCTION FOR VALIDATION*/
 	$(document).ready(function(){

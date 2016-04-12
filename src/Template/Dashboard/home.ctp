@@ -1,193 +1,181 @@
-<div class="col-md-9 col-lg-10 col-sm-8 " id="content">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT; ?>img/i-recent.png" alt="recent"></i>&nbsp; <?php echo __('Recent Activities'); ?></span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/plus.png" ></a></span> </div>
-              <!--<div class="panel-body">
-    
-  </div>-->
-              
-              <div class="col-xs-12 recent-activity-table">
-                <table class="table table-hover">
-                  <thead>
-                    <tr class="table-row-heading">
-                      <th><?php echo __('Activity'); ?></th>
-                      <th><?php echo __('User Name'); ?></th>
-                      <th><?php echo __('User ID'); ?></th>
-                      <th><?php echo __('Notes'); ?></th>
-                      <th><?php echo __('Time'); ?></th>
-                    </tr>
-                  </thead>
-                  <tbody class="table-row-text">
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-green.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-red.png" width="11" height="11" alt="green"></span> <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-orange.png" width="11" height="11" alt="green"></span>   <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    
-                     <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-yellow.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-red.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-green.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="clearfix">
-            <div style="margin:10px 0;"></div>
 
-</div>
-            <div class="panel panel-default clearfix">
-              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT; ?>img/i-recent.png"  alt="recent"></i>&nbsp; <?php echo __('Recent Activities') ;?> </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/plus.png" ></a></span> </div>
-            <div class="col-xs-12 recent-activity-table1">
-                <table class="table table-hover">
-                  <thead>
-                    <tr class="table-row-heading">
-                      <th><?php echo __('Activity'); ?></th>
-                      <th><?php echo __('User Name'); ?></th>
-                      <th><?php echo __('User ID'); ?></th>
-                      <th><?php echo __('Notes'); ?></th>
-                      <th><?php echo __('Time'); ?></th>
-                    </tr>
-                  </thead>
-                  <tbody class="table-row-text">
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-green.png" width="11" height="11" alt="green"></span> <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-red.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-orange.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    
-                     <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-yellow.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-red.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                    <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT; ?>img/t-green.png" width="11" height="11" alt="green"></span>  <?php echo __('Lorem Ipsum'); ?> </td>
-                      <td><?php echo __('Name'); ?> </td>
-                      <td>Mr John Deo</td>
-                      <td><?php echo __('Lorem Ipsum  dummy text'); ?></td>
-                      <td>15.30  -  06/10/15 </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div> </div>
+<div class="col-lg-10 col-md-9  col-sm-8 col-xs-12  ">
+        <div class="row db-top-bar-header no-padding-left no-padding-right">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <h3><img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Dashboard</h3>
+                      
+                      </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                              <ol class="breadcrumb text-right">
+                              <li>  You are here : </li>
+                              <li><a href="#">Home</a></li>
+                             
+                              <li class="active">Profile</li>
+                              </ol>              
+                            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-7">
+        
+        <div class="row stylish-panel">
+        
+       
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
+        <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        
+        <h4 class="blue">General Profile</h4>
+          <!--<div class="gp-icon">
+              
+            </div>-->
+          <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i1.png" alt="General Profile" class=" img-thumbnail">
+          
+          <div class="border-top" >
+         
+         
+      
+         <ul class="list-unstyled text-left">
+         
+         <li><span class="check-icon"></span> Details</li>
+         
+           <li><span class="check-icon"></span> Photos</li>
+           
+             <li><span class="cross-icon"></span> Testimonials</li>
+               <li><span class="check-icon"></span> Safety</li>
+                 <li class="border-none"><span class="check-icon"></span> Background</li>
+         
+         </ul>
+         
+         
+        
           </div>
-          <div class="col-sm-12 col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT; ?>img/i-cal.png"  alt="<?php echo __('calender'); ?>"></i>&nbsp; <?php echo __('Calender'); ?> </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/plus.png" ></a></span> </div>
-              <img src="<?php echo HTTP_ROOT; ?>img/calender.png" class="img-responsive" alt="calender"> </div>
-            <div class="panel panel-default">
-              <div class="panel-heading"> <?php echo __('Calender'); ?> <i class="fa fa-question-circle"></i> </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <ul class="list-unstyled">
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon green-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="<?php echo __('Day Care'); ?>" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon red-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Night Care" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <ul class="list-unstyled">
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon orange-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Drop in visit" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon yellow-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Hourly Services" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-12">
-                    <ul class="list-inline">
-                      <li class="refresh"> <img src="<?php echo HTTP_ROOT; ?>img/refresh_red.png" class="text-center" width="15" height="19" alt="refresh"> </li>
-                      <li class="sync"> <a href="#"><?php echo __('Sync your Calender'); ?></a></li>
-                    </ul>
-                  </div>
+        </div>
+      </div> 
+      
+      
+     <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
+       <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        
+        <h4 class="orange">Sitter House</h4>
+        
+          <!--<div class="sh-icon">
+              
+            </div>-->
+          <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i2.png" alt="General Profile" class=" img-thumbnail">
+          
+          <div class="border-top" >
+         
+         <ul class="list-unstyled text-left">
+         
+         <li><span class="check-icon"></span> Details</li>
+         
+           <li><span class="cross-icon"></span>  Photos</li>
+           
+             <li><span class="check-icon"></span> Testimonials</li>
+               <li><span class="check-icon"></span> Safety</li>
+                 <li class="border-none"><span class="check-icon"></span> Background</li>
+         
+         </ul>
+         
+         
+        
+          </div>
+        </div>
+      </div> 
+     
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
+        <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        
+        <h4 class="green">About Sitter</h4>
+          <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i3.png" alt="General Profile" class=" img-thumbnail">
+          
+          <div class="border-top" >
+         
+         <ul class="list-unstyled text-left">
+         
+         <li><span class="check-icon"></span> Details</li>
+         
+           <li><span class="cross-icon"></span>  Photos</li>
+           
+             <li><span class="check-icon"></span>Testimonials</li>
+               <li><span class="check-icon"></span> Safety</li>
+                 <li class="border-none"><span class="check-icon"></span> Background</li>
+         
+         </ul>
+         
+         
+        
+          </div>
+        </div>
+      </div> 
+      
+      
+    </div>
+        
+        
+        
+        
+        </div>
+                <div class="col-xs-12 col-sm-6 col-md-12 col-lg-5">
+                
+                <div class="row stylish-panel">
+      <div class="col-md-4 col-lg-6 col-sm-12 col-xs-12 top-padd20">
+      
+       <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        
+        <h4 class="carrot">Professional Accriditations</h4>
+          <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i4.png" alt="General Profile" class=" img-thumbnail">
+          
+          <div class="border-top" >
+         
+         <ul class="list-unstyled text-left">
+         
+         <li><span class="check-icon"></span> Details</li>
+         
+           <li><span class="cross-icon"></span>  Photos</li>
+           
+             <li><span class="check-icon"></span> Testimonials</li>
+               <li><span class="check-icon"></span> Safety</li>
+                 <li class="border-none"><span class="check-icon"></span> Background</li>
+         
+         </ul>
+         
+         
+        
+          </div>
+        
+          
+        </div>
+      </div>  
+      <div class="col-md-4 col-lg-6 col-sm-12 top-padd20 col-xs-12">
+       <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        
+        <h4 class="pink">Services & Rates</h4>
+          <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i5.png" alt="General Profile" class=" img-thumbnail">
+          
+          <div class="border-top" >
+         
+         <ul class="list-unstyled text-left">
+         
+         <li><span class="check-icon"></span> Details</li>
+         
+           <li><span class="cross-icon"></span>  Photos</li>
+           
+             <li><span class="check-icon"></span> Testimonials</li>
+               <li><span class="check-icon"></span> Safety</li>
+                 <li class="border-none"><span class="check-icon"></span> Background</li>
+         
+         </ul>
+         
+         
+        
+          </div>
+        </div>
+      </div> 
+    
+      
+    </div>
+                
                 </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
