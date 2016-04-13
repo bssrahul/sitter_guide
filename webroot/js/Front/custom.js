@@ -904,4 +904,23 @@ $(function () {
   		$('.search-input').focus();
   	});
   });
+
+ /*====For password fair line====*/
+   /* $( "#usersp-password" ).keyup(function() {
+    		
+        var value = $(this).val();
+       
+        if((value.length) == 6){
+               alert(value.length);
+
+            $('#password_line').attr("src", ajax_url+'fair.jpg');
+             
+        }/*elseif((value.length) > '6'){
+           $('#password_line').attr("src", '<?php echo HTTP_ROOT; ?>img/good.jpg');
+        }else{
+        	$('#password_line').attr("src", '<?php echo HTTP_ROOT; ?>img/good.jpg');
+        }*/
+  /* });*/
+     
+ /*====End fair line====*/
  });
