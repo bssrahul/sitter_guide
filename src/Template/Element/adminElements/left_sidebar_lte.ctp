@@ -7,27 +7,32 @@
 		<div class="clearfix"></div>
 
 		<!-- menu prile quick info -->
-		<div class="profile">
-			<div class="profile_pic">
-				<?php @$adminVal = $this->request->session()->read("Admin"); 
-				 if($adminVal !=""){
-					if($adminVal['admin_img'] != '' ){
-					   $adminImg = $adminVal['admin_img']; 
-					}else{
-					   $adminImg = 'prof_photo.png';
-					}
-				?>
-                <img src="<?php echo HTTP_ROOT ;?>img/uploads/<?php echo $adminImg; ?>" alt="..." class="img-circle profile_img">
-			</div>
-			<div class="profile_info">
-				<span><?php echo __("Welcome"); ?>, <h2> <?php if($adminVal['full_name'] !=''){
+		<div class="col-lg-12  profile">
+			<div class="col-lg-4">
+					
+						<?php @$adminVal = $this->request->session()->read("Admin"); 
+						if($adminVal !=""){
+							if($adminVal['admin_img'] != '' ){
+								$adminImg = $adminVal['admin_img']; 
+							}else{
+								$adminImg = 'prof_photo.png';
+							}
+							?>
+							<img style="padding:1px;width: 50px;height: 50px;position: relative;top: 25px;" src="<?php echo HTTP_ROOT ;?>img/uploads/<?php echo $adminImg; ?>" alt="..." class="img-circle profile_img">
+					
+				</div>	
+				<div class="col-lg-8">
+					<div style="width:100% !important"  class="profile_info">
+						<span><?php echo __("Welcome"); ?>, <h2> <?php if($adminVal['full_name'] !=''){
 							   echo $adminVal['full_name'];
 						 }else{
 							echo "Admin";
 						 }  
 					}?>
-				</h2></span>
-			</div>
+						</h2>
+						</span>
+					</div>
+				</div>	
 		</div>
 		<!-- /menu prile quick info -->
 
@@ -74,6 +79,9 @@
 							<li>
 								<a href="<?php echo HTTP_ROOT."cmspages/strings-listing" ?>"><i class="fa fa-plus-circle"></i>  <?php echo __("Manage  Strings"); ?></a>
 							</li> 
+							<li>
+							   <a href="<?php echo HTTP_ROOT."cmspages/blogs-listing" ?>"><i class="fa fa-bullhorn"></i> <span><?php echo __("Manage Blog"); ?> </span></a>
+							</li>
 						</ul>
                     </li>
 					
@@ -93,33 +101,14 @@
                        <a href="<?php echo HTTP_ROOT."cmspages/subscribes-listing" ?>"><i class="fa fa-envelope"></i> <span><?php echo __("Subscribers"); ?> </span></a>
                     </li>
                     <li>
-                       <a href="<?php echo HTTP_ROOT."partners/partners-listing" ?>"><i class="fa fa-glass"></i> <span><?php echo __("Partner"); ?> </span></a>
+                       <a href="<?php echo HTTP_ROOT."partners/partners-listing" ?>"><i class="fa fa-glass"></i> <span><?php echo __("Manage Partners"); ?> </span></a>
                     </li>
-                    <li>
-					   <a href="<?php echo HTTP_ROOT."cmspages/blogs-listing" ?>"><i class="fa fa-bullhorn"></i> <span><?php echo __("Blogs"); ?> </span></a>
-					</li>
+                    
 				</ul>
 			</div>
 			
 
 		</div>
 		<!-- /sidebar menu -->
-
-		<!-- 
-		<div class="sidebar-footer hidden-small">
-			<a data-toggle="tooltip" data-placement="top" title="Settings">
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-			</a>
-			<a data-toggle="tooltip" data-placement="top" title="FullScreen">
-				<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-			</a>
-			<a href="<?php echo HTTP_ROOT."Users/sleep"; ?>" data-toggle="tooltip" data-placement="top" title="Lock">
-				<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-			</a>
-			<a href="<?php echo HTTP_ROOT."Users/logout"; ?>" data-toggle="tooltip" data-placement="top" title="Logout">
-				<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-			</a>
-		</div>
-		 /menu footer buttons -->
 	</div>
 </div>

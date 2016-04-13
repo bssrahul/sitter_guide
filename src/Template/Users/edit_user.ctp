@@ -98,7 +98,12 @@
 				 ?>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				<img alt="Image not found" style="margin:5px" height="100px"; width="100px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($userInfo->image != ''?$userInfo->image:'prof_photo.png'); ?>"/>
+				
+				<div class="text-centerimage view-first editImg customImg">
+					<img class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($userInfo->image != ''?$userInfo->image:'prof_photo.png'); ?>"/>
+				</div>
+				
+				
 			</div>
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 				<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  >Cancel</button>

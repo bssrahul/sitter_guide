@@ -92,7 +92,7 @@ class PartnersController extends AppController
 					$partnersImg = explode(':',$partnersImg);
 					if($partnersImg[0]=='error')
 					{
-					   $this->displayErrorMessage($partnersImg[1]);
+					   $this->Flash->error(__($partnersImg[1]));
 					   return $this->redirect($this->referer());
 					}
 					
@@ -108,7 +108,7 @@ class PartnersController extends AppController
 				//CODE FOR MULTILIGUAL END
 				//Save data
 				if($partnersModel->save($partnersData)){
-				   $this->displaySuccessMessage("Record has been added Successfully");
+				   $this->Flash->success(__("Record has been added Successfully"));
 				   return $this->redirect(['controller' => 'partners', 'action' => 'partners-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -134,7 +134,7 @@ class PartnersController extends AppController
 					//echo $partnersImg;die;
 					$partnersImg = explode(':',$partnersImg);
 					if($partnersImg[0]=='error'){
-					   $this->displayErrorMessage($partnersImg[1]);
+					   $this->Flash->error(__($partnersImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$partnersData->image = $partnersImg[1];

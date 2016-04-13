@@ -74,6 +74,23 @@ div.customImg > img.img-circle {
 
 body.nav-sm .container.body .left_col {
 
-    overflow-y: scroll !important;
+   /* overflow-y: scroll !important;*/
 
 }
+
+.editImg {
+	width: 100px !important;
+	top: 10px !important;
+	bottom: 10px !important;
+	margin-bottom: 10px !important;
+	clear: both !important;
+	position: relative !important;
+}
+
+@media only screen and (max-width: 500px) {
+   ul.nav li ul.child_menu li a > i.fa {
+		display: none !important;
+	}
+}
+
+

@@ -73,8 +73,10 @@
 												  'type' => 'file',
 												  ]);
 											?>
-											<img alt="Image not found" style="margin:5px" height="100px"; width="100px"; src="<?php  echo HTTP_ROOT.'img/uploads/'.($partner_info->image != ''?$partner_info->image:'prof_photo.png'); ?>"/> 								 
-										
+																			 
+											<div class="text-centerimage view-first editImg customImg">
+												<img class="img-circle profile_img catImg"  src="<?php  echo HTTP_ROOT.'img/uploads/'.($partner_info->image != ''?$partner_info->image:'prof_photo.png'); ?>"/>	
+											</div>
 										</div>
 									</div>
 									
