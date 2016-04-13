@@ -1,6 +1,6 @@
 var host = window.location.host;
 var proto = window.location.protocol;
-var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
+var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -957,47 +957,56 @@ $(document).ready(function () {
                 "Currencies[1][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[2][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[3][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[4][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[5][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[6][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[7][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[8][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 },
                 "Currencies[9][price][]":
                 {
                     required: true,
-                    number:true
+                    number:true,
+                    min:1
                 }
                 
             },
@@ -1005,47 +1014,57 @@ $(document).ready(function () {
                "Currencies[1][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
+                    
                 },
                 "Currencies[2][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[3][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[4][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[5][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[6][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[7][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[8][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 },
                 "Currencies[9][price][]":
                 {
                     required: "This field is required",
-                    number:"Price should be in number"
+                    number:"Price should be in number",
+                    min:"Price should be greater than 1"
                 }
             }/*,
              errorPlacement: function (error, element) {

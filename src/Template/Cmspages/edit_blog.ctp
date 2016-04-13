@@ -45,7 +45,9 @@
 												  'label' => false,
 												  'class'=>'form-control col-md-7 col-xs-12']);
 											?>
-											<img alt="Image not found" style="margin:5px" height="100px"; width="100px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($blogInfo->image != ''?$blogInfo->image:'prof_photo.png'); ?>"/>
+											<div class="text-centerimage view-first editImg customImg">
+												<img class="img-circle profile_img catImg"  src="<?php echo HTTP_ROOT.'img/uploads/'.($blogInfo->image != ''?$blogInfo->image:'prof_photo.png'); ?>"/>
+											</div>
 										</div>
 									</div>
 									<div class="ln_solid"></div>

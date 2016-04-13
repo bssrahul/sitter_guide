@@ -180,10 +180,14 @@ class AppController extends Controller{
 		}
 		
 		I18n::locale($setRequestedLanguageLocale);
-		if (strpos($action,'edit') != false) {
-			return $this->redirect(['controller'=>$controller,'action' => 'dashboard' ]);
-		}else{
-		   return $this->redirect(['controller'=>$controller,'action' => $action]);
+		
+		if ((strpos($action,'edit') === false) && (strpos($action,'add') === false)) {
+		
+			return $this->redirect(['controller'=>$controller,'action' => $action]);
+		}
+		else{
+			$this->Flash->success(__('Kindly select language first, After that  try to add/edit action'));
+			return $this->redirect(['controller'=>"users",'action' => 'dashboard' ]);
 		}
 	}
 
@@ -213,46 +217,47 @@ class AppController extends Controller{
 				$uploadFolder="uploads";	
 				$logoWidth = "16";
 				$logoHeight = "16";
-				$logoSize="204800";
-				$logoKb = '200 KB';
+				$logoSize="409600";
+				$logoKb = "400 KB";
 			}else if($type == 'profilePic')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "128";
-				$logoHeight = "128";
-				$logoSize="204800";
-				$logoKb = '200 KB';
+				$logoWidth = "400";
+				$logoHeight = "400";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
+				
 			}else if($type == 'petImage')
 			{
 				$uploadFolder="petImages";	
-				$logoWidth = "128";
-				$logoHeight = "128";
-				$logoSize="204800";
-				$logoKb = '200 KB';
+				$logoWidth = "400";
+				$logoHeight = "400";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
 			}
 			else if($type == 'categoryImg')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "200";
-				$logoHeight = "200";
-				$logoSize="404800";
-				$logoKb = '200 KB';
+				$logoWidth = "400";
+				$logoHeight = "400";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
 			}
 			else if($type == 'blogsImg')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "940";
-				$logoHeight = "530";
-				$logoSize="819200";
-				$logoKb = '800 KB';
+				$logoWidth = "646";
+				$logoHeight = "220";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
 			}
 			else if($type == 'sliderImg')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "200";
-				$logoHeight = "200";
-				$logoSize="404800";
-				$logoKb = '200 KB';
+				$logoWidth = "974";
+				$logoHeight = "330";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
 			}
 			else if($type == 'audio' || $type == 'video')
 			{
@@ -310,10 +315,10 @@ class AppController extends Controller{
 			else
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "16";
-				$logoHeight = "16";
-				$logoSize="204800";
-				$logoKb = '200 KB';
+				$logoWidth = "400";
+				$logoHeight = "400";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
 			}
 			
 			
