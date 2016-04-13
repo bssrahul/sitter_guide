@@ -119,3 +119,9 @@ label.error{margin-top:5px;}
 .booking{
     margin-left:15px !important;
 }
+.error-message{
+    color: #ff5a5f;
+    font-size: 13px;
+    font-style: normal;
+    margin-left: 5px;
+}

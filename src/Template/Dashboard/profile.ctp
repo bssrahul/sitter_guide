@@ -1,12 +1,16 @@
-  <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
+ <?php 
+  echo $this->Html->css(['Front/jquery-ui.css']); 
+  echo $this->Html->script(['Front/jquery-ui.js']);
+?>
+ <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
         <div class="row">
 
         <div class="profiletab-section">
           
   <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">Sitter Profile</h3>
             <ul class="nav nav-pills">
-              <li class="active gen"><a data-toggle="pill" href="#home"><img src="<?php echo HTTP_ROOT; ?>img/ic1.png">General</a></li>
-              <li class="hou"><a data-toggle="pill" href="#menu1"><img src="<?php echo HTTP_ROOT; ?>img/ic2.png">Sitter House</a></li>
+              <li class="active gen"><a data-toggle="pill" href="#home1"><img src="<?php echo HTTP_ROOT; ?>img/ic1.png">General</a></li>
+              <li class="hou"><a data-toggle="pill" href="#menu11"><img src="<?php echo HTTP_ROOT; ?>img/ic2.png">Sitter House</a></li>
               <li class="sitt"><a data-toggle="pill" href="#menu2"><img src="<?php echo HTTP_ROOT; ?>img/ic3.png">Sitter</a></li>
               <li class="proa"><a data-toggle="pill" href="#menu3"><img src="<?php echo HTTP_ROOT; ?>img/ic4.png">Professional Accreditations</a></li>
               <li class="serv"><a data-toggle="pill" href="#menu4"><img src="<?php echo HTTP_ROOT; ?>img/ic5.png">Services & Rates</a></li>
@@ -15,117 +19,230 @@
             </ul>
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
-              <div id="home" class="tab-pane fade in active tab-comm">
+              <div id="home1" class="tab-pane fade in active tab-comm">
                 
-                  <form role="form">
+                  <!--<form role="form">-->
+            <?php echo $this->Form->create($userInfo, [
+              'url' => ['controller' => 'dashboard', 'action' => 'profile'],
+              'role'=>'form',
+              'id'=>'generelInfo'
+          ]);?>
                   <div class="row">
-                        <div class="form-group col-lg-4">
-                          <label for="">Title</label>
-                          <input type="text" class="form-control" id="">
+                        <div class="form-group col-lg-4 col-md-4">
+                      <?php 
+                      echo $this->Form->input('Users.title',[
+                        'templates' => ['inputContainer' => '{{content}}'],
+                        'type'=>'select',
+                        'options'=>['Mr'=>'Mr','Mrs'=>'Mrs','Ms'=>'Ms'],
+                        'class' =>'form-control'
+                        ]);
+                      ?>
                         </div>
 
                         <div class="form-group col-lg-8 noned">
                        
                         </div>
-
-                       
                     </div>
-         
                     <div class="row">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-4 col-md-4">
                           <label for="">Date of Birth</label>
-                          <input type="text" class="form-control" id="" placeholder="dd/mm/yyyy">
-                     
+                          <?php  
+                              echo $this->Form->input('Users.birth_date',[               
+                              'class'=>'form-control dob',
+                              'label'=>false,
+                              'templates' => ['inputContainer' => '{{content}}'],
+                              'placeholder'=>'DD/MM/YYYY', 
+                              ]);
+                          ?> 
                         </div>
-
-                        <div class="form-group col-lg-4">
-                        <label for="">First name</label>
-                          <input type="text" class="form-control" id="">
+                        <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.first_name',[                
+                                 'class'=>'form-control',
+                                 'required'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
                         </div>
-                        <div class="form-group col-lg-4">
-                       <label for="">Last name</label>
-                          <input type="text" class="form-control" id="">
+                        <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.last_name',[                
+                                 'class'=>'form-control',
+                                 'required'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
                         </div>
-
-                       
                     </div>
                     <h3>Address</h3>
                     <div class="row">
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="Address 1">
+                    <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.address',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'Address 1',
+                                 'label'=>false,
+                                 'type'=>'text',
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
                     </div>
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="Address 2">
+                    <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.address2',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'Address 2',
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
                     </div>
-                      <div class="form-group col-lg-4">
-                    <select id="sel1" class="form-control">
-                            <option>City</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
+                      <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.city',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'city',
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
                           </div>
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.zip',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'Post / Zip Code',
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.state',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'state',
+                                 'label'=>false,
+                                 'required'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
+                    </div>
+                      <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.country',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'country',
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
+                      </div>
                       
                     </div>
 
                     <div class="row">
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="Post / Zip Code">
-                    </div>
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="State">
-                    </div>
-                      <div class="form-group col-lg-4">
-                    <select id="sel1" class="form-control">
-                            <option>Country</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
-                          </div>
-                      
-                    </div>
+                    <div class="form-group col-lg-4 col-md-4">
+                     
+                      <div class="row">
+                          
+                          <div class="col-lg-6 col-xs-6">
+                            <?php 
+                                echo $this->Form->input('Users.county_code',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'select',
+                                  'label'=>false,
+                                  'options'=>['44'=>'UK (+44)','1'=>'USA (+1)'],
+                                  'class' =>'form-control'
+                                  ]);
+                            ?>
 
-                    <div class="row">
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="+91-9841300660">
+                        </div>
+                          <div class="col-lg-6 col-xs-6">
+                            <?php 
+                                echo $this->Form->input('Users.phone',[                
+                                 'class'=>'form-control col-lg-10',
+                                 'required'=>false,
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
+                          </div></div>
                     </div>
                    
-                      <div class="form-group col-lg-4">
-                    <select id="sel1" class="form-control">
-                            <option>Time Zone</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
+                      <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Users.zone_id',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'select',
+                                  'label'=>false,
+                                  'options'=>$zones_info,
+                                  'class' =>'form-control'
+                                  ]);
+                            ?>
                           </div>
                       
                     </div>
                     <h3>Change Password</h3>
                     <div class="row">
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="Change Password">
+                    <div class="form-group col-lg-4 col-md-4">
+                           <?php 
+                                echo $this->Form->input('Usersp.current_password',[                
+                                 'class'=>'form-control',
+                                 'type'=>'password',
+                                 'placeholder'=>'Cuurent Password',
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                                 echo '<em class="signup_error error">'.__(@$error['current_password'][0]).'</em>';
+                            ?>
                     </div>
                    
-                      <div class="form-group col-lg-4">
-                      <input type="text" class="form-control mzero" id="" placeholder="New Password">
-                      <span class="range-c"><img src="<?php echo HTTP_ROOT; ?>img/fair.jpg"> <small class="pull-right">Fair</small></span>
+                      <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Usersp.password',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'New Password',
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                                 echo '<em class="signup_error error">'.__(@$error['password'][0]).'</em>';
+                            ?>
+                      <span class="range-c"><img id="password_line" src="<?php echo HTTP_ROOT; ?>img/weak.jpg"> <small class="pull-right">Weak</small></span>
                     </div>
 
-                    <div class="form-group col-lg-4">
-                      <input type="text" class="form-control" id="" placeholder="Confirm Password">
+                    <div class="form-group col-lg-4 col-md-4">
+                            <?php 
+                                echo $this->Form->input('Usersp.re_password',[                
+                                 'class'=>'form-control',
+                                 'placeholder'=>'Confirm Password',
+                                 'label'=>false,
+                                 'type'=>'password',
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                                 echo '<em class="signup_error error">'.__(@$error['re_password'][0]).'</em>';
+                            ?>
                       <span class="pull-right captcha"><img src="<?php echo HTTP_ROOT; ?>img/captcha.jpg"></span>
+
+                      <!--<span class="pull-right captcha">
+                        <div class="g-recaptcha" data-sitekey="<?php echo CAPTCHA_SITE_KEY; ?>"></div>
+                        <br/><label generated="true" class="error"><?php echo isset($captchErr)?$captchErr:''; ?></label>
+                      </span>-->
                     
                           </div>
                       
                     </div>
                  
                     <div class="row pull-right sp-tb">
-                    <p class="col-lg-12"><button type="button" class="btn Continue">Continue</button></p>
+                    <p class="col-lg-12">
+                      <input type="submit" class="btn Continue" value="Continue" ></p>
                     </div>
-                  </form>
+                   <!--</form>-->
+                   <?php echo $this->Form->end(); ?>
               </div>
-              <div id="menu1" class="tab-pane fade tab-comm">
+              <div id="menu11" class="tab-pane fade tab-comm">
           
                   <form role="form">
 
@@ -356,7 +473,7 @@
                   <p class="browse-p">Add your profile photo<button type="button" class="btn btn-primary">Browse Photo</button></p>
 
                   <div class="row">
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 col-xs-3">
                     <div class="sitter-gal">
                     <img src="<?php echo HTTP_ROOT; ?>img/s1.jpg">
                     <a href="#"><i class="fa fa-minus-circle"></i></a>
@@ -365,7 +482,7 @@
                       
                     </div>
 
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 col-xs-3">
                     <div class="sitter-gal">
                     <img src="<?php echo HTTP_ROOT; ?>img/s2.jpg">
                     <a href="#"><i class="fa fa-minus-circle"></i></a>
@@ -374,7 +491,7 @@
                       
                     </div>
 
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 col-xs-3">
                     <div class="sitter-gal">
                     <img src="<?php echo HTTP_ROOT; ?>img/s3.jpg">
                     <a href="#"><i class="fa fa-minus-circle"></i></a>
@@ -383,7 +500,7 @@
                       
                     </div>
 
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 col-xs-3">
                     <div class="sitter-gal">
                     <img src="<?php echo HTTP_ROOT; ?>img/c4.jpg">
                     <a href="#"><i class="fa fa-minus-circle"></i></a>
@@ -392,7 +509,7 @@
                       
                     </div>
 
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 col-xs-3">
                     <div class="sitter-gal">
                     <img src="<?php echo HTTP_ROOT; ?>img/c5.png">
                     <a href="#"><i class="fa fa-minus-circle"></i></a>
@@ -400,7 +517,7 @@
                     </div>
                       
                     </div>
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 col-xs-3">
                     <div class="sitter-gal">
                     <img src="<?php echo HTTP_ROOT; ?>img/c6.jpg">
                     <a href="#"><i class="fa fa-minus-circle"></i></a>
@@ -716,16 +833,403 @@
 
                   <h3><strong>Boarding At Sitters Home</strong></h3>
                   <div class="row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <p></p>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
                         
                       </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/>(Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Cat Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+                   
+
+                    
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/>(Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Cat Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+                    
+                 
+
+
+                  
+                    <div class="form-group col-lg-4 col-md-12">
+                       <div class="rules_main">
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-sm-9">1st Guest Rate:  </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate:  </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Long Term Care</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/night (after 1st night)  </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+                    
+                  
+
+                   
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Hourly Care</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    
+                    </div>
+                     </div>
+
+                    <h3><strong>Home Sitting At Guests Home</strong></h3>
+
+
+                    <div class="row">
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/>(Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Cat Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+                   
+
+                    
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/>(Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Cat Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+                    
+                 
+
+
+                  
+                    <div class="form-group col-lg-4 col-md-12">
+                       <div class="rules_main">
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-sm-9">1st Guest Rate:  </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate:  </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Long Term Care</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/night (after 1st night)  </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    </div>
+                    
+                  
+
+                   
+                    <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Hourly Care</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                      <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
+                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      <div class="row"><div class="col-lg-5 col-md-5">Holiday Rate </div> 
+                      <div class="col-lg-7 col-md-7">   <input type="text"></input>  </div></div>
+                        
+                      </div>
+                    
+                    </div>
+                     </div>
+
+
+                     <h3>Hourly Products</h3>
+
+                     <div class="row">
+                      <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Grooming</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode   </div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate   </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      </div>
+                        
+                      </div>
+
+                      <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Training</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode   </div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate   </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      </div>
+                        
+                      </div>
+
+                      <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Outdoors Recreation (walking)  </div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">1 Per Day, 1 Guest: </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9"> 1 Per Day, 1 Guest: </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                        
+                      </div>
+                        
+                      </div>
+
+                       <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Driver Service</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Away Mode</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">  Pick-up:  </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">Drop-off:  </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">Return:  </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                      </div>
+                        
+                      </div>
+
+                      <div class="form-group col-lg-4 col-md-12">
+                      <div class="rules_main">
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Outdoors Recreation (walking)  </div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/on.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="col-lg-3 col-md-3">   <img src="<?php echo HTTP_ROOT; ?>img/off.png">   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9">1 Per Day, 1 Guest: </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                        <div class="row"><div class="col-lg-9 col-md-9"> 1 Per Day, 1 Guest: </div> 
+                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                        
+                      </div>
+                        
+                      </div>
+
+
+
+
+
+                       
+                     </div>
+
+                   <h3><i>Below <strong>4 features</strong> update the calendar to show how many spaces are availble for booking for each product </i>     
+</h3>
+                  <div class="row img-rightsp">
+                  <div class="form-group col-lg-4">
+                      <label for="">1. Day Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
+                      <input type="text" placeholder="New Password" id="" class="form-control mzero">
+                       
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="">2. Night Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
+                      <input type="text" placeholder="New Password" id="" class="form-control mzero">
+                       
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="">3. Visits P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
+                      <input type="text" placeholder="New Password" id="" class="form-control mzero">
+                       
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="">4. Hourly Services P/Day Limit <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
+                      <input type="text" placeholder="New Password" id="" class="form-control mzero">
+                       
                     </div>
                     
                   </div>
 
 
+
+                     
+<div class="row">
+                    <p class="col-lg-12 sp-tb"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button><button type="button" class="pull-right btn Continue">Submit</button></p>
+                    </div>
 
 
                   </form>
@@ -751,3 +1255,78 @@
 
         </div>
       </div>
+      <script> 
+      function init() {
+        window.addEventListener('scroll', function(e){
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                shrinkOn = 300,
+                header = document.querySelector("header");
+            if (distanceY > shrinkOn) {
+                classie.add(header,"smaller");
+            } else {
+                if (classie.has(header,"smaller")) {
+                    classie.remove(header,"smaller");
+                }
+            }
+        });
+    }
+    window.onload = init();
+
+$(document).ready(function(){
+  $("#flip").click(function(){
+        $("#panel").slideDown("slow");
+    });
+  $("#close").click(function(){
+        $("#panel").slideUp("slow");
+    });
+    $("#dro plog").click(function(){
+        $("#dr opcont").toggle("slow");
+    });
+  $("#drop log2").click(function(){
+        $("#dropcont2").toggle("slow");
+    });
+    $("#dro plog3").click(function(){
+        $("#dropcont3").toggle("slow");
+    }); 
+  $(".one").click(function() {
+    $("#one").toggle("slow");
+});
+    $(".add-more-expand").click(function(){
+            $(".add-more-expand i").toggleClass("fa-plus-circle fa-minus-circle");
+            });
+            
+
+ //For add datepicker
+    $("#users-birth-date").datepicker(
+           {
+         changeMonth: true,
+         changeYear: true
+       }
+      );
+    $(".fa-calendar").click(function(){ $("#users-birth-date").focus();});
+ 
+  
+});
+
+
+
+ function customCheckbox(checkboxName){
+        var checkBox = $('input[name="'+ checkboxName +'"]');
+        $(checkBox).each(function(){
+            $(this).wrap( "<span class='custom-checkbox'></span>" );
+            if($(this).is(':checked')){
+                $(this).parent().addClass("selected");
+            }
+        });
+        $(checkBox).click(function(){
+            $(this).parent().toggleClass("selected");
+        });
+    }
+    $(document).ready(function (){
+        customCheckbox("sport[]");
+        customCheckbox("car[]");
+        customCheckbox("confirm");
+    })
+
+
+</script> 

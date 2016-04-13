@@ -163,8 +163,97 @@ class DashboardController extends AppController
 	Function for profile
 	*/
 	function profile(){
-		$this->viewBuilder()->layout('profile_dashboard');
+		 $this->viewBuilder()->layout('profile_dashboard');
+       
+         $session = $this->request->session();
+         $userId = $session->read('User.id');
+
+         $usersModel = TableRegistry::get('Users');
+         $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
+          $this->set('user_info',$user_info);
+		  $usersModel = TableRegistry::get('Users');
+
+		 $session = $this->request->session();
+         $userId = $session->read('User.id');
+
+        $this->request->data = @$_REQUEST;
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+	            $data=$this->request->data['Usersp'];
+			    $error=$this->validate_password($data,$user_info);
+				if(count($error) > 0)
+				{
+                        $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		               $usersModel->save($userData);
+							
+                    unset($userData->id);
+	                $this->set('userInfo', $userData);
+                    $this->set('error',$error);
+				}else{
+                     $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		                if ($usersModel->save($userData)) {
+							$this->Flash->success(__('Generel profile has been updated Successfully'));
+
+							return $this->redirect(['controller'=>'dashboard','action'=>'profile']);
+						}else{
+							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}
+
+						unset($userData->id);
+		                $this->set('userInfo', $userData);
+				}
+        }else{
+		   $userData = $usersModel->get($userId);
+		   unset($userData->id);
+		  $this->set('userInfo', $userData);
+
+	    }
+	    
+
+
+		 $zonesModel = TableRegistry::get('Zones');
+		 $zones_data = $zonesModel->find('all')->toArray();
+		 foreach($zones_data as $key=>$val){
+                $zones_info[$key] = $val['zone_name']; 
+		 }
+		 $this->set('zones_info',$zones_info);
+    }
+    /*=================Validation For password=================*/
+    function validate_password($data, $user_info)
+	{
+		$errors=array();
+		if(trim($data['current_password'])=='')
+		{
+			$errors['current_password'][]="Required field\n";
+		}else{
+
+				if(trim(md5($data['current_password'])) != $user_info->password)
+				{
+					$errors['current_password'][]="Current password not matched\n";
+				}else{
+					    if(trim($data['password'])=='')
+						{
+							$errors['password'][]="Required field\n";
+						}
+						
+						if(trim($data['re_password'])=='')
+						{
+							$errors['re_password'][]="Required field\n";
+						}
+						if(trim($data['password'])!='' && trim($data['re_password'])!=''){
+							if(trim($data['password']) != trim($data['re_password'])){
+								$errors['re_password'][]="Password not matched\n";
+							}
+						}
+				}
+		}
+		return $errors;
 	}
+    /*=================End password validation========*/
 	function sitterProfile(){
          $this->viewBuilder()->layout('profile_dashboard');
          	$session = $this->request->session();
