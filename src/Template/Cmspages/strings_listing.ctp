@@ -73,7 +73,7 @@
 								<!--<th class="text-center column-title"><?php echo $this->Paginator->sort('StaticStrings.page_name', 'Page Name')?></th>-->
 								<th style="width:300px;"   class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Slug')); ?></th>
 								<th style="width:300px;"   class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Value')); ?></th> 
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
+								<!--<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>-->
 							    <th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
@@ -100,9 +100,9 @@
 								<td style="width:300px;"   class=" "><?php 
 										echo $string_info->value;
 								?></td>
-								 <td class=" "><?php 
+								 <!--<td class=" "><?php 
 										echo date("F  j,Y",strtotime($string_info->created_date));
-								?></td>
+								?></td>-->
 								<td class=" last">
 								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-string/".$string_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								</td>

@@ -2,7 +2,7 @@
 	<div class="left_col scroll-view">
 
 		<div class="navbar nav_title" style="border: 0;">
-			<a href="<?php echo HTTP_ROOT."users/dashboard"; ?>" class="site_title"><i class="fa fa-paw"></i> <span><?php echo __(SITE_TITLE); ?></span></a>
+			<a href="<?php echo HTTP_ROOT."users/dashboard"; ?>" class="site_title"><i class="fa fa-paw"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Sitter Guide')); ?></span></a>
 		</div>
 		<div class="clearfix"></div>
 
