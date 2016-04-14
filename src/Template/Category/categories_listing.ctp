@@ -57,7 +57,8 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> Category Listing</h2><h2 style="float:right"><a style="float:right" href="<?php echo HTTP_ROOT.'category/add-category'; ?>"><button class="btn btn-success addUser" type="button">Add Category</button></a></h2>
+					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Category Listing')); ?></h2>
+					<h2 style="float:right"><a style="float:right" href="<?php echo HTTP_ROOT.'category/add-category'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Category')); ?></button></a></h2>
 					<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -68,14 +69,14 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="text-center column-title">Image</th>
-								<th class="column-title">Title</th>
-								<th class="column-title">Slug</th>
-								<th class="column-title">Description</th> 
-							   <th class="column-title">Status</th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Slug')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th> 
+							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -125,7 +126,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Record Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

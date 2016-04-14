@@ -4,7 +4,8 @@
 	<div class="page-title">
 		<div class="title_left">
 			<h3>
-				<?php echo __("Dashboard"); ?> <small><?php echo __("Control Panel"); ?></small>
+				<?php echo $this->requestAction('users/get-translate/'.base64_encode('Dashboard')); ?>  <small><?php echo $this->requestAction('users/get-translate/'.base64_encode('Control Panel')); ?></small>
+				
 			</h3>
 		</div>
 	</div>
@@ -23,8 +24,8 @@
 						</div>
 						<div class="count"><?php echo $CmsPagesDetail['total_cms_pages']; ?></div>
 
-						<h3><?php echo __("CMS Pages"); ?></h3>
-						<p><i class="green"><b><?php echo $CmsPagesDetail['active']; ?></b> Active Pages</i> | <i class="red"><b><?php echo $CmsPagesDetail['deactive']; ?></b> De-active Pages</i></p>
+						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('CMS Pages')); ?></h3>
+						<p><i class="green"><b><?php echo $CmsPagesDetail['active']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Pages')); ?></i> | <i class="red"><b><?php echo $CmsPagesDetail['deactive']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Pages')); ?></i></p>
 					</div>
 				</div>
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -33,8 +34,8 @@
 						</div>
 						<div class="count"><?php echo $UsersDetail['total_user'];?></div>
 
-						<h3><?php echo __("Users"); ?></h3>
-						<p><i class="green"><b><?php echo $UsersDetail['active_user'];?></b> Active Users</i> | <i class="red"><b><?php echo $UsersDetail['deactive_user'];?></b> De-active Users</i></p>
+						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Users')); ?></h3>
+						<p><i class="green"><b><?php echo $UsersDetail['active_user'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Users')); ?></i> | <i class="red"><b><?php echo $UsersDetail['deactive_user'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Users')); ?></i></p>
 					</div>
 				</div>
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -43,8 +44,8 @@
 						</div>
 						<div class="count"><?php echo $ContactRequestDetail['total_contact_request']; ?></div>
 
-						<h3><?php echo __("Contact Requests"); ?></h3>
-						<p><i class="green"><b><?php echo $ContactRequestDetail['reply']; ?></b> Reply</i> | <i class="red"><b><?php echo $ContactRequestDetail['no_reply']; ?></b> No Reply</i></p>
+						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Contact Requests')); ?></h3>
+						<p><i class="green"><b><?php echo $ContactRequestDetail['reply']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reply')); ?></i> | <i class="red"><b><?php echo $ContactRequestDetail['no_reply']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Reply')); ?></i></p>
 					</div>
 				</div>
 			</div>
@@ -56,8 +57,8 @@
 						</div>
 						<div class="count"><?php echo $blogDetail['total_blog']; ?></div>
 
-						<h3><?php echo __("Blogs"); ?></h3>
-						<p><i class="green"><b><?php echo $blogDetail['active']; ?></b> Active Blogs</i> | <i class="red"><b><?php echo $blogDetail['deactive']; ?></b> De-active Blogs</i></p>
+						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Blogs')); ?></h3>
+						<p><i class="green"><b><?php echo $blogDetail['active']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Blogs')); ?></i> | <i class="red"><b><?php echo $blogDetail['deactive']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Blogs')); ?></i></p>
 					</div>
 				</div>
 				
@@ -67,8 +68,8 @@
 						</div>
 						<div class="count"><?php echo $subscribesDetail['total_subscribes'];?></div>
 
-						<h3><?php echo __("Subscribers"); ?></h3>
-						<p><i class="green"><b><?php echo $subscribesDetail['active'];?></b> Active Subscribers</i> | <i class="red"><b><?php echo $subscribesDetail['deactive'];?></b> De-active Subscribers</i></p>
+						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Subscribers')); ?></h3>
+						<p><i class="green"><b><?php echo $subscribesDetail['active'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Subscribers')); ?></i> | <i class="red"><b><?php echo $subscribesDetail['deactive'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Subscribers')); ?></i></p>
 					</div>
 				</div>
 				
@@ -78,8 +79,8 @@
 						</div>
 						<div class="count"><?php echo $partnersDetail['total_partners']; ?></div>
 
-						<h3><?php echo __("Partners"); ?></h3>
-						<p><i class="green"><b><?php echo $partnersDetail['active']; ?></b> Active Partners</i> | <i class="red"><b><?php echo $partnersDetail['deactive']; ?></b> De-active Partners</i></p>
+						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Partners')); ?></h3>
+						<p><i class="green"><b><?php echo $partnersDetail['active']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Partners')); ?></i> | <i class="red"><b><?php echo $partnersDetail['deactive']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Partners')); ?></i></p>
 					</div>
 				</div>
 				
@@ -88,7 +89,7 @@
 			
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> Administrator Detail</h2>
+					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Administrator Detail')); ?></h2>
 					<div class="clearfix"></div>
 				</div>
 						
@@ -99,13 +100,13 @@
 								<!--<th>
 									 <input type="checkbox" class="tableflat">
 								</th>-->
-								<th class="column-title"><?php echo $this->Paginator->sort('Admins.name', 'Name')?> </th>
-								<th class="column-title"><?php echo $this->Paginator->sort('Admins.username', 'User Name')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('Admins.email', 'email')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('Admins.status', 'Status')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('Admins.last_login', 'Last Login')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('Admins.date_added', 'Created')?></th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('User Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Last Login')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -151,7 +152,7 @@
 								} 
 							}else{ ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="8" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

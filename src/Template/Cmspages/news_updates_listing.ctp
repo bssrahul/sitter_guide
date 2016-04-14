@@ -57,7 +57,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>News Updates Listing</h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-news-updates'; ?>"><button class="btn btn-success addUser" type="button">Add News Updates</button></a></h2>-->
+					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('News Updates Listing')); ?></h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-news-updates'; ?>"><button class="btn btn-success addUser" type="button">Add News Updates</button></a></h2>-->
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -68,15 +68,15 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="text-center column-title">Image</th>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Images')); ?></th>
 								<!--<th class="column-title"><?php echo $this->Paginator->sort('Howitworks.category', 'Category')?> </th>-->
-								<th class="column-title">Title</th>
-								<th style="width:300px;"  class="column-title">Description</th> 
-							   <th class="column-title">Status</th>
-							   <th class="column-title">Created</th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
+								<th style="width:300px;"  class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th> 
+							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -125,7 +125,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

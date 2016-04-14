@@ -234,7 +234,7 @@ msgstr "Blogok"
 
 
 msgid "Subscribes"
-msgstr "Azonosul"
+msgstr "Előfizető"
 
 
 msgid "Blogs Listing"

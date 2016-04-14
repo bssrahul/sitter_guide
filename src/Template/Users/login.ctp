@@ -14,22 +14,22 @@
 					</div>
 				<?php } ?>
 				
-				<h1>Administrator Login</h1>
+				<h1><?php echo $this->requestAction('users/get-translate/'.base64_encode('Administrator Login')); ?></h1>
 				<div>
 					<?php
-						echo $this->Form->input('username', ['label' => false,'placeholder'=>'Username','class'=>'form-control']);
-						echo $this->Form->password('password', ['label' => false,'placeholder'=>'Password','class'=>'form-control']);
+						echo $this->Form->input('username', ['label' => false,'placeholder'=>$this->requestAction('users/get-translate/'.base64_encode('Username')),'class'=>'form-control']);
+						echo $this->Form->password('password', ['label' => false,'placeholder'=>$this->requestAction('users/get-translate/'.base64_encode('Password')),'class'=>'form-control']);
 					?>
 					
 					<div>
 						<a class="btn btn-default submit" id="submit">Login</a>
-						<a class="reset_pass" title="Forgot Password ?" href="<?php echo HTTP_ROOT."Users/forgot-password"; ?>">Lost your password ?</a>
+						<a class="reset_pass" title="Forgot Password ?" href="<?php echo HTTP_ROOT."Users/forgot-password"; ?>"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Lost your password?')); ?></a>
 					</div>
                     <div class="clearfix"></div>
                     <div class="separator">
 						<div>
                             <h1><i class="fa fa-paw" style="font-size: 26px;"></i> <?php echo SITE_TITLE; ?></h1>
-							<p>©<?php echo CURRENT_YEAR; ?> All Rights Reserved. <?php echo SITE_TITLE; ?>. Privacy and Terms</p>
+							<p>©<?php echo CURRENT_YEAR; ?> <?php echo $this->requestAction('users/get-translate/'.base64_encode('All Rights Reserved')); ?>. <?php echo SITE_TITLE; ?>. <?php echo $this->requestAction('users/get-translate/'.base64_encode('Privacy and Terms')); ?></p>
                         </div>
                     </div>
 					<?php echo $this->Form->end();?>

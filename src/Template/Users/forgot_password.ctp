@@ -19,22 +19,22 @@
 					</div>
 				<?php } ?>
 				
-				<h1>Forgot Password</h1>
+				<h1><?php echo $this->requestAction('users/get-translate/'.base64_encode('Forgot Password')); ?></h1>
 				<div>
 					
 					<?php
-						echo $this->Form->input('email', ['label' => false,'placeholder'=>'Enter you email','class'=>'form-control']);
+						echo $this->Form->input('email', ['label' => false,'placeholder'=>$this->requestAction('users/get-translate/'.base64_encode('Enter your email')),'class'=>'form-control']);
 					?>
 					
 					<div>
-						<a class="btn btn-default submit" id="submit">Reset Password</a>
-						<a title="Want to login back ?" class="reset_pass" href="<?php echo HTTP_ROOT."Users/login"; ?>">Back to login?</a>
+						<a class="btn btn-default submit" id="submit"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Reset Password')); ?></a>
+						<a title="Want to login back ?" class="reset_pass" href="<?php echo HTTP_ROOT."Users/login"; ?>"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Back to login ?')); ?></a>
 					</div>
                     <div class="clearfix"></div>
                     <div class="separator">
 						<div>
                             <h1><i class="fa fa-paw" style="font-size: 26px;"></i> <?php echo SITE_TITLE; ?></h1>
-							<p>©<?php echo CURRENT_YEAR; ?> All Rights Reserved. <?php echo SITE_TITLE; ?>. Privacy and Terms</p>
+							<p>©<?php echo CURRENT_YEAR; ?> <?php echo $this->requestAction('users/get-translate/'.base64_encode('All Rights Reserved')); ?>. <?php echo SITE_TITLE; ?>. <?php echo $this->requestAction('users/get-translate/'.base64_encode('Pricavy and Terms')); ?></p>
                         </div>
                     </div>
 					<?php echo $this->Form->end();?>

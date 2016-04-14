@@ -33,16 +33,14 @@
 					<ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
 						<li>
 							<?php
-								echo $this->Html->link(
-								'View Website',
+								echo $this->Html->link($this->requestAction('users/get-translate/'.base64_encode('View Website')),
 								HTTP_ROOT
 								);
 							?>
 						</li>
 						<li>
 							<?php
-								echo $this->Html->link(
-								'Profile',
+								echo $this->Html->link($this->requestAction('users/get-translate/'.base64_encode('Profile')),
 								['controller' => 'users', 'action' => 'admin-edit', '_full' => true]
 							);
 							?>
@@ -50,7 +48,7 @@
 						<li>
 							<?php
 								echo $this->Html->link(
-								'<span>Change Password</span>',
+								$this->requestAction('users/get-translate/'.base64_encode('Change Password')),
 								['controller' => 'users', 'action' => 'change-password', '_full' => true],
 								['escape' => false]
 							);
@@ -59,7 +57,7 @@
 						<li>
 							<?php
 								echo $this->Html->link(
-								'Screen Lock',
+								$this->requestAction('users/get-translate/'.base64_encode('Screen Lock')),
 								['controller' => 'users', 'action' => 'sleep', '_full' => true],
 								['escape' => false]
 							);
@@ -68,7 +66,7 @@
 						<li>
 							<?php
 								echo $this->Html->link(
-								'<i class="fa fa-sign-out pull-right"></i> Log Out',
+								'<i class="fa fa-sign-out pull-right"></i> '.$this->requestAction('users/get-translate/'.base64_encode('Logout')),
 								['controller' => 'users', 'action' => 'logout', '_full' => true],
 								['escape' => false]
 							);
@@ -149,12 +147,12 @@
 								echo $this->Html->link('Romanian',["controller"=>'Users',"action"=>"set_your_store/ro/$cont/$act"]);
 							?>
 						</li>
-						<li>
+						<!--<li>
 							<img src="<?php echo HTTP_ROOT ?>img/flags/ru.png" alt="Profile Image" /> 
 							<?php
 								echo $this->Html->link('Russian',["controller"=>'Users',"action"=>"set_your_store/ru/$cont/$act"]);
 							?>
-						</li>
+						</li>-->
 						<li>
 							<img src="<?php echo HTTP_ROOT ?>img/flags/es.png" alt="Profile Image" /> 
 							<?php
