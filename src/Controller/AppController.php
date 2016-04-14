@@ -49,8 +49,9 @@ class AppController extends Controller{
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
 		
-		
 	}
+	
+	
      /**
      * Before render callback.
      *

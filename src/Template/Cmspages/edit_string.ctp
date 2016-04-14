@@ -3,7 +3,7 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Edit String<small></small></h2>
+                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Edit String')); ?><small></small></h2>
 									<div class="clearfix"></div>
 							    </div>
 								<div class="x_content">
@@ -33,7 +33,7 @@
 										 </div>
 									</div>-->
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="constant_slug">String Slug <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="constant_slug"><?php echo $this->requestAction('users/get-translate/'.base64_encode('String Slug')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 										<?php 
@@ -44,7 +44,7 @@
 										 </div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="value">String Value<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="value"><?php echo $this->requestAction('users/get-translate/'.base64_encode('String Value')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->input('StaticStrings.value',

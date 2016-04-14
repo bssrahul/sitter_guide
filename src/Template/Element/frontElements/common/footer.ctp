@@ -131,7 +131,7 @@
                        <option value="<?php echo HTTP_ROOT.'app/setGuestStore/hu/'.$cont.'/'.$act;?>">HUNGARIAN</option>  
                        <option value="<?php echo HTTP_ROOT.'app/setGuestStore/it/'.$cont.'/'.$act;?>">ITALIAN</option>  
                        <option value="<?php echo HTTP_ROOT.'app/setGuestStore/ro/'.$cont.'/'.$act;?>">ROMANIAN</option>  
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/ru/'.$cont.'/'.$act;?>">RUSSIAN</option>  
+                       <!--<option value="<?php echo HTTP_ROOT.'app/setGuestStore/ru/'.$cont.'/'.$act;?>">RUSSIAN</option>  -->
                        <option value="<?php echo HTTP_ROOT.'app/setGuestStore/es/'.$cont.'/'.$act;?>">SPANISH</option>   
                   </select>              
              </div>                      

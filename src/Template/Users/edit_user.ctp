@@ -1,7 +1,7 @@
 <div class="x_panel">
 	
 	<div class="x_title">
-		<h2>Edit User<small></small></h2>
+		<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Edit User')); ?><small></small></h2>
 		<div class="clearfix"></div>
 	</div>
     <div class="x_content">
@@ -18,7 +18,7 @@
 				'novalidate'=>'novalidate'
 			]);?>
 			<div class="x_title">
-				<h2>Basic Info</h2>
+				<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Basic Info')); ?></h2>
 				<div class="clearfix"></div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -81,7 +81,7 @@
 				 ?>
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-			<label  class="control-label" for="about_user">About User</label>
+			<label  class="control-label" for="about_user"><?php echo $this->requestAction('users/get-translate/'.base64_encode('About User')); ?></label>
 				<?php 
 					echo $this->Form->textarea('Users.about_user',['rows' => '8', 'cols' => '15',
 					'placeholder'=>'About User',
@@ -91,7 +91,7 @@
 				
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				<label class="control-label" for="image">Profile Image </label>
+				<label class="control-label" for="image"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Profile Image')); ?> </label>
 				<?php 
 				echo $this->Form->file('Users.image',[
 						'class'=>'form-control']);
@@ -106,8 +106,8 @@
 				
 			</div>
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  >Cancel</button>
-				<button id="adminUserEdit" type="submit" class="btn btn-success">Submit</button>
+				<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
+				<button id="adminUserEdit" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
 			</div>
 			<?php echo $this->form->end(); ?>
 			

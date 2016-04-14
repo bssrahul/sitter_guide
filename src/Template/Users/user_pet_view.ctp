@@ -49,7 +49,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Pet Listing</h2>
+					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Pets Listing')); ?></h2>
 					<div class="clearfix"></div>
 				</div>
                  <?php echo $this->element("adminElements/success_msg"); ?>
@@ -59,20 +59,18 @@
 							<tr class="headings">
 								<th>
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_image', 'Image')?> </th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_name', 'Name')?> </th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_type', 'Type')?> </th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_breed', 'Breed')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_gender', 'Gender')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_weight', 'Weight')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_age', 'Age')
-								?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.pet_description', 'Description')
-								?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.date_added', 'Created')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('UserPets.status', 'Status')?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?> </th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Type')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Breed')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Gender')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Weight')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Ager')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
 								<th class="column-title no-link last"><span class="nobr">Action</span>
 								</th>
 							</tr>
@@ -135,7 +133,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="8" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

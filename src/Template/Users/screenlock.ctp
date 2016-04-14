@@ -27,7 +27,7 @@
 					<p>This page you are looking for does not exsist <a href="#">Report this?</a>
 					</p>-->
 					<div class="mid_center">
-						<h3 class="lockedname">Locked</h3>
+						<h3 class="lockedname"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Locked')); ?></h3>
 						<!--Login form -->
 						<?php 
 							echo $this->Form->create(null, [
@@ -43,10 +43,10 @@
 							<div class="col-xs-12 form-group pull-right top_search">
 								<div class="input-group">
 									<?php
-										echo $this->Form->password('password', ['label' => false,'autocomplete' => 'off','placeholder'=>'Enter password and hit enter to unlock...','class'=>'form-control']);
+										echo $this->Form->password('password', ['label' => false,'autocomplete' => 'off','placeholder'=>$this->requestAction('users/get-translate/'.base64_encode('Enter password and hit enter to unlock...')),'class'=>'form-control']);
 									?>
 									<span class="input-group-btn">
-										<button class="btn btn-default" id="submitLockForm" type="button">Go!</button>
+										<button class="btn btn-default" id="submitLockForm" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Go!')); ?></button>
 									</span>
 								</div>
 							</div>

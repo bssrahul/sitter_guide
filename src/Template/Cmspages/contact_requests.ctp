@@ -54,7 +54,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> Contact Requests </h2>
+					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Contact Requests')); ?> </h2>
 					<div class="clearfix"></div>
 				</div>
 				
@@ -66,15 +66,15 @@
 							<tr class="headings">
 								<th>
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title">Name</th>
-								<th class="column-title">Email</th>
-								<th class="column-title">Phone</th>
-								<th class="column-title">Country</th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Phone')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Country')); ?></th>
 								<!--<th class="column-title"><?php echo $this->Paginator->sort('ContactRequests.message', 'Message')?></th>-->
 					
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -100,7 +100,7 @@
 								
 								<td class=" last">
 								
-						           <a title="View Request" href="<?php echo HTTP_ROOT."cmspages/contact-view/".base64_encode(convert_uuencode($contactrequest->id))?>" >
+						           <a title="<?php echo $this->requestAction('users/get-translate/'.base64_encode('View Request')); ?>" href="<?php echo HTTP_ROOT."cmspages/contact-view/".base64_encode(convert_uuencode($contactrequest->id))?>" >
                                                         <span class="fa fa-fw fa-search"></span>
                                    </a>
 									<?php if($contactrequest->reply_status == 0){ ?>
@@ -116,7 +116,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="3" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

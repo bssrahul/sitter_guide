@@ -867,11 +867,11 @@ class CmspagesController extends AppController
 			'StaticStrings.id LIKE' => '%'.$data['StaticStrings']['id'].'%'],
 			'limit'=>500,
 			'order' => [
-			'StaticStrings.modified' => 'desc']]);
+			'StaticStrings.created_date' => 'desc']]);
 		}else{
 			$strings_info = $this->Paginator->paginate($StaticStringsModel,['limit'=>500,
 			'order' => [
-			'StaticStrings.modified' => 'desc']]);
+			'StaticStrings.created_date' => 'desc']]);
 		}
 		$this->set('strings_info',$strings_info);
 	}
@@ -893,8 +893,7 @@ class CmspagesController extends AppController
 				$this->i18translation($StaticStringsModel);
 				$this->i18translation($stringData);
 				//CODE FOR MULTILIGUAL END
-				//Save data
-				//echo "<pre>";print_r($stringData);die;
+				
                	if($StaticStringsModel->save($stringData)){
 					// echo "<pre>";print_r($stringData);die;
 				   $this->Flash->success(__('Record has been added Successfully'));
