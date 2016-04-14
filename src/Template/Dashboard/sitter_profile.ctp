@@ -582,7 +582,7 @@
 
                     <div class="form-group col-lg-6">
                       <label for="">Outing Area (allow multiple)</label>
-                          <?php echo $this->Form->input('UserProperties.outing_allow_multiple',[
+                      <?php echo $this->Form->input('UserProperties.outing_allow_multiple',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
