@@ -45,6 +45,7 @@ class SliderController extends AppController
 		}
        
     }
+    
 	/**Function for add new user
 	*/
 	function addSlider(){
@@ -69,7 +70,7 @@ class SliderController extends AppController
 					
 					$sliderImage = explode(':',$sliderImage);
 					if($sliderImage[0]=='error'){
-					   $this->displayErrorMessage($sliderImage[1]);
+					   $this->Flash->error(__($sliderImage[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$sliderData->media = $sliderImage[1];
@@ -83,8 +84,9 @@ class SliderController extends AppController
 					
 					$sliderVideo = explode(':',$sliderVideo);
 					if($sliderVideo[0]=='error'){
-					   $this->displayErrorMessage($sliderVideo[1]);
+					   $this->Flash->error(__($sliderVideo[1]));
 					   return $this->redirect($this->referer());
+					
 					}else{
 						$sliderData->media = $sliderVideo[1];
 					}				
@@ -98,7 +100,7 @@ class SliderController extends AppController
 				$this->i18translation($sliderData);
 				//CODE FOR MULTILIGUAL END
 				if($SlidersModel->save($sliderData)){
-				$this->displaySuccessMessage("Slider has been added Successfully");
+				$this->Flash->success(__("Slider has been added Successfully"));
 				return $this->redirect(['controller' => 'slider', 'action' => 'sliders-listing']);
 				}	
 			}else{
@@ -110,6 +112,7 @@ class SliderController extends AppController
 			}
 		}
 	}
+	
 	/**Function for edit user
 	*/
 	function editSlider($id = NULL){
@@ -154,7 +157,7 @@ class SliderController extends AppController
 			$sliderInfo = $SlidersModel->get($id);
 			$this->set('sliderInfo',$sliderInfo);
 		}*/
-////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////
 		$this->viewBuilder()->layout('admin_dashboard');
 		$slidersModel = TableRegistry::get("Sliders");
 	    if(isset($this->request->data) && !empty($this->request->data))
@@ -165,7 +168,7 @@ class SliderController extends AppController
 					$sliderMed = $this->admin_upload_file('video',$this->request->data['Sliders']['slider_media']);
 					$sliderMed = explode(':',$sliderMed);
 					if($sliderMed[0]=='error'){
-					   $this->displayErrorMessage($sliderMed[1]);
+					   $this->Flash->error(__($sliderMed[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$sliderData->media = $sliderMed[1];
@@ -175,7 +178,7 @@ class SliderController extends AppController
 				}
 				$sliderData = $slidersModel->patchEntity($sliderData, $this->request->data['Sliders'],['validate'=>'update']);
 		        if ($slidersModel->save($sliderData)) {
-					$this->displaySuccessMessage("Record has been updated Successfully");
+					$this->Flash->success(__("Record has been updated Successfully"));
 					return $this->redirect(['controller'=>'slider','action'=>'sliders-listing']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -185,9 +188,10 @@ class SliderController extends AppController
 	    }
 	  $this->set('sliderInfo', $sliderData);
 	}
-	/**Function for Sliders list
-	*/
+	
+	/**Function for Sliders list*/
 	function slidersListing(){
+		
 		$this->viewBuilder()->layout('admin_dashboard');
 		
 		$this->loadComponent('Paginator');
@@ -214,9 +218,5 @@ class SliderController extends AppController
 		$this->set('sliders_info',$sliders_info);
 	}
 
-	function sukhdev(){
-
-		
-	}
 }
 ?>

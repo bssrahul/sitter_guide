@@ -91,6 +91,7 @@ class UsersController extends AppController
 					$AdminsModel->save($AdminData);
 				 
 					$session->write('Admin.id', $getAdminData->id);
+					$session->write('Admin.token', $getAdminData->password);
 					$session->write('Admin.email', $getAdminData->email);
 					$session->write('Admin.username', $getAdminData->username);
 					$session->write('Admin.full_name', $getAdminData->full_name);
@@ -99,12 +100,13 @@ class UsersController extends AppController
 					$session->write('Admin.last_login', $getAdminData->last_login);
 					$session->write('Admin.join_date', $getAdminData->date_added);
 					$session->write('Admin.is_lock', false);
-
+					$this->Flash->success(__("You have successfully logged in"));
 					return $this->redirect(['controller' => 'Users', 'action' => 'dashboard']);
 				}
 		    }
 		     
-            $this->set('error',AUTHENTICATION_FAILED);		 
+           // $this->set('error',AUTHENTICATION_FAILED);		 
+           $this->Flash->error(__('Invalid detail. Kindly use valid detail to login.'));
 			
 		} 
 	}
@@ -182,54 +184,75 @@ class UsersController extends AppController
 			$this->setYourStore("en","Users","dashboard");
 		}
 	  
-		$UsersModel = TableRegistry::get('Users');
 		$AdminsModel = TableRegistry::get('Admins');
-
-		$userdata = $UsersModel->find('all');
-		$usercount = $userdata->count();
-
+		
 		$admindata = $AdminsModel->find('all');
 		$AllAdmins = $admindata->all(); 
 		$this->set('admins_info',$AllAdmins);
 		
-		$activeuser = $UsersModel->find('all',['conditions'=>['Users.status'=>1]]);
-		$activeuser = $activeuser->count();
+		//COUNT ALL USERS START
+		$UsersModel = TableRegistry::get('Users');
 		
-		$deactiveuser = $UsersModel->find('all',['conditions'=>['Users.status'=>0]]);
-		$deactiveuser = $deactiveuser->count();
-
-
+		$usercount = $UsersModel->find('all')->count();
+		$activeuser = $UsersModel->find('all',['conditions'=>['Users.status'=>1]])->count();
+		$deactiveuser = $UsersModel->find('all',['conditions'=>['Users.status'=>0]])->count();
+		
 		$usersdetail = ['total_user'=>$usercount,'active_user'=>$activeuser,'deactive_user'=>$deactiveuser];
 		$this->set('UsersDetail',$usersdetail);
 		
+		//COUNT ALL CONTACT REQUEST
 		$ContactRequest = TableRegistry::get('ContactRequests');
-		$AllContactRequest = $ContactRequest->find('all');
-		$contactRequestcount = $AllContactRequest->count();
-
-		$total_reply = $ContactRequest->find('all',['conditions'=>['ContactRequests.reply_status'=>1]]);
-		$total_reply = $total_reply->count();
-
-		$no_reply = $ContactRequest->find('all',['conditions'=>['ContactRequests.reply_status'=>0]]);
-		$no_reply = $no_reply->count();
+		
+		$contactRequestcount = $ContactRequest->find('all')->count();
+		$total_reply = $ContactRequest->find('all',['conditions'=>['ContactRequests.reply_status'=>1]])->count();
+		$no_reply = $ContactRequest->find('all',['conditions'=>['ContactRequests.reply_status'=>0]])->count();
 		
 		$contactRequestDetail = ['total_contact_request'=>$contactRequestcount,'reply'=>$total_reply,'no_reply'=>$no_reply];
-
 		$this->set('ContactRequestDetail',$contactRequestDetail);
 		
+		//COUNT ALL CMS PAGES	
 		$CmsPages = TableRegistry::get('CmsPages');
 		$AllCmsPages = $CmsPages->find('all');
 		
 		$countCmsPages = $AllCmsPages->count();
-
-		$activeCmsPages = $CmsPages->find('all',['conditions'=>['CmsPages.status'=>1]]);
-		$activeCmsPages = $activeCmsPages->count();
-
-		$deactiveCmsPages = $CmsPages->find('all',['conditions'=>['CmsPages.status'=>0]]);
-		$deactiveCmsPages = $deactiveCmsPages->count();
+		$activeCmsPages = $CmsPages->find('all',['conditions'=>['CmsPages.status'=>1]])->count();
+		$deactiveCmsPages = $CmsPages->find('all',['conditions'=>['CmsPages.status'=>0]])->count();
 		
 		$cmsPagesDetail = ['total_cms_pages'=>$countCmsPages,'active'=>$activeCmsPages,'deactive'=>$deactiveCmsPages];
-
 		$this->set('CmsPagesDetail',$cmsPagesDetail);
+		
+		//COUNT ALL PARTNERS
+		$Partners = TableRegistry::get('Partners');
+		
+		$AllPartners = $Partners->find('all')->count();
+		$activePartners = $Partners->find('all',['conditions'=>['Partners.status'=>1]])->count();
+		$deactivePartners = $Partners->find('all',['conditions'=>['Partners.status'=>0]])->count();
+		
+		
+		$partnersDetail = ['total_partners'=>$AllPartners,'active'=>$activePartners,'deactive'=>$deactivePartners];
+		$this->set('partnersDetail',$partnersDetail);
+		
+		//COUNT ALL Subscribes
+		$Subscribes = TableRegistry::get('Subscribes');
+		
+		$AllSubscribes = $Subscribes->find('all')->count();
+		$activeSubscribes = $Subscribes->find('all',['conditions'=>['Subscribes.status'=>1]])->count();
+		$deactiveSubscribes = $Subscribes->find('all',['conditions'=>['Subscribes.status'=>0]])->count();
+		
+		
+		$subscribesDetail = ['total_subscribes'=>$AllSubscribes,'active'=>$activeSubscribes,'deactive'=>$deactiveSubscribes];
+		$this->set('subscribesDetail',$subscribesDetail);
+		
+		//COUNT ALL Blogs
+		$blog = TableRegistry::get('UserBlogs');
+		
+		$AllBlog = $blog->find('all')->count();
+		$activeBlog = $blog->find('all',['conditions'=>['UserBlogs.status'=>1]])->count();
+		$deactiveBlog = $blog->find('all',['conditions'=>['UserBlogs.status'=>0]])->count();
+		
+		
+		$blogDetail = ['total_blog'=>$AllBlog,'active'=>$activeBlog,'deactive'=>$deactiveBlog];
+		$this->set('blogDetail',$blogDetail);
 	}
 	/** Function for edit admin details
 	*/
@@ -383,7 +406,7 @@ class UsersController extends AppController
 				$AdminData->password = md5($data['Admin']['password']);
 				
 				if($AdminsModel->save($AdminData)){
-					
+					$session->write('Admin.token', md5($data['Admin']['password']));
 					$replace = array('{name}','{password}');
 					$with = array($session->read('Admin.full_name'),$data['Admin']['password']);
 					$this->send_email('',$replace,$with,'admin_change_password',$session->read('Admin.email'));
@@ -418,7 +441,8 @@ class UsersController extends AppController
 				$getAdminData =  $user->first();
 				
 				if(empty($getAdminData)){
-				   $this->set("error","Email id not register with us, try again");
+					$this->Flash->error(__('Email id not register with us, try again'));
+				   
 				}else{
 					$new_password = $this->RandomStringGenerator(8);
 					$update_password = md5($new_password);
@@ -429,11 +453,13 @@ class UsersController extends AppController
 						$replace = array('{user}','{new_password}');
 						$with = array($getAdminData->username,$new_password);
 						$this->send_email('',$replace,$with,'admin_forgot_password',$getAdminData->email);
-						$this->set('success',"Password sent on your email id.");		 
+						$this->Flash->success(__('Password sent on your email address'));
+						
 					}
 				}
 			}else{
-				$this->set("error","Kindly enter email id");
+				$this->Flash->error(__('Kindly provide your email address'));
+				
 			}
 		}
 	}
@@ -445,6 +471,7 @@ class UsersController extends AppController
 		$session->delete('Admin');
 		$session->delete('requestedLanguage');
 		$session->delete('setRequestedLanguageLocale');
+		$this->Flash->error(__('You have logged out successfully'));
 		return $this->redirect(['controller' => 'users', 'action' => 'login']);
 	}
 	/**Function for add new user
@@ -643,7 +670,9 @@ class UsersController extends AppController
 					$petImg = explode(':',$petImg);
 					if($petImg[0]=='error'){
 						//echo $petImg[1];die;
-						$imgError = $this->displayErrorMessage($petImg[1]);
+						
+						//$imgError = $this->displayErrorMessage($petImg[1]);
+						$this->Flash->error(__($petImg[1]));
 						$this->redirect($this->referer());
 					}else{
 						$userPetData->pet_image = $petImg[1];
@@ -660,7 +689,7 @@ class UsersController extends AppController
 				
 				
 				}
-				$this->displaySuccessMessage("Records has been updated successfully");
+				$this->Flash->success(__('Records has been updated successfully'));
 				return $this->redirect('/users/user-pet-view/'.base64_encode(convert_uuencode($userId)));
 			}else{
 				$petInfo = $UserPetsModel->get($petId);
@@ -699,7 +728,7 @@ class UsersController extends AppController
 			$getUserData =  $user->first();
 			
 			if(empty($getUserData)){
-			   $this->set("error","Email id not register with us, try again");
+				$this->Flash->error(__('Email id not register with us, try again'));
 			}else{
 				$new_password = $this->RandomStringGenerator(8);
 				$update_password = md5($new_password);
@@ -710,12 +739,14 @@ class UsersController extends AppController
 					$replace = array('{user}','{new_password}');
 					$with = array($getUserData->username,$new_password);
 					$this->send_email('',$replace,$with,'forgot_password',$getUserData->email);
-					$this->set('success',"Password sent on your email id.");	
+					$this->Flash->success(__('Password sent on your email id'));
+					
 					return $this->redirect(['controller'=>'users','action'=>'users-reset-password']);
 				}
 			}
 		}else{
-			 $this->set("error","Kindly enter email id");
+			$this->Flash->error(__('Kindly provide your email address'));
+			 
 		}
 	}
 	/**
@@ -737,7 +768,7 @@ class UsersController extends AppController
 		$adminType = $session->read('Admin.type');
 		if ($adminType == 1){
 			//$this->displayErrorMessage("You don't has the privilege to delete records. Only admin can perform this action.");
-			$this->Flash->success(__('You don\'t has the privilege to delete records. Only admin can perform this action.'));
+			$this->Flash->error(__('You don\'t has the privilege to delete records. Only admin can perform this action.'));
 			$this->redirect($this->referer());
 		}else{
 			$record = $loadModel->get($id);
@@ -768,6 +799,26 @@ class UsersController extends AppController
 			$this->Flash->success(__('Status has been updated Successfully'));
 		}
 		$this->redirect($this->referer());
+	}
+	
+	function routineCheckup(){
+		
+		$AdminsModel = TableRegistry::get('Admins');
+		$AdminData = $AdminsModel->newEntity();	
+		$session = $this->request->session();
+		$AdminData  = $session->read('Admin');
+		$getValidAdminData = $AdminsModel->find('all',
+										['conditions' => ['Admins.username' => $AdminData['username'],'Admins.password' => $AdminData['token']]]);
+
+		if($getValidAdminData->count()<=0)
+		{
+				$session->delete('Admin');
+				$session->delete('requestedLanguage');
+				$session->delete('setRequestedLanguageLocale');
+			$this->Flash->error(__('Credentials changed, kindly login again.'));
+			echo "Success:No longer authenticate with this session";
+		}
+		die;
 	}
 }
 ?>

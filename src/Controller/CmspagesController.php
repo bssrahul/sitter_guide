@@ -177,7 +177,7 @@ class CmspagesController extends AppController
 					if ( $emailTemplateModel->save($emailTemplateData)) 
 					{
 						//$this->displaySuccessMessage('Template has been updated Successfully');
-						$this->Flash->success(__('Template has been updated Successfully.'));
+						$this->Flash->success(__('Record has been updated Successfully.'));
 						return $this->redirect(['controller'=>'cmspages','action'=>'email_templates']);
 					}
 				 }else{
@@ -277,7 +277,7 @@ class CmspagesController extends AppController
 					$with = array($data['ContactRequests']['reply']);
 					$this->send_email('',$replace,$with,'reply_contact',$data['ContactRequests']['email'],$data['ContactRequests']['reply']);
 			  //$this->displaySuccessMessage('Reply sent successfully');
-			  $this->Flash->error(__('Reply has been sent successfully.'));
+			  $this->Flash->error(__('Respond has been sent successfully.'));
 			  return $this->redirect(['controller'=>'cmspages','action' => 'contact-requests']);
 			}
 		}else{
@@ -390,7 +390,7 @@ class CmspagesController extends AppController
 					
 					$blogImg = explode(':',$blogImg);
 					if($blogImg[0]=='error'){
-					   $this->displayErrorMessage($blogImg[1]);
+					   $this->Flash->error(__($blogImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$UserBlogData->image = $blogImg[1];
@@ -546,7 +546,7 @@ class CmspagesController extends AppController
 					$HowWorksImg = explode(':',$HowWorksImg);
 					if($HowWorksImg[0]=='error')
 					{
-					   $this->displayErrorMessage($HowWorksImg[1]);
+					   $this->Flash->error(__($HowWorksImg[1]));
 					   return $this->redirect($this->referer());
 					}
 					
@@ -563,7 +563,7 @@ class CmspagesController extends AppController
 				//Save data
 				echo "okokokok";die;
 				if($HowWorksModel->save($workData)){
-				   $this->displaySuccessMessage("Record has been added Successfully");
+				   $this->Flash->success(__('Record has been added Successfully'));
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'works-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -661,7 +661,7 @@ class CmspagesController extends AppController
 					$HowWorksImg = explode(':',$HowWorksImg);
 					if($HowWorksImg[0]=='error')
 					{
-					   $this->displayErrorMessage($HowWorksImg[1]);
+					   $this->Flash->error(__($HowWorksImg[1]));
 					   return $this->redirect($this->referer());
 					}
 					
@@ -676,10 +676,10 @@ class CmspagesController extends AppController
 				$this->i18translation($workData);
 				//CODE FOR MULTILIGUAL END
 				//Save data
-               	$workData->category = trim($workData->category);
+				$workData->category = trim($workData->category);
 				if($HowWorksModel->save($workData)){
 					// echo "<pre>";print_r($workData);die;
-				   $this->displaySuccessMessage("Record has been added Successfully");
+				   $this->Flash->success(__('Record has been added Successfully'));
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'choose-us-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -697,13 +697,13 @@ class CmspagesController extends AppController
 		{
 		    $workData = $HowWorksModel->newEntity();
             $imagename = $this->request->data['HowWorks']['works_image']['name'];
-            //echo "<pre>";print_r($this->request->data);die;
+            
 				if($imagename!=''){
 					$HowWorksImg = $this->admin_upload_file('categoryImg',$this->request->data['HowWorks']['works_image']);
 					
 					$HowWorksImg = explode(':',$HowWorksImg);
 					if($HowWorksImg[0]=='error'){
-					   $this->displayErrorMessage($HowWorksImg[1]);
+					   $this->Flash->error(__($HowWorksImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$workData->image = $HowWorksImg[1];
@@ -822,7 +822,8 @@ class CmspagesController extends AppController
 					
 					$HowWorksImg = explode(':',$HowWorksImg);
 					if($HowWorksImg[0]=='error'){
-					   $this->displayErrorMessage($HowWorksImg[1]);
+					   
+					   $this->Flash->error(__($HowWorksImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$workData->image = $HowWorksImg[1];
@@ -896,7 +897,7 @@ class CmspagesController extends AppController
 				//echo "<pre>";print_r($stringData);die;
                	if($StaticStringsModel->save($stringData)){
 					// echo "<pre>";print_r($stringData);die;
-				   $this->displaySuccessMessage("Record has been added Successfully");
+				   $this->Flash->success(__('Record has been added Successfully'));
 				   return $this->redirect(['controller' => 'cmspages', 'action' => 'strings-listing']);
 				}else{
 				   $this->Flash->error(__('Error found, Kindly fix the errors.'));

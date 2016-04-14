@@ -65,7 +65,7 @@ class CategoryController extends AppController
 					
 					$categoryImg = explode(':',$categoryImg);
 					if($categoryImg[0]=='error'){
-					   $this->displayErrorMessage($categoryImg[1]);
+					   $this->Flash->error(__($categoryImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$categoryData->image = $categoryImg[1];
@@ -112,7 +112,7 @@ class CategoryController extends AppController
 					
 					$categoryImg = explode(':',$categoryImg);
 					if($categoryImg[0]=='error'){
-					   $this->displayErrorMessage($categoryImg[1]);
+					  $this->Flash->error(__($categoryImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
 						$categoryData->image = $categoryImg[1];
