@@ -10,7 +10,7 @@
 					    <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Contact Request Reply</h2>
+                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Contact Request Reply')); ?></h2>
 									<div class="clearfix"></div>
 							     </div>
 								 <?php echo $this->element('adminElements/success_msg');?>
@@ -31,7 +31,7 @@
 												'value'=>$contactRequest->id]);
 									?>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Email <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?> <span class="required">*</span>
 										</label>
 										<?php 
 										//echo "<pre>"; print_r($admininfo);
@@ -45,7 +45,7 @@
 									
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="reply">Description<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="reply"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->textarea('ContactRequests.reply',
@@ -57,8 +57,8 @@
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  >Cancel</button>
-											<button id="send" type="submit" class="btn btn-success">Submit</button>
+											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
+											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submits')); ?></button>
 										</div>
 									</div>
                                     <?php echo $this->form->end(); ?>

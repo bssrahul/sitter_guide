@@ -3,7 +3,7 @@
 					   <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Edit Admin Detail</h2>
+                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Edit Admin Detail')); ?></h2>
 									<div class="clearfix"></div>
 							    </div>
 								
@@ -22,9 +22,9 @@
 										'novalidate'=>'novalidate'
 										
 									]);?>
-									<span class="section">Profile Settings</span>
+									<span class="section"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Profile Settings')); ?></span>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="full_name">Full name <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="full_name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Full Name')); ?></span> <span class="required">*</span>
 										</label>
 										<?php 
 										echo $this->Form->input('Admins.full_name',[
@@ -35,7 +35,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">User name <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username"><?php echo $this->requestAction('users/get-translate/'.base64_encode('User Name')); ?></span> <span class="required">*</span>
 										</label>
 										<?php 
 										echo $this->Form->input('Admins.username',[
@@ -46,7 +46,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email Address <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email Address')); ?></span> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('Admins.email',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
@@ -56,7 +56,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="admin_img">Profile Picture<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="admin_img"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Profile Picture')); ?></span><span class="required">*</span>
 										</label>
 										 <div class="col-md-6 col-sm-6 col-xs-12">
 										   <?php 
@@ -70,9 +70,9 @@
 									
 										</div>
 									</div>
-									<span class="section">Main Settings</span>
+									<span class="section"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Main Settings')); ?></span></span>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_name">Site Name <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Site Name')); ?></span> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.site_name',[
 												'templates' => [
@@ -83,7 +83,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Site Contact Email <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Site Contact Email')); ?></span> <span class="required">*</span>
 										</label>
 										  <?php echo $this->Form->input('SiteConfigurations.site_contact_email',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
@@ -94,10 +94,10 @@
 												'value'=>$siteinfo->site_contact_email != ''?$siteinfo->site_contact_email:'']);
 										  ?>
 									</div>
-                                    <span class="section">Logo, Banner & Footer Settings</span>
+                                    <span class="section"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Logo, Banner & Footer Settings')); ?></span></span>
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_logo">Site Logo <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_logo"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Site Logo')); ?> <span class="required">*</span>
 										</label>
 										 <div class="col-md-6 col-sm-6 col-xs-12">
 										   <?php 
@@ -112,7 +112,7 @@
 										</div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_favicon">Favicon <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_favicon"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Favicon')); ?> <span class="required">*</span>
 										</label>
 										 <div class="col-md-6 col-sm-6 col-xs-12">
 										   <?php 
@@ -127,7 +127,7 @@
 										  
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_footer">Footer Content <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_footer"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Footer Content')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->textarea('SiteConfigurations.site_footer',
@@ -136,9 +136,9 @@
 											 'value'=>$siteinfo->site_footer]); ?>
 										</div>
 									</div>
-									<span class="section">SEO Settings</span>
+									<span class="section"><?php echo $this->requestAction('users/get-translate/'.base64_encode('SEO Settings')); ?></span>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="meta_title">Meta Title <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="meta_title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Meta Title')); ?> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.meta_title',[
 												'templates' => [
@@ -149,7 +149,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="meta_keyword">Meta Keywords <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="meta_keyword"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Meta Keywords')); ?> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.meta_keyword',[
 												'templates' => [
@@ -160,7 +160,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="meta_description">Meta Description <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="meta_description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Meta Description')); ?> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.meta_description',[
 												'templates' => [
@@ -170,9 +170,9 @@
 												'value'=>$siteinfo->meta_description != ''?$siteinfo->meta_description:'']);
 										 ?>
 									</div>
-									<span class="section">Social Settings</span>
+									<span class="section"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Social Settings')); ?></span>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="facebook_link">Facebook URL <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="facebook_link"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Facebook URL')); ?> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.facebook_link',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://facebook.com</b></em></div>'],
@@ -182,7 +182,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="twitter_link">Twitter URL<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="twitter_link"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Twitter URL')); ?><span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.twitter_link',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://twitter.com</b></em></div>'],
@@ -192,7 +192,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="google_link">Google+ URL <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="google_link"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Google+ URL')); ?> <span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.google_link',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
@@ -213,7 +213,7 @@
 										 ?>
 									</div>-->
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="instagram_link">Instagram URL<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="instagram_link"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Instagram URL')); ?><span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.instagram_link',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://instagram.com</b></em></div>'],
@@ -223,7 +223,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="youtube_link">Youtube URL<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="youtube_link"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Youtube URL')); ?><span class="required">*</span>
 										</label>
 										<?php echo $this->Form->input('SiteConfigurations.youtube_link',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}<em>eg : <b>https://youtube.com</b></em></div>'],
@@ -235,8 +235,8 @@
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  >Cancel</button>
-											<button id="send" type="submit" class="btn btn-success">Submit</button>
+											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
+											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
 										</div>
 									</div>
                                     <?php echo $this->form->end(); ?>

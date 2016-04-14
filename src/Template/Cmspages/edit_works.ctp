@@ -5,7 +5,7 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Edit Works<small></small></h2>
+                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Edit Works')); ?><small></small></h2>
 									<div class="clearfix"></div>
 							 </div>
 							 <?= $this->element('adminElements/error_msg'); ?>
@@ -21,7 +21,7 @@
 										
 									]);?>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Title <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?> <span class="required">*</span>
 										</label>
 										<?php 
                                          //$howId = base64_encode(convert_uuencode($Howitwork->id)); 
@@ -46,7 +46,7 @@
 									</div>
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->input('HowWorks.description',
@@ -60,7 +60,7 @@
 										</div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?>
 										</label>
 										 <div class="col-md-6 col-sm-6 col-xs-12">
 										   <?php 
@@ -78,8 +78,8 @@
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  >Cancel</button>
-											<button id="send" type="submit" class="btn btn-success">Submit</button>
+											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
+											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
 										</div>
 									</div>
                                     <?php echo $this->form->end(); ?>

@@ -820,5 +820,26 @@ class UsersController extends AppController
 		}
 		die;
 	}
+	
+	function getTranslate($strRequest=''){
+		
+		if($strRequest==''){
+				return false;
+		}else{
+			$StaticStringsModel = TableRegistry::get('StaticStrings');
+			//CODE FOR MULTILIGUAL START
+			$this->i18translation($StaticStringsModel);
+			//CODE FOR MULTILIGUAL END
+			$decodedstrRequest = base64_decode($strRequest);
+			$StaticStringData = $StaticStringsModel->find('all',['conditions'=>['StaticStrings.constant_slug'=>$decodedstrRequest]]);
+			if($StaticStringData->count() > 0){
+				$StaticStringRecord = $StaticStringData->first();
+				 $finalvalue = $StaticStringRecord->value;
+			}else{
+				 $finalvalue = $decodedstrRequest;
+			}
+		}
+		$this->set('finalvalue',$finalvalue);
+	}
 }
 ?>

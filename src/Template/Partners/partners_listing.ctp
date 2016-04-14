@@ -57,7 +57,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Partners Listing</h2><h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'partners/add-partner'; ?>"><button class="btn btn-success addUser" type="button">Add Partner</button></a></h2>
+					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Partners Listing')); ?></h2><h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'partners/add-partner'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Partner')); ?></button></a></h2>
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -70,13 +70,13 @@
 									 <!--<input type="checkbox" class="tableflat">-->
 									 Sr.No.
 								</th>
-								<th class="text-center column-title">Image</th>
-								<th class="text-center column-title">Title</th>
-								<th class="column-title">Short Description</th>
-								<th class="column-title">Long Description</th>
-								<th class="column-title">Status</th>
-							   <th class="column-title">Created</th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Short Description')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Long Description')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -131,7 +131,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

@@ -65,12 +65,12 @@
 							<tr class="headings">
 								<th>
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title">Page name</th>
-								<th class="column-title">Page content</th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Content')); ?></th>
 					
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -106,7 +106,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="3" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

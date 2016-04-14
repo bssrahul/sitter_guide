@@ -3,7 +3,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                    Contact Request View
+                    <?php echo $this->requestAction('users/get-translate/'.base64_encode('Contact Request View')); ?>
                 </h3>
                         </div>
 
@@ -16,20 +16,20 @@
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
-                                                <th>Name</th>
+                                                <th><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
 												<td class="col-md-9 col-sm-9 col-xs-9">
 												<?php echo $contactRequest->name?></td>
 											</tr>
 											<tr>
-                                                <th>Email Id</th>
+                                                <th><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
 												<td class="col-md-9 col-sm-9 col-xs-9"><?php echo $contactRequest->email?></td>
 											</tr>
 											<tr>	
-												<th>Phone No</th>
+												<th><?php echo $this->requestAction('users/get-translate/'.base64_encode('Phone')); ?></th>
 												<td class="col-md-9 col-sm-9 col-xs-9"><?php echo $contactRequest->phone_no?></td>
 											</tr>
 											<tr>	
-												<th>Message</th>
+												<th><?php echo $this->requestAction('users/get-translate/'.base64_encode('Message')); ?></th>
 												<td class="col-md-9 col-sm-9 col-xs-9"><?php echo $contactRequest->message?></td>
                                             </tr>
                                         </tbody>

@@ -57,7 +57,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>How Works Listing</h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-works'; ?>"><button class="btn btn-success addUser" type="button">Add Work</button></a></h2>-->
+					<h2>H<?php echo $this->requestAction('users/get-translate/'.base64_encode('Hot it works listing')); ?></h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-works'; ?>"><button class="btn btn-success addUser" type="button">Add Work</button></a></h2>-->
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -68,15 +68,15 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="text-center column-title">Image</th>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
 								<!--<th class="column-title"><?php echo $this->Paginator->sort('Howitworks.category', 'Category')?> </th>-->
-								<th class="column-title">Title</th>
-								<th style="width:300px;" class="column-title">Description</th> 
-							   <th class="column-title">Status</th>
-							   <th class="column-title">Created</th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
+								<th style="width:200px;" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th> 
+							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -104,7 +104,7 @@
 								?></td>-->
 								<td class=" "><?php echo $work_info->title; ?></td>
 								
-								<td style="width:300px;"  class=" "><?php 
+								<td style="width:200px;"  class=" "><?php 
 										echo $work_info->description;
 								?></td>
 								
@@ -125,7 +125,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>
@@ -140,87 +140,4 @@
 		</div>
 	</div>
 </div>	
-
-<!-- Datatables -->
-		<?php echo $this->Html->script(['datatables/js/jquery.dataTables.js','datatables/tools/js/dataTables.tableTools.js']); ?>
-		
-       
-        <script>
-            $(document).ready(function () {
-                $('input.tableflat').iCheck({
-                    checkboxClass: 'icheckbox_flat-green',
-                    radioClass: 'iradio_flat-green'
-                });
-            });
-
-            var asInitVals = new Array();
-            $(document).ready(function () {
-                var oTable = $('#example').dataTable({
-                    "oLanguage": {
-                        "sSearch": "Search all columns:"
-                    },
-					"fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-
-						var numStart = 0;
-
-						var index = numStart +  iDisplayIndexFull + 1;
-						$("td:first", nRow).html(index);
-						return nRow;
-					},
-                    "aoColumnDefs": [
-                        {
-                            'bSortable': false,
-                            'aTargets': [0]
-                        } //disables sorting for column one
-					],
-                    'iDisplayLength': 10,
-                    "sPaginationType": "full_numbers",
-                    "dom": 'T<"clear">lfrtip',
-                    "tableTools": {
-                        "sSwfPath": "<?php echo HTTP_ROOT.'webroot/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'; ?>"
-                    }
-                });
-                $("tfoot input").keyup(function () {
-                    /* Filter on the column based on the index of this element's parent <th> */
-                    oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
-                });
-                $("tfoot input").each(function (i) {
-                    asInitVals[i] = this.value;
-                });
-                $("tfoot input").focus(function () {
-                    if (this.className == "search_init") {
-                        this.className = "";
-                        this.value = "";
-                    }
-                });
-                $("tfoot input").blur(function (i) {
-                    if (this.value == "") {
-                        this.className = "search_init";
-                        this.value = asInitVals[$("tfoot input").index(this)];
-                    }
-                });
-            });
-        </script>
-		<style>
-		.catImg{
-			height:75px;
-			width:60% !important;
-		}
-		.img-circle.profile_img {
-			background: #fff none repeat scroll 0 0;
-			border: 1px solid rgba(52, 73, 94, 0.44);
-			margin-left: 0px !important;
-			margin-top: 0px !important;
-			position: inherit;
-			z-index: 1000;
-		}
-		.paging_full_numbers {
-			height: 50px !important;
-			line-height: 22px;
-			width: 400px;
-		}
-		.text-centerimage img {
-			width: 75px !important;
-		}
-		</style>
-		
+<?php echo $this->element("adminElements/data_table"); ?>	

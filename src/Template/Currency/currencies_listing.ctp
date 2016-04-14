@@ -54,7 +54,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> Currencies Listing</h2>
+					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Currencies Listing')); ?></h2>
 					<div class="clearfix"></div>
 				</div>
 				<?= $this->element("adminElements/success_msg"); ?>
@@ -75,15 +75,15 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title">Country Name</th>
-								<th class="column-title">Currency Name</th>
-								<th class="column-title">Locale</th>
-								<th class="column-title">Currency Code</th> 
-							    <th class="column-title">Price</th>
-								<th class="column-title">Status</th>
-							    <th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Country Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Currency Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Locale')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Currency Code')); ?></th> 
+							    <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Price')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+							    <th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -129,7 +129,7 @@
 							}
                             }else{ ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="8" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?></td>
 								</tr>
 							<?php } ?>
 							
@@ -146,7 +146,7 @@
 			
 			<div class="form-group" >
 				<div class="col-md-6 col-md-offset-3">
-					<button  style="float:right" id="submitButton" type="submit" class="btn btn-success">Submit</button>
+					<button  style="float:right" id="submitButton" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
 				</div>
 			</div>
 			

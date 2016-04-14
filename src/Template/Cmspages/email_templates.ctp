@@ -50,7 +50,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Email templates </h2>
+					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email templates')); ?> </h2>
 					<div class="clearfix"></div>
 				</div>
 				
@@ -63,12 +63,12 @@
 							<tr class="headings">
 								<th>
 									<!-- <input type="checkbox" class="tableflat">-->
-									Sr.No.
+									<?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title">Title</th>
-								<th class="column-title">Subject</th>
-								<th class="column-title">Alias</th>
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Subject')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Alias')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -102,7 +102,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="3" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>
