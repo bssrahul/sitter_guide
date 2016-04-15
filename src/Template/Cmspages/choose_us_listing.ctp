@@ -105,7 +105,7 @@
 										echo $work_info->description;
 								?></td>
 								
-								 <td><?php echo $work_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $work_info->status == 1?'Active':'Blocked';	?></td>
 								 <td class=" "><?php 
 										echo date("F  j,Y",strtotime($work_info->created_date));
 								?></td>

@@ -104,7 +104,7 @@
 										echo $promocode_info->description;
 								?></td>
 								
-								 <td><?php echo $promocode_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $promocode_info->status == 1?'Active':'Blocked';	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								   <a title="<?php echo($promocode_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'PromoCodes'.'/'.base64_encode(convert_uuencode($promocode_info->id)).'/'.$target[$promocode_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($promocode_info->status ==0?'-o':'') ?>"></span></a>
