@@ -22,7 +22,7 @@
         
        
       <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
-        <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/profile"; ?>'" >
         
         <h4 class="blue">General Profile</h4>
           <!--<div class="gp-icon">
@@ -54,7 +54,7 @@
       
       
      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
-       <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+       <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/sitter-house"; ?>'" >
         
         <h4 class="orange">Sitter House</h4>
         
@@ -84,7 +84,7 @@
       </div> 
      
       <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
-        <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+        <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/about-sitter"; ?>'" >
         
         <h4 class="green">About Sitter</h4>
           <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i3.png" alt="General Profile" class=" img-thumbnail">
@@ -121,9 +121,9 @@
                 <div class="row stylish-panel">
       <div class="col-md-4 col-lg-6 col-sm-12 col-xs-12 top-padd20">
       
-       <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+       <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/professional-accreditations"; ?>'" >
         
-        <h4 class="carrot">Professional Accriditations</h4>
+        <h4 class="carrot"> Professional Accriditations</h4>
           <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i4.png" alt="General Profile" class=" img-thumbnail">
           
           <div class="border-top" >
@@ -148,7 +148,7 @@
         </div>
       </div>  
       <div class="col-md-4 col-lg-6 col-sm-12 top-padd20 col-xs-12">
-       <div class="full-box" onclick="location.href = 'http://182.71.22.42/sitter-guide/html/logout.html'" >
+       <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/services-and-rates"; ?>'" >
         
         <h4 class="pink">Services & Rates</h4>
           <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i5.png" alt="General Profile" class=" img-thumbnail">

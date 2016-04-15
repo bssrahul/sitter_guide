@@ -20,6 +20,7 @@
           
     </head>
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">
+          
 		<!--[content area Start]-->
 		<?php 
 			echo $this->element('frontElements/common/response_msg');
@@ -27,6 +28,7 @@
 
 			echo $this->element('frontElements/profile/profile_header');
 			echo $this->element('frontElements/profile/profile_nav');?>
+			 <?php echo $this->Flash->render(); ?>
 			<div class="container-fluid main-container addBgColor">
 			   <div class=" main-container-outer">
 			      <div class="table-row">
@@ -36,6 +38,7 @@
 			      </div>
 			  </div>
 			</div>	
+
         <?php echo $this->element('frontElements/common/footer');
 		?>
 		<!--[content area end]-->

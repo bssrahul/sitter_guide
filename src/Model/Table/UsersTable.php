@@ -12,11 +12,12 @@ class UsersTable extends Table
         $this->addBehavior('Translate', ['fields' => ['name','phone','email','country','city','state','address','zip'],
             'translationTable' => 'UsersI18n'
 		]);
-		$this->hasOne('UserExtendedProfiles', ['dependent' => true]);
-		$this->hasMany('UserAcceptedPets', ['dependent' => true]);
-		$this->hasMany('UserWorkSchedules', ['dependent' => true]);
-		$this->hasMany('UserServices', ['dependent' => true]);
+		//$this->hasOne('UserExtendedProfiles', ['dependent' => true]);
+		//$this->hasMany('UserAcceptedPets', ['dependent' => true]);
+		//$this->hasMany('UserWorkSchedules', ['dependent' => true]);
+		//$this->hasMany('UserServices', ['dependent' => true]);
 		//$this->hasMany('UserBlogs', ['dependent' => true]);
+		$this->hasOne('UserSitterHouses', ['dependent' => true]);
     }
 	
     public function validationDefault(Validator $validator)

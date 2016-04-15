@@ -159,76 +159,15 @@ class DashboardController extends AppController
 		}
 		return $string;
 	}
-	/**
-	Function for profile
-	*/
-	function profile(){
-		 $this->viewBuilder()->layout('profile_dashboard');
-       
-         $session = $this->request->session();
-         $userId = $session->read('User.id');
 
-         $usersModel = TableRegistry::get('Users');
-         $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
-          $this->set('user_info',$user_info);
-		  $usersModel = TableRegistry::get('Users');
-
-		 $session = $this->request->session();
-         $userId = $session->read('User.id');
-
-        $this->request->data = @$_REQUEST;
-		if(isset($this->request->data) && !empty($this->request->data))
-		{
-	            $data=$this->request->data['Usersp'];
-			    $error=$this->validate_password($data,$user_info);
-				if(count($error) > 0)
-				{
-                        $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		               $usersModel->save($userData);
-							
-                    unset($userData->id);
-	                $this->set('userInfo', $userData);
-                    $this->set('error',$error);
-				}else{
-                     $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		                if ($usersModel->save($userData)) {
-							$this->Flash->success(__('Generel profile has been updated Successfully'));
-
-							return $this->redirect(['controller'=>'dashboard','action'=>'profile']);
-						}else{
-							$this->Flash->error(__('Error found, Kindly fix the errors.'));
-						}
-
-						unset($userData->id);
-		                $this->set('userInfo', $userData);
-				}
-        }else{
-		   $userData = $usersModel->get($userId);
-		   unset($userData->id);
-		  $this->set('userInfo', $userData);
-
-	    }
-	    
-
-
-		 $zonesModel = TableRegistry::get('Zones');
-		 $zones_data = $zonesModel->find('all')->toArray();
-		 foreach($zones_data as $key=>$val){
-                $zones_info[$key] = $val['zone_name']; 
-		 }
-		 $this->set('zones_info',$zones_info);
-    }
+	
     /*=================Validation For password=================*/
     function validate_password($data, $user_info)
 	{
 		$errors=array();
 		if(trim($data['current_password'])=='')
 		{
-			$errors['current_password'][]="Required field\n";
+			//$errors['current_password'][]="Required field\n";
 		}else{
 
 				if(trim(md5($data['current_password'])) != $user_info->password)
@@ -254,17 +193,139 @@ class DashboardController extends AppController
 		return $errors;
 	}
     /*=================End password validation========*/
-	function sitterProfile(){
+    /**
+    Function for Profile
+    */
+    function profile(){
+    	 $this->viewBuilder()->layout('profile_dashboard');
+         $usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+         $userId = $session->read('User.id');
+
+         $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
+         
+        
+
+        $this->request->data = @$_REQUEST;
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+	            $data=$this->request->data['Usersp'];
+			    $error=$this->validate_password($data,$user_info);
+				if(count($error) > 0)
+				{
+                        $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		               $usersModel->save($userData);
+							
+                    unset($userData->id);
+	                $this->set('userInfo', $userData);
+                    $this->set('error',$error);
+                    $this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}else{
+                     $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		                if ($usersModel->save($userData)) {
+		                	//echo "koko";die;
+							//$this->Flash->success(__('Profile has been saved Successfully'));
+
+							return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+						}else{
+							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}
+
+						unset($userData->id);
+		                $this->set('userInfo', $userData);
+
+				}
+        }else{
+		   $userData = $usersModel->get($userId);
+		   unset($userData->id);
+		  $this->set('userInfo', $userData);
+
+	    }
+	    
+
+
+		 $zonesModel = TableRegistry::get('Zones');
+		 $zones_data = $zonesModel->find('all')->toArray();
+		 foreach($zones_data as $key=>$val){
+                $zones_info[$key] = $val['zone_name']; 
+		 }
+		 $this->set('zones_info',$zones_info);
+    	
+    }
+    /**
+    Function for Sitter House
+    */
+    function sitterHouse(){
+    	  $this->viewBuilder()->layout('profile_dashboard');
+          $usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+   
+        $sitterHousesModel = TableRegistry::get('UserSitterHouses');
+
+		$this->request->data = @$_REQUEST;
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+			   $sitterHouseData = $sitterHousesModel->newEntity();
+               $sitterHouseData = $sitterHousesModel->patchEntity($sitterHouseData, $this->request->data['UserSitterHouses'],['validate'=>true]);
+                $sitterHouseData->user_id = $userId;
+                if ($sitterHousesModel->save($sitterHouseData)){
+               	     return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+				}else{
+					$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
+			 	unset($sitterHouseData->id);
+		       $this->set('sitterHouseData', $sitterHouseData);
+
+		}else{
+
+		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
+		   
+            $sitterHouseData = $query->user_sitter_house;
+            $this->set('sitterHouseId', $sitterHouseData->id);
+            $this->set('sitterHouseData', $sitterHouseData);
+        }
+	     
+		 
+    }
+     /**
+    Function for Sitter
+    */
+    function aboutSitter(){
+    	 $this->viewBuilder()->layout('profile_dashboard');
+
+    }
+     /**
+    Function for Professional Accreditations
+    */
+    function professionalAccreditations(){
+    	 $this->viewBuilder()->layout('profile_dashboard');
+
+    }
+     /**
+    Function for Services & Rates
+    */
+    function servicesAndRates(){
+    	 $this->viewBuilder()->layout('profile_dashboard');
+
+    }
+    function sitterProfile(){
          $this->viewBuilder()->layout('profile_dashboard');
          	$session = $this->request->session();
          	//$session->write('bookingProduct','');
          	//$session->write('house_details','');
          	//$session->write('sitter_property','');
 	}
-	/**
+    /**
 	Function for sitter profile
 	*/
-	function saveSitterProfile(){
+	/*function saveSitterProfile(){
 		$this->viewBuilder()->layout('profile_dashboard');
 
 		$session = $this->request->session();
@@ -275,7 +336,7 @@ class DashboardController extends AppController
 
 		}*/
 		////////////////////////
-		$session = $this->request->session();
+	/*	$session = $this->request->session();
 		$userId = $session->read('User.id');
 
 		$this->request->data = @$_REQUEST;
@@ -306,7 +367,7 @@ class DashboardController extends AppController
 			   unset($this->request->data['Users']['image']);
 			}*/
 			
-			$session->write('house_details', $this->request->data);
+		/*	$session->write('house_details', $this->request->data);
 			//echo "Basic Profile session";
 			echo "<pre>";print_r($this->request->data);die;
 		}elseif(isset($this->request->data['sitter_property']) && !empty($this->request->data['sitter_property'])){
@@ -324,13 +385,13 @@ class DashboardController extends AppController
 	   //$this->redirect($this->referer());
 		/////////////////////////
 
-	}
+	}*/
 
 
 /**
 	Function for save sitter profile
 	*/
-	function saveAllSessionsData(){
+	/*function saveAllSessionsData(){
 		//echo "okoko";die;
 		    //User Service data	
 			//Read getting start session
@@ -440,6 +501,7 @@ class DashboardController extends AppController
 						   $UserProfessionalDetailsModel->save($userProfessionalDetailData);
                 }
 			die;
+		}*/
             //End user service data
 			//START USER ACCEPTED
 			/*$UserAcceptedPetsModel = TableRegistry::get('UserAcceptedPets');
@@ -512,7 +574,7 @@ class DashboardController extends AppController
 				echo "extendedProfile<pre>";print_r($session->read('extendedProfile'));
 				echo "personal<pre>";print_r($session->read('personal'));die;*/
 				
-	}
+	
 
 
 
