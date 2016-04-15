@@ -113,7 +113,7 @@
 										echo $partner_info->description;
 								?></td>
 								
-								 <td><?php echo $partner_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $partner_info->status == 1?'Active':'Blocked';	?></td>
 								 <td class=" "><?php 
 										echo date("F j, Y", strtotime($partner_info->created_date));
 								?></td>

@@ -129,7 +129,7 @@
 									<td class=" "><?php 
 												echo $admin_info->email;
 									?></td>
-									<td><?php echo $admin_info->status == 1?'Active':'Inactive';	?></td>
+									<td><?php echo $admin_info->status == 1?'Active':'Blocked';	?></td>
 									<td class=" "><?php 
 												echo date("F j, Y h:i A", strtotime($admin_info->last_login));
 									?></td>
