@@ -103,7 +103,7 @@
 								</td>
 								<!--<td class=" "><?php echo ($blog_info->user->first_name)." ".($blog_info->user->last_name); ?></td>-->
 								<td style="width:400px"><?php echo $blog_info->description; ?></td>
-								<td><?php echo $blog_info->status == 1?'Active':'Inactive';	?></td>
+								<td><?php echo $blog_info->status == 1?'Active':'Blocked';	?></td>
 								<td><?php 	echo date("F  j,Y",strtotime($blog_info->created_date)); ?></td>
 								
 

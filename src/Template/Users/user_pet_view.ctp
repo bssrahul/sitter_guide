@@ -118,7 +118,7 @@
 								<td class=" "><?php 
 											echo $user_pet_info->date_added;
 								?></td>
-								 <td><?php echo $user_pet_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $user_pet_info->status == 1?'Active':'Blocked';	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								

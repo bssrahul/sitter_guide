@@ -97,7 +97,7 @@
 								</td>
 								<td class=" "><?php echo ($subscribe_info->email); ?></td>
 								<td><?php echo $subscribe_info->created_date; ?></td>
-								<td><?php echo $subscribe_info->status == 1?'Active':'Inactive';	?></td>
+								<td><?php echo $subscribe_info->status == 1?'Active':'Blocked';	?></td>
 
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">

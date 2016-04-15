@@ -107,7 +107,7 @@
 								<td class=" "><?php 
 										echo $slider_info->date_added;
 								?></td>
-								 <td><?php echo $slider_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $slider_info->status == 1?'Active':'Blocked';	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								  <a title="<?php echo($slider_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Sliders'.'/'.base64_encode(convert_uuencode($slider_info->id)).'/'.$target[$slider_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($slider_info->status ==0?'-o':'') ?>"></span></a>

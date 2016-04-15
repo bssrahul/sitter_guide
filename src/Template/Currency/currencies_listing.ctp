@@ -115,7 +115,7 @@
 								<td class=" ">
 									  <input type='text'  name='Currencies[<?php echo$currency_info->id; ?>][price][]' value="<?php echo $currency_info->price; ?>" />
 								</td>
-								 <td><?php echo $currency_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $currency_info->status == 1?'Active':'Blocked';	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								   <a title="<?php echo($currency_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Currencies'.'/'.base64_encode(convert_uuencode($currency_info->id)).'/'.$target[$currency_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($currency_info->status ==0?'-o':'') ?>"></span></a>
