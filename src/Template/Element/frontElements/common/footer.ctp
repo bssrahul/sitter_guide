@@ -7,43 +7,43 @@
                   <div class="row">
                       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                           <div class="foot-box">
-                          <p class="txt-head"><?php echo __('About Sitter Guide'); ?></p>          
-                              <ul>
-                                  <li><a href="#" title="About Us"> <?php echo __('About Us'); ?></a> </li>
-                                    <li><a href="#" title="Partners">  <?php echo __('Partners'); ?></a> </li>
-                                    <li><a href="#" title="In the News">  <?php echo __('In the News'); ?></a> </li>
-                                    <li><a href="#" title="Partners"> <?php echo __('Partners'); ?></a> </li>
-                                    <li><a href="#" title="Privacy Policy"> <?php echo __('Privacy Policy'); ?></a> </li>
-                                    <li><a href="#" title="Teams of service"> <?php echo __('About Us'); ?></a> </li>
+                          <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter Guide')); ?></p>          
+								<ul>
+									<li><a href="#" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
+									<li><a href="#" title="Partners">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Partner')); ?></a> </li>
+									<li><a href="#" title="In the News">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a> </li>
+									<li><a href="#" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>
                                 </ul>
                                
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                           <div class="foot-box">
-                          <p class="txt-head"><?php echo __('Top pet sitting cities'); ?></p>            
+                          <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Top Pet Sitting Cities')); ?></p>            
          
                               <ul>
-                                  <li><a href="#" title="Pet Sitters Sydney"><?php echo __('Pet Sitters Sydney'); ?></a> </li>
-                                    <li><a href="#" title="Pet Sitters Melbourne"><?php echo __('Pet Sitters Melbourne'); ?></a> </li>
-                                    <li><a href="#" title="Pet Sitters Brisbane"><?php echo __('Pet Sitters Brisbane'); ?></a> </li>
-                                    <li><a href="#" title="Pet Sitters Perth"><?php echo __('Pet Sitters Perth'); ?></a> </li>
-                                    <li><a href="#" title="Pet Sitters Adelaide"><?php echo __('Pet Sitters Adelaide'); ?></a> </li>
-                                    <li><a href="#" title="Pet Sitters Canberr"><?php echo __('Pet Sitters Canberra'); ?></a> </li>
+                                  <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Sydney')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Sydney')); ?></a> </li>
+                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Melbourne')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Melbourne')); ?></a> </li>
+                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Brisbane')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Brisbane')); ?></a> </li>
+                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Perth')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Perth')); ?></a> </li>
+                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Adelaide')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Adelaide')); ?></a> </li>
+                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Canberr')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Canberr')); ?></a> </li>
                                 </ul>
                                
                         </div>
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                           <div class="foot-box">
-                          <p class="txt-head"><?php echo __('Learn More'); ?></p>          
+                          <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Learn More')); ?></p>          
                               <ul>                   
 
-                                  <li><a href="#" title="How does Sitter Guide Work"> <?php echo __('How does Sitter Guide Work'); ?></a> </li>
-                                    <li><a href="#" title=" Insurance & Refunds"> <?php echo __('Insurance & Refunds'); ?></a> </li>
-                                    <li><a href="#" title="House Rules"><?php echo __('House Rules'); ?></a> </li>
-                                    <li><a href="#" title="Safety"><?php echo __('Safety'); ?></a> </li>
-                                    <li><a href="#" title="Benefits of sittings"> <?php echo __('Benefits of sittings'); ?></a> </li>
+                                  <li><a href="#" title="How does Sitter Guide Work"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('How does Sitter Guide Work')); ?></a> </li>
+                                    <li><a href="#" title=" Insurance & Refunds"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Insurance & Refunds')); ?></a> </li>
+                                    
+                                    
+                                    <li><a href="#" title="House Rules"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Rules')); ?></a> </li>
+                                    <li><a href="#" title="Safety"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Safety')); ?></a> </li>
+                                    <li><a href="#" title="Benefits of sittings"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Benefits of sittings')); ?></a> </li>
                                    
                                 </ul>
                                
@@ -57,22 +57,22 @@
                                 ]);?>
                       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                           <div class="foot-box fb-last">
-                          <p class="txt-head"><?php echo __('Need Help'); ?></p>          
+                          <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Need Help?')); ?></p>          
                             <ul>
-								<li><a href="#" title="Help Center"> <?php echo __('Help Center'); ?></a> </li>
-								<li><a href="#" title="Contact Us"><?php echo __('Contact Us'); ?></a> </li>
+								<li><a href="#" title="Help Center"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help Center')); ?></a> </li>
+								<li><a href="#" title="Contact Us"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Us')); ?></a> </li>
 							</ul>
                                 
                             <div class="news-let">
-                                <p class="txt-head"><?php echo __('Subscribe to Newsletter'); ?></p>
+                                <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Subscribe on News Letter')); ?></p>
                                  <div class="input email">
                                   <p class="successMessage clr"></p>
-                                    <?php echo $this->Form->input('Subscribes.email',['class'=>'nwlt-input','placeholder'=>'Enter your email here','label'=>false, 'templates' => [
+                                    <?php echo $this->Form->input('Subscribes.email',['class'=>'nwlt-input','placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Enter Your Email')),'label'=>false, 'templates' => [
                                                  'inputContainer' => '{{content}}'
                                                   ]]); 
 
                                     ?>                               
-                                  <input id="subscribe-btn"  type="submit" class="sb-btn" value="Subscribe" />
+                                  <input id="subscribe-btn"  type="submit" class="sb-btn" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Subscribe')); ?>" />
                                   <label class="error" for="subscribes-email" generated="true"></label>
                                  </div> 
                             </div>
@@ -92,7 +92,7 @@
                   <div class="row">
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                      
                           <div class="bot-social">
-                              <p><?php echo __('Join The Sitter Guide Pack'); ?></p>
+                              <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Join The Sitter Guide Pack')); ?></p>
                               <ul>
 									<li>
 										<a href="<?php echo isset($siteConfiguration->facebook_link)? "http://".$siteConfiguration->facebook_link:""; ?>" title=""><i class="fa fa-facebook"></i></a>
