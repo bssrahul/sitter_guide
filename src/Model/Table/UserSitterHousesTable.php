@@ -14,6 +14,7 @@ class UserSitterHousesTable extends Table
     }*/
     public function validationDefault(Validator $validator)
     {
+        //echo "<pre>";print_r($validator);die;
         $validator
              ->notEmpty('property_type', 'This field is required.')
              ->notEmpty('outdoor_area', 'This field is required.')
@@ -21,19 +22,25 @@ class UserSitterHousesTable extends Table
              ->notEmpty('outing_allow_multiple', 'This field is required.')
              ->notEmpty('cancellation_policy', 'This field is required.')
              ->notEmpty('breaks_provided_every', 'This field is required.')
-             ->notEmpty('fully_fenced', 'This field is required.')
-             ->notEmpty('smokers', 'This field is required.');
+           // ->add('fully_fenced',$this);
+             
+             
+           ->requirePresence('fully_fenced') ->notEmpty('fully_fenced', 'This field is required.')
+           ->requirePresence('fully_fenced') ->notEmpty('smokers', 'This field is required.');
+            ///////////////////
+            /*->add('fully_fenced', 'custom', [
+                    'rule' => function($value, $context) {
+                        if ($value !== $context['fully_fenced']) {
+                            return false;
+                        }
+                        return false;
+                    },
+                    'message' => 'The passwords are not equal'   ]);*/
+
+            ////////////////////
               
                return $validator;
     }
-	public function validationUpdate($validator)
-    {
-        $validator
-		    ->notEmpty('property_type', 'Property type field is required.');
-		    //->notEmpty('last_name', 'Last name field is required.')
-		   // ->notEmpty('country_code', 'Country code field is required.')
-			//->notEmpty('phone', 'Phone number field is required.')
-		return $validator;
-    }
+
 }
 ?>

@@ -252,6 +252,14 @@ class AppController extends Controller{
 				$logoSize="2097152";
 				$logoKb = "2 MB";
 			}
+			else if($type == 'sitterGallery')
+			{
+				$uploadFolder="uploads";	
+				$logoWidth = "111";
+				$logoHeight = "96";
+				$logoSize="2097152";
+				$logoKb = "2 MB";
+			}
 			else if($type == 'sliderImg')
 			{
 				$uploadFolder="uploads";	
