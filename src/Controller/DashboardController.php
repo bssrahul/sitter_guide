@@ -34,8 +34,6 @@ class DashboardController extends AppController
 	public function initialize()
     {
 		parent::initialize();
-		
-		
 		if(!$this->CheckGuestSession())
 		{
 			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
@@ -332,13 +330,8 @@ class DashboardController extends AppController
 		       $this->set('sitter_info', $aboutSitterData);
 
 		}else{
-
-		    $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
-
-		    if(isset($query->user_about_sitter)){
-
-		    	//  echo "<pre>";print_r($query->user_about_sitter);die;
-
+            $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
+            if(isset($query->user_about_sitter)){
                    $aboutSitterData = $query->user_about_sitter;
                    //$this->set('sitterHouseId', $aboutSitterData->id);
                    $this->set('sitter_info', $aboutSitterData);
@@ -414,6 +407,103 @@ class DashboardController extends AppController
     */
     function professionalAccreditations(){
     	 $this->viewBuilder()->layout('profile_dashboard');
+
+        $usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+   
+        //$professionalModel = TableRegistry::get('UserProfessionalAccreditations');
+        
+// echo  $userId;die; 
+		$this->request->data = @$_REQUEST;
+		//pr($this->request->data); die;
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+			 
+             
+ //pr($this->request->data); die;
+			   //if (isset($professional_accreditation) && !empty($professional_accreditation)) {
+                     $UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
+                     $UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
+                      
+                      
+                       $userProfessionalData = $UserProfessionalModel->newEntity();
+                       $userProfessionalData->user_id = $userId;
+                       $userProfessionalData->type_professional = 'check';
+                       $userProfessionalData->sector_type = "govt";
+                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
+					   $UserProfessionalModel->save($userProfessionalData);
+
+                       $userProfessionalData = $UserProfessionalModel->newEntity();
+                       $userProfessionalData->user_id = $userId;
+                       $userProfessionalData->type_professional = 'pets';
+                       $userProfessionalData->sector_type = "private";
+                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
+					   $UserProfessionalModel->save($userProfessionalData);
+
+					   $userProfessionalData = $UserProfessionalModel->newEntity();
+                       $userProfessionalData->user_id = $userId;
+                       $userProfessionalData->type_professional = 'people';
+                       $userProfessionalData->sector_type = "private";
+                       
+                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
+					   $UserProfessionalModel->save($userProfessionalData);
+
+                     //foreach($this->request->data as $key=>$val)
+                   for($i=0;$i<count($this->request->data['qualification_title']);$i++){
+
+                     	 $userProfessionalData = $UserProfessionalModel->newEntity();
+
+                         $userProfessionalData->user_id = $userId; 
+                         $userProfessionalData->type_professional = 'other';
+                         $userProfessionalData->sector_type = "other";
+
+                         $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
+                         $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
+                         $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
+
+
+                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
+					   $UserProfessionalModel->save($userProfessionalData);
+                      }
+                           //pr($this->request->data); die;
+                           
+		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
+		                   $userProfessionalDetailData->user_id = $userId;
+		                   $userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
+		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
+						  
+						   $UserProfessionalDetailsModel->save($userProfessionalDetailData);
+						   echo "<pre>";print_r($this->request->data);die;
+               // }
+
+			  /* $professionalData = $professionalModel->newEntity();
+               $professionalData = $professionalModel->patchEntity($professionalData, $this->request->data['UserAboutSitters'],['validate'=>true]);
+                $professionalData->user_id = $userId;
+                
+              // pr($professionalData->errors());  die;
+                if ($professionalModel->save($professionalData)){
+
+                      return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+				}else{
+					$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
+			 	unset($professionalData->id);
+		       $this->set('sitter_info', $professionalData);*/
+
+		}/*else{
+            $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
+            if(isset($query->user_about_sitter)){
+                   $professionalData = $query->user_about_sitter;
+                   //$this->set('sitterHouseId', $professionalData->id);
+                   $this->set('sitter_info', $professionalData);
+		    }
+            
+        }*/
+
+
+    	
 
     }
      /**
