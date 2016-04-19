@@ -3,9 +3,9 @@
     <!--Banner text-->
       <div class="ban-txt">
           <div class="container">             
-      <h1><?php echo __('Worry Free Pet Sitting') ;?></h1>
-        <p><?php echo __('& Dog Boarding Services') ;?></p>
-          <a href="#" id="flip" class="hworks" title="How its Works"><i class="fa fa-chevron-circle-right"></i><?php echo __('How It Works') ;?></a>
+      <h1><?php echo $this->requestAction('app/get-translate/'.base64_encode('Worry Free Pet SItting')); ?></h1>
+        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('& Dog Boarding Services')); ?></p>
+          <a href="#" id="flip" class="hworks" title="How its Works"><i class="fa fa-chevron-circle-right"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('How It Works')); ?></a>
               
             
             </div>
@@ -23,33 +23,33 @@
                               <!--top search-->
                               <div class="top-srch">
                                   <div class="ts-lft">
-                                      <p><?php echo __('For  When You’re Away') ;?></p>
+                                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('For When You’re Away')); ?></p>
                                         <ul class="search-list">
                                           <li><a href="#">
                                               <span class="nc"></span>
-                                                <?php echo __('Night Care') ;?>
+                                                <?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?>
                                                 
                                             </a></li>
                                             <li><a href="#">
                                               <span class="db"></span>
-                                              <?php echo __('Dog Boarding') ;?>
+												<?php echo $this->requestAction('app/get-translate/'.base64_encode('Dog Boarding')); ?>
                                             </a></li>
                                             <li><a href="#">
                                               <span class="div"></span>
-                                                <?php echo __('Drop-in-Visit') ;?>
+                                                <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-in-Visit')); ?>
                                             </a></li>
                                         </ul> 
                                     </div>
                                     <div class="ts-rgt">
-                                      <p><?php echo __('For  When You’re At Work') ;?></p>
+                                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('For When You’re At Work')); ?></p>
                                         <ul class="search-list search-list-2">
                                           <li><a href="#">
                                               <span class="dc"></span>
-                                                <?php echo __('Day Care') ;?>
+                                                <?php echo $this->requestAction('app/get-translate/'.base64_encode('Dog Care')); ?>
                                             </a></li>
                                             <li><a href="#">
                                               <span class="dw"></span>
-                                                  <?php echo __('Dog Walking') ;?>
+                                                 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Dog Walking')); ?>
                                             </a></li>
                                             
                                         </ul>                                        
@@ -59,11 +59,11 @@
                                 <!--bot search-->
                                   <div class="bot-search">
                                       <ul class="form-group">                                                                                
-                                          <li class="search"><input type="text" class="form-control" placeholder="Where do you want to go?" /></li>
-                                            <li class="drop"><input type="text" class="form-control" placeholder=" Drop Off" /></li>
-                                            <li class="pick"><input type="text" class="form-control" placeholder=" Pick Up" /></li>
-                                            <li class="size"> <select class="form-control" id="sel1"><option><?php echo __('Pet Size') ;?></option><option><?php echo __('Small') ;?></option><option><?php echo __('Medium') ;?></option><option><?php echo __('Large') ;?></option></select></li>
-                                            <li class="search-btn"><button type="button" class="btn btn-success"> <?php echo __('Submit') ;?> </button></li>                                            
+                                          <li class="search"><input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Where do you want to go?')); ?>" /></li>
+                                            <li class="drop"><input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop Off')); ?>" /></li>
+                                            <li class="pick"><input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pick Up')); ?>" /></li>
+                                            <li class="size"> <select class="form-control" id="sel1"><option><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Size')); ?></option><option><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small')); ?></option><option><?php echo $this->requestAction('app/get-translate/'.base64_encode('Medium')); ?></option><option><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large')); ?></option></select></li>
+                                            <li class="search-btn"><button type="button" class="btn btn-success"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?> </button></li>                                            
                                         </ul>                                                                           
                                     </div>
                                 <!--bot search-->
