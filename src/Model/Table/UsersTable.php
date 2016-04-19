@@ -18,6 +18,8 @@ class UsersTable extends Table
 		//$this->hasMany('UserServices', ['dependent' => true]);
 		//$this->hasMany('UserBlogs', ['dependent' => true]);
 		$this->hasOne('UserSitterHouses', ['dependent' => true]);
+		$this->hasOne('UserAboutSitters', ['dependent' => true]);
+		$this->hasMany('UserSitterGalleries', ['dependent' => true]);
     }
 	
     public function validationDefault(Validator $validator)

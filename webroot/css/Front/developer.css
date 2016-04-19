@@ -125,3 +125,8 @@ label.error{margin-top:5px;}
     font-style: normal;
     margin-left: 5px;
 }
+/*For service and rates */
+.guestRate{
+   float:right !important;
+   margin-top:5px !important;
+ }
