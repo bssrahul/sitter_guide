@@ -520,7 +520,7 @@ class DashboardController extends AppController
           $session = $this->request->session();
           $userId = $session->read('User.id');
    
-        $aboutSittersModel = TableRegistry::get('UserAboutSitters');
+        $sitterServicesModel = TableRegistry::get('UserSitterServices');
         
 
 		$this->request->data = @$_REQUEST;
@@ -528,19 +528,33 @@ class DashboardController extends AppController
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
 			pr($this->request->data);die;
-			   /*$aboutSitterData = $aboutSittersModel->newEntity();
-               $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
-                $aboutSitterData->user_id = $userId;
+
+                    //pr($this->request->data['SittersHome']);die;
+
+               $sittersServiceData = $sitterServicesModel->newEntity();
+
+               $sittersServiceData = $sitterServicesModel->patchEntity($sittersServiceData, $this->request->data['SitterServices']/*,['validate'=>true]*/);
+                $sittersServiceData->user_id = $userId;
+               $sittersServiceData->id = '3';
                 
-              // pr($aboutSitterData->errors());  die;
-                if ($aboutSittersModel->save($aboutSitterData)){
+              // pr($sittersServiceData->errors());  die;
+                if ($sitterServicesModel->save($sittersServiceData)){
+
+                     $serviceId = $sittersServiceData->id;
+                	 $sittersServiceData = $sitterServicesModel->newEntity();
+                	 $sittersServiceData->id = $serviceId;
+                	 foreach($this->request->data['SittersHome'] as $key=>$val){
+                            
+                	 }
+
+                	 pr($this->request->data['SittersHome']);die;
 
                       return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}
-			 	unset($aboutSitterData->id);
-		       $this->set('sitter_info', $aboutSitterData);*/
+			 	unset($sittersServiceData->id);
+		       $this->set('sitter_info', $sittersServiceData);
 
 		}/*else{
             $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
@@ -553,7 +567,7 @@ class DashboardController extends AppController
         }*/
 	     
 
-    }
+    
 
     }
     function sitterProfile(){
