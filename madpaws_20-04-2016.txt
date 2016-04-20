@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2016 at 05:56 PM
--- Server version: 5.5.47-MariaDB-1ubuntu0.14.04.1
+-- Generation Time: Apr 20, 2016 at 03:04 PM
+-- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `madpaws_live`
+-- Database: `madpaws`
 --
 
 -- --------------------------------------------------------
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `full_name`, `username`, `email`, `password`, `admin_img`, `status`, `type`, `date_added`, `last_login`) VALUES
-(1, 'Rahul Jain', 'admin', 'sanyam.arora@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', 'Gqge72iDPhF9lSF.png', 1, '0', '2015-01-16 00:00:00', '2016-04-15 11:35:57');
+(1, 'Raj', 'admin', 'sanyam.arora@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', 'EqTA0WJzibfnFXX.png', 1, '0', '2015-01-16 00:00:00', '2016-04-14 04:56:56');
 
 -- --------------------------------------------------------
 
@@ -63,15 +63,14 @@ CREATE TABLE IF NOT EXISTS `admins_i18n` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admins_i18n`
 --
 
 INSERT INTO `admins_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'ro', 'Admins', 1, 'full_name', 'Emma Watson ro'),
-(2, 'it_IT', 'Admins', 1, 'full_name', 'Rahul Jain');
+(1, 'ro', 'Admins', 1, 'full_name', 'Emma Watson ro');
 
 -- --------------------------------------------------------
 
@@ -106,7 +105,7 @@ INSERT INTO `categories` (`id`, `title`, `slug`, `image`, `status`, `description
 (14, 'Animal', 'A', 'gz6Cwrk2aifs51I.jpg', 1, 'Leopard', NULL, NULL),
 (15, 'Image', '*', 'MTRlalsVdrC0Qjf.jpg', 0, 'Image Shrink', NULL, NULL),
 (18, 'fgfg', 'gdfgdf', '', 1, 'gdgdfg', NULL, NULL),
-(20, 'sdfsdf', 'fsdf', 'KyPMCcJUS8KdNIF.png', 0, 'bvngn', NULL, '2016-04-12 07:52:44');
+(20, 'sdfsdf', 'fsdf', 'ikgZCP2gHLr6tAf.jpg', 0, 'bvngn', NULL, '2016-04-12 07:52:44');
 
 -- --------------------------------------------------------
 
@@ -124,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `categories_i18n` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `categories_i18n`
@@ -139,10 +138,7 @@ INSERT INTO `categories_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, 
 (15, 'de_DE', 'Categories', 7, 'description', '<p> Reports</p>'),
 (16, 'de_DE', 'Categories', 8, 'title', 'Pferde'),
 (17, 'de_DE', 'Categories', 8, 'slug', 'hourses'),
-(18, 'de_DE', 'Categories', 8, 'description', 'loving Pferde'),
-(19, 'ru_RU', 'Categories', 20, 'title', 'sdfsdf'),
-(20, 'ru_RU', 'Categories', 20, 'slug', 'fsdf'),
-(21, 'ru_RU', 'Categories', 20, 'description', 'bvngn');
+(18, 'de_DE', 'Categories', 8, 'description', 'loving Pferde');
 
 -- --------------------------------------------------------
 
@@ -176,10 +172,10 @@ CREATE TABLE IF NOT EXISTS `cms_pages` (
 --
 
 INSERT INTO `cms_pages` (`id`, `pagename`, `pageheading`, `banner_image`, `pagecontent`, `pageurl`, `link`, `company_name`, `phone_no`, `email`, `location`, `status`, `meta_title`, `meta_keywords`, `meta_description`, `created`, `modified`) VALUES
-(1, 'Terms & Conditions', '', '', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.<br /><br /><span style="font-size: medium;"><strong>1. Contrary to popular belief, Lorem</strong></span><br /><br />&nbsp;&nbsp;&nbsp; <strong>1. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>2. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.</p>\r\n<p><span style="font-size: medium;"><strong>2. It is a long established fact that</strong></span><br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>1. industry. Lorem Ipsum has been the industry''s</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 2. It is a long established fact that a</strong> reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br style="text-align: justify;" /></p>', 'terms', 'Home/cms/terms', '', '0', '', '', 1, 'Live3Times - Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '0000-00-00 00:00:00', '2016-04-13 09:59:05'),
+(1, 'Terms & Conditions', '', '', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.<br /><br /><span style="font-size: medium;"><strong>1. Contrary to popular belief, Lorem</strong></span><br /><br />&nbsp;&nbsp;&nbsp; <strong>1. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>2. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.</p>\r\n<p><span style="font-size: medium;"><strong>2. It is a long established fact that</strong></span><br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>1. industry. Lorem Ipsum has been the industry''s</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 2. It is a long established fact that a</strong> reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br style="text-align: justify;" /></p>', 'terms', 'Home/cms/terms', '', '0', '', '', 1, 'Live3Times - Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'abcdefg', '', '', '<h2 class="title_head">Welcome to Sitter Guide</h2>\r\n<p>Test Sitter Guide content.&nbsp;</p>\r\n<p class="strong">*Subject to Terms and Conditions*</p>', 'www.wearea.com', 'Homes/cms/about_us', 'Beta Soft Systems Pvt Ltd', '0', '', '', 1, 'Live3Times - About Us', 'About Us', 'About Us', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 'Privacy Policy', '', '', '<p><span style="font-size: medium;"><strong style="font-size: medium;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></span><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College Ipsum.<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <br /><br />in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br style="text-align: justify;" /></p>', 'privacy', 'Home/cms/privacy', '', '0', '', '', 0, 'Live3Times - Privacy Policy', 'Privacy Policy', 'Privacy Policy', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'Test', '', '', '<p><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Beta Soft Systems Pvt Ltd&nbsp;</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Sco 398 Sector - 20 Panchkula, Haryana 134116</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">info@betasofttrainings.com</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">0172 467 7163</span></p>', 'contact-us', 'Home/contact-us', 'Beta Soft Systems Pvt Ltd ', '0172 467 7163', 'info@betasofttrainings.com', 'Sco 398 Sector - 20 Panchkula, Haryana 134116', 1, 'Live3Times - Contact Us', 'Contact Us', 'Contact Us', '0000-00-00 00:00:00', '2016-04-13 09:59:00');
+(7, 'Test', '', '', '<p><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Beta Soft Systems Pvt Ltd&nbsp;</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Sco 398 Sector - 20 Panchkula, Haryana 134116</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">info@betasofttrainings.com</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">0172 467 7163</span></p>', 'contact-us', 'Home/contact-us', 'Beta Soft Systems Pvt Ltd ', '0172 467 7163', 'info@betasofttrainings.com', 'Sco 398 Sector - 20 Panchkula, Haryana 134116', 1, 'Live3Times - Contact Us', 'Contact Us', 'Contact Us', '0000-00-00 00:00:00', '2016-04-12 07:43:34');
 
 -- --------------------------------------------------------
 
@@ -591,9 +587,9 @@ CREATE TABLE IF NOT EXISTS `email_templates` (
 
 INSERT INTO `email_templates` (`id`, `title`, `alias`, `subject`, `allowed_vars`, `description`, `email_from`, `email_name`, `status`, `modified`) VALUES
 (1, 'Admin Reset Password', 'admin_forgot_password', 'Sitter Guide- Admin Reset Password', '{user},{new_password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p><table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center"><tbody><tr style="height: 36px;" height="36"><td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td><td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Reset Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td><td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td></tr><tr><td style="height: 20px;" colspan="3" valign="top"><p>&nbsp;</p></td></tr><tr><td style="width: 30px;" width="30" valign="top"><br /></td><td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> <table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left"><tbody><tr><td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td></tr><tr><td valign="top"><p>Hello {user},</p><p>&nbsp;</p></td></tr><tr><td style="height: 25px;" valign="top">You have requested for reset your password, Kindly review the below details</td></tr><tr><td valign="top"><p>Your new password is : {new_password}</p>You can log in using this new password.</td></tr></tbody></table></span></td><td style="width: 30px;" width="30" valign="top"><br /></td></tr><tr><td style="height: 20px;" colspan="3" valign="top"><br /></td></tr><tr><td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td><td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> <table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left"><tbody><tr><td style="width: 500px; height: 20px;" width="500" valign="top"><p style="font-weight: bold;">Regards,<br /><strong> </strong></p><p style="font-weight: bold;">Team Sitter Guide</p></td></tr><tr><td><p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p></td></tr></tbody></table></span> </span></td><td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td></tr></tbody></table><p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
-(2, 'Contact Request Reply', 'reply_contact', 'Sitter Guidde : Contact Request Reply ', '{to_name}, {content}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>{content}</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'vineet.kumar@mobilyte.com', 'Sitter Guide', 0, '2016-04-13 09:36:40'),
+(2, 'xyz', 'reply_contact', 'Sitter Guidde : Contact Request Reply ', '{to_name}, {content}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>{content}</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'vineet.kumar@mobilyte.com', 'Sitter Guide', 0, '0000-00-00 00:00:00'),
 (3, 'The Account Activated', 'account_activated', 'Sitter Guider- Account Activated', '{full_name}', '<p><span style="font-family: Arial,Helvetica,sans-serif;">&nbsp;</span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #A6CE45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong>Sitter Guide- Account Activated</strong></span></span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hello {full_name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Your account has been activated successfully. Thanks for being a member of Sitter Guide.</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class="system_contmail" colspan="2">If you any query please let us know straight away at:<a href="mailto:info@sitterguide.com"> info@sitterguide.com</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<hr />\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
-(4, 'Admin Change Password spanish', 'admin_change_password', 'Sitter Guide - Administrator Change Password', '{name},{password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Change Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>You have changed your password successfully. You new password is {password}.</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\r\n<p style="font-weight: bold;">Team Sitter Guide</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '2016-04-13 07:48:58'),
+(4, 'Admin Change Password spanish', 'admin_change_password', 'Sitter Guide - Administrator Change Password', '{name},{password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Change Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {Vineet},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>You have changed your password successfully. You new password is {ABS123456}.</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\r\n<p style="font-weight: bold;">Team Sitter Guide</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
 (5, 'Forgot Password', 'forgot_password', 'Sitter Guide - Password reset request', '{fname},{email},{password},{link}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\n<tbody>\n<tr style="height: 36px;" height="36">\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Forgot Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong> </strong></span><br /></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top">\n<p>&nbsp;</p>\n</td>\n</tr>\n<tr>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\n<tbody>\n<tr>\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\n</tr>\n<tr>\n<td valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">Hi {fullname},</td>\n</tr>\n<tr>\n<td style="height: 25px;" valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">\n<p>You have requested to reset your password for: {email} on Sitter Guide.</p>\n<p>Please visit the following link to reset your password: {link}</p>\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span></td>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\n<tbody>\n<tr>\n<td style="width: 500px; height: 20px;" width="500" valign="top">\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\n<p style="font-weight: bold;">Team Sitter Guide</p>\n</td>\n</tr>\n<tr>\n<td>\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span> </span></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n</tbody>\n</table>\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
 (31, 'Reference Email', 'reference_code', 'Sitter Guide-Reference Email', '{fullname},{refcode},{link}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\n<tbody>\n<tr style="height: 36px;" height="36">\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Sign Up With Facebook</strong></span></span><span style="color: #ffffff; font-size: small;"><strong> </strong></span><br /></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top">\n<p>&nbsp;</p>\n</td>\n</tr>\n<tr>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\n<tbody>\n<tr>\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\n</tr>\n<tr>\n<td valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">Hi {fullname},</td>\n</tr>\n<tr>\n<td style="height: 25px;" valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">\n<p>Your reference code:{refcode}.</p>\n<p>{link}</p>\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span></td>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\n<tbody>\n<tr>\n<td style="width: 500px; height: 20px;" width="500" valign="top">\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\n<p style="font-weight: bold;">Team Sitter Guide</p>\n</td>\n</tr>\n<tr>\n<td>\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span> </span></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n</tbody>\n</table>\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
 (6, 'French', 'contact_us', 'Sitter Guide - Contact Us', '{fname},{reason},{message}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #33628a;" width="30" valign="middle"><span style="background-color: #33628a;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #33628a;" width="500" valign="middle"><span style="background-color: #33628a;"><span style="color: white; font-size: small;"><strong>&nbsp;Sitter Guide -Contact us</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #33628a;" width="30" valign="middle"><span style="background-color: #33628a;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/razz_nation/app/webroot/img/uploads/logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {fname},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Thank you for contacting us. We will be in touch as soon as possible..</p>\r\n<p>&nbsp;</p>\r\n<p>Inquiry : {message}</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@razznation.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong>&nbsp;</strong></p>\r\n<p style="font-weight: bold;">Team Stter Guide</p>\r\n<p style="font-weight: bold;">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
@@ -658,11 +654,11 @@ INSERT INTO `how_works` (`id`, `category`, `image`, `title`, `description`, `sta
 (10, 'why_choose_us', 'qafy8R4N99E4Zaw.jpeg', 'Great for your pet', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 1, '2016-03-10 07:44:14', '0000-00-00 00:00:00'),
 (12, 'how_it_works', 'ei3OdouJdFeECG0.png', 'trusted and Caringd ', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.', 1, '2016-03-10 09:18:23', '0000-00-00 00:00:00'),
 (13, 'how_it_works', 'uwCIwXY0ywPbDsr.png', 'Find trusted and Caring', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.', 1, '2016-03-10 09:18:53', '0000-00-00 00:00:00'),
-(14, 'how_it_works', '75PkP3vsqJlbA8Z.png', 'Find trusted and Caring', 'My little Labra', 0, '2016-03-10 09:19:17', '2016-04-15 11:50:47'),
+(14, 'how_it_works', '75PkP3vsqJlbA8Z.png', 'Find trusted and Caring', 'My little Labra', 1, '2016-03-10 09:19:17', '2016-04-12 09:29:44'),
 (15, 'why_choose_us', '6LzNTKFGXibfutN.jpeg', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 0, '2016-03-10 09:30:25', '2016-04-12 09:30:04'),
-(16, 'why_choose_us', 'fcWF3QGSfUVHsBj.png', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 0, '2016-03-10 09:31:01', '2016-04-15 11:50:53'),
+(16, 'why_choose_us', 'fcWF3QGSfUVHsBj.png', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 1, '2016-03-10 09:31:01', '0000-00-00 00:00:00'),
 (22, 'news_updates', 'foZzgxsRU1d1IUh.png', 'Local Sitter', 'Trusted sitters will treat your pet like family', 1, '2016-03-11 12:24:21', '0000-00-00 00:00:00'),
-(23, 'news_updates', 'Wjfd2Hk4azZjS90.jpeg', 'Insurance Included', 'Trusted sitters.', 0, '2016-03-11 12:31:33', '2016-04-15 11:50:58'),
+(23, 'news_updates', 'Wjfd2Hk4azZjS90.jpeg', 'Insurance Included', 'Trusted sitters.', 0, '2016-03-11 12:31:33', '2016-04-12 09:30:10'),
 (24, 'news_updates', '9xTIeKV98dVSdmS.jpg', 'Peace  of mind', 'Trusted Sitter will treat your pet like family member.', 0, '2016-03-11 12:32:11', '0000-00-00 00:00:00'),
 (26, 'why_choose_us', 'o4a2o6wPDt1nHGA.jpg', 'xcsdfsdf', 'sdfsdfdsfdsfds', 0, '2016-03-30 20:19:25', '0000-00-00 00:00:00'),
 (31, 'how_it_works', 'X3uCXJ7FxzxvbYd.png', 'Pet dogs', 'sion. They allow you to make individual choices about what you want to watch. And when and where you want to watch it. With the new Apple TV and its powerful new tvOS, developers are creating experiences that will change what you expect from your big screen, making your TV feel as personal as your iPhone or iPad.', 0, '2016-04-07 09:32:20', '2016-04-12 09:29:41');
@@ -773,11 +769,11 @@ CREATE TABLE IF NOT EXISTS `i18n` (
   `model` varchar(255) NOT NULL,
   `foreign_key` int(10) NOT NULL,
   `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
+  `content` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=998 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=964 ;
 
 --
 -- Dumping data for table `i18n`
@@ -785,504 +781,969 @@ CREATE TABLE IF NOT EXISTS `i18n` (
 
 INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
 (1, 'de_DE', 'StaticStrings', 6, 'page_name', 'Admin ge'),
+(2, 'de_DE', 'StaticStrings', 6, 'constant_slug', 'Partners ge'),
 (3, 'de_DE', 'StaticStrings', 6, 'value', 'Partners'),
+(4, 'fr_FR', 'StaticStrings', 7, 'constant_slug', 'Subscriber'),
 (5, 'fr_FR', 'StaticStrings', 7, 'value', 'Abonné'),
+(6, 'de_DE', 'StaticStrings', 7, 'constant_slug', 'Subscriber'),
 (7, 'de_DE', 'StaticStrings', 7, 'value', 'Teilnehmer'),
-(9, 'hu_HU', 'StaticStrings', 7, 'value', 'Az előfizető'),
+(8, 'hu_HU', 'StaticStrings', 7, 'constant_slug', 'Subscriber'),
+(9, 'hu_HU', 'StaticStrings', 7, 'value', 'El?fizet?'),
+(10, 'de_DE', 'StaticStrings', 8, 'constant_slug', 'Page Name'),
 (11, 'de_DE', 'StaticStrings', 8, 'value', 'Seitenname'),
+(12, 'fr_FR', 'StaticStrings', 9, 'constant_slug', 'Sitter Guide developed by Beta-soft systems.'),
 (13, 'fr_FR', 'StaticStrings', 9, 'value', 'Guide Sitter développé par les systèmes de bêta-soft.'),
+(14, 'fr_FR', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (15, 'fr_FR', 'StaticStrings', 10, 'value', 'Bienvenue'),
+(16, 'hu_HU', 'StaticStrings', 11, 'constant_slug', 'Administrator'),
 (17, 'hu_HU', 'StaticStrings', 11, 'value', 'Adminisztrátor'),
+(18, 'fr_FR', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (19, 'fr_FR', 'StaticStrings', 12, 'value', 'URL de la page'),
+(20, 'hu_HU', 'StaticStrings', 13, 'constant_slug', 'Sitter Guide '),
 (21, 'hu_HU', 'StaticStrings', 13, 'value', 'Guide sitter\r\n'),
+(22, 'fr_FR', 'StaticStrings', 13, 'constant_slug', 'Sitter Guide '),
 (23, 'fr_FR', 'StaticStrings', 13, 'value', '\r\nGuide Sitter'),
+(24, 'it_IT', 'StaticStrings', 13, 'constant_slug', 'Sitter Guide '),
 (25, 'it_IT', 'StaticStrings', 13, 'value', 'Ghid pentru copii\r\n'),
+(26, 'fr_FR', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (27, 'fr_FR', 'StaticStrings', 14, 'value', '\r\nBlogs Liste\r\n'),
+(28, 'de_DE', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (29, 'de_DE', 'StaticStrings', 14, 'value', 'blogs Listing'),
+(30, 'ro_RO', 'StaticStrings', 13, 'constant_slug', 'Sitter Guide '),
 (31, 'ro_RO', 'StaticStrings', 13, 'value', 'Guía niño'),
+(32, 'hu_HU', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (33, 'hu_HU', 'StaticStrings', 14, 'value', 'Blogok Listing'),
+(34, 'it_IT', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (35, 'it_IT', 'StaticStrings', 14, 'value', '\r\nBlog Listing\r\n'),
+(36, 'ru_RU', 'StaticStrings', 13, 'constant_slug', 'Sitter Guide '),
 (37, 'ru_RU', 'StaticStrings', 13, 'value', '??????????? ?? ????? ?? ??????'),
+(38, 'ro_RO', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (39, 'ro_RO', 'StaticStrings', 14, 'value', 'Blog-uri Listarea\r\n'),
+(40, 'ru_RU', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (41, 'ru_RU', 'StaticStrings', 14, 'value', '????? ??????'),
+(42, 'es_ES', 'StaticStrings', 14, 'constant_slug', 'Blogs Listing'),
 (43, 'es_ES', 'StaticStrings', 14, 'value', 'Listado de blogs'),
+(44, 'de_DE', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (45, 'de_DE', 'StaticStrings', 12, 'value', 'Seiten-URL'),
+(46, 'hu_HU', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (47, 'hu_HU', 'StaticStrings', 12, 'value', 'oldal URL'),
+(48, 'it_IT', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (49, 'it_IT', 'StaticStrings', 12, 'value', 'URL della pagina'),
+(50, 'ro_RO', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (51, 'ro_RO', 'StaticStrings', 12, 'value', 'URL-ul paginii'),
+(52, 'ru_RU', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (53, 'ru_RU', 'StaticStrings', 12, 'value', 'URL ????????'),
+(54, 'es_ES', 'StaticStrings', 12, 'constant_slug', 'Page URL'),
 (55, 'es_ES', 'StaticStrings', 12, 'value', 'URL de la página'),
+(56, 'fr_FR', 'StaticStrings', 11, 'constant_slug', 'Administrator'),
 (57, 'fr_FR', 'StaticStrings', 11, 'value', 'par Administrator'),
+(58, 'de_DE', 'StaticStrings', 11, 'constant_slug', 'Administrator'),
 (59, 'de_DE', 'StaticStrings', 11, 'value', 'von Administrator'),
+(60, 'it_IT', 'StaticStrings', 11, 'constant_slug', 'Administrator'),
 (61, 'it_IT', 'StaticStrings', 11, 'value', 'da Administrator'),
+(62, 'ru_RU', 'StaticStrings', 11, 'constant_slug', 'Administrator'),
 (63, 'ru_RU', 'StaticStrings', 11, 'value', '???????????????'),
+(64, 'es_ES', 'StaticStrings', 11, 'constant_slug', 'Administrator'),
 (65, 'es_ES', 'StaticStrings', 11, 'value', 'por Administrator'),
+(66, 'de_DE', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (67, 'de_DE', 'StaticStrings', 10, 'value', 'herzlich willkommen'),
+(68, 'hu_HU', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (69, 'hu_HU', 'StaticStrings', 10, 'value', 'Üdvözöljük'),
+(70, 'it_IT', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (71, 'it_IT', 'StaticStrings', 10, 'value', 'benvenuto'),
+(72, 'ro_RO', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (73, 'ro_RO', 'StaticStrings', 10, 'value', 'Bine ati venit'),
+(74, 'ru_RU', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (75, 'ru_RU', 'StaticStrings', 10, 'value', '????? ?????????'),
+(76, 'es_ES', 'StaticStrings', 10, 'constant_slug', 'Welcome'),
 (77, 'es_ES', 'StaticStrings', 10, 'value', 'Bienvenido'),
+(78, 'fr_FR', 'StaticStrings', 15, 'constant_slug', ' Users Listing'),
 (79, 'fr_FR', 'StaticStrings', 15, 'value', '\r\nutilisateurs Liste\r\n'),
+(80, 'fr_FR', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (81, 'fr_FR', 'StaticStrings', 16, 'value', '\r\nListe des catégories\r\n'),
+(82, 'fr_FR', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (83, 'fr_FR', 'StaticStrings', 17, 'value', 'Gérer les pages CMS\r\n'),
+(84, 'de_DE', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (85, 'de_DE', 'StaticStrings', 16, 'value', 'Kategorie Eintrag\r\n'),
+(86, 'fr_FR', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (87, 'fr_FR', 'StaticStrings', 18, 'value', 'Comment Fonctionne Listing'),
+(88, 'de_DE', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (89, 'de_DE', 'StaticStrings', 18, 'value', 'Wie funktioniert Listing'),
+(90, 'hu_HU', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (91, 'hu_HU', 'StaticStrings', 16, 'value', 'Kategória lista\r\n'),
+(92, 'hu_HU', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (93, 'hu_HU', 'StaticStrings', 18, 'value', 'Hogyan m?ködik Listing'),
+(94, 'it_IT', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (95, 'it_IT', 'StaticStrings', 16, 'value', '\r\nElenco categorie\r\n'),
+(96, 'de_DE', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (97, 'de_DE', 'StaticStrings', 17, 'value', 'Verwalten CMS Seiten\r\n'),
+(98, 'it_IT', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (99, 'it_IT', 'StaticStrings', 18, 'value', 'Come funziona elenco'),
+(100, 'ro_RO', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (101, 'ro_RO', 'StaticStrings', 16, 'value', '\r\ncategoria Listarea\r\n'),
+(102, 'ro_RO', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (103, 'ro_RO', 'StaticStrings', 18, 'value', 'Modul de functionare Listarea'),
+(104, 'ru_RU', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (105, 'ru_RU', 'StaticStrings', 16, 'value', '????????? ???????\r\n'),
+(106, 'es_ES', 'StaticStrings', 16, 'constant_slug', ' Category Listing'),
 (107, 'es_ES', 'StaticStrings', 16, 'value', 'Lista de categorías\r\n'),
+(108, 'hu_HU', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (109, 'hu_HU', 'StaticStrings', 17, 'value', 'Kezelése CMS oldalak\r\n'),
+(110, 'ru_RU', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (111, 'ru_RU', 'StaticStrings', 18, 'value', '??? ???????? ???????'),
+(112, 'it_IT', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (113, 'it_IT', 'StaticStrings', 17, 'value', 'Gestire Pagine CMS\r\n'),
+(114, 'es_ES', 'StaticStrings', 18, 'constant_slug', 'How Works Listing'),
 (115, 'es_ES', 'StaticStrings', 18, 'value', 'Como Funciona de venta'),
+(116, 'fr_FR', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (117, 'fr_FR', 'StaticStrings', 19, 'value', '\r\nRechercher toutes les colonnes'),
+(118, 'ro_RO', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (119, 'ro_RO', 'StaticStrings', 17, 'value', 'Gestiona?i pagini CMS'),
+(120, 'de_DE', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (121, 'de_DE', 'StaticStrings', 19, 'value', 'Suche nach allen Spalten'),
+(122, 'ru_RU', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (123, 'ru_RU', 'StaticStrings', 17, 'value', '\r\n?????????? CMS ????????'),
+(124, 'hu_HU', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (125, 'hu_HU', 'StaticStrings', 19, 'value', 'Keresés az összes oszlop'),
+(126, 'es_ES', 'StaticStrings', 17, 'constant_slug', 'Manage CMS Pages'),
 (127, 'es_ES', 'StaticStrings', 17, 'value', 'Manejo de CMS Páginas\r\n'),
+(128, 'de_DE', 'StaticStrings', 20, 'constant_slug', 'Show'),
 (129, 'de_DE', 'StaticStrings', 20, 'value', 'Show'),
+(130, 'it_IT', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (131, 'it_IT', 'StaticStrings', 19, 'value', '\r\nCerca tutte le colonne'),
+(132, 'ro_RO', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (133, 'ro_RO', 'StaticStrings', 19, 'value', 'C?utare toate coloanele'),
+(134, 'hu_HU', 'StaticStrings', 20, 'constant_slug', 'Show'),
 (135, 'hu_HU', 'StaticStrings', 20, 'value', 'El?adás'),
+(136, 'ru_RU', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (137, 'ru_RU', 'StaticStrings', 19, 'value', '?????? ??? ???????'),
+(138, 'es_ES', 'StaticStrings', 19, 'constant_slug', 'Search all columns'),
 (139, 'es_ES', 'StaticStrings', 19, 'value', 'Buscar todas las columnas'),
+(140, 'fr_FR', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (141, 'fr_FR', 'StaticStrings', 21, 'value', 'Gestion de contenu'),
+(142, 'de_DE', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (143, 'de_DE', 'StaticStrings', 21, 'value', 'Content Management'),
+(144, 'hu_HU', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (145, 'hu_HU', 'StaticStrings', 21, 'value', 'Content Management'),
+(146, 'it_IT', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (147, 'it_IT', 'StaticStrings', 21, 'value', 'Gestione dei contenuti'),
+(148, 'ro_RO', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (149, 'ro_RO', 'StaticStrings', 21, 'value', 'Management de continut'),
+(150, 'fr_FR', 'StaticStrings', 22, 'constant_slug', 'entries'),
 (151, 'fr_FR', 'StaticStrings', 22, 'value', 'entrées'),
+(152, 'ru_RU', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (153, 'ru_RU', 'StaticStrings', 21, 'value', '?????????? ???????????'),
+(154, 'de_DE', 'StaticStrings', 22, 'constant_slug', 'entries'),
 (155, 'de_DE', 'StaticStrings', 22, 'value', 'Einträge'),
+(156, 'es_ES', 'StaticStrings', 21, 'constant_slug', 'Content Management'),
 (157, 'es_ES', 'StaticStrings', 21, 'value', 'Gestión de contenido'),
+(158, 'hu_HU', 'StaticStrings', 22, 'constant_slug', 'entries'),
 (159, 'hu_HU', 'StaticStrings', 22, 'value', '\r\nbejegyzés'),
+(160, 'fr_FR', 'StaticStrings', 23, 'constant_slug', 'Dashboard'),
 (161, 'fr_FR', 'StaticStrings', 23, 'value', '\r\nTableau de bord'),
+(162, 'it_IT', 'StaticStrings', 22, 'constant_slug', 'entries'),
 (163, 'it_IT', 'StaticStrings', 22, 'value', '\r\ninserimenti'),
+(164, 'ro_RO', 'StaticStrings', 22, 'constant_slug', 'entries'),
 (165, 'ro_RO', 'StaticStrings', 22, 'value', 'intr?rile'),
+(166, 'de_DE', 'StaticStrings', 23, 'constant_slug', 'Dashboard'),
 (167, 'de_DE', 'StaticStrings', 23, 'value', '\r\nInstrumententafel'),
+(168, 'ru_RU', 'StaticStrings', 24, 'constant_slug', 'entries'),
 (169, 'ru_RU', 'StaticStrings', 24, 'value', '??????'),
+(170, 'fr_FR', 'StaticStrings', 25, 'constant_slug', 'Show'),
 (171, 'fr_FR', 'StaticStrings', 25, 'value', 'Montrer'),
+(172, 'es_ES', 'StaticStrings', 24, 'constant_slug', 'entries'),
 (173, 'es_ES', 'StaticStrings', 24, 'value', 'entradas'),
+(174, 'hu_HU', 'StaticStrings', 25, 'constant_slug', 'Show'),
 (175, 'hu_HU', 'StaticStrings', 25, 'value', 'Eloadás'),
-(177, 'hu_HU', 'StaticStrings', 23, 'value', 'Műszerfal'),
+(176, 'hu_HU', 'StaticStrings', 23, 'constant_slug', 'Dashboard'),
+(177, 'hu_HU', 'StaticStrings', 23, 'value', '\r\nM?szerfal'),
+(178, 'it_IT', 'StaticStrings', 23, 'constant_slug', 'Dashboard'),
 (179, 'it_IT', 'StaticStrings', 23, 'value', 'Cruscotto'),
+(180, 'ro_RO', 'StaticStrings', 23, 'constant_slug', 'Dashboard'),
 (181, 'ro_RO', 'StaticStrings', 23, 'value', 'Bord'),
+(182, 'ru_RU', 'StaticStrings', 23, 'constant_slug', 'Dashboard'),
 (183, 'ru_RU', 'StaticStrings', 23, 'value', '?????? ????????'),
+(184, 'de_DE', 'StaticStrings', 26, 'constant_slug', 'page name'),
 (185, 'de_DE', 'StaticStrings', 26, 'value', 'Seitenname'),
+(186, 'hu_HU', 'StaticStrings', 26, 'constant_slug', 'page name'),
 (187, 'hu_HU', 'StaticStrings', 26, 'value', 'oldal neve'),
+(188, 'fr_FR', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (189, 'fr_FR', 'StaticStrings', 28, 'value', 'Gérer les catégories'),
+(190, 'de_DE', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (191, 'de_DE', 'StaticStrings', 28, 'value', 'Kategorien verwalten'),
+(192, 'fr_FR', 'StaticStrings', 29, 'constant_slug', 'Blogs'),
 (193, 'fr_FR', 'StaticStrings', 29, 'value', 'Blogs'),
+(194, 'hu_HU', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (195, 'hu_HU', 'StaticStrings', 28, 'value', 'Kategóriák kezelése'),
+(196, 'it_IT', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (197, 'it_IT', 'StaticStrings', 28, 'value', '\r\nGestione categorie'),
+(198, 'ro_RO', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (199, 'ro_RO', 'StaticStrings', 28, 'value', '\r\nGestione categorie'),
+(200, 'ru_RU', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (201, 'ru_RU', 'StaticStrings', 28, 'value', '?????????? ???????????'),
+(202, 'es_ES', 'StaticStrings', 28, 'constant_slug', 'Manage Categories'),
 (203, 'es_ES', 'StaticStrings', 28, 'value', 'Administrar categorías'),
+(204, 'hu_HU', 'StaticStrings', 29, 'constant_slug', 'Blogs'),
 (205, 'hu_HU', 'StaticStrings', 29, 'value', 'Blogok'),
+(206, 'fr_FR', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (207, 'fr_FR', 'StaticStrings', 31, 'value', 'Gestion des devises'),
+(208, 'de_DE', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (209, 'de_DE', 'StaticStrings', 31, 'value', 'Währungsmanagement '),
+(210, 'fr_FR', 'StaticStrings', 30, 'constant_slug', 'test ok'),
 (211, 'fr_FR', 'StaticStrings', 30, 'value', 'test 1 val ok'),
+(212, 'hu_HU', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (213, 'hu_HU', 'StaticStrings', 31, 'value', 'valuta kezelése'),
+(214, 'it_IT', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (215, 'it_IT', 'StaticStrings', 31, 'value', 'Gestione di valuta'),
+(216, 'ro_RO', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (217, 'ro_RO', 'StaticStrings', 31, 'value', 'Managementul valutei'),
+(218, 'ru_RU', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (219, 'ru_RU', 'StaticStrings', 31, 'value', '?????????? ???????'),
+(220, 'es_ES', 'StaticStrings', 31, 'constant_slug', 'Currency Management'),
 (221, 'es_ES', 'StaticStrings', 31, 'value', 'Gestión de divisas'),
+(222, 'fr_FR', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (223, 'fr_FR', 'StaticStrings', 33, 'value', 'Les partenaires'),
+(224, 'de_DE', 'StaticStrings', 27, 'constant_slug', 'Manage Promocode'),
 (225, 'de_DE', 'StaticStrings', 27, 'value', 'Verwalten Sie Promo-Code'),
+(226, 'de_DE', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (227, 'de_DE', 'StaticStrings', 33, 'value', 'Partner'),
+(228, 'hu_HU', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (229, 'hu_HU', 'StaticStrings', 33, 'value', '\r\npartnerek'),
+(230, 'hu_HU', 'StaticStrings', 27, 'constant_slug', 'Manage Promocode'),
 (231, 'hu_HU', 'StaticStrings', 27, 'value', 'Kezelés Promo Code'),
+(232, 'it_IT', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (233, 'it_IT', 'StaticStrings', 33, 'value', 'Partner'),
+(234, 'it_IT', 'StaticStrings', 27, 'constant_slug', 'Manage Promocode'),
 (235, 'it_IT', 'StaticStrings', 27, 'value', 'Gestire il codice promozionale'),
+(236, 'fr_FR', 'StaticStrings', 34, 'constant_slug', 'entries'),
 (237, 'fr_FR', 'StaticStrings', 34, 'value', 'entrées'),
+(238, 'ro_RO', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (239, 'ro_RO', 'StaticStrings', 33, 'value', 'parteneri'),
+(240, 'ru_RU', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (241, 'ru_RU', 'StaticStrings', 33, 'value', '????????'),
+(242, 'ro_RO', 'StaticStrings', 27, 'constant_slug', 'Manage Promocode'),
 (243, 'ro_RO', 'StaticStrings', 27, 'value', 'Gestiona?i Cod promo?ional'),
+(244, 'de_DE', 'StaticStrings', 34, 'constant_slug', 'entries'),
 (245, 'de_DE', 'StaticStrings', 34, 'value', 'Einträge'),
+(246, 'ru_RU', 'StaticStrings', 27, 'constant_slug', 'Manage Promocode'),
 (247, 'ru_RU', 'StaticStrings', 27, 'value', '?????????? ?????-???'),
+(248, 'es_ES', 'StaticStrings', 33, 'constant_slug', 'Partners'),
 (249, 'es_ES', 'StaticStrings', 33, 'value', 'Fogonadura'),
+(250, 'hu_HU', 'StaticStrings', 34, 'constant_slug', 'entries'),
 (251, 'hu_HU', 'StaticStrings', 34, 'value', 'bejegyzés'),
+(252, 'es_ES', 'StaticStrings', 27, 'constant_slug', 'Manage Promocode'),
 (253, 'es_ES', 'StaticStrings', 27, 'value', 'Administrar Código de promoción'),
+(254, 'it_IT', 'StaticStrings', 34, 'constant_slug', 'entries'),
 (255, 'it_IT', 'StaticStrings', 34, 'value', 'inserimenti'),
+(256, 'ro_RO', 'StaticStrings', 34, 'constant_slug', 'entries'),
 (257, 'ro_RO', 'StaticStrings', 34, 'value', 'intr?rile'),
+(258, 'fr_FR', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (259, 'fr_FR', 'StaticStrings', 35, 'value', 'gestion curseur'),
+(260, 'fr_FR', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (261, 'fr_FR', 'StaticStrings', 36, 'value', 'Rechercher toutes les colonnes'),
+(262, 'de_DE', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (263, 'de_DE', 'StaticStrings', 35, 'value', 'Slider-Management'),
+(264, 'it_IT', 'StaticStrings', 29, 'constant_slug', 'Blogs'),
 (265, 'it_IT', 'StaticStrings', 29, 'value', 'Blog'),
+(266, 'de_DE', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (267, 'de_DE', 'StaticStrings', 36, 'value', 'Suche nach allen Spalten'),
+(268, 'hu_HU', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (269, 'hu_HU', 'StaticStrings', 35, 'value', 'Slider Management'),
+(270, 'hu_HU', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (271, 'hu_HU', 'StaticStrings', 36, 'value', 'Keresés az összes oszlop'),
+(272, 'ro_RO', 'StaticStrings', 29, 'constant_slug', 'Blogs'),
 (273, 'ro_RO', 'StaticStrings', 29, 'value', '\r\nBlog-uri'),
+(274, 'it_IT', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (275, 'it_IT', 'StaticStrings', 35, 'value', 'Gestione Slider'),
+(276, 'ru_RU', 'StaticStrings', 29, 'constant_slug', 'Blogs'),
 (277, 'ru_RU', 'StaticStrings', 29, 'value', '\r\n?????'),
+(278, 'it_IT', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (279, 'it_IT', 'StaticStrings', 36, 'value', 'Cerca tutte le colonne'),
+(280, 'ro_RO', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (281, 'ro_RO', 'StaticStrings', 35, 'value', 'Managementul glisor'),
+(282, 'es_ES', 'StaticStrings', 29, 'constant_slug', 'Blogs'),
 (283, 'es_ES', 'StaticStrings', 29, 'value', 'blogs'),
+(284, 'ro_RO', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (285, 'ro_RO', 'StaticStrings', 36, 'value', 'C?utare toate coloanele'),
+(286, 'ru_RU', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (287, 'ru_RU', 'StaticStrings', 35, 'value', '?????????? Slider'),
+(288, 'es_ES', 'StaticStrings', 35, 'constant_slug', 'Slider Management'),
 (289, 'es_ES', 'StaticStrings', 35, 'value', 'Gestión deslizador'),
+(290, 'ru_RU', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (291, 'ru_RU', 'StaticStrings', 36, 'value', '?????? ??? ???????'),
+(292, 'es_ES', 'StaticStrings', 36, 'constant_slug', 'Search all columns'),
 (293, 'es_ES', 'StaticStrings', 36, 'value', 'Buscar todas las columnas'),
+(294, 'fr_FR', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (295, 'fr_FR', 'StaticStrings', 37, 'value', '\r\nsouscrit'),
+(296, 'fr_FR', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (297, 'fr_FR', 'StaticStrings', 39, 'value', 'Nouvelles et mises à jour'),
+(298, 'de_DE', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (299, 'de_DE', 'StaticStrings', 37, 'value', '\r\nsouscrit'),
+(300, 'fr_FR', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (301, 'fr_FR', 'StaticStrings', 40, 'value', 'Pourquoi nous choisir'),
+(302, 'fr_FR', 'StaticStrings', 38, 'constant_slug', 'image'),
 (303, 'fr_FR', 'StaticStrings', 38, 'value', 'image'),
+(304, 'de_DE', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (305, 'de_DE', 'StaticStrings', 39, 'value', 'News & Updates'),
+(306, 'hu_HU', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (307, 'hu_HU', 'StaticStrings', 37, 'value', '\r\nAzonosul'),
+(308, 'de_DE', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (309, 'de_DE', 'StaticStrings', 40, 'value', 'Warum Uns Wählen'),
+(310, 'hu_HU', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (311, 'hu_HU', 'StaticStrings', 39, 'value', 'Hírek és frissítések'),
+(312, 'de_DE', 'StaticStrings', 38, 'constant_slug', 'image'),
 (313, 'de_DE', 'StaticStrings', 38, 'value', 'image'),
+(314, 'hu_HU', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (315, 'hu_HU', 'StaticStrings', 40, 'value', '\r\nMiért minket válasszon'),
+(316, 'it_IT', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (317, 'it_IT', 'StaticStrings', 39, 'value', 'Notizie e aggiornamenti'),
+(318, 'it_IT', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (319, 'it_IT', 'StaticStrings', 37, 'value', '\r\nsottoscrive'),
+(320, 'it_IT', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (321, 'it_IT', 'StaticStrings', 40, 'value', '\r\nperché sceglierci'),
+(322, 'hu_HU', 'StaticStrings', 38, 'constant_slug', 'Image'),
 (323, 'hu_HU', 'StaticStrings', 38, 'value', 'kép'),
+(324, 'ro_RO', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (325, 'ro_RO', 'StaticStrings', 37, 'value', 'aboneaz?'),
+(326, 'ro_RO', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (327, 'ro_RO', 'StaticStrings', 40, 'value', 'De ce noi'),
+(328, 'ro_RO', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (329, 'ro_RO', 'StaticStrings', 39, 'value', 'Nout??i ?i actualiz?ri'),
+(330, 'ru_RU', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (331, 'ru_RU', 'StaticStrings', 40, 'value', '?????? ??????? ???'),
+(332, 'ru_RU', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (333, 'ru_RU', 'StaticStrings', 37, 'value', '?????????????'),
+(334, 'it_IT', 'StaticStrings', 38, 'constant_slug', 'Image'),
 (335, 'it_IT', 'StaticStrings', 38, 'value', 'Immagine'),
+(336, 'ru_RU', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (337, 'ru_RU', 'StaticStrings', 39, 'value', '??????? ? ??????????'),
+(338, 'es_ES', 'StaticStrings', 40, 'constant_slug', 'Why Choose Us'),
 (339, 'es_ES', 'StaticStrings', 40, 'value', 'Por qué elegirnos'),
+(340, 'es_ES', 'StaticStrings', 37, 'constant_slug', 'Subscribes'),
 (341, 'es_ES', 'StaticStrings', 37, 'value', '\r\nSe suscribe'),
+(342, 'ro_RO', 'StaticStrings', 38, 'constant_slug', 'Image'),
 (343, 'ro_RO', 'StaticStrings', 38, 'value', 'imagine'),
+(344, 'es_ES', 'StaticStrings', 39, 'constant_slug', 'News & Updates'),
 (345, 'es_ES', 'StaticStrings', 39, 'value', 'Noticias y actualizaciones'),
+(346, 'es_ES', 'StaticStrings', 38, 'constant_slug', 'Image'),
 (347, 'es_ES', 'StaticStrings', 38, 'value', 'imagen'),
+(348, 'fr_FR', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (349, 'fr_FR', 'StaticStrings', 41, 'value', '\r\nCordes statiques'),
+(350, 'de_DE', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (351, 'de_DE', 'StaticStrings', 41, 'value', '\r\nStatische Strings'),
+(352, 'fr_FR', 'StaticStrings', 42, 'constant_slug', 'Choose Us Listing'),
 (353, 'fr_FR', 'StaticStrings', 42, 'value', 'Choisissez-nous Inscription'),
+(354, 'hu_HU', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (355, 'hu_HU', 'StaticStrings', 41, 'value', 'statikus Strings'),
+(356, 'de_DE', 'StaticStrings', 42, 'constant_slug', 'Choose Us Listing'),
 (357, 'de_DE', 'StaticStrings', 42, 'value', 'Wählen Sie uns Listing'),
+(358, 'it_IT', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (359, 'it_IT', 'StaticStrings', 41, 'value', '\r\nstringhe statiche'),
+(360, 'ro_RO', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (361, 'ro_RO', 'StaticStrings', 41, 'value', 'Corzi statice'),
+(362, 'ru_RU', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (363, 'ru_RU', 'StaticStrings', 41, 'value', '??????????? ??????'),
+(364, 'es_ES', 'StaticStrings', 41, 'constant_slug', 'Static Strings'),
 (365, 'es_ES', 'StaticStrings', 41, 'value', '\r\nCuerdas estáticas'),
+(366, 'fr_FR', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
 (367, 'fr_FR', 'StaticStrings', 43, 'value', 'gestion CMS'),
+(368, 'de_DE', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
 (369, 'de_DE', 'StaticStrings', 43, 'value', 'CMS-Management'),
+(370, 'fr_FR', 'StaticStrings', 44, 'constant_slug', 'Users Listing'),
 (371, 'fr_FR', 'StaticStrings', 44, 'value', 'Choisissez-nous Inscription'),
-(373, 'hu_HU', 'StaticStrings', 43, 'value', 'A CMS-kezelés'),
+(372, 'hu_HU', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
+(373, 'hu_HU', 'StaticStrings', 43, 'value', 'CMS Management'),
+(374, 'it_IT', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
 (375, 'it_IT', 'StaticStrings', 43, 'value', 'Gestione CMS'),
+(376, 'de_DE', 'StaticStrings', 44, 'constant_slug', 'Users Listing'),
 (377, 'de_DE', 'StaticStrings', 44, 'value', 'Benutzer Listing\r\n'),
+(378, 'fr_FR', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (379, 'fr_FR', 'StaticStrings', 45, 'value', 'Prénom'),
+(380, 'ro_RO', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
 (381, 'ro_RO', 'StaticStrings', 43, 'value', 'Managementul CMS'),
+(382, 'hu_HU', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (383, 'hu_HU', 'StaticStrings', 45, 'value', 'felhasználók listázása'),
+(384, 'ru_RU', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
 (385, 'ru_RU', 'StaticStrings', 43, 'value', '\r\n?????????? CMS'),
+(386, 'it_IT', 'StaticStrings', 44, 'constant_slug', 'Users Listing'),
 (387, 'it_IT', 'StaticStrings', 44, 'value', 'Gli utenti Listing\r\n'),
+(388, 'de_DE', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (389, 'de_DE', 'StaticStrings', 45, 'value', 'Vorname'),
+(390, 'es_ES', 'StaticStrings', 43, 'constant_slug', 'CMS Management'),
 (391, 'es_ES', 'StaticStrings', 43, 'value', '\r\nGestión de CMS'),
+(392, 'ro_RO', 'StaticStrings', 44, 'constant_slug', 'Users Listing'),
 (393, 'ro_RO', 'StaticStrings', 44, 'value', 'Listarea utilizatori'),
+(394, 'es_ES', 'StaticStrings', 44, 'constant_slug', 'Users Listing'),
 (395, 'es_ES', 'StaticStrings', 44, 'value', 'Listado de usuarios'),
+(396, 'it_IT', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (397, 'it_IT', 'StaticStrings', 45, 'value', 'Nome'),
+(398, 'ro_RO', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (399, 'ro_RO', 'StaticStrings', 45, 'value', 'Primul nume'),
+(400, 'ru_RU', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (401, 'ru_RU', 'StaticStrings', 45, 'value', '???'),
+(402, 'es_ES', 'StaticStrings', 45, 'constant_slug', 'First Name'),
 (403, 'es_ES', 'StaticStrings', 45, 'value', 'Nombre de pila'),
+(404, 'fr_FR', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (405, 'fr_FR', 'StaticStrings', 46, 'value', '\r\ndate d''ajout'),
+(406, 'fr_FR', 'StaticStrings', 47, 'constant_slug', 'Phone'),
 (407, 'fr_FR', 'StaticStrings', 47, 'value', 'Téléphone'),
+(408, 'de_DE', 'StaticStrings', 47, 'constant_slug', 'Phone'),
 (409, 'de_DE', 'StaticStrings', 47, 'value', 'Telefon'),
+(410, 'de_DE', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (411, 'de_DE', 'StaticStrings', 46, 'value', 'Datum hinzugefügt'),
+(412, 'fr_FR', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (413, 'fr_FR', 'StaticStrings', 48, 'value', '\r\nEmail'),
+(414, 'hu_HU', 'StaticStrings', 47, 'constant_slug', 'Phone'),
 (415, 'hu_HU', 'StaticStrings', 47, 'value', 'Telefon'),
+(416, 'hu_HU', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (417, 'hu_HU', 'StaticStrings', 46, 'value', 'hozzáadott dátum'),
+(418, 'fr_FR', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (419, 'fr_FR', 'StaticStrings', 49, 'value', 'Nom de famille'),
+(420, 'it_IT', 'StaticStrings', 47, 'constant_slug', 'Phone'),
 (421, 'it_IT', 'StaticStrings', 47, 'value', 'Telefono'),
+(422, 'de_DE', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (423, 'de_DE', 'StaticStrings', 49, 'value', 'Familienname, Nachname'),
+(424, 'it_IT', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (425, 'it_IT', 'StaticStrings', 46, 'value', 'Data di inserimento'),
+(426, 'de_DE', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (427, 'de_DE', 'StaticStrings', 48, 'value', '\r\nEmail'),
+(428, 'ro_RO', 'StaticStrings', 47, 'constant_slug', 'Phone'),
 (429, 'ro_RO', 'StaticStrings', 47, 'value', 'Teléfono'),
+(430, 'hu_HU', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (431, 'hu_HU', 'StaticStrings', 49, 'value', 'Vezetéknév'),
+(432, 'ro_RO', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (433, 'ro_RO', 'StaticStrings', 46, 'value', '\r\nData ad?ug?rii'),
+(434, 'hu_HU', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (435, 'hu_HU', 'StaticStrings', 48, 'value', 'Email'),
+(436, 'it_IT', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (437, 'it_IT', 'StaticStrings', 49, 'value', 'Cognome'),
+(438, 'ru_RU', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (439, 'ru_RU', 'StaticStrings', 46, 'value', '\r\n????????? ????'),
+(440, 'it_IT', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (441, 'it_IT', 'StaticStrings', 48, 'value', 'E-mail'),
+(442, 'ro_RO', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (443, 'ro_RO', 'StaticStrings', 49, 'value', 'Numele de familie'),
+(444, 'es_ES', 'StaticStrings', 46, 'constant_slug', 'Added Date'),
 (445, 'es_ES', 'StaticStrings', 46, 'value', 'Fecha de adición'),
+(446, 'ro_RO', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (447, 'ro_RO', 'StaticStrings', 48, 'value', 'E-mail'),
+(448, 'ru_RU', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (449, 'ru_RU', 'StaticStrings', 49, 'value', '???????'),
+(450, 'ru_RU', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (451, 'ru_RU', 'StaticStrings', 48, 'value', '??. ?????'),
+(452, 'es_ES', 'StaticStrings', 49, 'constant_slug', 'Last Name'),
 (453, 'es_ES', 'StaticStrings', 49, 'value', 'Apellido'),
+(454, 'es_ES', 'StaticStrings', 48, 'constant_slug', 'Email'),
 (455, 'es_ES', 'StaticStrings', 48, 'value', '\r\nEmail'),
+(456, 'fr_FR', 'StaticStrings', 50, 'constant_slug', 'Status'),
 (457, 'fr_FR', 'StaticStrings', 50, 'value', 'statut'),
+(458, 'hu_HU', 'StaticStrings', 50, 'constant_slug', 'Status'),
 (459, 'hu_HU', 'StaticStrings', 50, 'value', 'Állapot'),
+(460, 'it_IT', 'StaticStrings', 50, 'constant_slug', 'Status'),
 (461, 'it_IT', 'StaticStrings', 50, 'value', 'Stato'),
+(462, 'ro_RO', 'StaticStrings', 50, 'constant_slug', 'Status'),
 (463, 'ro_RO', 'StaticStrings', 50, 'value', 'stare'),
+(464, 'es_ES', 'StaticStrings', 50, 'constant_slug', 'Status'),
 (465, 'es_ES', 'StaticStrings', 50, 'value', 'Estado'),
+(466, 'fr_FR', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (467, 'fr_FR', 'StaticStrings', 52, 'value', 'Nom de la page'),
+(468, 'de_DE', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (469, 'de_DE', 'StaticStrings', 52, 'value', 'Seitenname'),
+(470, 'hu_HU', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (471, 'hu_HU', 'StaticStrings', 52, 'value', 'oldal neve'),
+(472, 'it_IT', 'StaticStrings', 53, 'constant_slug', 'Page Content'),
 (473, 'it_IT', 'StaticStrings', 53, 'value', 'contenuto della pagina'),
+(474, 'fr_FR', 'StaticStrings', 53, 'constant_slug', 'Page Content'),
 (475, 'fr_FR', 'StaticStrings', 53, 'value', 'contenu de la page'),
+(476, 'ro_RO', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (477, 'ro_RO', 'StaticStrings', 52, 'value', 'numele paginii'),
+(478, 'ru_RU', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (479, 'ru_RU', 'StaticStrings', 52, 'value', '???????? ????????'),
+(480, 'es_ES', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (481, 'es_ES', 'StaticStrings', 52, 'value', 'Nombre de la página'),
+(482, 'de_DE', 'StaticStrings', 53, 'constant_slug', 'Page Content'),
 (483, 'de_DE', 'StaticStrings', 53, 'value', 'Seiteninhalt'),
+(484, 'hu_HU', 'StaticStrings', 53, 'constant_slug', 'Page Content'),
 (485, 'hu_HU', 'StaticStrings', 53, 'value', 'oldal tartalom'),
+(486, 'fr_FR', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (487, 'fr_FR', 'StaticStrings', 54, 'value', 'Assujettir'),
+(488, 'ro_RO', 'StaticStrings', 53, 'constant_slug', 'Page Content'),
 (489, 'ro_RO', 'StaticStrings', 53, 'value', 'Con?inut pagina'),
+(490, 'de_DE', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (491, 'de_DE', 'StaticStrings', 54, 'value', 'Fach'),
+(492, 'it_IT', 'StaticStrings', 52, 'constant_slug', 'Page name'),
 (493, 'it_IT', 'StaticStrings', 52, 'value', 'nome della pagina'),
+(494, 'fr_FR', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (495, 'fr_FR', 'StaticStrings', 55, 'value', 'Titre'),
+(496, 'hu_HU', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (497, 'hu_HU', 'StaticStrings', 54, 'value', '\r\nTantárgy'),
+(498, 'es_ES', 'StaticStrings', 53, 'constant_slug', 'Page Content'),
 (499, 'es_ES', 'StaticStrings', 53, 'value', 'Contenido de página'),
+(500, 'it_IT', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (501, 'it_IT', 'StaticStrings', 54, 'value', 'Soggetto'),
+(502, 'hu_HU', 'StaticStrings', 56, 'constant_slug', 'Alias'),
 (503, 'hu_HU', 'StaticStrings', 56, 'value', '\r\nÁlnév'),
+(504, 'de_DE', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (505, 'de_DE', 'StaticStrings', 55, 'value', 'Titel'),
+(506, 'ro_RO', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (507, 'ro_RO', 'StaticStrings', 54, 'value', 'Subiect'),
+(508, 'hu_HU', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (509, 'hu_HU', 'StaticStrings', 55, 'value', 'cím'),
+(510, 'fr_FR', 'StaticStrings', 57, 'constant_slug', 'Slug'),
 (511, 'fr_FR', 'StaticStrings', 57, 'value', 'Limace'),
+(512, 'it_IT', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (513, 'it_IT', 'StaticStrings', 55, 'value', 'titolo'),
+(514, 'ru_RU', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (515, 'ru_RU', 'StaticStrings', 54, 'value', '???????'),
+(516, 'ru_RU', 'StaticStrings', 56, 'constant_slug', 'Alias'),
 (517, 'ru_RU', 'StaticStrings', 56, 'value', '\r\n??????'),
+(518, 'ro_RO', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (519, 'ro_RO', 'StaticStrings', 55, 'value', 'titlu'),
+(520, 'de_DE', 'StaticStrings', 57, 'constant_slug', 'Slug'),
 (521, 'de_DE', 'StaticStrings', 57, 'value', 'Schnecke'),
+(522, 'es_ES', 'StaticStrings', 54, 'constant_slug', 'Subject'),
 (523, 'es_ES', 'StaticStrings', 54, 'value', 'Tema'),
+(524, 'es_ES', 'StaticStrings', 56, 'constant_slug', 'Alias'),
 (525, 'es_ES', 'StaticStrings', 56, 'value', 'Alias'),
+(526, 'ru_RU', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (527, 'ru_RU', 'StaticStrings', 55, 'value', '????????'),
+(528, 'hu_HU', 'StaticStrings', 57, 'constant_slug', 'Slug'),
 (529, 'hu_HU', 'StaticStrings', 57, 'value', 'Meztelen csiga\r\n'),
+(530, 'es_ES', 'StaticStrings', 55, 'constant_slug', 'Title'),
 (531, 'es_ES', 'StaticStrings', 55, 'value', 'título'),
+(532, 'it_IT', 'StaticStrings', 57, 'constant_slug', 'Slug'),
 (533, 'it_IT', 'StaticStrings', 57, 'value', 'lumaca'),
+(534, 'ro_RO', 'StaticStrings', 57, 'constant_slug', 'Slug'),
 (535, 'ro_RO', 'StaticStrings', 57, 'value', 'Melc'),
+(536, 'es_ES', 'StaticStrings', 57, 'constant_slug', 'Slug'),
 (537, 'es_ES', 'StaticStrings', 57, 'value', 'Babosa'),
+(538, 'fr_FR', 'StaticStrings', 59, 'constant_slug', 'name'),
 (539, 'fr_FR', 'StaticStrings', 59, 'value', 'name'),
+(540, 'de_DE', 'StaticStrings', 59, 'constant_slug', 'name'),
 (541, 'de_DE', 'StaticStrings', 59, 'value', 'Name'),
+(542, 'hu_HU', 'StaticStrings', 59, 'constant_slug', 'name'),
 (543, 'hu_HU', 'StaticStrings', 59, 'value', 'név'),
+(544, 'it_IT', 'StaticStrings', 59, 'constant_slug', 'name'),
 (545, 'it_IT', 'StaticStrings', 59, 'value', 'Nome'),
+(546, 'ro_RO', 'StaticStrings', 59, 'constant_slug', 'name'),
 (547, 'ro_RO', 'StaticStrings', 59, 'value', 'Nume'),
+(548, 'fr_FR', 'StaticStrings', 61, 'constant_slug', 'Image'),
 (549, 'fr_FR', 'StaticStrings', 61, 'value', 'image'),
+(550, 'fr_FR', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (551, 'fr_FR', 'StaticStrings', 58, 'value', 'Pays'),
+(552, 'ru_RU', 'StaticStrings', 59, 'constant_slug', 'name'),
 (553, 'ru_RU', 'StaticStrings', 59, 'value', '???'),
+(554, 'fr_FR', 'StaticStrings', 60, 'constant_slug', 'Description'),
 (555, 'fr_FR', 'StaticStrings', 60, 'value', 'La description'),
+(556, 'es_ES', 'StaticStrings', 59, 'constant_slug', 'name'),
 (557, 'es_ES', 'StaticStrings', 59, 'value', 'nombre'),
+(558, 'de_DE', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (559, 'de_DE', 'StaticStrings', 58, 'value', 'Land'),
+(560, 'de_DE', 'StaticStrings', 60, 'constant_slug', 'Description'),
 (561, 'de_DE', 'StaticStrings', 60, 'value', 'Beschreibung'),
+(562, 'hu_HU', 'StaticStrings', 61, 'constant_slug', 'Image'),
 (563, 'hu_HU', 'StaticStrings', 61, 'value', '\r\nKép'),
+(564, 'hu_HU', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (565, 'hu_HU', 'StaticStrings', 58, 'value', '\r\nOrszág'),
+(566, 'hu_HU', 'StaticStrings', 60, 'constant_slug', 'Description'),
 (567, 'hu_HU', 'StaticStrings', 60, 'value', 'Leírás'),
+(568, 'it_IT', 'StaticStrings', 61, 'constant_slug', 'Image'),
 (569, 'it_IT', 'StaticStrings', 61, 'value', 'Immagine'),
+(570, 'it_IT', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (571, 'it_IT', 'StaticStrings', 58, 'value', 'Nazione'),
+(572, 'it_IT', 'StaticStrings', 60, 'constant_slug', 'Description'),
 (573, 'it_IT', 'StaticStrings', 60, 'value', 'Descrizione'),
+(574, 'ro_RO', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (575, 'ro_RO', 'StaticStrings', 58, 'value', '?ar?'),
+(576, 'ro_RO', 'StaticStrings', 61, 'constant_slug', 'Image'),
 (577, 'ro_RO', 'StaticStrings', 61, 'value', 'Imagine'),
+(578, 'fr_FR', 'StaticStrings', 62, 'constant_slug', 'status'),
 (579, 'fr_FR', 'StaticStrings', 62, 'value', 'statut'),
+(580, 'ro_RO', 'StaticStrings', 60, 'constant_slug', 'Description'),
 (581, 'ro_RO', 'StaticStrings', 60, 'value', 'Descriere'),
+(582, 'ru_RU', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (583, 'ru_RU', 'StaticStrings', 58, 'value', '??????'),
+(584, 'de_DE', 'StaticStrings', 62, 'constant_slug', 'status'),
 (585, 'de_DE', 'StaticStrings', 62, 'value', 'Status'),
+(586, 'ro_RO', 'StaticStrings', 62, 'constant_slug', 'status'),
 (587, 'ro_RO', 'StaticStrings', 62, 'value', 'stare'),
+(588, 'es_ES', 'StaticStrings', 58, 'constant_slug', 'Country'),
 (589, 'es_ES', 'StaticStrings', 58, 'value', 'País'),
+(590, 'hu_HU', 'StaticStrings', 62, 'constant_slug', 'status'),
 (591, 'hu_HU', 'StaticStrings', 62, 'value', 'állapot'),
+(592, 'it_IT', 'StaticStrings', 62, 'constant_slug', 'status'),
 (593, 'it_IT', 'StaticStrings', 62, 'value', 'stato'),
+(594, 'fr_FR', 'StaticStrings', 63, 'constant_slug', 'Created Date'),
 (595, 'fr_FR', 'StaticStrings', 63, 'value', 'date de création'),
+(596, 'ru_RU', 'StaticStrings', 62, 'constant_slug', 'status'),
 (597, 'ru_RU', 'StaticStrings', 62, 'value', '????????? ???'),
+(598, 'ru_RU', 'StaticStrings', 61, 'constant_slug', 'Image'),
 (599, 'ru_RU', 'StaticStrings', 61, 'value', '\r\n?????'),
+(600, 'es_ES', 'StaticStrings', 62, 'constant_slug', 'status'),
 (601, 'es_ES', 'StaticStrings', 62, 'value', 'estado'),
+(602, 'fr_FR', 'StaticStrings', 64, 'constant_slug', 'Promo Code'),
 (603, 'fr_FR', 'StaticStrings', 64, 'value', 'Code promo'),
+(604, 'de_DE', 'StaticStrings', 64, 'constant_slug', 'Promo Code'),
 (605, 'de_DE', 'StaticStrings', 64, 'value', 'Gutscheincode'),
+(606, 'es_ES', 'StaticStrings', 61, 'constant_slug', 'Image'),
 (607, 'es_ES', 'StaticStrings', 61, 'value', 'Imagen'),
+(608, 'hu_HU', 'StaticStrings', 64, 'constant_slug', 'Promo Code'),
 (609, 'hu_HU', 'StaticStrings', 64, 'value', 'Promóciós kód'),
+(610, 'fr_FR', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (611, 'fr_FR', 'StaticStrings', 65, 'value', 'Comment Fonctionne Listing\r\n'),
+(612, 'it_IT', 'StaticStrings', 64, 'constant_slug', 'Promo Code'),
 (613, 'it_IT', 'StaticStrings', 64, 'value', 'Codice promozionale'),
+(614, 'de_DE', 'StaticStrings', 63, 'constant_slug', 'Created Date'),
 (615, 'de_DE', 'StaticStrings', 63, 'value', 'Datum der Registrierung'),
+(616, 'de_DE', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (617, 'de_DE', 'StaticStrings', 65, 'value', 'Wie funktioniert Listing\r\n'),
+(618, 'ro_RO', 'StaticStrings', 64, 'constant_slug', 'Promo Code'),
 (619, 'ro_RO', 'StaticStrings', 64, 'value', 'Cod promo?ional'),
+(620, 'hu_HU', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (621, 'hu_HU', 'StaticStrings', 65, 'value', 'Hogyan m?ködik Listing\r\n'),
+(622, 'es_ES', 'StaticStrings', 64, 'constant_slug', 'Promo Code'),
 (623, 'es_ES', 'StaticStrings', 64, 'value', 'Código promocional'),
+(624, 'it_IT', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (625, 'it_IT', 'StaticStrings', 65, 'value', 'Come funziona elenco'),
+(626, 'ro_RO', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (627, 'ro_RO', 'StaticStrings', 65, 'value', 'Modul de func?ionare Listarea\r\n'),
+(628, 'ru_RU', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (629, 'ru_RU', 'StaticStrings', 65, 'value', '??? ???????? ???????'),
+(630, 'es_ES', 'StaticStrings', 65, 'constant_slug', 'How Works Listing'),
 (631, 'es_ES', 'StaticStrings', 65, 'value', '¿Cómo Funciona de venta'),
+(632, 'fr_FR', 'StaticStrings', 66, 'constant_slug', 'Coupon Type'),
 (633, 'fr_FR', 'StaticStrings', 66, 'value', 'Type de coupon'),
+(634, 'de_DE', 'StaticStrings', 66, 'constant_slug', 'Coupon Type'),
 (635, 'de_DE', 'StaticStrings', 66, 'value', 'Coupon-Typ'),
+(636, 'fr_FR', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (637, 'fr_FR', 'StaticStrings', 67, 'value', 'Choisissez-nous Inscription'),
+(638, 'hu_HU', 'StaticStrings', 66, 'constant_slug', 'Coupon Type'),
 (639, 'hu_HU', 'StaticStrings', 66, 'value', 'Kupon típusa'),
+(640, 'de_DE', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (641, 'de_DE', 'StaticStrings', 67, 'value', 'Wählen Sie uns Listing'),
+(642, 'hu_HU', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (643, 'hu_HU', 'StaticStrings', 67, 'value', 'Válasszon minket Listing'),
+(644, 'it_IT', 'StaticStrings', 66, 'constant_slug', 'Coupon Type'),
 (645, 'it_IT', 'StaticStrings', 66, 'value', 'Coupon'),
+(646, 'it_IT', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (647, 'it_IT', 'StaticStrings', 67, 'value', 'Scegliere noi Listing'),
+(648, 'ro_RO', 'StaticStrings', 66, 'constant_slug', 'Coupon Type'),
 (649, 'ro_RO', 'StaticStrings', 66, 'value', 'Tipo de cupón\r\n'),
+(650, 'hu_HU', 'StaticStrings', 63, 'constant_slug', 'Created Date'),
 (651, 'hu_HU', 'StaticStrings', 63, 'value', '\r\nLétrehozás dátuma'),
+(652, 'ro_RO', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (653, 'ro_RO', 'StaticStrings', 67, 'value', 'Alege-ne Listing'),
+(654, 'it_IT', 'StaticStrings', 63, 'constant_slug', 'Created Date'),
 (655, 'it_IT', 'StaticStrings', 63, 'value', '\r\nData di Creazione'),
+(656, 'ru_RU', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (657, 'ru_RU', 'StaticStrings', 67, 'value', '???????? ??? ???????'),
+(658, 'es_ES', 'StaticStrings', 67, 'constant_slug', 'Choose Us Listing'),
 (659, 'es_ES', 'StaticStrings', 67, 'value', 'Listado qué nosotros'),
+(660, 'ro_RO', 'StaticStrings', 63, 'constant_slug', 'Created Date'),
 (661, 'ro_RO', 'StaticStrings', 63, 'value', '\r\ndata creata'),
+(662, 'fr_FR', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (663, 'fr_FR', 'StaticStrings', 68, 'value', 'Inscrivez-vous pour Guide Sitter'),
+(664, 'es_ES', 'StaticStrings', 63, 'constant_slug', 'Created Date'),
 (665, 'es_ES', 'StaticStrings', 63, 'value', 'Fecha de Creación'),
+(666, 'fr_FR', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (667, 'fr_FR', 'StaticStrings', 69, 'value', 'Cordes Listing'),
+(668, 'de_DE', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (669, 'de_DE', 'StaticStrings', 69, 'value', 'Streicher Listing'),
+(670, 'hu_HU', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (671, 'hu_HU', 'StaticStrings', 69, 'value', 'Strings Listing'),
+(672, 'it_IT', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (673, 'it_IT', 'StaticStrings', 69, 'value', 'Strings Listing'),
+(674, 'de_DE', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (675, 'de_DE', 'StaticStrings', 68, 'value', 'Anmeldung für Sitter-Führer'),
+(676, 'ro_RO', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (677, 'ro_RO', 'StaticStrings', 69, 'value', 'Listarea siruri de caractere'),
+(678, 'ru_RU', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (679, 'ru_RU', 'StaticStrings', 69, 'value', '?????? ???????'),
+(680, 'hu_HU', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (681, 'hu_HU', 'StaticStrings', 68, 'value', 'Iratkozzon fel Sitter Guide'),
+(682, 'es_ES', 'StaticStrings', 69, 'constant_slug', 'Strings Listing'),
 (683, 'es_ES', 'StaticStrings', 69, 'value', 'Las cadenas de venta'),
+(684, 'it_IT', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (685, 'it_IT', 'StaticStrings', 68, 'value', 'Iscriviti alla Guida Sitter'),
+(686, 'ro_RO', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (687, 'ro_RO', 'StaticStrings', 68, 'value', 'Înregistreaz?-te pentru Ghidul Sitter'),
+(688, 'ru_RU', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (689, 'ru_RU', 'StaticStrings', 68, 'value', '??????????? ?? ??????????? ?? ????????????'),
+(690, 'es_ES', 'StaticStrings', 68, 'constant_slug', 'Sign Up for Sitter Guide'),
 (691, 'es_ES', 'StaticStrings', 68, 'value', 'Regístrese para el Guía de Sitter'),
+(692, 'fr_FR', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (693, 'fr_FR', 'StaticStrings', 71, 'value', '\r\nValeur de chaîne'),
+(694, 'de_DE', 'StaticStrings', 70, 'constant_slug', 'String slug'),
 (695, 'de_DE', 'StaticStrings', 70, 'value', 'String slug\r\n'),
+(696, 'hu_HU', 'StaticStrings', 70, 'constant_slug', 'String slug'),
 (697, 'hu_HU', 'StaticStrings', 70, 'value', 'húr csiga\r\n'),
+(698, 'de_DE', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (699, 'de_DE', 'StaticStrings', 71, 'value', 'Zeichenfolge'),
+(700, 'it_IT', 'StaticStrings', 70, 'constant_slug', 'String slug'),
 (701, 'it_IT', 'StaticStrings', 70, 'value', 'String lumaca'),
+(702, 'hu_HU', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (703, 'hu_HU', 'StaticStrings', 71, 'value', '\r\nkarakterlánc'),
+(704, 'ro_RO', 'StaticStrings', 70, 'constant_slug', 'String slug'),
 (705, 'ro_RO', 'StaticStrings', 70, 'value', 'string slug\r\n'),
+(706, 'ru_RU', 'StaticStrings', 70, 'constant_slug', 'String slug'),
 (707, 'ru_RU', 'StaticStrings', 70, 'value', '?????? ??????????\r\n '),
+(708, 'es_ES', 'StaticStrings', 70, 'constant_slug', 'String slug'),
 (709, 'es_ES', 'StaticStrings', 70, 'value', 'babosa cadena\r\n'),
+(710, 'de_DE', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (711, 'de_DE', 'StaticStrings', 72, 'value', 'Worry-Free Tierbetreuung'),
+(712, 'fr_FR', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (713, 'fr_FR', 'StaticStrings', 72, 'value', 'Worry gratuit Pet Sitting'),
+(714, 'it_IT', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (715, 'it_IT', 'StaticStrings', 71, 'value', 'Valore stringa'),
+(716, 'hu_HU', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (717, 'hu_HU', 'StaticStrings', 72, 'value', 'Worry Free állatfelügyelet'),
+(718, 'it_IT', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (719, 'it_IT', 'StaticStrings', 72, 'value', 'Senza preoccupazioni Pet Sitting'),
+(720, 'ro_RO', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (721, 'ro_RO', 'StaticStrings', 71, 'value', 'Valoare ?ir'),
+(722, 'ru_RU', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (723, 'ru_RU', 'StaticStrings', 71, 'value', '\r\n????????? ????????'),
+(724, 'ro_RO', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (725, 'ro_RO', 'StaticStrings', 72, 'value', 'V? face?i griji Gratuit Pet Sitting'),
+(726, 'es_ES', 'StaticStrings', 71, 'constant_slug', 'String Value'),
 (727, 'es_ES', 'StaticStrings', 71, 'value', 'Valor de cadena'),
+(728, 'ru_RU', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (729, 'ru_RU', 'StaticStrings', 72, 'value', '???????????? ??????????? ???? ?? ????????? ?????????'),
+(730, 'es_ES', 'StaticStrings', 72, 'constant_slug', 'Worry Free Pet Sitting'),
 (731, 'es_ES', 'StaticStrings', 72, 'value', 'La preocupación libera Pet Sitting'),
+(732, 'fr_FR', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (733, 'fr_FR', 'StaticStrings', 74, 'value', 'et services d''embarquement Dog'),
+(734, 'de_DE', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (735, 'de_DE', 'StaticStrings', 74, 'value', '& Dog Boarding Dienstleistungen'),
+(736, 'hu_HU', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (737, 'hu_HU', 'StaticStrings', 74, 'value', '& Dog Étkezési szolgáltatások'),
+(738, 'it_IT', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (739, 'it_IT', 'StaticStrings', 74, 'value', 'e servizi di imbarco del cane'),
+(740, 'ro_RO', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (741, 'ro_RO', 'StaticStrings', 74, 'value', 'Servicii si Pensiuni Dog'),
+(742, 'ru_RU', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (743, 'ru_RU', 'StaticStrings', 74, 'value', '? ?????? ???????? ??? ?????'),
+(744, 'es_ES', 'StaticStrings', 74, 'constant_slug', '& Dog Boarding services'),
 (745, 'es_ES', 'StaticStrings', 74, 'value', 'y servicios de embarque para perros'),
+(746, 'fr_FR', 'StaticStrings', 75, 'constant_slug', 'Fun & News'),
 (747, 'fr_FR', 'StaticStrings', 75, 'value', 'Fun & Nouvelles'),
+(748, 'fr_FR', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (749, 'fr_FR', 'StaticStrings', 73, 'value', 'remise'),
+(750, 'de_DE', 'StaticStrings', 75, 'constant_slug', 'Fun & News'),
 (751, 'de_DE', 'StaticStrings', 75, 'value', 'Fun & News'),
+(752, 'de_DE', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (753, 'de_DE', 'StaticStrings', 73, 'value', 'Rabatt'),
+(754, 'hu_HU', 'StaticStrings', 75, 'constant_slug', 'Fun & News'),
 (755, 'hu_HU', 'StaticStrings', 75, 'value', 'Fun & News'),
+(756, 'hu_HU', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (757, 'hu_HU', 'StaticStrings', 73, 'value', 'kedvezmény'),
+(758, 'ro_RO', 'StaticStrings', 75, 'constant_slug', 'Fun & News'),
 (759, 'ro_RO', 'StaticStrings', 75, 'value', 'Distrac?ie ?i ?tiri'),
+(760, 'ru_RU', 'StaticStrings', 75, 'constant_slug', 'Fun & News');
+INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
 (761, 'ru_RU', 'StaticStrings', 75, 'value', 'Fun & ???????'),
+(762, 'it_IT', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (763, 'it_IT', 'StaticStrings', 73, 'value', 'sconto'),
+(764, 'ro_RO', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (765, 'ro_RO', 'StaticStrings', 73, 'value', 'reducere'),
+(766, 'ru_RU', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (767, 'ru_RU', 'StaticStrings', 73, 'value', '??????'),
+(768, 'es_ES', 'StaticStrings', 75, 'constant_slug', 'Fun & News'),
 (769, 'es_ES', 'StaticStrings', 75, 'value', 'Diversión y Noticias'),
+(770, 'fr_FR', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (771, 'fr_FR', 'StaticStrings', 76, 'value', 'Prix'),
+(772, 'es_ES', 'StaticStrings', 73, 'constant_slug', 'discount'),
 (773, 'es_ES', 'StaticStrings', 73, 'value', 'descuento'),
+(774, 'de_DE', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (775, 'de_DE', 'StaticStrings', 76, 'value', '\r\nPreis'),
+(776, 'hu_HU', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (777, 'hu_HU', 'StaticStrings', 76, 'value', '\r\nÁr'),
+(778, 'it_IT', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (779, 'it_IT', 'StaticStrings', 76, 'value', 'Prezzo'),
+(780, 'ro_RO', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (781, 'ro_RO', 'StaticStrings', 76, 'value', 'Pre?'),
+(782, 'fr_FR', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (783, 'fr_FR', 'StaticStrings', 77, 'value', 'Date de début'),
+(784, 'ru_RU', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (785, 'ru_RU', 'StaticStrings', 76, 'value', '????'),
+(786, 'de_DE', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (787, 'de_DE', 'StaticStrings', 77, 'value', 'Anfangsdatum'),
+(788, 'es_ES', 'StaticStrings', 76, 'constant_slug', '	Price'),
 (789, 'es_ES', 'StaticStrings', 76, 'value', 'Precio'),
+(790, 'fr_FR', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
 (791, 'fr_FR', 'StaticStrings', 79, 'value', 'Date d''expiration'),
+(792, 'fr_FR', 'StaticStrings', 78, 'constant_slug', 'Currency Name'),
 (793, 'fr_FR', 'StaticStrings', 78, 'value', 'Type de coupon'),
-(795, 'de_DE', 'StaticStrings', 79, 'value', 'Letztes Login'),
+(794, 'de_DE', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
+(795, 'de_DE', 'StaticStrings', 79, 'value', 'Verfallsdatum'),
+(796, 'hu_HU', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
 (797, 'hu_HU', 'StaticStrings', 79, 'value', 'Lejárati dátum'),
+(798, 'it_IT', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
 (799, 'it_IT', 'StaticStrings', 79, 'value', 'Data di scadenza'),
+(800, 'hu_HU', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (801, 'hu_HU', 'StaticStrings', 77, 'value', 'Kezd? dátum'),
+(802, 'fr_FR', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (803, 'fr_FR', 'StaticStrings', 80, 'value', 'Pourquoi nous choisir?'),
+(804, 'ro_RO', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
 (805, 'ro_RO', 'StaticStrings', 79, 'value', 'Data expirarii'),
+(806, 'it_IT', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (807, 'it_IT', 'StaticStrings', 77, 'value', 'Data d''inizio'),
+(808, 'ru_RU', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
 (809, 'ru_RU', 'StaticStrings', 79, 'value', '???? ????????'),
+(810, 'de_DE', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (811, 'de_DE', 'StaticStrings', 80, 'value', 'Warum Uns Wählen?'),
+(812, 'es_ES', 'StaticStrings', 79, 'constant_slug', 'Expire Date'),
 (813, 'es_ES', 'StaticStrings', 79, 'value', 'Fecha de caducidad'),
+(814, 'hu_HU', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (815, 'hu_HU', 'StaticStrings', 80, 'value', 'Miért minket válasszon?'),
+(816, 'ro_RO', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (817, 'ro_RO', 'StaticStrings', 77, 'value', 'Data de început'),
+(818, 'it_IT', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (819, 'it_IT', 'StaticStrings', 80, 'value', 'Perché sceglierci?'),
+(820, 'ru_RU', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (821, 'ru_RU', 'StaticStrings', 77, 'value', '???? ??????'),
+(822, 'ro_RO', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (823, 'ro_RO', 'StaticStrings', 80, 'value', 'Perché sceglierci?'),
+(824, 'fr_FR', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (825, 'fr_FR', 'StaticStrings', 81, 'value', 'Nom de la devise'),
+(826, 'ru_RU', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (827, 'ru_RU', 'StaticStrings', 80, 'value', '?????? ??????? ????'),
+(828, 'de_DE', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (829, 'de_DE', 'StaticStrings', 81, 'value', 'WÃ¤hrungsbezeichnung'),
+(830, 'es_ES', 'StaticStrings', 80, 'constant_slug', 'Why Choose us?'),
 (831, 'es_ES', 'StaticStrings', 80, 'value', '¿Por qué elegirnos?'),
+(832, 'hu_HU', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (833, 'hu_HU', 'StaticStrings', 81, 'value', 'Árfolyam neve'),
+(834, 'it_IT', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (835, 'it_IT', 'StaticStrings', 81, 'value', 'Nome valuta'),
+(836, 'ro_RO', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (837, 'ro_RO', 'StaticStrings', 81, 'value', 'Nume moned?\r\n'),
+(838, 'ru_RU', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (839, 'ru_RU', 'StaticStrings', 81, 'value', '???????? ??????'),
+(840, 'fr_FR', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (841, 'fr_FR', 'StaticStrings', 82, 'value', 'Pourquoi nous choisir?'),
+(842, 'es_ES', 'StaticStrings', 81, 'constant_slug', 'Currency Name'),
 (843, 'es_ES', 'StaticStrings', 81, 'value', 'Nombre moneda'),
+(844, 'hu_HU', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (845, 'hu_HU', 'StaticStrings', 82, 'value', 'Miért minket válasszon?'),
+(846, 'it_IT', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (847, 'it_IT', 'StaticStrings', 82, 'value', 'Perché sceglierci?'),
+(848, 'ro_RO', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (849, 'ro_RO', 'StaticStrings', 82, 'value', 'De ce noi?'),
+(850, 'es_ES', 'StaticStrings', 77, 'constant_slug', 'Start Date'),
 (851, 'es_ES', 'StaticStrings', 77, 'value', 'Fecha de inicio'),
+(852, 'ru_RU', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (853, 'ru_RU', 'StaticStrings', 82, 'value', '?????? ??????? ????'),
+(854, 'es_ES', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (855, 'es_ES', 'StaticStrings', 82, 'value', '¿Por qué elegirnos?'),
+(856, 'fr_FR', 'StaticStrings', 83, 'constant_slug', 'Leading Sitting And Walkers In Your Area'),
 (857, 'fr_FR', 'StaticStrings', 83, 'value', 'Pourquoi nous choisir?'),
+(858, 'de_DE', 'StaticStrings', 82, 'constant_slug', 'Find some of the funniest pet pics & videos along with news updates here'),
 (859, 'de_DE', 'StaticStrings', 82, 'value', 'Finden Sie einige der lustigsten pet Bilder & Videos zusammen mit News-Updates hier'),
+(860, 'de_DE', 'StaticStrings', 83, 'constant_slug', 'Leading Sitting And Walkers In Your Area'),
 (861, 'de_DE', 'StaticStrings', 83, 'value', 'Führende Sitzen und Wanderer in Ihrer Nähe'),
+(862, 'hu_HU', 'StaticStrings', 83, 'constant_slug', 'Leading Sitting And Walkers In Your Area'),
 (863, 'hu_HU', 'StaticStrings', 83, 'value', 'Vezet? ülés és a gyalogosok az Ön környékén'),
+(864, 'ru_RU', 'StaticStrings', 83, 'constant_slug', 'Leading Sitting And Walkers In Your Area'),
 (865, 'ru_RU', 'StaticStrings', 83, 'value', '??????? ????? ? ??????? ? ????? ??????'),
+(866, 'es_ES', 'StaticStrings', 83, 'constant_slug', 'Leading Sitting And Walkers In Your Area'),
 (867, 'es_ES', 'StaticStrings', 83, 'value', 'Sentado y caminantes que lleva en su área'),
+(868, 'fr_FR', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (869, 'fr_FR', 'StaticStrings', 84, 'value', 'Rencontrez quelques-uns de nos principaux sitters et marcheurs'),
+(870, 'de_DE', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (871, 'de_DE', 'StaticStrings', 84, 'value', 'Treffen Sie einige unserer führenden Sitter und Wanderer'),
+(872, 'hu_HU', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (873, 'hu_HU', 'StaticStrings', 84, 'value', 'Ismerje meg néhány vezet? ül?k és a gyalogosok'),
+(874, 'it_IT', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (875, 'it_IT', 'StaticStrings', 84, 'value', 'Incontra alcuni dei nostri leader sitter ed escursionisti'),
+(876, 'ro_RO', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (877, 'ro_RO', 'StaticStrings', 84, 'value', 'Face?i cuno?tin?? cu unele dintre sitter noastre de conducere ?i pietoni'),
+(878, 'ru_RU', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (879, 'ru_RU', 'StaticStrings', 84, 'value', '????????????? ? ?????????? ?? ????? ??????? ?????????? ? ???????'),
+(880, 'es_ES', 'StaticStrings', 84, 'constant_slug', 'Meet some of our ledaing sitters & walkers'),
 (881, 'es_ES', 'StaticStrings', 84, 'value', 'Conoce algunos de nuestros principales cuidadores y caminantes'),
+(882, 'fr_FR', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (883, 'fr_FR', 'StaticStrings', 86, 'value', 'Lieu'),
+(884, 'fr_FR', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (885, 'fr_FR', 'StaticStrings', 85, 'value', 'A propos de Guide Sitter'),
+(886, 'de_DE', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (887, 'de_DE', 'StaticStrings', 85, 'value', 'Über Sitter-Führer'),
+(888, 'de_DE', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (889, 'de_DE', 'StaticStrings', 86, 'value', 'Schauplatz'),
+(890, 'hu_HU', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (891, 'hu_HU', 'StaticStrings', 85, 'value', 'Mintegy Sitter Guide'),
+(892, 'hu_HU', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (893, 'hu_HU', 'StaticStrings', 86, 'value', 'helyszín'),
+(894, 'it_IT', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (895, 'it_IT', 'StaticStrings', 85, 'value', 'Informazioni su Guida Sitter'),
+(896, 'it_IT', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (897, 'it_IT', 'StaticStrings', 86, 'value', 'località'),
+(898, 'ro_RO', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (899, 'ro_RO', 'StaticStrings', 86, 'value', 'localizare'),
+(900, 'ru_RU', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (901, 'ru_RU', 'StaticStrings', 86, 'value', '????? ????????'),
+(902, 'ro_RO', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (903, 'ro_RO', 'StaticStrings', 85, 'value', 'Ghid despre Sitter'),
+(904, 'es_ES', 'StaticStrings', 86, 'constant_slug', 'Locale'),
 (905, 'es_ES', 'StaticStrings', 86, 'value', 'Lugar'),
+(906, 'ru_RU', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (907, 'ru_RU', 'StaticStrings', 85, 'value', '? ??????????? ????????????'),
+(908, 'es_ES', 'StaticStrings', 85, 'constant_slug', 'About Sitter Guide'),
 (909, 'es_ES', 'StaticStrings', 85, 'value', 'Acerca de la Guía Sitter'),
+(910, 'fr_FR', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (911, 'fr_FR', 'StaticStrings', 87, 'value', 'A propos de nous'),
+(912, 'de_DE', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (913, 'de_DE', 'StaticStrings', 87, 'value', 'Über uns'),
+(914, 'hu_HU', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (915, 'hu_HU', 'StaticStrings', 87, 'value', 'Rólunk'),
+(916, 'it_IT', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (917, 'it_IT', 'StaticStrings', 87, 'value', 'Chi siamo'),
+(918, 'ro_RO', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (919, 'ro_RO', 'StaticStrings', 87, 'value', 'despre noi'),
+(920, 'ru_RU', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (921, 'ru_RU', 'StaticStrings', 87, 'value', '? ????????'),
+(922, 'es_ES', 'StaticStrings', 87, 'constant_slug', 'About Us'),
 (923, 'es_ES', 'StaticStrings', 87, 'value', 'sobre nosotros'),
+(924, 'fr_FR', 'StaticStrings', 88, 'constant_slug', 'In the News'),
 (925, 'fr_FR', 'StaticStrings', 88, 'value', 'Dans les Nouvelles'),
+(926, 'hu_HU', 'StaticStrings', 88, 'constant_slug', 'In the News'),
 (927, 'hu_HU', 'StaticStrings', 88, 'value', 'A News'),
+(928, 'it_IT', 'StaticStrings', 88, 'constant_slug', 'In the News'),
 (929, 'it_IT', 'StaticStrings', 88, 'value', 'Nelle notizie'),
+(930, 'ro_RO', 'StaticStrings', 88, 'constant_slug', 'In the News'),
 (931, 'ro_RO', 'StaticStrings', 88, 'value', 'În ?tiri'),
+(932, 'ru_RU', 'StaticStrings', 88, 'constant_slug', 'In the News'),
 (933, 'ru_RU', 'StaticStrings', 88, 'value', '? ????????'),
+(934, 'es_ES', 'StaticStrings', 88, 'constant_slug', 'In the News'),
 (935, 'es_ES', 'StaticStrings', 88, 'value', 'En las noticias'),
+(936, 'fr_FR', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (937, 'fr_FR', 'StaticStrings', 89, 'value', 'Politique de confidentialité'),
+(938, 'de_DE', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (939, 'de_DE', 'StaticStrings', 89, 'value', 'Datenschutz-Bestimmungen'),
+(940, 'hu_HU', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (941, 'hu_HU', 'StaticStrings', 89, 'value', 'Adatvédelmi irányelvek'),
+(942, 'it_IT', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (943, 'it_IT', 'StaticStrings', 89, 'value', 'politica sulla riservatezza'),
+(944, 'ro_RO', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (945, 'ro_RO', 'StaticStrings', 89, 'value', 'Politica de confidentialitate'),
+(946, 'ru_RU', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (947, 'ru_RU', 'StaticStrings', 89, 'value', '???????? ??????????????????'),
+(948, 'es_ES', 'StaticStrings', 89, 'constant_slug', 'Privacy Policy'),
 (949, 'es_ES', 'StaticStrings', 89, 'value', 'Política de privacidad'),
+(950, 'fr_FR', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
 (951, 'fr_FR', 'StaticStrings', 90, 'value', 'Top animaux assis villes'),
+(952, 'de_DE', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
 (953, 'de_DE', 'StaticStrings', 90, 'value', 'Top PET-Sitzung Städte'),
+(954, 'hu_HU', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
 (955, 'hu_HU', 'StaticStrings', 90, 'value', 'Top pet ül városok'),
+(956, 'it_IT', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
 (957, 'it_IT', 'StaticStrings', 90, 'value', 'Le città più pet sitting'),
+(958, 'ro_RO', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
 (959, 'ro_RO', 'StaticStrings', 90, 'value', 'ora?e pentru animale de companie de zi'),
+(960, 'ru_RU', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
 (961, 'ru_RU', 'StaticStrings', 90, 'value', '?????? ?????? ??? ???????? ???????? ????'),
-(963, 'es_ES', 'StaticStrings', 90, 'value', 'Principales ciudades cuidado de mascotas'),
-(965, 'it_IT', 'StaticStrings', 7, 'value', 'Abbonato'),
-(967, 'ro_RO', 'StaticStrings', 7, 'value', 'Abonat'),
-(969, 'ru_RU', 'StaticStrings', 7, 'value', '???????'),
-(971, 'es_ES', 'StaticStrings', 7, 'value', 'Suscriptor'),
-(973, 'es_ES', 'StaticStrings', 91, 'value', 'Último inicio de sesión'),
-(975, 'ro_RO', 'StaticStrings', 91, 'value', 'Ultima conectare'),
-(977, 'fr_FR', 'StaticStrings', 91, 'value', 'Dernière connexion'),
-(979, 'de_DE', 'StaticStrings', 91, 'value', 'Letztes Login'),
-(981, 'hu_HU', 'StaticStrings', 91, 'value', 'Utolsó bejelentkezés'),
-(983, 'fr_FR', 'StaticStrings', 92, 'value', 'Gestion des Partenaires'),
-(985, 'de_DE', 'StaticStrings', 92, 'value', 'Partner verwalten'),
-(987, 'hu_HU', 'StaticStrings', 92, 'value', 'Partnerek kezelése'),
-(989, 'it_IT', 'StaticStrings', 92, 'value', 'Gestire i partner'),
-(991, 'ro_RO', 'StaticStrings', 92, 'value', 'Gestionaţi Parteneri'),
-(993, 'es_ES', 'StaticStrings', 92, 'value', 'Gestión de socios'),
-(995, 'es_ES', 'StaticStrings', 13, 'value', 'Guía de Sitter'),
-(997, 'es_ES', 'StaticStrings', 23, 'value', 'Salpicadero');
+(962, 'es_ES', 'StaticStrings', 90, 'constant_slug', 'Top pet sitting cities'),
+(963, 'es_ES', 'StaticStrings', 90, 'value', 'Principales ciudades cuidado de mascotas');
 
 -- --------------------------------------------------------
 
@@ -1300,14 +1761,21 @@ CREATE TABLE IF NOT EXISTS `partners` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `partners`
 --
 
 INSERT INTO `partners` (`id`, `title`, `short_description`, `description`, `image`, `status`, `created_date`, `modified`) VALUES
-(31, 'Tester3', 'Tester3', 'Tester3', 'gO2QIIlxO6R5GGW.jpg', 0, '2016-04-11 06:21:03', '2016-04-15 11:51:51');
+(28, 'Tester2ds', 'Test comment by rahul', 'Test comment by rahul Jain', 'J7lX8IyZkQ5jHRv.png', 0, '2016-04-07 06:40:08', '2016-04-12 07:40:14'),
+(29, 'Tester1', 'Tester1', 'Tester1', 'uz9CJiBXssrgfd3.jpeg', 1, '2016-04-11 12:40:39', '0000-00-00 00:00:00'),
+(30, 'Tester', 'Tester', 'Tester', 'zYC3CZCyapwINlT.jpg', 1, '2016-04-11 06:16:05', '0000-00-00 00:00:00'),
+(31, 'Tester3', 'Tester3', 'Tester3', 'SiKShXL8zuLSrJK.png', 0, '2016-04-11 06:21:03', '2016-04-12 07:39:43'),
+(32, 'Tester4', 'Tester4', 'Tester4', 'gXrblQoRSa7ZRnH.jpg', 1, '2016-04-11 06:21:50', '0000-00-00 00:00:00'),
+(33, 'fgbfdgbgbfb', 'gbsfbs', 'sbdfgb', 'S7QsOXgqUFLwo37.jpg', 0, '2016-04-11 06:23:46', '0000-00-00 00:00:00'),
+(34, 'Hdhdhd', 'Gdhdhd', 'Hdhdh', 'IaAOH8eHIhVuMAI.png', 1, '2016-04-11 10:27:37', '0000-00-00 00:00:00'),
+(35, 'Test5', 'Short descroption', 'Long description', 'pqbagBFisciCs63.png', 1, '2016-04-12 10:31:47', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1324,6 +1792,15 @@ CREATE TABLE IF NOT EXISTS `partners_i18n` (
   `content` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+--
+-- Dumping data for table `partners_i18n`
+--
+
+INSERT INTO `partners_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
+(34, 'it_IT', 'Partners', 28, 'title', 'the people'),
+(35, 'it_IT', 'Partners', 28, 'short_description', 'gsergegerg'),
+(36, 'it_IT', 'Partners', 28, 'description', 'ggwergr');
 
 -- --------------------------------------------------------
 
@@ -1352,9 +1829,9 @@ CREATE TABLE IF NOT EXISTS `promo_codes` (
 --
 
 INSERT INTO `promo_codes` (`id`, `promo_code`, `coupon_type`, `discount_rate`, `discounted_coupon`, `fixed_coupon`, `start_date`, `expire_date`, `description`, `status`, `date_added`, `modified`) VALUES
-(23, 'Test', 'discounted_coupon', NULL, '', '10', '2016-04-12 07:51:53', '2016-03-28 00:00:00', 'Description test', 1, '0000-00-00 00:00:00', '2016-04-12 07:51:53'),
-(24, '12', 'discounted_coupon', NULL, '1', '', '2016-04-12 09:35:54', '2016-01-04 00:00:00', '11', 0, '0000-00-00 00:00:00', '2016-04-12 09:35:54'),
-(25, 'gfhfgh', 'discounted_coupon', NULL, '67', '', '2016-04-06 00:00:00', '2016-04-30 00:00:00', ' fghfg hfg h', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(23, 'Test', 'discounted_coupon', NULL, '10', '', '2016-04-12 12:18:05', '2016-03-28 00:00:00', 'Description test', 1, '0000-00-00 00:00:00', '2016-04-12 07:51:53'),
+(24, '12', 'fixed_coupon', NULL, '', '100', '2016-04-12 00:00:00', '2016-01-04 00:00:00', '11', 1, '0000-00-00 00:00:00', '2016-04-12 11:57:46'),
+(25, 'New1', 'discounted_coupon', NULL, '4', '', '2016-04-04 00:00:00', '2016-04-06 00:00:00', 'Description new1', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1405,7 +1882,7 @@ CREATE TABLE IF NOT EXISTS `site_configurations` (
 --
 
 INSERT INTO `site_configurations` (`id`, `site_contact_email`, `site_name`, `site_logo`, `site_favicon`, `site_footer`, `meta_title`, `meta_keyword`, `meta_description`, `ganalytics`, `timezone`, `facebook_link`, `twitter_link`, `google_link`, `instagram_link`, `youtube_link`) VALUES
-(1, 'sanyam.arora@mobilyte.com', 'Sitter Guides', 'a71Uw18xmuRtUpf.jpg', 'cQ7WIYTKGf4wRhP.png', '        © 2015 Sitter Guide Pty Ltd. All Rights Reserved.', 'Sitter Guides', 'Sitter Guide', 'Sitter Guide', '<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push([_setAccount, UA-XXXXX-Y]);  _gaq.push([_trackPageview]);  (function() {    var ga = document.createElement(script); ga.type = text/javascript; ga.async = true;    ga.src = (https: == document.location.protocol ? https://ssl : http://www) + .google-analytics.com/ga.js;    var s = document.getElementsByTagName(script)[0]; s.parentNode.insertBefore(ga, s);  })();</script>', 'America/New_York', 'https://faceboo', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com');
+(1, 'sanyam.arora@mobilyte.com', 'Sitter Guides', 'a71Uw18xmuRtUpf.jpg', 'cQ7WIYTKGf4wRhP.png', '        © 2015 Sitter Guide Pty Ltd. All Rights Reserved.', 'Sitter Guides', 'Sitter Guide', 'Sitter Guide', '<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push([_setAccount, UA-XXXXX-Y]);  _gaq.push([_trackPageview]);  (function() {    var ga = document.createElement(script); ga.type = text/javascript; ga.async = true;    ga.src = (https: == document.location.protocol ? https://ssl : http://www) + .google-analytics.com/ga.js;    var s = document.getElementsByTagName(script)[0]; s.parentNode.insertBefore(ga, s);  })();</script>', 'America/New_York', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com');
 
 -- --------------------------------------------------------
 
@@ -1423,7 +1900,7 @@ CREATE TABLE IF NOT EXISTS `site_configurations_i18n` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `site_configurations_i18n`
@@ -1434,12 +1911,7 @@ INSERT INTO `site_configurations_i18n` (`id`, `locale`, `model`, `foreign_key`, 
 (2, 'ro_RO', 'SiteConfigurations', 1, 'site_footer', 'Romanian footer content'),
 (3, 'ro_RO', 'SiteConfigurations', 1, 'meta_title', 'Sitter Guide'),
 (4, 'ro_RO', 'SiteConfigurations', 1, 'meta_keyword', 'Sitter Guide'),
-(5, 'ro_RO', 'SiteConfigurations', 1, 'meta_description', 'Sitter Guide'),
-(6, 'it_IT', 'SiteConfigurations', 1, 'site_name', 'Sitter Guides'),
-(7, 'it_IT', 'SiteConfigurations', 1, 'site_footer', '        © 2015 Sitter Guide Pty Ltd. All Rights Reserved.'),
-(8, 'it_IT', 'SiteConfigurations', 1, 'meta_title', 'Sitter Guides'),
-(9, 'it_IT', 'SiteConfigurations', 1, 'meta_keyword', 'Sitter Guide'),
-(10, 'it_IT', 'SiteConfigurations', 1, 'meta_description', 'Sitter Guide');
+(5, 'ro_RO', 'SiteConfigurations', 1, 'meta_description', 'Sitter Guide');
 
 -- --------------------------------------------------------
 
@@ -1495,103 +1967,101 @@ CREATE TABLE IF NOT EXISTS `static_strings` (
   `constant_slug` varchar(255) NOT NULL,
   `value` text NOT NULL,
   `page_name` varchar(255) NOT NULL,
-  `created_date` datetime NOT NULL,
-  `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=93 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=91 ;
 
 --
 -- Dumping data for table `static_strings`
 --
 
 INSERT INTO `static_strings` (`id`, `constant_slug`, `value`, `page_name`, `created_date`, `modified`) VALUES
-(6, 'Partners', 'Partners', 'admin', '2016-04-07 19:18:16', '0000-00-00 00:00:00'),
-(7, 'Subscribers', 'Subscribers', 'admin', '2016-04-07 19:31:02', '2016-04-14 07:38:38'),
-(8, 'Page Name', 'Page Name', 'admin', '2016-04-07 19:34:18', '0000-00-00 00:00:00'),
-(9, 'Sitter Guide developed by Beta-soft systems.', 'Sitter Guide developed by Beta-soft systems.', 'admin', '2016-04-07 19:42:29', '0000-00-00 00:00:00'),
-(10, 'Welcome', 'Welcome', 'admin', '2016-04-07 19:44:55', '0000-00-00 00:00:00'),
-(11, 'Administrator', 'Administrator', 'admin', '2016-04-07 19:46:22', '0000-00-00 00:00:00'),
-(12, 'Page URL', 'Page URL', 'admin', '2016-04-07 19:46:48', '0000-00-00 00:00:00'),
-(13, 'Sitter Guide ', 'Sitter Guide \r\n', 'admin', '2016-04-07 19:55:03', '0000-00-00 00:00:00'),
-(14, 'Blogs Listing', 'Blogs Listing\r\n', 'admin', '2016-04-07 20:01:40', '0000-00-00 00:00:00'),
-(15, ' Users Listing', 'Users Listing\r\n', 'admin', '2016-04-07 21:24:23', '0000-00-00 00:00:00'),
-(16, ' Category Listing', ' Category Listing\r\n', 'admin', '2016-04-07 21:32:34', '0000-00-00 00:00:00'),
-(17, 'Manage CMS Pages', 'Manage CMS Pages\r\n', 'admin', '2016-04-07 21:32:51', '0000-00-00 00:00:00'),
-(18, 'How Works Listing', 'How Works Listing\r\n', 'admin', '2016-04-07 21:33:16', '0000-00-00 00:00:00'),
-(19, 'Search all columns', 'Search all columns', 'admin', '2016-04-07 21:37:36', '0000-00-00 00:00:00'),
-(20, 'Show', 'Show', 'admin', '2016-04-07 21:39:08', '0000-00-00 00:00:00'),
-(21, 'Content Management', 'Content Management', 'admin', '2016-04-07 21:42:15', '0000-00-00 00:00:00'),
-(22, 'entries', 'entries', 'admin', '2016-04-07 21:45:36', '0000-00-00 00:00:00'),
-(23, 'Dashboard', 'Dashboard', 'admin', '2016-04-07 21:46:19', '0000-00-00 00:00:00'),
-(24, 'entries', 'entries', 'admin', '2016-04-07 21:49:14', '0000-00-00 00:00:00'),
-(25, 'Show', 'show', 'admin', '2016-04-07 21:49:18', '0000-00-00 00:00:00'),
-(26, 'page name', 'page name', 'admin', '2016-04-07 22:01:37', '0000-00-00 00:00:00'),
-(27, 'Manage Promocode', 'Manage Promocode', 'admin', '2016-04-07 22:17:42', '0000-00-00 00:00:00'),
-(28, 'Manage Categories', 'Manage Categories', 'admin', '2016-04-07 22:19:14', '0000-00-00 00:00:00'),
-(29, 'Blogs', 'Blogs', 'admin', '2016-04-07 22:19:42', '0000-00-00 00:00:00'),
-(30, 'test 1', 'test 1 val', 'admin', '2016-04-07 22:24:13', '0000-00-00 00:00:00'),
-(31, 'Currency Management', 'Currency Management', 'admin', '2016-04-07 22:25:39', '0000-00-00 00:00:00'),
-(32, 'test3', 'test3 val', 'admin', '2016-04-07 22:29:47', '0000-00-00 00:00:00'),
-(33, 'Partners', 'Partners', 'admin', '2016-04-07 22:30:07', '0000-00-00 00:00:00'),
-(34, 'entries', 'entries', 'admin', '2016-04-07 22:31:13', '0000-00-00 00:00:00'),
-(35, 'Slider Management', 'Slider Managements', 'admin', '2016-04-07 22:35:17', '0000-00-00 00:00:00'),
-(36, 'Search all columns', 'Search all columns', 'admin', '2016-04-07 22:35:31', '0000-00-00 00:00:00'),
-(37, 'Subscribes', 'Subscribes', 'admin', '2016-04-07 22:41:01', '0000-00-00 00:00:00'),
-(38, 'image', 'image', 'admin', '2016-04-07 22:41:22', '0000-00-00 00:00:00'),
-(39, 'News & Updates', 'News & Updates', 'admin', '2016-04-07 22:41:27', '0000-00-00 00:00:00'),
-(40, 'Why Choose Us', 'Why Choose Us', 'admin', '2016-04-07 22:41:48', '0000-00-00 00:00:00'),
-(41, 'Static Strings', 'Static Strings', 'admin', '2016-04-07 22:46:35', '0000-00-00 00:00:00'),
-(42, 'Choose Us Listing', 'Choose Us Listing', 'admin', '2016-04-07 22:48:02', '0000-00-00 00:00:00'),
-(43, 'CMS Management', 'CMS Management', 'admin', '2016-04-07 22:52:02', '0000-00-00 00:00:00'),
-(44, 'Users Listing', 'Users Listing\r\n', 'admin', '2016-04-07 22:52:51', '0000-00-00 00:00:00'),
-(45, 'First Name', 'First Name', 'admin', '2016-04-07 22:53:56', '0000-00-00 00:00:00'),
-(46, 'Added Date', 'Added Date', 'admin', '2016-04-07 22:57:58', '0000-00-00 00:00:00'),
-(47, 'Phone', 'Phone', 'admin', '2016-04-07 22:59:02', '0000-00-00 00:00:00'),
-(48, 'Email', 'Email', 'admin', '2016-04-07 23:00:54', '0000-00-00 00:00:00'),
-(49, 'Last Name', 'Last Name', 'admin', '2016-04-07 23:01:40', '0000-00-00 00:00:00'),
-(50, 'Status', 'Status', 'admin', '2016-04-07 23:05:41', '0000-00-00 00:00:00'),
-(51, 'Action', 'Action', 'admin', '2016-04-07 23:06:48', '0000-00-00 00:00:00'),
-(52, 'Page name', 'Page name', 'admin', '2016-04-07 23:11:09', '0000-00-00 00:00:00'),
-(53, 'Page Content', 'Page Content', 'admin', '2016-04-07 23:14:28', '0000-00-00 00:00:00'),
-(54, 'Subject', 'Subject', 'admin', '2016-04-07 23:18:42', '0000-00-00 00:00:00'),
-(55, 'Title', 'Title', 'admin', '2016-04-07 23:19:08', '0000-00-00 00:00:00'),
-(56, 'Alias', 'Alias', 'admin', '2016-04-07 23:20:18', '0000-00-00 00:00:00'),
-(57, 'Slug', 'Slug', 'admin', '2016-04-07 23:22:28', '0000-00-00 00:00:00'),
-(58, 'Country', 'Country', 'admin', '2016-04-07 23:25:41', '0000-00-00 00:00:00'),
-(59, 'Name', 'Name', 'admin', '2016-04-07 23:26:40', '2016-04-14 12:17:28'),
-(60, 'Description', 'Description', 'admin', '2016-04-07 23:27:54', '0000-00-00 00:00:00'),
-(61, 'Image', 'Image', 'admin', '2016-04-07 23:28:22', '0000-00-00 00:00:00'),
-(62, 'status', 'status', 'admin', '2016-04-07 23:31:20', '0000-00-00 00:00:00'),
-(63, 'Created Date', 'Created Date', 'admin', '2016-04-07 23:33:27', '0000-00-00 00:00:00'),
-(64, 'Promo Code', 'Promo Code', 'admin', '2016-04-07 23:34:18', '0000-00-00 00:00:00'),
-(65, 'How Works Listing', 'How Works Listing\r\n', 'admin', '2016-04-07 23:35:55', '0000-00-00 00:00:00'),
-(66, 'Coupon Type', 'Coupon Type', 'admin', '2016-04-07 23:39:19', '0000-00-00 00:00:00'),
-(67, 'Choose Us Listing', 'Choose Us Listing', 'admin', '2016-04-07 23:40:27', '0000-00-00 00:00:00'),
-(68, 'Sign Up for Sitter Guide', 'Sign Up for Sitter Guide', 'admin', '2016-04-07 23:42:22', '0000-00-00 00:00:00'),
-(69, 'Strings Listing', 'Strings Listing', 'admin', '2016-04-07 23:44:19', '0000-00-00 00:00:00'),
-(70, 'String slug', 'String slug\r\n', 'admin', '2016-04-07 23:49:45', '0000-00-00 00:00:00'),
-(71, 'String Value', 'String Value', 'admin', '2016-04-07 23:50:07', '0000-00-00 00:00:00'),
-(72, 'Worry Free Pet Sitting', 'Worry Free Pet Sitting', 'admin', '2016-04-07 23:52:53', '0000-00-00 00:00:00'),
-(73, 'Discount', 'Discount', 'admin', '2016-04-08 00:02:24', '0000-00-00 00:00:00'),
-(74, '& Dog Boarding services', '& Dog Boarding services', 'admin', '2016-04-08 00:02:41', '0000-00-00 00:00:00'),
-(75, 'Fun & News', 'Fun & News', 'admin', '2016-04-08 00:08:41', '0000-00-00 00:00:00'),
-(76, '	Price', '	Price', 'admin', '2016-04-08 00:12:59', '0000-00-00 00:00:00'),
-(77, 'Start Date', 'Start Date', 'admin', '2016-04-08 00:14:40', '0000-00-00 00:00:00'),
-(78, 'Currency Name', 'Currency Name', 'admin', '2016-04-08 00:16:47', '0000-00-00 00:00:00'),
-(79, 'Expire Date', 'Expire Date', 'admin', '2016-04-08 00:17:05', '0000-00-00 00:00:00'),
-(80, 'Why Choose us?', 'Why Choose us?', 'admin', '2016-04-08 00:18:53', '0000-00-00 00:00:00'),
-(81, 'Currency Name', 'Currency Name\r\n', 'admin', '2016-04-08 00:23:06', '0000-00-00 00:00:00'),
-(82, 'Find some of the funniest pet pics & videos along with news updates here', 'Find some of the funniest pet pics & videos along with news updates here', 'front', '2016-04-08 00:25:12', '0000-00-00 00:00:00'),
-(83, 'Leading Sitting And Walkers In Your Area', 'Leading Sitting And Walkers In Your Area', 'front', '2016-04-08 00:29:26', '0000-00-00 00:00:00'),
-(84, 'Meet some of our ledaing sitters & walkers', 'Meet some of our ledaing sitters & walkers', 'front', '2016-04-08 00:34:38', '0000-00-00 00:00:00'),
-(85, 'About Sitter Guide', 'About Sitter Guide', 'front', '2016-04-08 00:41:13', '0000-00-00 00:00:00'),
-(86, 'Locale', 'Locale', 'front', '2016-04-08 00:41:25', '0000-00-00 00:00:00'),
-(87, 'About Us', 'About Us', 'front', '2016-04-08 00:47:42', '0000-00-00 00:00:00'),
-(88, 'In the News', 'In the News', 'front', '2016-04-08 00:58:07', '0000-00-00 00:00:00'),
-(89, 'Privacy Policy', 'Privacy Policy', 'front', '2016-04-08 01:20:32', '0000-00-00 00:00:00'),
-(90, 'Top pet sitting cities', 'Top pet sitting cities', 'front', '2016-04-08 01:25:49', '0000-00-00 00:00:00'),
-(91, 'Last Login', 'Last Login', '', '2016-04-14 12:20:53', '0000-00-00 00:00:00'),
-(92, 'Manage Partners', 'Manage Partners', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(6, 'Partners', 'Partners', 'Admin', '2016-04-07 13:48:16', '0000-00-00 00:00:00'),
+(7, 'Subscriber', 'Subscriber', '', '2016-04-07 14:01:02', '0000-00-00 00:00:00'),
+(8, 'Page Name', 'Page Name', '', '2016-04-07 14:04:18', '0000-00-00 00:00:00'),
+(9, 'Sitter Guide developed by Beta-soft systems.', 'Sitter Guide developed by Beta-soft systems.', '', '2016-04-07 14:12:29', '0000-00-00 00:00:00'),
+(10, 'Welcome', 'Welcome', '', '2016-04-07 14:14:55', '0000-00-00 00:00:00'),
+(11, 'Administrator', 'Administrator', '', '2016-04-07 14:16:22', '0000-00-00 00:00:00'),
+(12, 'Page URL', 'Page URL', '', '2016-04-07 14:16:48', '0000-00-00 00:00:00'),
+(13, 'Sitter Guide ', 'Sitter Guide \r\n', '', '2016-04-07 14:25:03', '0000-00-00 00:00:00'),
+(14, 'Blogs Listing', 'Blogs Listing\r\n', '', '2016-04-07 14:31:40', '0000-00-00 00:00:00'),
+(15, ' Users Listing', 'Users Listing\r\n', '', '2016-04-07 15:54:23', '0000-00-00 00:00:00'),
+(16, ' Category Listing', ' Category Listing\r\n', '', '2016-04-07 16:02:34', '0000-00-00 00:00:00'),
+(17, 'Manage CMS Pages', 'Manage CMS Pages\r\n', '', '2016-04-07 16:02:51', '0000-00-00 00:00:00'),
+(18, 'How Works Listing', 'How Works Listing\r\n', '', '2016-04-07 16:03:16', '0000-00-00 00:00:00'),
+(19, 'Search all columns', 'Search all columns', '', '2016-04-07 16:07:36', '0000-00-00 00:00:00'),
+(20, 'Show', 'Show', '', '2016-04-07 16:09:08', '0000-00-00 00:00:00'),
+(21, 'Content Management', 'Content Management', '', '2016-04-07 16:12:15', '0000-00-00 00:00:00'),
+(22, 'entries', 'entries', '', '2016-04-07 16:15:36', '0000-00-00 00:00:00'),
+(23, 'Dashboard', 'Dashboard', '', '2016-04-07 16:16:19', '0000-00-00 00:00:00'),
+(24, 'entries', 'entries', '', '2016-04-07 16:19:14', '0000-00-00 00:00:00'),
+(25, 'Show', 'show', '', '2016-04-07 16:19:18', '0000-00-00 00:00:00'),
+(26, 'page name', 'page name', '', '2016-04-07 16:31:37', '0000-00-00 00:00:00'),
+(27, 'Manage Promocode', 'Manage Promocode', '', '2016-04-07 16:47:42', '0000-00-00 00:00:00'),
+(28, 'Manage Categories', 'Manage Categories', '', '2016-04-07 16:49:14', '0000-00-00 00:00:00'),
+(29, 'Blogs', 'Blogs', '', '2016-04-07 16:49:42', '0000-00-00 00:00:00'),
+(30, 'test 1', 'test 1 val', '', '2016-04-07 16:54:13', '0000-00-00 00:00:00'),
+(31, 'Currency Management', 'Currency Management', '', '2016-04-07 16:55:39', '0000-00-00 00:00:00'),
+(32, 'test3', 'test3 val', '', '2016-04-07 16:59:47', '0000-00-00 00:00:00'),
+(33, 'Partners', 'Partners', '', '2016-04-07 17:00:07', '0000-00-00 00:00:00'),
+(34, 'entries', 'entries', '', '2016-04-07 17:01:13', '0000-00-00 00:00:00'),
+(35, 'Slider Management', 'Slider Managements', '', '2016-04-07 17:05:17', '0000-00-00 00:00:00'),
+(36, 'Search all columns', 'Search all columns', '', '2016-04-07 17:05:31', '0000-00-00 00:00:00'),
+(37, 'Subscribes', 'Subscribes', '', '2016-04-07 17:11:01', '0000-00-00 00:00:00'),
+(38, 'image', 'image', '', '2016-04-07 17:11:22', '0000-00-00 00:00:00'),
+(39, 'News & Updates', 'News & Updates', '', '2016-04-07 17:11:27', '0000-00-00 00:00:00'),
+(40, 'Why Choose Us', 'Why Choose Us', '', '2016-04-07 17:11:48', '0000-00-00 00:00:00'),
+(41, 'Static Strings', 'Static Strings', '', '2016-04-07 17:16:35', '0000-00-00 00:00:00'),
+(42, 'Choose Us Listing', 'Choose Us Listing', '', '2016-04-07 17:18:02', '0000-00-00 00:00:00'),
+(43, 'CMS Management', 'CMS Management', '', '2016-04-07 17:22:02', '0000-00-00 00:00:00'),
+(44, 'Users Listing', 'Users Listing\r\n', '', '2016-04-07 17:22:51', '0000-00-00 00:00:00'),
+(45, 'First Name', 'First Name', '', '2016-04-07 17:23:56', '0000-00-00 00:00:00'),
+(46, 'Added Date', 'Added Date', '', '2016-04-07 17:27:58', '0000-00-00 00:00:00'),
+(47, 'Phone', 'Phone', '', '2016-04-07 17:29:02', '0000-00-00 00:00:00'),
+(48, 'Email', 'Email', '', '2016-04-07 17:30:54', '0000-00-00 00:00:00'),
+(49, 'Last Name', 'Last Name', '', '2016-04-07 17:31:40', '0000-00-00 00:00:00'),
+(50, 'Status', 'Status', '', '2016-04-07 17:35:41', '0000-00-00 00:00:00'),
+(51, 'Action', 'Action', '', '2016-04-07 17:36:48', '0000-00-00 00:00:00'),
+(52, 'Page name', 'Page name', '', '2016-04-07 17:41:09', '0000-00-00 00:00:00'),
+(53, 'Page Content', 'Page Content', '', '2016-04-07 17:44:28', '0000-00-00 00:00:00'),
+(54, 'Subject', 'Subject', '', '2016-04-07 17:48:42', '0000-00-00 00:00:00'),
+(55, 'Title', 'Title', '', '2016-04-07 17:49:08', '0000-00-00 00:00:00'),
+(56, 'Alias', 'Alias', '', '2016-04-07 17:50:18', '0000-00-00 00:00:00'),
+(57, 'Slug', 'Slug', '', '2016-04-07 17:52:28', '0000-00-00 00:00:00'),
+(58, 'Country', 'Country', '', '2016-04-07 17:55:41', '0000-00-00 00:00:00'),
+(59, 'name', 'name', '', '2016-04-07 17:56:40', '0000-00-00 00:00:00'),
+(60, 'Description', 'Description', '', '2016-04-07 17:57:54', '0000-00-00 00:00:00'),
+(61, 'Image', 'Image', '', '2016-04-07 17:58:22', '0000-00-00 00:00:00'),
+(62, 'status', 'status', '', '2016-04-07 18:01:20', '0000-00-00 00:00:00'),
+(63, 'Created Date', 'Created Date', '', '2016-04-07 18:03:27', '0000-00-00 00:00:00'),
+(64, 'Promo Code', 'Promo Code', '', '2016-04-07 18:04:18', '0000-00-00 00:00:00'),
+(65, 'How Works Listing', 'How Works Listing\r\n', '', '2016-04-07 18:05:55', '0000-00-00 00:00:00'),
+(66, 'Coupon Type', 'Coupon Type', '', '2016-04-07 18:09:19', '0000-00-00 00:00:00'),
+(67, 'Choose Us Listing', 'Choose Us Listing', '', '2016-04-07 18:10:27', '0000-00-00 00:00:00'),
+(68, 'Sign Up for Sitter Guide', 'Sign Up for Sitter Guide', '', '2016-04-07 18:12:22', '0000-00-00 00:00:00'),
+(69, 'Strings Listing', 'Strings Listing', '', '2016-04-07 18:14:19', '0000-00-00 00:00:00'),
+(70, 'String slug', 'String slug\r\n', '', '2016-04-07 18:19:45', '0000-00-00 00:00:00'),
+(71, 'String Value', 'String Value', '', '2016-04-07 18:20:07', '0000-00-00 00:00:00'),
+(72, 'Worry Free Pet Sitting', 'Worry Free Pet Sitting', '', '2016-04-07 18:22:53', '0000-00-00 00:00:00'),
+(73, 'Discount', 'Discount', '', '2016-04-07 18:32:24', '0000-00-00 00:00:00'),
+(74, '& Dog Boarding services', '& Dog Boarding services', '', '2016-04-07 18:32:41', '0000-00-00 00:00:00'),
+(75, 'Fun & News', 'Fun & News', '', '2016-04-07 18:38:41', '0000-00-00 00:00:00'),
+(76, '	Price', '	Price', '', '2016-04-07 18:42:59', '0000-00-00 00:00:00'),
+(77, 'Start Date', 'Start Date', '', '2016-04-07 18:44:40', '0000-00-00 00:00:00'),
+(78, 'Currency Name', 'Currency Name', '', '2016-04-07 18:46:47', '0000-00-00 00:00:00'),
+(79, 'Expire Date', 'Expire Date', '', '2016-04-07 18:47:05', '0000-00-00 00:00:00'),
+(80, 'Why Choose us?', 'Why Choose us?', '', '2016-04-07 18:48:53', '0000-00-00 00:00:00'),
+(81, 'Currency Name', 'Currency Name\r\n', '', '2016-04-07 18:53:06', '0000-00-00 00:00:00'),
+(82, 'Find some of the funniest pet pics & videos along with news updates here', 'Find some of the funniest pet pics & videos along with news updates here', '', '2016-04-07 18:55:12', '0000-00-00 00:00:00'),
+(83, 'Leading Sitting And Walkers In Your Area', 'Leading Sitting And Walkers In Your Area', '', '2016-04-07 18:59:26', '0000-00-00 00:00:00'),
+(84, 'Meet some of our ledaing sitters & walkers', 'Meet some of our ledaing sitters & walkers', '', '2016-04-07 19:04:38', '0000-00-00 00:00:00'),
+(85, 'About Sitter Guide', 'About Sitter Guide', '', '2016-04-07 19:11:13', '0000-00-00 00:00:00'),
+(86, 'Locale', 'Locale', '', '2016-04-07 19:11:25', '0000-00-00 00:00:00'),
+(87, 'About Us', 'About Us', '', '2016-04-07 19:17:42', '0000-00-00 00:00:00'),
+(88, 'In the News', 'In the News', '', '2016-04-07 19:28:07', '0000-00-00 00:00:00'),
+(89, 'Privacy Policy', 'Privacy Policy', '', '2016-04-07 19:50:32', '0000-00-00 00:00:00'),
+(90, 'Top pet sitting cities', 'Top pet sitting cities', '', '2016-04-07 19:55:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1613,8 +2083,8 @@ CREATE TABLE IF NOT EXISTS `subscribes` (
 --
 
 INSERT INTO `subscribes` (`id`, `email`, `created_date`, `status`, `modified`) VALUES
-(39, 'sanyam.arora92@gmail.com', '2016-04-07 05:20:19', 1, '2016-04-13 09:13:11'),
-(40, 'Satyam.arora92@gmail.com', '2016-04-07 08:01:34', 0, '2016-04-13 09:59:10');
+(39, 'sanyam.arora92@gmail.com', '2016-04-07 05:20:19', 0, '2016-04-12 07:35:34'),
+(40, 'Satyam.arora92@gmail.com', '2016-04-07 08:01:34', 0, '2016-04-12 09:21:47');
 
 -- --------------------------------------------------------
 
@@ -30013,11 +30483,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `birth_date` varchar(255) NOT NULL,
   `awesome_title` varchar(255) NOT NULL,
   `your_story` varchar(255) NOT NULL,
+  `country_code` int(11) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `hear_from` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `address` text NOT NULL,
+  `address2` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
   `zip` varchar(255) DEFAULT NULL,
@@ -30040,26 +30512,26 @@ CREATE TABLE IF NOT EXISTS `users` (
   `about` text NOT NULL,
   `reference_code` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_type`, `facebook_id`, `title`, `first_name`, `last_name`, `email`, `password`, `org_password`, `gender`, `birth_date`, `awesome_title`, `your_story`, `phone`, `image`, `hear_from`, `country`, `address`, `city`, `state`, `zip`, `about_user`, `zone_id`, `cover_img`, `type`, `facebook_link`, `twitter_link`, `date_added`, `date_modified`, `modified`, `logged_intime`, `last_login`, `avail_status`, `activation_key`, `profile_view`, `pwd_token`, `status`, `about`, `reference_code`) VALUES
-(1, 'Basic', '', '', 'Vineet', 'Kumar', 'rahul.jain@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', 'jan,01-08-1995', '', '', '8905062665', 'goXSql32OXciGW0.jpg', '', '', 'basic addresss', 'basic city', 'basic state', '125077', '', '1', '', 1, '', '', '2016-01-22 07:03:02', '2016-04-13 10:41:20', '2016-04-13 10:41:20', '2016-01-22 07:04:42', '2016-04-15 05:37:55', 'Logout', '', 0, '', 1, '', ''),
-(2, 'Basic', '', '', '123@#$xdf', 'dc123@$', '#dx@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '', 'Female', '', '', '', '9050605251', '', '', '', '', '', '', NULL, 'dfvsdf34534(*(', '2', '', 1, '', '', '2016-01-22 07:06:21', '2016-01-22 07:06:21', '0000-00-00 00:00:00', '2016-01-22 07:06:21', '2016-03-30 07:30:05', 'Logout', 'f9318f98d8bf16323137708fc6fdd963', 0, '', 1, '', ''),
-(38, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@mobilyte.com', '0192023a7bbd73250516f069df18b500', '', 'Male', '17-01-1987', '', '', '', '', 'Facebook', 'Finland', '', '', '', '127306', '', '', '', 1, '', '', '2016-03-08 07:11:54', '2016-03-08 07:11:54', '0000-00-00 00:00:00', '2016-03-08 07:13:00', '2016-03-30 07:21:41', 'Logout', '', 0, '1f5a2c51a2b3be67632b6b8939f3c0a7', 1, '', ''),
-(3, 'Basic', '', 'Mr', 'testerd', '123', '#hcxvx.dcv@gmail.com', '', '', 'Male', '', '', '', '5434534567', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-04 07:09:55', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
-(24, 'Basic', '', '', 'Rahul', 'Jain', 'rahul@mobylite.com', '0192023a7bbd73250516f069df18b500', 'admin123', 'Other', '', '', '', '3334443332', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-02-02 09:09:08', '2016-02-02 09:09:08', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'a19d84fd7040f15ed93e8ae94fbbf03b', 0, '', 0, '', ''),
-(29, 'Basic', '', 'Mr', 'Virendar', 'kumardfdf676667', 'virender@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '01-12-1993', '', '', '2233445521', 'AMVC0VVS5XlKJIL.jpg', 'Instagram', 'Denmark', '', '', '', '125077', 'dsdfsdfdsfsdf423434535353535', '112', '', 1, '', '', '2016-03-04 04:28:02', '2016-03-04 04:28:02', '0000-00-00 00:00:00', '2016-03-04 04:28:26', '0000-00-00 00:00:00', 'Logout', '', 0, '', 1, '', ''),
-(37, 'Basic', '', 'Mr', 'Sunil', 'Kumar', 'sukhdev@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '11-12-1990', '', '', '', '', 'Facebook', 'Austria', '', '', '', '12545', '', '', '', 1, '', '', '2016-03-07 13:57:53', '2016-03-07 13:57:53', '0000-00-00 00:00:00', '2016-03-07 13:57:53', '2016-04-01 09:02:20', 'Logout', 'f044329d1e80892ad78a26989ed0f73f', 0, 'ab2a8536dd1243e6bfe48615c6dc0a68', 1, '', ''),
-(43, 'Basic', '1725316891087656', 'Mr', 'Albert', 'Gabriel', 'betasoftsystems.dummy@gmail.com', '382b2dde070fede332762171f108738a', 'IZfykHAdbG96bqD', 'Male', '', '', '', '', 'https://graph.facebook.com/1725316891087656/picture', '', '', '', '', '', NULL, '', '', '', 1, '', '', '2016-03-14 10:12:15', '2016-03-14 10:12:15', '2016-04-12 09:08:36', '2016-03-14 10:12:15', '2016-03-15 12:41:28', 'Logout', '142cc40375cf5d8ea299c1d0ad9938af', 0, 'c4334c1deec7a04704ead74a9be0d066', 1, '', ''),
-(57, 'Basic', '', 'Mr', 'test ok', 'name ok', 'test@test.com', 'a3dcb4d229de6fde0db5686dee47145d', 'asdasdasd', 'Male', '03/17/2016', '', '', '9050656545', '', 'Radio', 'Australia', '', '', '', '123123', '', '1', '', 1, '', '', '2016-03-16 09:49:24', '2016-03-16 09:49:24', '0000-00-00 00:00:00', '2016-03-16 09:49:25', '0000-00-00 00:00:00', 'Logout', 'cd2ae1bac4f7cfabbd4be3460b74b548', 0, '', 0, '', ''),
-(61, 'Basic', '888539421260409', 'Mr', 'Sukhdev', 'Kamboj', 'skanmulle111@gmail.com', 'f0f22591641f6bdf34ed109345dcd771', 'Y2QySaxjt0WuSUG', 'Male', '', '', '', '2323232323', 'j0eb2ZZNfkEHhGp.jpg', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-03-16 12:45:51', '2016-03-16 12:45:51', '0000-00-00 00:00:00', '2016-03-16 12:45:52', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
-(64, 'Basic', '', 'Mr', 'Sukant', 'Sharma', '#.sukant@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '08/01/2006', '', '', '3453654345', '', 'Other', 'Australia', '', '', '', '95131', '', '1', '', 1, '', '', '2016-03-18 06:24:01', '2016-03-18 06:24:01', '0000-00-00 00:00:00', '2016-03-18 06:24:01', '0000-00-00 00:00:00', 'Logout', 'ecffa2c1b3b9bfe0e487b7ed612b9b7e', 0, '', 0, '', ''),
-(65, 'Basic', '', 'Mr', 'Shampy', 'Singh Sanotra', 'mridula.sharma@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '05/13/1980', '', '', 'nhghyhjyy', '', 'Pinterest', 'Hong Kong S.A.R., China', '', '', '', '999077', '', '1', '', 1, '', '', '2016-03-30 16:46:43', '2016-03-30 16:46:43', '0000-00-00 00:00:00', '2016-03-30 16:46:43', '0000-00-00 00:00:00', 'Logout', '7602540cc095584b1c37e4d56e3b7e33', 0, '', 0, '', ''),
-(66, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@betasoftsystems.com', 'e00cf25ad42683b3df678c61f42c6bda', 'admin1', 'Male', '04/18/2025', '', '', '', '', 'Facebook', 'Germany', '', '', '', '123123', '', '', '', 1, '', '', '2016-04-11 12:56:41', '2016-04-11 12:56:41', '0000-00-00 00:00:00', '2016-04-11 12:56:41', '0000-00-00 00:00:00', 'Logout', '10593c835057dc8058c68f011fe4d60a', 0, '', 0, '', '');
+INSERT INTO `users` (`id`, `user_type`, `facebook_id`, `title`, `first_name`, `last_name`, `email`, `password`, `org_password`, `gender`, `birth_date`, `awesome_title`, `your_story`, `country_code`, `phone`, `image`, `hear_from`, `country`, `address`, `address2`, `city`, `state`, `zip`, `about_user`, `zone_id`, `cover_img`, `type`, `facebook_link`, `twitter_link`, `date_added`, `date_modified`, `modified`, `logged_intime`, `last_login`, `avail_status`, `activation_key`, `profile_view`, `pwd_token`, `status`, `about`, `reference_code`) VALUES
+(1, 'Basic', '', '', 'Vineet', 'Kumar', '#ra&hul.jain@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', 'jan,01-08-1995', '', '', 0, '8905062665', 'G3fVR8tGmW2bnVM.jpg', '', '', 'basic addresss', '', 'basic city', 'basic state', '125077', '', '1', '', 1, '', '', '2016-01-22 07:03:02', '2016-01-22 07:03:02', '0000-00-00 00:00:00', '2016-01-22 07:04:42', '2016-03-16 12:35:08', 'Logout', '', 0, '', 1, '', ''),
+(2, 'Basic', '', '', '123@#$xdf', 'dc123@$', '#dx@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '', 'Female', '', '', '', 0, '9050605251', '', '', '', '', '', '', '', NULL, 'dfvsdf34534(*(', '2', '', 1, '', '', '2016-01-22 07:06:21', '2016-01-22 07:06:21', '0000-00-00 00:00:00', '2016-01-22 07:06:21', '2016-03-30 07:30:05', 'Logout', 'f9318f98d8bf16323137708fc6fdd963', 0, '', 0, '', ''),
+(38, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@mobilyte.com', '0192023a7bbd73250516f069df18b500', '', 'Male', '17-01-1987', '', '', 0, '', '', 'Facebook', 'Finland', '', '', '', '', '127306', '', '', '', 1, '', '', '2016-03-08 07:11:54', '2016-03-08 07:11:54', '0000-00-00 00:00:00', '2016-03-08 07:13:00', '2016-03-30 07:21:41', 'Logout', '', 0, '1f5a2c51a2b3be67632b6b8939f3c0a7', 1, '', ''),
+(3, 'Basic', '', 'Mr', 'testerd', '123', '#hcxvx.dcv@gmail.com', '', '', 'Male', '', '', '', 0, '5434534567', '', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-04 07:09:55', '2016-04-12 10:28:25', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
+(24, 'Basic', '', '', 'Rahul', 'Jain', 'rahul@mobylite.com', '0192023a7bbd73250516f069df18b500', 'admin123', 'Other', '', '', '', 0, '3334443332', '', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-02-02 09:09:08', '2016-02-02 09:09:08', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'a19d84fd7040f15ed93e8ae94fbbf03b', 0, '', 0, '', ''),
+(29, 'Basic', '', 'Mr', 'Virendar', 'kumardfdf676667', 'virender@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '01-12-1993', '', '', 0, '2233445521', 'AMVC0VVS5XlKJIL.jpg', 'Instagram', 'Denmark', 'Test address', '', '', '', '125077', 'dsdfsdfdsfsdf423434535353535', '112', '', 1, '', '', '2016-03-04 04:28:02', '2016-03-04 04:28:02', '0000-00-00 00:00:00', '2016-03-04 04:28:26', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
+(37, 'Basic', '', 'Mr', 'Sunil', 'Kumar', 'sukhdev@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '11-12-1990', '', '', 0, '6052214564', '', 'Facebook', 'Austria', 'Test address', 'Test address2', 'testCity', 'TestState', '12545', '', '30', '', 1, '', '', '2016-03-07 13:57:53', '2016-03-07 13:57:53', '0000-00-00 00:00:00', '2016-03-07 13:57:53', '2016-04-20 08:59:33', 'Logout', 'f044329d1e80892ad78a26989ed0f73f', 0, 'ab2a8536dd1243e6bfe48615c6dc0a68', 1, '', ''),
+(43, 'Basic', '1725316891087656', 'Mr', 'Albert', 'Gabriel', 'betasoftsystems.dummy@gmail.com', '382b2dde070fede332762171f108738a', 'IZfykHAdbG96bqD', 'Male', '', '', '', 0, '', 'https://graph.facebook.com/1725316891087656/picture', '', '', '', '', '', '', NULL, '', '', '', 1, '', '', '2016-03-14 10:12:15', '2016-03-14 10:12:15', '2016-04-12 09:08:36', '2016-03-14 10:12:15', '2016-03-15 12:41:28', 'Logout', '142cc40375cf5d8ea299c1d0ad9938af', 0, 'c4334c1deec7a04704ead74a9be0d066', 1, '', ''),
+(57, 'Basic', '', 'Mr', 'test ok', 'name ok', 'test@test.com', 'a3dcb4d229de6fde0db5686dee47145d', 'asdasdasd', 'Male', '03/17/2016', '', '', 0, '9050656545', '', 'Radio', 'Australia', '', '', '', '', '123123', '', '1', '', 1, '', '', '2016-03-16 09:49:24', '2016-03-16 09:49:24', '0000-00-00 00:00:00', '2016-03-16 09:49:25', '0000-00-00 00:00:00', 'Logout', 'cd2ae1bac4f7cfabbd4be3460b74b548', 0, '', 0, '', ''),
+(61, 'Basic', '888539421260409', 'Mr', 'Sukhdev', 'Kamboj', 'skanmulle111@gmail.com', 'f0f22591641f6bdf34ed109345dcd771', 'Y2QySaxjt0WuSUG', 'Male', '', '', '', 0, '2323232323', 'j0eb2ZZNfkEHhGp.jpg', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-03-16 12:45:51', '2016-03-16 12:45:51', '0000-00-00 00:00:00', '2016-03-16 12:45:52', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
+(64, 'Basic', '', 'Mr', 'Sukant', 'Sharma', '#.sukant@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '08/01/2006', '', '', 0, '3453654345', '', 'Other', 'Australia', '', '', '', '', '95131', '', '1', '', 1, '', '', '2016-03-18 06:24:01', '2016-03-18 06:24:01', '2016-04-12 11:31:25', '2016-03-18 06:24:01', '0000-00-00 00:00:00', 'Logout', 'ecffa2c1b3b9bfe0e487b7ed612b9b7e', 0, '', 1, '', ''),
+(65, 'Basic', '', 'Mr', 'Shampy', 'Singh Sanotra', 'mridula.sharma@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '05/13/1980', '', '', 0, 'nhghyhjyy', '', 'Pinterest', 'Hong Kong S.A.R., China', '', '', '', '', '999077', '', '1', '', 1, '', '', '2016-03-30 16:46:43', '2016-03-30 16:46:43', '0000-00-00 00:00:00', '2016-03-30 16:46:43', '0000-00-00 00:00:00', 'Logout', '7602540cc095584b1c37e4d56e3b7e33', 0, '', 0, '', ''),
+(66, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@betasoftsystems.com', 'e00cf25ad42683b3df678c61f42c6bda', 'admin1', 'Male', '04/18/2025', '', '', 0, '', '', 'Facebook', 'Germany', '', '', '', '', '123123', '', '', '', 1, '', '', '2016-04-11 12:56:41', '2016-04-11 12:56:41', '0000-00-00 00:00:00', '2016-04-11 12:56:41', '0000-00-00 00:00:00', 'Logout', '10593c835057dc8058c68f011fe4d60a', 0, '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -30078,6 +30550,43 @@ CREATE TABLE IF NOT EXISTS `users_i18n` (
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_about_sitters`
+--
+
+CREATE TABLE IF NOT EXISTS `user_about_sitters` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `accepted_pet_size` varchar(255) NOT NULL,
+  `preferred_age` varchar(255) NOT NULL,
+  `cancellation_policy` enum('flexible','moderate','strict') NOT NULL COMMENT 'Flexible,Moderate,Strict',
+  `breaks_provided_every` varchar(255) NOT NULL,
+  `sitting_experience` varchar(255) NOT NULL,
+  `mixed_familes` enum('yes','no') NOT NULL,
+  `your_self` varchar(255) NOT NULL,
+  `take_care_desc` text NOT NULL,
+  `carers_description` text NOT NULL,
+  `un_neutered_pets` enum('yes','no') NOT NULL,
+  `un_spayed_females` enum('yes','no') NOT NULL,
+  `birds_in_cages` enum('yes','no') NOT NULL,
+  `females_on_heat` enum('yes','no') NOT NULL,
+  `un_trained_pets` enum('yes','no') NOT NULL,
+  `dogs_in_home` enum('yes','no') NOT NULL,
+  `last_minute_booking` enum('yes','no') NOT NULL,
+  `longer_than_week` enum('yes','no') NOT NULL,
+  `cats_in_home` enum('yes','no') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `user_about_sitters`
+--
+
+INSERT INTO `user_about_sitters` (`id`, `user_id`, `accepted_pet_size`, `preferred_age`, `cancellation_policy`, `breaks_provided_every`, `sitting_experience`, `mixed_familes`, `your_self`, `take_care_desc`, `carers_description`, `un_neutered_pets`, `un_spayed_females`, `birds_in_cages`, `females_on_heat`, `un_trained_pets`, `dogs_in_home`, `last_minute_booking`, `longer_than_week`, `cats_in_home`) VALUES
+(1, 37, 'cats', '1-3', 'moderate', '8+', '5 yrs', 'yes', 'dfsgdgdgdgdfgdg', 'gdfgd', 'gdg', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no');
 
 -- --------------------------------------------------------
 
@@ -30110,21 +30619,18 @@ CREATE TABLE IF NOT EXISTS `user_blogs` (
   `modified` datetime NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `user_blogs`
 --
 
 INSERT INTO `user_blogs` (`id`, `user_id`, `image`, `description`, `created_date`, `modified`, `status`) VALUES
-(3, 29, 'JZAAhsaxvykqLly.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-02-29 06:45:54', '0000-00-00 00:00:00', 0),
-(4, 24, 'rgFQqY7WJZtD6i7.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-03-08 09:59:24', '2016-04-12 07:39:28', 0),
+(2, 29, 'OJwxdOOwZff80pr.jpeg', 'The Pena National Palace is a Romanticist palace in Sintra, Portugal, built by Ferdinand II of Portugal on the site of a ruined monastery. The palace stands on the top of a hill in the Sintra Mountains, and on a clear day it can be easily seen from Lisbo', '2016-02-29 06:44:02', '2016-04-12 11:47:01', 0),
+(3, 29, 'JZAAhsaxvykqLly.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-02-29 06:45:54', '2016-04-12 11:47:13', 1),
+(4, 24, 'rgFQqY7WJZtD6i7.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-03-08 09:59:24', '2016-04-12 07:39:28', 1),
 (6, 0, 'tGsRS4U344vw4gM.jpeg', 'Desc', '2016-04-08 12:54:25', '0000-00-00 00:00:00', 1),
-(7, 0, 'CpHswwQEVGOorYW.jpeg', 'Description', '2016-04-08 12:55:50', '0000-00-00 00:00:00', 0),
-(8, 0, '4bAc3CY5SFsUORn.png', 'New ok', '2016-04-08 12:56:24', '2016-04-12 01:31:49', 1),
-(9, 0, 'LpJ5GDQMUvpHCpE.png', 'gdfgdsfgsdfgdfsg', '2016-04-12 09:57:07', '0000-00-00 00:00:00', 1),
-(10, 0, 'sW3cBxLol9AUWIt.jpg', 'asdasdasd', '2016-04-12 09:57:46', '0000-00-00 00:00:00', 1),
-(11, 0, 'fscOk0YjTmvgP2z.png', 'gdfgdfg', '2016-04-12 09:59:41', '2016-04-12 09:59:49', 0);
+(7, 0, '9GX75RqtC1oCUoh.jpeg', 'Description', '2016-04-08 12:55:50', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -30258,29 +30764,6 @@ INSERT INTO `user_extended_profiles` (`id`, `user_id`, `pick_drop`, `travel_fee_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_funding_materials`
---
-
-CREATE TABLE IF NOT EXISTS `user_funding_materials` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `document_name` varchar(225) NOT NULL,
-  `document_path` varchar(225) NOT NULL,
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `user_funding_materials`
---
-
-INSERT INTO `user_funding_materials` (`id`, `user_id`, `document_name`, `document_path`, `create_date`) VALUES
-(3, 39, 'New Document', 'KG2UAMb9eN7f26U.doc', '2016-01-18 10:03:52'),
-(4, 39, 'Updated Doc Finance 2016', '5BSuNDBlCD5WaeH.odt', '2016-01-18 11:30:24');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_members`
 --
 
@@ -30344,6 +30827,67 @@ INSERT INTO `user_pets` (`id`, `user_id`, `pet_name`, `pet_type`, `pet_breed`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_professional_accreditations`
+--
+
+CREATE TABLE IF NOT EXISTS `user_professional_accreditations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `type_professional` enum('check','pets','people','other') NOT NULL COMMENT 'Pets,People,Other',
+  `sector_type` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `qualification_date` date NOT NULL,
+  `expiry_date` date NOT NULL,
+  `scanned_certification` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+
+--
+-- Dumping data for table `user_professional_accreditations`
+--
+
+INSERT INTO `user_professional_accreditations` (`id`, `user_id`, `type_professional`, `sector_type`, `title`, `qualification_date`, `expiry_date`, `scanned_certification`, `status`, `created_date`) VALUES
+(18, 37, 'other', 'other', '', '0000-00-00', '2174-12-04', '', 1, '2016-04-19 06:00:34'),
+(19, 37, 'other', 'other', '', '0000-00-00', '2189-12-04', '', 1, '2016-04-19 06:00:34'),
+(20, 37, 'other', 'other', '', '0000-00-00', '2181-12-04', '', 1, '2016-04-19 06:00:34'),
+(21, 37, 'other', 'other', '', '2172-12-04', '2174-12-04', '', 1, '2016-04-19 06:02:45'),
+(22, 37, 'other', 'other', '', '2189-12-04', '2189-12-04', '', 1, '2016-04-19 06:02:45'),
+(23, 37, 'other', 'other', '', '2181-12-04', '2181-12-04', '', 1, '2016-04-19 06:02:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_professional_accreditations_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_professional_accreditations_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `first_aid_for` varchar(255) NOT NULL,
+  `cpr_for` varchar(255) NOT NULL,
+  `oral_madications` varchar(255) NOT NULL,
+  `injected_madications` varchar(255) NOT NULL,
+  `training_techniques` varchar(255) NOT NULL,
+  `ex_behavioural_problems` varchar(255) NOT NULL,
+  `ex_volunteer` varchar(255) NOT NULL,
+  `ex_rescue_pets` varchar(255) NOT NULL,
+  `languages` varchar(255) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_professional_accreditations_details`
+--
+
+INSERT INTO `user_professional_accreditations_details` (`id`, `user_id`, `first_aid_for`, `cpr_for`, `oral_madications`, `injected_madications`, `training_techniques`, `ex_behavioural_problems`, `ex_volunteer`, `ex_rescue_pets`, `languages`, `created_date`) VALUES
+(0, 37, 'children', 'adults', '', '', 'dog', 'children', 'no', 'dog', '', '2016-04-18 12:36:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_references`
 --
 
@@ -30363,22 +30907,6 @@ CREATE TABLE IF NOT EXISTS `user_references` (
 INSERT INTO `user_references` (`id`, `reference_code`, `email`, `status`, `created_date`) VALUES
 (24, '6IMudF', 'sukhdev@mobilyte.com', 0, '2016-03-29 05:24:38'),
 (25, 'fVvhNW', 'sukant@betasoftsystems.com', 0, '2016-03-30 07:22:26');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_services`
---
-
-CREATE TABLE IF NOT EXISTS `user_services` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `service` varchar(255) NOT NULL,
-  `service_price` int(11) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -30406,6 +30934,124 @@ CREATE TABLE IF NOT EXISTS `user_service_details` (
 
 INSERT INTO `user_service_details` (`id`, `user_service_id`, `additional_rate`, `puppy_pet_rate`, `extended_session`, `extended_discount`, `spaces_available`, `additional_services`, `status`, `created_date`) VALUES
 (9, 98, 55, 51, '25', '51', 2, '', 1, '2016-02-22 06:30:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_sitter_galleries`
+--
+
+CREATE TABLE IF NOT EXISTS `user_sitter_galleries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+
+--
+-- Dumping data for table `user_sitter_galleries`
+--
+
+INSERT INTO `user_sitter_galleries` (`id`, `user_id`, `image`) VALUES
+(13, 37, 'abB07k823wyTRsI.png'),
+(14, 37, 'X3KP8XkQ4KxAqS1.jpeg'),
+(15, 37, '7mSar1YgbTaj5CX.jpeg'),
+(16, 37, 'ipQS6NGgtzQRZ7A.jpeg'),
+(17, 37, 'Q4Mz54qSarCbAwD.png'),
+(18, 37, 'vA05qjJLxKZdrhI.jpeg'),
+(19, 37, 'WqfEOmN28CCQlpV.png'),
+(20, 37, 'VLlVFC6edsP4w7a.png'),
+(21, 37, '9djsDKFa1ZpAmMu.png'),
+(22, 37, '2cEuz1kgUp2DJyM.png'),
+(23, 37, '5wPePjOkkFaA7mc.jpeg'),
+(24, 37, 'F0cLiWDXfW5s5L1.png'),
+(25, 37, 'AW7QkinIoHywZIP.png'),
+(26, 37, '0dObPXYiK46FmZg.png'),
+(27, 37, 'cq307chjKvQ0SFH.jpeg'),
+(28, 37, 'xFLbHqYvzypu5Bk.jpeg'),
+(29, 37, '6IF1Vxgq9hr4PJN.jpeg'),
+(30, 37, 'AKEfAEBwN1Z17G6.jpeg'),
+(31, 37, 'HBDdspAyGzFYslx.jpeg'),
+(32, 37, '6Tqan6n1Xltp3EF.jpeg'),
+(33, 37, 'NqgZcMr8QvqwoNt.jpeg'),
+(34, 37, 'oIcFJpAWgo9zE15.jpeg'),
+(35, 37, '85a3KO2Km9SeT89.jpeg'),
+(36, 37, 'q90R8726YUsmD0F.jpeg'),
+(37, 37, 'c8AdZaSQL5Pu9ys.jpeg'),
+(38, 37, 'sE6qWReAddFmerX.jpeg'),
+(39, 37, '3vJlGuTJHE4cpJJ.jpeg'),
+(40, 37, 'h3edj2VnrYrWbve.jpeg'),
+(41, 37, 'Zozyz7SiGqNAt30.png'),
+(42, 37, '9vY6Ax0lsOrWXB4.jpeg'),
+(43, 37, '8vHT9uCYVhe0Uhl.jpeg'),
+(44, 37, 'fgG5b8rajKPAxD3.jpeg'),
+(45, 37, 'qAoYkmiNb4Uf4Fn.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_sitter_houses`
+--
+
+CREATE TABLE IF NOT EXISTS `user_sitter_houses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `property_type` enum('flat','house','farm') NOT NULL COMMENT 'Flat,House,Farm',
+  `outdoor_area` enum('balcony','backyard') NOT NULL COMMENT 'Balcony,Backyard',
+  `outdoor_area_size` enum('small','medium','large') NOT NULL COMMENT 'Small,Medium,Large',
+  `outing_allow_multiple` enum('urban_streets','beach','city_park','country_side','bush') NOT NULL COMMENT 'Urban Streets,Beach,City Park,Country Side,Bush',
+  `cancellation_policy` enum('flexible','moderate','strict') NOT NULL COMMENT 'Flexible,Moderate,Strict',
+  `breaks_provided_every` enum('0-2','2-4','4-8','8+') NOT NULL,
+  `fully_fenced` enum('yes','no') NOT NULL,
+  `smokers` enum('yes','no') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `user_sitter_houses`
+--
+
+INSERT INTO `user_sitter_houses` (`id`, `user_id`, `property_type`, `outdoor_area`, `outdoor_area_size`, `outing_allow_multiple`, `cancellation_policy`, `breaks_provided_every`, `fully_fenced`, `smokers`) VALUES
+(3, 37, 'house', 'balcony', 'medium', 'urban_streets', 'flexible', '2-4', 'no', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_sitter_services`
+--
+
+CREATE TABLE IF NOT EXISTS `user_sitter_services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `day_care` varchar(255) NOT NULL,
+  `visits` varchar(255) NOT NULL,
+  `night_care` varchar(255) NOT NULL,
+  `hourly` varchar(255) NOT NULL,
+  `cancellation_policy` varchar(255) NOT NULL,
+  `holiday_rate` tinytext NOT NULL,
+  `holiday_rate_status` tinyint(2) NOT NULL,
+  `puppy_rate_status` tinyint(2) NOT NULL,
+  `puppy_rate` int(11) NOT NULL,
+  `cat_rate_status` tinyint(2) NOT NULL,
+  `cat_rate` int(11) NOT NULL,
+  `horse_rate_status` tinyint(2) NOT NULL,
+  `horse_rate` int(11) NOT NULL,
+  `reptiles_rate_status` tinyint(2) NOT NULL,
+  `reptiles_rate` int(11) NOT NULL,
+  `small_pets_status` tinyint(2) NOT NULL,
+  `small_pets_rate` int(11) NOT NULL,
+  `day_care_status` tinyint(2) NOT NULL,
+  `additional_mode_status` tinyint(2) NOT NULL,
+  `repeat_clients_only` tinyint(2) NOT NULL,
+  `guest_rate` int(11) NOT NULL,
+  `1_visit_pr_day` int(11) NOT NULL,
+  `2_visit_pr_day` int(11) NOT NULL,
+  `1_day_1_guest` int(11) NOT NULL,
+  `2_day_1_guest` int(11) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -30438,10 +31084,10 @@ INSERT INTO `user_work_schedules` (`id`, `user_id`, `day_name`, `created_date`, 
 --
 
 CREATE TABLE IF NOT EXISTS `zones` (
-  `zone_id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `country_code` char(2) COLLATE utf8_bin NOT NULL,
   `zone_name` varchar(35) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`zone_id`),
+  PRIMARY KEY (`id`),
   KEY `idx_zone_name` (`zone_name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=417 ;
 
@@ -30449,7 +31095,7 @@ CREATE TABLE IF NOT EXISTS `zones` (
 -- Dumping data for table `zones`
 --
 
-INSERT INTO `zones` (`zone_id`, `country_code`, `zone_name`) VALUES
+INSERT INTO `zones` (`id`, `country_code`, `zone_name`) VALUES
 (1, 'AD', 'Europe/Andorra'),
 (2, 'AE', 'Asia/Dubai'),
 (3, 'AF', 'Asia/Kabul'),

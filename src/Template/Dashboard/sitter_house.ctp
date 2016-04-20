@@ -80,21 +80,6 @@
                         'class'=>'form-control']);
                       ?>
                     </div>
-
-                    
-
-
-                    <div class="form-group col-lg-4">
-                      <label for="">Cancellation Policy</label>
-                      <?php echo $this->Form->input('UserSitterHouses.cancellation_policy',[
-                        'templates' => ['inputContainer' => '{{content}}'],
-                        'label' => false,
-                         'required' => false,
-                        'type'=>'select',
-                        'options'=>[''=>'---','flexible'=>'Flexible','moderate'=>'Moderate','strict'=>'Strict'],
-                        'class'=>'form-control mzero']);
-                      ?>
-                    </div>
                     <div class="form-group col-lg-4">
                       <label for="">Toilet Breaks provided - every  </label>
                       <?php echo $this->Form->input('UserSitterHouses.breaks_provided_every',[

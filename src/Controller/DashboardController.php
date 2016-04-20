@@ -512,6 +512,49 @@ class DashboardController extends AppController
     function servicesAndRates(){
     	 $this->viewBuilder()->layout('profile_dashboard');
 
+    	  $this->viewBuilder()->layout('profile_dashboard');
+
+
+          $usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+   
+        $aboutSittersModel = TableRegistry::get('UserAboutSitters');
+        
+
+		$this->request->data = @$_REQUEST;
+		//pr($this->request->data); die;
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+			pr($this->request->data);die;
+			   /*$aboutSitterData = $aboutSittersModel->newEntity();
+               $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
+                $aboutSitterData->user_id = $userId;
+                
+              // pr($aboutSitterData->errors());  die;
+                if ($aboutSittersModel->save($aboutSitterData)){
+
+                      return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+				}else{
+					$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
+			 	unset($aboutSitterData->id);
+		       $this->set('sitter_info', $aboutSitterData);*/
+
+		}/*else{
+            $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
+            if(isset($query->user_about_sitter)){
+                   $aboutSitterData = $query->user_about_sitter;
+                   //$this->set('sitterHouseId', $aboutSitterData->id);
+                   $this->set('sitter_info', $aboutSitterData);
+		    }
+            
+        }*/
+	     
+
+    }
+
     }
     function sitterProfile(){
          $this->viewBuilder()->layout('profile_dashboard');

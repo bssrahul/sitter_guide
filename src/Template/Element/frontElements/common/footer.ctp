@@ -244,7 +244,7 @@
 <!--[Footer End]-->
 <!----------------------------------header resize------------------------------------------>
  <?php
-     echo $this->Html->script(['Front/classie.js','Admin/bootstrap.min.js']);
+     echo $this->Html->script(['Front/classie.js','Admin/bootstrap.min.js','Front/custom.js']);
  ?>
 <script>
     function init() {
