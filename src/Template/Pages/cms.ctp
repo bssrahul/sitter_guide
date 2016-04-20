@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 						<div class="outer-one box-marg">
-							<p class="text-right"><span>Last Updated <b><?php echo isset($CmsPageData->created)?date("F j, Y",strtotime($CmsPageData->created)):date("F j, Y"); ?></b>.</span></p>
+							<p class="text-right"><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Updated')); ?> <b><?php echo isset($CmsPageData->created)?date("F j, Y",strtotime($CmsPageData->created)):date("F j, Y"); ?></b>.</span></p>
 						</div> 
 						
 						<div class="outer-one ">

@@ -1,3 +1,89 @@
 
-.wcub-area .wcu-box{ min-height:365px; position:relative;}
-.wcub-area .wcu-box a.btn-1{ padding:0 10px; width:auto; position: absolute; bottom:0px;}
+@media (min-width:1681px) and (max-width:1920px){
+.wcub-area .wcu-box{ min-height:330px;}
+	
+}
+
+@media (min-width:1551px) and (max-width:1680px){
+.wcub-area .wcu-box{ min-height:330px;}	
+}
+
+@media (min-width:1441px) and (max-width:1550px){
+.wcub-area .wcu-box{ min-height:330px;}	
+}
+
+
+@media (min-width:1368px) and (max-width:1440px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 9px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:13px; padding:8px 9px;}
+
+.wcub-area .wcu-box{ min-height:330px; }
+
+}
+
+@media (min-width:1281px) and (max-width:1367px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 13px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:13px; padding:8px 13px;}
+
+.wcub-area .wcu-box{ min-height:330px; }
+}
+
+@media (min-width:1200px) and (max-width:1280px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 6px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 6px;}
+
+.wcub-area .wcu-box{ min-height:330px; }
+
+}
+
+
+@media (min-width:1101px) and (max-width:1199px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 12px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 12px;}
+}
+
+@media (min-width:1025px) and (max-width:1100px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 9px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:13px; padding:8px 9px;}
+}
+
+@media (min-width:992px) and (max-width:1024px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 7px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:12px; padding:8px 7px;}
+}
+
+@media (min-width:901px) and (max-width:991px){
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 30px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 30px;}
+
+.wcub-area .wcu-box{ min-height:270px; }
+
+}
+
+@media (min-width:851px) and (max-width:900px){
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 25px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 25px;}
+
+.wcub-area .wcu-box{ min-height:270px; }
+}
+
+@media (min-width:801px) and (max-width:850px){
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 22px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 22px;}
+
+.wcub-area .wcu-box{ min-height:270px; }
+
+}
+
+@media (min-width:768px) and (max-width:800px){
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 19px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 19px;}
+
+.wcub-area .wcu-box{ min-height:270px; }
+
+
+}

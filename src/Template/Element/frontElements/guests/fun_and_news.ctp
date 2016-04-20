@@ -9,40 +9,13 @@
             	<div class="fn-area"> 
                 	<!--heading--> 
                 	<div class="head-box">
-                    	<h4> <?php echo __('Fun & News'); ?> </h4>
-                        	<p> <?php echo __('Find some of the funniest pet pics & videos along with news updates here'); ?> </p>
+                    	<h4> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Fun & News')); ?> </h4>
+                        	<p> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Find some of the funniest pet pics & videos along with news updates here')); ?> </p>
                             <span class="head-bot"><b></b></span>
                     </div>                           	
             	<!--/heading--> 
                 	<div class="fnb-area">
-                    	<!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        	<div class="fnb-outer">
-                            	<div class="imgb-area">
-                                	<div class="date">
-                                    	<p><?php 
-                                         //echo "<pre>";print_r($blogsInfo);
-                                         echo __('Monday 21 Sep 2015') ;?></p>
-                                    </div>
-                                    <div class="img">
-                               	    	<img src="<?php echo HTTP_ROOT; ?>img/fn-image-1.png" width="937" height="527" alt=""> 
-                                    </div>                                	
-                                </div>
-                                <div class="p-area">
-                                	<div class="p-img">
-                               	    	<img src="<?php echo HTTP_ROOT; ?>img/fn-profile-img.png" width="50" height="50" alt=""> 
-                                        	<p><?php echo __('Sabina'); ?></p>
-                                    </div> 
-                                    <ul>
-                                    	<li><a href="#"><i class="fa fa-user"></i><?php echo __('By user'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i><?php echo __('Comments'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>40</a></li>
-                                    </ul>  
-                                    <p><?php echo __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'); ?> </p>                             	                                	
-                                    <a href="" title="Read More" class="btn-1"><?php echo __('Read More'); ?> <i class="fa fa-chevron-circle-right"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>-->
+                    	
                 <?php 
                 
 
@@ -80,71 +53,20 @@
                                         <li><a href="#"><i class="fa fa-heart"></i>40</a></li>
                                     </ul>  
                                     <p><?php echo __($single_blog->description); ?> </p>                                                                  
-                                    <a href="" title="Read More" class="btn-1"><?php echo __('Read More'); ?> <i class="fa fa-chevron-circle-right"></i></a>
+                                    <a href="" title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?> <i class="fa fa-chevron-circle-right"></i></a>
                                 </div>
                                 
                             </div>
                         </div>
                         <?php }
                          ?>
-                    	<!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        	<div class="fnb-outer">
-                            	<div class="imgb-area">
-                                	<div class="date">
-                                    	<p><?php echo __('Monday 21 Sep 2015'); ?></p>
-                                    </div>
-                                    <div class="img">
-                               	    	<img src="<?php echo HTTP_ROOT; ?>img/fn-image-2.png" width="937" height="527" alt=""> 
-                                    </div>                                	
-                                </div>
-                                <div class="p-area">
-                                	<div class="p-img">
-                               	    	<img src="<?php echo HTTP_ROOT; ?>img/fn-profile-img.png" width="50" height="50" alt=""> 
-                                        	<p><?php echo __('Sabina'); ?></p>
-                                    </div> 
-                                    <ul>
-                                    	<li><a href="#"><i class="fa fa-user"></i><?php echo __('By user'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i><?php echo __('Comments'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>40</a></li>
-                                    </ul>  
-                                    <p><?php echo __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'); ?> </p>                             	                                	
-                                    <a href="" title="Read More" class="btn-1"><?php echo __('Read More'); ?> <i class="fa fa-chevron-circle-right"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        	<div class="fnb-outer">
-                            	<div class="imgb-area">
-                                	<div class="date">
-                                    	<p><?php echo __('Monday 21 Sep 2015'); ?></p>
-                                    </div>
-                                    <div class="img">
-                               	    	<img src="<?php echo HTTP_ROOT; ?>img/fn-image-3.png" width="937" height="527" alt=""> 
-                                    </div>                                	
-                                </div>
-                                <div class="p-area">
-                                	<div class="p-img">
-                               	    	<img src="<?php echo HTTP_ROOT; ?>img/fn-profile-img.png" width="50" height="50" alt=""> 
-                                        	<p><?php echo __('Sabina<'); ?>/p>
-                                    </div> 
-                                    <ul>
-                                    	<li><a href="#"><i class="fa fa-user"></i><?php echo __('By user'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i><?php echo __('Comments'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>40</a></li>
-                                    </ul>  
-                                    <p><?php echo __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'); ?> </p>                             	                                	
-                                    <a href="" title="Read More" class="btn-1"><?php echo __('Read More'); ?> <i class="fa fa-chevron-circle-right"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>   -->                                            
+                    	                                          
                     </div>                               	
                 </div>
                  <div class="bot-btn-area">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a href="#"  title="" class="bot-more"><?php echo __('More News & Updates') ;?></a>
+                            <a href="#"  title="" class="bot-more"><?php echo $this->requestAction('app/get-translate/'.base64_encode('More News & Updates')); ?></a>
                         </div>
                     </div>
                     </div>
@@ -159,9 +81,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?></p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -173,9 +95,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -187,9 +109,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -201,9 +123,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -215,9 +137,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   

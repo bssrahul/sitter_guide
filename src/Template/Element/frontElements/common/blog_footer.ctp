@@ -9,9 +9,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?></p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -23,9 +23,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -37,9 +37,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -51,9 +51,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   
@@ -65,9 +65,9 @@
                              </div>   
                             <div class="ho-box">
                             	<div class="hb-inner">
-                                	<p class="txt-head"><?php echo __('Sitter Guide'); ?></p>
-                                    	<p><?php echo __('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum.'); ?> </p>
-                                        <a href="#" title="Read More" class="btn-2"><?php echo __('Read More'); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
+                                	<p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></p>
+                                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('It has survived not only five centuries, but also the leap into electronic typesetting, remaining Ipsum')); ?></p>
+                                        <a href="#" title="Read More" class="btn-2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?>  <i class="fa fa-chevron-circle-right"></i> </a>
                                 </div>                            	
                             </div>
                          </div>                   

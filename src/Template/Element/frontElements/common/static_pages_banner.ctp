@@ -3,8 +3,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<h3 class="text-center"><?php echo isset($CmsPageData->pagename)?$CmsPageData->pagename:__("Content not added yet"); ?></h3>
-				<p><?php echo isset($CmsPageData->pageheading)?$CmsPageData->pageheading:__("Content not added yet"); ?></p>
+				<h3 class="text-center"><?php echo isset($CmsPageData->pagename)?$CmsPageData->pagename:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet')); ?></h3>
+				<p><?php echo isset($CmsPageData->pageheading)?$CmsPageData->pageheading:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet'));; ?></p>
 			</div>
 		</div>
 	</div>

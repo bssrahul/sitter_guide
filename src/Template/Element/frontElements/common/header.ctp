@@ -9,15 +9,15 @@
       <div class="col-lg-<?php echo $currentLocal == 'ru'?'4':'5'; ?> col-md-<?php echo $currentLocal == 'ru'?'3':'4'; ?> col-sm-12 col-xs-12">               
           <div class="logo-area">
                           <div class="desk-logo">
-                              <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT ?>img/logo.jpg"  alt="Sitter Guide"></a>
+                              <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT ?>img/logo.jpg"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                             </div>
                           <div class="mob-logo">
-                              <a class="logo" href="#" title="Sitter Guide"><img src="img/create_logo.png"  alt="Sitter Guide"></a>
+                              <a class="logo" href="#" title="Sitter Guide"><img src="img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                             </div>                                
                         </div>   
                         <div class="top-search">
                           <div class="search-box">
-                              <input class="search-input" type="text" value="" placeholder="<?php echo __('Search home sitter for your loving dog') ?>" />
+                              <input class="search-input" type="text" value="" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search home sitter for your loving dog')); ?>" />
                             </div>
                         </div> 
         </div>
@@ -25,7 +25,7 @@
          <div class="topnav-area"> 
                         <nav class="navbar"> 
                             <div class="navbar-header">
-                               <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> MENU </button>
+                               <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Menu')); ?> </button>
                               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -34,13 +34,13 @@
                             </div>
                             <div class="collapse navbar-collapse" id="myNavbar">
                               <ul class="nav navbar-nav nav-logout">
-                                <li class="active"><a href="#"> <?php echo __('Get Free Sitting or Minding'); ?></a></li>
-                                <li class="select"> <a  href="#"><?php echo __('Become a sitter'); ?></a></li>
+                                <li class="active"><a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Get Free Sitting or Minding')); ?></a></li>
+                                <li class="select"> <a  href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Become a sitter')); ?></a></li>
 
-                                <li><a href="<?php echo HTTP_ROOT.'guests/signup'; ?>"><?php echo __('Sign Up'); ?></a></li>
+                                <li><a href="<?php echo HTTP_ROOT.'guests/signup'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up')); ?></a></li>
 
                                 <li  class="dropdown hideLogin">
-                                   <a id="droplog" href="#" data-toggle="dropdown"> <?php echo __('Login'); ?></a>
+                                   <a id="droplog" href="#" data-toggle="dropdown"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Login')); ?></a>
                                    <div class="dropdown-menu login-drop" id="dropcont">
                                     <div class="form-group">
                                            <?php echo $this->Form->create(null,[
@@ -56,7 +56,7 @@
                                                    'type'=>'password'
                                             ]);
                                         ?>
-                                        <input type="submit" id="log_in_btn" class="btn btn-success" value="<?php echo __('Submit'); ?>">
+                                        <input type="submit" id="log_in_btn" class="btn btn-success" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?>">
                                         <div class="row">
                                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div class="signup-or-separator"> <p class="successMessage clr"></p><p class="errorMessage clr"></p>
@@ -68,10 +68,10 @@
                                             <p class="forget">
                                            
                                                 <a id="droplogForgot" href="<?php echo HTTP_ROOT.'guests/forgot-password'; ?>" >
-                                                 <?php echo __('Forgot your Password?'); ?> </a>
+                                                 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Forgot Your Password')); ?> </a>
                                               <br>
-                                           <?php echo __('Not a member?'); ?>
-                                           <a href="<?php echo HTTP_ROOT.'guests/signup'; ?>" title="Sign up Now"><?php echo __('Sign up Now'); ?></a></p>
+                                          <?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a Member ?')); ?>
+                                           <a href="<?php echo HTTP_ROOT.'guests/signup'; ?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign up now')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign up now')); ?></a></p>
                                     </div>
                                           <!-- <p>- or -</p>-->
                                            <?php
@@ -95,7 +95,7 @@
                                    <?php //echo $this->element('frontElements/guests/forgot_password'); ?>
                                 </li>
                                  
-                                <li><a href="#"> <?php echo __('Help'); ?> </a></li>
+                                <li><a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help')); ?> </a></li>
 
                                  <!--<li  class="dropdown dd-country">
                                   <a id="droplog2" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> </a>
@@ -129,8 +129,8 @@
                                                 $act = $this->request->params['action'];
                                             ?>
                                           <ul class="nav nav-tabs">
-                                            <li class="active"><a data-toggle="tab" href="#home">Currency </a></li>
-                                            <li><a data-toggle="tab" href="#menu1">Currency</a></li>
+                                            <li class="active"><a data-toggle="tab" href="#home"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> </a></li>
+                                            <li><a data-toggle="tab" href="#menu1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Currency')); ?></a></li>
                                           </ul>                                        
                                           <div class="tab-content">
                                             <div id="home" class="tab-pane fade in active">

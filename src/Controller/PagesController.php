@@ -62,4 +62,23 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+    
+    function cms($url = NULL)
+	{
+		// load CMSPAGE Model
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> $url]])->first();
+		//pr($CmsPageData); die;
+		
+		$this->pageTitle = $CmsPageData->meta_title;
+		$this->pageKeyword = $CmsPageData->meta_keywords;
+		$this->pageDescription = $CmsPageData->meta_description;
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, $url));
+	}
 }

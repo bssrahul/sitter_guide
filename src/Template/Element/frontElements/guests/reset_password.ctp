@@ -4,14 +4,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
-        <h4 class="modal-title search-title-1">Log In</h4>
+        <h4 class="modal-title search-title-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reset Password')); ?></h4>
       </div>
       <div class="modal-body">
         <div class="signup_wrap">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="facebook">
-                <p><a href="#" class="btn btn-primary" role="button">Reset Password</a></p>
+                <p><a href="#" class="btn btn-primary" role="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reset Password')); ?></a></p>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
 						'label' => false,
 						'class'=>'form-control',
 						'id'=>'reset_pwd_field',
-						'placeholder' => __("Password"),
+						'placeholder' =>$this->requestAction('app/get-translate/'.base64_encode('Enter New Password')),
 						'value'=>(@$_POST['data']['Users']['password'] ? $_POST['data']['Users']['password'] : (@$signupdata['Users']['password'] ? $signupdata['Users']['password'] : ''))
 					]);
 					echo '<em class="signup_error error">'.__(@$loginerror['password'][0]).'</em>';
@@ -70,7 +70,7 @@
 						'type' => "password",
 						'class'=>'form-control',
 						'id'=>'reset_re_pwd_field',
-						'placeholder' => __("Repeat Password"),
+						'placeholder' => $this->requestAction('app/get-translate/'.base64_encode('Repeat Password')),
 						'value'=>(@$_POST['data']['Users']['re_password'] ? $_POST['data']['Users']['re_password'] : (@$signupdata['Users']['re_password'] ? $signupdata['Users']['re_password'] : ''))
 					]);
 					echo '<em class="signup_error error">'.__(@$loginerror['re_password'][0]).'</em>';
@@ -81,7 +81,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="facebook mar-top-msg">
-                <input type="submit" id="change-pwd" class="btn btn-primary msg_box" value="<?php echo __("Reset Password"); ?>">
+                <input type="submit" id="change-pwd" class="btn btn-primary msg_box" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Reset Password')); ?>">
               </div>
             </div>
           </div>
@@ -115,13 +115,13 @@
                          'type'=>'password'
                   ]);
               ?>
-              <input type="submit" id="log_in_btn" class="btn btn-success" value="<?php echo __('Submit'); ?>">
+              <input type="submit" id="log_in_btn" class="btn btn-success" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?>">
               <?php echo $this->Form->end(); ?>
 
-                  <p class="forget"><a href="#" title="Forget Your Password "><?php echo __('Forgot your Password?'); ?></a><br>
-                 <?php echo __('Not a member?'); ?>
-                 <a href="#" title="Sign up Now"><?php echo __('Sign up Now'); ?></a></p>
+                  <p class="forget"><a href="#" title="Forget Your Password "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Forgot your Password?')); ?></a><br>
+                 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a member?')); ?>
+                 <a href="#" title="Sign up Now"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign up Now')); ?></a></p>
           </div>
-                 <p>- or -</p>
-                <a href="#" title="Login With Faceook" class="lwfb"><i class="fa fa-facebook-square"></i> <?php echo __('Sign In with Facebook'); ?></a> 
+                 <p>- <?php echo $this->requestAction('app/get-translate/'.base64_encode('or')); ?> -</p>
+                <a href="#" title="Login With Faceook" class="lwfb"><i class="fa fa-facebook-square"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Log In with Facebook'); ?></a> 
 </div> 
