@@ -14,8 +14,7 @@
 		   $('.success_msg, .error_msg').slideUp();
 		}, 10000);
 		//DROP DOWN TOGGEL
-		//$('#dropcontForgot').hide();
-		/*$('#droplogForgot').click(function () {
+		$('#droplogForgot').click(function () {
 			$('#dropcont').hide();
             $('#dropcontForgot').fadeToggle();
             setTimeout(function(){$("#droplog").trigger("click");},500);
@@ -27,7 +26,7 @@
             $('#dropcont').fadeToggle();
             setTimeout(function(){$("#droplog").trigger("click");},500);
 
-        });*/
+        });
 		//SLIDEUP MESSAGES FUNCTIONALITY START
 		
 		//CODE SNIPPET FOR SIGN UP
@@ -35,11 +34,11 @@
 			rules: {
 				"Users[title]":
 				{
-					required:true,
+					required:true
 				},
 				"Users[first_name]":
 				{
-					required:true,
+					required:true
 				},
 				"Users[email]":
 				{
@@ -60,19 +59,19 @@
 				},
 				"Users[zip]":
 				{
-					required:true,
+					required:true
 				},
 				"Users[birth_date]":
 				{
-					required:true,
+					required:true
 				},
 				"Users[country]":
 				{
-					required:true,
+					required:true
 				},
 				"Users[term_condition]":
 				{
-					required:true,
+					required:true
 				}
 			},
 			messages: {
@@ -132,6 +131,7 @@
 			}
 			
 		});
+
 		//CODE SNIPPET FOR EDIT PROFILE
 		$('#profileedit').validate({
 			rules: {
@@ -198,6 +198,7 @@
 			}*/
 			
 		});
+
 		//CODE SNIPPET FOR FORGOT PASSWORD
 		$('#forgotPasswordForm').validate({
 			rules: {
@@ -882,28 +883,14 @@ $( document ).ready(function() {
 	  window.location.href = languagePath;
     });
 
+   $(document)
+	.on( 'click', '.dropdown-menu', function (e){
+	    e.stopPropagation();
+	});
+
 /*End sign up*/
 /*Last Drop down country- currency listing*/
 
-$(document)
-.on( 'click', '.dropdown-menu', function (e){
-    e.stopPropagation();
-});
-
-/*Last Drop down country- currency listing*/
-$(function () {
-  	$('.navbar-toggle-sidebar').click(function () {
-  		$('.navbar-nav').toggleClass('slide-in');
-  		$('.side-body').toggleClass('body-slide-in');
-  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
-  	});
-
-  	$('#search-trigger').click(function () {
-  		$('.navbar-nav').removeClass('slide-in');
-  		$('.side-body').removeClass('body-slide-in');
-  		$('.search-input').focus();
-  	});
-  });
 
  /*====For password fair line====*/
    /* $( "#usersp-password" ).keyup(function() {
@@ -924,3 +911,21 @@ $(function () {
      
  /*====End fair line====*/
  });
+
+
+
+
+/*Last Drop down country- currency listing*/
+$(function () {
+  	$('.navbar-toggle-sidebar').click(function () {
+  		$('.navbar-nav').toggleClass('slide-in');
+  		$('.side-body').toggleClass('body-slide-in');
+  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
+  	});
+
+  	$('#search-trigger').click(function () {
+  		$('.navbar-nav').removeClass('slide-in');
+  		$('.side-body').removeClass('body-slide-in');
+  		$('.search-input').focus();
+  	});
+  });

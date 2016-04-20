@@ -527,7 +527,7 @@ padding-left: 15px;
 
 
 .radio-main .custom-checkbox {
-    background: rgba(0, 0, 0, 0) url("../radio1.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../../img/radio1.png") no-repeat scroll 0 0;
     display: inline-block;
     height: 21px;
     position: relative;
@@ -541,7 +541,7 @@ padding-left: 15px;
     background: rgba(0, 0, 0, 0) url("../radio-h.png") no-repeat scroll 0 0;
 }*/
 .radio-main .custom-checkbox.selected {
-    background: rgba(0, 0, 0, 0) url("../radio-h.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../../img/radio-h.png") no-repeat scroll 0 0;
 }
 .radio-main .custom-checkbox input[type="checkbox"] {
     cursor: pointer;
