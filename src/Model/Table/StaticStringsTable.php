@@ -9,7 +9,7 @@ class StaticStringsTable extends Table
 
 	public function initialize(array $config)
     { 
-        $this->addBehavior('Translate', ['fields' => ['constant_slug','value'],
+        $this->addBehavior('Translate', ['fields' => ['value'],
             'translationTable' => 'I18n'
 		]);
     }

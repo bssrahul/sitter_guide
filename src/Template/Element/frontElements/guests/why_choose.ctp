@@ -4,8 +4,8 @@
             	<div class="wcu-area">  
                 	<!--heading--> 
                 	<div class="head-box">
-                    	<h3><?php echo __('Why Choose us?') ;?></h3>
-                        	<p><?php echo __('Find some of the funniest pet pics & videos along with news updates here') ;?></p>
+                    	<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Why Choose us?')); ?></h3>
+                        	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Find some of the funniest pet pics & videos along with news updates here')); ?></p>
                             <span class="head-bot"><b></b></span>
                     </div>                           	
             	<!--/heading-->   
@@ -26,55 +26,13 @@
                                   <p><?php 
                                         echo $single_data->description;?>
                                   </p>
-                                                <a href="#"  title="Read More" class="btn-1"><?php echo __('READ MORE')  ;?><i class="fa fa-chevron-circle-right"></i></a>
+                                  <a href="#"  title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('READ MORE')); ?><i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
 
                        
                         <?php  $i++;} 
-                          }?>
-                    	<!--<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">                        	
-                        	<div class="wcu-box">
-                            	<div class="img-box img-box-2">                                	
-                                </div>
-                                <p class="txt-head"><?php echo __('Great for you') ;?></p>
-                                  <p><?php echo __('Caring, personalized attention') ;?>
-                                      <b>  <?php echo __('No kennels, no cages') ;?></b>
-                                        <b><?php echo __('Stay locally in the community') ;?></b>
-                                        <b><?php echo __('Retain familiar items (bed, toys,') ;?></b>
-                                         <?php echo __('treats, etc.)') ;?>
-                                                </p>
-                                                <a href="#"  title="Read More" class="btn-1"><?php echo __('READ MORE') ;?> <i class="fa fa-chevron-circle-right"></i></a>
-                            </div>
-                        </div>
-                    	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        	<div class="wcu-box">
-                            	<div class="img-box img-box-3">                                	
-                                </div>
-                                <p class="txt-head"><?php echo __('Trust and Safety') ;?></p>
-                                  <p><?php echo __('Caring, personalized attention') ;?>
-                                      <b>  <?php echo __('No kennels, no cages') ;?></b>
-                                        <b><?php echo __('Stay locally in the community') ;?></b>
-                                        <b><?php echo __('Retain familiar items (bed, toys,') ;?></b>
-                                         <?php echo __('treats, etc.)') ;?>
-                                                </p>
-                                                <a href="#"  title="Read More" class="btn-1"><?php echo __('READ MORE') ;?> <i class="fa fa-chevron-circle-right"></i></a>
-                            </div>
-                        </div>
-                    	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        	<div class="wcu-box">
-                            	<div class="img-box img-box-4">                                	
-                                </div>
-                                <p class="txt-head"><?php echo __('Trust and Safety') ;?></p>
-                                  <p><?php echo __('Caring, personalized attention') ;?>
-                                      <b>  <?php echo __('No kennels, no cages') ;?></b>
-                                        <b><?php echo __('Stay locally in the community') ;?></b>
-                                        <b><?php echo __('Retain familiar items (bed, toys,') ;?></b>
-                                         <?php echo __('treats, etc.)') ;?>
-                                                </p>
-                                                <a href="#"  title="Read More" class="btn-1"><?php echo __('READ MORE') ;?> <i class="fa fa-chevron-circle-right"></i></a>
-                            </div>
-                        </div> -->                                                                       
+                          } ?>
                     </div>
                    
                 </div>           	
@@ -94,29 +52,14 @@
                         	<div class="img-box <?php echo $imgArray[$i]; ?>">
                             </div>
                             <p class="txt-head"><?php echo $single_data->title;?></p>
-                            	<p><!--<?php echo __('Trusted sitters will treat your') ;?> <span><?php echo __('pet like family') ;?></span>-->
+                            	<p>
                                  <?php echo $single_data->description; ?>
                                 </p>
                         </div>
                     </div>
                     <?php $i++; }
                     }?>
-                	<!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    	<div class="wcub-box">
-                        	<div class="img-box img-box-2">                            	
-                            </div>
-                            <p class="txt-head"><?php echo __('Insurance Included') ;?></p>
-                            	<p><?php echo __('Trusted sitters will treat your') ;?> <span><?php echo __('pet like family') ;?></span></p>
-                        </div>
-                    </div>
-                	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    	<div class="wcub-box no-bdr">
-                        	<div class="img-box img-box-3">                            	
-                            </div>
-                            <p class="txt-head"><?php echo __('Peace of Mind'); ?></p>
-                            	<p> <?php echo __('Trusted sitters will treat your') ;?> <span><?php echo __('pet like family') ;?></span></p>
-                        </div>
-                    </div> -->                                       
+                	
                 </div>
                  
             </div>
