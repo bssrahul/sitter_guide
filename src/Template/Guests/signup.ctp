@@ -12,9 +12,9 @@
             <div class="row">
                 <div class="col-lg-offset-3 col-sm-offset-2 col-md-offset-2 col-xs-offset-0 col-lg-6 col-sm-8 col-md-8 col-xs-12">
                     <div class="signup-container">
-                        <h2><?php echo __('Sign Up for Sitter Guide');?></h2>
+                        <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up for Sitter Guide'));?></h2>
                         <div class="signup-email">
-                           <a href="javascript:void(0)" id="signUpEmail"> <i class="fa fa-envelope"></i><?php echo __('Sign Up with Email');?></a>
+                           <a href="javascript:void(0)" id="signUpEmail"> <i class="fa fa-envelope"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Email')); ?></a>
                         </div>
                         
                         <!--START SINGN UP Form-->  
@@ -29,7 +29,7 @@
 						  echo $this->Form->input('Users.title',[
 							'templates' => ['inputContainer' => '<div class="form-group">{{content}}</div>'],
 							'type'=>'select',
-							'options'=>[''=>'Choose Title','Mr'=>'Mr','Mrs'=>'Mrs','Ms'=>'Ms'],
+							'options'=>[''=>'Choose Title','Mr'=>$this->requestAction('app/get-translate/'.base64_encode('Mr')),'Mrs'=>$this->requestAction('app/get-translate/'.base64_encode('Mrs')),'Ms'=>$this->requestAction('app/get-translate/'.base64_encode('Ms'))],
 							'class' =>'form-control'
 							]);
 						 ?>
@@ -66,7 +66,7 @@
                             ?>
                          </div>
 							<div class='form-group'>
-								<label for="zip"><?php echo __('Post/Zip Code');?></label>
+								<label for="zip"><?php echo $this->requestAction('app/get-translate/'.base64_encode('MrPost/Zip Code')); ?></label>
 							    <?php  
 								echo $this->Form->input('Users.zip',[
 								'templates' => ['inputContainer' => '{{content}}'],               
@@ -100,7 +100,7 @@
                        
                              </div>
 							  <div class="form-group">
-								<label for="re_password"><?php echo __('Repeat Password');?></label>
+								<label for="re_password"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Password')); ?></label>
 								  <?php 
 									echo $this->Form->input('Users.re_password',[
 										'label'=>false,
@@ -113,7 +113,7 @@
 							   </div>
                         </div>
                         <div class="form-group">
-								  <label for="pwd"><?php echo __('Where did you hear about us?');?></label>
+								  <label for="pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Where did you hear about us?')); ?></label>
 								  <?php 
 									echo $this->Form->input('Users.hear_from',[
 									  'type'=>'select',
@@ -126,7 +126,7 @@
                         
                         <div class="form-part">
 							<div class='form-group dobDiv'>
-								<label for="birth_date"><?php echo __('Date of Birth');?></label>
+								<label for="birth_date"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?></label>
 								<?php  
 								echo $this->Form->input('Users.birth_date',[               
 								'class'=>'form-control dob',
@@ -140,7 +140,7 @@
 								<i class="fa fa-calendar"></i>
 							</div>
                            <div class="form-group">
-								  <label for="pwd"><?php echo __('Have A Reference Code?');?></label>
+								  <label for="pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Have A Reference Code?')); ?></label>
 								  <?php 
 								echo $this->Form->input('Users.reference_code',[								
 								'label' => false,
@@ -155,7 +155,7 @@
                          
                             
                         <div class="form-group">
-                          <label for="pwd"><?php echo __('Verification');?></label>
+                          <label for="pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Verification')); ?></label>
                           
 							<span class="cap-img">
 								<div class="g-recaptcha" data-sitekey="<?php echo CAPTCHA_SITE_KEY; ?>"></div>
@@ -180,10 +180,9 @@
                             	'type' => "checkbox"
 							]);
                            ?>
-                        <label for="users-term-condition" style="position:relative"><?php echo __('Terms & Conditions');?></label>  
+                        <label for="users-term-condition" style="position:relative"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></label>  
                         </div>
  
-						<!--<input type="submit" class="signup-submit btn btn-default" id="sign-up" name="signup-submit" value="Sign Up">-->
                        <?php
                             echo $this->Form->submit('Sign Up',[
                                 'name'=>'signup-submit',			
@@ -194,12 +193,12 @@
                             	
 							]);
                            ?>
-						<p><span class="c-red c-red-bar"><?php echo __('OR');?></span></p>
+						<p><span class="c-red c-red-bar"><?php echo $this->requestAction('app/get-translate/'.base64_encode('OR')); ?></span></p>
                         
-                        <a href="#" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo __('Sign Up with Facebook');?></a>
-                          <p class="line-signin"><?php echo __('Not a Member?');?> 
+                        <a href="#" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Facebook')); ?></a>
+                          <p class="line-signin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a Member?')); ?> 
 							<span class="signup-color">
-							  <a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo __('Sign In');?> </a>
+							  <a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In')); ?> </a>
 							 </span>
                          </p>
                     
@@ -207,14 +206,14 @@
                          <!--END SIGN UP FORM-->
                      <div id="loginFacebook">
                         <div class="top-sp">
-                            <span><?php echo __('- or -');?></span>
+                            <span><?php echo $this->requestAction('app/get-translate/'.base64_encode('- or -')); ?></span>
                         </div>
                         <div class="signup-facebook">
                           <!-- <?php 
                            echo $signupWithFacebook; ?> -->
                         </div>
-                        <p><span class="signup-line"><?php echo __("By signing up, I agree to Sitter Guide Terms of Service and <br/> confirm that I am 18 years of age or older.");?></span></p>
-                        <p><?php echo __('Already a member?');?> <span class="signup-color"><a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo __('Sign In Now');?></a></span></p>
+                        <p><span class="signup-line"><?php echo $this->requestAction('app/get-translate/'.base64_encode('By signing up, I agree to Sitter Guide Terms of Service and <br/> confirm that I am 18 years of age or older.')); ?></span></p>
+                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Already a member?')); ?> <span class="signup-color"><a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In Now')); ?></a></span></p>
                       </div>
                     </div>
                 </div>
