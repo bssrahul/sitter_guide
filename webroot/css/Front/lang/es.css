@@ -3,6 +3,7 @@
 @media (min-width:1681px) and (max-width:1920px){
 .wcub-area .wcu-box{ height:auto; min-height:360px; padding:0 15px 15px 15px;}
 .bot-btn-area a.bot-more{ margin:15px auto 0;}
+.banner-area .ban-txt h1 {    font-size:65px}
 }
 
 
@@ -10,6 +11,7 @@
 @media (min-width:1551px) and (max-width:1680px){
 .wcub-area .wcu-box{ height:auto; min-height:360px; padding:0 15px 15px 15px;}
 .bot-btn-area a.bot-more{ margin:15px auto 0;}
+.banner-area .ban-txt h1 {    font-size:65px}
 }
 
 
@@ -17,8 +19,12 @@
 header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}
 header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}	
 
+.banner-area .ban-txt h1 {    font-size:60px}
+
 .wcub-area .wcu-box{ height:auto; min-height:360px; padding:0 15px 15px 15px;}
 .bot-btn-area a.bot-more{ margin:15px auto 0;}
+
+
 
 }
 

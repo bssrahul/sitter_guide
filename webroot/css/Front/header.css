@@ -224,6 +224,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 .banner-area{ height:100vh;}	
 .ban-search-area{ margin:70px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ; padding:50px 0 0 0;}
 .banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
 }
 
@@ -246,6 +247,8 @@ header .topnav-area .navbar .nav-logout li{ padding:18px 4px;}
 header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*top head*/
 .banner-area{ height:100vh;}
+.banner-area .ban-txt{ margin:100px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ; padding:50px 0 0 0;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
 .banner-area .ban-txt .hworks{  font-size:22px; margin:20px auto 0;}
 .ban-search-area{ margin:50px 0 0 0;}
@@ -273,7 +276,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*Banner*/
 .banner-area{ height:100vh; padding:125px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ; padding:0px 0 0 0;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
 .banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
 .ban-search-area{ margin:30px 0 0 0; }
@@ -503,7 +506,7 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*Banner*/
 .banner-area{ height:auto; padding:85px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ; padding:0px;}
 .banner-area .ban-txt p{font-size:16px; padding:15px 0 0 0;}
 .banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }

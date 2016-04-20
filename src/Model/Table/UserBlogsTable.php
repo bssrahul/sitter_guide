@@ -12,11 +12,7 @@ class UserBlogsTable extends Table
         $this->addBehavior('Translate', ['fields' => ['name','phone','email','country','city','state','address','zip'],
             'translationTable' => 'UsersI18n'
 		]);
-		$this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
-            'recursive' => 1
-           // 'fields'=>['id','first_name','last_name']
-        ]);
+		
     }
 
     public function validationDefault(Validator $validator)

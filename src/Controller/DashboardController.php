@@ -554,8 +554,7 @@ class DashboardController extends AppController
 	     
 
     }
-
-    }
+        
     function sitterProfile(){
          $this->viewBuilder()->layout('profile_dashboard');
          	$session = $this->request->session();

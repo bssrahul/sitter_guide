@@ -1,14 +1,17 @@
 @media (min-width:1681px) and (max-width:1920px){
 .wcub-area .wcu-box{ min-height:360px;}
+.banner-area .ban-txt h1 {    font-size:70px}
 	
 }
 
 @media (min-width:1551px) and (max-width:1680px){
 .wcub-area .wcu-box{ min-height:360px;}	
+.banner-area .ban-txt h1 {    font-size:70px}
 }
 
 @media (min-width:1441px) and (max-width:1550px){
 .wcub-area .wcu-box{ min-height:360px;}	
+.banner-area .ban-txt h1 {    font-size:70px}
 }
 
 @media (min-width:1368px) and (max-width:1440px){
