@@ -527,7 +527,7 @@ class DashboardController extends AppController
 		//pr($this->request->data); die;
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
-			pr($this->request->data);die;
+			//pr($this->request->data);die;
 
                     //pr($this->request->data['SittersHome']);die;
 
@@ -543,8 +543,12 @@ class DashboardController extends AppController
                      $serviceId = $sittersServiceData->id;
                 	 $sittersServiceData = $sitterServicesModel->newEntity();
                 	 $sittersServiceData->id = $serviceId;
+
+                	$sitterHome = $this->request->data['SittersHome'];
+
+                	 pr($this->request->data['SittersHome']['day_care']);die;
                 	 foreach($this->request->data['SittersHome'] as $key=>$val){
-                            
+                            echo "<pre>";print_r($val);die;
                 	 }
 
                 	 pr($this->request->data['SittersHome']);die;
