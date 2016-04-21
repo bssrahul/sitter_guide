@@ -130,3 +130,8 @@ label.error{margin-top:5px;}
    float:right !important;
    margin-top:5px !important;
  }
+ @media (max-width: 1366px) and (min-width: 1200px){
+		header .top-search .search-box .search-input {
+			font-size: 14px !important;
+		}	
+}

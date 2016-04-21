@@ -3,17 +3,22 @@
 .wcub-area .wcu-box p.txt-head{ font-size:20px;}
 
 
+
 @media (min-width:1681px) and (max-width:1920px){
+	.banner-area .ban-txt h1 {    font-size:70px}
 .wcub-area .wcu-box{ min-height:330px;}	
 }
 
 
 @media (min-width:1551px) and (max-width:1680px){
+	.banner-area .ban-txt h1 {    font-size:70px}
 .wcub-area .wcu-box{ min-height:330px;}	
 }
 
 @media (min-width:1441px) and (max-width:1550px){
-.wcub-area .wcu-box{ min-height:330px;}
+.wcub-area .wcu-box{ min-height:330px; }
+.banner-area .ban-txt h1 {    font-size:70px}
+
 }
 
 @media (min-width:1368px) and (max-width:1440px){
@@ -72,11 +77,14 @@ header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
 header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 20px;}
 header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 20px;}
 
+.banner-area .ban-txt h1 { font-size:35px; line-height:40px;}		
 .wcub-area .wcu-box{ min-height:300px;}
 
 }
 
 @media (min-width:768px) and (max-width:800px){
+	
+.banner-area .ban-txt h1 { font-size:30px; line-height: 37px;}		
 header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
 header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 18px;}
 header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 18px;}
@@ -84,7 +92,14 @@ header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8p
 .wcub-area .wcu-box{ min-height:300px;}
 
 }
-
+@media (min-width:641px) and (max-width:767px){
+	.banner-area .ban-txt h1 {    font-size: 30px;    line-height: 37px;}	
+	}
+@media (min-width:481px) and (max-width:640px){
+	.banner-area .ban-txt h1 {    font-size: 30px;    line-height: 37px;}	
+	}
 @media (min-width:320px) and (max-width:480px){
+	
+.banner-area .ban-txt h1 {    font-size: 30px;    line-height: 37px;}	
 .wcub-area .wcu-box{height:auto;}	
 }

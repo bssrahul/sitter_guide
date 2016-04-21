@@ -5,6 +5,8 @@
 }
 
 @media (min-width:1551px) and (max-width:1680px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}		
 .wcub-area .wcu-box{ min-height:360px;}	
 }
 
@@ -14,9 +16,13 @@
 
 
 @media (min-width:1368px) and (max-width:1440px){
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}	
 	.wcub-area .wcu-box{ min-height:360px;}	
 }
 @media (min-width:1281px) and (max-width:1367px){
+	header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 5px;}
+header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 5px;}
 .wcub-area .wcu-box{ min-height:360px;}	
 	}
 
@@ -44,14 +50,34 @@ header.smaller .topnav-area .navbar .nav-logout li a{font-size:13px; padding:8px
 
 }
 @media (min-width:901px) and (max-width:991px){
-	.wcub-area .wcu-box{ min-height:300px;}
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 20px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 20px;}
+
+.wcub-area .wcu-box{ min-height:300px;}
 }
 @media (min-width:851px) and (max-width:900px){
-	.wcub-area .wcu-box{ min-height:300px;}
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 17px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 17px;}	
+.wcub-area .wcu-box{ min-height:300px;}
 }
 @media (min-width:801px) and (max-width:850px){
-	.wcub-area .wcu-box{ min-height:300px;}
+	
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 14px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 14px;}
+.wcub-area .wcu-box{ min-height:300px;}
 }
 @media (min-width:768px) and (max-width:800px){
-	.wcub-area .wcu-box{ min-height:300px;}
+	
+header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
+header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 14px;}
+header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 14px;}
+	
+.wcub-area .wcu-box{ min-height:300px;}
+	
+
+	
+	
 }

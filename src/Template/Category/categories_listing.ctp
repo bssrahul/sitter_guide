@@ -58,7 +58,13 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Category Listing')); ?></h2>
-					<h2 style="float:right"><a style="float:right" href="<?php echo HTTP_ROOT.'category/add-category'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Category')); ?></button></a></h2>
+					<h2 style="float:right">
+						<?php 
+						$languageSession = $this->request->session();
+						if($languageSession->read('requestedLanguage')=='en'){ ?>	
+						<a style="float:right" href="<?php echo HTTP_ROOT.'category/add-category'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Category')); ?></button></a>
+						<?php } ?>	
+						</h2>
 					<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
