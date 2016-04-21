@@ -256,8 +256,8 @@ class AppController extends Controller{
 				$uploadFolder="uploads";	
 				$logoWidth = "940";
 				$logoHeight = "530";
-				$logoSize="300000";
-				$logoKb = '300 KB';
+				$logoSize="4194304";
+				$logoKb = '4 MB';
 			
 			}else if($type == 'staticBannerImg')
 			{

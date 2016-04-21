@@ -80,7 +80,7 @@ class GuestsController extends AppController
 
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
 		//$blogsInfo = $UserBlogsModel->find('all',['contain'=>'Users']);//->toArray();
-		$blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.status' =>1],'order' => [
+		$blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.featured' =>1],'order' => [
 																	'UserBlogs.modified' => 'desc'
 																]])->toArray();
 		//pr($blogsInfo); die;
@@ -90,15 +90,15 @@ class GuestsController extends AppController
 
         //Fetch data how works
 		$worksModel = TableRegistry::get('HowWorks');
-		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'How_it_works']]);
+		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'How_it_works']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
 		$this->set('works_data',$workdata);
 
 		//Fetch data why choose
-		$chooseData = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'why_choose_us']]);
+		$chooseData = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'why_choose_us']])->order(['modified'=>'desc']) ->limit(4)->where(['status' => 1])->toArray();
 		$this->set('choose_data',$chooseData);
 
 		//Fetch data news updates
-		$news_data = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'news_updates']]);
+		$news_data = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'news_updates']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
 		$this->set('news_data',$news_data);
 		
 	}
