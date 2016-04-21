@@ -63,15 +63,16 @@
                     <table id="example" class="table table-bordered responsive-utilities jambo_table">
 						<thead>
 							<tr class="headings">
-								<th>
+								<th style="width:150px" class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
 									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Name')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('URL')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Content')); ?></th>
+								<th style="width:150px" class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
+								<th style="width:200px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Name')); ?></th>
+								<th style="width:200px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('URL')); ?></th>
+								<th style="width:150px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Heading')); ?></th>
 					
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th style="width:150px" class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -88,18 +89,15 @@
 								<td class="a-center ">
 								
 								<!--<div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>--></td>
+								
+								<td class="text-center">
+									<div class="text-centerimage view-first customImg">
+										<img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($pages->image != ''?$pages->image:'no-image.png'); ?>"/>
+									</div>
+								</td>
 								<td  style="width:150px" class=" "><?php echo $pages->pagename; ?></td>
 								<td  style="width:200px" class=" "><?php echo $pages->pageurl; ?></td>
-								<td  style="width:400px" class=" "><?php 
-											if(!empty($pages->pagecontent))
-											{
-												echo substr(strip_tags($pages->pagecontent),0,100);
-											}
-											else
-											{
-												echo $pages->company_name.'<br />'.$pages->location.'<br />'.$pages->email.'<br />'.$pages->phone_no;
-											}
-										?></td>
+								<td  style="width:400px" class=" "><?php echo $pages->pageheading;?></td>
 								<td class=" last">
 								<a title="Edit" href="<?php echo HTTP_ROOT.'cmspages/cms-pages-edit/'.base64_encode(convert_uuencode($pages->id)); ?>"><span><i class="fa fa-pencil-square"></i> </span></a>
 								</td>

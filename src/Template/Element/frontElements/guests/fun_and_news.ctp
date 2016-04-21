@@ -39,16 +39,20 @@
                                     </div>                                  
                                 </div>
                                 <div class="p-area">
-                                    <div class="p-img">
-                                        <img src="<?php echo HTTP_ROOT.'img/uploads/'.$proPic; ?>" width="50" height="50" alt=""> 
-                                          
-                                    </div> 
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-user"></i><?php echo __('By user'); ?></a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i><?php echo __('Comments'); ?></a></li>
+							
+                                    
+										
+                                  <ul>
+                                        <li><a href="#"><i class="fa fa-user"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('By user')); ?></a></li>
+                                        <li><a href="#"><i class="fa fa-comments"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Comments')); ?></a></li>
                                         <li><a href="#"><i class="fa fa-heart"></i>40</a></li>
-                                    </ul>  
-                                    <p><?php echo __($single_blog->description); ?> </p>                                                                  
+                                    </ul> 
+<div class="p-img">
+                                      
+                                          
+                                    </div>
+	<p class="txt-head"><?php echo $single_blog->title; ?></p>									
+                                    <p><?php echo $single_blog->description; ?> </p>                                                                  
                                     <a href="" title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?> <i class="fa fa-chevron-circle-right"></i></a>
                                 </div>
                                 
