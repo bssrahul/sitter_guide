@@ -325,7 +325,7 @@ class CmspagesController extends AppController
 			$imagename = $this->request->data['UserBlogs']['image']['name'];
 			//Upload image
 				if($imagename!=''){
-					$blogImg = $this->admin_upload_file('categoryImg',$this->request->data['UserBlogs']['image']);
+					$blogImg = $this->admin_upload_file('blogsImg',$this->request->data['UserBlogs']['image']);
 				
 					$blogImg = explode(':',$blogImg);
 					if($blogImg[0]=='error')
@@ -881,6 +881,7 @@ class CmspagesController extends AppController
 			'order' => [
 			'StaticStrings.created_date' => 'desc']]);
 		}
+		
 		$this->set('strings_info',$strings_info);
 	}
 	/**

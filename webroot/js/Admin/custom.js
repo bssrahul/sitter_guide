@@ -729,6 +729,10 @@ $(document).ready(function () {
                 {
                     required: true
                 },
+				"CmsPages[pageheading]":
+                {
+                    required: true
+                },
                  "CmsPages[pageurl]":
                 {
                     required: true
@@ -891,6 +895,10 @@ $(document).ready(function () {
             debug: false,
             rules: {
                 "UserBlogs[description]":
+                {
+                    required: true
+                },
+				"UserBlogs[title]":
                 {
                     required: true
                 },

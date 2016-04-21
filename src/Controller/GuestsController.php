@@ -80,7 +80,7 @@ class GuestsController extends AppController
 
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
 		//$blogsInfo = $UserBlogsModel->find('all',['contain'=>'Users']);//->toArray();
-		$blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.status' =>1],'order' => [
+		$blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.featured' =>1],'order' => [
 																	'UserBlogs.modified' => 'desc'
 																]])->toArray();
 		//pr($blogsInfo); die;
