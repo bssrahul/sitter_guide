@@ -73,9 +73,10 @@
 									 <!--<input type="checkbox" class="tableflat">-->
 									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>								</th>
 								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
 								<!--<th class="column-title"><?php echo __('Name'); ?></th>-->
-								<th style="width:300px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Featured')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
 								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
@@ -108,15 +109,16 @@
 									</div>
 								</td>
 								<!--<td class=" "><?php echo ($blog_info->user->first_name)." ".($blog_info->user->last_name); ?></td>-->
-								<td style="width:400px"><?php echo $blog_info->description; ?></td>
+								<td ><?php echo $blog_info->title; ?></td>
 								<td><?php echo $blog_info->status == 1?'Active':'Blocked';	?></td>
+								<td><?php echo $blog_info->featured == 1?'Featured':'Unfeatured';	?></td>
 								<td><?php 	echo date("F  j,Y",strtotime($blog_info->created_date)); ?></td>
 								
 
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								   <a title="<?php echo($blog_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'UserBlogs'.'/'.base64_encode(convert_uuencode($blog_info->id)).'/'.$target[$blog_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($blog_info->status ==0?'-o':'') ?>"></span></a>
-								 
+									 <a title="<?php echo($blog_info->featured == 0?'Activate featured':'Deactivate featured') ?>" href="<?php echo HTTP_ROOT."users/update-featured-row/".'UserBlogs'.'/'.base64_encode(convert_uuencode($blog_info->id)).'/'.$target[$blog_info->featured];?>" ><span class="fa fa-star<?php echo($blog_info->featured ==0?'-o':'') ?>"></span></a>
 								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-blog/".base64_encode(convert_uuencode($blog_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								   
 								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'UserBlogs'.'/'.base64_encode(convert_uuencode($blog_info->id));?>" onclick="if(!confirm('Are you sure to delete this User?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>

@@ -51,6 +51,17 @@
 												'value'=>$page->pageurl != ''?$page->pageurl:'']);
 										 ?>
 									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Pageheading')); ?><span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											 <?php echo $this->Form->textarea('CmsPages.pageheading',
+											 ['escape' => false,
+											 'class'=>'form-control col-md-7' ,
+											 'value'=>$page->pageheading != ''?$page->pageheading:'']);?>
+										</div>
+									</div>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="pagecontent"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Content')); ?><span class="required">*</span>
 										</label>
@@ -59,6 +70,21 @@
 											 ['escape' => false,
 											 'value'=>$page->pagecontent != ''?$page->pagecontent:'',
 											 'class'=>'form-control col-md-7 col-xs-12 tinymce', 'id'=>'elm1']);?>
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?>
+										</label>
+										 <div class="col-md-6 col-sm-6 col-xs-12">
+										   <?php 
+												echo $this->Form->file('CmsPages.banner_image',[
+												  'label' => false,
+												  'class'=>'form-control col-md-7 col-xs-12']);
+											?>
+											<div class="text-centerimage view-first editImg customImg">
+												<img class="img-circle profile_img catImg"  src="<?php echo HTTP_ROOT.'img/uploads/'.($page->banner_image != ''?$page->banner_image:'no-image.png'); ?>"/>
+											</div>
+											
 										</div>
 									</div>
 									<div class="ln_solid"></div>

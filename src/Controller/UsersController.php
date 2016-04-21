@@ -801,6 +801,24 @@ class UsersController extends AppController
 		$this->redirect($this->referer());
 	}
 	
+	 public function updateFeaturedRow($model=NULL,$id,$target)
+    {
+		$id=convert_uudecode(base64_decode($id));
+		//echo $model.$id."ok".$target;die;
+		$loadModel = TableRegistry::get($model);
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($loadModel);
+		//CODE FOR MULTILIGUAL END
+		$modelEntity = $loadModel->newEntity();
+
+		$modelEntity->id = $id;
+		$modelEntity->featured = $target;
+		$modelEntity->modified = date('Y-m-d h:i:s');
+		if($loadModel->save($modelEntity)){
+			$this->Flash->success(__('Status has been updated Successfully'));
+		}
+		$this->redirect($this->referer());
+    }
 	function routineCheckup(){
 		
 		$AdminsModel = TableRegistry::get('Admins');

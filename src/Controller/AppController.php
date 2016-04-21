@@ -44,10 +44,18 @@ class AppController extends Controller{
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 		
-		//GET LOCALE VALUE
+		 //GET LOCALE VALUE
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
+		if($session->read("requestedLanguage")==""){
+
+			$this->setGuestStore("en");
+		}
+
+		//$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale');
+		$currentLocal = substr($setRequestedLanguageLocale,0,2);
+		$this->set('currentLocal', $currentLocal);
 		
 	}
 	
@@ -208,65 +216,64 @@ class AppController extends Controller{
 			if($type == 'logo')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth="285";
-				$logoHeight="82";
+				$logoWidth = "128";
+				$logoHeight = "128";
 				$logoSize="2097152";
-				$logoKb = "2 MB";
+				$logoKb = '2 MB';
 			}
 			else if($type == 'favicon')
 			{
 				$uploadFolder="uploads";	
 				$logoWidth = "16";
 				$logoHeight = "16";
-				$logoSize="409600";
-				$logoKb = "400 KB";
+				$logoSize="2097152";
+				$logoKb = '2 MB';
 			}else if($type == 'profilePic')
 			{
 				$uploadFolder="uploads";	
 				$logoWidth = "400";
 				$logoHeight = "400";
-				$logoSize="2097152";
-				$logoKb = "2 MB";
-				
+				$logoSize="4194304";
+				$logoKb = '4 MB';
 			}else if($type == 'petImage')
 			{
 				$uploadFolder="petImages";	
 				$logoWidth = "400";
 				$logoHeight = "400";
-				$logoSize="2097152";
-				$logoKb = "2 MB";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
 			}
 			else if($type == 'categoryImg')
 			{
 				$uploadFolder="uploads";	
 				$logoWidth = "400";
 				$logoHeight = "400";
-				$logoSize="2097152";
-				$logoKb = "2 MB";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
 			}
 			else if($type == 'blogsImg')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "646";
-				$logoHeight = "220";
-				$logoSize="2097152";
-				$logoKb = "2 MB";
-			}
-			else if($type == 'sitterGallery')
+				$logoWidth = "940";
+				$logoHeight = "530";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
+			
+			}else if($type == 'staticBannerImg')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "111";
-				$logoHeight = "96";
-				$logoSize="2097152";
-				$logoKb = "2 MB";
+				$logoWidth = "1920";
+				$logoHeight = "350";
+				$logoSize="5242880";
+				$logoKb = '5 MB';
 			}
 			else if($type == 'sliderImg')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "974";
-				$logoHeight = "330";
-				$logoSize="2097152";
-				$logoKb = "2 MB";
+				$logoWidth = "400";
+				$logoHeight = "400";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
 			}
 			else if($type == 'audio' || $type == 'video')
 			{

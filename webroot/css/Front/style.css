@@ -12,6 +12,12 @@
 @import 'signup.css';
 
 @import 'db-profile.css';
+@import 'contact.css';
+@import 'profile-view.css';
+@import 'privacy.css';
+@import 'insurance.css';
+@import 'terms.css';
+@import 'news.css';
 
 
 @font-face {

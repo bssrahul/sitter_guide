@@ -89,12 +89,26 @@ class CmspagesController extends AppController
 		   $cmsPageData = $CmsPagesModel->newEntity($this->request->data['CmsPages'],['validate' => true]);
 			
 			$cmsPage = (object)$this->request->data['CmsPages'];
+			$imagename = $this->request->data['CmsPages']['banner_image']['name'];
 			if (!$cmsPageData->errors()){
-				$cmsPageData->modified = date('Y-m-d h:i:s');
+				
+				if($imagename!=''){
+					$pageBannerImg = $this->admin_upload_file('staticBannerImg',$this->request->data['CmsPages']['banner_image']);
+					
+					$pageBannerImg = explode(':',$pageBannerImg);
+					if($pageBannerImg[0]=='error'){
+					   $this->displayErrorMessage($pageBannerImg[1]);
+					   return $this->redirect($this->referer());
+					}else{
+						$cmsPageData->banner_image = $pageBannerImg[1];
+					}				
+				}else{
+				   unset($cmsPageData->banner_image);
+				}
+				
 				if ($CmsPagesModel->save($cmsPageData)) 
 				{
-					//$this->displaySuccessMessage('CMS Page updated successfully');
-					$this->Flash->success(__('CMS Page updated successfully.'));
+					$this->displaySuccessMessage('CMS Page updated successfully');
 					return $this->redirect(['controller'=>'cmspages','action'=>'cms-pages']);
 				}
 			}else{
@@ -103,8 +117,7 @@ class CmspagesController extends AppController
 				'errors' => $cmsPageData->errors(), 
 				'_serialize' => ['errors']]);
 				
-				//$this->displayErrorMessage('All fields are required');
-				$this->Flash->error(__('All fields are required.'));
+				$this->displayErrorMessage('All fields are required');
 				return $this->redirect($this->referer());
 			}
         }else{
@@ -312,7 +325,7 @@ class CmspagesController extends AppController
 			$imagename = $this->request->data['UserBlogs']['image']['name'];
 			//Upload image
 				if($imagename!=''){
-					$blogImg = $this->admin_upload_file('categoryImg',$this->request->data['UserBlogs']['image']);
+					$blogImg = $this->admin_upload_file('blogsImg',$this->request->data['UserBlogs']['image']);
 				
 					$blogImg = explode(':',$blogImg);
 					if($blogImg[0]=='error')
@@ -868,6 +881,7 @@ class CmspagesController extends AppController
 			'order' => [
 			'StaticStrings.created_date' => 'desc']]);
 		}
+		
 		$this->set('strings_info',$strings_info);
 	}
 	/**

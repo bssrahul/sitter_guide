@@ -47,13 +47,16 @@
                                                 'url' => ['controller' => 'guests', 'action' => 'login'],
                                                 'role'=>'form',
                                                 'id'=>'loginUser'
+                                                
                                             ]);
                                             echo $this->Form->input('Users.email',[                
-                                                   'class'=>'form-control'
+                                                   'class'=>'form-control',
+                                                   'label'=>$this->requestAction('app/get-translate/'.base64_encode('Email'))
                                             ]);
                                              echo $this->Form->input('Users.password',[                
                                                    'class'=>'form-control',
-                                                   'type'=>'password'
+                                                   'type'=>'password',
+                                                   'label'=>$this->requestAction('app/get-translate/'.base64_encode('Password'))
                                             ]);
                                         ?>
                                         <input type="submit" id="log_in_btn" class="btn btn-success" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?>">
