@@ -49,18 +49,7 @@ class GuestsController extends AppController
 			return $this->redirect(['controller' => 'Guests','action'=>'home']);
 			
 		}
-        //GET LOCALE VALUE
-		$session = $this->request->session();
-		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
-		I18n::locale($setRequestedLanguageLocale);
-		if($session->read("requestedLanguage")==""){
-
-			$this->setGuestStore("en");
-		}
-
-		//$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale');
-		$currentLocal = substr($setRequestedLanguageLocale,0,2);
-		$this->set('currentLocal', $currentLocal);
+       
 		
 		// Loaded EmailTemplate Model
 		$SiteModel = TableRegistry::get('siteConfigurations');
@@ -157,9 +146,9 @@ class GuestsController extends AppController
 					$session->write('User.name', $getUserData->first_name." ".$getUserData->last_name);
 					$session->write('User.image', $getUserData->image);
 					$session->write('User.last_login', $getUserData->last_login);
-					$this->setSuccessMessage('You have successfully logged in.');
+					$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
 					if ($this->request->is('ajax')) {
-					  	echo 'Success:'.$this->stringTranslate('Successfully Authenticated, Please wait..');
+					  	echo 'Success:'.$this->stringTranslate(base64_encode('Successfully Authenticated, Please wait..'));
 					  	 //echo "<pre>";print_r($session->read('User')); die;
 					  	die;
 					}else{
@@ -167,10 +156,10 @@ class GuestsController extends AppController
 						}
 				}else{
 						if ($this->request->is('ajax')) {
-						  	echo 'Error:'.$this->stringTranslate(AUTHENTICATION_FAILED);
+						  	echo 'Error:'.$this->stringTranslate(base64_encode('Authentication Failed! Please try again.'));
 						  	die;
 						}else{
-							$this->setErrorMessage($this->stringTranslate(AUTHENTICATION_FAILED));
+							$this->setErrorMessage($this->stringTranslate(base64_encode('Authentication Failed! Please try again.')));
 						}
 			
 				}
@@ -208,19 +197,19 @@ class GuestsController extends AppController
 		//Validation for email
 		if(trim($data['Users']['email'])=='')
 		{
-			$errors['email'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['email'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}
 		else
 		{
 			$checkEmail=explode('@',$data['Users']['email']);
 			if($this->isValidEmail($data['Users']['email'])==0){
-				$errors ['email'] [] = $this->stringTranslate("Please enter a valid email address")."\n";
+				$errors ['email'] [] = $this->stringTranslate(base64_encode("Please enter a valid email address"))."\n";
 			}
 		}
 		//Validation for password
 		if(trim($data['Users']['password'])=='')
 		{
-			$errors['password'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['password'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}		
 		return $errors;
 	}
@@ -245,9 +234,9 @@ class GuestsController extends AppController
 			//echo "<pre>";print_r($getUserData);die;	
               
 			if(empty($getUserData)){
-				$this->setErrorMessage($this->stringTranslate("Email id not register with us, try again"));
+				$this->setErrorMessage($this->stringTranslate(base64_encode("Email id not register with us, try again")));
 
-			    echo "Error:".$this->stringTranslate("Email id not register with us, try again"); die;
+			    echo "Error:".$this->stringTranslate(base64_encode("Email id not register with us, try again")); die;
 			}else{
 			    $UserData = $UsersModel->newEntity();
 			    $UserData->id = $getUserData->id;
@@ -261,7 +250,7 @@ class GuestsController extends AppController
 					
 					$uid = base64_encode($getUserData->email);
 					$link = HTTP_ROOT.'Guests/reset-password/'.$uid.'/'.$UserData->pwd_token;
-					$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate("Click Here For Reset Password").'.</a>';
+					$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate(base64_encode("Click Here For Reset Password")).'.</a>';
 					
 					$replace = array('{fullname}','{email}','{link}');
 					if($getUserData->first_name !='' || $getUserData->last_name !=""){
@@ -272,8 +261,8 @@ class GuestsController extends AppController
 					$with = array($name,$getUserData->email, $linkOnMail);
 					
 					$this->send_email('',$replace,$with,'forgot_password',$getUserData->email);		
-				        echo 'Success:'.$this->stringTranslate("Email has been sent to your email address");
-						$this->setSuccessMessage($this->stringTranslate('Password reset link has been sent over registered email address.'));
+				        echo 'Success:'.$this->stringTranslate(base64_encode("Email has been sent to your email address"));
+						$this->setSuccessMessage($this->stringTranslate(base64_encode('Password reset link has been sent over registered email address.')));
 	                    die;			     
 				}
                 //return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
@@ -339,8 +328,8 @@ class GuestsController extends AppController
 					$with = array($count->first_name." ".$count->last_name);
 					$this->send_email('',$replace,$with,'user_reset_password',$count->email);
 					
-					$this->setSuccessMessage($this->stringTranslate("Password has been reset successfully"));
-					echo "Success:".$this->stringTranslate("Password has been reset successfully"); die;
+					$this->setSuccessMessage($this->stringTranslate(base64_encode("Password has been reset successfully")));
+					echo "Success:".$this->stringTranslate(base64_encode("Password has been reset successfully")); die;
 			       //return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
 				
 				}else{
@@ -350,7 +339,7 @@ class GuestsController extends AppController
 				}
 			}	
 		}else{
-			$this->setErrorMessage($this->stringTranslate("Reset password link has been expired"));
+			$this->setErrorMessage($this->stringTranslate(base64_encode("Reset password link has been expired")));
 			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
 		}
 		//$this->render('home');
@@ -366,25 +355,25 @@ class GuestsController extends AppController
 				
 		if(trim($data['Users']['password'])=="")
 		{
-			$errors['password'][]=$this->stringTranslate("Please enter your password")."\n";
+			$errors['password'][]=$this->stringTranslate(base64_encode("Please enter your password"))."\n";
 		}
 		else 
 		{
 			$length=strlen($data['Users']['password']);
 			if($length < 6)
 			{
-				$errors['password'][]=$this->stringTranslate("Please enter minimum 6 characters")."\n";
+				$errors['password'][]=$this->stringTranslate(base64_encode("Please enter minimum 6 characters"))."\n";
 			}
 		}
 		if(trim($data['Users']['re_password'])=="")
 		{
-			$errors['re_password'][]=$this->stringTranslate("Please enter your Confirm password")."\n";
+			$errors['re_password'][]=$this->stringTranslate(base64_encode("Please enter your Confirm password"))."\n";
 		}
 		else 
 		{
 			if($data['Users']['password'] != $data['Users']['re_password'])
 			{
-				$errors['re_password'][]=$this->stringTranslate("Password does not match");
+				$errors['re_password'][]=$this->stringTranslate(base64_encode("Password does not match"));
 			}
 		}	
 		
@@ -467,7 +456,7 @@ class GuestsController extends AppController
 								
 								$uid = base64_encode($this->request->data['Users']['email']);
 								$link = HTTP_ROOT.'guests/activation/'.$uid.'/'.$activation_key.'/success:registerSuccess';
-								$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate('Click Here For Activate Your Account').'</a>';
+								$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate(base64_encode('Click Here For Activate Your Account')).'</a>';
 								
 								$replace = array('{full_name}','{email}','{link}');
 								$with = array($this->request->data['Users']['first_name'],$this->request->data['Users']['email'],$linkOnMail);
@@ -510,11 +499,11 @@ class GuestsController extends AppController
 								
 								
 								if ($this->request->is('ajax')) {
-										echo "Success:".$this->stringTranslate(SIGN_UP);
-										$this->setSuccessMessage($this->stringTranslate(SIGN_UP));
+										echo "Success:".$this->stringTranslate(base64_encode(SIGN_UP));
+										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
 										die;
 									}else{
-										$this->setSuccessMessage($this->stringTranslate(SIGN_UP));
+										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
 								return $this->redirect(['controller' => 'guests', 'action' => 'home']);		
 								//die;
 									}
@@ -529,10 +518,10 @@ class GuestsController extends AppController
 						}
 							
 					}else{
-						$captchErr = $this->stringTranslate('Robot verification failed, please try again');
+						$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
 					}
 				}else{
-					$captchErr = $this->stringTranslate('Please click on the reCAPTCHA box');
+					$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
 				}
 			}else{
 					
@@ -571,50 +560,50 @@ class GuestsController extends AppController
 		//Validation for first name
 		if(trim($data['Users']['first_name'])=='')
 		{
-			$errors['first_name'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['first_name'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}else{
 			if(is_numeric($data['Users']['first_name'])){
-				$errors['first_name'][]=$this->stringTranslate("First name should be alphabatic")."\n";
+				$errors['first_name'][]=$this->stringTranslate(base64_encode("First name should be alphabatic"))."\n";
 			}
 		}
 		//Validation for last name
 		if(trim($data['Users']['last_name'])=='')
 		{
-			$errors['last_name'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['last_name'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}else{
 			if(is_numeric($data['Users']['last_name'])){
-				$errors['last_name'][]=$this->stringTranslate("Last name should be alphabatic")."\n";
+				$errors['last_name'][]=$this->stringTranslate(base64_encode("Last name should be alphabatic"))."\n";
 			}
 		}
 		//Validation for email
 		if(trim($data['Users']['email'])=='')
 		{
-			$errors['email'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['email'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}
 		else
 		{
 			$checkEmail=explode('@',$data['Users']['email']);
 			if($this->isValidEmail($data['Users']['email'])==0){
-				$errors ['email'] [] =$this->stringTranslate("Please enter valid email")."\n";
+				$errors ['email'] [] =$this->stringTranslate(base64_encode("Please enter valid email"))."\n";
 			}else{
 				if($this->isUniqueEmail($data['Users']['email'])=='false'){
-					$errors ['email'] [] = $this->stringTranslate("Email already exists")."\n";
+					$errors ['email'] [] = $this->stringTranslate(base64_encode("Email already exists"))."\n";
 				}
 			}
 		}
 		//Validation for password
 		if(trim($data['Users']['password'])=='')
 		{
-			$errors['password'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['password'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}
 		
 		if(trim($data['Users']['re_password'])=='')
 		{
-			$errors['re_password'][]=$this->stringTranslate("This is required field")."\n";
+			$errors['re_password'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}
 		if(trim($data['Users']['password'])!='' && trim($data['Users']['re_password'])!=''){
 			if(trim($data['Users']['password']) != trim($data['Users']['re_password'])){
-				$errors['re_password'][]=$this->stringTranslate("Password does not matched")."\n";
+				$errors['re_password'][]=$this->stringTranslate(base64_encode("Password does not matched"))."\n";
 			}
 		}
 		return $errors;
@@ -648,11 +637,11 @@ class GuestsController extends AppController
 				$with = array($count->first_name." ".$count->last_name);
 				$this->send_email('',$replace,$with,'account_activated',$count->email);
 				//$session->write('success', ACTIVATE_ACCT);
-				$this->setSuccessMessage($this->stringTranslate(ACTIVATE_ACCT));
+				$this->setSuccessMessage($this->stringTranslate(base64_encode(ACTIVATE_ACCT)));
 				
 			}
 		}else{
-			$this->setErrorMessage($this->stringTranslate("Activation link has been expired"));
+			$this->setErrorMessage($this->stringTranslate(base64_encode("Activation link has been expired")));
 			 //$session->write('error', "Activation link has been expired.");
 		}
 		return $this->redirect(['controller' => 'guests', 'action' => 'home']);			
@@ -672,8 +661,8 @@ class GuestsController extends AppController
 				
 			if(!empty($getSubscribeData)){
 
-			   echo "Error:".$this->stringTranslate("Email already exists");
-               $this->setErrorMessage($this->stringTranslate("Email already exists"));
+			   echo "Error:".$this->stringTranslate(base64_encode("Email already exists"));
+               $this->setErrorMessage($this->stringTranslate(base64_encode("Email already exists")));
 			   die;
 			}else{
 				$SubscribeData = $SubscribesModel->newEntity();
@@ -683,8 +672,8 @@ class GuestsController extends AppController
 					$replace = array('{message}');
 				    $with = array($this->request->data['Subscribes']['email']);
 						
-					echo 'Success:'.$this->stringTranslate("You have been subscribe successfully");
-					$this->setSuccessMessage($this->stringTranslate("You have been subscribe successfully"));
+					echo 'Success:'.$this->stringTranslate(base64_encode("You have been subscribe successfully"));
+					$this->setSuccessMessage($this->stringTranslate(base64_encode("You have been subscribe successfully")));
 					$this->send_email('',$replace,$with,'subscribe_confirmation',$this->request->data['Subscribes']['email'],'');
 				}
 				die;
@@ -816,11 +805,11 @@ class GuestsController extends AppController
 					$session->write('User.name', $getUserData->first_name." ".$getUserData->last_name);
 					$session->write('User.image', $getUserData->image);
 					$session->write('User.last_login', $getUserData->last_login);
-					$this->setSuccessMessage($this->stringTranslate('You have successfully logged in'));
+					$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in')));
 					return $this->redirect(['controller' => 'Guests', 'action' => 'home']);	
 					
 				}else{
-					$this->setErrorMessage($this->stringTranslate(AUTHENTICATION_FAILED));
+					$this->setErrorMessage($this->stringTranslate(base64_encode('Authentication Failed! Please try again')));
 				}
 			
 		}
