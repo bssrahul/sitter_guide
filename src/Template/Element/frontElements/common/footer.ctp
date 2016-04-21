@@ -9,10 +9,11 @@
                           <div class="foot-box">
                           <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter Guide')); ?></p>          
 								<ul>
-									<li><a href="#" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'pages/about-us'; ?>" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
 									<li><a href="#" title="Partners">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Partner')); ?></a> </li>
 									<li><a href="#" title="In the News">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a> </li>
-									<li><a href="#" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'pages/privacy'; ?>" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'pages/terms'; ?>" title="Terms & Conditions"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a> </li>
                                 </ul>
                                
                         </div>
@@ -139,100 +140,100 @@
          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="form-group">
                      <select class="form-control" id="">                                          
-      <option value="AED">USD</option>
-    
-      <option value="ARS">ARS</option>
-    
-      <option value="AUD">AUD</option>
-    
-      <option value="BGN">BGN</option>
-    
-      <option value="BRL">BRL</option>
-    
-      <option value="CAD">CAD</option>
-    
-      <option value="CHF">CHF</option>
-    
-      <option value="CLP">CLP</option>
-    
-      <option value="CNY">CNY</option>
-    
-      <option value="COP">COP</option>
-    
-      <option value="CRC">CRC</option>
-    
-      <option value="CZK">CZK</option>
-    
-      <option value="DKK">DKK</option>
-    
-      <option value="EUR">EUR</option>
-    
-      <option value="GBP">GBP</option>
-    
-      <option value="HKD">HKD</option>
-    
-      <option value="HRK">HRK</option>
-    
-      <option value="HUF">HUF</option>
-    
-      <option value="IDR">IDR</option>
-    
-      <option value="ILS">ILS</option>
-    
-      <option value="INR">INR</option>
-    
-      <option value="JPY">JPY</option>
-    
-      <option value="KRW">KRW</option>
-    
-      <option value="MAD">MAD</option>
-    
-      <option value="MXN">MXN</option>
-    
-      <option value="MYR">MYR</option>
-    
-      <option value="NOK">NOK</option>
-    
-      <option value="NZD">NZD</option>
-    
-      <option value="PEN">PEN</option>
-    
-      <option value="PHP">PHP</option>
-    
-      <option value="PLN">PLN</option>
-    
-      <option value="RON">RON</option>
-    
-      <option value="RUB">RUB</option>
-    
-      <option value="SAR">SAR</option>
-    
-      <option value="SEK">SEK</option>
-    
-      <option value="SGD">SGD</option>
-    
-      <option value="THB">THB</option>
-    
-      <option value="TRY">TRY</option>
-    
-      <option value="TWD">TWD</option>
-    
-      <option value="UAH">UAH</option>
-    
-      <option selected="" value="USD">USD</option>
-    
-      <option value="UYU">UYU</option>
-    
-      <option value="VND">VND</option>
-    
-      <option value="ZAR">ZAR</option>
-    
-  </select>             
+						  <option value="AED">USD</option>
+						
+						  <option value="ARS">ARS</option>
+						
+						  <option value="AUD">AUD</option>
+						
+						  <option value="BGN">BGN</option>
+						
+						  <option value="BRL">BRL</option>
+						
+						  <option value="CAD">CAD</option>
+						
+						  <option value="CHF">CHF</option>
+						
+						  <option value="CLP">CLP</option>
+						
+						  <option value="CNY">CNY</option>
+						
+						  <option value="COP">COP</option>
+						
+						  <option value="CRC">CRC</option>
+						
+						  <option value="CZK">CZK</option>
+						
+						  <option value="DKK">DKK</option>
+						
+						  <option value="EUR">EUR</option>
+						
+						  <option value="GBP">GBP</option>
+						
+						  <option value="HKD">HKD</option>
+						
+						  <option value="HRK">HRK</option>
+						
+						  <option value="HUF">HUF</option>
+						
+						  <option value="IDR">IDR</option>
+						
+						  <option value="ILS">ILS</option>
+						
+						  <option value="INR">INR</option>
+						
+						  <option value="JPY">JPY</option>
+						
+						  <option value="KRW">KRW</option>
+						
+						  <option value="MAD">MAD</option>
+						
+						  <option value="MXN">MXN</option>
+						
+						  <option value="MYR">MYR</option>
+						
+						  <option value="NOK">NOK</option>
+						
+						  <option value="NZD">NZD</option>
+						
+						  <option value="PEN">PEN</option>
+						
+						  <option value="PHP">PHP</option>
+						
+						  <option value="PLN">PLN</option>
+						
+						  <option value="RON">RON</option>
+						
+						  <option value="RUB">RUB</option>
+						
+						  <option value="SAR">SAR</option>
+						
+						  <option value="SEK">SEK</option>
+						
+						  <option value="SGD">SGD</option>
+						
+						  <option value="THB">THB</option>
+						
+						  <option value="TRY">TRY</option>
+						
+						  <option value="TWD">TWD</option>
+						
+						  <option value="UAH">UAH</option>
+						
+						  <option selected="" value="USD">USD</option>
+						
+						  <option value="UYU">UYU</option>
+						
+						  <option value="VND">VND</option>
+						
+						  <option value="ZAR">ZAR</option>
+						
+					  </select>             
                                           </div> 
                                     </div>                                    
                                 </div>
                             </div>
-                              <p class="crgt"><?php echo ($siteConfiguration->site_footer)?$siteConfiguration->site_footer:""?></p>
+                              <p class="crgt"><?php echo isset($siteConfiguration->site_footer)?$siteConfiguration->site_footer:""?></p>
                         </div>
                         
                     </div>
