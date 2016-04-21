@@ -17,7 +17,8 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
-
+use Cake\ORM\TableRegistry;
+use Cake\I18n\I18n;
 /**
  * Static content controller
  *
@@ -35,35 +36,27 @@ class PagesController extends AppController
      * @throws \Cake\Network\Exception\NotFoundException When the view file could not
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
-    public function display()
+	/**
+	* Function for cms pages
+	*/ 
+	public function initialize()
     {
-        $path = func_get_args();
 
-        $count = count($path);
-        if (!$count) {
-            return $this->redirect('/');
-        }
-        $page = $subpage = null;
+		parent::initialize();
+				
+		
+        //GET LOCALE VALUE
+		$session = $this->request->session();
+		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
+		I18n::locale($setRequestedLanguageLocale);
+		if($session->read("requestedLanguage")==""){
 
-        if (!empty($path[0])) {
-            $page = $path[0];
-        }
-        if (!empty($path[1])) {
-            $subpage = $path[1];
-        }
-        $this->set(compact('page', 'subpage'));
+			$this->setGuestStore("en");
+		}
 
-        try {
-            $this->render(implode('/', $path));
-        } catch (MissingTemplateException $e) {
-            if (Configure::read('debug')) {
-                throw $e;
-            }
-            throw new NotFoundException();
-        }
-    }
-    
-    function cms($url = NULL)
+		
+	}
+	function cms($url = NULL)
 	{
 		// load CMSPAGE Model
 		$this->viewBuilder()->layout('cms_pages');

@@ -44,10 +44,18 @@ class AppController extends Controller{
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 		
-		//GET LOCALE VALUE
+		 //GET LOCALE VALUE
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
+		if($session->read("requestedLanguage")==""){
+
+			$this->setGuestStore("en");
+		}
+
+		//$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale');
+		$currentLocal = substr($setRequestedLanguageLocale,0,2);
+		$this->set('currentLocal', $currentLocal);
 		
 	}
 	
