@@ -247,7 +247,9 @@
 		$("#users-birth-date").datepicker(
            {
 		     changeMonth: true,
-		     changeYear: true
+		     changeYear: true,
+	         maxDate: new Date(),
+	         yearRange: "-50:-6"
 		   }
 			);
 		$(".fa-calendar").click(function(){ $("#users-birth-date").focus();});
