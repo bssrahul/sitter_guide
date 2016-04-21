@@ -21,15 +21,11 @@
 
                    foreach($blogsInfo as $single_blog){ 
                    //echo $single_blog->created_date;
-                    if(!empty($single_blog->user)){
-                        if($single_blog->user->image){
-                            $proPic = $single_blog->user->image;
-                        }else{
+                   
+                        
                             $proPic ="prof_photo.png";
-                        }
-                    }else{
-                        continue;
-                     }
+                       
+                    
                     
              ?>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -45,7 +41,7 @@
                                 <div class="p-area">
                                     <div class="p-img">
                                         <img src="<?php echo HTTP_ROOT.'img/uploads/'.$proPic; ?>" width="50" height="50" alt=""> 
-                                            <p><?php echo $single_blog->user->first_name; ?></p>
+                                          
                                     </div> 
                                     <ul>
                                         <li><a href="#"><i class="fa fa-user"></i><?php echo __('By user'); ?></a></li>
