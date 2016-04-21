@@ -414,7 +414,7 @@
 
                     </div>
                    <div class="row">
-                    <p class="col-lg-12 sp-tb"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button>
+                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button></a>
                       <input class="pull-right btn Continue" type="submit" value="Continue" ></p>
                     </div>
                      
