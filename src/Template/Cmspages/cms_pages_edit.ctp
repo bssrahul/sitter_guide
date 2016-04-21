@@ -47,6 +47,7 @@
 										echo $this->Form->input('CmsPages.pageurl',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
 												'label' => false,
+												'readonly' => true,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$page->pageurl != ''?$page->pageurl:'']);
 										 ?>

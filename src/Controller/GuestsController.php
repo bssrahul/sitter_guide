@@ -171,7 +171,7 @@ class GuestsController extends AppController
 			}
 
 		}
-			/*$fb = new \Facebook\Facebook([
+			$fb = new \Facebook\Facebook([
 			'app_id' => FACEBOOK_APP_ID, // Replace {app-id} with your app id
 			'app_secret' => FACEBOOK_SECRET,
 			'default_graph_version' => 'v2.2',
@@ -184,7 +184,7 @@ class GuestsController extends AppController
 
 
 			$this->set('loginWithFacebook', '<a class="signup-fb" href="' . htmlspecialchars($loginUrl) . '"><i class="fa fa-facebook-square"></i> Signup with Facebook!</a>');
-	        $this->set('facebookUrl',$loginUrl);*/
+	        $this->set('facebookUrl',$loginUrl);
 	        
 	
 	}
