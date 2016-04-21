@@ -681,68 +681,159 @@
 			}*/
 			
 		});
-		///////////
-	 
-	//Hide and Show functionality for Getting Started form
-        $('#pet_hosting').click(function(){
-		    if ( $('#pet_hosting').is( ":checked" ) ){
-				   $('#night1').show();
-				   $( "#night1" ).prop( "disabled", false );
-			  }else{
-				   $('#night1').hide();
-				   $( "#night1" ).prop( "disabled", true );
-			  }
+		/*For Services and Rates form*/
+		//CODE SNIPPET FOR SUBSCRIBE
+		$('#servicesAndRates').validate({
+			rules: {
+				"UserSitterServices[sh_holiday_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_puppy_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_cat_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_horse_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_reptiles_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_small_pets_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_dc_holiday_rate]":
+				{
+					 number: true  
+				},
+				"UserSitterServices[sh_nc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_hc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_ltc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_holiday_rate]":
+				{
+					 number: true  
+				},
+				"UserSitterServices[gh_puppy_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_cat_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_horse_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_reptiles_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_small_pets_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_dc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_nc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_hc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_ltc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_vpd_1_visit_pr_day]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_vpd_2_visit_pr_day]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_gm_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_tr_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_or_1_day_1_guest]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_or_2_day_1_guest]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_ds_pick_up]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_ds_drop_off]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_ds_return]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[day_care_limit]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[visits_limit]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[night_care_limit]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hourly_services_limit]":
+				{
+					 number: true 
+				}
+			},
+			messages: {				
+				"UserSitterServices[sh_holiday_rate]":
+				{
+					required : "Number only please"
+				}
+			}/*,
+			submitHandler: function(form) {
+				var actionURL = $('#subscribeForm').attr('action');
+				//alert('okokokoko');
+				process_form("subscribeForm","subscribe-btn",actionURL);
+				return false;
+			}*/
+			
 		});
-		 $('#dog_walking').click(function(){
-		    if ( $('#dog_walking').is( ":checked" ) ){
-				   $('#session1').show();
-				   $( "#session1" ).prop( "disabled", false );
-			  }else{
-				   $('#session1').hide();
-				   $( "#session1" ).prop( "disabled", true );
-			  }
-		});
-		$('#dog_grooming').click(function(){
-		    if ( $('#dog_grooming').is( ":checked" ) ){
-				   $('#session2').show();
-				   $( "#session2" ).prop( "disabled", false );
-			  }else{
-				   $('#session2').hide();
-				   $( "#session2" ).prop( "disabled", true );
-			  }
-		});
-		///////////////////
-		$('input[name="service[]"]').click(function(){
-		    var serviceId = $(this).attr("id");
-			//alert(serviceId);
-			  if ( $('#'+serviceId).is( ":checked" ) ){
-				   $('.'+serviceId).show();
-				   $('.'+serviceId).prop( "disabled", false );
-				  // class=""
-				   $( "#mainServiceDiv" ).append(
-				   "<strong 'class="+serviceId+"'>Hello</strong>" );
-				   
-				   //////////////////////////////
-			  }else{
-				   $('.'+serviceId).hide();
-				   $('.'+serviceId).prop( "disabled", true );
-				    $('#mainServiceDiv').remove('.'+serviceId);
-			  }
-		});
-		
-		///////////////////
-		//End Getting Started 
-	 //Hide and Show functionality for Extended profile form
-		$('#pick_drop').click(function(){
-			 // alert("okokoko");
-				if ( $('#pick_drop').is( ":checked" ) ){
-					   $('#travel_fee_rate').show();
-					   $( "#travel_fee_rate" ).prop( "disabled", false );
-				  }else{
-					   $('#travel_fee_rate').hide();
-					   $( "#travel_fee_rate" ).prop( "disabled", true );
-				  }
-		});
+		/*End service and rates*/
+	
 	});
 		//End base profile
 	function gettingstarted(formID,btnID,actionURL){

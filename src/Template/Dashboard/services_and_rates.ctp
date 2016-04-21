@@ -17,11 +17,19 @@
               <div class="tab-pane fade tab-comm active in" id="menu4">
              
                   <!--<form role="form">-->
-                   <?php echo $this->Form->create(null, [
+                   <?php 
+                  //pr($sitter_service_info);
+                   echo $this->Form->create(@$sitter_service_info, [
                         'url' => ['controller' => 'dashboard', 'action' => 'services-and-rates'],
                         'role'=>'form',
-                        'id'=>'generelInfo'
-                    ]);?>
+                        'id'=>'servicesAndRates'
+                    ]);
+
+                        echo $this->Form->input('UserSitterServices.id',[
+                          'type'=>'hidden',
+                          'value'=>@$sitterServiceId
+                                                   ]);
+                    ?>
 
                   <h3><strong>All services for Sitters house and Guests House</strong></h3>
                   <div class="row">
@@ -31,15 +39,14 @@
                             <!--<label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]">
                             </span> Day Care For Sitters house</label>-->
-                            <label><span class="custom-checkbox">
+                            <label><span class="custom-checkbox <?php echo @$sitter_service_info->day_care_sitters == '1'?"selected":"" ?>">
                               <?php 
-                                  echo $this->Form->input('SitterServices.day_care_sitters',[
+                                  echo $this->Form->input('UserSitterServices.day_care_sitters',[
                                     'templates' => ['inputContainer' => '{{content}}'],
                                     'type'=>'checkbox',
                                     'label' =>false,
                                     'class'=>'selectedCheckbox',
-                                    'hiddenField' => false,
-                                    'value' =>'1'
+                                    'hiddenField' => false
                                    ]);
                               ?>
                                </span> Day Care For Sitters house</label>
@@ -48,15 +55,14 @@
                             <!--<label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]"></span> Day Care For Guests house</label>
                                 <label><span class="custom-checkbox">-->
-                              <label><span class="custom-checkbox">
+                              <label><span class="custom-checkbox <?php echo @$sitter_service_info->day_care_guests == '1'?"selected":"" ?>">
                               <?php 
-                                  echo $this->Form->input('SitterServices.day_care_guests',[
+                                  echo $this->Form->input('UserSitterServices.day_care_guests',[
                                     'templates' => ['inputContainer' => '{{content}}'],
                                     'type'=>'checkbox',
                                     'label' =>false,
                                     'class'=>'selectedCheckbox',
-                                    'hiddenField' => false,
-                                    'value' =>'1'
+                                    'hiddenField' => false
                                    ]);
                               ?>
                                </span>Day Care For Guests house</label>
@@ -67,15 +73,14 @@
                           <div class="radio-main">
                               <!--<label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]"></span> Visit For Sitters house</label>-->
-                               <label><span class="custom-checkbox">
+                               <label><span class="custom-checkbox <?php echo @$sitter_service_info->visits_sitters == '1'?"selected":"" ?>">
                               <?php 
-                                  echo $this->Form->input('SitterServices.visits_sitters',[
+                                  echo $this->Form->input('UserSitterServices.visits_sitters',[
                                     'templates' => ['inputContainer' => '{{content}}'],
                                     'type'=>'checkbox',
                                     'label' =>false,
                                       'class'=>'selectedCheckbox',
-                                    'hiddenField' => false,
-                                    'value' =>'1'
+                                    'hiddenField' => false
                                    ]);
                               ?>
                                </span>Visits For Sitters house</label>
@@ -83,15 +88,14 @@
                           <div class="radio-main">
                              <!-- <label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]"></span> Visit For Guests house</label>-->
-                                <label><span class="custom-checkbox">
+                                <label><span class="custom-checkbox <?php echo @$sitter_service_info->visits_guests == '1'?"selected":"" ?>">
                               <?php 
-                                  echo $this->Form->input('SitterServices.visits_guests',[
+                                  echo $this->Form->input('UserSitterServices.visits_guests',[
                                     'templates' => ['inputContainer' => '{{content}}'],
                                     'type'=>'checkbox',
                                     'label' =>false,
                                      'class'=>'selectedCheckbox',
-                                    'hiddenField' => false,
-                                    'value' =>'1'
+                                    'hiddenField' => false
                                           ]);
                               ?>
                                </span>Visits For Guests house</label>
@@ -102,15 +106,14 @@
                           <div class="radio-main">
                             <!--<label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]"></span> Night Care For Sitters house</label>-->
-                               <label><span class="custom-checkbox">
+                               <label><span class="custom-checkbox <?php echo @$sitter_service_info->night_care_sitters == '1'?"selected":"" ?>">
                               <?php 
-                                  echo $this->Form->input('SitterServices.night_care_sitters',[
+                                  echo $this->Form->input('UserSitterServices.night_care_sitters',[
                                     'templates' => ['inputContainer' => '{{content}}'],
                                     'type'=>'checkbox',
                                     'label' =>false,
                                      'class'=>'selectedCheckbox',
-                                    'hiddenField' => false,
-                                    'value'=>'1'
+                                    'hiddenField' => false
                                    ]);
                               ?>
                                </span>Night Care For Sitters house</label>
@@ -118,15 +121,14 @@
                           <div class="radio-main">
                             <!--<label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]"></span> Night Care For Guests house</label>-->
-                              <label><span class="custom-checkbox">
+                              <label><span class="custom-checkbox <?php echo @$sitter_service_info->night_care_guests == '1'?"selected":"" ?>">
                               <?php 
-                                  echo $this->Form->input('SitterServices.night_care_guests',[
+                                  echo $this->Form->input('UserSitterServices.night_care_guests',[
                                     'templates' => ['inputContainer' => '{{content}}'],
                                     'type'=>'checkbox',
                                     'label' =>false,
                                     'class'=>'selectedCheckbox',
-                                    'hiddenField' => false,
-                                    'value' =>'1'
+                                    'hiddenField' => false
                                    ]);
                               ?>
                                </span>Night Care For Guests house</label>
@@ -143,7 +145,7 @@
                             <option>4</option>
                           </select>-->
                           <?php 
-                              echo $this->Form->input('SitterServices.hourly_service',[
+                              echo $this->Form->input('UserSitterServices.hourly_service',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'select',
                                 'label'=>false,
@@ -160,7 +162,7 @@
                             <option>3</option>
                             <option>4</option>
                           </select>-->
-                      <?php echo $this->Form->input('SitterServices.cancellation_policy',[
+                      <?php echo $this->Form->input('UserSitterServices.cancellation_policy',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                          'required' => false,
@@ -180,11 +182,11 @@
                         <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_holiday_rate_status',[
+                              echo $this->Form->input('UserSitterServices.sh_holiday_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
+                                //'checked'=>'checked'
                                 ]);
                           ?>
                         </div>
@@ -193,9 +195,10 @@
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input>--> 
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_holiday_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?> 
                       </div></div>
@@ -209,11 +212,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_puppy_rate_status',[
+                              echo $this->Form->input('UserSitterServices.sh_puppy_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                                 ]);
                           ?>
                         </div>   </div></div>
@@ -221,9 +223,10 @@
                       <div class="col-lg-6 col-md-6"> 
                         <!--<input type="text"></input> -->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_puppy_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_puppy_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?> 
                          </div></div>
@@ -237,11 +240,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_cat_rate_status',[
+                              echo $this->Form->input('UserSitterServices.sh_cat_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                                 ]);
                           ?>
                         </div>   </div></div>
@@ -249,9 +251,10 @@
                       <div class="col-lg-6 col-md-6"> 
                         <!--<input type="text"></input> -->
                           <?php 
-                              echo $this->Form->input('SitterServices.sh_cat_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_cat_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?> 
                       </div></div>
@@ -267,11 +270,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_horse_rate_status',[
+                              echo $this->Form->input('UserSitterServices.sh_horse_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                                 ]);
                           ?>
                         </div>   </div></div>
@@ -279,9 +281,10 @@
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input>-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_horse_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_horse_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?>  
                          </div></div>
@@ -295,11 +298,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_reptiles_rate_status',[
+                              echo $this->Form->input('UserSitterServices.sh_reptiles_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                                 ]);
                           ?>
                         </div>   </div></div>
@@ -307,9 +309,10 @@
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input> -->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_reptiles_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_reptiles_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?> 
                         </div></div>
@@ -323,11 +326,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_small_pets_status',[
+                              echo $this->Form->input('UserSitterServices.sh_small_pets_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                                 ]);
                           ?>
                         </div>   </div></div>
@@ -335,9 +337,10 @@
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input> -->
                        <?php 
-                              echo $this->Form->input('SitterServices.sh_small_pets_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_small_pets_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?> 
                          </div></div>
@@ -350,11 +353,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_day_care',[
+                              echo $this->Form->input('UserSitterServices.sh_day_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -362,11 +364,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                            <?php 
-                              echo $this->Form->input('SitterServices.sh_dc_additional_mode',[
+                              echo $this->Form->input('UserSitterServices.sh_dc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -374,11 +375,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_dc_repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.sh_dc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -388,9 +388,10 @@
                       <div class="col-lg-6 col-md-6">  
                       <!-- <input type="text"></input> -->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_dc_holiday_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_dc_holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                               'required'=>false
                               ]);
                           ?> 
                         </div></div>
@@ -404,11 +405,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_night_care',[
+                              echo $this->Form->input('UserSitterServices.sh_night_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -416,11 +416,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_nc_additional_mode',[
+                              echo $this->Form->input('UserSitterServices.sh_nc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -428,28 +427,29 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_nc_repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.sh_nc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
                      <!-- <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate:  </div> 
                       <div class="col-lg-3 col-md-3 num">    <?php 
-                              echo $this->Form->input('SitterServices.sh_nc_holiday_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_nc_holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?>    </div></div>-->
                       <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input>-->  
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_nc_guest_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_nc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                          </div></div>
@@ -467,11 +467,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_hc_hourly_care',[
+                              echo $this->Form->input('UserSitterServices.sh__hourly_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -479,11 +478,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_hc_additional_mode',[
+                              echo $this->Form->input('UserSitterServices.sh_hc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -491,11 +489,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_hc_repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.sh_hc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -505,9 +502,10 @@
                       <div class="col-lg-5 col-md-5">   
                         <!--<input type="text"></input> --> 
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_hc_guest_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_hc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                       </div></div>
@@ -521,11 +519,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_ltc_long_term_care',[
+                              echo $this->Form->input('UserSitterServices.sh_long_term_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -533,11 +530,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_ltc_additional_mode',[
+                              echo $this->Form->input('UserSitterServices.sh_ltc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -545,11 +541,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('SitterServices.sh_ltc_repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.sh_ltc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -559,9 +554,10 @@
                       <div class="col-lg-6 col-md-6 guestRate" >   
                         <!--<input type="text"></input>--> 
                          <?php 
-                              echo $this->Form->input('SitterServices.sh_ltc_.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.sh_ltc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                          </div></div>
@@ -580,11 +576,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.holiday_rate_status',[
+                              echo $this->Form->input('UserSitterServices.gh_holiday_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -592,9 +587,10 @@
                       <div class="col-lg-6 col-md-6">   
                        <!-- <input type="text"></input> -->
                             <?php 
-                              echo $this->Form->input('GuestsHome.holiday_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                       </div></div>
@@ -608,11 +604,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.puppy_rate_status',[
+                              echo $this->Form->input('UserSitterServices.gh_puppy_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                                  ]);
                           ?>
                         </div>   </div></div>
@@ -620,9 +615,10 @@
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input> --> 
                         <?php 
-                              echo $this->Form->input('GuestsHome.puppy_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_puppy_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                      </div></div>
@@ -636,11 +632,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.cat_rate_status',[
+                              echo $this->Form->input('UserSitterServices.gh_cat_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -648,9 +643,11 @@
                       <div class="col-lg-6 col-md-6"> 
                         <!--<input type="text"></input> -->
                         <?php 
-                              echo $this->Form->input('GuestsHome.cat_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_cat_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false,
+                                'type'=>'text'
                               ]);
                           ?> 
                          </div></div>
@@ -666,11 +663,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.horse_rate_status',[
+                              echo $this->Form->input('UserSitterServices.gh_horse_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -678,9 +674,10 @@
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input>  -->
                           <?php 
-                              echo $this->Form->input('GuestsHome.horse_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_horse_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?>  
                      </div></div>
@@ -694,11 +691,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.reptiles_rate_status',[
+                              echo $this->Form->input('UserSitterServices.gh_reptiles_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -706,9 +702,10 @@
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input>  -->
                           <?php 
-                              echo $this->Form->input('GuestsHome.reptiles_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_reptiles_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                       </div></div>
@@ -722,11 +719,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                        <!-- <input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('GuestsHome.small_pets_status',[
+                              echo $this->Form->input('UserSitterServices.gh_small_pets_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -734,9 +730,10 @@
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input> -->
                           <?php 
-                              echo $this->Form->input('GuestsHome.small_pets_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_small_pets_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                          </div></div>
@@ -754,11 +751,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.day_care.day_care',[
+                              echo $this->Form->input('UserSitterServices.gh_day_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -766,11 +762,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.day_care.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.gh_dc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -778,11 +773,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.day_care.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.gh_dc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -792,9 +786,10 @@
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input>  -->
                         <?php 
-                              echo $this->Form->input('GuestsHome.day_care.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_dc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                       </div></div>
@@ -808,11 +803,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                        <!-- <input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.night_care.night_care',[
+                              echo $this->Form->input('UserSitterServices.gh_night_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -820,11 +814,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.night_care.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.gh_nc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -832,11 +825,10 @@
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.night_care.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.gh_nc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -846,9 +838,10 @@
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input> -->
                         <?php 
-                              echo $this->Form->input('GuestsHome.night_care.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_nc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                               'required'=>false 
                               ]);
                           ?> 
                          </div></div>
@@ -867,11 +860,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.hourly_care.hourly_care',[
+                              echo $this->Form->input('UserSitterServices.gh_hc_hourly_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -879,11 +871,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.hourly_care.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.gh_hc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -891,11 +882,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.hourly_care.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.gh_hc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -905,9 +895,10 @@
                       <div class="col-lg-5 col-md-5">  
                        <!--<input type="text"></input>  -->
                        <?php 
-                              echo $this->Form->input('GuestsHome.hourly_care.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_hc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                      </div></div>
@@ -921,11 +912,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.long_term_care.long_term_care',[
+                              echo $this->Form->input('UserSitterServices.gh_ltc_long_term_care',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -933,11 +923,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                        <!-- <input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.long_term_care.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.gh_ltc_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -945,12 +934,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.long_term_care.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.gh_ltc_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'repeat_client_only'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -960,9 +947,10 @@
                       <div class="col-lg-6 col-md-6 guestRate">  
                        <!--<input type="text"></input> --> 
                        <?php 
-                              echo $this->Form->input('GuestsHome.long_term_care.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.gh_ltc_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                      </div></div>
@@ -975,11 +963,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.visits_pr_day.visits_pr_day',[
+                              echo $this->Form->input('UserSitterServices.gh_visits_pr_day',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -987,11 +974,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.visits_pr_day.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.gh_vpd_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -999,11 +985,10 @@
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('GuestsHome.visits_pr_day.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.gh_vpd_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1013,9 +998,10 @@
                       <div class="col-lg-5 col-md-5">  
                        <!--<input type="text"></input>  -->
                        <?php 
-                              echo $this->Form->input('GuestsHome.visits_pr_day.1_visit_pr_day',[
+                              echo $this->Form->input('UserSitterServices.gh_vpd_1_visit_pr_day',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                      </div></div>
@@ -1023,9 +1009,10 @@
                       <div class="col-lg-5 col-md-5">  
                        <!--<input type="text"></input>  -->
                        <?php 
-                              echo $this->Form->input('GuestsHome.visits_pr_day.2_visit_pr_day',[
+                              echo $this->Form->input('UserSitterServices.gh_vpd_2_visit_pr_day',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?> 
                      </div></div>
@@ -1045,11 +1032,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.grooming.grooming',[
+                              echo $this->Form->input('UserSitterServices.hp_grooming',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1057,11 +1043,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.grooming.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.hp_gm_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1069,21 +1054,20 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.grooming.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.hp_gm_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'repeat_client_only'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
                         <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
                         <div class="col-lg-6 col-md-6 num">   
                          <?php 
-                              echo $this->Form->input('HourlyProducts.grooming.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.hp_gm_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?>    </div></div>
                       </div>
@@ -1096,11 +1080,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.training.training',[
+                              echo $this->Form->input('UserSitterServices.hp_training',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1108,11 +1091,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.training.aditional_mode',[
+                              echo $this->Form->input('UserSitterServices.hp_tr_aditional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1120,21 +1102,20 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.training.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.hp_tr_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'repeat_client_only'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
                         <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
                         <div class="col-lg-6 col-md-6 num">  
                           <?php 
-                              echo $this->Form->input('HourlyProducts.training.guest_rate',[
+                              echo $this->Form->input('UserSitterServices.hp_tr_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                             </div></div>
@@ -1148,11 +1129,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.outdoors_recreation.outdoors_recreation',[
+                              echo $this->Form->input('UserSitterServices.hp_outdoors_recreation',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1160,11 +1140,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.outdoors_recreation.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.hp_or_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1172,29 +1151,30 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.outdoors_recreation.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.hp_or_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
                         <div class="row"><div class="col-lg-7 col-md-7">1 Per Day, 1 Guest: $</div> 
                         <div class="col-lg-5 col-md-5 num">  
                          <?php 
-                              echo $this->Form->input('HourlyProducts.outdoors_recreation.1_day_1_guest',[
+                              echo $this->Form->input('UserSitterServices.hp_or_1_day_1_guest',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?>   
                         </div></div>
                         <div class="row"><div class="col-lg-7 col-md-7"> 2 Per Day, 1 Guest: $</div> 
                         <div class="col-lg-5 col-md-5 num">   
                          <?php 
-                              echo $this->Form->input('HourlyProducts.outdoors_recreation.2_day_1_guest',[
+                              echo $this->Form->input('UserSitterServices.hp_or_2_day_1_guest',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false 
                               ]);
                           ?> 
                            </div></div>
@@ -1209,11 +1189,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.driver_service.driver_service',[
+                              echo $this->Form->input('UserSitterServices.hp_driver_service',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1221,12 +1200,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.driver_service.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.hp_ds_additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'repeat_client_only'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1234,35 +1211,37 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('HourlyProducts.driver_service.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.hp_ds_repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
                         <div class="row"><div class="col-lg-6 col-md-6">  Pick-up: $</div> 
                         <div class="col-lg-6 col-md-6 num">  <?php 
-                              echo $this->Form->input('HourlyProducts.driver_service.pick_up',[
+                              echo $this->Form->input('UserSitterServices.hp_ds_pick_up',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?>   </div></div>
                         <div class="row"><div class="col-lg-6 col-md-6">Drop-off: $</div> 
                         <div class="col-lg-6 col-md-6 num"> 
                          <?php 
-                              echo $this->Form->input('HourlyProducts.driver_service.drop_off',[
+                              echo $this->Form->input('UserSitterServices.hp_ds_drop_off',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?>    </div></div>
                         <div class="row"><div class="col-lg-6 col-md-6">Return: $</div> 
                         <div class="col-lg-6 col-md-6 num">  
                           <?php 
-                              echo $this->Form->input('HourlyProducts.driver_service.return',[
+                              echo $this->Form->input('UserSitterServices.hp_ds_return',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false
+                                'label'=>false,
+                                'required'=>false
                               ]);
                           ?>    </div></div>
                       </div>
@@ -1275,12 +1254,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />
                          <?php 
-                              echo $this->Form->input('HourlyProducts.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'repeat_client_only'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1288,7 +1265,7 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <input type="checkbox" checked />
                          <?php 
-                              echo $this->Form->input('HourlyProducts.additional_mode',[
+                              echo $this->Form->input('UserSitterServices.additional_mode',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label'=>false,
@@ -1301,12 +1278,10 @@
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />
                          <?php 
-                              echo $this->Form->input('HourlyProducts.repeat_client_only',[
+                              echo $this->Form->input('UserSitterServices.repeat_client_only',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'repeat_client_only'
+                                'label'=>false
                               ]);
                           ?>
                         </div>   </div></div>
@@ -1333,12 +1308,11 @@
                       <label for="">1. Day Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                        <?php 
-                              echo $this->Form->input('SitterServices.day_care_limit',[
+                              echo $this->Form->input('UserSitterServices.day_care_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
-                                 'type'=>'number',
-                                 'min'=>'1',
-                                'class'=>'form-control mzero'
+                                 'required'=>false,
+                                 'class'=>'form-control mzero'
                               ]);
                           ?> 
                        
@@ -1347,11 +1321,10 @@
                       <label for="">2. Night Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
-                              echo $this->Form->input('SitterServices.night_care_limit',[
+                              echo $this->Form->input('UserSitterServices.night_care_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
-                                 'type'=>'number',
-                                 'min'=>'1',
+                                 'required'=>false,
                                 'class'=>'form-control mzero'
                               ]);
                           ?> 
@@ -1360,11 +1333,10 @@
                       <label for="">3. Visits P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
-                              echo $this->Form->input('SitterServices.visits_limit',[
+                              echo $this->Form->input('UserSitterServices.visits_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
-                                 'type'=>'number',
-                                 'min'=>'1',
+                                 'required'=>false,
                                 'class'=>'form-control mzero'
                               ]);
                           ?> 
@@ -1373,11 +1345,10 @@
                       <label for="">4. Hourly Services P/Day Limit <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
-                              echo $this->Form->input('SitterServices.hourly_services_limit',[
+                              echo $this->Form->input('UserSitterServices.hourly_services_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
-                                'type'=>'number',
-                                'min'=>'1',
+                                'required'=>false,
                                 'class'=>'form-control mzero'
                               ]);
                           ?> 
@@ -1385,7 +1356,7 @@
                     
                   </div>
 <div class="row">
-                    <p class="col-lg-12 sp-tb"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button>
+                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button></a>
                       <input type="submit" class="pull-right btn Continue" value="Submit" /></p>
                     </div>
 
