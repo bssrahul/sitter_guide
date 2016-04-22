@@ -51,6 +51,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/guests', ['controller' => 'guests', 'action' => 'home']);
     $routes->connect('/admin', ['controller' => 'users', 'action' => 'login', 'home']);
 	$routes->connect('/', ['controller' => 'guests', 'action' => 'home']);
+    $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'home']);
 	
 	 /**
      * ...and connect the rest of 'Pages' controller's URLs.

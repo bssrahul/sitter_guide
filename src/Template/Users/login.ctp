@@ -19,7 +19,7 @@
 					<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Username')); ?></label>
 					<?php echo $this->Form->input('username', ['label' => false,'class'=>'form-control']); ?>
 					<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Password')); ?></label>
-					<?php echo $this->Form->password('password', ['label' => false,'class'=>'form-control']);
+					<?php echo $this->Form->password('password', ['label' => false,'id'=>'password','class'=>'form-control']);
 					?>
 					
 					<div>
@@ -73,5 +73,8 @@ body {
 label {
     float: left;
     margin: 0 0 3px 3px;
+}
+#username,#password{
+	float:left;
 }
 </style>

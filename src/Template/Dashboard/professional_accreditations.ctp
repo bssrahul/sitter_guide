@@ -165,6 +165,20 @@
                     </div>
                    
                   </div>
+                    <h3><strong>drivers licence / Government issued ID<small>( Your photo ID will not be displayed on your profile )</small></strong></h3>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                    <div class="brow-inner">
+                      <input type="text" class="form-control" id="" placeholder="Upload Government Proof">
+                      
+                      <button class="btn btn-secondary" type="button">Browse</button>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-2">
+                      <button type="button" class="btn btn-primary upload-side">Upload</button>
+                    </div>
+                   
+                  </div>
                   <h3><strong>Other Qualifications & Specific Skills</strong><small>( Please specify )</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i>
  Add More</span></h3>
                   <div class="row">

@@ -18,7 +18,7 @@
  <div id="home1" class="tab-pane fade in active tab-comm">
                 
                   <!--<form role="form">-->
-            <?php echo $this->Form->create($userInfo, [
+            <?php echo $this->Form->create(@$userInfo, [
               'url' => ['controller' => 'dashboard', 'action' => 'profile'],
               'role'=>'form',
               'id'=>'generelInfo'
@@ -206,7 +206,7 @@
                                   ]);
                                  echo '<em class="signup_error error">'.__(@$error['password'][0]).'</em>';
                             ?>
-                      <span class="range-c"><img id="password_line" src="<?php echo HTTP_ROOT; ?>img/weak.jpg"> <small class="pull-right">Weak</small></span>
+                      <span class="range-c" id="passwordStatus"></span>
                     </div>
 
                     <div class="form-group col-lg-4 col-md-4">
