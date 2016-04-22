@@ -92,7 +92,7 @@
 								
 								<td class="text-center">
 									<div class="text-centerimage view-first customImg">
-										<img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($pages->image != ''?$pages->image:'no-image.png'); ?>"/>
+										<img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($pages->banner_image != ''?$pages->banner_image:'no-image.png'); ?>"/>
 									</div>
 								</td>
 								<td  style="width:150px" class=" "><?php echo $pages->pagename; ?></td>
