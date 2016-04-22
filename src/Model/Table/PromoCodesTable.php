@@ -10,7 +10,7 @@ class PromoCodesTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['promo_code','discount_rate','description'],
-            'translationTable' => 'PromoCodesI18n'
+           'translationTable' => 'I18n'
 		]);
     }
 	

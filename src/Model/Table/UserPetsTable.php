@@ -10,7 +10,7 @@ class UserPetsTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['pet_name','pet_type','pet_breed','pet_gender','pet_weight','pet_age','pet_description'],
-            'translationTable' => 'UsersI18n'
+            'translationTable' => 'I18n'
 		]);
     }
 	

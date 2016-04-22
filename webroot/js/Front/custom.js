@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
+	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	/*FUNCTION FOR VALIDATION*/
 	$(document).ready(function(){
@@ -578,11 +578,6 @@
 					required : "This field is required"
 					
 				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#addUsers').attr('action');
-				signup("addUsers","sign-up",actionURL);
-				return false;
 			}
 			
 		}); 
