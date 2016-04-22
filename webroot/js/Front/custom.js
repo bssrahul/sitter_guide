@@ -582,6 +582,67 @@
 			}*/
 			
 		});
+		//Start Contact form
+		$('#contactform').validate({
+			rules: {
+				"name":
+				{
+					required: true,
+					
+				},
+				"email":
+				{
+					required: true,
+					email: true,
+				},
+				"phone_no":
+				{	
+				    required: true,
+					number:true,
+					minlength: '10',
+					maxlength:'10',
+															
+				},
+				"message":
+				{
+					required: true,
+					
+				}
+				
+			},
+			messages:{				
+				"name":
+				{
+					 required: "This field is required.",
+					
+				},
+				"email":
+				{
+					required : "This field is required",
+					email: 'Kindly use valid email address gfgf',
+					
+				},
+				"phone_no":
+				{
+					required : "This field is required",
+					number: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					minlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					maxlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+				},
+				"message":
+				{
+					 required: "This field is required.",
+					
+				}
+				
+			}/*,
+			submitHandler: function(form) {
+				var actionURL = $('#personalForm').attr('action');
+				gettingstarted("personalForm","submitGetting",actionURL);
+				return false;
+			}*/
+			
+		});
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
 			rules: {

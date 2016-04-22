@@ -61,7 +61,7 @@
                           <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Need Help?')); ?></p>          
                             <ul>
 								<li><a href="#" title="Help Center"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help Center')); ?></a> </li>
-								<li><a href="#" title="Contact Us"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Us')); ?></a> </li>
+								<li><a href="<?php echo HTTP_ROOT.'pages/contact-us'; ?>" title="Contact Us"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Us')); ?></a> </li>
 							</ul>
                                 
                             <div class="news-let">
