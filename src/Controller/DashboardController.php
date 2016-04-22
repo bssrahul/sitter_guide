@@ -215,6 +215,7 @@ class DashboardController extends AppController
         $this->request->data = @$_REQUEST;
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
+			 //pr($this->request->data);die;
 	            $data=$this->request->data['Usersp'];
 			    $error=$this->validate_password($data,$user_info);
 				if(count($error) > 0)
@@ -298,6 +299,20 @@ class DashboardController extends AppController
                    $this->set('sitterHouseId', $sitterHouseData->id);
                    $this->set('sitterHouseData', $sitterHouseData);
 		    }
+		     $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+           if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
+                  $images_arr = $query->user_sitter_galleries;
+                  $sitterImg = array();
+                   $html = " ";
+                   foreach($images_arr as $key=>$val){
+
+                   	$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a href="#"><i class="fa fa-minus-circle"></i></a>';
+                   	 $html .='</div></div>';
+                   }
+                $this->set('sitter_images', $html);
+            }
+            
             
         }
 	     
@@ -319,9 +334,10 @@ class DashboardController extends AppController
         
 
 		$this->request->data = @$_REQUEST;
-		//pr($this->request->data); die;
+		
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
+			pr($this->request->data); die;
 			   $aboutSitterData = $aboutSittersModel->newEntity();
                $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
                 $aboutSitterData->user_id = $userId;
@@ -344,7 +360,7 @@ class DashboardController extends AppController
                    //$this->set('sitterHouseId', $aboutSitterData->id);
                    $this->set('sitter_info', $aboutSitterData);
 		    }
-            
+		   
         }
 	     
 
@@ -404,7 +420,17 @@ class DashboardController extends AppController
             //pr($query);die;
             if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
                   $images_arr = $query->user_sitter_galleries;
-                  pr($images_arr);die;
+                  $sitterImg = array();
+                   $html = " ";
+                   foreach($images_arr as $key=>$val){
+
+                   	$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a href="#"><i class="fa fa-minus-circle"></i></a>';
+                   	 $html .='</div></div>';
+                   }
+                  
+                   //json_encode($sitterImg);
+                  echo $html; die;
             }
 
 
@@ -483,9 +509,9 @@ class DashboardController extends AppController
 		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
 						  
 						   $UserProfessionalDetailsModel->save($userProfessionalDetailData);
-						   echo "<pre>";print_r($this->request->data);die;
+						  // echo "<pre>";print_r($this->request->data);die;
                
-		}else{
+		}/*else{
             $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
            // pr($query->user_professional_accreditations);die;
            
@@ -496,7 +522,7 @@ class DashboardController extends AppController
                    $this->set('skill_info', $skillsData);
 		    }
             
-        }
+        }*/
 
 
     	
