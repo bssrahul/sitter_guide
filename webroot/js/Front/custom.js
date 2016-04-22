@@ -455,11 +455,7 @@
 				{
 					required:true
 				},
-				"Users[first_name]":
-				{
-					required:true
-				},
-                "Users[zip]":
+				"Users[zip]":
 				{
 					required:true
 				},
@@ -478,27 +474,17 @@
 				"Users[zone_id]":
 				{
 					required:true
-				},
-				"Users[create_password]":
+				}/*,
+				"Users[password]":
 				{
-					required: true,
 					minlength: '6'
 				},
 				"Users[re_password]":
 				{
-					required: true,
+					 required:true,
 					minlength: '6',
-					equalTo: '#users-create-password'
-				},
-				
-				"Users[country]":
-				{
-					required:true
-				},
-				"Users[term_condition]":
-				{
-					required:true
-				}
+					equalTo: '#usersp-password'
+				}*/
 			},
 			messages: {
 				"Users[title]":
@@ -516,41 +502,61 @@
 					required : "This field is required"
 					
 				},
-				"Users[create_password]":
+				"Users[address]":
 				{
-					required : "This field is required",
-					minlength: 'Please enter minimum 6 characters.'
+					required : "This field is required"
+					
 				},
-				"Users[re_password]":
+				"Users[address2]":
 				{
-					required : "This field is required",
-					minlength: 'Please enter minimum 6 characters.',
-					equalTo: 'Password does not match'
+					required : "This field is required"
+					
+				},
+				"Users[city]":
+				{
+					required : "This field is required"
+					
 				},
 				"Users[zip]":
 				{
 					required : "This field is required"
 					
 				},
-				
-				"Users[country]":
+				"Users[state]":
 				{
 					required : "This field is required"
 					
+				},
+				"Users[country_code]":
+				{
+					required : "This field is required"
+				},
+				"Users[phone]":
+				{
+					required : "This field is required"
+				},
+				"Users[zone_id]":
+				{
+					required : "This field is required"
 				},
 				"Users[term_condition]":
 				{
 					required : "This field is required"
 					
-				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#addUsers').attr('action');
-				signup("addUsers","sign-up",actionURL);
-				return false;
+				}/*,
+				"Users[password]":
+				{
+					minlength: 'Please enter minimum 6 characters.'
+				},
+				"Users[re_password]":
+				{
+					 required : "This field is required",
+					minlength: 'Please enter minimum 6 characters.',
+					equalTo: 'Password does not match'
+				}*/
 			}
 			
-		}); 
+		});
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
