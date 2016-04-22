@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
 	
 	/*FUNCTION FOR VALIDATION*/
 	$(document).ready(function(){
@@ -630,8 +630,43 @@
 			submitHandler: function(form) {
 				var actionURL = $('#subscribeForm').attr('action');
 				//alert('okokokoko');
-				process_form("subscribeForm","subscribe-btn",actionURL);
-				return false;
+				//process_form("","subscribe-btn",actionURL);
+				//return false;
+				var btnID = 'subscribe-btn';
+				var formID = 'subscribeForm';
+				//alert(formID+btnID+'url='+actionURL);
+					var orgBtnVal=$("#"+btnID).val();//GET BUTTON VALUE
+					$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
+					$("#"+btnID).val('Wait...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
+					var formData = $('#'+formID).serialize();//BIND THE FORM VALUE INTO A VARIABLE
+					//console.log(formData);
+					$.ajax({
+						url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+						data:formData,//ALL SUBMITTED DATA FROM THE FORM
+						 
+						success:function(res)
+						{
+							console.log(res);
+							//alert(res);
+							var response = res.split(':');
+							if($.trim(response[0]) == 'Success'){
+								$('.clr').html('');	//Emtpy Error MESSAGE
+								//alert(response[1]);
+								
+								$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+								$('#'+formID)[0].reset();
+								setTimeout(function(){window.location.href = ajax_url;},2000);
+							}if($.trim(response[0]) == 'Error'){
+								$('.clr').html('');	//Emtpy Error MESSAGE
+								$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+							}
+							
+							//CODE FOR CHANGE THE BUTTON STYLE AND TEXT
+							$("#"+btnID).attr('disabled',false);
+							$("#"+btnID).val(orgBtnVal);	
+						}
+					});
+				
 			}
 			
 		});
@@ -872,7 +907,7 @@
 			{
 				//console.log(res);
 				var response = res.split(':');
-				if(response[0] == 'Success'){
+				if($.trim(response[0]) == 'Success'){
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
 					setTimeout(function(){window.location.href = ajax_url;},2000);
