@@ -18,6 +18,7 @@ use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
+use Cake\Event\Event;
 /**
  * Static content controller
  *
@@ -31,15 +32,20 @@ class DashboardController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
+	 public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+		if($this->CheckGuestSession()==false)
+		{
+		  return $this->redirect(['controller' => 'guests', 'action' => 'home']);
+			exit();
+		}
+    }
 	public function initialize()
     {
 		parent::initialize();
-		if(!$this->CheckGuestSession())
-		{
-			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
-		}
-		
-		//GET LOCALE VALUE
+
+       //GET LOCALE VALUE
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
@@ -60,6 +66,7 @@ class DashboardController extends AppController
 		
 
 	}
+	
 	/**Function for landing page
 	*/
 	function home()
@@ -479,6 +486,7 @@ class DashboardController extends AppController
                
 		}else{
             $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
+            pr($query);die;
             if(isset($query->user_about_sitter)){
                    $professionalData = $query->user_about_sitter;
                    //$this->set('sitterHouseId', $professionalData->id);

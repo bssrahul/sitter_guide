@@ -20,6 +20,7 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 //require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
 use Facebook;
+use Cake\Event\Event;
 
 /**
  * Static content controller
@@ -35,12 +36,9 @@ class GuestsController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
-	public function initialize()
+     public function beforeFilter(Event $event)
     {
-
-		parent::initialize();
-		
-		
+        parent::beforeFilter($event);
 		if($this->CheckGuestSession() && ($this->request->action == 'login' || $this->request->action=="forgotPassword"))
 		{
 			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
@@ -49,8 +47,11 @@ class GuestsController extends AppController
 			return $this->redirect(['controller' => 'Guests','action'=>'home']);
 			
 		}
-       
-		
+    }
+	public function initialize()
+    {
+
+		parent::initialize();
 		// Loaded EmailTemplate Model
 		$SiteModel = TableRegistry::get('siteConfigurations');
 		$siteConfiguration = $SiteModel->find('all')->first();

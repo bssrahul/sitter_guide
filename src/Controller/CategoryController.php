@@ -16,6 +16,7 @@
 namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
+use Cake\Event\Event;
 
 /**
  * Static content controller
@@ -28,12 +29,9 @@ use Cake\ORM\TableRegistry;
 class CategoryController extends AppController
 {
 	public $helpers = ['Form'];
-	
-	public function initialize()
+	 public function beforeFilter(Event $event)
     {
-        parent::initialize();
-		
-		// check admin session
+    	// check admin session
 		if(!$this->CheckAdminSession() && !in_array($this->request->action,array('login','forgotPassword')))
 		{
 			return $this->redirect(['controller' => 'users', 'action' => 'login']);
@@ -43,8 +41,14 @@ class CategoryController extends AppController
 		{
 			return $this->redirect(['controller' => 'users', 'action' => 'dashboard']);
 		}
-       
     }
+	/*public function initialize()
+    {
+        parent::initialize();
+		
+		
+       
+    }*/
 		
 	/**Function for add new user
 	*/
