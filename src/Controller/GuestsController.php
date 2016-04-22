@@ -18,7 +18,7 @@ use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
-require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
+//require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
 use Facebook;
 use Cake\Event\Event;
 
@@ -532,7 +532,7 @@ class GuestsController extends AppController
 			}
 			$this->set('captchErr',@$captchErr);
 			
-			$fb = new \Facebook\Facebook([
+			/*$fb = new \Facebook\Facebook([
 			'app_id' => FACEBOOK_APP_ID, // Replace {app-id} with your app id
 			'app_secret' => FACEBOOK_SECRET,
 			'default_graph_version' => 'v2.2',
@@ -545,7 +545,7 @@ class GuestsController extends AppController
 
 
 			$this->set('signupWithFacebook', '<a href="' . htmlspecialchars($loginUrl) . '"><i class="fa fa-facebook-square"></i> Signup with Facebook!</a>');
-	        $this->set('facebookUrl',$loginUrl);
+	        $this->set('facebookUrl',$loginUrl);*/
 	}
 	/**
     Function for signin

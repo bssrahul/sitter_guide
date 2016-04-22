@@ -329,259 +329,6 @@
 			}*/
 			
 		});
-		
-		//Start Getting Started
-		$('#gettingStartedForm').validate({
-			rules: {
-				"service[]":
-				{
-					required: true,
-					
-				},
-				"service_price[]":
-				{
-					required: true,
-					
-				},
-				"day_name[]":
-				{
-					required: true,
-					
-				},
-				"pet_type[]":
-				{
-					required: true,
-					
-				}
-			},
-			messages: {				
-				"service[]":
-				{
-					 required: "Please select at least one type of service.",
-				},
-				"service_price[]":
-				{
-					 required: "This field is required.",
-					
-				},
-				"day_name[]":
-				{
-					 required: "Please select at least one type of day.",
-					
-				},
-				"pet_type[]":
-				{
-					 required: "Please select at least one type of pet.",
-					
-				}
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#gettingStartedForm').attr('action');
-				gettingstarted("gettingStartedForm","submitGetting",actionURL);
-				return false;
-			}*/
-			
-		});
-		//Start base profile form
-		$('#baseProfileForm').validate({
-			rules: {
-				"awesome_title":
-				{
-					required: true,
-					
-				},
-				"your_story":
-				{
-					required: true,
-					
-				}
-			},
-			messages: {				
-				"service[]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"day_name[]":
-				{
-					 required: "This field id required.",
-					
-				}
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#baseProfileForm').attr('action');
-				gettingstarted("baseProfileForm","submitGetting",actionURL);
-				return false;
-			}*/
-			
-		});
-		///////////
-		//Start Extended profile form
-		$('#extendedProfileForm').validate({
-			rules: {
-				"UserExtendedProfiles[travel_fee_rate]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[access_car]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[home_type]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[garden_area]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[is_fanced]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[under_13_child]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[last_minute_booking]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[short_term_type]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[cancel_policy]":
-				{
-					required: true,
-					
-				}
-			},
-			messages:{		
-			    "UserExtendedProfiles[travel_fee_rate]":
-				{
-					 required: "This field id required.",
-					
-				},		
-				"UserExtendedProfiles[access_car]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[home_type]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[garden_area]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[is_fanced]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[under_13_child]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[last_minute_booking]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[short_term_type]":
-				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[cancel_policy]":
-				{
-					 required: "This field id required.",
-					
-				}
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#extendedProfileForm').attr('action');
-				gettingstarted("extendedProfileForm","submitGetting",actionURL);
-				return false;
-			}*/
-			
-		});
-		//Start Personal form
-		$('#personalForm').validate({
-			rules: {
-				"Users[address]":
-				{
-					required: true,
-					
-				},
-				"Users[city]":
-				{
-					required: true,
-					
-				},
-				"Users[state]":
-				{
-					required: true,
-					
-				},
-				"Users[zip]":
-				{
-					required: true,
-					
-				},
-				"Users[phone]":
-				{
-					required: true,
-					
-				}
-			},
-			messages:{				
-				"Users[address]":
-				{
-					 required: "This field is required.",
-					
-				},
-				"Users[city]":
-				{
-					 required: "This field is required.",
-					
-				},
-				"Users[state]":
-				{
-					 required: "This field is required.",
-					
-				},
-				"Users[zip]":
-				{
-					 required: "This field is required.",
-					
-				},
-				"Users[phone]":
-				{
-					 required: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
-					
-				}
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#personalForm').attr('action');
-				gettingstarted("personalForm","submitGetting",actionURL);
-				return false;
-			}*/
-			
-		});
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
 			rules: {
@@ -681,6 +428,129 @@
 			}*/
 			
 		});
+         //CODE SNIPPET FOR General sitter profile
+		$('#generelInfo').validate({
+			rules: {
+				"Users[title]":
+				{
+					required:true
+				},
+				"Users[birth_date]":
+				{
+					required:true
+				},
+				"Users[first_name]":
+				{
+					required:true
+				},
+				"Users[address]":
+				{
+					required:true
+				},
+				"Users[address2]":
+				{
+					required:true
+				},
+                "Users[city]":
+				{
+					required:true
+				},
+				"Users[first_name]":
+				{
+					required:true
+				},
+                "Users[zip]":
+				{
+					required:true
+				},
+				"Users[state]":
+				{
+					required:true
+				},
+                "Users[country_code]":
+				{
+					required:true
+				},
+				"Users[phone]":
+				{
+					required:true
+				},
+				"Users[zone_id]":
+				{
+					required:true
+				},
+				"Users[create_password]":
+				{
+					required: true,
+					minlength: '6'
+				},
+				"Users[re_password]":
+				{
+					required: true,
+					minlength: '6',
+					equalTo: '#users-create-password'
+				},
+				
+				"Users[country]":
+				{
+					required:true
+				},
+				"Users[term_condition]":
+				{
+					required:true
+				}
+			},
+			messages: {
+				"Users[title]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[birth_date]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[first_name]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[create_password]":
+				{
+					required : "This field is required",
+					minlength: 'Please enter minimum 6 characters.'
+				},
+				"Users[re_password]":
+				{
+					required : "This field is required",
+					minlength: 'Please enter minimum 6 characters.',
+					equalTo: 'Password does not match'
+				},
+				"Users[zip]":
+				{
+					required : "This field is required"
+					
+				},
+				
+				"Users[country]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[term_condition]":
+				{
+					required : "This field is required"
+					
+				}
+			},
+			submitHandler: function(form) {
+				var actionURL = $('#addUsers').attr('action');
+				signup("addUsers","sign-up",actionURL);
+				return false;
+			}
+			
+		}); 
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
@@ -980,32 +850,28 @@ $( document ).ready(function() {
 	});
 
 /*End sign up*/
-/*Last Drop down country- currency listing*/
-
-
- /*====For password fair line====*/
-   /* $( "#usersp-password" ).keyup(function() {
-    		
+/*====For password fair line====*/
+    $( "#usersp-password" ).keyup(function() {
+    		//alert("ook");
         var value = $(this).val();
-       
-        if((value.length) == 6){
-               alert(value.length);
+      	if((value.length) === 0){
+      		$('#passwordStatus').html("");
 
-            $('#password_line').attr("src", ajax_url+'fair.jpg');
-             
-        }/*elseif((value.length) > '6'){
-           $('#password_line').attr("src", '<?php echo HTTP_ROOT; ?>img/good.jpg');
-        }else{
-        	$('#password_line').attr("src", '<?php echo HTTP_ROOT; ?>img/good.jpg');
-        }*/
-  /* });*/
-     
+        }else if((value.length) > 0 && (value.length) < 6){
+
+            $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'weak.jpg'+"'><small class='pull-right'>Weak</small>");
+
+        }else if((value.length) >= 6 && (value.length) < 9){
+
+           $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'fair.jpg'+"'><small class='pull-right'>Fair</small>");
+
+        }else if((value.length) > 9){
+
+        	$('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'good.jpg'+"'><small class='pull-right'>Good</small>");
+        }
+  });
  /*====End fair line====*/
  });
-
-
-
-
 /*Last Drop down country- currency listing*/
 $(function () {
   	$('.navbar-toggle-sidebar').click(function () {
