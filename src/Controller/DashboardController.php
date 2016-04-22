@@ -293,7 +293,7 @@ class DashboardController extends AppController
 		}else{
 
 		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
-		    if(isset($query->user_sitter_house)){
+		    if(isset($query->user_sitter_house) && !empty($query->user_sitter_house)){
                    $sitterHouseData = $query->user_sitter_house;
                    $this->set('sitterHouseId', $sitterHouseData->id);
                    $this->set('sitterHouseData', $sitterHouseData);
@@ -338,7 +338,8 @@ class DashboardController extends AppController
 
 		}else{
             $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
-            if(isset($query->user_about_sitter)){
+          
+           if(isset($query->user_about_sitter) && !empty($query->user_about_sitter)){
                    $aboutSitterData = $query->user_about_sitter;
                    //$this->set('sitterHouseId', $aboutSitterData->id);
                    $this->set('sitter_info', $aboutSitterData);
