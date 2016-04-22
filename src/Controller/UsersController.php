@@ -18,6 +18,7 @@ use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
+use Cake\Event\Event;
 /**
  * Static content controller
  *
@@ -28,17 +29,12 @@ use Cake\Network\Email\Email;
 class UsersController extends AppController
 {
 	public $helpers = ['Form'];
-	
-	public function initialize()
+
+	 public function beforeFilter(Event $event)
     {
-		//print_R($this->request->params);die;
-        parent::initialize();
-		
-		//GET LOCALE VALUE
-		$session = $this->request->session();
-		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
-		I18n::locale($setRequestedLanguageLocale);
-		$AdminData  = $session->read('Admin');
+    	 $session = $this->request->session();
+
+        $AdminData  = $session->read('Admin');
 		// check admin session
 		if(!$this->CheckAdminSession() && !in_array($this->request->action,array('login','forgotPassword')))
 		{
@@ -59,6 +55,18 @@ class UsersController extends AppController
 		if($AdminData['is_lock']==true && $this->request->action != 'screenlock'){
 			return $this->redirect(['controller' => 'users', 'action' => 'screenlock']);
 		}
+    }
+	public function initialize()
+    {
+		//print_R($this->request->params);die;
+        parent::initialize();
+		
+		//GET LOCALE VALUE
+		//pr($this->request->action);die; 
+		 $session = $this->request->session();
+		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
+		I18n::locale($setRequestedLanguageLocale);
+		
 	}
 	/**
 	* Function of admin login
