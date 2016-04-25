@@ -578,9 +578,9 @@
 				{
 					required : "This field is required"
 					
-<<<<<<< HEAD
+
 				}
-=======
+
 				}/*,
 				"Users[password]":
 				{
@@ -592,10 +592,10 @@
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				}*/
->>>>>>> 69e555439fe608b64093e70c29d75ba7f0472c75
-			}
+
+			});
 			
-		});
+		
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
@@ -638,7 +638,7 @@
 				},
 				"UserSitterServices[sh_ltc_guest_rate]":
 				{
-<<<<<<< HEAD
+
 					 required: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
 					
 				}
@@ -650,76 +650,13 @@
 			}*/
 			
 		});
-		//Start Contact form
-		$('#contactform').validate({
-			rules: {
-				"name":
-				{
-					required: true,
-					
-				},
-				"email":
-				{
-					required: true,
-					email: true,
-				},
-				"phone_no":
-				{	
-				    required: true,
-					number:true,
-					minlength: '10',
-					maxlength:'10',
-															
-				},
-				"message":
-				{
-					required: true,
-					
-				}
-				
-			},
-			messages:{				
-				"name":
-				{
-					 required: "This field is required.",
-					
-				},
-				"email":
-				{
-					required : "This field is required",
-					email: 'Kindly use valid email address gfgf',
-					
-				},
-				"phone_no":
-				{
-					required : "This field is required",
-					number: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
-					minlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
-					maxlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
-				},
-				"message":
-				{
-					 required: "This field is required.",
-					
-				}
-				
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#personalForm').attr('action');
-				gettingstarted("personalForm","submitGetting",actionURL);
-				return false;
-			}*/
-			
-		});
+		
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
 			rules: {
-				"email":
-=======
-					 number: true 
-				},
+			
 				"UserSitterServices[gh_holiday_rate]":
->>>>>>> 8abe6b8b34b980fe69c7533ebd640a8d509a4efd
+
 				{
 					 number: true  
 				},
@@ -827,7 +764,68 @@
 			
 		});
 		/*End service and rates*/
-	
+		/*Start Contact form*/
+		$('#contactform').validate({
+			rules: {
+				"name":
+				{
+					required: true,
+				},
+				"email":
+				{
+					required: true,
+					email: true,
+				},
+				"phone_no":
+				{	
+				    required: true,
+					number:true,
+					minlength: '10',
+					maxlength:'10',
+															
+				},
+				"message":
+				{
+					required: true,
+					
+				},
+				"location":
+				{
+					required: true,
+				},
+				
+			},
+			messages:{				
+				"name":
+				{
+					 required: "This field is required.",
+				},
+				"email":
+				{
+					required : "This field is required",
+					email: 'Kindly use valid email address ',
+					
+				},
+				"phone_no":
+				{
+					required : "This field is required",
+					number: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					minlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					maxlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+				},
+				"message":
+				{
+					 required: "This field is required.",	
+				},
+				"location":
+				{
+					required:"This field is required.",
+				},
+				
+			}
+			
+		});
+	/*End contact form*/
 	});
 		//End base profile
 	function gettingstarted(formID,btnID,actionURL){
@@ -1010,3 +1008,6 @@ $(function () {
   		$('.search-input').focus();
   	});
   });
+
+  
+  
