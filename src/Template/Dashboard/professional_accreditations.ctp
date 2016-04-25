@@ -207,7 +207,7 @@
                   </div>
                   <h3><strong>Other Qualifications & Specific Skills</strong><small>( Please specify )</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i>
  Add More</span></h3>
-                  <div class="row">
+                  <div class="row ajaxAdd">
                     <div class="form-group col-lg-4">
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">-->
                        <?php echo $this->Form->input('qualification_title[]',[
@@ -488,23 +488,24 @@
 		  'id'=>'uploaddocument',
 		  'method'=>'post',
 		  'enctype'=>"multipart/form-data",
-		  'style'=>"visibility: hidden"
+		  '
 	  ]);*/?>
-	<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo HTTP_ROOT."dashboard/upload-documents"; ?>'>  
+	<form id="imageform"  style="visibility: hidden" method="post" enctype="multipart/form-data" action='<?php echo HTTP_ROOT."dashboard/upload-documents"; ?>'>  
 	<input type="hidden" name="valuefor" value="" id="valuefor" />
 	<input type="file" name="document" id="documentControl" />
 	</form>      
 
 <script>
 	$( document ).ready(function() {
+		
 		//open document selector window script
-		$(".uploaddoc").on('click',function(){
+		$(document).on('click', ".uploaddoc", function(){
 			$("#valuefor").val($(this).prev().attr('id'));
 			$("#documentControl").trigger("click");	
 		});
 		
 		//Document upload using ajax and return document name insert into releted text box
-		$('#documentControl').on('change', function() 
+		$(document).on('change', '#documentControl', function() 
 		{ 
 			$(".uploaddoc").next().html('<img src="<?php echo HTTP_ROOT."img/ajax-loader.gif"; ?>"/>');
 			$("#imageform").ajaxForm(
@@ -522,6 +523,14 @@
 			}).submit();
 		});
 		
+		//DELETE ROW
+		$(document).on('click', '.deleteOtherRow', function() 
+		{
+			alert($(this).attr('data-rel'));
+			$('#'+$(this).attr('data-rel')).remove();
+		});	
+		
+		//SCRIPT FOR ADD DATEPICKER
 		$(".addDateCalendar").datepicker(
         {
 			changeMonth: true,
@@ -531,11 +540,10 @@
 		
 		$(".fa-calendar").click(function(){ $(".addDateCalendar").focus();});
 		
-		var i=0;
-		
+		var i=2;
 		//For append other qualification
 		$("#addMore").on('click',function(){
-			$("#addAfter").append('<div class="row"><div class="form-group col-lg-4"><input  class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"></div></div><div class="row"><div class="form-group col-lg-4"><div class="brow-inner"><input  class="form-control" name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "><button class="uploaddoc btn btn-secondary" type="button">Browse</button></div></div></div>');
+			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="row ajaxAdd"><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4"><div class="brow-inner"> <input class="form-control" id="scanned_certification_'+i+'[]" name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc btn btn-secondary" type="button">Browse </button></div></div><button data-rel="ajaxAdd'+i+'" class="deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div>');
 
 			setTimeout(function(){ 
 				$(".addDateCalendar").datepicker(
@@ -545,6 +553,7 @@
 					dateFormat: 'yy-mm-dd'
 				});
 			}, 500);
+			i = parseInt(i)+1;
 		}); 
 	});
 </script>
