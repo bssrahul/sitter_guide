@@ -404,6 +404,7 @@
       </div>
 
 <script type="text/javascript">
+  /*For add multiple profile photos*/
 $(document).ready(function(){
     $('#images').on('change',function(){
       //alert("okokok");
@@ -423,4 +424,5 @@ $(document).ready(function(){
         }).submit();
     });
 });
+/*End multiple profile photos*/
 </script>
