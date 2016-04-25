@@ -10,7 +10,7 @@ class PartnersTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['title','short_description','description'],
-            'translationTable' => 'PartnersI18n'
+           'translationTable' => 'I18n'
 		]);
     }
 	

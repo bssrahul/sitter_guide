@@ -10,7 +10,7 @@ class EmailTemplatesTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['title','subject','email_from','email_name','description'],
-            'translationTable' => 'EmailTemplatesI18n'
+           'translationTable' => 'I18n'
 		]);
     }
     public function validationDefault(Validator $validator)
