@@ -26,66 +26,36 @@
     <section class="maps">
     <div class="row">
     <div class="col-sm-3 padding-left0px  padding-right3px">
-    
-    <div class="map">
-    
-    <div class="embed-responsive embed-responsive-4by3">
-
- <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:400px;width:400px;'><div id='gmap_canvas' style='height:400px;width:400px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="http://www.proxysitereviews.com/instantproxies">instantproxies</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(-33.86540229491878,151.2059816894105),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-33.86540229491878,151.2059816894105)});infowindow = new google.maps.InfoWindow({content:'<strong>Sitter Guide</strong><br>sydney<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
-	</div>
-
-    </div>
-
-    
+        <div class="map">
+			<div class="embed-responsive embed-responsive-4by3">
+			 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:400px;width:400px;'><div id='gmap_canvas' style='height:400px;width:400px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="http://www.proxysitereviews.com/instantproxies">instantproxies</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(-33.86540229491878,151.2059816894105),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-33.86540229491878,151.2059816894105)});infowindow = new google.maps.InfoWindow({content:'<strong>Sitter Guide</strong><br>sydney<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+			</div>
+		</div>
     </div>
     
     <div class="col-sm-3    padding-right3px padding-left3px">
-    <div class="map">
-
-    
-    <div class="embed-responsive embed-responsive-4by3">
-  <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12407.048908171513!2d174.76589883592328!3d-36.85083896268545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47fb5a9ce6fb%3A0x500ef6143a29917!2sAuckland%2C+New+Zealand!5e0!3m2!1sen!2sin!4v1459156778025"></iframe>
-	</div>
-
-    </div>
-
+		<div class="map">
+			<div class="embed-responsive embed-responsive-4by3">
+				 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:400px;width:400px;'><div id='gmap_canvas' style='height:400px;width:400px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='http://www.maps-generator.com/'>Infos at maps-generator</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=86e50b82c0f5a4980112e147bf71fd1fa2c0b293'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(-36.84845970000001,174.76333150000008),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-36.84845970000001,174.76333150000008)});infowindow = new google.maps.InfoWindow({content:'<strong>Sitter Guide</strong><br>Auckland<br> <br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+			</div>
+		</div>
     </div>
     
     <div class="col-sm-3  padding-right3px padding-left3px">
-    
-<div class="map">
-    
-   
-    
- 
-    
-    <div class="embed-responsive embed-responsive-4by3 mapactive">
-  <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11477.996179897233!2d-0.13720882938893675!3d51.5011740644121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2sin!4v1459156979582"></iframe>
-</div>
-
-    
-    </div>
-
-    
-    </div>
+    	<div class="map">
+    		<div class="embed-responsive embed-responsive-4by3 mapactive">
+			 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:400px;width:400px;'><div id='gmap_canvas' style='height:400px;width:400px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='http://www.maps-generator.com/'>Infos at maps-generator</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=54f47c868f6fc93ae3e83dc816f703944a0bcf2b'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(51.5073509,-0.12775829999998223),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(51.5073509,-0.12775829999998223)});infowindow = new google.maps.InfoWindow({content:'<strong>Sitter Guide</strong><br>London<br> <br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+			</div>
+		</div>
+   </div>
     
     <div class="col-sm-3 padding-right0px   padding-left3px">
-    
-<div class="map">
-    
-    
-    
-    
-    
-    <div class="embed-responsive embed-responsive-4by3">
-  <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d64612.64528101913!2d-74.05240238698596!3d40.68940084812692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1459157239580"></iframe>
-</div>
-</div>
-    
-    
-
-    
-    </div>
+		<div class="map">
+			<div class="embed-responsive embed-responsive-4by3">
+			  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:400px;width:400px;'><div id='gmap_canvas' style='height:400px;width:400px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='http://www.maps-generator.com/'>Infos at maps-generator</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=1acd12a5cafede5ce36b939824a5ed5f0648917b'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(40.7127837,-74.00594130000002),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(40.7127837,-74.00594130000002)});infowindow = new google.maps.InfoWindow({content:'<strong>Sitter Guide</strong><br>New York<br> <br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+			</div>
+		</div>
+	</div>
     </div>
    
     
