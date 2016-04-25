@@ -50,13 +50,16 @@ Router::scope('/', function ($routes) {
     $routes->connect('/fb_login', ['controller' => 'Facebook', 'action' => 'fb_login']);
     $routes->connect('/guests', ['controller' => 'guests', 'action' => 'home']);
     $routes->connect('/admin', ['controller' => 'users', 'action' => 'login', 'home']);
-	$routes->connect('/', ['controller' => 'guests', 'action' => 'home']);
+
+	$routes->connect('/', ['controller' => 'Guests', 'action' => 'home']);
     $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'home']);
+
 	
 	 /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
+        $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
+		 $routes->connect('/pages/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
 
     /**
      * Connect catchall routes for all controllers.
