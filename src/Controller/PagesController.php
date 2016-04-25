@@ -100,15 +100,16 @@ class PagesController extends AppController
 			 $name=$this->request->data['name'];
 			  $phone=$this->request->data['phone_no'];
 			 $message=$this->request->data['message'];
-			//pr($this->request->data);die;
+			 $location=$this->request->data['location'];
+			
 			$Contactdata=$ContactModel->patchEntity($Contactdata,$this->request->data);
 			if($ContactModel->save($Contactdata))
 			{
-				$replace = array('{fname}','{phone}','{message}');
-				$with = array($name,$phone, $message);
+				$replace = array('{fname}','{phone}','{location}','{message}');
+				$with = array($name,$phone,$location, $message);
 				$this->send_email('',$replace,$with,'contact_us_admin',$AdminEmail,'');
-				$replace = array('{fname}','{phone}','{message}');
-				$with = array($name,$phone, $message);
+				$replace = array('{fname}','{phone}','{location}','{message}');
+				$with = array($name,$phone, $location,$message);
 				$this->send_email('',$replace,$with,'contact_us',$email,'');		
 				echo 'Success:'.$this->stringTranslate(base64_encode("Email has been sent to your email address"));
 				
