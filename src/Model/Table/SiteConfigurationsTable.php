@@ -8,7 +8,7 @@ class SiteConfigurationsTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['site_name','site_footer','meta_title','meta_keyword','meta_description'],
-            'translationTable' => 'SiteConfigurationsI18n'
+            'translationTable' => 'I18n'
 		]);
     }
 	

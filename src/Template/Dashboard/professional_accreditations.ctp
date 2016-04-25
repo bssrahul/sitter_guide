@@ -61,13 +61,21 @@
                   <div class="row">
                     <div class="form-group col-lg-4">
                     <div class="brow-inner">
-                      <input type="text" placeholder="Upload Scanned Certificate " id="" class="form-control">
-                      <button type="button" class="btn btn-secondary">Browse</button>
+                      <?php echo $this->Form->input('UserProfessionals.check.govt.scanned_certification',[
+                             'class'=>'form-control',
+                             'templates' => ['inputContainer' => '{{content}}'],
+                             'placeholder'=>'Upload Scanned Certificate',
+                             'label'=>false/*,
+                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                      ]); ?>
+                      
+                      
+                      <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <!--<div class="form-group col-lg-2">
                       <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>
+                    </div>-->
                    
                   </div>
 
@@ -109,13 +117,19 @@
                   <div class="row">
                     <div class="form-group col-lg-4">
                     <div class="brow-inner">
-                      <input type="text" placeholder="Upload Scanned Certificate " id="" class="form-control">
-                      <button type="button" class="btn btn-secondary">Browse</button>
+                      <?php echo $this->Form->input('UserProfessionals.pets.private.scanned_certification',[
+                             'class'=>'form-control',
+                             'templates' => ['inputContainer' => '{{content}}'],
+                             'placeholder'=>'Upload Scanned Certificate',
+                             'label'=>false/*,
+                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                      ]); ?>
+                      <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                   <!--<div class="form-group col-lg-2">
                       <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>
+                    </div>-->
                    
                   </div>
 
@@ -156,13 +170,39 @@
                   <div class="row">
                     <div class="form-group col-lg-4">
                     <div class="brow-inner">
-                      <input type="text" placeholder="Upload Scanned Certificate " id="" class="form-control">
-                      <button type="button" class="btn btn-secondary">Browse</button>
+                     <?php echo $this->Form->input('UserProfessionals.people.private.scanned_certification',[
+                             'class'=>'form-control',
+                             'templates' => ['inputContainer' => '{{content}}'],
+                             'placeholder'=>'Upload Scanned Certificate',
+                             'label'=>false/*,
+                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                      ]); ?>
+                      <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <!--<div class="form-group col-lg-2">
                       <button class="btn btn-primary upload-side" type="button">Upload</button>
+                    </div>-->
+                   
+                  </div>
+                    <h3><strong>drivers licence / Government issued ID<small>( Your photo ID will not be displayed on your profile )</small></strong></h3>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                    <div class="brow-inner">
+                     <?php echo $this->Form->input('UserProfessionals.govt.licence.scanned_certification',[
+                             'class'=>'form-control',
+                             'templates' => ['inputContainer' => '{{content}}'],
+                             'placeholder'=>'Upload Scanned Certificate',
+                             'label'=>false/*,
+                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                      ]); ?>
+                      
+                      <button class="uploaddoc btn btn-secondary" type="button">Browse</button>
+                      </div>
                     </div>
+                    <!--<div class="form-group col-lg-2">
+                      <button class="btn btn-primary upload-side" type="button">Upload</button>
+                    </div>-->
                    
                   </div>
                   <h3><strong>Other Qualifications & Specific Skills</strong><small>( Please specify )</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i>
@@ -205,13 +245,19 @@
                   <div class="row" >
                     <div class="form-group col-lg-4">
                     <div class="brow-inner">
-                      <input type="text" placeholder="Upload Scanned Certificate " id="" class="form-control">
-                      <button type="button" class="btn btn-secondary">Browse</button>
+                      <?php echo $this->Form->input('scanned_certification[]',[
+                             'class'=>'form-control',
+                             'templates' => ['inputContainer' => '{{content}}'],
+                             'placeholder'=>'Upload Scanned Certificate',
+                             'label'=>false/*,
+                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                      ]); ?>
+                      <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <!--<div class="form-group col-lg-2">
                       <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>
+                    </div>-->
                    
                   </div>
                   <h3 id="addAfter"></h3>
@@ -414,7 +460,7 @@
 
                     </div>
                    <div class="row">
-                    <p class="col-lg-12 sp-tb"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button>
+                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button></a>
                       <input class="pull-right btn Continue" type="submit" value="Continue" ></p>
                     </div>
                      
@@ -436,35 +482,69 @@
 
         </div>
       </div>
+
+	<?php /* echo $this->Form->create(null, [
+		  'url' => ['controller' => 'dashboard', 'action' => 'upload-documents'],
+		  'id'=>'uploaddocument',
+		  'method'=>'post',
+		  'enctype'=>"multipart/form-data",
+		  'style'=>"visibility: hidden"
+	  ]);*/?>
+	<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo HTTP_ROOT."dashboard/upload-documents"; ?>'>  
+	<input type="hidden" name="valuefor" value="" id="valuefor" />
+	<input type="file" name="document" id="documentControl" />
+	</form>      
+
 <script>
-  $( document ).ready(function() {
+	$( document ).ready(function() {
+		//open document selector window script
+		$(".uploaddoc").on('click',function(){
+			$("#valuefor").val($(this).prev().attr('id'));
+			$("#documentControl").trigger("click");	
+		});
+		
+		//Document upload using ajax and return document name insert into releted text box
+		$('#documentControl').on('change', function() 
+		{ 
+			$(".uploaddoc").next().html('<img src="<?php echo HTTP_ROOT."img/ajax-loader.gif"; ?>"/>');
+			$("#imageform").ajaxForm(
+			{
+				success: function(res)
+				{
+					var response = res.split(':');
+					if($.trim(response[0]) == 'Success'){
+						$('#'+response[1]).val(response[2]);	//DISPLAY SUCCESS MESSAGE
+						$('#uploaddocument')[0].reset();
+					}else{
+						$('#'+response[1]).next("<em>"+response[2]+"</em>");	//DISPLAY RESPONSE ERRORS
+					}
+				}
+			}).submit();
+		});
+		
+		$(".addDateCalendar").datepicker(
+        {
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+		
+		$(".fa-calendar").click(function(){ $(".addDateCalendar").focus();});
+		
+		var i=0;
+		
+		//For append other qualification
+		$("#addMore").on('click',function(){
+			$("#addAfter").append('<div class="row"><div class="form-group col-lg-4"><input  class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"></div></div><div class="row"><div class="form-group col-lg-4"><div class="brow-inner"><input  class="form-control" name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "><button class="uploaddoc btn btn-secondary" type="button">Browse</button></div></div></div>');
 
-    $(".addDateCalendar").datepicker(
-           {
-         changeMonth: true,
-         changeYear: true,
-         dateFormat: 'yy-mm-dd'
-       }
-      );
-    $(".fa-calendar").click(function(){ $(".addDateCalendar").focus();});
-
-var i=0;
-//For append other qualification
-  $("#addMore").on('click',function(){
-    $("#addAfter").append('<div class="row"><div class="form-group col-lg-4"><input  class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"></div></div><div class="row"><div class="form-group col-lg-4"><div class="brow-inner"><input  class="form-control" type="text" placeholder="Upload Scanned Certificate "><button class="btn btn-secondary" type="button">Browse</button></div></div><div class="form-group col-lg-2"><button class="btn btn-primary upload-side" type="button">Upload</button></div></div>');
-
-       setTimeout(function(){ 
-
-           $(".addDateCalendar").datepicker(
-           {
-             changeMonth: true,
-            changeYear: true,
-            dateFormat: 'yy-mm-dd'
-          });
-        }, 500);
-
-
-  }); 
-
-});
+			setTimeout(function(){ 
+				$(".addDateCalendar").datepicker(
+				{
+					changeMonth: true,
+					changeYear: true,
+					dateFormat: 'yy-mm-dd'
+				});
+			}, 500);
+		}); 
+	});
 </script>

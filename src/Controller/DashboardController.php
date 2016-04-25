@@ -11,13 +11,13 @@
  * @link      http://cakephp.org CakePHP(tm) Project
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- */
- 
+ */ 
 namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
+use Cake\Event\Event;
 /**
  * Static content controller
  *
@@ -31,15 +31,20 @@ class DashboardController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
+	 public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+		if($this->CheckGuestSession()==false)
+		{
+		  return $this->redirect(['controller' => 'guests', 'action' => 'home']);
+			exit();
+		}
+    }
 	public function initialize()
     {
 		parent::initialize();
-		if(!$this->CheckGuestSession())
-		{
-			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
-		}
-		
-		//GET LOCALE VALUE
+
+       //GET LOCALE VALUE
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
@@ -60,6 +65,7 @@ class DashboardController extends AppController
 		
 
 	}
+	
 	/**Function for landing page
 	*/
 	function home()
@@ -208,6 +214,7 @@ class DashboardController extends AppController
         $this->request->data = @$_REQUEST;
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
+			 //pr($this->request->data);die;
 	            $data=$this->request->data['Usersp'];
 			    $error=$this->validate_password($data,$user_info);
 				if(count($error) > 0)
@@ -286,11 +293,25 @@ class DashboardController extends AppController
 		}else{
 
 		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
-		    if(isset($query->user_sitter_house)){
+		    if(isset($query->user_sitter_house) && !empty($query->user_sitter_house)){
                    $sitterHouseData = $query->user_sitter_house;
                    $this->set('sitterHouseId', $sitterHouseData->id);
                    $this->set('sitterHouseData', $sitterHouseData);
 		    }
+		     $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+           if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
+                  $images_arr = $query->user_sitter_galleries;
+                  $sitterImg = array();
+                   $html = " ";
+                   foreach($images_arr as $key=>$val){
+
+                   	$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a href="#"><i class="fa fa-minus-circle"></i></a>';
+                   	 $html .='</div></div>';
+                   }
+                $this->set('sitter_images', $html);
+            }
+            
             
         }
 	     
@@ -312,9 +333,10 @@ class DashboardController extends AppController
         
 
 		$this->request->data = @$_REQUEST;
-		//pr($this->request->data); die;
+		
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
+			pr($this->request->data); die;
 			   $aboutSitterData = $aboutSittersModel->newEntity();
                $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
                 $aboutSitterData->user_id = $userId;
@@ -331,12 +353,13 @@ class DashboardController extends AppController
 
 		}else{
             $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
-            if(isset($query->user_about_sitter)){
+          
+           if(isset($query->user_about_sitter) && !empty($query->user_about_sitter)){
                    $aboutSitterData = $query->user_about_sitter;
                    //$this->set('sitterHouseId', $aboutSitterData->id);
                    $this->set('sitter_info', $aboutSitterData);
 		    }
-            
+		   
         }
 	     
 
@@ -396,7 +419,17 @@ class DashboardController extends AppController
             //pr($query);die;
             if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
                   $images_arr = $query->user_sitter_galleries;
-                  pr($images_arr);die;
+                  $sitterImg = array();
+                   $html = " ";
+                   foreach($images_arr as $key=>$val){
+
+                   	$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a href="#"><i class="fa fa-minus-circle"></i></a>';
+                   	 $html .='</div></div>';
+                   }
+                  
+                   //json_encode($sitterImg);
+                  echo $html; die;
             }
 
 
@@ -406,98 +439,91 @@ class DashboardController extends AppController
     Function for Professional Accreditations
     */
     function professionalAccreditations(){
-    	 $this->viewBuilder()->layout('profile_dashboard');
+    	
+    	$this->viewBuilder()->layout('profile_dashboard');
 
         $usersModel = TableRegistry::get('Users');
 
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
+        $session = $this->request->session();
+        $userId = $session->read('User.id');
    
-        //$professionalModel = TableRegistry::get('UserProfessionalAccreditations');
         
-// echo  $userId;die; 
 		$this->request->data = @$_REQUEST;
-		//pr($this->request->data); die;
+		
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
+			
 			 
-             
- //pr($this->request->data); die;
-			   //if (isset($professional_accreditation) && !empty($professional_accreditation)) {
-                     $UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
-                     $UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
-                      
-                      
-                       $userProfessionalData = $UserProfessionalModel->newEntity();
-                       $userProfessionalData->user_id = $userId;
-                       $userProfessionalData->type_professional = 'check';
-                       $userProfessionalData->sector_type = "govt";
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
-					   $UserProfessionalModel->save($userProfessionalData);
+			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
+			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
 
-                       $userProfessionalData = $UserProfessionalModel->newEntity();
-                       $userProfessionalData->user_id = $userId;
-                       $userProfessionalData->type_professional = 'pets';
-                       $userProfessionalData->sector_type = "private";
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
-					   $UserProfessionalModel->save($userProfessionalData);
 
-					   $userProfessionalData = $UserProfessionalModel->newEntity();
-                       $userProfessionalData->user_id = $userId;
-                       $userProfessionalData->type_professional = 'people';
-                       $userProfessionalData->sector_type = "private";
-                       
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
-					   $UserProfessionalModel->save($userProfessionalData);
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'check';
+			$userProfessionalData->sector_type = "govt";
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
+			$UserProfessionalModel->save($userProfessionalData);
+
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'pets';
+			$userProfessionalData->sector_type = "private";
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
+			$UserProfessionalModel->save($userProfessionalData);
+
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'people';
+			$userProfessionalData->sector_type = "private";
+
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
+			$UserProfessionalModel->save($userProfessionalData);
+			
+			
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'govt';
+			$userProfessionalData->sector_type = "licence";
+
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['govt']['licence']);
+			$UserProfessionalModel->save($userProfessionalData);
 
                      //foreach($this->request->data as $key=>$val)
-                   for($i=0;$i<count($this->request->data['qualification_title']);$i++){
+			for($i=0;$i<count($this->request->data['qualification_title']);$i++){
 
-                     	 $userProfessionalData = $UserProfessionalModel->newEntity();
+				 $userProfessionalData = $UserProfessionalModel->newEntity();
 
-                         $userProfessionalData->user_id = $userId; 
-                         $userProfessionalData->type_professional = 'other';
-                         $userProfessionalData->sector_type = "other";
+				 $userProfessionalData->user_id = $userId; 
+				 $userProfessionalData->type_professional = 'other';
+				 $userProfessionalData->sector_type = "other";
 
-                         $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
-                         $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
-                         $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
+				 $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
+				 $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
+				 $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
 
 
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
-					   $UserProfessionalModel->save($userProfessionalData);
-                      }
-                           //pr($this->request->data); die;
-                           
-		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
-		                   $userProfessionalDetailData->user_id = $userId;
-		                   $userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
-		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
-						  
-						   $UserProfessionalDetailsModel->save($userProfessionalDetailData);
-						   echo "<pre>";print_r($this->request->data);die;
-               // }
 
-			  /* $professionalData = $professionalModel->newEntity();
-               $professionalData = $professionalModel->patchEntity($professionalData, $this->request->data['UserAboutSitters'],['validate'=>true]);
-                $professionalData->user_id = $userId;
-                
-              // pr($professionalData->errors());  die;
-                if ($professionalModel->save($professionalData)){
+			   $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
+			   $UserProfessionalModel->save($userProfessionalData);
+			}
 
-                      return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
-				}else{
-					$this->Flash->error(__('Error found, Kindly fix the errors.'));
-				}
-			 	unset($professionalData->id);
-		       $this->set('sitter_info', $professionalData);*/
+			$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
+			$userProfessionalDetailData->user_id = $userId;
+			$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
+			$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
 
+			$UserProfessionalDetailsModel->save($userProfessionalDetailData);
+
+               
 		}/*else{
-            $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
-            if(isset($query->user_about_sitter)){
-                   $professionalData = $query->user_about_sitter;
-                   //$this->set('sitterHouseId', $professionalData->id);
-                   $this->set('sitter_info', $professionalData);
+            $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
+         
+		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
+                   $skillsData = $query->user_professional_accreditations;
+                   $this->set('skillId', $skillsData->id);
+                   unset($skillsData->id);
+                   $this->set('skill_info', $skillsData);
 		    }
             
         }*/
@@ -512,13 +538,10 @@ class DashboardController extends AppController
     function servicesAndRates(){
     	 $this->viewBuilder()->layout('profile_dashboard');
 
-    	  $this->viewBuilder()->layout('profile_dashboard');
+    	 $usersModel = TableRegistry::get('Users');
 
-
-          $usersModel = TableRegistry::get('Users');
-
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
+         $session = $this->request->session();
+         $userId = $session->read('User.id');
    
         $sitterServicesModel = TableRegistry::get('UserSitterServices');
         
@@ -527,48 +550,40 @@ class DashboardController extends AppController
 		//pr($this->request->data); die;
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
-			//pr($this->request->data);die;
-
-                    //pr($this->request->data['SittersHome']);die;
-
+			
+           $customAllServices = array("day_care_sitters","day_care_guests","visits_sitters","visits_guests","night_care_sitters","night_care_guests"); 
+                foreach($customAllServices as $val){ 
+               		if (!array_key_exists($val,$this->request->data['UserSitterServices'])){
+	           			$this->request->data['UserSitterServices'][$val] = 0;
+               		}
+               	}
+                 //pr($this->request->data['UserSitterServices']);
                $sittersServiceData = $sitterServicesModel->newEntity();
 
-               $sittersServiceData = $sitterServicesModel->patchEntity($sittersServiceData, $this->request->data['SitterServices']/*,['validate'=>true]*/);
+
+
+               $sittersServiceData = $sitterServicesModel->patchEntity($sittersServiceData, $this->request->data['UserSitterServices']/*,['validate'=>true]*/);
                 $sittersServiceData->user_id = $userId;
-               $sittersServiceData->id = '3';
-                
-              // pr($sittersServiceData->errors());  die;
-                if ($sitterServicesModel->save($sittersServiceData)){
-
-                       $serviceId = $sittersServiceData->id;
-                	 $sittersServiceData = $sitterServicesModel->newEntity();
-                	 $sittersServiceData->id = $serviceId;
-
-                	$sitterHome = $this->request->data['SittersHome'];
-
-                	 pr($this->request->data['SittersHome']['day_care']);die;
-                	 foreach($this->request->data['SittersHome'] as $key=>$val){
-                            echo "<pre>";print_r($val);die;
-                	 }
-
-                	 pr($this->request->data['SittersHome']);die;
-
-                      return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+               if ($sitterServicesModel->save($sittersServiceData)){
+                     // pr($this->request->data);die;
+                      return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}
 			 	unset($sittersServiceData->id);
 		       $this->set('sitter_info', $sittersServiceData);
 
-		}/*else{
-            $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
-            if(isset($query->user_about_sitter)){
-                   $aboutSitterData = $query->user_about_sitter;
-                   //$this->set('sitterHouseId', $aboutSitterData->id);
-                   $this->set('sitter_info', $aboutSitterData);
+		}else{
+            $query = $usersModel->get($userId,['contain'=>'UserSitterServices']);
+          // pr($query);die;
+            if(isset($query->user_sitter_services) && !empty($query->user_sitter_services)){
+                   $sittersServiceData = $query->user_sitter_services[0];
+                   $this->set('sitterServiceId', $sittersServiceData->id);
+                   unset($sittersServiceData->id);
+                   $this->set('sitter_service_info', $sittersServiceData);
 		    }
             
-        }*/
+        }
 	     
 
     
@@ -1421,7 +1436,31 @@ class DashboardController extends AppController
                        }
 
         }
-                 // echo "<pre>";print_r($options);
+             
     }
+    
+     /**
+    Function for Professional Accreditations
+    */
+    function uploadDocuments(){
+
+		$images_arr = array();
+				  
+		//Upload Document
+		if($_FILES['document']['name'] !=''){
+			$Img = $this->admin_upload_document('document',$_FILES['document']);
+			
+			$Img = explode(':',$Img);
+			
+			if($Img[0]=='error'){
+				echo $errors = 'Error:'.$_REQUEST['valuefor'].":".$Img[1];
+			}else{
+			   
+			   echo $imageName = 'Success:'.$_REQUEST['valuefor'].":".$Img[1];
+			}				
+		}else{
+		   unset($_FILES['document']);
+		}
+	}
 }
 ?>

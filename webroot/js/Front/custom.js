@@ -329,248 +329,316 @@
 			}*/
 			
 		});
-		
-		//Start Getting Started
-		$('#gettingStartedForm').validate({
+		//CODE SNIPPET FOR REFERE FRIEND
+		$('#referForm').validate({
 			rules: {
-				"service[]":
+				"email":
 				{
 					required: true,
-					
-				},
-				"service_price[]":
-				{
-					required: true,
-					
-				},
-				"day_name[]":
-				{
-					required: true,
-					
-				},
-				"pet_type[]":
-				{
-					required: true,
-					
+					email: true,
+					remote: ajax_url+"App/isUniqueEmailAjax"
 				}
 			},
 			messages: {				
-				"service[]":
+				"email":
 				{
-					 required: "Please select at least one type of service.",
-				},
-				"service_price[]":
-				{
-					 required: "This field is required.",
-					
-				},
-				"day_name[]":
-				{
-					 required: "Please select at least one type of day.",
-					
-				},
-				"pet_type[]":
-				{
-					 required: "Please select at least one type of pet.",
-					
+					required : "This field is required",
+					email: 'Kindly use valid email address',
+				    remote: 'Email id already registered.'
 				}
-			}/*,
+			},
 			submitHandler: function(form) {
-				var actionURL = $('#gettingStartedForm').attr('action');
-				gettingstarted("gettingStartedForm","submitGetting",actionURL);
+				var actionURL = $('#referForm').attr('action');
+				process_form("referForm","refer-btn",actionURL);
 				return false;
-			}*/
+			}
 			
 		});
-		//Start base profile form
-		$('#baseProfileForm').validate({
+		//END REFER FRIEND
+		//CODE SNIPPET FOR SUBSCRIBE
+		$('#subscribeForm').validate({
 			rules: {
-				"awesome_title":
+				"Subscribes[email]":
 				{
 					required: true,
-					
-				},
-				"your_story":
-				{
-					required: true,
-					
+					email: true,
+					//remote: ajax_url+"guests/subscriberEmailExists"
 				}
 			},
 			messages: {				
-				"service[]":
+				"Subscribes[email]":
 				{
-					 required: "This field id required.",
-					
-				},
-				"day_name[]":
-				{
-					 required: "This field id required.",
-					
-				}
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#baseProfileForm').attr('action');
-				gettingstarted("baseProfileForm","submitGetting",actionURL);
-				return false;
-			}*/
-			
-		});
-		///////////
-		//Start Extended profile form
-		$('#extendedProfileForm').validate({
-			rules: {
-				"UserExtendedProfiles[travel_fee_rate]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[access_car]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[home_type]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[garden_area]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[is_fanced]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[under_13_child]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[last_minute_booking]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[short_term_type]":
-				{
-					required: true,
-					
-				},
-				"UserExtendedProfiles[cancel_policy]":
-				{
-					required: true,
+					required : "This field is required",
+					email: 'Kindly use valid email address',
+					//remote: "Email id already subscribed."
 					
 				}
 			},
-			messages:{		
-			    "UserExtendedProfiles[travel_fee_rate]":
+			submitHandler: function(form) {
+				var actionURL = $('#subscribeForm').attr('action');
+				//alert('okokokoko');
+				//process_form("","subscribe-btn",actionURL);
+				//return false;
+				var btnID = 'subscribe-btn';
+				var formID = 'subscribeForm';
+				//alert(formID+btnID+'url='+actionURL);
+					var orgBtnVal=$("#"+btnID).val();//GET BUTTON VALUE
+					$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
+					$("#"+btnID).val('Wait...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
+					var formData = $('#'+formID).serialize();//BIND THE FORM VALUE INTO A VARIABLE
+					//console.log(formData);
+					$.ajax({
+						url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+						data:formData,//ALL SUBMITTED DATA FROM THE FORM
+						 
+						success:function(res)
+						{
+							console.log(res);
+							//alert(res);
+							var response = res.split(':');
+							if($.trim(response[0]) == 'Success'){
+								$('.clr').html('');	//Emtpy Error MESSAGE
+								//alert(response[1]);
+								
+								$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+								$('#'+formID)[0].reset();
+								setTimeout(function(){window.location.href = ajax_url;},2000);
+							}if($.trim(response[0]) == 'Error'){
+								$('.clr').html('');	//Emtpy Error MESSAGE
+								$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+							}
+							
+							//CODE FOR CHANGE THE BUTTON STYLE AND TEXT
+							$("#"+btnID).attr('disabled',false);
+							$("#"+btnID).val(orgBtnVal);	
+						}
+					});
+				
+			}
+			
+		});
+		//CODE SNIPPET FOR SUBSCRIBE
+		$('#addpartners').validate({
+			rules: {
+				"Partners[title]":
 				{
-					 required: "This field id required.",
-					
-				},		
-				"UserExtendedProfiles[access_car]":
-				{
-					 required: "This field id required.",
-					
+					required: true
 				},
-				"UserExtendedProfiles[home_type]":
+				"Partners[short_description]":
 				{
-					 required: "This field id required.",
-					
+					required: true
 				},
-				"UserExtendedProfiles[garden_area]":
+				"Partners[description]":
 				{
-					 required: "This field id required.",
-					
+					required: true
 				},
-				"UserExtendedProfiles[is_fanced]":
+				"Partners[image]":
 				{
-					 required: "This field id required.",
-					
+					required: true
+				}
+			},
+			messages: {				
+				"Partners[title]":
+				{
+					required : "This field is required"
 				},
-				"UserExtendedProfiles[under_13_child]":
+				"Partners[short_description]":
 				{
-					 required: "This field id required.",
-					
+					required : "This field is required"
 				},
-				"UserExtendedProfiles[last_minute_booking]":
+				"Partners[description]":
 				{
-					 required: "This field id required.",
-					
+					required : "This field is required"
 				},
-				"UserExtendedProfiles[short_term_type]":
+				"Partners[image]":
 				{
-					 required: "This field id required.",
-					
-				},
-				"UserExtendedProfiles[cancel_policy]":
-				{
-					 required: "This field id required.",
-					
+					required : "This field is required"
 				}
 			}/*,
 			submitHandler: function(form) {
-				var actionURL = $('#extendedProfileForm').attr('action');
-				gettingstarted("extendedProfileForm","submitGetting",actionURL);
+				var actionURL = $('#subscribeForm').attr('action');
+				//alert('okokokoko');
+				process_form("subscribeForm","subscribe-btn",actionURL);
 				return false;
 			}*/
 			
 		});
-		//Start Personal form
-		$('#personalForm').validate({
+         //CODE SNIPPET FOR General sitter profile
+		$('#generelInfo').validate({
 			rules: {
+				"Users[title]":
+				{
+					required:true
+				},
+				"Users[birth_date]":
+				{
+					required:true
+				},
+				"Users[first_name]":
+				{
+					required:true
+				},
 				"Users[address]":
 				{
-					required: true,
+					required:true
+				},
+				"Users[address2]":
+				{
+					required:true
+				},
+                "Users[city]":
+				{
+					required:true
+				},
+				"Users[zip]":
+				{
+					required:true
+				},
+				"Users[state]":
+				{
+					required:true
+				},
+                "Users[country_code]":
+				{
+					required:true
+				},
+				"Users[phone]":
+				{
+					required:true
+				},
+				"Users[zone_id]":
+				{
+					required:true
+				}/*,
+				"Users[password]":
+				{
+					minlength: '6'
+				},
+				"Users[re_password]":
+				{
+					 required:true,
+					minlength: '6',
+					equalTo: '#usersp-password'
+				}*/
+			},
+			messages: {
+				"Users[title]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[birth_date]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[first_name]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[address]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[address2]":
+				{
+					required : "This field is required"
 					
 				},
 				"Users[city]":
 				{
-					required: true,
-					
-				},
-				"Users[state]":
-				{
-					required: true,
+					required : "This field is required"
 					
 				},
 				"Users[zip]":
 				{
-					required: true,
+					required : "This field is required"
 					
+				},
+				"Users[state]":
+				{
+					required : "This field is required"
+					
+				},
+				"Users[country_code]":
+				{
+					required : "This field is required"
 				},
 				"Users[phone]":
 				{
-					required: true,
+					required : "This field is required"
+				},
+				"Users[zone_id]":
+				{
+					required : "This field is required"
+				},
+				"Users[term_condition]":
+				{
+					required : "This field is required"
 					
+<<<<<<< HEAD
 				}
-			},
-			messages:{				
-				"Users[address]":
+=======
+				}/*,
+				"Users[password]":
 				{
-					 required: "This field is required.",
-					
+					minlength: 'Please enter minimum 6 characters.'
 				},
-				"Users[city]":
+				"Users[re_password]":
 				{
-					 required: "This field is required.",
-					
+					 required : "This field is required",
+					minlength: 'Please enter minimum 6 characters.',
+					equalTo: 'Password does not match'
+				}*/
+>>>>>>> 69e555439fe608b64093e70c29d75ba7f0472c75
+			}
+			
+		});
+		/*For Services and Rates form*/
+		//CODE SNIPPET FOR SUBSCRIBE
+		$('#servicesAndRates').validate({
+			rules: {
+				"UserSitterServices[sh_holiday_rate]":
+				{
+					 number: true 
 				},
-				"Users[state]":
+				"UserSitterServices[sh_puppy_rate]":
 				{
-					 required: "This field is required.",
-					
+					 number: true 
 				},
-				"Users[zip]":
+				"UserSitterServices[sh_cat_rate]":
 				{
-					 required: "This field is required.",
-					
+					 number: true 
 				},
-				"Users[phone]":
+				"UserSitterServices[sh_horse_rate]":
 				{
+					 number: true 
+				},
+				"UserSitterServices[sh_reptiles_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_small_pets_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_dc_holiday_rate]":
+				{
+					 number: true  
+				},
+				"UserSitterServices[sh_nc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_hc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[sh_ltc_guest_rate]":
+				{
+<<<<<<< HEAD
 					 required: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
 					
 				}
@@ -647,91 +715,107 @@
 		$('#referForm').validate({
 			rules: {
 				"email":
+=======
+					 number: true 
+				},
+				"UserSitterServices[gh_holiday_rate]":
+>>>>>>> 8abe6b8b34b980fe69c7533ebd640a8d509a4efd
 				{
-					required: true,
-					email: true,
-					remote: ajax_url+"App/isUniqueEmailAjax"
+					 number: true  
+				},
+				"UserSitterServices[gh_puppy_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_cat_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_horse_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_reptiles_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_small_pets_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_dc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_nc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_hc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_ltc_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_vpd_1_visit_pr_day]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[gh_vpd_2_visit_pr_day]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_gm_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_tr_guest_rate]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_or_1_day_1_guest]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_or_2_day_1_guest]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_ds_pick_up]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_ds_drop_off]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hp_ds_return]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[day_care_limit]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[visits_limit]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[night_care_limit]":
+				{
+					 number: true 
+				},
+				"UserSitterServices[hourly_services_limit]":
+				{
+					 number: true 
 				}
 			},
 			messages: {				
-				"email":
+				"UserSitterServices[sh_holiday_rate]":
 				{
-					required : "This field is required",
-					email: 'Kindly use valid email address',
-				    remote: 'Email id already registered.'
-				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#referForm').attr('action');
-				process_form("referForm","refer-btn",actionURL);
-				return false;
-			}
-			
-		});
-		//END REFER FRIEND
-		//CODE SNIPPET FOR SUBSCRIBE
-		$('#subscribeForm').validate({
-			rules: {
-				"Subscribes[email]":
-				{
-					required: true,
-					email: true,
-					//remote: ajax_url+"guests/subscriberEmailExists"
-				}
-			},
-			messages: {				
-				"Subscribes[email]":
-				{
-					required : "This field is required",
-					email: 'Kindly use valid email address',
-					//remote: "Email id already subscribed."
-					
-				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#subscribeForm').attr('action');
-				//alert('okokokoko');
-				process_form("subscribeForm","subscribe-btn",actionURL);
-				return false;
-			}
-			
-		});
-		//CODE SNIPPET FOR SUBSCRIBE
-		$('#addpartners').validate({
-			rules: {
-				"Partners[title]":
-				{
-					required: true
-				},
-				"Partners[short_description]":
-				{
-					required: true
-				},
-				"Partners[description]":
-				{
-					required: true
-				},
-				"Partners[image]":
-				{
-					required: true
-				}
-			},
-			messages: {				
-				"Partners[title]":
-				{
-					required : "This field is required"
-				},
-				"Partners[short_description]":
-				{
-					required : "This field is required"
-				},
-				"Partners[description]":
-				{
-					required : "This field is required"
-				},
-				"Partners[image]":
-				{
-					required : "This field is required"
+					required : "Number only please"
 				}
 			}/*,
 			submitHandler: function(form) {
@@ -742,68 +826,8 @@
 			}*/
 			
 		});
-		///////////
-	 
-	//Hide and Show functionality for Getting Started form
-        $('#pet_hosting').click(function(){
-		    if ( $('#pet_hosting').is( ":checked" ) ){
-				   $('#night1').show();
-				   $( "#night1" ).prop( "disabled", false );
-			  }else{
-				   $('#night1').hide();
-				   $( "#night1" ).prop( "disabled", true );
-			  }
-		});
-		 $('#dog_walking').click(function(){
-		    if ( $('#dog_walking').is( ":checked" ) ){
-				   $('#session1').show();
-				   $( "#session1" ).prop( "disabled", false );
-			  }else{
-				   $('#session1').hide();
-				   $( "#session1" ).prop( "disabled", true );
-			  }
-		});
-		$('#dog_grooming').click(function(){
-		    if ( $('#dog_grooming').is( ":checked" ) ){
-				   $('#session2').show();
-				   $( "#session2" ).prop( "disabled", false );
-			  }else{
-				   $('#session2').hide();
-				   $( "#session2" ).prop( "disabled", true );
-			  }
-		});
-		///////////////////
-		$('input[name="service[]"]').click(function(){
-		    var serviceId = $(this).attr("id");
-			//alert(serviceId);
-			  if ( $('#'+serviceId).is( ":checked" ) ){
-				   $('.'+serviceId).show();
-				   $('.'+serviceId).prop( "disabled", false );
-				  // class=""
-				   $( "#mainServiceDiv" ).append(
-				   "<strong 'class="+serviceId+"'>Hello</strong>" );
-				   
-				   //////////////////////////////
-			  }else{
-				   $('.'+serviceId).hide();
-				   $('.'+serviceId).prop( "disabled", true );
-				    $('#mainServiceDiv').remove('.'+serviceId);
-			  }
-		});
-		
-		///////////////////
-		//End Getting Started 
-	 //Hide and Show functionality for Extended profile form
-		$('#pick_drop').click(function(){
-			 // alert("okokoko");
-				if ( $('#pick_drop').is( ":checked" ) ){
-					   $('#travel_fee_rate').show();
-					   $( "#travel_fee_rate" ).prop( "disabled", false );
-				  }else{
-					   $('#travel_fee_rate').hide();
-					   $( "#travel_fee_rate" ).prop( "disabled", true );
-				  }
-		});
+		/*End service and rates*/
+	
 	});
 		//End base profile
 	function gettingstarted(formID,btnID,actionURL){
@@ -842,7 +866,7 @@
 			{
 				//console.log(res);
 				var response = res.split(':');
-				if(response[0] == 'Success'){
+				if($.trim(response[0]) == 'Success'){
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
 					setTimeout(function(){window.location.href = ajax_url;},2000);
@@ -950,32 +974,28 @@ $( document ).ready(function() {
 	});
 
 /*End sign up*/
-/*Last Drop down country- currency listing*/
-
-
- /*====For password fair line====*/
-   /* $( "#usersp-password" ).keyup(function() {
-    		
+/*====For password fair line====*/
+    $( "#usersp-password" ).keyup(function() {
+    		//alert("ook");
         var value = $(this).val();
-       
-        if((value.length) == 6){
-               alert(value.length);
+      	if((value.length) === 0){
+      		$('#passwordStatus').html("");
 
-            $('#password_line').attr("src", ajax_url+'fair.jpg');
-             
-        }/*elseif((value.length) > '6'){
-           $('#password_line').attr("src", '<?php echo HTTP_ROOT; ?>img/good.jpg');
-        }else{
-        	$('#password_line').attr("src", '<?php echo HTTP_ROOT; ?>img/good.jpg');
-        }*/
-  /* });*/
-     
+        }else if((value.length) > 0 && (value.length) < 6){
+
+            $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'weak.jpg'+"'><small class='pull-right'>Weak</small>");
+
+        }else if((value.length) >= 6 && (value.length) < 9){
+
+           $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'fair.jpg'+"'><small class='pull-right'>Fair</small>");
+
+        }else if((value.length) > 9){
+
+        	$('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'good.jpg'+"'><small class='pull-right'>Good</small>");
+        }
+  });
  /*====End fair line====*/
  });
-
-
-
-
 /*Last Drop down country- currency listing*/
 $(function () {
   	$('.navbar-toggle-sidebar').click(function () {

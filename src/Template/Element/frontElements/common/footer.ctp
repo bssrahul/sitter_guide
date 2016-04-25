@@ -68,6 +68,7 @@
                                 <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Subscribe on News Letter')); ?></p>
                                  <div class="input email">
                                   <p class="successMessage clr"></p>
+                                  <p class="errorMessage clr"></p>
                                     <?php echo $this->Form->input('Subscribes.email',['class'=>'nwlt-input','placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Enter Your Email')),'label'=>false, 'templates' => [
                                                  'inputContainer' => '{{content}}'
                                                   ]]); 

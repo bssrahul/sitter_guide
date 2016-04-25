@@ -29,6 +29,7 @@
 						  echo $this->Form->input('Users.title',[
 							'templates' => ['inputContainer' => '<div class="form-group">{{content}}</div>'],
 							'type'=>'select',
+							'label'=>$this->requestAction('app/get-translate/'.base64_encode('Title')),
 							'options'=>[''=>'Choose Title','Mr'=>$this->requestAction('app/get-translate/'.base64_encode('Mr')),'Mrs'=>$this->requestAction('app/get-translate/'.base64_encode('Mrs')),'Ms'=>$this->requestAction('app/get-translate/'.base64_encode('Ms'))],
 							'class' =>'form-control'
 							]);
@@ -38,6 +39,7 @@
 							<?php 
 								echo $this->Form->input('Users.first_name',[                
 								 'class'=>'form-control',
+								 'label'=>$this->requestAction('app/get-translate/'.base64_encode('First Name')),
 								 'templates' => ['inputContainer' => '{{content}}']
 								  ]);
 								 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
@@ -47,6 +49,7 @@
 								<?php 
 								 echo $this->Form->input('Users.last_name',[               
 								  'class'=>'form-control',
+								  'label'=>$this->requestAction('app/get-translate/'.base64_encode('Last Name')),
 								   'templates' => ['inputContainer' => '{{content}}']
 								]);
 								echo '<em class="signup_error error">'.__(@$loginerror['last_name'][0]).'</em>';
@@ -59,6 +62,7 @@
                                 echo $this->Form->input('Users.country',[
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'select',
+                                  'label'=>$this->requestAction('app/get-translate/'.base64_encode('Country')),
                                   'options'=>[''=>'Choose Country','Australia'=>'Australia','Austria'=>'Austria','Belbium'=>'Belbium','Canada'=>'Canada','Denmark'=>'Denmark','Finland'=>'Finland','France'=>'France','Germany'=>'Germany','Hong Kong S.A.R., China'=>'Hong Kong S.A.R., China','Ireland'=>'Ireland','Italy'=>'Italy','Japan'=>'Japan'],
                                   'class' =>'form-control'
                                   ]);
@@ -71,7 +75,7 @@
 								echo $this->Form->input('Users.zip',[
 								'templates' => ['inputContainer' => '{{content}}'],               
 									'class'=>'form-control',
-									'label'=>false
+									'label'=>false,
 									]);
 									echo '<em class="signup_error error">'.__(@$loginerror['zip'][0]).'</em>';
 								?>
@@ -82,7 +86,8 @@
 						<?php 
 							echo $this->Form->input('Users.email',[
 							'templates' => ['inputContainer' => '{{content}}'],
-							'class' =>'form-control'
+							'class' =>'form-control',
+							'label'=>$this->requestAction('app/get-translate/'.base64_encode('Email')),
 							]);
 							echo '<em class="signup_error error">'.__(@$loginerror['email'][0]).'</em>';
 						?>
@@ -93,6 +98,7 @@
                               echo $this->Form->input('Users.create_password',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'password',
+                                  'label'=>$this->requestAction('app/get-translate/'.base64_encode('Create Password')),
                                   'class' =>'form-control'
                                 ]);
                               echo '<em class="signup_error error">'.__(@$loginerror['create_password'][0]).'</em>';
@@ -247,7 +253,9 @@
 		$("#users-birth-date").datepicker(
            {
 		     changeMonth: true,
-		     changeYear: true
+		     changeYear: true,
+	         maxDate: new Date(),
+	         yearRange: "-50:-6"
 		   }
 			);
 		$(".fa-calendar").click(function(){ $("#users-birth-date").focus();});

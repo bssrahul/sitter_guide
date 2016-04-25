@@ -115,10 +115,8 @@
                         </span>
                     </div>
 
-                     <div class="form-group col-lg-4">
+                  <div class="form-group col-lg-4">
                     <label>Smokers</label>
-                    <!--<span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
                     <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
                               'UserSitterHouses.smokers',
@@ -128,21 +126,130 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
-                                  'templates' => ['inputContainer' => '{{content}}']/*
-                        'value'=>$sitter_property['UserProperties']['smokers'] !=''?$sitter_property['UserProperties']['smokers']:''   */                    
-                         ]); ?>
+                                  'templates' => ['inputContainer' => '{{content}}']
+                    ]); ?>
+                        </span>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label>Birds in cages?</label>
+                   <!-- <span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
+                    <span class="pull-right m-rights">
+                    <?php echo $this->Form->input(
+                              'UserSitterHouses.birds_in_cages',
+                              [
+                                //'label'=>['class'=>'radio-inline'],
+                                'type'=>"radio",
+                                 'label'=>false,
+                                 'required'=>false,
+                                "options"=>["yes"=>"Yes","no"=>"No"],
+                                  'templates' => ['inputContainer' => '{{content}}']
+                    ]); ?>
+                        </span>
+                  </div>
+                    <!--<div class="form-group col-lg-4 noned">
+                    </div>-->
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                    <label>Dogs in home?</label>
+                   <!-- <span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
+                    <span class="pull-right m-rights">
+                    <?php echo $this->Form->input(
+                              'UserSitterHouses.dogs_in_home',
+                              [
+                                //'label'=>['class'=>'radio-inline'],
+                                'type'=>"radio",
+                                 'label'=>false,
+                                 'required'=>false,
+                                "options"=>["yes"=>"Yes","no"=>"No"],
+                                  'templates' => ['inputContainer' => '{{content}}']
+                    ]); ?>
                         </span>
                     </div>
+                     <div class="form-group col-lg-4">
+                    <label>Cats in home?</label>
+                    <!--<span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
+                    <span class="pull-right m-rights">
+                    <?php echo $this->Form->input(
+                              'UserSitterHouses.cats_in_home',
+                              [
+                                //'label'=>['class'=>'radio-inline'],
+                                'type'=>"radio",
+                                 'label'=>false,
+                                 'required'=>false,
+                                "options"=>["yes"=>"Yes","no"=>"No"],
+                                  'templates' => ['inputContainer' => '{{content}}']
+                    ]); ?>
+                        </span>
+                    </div>
+                      <div class="form-group col-lg-4 noned">
+                    </div>
+                  </div>
+               
+                  <h3>Photo</h3>
+                  <p class="browse-p">Add your profile photo<button id="browseImg" type="button" class="btn btn-primary">Browse Photo</button></p>
 
-                     <div class="form-group col-lg-4 noned">
-                    
+                  <div class="row" id="images_preview">
+                        <?php echo @$sitter_images; ?>
+                    <!--<div class="col-lg-1 col-md-2 col-xs-3">
+                      <div class="sitter-gal">
+                      <img src="<?php echo HTTP_ROOT; ?>img/uploads/abB07k823wyTRsI.png">
+                      <a href="#"><i class="fa fa-minus-circle"></i></a>
+                      </div>
+                    </div>-->
+
+                    <!--<div class="col-lg-1 col-md-2 col-xs-3">
+                    <div class="sitter-gal">
+                    <img src="<?php echo HTTP_ROOT; ?>img/s2.jpg">
+                    <a href="#"><i class="fa fa-minus-circle"></i></a>
+                      
                     </div>
                       
                     </div>
 
+                    <div class="col-lg-1 col-md-2 col-xs-3">
+                    <div class="sitter-gal">
+                    <img src="<?php echo HTTP_ROOT; ?>img/s3.jpg">
+                    <a href="#"><i class="fa fa-minus-circle"></i></a>
+                      
+                    </div>
+                      
+                    </div>
+
+                    <div class="col-lg-1 col-md-2 col-xs-3">
+                    <div class="sitter-gal">
+                    <img src="<?php echo HTTP_ROOT; ?>img/c4.jpg">
+                    <a href="#"><i class="fa fa-minus-circle"></i></a>
+                      
+                    </div>
+                      
+                    </div>
+
+                    <div class="col-lg-1 col-md-2 col-xs-3">
+                    <div class="sitter-gal">
+                    <img src="<?php echo HTTP_ROOT; ?>img/c5.png">
+                    <a href="#"><i class="fa fa-minus-circle"></i></a>
+                      
+                    </div>
+                      
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-xs-3">
+                    <div class="sitter-gal">
+                    <img src="<?php echo HTTP_ROOT; ?>img/c6.jpg">
+                    <a href="#"><i class="fa fa-minus-circle"></i></a>
+                      
+                    </div>
+                      
+                    </div>-->
+                    
+                  </div>
+
                     <div class="row">
                     <p class="col-lg-12 sp-tb">
-                    <button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button>
+                    <a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button></a>
                     <input class="pull-right btn Continue" type="submit" value="Continue" /></p>
                     </div>
 
@@ -152,7 +259,27 @@
 
               </div>
 
+              <!--Start multiple upload-->
+                  <?php echo $this->Form->create(@$sitter_info, [
+                      'url' => ['controller' => 'dashboard', 'action' => 'sitter-gallery'],
+                      'name'=>'multiple_upload_form',
+                      'id'=>'multiple_upload_form',
+                      'enctype'=>"multipart/form-data",
+                      'style'=>'display:none'
+                  ]);?>
 
+                      <input type="hidden" name="image_form_submit" value="1"/>
+
+                      <label>Choose Image</label>
+                      <input type="file" name="images[]" id="images" multiple >
+                      <div class="uploading none">
+                          <label>&nbsp;</label>
+                          <img src="uploading.gif" alt="uploading......"/>
+                      </div>
+                      <?php echo $this->Form->end(); ?>
+                  <!--</form>-->
+                  <!--<div id="images_preview"></div>-->
+                 <!--End multiple upload-->
 
               </div>
         
@@ -160,4 +287,33 @@
         </div>
 
         </div>
+
       </div>
+
+      <script type="text/javascript">
+  /*For add multiple profile photos*/
+$(document).ready(function(){
+    $('#images').on('change',function(){
+      //alert("okokok");
+        jQuery('#multiple_upload_form').ajaxForm({
+            //display the uploaded images
+            //alert("okokok");
+            target:'#images_preview',
+            beforeSubmit:function(e){
+                $('.uploading').show();
+            },
+            success:function(e){
+             // alert(e);
+              //console.log(e);
+               $('.uploading').hide();
+            },
+            error:function(e){
+            }
+        }).submit();
+    });
+    $("#browseImg").on('click',function(){
+        $("#images").trigger("click");    
+        });
+});
+/*End multiple profile photos*/
+</script>

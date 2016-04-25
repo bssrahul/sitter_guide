@@ -10,7 +10,7 @@ class UsersTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['name','phone','email','country','city','state','address','zip'],
-            'translationTable' => 'UsersI18n'
+           'translationTable' => 'I18n'
 		]);
 		//$this->hasOne('UserExtendedProfiles', ['dependent' => true]);
 		//$this->hasMany('UserAcceptedPets', ['dependent' => true]);
@@ -20,6 +20,8 @@ class UsersTable extends Table
 		$this->hasOne('UserSitterHouses', ['dependent' => true]);
 		$this->hasOne('UserAboutSitters', ['dependent' => true]);
 		$this->hasMany('UserSitterGalleries', ['dependent' => true]);
+		$this->hasMany('UserProfessionalAccreditations', ['dependent' => true]);
+		$this->hasMany('UserSitterServices', ['dependent' => true]);
     }
 	
     public function validationDefault(Validator $validator)

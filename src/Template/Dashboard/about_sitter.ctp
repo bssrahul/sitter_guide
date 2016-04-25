@@ -386,7 +386,7 @@
                     
                   </div>
                   <div class="row">
-                    <p class="col-lg-12 sp-tb"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button>
+                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/sitter-house'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button></a>
                     <input type="submit" class="pull-right btn Continue" value="Continue"></p>
                     </div>
 
@@ -404,6 +404,7 @@
       </div>
 
 <script type="text/javascript">
+  /*For add multiple profile photos*/
 $(document).ready(function(){
     $('#images').on('change',function(){
       //alert("okokok");
@@ -423,4 +424,5 @@ $(document).ready(function(){
         }).submit();
     });
 });
+/*End multiple profile photos*/
 </script>

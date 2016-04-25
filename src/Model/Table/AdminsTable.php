@@ -8,7 +8,7 @@ class AdminsTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['full_name'],
-            'translationTable' => 'AdminsI18n'
+           'translationTable' => 'I18n'
 		]);
     }
     public function validationDefault(Validator $validator)

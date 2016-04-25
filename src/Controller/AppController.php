@@ -653,5 +653,68 @@ class AppController extends Controller{
 		return $finalvalue;
 		
 	}
+	
+	/**
+	* Function for Upload Image
+	*/
+	function admin_upload_document($type = NULL, $FileArr = array())
+	{
+	
+		
+		//echo $type;print_r($FileArr);die;
+		$this->viewBuilder()->layout('');
+		$this->autoRender=false;
+		
+		if($FileArr['name']!="")
+		{
+			
+			if($type == 'document')
+			{
+				$imgName = pathinfo($FileArr['name']);
+				$file = $FileArr;
+				$fileName = $FileArr['name'];
+				$ext = trim(substr($fileName, strrpos($fileName,'.')));
+				
+				$explodeExt = explode('.',$fileName);
+				$explodeExt =  end($explodeExt);
+				if($type == 'document')
+				{
+					$uploadFolder= "files/";	
+					$fileSize= "5242880";
+					$fileKb = "5 MB";
+					$extCheckArr = array('pdf','docx','doc');	
+				}
+				
+				
+				if(in_array($explodeExt,$extCheckArr))
+				{
+					if($FileArr['size'] <= $fileSize)
+					{
+						$fileName = $this->RandomStringGenerator(15);
+						$destination = realpath('../webroot/'.$uploadFolder).'/'.$fileName.$ext;
+						$src = $FileArr['tmp_name'];
+												
+						
+						if(move_uploaded_file($FileArr['tmp_name'],$destination))
+						{
+							$return = "success:".$fileName.$ext.":uploaded";
+							return $return;
+						}
+					}
+					else
+					{
+						$return = "error:File size should be less than $fileKb";
+						return $return;
+					}
+				}
+				else
+				{
+					$extCheckStr = implode(',',$extCheckArr);
+					$return = "error:Only ".strtoupper($extCheckStr)." files are allowed!";
+					return $return;
+				}
+			}
+		}
+	}
 }
 ?>
