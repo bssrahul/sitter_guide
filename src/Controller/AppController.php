@@ -679,18 +679,19 @@ class AppController extends Controller{
 				$explodeExt =  end($explodeExt);
 				if($type == 'document')
 				{
-					$uploadFolder= "files/";	
+					$uploadFolder= "files/scanned_doc";	
 					$fileSize= "5242880";
 					$fileKb = "5 MB";
 					$extCheckArr = array('pdf','docx','doc');	
 				}
 				
+				$session = $this->request->session();
 				
 				if(in_array($explodeExt,$extCheckArr))
 				{
 					if($FileArr['size'] <= $fileSize)
 					{
-						$fileName = $this->RandomStringGenerator(15);
+						$fileName = $session->read('User.id')."_".$FileArr['custom_name'];//$this->RandomStringGenerator(15);
 						$destination = realpath('../webroot/'.$uploadFolder).'/'.$fileName.$ext;
 						$src = $FileArr['tmp_name'];
 												
