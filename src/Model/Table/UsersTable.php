@@ -30,7 +30,7 @@ class UsersTable extends Table
             ->notEmpty('first_name', 'First Name field is required.')
 			->notEmpty('last_name', 'Last Name field is required.')
 			->notEmpty('phone', 'Phone number field is required.')
-            //->notEmpty('email', 'Email field is required.')
+            ->notEmpty('email', 'Email field is required.')
 			
 			//->notEmpty('country', 'Country field is required.')
 			//->notEmpty('city', 'City field is required.')
@@ -68,12 +68,11 @@ class UsersTable extends Table
 			->notEmpty('state', 'State field is required.')
 			->notEmpty('address', 'Address1 field is required.')
 			->notEmpty('address2', 'Address2 field is required.')
-			->notEmpty('zip', 'Zip field is required.');
-			
-		    /*->add('email', 'validFormat', [
+			->notEmpty('zip', 'Zip field is required.')
+			->add('email', 'validFormat', [
 			   'rule' => 'email',
 			   'message' => 'E-mail must be valid'
-			   ]);*/
+			   ]);
            
         return $validator;
     }

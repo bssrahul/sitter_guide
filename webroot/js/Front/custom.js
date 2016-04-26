@@ -1,6 +1,24 @@
+	var host = window.location.host;
+	var proto = window.location.protocol;
+	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+	
+	/*FUNCTION FOR VALIDATION*/
+	$(document).ready(function(){
+		
+		//SLIDEUP MESSAGES FUNCTIONALITY START
+		
+		$('.success_msg, .error_msg').on('click',function(){
+				$(this).slideUp(1000);
+		});
+		setInterval(function() {
+		   $('.success_msg, .error_msg').slideUp();
+		}, 10000);
+		//DROP DOWN TOGGEL
+		$('#droplogForgot').click(function () {
+			$('#dropcont').hide();
+            $('#dropcontForgot').fadeToggle();
+            setTimeout(function(){$("#droplog").trigger("click");},500);
 
-<<<<<<< HEAD
-=======
         });
 
         $('#loginBack').click(function () {
@@ -491,7 +509,18 @@
 				"Users[zone_id]":
 				{
 					required:true
-				}/*,
+				},
+				"Users[email]":
+				{
+					required: true,
+					email: true,
+					remote: ajax_url+"App/isUniqueEmailAjax"
+				},
+				"Users[emergency_contacts]":
+				{
+					required : true
+					
+				},
 				"Users[password]":
 				{
 					minlength: '6'
@@ -501,7 +530,7 @@
 					 required:true,
 					minlength: '6',
 					equalTo: '#usersp-password'
-				}*/
+				}
 			},
 			messages: {
 				"Users[title]":
@@ -559,12 +588,21 @@
 				"Users[term_condition]":
 				{
 					required : "This field is required"
+
+				},
+				"Users[email]":
+				{
+					required : "This field is required",
+					email: 'Kindly use valid email address',
+					remote: "Email address already exists"
 					
-
-				}
-
-				}/*,
-				"Users[password]":
+				},
+				"Users[emergency_contacts]":
+				{
+					required : "This field is required"
+					
+				},
+                "Users[password]":
 				{
 					minlength: 'Please enter minimum 6 characters.'
 				},
@@ -573,7 +611,7 @@
 					 required : "This field is required",
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
-				}*/
+				}
 
 			});
 			
@@ -975,6 +1013,19 @@ $( document ).ready(function() {
         }
   });
  /*====End fair line====*/
+
+ /*For Remove profile image */
+ $(document).on('click', '.removeProfileImg',function(){
+ 	var imageId = $(this).attr('data-rel');
+ 	   $.ajax({
+          url: ajax_url+'dashboard/remove-gallery-image', 
+         data:'imageId='+imageId,
+         success: function(result){
+            $("#images_preview").html(result);
+          }
+        });
+   }); 
+ /*End profile image*/
  });
 /*Last Drop down country- currency listing*/
 $(function () {
@@ -991,6 +1042,10 @@ $(function () {
   	});
   });
 
-  
-  
->>>>>>> b1d12fc69b299f9a4b784eceb21cb455651aed62
+/*For profile video*/
+$(document).ready(function(){
+    $("#browseVideo").on('click',function(){
+        $("#images").trigger("click");    
+        });
+});
+/*End profile video*/
