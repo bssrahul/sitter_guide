@@ -377,8 +377,43 @@
 			submitHandler: function(form) {
 				var actionURL = $('#subscribeForm').attr('action');
 				//alert('okokokoko');
-				process_form("subscribeForm","subscribe-btn",actionURL);
-				return false;
+				//process_form("","subscribe-btn",actionURL);
+				//return false;
+				var btnID = 'subscribe-btn';
+				var formID = 'subscribeForm';
+				//alert(formID+btnID+'url='+actionURL);
+					var orgBtnVal=$("#"+btnID).val();//GET BUTTON VALUE
+					$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
+					$("#"+btnID).val('Wait...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
+					var formData = $('#'+formID).serialize();//BIND THE FORM VALUE INTO A VARIABLE
+					//console.log(formData);
+					$.ajax({
+						url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+						data:formData,//ALL SUBMITTED DATA FROM THE FORM
+						 
+						success:function(res)
+						{
+							console.log(res);
+							//alert(res);
+							var response = res.split(':');
+							if($.trim(response[0]) == 'Success'){
+								$('.clr').html('');	//Emtpy Error MESSAGE
+								//alert(response[1]);
+								
+								$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+								$('#'+formID)[0].reset();
+								setTimeout(function(){window.location.href = ajax_url;},2000);
+							}if($.trim(response[0]) == 'Error'){
+								$('.clr').html('');	//Emtpy Error MESSAGE
+								$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+							}
+							
+							//CODE FOR CHANGE THE BUTTON STYLE AND TEXT
+							$("#"+btnID).attr('disabled',false);
+							$("#"+btnID).val(orgBtnVal);	
+						}
+					});
+				
 			}
 			
 		});
@@ -485,7 +520,7 @@
 				{
 					required : true
 					
-				}/*,
+				},
 				"Users[password]":
 				{
 					minlength: '6'
@@ -495,7 +530,7 @@
 					 required:true,
 					minlength: '6',
 					equalTo: '#usersp-password'
-				}*/
+				}
 			},
 			messages: {
 				"Users[title]":
@@ -553,7 +588,7 @@
 				"Users[term_condition]":
 				{
 					required : "This field is required"
-					
+
 				},
 				"Users[email]":
 				{
@@ -566,9 +601,8 @@
 				{
 					required : "This field is required"
 					
-				}
-				/*,
-				"Users[password]":
+				},
+                "Users[password]":
 				{
 					minlength: 'Please enter minimum 6 characters.'
 				},
@@ -577,10 +611,11 @@
 					 required : "This field is required",
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
-				}*/
-			}
+				}
+
+			});
 			
-		});
+		
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
@@ -623,9 +658,25 @@
 				},
 				"UserSitterServices[sh_ltc_guest_rate]":
 				{
-					 number: true 
-				},
+
+					 required: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					
+				}
+			}/*,
+			submitHandler: function(form) {
+				var actionURL = $('#personalForm').attr('action');
+				gettingstarted("personalForm","submitGetting",actionURL);
+				return false;
+			}*/
+			
+		});
+		
+		//CODE SNIPPET FOR REFERE FRIEND
+		$('#referForm').validate({
+			rules: {
+			
 				"UserSitterServices[gh_holiday_rate]":
+
 				{
 					 number: true  
 				},
@@ -733,7 +784,68 @@
 			
 		});
 		/*End service and rates*/
-	
+		/*Start Contact form*/
+		$('#contactform').validate({
+			rules: {
+				"name":
+				{
+					required: true,
+				},
+				"email":
+				{
+					required: true,
+					email: true,
+				},
+				"phone_no":
+				{	
+				    required: true,
+					number:true,
+					minlength: '10',
+					maxlength:'10',
+															
+				},
+				"message":
+				{
+					required: true,
+					
+				},
+				"location":
+				{
+					required: true,
+				},
+				
+			},
+			messages:{				
+				"name":
+				{
+					 required: "This field is required.",
+				},
+				"email":
+				{
+					required : "This field is required",
+					email: 'Kindly use valid email address ',
+					
+				},
+				"phone_no":
+				{
+					required : "This field is required",
+					number: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					minlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					maxlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+				},
+				"message":
+				{
+					 required: "This field is required.",	
+				},
+				"location":
+				{
+					required:"This field is required.",
+				},
+				
+			}
+			
+		});
+	/*End contact form*/
 	});
 		//End base profile
 	function gettingstarted(formID,btnID,actionURL){
@@ -772,7 +884,7 @@
 			{
 				//console.log(res);
 				var response = res.split(':');
-				if(response[0] == 'Success'){
+				if($.trim(response[0]) == 'Success'){
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
 					setTimeout(function(){window.location.href = ajax_url;},2000);
@@ -929,6 +1041,7 @@ $(function () {
   		$('.search-input').focus();
   	});
   });
+
 /*For profile video*/
 $(document).ready(function(){
     $("#browseVideo").on('click',function(){
@@ -936,3 +1049,4 @@ $(document).ready(function(){
         });
 });
 /*End profile video*/
+

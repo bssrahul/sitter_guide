@@ -11,8 +11,7 @@
  * @link      http://cakephp.org CakePHP(tm) Project
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- */
- 
+ */ 
 namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
@@ -481,81 +480,86 @@ class DashboardController extends AppController
     Function for Professional Accreditations
     */
     function professionalAccreditations(){
-    	 $this->viewBuilder()->layout('profile_dashboard');
+    	
+    	$this->viewBuilder()->layout('profile_dashboard');
 
         $usersModel = TableRegistry::get('Users');
 
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
+        $session = $this->request->session();
+        $userId = $session->read('User.id');
    
-        //$professionalModel = TableRegistry::get('UserProfessionalAccreditations');
         
-// echo  $userId;die; 
 		$this->request->data = @$_REQUEST;
-		//pr($this->request->data); die;
+		
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
+			
 			 
-             
-              // pr($this->request->data); die;
-			   //if (isset($professional_accreditation) && !empty($professional_accreditation)) {
-                     $UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
-                     $UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
-                      
-                      
-                       $userProfessionalData = $UserProfessionalModel->newEntity();
-                       $userProfessionalData->user_id = $userId;
-                       $userProfessionalData->type_professional = 'check';
-                       $userProfessionalData->sector_type = "govt";
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
-					   $UserProfessionalModel->save($userProfessionalData);
+			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
+			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
 
-                       $userProfessionalData = $UserProfessionalModel->newEntity();
-                       $userProfessionalData->user_id = $userId;
-                       $userProfessionalData->type_professional = 'pets';
-                       $userProfessionalData->sector_type = "private";
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
-					   $UserProfessionalModel->save($userProfessionalData);
 
-					   $userProfessionalData = $UserProfessionalModel->newEntity();
-                       $userProfessionalData->user_id = $userId;
-                       $userProfessionalData->type_professional = 'people';
-                       $userProfessionalData->sector_type = "private";
-                       
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
-					   $UserProfessionalModel->save($userProfessionalData);
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'check';
+			$userProfessionalData->sector_type = "govt";
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
+			$UserProfessionalModel->save($userProfessionalData);
+
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'pets';
+			$userProfessionalData->sector_type = "private";
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
+			$UserProfessionalModel->save($userProfessionalData);
+
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'people';
+			$userProfessionalData->sector_type = "private";
+
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
+			$UserProfessionalModel->save($userProfessionalData);
+			
+			
+			$userProfessionalData = $UserProfessionalModel->newEntity();
+			$userProfessionalData->user_id = $userId;
+			$userProfessionalData->type_professional = 'govt';
+			$userProfessionalData->sector_type = "licence";
+
+			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['govt']['licence']);
+			$UserProfessionalModel->save($userProfessionalData);
 
                      //foreach($this->request->data as $key=>$val)
-                   for($i=0;$i<count($this->request->data['qualification_title']);$i++){
+			for($i=0;$i<count($this->request->data['qualification_title']);$i++){
 
-                     	 $userProfessionalData = $UserProfessionalModel->newEntity();
+				 $userProfessionalData = $UserProfessionalModel->newEntity();
 
-                         $userProfessionalData->user_id = $userId; 
-                         $userProfessionalData->type_professional = 'other';
-                         $userProfessionalData->sector_type = "other";
+				 $userProfessionalData->user_id = $userId; 
+				 $userProfessionalData->type_professional = 'other';
+				 $userProfessionalData->sector_type = "other";
 
-                         $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
-                         $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
-                         $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
+				 $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
+				 $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
+				 $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
 
 
-                       $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
-					   $UserProfessionalModel->save($userProfessionalData);
-                      }
-                           //pr($this->request->data); die;
-                           
-		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
-		                   $userProfessionalDetailData->user_id = $userId;
-		                   $userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
-		                   $userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
-						  
-						   $UserProfessionalDetailsModel->save($userProfessionalDetailData);
-						  // echo "<pre>";print_r($this->request->data);die;
+
+			   $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
+			   $UserProfessionalModel->save($userProfessionalData);
+			}
+
+			$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
+			$userProfessionalDetailData->user_id = $userId;
+			$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
+			$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
+
+			$UserProfessionalDetailsModel->save($userProfessionalDetailData);
+
                
 		}/*else{
             $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
-           // pr($query->user_professional_accreditations);die;
-           
+         
 		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
                    $skillsData = $query->user_professional_accreditations;
                    $this->set('skillId', $skillsData->id);
@@ -575,13 +579,10 @@ class DashboardController extends AppController
     function servicesAndRates(){
     	 $this->viewBuilder()->layout('profile_dashboard');
 
-    	  $this->viewBuilder()->layout('profile_dashboard');
+    	 $usersModel = TableRegistry::get('Users');
 
-
-          $usersModel = TableRegistry::get('Users');
-
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
+         $session = $this->request->session();
+         $userId = $session->read('User.id');
    
         $sitterServicesModel = TableRegistry::get('UserSitterServices');
         
@@ -937,7 +938,31 @@ class DashboardController extends AppController
                        }
 
         }
-                 // echo "<pre>";print_r($options);
+             
     }
+    
+     /**
+    Function for Professional Accreditations
+    */
+    function uploadDocuments(){
+
+		$images_arr = array();
+				  
+		//Upload Document
+		if($_FILES['document']['name'] !=''){
+			$Img = $this->admin_upload_document('document',$_FILES['document']);
+			
+			$Img = explode(':',$Img);
+			
+			if($Img[0]=='error'){
+				echo $errors = 'Error:'.$_REQUEST['valuefor'].":".$Img[1];
+			}else{
+			   
+			   echo $imageName = 'Success:'.$_REQUEST['valuefor'].":".$Img[1];
+			}				
+		}else{
+		   unset($_FILES['document']);
+		}
+	}
 }
 ?>

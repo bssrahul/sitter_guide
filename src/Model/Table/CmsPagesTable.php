@@ -9,7 +9,7 @@ class CmsPagesTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['pagename','pagecontent'],
-            'translationTable' => 'CmsPagesI18n'
+           'translationTable' => 'I18n'
 		]);
     }
 	public function validationDefault(Validator $validator)

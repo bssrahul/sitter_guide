@@ -10,7 +10,7 @@ class HowWorksTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['title','category','description'],
-            'translationTable' => 'HowWorksI18n'
+            'translationTable' => 'I18n'
 		]);
     }
 	

@@ -10,7 +10,7 @@ class UsersTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['name','phone','email','country','city','state','address','zip'],
-            'translationTable' => 'UsersI18n'
+           'translationTable' => 'I18n'
 		]);
 		//$this->hasOne('UserExtendedProfiles', ['dependent' => true]);
 		//$this->hasMany('UserAcceptedPets', ['dependent' => true]);

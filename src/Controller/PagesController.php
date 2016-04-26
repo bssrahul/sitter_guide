@@ -74,4 +74,51 @@ class PagesController extends AppController
 		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, $url));
 	}
+	function contactUs(){
+		
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact-us']])->first();
+		//pr($CmsPageData); die;
+	
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'contact-us'));
+		
+		$SiteModel = TableRegistry::get('SiteConfigurations');
+		$SiteData=$SiteModel->find('all')->toArray();
+		$AdminEmail=$SiteData[0]['site_contact_email'];
+			
+		$ContactModel=TableRegistry::get("Contact_requests");
+		$Contactdata=$ContactModel->newEntity();
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+			 $email=$this->request->data['email'];
+			 $name=$this->request->data['name'];
+			  $phone=$this->request->data['phone_no'];
+			 $message=$this->request->data['message'];
+			 $location=$this->request->data['location'];
+			
+			$Contactdata=$ContactModel->patchEntity($Contactdata,$this->request->data);
+			if($ContactModel->save($Contactdata))
+			{
+				$replace = array('{fname}','{phone}','{location}','{message}');
+				$with = array($name,$phone,$location, $message);
+				$this->send_email('',$replace,$with,'contact_us_admin',$AdminEmail,'');
+				$replace = array('{fname}','{phone}','{location}','{message}');
+				$with = array($name,$phone, $location,$message);
+				$this->send_email('',$replace,$with,'contact_us',$email,'');		
+				echo 'Success:'.$this->stringTranslate(base64_encode("Email has been sent to your email address"));
+				
+						
+			}
+			
+			
+		}
+		
+		
+	}
 }

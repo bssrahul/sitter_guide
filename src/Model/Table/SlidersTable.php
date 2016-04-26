@@ -10,7 +10,7 @@ class SlidersTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['title','description'],
-            'translationTable' => 'SlidersI18n'
+            'translationTable' => 'I18n'
 		]);
     }
 	

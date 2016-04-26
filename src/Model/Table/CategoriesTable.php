@@ -10,7 +10,7 @@ class CategoriesTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['title','slug','description'],
-            'translationTable' => 'CategoriesI18n'
+           'translationTable' => 'I18n'
 		]);
     }
 	

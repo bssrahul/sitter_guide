@@ -103,6 +103,10 @@
                     <li>
                        <a href="<?php echo HTTP_ROOT."partners/partners-listing" ?>"><i class="fa fa-glass"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Manage Partners')); ?>  </span></a>
                     </li>
+					<li>
+					  <a href="<?php echo HTTP_ROOT."faqs/faqs-listing" ?>"><i class="fa fa-question"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Faqs')); ?> </span></a>
+                      
+                    </li>
                     
 				</ul>
 			</div>

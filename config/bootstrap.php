@@ -1,6 +1,4 @@
 <?php
-header( 'Content-Type: text/html; charset=utf-8' ); 
-
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
