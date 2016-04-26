@@ -612,8 +612,8 @@
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				}
-
-			});
+			}
+		});
 			
 		
 		/*For Services and Rates form*/

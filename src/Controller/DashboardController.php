@@ -494,11 +494,13 @@ class DashboardController extends AppController
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
 			
-			 
+			
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
 
-
+			$UserProfessionalModel->deleteAll(['user_id' => $userId]);
+			$UserProfessionalDetailsModel->deleteAll(['user_id' => $userId]);
+			
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
 			$userProfessionalData->type_professional = 'check';
@@ -530,7 +532,7 @@ class DashboardController extends AppController
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['govt']['licence']);
 			$UserProfessionalModel->save($userProfessionalData);
 
-                     //foreach($this->request->data as $key=>$val)
+            //foreach($this->request->data as $key=>$val)
 			for($i=0;$i<count($this->request->data['qualification_title']);$i++){
 
 				 $userProfessionalData = $UserProfessionalModel->newEntity();
@@ -542,6 +544,7 @@ class DashboardController extends AppController
 				 $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
 				 $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
 				 $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
+				 $userProfessional['scanned_certification'] = $this->request->data['scanned_certification'][$i];
 
 
 
@@ -554,20 +557,55 @@ class DashboardController extends AppController
 			$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
 			$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
 
-			$UserProfessionalDetailsModel->save($userProfessionalDetailData);
+			if ($UserProfessionalDetailsModel->save($userProfessionalDetailData)){
+				 return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
+			}else{
+				$this->Flash->error(__('Error found, Kindly fix the errors.'));
+			}
 
                
-		}/*else{
+		}else{
+			
             $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
-         
+          
 		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
-                   $skillsData = $query->user_professional_accreditations;
-                   $this->set('skillId', $skillsData->id);
-                   unset($skillsData->id);
-                   $this->set('skill_info', $skillsData);
+				 
+				 if(!empty($query->user_professional_accreditations)){
+						$customArrForDisplayRec = array();
+						$i=1;
+						foreach($query->user_professional_accreditations as $k=>$user_professional_accreditations){
+							if($user_professional_accreditations->type_professional !='other'){
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$user_professional_accreditations->sector_type]['qualification_title'] = $user_professional_accreditations->qualification_title;
+								
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$user_professional_accreditations->sector_type]['qualification_date'] = $user_professional_accreditations->qualification_date;
+								
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$user_professional_accreditations->sector_type]['expiry_date'] = $user_professional_accreditations->expiry_date;
+								
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$user_professional_accreditations->sector_type]['scanned_certification'] = $user_professional_accreditations->scanned_certification;
+								
+							}else{
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$i][$user_professional_accreditations->sector_type]['qualification_title'] = $user_professional_accreditations->qualification_title;	
+								
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$i][$user_professional_accreditations->sector_type]['qualification_date'] = $user_professional_accreditations->qualification_date;	
+								
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$i][$user_professional_accreditations->sector_type]['expiry_date'] = $user_professional_accreditations->expiry_date;	
+								
+								$customArrForDisplayRec['UserProfessionals'][$user_professional_accreditations->type_professional][$i][$user_professional_accreditations->sector_type]['scanned_certification'] = $user_professional_accreditations->scanned_certification;	
+								
+								$i++;
+							}
+							
+						}
+				  }
+					// $skillsData = $query->user_professional_accreditations;
+					//  $this->set('skillId', $skillsData->id);
+					// unset($skillsData->id);
+					//pr($customArrForDisplayRec); die;
+					$this->set('professional', $customArrForDisplayRec);
+                  
 		    }
             
-        }*/
+        }
 
 
     	
@@ -947,7 +985,7 @@ class DashboardController extends AppController
     function uploadDocuments(){
 
 		$images_arr = array();
-				  
+		$_FILES['document']['custom_name'] = $_REQUEST['valuefor'];
 		//Upload Document
 		if($_FILES['document']['name'] !=''){
 			$Img = $this->admin_upload_document('document',$_FILES['document']);
