@@ -1,4 +1,4 @@
-    <?php //echo "<pre>";print_r($houseInfo); die;?>
+ <?php //echo "<pre>";print_r($houseInfo); die;?>
  <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
         <div class="row">
 
@@ -20,8 +20,6 @@
                       'id'=>'generelInfo'
                   ]);?>
                   <?php
-                 
-
                       if(@$sitterHouseId != ''){
                            echo $this->Form->input('UserSitterHouses.id',[
                                 'type'=>'hidden',
@@ -152,14 +150,10 @@
                   </div>
                   <div class="row">
                     <div class="form-group col-lg-4">
-                    <label>Dogs in home?</label>
-                   <!-- <span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
-                    <span class="pull-right m-rights">
+                    <label>Dogs in home?</label> <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
                               'UserSitterHouses.dogs_in_home',
                               [
-                                //'label'=>['class'=>'radio-inline'],
                                 'type'=>"radio",
                                  'label'=>false,
                                  'required'=>false,
@@ -194,56 +188,7 @@
 
                   <div class="row" id="images_preview">
                         <?php echo @$sitter_images; ?>
-                    <!--<div class="col-lg-1 col-md-2 col-xs-3">
-                      <div class="sitter-gal">
-                      <img src="<?php echo HTTP_ROOT; ?>img/uploads/abB07k823wyTRsI.png">
-                      <a href="#"><i class="fa fa-minus-circle"></i></a>
-                      </div>
-                    </div>-->
-
-                    <!--<div class="col-lg-1 col-md-2 col-xs-3">
-                    <div class="sitter-gal">
-                    <img src="<?php echo HTTP_ROOT; ?>img/s2.jpg">
-                    <a href="#"><i class="fa fa-minus-circle"></i></a>
-                      
-                    </div>
-                      
-                    </div>
-
-                    <div class="col-lg-1 col-md-2 col-xs-3">
-                    <div class="sitter-gal">
-                    <img src="<?php echo HTTP_ROOT; ?>img/s3.jpg">
-                    <a href="#"><i class="fa fa-minus-circle"></i></a>
-                      
-                    </div>
-                      
-                    </div>
-
-                    <div class="col-lg-1 col-md-2 col-xs-3">
-                    <div class="sitter-gal">
-                    <img src="<?php echo HTTP_ROOT; ?>img/c4.jpg">
-                    <a href="#"><i class="fa fa-minus-circle"></i></a>
-                      
-                    </div>
-                      
-                    </div>
-
-                    <div class="col-lg-1 col-md-2 col-xs-3">
-                    <div class="sitter-gal">
-                    <img src="<?php echo HTTP_ROOT; ?>img/c5.png">
-                    <a href="#"><i class="fa fa-minus-circle"></i></a>
-                      
-                    </div>
-                      
-                    </div>
-                    <div class="col-lg-1 col-md-2 col-xs-3">
-                    <div class="sitter-gal">
-                    <img src="<?php echo HTTP_ROOT; ?>img/c6.jpg">
-                    <a href="#"><i class="fa fa-minus-circle"></i></a>
-                      
-                    </div>
-                      
-                    </div>-->
+                   
                     
                   </div>
 
@@ -252,9 +197,6 @@
                     <a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button></a>
                     <input class="pull-right btn Continue" type="submit" value="Continue" /></p>
                     </div>
-
-
-<!--</form>-->
                   <?php echo $this->Form->end(); ?>
 
               </div>
@@ -277,11 +219,7 @@
                           <img src="uploading.gif" alt="uploading......"/>
                       </div>
                       <?php echo $this->Form->end(); ?>
-                  <!--</form>-->
-                  <!--<div id="images_preview"></div>-->
-                 <!--End multiple upload-->
-
-              </div>
+                </div>
         
           </div>
         </div>
@@ -290,21 +228,17 @@
 
       </div>
 
-      <script type="text/javascript">
+<script type="text/javascript">
   /*For add multiple profile photos*/
 $(document).ready(function(){
     $('#images').on('change',function(){
-      //alert("okokok");
-        jQuery('#multiple_upload_form').ajaxForm({
+            jQuery('#multiple_upload_form').ajaxForm({
             //display the uploaded images
-            //alert("okokok");
             target:'#images_preview',
             beforeSubmit:function(e){
                 $('.uploading').show();
             },
             success:function(e){
-             // alert(e);
-              //console.log(e);
                $('.uploading').hide();
             },
             error:function(e){
@@ -314,6 +248,8 @@ $(document).ready(function(){
     $("#browseImg").on('click',function(){
         $("#images").trigger("click");    
         });
+
+    
 });
 /*End multiple profile photos*/
 </script>

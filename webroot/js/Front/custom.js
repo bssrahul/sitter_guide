@@ -509,7 +509,18 @@
 				"Users[zone_id]":
 				{
 					required:true
-				}/*,
+				},
+				"Users[email]":
+				{
+					required: true,
+					email: true,
+					remote: ajax_url+"App/isUniqueEmailAjax"
+				},
+				"Users[emergency_contacts]":
+				{
+					required : true
+					
+				},
 				"Users[password]":
 				{
 					minlength: '6'
@@ -519,7 +530,7 @@
 					 required:true,
 					minlength: '6',
 					equalTo: '#usersp-password'
-				}*/
+				}
 			},
 			messages: {
 				"Users[title]":
@@ -577,12 +588,21 @@
 				"Users[term_condition]":
 				{
 					required : "This field is required"
+
+				},
+				"Users[email]":
+				{
+					required : "This field is required",
+					email: 'Kindly use valid email address',
+					remote: "Email address already exists"
 					
-
-				}
-
-				}/*,
-				"Users[password]":
+				},
+				"Users[emergency_contacts]":
+				{
+					required : "This field is required"
+					
+				},
+                "Users[password]":
 				{
 					minlength: 'Please enter minimum 6 characters.'
 				},
@@ -591,7 +611,7 @@
 					 required : "This field is required",
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
-				}*/
+				}
 
 			});
 			
@@ -993,6 +1013,19 @@ $( document ).ready(function() {
         }
   });
  /*====End fair line====*/
+
+ /*For Remove profile image */
+ $(document).on('click', '.removeProfileImg',function(){
+ 	var imageId = $(this).attr('data-rel');
+ 	   $.ajax({
+          url: ajax_url+'dashboard/remove-gallery-image', 
+         data:'imageId='+imageId,
+         success: function(result){
+            $("#images_preview").html(result);
+          }
+        });
+   }); 
+ /*End profile image*/
  });
 /*Last Drop down country- currency listing*/
 $(function () {
@@ -1009,5 +1042,11 @@ $(function () {
   	});
   });
 
-  
-  
+/*For profile video*/
+$(document).ready(function(){
+    $("#browseVideo").on('click',function(){
+        $("#images").trigger("click");    
+        });
+});
+/*End profile video*/
+
