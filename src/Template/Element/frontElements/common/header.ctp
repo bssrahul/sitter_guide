@@ -20,12 +20,45 @@
                               <input class="search-input" type="text" value="" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search home sitter for your loving dog')); ?>" />
                             </div>
                         </div> 
+                              <!--Start mob country-->
+                                    <div class="mob-country-drop">
+                                      <ul>
+                                        <li class="dd-country last-drop"><a href="#"  data-toggle="dropdown"> <img src="<?php echo HTTP_ROOT; ?>img/flag-icon.png" alt=""> </a>
+                                         <div class="dropdown-menu country-drop">
+                                                    <ul class="nav nav-tabs">
+                                                      <li class="active"><a data-toggle="tab" href="#home">Currency </a></li>
+                                                      <li><a data-toggle="tab" href="#menu1">Currency</a></li>
+                                                    </ul>                                        
+                                                    <div class="tab-content">
+                                                      <div id="home" class="tab-pane fade in active">
+                                                        <ul class="c-list"> 
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-1.png"  alt="">AUD</a></li>
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-2.png"  alt="">CAD</a></li>
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">EUR</a></li>
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">EUR</a></li>
+                                                          </ul>
+                                                      </div>
+                                                      <div id="menu1" class="tab-pane fade">
+                                                        <ul class="c-list"> 
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-1.png"  alt="">Currency 1</a></li>
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-2.png"  alt="">Currency 2</a></li>
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">Currency 3</a></li>
+                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">Currency 45</a></li>
+                                                          </ul>
+                                                      </div>                                          
+                                                      
+                                                    </div>
+                                                    </div>
+                                       </li>
+                                    </ul>
+                                  </div>
+                                <!--end -->
         </div>
       <div class="col-lg-<?php echo $currentLocal == 'ru'?'8':'7'; ?> col-md-<?php echo $currentLocal == 'ru'?'9':'8'; ?> col-sm-12 col-xs-12">
          <div class="topnav-area"> 
                         <nav class="navbar"> 
                             <div class="navbar-header">
-                               <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Menu')); ?> </button>
+                              <!-- <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Menu')); ?> </button>-->
                               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -103,7 +136,34 @@
                               
                                 <li class="dd-country last-drop"><a href="#"  data-toggle="dropdown"> <img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> </a>
 									 <?php echo $this->element('frontElements/common/language_switcher'); ?>
-                                 </li>
+
+                             
+                                <!--<div class="dropdown-menu country-drop">
+                                          <ul class="nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#home">Currency </a></li>
+                                            <li><a data-toggle="tab" href="#menu1">Currency</a></li>
+                                          </ul>                                        
+                                          <div class="tab-content">
+                                            <div id="home" class="tab-pane fade in active">
+                                              <ul class="c-list"> 
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-1.png"  alt="">AUD</a></li>
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-2.png"  alt="">CAD</a></li>
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">EUR</a></li>
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">EUR</a></li>
+                                                </ul>
+                                            </div>
+                                            <div id="menu1" class="tab-pane fade">
+                                              <ul class="c-list"> 
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-1.png"  alt="">Currency 1</a></li>
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-2.png"  alt="">Currency 2</a></li>
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">Currency 3</a></li>
+                                                <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">Currency 4</a></li>
+                                                </ul>
+                                            </div>                                          
+                                            
+                                          </div>
+                                          </div>-->
+                             </li>
                               </ul> 
                                                                                                   
                             </div> 
