@@ -10,7 +10,7 @@ class FaqsTable extends Table
 	public function initialize(array $config)
     { 
         $this->addBehavior('Translate', ['fields' => ['title','category_id','description','faq_type'],
-            'translationTable' => 'FaqsI18n'
+            'translationTable' => 'I18n'
 		]);
 		 $this->hasOne('Categories', [
            

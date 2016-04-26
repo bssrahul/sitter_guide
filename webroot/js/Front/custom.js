@@ -1049,4 +1049,3 @@ $(document).ready(function(){
         });
 });
 /*End profile video*/
-
