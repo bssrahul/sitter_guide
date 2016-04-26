@@ -81,9 +81,11 @@ class GuestsController extends AppController
 
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
 		//$blogsInfo = $UserBlogsModel->find('all',['contain'=>'Users']);//->toArray();
-		$blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.featured' =>1],'order' => [
+		/* $blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.featured' =>1],'order' => [
 																	'UserBlogs.modified' => 'desc'
-																]])->toArray();
+																]])->toArray(); */
+		
+		$blogsInfo = $UserBlogsModel->find('all', ['order' => ['UserBlogs.modified' => 'desc']]) ->limit(3)->where(['UserBlogs.featured' =>1])->where(['UserBlogs.status' =>1])->toArray();
 		//pr($blogsInfo); die;
 		$this->set('blogsInfo',$blogsInfo);
 		
@@ -290,7 +292,7 @@ class GuestsController extends AppController
 		$this->request->data = @$_REQUEST;
 		//echo "<pre>";print_r(@$_REQUEST);die;
 		$uid = base64_decode($uid);
-		
+		//pr($uid);die;
 		if($uid !=""){
 			$this->set("email",$uid);
 		}else{
@@ -496,16 +498,16 @@ class GuestsController extends AppController
 								$this->send_email('',$replace,$with,'new_registration',$this->request->data['Users']['email'],'');
 								
 								$userInfo = $UsersModel->get($getUsersTempId1);
-								$this->UsersessionSet($userInfo);
+								//$this->UsersessionSet($userInfo);
 								
 								
 								if ($this->request->is('ajax')) {
-										echo "Success:".$this->stringTranslate(base64_encode(SIGN_UP));
+										echo "Success:".$this->stringTranslate(base64_encode(SIGN_UP)).":guests/login";
 										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
 										die;
 									}else{
 										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
-								return $this->redirect(['controller' => 'guests', 'action' => 'home']);		
+								return $this->redirect(['controller' => 'guests', 'action' => 'login']);		
 								//die;
 									}
 							 

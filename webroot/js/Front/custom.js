@@ -30,15 +30,18 @@
 		//SLIDEUP MESSAGES FUNCTIONALITY START
 		
 		//CODE SNIPPET FOR SIGN UP
+	
 		$('#addUsers').validate({
 			rules: {
 				"Users[title]":
 				{
-					required:true
+					required:true,
+					
 				},
 				"Users[first_name]":
 				{
-					required:true
+					required:true,
+					lettersonly: true ,
 				},
 				"Users[email]":
 				{
@@ -59,7 +62,11 @@
 				},
 				"Users[zip]":
 				{
-					required:true
+					required:true,
+					number:true,
+					minlength:'6',
+					maxlength:'6',
+					
 				},
 				"Users[birth_date]":
 				{
@@ -105,7 +112,11 @@
 				},
 				"Users[zip]":
 				{
-					required : "This field is required"
+					required : "This field is required",
+					number:"Please enter  Numbers only.",
+					minlength: "Please enter minimum 6 Number.",
+					maxlength: "Please enter miximmum 6 Number.",
+					
 					
 				},
 				"Users[birth_date]":
@@ -867,7 +878,7 @@
 				if($.trim(response[0]) == 'Success'){
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
-					setTimeout(function(){window.location.href = ajax_url;},2000);
+					setTimeout(function(){window.location.href = ajax_url+response[2];},2000);
 				}else{
 					$('#myModal_sign').html(res);	//DISPLAY RESPONSE ERRORS
 				}
@@ -970,7 +981,9 @@ $( document ).ready(function() {
 	.on( 'click', '.dropdown-menu', function (e){
 	    e.stopPropagation();
 	});
-
+	jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z]+$/i.test(value);
+}, "Letters only please"); 
 /*End sign up*/
 /*====For password fair line====*/
     $( "#usersp-password" ).keyup(function() {

@@ -17,7 +17,8 @@
                            <a href="javascript:void(0)" id="signUpEmail"> <i class="fa fa-envelope"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Email')); ?></a>
                         </div>
                         
-                        <!--START SINGN UP Form-->  
+                        <!--START SINGN UP Form--> 
+						
 						  <?php echo $this->Form->create(null, [
 							'url' => ['controller' => 'guests', 'action' => 'signup'],
 							'id'=>'addUsers',
@@ -25,27 +26,32 @@
 							'role'=>'form',
 							'style'=>'display:none'
 						  ]);
-						  
+						  ?>
+						  <div class="form-group">
+						  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Title')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label><?php
 						  echo $this->Form->input('Users.title',[
-							'templates' => ['inputContainer' => '<div class="form-group">{{content}}</div>'],
+							'templates' => ['inputContainer' => '{{content}}'],
 							'type'=>'select',
-							'label'=>$this->requestAction('app/get-translate/'.base64_encode('Title')),
+							'label'=>false,
 							'options'=>[''=>'Choose Title','Mr'=>$this->requestAction('app/get-translate/'.base64_encode('Mr')),'Mrs'=>$this->requestAction('app/get-translate/'.base64_encode('Mrs')),'Ms'=>$this->requestAction('app/get-translate/'.base64_encode('Ms'))],
 							'class' =>'form-control'
 							]);
 						 ?>
+						 </div>
                         <div class="form-part">
                         	<div class="form-group">
+							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('First Name')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							<?php 
 								echo $this->Form->input('Users.first_name',[                
 								 'class'=>'form-control',
-								 'label'=>$this->requestAction('app/get-translate/'.base64_encode('First Name')),
+								 'label'=>false,
 								 'templates' => ['inputContainer' => '{{content}}']
 								  ]);
 								 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
 								  ?>
 							</div>	  
 							<div class="form-group">
+							
 								<?php 
 								 echo $this->Form->input('Users.last_name',[               
 								  'class'=>'form-control',
@@ -58,11 +64,12 @@
                          </div>
                          <div class="form-part">
                          <div class="form-group">	
+						 <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
                          <?php 
                                 echo $this->Form->input('Users.country',[
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'select',
-                                  'label'=>$this->requestAction('app/get-translate/'.base64_encode('Country')),
+                                  'label'=>false,
                                   'options'=>[''=>'Choose Country','Australia'=>'Australia','Austria'=>'Austria','Belbium'=>'Belbium','Canada'=>'Canada','Denmark'=>'Denmark','Finland'=>'Finland','France'=>'France','Germany'=>'Germany','Hong Kong S.A.R., China'=>'Hong Kong S.A.R., China','Ireland'=>'Ireland','Italy'=>'Italy','Japan'=>'Japan'],
                                   'class' =>'form-control'
                                   ]);
@@ -70,8 +77,8 @@
                             ?>
                          </div>
 							<div class='form-group'>
-								<label for="zip"><?php echo $this->requestAction('app/get-translate/'.base64_encode('MrPost/Zip Code')); ?></label>
-							    <?php  
+							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Post/Zip Code')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+							 <?php  
 								echo $this->Form->input('Users.zip',[
 								'templates' => ['inputContainer' => '{{content}}'],               
 									'class'=>'form-control',
@@ -83,22 +90,24 @@
                         </div>
                        
                        <div class='form-group'>
+					   <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 						<?php 
 							echo $this->Form->input('Users.email',[
 							'templates' => ['inputContainer' => '{{content}}'],
 							'class' =>'form-control',
-							'label'=>$this->requestAction('app/get-translate/'.base64_encode('Email')),
+							'label'=>false,
 							]);
 							echo '<em class="signup_error error">'.__(@$loginerror['email'][0]).'</em>';
 						?>
 					   </div>
                         <div class="form-part">
                             <div class="form-group">
+							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Create Password')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							<?php 
                               echo $this->Form->input('Users.create_password',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'password',
-                                  'label'=>$this->requestAction('app/get-translate/'.base64_encode('Create Password')),
+                                  'label'=>false,
                                   'class' =>'form-control'
                                 ]);
                               echo '<em class="signup_error error">'.__(@$loginerror['create_password'][0]).'</em>';
@@ -106,8 +115,8 @@
                        
                              </div>
 							  <div class="form-group">
-								<label for="re_password"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Password')); ?></label>
-								  <?php 
+							  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Password')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+							   <?php 
 									echo $this->Form->input('Users.re_password',[
 										'label'=>false,
 										'type'=>'password',
@@ -119,8 +128,8 @@
 							   </div>
                         </div>
                         <div class="form-group">
-								  <label for="pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Where did you hear about us?')); ?></label>
-								  <?php 
+						<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Where did you hear about us?')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+							   <?php 
 									echo $this->Form->input('Users.hear_from',[
 									  'type'=>'select',
 									  'label'=>false,
@@ -132,8 +141,8 @@
                         
                         <div class="form-part">
 							<div class='form-group dobDiv'>
-								<label for="birth_date"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?></label>
-								<?php  
+							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+							 <?php  
 								echo $this->Form->input('Users.birth_date',[               
 								'class'=>'form-control dob',
 								'label'=>false,
@@ -146,8 +155,8 @@
 								<i class="fa fa-calendar"></i>
 							</div>
                            <div class="form-group">
-								  <label for="pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Have A Reference Code?')); ?></label>
-								  <?php 
+						   <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Have A Reference Code?')); ?> </label>
+							  <?php 
 								echo $this->Form->input('Users.reference_code',[								
 								'label' => false,
 								'type' => "text",
@@ -161,7 +170,8 @@
                          
                             
                         <div class="form-group">
-                          <label for="pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Verification')); ?></label>
+						<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Verification')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                    
                           
 							<span class="cap-img">
 								<div class="g-recaptcha" data-sitekey="<?php echo CAPTCHA_SITE_KEY; ?>"></div>
@@ -186,7 +196,8 @@
                             	'type' => "checkbox"
 							]);
                            ?>
-                        <label for="users-term-condition" style="position:relative"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></label>  
+						   <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                        <label for="users-term-condition" style="position:relative"></label>  
                         </div>
  
                        <?php
@@ -261,3 +272,12 @@
 		$(".fa-calendar").click(function(){ $("#users-birth-date").focus();});
 	});
 </script>
+<style>
+label .fa.fa-asterisk {
+    font-size: 6px;
+    left: 2px;
+    position: relative;
+    top: -5px;
+	color:red
+}
+</style>
