@@ -27,9 +27,9 @@
     <div class="row">
     <div class="col-sm-3 padding-left0px  padding-right3px">
         <div class="map">
-			<!--<div class="embed-responsive embed-responsive-4by3">
+			<div class="embed-responsive embed-responsive-4by3">
 			 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:400px;width:400px;'><div id='gmap_canvas' style='height:400px;width:400px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="http://www.proxysitereviews.com/instantproxies">instantproxies</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(-33.86540229491878,151.2059816894105),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-33.86540229491878,151.2059816894105)});infowindow = new google.maps.InfoWindow({content:'<strong>Sitter Guide</strong><br>sydney<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
-			</div>-->
+			</div>
 		</div>
     </div>
     

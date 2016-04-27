@@ -199,7 +199,7 @@ class AppController extends Controller{
 			return $this->redirect(['controller'=>"users",'action' => 'dashboard' ]);
 		}
 	}
-
+	
 	/**
 	* Function for Upload Image
 	*/
@@ -685,7 +685,7 @@ class AppController extends Controller{
 					$uploadFolder= "files/scanned_doc";	
 					$fileSize= "5242880";
 					$fileKb = "5 MB";
-					$extCheckArr = array('pdf','docx','doc');	
+					$extCheckArr = array('pdf','docx','doc','png','gif','jpeg','jpg','bmp');	
 				}
 				
 				$session = $this->request->session();
@@ -697,7 +697,10 @@ class AppController extends Controller{
 						$fileName = $session->read('User.id')."_".$FileArr['custom_name'];//$this->RandomStringGenerator(15);
 						$destination = realpath('../webroot/'.$uploadFolder).'/'.$fileName.$ext;
 						$src = $FileArr['tmp_name'];
-												
+						
+						if(file_exists($destination)){
+							unlink($destination);						
+						}
 						
 						if(move_uploaded_file($FileArr['tmp_name'],$destination))
 						{
@@ -720,5 +723,7 @@ class AppController extends Controller{
 			}
 		}
 	}
+	
+	
 }
 ?>

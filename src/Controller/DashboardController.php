@@ -18,6 +18,7 @@ use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\Event\Event;
+use Cake\I18n\Time;
 /**
  * Static content controller
  *
@@ -525,36 +526,43 @@ class DashboardController extends AppController
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
 			
-			
+			//pr($this->request->data['UserProfessionals']['check']['govt']); die;
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
 
 			$UserProfessionalModel->deleteAll(['user_id' => $userId]);
 			$UserProfessionalDetailsModel->deleteAll(['user_id' => $userId]);
 			
+			//ADD FIRST FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
 			$userProfessionalData->type_professional = 'check';
 			$userProfessionalData->sector_type = "govt";
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
+			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['check']['govt']['qualification_date'], 'UTC');
+			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['check']['govt']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
-
+			//ADD SECOND FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
 			$userProfessionalData->type_professional = 'pets';
 			$userProfessionalData->sector_type = "private";
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
+			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['qualification_date'], 'UTC');
+			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
-
+			//ADD THIRD FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
 			$userProfessionalData->type_professional = 'people';
 			$userProfessionalData->sector_type = "private";
 
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
+			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['people']['private']['qualification_date'], 'UTC');
+			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['people']['private']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
 			
-			
+			//ADD FOURTH FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
 			$userProfessionalData->type_professional = 'govt';
@@ -563,7 +571,6 @@ class DashboardController extends AppController
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['govt']['licence']);
 			$UserProfessionalModel->save($userProfessionalData);
 
-            //foreach($this->request->data as $key=>$val)
 			for($i=0;$i<count($this->request->data['qualification_title']);$i++){
 
 				 $userProfessionalData = $UserProfessionalModel->newEntity();
@@ -577,10 +584,11 @@ class DashboardController extends AppController
 				 $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
 				 $userProfessional['scanned_certification'] = $this->request->data['scanned_certification'][$i];
 
-
-
-			   $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
-			   $UserProfessionalModel->save($userProfessionalData);
+				 $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
+				 $userProfessionalData->qualification_date = $this->request->data['qualification_date'][$i];
+				 $userProfessionalData->expiry_date = $this->request->data['expiry_date'][$i];
+			
+				 $UserProfessionalModel->save($userProfessionalData);
 			}
 
 			$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
@@ -597,8 +605,8 @@ class DashboardController extends AppController
                
 		}else{
 			
-            $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
-          
+            $query = $usersModel->get($userId,['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails']]);
+         
 		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
 				 
 				 if(!empty($query->user_professional_accreditations)){
@@ -625,12 +633,15 @@ class DashboardController extends AppController
 								
 								$i++;
 							}
-							
+						
 						}
 				  }
+				   if(!empty($query['user_professional_accreditations_details'])){
+						$customArrForDisplayRec['user_professional_accreditations_details'] = $query['user_professional_accreditations_details'][0];
+				   }
 					// $skillsData = $query->user_professional_accreditations;
 					//  $this->set('skillId', $skillsData->id);
-					// unset($skillsData->id);
+					// unset($skillsData->id); 
 					//pr($customArrForDisplayRec); die;
 					$this->set('professional', $customArrForDisplayRec);
                   

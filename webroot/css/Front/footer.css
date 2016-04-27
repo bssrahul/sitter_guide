@@ -21,7 +21,7 @@
 .foot-wrap .bot-foot .bf-area .bot-social ul li a{ width:45px; height:45px; border:#505050 1px solid; display:block; text-align:center; color:#ffffff; line-height:45px; margin:0 15px 0 0; border-radius:50%;}
 .foot-wrap .bot-foot .bf-area .bot-social ul li a:hover, .foot-wrap .bot-foot .bf-area .bot-social ul li a:focus{ color:#aaa9a9; border:#aaa9a9 1px solid;}
 .foot-wrap .bot-foot .bf-area .drop-area{ width:100%; float:left;}
-.foot-wrap .bot-foot .bf-area .drop-area .form-group .form-control{ height:50px; border-radius:2px; background:#72a105; color:#ffffff; border:0px; -webkit-appearance:none; -moz-appearance:none; background:#72a105 url(../../img/drop-arrow.png) no-repeat; background-position: right 15px center;  }
+.foot-wrap .bot-foot .bf-area .drop-area .form-group .form-control{ height:50px; border-radius:2px; background:#72a105; color:#ffffff; border:0px; -webkit-appearance:none; -moz-appearance:none; background:#72a105 url(../../img/drop-arrow.png) no-repeat; background-position: right 15px center; background-position-x:95%; background-position-y:18px; }
 .foot-wrap .bot-foot .bf-area .drop-area .form-group select::-ms-expand {    display: none;}
 .foot-wrap .bot-foot .bf-area .drop-area .form-group .form-control option{ background:#ffffff; color:#404040;}
 .foot-wrap .bot-foot .bf-area p.crgt{ font-size:13px; font-weight:200; color:#ffffff; text-align:right;}

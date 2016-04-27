@@ -21,6 +21,7 @@ class UsersTable extends Table
 		$this->hasOne('UserAboutSitters', ['dependent' => true]);
 		$this->hasMany('UserSitterGalleries', ['dependent' => true]);
 		$this->hasMany('UserProfessionalAccreditations', ['dependent' => true]);
+		$this->hasMany('userProfessionalAccreditationsDetails', ['dependent' => true]);
 		$this->hasMany('UserSitterServices', ['dependent' => true]);
     }
 	
@@ -46,9 +47,17 @@ class UsersTable extends Table
 	public function validationUpdate($validator)
     {
         $validator
+			->notEmpty('title', 'Title field is required.')
 		    ->notEmpty('first_name', 'First name field is required.')
-		    ->notEmpty('last_name', 'Last name field is required.')
-		    ->notEmpty('country_code', 'Country code field is required.')
+		 
+		    ->notEmpty('country_code', 'Country code field is required.') 
+			->notEmpty('create_password', 'Create Password field is required.')
+		    ->notEmpty('re_password', 'Repeate Password field is required.')
+		    ->notEmpty('country_code', 'Country code field is required.') 
+			->notEmpty('birth_date', 'Birth Date field is required.')
+		    ->notEmpty('term_condition', 'This field is required.') 
+			->notEmpty('zip', 'Zip field is required.')
+		  
 			->notEmpty('phone', 'Phone number field is required.')
 			->add('phone', [
 			        'minLength' => [
@@ -68,7 +77,6 @@ class UsersTable extends Table
 			->notEmpty('state', 'State field is required.')
 			->notEmpty('address', 'Address1 field is required.')
 			->notEmpty('address2', 'Address2 field is required.')
-			->notEmpty('zip', 'Zip field is required.')
 			->add('email', 'validFormat', [
 			   'rule' => 'email',
 			   'message' => 'E-mail must be valid'
