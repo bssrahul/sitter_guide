@@ -393,7 +393,7 @@
 						 
 						success:function(res)
 						{
-							console.log(res);
+							//console.log(res);
 							//alert(res);
 							var response = res.split(':');
 							if($.trim(response[0]) == 'Success'){
@@ -510,12 +510,6 @@
 				{
 					required:true
 				},
-				"Users[email]":
-				{
-					required: true,
-					email: true,
-					remote: ajax_url+"App/isUniqueEmailAjax"
-				},
 				"Users[emergency_contacts]":
 				{
 					required : true
@@ -589,13 +583,6 @@
 				{
 					required : "This field is required"
 
-				},
-				"Users[email]":
-				{
-					required : "This field is required",
-					email: 'Kindly use valid email address',
-					remote: "Email address already exists"
-					
 				},
 				"Users[emergency_contacts]":
 				{

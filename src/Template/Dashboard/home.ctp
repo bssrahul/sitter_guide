@@ -123,7 +123,7 @@
       
        <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/professional-accreditations"; ?>'" >
         
-        <h4 class="carrot"> Skill & Accriditations</h4>
+        <h4 class="carrot"> Skills & Accriditations</h4>
           <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i4.png" alt="General Profile" class=" img-thumbnail">
           
           <div class="border-top" >
