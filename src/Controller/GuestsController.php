@@ -18,6 +18,8 @@ use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
+use Cake\I18n\Time;
+
 //require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
 use Facebook;
 use Cake\Event\Event;
@@ -206,9 +208,10 @@ class GuestsController extends AppController
 		{
 			$checkEmail=explode('@',$data['Users']['email']);
 			if($this->isValidEmail($data['Users']['email'])==0){
-				$errors ['email'] [] = $this->stringTranslate(base64_encode("Please enter a valid email address"))."\n";
+				$errors['email'][] = $this->stringTranslate(base64_encode("Please enter a valid email address"))."\n";
 			}
 		}
+		
 		//Validation for password
 		if(trim($data['Users']['password'])=='')
 		{
@@ -402,7 +405,7 @@ class GuestsController extends AppController
 		$error=array();
 		$captchErr="";
 		$this->request->data = @$_REQUEST;
-	
+
 		if(isset($this->request->data['signup-submit']) && $this->request->data['signup-submit']=='Sign Up')
 		{ 
 			
@@ -415,12 +418,14 @@ class GuestsController extends AppController
 					$responseData = json_decode($verifyResponse);
                     if($responseData->success){
 						
+							//pr($this->request->data);die;
 						$this->request->data['Users']['password'] = $this->request->data['Users']['create_password'];
 						unset($this->request->data['Users']['create_password']);
 
 						$data=$this->request->data;
+						
 						$error=$this->validate_register($data);
-						//echo "<pre>";print_r($data);die;
+						echo "<pre>";print_r($error);die;
 						if(count($error) == 0)
 						{
 							// Loaded Users Model
@@ -512,12 +517,12 @@ class GuestsController extends AppController
 									}
 							 
 								
-							}else{
+							} else{
 								
 								$this->set('loginerror',$this->Member->validationErrors);
 								$this->set('totalError',count($this->Member->validationErrors));
 								$this->set('signupdata',$data);
-							}
+							} 
 						}
 							
 					}else{
@@ -555,20 +560,44 @@ class GuestsController extends AppController
 	/*function signin(){
 		$this->viewBuilder()->layout('landing');
 	}*/
+	
+	
+	//dummy
+	/* function dummy(){
+		
+		echo $cdate= date("Y-m-d");
+     $your_date = strtotime("1998-04-29");
+     $datediff =strtotime($cdate)-$your_date;
+     $days=floor($datediff/(60*60*24));
+	 echo $days;
+	if($days < 6574){
+		echo "<br>";
+		echo "You are under eighteen";
+	}
+	else{
+		echo "<br>";
+		echo "You are above eighteen";
+	}
+	} */
+	
+	
     /**Function for Validate SIGN UP
 	*/
 	function validate_register($data)
 	{
+	//echo "okok"; pr($data);die;
 		$errors=array();
 		//Validation for first name
 		if(trim($data['Users']['first_name'])=='')
 		{
-			$errors['first_name'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
+			//echo "empty";die;
+			$errors['first_name'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
 		}else{
 			if(is_numeric($data['Users']['first_name'])){
-				$errors['first_name'][]=$this->stringTranslate(base64_encode("First name should be alphabatic"))."\n";
+				$errors['first_name'][]= $this->stringTranslate(base64_encode("First name should be alphabatic"))."\n";
 			}
 		}
+		
 		//Validation for last name
 		if(trim($data['Users']['last_name'])=='')
 		{
@@ -578,6 +607,21 @@ class GuestsController extends AppController
 				$errors['last_name'][]=$this->stringTranslate(base64_encode("Last name should be alphabatic"))."\n";
 			}
 		}
+		//Validation for Birth Date
+		if(trim($data['Users']['birth_date'])== ""){
+			
+			$errors['birth_date'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
+		}else{
+				 echo $bdate=$data['Users']['birth_date'];
+				 echo $cdate= date("Y-m-d");
+				 $diff = abs(strtotime($cdate) - strtotime($bdate));
+				 $years = floor($diff / (365*60*60*24));
+				 if($years >= 18){}else{
+						$errors['birth_date'][]=$this->stringTranslate(base64_encode("User Must be 18 Years Above"))."\n";
+				 }
+				//printf("%d years, %d months, %d days\n", $years, $months, $days);
+					
+	}
 		//Validation for email
 		if(trim($data['Users']['email'])=='')
 		{
@@ -609,6 +653,7 @@ class GuestsController extends AppController
 				$errors['re_password'][]=$this->stringTranslate(base64_encode("Password does not matched"))."\n";
 			}
 		}
+		//pr($errors);die;
 		return $errors;
 	}
 		
@@ -818,6 +863,20 @@ class GuestsController extends AppController
 		}
 		$this->render("signup");
 		
+	}
+	
+	public function checkDevice() {
+		include('/class/Mobile_Detect.php');
+		$detect = new \Mobile_Detect;
+		
+		// Any mobile device (phones or tablets).
+		if( $detect->isMobile() ){
+			$detect= "mobile";	
+		} else {
+			$detect= "desktop";
+		}
+		$this->set('detect',$detect);
+		//$this->render("login_menu");
 	}
 
 

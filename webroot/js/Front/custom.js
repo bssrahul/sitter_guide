@@ -113,7 +113,7 @@
 				"Users[zip]":
 				{
 					required : "This field is required",
-					number:"Please enter  Numbers only.",
+					number:"Zip Code should be Numbers.",
 					minlength: "Please enter minimum 6 Number.",
 					maxlength: "Please enter miximmum 6 Number.",
 					

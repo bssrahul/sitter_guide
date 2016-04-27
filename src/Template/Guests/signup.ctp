@@ -20,6 +20,7 @@
                         <!--START SINGN UP Form--> 
 						
 						  <?php echo $this->Form->create(null, [
+
 							'url' => ['controller' => 'guests', 'action' => 'signup'],
 							'id'=>'addUsers',
 							'enctype'=>'multipart/form-data',
@@ -36,7 +37,9 @@
 							'options'=>[''=>'Choose Title','Mr'=>$this->requestAction('app/get-translate/'.base64_encode('Mr')),'Mrs'=>$this->requestAction('app/get-translate/'.base64_encode('Mrs')),'Ms'=>$this->requestAction('app/get-translate/'.base64_encode('Ms'))],
 							'class' =>'form-control'
 							]);
+							 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
 						 ?>
+
 						 </div>
                         <div class="form-part">
                         	<div class="form-group">
@@ -47,6 +50,7 @@
 								 'label'=>false,
 								 'templates' => ['inputContainer' => '{{content}}']
 								  ]);
+								//  pr($loginerror['first_name'][0]);
 								 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
 								  ?>
 							</div>	  
@@ -219,7 +223,7 @@
 							 </span>
                          </p>
                     
-                    </form>
+                    <?php $this->Form->end(); ?>
                          <!--END SIGN UP FORM-->
                      <div id="loginFacebook">
                         <div class="top-sp">
@@ -266,7 +270,8 @@
 		     changeMonth: true,
 		     changeYear: true,
 	         maxDate: new Date(),
-	         yearRange: "-50:-6"
+	         yearRange: "-50:-6",
+			 dateFormat: 'dd-mm-yy'
 		   }
 			);
 		$(".fa-calendar").click(function(){ $("#users-birth-date").focus();});
