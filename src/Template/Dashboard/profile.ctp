@@ -272,7 +272,8 @@
                     </button>
                     </div>
                     <div class="col-lg-6">
-                <iframe width="" height="" src="https://www.youtube.com/embed/GF60Iuh643I" frameborder="0" allowfullscreen></iframe>
+                <iframe id="preview-profile-video" width="" height="" src="https://www.youtube.com/embed/GF60Iuh643I" frameborder="0" allowfullscreen>
+                </iframe>
 </div>
                     </div>
                     </div>
@@ -372,8 +373,8 @@
         </div>
     </div>
 </div>
-<?php echo $this->Form->create(null,['id'=>'profileImage','enctype'=>'multipart/form-data',
-                  'url'=>['controller'=>'dashboard','action'=>'saveProfileVideo']]); ?>
+<?php echo $this->Form->create(null,['id'=>'profileVideo','enctype'=>'multipart/form-data',
+                  'url'=>['controller'=>'dashboard','action'=>'save-profile-video']]); ?>
                 <input type="file" name="profile_video" id="profile_video" />
 <?php echo $this->Form->end(); ?>
 
@@ -478,26 +479,24 @@ function saveCropImage(params) {
         }
     });
     }
-    /*For profile video*/
+/*For profile video*/
 $(document).ready(function(){
     $("#browseVideo").on('click',function(){
         $("#profile_video").trigger("click");    
         });
 
-  $('#browseVideo').on('change', function(){ 
+  $(document).on('change','#profile_video', function(){ 
 
     //$("#preview-avatar-profile").html('');
     //$("#preview-avatar-profile").html('Uploading....');
     $("#profileVideo").ajaxForm(
     {
     //target: '#preview-profile-video',
-
     success: function(data) { 
-      $("#preview-avatar-profile").attr(src,'');
-            /*$('img#photo').imgAreaSelect({
-                aspectRatio: '1:1',
-                onSelectEnd: getSizes,
-            });*/
+      alert(data);
+      
+      $("#preview-profile-video").attr('src','');
+       
         }
     }).submit();
   });
