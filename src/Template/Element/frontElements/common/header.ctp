@@ -20,12 +20,14 @@
                               <input class="search-input" type="text" value="" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search home sitter for your loving dog')); ?>" />
                             </div>
                         </div> 
+                                
+                   <?php echo $this->element('frontElements/common/mob_language_switcher'); ?>
         </div>
       <div class="col-lg-<?php echo $currentLocal == 'ru'?'8':'7'; ?> col-md-<?php echo $currentLocal == 'ru'?'9':'8'; ?> col-sm-12 col-xs-12">
          <div class="topnav-area"> 
                         <nav class="navbar"> 
                             <div class="navbar-header">
-                               <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Menu')); ?> </button>
+                              <!-- <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Menu')); ?> </button>-->
                               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -46,7 +48,10 @@
                               
                                 <li class="dd-country last-drop"><a href="#"  data-toggle="dropdown"> <img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> </a>
 									 <?php echo $this->element('frontElements/common/language_switcher'); ?>
-                                 </li>
+
+                             
+                               
+                             </li>
                               </ul> 
                                                                                                   
                             </div> 

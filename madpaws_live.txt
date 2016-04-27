@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.7
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 20, 2016 at 11:56 PM
--- Server version: 5.5.45-cll-lve
--- PHP Version: 5.4.31
+-- Generation Time: Apr 27, 2016 at 11:52 AM
+-- Server version: 5.5.47-MariaDB-1ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `sitterguide-test`
+-- Database: `madpaws_live`
 --
 
 -- --------------------------------------------------------
@@ -45,32 +45,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `full_name`, `username`, `email`, `password`, `admin_img`, `status`, `type`, `date_added`, `last_login`) VALUES
-(1, 'Sanyam', 'admin', 'rahul.sharma2@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', 'Q6voJkyTw9P24nF.png', 1, '0', '2015-01-16 00:00:00', '2016-04-21 05:23:12');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `admins_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `admins_i18n`
---
-
-INSERT INTO `admins_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'ro', 'Admins', 1, 'full_name', 'Emma Watson ro');
+(1, 'Rahul Jain', 'admin', 'rahul.jain@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', 'Gqge72iDPhF9lSF.png', 1, '0', '2015-01-16 00:00:00', '2016-04-25 05:31:48');
 
 -- --------------------------------------------------------
 
@@ -88,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `date_added` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `categories`
@@ -96,49 +71,16 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 INSERT INTO `categories` (`id`, `title`, `slug`, `image`, `status`, `description`, `date_added`, `modified`) VALUES
 (6, 'Dogs', 'dogs', 'K0kJp5J6jalVNVh.jpg', 1, '<p>Dogs report</p>', '2015-05-15 08:22:26', '2015-05-15 08:22:26'),
-(7, 'Cat', 'cat', 'TYxgPI04NDQ0Lmk.jpg', 0, '<p> Cat Reports</p>', '2015-05-15 08:22:54', '2016-04-20 10:04:23'),
-(8, 'Hourses', 'hourses', 'Aw2V2lesQGqUDfX.jpg', 1, 'loving hourses ', NULL, '2016-04-20 10:04:30'),
-(9, 'Birds', 'birds', '844YjgTPKCTQ0oF.jpg', 1, 'Bird descriptions', NULL, '2016-04-20 10:56:18'),
+(7, 'Cat', 'cat', 'TYxgPI04NDQ0Lmk.jpg', 1, '<p> Cat Reports</p>', '2015-05-15 08:22:54', '2015-05-15 08:22:54'),
+(8, 'Hourses', 'hourses', 'Aw2V2lesQGqUDfX.jpg', 1, 'loving hourses ', NULL, '2016-04-12 09:06:33'),
+(9, 'Birds', 'birds', '844YjgTPKCTQ0oF.jpg', 1, 'Bird descriptions', NULL, '2016-04-12 07:52:37'),
 (11, 'Animal', 'Ani', 'sl5p6FZXThInwLX.jpg', 1, 'Cat', NULL, NULL),
 (12, 'Anim', 'Animz', '3zWV1p6I4jUm0Ke.jpg', 1, 'Snake', NULL, NULL),
 (13, 'Wild animal', 'AA', '5AUhVkLSNb1fOB8.jpg', 1, 'Outdoor Cat', NULL, NULL),
 (14, 'Animal', 'A', 'gz6Cwrk2aifs51I.jpg', 1, 'Leopard', NULL, NULL),
-(20, 'sdfsdf', 'fsdf', 'BMvnQlo5tcAHAKt.jpg', 1, 'bvngn', NULL, '2016-04-20 10:05:52'),
-(21, 'Penguins', 'Animal', 'JRBt067vO5kwQYo.jpg', 1, 'Penguins', NULL, NULL),
-(24, 'bgbgb', 'bdbbd', '', 1, 'bdf', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `categories_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
-
---
--- Dumping data for table `categories_i18n`
---
-
-INSERT INTO `categories_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(10, 'de_DE', 'Categories', 6, 'title', 'Comics gr'),
-(11, 'de_DE', 'Categories', 6, 'slug', 'comics'),
-(12, 'de_DE', 'Categories', 6, 'description', '<p>Comics</p>'),
-(13, 'de_DE', 'Categories', 7, 'title', 'Reports gr'),
-(14, 'de_DE', 'Categories', 7, 'slug', 'reports'),
-(15, 'de_DE', 'Categories', 7, 'description', '<p> Reports</p>'),
-(16, 'de_DE', 'Categories', 8, 'title', 'Pferde'),
-(17, 'de_DE', 'Categories', 8, 'slug', 'hourses'),
-(18, 'de_DE', 'Categories', 8, 'description', 'loving Pferde');
+(15, 'Image', '*', 'MTRlalsVdrC0Qjf.jpg', 0, 'Image Shrink', NULL, NULL),
+(18, 'fgfg', 'gdfgdf', '', 1, 'gdgdfg', NULL, NULL),
+(20, 'sdfsdf', 'fsdf', 'KyPMCcJUS8KdNIF.png', 0, 'bvngn', NULL, '2016-04-12 07:52:44');
 
 -- --------------------------------------------------------
 
@@ -172,42 +114,10 @@ CREATE TABLE IF NOT EXISTS `cms_pages` (
 --
 
 INSERT INTO `cms_pages` (`id`, `pagename`, `pageheading`, `banner_image`, `pagecontent`, `pageurl`, `link`, `company_name`, `phone_no`, `email`, `location`, `status`, `meta_title`, `meta_keywords`, `meta_description`, `created`, `modified`) VALUES
-(1, 'Terms & Conditions', '', '', '<p class="text-justify">At Sitter Guide, the safety of our Users, Sitters and Pets is of the utmost importance and concern.</p>\r\n<p class="text-justify">Public Liability cover is a legal requirement for people looking after pets for money. As in accordance with Australian law, if a domestic animal causes an accident or injures a 3rd party, the person who is in control of the animal is responsible.</p>\r\n<h3>1. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>2. Btandard Lsosdrem sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>3. International isitom sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>4. Arl isitom sIpsum dpass</h3>\r\n<p class="text-justify">or in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>5.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste iru anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<p class="text-justify">Lorem ipste irure dolor icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>6.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>7. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'terms', 'Home/cms/terms', '', '0', '', '', 1, 'Live3Times - Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '0000-00-00 00:00:00', '2016-04-21 05:54:30'),
-(4, 'About Us', '', '', '<p class="text-justify">At Sitter Guide, the safety of our Users, Sitters and Pets is of the utmost importance and concern.</p>\r\n<p class="text-justify">Public Liability cover is a legal requirement for people looking after pets for money. As in accordance with Australian law, if a domestic animal causes an accident or injures a 3rd party, the person who is in control of the animal is responsible.</p>\r\n<h3>1. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>2. Btandard Lsosdrem sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>3. International isitom sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>4. Arl isitom sIpsum dpass</h3>\r\n<p class="text-justify">or in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>5.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste iru anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<p class="text-justify">Lorem ipste irure dolor icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>6.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>7. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'about-us', 'Homes/cms/about_us', 'Beta Soft Systems Pvt Ltd', '0', '', '', 1, 'Live3Times - About Us', 'About Us', 'About Us', '0000-00-00 00:00:00', '2016-04-21 05:55:12'),
-(6, 'Privacy Policy', '', '', '<p class="text-justify">At Sitter Guide, the safety of our Users, Sitters and Pets is of the utmost importance and concern.</p>\r\n<p class="text-justify">Public Liability cover is a legal requirement for people looking after pets for money. As in accordance with Australian law, if a domestic animal causes an accident or injures a 3rd party, the person who is in control of the animal is responsible.</p>\r\n<h3>1. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>2. Btandard Lsosdrem sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>3. International isitom sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>4. Arl isitom sIpsum dpass</h3>\r\n<p class="text-justify">or in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>5.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste iru anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<p class="text-justify">Lorem ipste irure dolor icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>6.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>7. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'privacy', 'Home/cms/privacy', '', '0', '', '', 0, 'Live3Times - Privacy Policy', 'Privacy Policy', 'Privacy Policy', '0000-00-00 00:00:00', '2016-04-21 05:55:26'),
-(7, 'Contact us', '', '', '<p class="text-justify">At Sitter Guide, the safety of our Users, Sitters and Pets is of the utmost importance and concern.</p>\r\n<p class="text-justify">Public Liability cover is a legal requirement for people looking after pets for money. As in accordance with Australian law, if a domestic animal causes an accident or injures a 3rd party, the person who is in control of the animal is responsible.</p>\r\n<h3>1. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>2. Btandard Lsosdrem sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>3. International isitom sIpsum dpassagde</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>4. Arl isitom sIpsum dpass</h3>\r\n<p class="text-justify">or in reprehenderit in voluptate velit esse cillum  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>5.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste iru anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<p class="text-justify">Lorem ipste irure dolor icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n<h3>6.  Btandaational isitom sIpsum dpass Btandae</h3>\r\n<p class="text-justify">Lorem ipste irure dolor in reprehenderit in voluptate velit esse cillum <a href="#">dolore@ugiat.com</a> nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".</p>\r\n<h3>7. The standard Lorem Ipsum passage</h3>\r\n<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'contact-us', 'Home/contact-us', 'Beta Soft Systems Pvt Ltd ', '0172 467 7163', 'info@betasofttrainings.com', 'Sco 398 Sector - 20 Panchkula, Haryana 134116', 1, 'Live3Times - Contact Us', 'Contact Us', 'Contact Us', '0000-00-00 00:00:00', '2016-04-21 05:54:50');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cms_pages_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `cms_pages_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
-
---
--- Dumping data for table `cms_pages_i18n`
---
-
-INSERT INTO `cms_pages_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(3, 'it_IT', 'CmsPages', 4, 'pagename', 'About Us et'),
-(4, 'it_IT', 'CmsPages', 4, 'pagecontent', '<h2 class="title_head">Welcome to Sitter Guide et</h2>\r\n<p>Test Sitter Guide content.&nbsp;</p>\r\n<p class="strong">*Subject to Terms and Conditions*</p>'),
-(5, 'es_ES', 'CmsPages', 4, 'pagename', 'About Us sp'),
-(6, 'es_ES', 'CmsPages', 4, 'pagecontent', '<h2 class="title_head">Welcome to Sitter Guide sp</h2>\r\n<p>Test Sitter Guide content.&nbsp;</p>\r\n<p class="strong">*Subject to Terms and Conditions*</p>'),
-(7, 'de_DE', 'CmsPages', 4, 'pagename', 'Über uns'),
-(8, 'de_DE', 'CmsPages', 4, 'pagecontent', '<h2 class="title_head">Willkommen bei Sitter F&uuml;hrer</h2>\r\n<h2 class="title_head"></h2>\r\n<h2 class="title_head">Sitter Test Guide Gehalt.</h2>\r\n<h2 class="title_head"></h2>\r\n<h2 class="title_head">* Vorbehaltlich der Allgemeinen Gesch&auml;ftsbedingungen *</h2>'),
-(9, 'ru_RU', 'CmsPages', 6, 'pagename', 'Privacy Policy russsian'),
-(10, 'ru_RU', 'CmsPages', 6, 'pagecontent', '<p><span style="font-size: medium;"><strong style="font-size: medium;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></span><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College Ipsum.<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <br /><br />in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br style="text-align: justify;" /></p>');
+(1, 'Terms & Conditions', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', 'bT1LnGwVDPXugT9.jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.<br /><br /><span style="font-size: medium;"><strong>1. Contrary to popular belief, Lorem</strong></span><br /><br />&nbsp;&nbsp;&nbsp; <strong>1. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>2. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.</p>\r\n<p><span style="font-size: medium;"><strong>2. It is a long established fact that</strong></span><br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>1. industry. Lorem Ipsum has been the industry''s</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 2. It is a long established fact that a</strong> reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br style="text-align: justify;" /></p>', 'terms', 'Home/cms/terms', '', '0', '', '', 1, 'Live3Times - Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '0000-00-00 00:00:00', '2016-04-21 06:50:51'),
+(4, 'About Us', '', '', '<h2 class="title_head">Welcome to Sitter Guide</h2>\r\n<p>Test Sitter Guide content.&nbsp;</p>\r\n<p class="strong">*Subject to Terms and Conditions*</p>', 'about-us', 'Homes/cms/about_us', 'Beta Soft Systems Pvt Ltd', '0', '', '', 1, 'Live3Times - About Us', 'About Us', 'About Us', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Privacy Policy', '', '', '<p><span style="font-size: medium;"><strong style="font-size: medium;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></span><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College Ipsum.<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <br /><br />in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br style="text-align: justify;" /></p>', 'privacy', 'Home/cms/privacy', '', '0', '', '', 0, 'Live3Times - Privacy Policy', 'Privacy Policy', 'Privacy Policy', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Contact us', '', '', '<p><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Beta Soft Systems Pvt Ltd&nbsp;</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Sco 398 Sector - 20 Panchkula, Haryana 134116</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">info@betasofttrainings.com</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">0172 467 7163</span></p>', 'contact-us', 'Home/contact-us', 'Beta Soft Systems Pvt Ltd ', '0172 467 7163', 'info@betasofttrainings.com', 'Sco 398 Sector - 20 Panchkula, Haryana 134116', 1, 'Live3Times - Contact Us', 'Contact Us', 'Contact Us', '0000-00-00 00:00:00', '2016-04-13 09:59:00');
 
 -- --------------------------------------------------------
 
@@ -227,34 +137,18 @@ CREATE TABLE IF NOT EXISTS `contact_requests` (
   `reply_status` int(11) NOT NULL DEFAULT '0' COMMENT '0=> No Reply, 1=>Reply  sent',
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `contact_requests`
 --
 
 INSERT INTO `contact_requests` (`id`, `name`, `email`, `phone_no`, `country`, `subject`, `message`, `reply`, `reply_status`, `date_added`) VALUES
+(7, 'test', 'sukhdev@mobilyte.com', '', '', '', '', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Write your message here...</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 1, '0000-00-00 00:00:00'),
 (8, 'Tester', 'tester@gmail.com', '9856745634', 'India', '', '', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Write your message here...</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 1, '0000-00-00 00:00:00'),
 (9, 'Kumar', 'Vineet@mobllyte.com', '', '', '', '', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Write your message here...</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 1, '0000-00-00 00:00:00'),
-(10, 'Mridula', 'mridula.sharma@mobilyte.com', '', '', '', '', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Write your message here...</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 1, '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contact_requests_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `contact_requests_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+(10, 'Mridula', 'mridula.sharma@mobilyte.com', '', '', '', '', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Write your message here...</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 1, '0000-00-00 00:00:00'),
+(11, '', '', '', '', '', '', '', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -550,15 +444,15 @@ CREATE TABLE IF NOT EXISTS `currencies` (
 --
 
 INSERT INTO `currencies` (`id`, `country_name`, `currency_name`, `locale`, `currency`, `price`, `status`, `date_added`, `modified`) VALUES
-(1, 'French', 'Euro', 'fr_FR', 'EUR', 15, 0, '2016-01-11 05:14:05', '2016-04-20 11:01:25'),
-(2, 'German', 'Euro', 'de_DE', 'EUR', 10, 0, '2016-01-11 05:19:37', '2016-04-20 11:01:15'),
-(3, 'Hungarian', 'Hungarian Forint', 'hu_HU', 'HUF', 290.47, 0, '2016-01-11 05:23:33', '2016-04-20 11:00:20'),
-(4, 'Italian', 'Euro', 'it_IT', 'EUR', 67, 1, '2016-01-11 05:25:38', '0000-00-00 00:00:00'),
-(5, 'Romanian', 'Romanian New Leu', 'ro_RO', 'RON', 8.26, 0, '2016-01-11 05:28:03', '2016-04-20 11:00:27'),
-(6, 'Russian', 'Russian Ruble', 'ru_RU', 'RUB', 75.46, 0, '2016-01-11 05:29:53', '2016-04-20 11:34:46'),
-(7, 'Spanish', 'Euro', 'sn_SN', 'EUR', 92, 1, '2016-01-11 05:34:38', '0000-00-00 00:00:00'),
-(8, 'Australia', 'Australian Dollar', 'en_AU', 'AUD', 20, 0, '2016-01-11 05:43:24', '2016-04-20 11:00:36'),
-(9, 'United State', 'US Dollar', 'en_EN', 'USD', 70, 1, '2016-01-11 05:45:36', '0000-00-00 00:00:00');
+(1, 'French', 'Euro', 'fr_FR', 'EUR', -0.96, 1, '2016-01-11 05:14:05', '0000-00-00 00:00:00'),
+(2, 'German', 'Euro', 'de_DE', 'EUR', 0.215, 1, '2016-01-11 05:19:37', '0000-00-00 00:00:00'),
+(3, 'Hungarian', 'Hungarian Forint', 'hu_HU', 'HUF', 290.47, 0, '2016-01-11 05:23:33', '2016-04-12 07:51:15'),
+(4, 'Italian', 'Euro', 'it_IT', 'EUR', 1.36, 1, '2016-01-11 05:25:38', '0000-00-00 00:00:00'),
+(5, 'Romanian', 'Romanian New Leu', 'ro_RO', 'RON', 8.26, 1, '2016-01-11 05:28:03', '2016-04-12 07:50:17'),
+(6, 'Russian', 'Russian Ruble', 'ru_RU', 'RUB', 75.46, 1, '2016-01-11 05:29:53', '2016-04-12 07:50:26'),
+(7, 'Spanish', 'Euro', 'sn_SN', 'EUR', 0.92, 1, '2016-01-11 05:34:38', '0000-00-00 00:00:00'),
+(8, 'Australia', 'Australian Dollar', 'en_AU', 'AUD', -1.42, 1, '2016-01-11 05:43:24', '2016-04-12 07:50:21'),
+(9, 'United State', 'US Dollar', 'en_EN', 'USD', 1, 1, '2016-01-11 05:45:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -585,10 +479,10 @@ CREATE TABLE IF NOT EXISTS `email_templates` (
 --
 
 INSERT INTO `email_templates` (`id`, `title`, `alias`, `subject`, `allowed_vars`, `description`, `email_from`, `email_name`, `status`, `modified`) VALUES
-(1, 'Admin Reset Password', 'admin_forgot_password', 'Sitter Guide- Admin Reset Password', '{user},{new_password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Reset Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Hello {user},</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top">You have requested for reset your password, Kindly review the below details</td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Your new password is : {new_password}</p>\r\nYou can log in using this new password.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\r\n<p style="font-weight: bold;">Team Sitter Guide</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
-(2, 'xyz', 'reply_contact', 'Sitter Guidde : Contact Request Reply ', '{to_name}, {content}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_V},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>{content}</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'vineet.kumar@mobilyte.com', 'Sitter Guide', 0, '0000-00-00 00:00:00'),
+(1, 'Admin Reset Password', 'admin_forgot_password', 'Sitter Guide- Admin Reset Password', '{user},{new_password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p><table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center"><tbody><tr style="height: 36px;" height="36"><td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td><td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Reset Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td><td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td></tr><tr><td style="height: 20px;" colspan="3" valign="top"><p>&nbsp;</p></td></tr><tr><td style="width: 30px;" width="30" valign="top"><br /></td><td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> <table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left"><tbody><tr><td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td></tr><tr><td valign="top"><p>Hello {user},</p><p>&nbsp;</p></td></tr><tr><td style="height: 25px;" valign="top">You have requested for reset your password, Kindly review the below details</td></tr><tr><td valign="top"><p>Your new password is : {new_password}</p>You can log in using this new password.</td></tr></tbody></table></span></td><td style="width: 30px;" width="30" valign="top"><br /></td></tr><tr><td style="height: 20px;" colspan="3" valign="top"><br /></td></tr><tr><td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td><td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> <table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left"><tbody><tr><td style="width: 500px; height: 20px;" width="500" valign="top"><p style="font-weight: bold;">Regards,<br /><strong> </strong></p><p style="font-weight: bold;">Team Sitter Guide</p></td></tr><tr><td><p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p></td></tr></tbody></table></span> </span></td><td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td></tr></tbody></table><p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
+(2, 'Contact Request Reply', 'reply_contact', 'Sitter Guidde : Contact Request Reply ', '{to_name}, {content}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #339900;" width="500" valign="middle"><span style="color: #ffffff; font-size: medium;"><strong>Sitter Guide</strong></span></td>\r\n<td style="width: 30px; background-color: #339900;" width="30" valign="middle"><span style="background-color: #339900;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top">Hello {to_name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>{content}</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<p style="font-weight: bold;"><br /><span style="font-weight: bold;">Note</span>: This is a system generated email, please do not reply</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'vineet.kumar@mobilyte.com', 'Sitter Guide', 0, '2016-04-13 09:36:40'),
 (3, 'The Account Activated', 'account_activated', 'Sitter Guider- Account Activated', '{full_name}', '<p><span style="font-family: Arial,Helvetica,sans-serif;">&nbsp;</span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #A6CE45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong>Sitter Guide- Account Activated</strong></span></span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hello {full_name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Your account has been activated successfully. Thanks for being a member of Sitter Guide.</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class="system_contmail" colspan="2">If you any query please let us know straight away at:<a href="mailto:info@sitterguide.com"> info@sitterguide.com</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<hr />\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
-(4, 'Admin Change Password spanish', 'admin_change_password', 'Sitter Guide - Administrator Change Password', '{name},{password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Change Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {Vineet},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>You have changed your password successfully. You new password is {ABS123456}.</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\r\n<p style="font-weight: bold;">Team Sitter Guide</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
+(4, 'Admin Change Password spanish', 'admin_change_password', 'Sitter Guide - Administrator Change Password', '{name},{password}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Admin Change Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>You have changed your password successfully. You new password is {password}.</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\r\n<p style="font-weight: bold;">Team Sitter Guide</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '2016-04-13 07:48:58'),
 (5, 'Forgot Password', 'forgot_password', 'Sitter Guide - Password reset request', '{fname},{email},{password},{link}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\n<tbody>\n<tr style="height: 36px;" height="36">\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Forgot Password</strong></span></span><span style="color: #ffffff; font-size: small;"><strong> </strong></span><br /></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top">\n<p>&nbsp;</p>\n</td>\n</tr>\n<tr>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\n<tbody>\n<tr>\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\n</tr>\n<tr>\n<td valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">Hi {fullname},</td>\n</tr>\n<tr>\n<td style="height: 25px;" valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">\n<p>You have requested to reset your password for: {email} on Sitter Guide.</p>\n<p>Please visit the following link to reset your password: {link}</p>\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span></td>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\n<tbody>\n<tr>\n<td style="width: 500px; height: 20px;" width="500" valign="top">\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\n<p style="font-weight: bold;">Team Sitter Guide</p>\n</td>\n</tr>\n<tr>\n<td>\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span> </span></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n</tbody>\n</table>\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
 (31, 'Reference Email', 'reference_code', 'Sitter Guide-Reference Email', '{fullname},{refcode},{link}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\n<tbody>\n<tr style="height: 36px;" height="36">\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Sign Up With Facebook</strong></span></span><span style="color: #ffffff; font-size: small;"><strong> </strong></span><br /></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top">\n<p>&nbsp;</p>\n</td>\n</tr>\n<tr>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\n<tbody>\n<tr>\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\n</tr>\n<tr>\n<td valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">Hi {fullname},</td>\n</tr>\n<tr>\n<td style="height: 25px;" valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">\n<p>Your reference code:{refcode}.</p>\n<p>{link}</p>\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span></td>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\n<tbody>\n<tr>\n<td style="width: 500px; height: 20px;" width="500" valign="top">\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\n<p style="font-weight: bold;">Team Sitter Guide</p>\n</td>\n</tr>\n<tr>\n<td>\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span> </span></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\n</tr>\n</tbody>\n</table>\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
 (6, 'French', 'contact_us', 'Sitter Guide - Contact Us', '{fname},{reason},{message}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #33628a;" width="30" valign="middle"><span style="background-color: #33628a;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #33628a;" width="500" valign="middle"><span style="background-color: #33628a;"><span style="color: white; font-size: small;"><strong>&nbsp;Sitter Guide -Contact us</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #33628a;" width="30" valign="middle"><span style="background-color: #33628a;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/razz_nation/app/webroot/img/uploads/logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {fname},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Thank you for contacting us. We will be in touch as soon as possible..</p>\r\n<p>&nbsp;</p>\r\n<p>Inquiry : {message}</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@razznation.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong>&nbsp;</strong></p>\r\n<p style="font-weight: bold;">Team Stter Guide</p>\r\n<p style="font-weight: bold;">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
@@ -597,35 +491,6 @@ INSERT INTO `email_templates` (`id`, `title`, `alias`, `subject`, `allowed_vars`
 (28, 'User Password Reset', 'user_reset_password', 'Sitter Guide- Password Reset', '{full_name}', '<p><span style="font-family: Arial,Helvetica,sans-serif;">&nbsp;</span></p>\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #A6CE45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\n<tbody>\n<tr style="height: 36px;" height="36">\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong>Sitter Guide- Password Reset</strong></span></span></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\n<tbody>\n<tr>\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\n</tr>\n<tr>\n<td valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">Hello {full_name},</td>\n</tr>\n<tr>\n<td style="height: 25px;" valign="top"><br /></td>\n</tr>\n<tr>\n<td valign="top">\n<p>Your password has been reset successfully.&nbsp;</p>\n<p>&nbsp;</p>\n</td>\n</tr>\n<tr>\n<td class="system_contmail" colspan="2">If you any query please let us know straight away at:<a href="mailto:info@sitterguide.com"> info@sitterguide.com</a></td>\n</tr>\n</tbody>\n</table>\n</span></td>\n<td style="width: 30px;" width="30" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\n</tr>\n<tr>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\n<tbody>\n<tr>\n<td style="width: 500px; height: 20px;" width="500" valign="top">\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\n<hr />\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</span></span></td>\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\n</tr>\n</tbody>\n</table>\n<p>&nbsp;</p>', 'noreply@sitterguide.com', 'Sitter Guide', 1, '0000-00-00 00:00:00'),
 (30, 'Sign Up With Facebook', 'signup_with_facebook', 'Sitter Guide - Registration', '{full_name},{email},{''password''}', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #a6ce45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong> Sitter Guide - Sign Up With Facebook</strong></span></span><span style="color: #ffffff; font-size: small;"><strong> </strong></span><br /></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {full_name},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Thank you for registration on Sitter Guide; Following are the details.</p>\r\n<p>Email : {email}</p>\r\n<p>Password : {password} (This password automatic generated by system,while you have select registration through facebook.You can change the password from the edit section )</p>\r\n<p>Kindly authenticate your email from the below link.</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@sitterguide.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong> </strong></p>\r\n<p style="font-weight: bold;">Team Sitter Guide</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><span style="background-color: #a6ce45;"> </span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>', 'noreply@sitterguide.com', 'Sitter Guide', 0, '0000-00-00 00:00:00'),
 (29, 'Subscribed Confirmation', 'subscribe_confirmation', 'Sitter Guide-Subscribed Confirmation', '{email}', '<p><span style="font-family: Arial,Helvetica,sans-serif;">&nbsp;</span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; border: 1px solid #A6CE45; background-color: #fff; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #a6ce45;" width="500" valign="middle"><span style="background-color: #a6ce45;"><span style="color: white; font-size: small;"><strong>Sitter Guide- Subscribed Confirmation<br /></strong></span></span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="middle"><span style="background-color: #a6ce45;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/sitterguide/img/front/mobile_nav_logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Welcome,</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>You have been subscribe successfully on Sitter Guide with {message}</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class="system_contmail" colspan="2">If you any query please let us know straight away at:<a href="mailto:info@sitterguide.com"> info@sitterguide.com</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #a6ce45; padding: 15px 0;" valign="top"><span style="background-color: #a6ce45;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /> Team Sitter Guide</p>\r\n<hr />\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></span></td>\r\n<td style="width: 30px; background-color: #a6ce45;" width="30" valign="top"><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>', 'noreply@sitterguide.com', 'Sitter Guide', 0, '2016-04-12 07:42:14');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `email_templates_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `email_templates_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `email_templates_i18n`
---
-
-INSERT INTO `email_templates_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'es_ES', 'EmailTemplates', 6, 'title', 'Contact Us spanish'),
-(2, 'es_ES', 'EmailTemplates', 6, 'subject', 'Sitter Guide - Contact Us'),
-(3, 'es_ES', 'EmailTemplates', 6, 'email_from', 'noreply@sitterguide.com'),
-(4, 'es_ES', 'EmailTemplates', 6, 'email_name', 'Sitter Guide'),
-(5, 'es_ES', 'EmailTemplates', 6, 'description', '<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>\r\n<table style="border-collapse: collapse; border-spacing: 0; background-color: #f8f8f8; padding: 0;" border="0" cellspacing="0" cellpadding="0" align="center">\r\n<tbody>\r\n<tr style="height: 36px;" height="36">\r\n<td style="width: 30px; background-color: #33628a;" width="30" valign="middle"><span style="background-color: #33628a;">&nbsp;</span></td>\r\n<td style="width: 500px; background-color: #33628a;" width="500" valign="middle"><span style="background-color: #33628a;"><span style="color: white; font-size: small;"><strong>&nbsp;Sitter Guide -Contact us</strong></span></span><span style="color: #ffffff; font-size: small;"><strong>&nbsp;</strong></span><br /></td>\r\n<td style="width: 30px; background-color: #33628a;" width="30" valign="middle"><span style="background-color: #33628a;">&nbsp;</span></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top">\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n<td style="width: 500px;" width="500" valign="top"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="499" height="108" align="left">\r\n<tbody>\r\n<tr>\r\n<td valign="top"><img style="display: block; margin-left: auto; margin-right: auto;" src="/razz_nation/app/webroot/img/uploads/logo.png" alt="" /><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">Hi {fname},</td>\r\n</tr>\r\n<tr>\r\n<td style="height: 25px;" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td valign="top">\r\n<p>Thank you for contacting us. We will be in touch as soon as possible..</p>\r\n<p>&nbsp;</p>\r\n<p>Inquiry : {message}</p>\r\n<p>If you have any questions please contact us at <a href="mailto:info@razznation.com">info@sitterguide.com</a></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span></td>\r\n<td style="width: 30px;" width="30" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="height: 20px;" colspan="3" valign="top"><br /></td>\r\n</tr>\r\n<tr>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><br /></td>\r\n<td style="background-color: #eeeeee; padding: 15px 0;" valign="top"><span style="background-color: #eeeeee;"><span style="font-family: Arial,Helvetica,sans-serif;"> \r\n<table style="border-collapse: collapse; border-spacing: 0; text-align: justify; padding: 0;" border="0" cellspacing="0" cellpadding="0" width="500" height="128" align="left">\r\n<tbody>\r\n<tr>\r\n<td style="width: 500px; height: 20px;" width="500" valign="top">\r\n<p style="font-weight: bold;">Regards,<br /><strong>&nbsp;</strong></p>\r\n<p style="font-weight: bold;">Team Stter Guide</p>\r\n<p style="font-weight: bold;">&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td>\r\n<p><span style="font-family: Arial; font-size: xx-small;">Notice:  The information in this email and in any  attachments is confidential  and intended solely for the attention and use of the  named addressee.  This information may be subject to legal professional or other   privilege or may otherwise be protected by work product immunity or  other legal  rules. It must not be disclosed to any person without  authorization. If you are  not the intended recipient, or a person  responsible for delivering it to the  intended recipient, you are not  authorized to and must not disclose, copy,  distribute, or retain this  message or any part of  it.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</span> </span></td>\r\n<td style="width: 30px; background-color: #eeeeee;" width="30" valign="top"><span style="background-color: #eeeeee;">&nbsp;</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style="font-family: Arial,Helvetica,sans-serif;"> </span></p>');
 
 -- --------------------------------------------------------
 
@@ -650,111 +515,17 @@ CREATE TABLE IF NOT EXISTS `how_works` (
 --
 
 INSERT INTO `how_works` (`id`, `category`, `image`, `title`, `description`, `status`, `created_date`, `modified`) VALUES
-(10, 'why_choose_us', 'qafy8R4N99E4Zaw.jpeg', 'Great for your pet', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 1, '2016-03-10 07:44:14', '2016-04-20 09:57:26'),
-(12, 'how_it_works', 'ei3OdouJdFeECG0.png', 'trusted and Caringd ', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.', 1, '2016-03-10 09:18:23', '2016-04-20 10:16:50'),
+(10, 'why_choose_us', 'qafy8R4N99E4Zaw.jpeg', 'Great for your pet', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 1, '2016-03-10 07:44:14', '0000-00-00 00:00:00'),
+(12, 'how_it_works', 'ei3OdouJdFeECG0.png', 'trusted and Caringd ', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.', 1, '2016-03-10 09:18:23', '0000-00-00 00:00:00'),
 (13, 'how_it_works', 'uwCIwXY0ywPbDsr.png', 'Find trusted and Caring', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.', 1, '2016-03-10 09:18:53', '0000-00-00 00:00:00'),
-(14, 'how_it_works', '75PkP3vsqJlbA8Z.png', 'Find trusted and Caring', 'Database testing ', 0, '2016-03-10 09:19:17', '2016-04-20 10:00:52'),
-(15, 'why_choose_us', 'jDcdjUFhl5I0qj4.jpg', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the communityhhhh\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 0, '2016-03-10 09:30:25', '2016-04-20 12:47:59'),
-(16, 'why_choose_us', 'fcWF3QGSfUVHsBj.png', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 1, '2016-03-10 09:31:01', '2016-04-20 09:58:01'),
-(22, 'news_updates', 'foZzgxsRU1d1IUh.png', 'Local Sitter', 'Trusted sitters will treat your pet like family', 1, '2016-03-11 12:24:21', '2016-04-20 01:19:06'),
-(23, 'news_updates', 'Wjfd2Hk4azZjS90.jpeg', 'Insurance Included', 'Trusted sitters.', 1, '2016-03-11 12:31:33', '2016-04-20 01:19:04'),
-(24, 'news_updates', '9xTIeKV98dVSdmS.jpg', 'Peace  of mind', 'Trusted Sitter will treat your pet like family member.', 1, '2016-03-11 12:32:11', '2016-04-20 10:53:23'),
-(26, 'why_choose_us', 'o4a2o6wPDt1nHGA.jpg', 'xcsdfsdf', 'sdfsdfdsfdsfds', 1, '2016-03-30 20:19:25', '2016-04-20 09:57:58'),
-(31, 'how_it_works', 'X3uCXJ7FxzxvbYd.png', 'Pet dogs', 'sion. They allow you to make individual choices about what you want to watch. And when and where you want to watch it. With the new Apple TV and its powerful new tvOS, developers are creating experiences that will change what you expect from your big screen, making your TV feel as personal as your iPhone or iPad.', 0, '2016-04-07 09:32:20', '2016-04-20 10:16:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `how_works_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `how_works_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=91 ;
-
---
--- Dumping data for table `how_works_i18n`
---
-
-INSERT INTO `how_works_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'de_DE', 'HowWorks', 10, 'title', 'Greate for your pet'),
-(2, 'de_DE', 'HowWorks', 10, 'category', 'why_choose_us'),
-(3, 'de_DE', 'HowWorks', 10, 'description', 'Pflege, persönliche Betreuung keine Zwinger, bleiben keine Käfige vor Ort in der Gemeinde beibehalten vertraute Elemente (Bett, Spielzeug, Leckereien, etc.)'),
-(4, 'de_DE', 'HowWorks', 16, 'title', 'Vertrauen und Sicherheit'),
-(5, 'de_DE', 'HowWorks', 16, 'category', 'why_choose_us'),
-(6, 'de_DE', 'HowWorks', 16, 'description', 'Pflege, persönliche Betreuung keine Zwinger, bleiben keine Käfige vor Ort in der Gemeinde beibehalten vertraute Elemente (Bett, Spielzeug, Leckereien, etc.)'),
-(7, 'de_DE', 'HowWorks', 15, 'title', 'Vertrauen und Sicherheit'),
-(8, 'de_DE', 'HowWorks', 15, 'category', 'why_choose_us'),
-(9, 'de_DE', 'HowWorks', 15, 'description', 'Pflege, persönliche Betreuung keine Zwinger, bleiben keine Käfige vor Ort in der Gemeinde beibehalten vertraute Elemente (Bett, Spielzeug, Leckereien, etc.)'),
-(13, 'hu_HU', 'HowWorks', 16, 'title', 'Bizalom és biztonság'),
-(14, 'hu_HU', 'HowWorks', 16, 'category', 'why_choose_us'),
-(15, 'hu_HU', 'HowWorks', 16, 'description', 'Gondoskodó, személyre szabott figyelmet No ólak, ketrecek nem marad helyben a közösség megtartása ismer?s elemek (ágy, játékok, kezeli, stb)'),
-(16, 'hu_HU', 'HowWorks', 15, 'title', 'Bizalom és biztonság'),
-(17, 'hu_HU', 'HowWorks', 15, 'category', 'why_choose_us'),
-(18, 'hu_HU', 'HowWorks', 15, 'description', 'Gondoskodó, személyre szabott figyelmet No ólak, ketrecek nem marad helyben a közösség megtartása ismer?s elemek (ágy, játékok, kezeli, stb)'),
-(90, 'es_ES', 'HowWorks', 14, 'description', 'My little buddy was '),
-(88, 'es_ES', 'HowWorks', 14, 'title', 'Find trusted and Caring spanish'),
-(89, 'es_ES', 'HowWorks', 14, 'category', 'how_it_works'),
-(22, 'hu_HU', 'HowWorks', 10, 'title', 'Nagy kedvence'),
-(23, 'hu_HU', 'HowWorks', 10, 'category', 'why_choose_us'),
-(24, 'hu_HU', 'HowWorks', 10, 'description', 'Gondoskodó, személyre szabott figyelmet No ólak, ketrecek nem marad helyben a közösség megtartása ismer?s elemek (ágy, játékok, kezeli, stb)'),
-(25, 'it_IT', 'HowWorks', 16, 'title', 'La fiducia e la sicurezza'),
-(26, 'it_IT', 'HowWorks', 16, 'category', 'why_choose_us'),
-(27, 'it_IT', 'HowWorks', 16, 'description', 'Cura, attenzione personalizzata Nessun cucce, gabbie Rimani localmente nella comunità Conservare oggetti familiari (letto, giocattoli, dolcetti, ecc)'),
-(28, 'it_IT', 'HowWorks', 15, 'title', 'La fiducia e la sicurezza'),
-(29, 'it_IT', 'HowWorks', 15, 'category', 'why_choose_us'),
-(30, 'it_IT', 'HowWorks', 15, 'description', 'Cura, attenzione personalizzata Nessun cucce, gabbie Rimani localmente nella comunità Conservare oggetti familiari (letto, giocattoli, dolcetti, ecc)'),
-(87, 'hu_HU', 'HowWorks', 24, 'description', ' Trusted sitters will treat your pet like family hu'),
-(84, 'ro_RO', 'HowWorks', 26, 'description', 'sdfsdfdsfdsfds ro'),
-(85, 'hu_HU', 'HowWorks', 24, 'title', 'Peace of Mind hu'),
-(86, 'hu_HU', 'HowWorks', 24, 'category', 'news_updates'),
-(34, 'it_IT', 'HowWorks', 10, 'title', 'Grande per il vostro animale domestico'),
-(35, 'it_IT', 'HowWorks', 10, 'category', 'why_choose_us'),
-(36, 'it_IT', 'HowWorks', 10, 'description', 'Cura, attenzione personalizzata Nessun cucce, gabbie Rimani localmente nella comunità Conservare oggetti familiari (letto, giocattoli, dolcetti, ecc)'),
-(37, 'ro_RO', 'HowWorks', 16, 'title', 'Încredere ?i siguran??'),
-(38, 'ro_RO', 'HowWorks', 16, 'category', 'why_choose_us'),
-(39, 'ro_RO', 'HowWorks', 16, 'description', 'Îngrijire, aten?ie personalizat? Nu exist? canise, f?r? cu?ti Stai local în comunitate P?stra?i elemente familiare (pat, juc?rii, dulciuri, etc.)'),
-(40, 'ro_RO', 'HowWorks', 15, 'title', 'Încredere ?i siguran??'),
-(41, 'ro_RO', 'HowWorks', 15, 'category', 'why_choose_us'),
-(42, 'ro_RO', 'HowWorks', 15, 'description', 'Îngrijire, aten?ie personalizat? Nu exist? canise, f?r? cu?ti Stai local în comunitate P?stra?i elemente familiare (pat, juc?rii, dulciuri, etc.)'),
-(43, 'ro_RO', 'HowWorks', 10, 'title', 'Mare pentru tine'),
-(44, 'ro_RO', 'HowWorks', 10, 'category', 'why_choose_us'),
-(45, 'ro_RO', 'HowWorks', 10, 'description', 'Îngrijire, aten?ie personalizat? Nu exist? canise, f?r? cu?ti Stai local în comunitate P?stra?i elemente familiare (pat, juc?rii, dulciuri, etc.)'),
-(83, 'ro_RO', 'HowWorks', 26, 'category', 'why_choose_us'),
-(82, 'ro_RO', 'HowWorks', 26, 'title', 'xcsdfsdf ro'),
-(81, 'hu_HU', 'HowWorks', 14, 'description', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.hu'),
-(49, 'ru_RU', 'HowWorks', 16, 'title', 'Доверие и безопасность'),
-(50, 'ru_RU', 'HowWorks', 16, 'category', 'why_choose_us'),
-(51, 'ru_RU', 'HowWorks', 16, 'description', 'Заботливые, персональное внимание нет будки, не садки Пребывание на местном уровне в сообществе Сохранил знакомых предметов (кровать, игрушки, лакомства и т.д.)'),
-(52, 'es_ES', 'HowWorks', 16, 'title', 'Confianza y Seguridad'),
-(53, 'es_ES', 'HowWorks', 16, 'category', 'why_choose_us'),
-(54, 'es_ES', 'HowWorks', 16, 'description', 'El cuidado, la atención personalizada No hay perreras, no hay jaulas Manténgase a nivel local en la comunidad Conservar los objetos familiares (cama, juguetes, golosinas, etc.)'),
-(55, 'es_ES', 'HowWorks', 15, 'title', 'Confianza y Seguridad'),
-(56, 'es_ES', 'HowWorks', 15, 'category', 'why_choose_us'),
-(57, 'es_ES', 'HowWorks', 15, 'description', 'El cuidado, la atención personalizada No hay perreras, no hay jaulas Manténgase a nivel local en la comunidad Conservar los objetos familiares (cama, juguetes, golosinas, etc.)'),
-(80, 'hu_HU', 'HowWorks', 14, 'category', 'how_it_works'),
-(77, 'it_IT', 'HowWorks', 13, 'category', 'how_it_works'),
-(78, 'it_IT', 'HowWorks', 13, 'description', 'My little buddy was so happy and energetic when I came to pick her up and had become quite bonded with the sitter and her dog.'),
-(61, 'es_ES', 'HowWorks', 10, 'title', 'Grande para su mascota'),
-(62, 'es_ES', 'HowWorks', 10, 'category', 'why_choose_us'),
-(63, 'es_ES', 'HowWorks', 10, 'description', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)'),
-(64, 'ru_RU', 'HowWorks', 15, 'title', 'Доверие и безопасность'),
-(65, 'ru_RU', 'HowWorks', 15, 'category', 'why_choose_us'),
-(66, 'ru_RU', 'HowWorks', 15, 'description', 'Заботливые, персональное внимание нет будки, не садки Пребывание на местном уровне в сообществе Сохранил знакомых предметов (кровать, игрушки, лакомства и т.д.)'),
-(76, 'it_IT', 'HowWorks', 13, 'title', 'Find trusted and Caring italy'),
-(73, 'de_DE', 'HowWorks', 14, 'title', 'Finden größte und Pflege Deutsch'),
-(74, 'de_DE', 'HowWorks', 14, 'category', 'how_it_works'),
-(75, 'de_DE', 'HowWorks', 14, 'description', 'Finden größte und Pflege Deutsch'),
-(79, 'hu_HU', 'HowWorks', 14, 'title', 'Find trusted and Caring hu'),
-(70, 'ru_RU', 'HowWorks', 10, 'title', 'Отлично подходит для вашего питомца'),
-(71, 'ru_RU', 'HowWorks', 10, 'category', 'why_choose_us'),
-(72, 'ru_RU', 'HowWorks', 10, 'description', 'Заботливые, персональное внимание нет будки, не садки Пребывание на местном уровне в сообществе Сохранил знакомых предметов (кровать, игрушки, лакомства и т.д.)');
+(14, 'how_it_works', '75PkP3vsqJlbA8Z.png', 'Find trusted and Caring', 'My little Labra', 0, '2016-03-10 09:19:17', '2016-04-15 11:50:47'),
+(15, 'why_choose_us', '6LzNTKFGXibfutN.jpeg', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 0, '2016-03-10 09:30:25', '2016-04-12 09:30:04'),
+(16, 'why_choose_us', 'fcWF3QGSfUVHsBj.png', 'Trust and Safety', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)', 0, '2016-03-10 09:31:01', '2016-04-15 11:50:53'),
+(22, 'news_updates', 'foZzgxsRU1d1IUh.png', 'Local Sitter', 'Trusted sitters will treat your pet like family', 1, '2016-03-11 12:24:21', '0000-00-00 00:00:00'),
+(23, 'news_updates', 'Wjfd2Hk4azZjS90.jpeg', 'Insurance Included', 'Trusted sitters.', 0, '2016-03-11 12:31:33', '2016-04-15 11:50:58'),
+(24, 'news_updates', '9xTIeKV98dVSdmS.jpg', 'Peace  of mind', 'Trusted Sitter will treat your pet like family member.', 0, '2016-03-11 12:32:11', '0000-00-00 00:00:00'),
+(26, 'why_choose_us', 'o4a2o6wPDt1nHGA.jpg', 'xcsdfsdf', 'sdfsdfdsfdsfds', 0, '2016-03-30 20:19:25', '0000-00-00 00:00:00'),
+(31, 'how_it_works', 'X3uCXJ7FxzxvbYd.png', 'Pet dogs', 'sion. They allow you to make individual choices about what you want to watch. And when and where you want to watch it. With the new Apple TV and its powerful new tvOS, developers are creating experiences that will change what you expect from your big screen, making your TV feel as personal as your iPhone or iPad.', 0, '2016-04-07 09:32:20', '2016-04-12 09:29:41');
 
 -- --------------------------------------------------------
 
@@ -772,7 +543,7 @@ CREATE TABLE IF NOT EXISTS `i18n` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1131 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1101 ;
 
 --
 -- Dumping data for table `i18n`
@@ -1066,7 +837,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (569, 'it_IT', 'StaticStrings', 61, 'value', 'Immagine'),
 (571, 'it_IT', 'StaticStrings', 58, 'value', 'Nazione'),
 (573, 'it_IT', 'StaticStrings', 60, 'value', 'Descrizione'),
-(575, 'ro_RO', 'StaticStrings', 58, 'value', 'țară'),
+(575, 'ro_RO', 'StaticStrings', 58, 'value', '?ar?'),
 (577, 'ro_RO', 'StaticStrings', 61, 'value', 'Imagine'),
 (579, 'fr_FR', 'StaticStrings', 62, 'value', 'statut'),
 (581, 'ro_RO', 'StaticStrings', 60, 'value', 'Descriere'),
@@ -1258,7 +1029,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (953, 'de_DE', 'StaticStrings', 90, 'value', 'Top PET-Sitzung Städte'),
 (955, 'hu_HU', 'StaticStrings', 90, 'value', 'Top pet ül városok'),
 (957, 'it_IT', 'StaticStrings', 90, 'value', 'Le città più pet sitting'),
-(959, 'ro_RO', 'StaticStrings', 90, 'value', 'orașe pentru animale de companie de zi\r\n'),
+(959, 'ro_RO', 'StaticStrings', 90, 'value', 'ora?e pentru animale de companie de zi'),
 (961, 'ru_RU', 'StaticStrings', 90, 'value', '?????? ?????? ??? ???????? ???????? ????'),
 (963, 'es_ES', 'StaticStrings', 90, 'value', 'Principales ciudades cuidado de mascotas'),
 (965, 'it_IT', 'StaticStrings', 7, 'value', 'Abbonato'),
@@ -1380,37 +1151,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (1097, 'it_IT', 'StaticStrings', 117, 'value', 'Segítség Központ'),
 (1098, 'ro_RO', 'StaticStrings', 117, 'value', 'Centru de ajutor'),
 (1099, 'es_ES', 'StaticStrings', 117, 'value', 'Centro de ayuda'),
-(1100, 'fr_FR', 'StaticStrings', 118, 'value', 'Centre d''aide'),
-(1101, 'it_IT', 'StaticStrings', 96, 'value', 'Come Funziona'),
-(1102, 'ro_RO', 'StaticStrings', 96, 'value', 'Cum funcționează'),
-(1103, 'es_ES', 'StaticStrings', 96, 'value', 'Cómo Funciona'),
-(1104, 'es_ES', 'StaticStrings', 120, 'value', 'Error de autenticación! Por favor, inténtelo de nuevo.'),
-(1105, 'es_ES', 'StaticStrings', 121, 'value', 'Contraseña'),
-(1106, 'it_IT', 'StaticStrings', 118, 'value', 'Contattaci'),
-(1107, 'es_ES', 'StaticStrings', 122, 'value', 'Enviar'),
-(1108, 'de_DE', 'StaticStrings', 118, 'value', 'Kontaktieren Sie uns'),
-(1109, 'hu_HU', 'StaticStrings', 118, 'value', 'Kapcsolat'),
-(1110, 'ro_RO', 'StaticStrings', 118, 'value', 'frecvente Contactați-ne'),
-(1111, 'es_ES', 'StaticStrings', 123, 'value', 'Has iniciado sesión correctamente'),
-(1112, 'es_ES', 'StaticStrings', 118, 'value', 'contáctenos'),
-(1113, 'fr_FR', 'StaticStrings', 124, 'value', 'Abonnez-vous à la Newsletter'),
-(1114, 'de_DE', 'StaticStrings', 124, 'value', 'Abonnieren Sie Newsletter'),
-(1115, 'hu_HU', 'StaticStrings', 124, 'value', 'Iratkozzon fel hírlevél'),
-(1116, 'it_IT', 'StaticStrings', 124, 'value', 'Iscriviti su Newsletter'),
-(1117, 'es_ES', 'StaticStrings', 124, 'value', 'Abonează-te la Newsletter'),
-(1118, 'ro_RO', 'StaticStrings', 124, 'value', 'Abonează-te la Newsletter'),
-(1119, 'fr_FR', 'StaticStrings', 125, 'value', 'En savoir plus'),
-(1120, 'de_DE', 'StaticStrings', 125, 'value', 'En savoir plus'),
-(1121, 'hu_HU', 'StaticStrings', 125, 'value', 'További'),
-(1122, 'it_IT', 'StaticStrings', 125, 'value', 'Approfondisci'),
-(1123, 'ro_RO', 'StaticStrings', 125, 'value', 'Află mai multe'),
-(1124, 'es_ES', 'StaticStrings', 125, 'value', 'Află mai multe'),
-(1125, 'fr_FR', 'StaticStrings', 126, 'value', 'Comment fonctionne Guide Sitter travail'),
-(1126, 'de_DE', 'StaticStrings', 126, 'value', 'Wie funktioniert Sitter Führer Arbeit'),
-(1127, 'hu_HU', 'StaticStrings', 126, 'value', 'Hogyan működik Sitter Guide Work'),
-(1128, 'it_IT', 'StaticStrings', 126, 'value', 'Come funziona Sitter Guida Lavoro'),
-(1129, 'ro_RO', 'StaticStrings', 126, 'value', 'Cum Ghid de lucru Sitter'),
-(1130, 'es_ES', 'StaticStrings', 126, 'value', 'How does Sitter Guide Work');
+(1100, 'fr_FR', 'StaticStrings', 118, 'value', 'Centre d''aide');
 
 -- --------------------------------------------------------
 
@@ -1428,50 +1169,15 @@ CREATE TABLE IF NOT EXISTS `partners` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `partners`
 --
 
 INSERT INTO `partners` (`id`, `title`, `short_description`, `description`, `image`, `status`, `created_date`, `modified`) VALUES
-(28, 'Tester2ds', 'Test comment by rahul', 'Test comment by rahul Jain', 'J7lX8IyZkQ5jHRv.png', 1, '2016-04-07 06:40:08', '2016-04-20 11:27:42'),
-(29, 'Tester1', 'Tester1', 'Tester1', 'uz9CJiBXssrgfd3.jpeg', 0, '2016-04-11 12:40:39', '2016-04-20 11:27:54'),
-(30, 'Tester', 'Tester', 'Tester', 'zYC3CZCyapwINlT.jpg', 1, '2016-04-11 06:16:05', '0000-00-00 00:00:00'),
-(31, 'Tester3', 'Tester3', 'Tester3', 'SiKShXL8zuLSrJK.png', 1, '2016-04-11 06:21:03', '2016-04-20 10:14:03'),
-(32, 'Tester4', 'Tester4', 'Tester4', 'gXrblQoRSa7ZRnH.jpg', 1, '2016-04-11 06:21:50', '0000-00-00 00:00:00'),
-(33, 'fgbfdgbgbfb', 'gbsfbs', 'sbdfgb', 'S7QsOXgqUFLwo37.jpg', 0, '2016-04-11 06:23:46', '0000-00-00 00:00:00'),
-(34, 'Hdhdhd', 'Gdhdhd', 'Hdhdh', 'IaAOH8eHIhVuMAI.png', 0, '2016-04-11 10:27:37', '2016-04-20 11:28:39'),
-(35, 'Test5', 'Short descroption', 'Long description', 'pqbagBFisciCs63.png', 0, '2016-04-12 10:31:47', '2016-04-21 04:24:34'),
-(36, 'Software', 'Abc''', '121', 'AKm0iiPatkXrWHX.png', 1, '2016-04-14 12:17:59', '0000-00-00 00:00:00'),
-(37, ',m.,m', 'nmmn', 'nmbn', '2XCDeZfNG8OBkhw.jpg', 0, '2016-04-20 11:29:33', '2016-04-20 11:30:43'),
-(38, 'n b', 'm,nm,', 'nm,n', 'LO0k4Rdc8x61vdu.jpg', 0, '2016-04-20 11:29:47', '2016-04-20 11:29:56'),
-(39, 'ak', 'ak', 'ak', 'sPQU8dS4n6ddqy7.jpg', 0, '2016-04-21 04:24:18', '2016-04-21 04:24:43');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `partners_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `partners_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
-
---
--- Dumping data for table `partners_i18n`
---
-
-INSERT INTO `partners_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(34, 'it_IT', 'Partners', 28, 'title', 'the people'),
-(35, 'it_IT', 'Partners', 28, 'short_description', 'gsergegerg'),
-(36, 'it_IT', 'Partners', 28, 'description', 'ggwergr');
+(31, 'Tester3', 'Tester3', 'Tester3', 'gO2QIIlxO6R5GGW.jpg', 0, '2016-04-11 06:21:03', '2016-04-15 11:51:51'),
+(32, 'Rahul Jain', 'Test code', 'Test code Descriptiom', 'Dd6BbLzpTCPbbI1.jpg', 1, '2016-04-15 13:09:38', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1493,36 +1199,16 @@ CREATE TABLE IF NOT EXISTS `promo_codes` (
   `date_added` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `promo_codes`
 --
 
 INSERT INTO `promo_codes` (`id`, `promo_code`, `coupon_type`, `discount_rate`, `discounted_coupon`, `fixed_coupon`, `start_date`, `expire_date`, `description`, `status`, `date_added`, `modified`) VALUES
-(23, '14', 'discounted_coupon', NULL, '10', '', '2016-04-20 00:00:00', '2016-03-28 00:00:00', 'Description test', 1, '0000-00-00 00:00:00', '2016-04-20 09:40:34'),
-(24, '12', 'discounted_coupon', NULL, '10', '', '2016-04-20 10:57:01', '2016-01-04 00:00:00', '11', 0, '0000-00-00 00:00:00', '2016-04-20 10:57:01'),
-(25, '15', 'fixed_coupon', NULL, '', '123', '2016-04-04 00:00:00', '2016-04-07 00:00:00', 'Description test1', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(26, '16', 'fixed_coupon', NULL, '', '12', '2016-04-04 00:00:00', '2016-04-04 00:00:00', 'sasa', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, '13', 'fixed_coupon', NULL, '', '20', '2016-04-20 10:56:57', '2016-04-22 00:00:00', 'cdcvdvv', 1, '0000-00-00 00:00:00', '2016-04-20 10:56:57');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `promo_codes_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `promo_codes_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+(23, 'Test', 'discounted_coupon', NULL, '', '10', '2016-04-12 07:51:53', '2016-03-28 00:00:00', 'Description test', 1, '0000-00-00 00:00:00', '2016-04-12 07:51:53'),
+(24, '12', 'discounted_coupon', NULL, '1', '', '2016-04-12 09:35:54', '2016-01-04 00:00:00', '11', 0, '0000-00-00 00:00:00', '2016-04-12 09:35:54'),
+(25, 'gfhfgh', 'discounted_coupon', NULL, '67', '', '2016-04-06 00:00:00', '2016-04-30 00:00:00', ' fghfg hfg h', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1555,36 +1241,7 @@ CREATE TABLE IF NOT EXISTS `site_configurations` (
 --
 
 INSERT INTO `site_configurations` (`id`, `site_contact_email`, `site_name`, `site_logo`, `site_favicon`, `site_footer`, `meta_title`, `meta_keyword`, `meta_description`, `ganalytics`, `timezone`, `facebook_link`, `twitter_link`, `google_link`, `instagram_link`, `youtube_link`) VALUES
-(1, 'sanyam.arora@mobilyte.com', 'Sitter Guides', 'a71Uw18xmuRtUpf.jpg', 'cQ7WIYTKGf4wRhP.png', '        © 2015 Sitter Guide Pty Ltd. All Rights Reserved.', 'Sitter Guides', 'Sitter Guide', 'Sitter Guide', '<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push([_setAccount, UA-XXXXX-Y]);  _gaq.push([_trackPageview]);  (function() {    var ga = document.createElement(script); ga.type = text/javascript; ga.async = true;    ga.src = (https: == document.location.protocol ? https://ssl : http://www) + .google-analytics.com/ga.js;    var s = document.getElementsByTagName(script)[0]; s.parentNode.insertBefore(ga, s);  })();</script>', 'America/New_York', 'https://fasdfsfdsf', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `site_configurations_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `site_configurations_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `site_configurations_i18n`
---
-
-INSERT INTO `site_configurations_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'ro_RO', 'SiteConfigurations', 1, 'site_name', 'Sitter Guides'),
-(2, 'ro_RO', 'SiteConfigurations', 1, 'site_footer', 'Romanian footer content'),
-(3, 'ro_RO', 'SiteConfigurations', 1, 'meta_title', 'Sitter Guide'),
-(4, 'ro_RO', 'SiteConfigurations', 1, 'meta_keyword', 'Sitter Guide'),
-(5, 'ro_RO', 'SiteConfigurations', 1, 'meta_description', 'Sitter Guide');
+(1, 'rahul.jain@mobilyte.com', 'Sitter Guide', 'a71Uw18xmuRtUpf.jpg', 'cQ7WIYTKGf4wRhP.png', '© 2015 Sitter Guide Pty Ltd. All Rights Reserved.', 'Sitter Guides', 'Sitter Guide', 'Sitter Guide', '<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push([_setAccount, UA-XXXXX-Y]);  _gaq.push([_trackPageview]);  (function() {    var ga = document.createElement(script); ga.type = text/javascript; ga.async = true;    ga.src = (https: == document.location.protocol ? https://ssl : http://www) + .google-analytics.com/ga.js;    var s = document.getElementsByTagName(script)[0]; s.parentNode.insertBefore(ga, s);  })();</script>', 'America/New_York', 'https://faceboo', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com');
 
 -- --------------------------------------------------------
 
@@ -1614,24 +1271,6 @@ INSERT INTO `sliders` (`id`, `slide_type`, `title`, `media`, `description`, `sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sliders_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `sliders_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `static_strings`
 --
 
@@ -1643,7 +1282,7 @@ CREATE TABLE IF NOT EXISTS `static_strings` (
   `created_date` datetime NOT NULL,
   `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=127 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=119 ;
 
 --
 -- Dumping data for table `static_strings`
@@ -1702,7 +1341,7 @@ INSERT INTO `static_strings` (`id`, `constant_slug`, `value`, `page_name`, `crea
 (55, 'Title', 'Title', 'admin', '2016-04-07 23:19:08', '0000-00-00 00:00:00'),
 (56, 'Alias', 'Alias', 'admin', '2016-04-07 23:20:18', '0000-00-00 00:00:00'),
 (57, 'Slug', 'Slug', 'admin', '2016-04-07 23:22:28', '0000-00-00 00:00:00'),
-(58, 'Country', 'Country', 'admin', '2016-04-07 23:25:41', '2016-04-20 13:12:57'),
+(58, 'Country', 'Country', 'admin', '2016-04-07 23:25:41', '0000-00-00 00:00:00'),
 (59, 'Name', 'Name', 'admin', '2016-04-07 23:26:40', '2016-04-14 12:17:28'),
 (60, 'Description', 'Description', 'admin', '2016-04-07 23:27:54', '0000-00-00 00:00:00'),
 (61, 'Image', 'Image', 'admin', '2016-04-07 23:28:22', '0000-00-00 00:00:00'),
@@ -1762,15 +1401,7 @@ INSERT INTO `static_strings` (`id`, `constant_slug`, `value`, `page_name`, `crea
 (115, 'Country', 'Country', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (116, 'dog-walking', 'dog-walking', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (117, 'Help Center', 'Help Center', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(118, 'Contact Us', 'Contact Us', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(119, 'Successfully Authenticated, Please wait..', 'Successfully Authenticated, Please wait..', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(120, 'Authentication Failed! Please try again.', 'Authentication Failed! Please try again.', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(121, 'Password', 'Password', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(122, 'Submit', 'Submit', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(123, 'You have successfully logged in.', 'You have successfully logged in', '', '0000-00-00 00:00:00', '2016-04-21 05:41:05'),
-(124, 'Subscribe on News Letter', 'Subscribe on News Letter', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(125, 'Learn More', 'Learn More', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(126, 'How does Sitter Guide Work', 'How does Sitter Guide Work', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(118, 'Contact Us', 'Contact Us', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1785,14 +1416,16 @@ CREATE TABLE IF NOT EXISTS `subscribes` (
   `status` int(11) NOT NULL DEFAULT '1',
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `subscribes`
 --
 
 INSERT INTO `subscribes` (`id`, `email`, `created_date`, `status`, `modified`) VALUES
-(39, 'sanyam.arora92@gmail.com', '2016-04-07 05:20:19', 1, '2016-04-12 07:35:34');
+(39, 'sanyam.arora92@gmail.com', '2016-04-07 05:20:19', 1, '2016-04-13 09:13:11'),
+(40, 'Satyam.arora92@gmail.com', '2016-04-07 08:01:34', 0, '2016-04-13 09:59:10'),
+(41, 'rahul.jain@mobilyte.com', '2016-04-22 09:15:00', 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -30225,37 +29858,49 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `user_type`, `facebook_id`, `title`, `first_name`, `last_name`, `email`, `password`, `org_password`, `gender`, `birth_date`, `awesome_title`, `your_story`, `phone`, `image`, `hear_from`, `country`, `address`, `city`, `state`, `zip`, `about_user`, `zone_id`, `cover_img`, `type`, `facebook_link`, `twitter_link`, `date_added`, `date_modified`, `modified`, `logged_intime`, `last_login`, `avail_status`, `activation_key`, `profile_view`, `pwd_token`, `status`, `about`, `reference_code`) VALUES
-(1, 'Basic', '', '', 'Vineet', 'Kumar', '#ra&hul.jain@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', 'jan,01-08-1995', '', '', '8905062665', 'G3fVR8tGmW2bnVM.jpg', '', '', 'basic addresss', 'basic city', 'basic state', '125077', '', '1', '', 1, '', '', '2016-01-22 07:03:02', '2016-01-22 07:03:02', '2016-04-20 10:03:12', '2016-01-22 07:04:42', '2016-03-16 12:35:08', 'Logout', '', 0, '', 1, '', ''),
-(2, 'Basic', '', '', '123@#$xdf', 'dc123@$', 'am@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '', 'Female', '', '', '', '9050605251', '', '', '', '', '', '', NULL, 'dfvsdf34534(*(', '2', '', 1, '', '', '2016-01-22 07:06:21', '2016-04-20 07:59:53', '2016-04-20 10:03:03', '2016-01-22 07:06:21', '2016-03-30 07:30:05', 'Logout', 'f9318f98d8bf16323137708fc6fdd963', 0, '', 0, '', ''),
-(38, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@mobilyte.com', '0192023a7bbd73250516f069df18b500', '', 'Male', '17-01-1987', '', '', '', '', 'Facebook', 'Finland', '', '', '', '127306', '', '', '', 1, '', '', '2016-03-08 07:11:54', '2016-03-08 07:11:54', '0000-00-00 00:00:00', '2016-03-08 07:13:00', '2016-04-21 05:39:44', 'Logout', '', 0, '1f5a2c51a2b3be67632b6b8939f3c0a7', 1, '', ''),
-(3, 'Basic', '', 'Mr', 'testerd', '123', '#hcxvx.dcv@gmail.com', '', '', 'Male', '', '', '', '5434534567', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-04 07:09:55', '2016-04-20 10:02:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 1, '', ''),
-(24, 'Basic', '', '', 'Rahul', 'Jain', 'rahul@mobylite.com', '0192023a7bbd73250516f069df18b500', 'admin123', 'Other', '', '', '', '3334443332', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-02-02 09:09:08', '2016-02-02 09:09:08', '2016-04-20 10:03:21', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'a19d84fd7040f15ed93e8ae94fbbf03b', 0, '', 0, '', ''),
-(29, 'Basic', '', 'Mr', 'Virendar', 'kumardfdf676667', 'virender@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '01-12-1993', '', '', '2233445521', 'AMVC0VVS5XlKJIL.jpg', 'Instagram', 'Denmark', '', '', '', '125077', 'dsdfsdfdsfsdf423434535353535', '112', '', 1, '', '', '2016-03-04 04:28:02', '2016-03-04 04:28:02', '0000-00-00 00:00:00', '2016-03-04 04:28:26', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
+(1, 'Basic', '', '', 'Vineet', 'Kumar', 'rahul.jain@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', 'jan,01-08-1995', '', '', '8905062665', 'sI9xuSY8aw62d3B.jpg', '', '', 'basic addresss', 'basic city', 'basic state', '125077', '', '1', '', 1, '', '', '2016-01-22 07:03:02', '2016-04-15 01:10:03', '2016-04-15 01:10:03', '2016-01-22 07:04:42', '2016-04-21 05:10:39', 'Logout', '', 0, '', 1, '', ''),
+(2, 'Basic', '', '', '123@#$xdf', 'dc123@$', '#dx@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '', 'Female', '', '', '', '9050605251', '', '', '', '', '', '', NULL, 'dfvsdf34534(*(', '2', '', 1, '', '', '2016-01-22 07:06:21', '2016-01-22 07:06:21', '0000-00-00 00:00:00', '2016-01-22 07:06:21', '2016-03-30 07:30:05', 'Logout', 'f9318f98d8bf16323137708fc6fdd963', 0, '', 1, '', ''),
+(38, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@mobilyte.com', '0192023a7bbd73250516f069df18b500', '', 'Male', '17-01-1987', '', '', '9879879879', '', 'Facebook', 'india', '#302, GH-104', 'Panchkula', 'Haryana', '127306', '', '111', '', 1, '', '', '2016-03-08 07:11:54', '2016-03-08 07:11:54', '0000-00-00 00:00:00', '2016-03-08 07:13:00', '2016-04-27 05:30:57', 'Logout', '', 0, '1f5a2c51a2b3be67632b6b8939f3c0a7', 1, '', ''),
+(3, 'Basic', '', 'Mr', 'testerd', '123', '#hcxvx.dcv@gmail.com', '', '', 'Male', '', '', '', '5434534567', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-04 07:09:55', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
+(24, 'Basic', '', '', 'Rahul', 'Jain', 'rahul@mobylite.com', '0192023a7bbd73250516f069df18b500', 'admin123', 'Other', '', '', '', '3334443332', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-02-02 09:09:08', '2016-02-02 09:09:08', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'a19d84fd7040f15ed93e8ae94fbbf03b', 0, '', 0, '', ''),
+(29, 'Basic', '', 'Mr', 'Virendar', 'kumardfdf676667', 'virender@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '01-12-1993', '', '', '2233445521', 'AMVC0VVS5XlKJIL.jpg', 'Instagram', 'Denmark', '', '', '', '125077', 'dsdfsdfdsfsdf423434535353535', '112', '', 1, '', '', '2016-03-04 04:28:02', '2016-03-04 04:28:02', '0000-00-00 00:00:00', '2016-03-04 04:28:26', '0000-00-00 00:00:00', 'Logout', '', 0, '', 1, '', ''),
 (37, 'Basic', '', 'Mr', 'Sunil', 'Kumar', 'sukhdev@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '11-12-1990', '', '', '', '', 'Facebook', 'Austria', '', '', '', '12545', '', '', '', 1, '', '', '2016-03-07 13:57:53', '2016-03-07 13:57:53', '0000-00-00 00:00:00', '2016-03-07 13:57:53', '2016-04-01 09:02:20', 'Logout', 'f044329d1e80892ad78a26989ed0f73f', 0, 'ab2a8536dd1243e6bfe48615c6dc0a68', 1, '', ''),
-(43, 'Basic', '1725316891087656', 'Mr', 'Albert', 'Gabriel', 'betasoftsystems.dummy@gmail.com', '382b2dde070fede332762171f108738a', 'IZfykHAdbG96bqD', 'Male', '', '', '', '', 'https://graph.facebook.com/1725316891087656/picture', '', '', '', '', '', NULL, '', '', '', 1, '', '', '2016-03-14 10:12:15', '2016-03-14 10:12:15', '2016-04-20 10:01:45', '2016-03-14 10:12:15', '2016-03-15 12:41:28', 'Logout', '142cc40375cf5d8ea299c1d0ad9938af', 0, 'c4334c1deec7a04704ead74a9be0d066', 0, '', ''),
+(43, 'Basic', '1725316891087656', 'Mr', 'Albert', 'Gabriel', 'betasoftsystems.dummy@gmail.com', '382b2dde070fede332762171f108738a', 'IZfykHAdbG96bqD', 'Male', '', '', '', '', 'https://graph.facebook.com/1725316891087656/picture', '', '', '', '', '', NULL, '', '', '', 1, '', '', '2016-03-14 10:12:15', '2016-03-14 10:12:15', '2016-04-12 09:08:36', '2016-03-14 10:12:15', '2016-03-15 12:41:28', 'Logout', '142cc40375cf5d8ea299c1d0ad9938af', 0, 'c4334c1deec7a04704ead74a9be0d066', 1, '', ''),
 (57, 'Basic', '', 'Mr', 'test ok', 'name ok', 'test@test.com', 'a3dcb4d229de6fde0db5686dee47145d', 'asdasdasd', 'Male', '03/17/2016', '', '', '9050656545', '', 'Radio', 'Australia', '', '', '', '123123', '', '1', '', 1, '', '', '2016-03-16 09:49:24', '2016-03-16 09:49:24', '0000-00-00 00:00:00', '2016-03-16 09:49:25', '0000-00-00 00:00:00', 'Logout', 'cd2ae1bac4f7cfabbd4be3460b74b548', 0, '', 0, '', ''),
 (61, 'Basic', '888539421260409', 'Mr', 'Sukhdev', 'Kamboj', 'skanmulle111@gmail.com', 'f0f22591641f6bdf34ed109345dcd771', 'Y2QySaxjt0WuSUG', 'Male', '', '', '', '2323232323', 'j0eb2ZZNfkEHhGp.jpg', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-03-16 12:45:51', '2016-03-16 12:45:51', '0000-00-00 00:00:00', '2016-03-16 12:45:52', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
-(64, 'Basic', '', 'Mr', 'Sukant', 'Sharma', '#.sukant@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '08/01/2006', '', '', '1234567890', '', 'Other', 'Australia', '', '', '', '95131', '', '1', '', 1, '', '', '2016-03-18 06:24:01', '2016-04-20 07:48:35', '2016-04-20 10:02:58', '2016-03-18 06:24:01', '0000-00-00 00:00:00', 'Logout', 'ecffa2c1b3b9bfe0e487b7ed612b9b7e', 0, '', 0, '', ''),
+(64, 'Basic', '', 'Mr', 'Sukant', 'Sharma', '#.sukant@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '08/01/2006', '', '', '3453654345', '', 'Other', 'Australia', '', '', '', '95131', '', '1', '', 1, '', '', '2016-03-18 06:24:01', '2016-03-18 06:24:01', '0000-00-00 00:00:00', '2016-03-18 06:24:01', '0000-00-00 00:00:00', 'Logout', 'ecffa2c1b3b9bfe0e487b7ed612b9b7e', 0, '', 0, '', ''),
 (65, 'Basic', '', 'Mr', 'Shampy', 'Singh Sanotra', 'mridula.sharma@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '05/13/1980', '', '', 'nhghyhjyy', '', 'Pinterest', 'Hong Kong S.A.R., China', '', '', '', '999077', '', '1', '', 1, '', '', '2016-03-30 16:46:43', '2016-03-30 16:46:43', '0000-00-00 00:00:00', '2016-03-30 16:46:43', '0000-00-00 00:00:00', 'Logout', '7602540cc095584b1c37e4d56e3b7e33', 0, '', 0, '', ''),
-(66, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@betasoftsystems.com', 'e00cf25ad42683b3df678c61f42c6bda', 'admin1', 'Male', '04/18/2025', '', '', '', '', 'Facebook', 'Germany', '', '', '', '123123', '', '', '', 1, '', '', '2016-04-11 12:56:41', '2016-04-11 12:56:41', '0000-00-00 00:00:00', '2016-04-11 12:56:41', '2016-04-20 12:57:19', 'Logout', '10593c835057dc8058c68f011fe4d60a', 0, '', 0, '', '');
+(66, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@betasoftsystems.com', 'e00cf25ad42683b3df678c61f42c6bda', 'admin1', 'Male', '04/18/2025', '', '', '', '', 'Facebook', 'Germany', '', '', '', '123123', '', '', '', 1, '', '', '2016-04-11 12:56:41', '2016-04-11 12:56:41', '0000-00-00 00:00:00', '2016-04-11 12:56:41', '0000-00-00 00:00:00', 'Logout', '10593c835057dc8058c68f011fe4d60a', 0, '', 0, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_i18n`
+-- Table structure for table `user_about_sitters`
 --
 
-CREATE TABLE IF NOT EXISTS `users_i18n` (
+CREATE TABLE IF NOT EXISTS `user_about_sitters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `user_id` int(11) NOT NULL,
+  `accepted_pet_size` varchar(255) NOT NULL,
+  `preferred_age` varchar(255) NOT NULL,
+  `cancellation_policy` enum('flexible','moderate','strict') NOT NULL COMMENT 'Flexible,Moderate,Strict',
+  `breaks_provided_every` varchar(255) NOT NULL,
+  `sitting_experience` varchar(255) NOT NULL,
+  `mixed_familes` enum('yes','no') NOT NULL,
+  `your_self` varchar(255) NOT NULL,
+  `take_care_desc` text NOT NULL,
+  `carers_description` text NOT NULL,
+  `un_neutered_pets` enum('yes','no') NOT NULL,
+  `un_spayed_females` enum('yes','no') NOT NULL,
+  `birds_in_cages` enum('yes','no') NOT NULL,
+  `females_on_heat` enum('yes','no') NOT NULL,
+  `un_trained_pets` enum('yes','no') NOT NULL,
+  `dogs_in_home` enum('yes','no') NOT NULL,
+  `last_minute_booking` enum('yes','no') NOT NULL,
+  `longer_than_week` enum('yes','no') NOT NULL,
+  `cats_in_home` enum('yes','no') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -30282,47 +29927,25 @@ CREATE TABLE IF NOT EXISTS `user_accepted_pets` (
 CREATE TABLE IF NOT EXISTS `user_blogs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
+  `featured` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `user_blogs`
 --
 
-INSERT INTO `user_blogs` (`id`, `user_id`, `image`, `description`, `created_date`, `modified`, `status`) VALUES
-(3, 6, 'JZAAhsaxvykqLly.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-02-17 06:52:26', '2016-04-20 01:37:09', 1),
-(4, 24, 'rgFQqY7WJZtD6i7.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-02-17 06:52:26', '2016-04-20 01:42:57', 1),
-(12, 0, '3NRRzBIDctdn00h.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt', '2016-04-20 13:38:48', '2016-04-20 01:42:17', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_blogs_i18n`
---
-
-CREATE TABLE IF NOT EXISTS `user_blogs_i18n` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `locale` varchar(6) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `foreign_key` int(10) NOT NULL,
-  `field` varchar(255) NOT NULL,
-  `content` text CHARACTER SET utf8,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
-  KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `user_blogs_i18n`
---
-
-INSERT INTO `user_blogs_i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'es_ES', 'UserBlogs', 1, 'description', 'SP Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ');
+INSERT INTO `user_blogs` (`id`, `user_id`, `title`, `image`, `description`, `created_date`, `modified`, `status`, `featured`) VALUES
+(3, 29, '', 'JZAAhsaxvykqLly.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-02-29 06:45:54', '2016-04-20 01:22:42', 1, 0),
+(4, 24, '', 'rgFQqY7WJZtD6i7.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ', '2016-03-08 09:59:24', '2016-04-20 01:33:27', 1, 0),
+(8, 0, '', '4bAc3CY5SFsUORn.png', 'New ok', '2016-04-08 12:56:24', '2016-04-12 01:31:49', 1, 0),
+(11, 0, '', 'fscOk0YjTmvgP2z.png', 'gdfgdfg', '2016-04-12 09:59:41', '2016-04-20 01:33:24', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -30360,7 +29983,7 @@ CREATE TABLE IF NOT EXISTS `user_details` (
 --
 
 INSERT INTO `user_details` (`id`, `user_id`, `company_summary`, `company_video`, `where_live`, `describe_yourself`, `school`, `work`, `time_zone`, `language`, `emergency_name`, `emergency_phone`, `emergency_email`, `emergency_relationship`, `shipping_country`, `shipping_address1`, `shipping_address2`, `shipping_city`, `shipping_state`, `shipping_zip`, `work_email_address`) VALUES
-(11, 29, '', '', 'test line', 'test yourself', 'ok test school', 'test work', 'delhi', 'UK', 'Test name', '9050525252', 'em@gmail.com', 'friend', 'dsf', 'test address1', 'fas', 'dfafaf', 'asf', 'asdf', 'dsfasdf@gmail.com'),
+(11, 1, '', '', 'test line', 'test yourself', 'ok test school', 'test work', 'delhi', 'UK', 'Test name', '9050525252', 'em@gmail.com', 'friend', 'dsf', 'test address1', 'fas', 'dfafaf', 'asf', 'asdf', 'dsfasdf@gmail.com'),
 (12, 24, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (13, 2, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (14, 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
@@ -30426,30 +30049,7 @@ CREATE TABLE IF NOT EXISTS `user_extended_profiles` (
 --
 
 INSERT INTO `user_extended_profiles` (`id`, `user_id`, `pick_drop`, `travel_fee_rate`, `access_car`, `home_type`, `garden_area`, `is_fenced`, `pet_sleep`, `under_13_child`, `last_minute_booking`, `short_term_type`, `cancel_policy`, `created_date`, `status`) VALUES
-(3, 4, '', 34, 'yes', '1', '0', 'yes', 'indoor', 'yes', 'no', 'no', 'Strict', '2016-02-16 06:52:26', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_funding_materials`
---
-
-CREATE TABLE IF NOT EXISTS `user_funding_materials` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `document_name` varchar(225) NOT NULL,
-  `document_path` varchar(225) NOT NULL,
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `user_funding_materials`
---
-
-INSERT INTO `user_funding_materials` (`id`, `user_id`, `document_name`, `document_path`, `create_date`) VALUES
-(3, 39, 'New Document', 'KG2UAMb9eN7f26U.doc', '2016-01-18 10:03:52'),
-(4, 39, 'Updated Doc Finance 2016', '5BSuNDBlCD5WaeH.odt', '2016-01-18 11:30:24');
+(3, 4, '', 34, 'yes', '1', '0', 'yes', 'indoor', 'yes', 'no', 'no', 'Strict', '2016-02-17 06:52:26', 1);
 
 -- --------------------------------------------------------
 
@@ -30523,16 +30123,58 @@ INSERT INTO `user_pets` (`id`, `user_id`, `pet_name`, `pet_type`, `pet_breed`, `
 CREATE TABLE IF NOT EXISTS `user_professional_accreditations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `type_professional` enum('check','pets','people','other') NOT NULL COMMENT 'Pets,People,Other',
+  `type_professional` enum('govt','check','pets','people','other') NOT NULL COMMENT 'Pets,People,Other',
   `sector_type` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `qualification_date` date NOT NULL,
-  `expiry_date` date NOT NULL,
+  `qualification_title` varchar(255) NOT NULL,
+  `qualification_date` datetime NOT NULL,
+  `expiry_date` datetime NOT NULL,
   `scanned_certification` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+
+--
+-- Dumping data for table `user_professional_accreditations`
+--
+
+INSERT INTO `user_professional_accreditations` (`id`, `user_id`, `type_professional`, `sector_type`, `qualification_title`, `qualification_date`, `expiry_date`, `scanned_certification`, `status`, `created_date`) VALUES
+(28, 38, 'check', 'govt', 'MCAs', '2173-12-04 00:00:00', '2181-12-04 00:00:00', '38_userprofessionals-check-govt-scanned-certification.pdf', 1, '2016-04-27 06:12:36'),
+(29, 38, 'pets', 'private', 'BCAs', '1970-12-04 00:00:00', '1971-12-04 00:00:00', '38_userprofessionals-pets-private-scanned-certification.pdf', 1, '2016-04-27 06:12:36'),
+(30, 38, 'people', 'private', 'PGDCAs', '1972-12-04 00:00:00', '1973-12-04 00:00:00', '38_userprofessionals-people-private-scanned-certification.docx', 1, '2016-04-27 06:12:36'),
+(31, 38, 'govt', 'licence', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '38_userprofessionals-govt-licence-scanned-certification.pdf', 1, '2016-04-27 06:12:36'),
+(32, 38, 'other', 'other', 'New 1s', '1974-12-04 00:00:00', '1975-12-04 00:00:00', '38_scanned_certification_1.docx', 1, '2016-04-27 06:12:36'),
+(33, 38, 'other', 'other', 'New 2s', '1976-12-04 00:00:00', '1977-12-04 00:00:00', '', 1, '2016-04-27 06:12:36'),
+(34, 38, 'other', 'other', 'New 3s', '1994-12-04 00:00:00', '1995-12-04 00:00:00', '38_scanned_certification_3.pdf', 1, '2016-04-27 06:12:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_professional_accreditations_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_professional_accreditations_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `first_aid_for` varchar(255) NOT NULL,
+  `cpr_for` varchar(255) NOT NULL,
+  `oral_madications` varchar(255) NOT NULL,
+  `injected_madications` varchar(255) NOT NULL,
+  `training_techniques` varchar(255) NOT NULL,
+  `ex_behavioural_problems` varchar(255) NOT NULL,
+  `ex_volunteer` varchar(255) NOT NULL,
+  `ex_rescue_pets` varchar(255) NOT NULL,
+  `languages` varchar(255) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `user_professional_accreditations_details`
+--
+
+INSERT INTO `user_professional_accreditations_details` (`id`, `user_id`, `first_aid_for`, `cpr_for`, `oral_madications`, `injected_madications`, `training_techniques`, `ex_behavioural_problems`, `ex_volunteer`, `ex_rescue_pets`, `languages`, `created_date`) VALUES
+(5, 38, 'adults', 'children', 'children', 'children', 'cat', 'children', 'yes', 'dog', 'en', '2016-04-27 06:12:36');
 
 -- --------------------------------------------------------
 
@@ -30611,7 +30253,7 @@ CREATE TABLE IF NOT EXISTS `user_sitter_galleries` (
   `user_id` int(11) NOT NULL,
   `image` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -30631,7 +30273,14 @@ CREATE TABLE IF NOT EXISTS `user_sitter_houses` (
   `fully_fenced` enum('yes','no') NOT NULL,
   `smokers` enum('yes','no') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `user_sitter_houses`
+--
+
+INSERT INTO `user_sitter_houses` (`id`, `user_id`, `property_type`, `outdoor_area`, `outdoor_area_size`, `outing_allow_multiple`, `cancellation_policy`, `breaks_provided_every`, `fully_fenced`, `smokers`) VALUES
+(1, 38, 'flat', 'balcony', 'medium', 'urban_streets', 'flexible', '2-4', 'yes', 'yes');
 
 -- --------------------------------------------------------
 

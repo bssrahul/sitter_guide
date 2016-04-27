@@ -623,10 +623,10 @@
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				}
+
 			}
-		});
-			
-		
+
+         });
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
@@ -1040,9 +1040,19 @@ $( document ).ready(function() {
    }); 
  /*End profile image*/
  });
-/*Last Drop down country- currency listing*/
+
+
+
+$(document).ready(function(){
+/*For profile video*/
+    $("#browseVideo").on('click',function(){
+        $("#images").trigger("click");    
+        });
+/*End profile video*/
+   /*Last Drop down country- currency listing*/
 $(function () {
   	$('.navbar-toggle-sidebar').click(function () {
+  		
   		$('.navbar-nav').toggleClass('slide-in');
   		$('.side-body').toggleClass('body-slide-in');
   		$('#search').removeClass('in').addClass('collapse').slideUp(200);
@@ -1054,11 +1064,13 @@ $(function () {
   		$('.search-input').focus();
   	});
   });
-
-/*For profile video*/
-$(document).ready(function(){
-    $("#browseVideo").on('click',function(){
-        $("#images").trigger("click");    
-        });
+   /*Last Drop down country- currency listing*/
+   $(document)
+	.on( 'click', '.dropdown-menu', function (e){
+	    e.stopPropagation();
+	});
+ /*Last Drop down country- currency listing*/
 });
+
 /*End profile video*/
+
