@@ -1,5 +1,4 @@
- 
-  <?php 
+<?php 
   echo $this->Html->css(['Front/jquery-ui.css']); 
   echo $this->Html->script(['Front/jquery-ui.js']);
 ?>
@@ -26,34 +25,33 @@
                   <h3><strong>Police Check</strong><small>( Government Issued Police Check ) </small></h3>
                   <div class="row">
                     <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Issuing Institution" id="" class="form-control">-->
-                       <?php echo $this->Form->input('UserProfessionals.check.govt.qualification_title',[
+                     <?php echo $this->Form->input('UserProfessionals.check.govt.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
                                  'placeholder'=>'Qualification Title',
-                                 'label'=>false/*,
-                                 'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title']:''*/
+                                 'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
                       ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Date Issued" id="" class="form-control">-->
-                      <?php echo $this->Form->input('UserProfessionals.check.govt.qualification_date',[
+                     <?php echo $this->Form->input('UserProfessionals.check.govt.qualification_date',[
                                  'class'=>'form-control addDateCalendar',
                                  'templates' => ['inputContainer' => '{{content}}'],
                                  'placeholder'=>'Date Issued',
-                                 'label'=>false/*,
-                                 'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date']:''*/
+                                 'type' => 'text',
+                                 'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_date'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_date']:''
                       ]); ?>
 
                     </div>
                     <div class="form-group col-lg-4">
-                     <!-- <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
-                      <?php echo $this->Form->input('UserProfessionals.check.govt.expiry_date',[
+                     <?php echo $this->Form->input('UserProfessionals.check.govt.expiry_date',[
                              'class'=>'form-control addDateCalendar',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Expiry Date of Certification',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                             'type' => 'text',
+                             'label'=>false,
+                             'value'=>@$professional['UserProfessionals']['check']['govt']['expiry_date'] !=''?@$professional['UserProfessionals']['check']['govt']['expiry_date']:''
                       ]); ?>
                     </div>
                   </div>
@@ -65,51 +63,49 @@
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Upload Scanned Certificate',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                             'readonly'=>true,
+                             'label'=>false,
+                              'value'=>@$professional['UserProfessionals']['check']['govt']['scanned_certification'] !=''?@$professional['UserProfessionals']['check']['govt']['scanned_certification']:''
                       ]); ?>
                       
                       
                       <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                    <!--<div class="form-group col-lg-2">
-                      <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>-->
+                    
                    
                   </div>
 
                   <h3><strong>Physician (Pets)</strong><small>   ( Medical Certificate ) </small></h3>
                   <div class="row">
                     <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">-->
-                       <?php echo $this->Form->input('UserProfessionals.pets.private.qualification_title',[
+						<?php echo $this->Form->input('UserProfessionals.pets.private.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
                                  'placeholder'=>'Qualification Title',
-                                 'label'=>false/*,
-                                 'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title']:''*/
+								  'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['pets']['private']['qualification_title'] !=''?@$professional['UserProfessionals']['pets']['private']['qualification_title']:''
                       ]); ?>
 
                     </div>
                     <div class="form-group col-lg-4">
-                        <!--<input type="text" placeholder="Graduation Date" id="" class="form-control">-->
                         <?php echo $this->Form->input('UserProfessionals.pets.private.qualification_date',[
                                    'class'=>'form-control addDateCalendar',
                                    'templates' => ['inputContainer' => '{{content}}'],
                                    'placeholder'=>'Date Issued',
-                                   'label'=>false/*,
-                                   'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date']:''*/
+                                   'type' => 'text',
+                                   'label'=>false,
+									'value'=>@$professional['UserProfessionals']['pets']['private']['qualification_date'] !=''?@$professional['UserProfessionals']['pets']['private']['qualification_date']:''
                         ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                       <?php echo $this->Form->input('UserProfessionals.pets.private.expiry_date',[
                              'class'=>'form-control addDateCalendar',
+                             'type' => 'text',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Expiry Date of Certification',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+								'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['pets']['private']['expiry_date'] !=''?@$professional['UserProfessionals']['pets']['private']['expiry_date']:''
                       ]); ?>
                     </div>
                   </div>
@@ -121,48 +117,46 @@
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Upload Scanned Certificate',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                             'readonly'=>true,
+                             'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['pets']['private']['scanned_certification'] !=''?@$professional['UserProfessionals']['pets']['private']['scanned_certification']:''
                       ]); ?>
                       <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                   <!--<div class="form-group col-lg-2">
-                      <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>-->
+                   
                    
                   </div>
 
                   <h3><strong>Physician (People)</strong><small>   ( Medical Certificate ) </small></h3>
                   <div class="row">
                     <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">-->
                       <?php echo $this->Form->input('UserProfessionals.people.private.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
                                  'placeholder'=>'Qualification Title',
-                                 'label'=>false/*,
-                                 'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title']:''*/
+                                 'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['people']['private']['qualification_title'] !=''?@$professional['UserProfessionals']['people']['private']['qualification_title']:''
                       ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
-                     <!-- <input type="text" placeholder="Graduation Date" id="" class="form-control">-->
-                        <?php echo $this->Form->input('UserProfessionals.people.private.qualification_date',[
+                      <?php echo $this->Form->input('UserProfessionals.people.private.qualification_date',[
                                    'class'=>'form-control addDateCalendar',
                                    'templates' => ['inputContainer' => '{{content}}'],
                                    'placeholder'=>'Date Issued',
-                                   'label'=>false/*,
-                                   'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date']:''*/
+                                   'type' => 'text',
+                                  'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['people']['private']['qualification_date'] !=''?@$professional['UserProfessionals']['people']['private']['qualification_date']:''
                         ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                       <?php echo $this->Form->input('UserProfessionals.people.private.expiry_date',[
                              'class'=>'form-control addDateCalendar',
+                             'type' => 'text',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Expiry Date of Certification',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                             'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['people']['private']['expiry_date'] !=''?@$professional['UserProfessionals']['people']['private']['expiry_date']:''
                       ]); ?>
                     </div>
                   </div>
@@ -174,15 +168,14 @@
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Upload Scanned Certificate',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                             'readonly'=>true,
+                            'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['people']['private']['scanned_certification'] !=''?@$professional['UserProfessionals']['people']['private']['scanned_certification']:''
                       ]); ?>
                       <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
                       </div>
                     </div>
-                    <!--<div class="form-group col-lg-2">
-                      <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>-->
+                    
                    
                   </div>
                     <h3><strong>drivers licence / Government issued ID<small>( Your photo ID will not be displayed on your profile )</small></strong></h3>
@@ -193,133 +186,172 @@
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Upload Scanned Certificate',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
+                             'readonly'=>true,
+                             'label'=>false,
+                                 'value'=>@$professional['UserProfessionals']['govt']['licence']['scanned_certification'] !=''?@$professional['UserProfessionals']['govt']['licence']['scanned_certification']:''
                       ]); ?>
                       
                       <button class="uploaddoc btn btn-secondary" type="button">Browse</button>
                       </div>
                     </div>
-                    <!--<div class="form-group col-lg-2">
-                      <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>-->
+                    
                    
                   </div>
                   <h3><strong>Other Qualifications & Specific Skills</strong><small>( Please specify )</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i>
  Add More</span></h3>
-                  <div class="row">
-                    <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">-->
-                       <?php echo $this->Form->input('qualification_title[]',[
-                                 'class'=>'form-control',
-                                 'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
-                                 'label'=>false/*,
-                                 'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title']:''*/
-                      ]); ?>
-                    </div>
-                    <div class="form-group col-lg-4">
-                      <!--<input type="text" placeholder="Graduation Date" id="" class="form-control">-->
-                      <?php echo $this->Form->input('qualification_date[]',[
-                                   'class'=>'form-control addDateCalendar',
-                                   'templates' => ['inputContainer' => '{{content}}'],
-                                   'placeholder'=>'Date Issued',
-                                   'label'=>false/*,
-                                   'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date']:''*/
-                      ]); ?>
+                <?php 
+					//CONDITION FOR 
+					if(!empty($professional['UserProfessionals']['other'])){ ?>
+							<?php $o=1; 
+							foreach($professional['UserProfessionals']['other'] as $otherValue){ ?>
+								  <div id="ajaxAdd<?php echo $o; ?>" class="row ajaxAdd">
+                    
+										<div class="form-group col-lg-4">
+										   <?php echo $this->Form->input('qualification_title[]',[
+													 'class'=>'form-control',
+													 'templates' => ['inputContainer' => '{{content}}'],
+													 'placeholder'=>'Qualification Title',
+													 'label'=>false,
+													 'value'=>@$otherValue['other']['qualification_title'] !=''?@$otherValue['other']['qualification_title']:''
+										  ]); ?>
+										</div>
+										<div class="form-group col-lg-4">
+										  <?php echo $this->Form->input('qualification_date[]',[
+													   'class'=>'form-control addDateCalendar',
+													   'type' => 'text',
+													   'templates' => ['inputContainer' => '{{content}}'],
+													   'placeholder'=>'Date Issued',
+													  'label'=>false,
+													 'value'=>@$otherValue['other']['qualification_date'] !=''?@$otherValue['other']['qualification_date']:''
+										  ]); ?>
 
-                    </div>
-                    <div class="form-group col-lg-4" >
-                      <!--<input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
-                      <?php echo $this->Form->input('expiry_date[]',[
-                             'class'=>'form-control addDateCalendar',
-                             'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
-                      ]); ?>
+										</div>
+										<div class="form-group col-lg-4" >
+										  <?php echo $this->Form->input('expiry_date[]',[
+												 'class'=>'form-control addDateCalendar',
+												 'type' => 'text',
+												 'templates' => ['inputContainer' => '{{content}}'],
+												 'placeholder'=>'Expiry Date of Certification',
+												'label'=>false,
+												 'value'=>@$otherValue['other']['expiry_date'] !=''?@$otherValue['other']['expiry_date']:''
+										  ]); ?>
 
-                    </div>
-                  </div>
+										</div>
+								 
+
+								  <div class="row" >
+									<div class="form-group col-lg-4">
+										<div class="brow-inner">
+											<?php echo $this->Form->input('scanned_certification[]',[
+												 'class'=>'form-control',
+												 'id'=>'scanned_certification_'.$o,
+												 'templates' => ['inputContainer' => '{{content}}'],
+												 'placeholder'=>'Upload Scanned Certificate',
+												 'readonly'=>true,
+												 'label'=>false,
+													 'value'=>@$otherValue['other']['scanned_certification'] !=''?@$otherValue['other']['scanned_certification']:''
+										  ]); ?>
+										  <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
+										</div>
+									</div>
+								  </div>
+								   </div>
+							<?php $o++;	
+							} //END FOREACH LOOP FOR DISPLAY MULTIPLE OTHER FIELD WHEN USER SELECT MULTIPLE FROM ADD OTHER ?>
+				<?php }else{ ?>
+					  <div id="ajaxAdd1"  class="row ajaxAdd">
+                    
+						<div class="form-group col-lg-4">
+						   <?php echo $this->Form->input('qualification_title[]',[
+									 'class'=>'form-control',
+									 'templates' => ['inputContainer' => '{{content}}'],
+									 'placeholder'=>'Qualification Title',
+									 'label'=>false,
+									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+						  ]); ?>
+						</div>
+						<div class="form-group col-lg-4">
+						  <?php echo $this->Form->input('qualification_date[]',[
+									   'class'=>'form-control addDateCalendar',
+									   'type' => 'text',
+									   'templates' => ['inputContainer' => '{{content}}'],
+									   'placeholder'=>'Date Issued',
+									  'label'=>false,
+									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+						  ]); ?>
+
+						</div>
+						<div class="form-group col-lg-4" >
+						  <?php echo $this->Form->input('expiry_date[]',[
+								 'class'=>'form-control addDateCalendar',
+								 'type' => 'text',
+								 'templates' => ['inputContainer' => '{{content}}'],
+								 'placeholder'=>'Expiry Date of Certification',
+								'label'=>false,
+								 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+						  ]); ?>
+
+						</div>
+                 
 
                   <div class="row" >
                     <div class="form-group col-lg-4">
-                    <div class="brow-inner">
-                      <?php echo $this->Form->input('scanned_certification[]',[
-                             'class'=>'form-control',
-                             'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Upload Scanned Certificate',
-                             'label'=>false/*,
-                              'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''*/
-                      ]); ?>
-                      <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
-                      </div>
+						<div class="brow-inner">
+							<?php echo $this->Form->input('scanned_certification[]',[
+								 'class'=>'form-control',
+								 'id'=>'scanned_certification_1',
+								 'templates' => ['inputContainer' => '{{content}}'],
+								 'placeholder'=>'Upload Scanned Certificate',
+								 'readonly'=>true,
+								 'label'=>false,
+									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+						  ]); ?>
+						  <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
+						</div>
                     </div>
-                    <!--<div class="form-group col-lg-2">
-                      <button class="btn btn-primary upload-side" type="button">Upload</button>
-                    </div>-->
-                   
                   </div>
+                   </div>
+					<?php } //END IF CONDITION FOR OTHER FIELDS ?>
+                  
                   <h3 id="addAfter"></h3>
 
                   <div class="row">
                     <div class="col-lg-4">
                        <label for="">Do you know First Aid for </label>
-                          <!--<select id="sel1" class="form-control">
-                           <option>Adults</option>
-                          <option>Children</option>
-                          <option>Infants</option>
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
+                      
                       <?php echo $this->Form->input('UserProfessionalsDetails.first_aid_for',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                     </div>
 
                     <div class="col-lg-4">
                       <label for="">Do you know CPR for </label>
-                          <!--<select id="sel1" class="form-control">
-                           <option>Adults</option>
-                          <option>Children</option>
-                          <option>Infants</option>
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
+                      
                       <?php echo $this->Form->input('UserProfessionalsDetails.cpr_for',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                     </div>
 
                     <div class="col-lg-4">
                        <label for="">I can administer Oral Medications</label>
-                          <!--<select id="sel1" class="form-control">
-                           <option>Adults</option>
-                          <option>Children</option>
-                          <option>Infants</option>
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
-                      <?php echo $this->Form->input('UserProfessionalsDetails.oral_medications',[
+                      
+                      <?php echo $this->Form->input('UserProfessionalsDetails.oral_madications',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                     </div>
 
@@ -328,21 +360,14 @@
                     <div class="row">
                     <div class="col-lg-4">
                      <label for="">I canadminister Injected Medications</label>
-                          <!--<select id="sel1" class="form-control">
-                        <option>Adults</option>
-                          <option>Children</option>
-                          <option>Infants</option>
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
-                      <?php echo $this->Form->input('UserProfessionalsDetails.injected_medications',[
+                      
+                      <?php echo $this->Form->input('UserProfessionalsDetails.injected_madications',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                           </div>
                       
@@ -362,7 +387,7 @@
                         'type'=>'select',
                         'options'=>[''=>'---','dog'=>'Dog','cat'=>'Cat','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
 
                     </div>
@@ -371,21 +396,14 @@
                    
                     <div class="col-lg-4">
                        <label for="">Experience with Behavioural Problems</label>
-                          <!--<select id="sel1" class="form-control">
-                            <option>Adults</option>
-                          <option>Children</option>
-                          <option>Infants</option>
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
+                         
                       <?php echo $this->Form->input('UserProfessionalsDetails.ex_behavioural_problems',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                     </div>
                     </div>
@@ -396,18 +414,14 @@
                 
                     <div class="col-lg-4">
                          <label for="">Experience as Volunteer with Animal Welfare</label>
-                          <!--<select id="sel1" class="form-control">
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
+                          
                       <?php echo $this->Form->input('UserProfessionalsDetails.ex_volunteer',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>['yes'=>'Yes','no'=>'No'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                     </div>
                     <div class="col-lg-4">
@@ -423,37 +437,19 @@
                         'type'=>'select',
                         'options'=>[''=>'---','dog'=>'Dog','cat'=>'Cat','other'=>'Other (specify)'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['first_aid_for'] !=''?$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
                       ?>
                     </div>
                     <div class="col-lg-4">
                       <label for="">Languages</label>
-                          <!--<select id="sel1" class="form-control">
-                            <option>English</option>
-                            <option>Chinese</option>
-                            <option>Czech</option>
-                            <option>Danish</option>
-                            <option>Dutch</option>
-                            <option>Finnish</option>
-                            <option>French</option>
-                            <option>German</option>
-                            <option>Italian</option>
-                            <option>Japanese</option>
-                            <option>Maori</option>
-                            <option>Norwegian</option>
-                            <option>Portugese</option>
-                            <option>Russian</option>
-                            <option>Spanish</option>
-                            <option>Swedish</option>
-                            <option>Other</option>
-                          </select>-->
-                      <?php echo $this->Form->input('UserProfessionalsDetails.language',[
+                          
+                      <?php echo $this->Form->input('UserProfessionalsDetails.languages',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>['en'=>'English','fr'=>'French','de'=>'German','hu'=>'Hungarian','it'=>'Italian','ro'=>'Romanian','ru'=>'Russion','es'=>'spanish'],
                         'class'=>'form-control'/*,
-                        'value'=>$professional['UserProfessionalsDetails']['language'] !=''?$professional['UserProfessionalsDetails']['language']:''*/]);
+                        'value'=>@$professional['UserProfessionalsDetails']['language'] !=''?@$professional['UserProfessionalsDetails']['language']:''*/]);
                       ?>
                     </div>
 
@@ -488,40 +484,54 @@
 		  'id'=>'uploaddocument',
 		  'method'=>'post',
 		  'enctype'=>"multipart/form-data",
-		  'style'=>"visibility: hidden"
+		  '
 	  ]);*/?>
-	<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo HTTP_ROOT."dashboard/upload-documents"; ?>'>  
+	<form id="imageform"  style="visibility: hidden" method="post" enctype="multipart/form-data" action='<?php echo HTTP_ROOT."dashboard/upload-documents"; ?>'>  
 	<input type="hidden" name="valuefor" value="" id="valuefor" />
 	<input type="file" name="document" id="documentControl" />
 	</form>      
 
 <script>
 	$( document ).ready(function() {
+		
 		//open document selector window script
-		$(".uploaddoc").on('click',function(){
-			$("#valuefor").val($(this).prev().attr('id'));
+		$(document).on('click', ".uploaddoc", function(){
+			$("#valuefor").val($(this).prev().attr('id').replace("[]", "")); //ADD TEXT box id to hidden form value
 			$("#documentControl").trigger("click");	
 		});
 		
 		//Document upload using ajax and return document name insert into releted text box
-		$('#documentControl').on('change', function() 
+		$(document).on('change', '#documentControl', function() 
 		{ 
-			$(".uploaddoc").next().html('<img src="<?php echo HTTP_ROOT."img/ajax-loader.gif"; ?>"/>');
+			$("#"+$("#valuefor").val()).next().after('<img class="wait-img" src="<?php echo HTTP_ROOT."img/ajax-loader.gif"; ?>"/>');
 			$("#imageform").ajaxForm(
 			{
 				success: function(res)
 				{
 					var response = res.split(':');
+					$(".wait-img").remove();
+					$(".inline-error").remove();
 					if($.trim(response[0]) == 'Success'){
 						$('#'+response[1]).val(response[2]);	//DISPLAY SUCCESS MESSAGE
-						$('#uploaddocument')[0].reset();
+						$('#uploaddocument').reset();
 					}else{
-						$('#'+response[1]).next("<em>"+response[2]+"</em>");	//DISPLAY RESPONSE ERRORS
+						
+						$('#'+response[1]).next(".uploaddoc").after("<em class='inline-error'>"+response[2]+"</em>");	//DISPLAY RESPONSE ERRORS
+						
 					}
+					
+					
 				}
 			}).submit();
 		});
 		
+		//DELETE ROW
+		$(document).on('click', '.deleteOtherRow', function() 
+		{
+			$('#'+$(this).attr('data-rel')).remove();
+		});	
+		
+		//SCRIPT FOR ADD DATEPICKER
 		$(".addDateCalendar").datepicker(
         {
 			changeMonth: true,
@@ -530,12 +540,12 @@
 		});
 		
 		$(".fa-calendar").click(function(){ $(".addDateCalendar").focus();});
-		
-		var i=0;
-		
+
+		var i=$( ".ajaxAdd" ).length;
 		//For append other qualification
 		$("#addMore").on('click',function(){
-			$("#addAfter").append('<div class="row"><div class="form-group col-lg-4"><input  class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"></div><div class="form-group col-lg-4"><input  class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"></div></div><div class="row"><div class="form-group col-lg-4"><div class="brow-inner"><input  class="form-control" name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "><button class="uploaddoc btn btn-secondary" type="button">Browse</button></div></div></div>');
+			i = parseInt(i)+1;
+			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="row ajaxAdd"><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4"><div class="brow-inner"> <input class="form-control" id="scanned_certification_'+i+'" readonly name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc btn btn-secondary" type="button">Browse </button></div></div><button data-rel="ajaxAdd'+i+'" class="deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div>');
 
 			setTimeout(function(){ 
 				$(".addDateCalendar").datepicker(
@@ -545,6 +555,19 @@
 					dateFormat: 'yy-mm-dd'
 				});
 			}, 500);
+			
 		}); 
 	});
-</script>
+	</script>
+	<style>
+		.brow-inner > img {
+			float: left;
+			left: 330px;
+			position: relative;
+			top: -30px;
+		}
+		.inline-error{
+			color:red;
+			font-size:12px;	
+		}
+	</style>

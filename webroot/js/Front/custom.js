@@ -614,8 +614,8 @@
 				}
 
 			}
-			
-		});
+
+         });
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
@@ -1051,7 +1051,13 @@ $(function () {
   		$('.search-input').focus();
   	});
   });
-    
+   /*Last Drop down country- currency listing*/
+   $(document)
+	.on( 'click', '.dropdown-menu', function (e){
+	    e.stopPropagation();
+	});
+ /*Last Drop down country- currency listing*/
 });
 
+/*End profile video*/
 

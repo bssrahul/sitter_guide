@@ -18,39 +18,7 @@
                               <input class="search-input" type="text" value="" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search Home Sitter')); ?>" />
                             </div>
                         </div> 
-                      <!--Start mob country-->
-                                    <div class="mob-country-drop">
-                                      <ul>
-                                        <li class="dd-country last-drop"><a href="#"  data-toggle="dropdown"> <img src="<?php echo HTTP_ROOT; ?>img/flag-icon.png" alt=""> </a>
-                                         <div class="dropdown-menu country-drop">
-                                                    <ul class="nav nav-tabs">
-                                                      <li class="active"><a data-toggle="tab" href="#home">Currency </a></li>
-                                                      <li><a data-toggle="tab" href="#menu1">Currency</a></li>
-                                                    </ul>                                        
-                                                    <div class="tab-content">
-                                                      <div id="home" class="tab-pane fade in active">
-                                                        <ul class="c-list"> 
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-1.png"  alt="">AUD</a></li>
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-2.png"  alt="">CAD</a></li>
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">EUR</a></li>
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">EUR</a></li>
-                                                          </ul>
-                                                      </div>
-                                                      <div id="menu1" class="tab-pane fade">
-                                                        <ul class="c-list"> 
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-1.png"  alt="">Currency 1</a></li>
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-2.png"  alt="">Currency 2</a></li>
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">Currency 3</a></li>
-                                                          <li><a href="#"><img src="<?php echo HTTP_ROOT; ?>img/currency-icon-3.png"  alt="">Currency 45</a></li>
-                                                          </ul>
-                                                      </div>                                          
-                                                      
-                                                    </div>
-                                                    </div>
-                                       </li>
-                                    </ul>
-                                  </div>
-                                <!--end -->
+                      <?php echo $this->element('frontElements/common/mob_language_switcher'); ?>
                         
         </div>
         <!--/Mobile country Dropdown-->
