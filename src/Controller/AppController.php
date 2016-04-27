@@ -694,7 +694,10 @@ class AppController extends Controller{
 						$fileName = $session->read('User.id')."_".$FileArr['custom_name'];//$this->RandomStringGenerator(15);
 						$destination = realpath('../webroot/'.$uploadFolder).'/'.$fileName.$ext;
 						$src = $FileArr['tmp_name'];
-												
+						
+						if(file_exists($destination)){
+							unlink($destination);						
+						}
 						
 						if(move_uploaded_file($FileArr['tmp_name'],$destination))
 						{

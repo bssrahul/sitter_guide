@@ -517,7 +517,7 @@ class DashboardController extends AppController
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
 			
-			
+			//pr($this->request->data['UserProfessionals']['check']['govt']); die;
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
 
@@ -589,8 +589,8 @@ class DashboardController extends AppController
                
 		}else{
 			
-            $query = $usersModel->get($userId,['contain'=>'UserProfessionalAccreditations']);
-          
+            $query = $usersModel->get($userId,['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails']]);
+         
 		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
 				 
 				 if(!empty($query->user_professional_accreditations)){
@@ -617,12 +617,12 @@ class DashboardController extends AppController
 								
 								$i++;
 							}
-							
+							$customArrForDisplayRec['user_professional_accreditations_details'] = $query['user_professional_accreditations_details'][0];
 						}
 				  }
 					// $skillsData = $query->user_professional_accreditations;
 					//  $this->set('skillId', $skillsData->id);
-					// unset($skillsData->id);
+					// unset($skillsData->id); 
 					//pr($customArrForDisplayRec); die;
 					$this->set('professional', $customArrForDisplayRec);
                   

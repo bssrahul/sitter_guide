@@ -324,8 +324,8 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->first_aid_for !=''?@$professional['user_professional_accreditations_details']->first_aid_for:'']);
                       ?>
                     </div>
 
@@ -337,8 +337,8 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->cpr_for !=''?@$professional['user_professional_accreditations_details']->cpr_for:'']);
                       ?>
                     </div>
 
@@ -350,8 +350,8 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->oral_madications !=''?@$professional['user_professional_accreditations_details']->oral_madications:'']);
                       ?>
                     </div>
 
@@ -366,8 +366,8 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->injected_madications !=''?@$professional['user_professional_accreditations_details']->injected_madications:'']);
                       ?>
                           </div>
                       
@@ -376,18 +376,14 @@
               
                     <div class="col-lg-4">
                      <label for="">Familiar with Pet Training Techniques</label>
-                          <!--<select id="sel1" class="form-control">
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
+                          
                       <?php echo $this->Form->input('UserProfessionalsDetails.training_techniques',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','dog'=>'Dog','cat'=>'Cat','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->training_techniques !=''?@$professional['user_professional_accreditations_details']->training_techniques:'']);
                       ?>
 
                     </div>
@@ -402,8 +398,8 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->ex_behavioural_problems !=''?@$professional['user_professional_accreditations_details']->ex_behavioural_problems:'']);
                       ?>
                     </div>
                     </div>
@@ -420,24 +416,20 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>['yes'=>'Yes','no'=>'No'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->ex_volunteer !=''?@$professional['user_professional_accreditations_details']->ex_volunteer:'']);
                       ?>
                     </div>
                     <div class="col-lg-4">
                          <label for="">Experience with Rescue Pets  </label>
-                          <!--<select id="sel1" class="form-control">
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Other (specify)</option>
-                          </select>-->
+                          
                       <?php echo $this->Form->input('UserProfessionalsDetails.ex_rescue_pets',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'type'=>'select',
                         'options'=>[''=>'---','dog'=>'Dog','cat'=>'Cat','other'=>'Other (specify)'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['first_aid_for'] !=''?@$professional['UserProfessionalsDetails']['first_aid_for']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->ex_rescue_pets !=''?@$professional['user_professional_accreditations_details']->ex_rescue_pets:'']);
                       ?>
                     </div>
                     <div class="col-lg-4">
@@ -448,8 +440,8 @@
                         'label' => false,
                         'type'=>'select',
                         'options'=>['en'=>'English','fr'=>'French','de'=>'German','hu'=>'Hungarian','it'=>'Italian','ro'=>'Romanian','ru'=>'Russion','es'=>'spanish'],
-                        'class'=>'form-control'/*,
-                        'value'=>@$professional['UserProfessionalsDetails']['language'] !=''?@$professional['UserProfessionalsDetails']['language']:''*/]);
+                        'class'=>'form-control',
+                        'value'=>@$professional['user_professional_accreditations_details']->languages !=''?@$professional['user_professional_accreditations_details']->languages:'']);
                       ?>
                     </div>
 
@@ -569,5 +561,8 @@
 		.inline-error{
 			color:red;
 			font-size:12px;	
+		}
+		.ajaxAdd .col-lg-4 .brow-inner {
+			margin-left: 15px;
 		}
 	</style>
