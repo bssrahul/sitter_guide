@@ -1,4 +1,7 @@
 
+.banner-area .ban-txt .hworks{ height:56px; line-height:54px; display:inline-block; width:auto; padding:0 15px;}
+
+
 @media (min-width:1551px) and (max-width:1680px){
 header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}
 header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 8px;}	
@@ -22,6 +25,11 @@ header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8p
 @media (min-width:1200px) and (max-width:1280px){
 header .topnav-area .navbar .nav-logout li a{ font-size:13px; padding:8px 4px;}
 header.smaller .topnav-area .navbar .nav-logout li a{ font-size:13px; padding:8px 4px;}
+
+
+.banner-area .ban-txt .hworks{  height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; font-family:"Century Gothic"; background:#59aae1; margin:65px auto 0;
+ border-radius:1px;}
+
 }
 
 @media (min-width:1101px) and (max-width:1199px){
@@ -43,8 +51,8 @@ header.smaller .topnav-area .navbar .nav-logout li a{ font-size:13px; padding:8p
 header .topnav-area .navbar .nav-logout li{ padding:8px 0px;}
 header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 20px;}
 header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 20px;}
-
 .wcub-area .wcu-box{ min-height:270px;}
+
 }
 
 @media (min-width:851px) and (max-width:900px){
@@ -53,6 +61,7 @@ header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 17px;}
 header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 17px;}
 
 .wcub-area .wcu-box{ min-height:270px;}
+
 }
 
 @media (min-width:801px) and (max-width:850px){
@@ -61,6 +70,7 @@ header .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8px 14px;}
 header.smaller .topnav-area .navbar .nav-logout li a{font-size:14px; padding:8px 14px;}
 
 .wcub-area .wcu-box{ min-height:270px;}
+
 }
 
 @media (min-width:768px) and (max-width:800px){
@@ -70,4 +80,5 @@ header.smaller .topnav-area .navbar .nav-logout li a{ font-size:14px; padding:8p
 
 
 .wcub-area .wcu-box{ min-height:270px;}
+
 }
