@@ -40,7 +40,8 @@
                                  'placeholder'=>'Date Issued',
                                  'type' => 'text',
                                  'label'=>false,
-                                 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_date'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_date']:''
+                                 'readonly'=>true,
+                                 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_date'] !=''?date("Y-m-d",strtotime(@$professional['UserProfessionals']['check']['govt']['qualification_date'])):''
                       ]); ?>
 
                     </div>
@@ -51,7 +52,8 @@
                              'placeholder'=>'Expiry Date of Certification',
                              'type' => 'text',
                              'label'=>false,
-                             'value'=>@$professional['UserProfessionals']['check']['govt']['expiry_date'] !=''?@$professional['UserProfessionals']['check']['govt']['expiry_date']:''
+                             'readonly'=>true,
+                             'value'=>@$professional['UserProfessionals']['check']['govt']['expiry_date'] !=''?date("Y-m-d",strtotime(@$professional['UserProfessionals']['check']['govt']['expiry_date'])):''
                       ]); ?>
                     </div>
                   </div>
@@ -95,7 +97,8 @@
                                    'placeholder'=>'Date Issued',
                                    'type' => 'text',
                                    'label'=>false,
-									'value'=>@$professional['UserProfessionals']['pets']['private']['qualification_date'] !=''?@$professional['UserProfessionals']['pets']['private']['qualification_date']:''
+                                   'readonly'=>true,
+									'value'=>@$professional['UserProfessionals']['pets']['private']['qualification_date'] !=''?date("Y-m-d",strtotime(@$professional['UserProfessionals']['pets']['private']['qualification_date'])):''
                         ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
@@ -105,7 +108,8 @@
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Expiry Date of Certification',
 								'label'=>false,
-                                 'value'=>@$professional['UserProfessionals']['pets']['private']['expiry_date'] !=''?@$professional['UserProfessionals']['pets']['private']['expiry_date']:''
+								'readonly'=>true,
+                                 'value'=>@$professional['UserProfessionals']['pets']['private']['expiry_date'] !=''?date("Y-m-d",strtotime(@$professional['UserProfessionals']['pets']['private']['expiry_date'])):''
                       ]); ?>
                     </div>
                   </div>
@@ -145,8 +149,9 @@
                                    'templates' => ['inputContainer' => '{{content}}'],
                                    'placeholder'=>'Date Issued',
                                    'type' => 'text',
+                                   'readonly'=>true,
                                   'label'=>false,
-                                 'value'=>@$professional['UserProfessionals']['people']['private']['qualification_date'] !=''?@$professional['UserProfessionals']['people']['private']['qualification_date']:''
+                                 'value'=>@$professional['UserProfessionals']['people']['private']['qualification_date'] !=''?date("Y-m-d",strtotime(@$professional['UserProfessionals']['people']['private']['qualification_date'])):''
                         ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
@@ -156,7 +161,8 @@
                              'templates' => ['inputContainer' => '{{content}}'],
                              'placeholder'=>'Expiry Date of Certification',
                              'label'=>false,
-                                 'value'=>@$professional['UserProfessionals']['people']['private']['expiry_date'] !=''?@$professional['UserProfessionals']['people']['private']['expiry_date']:''
+                             'readonly'=>true,
+                                 'value'=>@$professional['UserProfessionals']['people']['private']['expiry_date'] !=''?date("Y-m-d",strtotime(@$professional['UserProfessionals']['people']['private']['expiry_date'])):''
                       ]); ?>
                     </div>
                   </div>
@@ -219,10 +225,12 @@
 										  <?php echo $this->Form->input('qualification_date[]',[
 													   'class'=>'form-control addDateCalendar',
 													   'type' => 'text',
+													   'id' => "start_date_picker_".$o,
 													   'templates' => ['inputContainer' => '{{content}}'],
 													   'placeholder'=>'Date Issued',
 													  'label'=>false,
-													 'value'=>@$otherValue['other']['qualification_date'] !=''?@$otherValue['other']['qualification_date']:''
+													  'readonly'=>true,
+													 'value'=>@$otherValue['other']['qualification_date'] !=''?date("Y-m-d",strtotime(@$otherValue['other']['qualification_date'])):''
 										  ]); ?>
 
 										</div>
@@ -230,10 +238,12 @@
 										  <?php echo $this->Form->input('expiry_date[]',[
 												 'class'=>'form-control addDateCalendar',
 												 'type' => 'text',
+												 'id' => "end_date_picker_".$o,
 												 'templates' => ['inputContainer' => '{{content}}'],
 												 'placeholder'=>'Expiry Date of Certification',
 												'label'=>false,
-												 'value'=>@$otherValue['other']['expiry_date'] !=''?@$otherValue['other']['expiry_date']:''
+												'readonly'=>true,
+												 'value'=>@$otherValue['other']['expiry_date'] !=''?date("Y-m-d",strtotime(@$otherValue['other']['expiry_date'])):''
 										  ]); ?>
 
 										</div>
@@ -266,8 +276,8 @@
 									 'class'=>'form-control',
 									 'templates' => ['inputContainer' => '{{content}}'],
 									 'placeholder'=>'Qualification Title',
-									 'label'=>false,
-									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+									 'label'=>false/*,
+									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''*/
 						  ]); ?>
 						</div>
 						<div class="form-group col-lg-4">
@@ -276,8 +286,9 @@
 									   'type' => 'text',
 									   'templates' => ['inputContainer' => '{{content}}'],
 									   'placeholder'=>'Date Issued',
-									  'label'=>false,
-									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+									   'readonly'=>true,
+									  'label'=>false/*,
+									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_date'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_date']:''*/
 						  ]); ?>
 
 						</div>
@@ -287,8 +298,9 @@
 								 'type' => 'text',
 								 'templates' => ['inputContainer' => '{{content}}'],
 								 'placeholder'=>'Expiry Date of Certification',
-								'label'=>false,
-								 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+								 'readonly'=>true,
+								'label'=>false/*,
+								 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''*/
 						  ]); ?>
 
 						</div>
@@ -303,8 +315,8 @@
 								 'templates' => ['inputContainer' => '{{content}}'],
 								 'placeholder'=>'Upload Scanned Certificate',
 								 'readonly'=>true,
-								 'label'=>false,
-									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''
+								 'label'=>false/*,
+									 'value'=>@$professional['UserProfessionals']['check']['govt']['qualification_title'] !=''?@$professional['UserProfessionals']['check']['govt']['qualification_title']:''*/
 						  ]); ?>
 						  <button type="button" class="uploaddoc btn btn-secondary">Browse</button>
 						</div>
@@ -533,11 +545,14 @@
 		
 		$(".fa-calendar").click(function(){ $(".addDateCalendar").focus();});
 
+		
 		var i=$( ".ajaxAdd" ).length;
+		
 		//For append other qualification
 		$("#addMore").on('click',function(){
+		
 			i = parseInt(i)+1;
-			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="row ajaxAdd"><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4"><div class="brow-inner"> <input class="form-control" id="scanned_certification_'+i+'" readonly name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc btn btn-secondary" type="button">Browse </button></div></div><button data-rel="ajaxAdd'+i+'" class="deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div>');
+			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="row ajaxAdd"><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input readonly id="start_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input readonly id="end_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4"><div class="brow-inner"> <input class="form-control" id="scanned_certification_'+i+'" readonly name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc btn btn-secondary" type="button">Browse </button></div></div><button data-rel="ajaxAdd'+i+'" class="deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div>');
 
 			setTimeout(function(){ 
 				$(".addDateCalendar").datepicker(
