@@ -138,13 +138,14 @@
                       </div>
                       
                     </div>
-
+                  <h3>Contact Details<span class="hint--right" data-hint="Contact Details!"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></h3>
                     <div class="row">
-                    <div class="form-group col-lg-4 col-md-4">
+                    <div class="form-group col-lg-8 col-md-8">
                      
                       <div class="row">
                           
-                          <div class="col-lg-6 col-xs-6">
+                          <div class="col-lg-2 col-xs-3">
+                            <label for="county_code" >Code</label>
                             <?php 
                                 echo $this->Form->input('Users.county_code',[
                                   'templates' => ['inputContainer' => '{{content}}'],
@@ -156,7 +157,8 @@
                             ?>
 
                         </div>
-                          <div class="col-lg-6 col-xs-6">
+                          <div class="col-lg-4 col-xs-9">
+                              <label for="">Mobile/Cell <span class="hint--right" data-hint="Mobile/Cell!"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
                                  'class'=>'form-control col-lg-10',
@@ -165,10 +167,22 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
                             ?>
-                          </div></div>
+                          </div>
+                        <div class="col-lg-3 col-md-3">
+                          <label class="invisi-no" for="">im-vi </label>
+                            <div class="varify-mobile">
+                              
+                              <a href="#" class="unvari"><img src="<?php echo HTTP_ROOT; ?>img/unverify.png"></a>
+
+                            </div>
+                          </div>
+
+
+                        </div>
                     </div>
                    
                       <div class="form-group col-lg-4 col-md-4">
+                         <label class="invisi-no" for="">Time Zone</label>
                             <?php 
                                 echo $this->Form->input('Users.zone_id',[
                                   'templates' => ['inputContainer' => '{{content}}'],
@@ -181,7 +195,7 @@
                           </div>
                       
                     </div>
-                    <h3>Change Password</h3>
+                    <h3>Password<span class="hint--right" data-hint="Password!"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></h3>
                     <div class="row">
                     <div class="form-group col-lg-4 col-md-4">
                            <?php 
@@ -230,6 +244,45 @@
                           </div>
                       
                     </div>
+                    <h3>Emergency Contacts <span class="hint--right" data-hint="Emergency Contacts!"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></h3>
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                          <label for="">Email </label>
+                              <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
+                               <?php 
+                                echo $this->Form->input('Users.email',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'label'=>false,
+                                  'required'=>false,
+                                  'class' =>'form-control',
+                                  'disabled'=>'disabled'
+                                  ]);
+                            ?>
+                        </div>
+                        <div class="form-group col-lg-4">
+                          <label for="">Emergency Contacts </label>
+                          <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
+                           <?php 
+                                echo $this->Form->input('Users.emergency_contacts',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'label'=>false,
+                                  'class' =>'form-control mzero'
+                                  ]);
+                            ?>
+                        </div>
+                        <div class="form-group col-lg-4">
+                          <label for="">In emergency, who can speak?</label>
+                          <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
+                           <?php 
+                                echo $this->Form->input('Users.emergency_who',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'label'=>false,
+                                  'class' =>'form-control mzero'
+                              ]);
+                            ?>
+                            
+                        </div>
+                  </div>
                  <h3>Photo</h3>
                  <div class="row">
                      <div class="col-lg-5">
@@ -262,7 +315,28 @@
 
 </div>
            </div>
-                <div class="col-lg-7">
+              
+
+
+                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
+                       <div class="row d-m2">
+                       <div class="col-lg-7">
+                      <p class="browse-p">Add your banner profile banner<!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
+                      <p  class="min-hh">
+                          In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels. 
+                      </p>
+                      <button class="btn btn-primary" type="button"><i class="fa fa-upload" aria-hidden="true"></i>
+                        Upload Profile Banner</button>
+
+                        </div>
+                        <div class="col-lg-5">
+                                <img class="img-responsive" src="<?php echo HTTP_ROOT; ?>img/img.png">
+                              </div>
+                        </div>
+                     </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-7">
                     <div class="row d-m2">
                     <div class="col-lg-6">
                     <p class="browse-p">Add your profile Video<!-- <button type="button" class="btn btn-primary pull-right">Browse Video</button> --></p>
@@ -272,49 +346,20 @@
                     </button>
                     </div>
                     <div class="col-lg-6">
-                <iframe id="preview-profile-video" width="" height="" src="https://www.youtube.com/embed/GF60Iuh643I" frameborder="0" allowfullscreen>
-                </iframe>
-</div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                        <div class="form-group col-lg-4">
-                          <label for="">Email </label>
-                              <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
-                               <?php 
-                                echo $this->Form->input('Users.email',[
-                                  'templates' => ['inputContainer' => '{{content}}'],
-                                  'label'=>false,
-                                  'required'=>false,
-                                  'class' =>'form-control'
-                                  ]);
-                            ?>
+                      <?php if(@$userInfo->profile_video != ''){
+                           $path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
+                      }else{
+                           $path ='https://www.youtube.com/embed/GF60Iuh643I';
+                      }
+                      
+                     ?>
+                    <iframe id="preview-profile-video" width="" height="" src="<?php echo @$path; ?>" frameborder="0" allowfullscreen>
+                    </iframe>
+                   <?php echo '<em class="signup_error error clr addError"></em>'; ?>
+                       </div>
                         </div>
-                        <div class="form-group col-lg-4">
-                          <label for="">Emergency Contacts </label>
-                          <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
-                           <?php 
-                                echo $this->Form->input('Users.emergency_contacts',[
-                                  'templates' => ['inputContainer' => '{{content}}'],
-                                  'label'=>false,
-                                  'class' =>'form-control mzero'
-                                  ]);
-                            ?>
-                        </div>
-                        <div class="form-group col-lg-4">
-                          <label for="">In emergency, who can speak?</label>
-                          <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
-                           <?php 
-                                echo $this->Form->input('Users.emergency_who',[
-                                  'templates' => ['inputContainer' => '{{content}}'],
-                                  'label'=>false,
-                                  'class' =>'form-control mzero'
-                              ]);
-                            ?>
-                            
-                        </div>
-                  </div>
+                </div>
+                </div>
                   <div class="row pull-right sp-tb">
                     <p class="col-lg-12">
                       <input type="submit" class="btn Continue" value="Continue" >
@@ -492,12 +537,19 @@ $(document).ready(function(){
     $("#profileVideo").ajaxForm(
     {
     //target: '#preview-profile-video',
-    success: function(data) { 
-      alert(data);
+    success: function(res) { 
+        var response = res.split('::');
+              if($.trim(response[0]) == 'Success'){
+                alert(response[1]);
+                  $("#preview-profile-video").attr('src',response[1]);
+              }
+              if($.trim(response[0]) == 'Error'){
+                $('.clr').html(''); //Emtpy Error MESSAGE
+                $('.addError').html(response[1]); //DISPLAY SUCCESS MESSAGE
+              }
+            }
       
-      $("#preview-profile-video").attr('src','');
        
-        }
     }).submit();
   });
 });

@@ -294,14 +294,16 @@ class AppController extends Controller{
 				}
 				else
 				{
-					$uploadFolder="uploads";	
-					$fileSize= "5242880"; //10485760";
-					$fileKb = "5 MB"; //'10 MB';
+
+					$uploadFolder="files/video";	
+					$fileSize= "52428800"; //10485760";
+					$fileKb = "50 MB"; //'10 MB';
 					$extCheckArr = array('mp4','ogg','wmv');	
 				}
+				//echo $explodeExt;die; 
 				if(in_array($explodeExt,$extCheckArr))
 				{
-					//echo $uploadFolder;die;
+					
 					if($FileArr['size'] <= $fileSize)
 					{
 						$fileName = $this->RandomStringGenerator(15);
@@ -325,7 +327,8 @@ class AppController extends Controller{
 				{
 					$extCheckStr = implode(',',$extCheckArr);
 					$return = "error:Only ".strtoupper($extCheckStr)." files are allowed!";
-					return $return;
+					//echo "oko".$return;die;
+					return $return;exit();
 				}
 			}
 			else

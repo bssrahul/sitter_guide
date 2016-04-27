@@ -478,25 +478,33 @@ class DashboardController extends AppController
          Function for save profile video
       */
      function saveProfileVideo(){
+     	$usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+
        if(isset($_FILES['profile_video']) && !empty($_FILES['profile_video'])){
-     	//pr($_FILES['profile_video']);die;
+     
+     	$userData = $usersModel->newEntity();
+     	$userData->id = $userId;
      	  //Upload video
 			if($_FILES['profile_video']['name']!=''){
 				$profileVideo = $this->admin_upload_file('video',$_FILES['profile_video']);
 				$profileVideo = explode(':',$profileVideo);
 				if($profileVideo[0]=='error'){
-					//$this->setErrorMessage($profileVideo[1]);
-					//$this->redirect($this->referer());
-					echo $profileVideo[1];die;
-					
+					//$this->Flash->error(__($profileVideo[1]));
+				    echo $errors = 'Error::'.$profileVideo[1];die;
 				}else{
-					//$UserData->image = $profileVideo[1];
-					echo $profileVideo[1];die;
+					$userData->profile_video = $profileVideo[1];
+                     if($usersModel->save($userData)){
+		                   $userInfo = $usersModel->get($userId);
+		                   echo 'Success::'.HTTP_ROOT.'files/video/'.$userInfo->profile_video;die;
+			         }
 				}				
 			}else{
 				 unset($_FILES['profile_video']);
 			}
-			
+			 
 		}
 
      }
