@@ -682,7 +682,7 @@ class AppController extends Controller{
 					$uploadFolder= "files/scanned_doc";	
 					$fileSize= "5242880";
 					$fileKb = "5 MB";
-					$extCheckArr = array('pdf','docx','doc');	
+					$extCheckArr = array('pdf','docx','doc','png','gif','jpeg','jpg','bmp');	
 				}
 				
 				$session = $this->request->session();
