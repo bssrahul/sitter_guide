@@ -204,14 +204,11 @@ class DashboardController extends AppController
     	 $this->viewBuilder()->layout('profile_dashboard');
          $usersModel = TableRegistry::get('Users');
 
-          $session = $this->request->session();
+         $session = $this->request->session();
          $userId = $session->read('User.id');
 
          $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
-         
-        
-
-        $this->request->data = @$_REQUEST;
+         $this->request->data = @$_REQUEST;
 		if(isset($this->request->data) && !empty($this->request->data))
 		{
 			 //pr($this->request->data);die;
@@ -476,6 +473,32 @@ class DashboardController extends AppController
             }
       }
       /*End gallery image*/
+      /**
+         Function for save profile video
+      */
+     function saveProfileVideo(){
+       if(isset($_FILES['profile_video']) && !empty($_FILES['profile_video'])){
+     	//pr($_FILES['profile_video']);die;
+     	  //Upload video
+			if($_FILES['profile_video']['name']!=''){
+				$profileVideo = $this->admin_upload_file('video',$_FILES['profile_video']);
+				$profileVideo = explode(':',$profileVideo);
+				if($profileVideo[0]=='error'){
+					//$this->setErrorMessage($profileVideo[1]);
+					//$this->redirect($this->referer());
+					echo $profileVideo[1];die;
+					
+				}else{
+					//$UserData->image = $profileVideo[1];
+					echo $profileVideo[1];die;
+				}				
+			}else{
+				 unset($_FILES['profile_video']);
+			}
+			
+		}
+
+     }
      /**
     Function for Professional Accreditations
     */

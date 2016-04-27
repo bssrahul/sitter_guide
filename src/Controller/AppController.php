@@ -277,6 +277,7 @@ class AppController extends Controller{
 			}
 			else if($type == 'audio' || $type == 'video')
 			{
+				//echo 'okokok'.$type;die;
 				$imgName = pathinfo($FileArr['name']);
 				$file = $FileArr;
 				$fileName = $FileArr['name'];
@@ -293,22 +294,21 @@ class AppController extends Controller{
 				}
 				else
 				{
-					$uploadFolder="files/video";	
-					$fileSize= "31457280"; //10485760";
-					$fileKb = "30 MB"; //'10 MB';
+					$uploadFolder="uploads";	
+					$fileSize= "5242880"; //10485760";
+					$fileKb = "5 MB"; //'10 MB';
 					$extCheckArr = array('mp4','ogg','wmv');	
 				}
-				
-				
 				if(in_array($explodeExt,$extCheckArr))
 				{
+					//echo $uploadFolder;die;
 					if($FileArr['size'] <= $fileSize)
 					{
 						$fileName = $this->RandomStringGenerator(15);
 						$destination = realpath('../webroot/'.$uploadFolder).'/'.$fileName.$ext;
 						$src = $FileArr['tmp_name'];
 												
-						
+						//echo "path".$destination;die;
 						if(move_uploaded_file($FileArr['tmp_name'],$destination))
 						{
 							$return = "success:".$fileName.$ext.":uploaded";

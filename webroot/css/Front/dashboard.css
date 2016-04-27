@@ -9,7 +9,7 @@
 
 .db-top-bar-header { border-bottom:1px solid #ccc;}
 
-.db-top-bar-header h3 {color:#222d3d; font-size:20px; padding-top:15px; margin-bottom:15px; margin-top: 0px;}
+.db-top-bar-header h3 {color:#222d3d; font-size:20px; padding-top:15px; margin-bottom:15px;}
 
 
 .db-top-bar-header .breadcrumb {background-color:transparent; padding-top:20px; margin-bottom:0px !important;}
@@ -71,11 +71,10 @@ h1.page-header {margin-top: -5px;}
 .dbprofile-area .dbprofile-pic p{ font-size:16px; padding:10px 0 0 0;}
 .dbprofile-area .status-box{ width:100%; float:left; max-width:330px; margin:4px 0 0 0; background:#ffffff; height:38px; border-radius:2px;}
 .dbprofile-area .status-box ul{ margin:0px; padding:0px; list-style-type:none;}
-.dbprofile-area .status-box ul li{ float:left; }
+.dbprofile-area .status-box ul li{ float:left; line-height:36px; }
 .dbprofile-area .status-box ul li.stat{ width:90px; background:#72a105; float:left; font-size:16px; line-height:38px; text-align:center; border-radius:2px 0 0 2px;}
 .dbprofile-area .status-box ul li.input{ width:200px;}
-.dbprofile-area .status-box ul li.input .form-control{ border:0px; width:100%;  font-size:16px; line-height:38px !important; padding:0px 15px; background:url(../../img/orange-circle.png) no-repeat;
- background-position:center right 10px; border-radius:0px; height:38px;}
+ .dbprofile-area .status-box ul li.input .form-control{ border:0px !important; border-radius:0px; width:100%;  font-size:16px;  padding:0px 15px; background:url(../../img/orange-circle.png) no-repeat; background-position:center right 10px; border-radius:0px; height:38px; background-position-x:95%; background-position-y:10px; font-size:14px;}
 .dbprofile-area .status-box ul li.input .form-control:hover{ box-shadow:none;}
 .dbprofile-area .status-box ul li.stat-drop{ float:right; position:relative;}
 .dbprofile-area .status-box ul li.stat-drop .dropdown-menu{ position:absolute; top:38px; right:0px; left:0px; width:100px; margin:0 0 0 -120px;}
