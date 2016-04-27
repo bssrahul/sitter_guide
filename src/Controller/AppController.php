@@ -199,7 +199,7 @@ class AppController extends Controller{
 			return $this->redirect(['controller'=>"users",'action' => 'dashboard' ]);
 		}
 	}
-
+	
 	/**
 	* Function for Upload Image
 	*/
@@ -720,5 +720,7 @@ class AppController extends Controller{
 			}
 		}
 	}
+	
+	
 }
 ?>

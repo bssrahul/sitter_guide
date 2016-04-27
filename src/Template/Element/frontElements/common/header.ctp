@@ -41,64 +41,7 @@
 
                                 <li><a href="<?php echo HTTP_ROOT.'guests/signup'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up')); ?></a></li>
 
-                                <li  class="dropdown hideLogin">
-                                   <a id="droplog" href="#" data-toggle="dropdown"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Login')); ?></a>
-                                   <div class="dropdown-menu login-drop" id="dropcont">
-                                    <div class="form-group">
-                                           <?php echo $this->Form->create(null,[
-                                                'url' => ['controller' => 'guests', 'action' => 'login'],
-                                                'role'=>'form',
-                                                'id'=>'loginUser'
-                                                
-                                            ]);
-                                            echo $this->Form->input('Users.email',[                
-                                                   'class'=>'form-control',
-                                                   'label'=>$this->requestAction('app/get-translate/'.base64_encode('Email'))
-                                            ]);
-                                             echo $this->Form->input('Users.password',[                
-                                                   'class'=>'form-control',
-                                                   'type'=>'password',
-                                                   'label'=>$this->requestAction('app/get-translate/'.base64_encode('Password'))
-                                            ]);
-                                        ?>
-                                        <input type="submit" id="log_in_btn" class="btn btn-success" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?>">
-                                        <div class="row">
-                                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="signup-or-separator"> <p class="successMessage clr"></p><p class="errorMessage clr"></p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <?php echo $this->Form->end(); ?>
-
-                                            <p class="forget">
-                                           
-                                                <a id="droplogForgot" href="<?php echo HTTP_ROOT.'guests/forgot-password'; ?>" >
-                                                 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Forgot Your Password')); ?> </a>
-                                              <br>
-                                          <?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a Member ?')); ?>
-                                           <a href="<?php echo HTTP_ROOT.'guests/signup'; ?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign up now')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign up now')); ?></a></p>
-                                    </div>
-                                          <!-- <p>- or -</p>-->
-                                           <?php
-                                          /* $fb = new \Facebook\Facebook([
-											'app_id' => FACEBOOK_APP_ID, // Replace {app-id} with your app id
-											'app_secret' => FACEBOOK_SECRET,
-											'default_graph_version' => 'v2.2',
-											]);
-
-											$helper = $fb->getRedirectLoginHelper();
-
-											$permissions = ['email']; // Optional permissions
-											$loginUrl = $helper->getLoginUrl(HTTP_ROOT.'guests/signup-with-facebook', $permissions);
-										
-
-											echo '<a title="Login With Faceook" class="lwfb" href="' . htmlspecialchars($loginUrl) . '"><i class="fa fa-facebook-square"></i>'.__("Login with Facebook").'</a>';*/
-                                            ?> 
-                                          <!--<a href="#" title="Login With Faceook" class="lwfb"><i class="fa fa-facebook-square"></i> <?php echo __('Sign In with Facebook'); ?></a> -->
-
-                                   </div> 
-                                  
-                                </li>
+								<?php echo $this->requestAction('guests/check-device'); ?>
                                  
                                 <li><a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help')); ?> </a></li>
 
