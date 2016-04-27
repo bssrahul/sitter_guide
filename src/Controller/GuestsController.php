@@ -866,17 +866,16 @@ class GuestsController extends AppController
 	}
 	
 	public function checkDevice() {
-		include('/class/Mobile_Detect.php');
-		$detect = new \Mobile_Detect;
+		
+		$this->loadComponent('MobileDetect');
 		
 		// Any mobile device (phones or tablets).
-		if( $detect->isMobile() ){
+		if( $this->MobileDetect->isMobile() ){
 			$detect= "mobile";	
 		} else {
 			$detect= "desktop";
 		}
 		$this->set('detect',$detect);
-		//$this->render("login_menu");
 	}
 
 
