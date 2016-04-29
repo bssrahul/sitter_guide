@@ -608,7 +608,7 @@ class GuestsController extends AppController
 			}
 		}
 		//Validation for Birth Date
-		if(trim($data['Users']['birth_date'])== ""){
+		/* if(trim($data['Users']['birth_date'])== ""){
 			
 			$errors['birth_date'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}else{
@@ -621,7 +621,7 @@ class GuestsController extends AppController
 				 }
 				//printf("%d years, %d months, %d days\n", $years, $months, $days);
 					
-	}
+	} */
 		//Validation for email
 		if(trim($data['Users']['email'])=='')
 		{
