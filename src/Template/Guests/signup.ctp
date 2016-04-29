@@ -152,7 +152,7 @@
 								'label'=>false,
 								'readonly'=>true,
 								'div'=>false,
-								'placeholder'=>'DD/MM/YYYY', 
+								'placeholder'=>'DD-MM-YYYY', 
 								]);
 								?> 
 								<?php echo '<em class="signup_error error">'.__(@$loginerror['birth_date'][0]).'</em>'; ?>
@@ -223,7 +223,7 @@
 							 </span>
                          </p>
                     
-                    <?php $this->Form->end(); ?>
+                    <?php echo $this->Form->end(); ?>
                          <!--END SIGN UP FORM-->
                      <div id="loginFacebook">
                         <div class="top-sp">
@@ -236,6 +236,7 @@
                         <p><span class="signup-line"><?php echo $this->requestAction('app/get-translate/'.base64_encode('By signing up, I agree to Sitter Guide Terms of Service and <br/> confirm that I am 18 years of age or older.')); ?></span></p>
                         <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Already a member?')); ?> <span class="signup-color"><a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In Now')); ?></a></span></p>
                       </div>
+
                     </div>
                 </div>
             </div>
@@ -270,8 +271,10 @@
 		     changeMonth: true,
 		     changeYear: true,
 	         maxDate: new Date(),
-	         yearRange: "-50:-6",
-			 dateFormat: 'dd-mm-yy'
+	         yearRange: "-50:-18",
+			 dateFormat: 'dd-mm-yy',
+			 defaultDate: '01-01-1998'
+
 		   }
 			);
 		$(".fa-calendar").click(function(){ $("#users-birth-date").focus();});

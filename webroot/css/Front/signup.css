@@ -1,26 +1,32 @@
 /****signup***/
 .innerpage-conent { float: left; margin-top: 75px; width: 100%; }
-.signup-container {border: 1px solid #adadad; width: 100%; margin-top: 70px; margin-bottom: 70px; border-radius: 2px; text-align: center; background: #fff;}
-.signup-container h2 {font-size: 25px; color: #565656; padding: 20px 0; text-align: center; font-weight: 300;border-bottom: 1px solid #adadad; }
+.signup-container {border-top: 1px solid #adadad; border-left: 1px solid #adadad; border-right: 1px solid #adadad; border-bottom: 4px solid #74a208;width: 100%; margin-top: 70px; margin-bottom: 70px; border-radius: 2px; text-align: center; background: #fff;}
+.signup-container h2 {font-size: 25px; color: #565656; padding: 20px 0; margin:0; text-align: center; font-weight: 300;border-bottom: 1px solid #adadad; }
 .signup-container div {text-align: center;}
 .signup-container a:hover { text-decoration: none; }
-.signup-container a { font-size: 16px; background: #f1f1f1;}
-.signup-email a {border: 1px solid #cdcdcd;  border-radius: 2px; color: #404040;display: inline-block; max-width: 436px; padding: 20px; width: 100%; margin-bottom: 35px; margin-top: 70px;}
+/*.signup-container a { font-size: 16px; background: #f1f1f1;}*/
+.signup-email a {border: 1px solid #cdcdcd;  border-radius: 2px; color: #404040;display: inline-block; max-width: 450px; padding: 15px; width: 100%; margin-top: 50px;}
 .signup-facebook a:hover {color: #fff;}
-.signup-facebook a{ border: 1px solid #4063b3; border-radius: 2px; color: #fff; display: inline-block;max-width: 436px; padding: 20px; width: 100%; background: #4063b3; margin-top: 35px;}
+.signup-facebook a{ border: 1px solid #4063b3; border-radius: 2px; color: #fff; display: inline-block;max-width: 450px; padding: 15px; width: 100%; background: #4063b3; margin-top: 35px;}
 .signup-container i {margin-right: 12px;}
-.signup-container p {color: #404040; font-size: 13px; margin-top: 45px; margin-bottom: 45px;}
-span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  padding-bottom: 45px;  }
-.signup-color {	color: #1277bb; }
+.signup-container p {color: #404040; font-size: 13px; margin-top: 25px; margin-bottom: 25px;}
+span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  padding-bottom: 25px;  }
+.signup-color { color: #1277bb; }
 
-
+#login_user .form-group, #forgotPasswordForm .form-group , #resetPasswordForm .form-group{
+    position: relative;
+}
 /****sigin***/ 
 .signup-container form {
-    margin: 49px auto;
-    max-width: 575px;
+    margin: auto;
+    max-width: 450px;
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;
+    margin-top: 35px; 
+}
+.top-sp {
+    margin-top:35px;
 }
 .signup-container form label {
     font-family: raleway;
@@ -57,22 +63,154 @@ a.signup-fb:hover {
     padding-bottom: 45px;
 }
 .signup-container form button:hover {background:#515151 ; color: #fff;}
-.signup-container input.form-control{height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;}
-.signin-wrapper select {height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;
+.signup-container input.form-control{height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none; position: relative; /*z-index: 1000000;*/}
+/*.signin-wrapper select {
+    height: 47px; 
+    border-radius: 2px; 
+    border: 1px solid #aaaaaa;
+    box-shadow: none;
   -webkit-appearance: none;
    -moz-appearance:    none;
    appearance:         none;
    background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;
-}
-select {
--webkit-appearance: none;
-}
+}*/
+
+/*.signin-wrapper select {
+    -moz-appearance: none;
+    background: #fff url("../images/arw.png") no-repeat scroll right 10px center;
+    border: 1px solid #aaaaaa !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
+    height: 47px !important;
+}*/
+
 .signup-container p.line-signin {
     border-bottom: medium none;
     border-top: 1px solid #ccc;
    
     padding-bottom: 0;
     padding-top: 45px;
+}
+.c-red {
+    color: #d61a1a;
+    position: relative;
+}
+.c-red-bar::after {
+    border-top: 1px solid #d61a1a;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: 8px;
+    width: 20px;
+}
+.c-red-bar::before {
+    border-top: 1px solid;
+    content: "";
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    width: 20px;
+}
+.form-group.radio span {
+    float: left;
+    margin: 0 20px 10px 0;
+}
+#addUsers .form-part div.form-group {
+    float: left;
+    width: 48%;
+}
+#addUsers .form-part div.form-group:nth-child(2){
+    float: right;
+}
+p.cap {
+    float: left;
+    margin: 0 0 15px;
+    width: 100%;
+}
+p.cap span {
+    float: left;
+    text-align: left;
+    width: 80%;
+}
+.cap-img img {
+    width: 100%;
+}
+
+.cap-sr i {
+    background: #fff;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    color: #a7a7a7;
+    font-size: 24px;
+    margin: 0 10px;
+    padding: 9px 10px;
+    text-align: center;
+}
+
+.form-part {
+    width: 100%;
+    float: left;
+}
+.calender {
+    position: relative;
+}
+.calender i {
+    left: 0;
+    position: absolute;
+    top: 48px;
+}
+
+.icon-input i {
+    font-size: 17px;
+    left: 13px;
+    position: absolute;
+    top: 49px;
+}
+.icon-input input {
+    padding-left: 40px;
+}
+
+
+#users-title,#users-hear-from {
+    appearance:none;
+  -moz-appearance: none;
+  -webkit-appearance:none; /* Safari and Chrome */
+  background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;
+  border: 1px solid #aaaaaa;
+  border-radius: 2px;
+  box-shadow: none;
+  height: 47px;
+}
+#users-country {
+      appearance:none;
+  -moz-appearance: none;
+  -webkit-appearance:none; /* Safari and Chrome */
+  background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;
+}
+#addUsers .form-group {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+.signup-container form label.error {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 12px;
+}
+#addUsers .checkbox {
+    float: left;
+    width: 100%;
+    margin-top: 0;
+}
+.form-part .dobDiv i {
+    font-size: 17px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+}
+.signup-container form div.checkbox label.error {
+    top: 0;
 }
 .c-red {color: #d61a1a;}
 .form-group.radio span {
@@ -248,10 +386,8 @@ margin-top:20px;
     border-radius: 3px;
     box-shadow: none;
     height: 40px;
-    
+    margin-bottom: 15px;
       border: 1px solid #aaaaaa;
-      background-position-x: 97%;
-background-position-y: 50%;
 }
 .tab-content textarea{
     border-radius: 3px;
@@ -264,14 +400,12 @@ background-position-y: 50%;
     font-size: 12px;
     font-style: italic;
     padding: 5px;
-    resize: none;
 
  
 }
 .upload-side {
      margin-left: -20px;
     margin-top: 2px;
-    display: none !important;
 }
 .btn.Continue {
     background: #83b314;
@@ -592,7 +726,7 @@ padding-left: 15px;
 }
 .captcha img {
     float: right;
-    width: 50%;
+    width: 93%;
     margin-top: 10px;
 }
 .range-c small {
@@ -606,52 +740,10 @@ padding-left: 15px;
     float: right;
     position: relative;
 }
-#menu3 h3 {margin-top: 10px;}
-.la1 {
-    margin-top: 30px;
-}
-.la33 {
-    margin-right: 10px;
-}
-select.padd-difff {
-    padding-left: 0;
-    padding-right: 5px;
-}
-.tab-sectioninner select.padd-difff.form-control {
-    background-position: right 5px center;
-}
 
-.tab-sectioninner select.form-control.mmm {background: none;  min-height: 70px;}
-.videoo {
-    margin-bottom: 20px;
-}
-.d-m2 img {
-    border: 1px solid #eeeeee;
-    padding: 15px 20px;
-}
-.d-m2 button {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-video.videoo {
-    width: 100%;
-}
-.m-space-not {
-    min-height: auto;
-}
-.d-m2 div > iframe {
-    border: 5px solid #72a105;
-    border-radius: 5px;
-}
-.d-m2 {
-    margin-bottom: 20px;
-}
-
-/***** media start *****/
 
 @media screen and (max-width: 1842px) {
 .rules_main br {display: none;}
-
 }
 
 
@@ -661,12 +753,16 @@ video.videoo {
 
 @media screen and (max-width: 1775px){
     .profiletab-section ul li {width: auto;}
-    .profiletab-section ul li a {  font-size: 14px; padding-bottom: 10px; padding-top: 10px;}
-    .rules_main img { max-width: 80px; width: 100%;}
+    .profiletab-section ul li a {  font-size: 14px;
+    padding-bottom: 10px;
+    padding-top: 10px;}
+    .rules_main img {
+    max-width: 80px;
+    width: 100%;
 }
 
 
-
+}
 
 
 @media screen and (max-width: 1482px) {
@@ -676,12 +772,6 @@ video.videoo {
     min-height: 129px;
 }
 }
-
-@media screen and (max-width: 1500px) {
-.m-space-not {min-height: 40px;}
-
-}
-
 
 
 @media screen and (max-width:1350px) {

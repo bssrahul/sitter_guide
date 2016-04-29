@@ -77,4 +77,7 @@ label {
 #username,#password{
 	float:left;
 }
+a#submit {
+    float: left;
+}
 </style>

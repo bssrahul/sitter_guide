@@ -210,7 +210,7 @@ class DashboardController extends AppController
 
          $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
          $this->request->data = @$_REQUEST;
-		if(isset($this->request->data) && !empty($this->request->data))
+		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{
 			 //pr($this->request->data);die;
 	            $data=$this->request->data['Usersp'];
@@ -274,7 +274,7 @@ class DashboardController extends AppController
 
 		$this->request->data = @$_REQUEST;
 		//pr($this->request->data); die;
-		if(isset($this->request->data) && !empty($this->request->data))
+		if(isset($this->request->data['UserSitterHouses']) && !empty($this->request->data['UserSitterHouses']))
 		{
 			   $sitterHouseData = $sitterHousesModel->newEntity();
                $sitterHouseData = $sitterHousesModel->patchEntity($sitterHouseData, $this->request->data['UserSitterHouses'],['validate'=>true]);
@@ -330,7 +330,7 @@ class DashboardController extends AppController
 
 		$this->request->data = @$_REQUEST;
 		
-		if(isset($this->request->data) && !empty($this->request->data))
+		if(isset($this->request->data['UserAboutSitters']) && !empty($this->request->data['UserAboutSitters']))
 		{
 			//pr($this->request->data); die;
 			   $aboutSitterData = $aboutSittersModel->newEntity();
@@ -523,7 +523,7 @@ class DashboardController extends AppController
         
 		$this->request->data = @$_REQUEST;
 		
-		if(isset($this->request->data) && !empty($this->request->data))
+		if(isset($this->request->data['UserProfessionals']) && !empty($this->request->data['UserProfessionals']))
 		{
 			
 			//pr($this->request->data['UserProfessionals']['check']['govt']); die;
@@ -669,7 +669,7 @@ class DashboardController extends AppController
 
 		$this->request->data = @$_REQUEST;
 		//pr($this->request->data); die;
-		if(isset($this->request->data) && !empty($this->request->data))
+		if(isset($this->request->data['UserSitterServices']) && !empty($this->request->data['UserSitterServices']))
 		{
 			
            $customAllServices = array("day_care_sitters","day_care_guests","visits_sitters","visits_guests","night_care_sitters","night_care_guests"); 
