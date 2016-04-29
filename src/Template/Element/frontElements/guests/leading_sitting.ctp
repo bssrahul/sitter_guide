@@ -5,7 +5,7 @@
                 <!--heading--> 
                     <div class="head-box">
                         <h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Leading  Sitting And Walkers In Your Area')); ?></h2>
-                            <p> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Meet some of our ledaing sitters & walkers')); ?> </p>
+                            <p> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Meet some of our leading sitters & walkers')); ?> </p>
                             <span class="head-bot"><b></b></span>
                     </div>                              
                 <!--/heading-->   

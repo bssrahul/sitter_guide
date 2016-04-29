@@ -246,6 +246,9 @@
                     <input class="pull-right btn Continue" type="submit" value="Continue" /></p>
                     </div>
                   <?php echo $this->Form->end(); ?>
+                  <div class="row" id="show-all-errors">
+
+                  </div>
 
               </div>
 
@@ -282,12 +285,25 @@ $(document).ready(function(){
     $('#images').on('change',function(){
             jQuery('#multiple_upload_form').ajaxForm({
             //display the uploaded images
-            target:'#images_preview',
+            //target:'#images_preview',
             beforeSubmit:function(e){
                 $('.uploading').show();
             },
-            success:function(e){
-             // alert(e);
+            success:function(res){
+              alert(res);
+             ///////////////////
+             var response = res.split('::');
+              if($.trim(response[0]) == 'Error'){
+                $('#show-all-errors').html(response[1]); //DISPLAY SUCCESS MESSAGE
+
+              }
+            var response = res.split('::');
+            if($.trim(response[0]) == 'Success'){
+              $('#images_preview').html(response[1]); //DISPLAY SUCCESS MESSAGE
+
+            }
+
+             //////////////////
                $('.uploading').hide();
             },
             error:function(e){

@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
 	
 	/*FUNCTION FOR VALIDATION*/
 	$(document).ready(function(){
@@ -41,6 +41,10 @@
 				"Users[first_name]":
 				{
 					required:true,
+					lettersonly: true ,
+				},
+				"Users[last_name]":
+				{
 					lettersonly: true ,
 				},
 				"Users[email]":
@@ -115,7 +119,7 @@
 					required : "This field is required",
 					number:"Zip Code should be Numbers.",
 					minlength: "Please enter minimum 6 Number.",
-					maxlength: "Please enter miximmum 6 Number.",
+					maxlength: "Please enter maximmum 6 Number.",
 					
 					
 				},
@@ -413,7 +417,7 @@
 								
 								$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 								$('#'+formID)[0].reset();
-								setTimeout(function(){window.location.href = ajax_url;},2000);
+								setTimeout(function(){window.location.href = ajax_url;},1000);
 							}if($.trim(response[0]) == 'Error'){
 								$('.clr').html('');	//Emtpy Error MESSAGE
 								$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
@@ -959,24 +963,25 @@
 	
 	/*FUNCTION FOR SUBMIT THE SIGNUP FORM AND DISPLAYING THERE REPOSNSE*/
 	function signup(formID,btnID,actionURL){
-		
+		//alert(formID+btnID+actionURL);
 		var orgBtnVal=$("#"+btnID).val();//GET BUTTON VALUE
 		$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
 		$("#"+btnID).val('Processing...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
 		var formData = $('#'+formID).serialize();//BIND THE FORM VALUE INTO A VARIABLE
-		
+		//alert(formData);
 		$.ajax({
 			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
 			data:formData,//ALL SUBMITTED DATA FROM THE FORM
 			 
 			success:function(res)
 			{
-				//console.log(res);
+				//alert(res);
+				console.log(res);
 				var response = res.split(':');
 				if($.trim(response[0]) == 'Success'){
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
-					setTimeout(function(){window.location.href = ajax_url+response[2];},2000);
+					setTimeout(function(){window.location.href = ajax_url+response[2];},1000);
 				}else{
 					$('#myModal_sign').html(res);	//DISPLAY RESPONSE ERRORS
 				}
@@ -1013,7 +1018,7 @@
 					
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
-					setTimeout(function(){window.location.href = ajax_url;},2000);
+					setTimeout(function(){window.location.href = ajax_url;},1000);
 				}if($.trim(response[0]) == 'Error'){
 					$('.clr').html('');	//Emtpy Error MESSAGE
 					$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE

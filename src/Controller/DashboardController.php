@@ -463,17 +463,17 @@ class DashboardController extends AppController
                    	 $html .='</div></div>';
                    }
                   //pr($errors);die;
-                  //if($errors != ''){
-                   $html.="<br>";
+                  if($errors != ''){
+                   $error ="Error::";
                   	  foreach($errors as $key=>$val){
                   	  //echo "<em class='signup_error error'>".$val."</em>";die;
                   	  	
-                             $html.= "<em class='signup_error error'>".$val."</em><br>";
+                           $error.= "<em class='signup_error error col-md-4 col-lg-4 col-sm-6'>".$val."</em>";
                       }
-                  //}
+                  }
                  
-                   
-                  echo $html; die;
+                  echo $error;die;
+                 // echo 'Success::'.$html; die;
             }
       }
       /**
