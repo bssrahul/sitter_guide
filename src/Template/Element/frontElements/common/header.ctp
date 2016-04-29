@@ -9,10 +9,10 @@
       <div class="col-lg-<?php echo $currentLocal == 'ru'?'4':'5'; ?> col-md-<?php echo $currentLocal == 'ru'?'3':'4'; ?> col-sm-12 col-xs-12">               
           <div class="logo-area">
                           <div class="desk-logo">
-                              <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT ?>img/logo.jpg"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
+                              <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/logo.jpg"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                             </div>
                           <div class="mob-logo">
-                              <a class="logo" href="#" title="Sitter Guide"><img src="img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
+                              <a class="logo" href="#" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                             </div>                                
                         </div>   
                         <div class="top-search">
@@ -27,8 +27,8 @@
          <div class="topnav-area"> 
                         <nav class="navbar"> 
                             <div class="navbar-header">
-                              <!-- <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Menu')); ?> </button>-->
-                              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>                        
