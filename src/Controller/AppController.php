@@ -235,7 +235,15 @@ class AppController extends Controller{
 				$logoHeight = "400";
 				$logoSize="4194304";
 				$logoKb = '4 MB';
-			}else if($type == 'petImage')
+			}else if($type == 'profileBanner')
+			{
+				$uploadFolder="uploads";	
+				$logoWidth = "950";
+				$logoHeight = "250";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
+			}
+			else if($type == 'petImage')
 			{
 				$uploadFolder="petImages";	
 				$logoWidth = "400";
