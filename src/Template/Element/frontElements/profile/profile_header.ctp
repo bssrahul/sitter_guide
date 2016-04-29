@@ -30,8 +30,8 @@
                  <?php 
                         $cont = $this->request->params['controller'];
                         $act = $this->request->params['action'];
-                 if($cont != 'guests' && $act != 'home'){
-
+                 if(($cont != 'Guests') || ($cont != 'guests' && $act != 'home')){
+               
                   ?>
                 <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed" style="float:left"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('MENU')); ?> </button>
                 <?php } ?>

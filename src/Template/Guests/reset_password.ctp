@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="re_password"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Confirm Password');?></label>
+    <label for="re_password"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Confirm Password'));?></label>
     <div class="icon-input">
        <?php 
         echo $this->Form->input('Users.re_password',[
