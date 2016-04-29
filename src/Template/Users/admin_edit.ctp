@@ -19,7 +19,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'profileform',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										'autocomplete' =>'off',
 										
 									]);?>
 									<span class="section"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Profile Settings')); ?></span>

@@ -37,7 +37,8 @@
 									'url' => ['controller' => 'dashboard', 'action' => 'save-minder-details'],
 									'role'=>'form',
 									'id'=>'personalForm',
-									'enctype'=>'multipart/form-data'
+									'enctype'=>'multipart/form-data',
+									 'autocomplete'=>'off',
 									]);?>
 				  <h1>Personal Details</h1>
 				<?php 	  

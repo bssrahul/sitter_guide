@@ -22,7 +22,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'addcurrency',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										 'autocomplete'=>'off',
 										
 									]);?>
 									<div class="item form-group">

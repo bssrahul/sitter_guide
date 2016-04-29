@@ -15,7 +15,8 @@
 				'id'=>'edituser',
 				'style'=>'margin-top: 10px !important;float: left;',
 				'enctype'=>'multipart/form-data',
-				'novalidate'=>'novalidate'
+				'novalidate'=>'novalidate',
+				'autocomplete' =>'off',
 			]);?>
 			<div class="x_title">
 				<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Basic Info')); ?></h2>

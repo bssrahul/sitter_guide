@@ -13,7 +13,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'addpartners',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										'autocomplete' =>'off',
 									]);?>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="promo_code"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?> <span class="required">*</span>
