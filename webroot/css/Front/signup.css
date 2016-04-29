@@ -15,6 +15,24 @@ span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  pad
 
 
 /****sigin***/ 
+.tab-sectioninner h3 span.hed-0 {
+    border-bottom: 1px solid #ff0000;
+    color: #ff0000;
+    
+    font-style: italic;
+}
+
+.tab-sectioninner h3 span.hed-0 {
+    border-bottom: 2px solid #FFAC04;
+    color: #FFAC04;
+   
+}
+
+.tab-sectioninner h3 span.hed-0.coh1  {
+
+}
+
+
 .signup-container form {
     margin: 49px auto;
     max-width: 575px;
@@ -646,6 +664,57 @@ video.videoo {
 .d-m2 {
     margin-bottom: 20px;
 }
+.padding-zero-left {
+    padding-left: 0 !important;
+}
+.invisi-no {
+    opacity: 0;
+    visibility: visible;
+}
+.close11 {
+    height: 16px;
+    margin-left: 5px;
+    width: 16px;
+}
+.d-m2 img.close11 {
+    border: medium none;
+    padding: 0;
+}
+p.min-hh {
+    min-height: 85px;
+}
+p.sub-title small {
+    color: #72a105;
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 29px;
+    margin-top: 10px;
+}
+.cir-o {
+    background: #434360 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    padding: 3px;
+}
+
+i.cir-o {
+    font-size: 14px;
+    height: 18px;
+    text-align: center;
+    width: 18px;
+    margin-right: 10px;
+}
+.right-width {
+    z-index: 900;
+}
+.word-limit textarea {
+    margin-bottom: 0;
+}
+.w-limit {
+    text-align: right;
+}
+
 
 /***** media start *****/
 
@@ -674,6 +743,9 @@ video.videoo {
 .rules_main {
     height: 100%;
     min-height: 129px;
+}
+p.min-hh {
+    min-height: 120px;
 }
 }
 
@@ -714,6 +786,9 @@ video.videoo {
 
 @media screen and (max-width:580px) {
 	.profiletab-section ul li {display:block;}
+    p.min-hh {
+    min-height: auto;
+}
 	
 }
 
@@ -724,3 +799,7 @@ video.videoo {
     .sp-tb .btn.previous {margin-bottom: 10px;}
 	
 }
+
+@media screen and (max-width:370px) {
+    .full-width11 {width: 100% !important;}
+ }

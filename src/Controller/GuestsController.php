@@ -21,7 +21,7 @@ use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 
 //require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
-use Facebook;
+//use Facebook;
 use Cake\Event\Event;
 
 /**
@@ -135,7 +135,7 @@ class GuestsController extends AppController
 				$email = trim($this->request->data['Users']['email']);
 				$password = md5(trim($this->request->data['Users']['password']));
 				$getValidUserData = 	$UsersModel->find('all',
-											['conditions' => ['Users.email' => $email,'Users.password' => $password]]
+											['conditions' => ['Users.email' => $email,'Users.password' => $password,'status'=>'1']]
 										);
 
 				if($getValidUserData->count()>0)
@@ -425,7 +425,7 @@ class GuestsController extends AppController
 						$data=$this->request->data;
 						
 						$error=$this->validate_register($data);
-						echo "<pre>";print_r($error);die;
+						//echo "<pre>";print_r($error);die;
 						if(count($error) == 0)
 						{
 							// Loaded Users Model
@@ -608,12 +608,12 @@ class GuestsController extends AppController
 			}
 		}
 		//Validation for Birth Date
-		if(trim($data['Users']['birth_date'])== ""){
+		/*if(trim($data['Users']['birth_date'])== ""){
 			
 			$errors['birth_date'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
 		}else{
-				 echo $bdate=$data['Users']['birth_date'];
-				 echo $cdate= date("Y-m-d");
+				 $bdate=$data['Users']['birth_date'];
+				$cdate= date("Y-m-d");
 				 $diff = abs(strtotime($cdate) - strtotime($bdate));
 				 $years = floor($diff / (365*60*60*24));
 				 if($years >= 18){}else{
@@ -621,7 +621,7 @@ class GuestsController extends AppController
 				 }
 				//printf("%d years, %d months, %d days\n", $years, $months, $days);
 					
-	}
+	}*/
 		//Validation for email
 		if(trim($data['Users']['email'])=='')
 		{

@@ -614,6 +614,97 @@
 			}
 
          });
+	//CODE SNIPPET FOR Sitter House
+		$('#sitterHouse').validate({
+			rules: {
+				"UserSitterHouses[property_type]":
+				{
+					required:true
+				},
+				"UserSitterHouses[outdoor_area]":
+				{
+					required:true
+				},
+				"UserSitterHouses[outdoor_area_size]":
+				{
+					required:true
+				},
+				"UserSitterHouses[outing_allow_multiple]":
+				{
+					required:true
+				},
+				"UserSitterHouses[breaks_provided_every]":
+				{
+					required:true
+				},
+				"UserSitterHouses[fully_fenced]":
+				{
+					required:true
+				},
+				"UserSitterHouses[smokers]":
+				{
+					required:true
+				},
+				"UserSitterHouses[birds_in_cages]":
+				{
+					required:true
+				},
+				"UserSitterHouses[dogs_in_home]":
+				{
+					required:true
+				},
+				"UserSitterHouses[cats_in_home]":
+				{
+					required:true
+				}
+             },
+			messages: {
+				
+				"UserSitterHouses[property_type]":
+				{
+					required : " ok This field is required"
+				},
+				"UserSitterHouses[outdoor_area]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[outdoor_area_size]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[outing_allow_multiple]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[breaks_provided_every]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[fully_fenced]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[smokers]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[birds_in_cages]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[dogs_in_home]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[cats_in_home]":
+				{
+					required : "This field is required"
+				}
+				
+
+			}
+
+         });
 		/*For Services and Rates form*/
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
