@@ -77,6 +77,7 @@ class PagesController extends AppController
 	function contactUs(){
 		
 		$this->viewBuilder()->layout('cms_pages');
+		
 		$CmsPagesModel = TableRegistry::get('CmsPages');
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($CmsPagesModel);
@@ -119,6 +120,34 @@ class PagesController extends AppController
 			
 		}
 		
+		
+	}
+	function news(){
+
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'news']])->first();
+		//pr($CmsPageData); die;
+	
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'news'));
+		
+		$this->loadComponent('Paginator');
+		$this->set('modelName','UserBlogs');
+		$UserBlogsModel = TableRegistry::get("UserBlogs");
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($UserBlogsModel);
+		$blogs_info = $UserBlogsModel->find('all',['order' => ['UserBlogs.modified' => 'desc']])->where(['status'=>1])->toArray();
+		//pr($blogs_info);die;
+		$this->set('blogs_info',$blogs_info);
+				
+	}
+	function newsDetail(){
 		
 	}
 }

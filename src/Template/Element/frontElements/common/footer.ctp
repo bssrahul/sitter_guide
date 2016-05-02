@@ -11,7 +11,8 @@
 								<ul>
 									<li><a href="<?php echo HTTP_ROOT.'pages/about-us'; ?>" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
 									<li><a href="#" title="Partners">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Partner')); ?></a> </li>
-									<li><a href="#" title="In the News">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'pages/news'; ?>" title="In the News"><?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a>
+									</li>
 									<li><a href="<?php echo HTTP_ROOT.'pages/privacy'; ?>" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>
 									<li><a href="<?php echo HTTP_ROOT.'pages/terms'; ?>" title="Terms & Conditions"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a> </li>
                                 </ul>

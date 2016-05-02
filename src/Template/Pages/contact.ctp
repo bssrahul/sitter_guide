@@ -95,7 +95,7 @@
                                 <a id="droplog" href="#" data-toggle="dropdown"> Login</a>
                                  <div class="dropdown-menu login-drop" id="dropcont">
                                  	<div class="form-group">
-                                     	<form role="form">
+                                     	<form role="form" autocomplete="off">
                                           <label for="usr">Name:</label>
                                           <input type="text" class="form-control" id="usr">
                                           <label for="pwd">Password:</label>

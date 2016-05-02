@@ -1,6 +1,10 @@
 <!-- country codes (ISO 3166) and Dial codes. -->
 
-
+['44'=>'UK','1'=>'USA','213'=>'Algeria','376'=>'Andorra','244'=>'Angola','1264'=>'UK','44'=>'UK','44'=>'UK',
+'44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK',
+'44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK',
+'44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK',
+'44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK','44'=>'UK',]
   <option data-countryCode="GB" value="44" Selected>UK (+44)</option>
   <option data-countryCode="US" value="1">USA (+1)</option>
   <optgroup label="Other countries">

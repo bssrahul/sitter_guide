@@ -26,7 +26,8 @@
 										'url' => ['controller' => 'users', 'action' => 'change-password'],
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'changepassform',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										'autocomplete' =>'off',
 									]);?>
 								   
 								   

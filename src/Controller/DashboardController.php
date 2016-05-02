@@ -212,6 +212,14 @@ class DashboardController extends AppController
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{
+			/* $countryCodesModel = TableRegistry::get('CountryCodes');
+			 foreach($this->request->data['Users']['county_code'] as $key=>$val){
+			 	$countryCodeData = $countryCodesModel->newEntity();
+			 	//echo $val;die;
+                  $countryCodeData->country_code = $val;
+                 $countryCodesModel->save($countryCodeData);
+			 }*/
+			 
 			 //pr($this->request->data);die;
 	            $data=$this->request->data['Usersp'];
 			    $error=$this->validate_password($data,$user_info);
@@ -272,21 +280,41 @@ class DashboardController extends AppController
    
         $sitterHousesModel = TableRegistry::get('UserSitterHouses');
 
-		$this->request->data = @$_REQUEST;
+		//$this->request->data = @$_REQUEST;
 		//pr($this->request->data); die;
 		if(isset($this->request->data['UserSitterHouses']) && !empty($this->request->data['UserSitterHouses']))
 		{
+			//pr($this->request->data['UserSitterHouses']);die;
 			   $sitterHouseData = $sitterHousesModel->newEntity();
                $sitterHouseData = $sitterHousesModel->patchEntity($sitterHouseData, $this->request->data['UserSitterHouses'],['validate'=>true]);
                 $sitterHouseData->user_id = $userId;
-              // pr($sitterHouseData->errors());  die;
+             // pr($sitterHouseData->errors());  die;
                 if ($sitterHousesModel->save($sitterHouseData)){
                	     return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
 				}else{
+					//pr($sitterHouseData->errors());die;
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}
 			 	unset($sitterHouseData->id);
 		       $this->set('sitterHouseData', $sitterHouseData);
+
+		            //echo @$sitterHouseId;die;
+				     $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+		           if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
+		                  $images_arr = $query->user_sitter_galleries;
+		                  $sitterImg = array();
+		                   $html = " ";
+		                   foreach($images_arr as $key=>$val){
+		                   	//echo $val->id;die;
+		                     $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+		                   	 $html .='</div></div>';
+		                    }
+		                $this->set('sitter_images', $html);
+		            }
+		            
+
+
 
 		}else{
 
@@ -296,6 +324,7 @@ class DashboardController extends AppController
                    $this->set('sitterHouseId', $sitterHouseData->id);
                    $this->set('sitterHouseData', $sitterHouseData);
 		    }
+		    //echo @$sitterHouseId;die;
 		     $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
            if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
                   $images_arr = $query->user_sitter_galleries;
@@ -335,8 +364,10 @@ class DashboardController extends AppController
 			//pr($this->request->data); die;
 			   $aboutSitterData = $aboutSittersModel->newEntity();
 			   $petSizeArr = $this->request->data['UserAboutSitters']['accepted_pet_size'];
-
-			   $this->request->data['UserAboutSitters']['accepted_pet_size'] = implode(",",$petSizeArr);
+		        if(isset($petSizeArr) && !empty($petSizeArr)){
+                      $this->request->data['UserAboutSitters']['accepted_pet_size'] = implode(",",$petSizeArr);
+		        }
+		
                $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
                 $aboutSitterData->user_id = $userId;
                 
@@ -345,6 +376,7 @@ class DashboardController extends AppController
 
                       return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
 				}else{
+
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}
 			 	unset($aboutSitterData->id);
@@ -379,7 +411,7 @@ class DashboardController extends AppController
           $userId = $session->read('User.id');
       //echo "<pre>";print_r($_FILES);die;
                $images_arr = array();
-			    
+			    $errors = array();
 			   for($i=0;$i<count($_FILES['images']['name']);$i++){
 			       $FileArr['name'] = $_FILES['images']['name'][$i];
                    $FileArr['type'] = $_FILES['images']['type'][$i];
@@ -392,10 +424,10 @@ class DashboardController extends AppController
 						$Img = $this->admin_upload_file('sitterGallery',$FileArr);
 						$Img = explode(':',$Img);
 						if($Img[0]=='error'){
-							$errors[] = array();
+							
 							$errors[] = $_FILES['images']['name'][$i].':'.$Img[1];
 							//pr($errors);die;
-							continue;
+							//continue;
                         }else{
 						   $sitterGalleryData = $sitterGallriesModel->newEntity();
                            $sitterGalleryData->user_id = $userId;
@@ -430,9 +462,18 @@ class DashboardController extends AppController
                    	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg"  data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle"></i></a>';
                    	 $html .='</div></div>';
                    }
-                  
-                   //json_encode($sitterImg);
-                  echo $html; die;
+                  //pr($errors);die;
+                  if($errors != ''){
+                   $error ="Error::";
+                  	  foreach($errors as $key=>$val){
+                  	  //echo "<em class='signup_error error'>".$val."</em>";die;
+                  	  	
+                           $error.= "<em class='signup_error error col-md-4 col-lg-4 col-sm-6'>".$val."</em>";
+                      }
+                  }
+                 
+                  echo $error;die;
+                 // echo 'Success::'.$html; die;
             }
       }
       /**

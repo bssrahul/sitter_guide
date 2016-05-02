@@ -20,7 +20,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'cmspageedit',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										 'autocomplete'=>'off',
 										
 									]);?>
                                    <?php 
