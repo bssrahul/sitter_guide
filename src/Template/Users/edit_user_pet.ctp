@@ -20,7 +20,8 @@
 				'id'=>'edituserpet',
 				'style'=>'margin-top: 10px !important;float: left;',
 				'enctype'=>'multipart/form-data',
-				'novalidate'=>'novalidate'
+				'novalidate'=>'novalidate',
+				'autocomplete' =>'off',
 			]);?>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 				<label class="control-label" for="pet_name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></label>

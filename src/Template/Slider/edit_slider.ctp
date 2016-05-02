@@ -16,7 +16,8 @@
 										'url' => ['controller' => 'slider', 'action' => 'edit-slider'],
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'editslider',
-										'enctype'=>'multipart/form-data'
+										'enctype'=>'multipart/form-data',
+										'autocomplete' =>'off',
 									]);?>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="tilte"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?> <span class="required">*</span>

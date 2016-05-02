@@ -14,7 +14,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'addChooseUs',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										 'autocomplete'=>'off',
 										
 									]);?>
 									
