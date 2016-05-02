@@ -21,7 +21,8 @@
 						'class'=>'form-horizontal form-label-left',
 						'id'=>'adduser',
 						'enctype'=>'multipart/form-data',
-						'novalidate'=>'novalidate'
+						'novalidate'=>'novalidate',
+						'autocomplete' =>'off',
 						
 					]);?>
 					<div class="item form-group">

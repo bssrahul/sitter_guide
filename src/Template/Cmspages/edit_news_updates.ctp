@@ -15,7 +15,8 @@
 							        <?php echo $this->Form->create($work_info, [
 										'class'=>'form-horizontal form-label-left',
 										//'id'=>'editcategory',
-										'enctype'=>'multipart/form-data'
+										'enctype'=>'multipart/form-data',
+										 'autocomplete'=>'off',
 									]);?>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?> <span class="required">*</span>

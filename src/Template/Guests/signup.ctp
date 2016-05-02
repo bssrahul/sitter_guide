@@ -25,7 +25,8 @@
 							'id'=>'addUsers',
 							'enctype'=>'multipart/form-data',
 							'role'=>'form',
-							'style'=>'display:none'
+							'style'=>'display:none',
+							 'autocomplete'=>'off',
 						  ]);
 						  ?>
 						  <div class="form-group">

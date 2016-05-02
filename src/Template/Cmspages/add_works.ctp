@@ -14,7 +14,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'addpromocode',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										 'autocomplete'=>'off',
 										
 									]);?>
 									

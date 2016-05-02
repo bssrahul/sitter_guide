@@ -37,7 +37,8 @@
 									'url' => ['controller' => 'dashboard', 'action' => 'personal-details'],
 									'role'=>'form',
 									'id'=>'personalForm',
-									'enctype'=>'multipart/form-data'
+									'enctype'=>'multipart/form-data',
+									 'autocomplete'=>'off',
 									]);?>
 						  <div class="form-group">
 					      <label for="phone">

@@ -22,7 +22,8 @@
                    echo $this->Form->create(@$sitter_service_info, [
                         'url' => ['controller' => 'dashboard', 'action' => 'services-and-rates'],
                         'role'=>'form',
-                        'id'=>'servicesAndRates'
+                        'id'=>'servicesAndRates',
+						 'autocomplete'=>'off',
                     ]);
 
                         echo $this->Form->input('UserSitterServices.id',[
