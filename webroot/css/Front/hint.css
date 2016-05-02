@@ -72,7 +72,9 @@
     white-space: nowrap; }
 
 [data-hint='']:before, [data-hint='']:after {
-  display: none !important; }
+  display: none !important; 
+
+}
 
 /**
  * source: hint-position.scss

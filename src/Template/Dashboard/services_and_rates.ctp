@@ -1378,26 +1378,13 @@
       echo $this->Html->script(['Front/dist/jquery.onoff.js']);
  ?>
 <script>
-   /*Checkbox show*/
-   /*function customCheckbox(checkboxName){
-    //alert(checkboxName);
-        var checkBox = $('input[name="'+ checkboxName +'"]');
-        $(checkBox).each(function(){
-            $(this).wrap( "<span class='custom-checkbox'></span>" );
-            if($(this).is(':checked')){
-                $(this).parent().parent().addClass("selected");
-            }
-        });
-        
-    }*/
-    $(document).ready(function (){
+  $(document).ready(function (){
       $('.selectedCheckbox').click(function(){
-            //alert('checkboxName');
             $(this).parent().parent().toggleClass("selected");
         });
    
     })
-/*For on-off button*/
+   /*For on-off button*/
     $(function(){
           $('input[type=checkbox]').onoff();
     });

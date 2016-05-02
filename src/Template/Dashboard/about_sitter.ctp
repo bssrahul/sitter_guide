@@ -59,7 +59,8 @@
                     </div>
                     <div class="form-group col-lg-4">
                       <label for="">Years of Sitting Experience </label>
-                          <?php echo $this->Form->input('UserAboutSitters.sitting_experience',['class'=>'form-control', 'templates' => ['inputContainer' => '{{content}}']
+                          <?php echo $this->Form->input('UserAboutSitters.sitting_experience',['class'=>'form-control', 'templates' => ['inputContainer' => '{{content}}'],
+                             'required'=>false
                           ]); ?>
                     </div>
                     <div class="form-group col-lg-4">
