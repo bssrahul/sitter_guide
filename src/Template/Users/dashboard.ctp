@@ -18,7 +18,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 						
 			<div class="row top_tiles">
+			
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?php echo HTTP_ROOT.'cmspages/cms-pages'; ?>">
 					<div class="tile-stats">
 						<div class="icon"><i class="fa fa-laptop"></i>
 						</div>
@@ -27,8 +29,11 @@
 						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('CMS Pages')); ?></h3>
 						<p><i class="green"><b><?php echo $CmsPagesDetail['active']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Pages')); ?></i> | <i class="red"><b><?php echo $CmsPagesDetail['deactive']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Pages')); ?></i></p>
 					</div>
+				</a>
 				</div>
+			
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?php echo HTTP_ROOT.'users/users-listing'; ?>">
 					<div class="tile-stats">
 						<div class="icon"><i class="fa fa-user"></i>
 						</div>
@@ -37,8 +42,10 @@
 						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Users')); ?></h3>
 						<p><i class="green"><b><?php echo $UsersDetail['active_user'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Users')); ?></i> | <i class="red"><b><?php echo $UsersDetail['deactive_user'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Users')); ?></i></p>
 					</div>
+				</a>
 				</div>
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?php echo HTTP_ROOT.'cmspages/contact-requests'; ?>">
 					<div class="tile-stats">
 						<div class="icon"><i class="fa fa-phone"></i>
 						</div>
@@ -47,11 +54,13 @@
 						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Contact Requests')); ?></h3>
 						<p><i class="green"><b><?php echo $ContactRequestDetail['reply']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reply')); ?></i> | <i class="red"><b><?php echo $ContactRequestDetail['no_reply']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Reply')); ?></i></p>
 					</div>
+				</a>
 				</div>
 			</div>
 			
 			<div class="row top_tiles">
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?php echo HTTP_ROOT.'cmspages/blogs-listing'; ?>">
 					<div class="tile-stats">
 						<div class="icon"><i class="fa fa-bullhorn"></i>
 						</div>
@@ -60,9 +69,11 @@
 						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Blogs')); ?></h3>
 						<p><i class="green"><b><?php echo $blogDetail['active']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Blogs')); ?></i> | <i class="red"><b><?php echo $blogDetail['deactive']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Blogs')); ?></i></p>
 					</div>
+				</a>
 				</div>
 				
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?php echo HTTP_ROOT.'cmspages/subscribes-listing'; ?>">
 					<div class="tile-stats">
 						<div class="icon"><i class="fa fa-users"></i>
 						</div>
@@ -71,9 +82,11 @@
 						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Subscribers')); ?></h3>
 						<p><i class="green"><b><?php echo $subscribesDetail['active'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Subscribers')); ?></i> | <i class="red"><b><?php echo $subscribesDetail['deactive'];?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Subscribers')); ?></i></p>
 					</div>
+				</a>
 				</div>
 				
 				<div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<a href="<?php echo HTTP_ROOT.'partners/partners-listing'; ?>">
 					<div class="tile-stats">
 						<div class="icon"><i class="fa fa-glass"></i>
 						</div>
@@ -82,6 +95,7 @@
 						<h3><?php echo $this->requestAction('users/get-translate/'.base64_encode('Partners')); ?></h3>
 						<p><i class="green"><b><?php echo $partnersDetail['active']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Active Partners')); ?></i> | <i class="red"><b><?php echo $partnersDetail['deactive']; ?></b> <?php echo $this->requestAction('users/get-translate/'.base64_encode('De-active Partners')); ?></i></p>
 					</div>
+				</a>
 				</div>
 				
 				

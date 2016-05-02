@@ -105,7 +105,9 @@
 								<td class=" "><?php echo $work_info->title; ?></td>
 								
 								<td style="width:200px;"  class=" "><?php 
-										echo $work_info->description;
+								
+										$string= $work_info->description;
+										echo $descdata=substr($string,0,250).'...';
 								?></td>
 								
 								 <td><?php echo $work_info->status == 1?'Active':'Blocked';	?></td>
