@@ -315,7 +315,7 @@ class AppController extends Controller{
 					$fileKb = "50 MB"; //'10 MB';
 					$extCheckArr = array('mp4','ogg','wmv');	
 				}
-				//echo $explodeExt;die; 
+				
 				if(in_array($explodeExt,$extCheckArr))
 				{
 					
@@ -365,7 +365,7 @@ class AppController extends Controller{
 			$explodeExt = explode('.',$image);
 			$explodeExt =  end($explodeExt);
 			
-			
+		
 			if($explodeExt=='jpg' || $explodeExt=='jpeg' || $explodeExt=='png' || $explodeExt=='gif' || $explodeExt=='bmp')
 			{
 				

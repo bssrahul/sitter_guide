@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitterguide/"; 
+	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	/*FUNCTION FOR VALIDATION*/
 	$(document).ready(function(){
@@ -1121,9 +1121,8 @@ $( document ).ready(function() {
           }
         });
    }); 
- /*End profile image*/
  });
-
+ /*End profile image*/
 
 
 $(document).ready(function(){

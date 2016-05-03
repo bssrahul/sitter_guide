@@ -84,7 +84,9 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-4">
-                      <label for="">Toilet Breaks provided - every  </label>
+                      <label for="">Toilet Breaks provided - every  
+                      <span><a href="#" data-toggle="tooltip" data-placement="top" title="Optional promotional video for you to include on your profile page"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png">   
+                      </label>
                       <?php echo $this->Form->input('UserSitterHouses.breaks_provided_every',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -283,6 +285,7 @@
 <script type="text/javascript">
   /*For add multiple profile photos*/
 $(document).ready(function(){
+     
     $('#images').on('change',function(){
             jQuery('#multiple_upload_form').ajaxForm({
             //display the uploaded images
@@ -291,20 +294,16 @@ $(document).ready(function(){
                 $('.uploading').show();
             },
             success:function(res){
-              alert(res);
-             ///////////////////
-             var response = res.split('::');
-              if($.trim(response[0]) == 'Error'){
-                $('#show-all-errors').html(response[1]); //DISPLAY SUCCESS MESSAGE
-
-              }
-            var response = res.split('::');
-            if($.trim(response[0]) == 'Success'){
-              $('#images_preview').html(response[1]); //DISPLAY SUCCESS MESSAGE
+             var data = jQuery.parseJSON(res);
+            if($.trim(data[0]) != ''){
+              $('#show-all-errors').html(data[0]); //DISPLAY SUCCESS MESSAGE
 
             }
+          
+            if($.trim(data[1]) != ''){
+              $('#images_preview').html(data[1]); //DISPLAY SUCCESS MESSAGE
 
-             //////////////////
+            }
                $('.uploading').hide();
             },
             error:function(e){
@@ -315,31 +314,11 @@ $(document).ready(function(){
         $("#images").trigger("click");    
         });
 
-/*Function for count char*/
-/* $( "#usersitterhouses-about-home-desc" ).keyup(function() {
-       var len = (this).value.length;
-        //alert(len);
-       if(len == '75'){
 
-        //alert(len);
-          return false;
-       }else{
-         $('#about-home-preview').html((75 - len)+" Words");
-       }       
- });
-  $( "#usersitterhouses-spaces-access-desc" ).keyup(function() {
-       var len = (this).value.length;
-       if(len == '75' ){
-        //alert("okoko o");
-          return false;
-       }
-        $('#masterSwitch').is(true);
 
-       $('#space-word-preview').html((75 - len)+" Words");
- });*/
-
-   var maxWords = 75;
-   /*For 75 limit for about home desc*/
+  
+/*For 75 limit*/
+    var maxWords = 75;
    $( "#usersitterhouses-about-home-desc" ).keypress(function() {
          var len = (this).value.length;
           var $this, wordcount;
@@ -362,8 +341,7 @@ $(document).ready(function(){
                 alert("You've reached the maximum allowed words. Extra words removed.");
           }
         });
- /*End*/
-  /*For 75 limit for spaces access desc*/
+
  $( "#usersitterhouses-spaces-access-desc" ).keypress(function() {
          var len = (this).value.length;
           var $this, wordcount;
@@ -386,7 +364,7 @@ $(document).ready(function(){
                 alert("You've reached the maximum allowed words. Extra words removed.");
           }
         });
- /*For 75 limit for home pets desc*/
+ 
    $( "#usersitterhouses-home-pets-desc" ).keypress(function() {
          var len = (this).value.length;
           var $this, wordcount;
@@ -412,24 +390,4 @@ $(document).ready(function(){
    /*End*/
    
 });
-/*Functin for count char*/
-     /*function countChar(val) {
-      //alert(val);
-       
-
-        
-
-       // alert(len);
-        if (len >= 500) {
-          val.value = val.value.substring(0, 500);
-        } else {
-          $('#charNum').text(500 - len);
-        }
-      };*/
-
-      
-        
-
-      
-/*End multiple profile photos*/
 </script>
