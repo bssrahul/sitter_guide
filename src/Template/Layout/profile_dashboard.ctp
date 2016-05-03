@@ -16,7 +16,12 @@
 			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css',/*'Front/bootstrap-theme.min.css',*/'Front/dist/imageselect.css','Front/hint.css']); 
 			echo $this->Html->script(['Front/jquery.min.js'/*,'Admin/dev.js'*/,'Front/jquery.validate.js'/*,'Admin/bootstrap.min.js'*/,'Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js']);
 		?>
-	       <link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+			<?php if($sitefavicon != null){?>
+        <link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
+	<?php } else {?>
+		 <link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+	<?php }?>
+	      
           
     </head>
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">

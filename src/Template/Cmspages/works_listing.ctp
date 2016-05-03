@@ -57,7 +57,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>H<?php echo $this->requestAction('users/get-translate/'.base64_encode('Hot it works listing')); ?></h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-works'; ?>"><button class="btn btn-success addUser" type="button">Add Work</button></a></h2>-->
+					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('How it works listing')); ?></h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-works'; ?>"><button class="btn btn-success addUser" type="button">Add Work</button></a></h2>-->
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -120,7 +120,7 @@
 								 
 								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-works/".$work_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								   
-								   <!--<a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'HowWorks'.'/'.base64_encode(convert_uuencode($work_info->id));?>" onclick="if(!confirm('Are you sure to delete this User?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>-->
+								   <!--<a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'HowWorks'.'/'.base64_encode(convert_uuencode($work_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>-->
 								</td>
 							</tr>
 							<?php $i++;

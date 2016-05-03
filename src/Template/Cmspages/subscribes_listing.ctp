@@ -102,7 +102,7 @@
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								   <a title="<?php echo($subscribe_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id)).'/'.$target[$subscribe_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($subscribe_info->status ==0?'-o':'') ?>"></span></a>
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id));?>" onclick="if(!confirm('Are you sure to delete this User?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 							</tr>
 							<?php $i++;

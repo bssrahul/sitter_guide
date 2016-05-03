@@ -17,7 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\Event\Event;
-
+use Cake\I18n\Time;
 /**
  * Static content controller
  *
@@ -117,7 +117,6 @@ class PromocodeController extends AppController
 	*/
 	function promocodesListing(){
 		$this->viewBuilder()->layout('admin_dashboard');
-	
 		$this->loadComponent('Paginator');
 		$this->set('modelName','PromoCodes');
 		$PromocodesModel = TableRegistry::get("PromoCodes");

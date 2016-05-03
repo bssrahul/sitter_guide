@@ -10,15 +10,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo SITE_TITLE;?> </title>
-
+    <title><?php echo SITE_TITLE;?> 
+	<?php// $this->Html->meta('icon', $this->Html->url('/hg8fPO7anRxyGJS.png'));?></title>
     <!-- Bootstrap core CSS -->
     <?php 
         echo $this->Html->css(['Admin/bootstrap.min.css','Admin/fonts/css/font-awesome.min.css','Admin/animate.min.css','Admin/custom.css','Admin/icheck/flat/green.css','Admin/developer.css']); 
     
         echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js','Admin/bootstrap.min.js','Admin/nicescroll/jquery.nicescroll.min.js','Admin/icheck/icheck.min.js','Admin/custom.js','Admin/moment.min2.js','Admin/datepicker/daterangepicker.js'/*,'Admin/validator/validator.js'*/,'Admin/skycons/skycons.js']); 
     ?>
-
+	<?php if($sitefavicon != null){?>
+        <link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
+	<?php } else {?>
+		 <link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+	<?php }?>
 </head>
 
 
