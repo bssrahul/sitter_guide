@@ -6,8 +6,12 @@
       <!--Logo Area-->
           <div class="logo-area">
                           <div class="desk-logo">
-                              <a href="<?php echo HTTP_ROOT; ?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"><img src="<?php echo HTTP_ROOT; ?>img/logo.jpg"  alt="<?php echo __('Sitter Guide'); ?>"></a>
-                            </div>
+                             <?php if($sitelogo != null){?>
+                              <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/uploads/<?php echo $sitelogo;?>"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
+								<?php }else{?>
+								 <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/logo.jpg"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
+								<?php } ?>
+							</div>
                           <div class="mob-logo">
                               <a class="logo" href="<?php echo HTTP_ROOT; ?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide'));?>"><img src="<?php echo HTTP_ROOT; ?>img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                             </div>                                

@@ -130,7 +130,7 @@
 								 
 								  <a title="Edit" href="<?php echo HTTP_ROOT."partners/edit-partner/".$partner_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								   
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Partners'.'/'.base64_encode(convert_uuencode($partner_info->id));?>" onclick="if(!confirm('Are you sure to delete this User?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Partners'.'/'.base64_encode(convert_uuencode($partner_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 							</tr>
 							<?php $i++;
