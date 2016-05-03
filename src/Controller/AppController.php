@@ -57,6 +57,13 @@ class AppController extends Controller{
 		$currentLocal = substr($setRequestedLanguageLocale,0,2);
 		$this->set('currentLocal', $currentLocal);
 		
+		//FOR FAVICON AND SITE LOGO
+		$ConfingModel=TableRegistry::get("site_configurations");
+		$ConfingData=$ConfingModel->find('all')->toArray();
+		$sitelogo=$ConfingData[0]['site_logo'];
+		$sitefavicon=$ConfingData[0]['site_favicon'];
+		$this->set('sitelogo',$sitelogo);
+		$this->set('sitefavicon',$sitefavicon);
 	}
 	
 	
@@ -216,16 +223,16 @@ class AppController extends Controller{
 			if($type == 'logo')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "128";
-				$logoHeight = "128";
+				$logoWidth = "153";
+				$logoHeight = "25";
 				$logoSize="2097152";
 				$logoKb = '2 MB';
 			}
 			else if($type == 'favicon')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "16";
-				$logoHeight = "16";
+				$logoWidth = "24";
+				$logoHeight = "25";
 				$logoSize="2097152";
 				$logoKb = '2 MB';
 			}else if($type == 'profilePic')
@@ -732,6 +739,13 @@ class AppController extends Controller{
 		}
 	}
 	
+	//FOR FAVICON AND SITE LOGO
+	/* public function faviconLogo(){
+		
+		$ConfingModel=TableRegistry::get("site_configuration");
+		$ConfingData=$ConfingModel->find('all')->toArray();
+		pr($ConfingData);die;
+	} */
 	
 }
 ?>

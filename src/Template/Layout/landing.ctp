@@ -10,7 +10,11 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<title><?php echo "Sitter Guide";//echo @$title_for_layout; ?></title>
-		
+		<?php if($sitefavicon != null){?>
+			<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
+		<?php } else {?>
+			<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+		<?php }?>
 		<!-- Bootstrap Core CSS -->
 		<?php 
 			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 

@@ -83,12 +83,13 @@ class PagesController extends AppController
 		$this->i18translation($CmsPagesModel);
 		//CODE FOR MULTILIGUAL END
 		
-		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact-us']])->first();
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact us']])->first();
 		//pr($CmsPageData); die;
-	
-		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'contact-us'));
-		
+		$CategoriesModel=TableRegistry::get('Categories');
+		$Categoriesdata=$CategoriesModel->find('all')->where(['slug'=>'Contact-us'])->toArray();
+		//pr($Categoriesdata);die;
+		$this->set('Categoriesdata',$Categoriesdata);
 		$SiteModel = TableRegistry::get('SiteConfigurations');
 		$SiteData=$SiteModel->find('all')->toArray();
 		$AdminEmail=$SiteData[0]['site_contact_email'];
@@ -99,7 +100,7 @@ class PagesController extends AppController
 		{
 			 $email=$this->request->data['email'];
 			 $name=$this->request->data['name'];
-			  $phone=$this->request->data['phone_no'];
+			 $phone=$this->request->data['phone_no'];
 			 $message=$this->request->data['message'];
 			 $location=$this->request->data['location'];
 			
