@@ -44,7 +44,7 @@
                                     
                                     
                                     <li><a href="#" title="House Rules"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Rules')); ?></a> </li>
-                                    <li><a href="#" title="Safety"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Safety')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT.'pages/safety'; ?>" title="Safety"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Safety')); ?></a> </li>
                                     <li><a href="#" title="Benefits of sittings"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Benefits of sittings')); ?></a> </li>
                                    
                                 </ul>

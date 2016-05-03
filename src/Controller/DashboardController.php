@@ -620,9 +620,8 @@ class DashboardController extends AppController
 			$userProfessionalData->type_professional = 'check';
 			$userProfessionalData->sector_type = "govt";
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
-			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['check']['govt']['qualification_date'], 'UTC');
-			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['check']['govt']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
+			
 			//ADD SECOND FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
@@ -632,6 +631,7 @@ class DashboardController extends AppController
 			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['qualification_date'], 'UTC');
 			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
+			
 			//ADD THIRD FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
