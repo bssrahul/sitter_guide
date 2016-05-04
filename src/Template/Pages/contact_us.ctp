@@ -1,4 +1,3 @@
-
 <!--content area Start-->
 <main id="contact">
 	<section class="our-location">
@@ -215,6 +214,7 @@
 				</form>
 			</div>
     </section>
+</main>    
     <!-- Get in Touch ends-->
 	<script>
 		function activemap(val){
@@ -226,3 +226,4 @@
 			$('#'+location).addClass('mapactive');
 		}
 	</script>
+

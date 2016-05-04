@@ -53,15 +53,17 @@ Router::scope('/', function ($routes) {
 
 	$routes->connect('/', ['controller' => 'Guests', 'action' => 'home']);
     $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'home']);
+    $routes->connect('/search', ['controller' => 'search', 'action' => 'search']);
 
 	
 	 /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
         $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
-		 $routes->connect('/pages/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
-		 $routes->connect('/pages/news', ['controller' => 'Pages', 'action' => 'news']);
-		  $routes->connect('/pages/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
+		$routes->connect('/pages/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
+		$routes->connect('/pages/news', ['controller' => 'Pages', 'action' => 'news']);
+		$routes->connect('/pages/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
+
 
     /**
      * Connect catchall routes for all controllers.
