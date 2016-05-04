@@ -53,6 +53,7 @@ Router::scope('/', function ($routes) {
 
 	$routes->connect('/', ['controller' => 'Guests', 'action' => 'home']);
     $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'home']);
+    $routes->connect('/search', ['controller' => 'search', 'action' => 'search']);
 
 	
 	 /**
