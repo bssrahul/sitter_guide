@@ -4,7 +4,7 @@
 
         <div class="profiletab-section">
           
-  <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">Sitter Profile</h3>
+  <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
 
           <?php echo $this->element('frontElements/profile/sitter_nav');?>
 
@@ -32,7 +32,7 @@
                                                    ]);
                     ?>
 
-                  <h3><strong>All services for Sitters house and Guests House</strong></h3>
+                  <h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('All services for Sitters house and Guests House')); ?></strong></h3>
                   <div class="row">
                     <div class="col-lg-4 col-md-4">
                           <h4>Day Care</h4>
@@ -50,7 +50,7 @@
                                     'hiddenField' => false
                                    ]);
                               ?>
-                               </span> Day Care For Sitters house</label>
+                               </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care For Sitters house')); ?></label>
                           </div>
                           <div class="radio-main">
                             <!--<label><span class="custom-checkbox">
@@ -66,7 +66,7 @@
                                     'hiddenField' => false
                                    ]);
                               ?>
-                               </span>Day Care For Guests house</label>
+                               </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care For Guests house')); ?></label>
                           </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
@@ -84,7 +84,7 @@
                                     'hiddenField' => false
                                    ]);
                               ?>
-                               </span>Visits For Sitters house</label>
+                               </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Visits For Sitters house')); ?></label>
                           </div>
                           <div class="radio-main">
                              <!-- <label><span class="custom-checkbox">
@@ -99,11 +99,11 @@
                                     'hiddenField' => false
                                           ]);
                               ?>
-                               </span>Visits For Guests house</label>
+                               </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Visits For Guests house')); ?></label>
                           </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                          <h4>Night Care</h4>
+                          <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?></h4>
                           <div class="radio-main">
                             <!--<label><span class="custom-checkbox">
                               <input type="checkbox" value="football" name="sport[]"></span> Night Care For Sitters house</label>-->
@@ -117,7 +117,7 @@
                                     'hiddenField' => false
                                    ]);
                               ?>
-                               </span>Night Care For Sitters house</label>
+                               </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care For Sitters house')); ?></label>
                           </div>
                           <div class="radio-main">
                             <!--<label><span class="custom-checkbox">
@@ -132,20 +132,14 @@
                                     'hiddenField' => false
                                    ]);
                               ?>
-                               </span>Night Care For Guests house</label>
+                               </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care For Guests house')); ?></label>
                           </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-lg-4">
-                      <h4 class="top-sh">Hourly</h4>
-                          <!--<select id="" class="form-control">
-                            <option>Sitting for Sitters house</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>-->
-                          <?php 
+                      <h4 class="top-sh"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Hourly')); ?></h4>
+                           <?php 
                               echo $this->Form->input('UserSitterServices.hourly_service',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'select',
@@ -156,14 +150,8 @@
                           ?>
                     </div>
                     <div class="form-group col-lg-4">
-                      <h4 class="top-sh">Cancellation Policy</h4>
-                          <!--<select id="" class="form-control">
-                            <option>Sitting for Sitters house</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>-->
-                      <?php echo $this->Form->input('UserSitterServices.cancellation_policy',[
+                      <h4 class="top-sh"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancellation Policy')); ?></h4>
+                         <?php echo $this->Form->input('UserSitterServices.cancellation_policy',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                          'required' => false,
@@ -174,11 +162,11 @@
                     </div>
                     <div class="form-group col-lg-8 noned"></div>
                   </div>
-                  <h3><strong>Boarding At Sitters Home</strong></h3>
+                  <h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding At Sitters Home')); ?></strong></h3>
                   <div class="row">
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate')); ?><br/> ( <?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load - member activated. Not automated')); ?> )</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
                         <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
@@ -192,7 +180,7 @@
                           ?>
                         </div>
                         </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Holiday Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input>--> 
                         <?php 
@@ -209,7 +197,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy or Kitten (under 1 year old) Rate<br/>(Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy or Kitten (under 1 year old) Rate')); ?><br/>(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -220,7 +208,7 @@
                                 ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Puppy Rate:% </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy Rate')); ?>:% </div> 
                       <div class="col-lg-6 col-md-6"> 
                         <!--<input type="text"></input> -->
                         <?php 
@@ -237,7 +225,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/> (Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate')); ?> <br/> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -248,7 +236,7 @@
                                 ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Cate Rate:% </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cate Rate')); ?>:% </div> 
                       <div class="col-lg-6 col-md-6"> 
                         <!--<input type="text"></input> -->
                           <?php 
@@ -267,7 +255,7 @@
                     
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Horse  Rate <br/> (Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Horse  Rate')); ?> <br/> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -278,7 +266,7 @@
                                 ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Horse Rate:% </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Horse Rate')); ?>:% </div> 
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input>-->
                         <?php 
@@ -295,7 +283,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Reptiles  Rate<br/>(Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reptiles  Rate')); ?><br/>(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -306,7 +294,7 @@
                                 ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Reptiles Rate:%</div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reptiles Rate')); ?>:%</div> 
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input> -->
                          <?php 
@@ -323,7 +311,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Pets  - other than cats & dogs')); ?><br/> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -334,7 +322,7 @@
                                 ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Small Pets Rate:% </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Pets Rate')); ?>:% </div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input> -->
                        <?php 
@@ -350,7 +338,7 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-12">
                        <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -361,7 +349,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                            <?php 
@@ -372,7 +360,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -385,7 +373,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-sm-9">1st Guest Rate:  </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $ </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate')); ?>: $ </div> 
                       <div class="col-lg-6 col-md-6">  
                       <!-- <input type="text"></input> -->
                         <?php 
@@ -402,7 +390,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -413,7 +401,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -424,7 +412,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -443,7 +431,7 @@
                                 'required'=>false
                               ]);
                           ?>    </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate')); ?>: $</div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input>-->  
                         <?php 
@@ -464,7 +452,7 @@
                    
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Hourly Care</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Hourly Care')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -475,7 +463,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -486,7 +474,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -499,7 +487,7 @@
                         </div>   </div></div>
                      <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-7 col-md-7">1st Guest Rate p/hour: $</div> 
+                      <div class="row"><div class="col-lg-7 col-md-7"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate p/hour')); ?>: $</div> 
                       <div class="col-lg-5 col-md-5">   
                         <!--<input type="text"></input> --> 
                          <?php 
@@ -516,7 +504,7 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Long Term Care</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Long Term Care')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -527,7 +515,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -538,7 +526,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
@@ -551,7 +539,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/night (after 1st night)  </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-12 col-md-12">1st Guest Rate p/night (after 1st night): $</div> 
+                      <div class="row"><div class="col-lg-12 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate p/night (after 1st night)')); ?>: $</div> 
                       <div class="col-lg-6 col-md-6 guestRate" >   
                         <!--<input type="text"></input>--> 
                          <?php 
@@ -567,13 +555,13 @@
                     </div>
                      </div>
 
-                    <h3><strong>Home Sitting At Guests Home</strong></h3>
+                    <h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home Sitting At Guests Home')); ?></strong></h3>
 
 
                     <div class="row">
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate')); ?><br/> ( <?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load - member activated. Not automated')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -584,7 +572,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Holiday Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6">   
                        <!-- <input type="text"></input> -->
                             <?php 
@@ -601,7 +589,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy or Kitten (under 1 year old) Rate <br/>(Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy or Kitten (under 1 year old) Rate')); ?> <br/>(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -612,7 +600,7 @@
                                  ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Puppy Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input> --> 
                         <?php 
@@ -629,7 +617,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/> (Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate')); ?> <br/> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -640,7 +628,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Cat Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6"> 
                         <!--<input type="text"></input> -->
                         <?php 
@@ -660,7 +648,7 @@
                     
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Horse  Rate <br/> (Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Horse  Rate')); ?> <br/> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -671,7 +659,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Horse Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Horse Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6">  
                        <!--<input type="text"></input>  -->
                           <?php 
@@ -688,7 +676,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Reptiles  Rate  <br/>(Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reptiles  Rate')); ?>  <br/>(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -699,7 +687,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Reptiles Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reptiles Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input>  -->
                           <?php 
@@ -716,7 +704,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Pets  - other than cats & dogs')); ?><br/> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Service load')); ?>)</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                        <!-- <input type="checkbox" checked />-->
                         <?php 
@@ -727,7 +715,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Pets Rate: % </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pets Rate')); ?>: % </div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input> -->
                           <?php 
@@ -748,7 +736,7 @@
                   
                     <div class="form-group col-lg-4 col-md-12">
                        <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -759,7 +747,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -770,7 +758,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -783,7 +771,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-sm-9">1st Guest Rate:  </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $ </div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate')); ?>: $ </div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input>  -->
                         <?php 
@@ -800,7 +788,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
+                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                        <!-- <input type="checkbox" checked />-->
                          <?php 
@@ -811,7 +799,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -822,7 +810,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -835,7 +823,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate:  </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
+                      <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate')); ?>: $</div> 
                       <div class="col-lg-6 col-md-6">   
                         <!--<input type="text"></input> -->
                         <?php 
@@ -857,7 +845,7 @@
                    
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Hourly Care</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Hourly Care')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -868,7 +856,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -879,7 +867,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -892,7 +880,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-7 col-md-7">1st Guest Rate p/hour: $ </div> 
+                      <div class="row"><div class="col-lg-7 col-md-7"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate p/hour')); ?>: $ </div> 
                       <div class="col-lg-5 col-md-5">  
                        <!--<input type="text"></input>  -->
                        <?php 
@@ -909,7 +897,7 @@
                     </div>
                       <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Long Term Care</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Long Term Care')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -920,7 +908,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                        <!-- <input type="checkbox" checked />-->
                          <?php 
@@ -931,7 +919,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -944,7 +932,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/night (after 1st night)  </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-12 col-md-12">1st Guest Rate p/night (after 1st night): $ </div> 
+                      <div class="row"><div class="col-lg-12 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate p/night (after 1st night)')); ?>: $ </div> 
                       <div class="col-lg-6 col-md-6 guestRate">  
                        <!--<input type="text"></input> --> 
                        <?php 
@@ -960,7 +948,7 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Visits Per Day</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Visits Per Day)')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -971,7 +959,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -982,7 +970,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                       <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -995,7 +983,7 @@
                         </div>   </div></div>
                       <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
                       <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-7 col-md-7">1 Visit Per Day: $ </div> 
+                      <div class="row"><div class="col-lg-7 col-md-7"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1 Visit Per Day')); ?>: $ </div> 
                       <div class="col-lg-5 col-md-5">  
                        <!--<input type="text"></input>  -->
                        <?php 
@@ -1006,7 +994,7 @@
                               ]);
                           ?> 
                      </div></div>
-                      <div class="row"><div class="col-lg-7 col-md-7">2 Visit Per Day: $ </div> 
+                      <div class="row"><div class="col-lg-7 col-md-7"><?php echo $this->requestAction('app/get-translate/'.base64_encode('2 Visit Per Day')); ?>: $ </div> 
                       <div class="col-lg-5 col-md-5">  
                        <!--<input type="text"></input>  -->
                        <?php 
@@ -1024,12 +1012,12 @@
                      </div>
 
 
-                     <h3>Hourly Products</h3>
+                     <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Hourly Products')); ?></h3>
 
                      <div class="row">
                       <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Grooming</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Grooming')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1040,7 +1028,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode   </div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>   </div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1051,7 +1039,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1062,7 +1050,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
+                        <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate')); ?>: $</div> 
                         <div class="col-lg-6 col-md-6 num">   
                          <?php 
                               echo $this->Form->input('UserSitterServices.hp_gm_guest_rate',[
@@ -1077,7 +1065,7 @@
 
                       <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Training</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Training')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1088,7 +1076,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode   </div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>   </div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1099,7 +1087,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1110,7 +1098,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
+                        <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1st Guest Rate')); ?>: $</div> 
                         <div class="col-lg-6 col-md-6 num">  
                           <?php 
                               echo $this->Form->input('UserSitterServices.hp_tr_guest_rate',[
@@ -1126,7 +1114,7 @@
 
                       <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Outdoors Recreation (walking)  </div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoors Recreation (walking)')); ?>  </div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1137,7 +1125,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate Away Mode')); ?>  </div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1148,7 +1136,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1159,7 +1147,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-7 col-md-7">1 Per Day, 1 Guest: $</div> 
+                        <div class="row"><div class="col-lg-7 col-md-7"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1 Per Day, 1 Guest')); ?>: $</div> 
                         <div class="col-lg-5 col-md-5 num">  
                          <?php 
                               echo $this->Form->input('UserSitterServices.hp_or_1_day_1_guest',[
@@ -1169,7 +1157,7 @@
                               ]);
                           ?>   
                         </div></div>
-                        <div class="row"><div class="col-lg-7 col-md-7"> 2 Per Day, 1 Guest: $</div> 
+                        <div class="row"><div class="col-lg-7 col-md-7"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('2 Per Day, 1 Guest')); ?>: $</div> 
                         <div class="col-lg-5 col-md-5 num">   
                          <?php 
                               echo $this->Form->input('UserSitterServices.hp_or_2_day_1_guest',[
@@ -1186,7 +1174,7 @@
 
                        <div class="form-group col-lg-4 col-md-12">
                       <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Driver Service</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Driver Service')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1197,7 +1185,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Away Mode</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Away Mode')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1208,7 +1196,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Clients Only')); ?></div> 
                         <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
@@ -1219,7 +1207,7 @@
                               ]);
                           ?>
                         </div>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">  Pick-up: $</div> 
+                        <div class="row"><div class="col-lg-6 col-md-6">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pick-up')); ?>: $</div> 
                         <div class="col-lg-6 col-md-6 num">  <?php 
                               echo $this->Form->input('UserSitterServices.hp_ds_pick_up',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -1227,7 +1215,7 @@
                                 'required'=>false
                               ]);
                           ?>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">Drop-off: $</div> 
+                        <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-off')); ?>: $</div> 
                         <div class="col-lg-6 col-md-6 num"> 
                          <?php 
                               echo $this->Form->input('UserSitterServices.hp_ds_drop_off',[
@@ -1236,7 +1224,7 @@
                                 'required'=>false
                               ]);
                           ?>    </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">Return: $</div> 
+                        <div class="row"><div class="col-lg-6 col-md-6"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Return')); ?>: $</div> 
                         <div class="col-lg-6 col-md-6 num">  
                           <?php 
                               echo $this->Form->input('UserSitterServices.hp_ds_return',[
@@ -1302,11 +1290,11 @@
                        
                      </div>
 
-                   <h3><i>Below <strong>4 features</strong> update the calendar to show how many spaces are availble for booking for each product </i>     
+                   <h3><i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Below')); ?> <strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('4 features')); ?></strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('update the calendar to show how many spaces are availble for booking for each product')); ?>  </i>     
 </h3>
                   <div class="row img-rightsp">
                   <div class="form-group col-lg-4">
-                      <label for="">1. Day Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
+                      <label for="">1. <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care P/day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                        <?php 
                               echo $this->Form->input('UserSitterServices.day_care_limit',[
@@ -1319,7 +1307,7 @@
                        
                     </div>
                     <div class="form-group col-lg-4">
-                      <label for="">2. Night Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
+                      <label for="">2. <?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care P/day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
                               echo $this->Form->input('UserSitterServices.night_care_limit',[
@@ -1331,7 +1319,7 @@
                           ?> 
                     </div>
                     <div class="form-group col-lg-4">
-                      <label for="">3. Visits P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
+                      <label for="">3. <?php echo $this->requestAction('app/get-translate/'.base64_encode('Visits P/day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
                               echo $this->Form->input('UserSitterServices.visits_limit',[
@@ -1343,7 +1331,7 @@
                           ?> 
                     </div>
                     <div class="form-group col-lg-4">
-                      <label for="">4. Hourly Services P/Day Limit <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
+                      <label for="">4. <?php echo $this->requestAction('app/get-translate/'.base64_encode('Hourly Services P/Day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
                               echo $this->Form->input('UserSitterServices.hourly_services_limit',[

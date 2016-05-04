@@ -139,3 +139,6 @@ label.error{margin-top:5px;}
     width:100% !important;
 }
 
+div.checkbox label.error{
+    width:auto !important;
+}

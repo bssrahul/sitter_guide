@@ -203,8 +203,10 @@ class DashboardController extends AppController
     */
     function profile(){
     	 $this->viewBuilder()->layout('profile_dashboard');
-         $usersModel = TableRegistry::get('Users');
 
+    	 $captchErr="";
+         $usersModel = TableRegistry::get('Users');
+         
          $session = $this->request->session();
          $userId = $session->read('User.id');
 
@@ -212,6 +214,16 @@ class DashboardController extends AppController
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{
+
+             if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response'])){
+					//your site secret key
+					$secret = CAPTCHA_SECRET_KEY;
+					//get verify response data
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
+					$responseData = json_decode($verifyResponse);
+                    if($responseData->success)
+                    {
+
 			$countryCodesModel = TableRegistry::get('CountryCodes');
 			/*pr($this->request->data['Users']['county_code']);die;
 			 foreach($this->request->data['Users']['county_code'] as $key=>$val){
@@ -252,17 +264,25 @@ class DashboardController extends AppController
 		                $this->set('userInfo', $userData);
 
 				}
+			  }else{
+						$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
+					}
+
+			}else{
+					$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
+				}
         }else{
 		   $userData = $usersModel->get($userId);
 		   unset($userData->id);
 		  $this->set('userInfo', $userData);
 
 	    }
-	    
+	    $this->set('captchErr',@$captchErr);
+
         $countryCodesModel = TableRegistry::get('CountryCodes');
         $countrydata = $countryCodesModel->find('all')->toArray();
 		 foreach($countrydata as $key=>$val){
-                $country_info[$val['phonecode']] = $val['nicename']."(".$val['phonecode'].")"; 
+                $country_info[$val['phonecode']] = $val['iso3']."(".$val['phonecode'].")"; 
 		 }
 		 $this->set('counry_info',$country_info);
           //pr($country_info);die;
@@ -353,34 +373,35 @@ class DashboardController extends AppController
     */
     function aboutSitter(){
     	 $this->viewBuilder()->layout('profile_dashboard');
+         $usersModel = TableRegistry::get('Users');
 
+         $session = $this->request->session();
+         $userId = $session->read('User.id');
 
-          $usersModel = TableRegistry::get('Users');
-
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
-   
         $aboutSittersModel = TableRegistry::get('UserAboutSitters');
-        
+        $this->request->data = @$_REQUEST;
 
-		$this->request->data = @$_REQUEST;
-		
-		if(isset($this->request->data['UserAboutSitters']) && !empty($this->request->data['UserAboutSitters']))
+		if(isset($this->request->data['UserAboutSitters']))
 		{
-			//pr($this->request->data); die;
-			   $aboutSitterData = $aboutSittersModel->newEntity();
-			   $petSizeArr = $this->request->data['UserAboutSitters']['accepted_pet_size'];
-		        if(isset($petSizeArr) && !empty($petSizeArr)){
-                      $this->request->data['UserAboutSitters']['accepted_pet_size'] = implode(",",$petSizeArr);
-		        }
-		
-               $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
-                $aboutSitterData->user_id = $userId;
-                
-              // pr($aboutSitterData->errors());  die;
-                if ($aboutSittersModel->save($aboutSitterData)){
+			    //pr($this->request->data); die;
+			$aboutSitterData = $aboutSittersModel->newEntity();
 
-                      return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+            if(!empty($this->request->data['UserAboutSitters']['sh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['sh_pet_sizes'][0])){
+	              $petSizeArr = $this->request->data['UserAboutSitters']['sh_pet_sizes'];
+	              $aboutSitterData->sh_pet_sizes = $this->request->data['UserAboutSitters']['sh_pet_sizes'] = implode(",",$petSizeArr);
+	        }
+	        if(!empty($this->request->data['UserAboutSitters']['gh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['gh_pet_sizes'][0])){
+	              $petSizeArr = $this->request->data['UserAboutSitters']['gh_pet_sizes'];
+	             $aboutSitterData->gh_pet_sizes = $this->request->data['UserAboutSitters']['gh_pet_sizes'] = implode(",",$petSizeArr);
+	        }
+		       //pr($this->request->data); die;
+               //$aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>false]);
+               // pr($aboutSitterData);die;
+	        $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
+            $aboutSitterData->user_id = $userId;
+               if ($aboutSittersModel->save($aboutSitterData)){
+
+                      return $this->redirect(['controller'=>'dashboard','action'=>'professional-accreditations']);
 				}else{
 
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -390,14 +411,15 @@ class DashboardController extends AppController
 			 		$this->set('aboutSitterId', $aboutSitterData->id);
 			 	}
 		       $this->set('sitter_info', $aboutSitterData);
-
-		}else{
+               //return $this->redirect(['controller'=>'dashboard','action'=>'professional-accreditations']); 
+        }else{
             $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
           
            if(isset($query->user_about_sitter) && !empty($query->user_about_sitter)){
                    $aboutSitterData = $query->user_about_sitter;
                    $this->set('aboutSitterId', $aboutSitterData->id);
                    unset($aboutSitterData->id);
+                   //pr($aboutSitterData);die;
                    $this->set('sitter_info', $aboutSitterData);
 		    }
 		   
