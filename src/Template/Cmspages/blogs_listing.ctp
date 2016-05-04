@@ -121,7 +121,7 @@
 									 <a title="<?php echo($blog_info->featured == 0?'Activate featured':'Deactivate featured') ?>" href="<?php echo HTTP_ROOT."users/update-featured-row/".'UserBlogs'.'/'.base64_encode(convert_uuencode($blog_info->id)).'/'.$target[$blog_info->featured];?>" ><span class="fa fa-star<?php echo($blog_info->featured ==0?'-o':'') ?>"></span></a>
 								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-blog/".base64_encode(convert_uuencode($blog_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								   
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'UserBlogs'.'/'.base64_encode(convert_uuencode($blog_info->id));?>" onclick="if(!confirm('Are you sure to delete this User?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'UserBlogs'.'/'.base64_encode(convert_uuencode($blog_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 							</tr>
 							<?php $i++;

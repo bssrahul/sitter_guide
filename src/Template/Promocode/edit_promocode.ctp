@@ -21,7 +21,8 @@
 										'class'=>'form-horizontal form-label-left',
 										'id'=>'addpromocode',
 										'enctype'=>'multipart/form-data',
-										'novalidate'=>'novalidate'
+										'novalidate'=>'novalidate',
+										'autocomplete' =>'off',
 									]);?>
 									<?php 
 									 //$promocodeId = base64_encode(convert_uuencode($promocodeInfo->id));

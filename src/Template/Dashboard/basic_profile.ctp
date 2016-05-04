@@ -35,7 +35,8 @@
 									'url' => ['controller' => 'dashboard', 'action' => 'basic-profile'],
 									'role'=>'form',
 									'id'=>'personalForm',
-									'enctype'=>'multipart/form-data'
+									'enctype'=>'multipart/form-data',
+									 'autocomplete'=>'off',
 									]);?>
 			        <h4>Headline</h4>					
 			        <label for="pet_type">Give your profile an awesome title. First impression counts, and this is the first thing people read when they visit your profile. </label>

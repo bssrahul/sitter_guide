@@ -366,12 +366,7 @@ class CmspagesController extends AppController
 		
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UserBlogsModel);
-		$blogs_info = $UserBlogsModel->find('all',[
-																'order' => [
-																	'UserBlogs.modified' => 'desc'
-																]
-													]
-											);
+		$blogs_info = $UserBlogsModel->find('all',['order' => ['UserBlogs.modified' => 'desc']]);
 		$this->set('blogs_info',$blogs_info);
 	}
 	/**

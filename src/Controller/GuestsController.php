@@ -611,21 +611,7 @@ class GuestsController extends AppController
 				$errors['last_name'][]=$this->stringTranslate(base64_encode("Last name should be alphabatic"))."\n";
 			}
 		}
-		//Validation for Birth Date
-		/*if(trim($data['Users']['birth_date'])== ""){
-			
-			$errors['birth_date'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
-		}else{
-				 $bdate=$data['Users']['birth_date'];
-				$cdate= date("Y-m-d");
-				 $diff = abs(strtotime($cdate) - strtotime($bdate));
-				 $years = floor($diff / (365*60*60*24));
-				 if($years >= 18){}else{
-						$errors['birth_date'][]=$this->stringTranslate(base64_encode("User Must be 18 Years Above"))."\n";
-				 }
-				//printf("%d years, %d months, %d days\n", $years, $months, $days);
-					
-	}*/
+
 		//Validation for email
 		if(trim($data['Users']['email'])=='')
 		{

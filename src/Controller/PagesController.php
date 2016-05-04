@@ -77,17 +77,19 @@ class PagesController extends AppController
 	function contactUs(){
 		
 		$this->viewBuilder()->layout('cms_pages');
+		
 		$CmsPagesModel = TableRegistry::get('CmsPages');
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($CmsPagesModel);
 		//CODE FOR MULTILIGUAL END
 		
-		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact-us']])->first();
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact us']])->first();
 		//pr($CmsPageData); die;
-	
-		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'contact-us'));
-		
+		$CategoriesModel=TableRegistry::get('Categories');
+		$Categoriesdata=$CategoriesModel->find('all')->where(['slug'=>'Contact-us'])->toArray();
+		//pr($Categoriesdata);die;
+		$this->set('Categoriesdata',$Categoriesdata);
 		$SiteModel = TableRegistry::get('SiteConfigurations');
 		$SiteData=$SiteModel->find('all')->toArray();
 		$AdminEmail=$SiteData[0]['site_contact_email'];
@@ -98,7 +100,7 @@ class PagesController extends AppController
 		{
 			 $email=$this->request->data['email'];
 			 $name=$this->request->data['name'];
-			  $phone=$this->request->data['phone_no'];
+			 $phone=$this->request->data['phone_no'];
 			 $message=$this->request->data['message'];
 			 $location=$this->request->data['location'];
 			
@@ -119,6 +121,34 @@ class PagesController extends AppController
 			
 		}
 		
+		
+	}
+	function news(){
+
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'news']])->first();
+		//pr($CmsPageData); die;
+	
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'news'));
+		
+		$this->loadComponent('Paginator');
+		$this->set('modelName','UserBlogs');
+		$UserBlogsModel = TableRegistry::get("UserBlogs");
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($UserBlogsModel);
+		$blogs_info = $UserBlogsModel->find('all',['order' => ['UserBlogs.modified' => 'desc']])->where(['status'=>1])->toArray();
+		//pr($blogs_info);die;
+		$this->set('blogs_info',$blogs_info);
+				
+	}
+	function newsDetail(){
 		
 	}
 }

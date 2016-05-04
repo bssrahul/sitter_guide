@@ -38,7 +38,8 @@
 									'url' => ['controller' => 'dashboard', 'action' => 'services-and-rates'],
 									'role'=>'form',
 									'id'=>'personalForm',
-									'enctype'=>'multipart/form-data'
+									'enctype'=>'multipart/form-data',
+									 'autocomplete'=>'off',
 									]);?>
 			 <h4>Accepted Pet Types</h4>					
 			 <label for="pet_type">Select one or more types of pet from below </label>

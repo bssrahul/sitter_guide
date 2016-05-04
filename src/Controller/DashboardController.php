@@ -212,11 +212,12 @@ class DashboardController extends AppController
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{
-			/* $countryCodesModel = TableRegistry::get('CountryCodes');
+			$countryCodesModel = TableRegistry::get('CountryCodes');
+			/*pr($this->request->data['Users']['county_code']);die;
 			 foreach($this->request->data['Users']['county_code'] as $key=>$val){
 			 	$countryCodeData = $countryCodesModel->newEntity();
 			 	//echo $val;die;
-                  $countryCodeData->country_code = $val;
+                  $countryCodeData->code = $val;
                  $countryCodesModel->save($countryCodeData);
 			 }*/
 			 
@@ -258,8 +259,13 @@ class DashboardController extends AppController
 
 	    }
 	    
-
-
+        $countryCodesModel = TableRegistry::get('CountryCodes');
+        $countrydata = $countryCodesModel->find('all')->toArray();
+		 foreach($countrydata as $key=>$val){
+                $country_info[$val['phonecode']] = $val['nicename']."(".$val['phonecode'].")"; 
+		 }
+		 $this->set('counry_info',$country_info);
+          //pr($country_info);die;
 		 $zonesModel = TableRegistry::get('Zones');
 		 $zones_data = $zonesModel->find('all')->toArray();
 		 foreach($zones_data as $key=>$val){
@@ -425,7 +431,7 @@ class DashboardController extends AppController
 						$Img = explode(':',$Img);
 						if($Img[0]=='error'){
 							
-							$errors[] = $_FILES['images']['name'][$i].':'.$Img[1];
+							$errors[] = 'File:'.$_FILES['images']['name'][$i].':'.$Img[1];
 							//pr($errors);die;
 							//continue;
                         }else{
@@ -464,16 +470,17 @@ class DashboardController extends AppController
                    }
                   //pr($errors);die;
                   if($errors != ''){
-                   $error ="Error::";
+                   $error ="";
                   	  foreach($errors as $key=>$val){
                   	  //echo "<em class='signup_error error'>".$val."</em>";die;
                   	  	
-                           $error.= "<em class='signup_error error col-md-4 col-lg-4 col-sm-6'>".$val."</em>";
+                           $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
                       }
                   }
                  
-                  echo $error;die;
-                 // echo 'Success::'.$html; die;
+                  //echo $error;die;
+                  echo (json_encode(array($error,$html)));die;
+                  //echo 'Success::'.$html; die;
             }
       }
       /**
@@ -493,7 +500,7 @@ class DashboardController extends AppController
 			    	//echo $_REQUEST['imageId'];die;
 			    	$record = $sitterGallriesModel->get($_REQUEST['imageId']);
 					$deleteResult = $sitterGallriesModel->delete($record);
-					$this->Flash->success(__('Record has been deleted successfully.'));
+					//$this->Flash->success(__('Record has been deleted successfully.'));
 			   }
             }
 
@@ -549,6 +556,39 @@ class DashboardController extends AppController
 		}
 
      }
+      /**
+         Function for save profile banner
+      */
+     function saveProfileBanner(){
+     	$usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+
+       if(isset($_FILES['profile_banner']) && !empty($_FILES['profile_banner'])){
+        $userData = $usersModel->newEntity();
+     	$userData->id = $userId;
+     	  //Upload video
+			if($_FILES['profile_banner']['name']!=''){
+				$profileBanner = $this->admin_upload_file('profileBanner',$_FILES['profile_banner']);
+				$profileBanner = explode(':',$profileBanner);
+				if($profileBanner[0]=='error'){
+					//$this->Flash->error(__($profileBanner[1]));
+				    echo $errors = 'Error::'.$profileBanner[1];die;
+				}else{
+					$userData->profile_banner = $profileBanner[1];
+                     if($usersModel->save($userData)){
+		                   $userInfo = $usersModel->get($userId);
+		                   echo 'Success::'.HTTP_ROOT.'img/uploads/'.$userInfo->profile_banner;die;
+			         }
+				}				
+			}else{
+				 unset($_FILES['profile_banner']);
+			}
+			 
+		}
+
+     }
      /**
     Function for Professional Accreditations
     */
@@ -580,9 +620,8 @@ class DashboardController extends AppController
 			$userProfessionalData->type_professional = 'check';
 			$userProfessionalData->sector_type = "govt";
 			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
-			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['check']['govt']['qualification_date'], 'UTC');
-			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['check']['govt']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
+			
 			//ADD SECOND FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
@@ -592,6 +631,7 @@ class DashboardController extends AppController
 			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['qualification_date'], 'UTC');
 			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['expiry_date'], 'UTC');
 			$UserProfessionalModel->save($userProfessionalData);
+			
 			//ADD THIRD FIELD START
 			$userProfessionalData = $UserProfessionalModel->newEntity();
 			$userProfessionalData->user_id = $userId;
@@ -884,29 +924,71 @@ class DashboardController extends AppController
     public function changeAvatar() {
     	
     	$session = $this->request->session();
-    	
-        //global $current_user;
-       //echo "<pre>";print_r();
-        $loggedInId = $session->read('User.id');//$current_user->ID;
+    	$userId = $session->read('User.id');//$current_user->ID;
 
-        $post = isset($_POST) ? $_POST: array();
-        $max_width = "1024"; 
-        $userId = $loggedInId;//isset($post['hdn-profile-id']) ? intval($post['hdn-profile-id']) : 0;
+        //$post = isset($_POST) ? $_POST: array();
+        //$max_width = "1024"; 
+       // $userId = $loggedInId;//isset($post['hdn-profile-id']) ? intval($post['hdn-profile-id']) : 0;
         //$path = get_theme_root(). '\images\uploads\tmp';
-        $uploadFolder = 'uploads';
+        //$uploadFolder = 'uploads';
         //$path = realpath('../webroot/'.$uploadFolder);
     
-        $valid_formats = array("jpg", "png", "gif", "bmp","jpeg");
-        $name = $_FILES['photoimg']['name'];
-        $size = $_FILES['photoimg']['size'];
-        if(strlen($name))
-        {
-	        list($txt, $ext) = explode(".", $name);
+        //$valid_formats = array("jpg", "png", "gif", "bmp","jpeg");
+        //$name = $_FILES['image']['name'];
+        //$size = $_FILES['image']['size'];
+        /*if(strlen($name))
+        {*/
+        /*if(isset($_FILES['image']) && !empty($_FILES['image']))
+        {*/
+		        //$userData = $usersModel->newEntity();
+		     	//$userData->id = $userId;
+     	        //Upload video
+     	        
+	    if($_FILES['image']['name']!=''){
+                    ob_start();
+					$profilePic = $this->admin_upload_file('profilePic',$_FILES['image']);
+					$profilePic = explode(':',$profilePic);
+					if($profilePic[0]=='error'){
+						//$this->Flash->error(__($profileBanner[1]));
+					    echo "<em class='signup_error error clr'>".$profilePic[1]."</em>";die;//'Error::'.$profilePic[1];die;
+					}else{
+					 //$userData->profile_banner = $profilePic[1];
+                    /* if($usersModel->save($userData)){
+		                   $userInfo = $usersModel->get($userId);
+		                   echo 'Success::'.HTTP_ROOT.'img/uploads/'.$userInfo->profile_banner;die;
+			         }*/
+                      ob_end_clean();
+				    		/*chmod($filePath, 0755);
+				        	//echo $filePath;die;
+				        	$width = $this->getWidth($filePath);
+				            $height = $this->getHeight($filePath);
+				            //Scale the image if it is greater than the width set above
+				            if ($width > $max_width){
+				                $scale = $max_width/$width;
+				                $uploaded = $this->resizeImage($filePath,$width,$height,$scale);
+				            }else{
+				                $scale = 1;
+				                $uploaded = $this->resizeImage($filePath,$width,$height,$scale);
+				            }*/
+
+			         $res = $this->saveAvatar(array(
+				                        'userId' => isset($userId) ? intval($userId) : 0,
+				                                                'USERIMG' => isset($profilePic[1]) ? $profilePic[1] : '',
+				                        ));
+
+			          $src = HTTP_ROOT.'webroot/img/uploads/'.$profilePic[1];
+				        echo "<img  id='photo' class='' src='".$src."' class='preview'/>";
+				}				
+			/*}else{
+				 unset($_FILES['profile_banner']);
+			}*/
+
+	       /*list($txt, $ext) = explode(".", $name);
 	        if(in_array(strtolower($ext),$valid_formats))
 		    {
 		        if($size<(2048*2048)) // Image size max 1 MB
 			    {
-			        $actual_image_name = 'USERIMG' .'_'.$this->RandomStringGenerator(7).'.'.$ext;
+			        $actual_image_name = 'user_img' .'_'.$this->RandomStringGenerator(15).'.'.$ext;
 			        $filePath = realpath('../webroot/img/'.$uploadFolder).'/'.$actual_image_name;
 			        $tmp = $_FILES['photoimg']['tmp_name'];
 			        //echo $tmp.$filePath;die;
@@ -935,22 +1017,19 @@ class DashboardController extends AppController
 				        //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");
 				     //echo "<img id='photo' class='' src='".getCustomAvatar($userId, true).'?'.time()."' class='preview'/>";
 				       $src = HTTP_ROOT.'webroot/img/uploads/'.$actual_image_name;
-				        echo "<img id='photo' class='' src='".$src."' class='preview'/>";
+				        echo "<img height='150px' width='150px' id='photo' class='' src='".$src."' class='preview'/>";
 			        }
 			        else
-			        echo "failed";
+			      echo "<em class='signup_error error clr'>Failed!</em>"; 
 		        }
 		        else
-		        echo "Image file size max 1 MB"; 
-	        }
+		       echo "<em class='signup_error error clr'>Image file size max 1 MB!</em>"; */
+	       /* }
 	        else
-	        echo "Invalid file format.."; 
-	    }
-        else
-        echo "Please select image..!";
-        exit;
-        
-        die;
+	        echo "<em class='signup_error error clr'>Only JPG, PNG, BMP or GIF files are allowed!</em>"; */
+	    }else
+			 echo "<em class='signup_error error clr'>Please select image..!</em>"; die;
+			
     }
 	/*********************************************************************
 	 Purpose            : update image.
@@ -975,6 +1054,9 @@ class DashboardController extends AppController
 	     //$path = realpath('../webroot/'.$uploadFolder);
 	     $uploadFolder = 'uploads';
 	     $path = realpath('../webroot/img/'.$uploadFolder);
+	    
+//echo "okokovk";
+	   // echo $path ;die;//= explode(".", $path);die;
 	    $t_width = 300; // Maximum thumbnail width
 	    $t_height = 300;    // Maximum thumbnail height
 
@@ -987,16 +1069,36 @@ class DashboardController extends AppController
       
       
 	    $img = $user->image; //'avatar_1.jpeg'; //get_user_meta($userId, 'user_avatar', true);
-
+      // echo  $img;die;
+        list($txt, $ext) = explode(".", $img);
+        //echo $ext;die;
 	    $imagePath = $path.'/'.$img;
 	    $ratio = ($t_width/$w1); 
 	    $nw = ceil($w1 * $ratio);
 	    $nh = ceil($h1 * $ratio);
 	    $nimg = imagecreatetruecolor($nw,$nh);
-	    $im_src = imagecreatefromjpeg($imagePath);
-	    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
+	    if($ext=='png'){
+	    	//echo "okokoo";die;
+	    	$im_src = imagecreatefrompng($imagePath);
+		    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
+	    	$q=9/100;
+			$quality=$q;
+			imagepng($nimg,$imagePath,$quality);      
+		    //imagepng($nimg,$imagePath,90);
+        }else if($ext == 'jpeg' || $ext == 'jpg'){
+        	$im_src = imagecreatefromjpeg($imagePath);
+		    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
+		    imagejpeg($nimg,$imagePath,90);
+        }else if($ext == 'gif'){
+        	$im_src = imagecreatefromgif($imagePath);
+		    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
+		    imagegif($nimg,$imagePath,90);
+        }else{
+        	$im_src = imagecreatefromjpeg($imagePath);
+		    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
+		    imagejpeg($nimg,$imagePath,90);
+        }
 
-	    imagejpeg($nimg,$imagePath,90);
 	     //echo "<pre>";print_r($imageCopy);die;
 	   // echo $user->image;die;
 	}
@@ -1004,6 +1106,7 @@ class DashboardController extends AppController
 	 /*$src = HTTP_ROOT.'webroot/img/uploads/'.$img;
 	 echo "<img id='photo' class='' src='".$src."' class='preview'/>";*/
 		exit(0);    
+		die;
 	}
 			    
 	/*********************************************************************
@@ -1015,9 +1118,33 @@ class DashboardController extends AppController
 		    $newImageWidth = ceil($width * $scale);
 		    $newImageHeight = ceil($height * $scale);
 		    $newImage = imagecreatetruecolor($newImageWidth,$newImageHeight);
-		    $source = imagecreatefromjpeg($image);
+
+		    /*$source = imagecreatefromjpeg($image);
+		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
+		    imagejpeg($newImage,$image,90);*/
+		  
+		if($ext=='png'){
+			//echo "yes okok";die;
+	    	 $source = imagecreatefrompng($image);
+		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
+            $q=9/100;
+			$quality=$q;
+		    imagepng($newImage,$image,$quality);
+        }else if($ext == 'jpeg' || $ext == 'jpg'){
+        	 $source = imagecreatefromjpeg($image);
 		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
 		    imagejpeg($newImage,$image,90);
+        
+        }else if($ext == 'gif'){
+        	 $source = imagecreatefromgif($image);
+		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
+		    imagegif($newImage,$image,90);
+        }else{
+        	 $source = imagecreatefromjpeg($image);
+		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
+		    imagejpeg($newImage,$image,90);
+        }
+		 
 		    chmod($image, 0777);
 		    return $image;
 	}

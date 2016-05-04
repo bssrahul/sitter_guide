@@ -1121,9 +1121,8 @@ $( document ).ready(function() {
           }
         });
    }); 
- /*End profile image*/
  });
-
+ /*End profile image*/
 
 
 $(document).ready(function(){

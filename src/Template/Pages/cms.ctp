@@ -1,9 +1,13 @@
-
+<section>
+	<div class="container">
+		<div class="row privacy-top"></div>
+    
 	<!-- Get in Touch starts-->
-    <section>
-		<div class="container">
-			<div class="row privacy-top"></div>
-      
+	<?php if($CmsPageData->pageurl=="safety"){ ?>
+			<div id="<?php echo $CmsPageData->pageurl; ?>">
+				<?php echo isset($CmsPageData->pagecontent)?$CmsPageData->pagecontent:__("Content not added yet"); ?>
+			<div>
+	<?php }else{ ?>
 			<div id="privacy">
    
 				<div class="row">
@@ -17,9 +21,9 @@
 						</div>
 					</div>
     			</div>
-    			
-    			
-			</div>
+    		</div>	
+	<?php } ?>
 		</div>
-   </section>
+	</div>
+</section>
     
