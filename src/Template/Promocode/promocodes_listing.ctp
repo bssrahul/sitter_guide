@@ -75,7 +75,7 @@
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Discount')); ?></th> 
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Start')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Expire')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Coupon Status')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
 								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
@@ -105,10 +105,20 @@
 
 								<td class=" "><?php echo date("F j, Y", strtotime($promocode_info->start_date));?></td>
 								<td class=" "><?php echo date("F j, Y", strtotime($promocode_info->expire_date));?></td>
+								<td class="">
+								<?php $cdate=date("m/d/y");
+									  $edate=$promocode_info->expire_date;
+									  $edate->format('m/d/y');
+									  if(strtotime($cdate) <= strtotime($edate))
+									  {
+											echo "<span class='active'>Available</span>";
+									  }
+									  else{
+											echo "<span class='expire'>Expired</span>";
+									  }
 								
-								<td class=" "><?php 
-										echo $promocode_info->description;
 								?></td>
+								
 								
 								 <td><?php echo $promocode_info->status == 1?'Active':'Blocked';	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>

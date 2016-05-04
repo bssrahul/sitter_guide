@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.safety-page .fun-news .fn-bot {
+    float: left;
+    margin: 0px 0 0;
+    width: 100%;
+}
+.safety-page {background:#fff !important;}
+
+
+
+
+/*Banner inner pages starts*/
+.safety-page .banner-area-terms {background:url(../../img/safety.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+
+.safety-page .banner-area-terms h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.safety-page .banner-area-terms p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/
+
+
+#safety h2 {font-size:30px; color:#404040; font-weight:400; font-family: 'Raleway', sans-serif;}
+
+#safety .top-pad {padding-top:63px; padding-bottom:28px;}
+
+#safety p {font-size:14px; color:#404040; font-family: 'Raleway', sans-serif; line-height:26px;}
+
+
+#safety .premium { background:#EDF2F6; padding:0px 60px 80px 60px; margin-top:60px;}
+
+
+#safety .premium h1 { font-size:60px; color:#2c6891; font-family: 'Raleway', sans-serif; line-height:26px; font-weight:600; padding-top:70px; padding-bottom:18px; }
+
+#safety .premium p { font-size:14px; color:#2b6790; font-family: 'Raleway', sans-serif; line-height:26px;  }
+
+#safety .premium .picons{ text-align:center !important; padding-top:60px;}
+
+#safety .premium .picons p{ text-align:center; padding-top:10px;}
+
+#safety .premium .dog { padding-top:105px;}
+
+
+#safety h3 {font-size:22px; color:#404040; font-family: 'Raleway', sans-serif; padding-top:80px; padding-bottom:35px;}
+
+#safety ul {padding-top:35px;}
+
+#safety ul li {
+    background: rgba(0, 0, 0, 0) url("../../img/s-arrow.png") no-repeat scroll left top;
+    height: auto;
+    line-height: 14px;
+    margin-top: 25px;
+    padding-left: 25px;
+    padding-top: 0;
+    width: 100%;
+}
+
+#safety .dog-banner {background:url(../../img/s-dog-banner.png) no-repeat; background-position:center; width:100%; height:auto; padding-left:25px; margin-top:55px;}
+
+#safety  .dog-banner h1 { font-size:70px; color:#fff; padding-top:170px; font-weight:300 !important; padding-bottom:190px;}
+
+
+
+
+	@media (min-width:320px) and (max-width:419px) {
+		
+		#safety .premium h1 { font-size:19px !important; color:#2c6891; font-family: 'Raleway', sans-serif; line-height:26px; font-weight:600; padding-top:60px; padding-bottom:30px; }
+		
+		
+		}
+
+@media (max-width:767px) {
+	
+	
+	#safety ul li {
+    background: rgba(0, 0, 0, 0) url("../../img/s-arrow.png") no-repeat scroll left top;
+    height: auto;
+    line-height: 19px;
+    margin-top: 25px;
+    padding-left: 25px;
+    padding-top: 0;
+    width: 100%;
+}
+
+	
+	
+	#safety .premium .dog { padding-top:60px;}
+	
+	#safety .premium { background:#cae8fd; padding:0px 15px 80px 15px; margin-top:60px;}
+	#safety .premium h1 { font-size:30px; color:#2c6891; font-family: 'Raleway', sans-serif; line-height:26px; font-weight:600; padding-top:60px; padding-bottom:30px; }
+	
+	#safety  .dog-banner h1 { font-size:32px; color:#fff; padding-top:170px; font-weight:300 !important; padding-bottom:190px;}
+	
+	
+	
+	}
+	
+	
+	
+@media (min-width:768px) and (max-width:991px) {
+		
+		
+		#safety .premium h1 { font-size:42px; color:#2c6891; font-family: 'Raleway', sans-serif; line-height:26px; font-weight:600; padding-top:60px; padding-bottom:30px; }
+		
+	#safety  .dog-banner h1 { font-size:45px !important; color:#fff; padding-top:170px; font-weight:300 !important; padding-bottom:190px;}
+	
+		
+	}
+	
+	
+	@media (min-width:992px) and (max-width:1199px) {
+		
+		
+		
+		
+	#safety .premium h1 { font-size:36px; color:#2c6891; font-family: 'Raleway', sans-serif; line-height:26px; font-weight:600; padding-top:60px; padding-bottom:30px; }
+	
+		
+	}
+	
+	
