@@ -597,11 +597,15 @@ class UsersController extends AppController
 		$this->loadComponent('Paginator');
 		$this->set('modelName','Users');
 		$UsersModel = TableRegistry::get("Users");
+		$Userdata=$UsersModel->find('all')->contain(['Users_badge'])->toArray();
+		
+		//pr($Userdata);die;
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UsersModel);
 		//CODE FOR MULTILIGUAL END
+		
 		//for searching 
-		if(!empty($_GET['data']) && isset($_GET['data'])){
+		/* if(!empty($_GET['data']) && isset($_GET['data'])){
 			$data = $_GET['data'];
 			$users_info = $this->Paginator->paginate($UsersModel,[
 			'conditions' => [
@@ -614,8 +618,9 @@ class UsersController extends AppController
 			'order' => [
 			'Users.modified' => 'desc']]);
 		}
-		$this->set('users_info',$users_info);
-		//pr($users_info);die;
+		 */
+		$this->set('users_info',$Userdata);
+		
 	}
 	/**Function for user pet view
 	*/
@@ -791,8 +796,11 @@ class UsersController extends AppController
 	*/
 	function updateStatusRow($model=NULL,$id,$target)
 	{ 
+		
+		
 	  // Loaded Model
 		$id=convert_uudecode(base64_decode($id));
+		//echo $model.$id.$target;die;
 		//echo $model.$id."ok".$target;die;
 		$loadModel = TableRegistry::get($model);
 		//CODE FOR MULTILIGUAL START
@@ -802,6 +810,32 @@ class UsersController extends AppController
 
 		$modelEntity->id = $id;
 		$modelEntity->status = $target;
+		$modelEntity->modified = date('Y-m-d h:i:s');
+		if($loadModel->save($modelEntity)){
+			$this->Flash->success(__('Status has been updated Successfully'));
+		}
+		$this->redirect($this->referer());
+	}
+	/**
+	* Function for Field status update
+	*/
+	function updateFieldStatusRow($model=NULL,$id,$fieldname,$target)
+	{ 
+		
+		
+	  // Loaded Model
+		$id=convert_uudecode(base64_decode($id));
+		//echo $model.$id.$target.$fieldname;die;
+		//echo $model.$id.$target;die;
+		//echo $model.$id."ok".$target;die;
+		$loadModel = TableRegistry::get($model);
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($loadModel);
+		//CODE FOR MULTILIGUAL END
+		$modelEntity = $loadModel->newEntity();
+
+		$modelEntity->id = $id;
+		$modelEntity->$fieldname = $target;
 		$modelEntity->modified = date('Y-m-d h:i:s');
 		if($loadModel->save($modelEntity)){
 			$this->Flash->success(__('Status has been updated Successfully'));

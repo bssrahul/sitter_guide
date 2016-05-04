@@ -17,6 +17,7 @@ class UsersTable extends Table
 		//$this->hasMany('UserWorkSchedules', ['dependent' => true]);
 		//$this->hasMany('UserServices', ['dependent' => true]);
 		//$this->hasMany('UserBlogs', ['dependent' => true]);
+		$this->hasOne('Users_badge', ['dependent' => true]);
 		$this->hasOne('UserSitterHouses', ['dependent' => true]);
 		$this->hasOne('UserAboutSitters', ['dependent' => true]);
 		$this->hasMany('UserSitterGalleries', ['dependent' => true]);
