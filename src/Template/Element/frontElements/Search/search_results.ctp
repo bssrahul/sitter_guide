@@ -296,7 +296,8 @@
                         </div>                        
                     </div>
                 </div>
-             <img src="<?php echo HTTP_ROOT; ?>img/search-map.png" alt=""/> 
+             <!--<img src="<?php echo HTTP_ROOT; ?>img/search-map.png" alt=""/> -->
+              <?php echo $this->GoogleMap->map(array('width'=>'100%','height'=>'1180px','type'=>'ROADMAP')); ?>
            </div>
            <!--[Right Map End]-->
         </div>

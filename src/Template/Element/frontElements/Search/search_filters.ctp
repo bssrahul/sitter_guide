@@ -94,7 +94,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 LastTwoServices onLoadHide">
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 LastTwoServices onLoadHide mPlacesOption">
                       <div class="what-time">
                         <label>What time?</label>
                         <ul>

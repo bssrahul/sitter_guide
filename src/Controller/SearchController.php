@@ -37,7 +37,7 @@ use Cake\Event\Event;
 
 class SearchController extends AppController
 {
-	public $helpers = ['Form'];
+	public $helpers = ['Form','GoogleMap'];
 	/**
 	* Function which is call at very first when this controller load
 	*/

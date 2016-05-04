@@ -35,6 +35,7 @@ $(function(){
         $('.dropInOption').addClass('onLoadHide');
         $('.FirstThreeServices').removeClass('onLoadHide');
         $('.LastTwoServices').addClass('onLoadHide');
+        $('.mPlacesOption').children().removeClass('onLoadHide');
 
         if($(this).hasClass('d-visit')){
             $('.dropInOption').removeClass('onLoadHide');
@@ -43,6 +44,12 @@ $(function(){
         if($(this).hasClass('dn-care')){
             $('.FirstThreeServices').addClass('onLoadHide');
             $('.LastTwoServices').removeClass('onLoadHide');
+        }
+
+        if($(this).hasClass('m-place')){
+            $('.FirstThreeServices').addClass('onLoadHide');
+            $('.LastTwoServices').removeClass('onLoadHide');
+            $('.mPlacesOption').children().addClass('onLoadHide');
         }
 
 
