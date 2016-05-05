@@ -117,14 +117,35 @@
 .col-cont .market-place ul li { float:left; }
 .col-cont .market-place ul li a { font-size:12px; padding:30px 23px 15px 23px; display:block; border-left:#d1d1d1 1px solid;  border-top:#d1d1d1 1px solid;  border-bottom:#d1d1d1 1px solid; border-radius:0 0 25px 25px; text-decoration:none; color:#404040;}
 .col-cont .market-place ul li.driver a {border-right:#d1d1d1 1px solid; }
-.col-cont .market-place ul li a:hover,  .market-place ul li a:focus {background:#404040; color:#ffffff;}
-.col-cont .market-place ul li.training a, .col-cont .market-place ul li.training a:hover, .col-cont .market-place ul li.training a:focus {background:#4c4c4c url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#ffffff;}
-.col-cont .market-place ul li.recreation a {background:url(../../img/recreation-icon.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.recreation a:hover, .col-cont .market-place ul li.recreation a:focus{ color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.grooming a {background:url(../../img/grooming-icon.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.grooming a:hover, .col-cont .market-place ul li.grooming a:focus { color:#ffffff; background:#4c4c4c url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.driver a {background:url(../../img/driver-icon.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.driver a:hover, .col-cont .market-place ul li.driver a:focus { color:#ffffff; background:#4c4c4c url(../../img/driver-icon-hover.png) no-repeat; background-position:top 5px center;}
+
+
+
+
+.col-cont .market-place ul li a:hover, .col-cont .market-place ul li.active a {background:#404040; color:#ffffff;}
+
+
+.col-cont .market-place ul li a.training{background:url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#404040;}
+.col-cont .market-place ul li a.training:hover{ background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#ffffff;}
+.col-cont .market-place ul li.active a.training { background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#ffffff;}
+
+.col-cont .market-place ul li a.recreation {background:url(../../img/recreation-icon.png) no-repeat; background-position:top 5px center; color:#404040;}
+.col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 5px center;}
+.col-cont .market-place ul li.active a.recreation{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 5px center;}
+
+.col-cont .market-place ul li a.grooming {background:url(../../img/grooming-icon.png) no-repeat; background-position:top 5px center; color:#404040;}
+.col-cont .market-place ul li a.grooming:hover{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 5px center;}
+.col-cont .market-place ul li.active a.grooming{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 5px center;}
+
+.col-cont .market-place ul li a.driver {background:url(../../img/driver-icon.png) no-repeat; background-position:top 5px center; color:#404040;}
+.col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 5px center;}
+.col-cont .market-place ul li.active a.driver{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 5px center;}
+
+
+
+
+
+
+
 .price-range label.prcRangLbl{
  	padding-bottom:20px; 
  }

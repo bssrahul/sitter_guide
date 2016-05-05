@@ -20,10 +20,8 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 
-
-
-require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
-use Facebook;
+//require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
+//use Facebook;
 
 use Cake\Event\Event;
 
@@ -79,6 +77,9 @@ class SearchController extends AppController
 		
         $session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
+		if(!empty($this->request->data)){
+			pr($this->request->data); die;
+		}
 		if(!isset($currentLang) && empty($currentLang)){
 
 			$this->setGuestStore("en","Guests","index");
