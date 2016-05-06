@@ -138,4 +138,57 @@ label.error{margin-top:5px;}
 .col-lg-6.col-md-6 > input,.col-lg-5.col-md-5 > input{
     width:100% !important;
 }
+div.checkbox label.error{
+    width:auto !important;
+}
+/*Search CSS ADD ON START*/
+ul.pet_count li.dog-in-li span {
+    float: left;
+    position: relative;
+    text-align: center;
+    top: 10px;
+    width: 100%;
+}
 
+ul.pet_count  li.dog-in-li:hover  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+ul.pet_count li.active  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+
+ul.booking_days li.dog-in-li span {
+    float: left;
+    position: relative;
+    text-align: center;
+    top: 10px;
+    width: 100%;
+}
+
+ul.booking_days  li.dog-in-li:hover  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+ul.booking_days li.active  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+.unbold {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.market-place ul li.active a{
+  background: #4c4c4c url("../../img/training-icon.png") no-repeat scroll center top 5px;
+  color: #ffffff;
+}

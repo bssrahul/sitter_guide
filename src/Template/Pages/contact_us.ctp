@@ -113,7 +113,7 @@
                                     position: new google.maps.LatLng(51.5073509,-0.12775829999998223)
                                  });
                                  infowindow = new google.maps.InfoWindow({
-                                    content: '<strong>Sitter Guide</strong><br>New York<br> <br>'
+                                    content: '<strong>Sitter Guide</strong><br>London<br> <br>'
                                  });
                                  google.maps.event.addListener(marker, 'click', function() {
                                     infowindow.open(map, marker);

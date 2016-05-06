@@ -9,18 +9,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<title><?php echo "Sitter Guide";//echo @$title_for_layout; ?></title>
+		<title><?php echo SITE_TITLE; ?></title>
 		
 		<!-- Bootstrap Core CSS -->
 		<?php 
-			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css',/*'Front/bootstrap-theme.min.css',*/'Front/dist/imageselect.css','Front/hint.css']); 
-			echo $this->Html->script(['Front/jquery.min.js'/*,'Admin/dev.js'*/,'Front/jquery.validate.js'/*,'Admin/bootstrap.min.js'*/,'Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js']);
-		?>
-			<?php if($sitefavicon != null){?>
-        <link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
-	<?php } else {?>
-		 <link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
-	<?php }?>
+			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/dist/imageselect.css','Front/hint.css']); 
+			echo $this->Html->script(['Front/jquery.min.js','Front/jquery.validate.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js']);
+		
+			if($sitefavicon != null){ ?>
+				<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
+			<?php } else {?>
+				<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+			<?php }?>
 	      
           
     </head>
@@ -47,7 +47,7 @@
         <?php echo $this->element('frontElements/common/footer');
 		?>
 		<!--[content area end]-->
-         <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+       <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'> 
     </body>
 </html>
 <script>
@@ -78,8 +78,6 @@ $(function(){
 })
 
 /*spinner in navsecond ends*/
-
-
 /*Tooltip*/
 
 $(document).ready(function(){

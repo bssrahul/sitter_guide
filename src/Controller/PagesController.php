@@ -58,6 +58,7 @@ class PagesController extends AppController
 	}
 	function cms($url = NULL)
 	{
+		
 		// load CMSPAGE Model
 		$this->viewBuilder()->layout('cms_pages');
 		$CmsPagesModel = TableRegistry::get('CmsPages');
@@ -83,7 +84,7 @@ class PagesController extends AppController
 		$this->i18translation($CmsPagesModel);
 		//CODE FOR MULTILIGUAL END
 		
-		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact us']])->first();
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact-us']])->first();
 		//pr($CmsPageData); die;
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'contact-us'));
 		$CategoriesModel=TableRegistry::get('Categories');

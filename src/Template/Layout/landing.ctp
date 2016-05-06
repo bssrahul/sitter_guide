@@ -9,28 +9,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<title><?php echo "Sitter Guide";//echo @$title_for_layout; ?></title>
+		<title><?php echo SITE_TITLE; ?></title>
+		
 		<?php if($sitefavicon != null){?>
 			<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
 		<?php } else {?>
 			<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
 		<?php }?>
-		<!-- Bootstrap Core CSS -->
+			<!-- Bootstrap Core CSS -->
 		<?php 
-			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
-    	echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js']);
+		echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
+		echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js']);
 		?>
-	       <link rel=icon href="<?php echo HTTP_ROOT; ?>images/create_logo.png" type="image/png">
+		
           
     </head>
+    
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">
 		<!--[content area Start]-->
 		<?php 
 			echo $this->element('frontElements/guests/how_works_dropdown');
 
 			$session = $this->request->session();
-             $session = $session->read('User');
-            /*ELEMENTS FOR DISPLAY SESSION ERROR AND SUCCESS MSGS */
+            $session = $session->read('User');
+			/*ELEMENTS FOR DISPLAY SESSION ERROR AND SUCCESS MSGS */
              echo $this->element('frontElements/common/response_msg');
              if($session){
              	 echo $this->element('frontElements/profile/profile_header');
