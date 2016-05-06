@@ -842,7 +842,88 @@ class UsersController extends AppController
 		}
 		$this->redirect($this->referer());
 	}
+	//Function for Download a Documents
+	function downloadSkillDocuments(){
+		
+		/* $this->response->file("img/documents/26rohit.pdf",array('download'=>true));
+		return $this->response;  */
+		/* $files = array('1abc.pdf', '2xyz.pdf', '3mno.pdf','26rohit.pdf');
+		$zipname = 'file.zip';
+		$zip = new ZipArchive;
+		$zip->open($zipname, ZipArchive::CREATE);
+		foreach ($files as $file) {
+			$zip->addFile($file);
+		}
+		pr($zip);die;
+		$zip->close();  */
+		
+		
+		/* $zip = new ZipArchive;
+		if ($zip->open('test.zip') === TRUE) {
+			$zip->addFile('/path/to/index.txt', 'newname.txt');
+			$zip->close();
+			echo 'ok';
+		} else {
+			echo 'failed';
+		}
+ */
+		
+	}
 	
+	
+	/* creates a compressed zip file */
+	/* function createZip($files = array(),$filename = 'rahul.zip',$overwrite = false) {
+			
+		//pr($_SERVER); die;
+		$destination = $_SERVER['DOCUMENT_ROOT']."/sitter_guide/webroot/img/documents/";
+		$files = array($destination.'/1abc.pdf', $destination.'/2xyz.pdf', $destination.'/3mno.pdf',$destination.'/26rohit.pdf');
+		//if the zip file already exists and overwrite is false, return false
+		
+		//vars
+		$valid_files = array();
+		//if files were passed in...
+		if(is_array($files)) {
+			//cycle through each file
+			foreach($files as $file) {
+				//make sure the file exists
+				if(file_exists($file)) {
+					$valid_files[] = $file;
+				}
+			}
+		}
+		//if we have good files...
+		if(count($valid_files)) {
+			
+			//create the archive
+			$zip = new ZipArchive();
+			pr($zip); die;
+			if($zip->open($destination,$overwrite ? ZIPARCHIVE::OVERWRITE : ZIPARCHIVE::CREATE) !== true) {
+				return false;
+			}
+			//add the files
+			foreach($valid_files as $file) {
+				$zip->addFile($file,$file);
+			}
+			//debug
+			//echo 'The zip archive contains ',$zip->numFiles,' files with a status of ',$zip->status;
+			
+			//close the zip -- done!
+			$zip->close();
+			
+			//check to make sure the file exists
+			return file_exists($destination);
+		}
+		else
+		{
+			return false;
+		}
+		///Then download the zipped file.
+		header('Content-Type: application/zip');
+		header('Content-disposition: attachment; filename='.$filename);
+		header('Content-Length: ' . filesize($filename));
+		readfile($filename);
+		exit();
+	} */
 	 public function updateFeaturedRow($model=NULL,$id,$target)
     {
 		$id=convert_uudecode(base64_decode($id));

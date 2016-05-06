@@ -69,8 +69,10 @@
 								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
 								<th class="column-title no-link last" ><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
+								
 								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Badge')); ?></span>
 								</th>
+								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Skill Documents')); ?></th>
 							</tr>
 						</thead>
 
@@ -112,7 +114,8 @@
 									   
 										<a title="Pet View" href="<?php echo HTTP_ROOT."users/user-pet-view/".base64_encode(convert_uuencode($user_info->id));?>"><span><i class="fa fa-paw"></i></span></a>-->
 									</td>
-									<td>
+									
+									<td style="width:150px;">
 										<?php if(($user_info['users_badge'])!= ""){?>
 												<a title="<?php echo($user_info['users_badge']->dl_badge == 0?'Fill Driving licence badge':'Unfill Driving licence badge') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='dl_badge'.'/'.$target[$user_info['users_badge']->dl_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->dl_badge ==0?'-o':'') ?>"></span></a>
 												
@@ -138,7 +141,11 @@
 												<a title="<?php echo($user_info['users_badge']->behavioural_problem == 0?'Fill Experience of behavioural problems':'Unfill Experience of behavioural problems') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='behavioural_problem'.'/'.$target[$user_info['users_badge']->behavioural_problem];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->behavioural_problem ==0?'-o':'') ?>"></span></a>
 												
 												
-										<?php }else{}?>			 								  
+										<?php }?>			 								  
+									</td>
+									<td>
+											<a title="Download Skill Documents" href="<?php echo HTTP_ROOT.'users/download-skill-documents'?>"> Download Skill Documents </a>
+										
 									</td>
 								</tr>
 							<?php $i++; 
