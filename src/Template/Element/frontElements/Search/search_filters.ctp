@@ -79,13 +79,13 @@
                         <label>How many dogs do you have?</label>
                         
                         <ul class="pet_count">
-                          <li class="dog-in-li">
+                          <li class="dog-in-li ajaxSearch">
                             <span data-rel="1">1 Dog</span>
                           </li>
-                          <li class="dog-in-li">
+                          <li class="dog-in-li ajaxSearch">
                             <span data-rel="2">2 Dogs</span>
                           </li>
-                          <li class="dog-in-li">
+                          <li class="dog-in-li ajaxSearch">
                             <span data-rel="3">3 Dogs</span>
                           </li>
                         </ul>
@@ -102,25 +102,25 @@
                       <div class="day-list">
                         <label>For which days? </label>
 							<ul class="booking_days">
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="sunday">S</span>
 								  </li>
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="monday">M</span>
 								  </li>
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="tuesday">T</span>
 								  </li>
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="wednessday">W</span>
 								  </li>
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="thursday">T</span>
 								  </li>
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="friday">F</span>
 								  </li>
-								  <li class="dog-in-li">
+								  <li class="dog-in-li ajaxSearch">
 									<span data-rel="saturday">S</span>
 								  </li>
 							</ul>
@@ -143,6 +143,7 @@
 								'templates' => ['inputContainer' => '{{content}}'],
 								'hiddenField' => false,
 								'type'=>'checkbox',
+								'class'=>'ajaxSearch',
 								'option'=>["day"],
 								'id'=>'day']);
 							  ?>
@@ -153,6 +154,7 @@
 								'templates' => ['inputContainer' => '{{content}}'],
 								'hiddenField' => false,
 								'type'=>'checkbox',
+								'class'=>'ajaxSearch',
 								'option'=>["night"],
 								'id'=>'night']);
 							  ?>
@@ -204,6 +206,7 @@
 								'templates' => ['inputContainer' => '{{content}}'],
 								'hiddenField' => false,
 								'type'=>'checkbox',
+								'class'=>'ajaxSearch',
 								'option'=>["hunter"],
 								'id'=>'hunter']);
 							  ?>
@@ -220,6 +223,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["own_pet"],
 									'id'=>'own_pet']);
 								  ?>
@@ -233,6 +237,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["no_children"],
 									'id'=>'no_children']);
 								  ?>
@@ -245,6 +250,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["farm"],
 									'id'=>'farm']);
 								  ?>
@@ -257,6 +263,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["flat"],
 									'id'=>'flat']);
 								  ?>
@@ -269,6 +276,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["house"],
 									'id'=>'house']);
 								  ?>
@@ -285,6 +293,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["experience"],
 									'id'=>'experience']);
 								  ?>
@@ -297,6 +306,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'hiddenField' => false,
 									'type'=>'checkbox',
+									'class'=>'ajaxSearch',
 									'option'=>["first_aid"],
 									'id'=>'first_aid']);
 								  ?>
@@ -309,7 +319,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'label' => false,
 									'type'=>'select',
-									'class'=>'form-control',
+									'class'=>'ajaxSearch form-control',
 									'options'=>['en'=>'English','fr'=>'French','de'=>'German','hu'=>'Hungarian','it'=>'Italian','ro'=>'Romanian','ru'=>'Russian','es'=>'spanish']									
 									]);
 									?>
@@ -323,10 +333,10 @@
                         <div class="market-place">
                           <label>Other Market Place Services Offered</label>
                           <ul class="marketplace">
-							<li class="marketplace_li"><a href="javascript:void(0);" class="training" data-rel="training" title="Training">Training</a></li>
-                            <li class="marketplace_li"><a href="javascript:void(0);" class="recreation" data-rel="recreation" title="Recreation">Recreation</a></li>
-                            <li class="marketplace_li"><a href="javascript:void(0);" class="grooming" data-rel="grooming" title="Grooming">Grooming</a></li>
-                            <li class="marketplace_li"><a  href="javascript:void(0);" class="driver" data-rel="driver" title="Driver">Driver</a></li>
+							<li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="training" data-rel="training" title="Training">Training</a></li>
+                            <li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="recreation" data-rel="recreation" title="Recreation">Recreation</a></li>
+                            <li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="grooming" data-rel="grooming" title="Grooming">Grooming</a></li>
+                            <li class="marketplace_li ajaxSearch"><a  href="javascript:void(0);" class="driver" data-rel="driver" title="Driver">Driver</a></li>
                           </ul>
                           <!-- Search Field PET COUNT Start-->
 							<?php echo $this->Form->input('Search.marketplace',[
@@ -361,6 +371,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["pet_in_home"],
 											'id'=>'pet_in_home']);
 										?>
@@ -377,6 +388,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["doesnt_own_dog"],
 											'id'=>'doesnt_own_dog']);
 										?>
@@ -389,6 +401,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["doesnt_own_caged_dog"],
 											'id'=>'doesnt_own_caged_dog']);
 										?>
@@ -401,6 +414,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["doesnt_own_cat"],
 											'id'=>'doesnt_own_cat']);
 										?>
@@ -419,6 +433,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["child_in_home"],
 											'id'=>'child_in_home']);
 										?>
@@ -435,6 +450,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["no_child_under_5"],
 											'id'=>'no_child_under_5']);
 										?>
@@ -447,6 +463,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["no_child_under_12"],
 											'id'=>'no_child_under_12']);
 										?>
@@ -465,6 +482,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["housing_condition"],
 											'id'=>'housing_condition']);
 										?>
@@ -481,6 +499,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["has_house"],
 											'id'=>'has_house']);
 										?>
@@ -494,6 +513,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["outdoor_area"],
 											'id'=>'outdoor_area']);
 										?>
@@ -507,6 +527,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["non_smoker"],
 											'id'=>'non_smoker']);
 										?>
@@ -520,6 +541,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["outdoor_play_area"],
 											'id'=>'outdoor_play_area']);
 										?>
@@ -533,6 +555,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["has_fenced_yard"],
 											'id'=>'has_fenced_yard']);
 										?>
@@ -552,6 +575,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["medical_experience"],
 											'id'=>'medical_experience']);
 										?>
@@ -569,6 +593,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["administer_cpr"],
 											'id'=>'administer_cpr']);
 										?>
@@ -582,6 +607,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["pet_training_experience"],
 											'id'=>'pet_training_experience']);
 										?>
@@ -595,6 +621,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["administer_injections"],
 											'id'=>'administer_injections']);
 										?>
@@ -608,6 +635,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["begavioural_experience"],
 											'id'=>'begavioural_experience']);
 										?>
@@ -621,6 +649,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
+											'class'=>'ajaxSearch',
 											'option'=>["certified_oral_medication"],
 											'id'=>'certified_oral_medication']);
 										?>

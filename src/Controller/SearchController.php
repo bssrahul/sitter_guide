@@ -39,7 +39,7 @@ class SearchController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
-     public function beforeFilter(Event $event)
+    public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 		if($this->CheckGuestSession() && ($this->request->action == 'login' || $this->request->action == 'signup' || $this->request->action=="forgotPassword"))
@@ -52,6 +52,7 @@ class SearchController extends AppController
 			
 		}
     }
+    
 	public function initialize()
     {
 
@@ -74,11 +75,14 @@ class SearchController extends AppController
 	function search(){
 		
 		$this->viewBuilder()->layout('landing');
-		
+		$this->request->data = $_REQUEST;	
         $session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
 		if(!empty($this->request->data)){
-			pr($this->request->data); die;
+			
+			$SiteModel = TableRegistry::get('siteConfigurations');
+			$siteConfiguration = $SiteModel->find('all')->first();
+		
 		}
 		if(!isset($currentLang) && empty($currentLang)){
 
@@ -86,8 +90,6 @@ class SearchController extends AppController
 		}
 		
 	}
-	
-	
 
 
 }

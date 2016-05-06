@@ -1,3 +1,7 @@
+	var host = window.location.host;
+	var proto = window.location.protocol;
+	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+	
 $(function(){
 
 	$( "#boardingFrom" ).datepicker({
@@ -113,6 +117,27 @@ $(function(){
 		$('#marketplace').val(textString);
         
 	});
-    
+		
+		
+	$(".ajaxSearch").click(function(){
+		$.ajax({
+			url: $('#searchParam').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
+			data:$('#searchParam').serialize(),//ALL SUBMITTED DATA FROM THE FORM
+			
+			beforeSend: function(){
+				$(".search-overlay").show();
+				$(".search-overlay").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+			},
+			
+			complete: function(){
+				$(".search-overlay").hide();
+				$(".search-overlay").html('');
+			},
+			success:function(res)
+			{
+				
+			}
+		});
+	});		
     
 });
