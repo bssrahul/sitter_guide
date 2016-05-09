@@ -49,7 +49,7 @@
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="discount_rate"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Discount Rate/Fixed')); ?><span class="required">*</span>
 										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-11">
 										<?php 
 										echo $this->Form->input('PromoCodes.discounted_coupon',[
 												'label' => false,

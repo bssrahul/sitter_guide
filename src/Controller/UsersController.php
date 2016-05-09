@@ -420,7 +420,8 @@ class UsersController extends AppController
 					$this->send_email('',$replace,$with,'admin_change_password',$session->read('Admin.email'));
 					//$this->displaySuccessMessage('Your password has been updated Successfully!.');
 					//Flash
-					$this->Flash->success(__('Your password has been updated Successfully!.'));
+					 $this->Flash->success(__('Your password has been updated Successfully!.'));
+					//$this->Flash->success(__('Your password has been updated Successfully!.'));
 					
 					return $this->redirect(['controller' => 'users', 'action' => 'dashboard']);
 				}else{
@@ -460,7 +461,7 @@ class UsersController extends AppController
 					if($AdminsModel->save($AdminData)){
 						$replace = array('{user}','{new_password}');
 						$with = array($getAdminData->username,$new_password);
-						$this->send_email('',$replace,$with,'admin_forgot_password',$getAdminData->email);
+						//$this->send_email('',$replace,$with,'admin_forgot_password',$getAdminData->email);
 						$this->Flash->success(__('Password sent on your email address'));
 						
 					}
