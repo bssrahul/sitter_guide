@@ -9,12 +9,12 @@
                           <div class="foot-box">
                           <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter Guide')); ?></p>          
 								<ul>
-									<li><a href="<?php echo HTTP_ROOT.'pages/about-us'; ?>" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'about-us'; ?>" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
 									<li><a href="#" title="Partners">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Partner')); ?></a> </li>
-									<li><a href="<?php echo HTTP_ROOT.'pages/news'; ?>" title="In the News"><?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a>
+									<li><a href="<?php echo HTTP_ROOT.'news'; ?>" title="In the News"><?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a>
 									</li>
-									<li><a href="<?php echo HTTP_ROOT.'pages/privacy'; ?>" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>
-									<li><a href="<?php echo HTTP_ROOT.'pages/terms'; ?>" title="Terms & Conditions"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'privacy'; ?>" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT.'terms'; ?>" title="Terms & Conditions"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a> </li>
                                 </ul>
                                
                         </div>
@@ -44,7 +44,7 @@
                                     
                                     
                                     <li><a href="#" title="House Rules"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Rules')); ?></a> </li>
-                                    <li><a href="<?php echo HTTP_ROOT.'pages/safety'; ?>" title="Safety"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Safety')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT.'safety'; ?>" title="Safety"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Safety')); ?></a> </li>
                                     <li><a href="#" title="Benefits of sittings"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Benefits of sittings')); ?></a> </li>
                                    
                                 </ul>
@@ -62,7 +62,7 @@
                           <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Need Help?')); ?></p>          
                             <ul>
 								<li><a href="#" title="Help Center"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help Center')); ?></a> </li>
-								<li><a href="<?php echo HTTP_ROOT.'pages/contact-us'; ?>" title="Contact Us"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Us')); ?></a> </li>
+								<li><a href="<?php echo HTTP_ROOT.'contact-us'; ?>" title="Contact Us"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Us')); ?></a> </li>
 							</ul>
                                 
                             <div class="news-let">

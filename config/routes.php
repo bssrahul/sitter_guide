@@ -60,10 +60,17 @@ Router::scope('/', function ($routes) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
 
-         $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
-		 $routes->connect('/pages/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
-		 $routes->connect('/pages/news', ['controller' => 'Pages', 'action' => 'news']);
-		 $routes->connect('/pages/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
+       // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
+		$routes->connect('/about-us', ['controller' => 'Pages', 'action' => 'cms','about-us']);
+		$routes->connect('/news', ['controller' => 'Pages', 'action' => 'cms','news']);
+		$routes->connect('/privacy', ['controller' => 'Pages', 'action' => 'cms','privacy']);
+		$routes->connect('/terms', ['controller' => 'Pages', 'action' => 'cms','terms']);
+		$routes->connect('/safety', ['controller' => 'Pages', 'action' => 'cms','safety']);
+		
+		$routes->connect('/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
+		$routes->connect('/news', ['controller' => 'Pages', 'action' => 'news']);
+		$routes->connect('/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
+
 
 
     /**

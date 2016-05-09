@@ -10,8 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo SITE_TITLE;?> 
-	<?php// $this->Html->meta('icon', $this->Html->url('/hg8fPO7anRxyGJS.png'));?></title>
+    <title><?php echo SITE_TITLE; ?></title>
     <!-- Bootstrap core CSS -->
     <?php 
         echo $this->Html->css(['Admin/bootstrap.min.css','Admin/fonts/css/font-awesome.min.css','Admin/animate.min.css','Admin/custom.css','Admin/icheck/flat/green.css','Admin/developer.css']); 

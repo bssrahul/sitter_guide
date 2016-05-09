@@ -785,37 +785,40 @@ class DashboardController extends AppController
 		//die;
 		///if(isset($this->request->data['UserServiceDetail']) && !empty($this->request->data['UserServiceDetail']))
 		//{
-        //pr($this->request->data); die;
-	    foreach($this->request->data['UserServiceDetail'] as $service_for){
+       //pr($this->request->data['UserServiceDetail']); die;
+       	      $finalArr = array();
+	   	foreach($this->request->data['UserServiceDetail'] as $service_for){
+       //  pr($service_for);die;
             $customArray = array(); 
 			foreach($service_for as $sk=>$service){
 			       if(is_array($service_for[$sk]) && !empty($service_for[$sk])){	
-			           	foreach($service_for[$sk] as $k => $dcVal){
-			            		$customArray[$k] = $dcVal;
+			           	foreach($service_for[$sk] as $sk => $dcVal){
+			            		$customArray[$sk] = $dcVal;
 
 						}
 					}else{
-							$customArray[$sk]=$service;
+						$customArray[$sk] = $service;
 					}
-					
 			}
-          pr($customArray); die;
-            $services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
-                foreach($services_status as $val){ 
-               		if (!array_key_exists($val,$customArray)){
-	           			$customArray[$val] = 0;
-               		}
-               		$serviceDetailData = $serviceDetailsModel->newEntity();
-               	}
 
-
-           $serviceDetailData = $serviceDetailsModel->newEntity($customArray);
-    	   $serviceDetailData->user_id = $userId;
-    		pr($serviceDetailData); die;
-    	   $serviceDetailsModel->save($serviceDetailData);
-    	   $serviceDetailData = $serviceDetailsModel->newEntity();
-            //pr($serviceDetailData); die;
+			$finalArr[] = $customArray;
+         pr($finalArr);die;
+           
+           
          }
+	    pr($finalArr); die;
+	    foreach($finalArr as $service_val){
+	    	$services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
+						
+			foreach($services_status as $val){ 
+				if (!array_key_exists($val,$service_val)){
+					$service_val[$val] = 0;
+				}
+			}
+	        $serviceDetailData = $serviceDetailsModel->newEntity($service_val);
+			$serviceDetailData->user_id = $userId;
+			$serviceDetailsModel->save($serviceDetailData);
+		}
             return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
         }else{
             $query = $usersModel->get($userId,['contain'=>['UserSitterServices','UserSitterServiceDetails']]);
