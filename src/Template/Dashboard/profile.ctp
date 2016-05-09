@@ -1,3 +1,4 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <?php 
   echo $this->Html->css(['Front/jquery-ui.css']); 
   echo $this->Html->script(['Front/jquery-ui.js']);
@@ -8,7 +9,8 @@
 
         <div class="profiletab-section">
           
-                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">Sitter Profile</h3>
+                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
+                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
 
                 <?php echo $this->element('frontElements/profile/sitter_nav');?>
           
@@ -27,16 +29,21 @@
           ]);?>
 
                   <div class="row">
-                    <h3><i aria-hidden="true" class="fa fa-hand-pointer-o cir-o"></i> Tell us a bit about yourself
-                <span class="pull-right hed-0">Let us step you through setting up your Sitter Guide profile.</span>
-                   <p class="sub-title"><small>This page is just about you in general and allows you to update your
-profile photo’s, video, password and contact details.</small></p>
+                    <h3><i aria-hidden="true" class="fa fa-hand-pointer-o cir-o"></i>
+                    <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?> 
+                <span class="pull-right hed-0">
+                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></span>
+                   <p class="sub-title"><small>
+      <?php echo $this->requestAction('app/get-translate/'.base64_encode('This page is just about you in general and allows you to update your
+profile photo’s, video, password and contact details.')); ?></small></p>
                 </h3>
                         <div class="form-group col-lg-4 col-md-4">
+                          <label for="title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Title')); ?></label>
                       <?php 
                       echo $this->Form->input('Users.title',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'type'=>'select',
+                        'label'=>false,
                         'options'=>['Mr'=>'Mr','Mrs'=>'Mrs','Ms'=>'Ms'],
                         'class' =>'form-control'
                         ]);
@@ -49,7 +56,7 @@ profile photo’s, video, password and contact details.</small></p>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-4 col-md-4">
-                          <label for="">Date of Birth</label>
+                          <label for="Users['birth_date']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?></label>
                           <?php  
                               echo $this->Form->input('Users.birth_date',[               
                               'class'=>'form-control dob',
@@ -60,19 +67,23 @@ profile photo’s, video, password and contact details.</small></p>
                           ?> 
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
+                           <label for="Users['first_name']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('First Name')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.first_name',[                
                                  'class'=>'form-control',
                                  'required'=>false,
+                                 'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
                             ?>
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
+                          <label for="Users['last_name']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Name')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.last_name',[                
                                  'class'=>'form-control',
                                  'required'=>false,
+                                 'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
                             ?>
@@ -83,10 +94,11 @@ profile photo’s, video, password and contact details.</small></p>
                     </h3>
                     <div class="row">
                     <div class="form-group col-lg-4 col-md-4">
+
                             <?php 
                                 echo $this->Form->input('Users.address',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'Address 1',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Address 1')),
                                  'label'=>false,
                                  'type'=>'text',
                                  'templates' => ['inputContainer' => '{{content}}']
@@ -97,7 +109,7 @@ profile photo’s, video, password and contact details.</small></p>
                             <?php 
                                 echo $this->Form->input('Users.address2',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'Address 2',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Address 2')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -107,7 +119,7 @@ profile photo’s, video, password and contact details.</small></p>
                             <?php 
                                 echo $this->Form->input('Users.city',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'city',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('City')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -119,7 +131,7 @@ profile photo’s, video, password and contact details.</small></p>
                             <?php 
                                 echo $this->Form->input('Users.zip',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'Post / Zip Code',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Post / Zip Code')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -129,7 +141,7 @@ profile photo’s, video, password and contact details.</small></p>
                             <?php 
                                 echo $this->Form->input('Users.state',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'state',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('State')),
                                  'label'=>false,
                                  'required'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
@@ -140,7 +152,7 @@ profile photo’s, video, password and contact details.</small></p>
                             <?php 
                                 echo $this->Form->input('Users.country',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'country',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Country')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -148,14 +160,15 @@ profile photo’s, video, password and contact details.</small></p>
                       </div>
                       
                     </div>
-                  <h3>Contact Details</h3>
+                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Details')); ?>
+                    </h3>
                     <div class="row">
                     <div class="form-group col-lg-8 col-md-8">
                      
                       <div class="row">
                           
                           <div class="col-lg-2 col-xs-3">
-                            <label for="county_code" >Code</label>
+                            <label for="county_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.county_code',[
                                   'templates' => ['inputContainer' => '{{content}}'],
@@ -168,7 +181,7 @@ profile photo’s, video, password and contact details.</small></p>
 
                         </div>
                           <div class="col-lg-4 col-xs-9">
-                              <label for="">Mobile/Cell <span><a href="#" data-toggle="tooltip" data-placement="top" title="We will send an sms confirmation to this number for verification"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
+                              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="We will send an sms confirmation to this number for verification"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
                                  'class'=>'form-control col-lg-10',
@@ -179,11 +192,11 @@ profile photo’s, video, password and contact details.</small></p>
                             ?>
                           </div>
                         <div class="col-lg-3 col-md-3">
-                          <label class="invisi-no" for="">im-vi </label>
+                          <label class="invisi-no" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('im-vi')); ?></label>
                             <div class="varify-mobile">
                               
                               <a href="#" class="unvari"><img src="<?php echo HTTP_ROOT; ?>img/unverify.png"></a>
-
+                                 
                             </div>
                           </div>
 
@@ -192,7 +205,7 @@ profile photo’s, video, password and contact details.</small></p>
                     </div>
                    
                       <div class="form-group col-lg-4 col-md-4">
-                         <label class="invisi-no" for="">Time Zone</label>
+                         <label class="invisi-no" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Time Zone')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.zone_id',[
                                   'templates' => ['inputContainer' => '{{content}}'],
@@ -212,7 +225,7 @@ profile photo’s, video, password and contact details.</small></p>
                                 echo $this->Form->input('Usersp.current_password',[                
                                  'class'=>'form-control',
                                  'type'=>'password',
-                                 'placeholder'=>'Cuurent Password',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Cuurent Password')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -237,27 +250,27 @@ profile photo’s, video, password and contact details.</small></p>
                             <?php 
                                 echo $this->Form->input('Usersp.re_password',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'Confirm Password',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Confirm Password')),
                                  'label'=>false,
                                  'type'=>'password',
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
                                  echo '<em class="signup_error error">'.__(@$error['re_password'][0]).'</em>';
                             ?>
-                      <span class="pull-right captcha"><img src="<?php echo HTTP_ROOT; ?>img/captcha.jpg"></span>
+                      <!--<span class="pull-right captcha"><img src="<?php echo HTTP_ROOT; ?>img/captcha.jpg"></span>-->
 
-                      <!--<span class="pull-right captcha">
+                      <span class="pull-right captcha">
                         <div class="g-recaptcha" data-sitekey="<?php echo CAPTCHA_SITE_KEY; ?>"></div>
                         <br/><label generated="true" class="error"><?php echo isset($captchErr)?$captchErr:''; ?></label>
-                      </span>-->
+                      </span>
                     
                           </div>
                       
                     </div>
-                    <h3>Emergency Contacts <span><a href="#" data-toggle="tooltip" data-placement="top" title="Alphanumeric & minimum character combination is required"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></h3>
+                    <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contacts')); ?> <span><a href="#" data-toggle="tooltip" data-placement="top" title="Alphanumeric & minimum character combination is required"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></h3>
                     <div class="row">
                         <div class="form-group col-lg-4">
-                          <label for="">Email </label>
+                          <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?> </label>
                               <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
                                <?php 
                                 echo $this->Form->input('Users.email',[
@@ -270,7 +283,7 @@ profile photo’s, video, password and contact details.</small></p>
                             ?>
                         </div>
                         <div class="form-group col-lg-4">
-                          <label for="">Emergency Contacts </label>
+                          <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contacts')); ?> </label>
                           <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
                            <?php 
                                 echo $this->Form->input('Users.emergency_contacts',[
@@ -281,7 +294,7 @@ profile photo’s, video, password and contact details.</small></p>
                             ?>
                         </div>
                         <div class="form-group col-lg-4">
-                          <label for="">In emergency, who can speak?</label>
+                          <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('In emergency, who can speak?')); ?></label>
                           <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
                            <?php 
                                 echo $this->Form->input('Users.emergency_who',[
@@ -298,9 +311,10 @@ profile photo’s, video, password and contact details.</small></p>
                      <div class="col-lg-5">
                      <div class="row d-m2">
                      <div class="col-lg-7">
-                    <p class="browse-p">Add your profile Photo</p>
+                    <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Photo')); ?></p>
                     <p>
-                        In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels. 
+                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels.')); ?>
+                         
                     </p>
                  
                <?php 
@@ -309,7 +323,8 @@ profile photo’s, video, password and contact details.</small></p>
                     ?>
              <!--<button id="change_pic" class="btn "></button>-->
                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload" aria-hidden="true"></i>
-                         Upload Profile Photo
+                <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?>
+                         
                </button>
               <!--<button type="button" class="btn btn-upload center-block" data-toggle="modal" data-target="#myModal">
                 Upload photo
@@ -331,12 +346,16 @@ profile photo’s, video, password and contact details.</small></p>
                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
                        <div class="row d-m2">
                        <div class="col-lg-7">
-                      <p class="browse-p">Add your banner profile banner<!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
+                      <p class="browse-p">
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile banner')); ?>
+                        <!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
                       <p  class="min-hh">
-                          In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels. 
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
+                           
                       </p>
                       <button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
-                        Upload Profile Banner</button>
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
+                        </button>
 
                         </div>
                         <div class="col-lg-5">
@@ -357,10 +376,15 @@ profile photo’s, video, password and contact details.</small></p>
                   <div class="col-lg-7">
                     <div class="row d-m2">
                     <div class="col-lg-6">
-                    <p class="browse-p">Add your profile Video<!-- <button type="button" class="btn btn-primary pull-right">Browse Video</button> --></p>
-                    <p>In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended size is 50mb. </p>
+                    <p class="browse-p">
+                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
+                      <!-- <button type="button" class="btn btn-primary pull-right">Browse Video</button> --></p>
+                    <p>
+                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended size is 50mb.')); ?>
+                       </p>
                     <button class="btn btn-primary" type="button" id="browseVideo"><i class="fa fa-upload" aria-hidden="true"></i>
-                          Upload Profile Video
+                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Video')); ?>
+                          
                     </button>
                     </div>
                     <div class="col-lg-6">
@@ -380,7 +404,7 @@ profile photo’s, video, password and contact details.</small></p>
                 </div>
                   <div class="row pull-right sp-tb">
                     <p class="col-lg-12">
-                      <input type="submit" class="btn Continue" value="Continue" >
+                      <input type="submit" class="btn Continue" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Continue')); ?>" >
                       
                     </p>
                   </div>
@@ -411,7 +435,7 @@ profile photo’s, video, password and contact details.</small></p>
                   'url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
                     Upload your image 
 
-                    <input type="file" name="image" id="image" />
+                    <input style="hidden" type="file" name="image" id="image" />
 
                     <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
                     <input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
@@ -437,11 +461,13 @@ profile photo’s, video, password and contact details.</small></p>
     </div>
 </div>
 <?php echo $this->Form->create(null,['id'=>'profileVideo','enctype'=>'multipart/form-data',
-                  'url'=>['controller'=>'dashboard','action'=>'save-profile-video']]); ?>
+                  'url'=>['controller'=>'dashboard','action'=>'save-profile-video'],
+                  'style'=>"visibility: hidden"]); ?>
                 <input type="file" name="profile_video" id="profile_video" />
 <?php echo $this->Form->end(); ?>
 <?php echo $this->Form->create(null,['id'=>'profileBanner','enctype'=>'multipart/form-data',
-                  'url'=>['controller'=>'dashboard','action'=>'save-profile-banner']]); ?>
+                  'url'=>['controller'=>'dashboard','action'=>'save-profile-banner'],
+                  'style'=>"visibility: hidden"]); ?>
                 <input type="file" name="profile_banner" id="profile_banner" />
 <?php echo $this->Form->end(); ?>
 
