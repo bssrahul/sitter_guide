@@ -23,9 +23,23 @@ span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  pad
     padding: 15px 0;}
 	
 	.color-green-text {color: #72a105; font-size:13px;}
+	.h32 {height:32px !important;}
+	.f17 {font-size:17px; }
+	.f14 {font-size:14px;}
+	.f22 {font-size:22px;}
+	.mt10 {margin-top:10px;}
+	.mb10 { margin-bottom:12px;}
+	.mb0 {margin-bottom:0px !important;}
+		.mb2 {margin-bottom:2px !important;}
+	.color-green {color:#72a105 !important;}
 
 
-
+.rules_main input[type="number"] {
+    border: 1px solid #d5d5d5;
+    border-radius: 2px;
+    padding: 3px;
+    width: 100%;
+}
 
 
 /****sigin***/ 
@@ -733,6 +747,18 @@ i.cir-o {
 
 /***** media start *****/
 
+@media screen and (min-width: 1920px) {
+	
+	.rules_main {
+    height: 100%;
+    min-height: 86px;
+}
+	
+	
+	}
+
+
+
 @media screen and (max-width: 1842px) {
 .rules_main br {display: none;}
 
@@ -757,7 +783,7 @@ i.cir-o {
 .rules_main br {display: block;}
 .rules_main {
     height: 100%;
-    min-height: 129px;
+    min-height: 95px;
 }
 p.min-hh {
     min-height: 120px;
