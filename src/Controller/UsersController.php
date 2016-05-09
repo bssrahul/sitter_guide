@@ -38,6 +38,7 @@ class UsersController extends AppController
 		// check admin session
 		if(!$this->CheckAdminSession() && !in_array($this->request->action,array('login','forgotPassword')))
 		{
+			//echo "ko".$this->request->action;die;
 			return $this->redirect(['controller' => 'users', 'action' => 'login']);
 			exit();
 		}
@@ -73,6 +74,7 @@ class UsersController extends AppController
 	*/
 	function login()
 	{
+
 		$this->viewBuilder()->layout('admin_login');
 		
 		// Loaded Admin Model
@@ -475,13 +477,15 @@ class UsersController extends AppController
 	*/
 	function logout(){
 		// Loaded Session Component
+		//echo "okoko";die;
 		$session = $this->request->session();
 		$session->delete('Admin');
-		$session->delete('requestedLanguage');
-		$session->delete('setRequestedLanguageLocale');
+		//$session->delete('requestedLanguage');
+		//$session->delete('setRequestedLanguageLocale');
 		$this->Flash->error(__('You have logged out successfully'));
-		return $this->redirect(['controller' => 'users', 'action' => 'login']);
+		return $this->redirect(['controller' => 'Users', 'action' => 'login']);
 	}
+
 	/**Function for add new user
 	*/
 	/*function addNewUser(){

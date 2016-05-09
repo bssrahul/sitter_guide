@@ -4,1311 +4,3335 @@
 
         <div class="profiletab-section">
           
-  <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">Sitter Profile</h3>
+  <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
 
           <?php echo $this->element('frontElements/profile/sitter_nav');?>
 
           </div>
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
-              
+                <div class="tab-pane fade tab-comm active in" id="menu4">
 
-
-              <div class="tab-pane fade tab-comm active in" id="menu4">
+                <h2 class="head-font">Which service and rates would you like to offer? </h2>
+                <p class="head-font2 pad-head-foot pad-head-foot-bot">You can select and modify your settings in this central control panel</p>
+                
              
+             <h4><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> Going away on leave? <a href="#" class="color-green">Click here</a> to update your callender settings</h4>
+             
+             <h3></h3>
                   <!--<form role="form">-->
-                   <?php 
-                  //pr($sitter_service_info);
-                   echo $this->Form->create(@$sitter_service_info, [
+                 <?php 
+                    echo $this->Form->create(@$sitter_service_info, [
                         'url' => ['controller' => 'dashboard', 'action' => 'services-and-rates'],
                         'role'=>'form',
                         'id'=>'servicesAndRates',
-						 'autocomplete'=>'off',
+                        'autocomplete'=>'off',
                     ]);
-
-                        echo $this->Form->input('UserSitterServices.id',[
+                    echo $this->Form->input('UserSitterServices.id',[
                           'type'=>'hidden',
                           'value'=>@$sitterServiceId
                                                    ]);
                     ?>
-
-                  <h3><strong>All services for Sitters house and Guests House</strong></h3>
                   <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                          <h4>Day Care</h4>
-                          <div class="radio-main">
-                            <!--<label><span class="custom-checkbox">
-                              <input type="checkbox" value="football" name="sport[]">
-                            </span> Day Care For Sitters house</label>-->
-                            <label><span class="custom-checkbox <?php echo @$sitter_service_info->day_care_sitters == '1'?"selected":"" ?>">
-                              <?php 
-                                  echo $this->Form->input('UserSitterServices.day_care_sitters',[
-                                    'templates' => ['inputContainer' => '{{content}}'],
-                                    'type'=>'checkbox',
-                                    'label' =>false,
-                                    'class'=>'selectedCheckbox',
-                                    'hiddenField' => false
-                                   ]);
-                              ?>
-                               </span> Day Care For Sitters house</label>
-                          </div>
-                          <div class="radio-main">
-                            <!--<label><span class="custom-checkbox">
-                              <input type="checkbox" value="football" name="sport[]"></span> Day Care For Guests house</label>
-                                <label><span class="custom-checkbox">-->
-                              <label><span class="custom-checkbox <?php echo @$sitter_service_info->day_care_guests == '1'?"selected":"" ?>">
-                              <?php 
-                                  echo $this->Form->input('UserSitterServices.day_care_guests',[
-                                    'templates' => ['inputContainer' => '{{content}}'],
-                                    'type'=>'checkbox',
-                                    'label' =>false,
-                                    'class'=>'selectedCheckbox',
-                                    'hiddenField' => false
-                                   ]);
-                              ?>
-                               </span>Day Care For Guests house</label>
-                          </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                          <h4>Visits</h4>
-                          <div class="radio-main">
-                              <!--<label><span class="custom-checkbox">
-                              <input type="checkbox" value="football" name="sport[]"></span> Visit For Sitters house</label>-->
-                               <label><span class="custom-checkbox <?php echo @$sitter_service_info->visits_sitters == '1'?"selected":"" ?>">
-                              <?php 
-                                  echo $this->Form->input('UserSitterServices.visits_sitters',[
-                                    'templates' => ['inputContainer' => '{{content}}'],
-                                    'type'=>'checkbox',
-                                    'label' =>false,
-                                      'class'=>'selectedCheckbox',
-                                    'hiddenField' => false
-                                   ]);
-                              ?>
-                               </span>Visits For Sitters house</label>
-                          </div>
-                          <div class="radio-main">
-                             <!-- <label><span class="custom-checkbox">
-                              <input type="checkbox" value="football" name="sport[]"></span> Visit For Guests house</label>-->
-                                <label><span class="custom-checkbox <?php echo @$sitter_service_info->visits_guests == '1'?"selected":"" ?>">
-                              <?php 
-                                  echo $this->Form->input('UserSitterServices.visits_guests',[
-                                    'templates' => ['inputContainer' => '{{content}}'],
-                                    'type'=>'checkbox',
-                                    'label' =>false,
-                                     'class'=>'selectedCheckbox',
-                                    'hiddenField' => false
-                                          ]);
-                              ?>
-                               </span>Visits For Guests house</label>
-                          </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                          <h4>Night Care</h4>
-                          <div class="radio-main">
-                            <!--<label><span class="custom-checkbox">
-                              <input type="checkbox" value="football" name="sport[]"></span> Night Care For Sitters house</label>-->
-                               <label><span class="custom-checkbox <?php echo @$sitter_service_info->night_care_sitters == '1'?"selected":"" ?>">
-                              <?php 
-                                  echo $this->Form->input('UserSitterServices.night_care_sitters',[
-                                    'templates' => ['inputContainer' => '{{content}}'],
-                                    'type'=>'checkbox',
-                                    'label' =>false,
-                                     'class'=>'selectedCheckbox',
-                                    'hiddenField' => false
-                                   ]);
-                              ?>
-                               </span>Night Care For Sitters house</label>
-                          </div>
-                          <div class="radio-main">
-                            <!--<label><span class="custom-checkbox">
-                              <input type="checkbox" value="football" name="sport[]"></span> Night Care For Guests house</label>-->
-                              <label><span class="custom-checkbox <?php echo @$sitter_service_info->night_care_guests == '1'?"selected":"" ?>">
-                              <?php 
-                                  echo $this->Form->input('UserSitterServices.night_care_guests',[
-                                    'templates' => ['inputContainer' => '{{content}}'],
-                                    'type'=>'checkbox',
-                                    'label' =>false,
-                                    'class'=>'selectedCheckbox',
-                                    'hiddenField' => false
-                                   ]);
-                              ?>
-                               </span>Night Care For Guests house</label>
-                          </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-lg-4">
-                      <h4 class="top-sh">Hourly</h4>
-                          <!--<select id="" class="form-control">
-                            <option>Sitting for Sitters house</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>-->
+                  
+                  <div class="col-md-4">
+                  <p><b>Will you accept last minute</b></p>
+                  <div class="row"><div class="col-lg-8 col-md-9 col-xs-8 col-lg-offset-1 mt10 "><b>Cancellation</b><small class="color-green-text"> (Under 24 hours) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" checked="" class="onoffswitch-checkbox" id="onoffswitch1">-->
                           <?php 
-                              echo $this->Form->input('UserSitterServices.hourly_service',[
+                              echo $this->Form->input('UserSitterServices.cancellation_policy',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'select',
-                                'label'=>false,
-                                'options'=>[''=>'---','sitting_for_sitter_house'=>'Sitting For Sitter House','sitting_for_guest_house'=>'Sitting For Guest House','grooming'=>'Grooming','outdoor_recreaption'=>'Outdoor Recreaption','driver_service'=>'Driver Service','training'=>'Training'],
-                                'class' =>'form-control'
-                                ]);
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
                           ?>
-                    </div>
-                    <div class="form-group col-lg-4">
-                      <h4 class="top-sh">Cancellation Policy</h4>
-                          <!--<select id="" class="form-control">
-                            <option>Sitting for Sitters house</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>-->
-                      <?php echo $this->Form->input('UserSitterServices.cancellation_policy',[
-                        'templates' => ['inputContainer' => '{{content}}'],
-                        'label' => false,
-                         'required' => false,
-                        'type'=>'select',
-                        'options'=>[''=>'---','flexible'=>'Flexible','moderate'=>'Moderate','strict'=>'Strict'],
-                        'class'=>'form-control']);
-                      ?>
-                    </div>
-                    <div class="form-group col-lg-8 noned"></div>
+                          <!--<label for="onoffswitch1" class="onoffswitch-label"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        </div>
+                        </div>
+                        </div></div>
+                        <div class="row"><div class="col-lg-8 col-md-9 col-xs-8 col-lg-offset-1 mt10 "><b>Booking</b><small class="color-green-text"> (Under 24 hours) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" checked="" class="onoffswitch-checkbox" id="onoffswitch1">
+                          <label for="onoffswitch1" class="onoffswitch-label"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserSitterServices.booking',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                  
+                  
+                  
                   </div>
-                  <h3><strong>Boarding At Sitters Home</strong></h3>
+                  
+                  </div>
+                  
+                  
+                  
+                  <h3></h3>
+<div class="row">
+ <div class="form-group col-lg-4 col-md-12">
+ <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22">Sitting at Sitter House</h2></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.service_for_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                               echo $this->Form->input('UserServiceDetail.sh.service_for',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'hidden',
+                                'value'=>'sitter_house'
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+  </div>
+ </div>
+ 
+ <div class="form-group col-lg-4 col-md-12">
+ 
+ <p>Set-up and modify your settings for when you have guests at your house service loads for non-standard services</p>
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4">
+ 
+ 
+ <div class="row">
+ 
+ <div class="col-lg-4">  <label for="" class="f14 color-green">Holiday Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.holiday_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control'
+                              ]);
+                          ?>
+                        </div>
+                          
+                          <div class="col-lg-4">  <label for="" class="f14 color-green">Small Guest Rate %</label>
+                          <!--<input type="number" class="form-control">--> 
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.small_guest_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control'
+                              ]);
+                          ?>
+                          </div>
+                          
+                          <div class="col-lg-4">  <label for="" class="f14 color-green">Large Guest Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.large_guest_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control'
+                              ]);
+                           ?>
+                        </div>
+ </div>
+ 
+                   
+
+                    </div>
+
+
+
+</div>
+
+
+<div class="row">
+
+<div class="form-group col-lg-4 col-md-12">
+ 
+  <label for="" class="f14 color-green">Day Rate </label>
+                          <!--<input type="number" class="form-control" placeholder="$"> -->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.day_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control',
+                                'placeholder'=>"$"
+                              ]);
+                           ?>
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4 col-md-12">
+ 
+  <label for="" class="f14 color-green">Night Rate </label>
+                          <!--<input type="number" class="form-control" placeholder="$">--> 
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.night_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control',
+                                'placeholder'=>"$"
+                              ]);
+                        ?>
+ </div>
+ 
+ <div class="form-group col-lg-4">
+ 
+ 
+ <div class="row">
+ 
+ <div class="col-lg-4">  <label for="" class="f14 color-green">Cat Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.cat_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control'
+                              ]);
+                        ?>
+                        </div>
+                          
+                          <div class="col-lg-8">  <label for="" class="f14 color-green">Puppy &kitten Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.puppy_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label'=>false,
+                                'class'=>'form-control'
+                              ]);
+                        ?>
+                        </div>
+                          
+                          
+ </div>
+ 
+                   
+
+                    </div>
+
+</div>
+                  
+
+                
                   <div class="row">
-                    <div class="form-group col-lg-4 col-md-12">
+                    <div class="form-group col-lg-4 col-md-12 mt10">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
                         <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('UserSitterServices.sh_holiday_rate_status',[
+                              echo $this->Form->input('UserServiceDetail.sh.dc.service_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                                //'checked'=>'checked'
-                                ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.sh.dc.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'day_care'
+                               ]);
                           ?>
                         </div>
                         </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Holiday Rate: % </div> 
-                      <div class="col-lg-6 col-md-6">  
-                       <!--<input type="text"></input>--> 
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_holiday_rate',[
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Extended Stay Rate<small class="color-green-text"> (2nd consecutive stay onwards) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.extended_stay_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?> 
-                      </div></div>
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                       </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.additional_guest_limit',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Extended Stay Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.extended_stay_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.additional_guest_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.dc.holiday_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
                               
                       </div>
                     </div>
 
-                    <div class="form-group col-lg-4 col-md-12">
+                    <div class="form-group col-lg-4 col-md-12 mt10">
                       <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy or Kitten (under 1 year old) Rate<br/>(Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_puppy_rate_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                                ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Puppy Rate:% </div> 
-                      <div class="col-lg-6 col-md-6"> 
-                        <!--<input type="text"></input> -->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_puppy_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?> 
-                         </div></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/> (Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_cat_rate_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                                ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Cate Rate:% </div> 
-                      <div class="col-lg-6 col-md-6"> 
-                        <!--<input type="text"></input> -->
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                           <!--<input type="checkbox" checked />-->
                           <?php 
-                              echo $this->Form->input('UserSitterServices.sh_cat_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?> 
-                      </div></div>
-                        
-                      </div>
-                    </div>
-                   
-
-                    
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Horse  Rate <br/> (Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_horse_rate_status',[
+                              echo $this->Form->input('UserServiceDetail.sh.nc.service_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                                ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                               echo $this->Form->input('UserServiceDetail.sh.nc.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'night_care'
+                               ]);
                           ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Horse Rate:% </div> 
-                      <div class="col-lg-6 col-md-6">  
-                       <!--<input type="text"></input>-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_horse_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?>  
-                         </div></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Reptiles  Rate<br/>(Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_reptiles_rate_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                                ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Reptiles Rate:%</div> 
-                      <div class="col-lg-6 col-md-6">  
-                       <!--<input type="text"></input> -->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_reptiles_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?> 
+                        </div>
                         </div></div>
                         
-                      </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_small_pets_status',[
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Extended Stay Rate<small class="color-green-text"> (2nd consecutive stay onwards) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.nc.extended_stay_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                                ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
                           ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Small Pets Rate:% </div> 
-                      <div class="col-lg-6 col-md-6">   
-                        <!--<input type="text"></input> -->
-                       <?php 
-                              echo $this->Form->input('UserSitterServices.sh_small_pets_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?> 
-                         </div></div>
+                        </div>
+                        </div>
+                        </div></div>
                         
-                      </div>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-12">
-                       <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_day_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                            <?php 
-                              echo $this->Form->input('UserSitterServices.sh_dc_additional_mode',[
+                              echo $this->Form->input('UserServiceDetail.sh.nc.additional_guest_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                              ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
                           ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_dc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-sm-9">1st Guest Rate:  </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $ </div> 
-                      <div class="col-lg-6 col-md-6">  
-                      <!-- <input type="text"></input> -->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_dc_holiday_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                               'required'=>false
-                              ]);
-                          ?> 
+                        </div>
+                        </div>
                         </div></div>
                         
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.nc.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit  </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                             <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.nc.additional_guest_limit',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Extended Stay Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                             <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.nc.extended_stay_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.nc.additional_guest_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.nc.holiday_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control h32',
+                                'hiddenField' => false,
+                                'placeholder'=>" % "
+                               ]);
+                          ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
                       </div>
                     </div>
 
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_night_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_nc_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_nc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                     <!-- <div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate:  </div> 
-                      <div class="col-lg-3 col-md-3 num">    <?php 
-                              echo $this->Form->input('UserSitterServices.sh_nc_holiday_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?>    </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
-                      <div class="col-lg-6 col-md-6">   
-                        <!--<input type="text"></input>-->  
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_nc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                         </div></div>
-                      </div>
-                    </div>
-
+                    <div class="form-group col-lg-4 col-md-12 ">
                     
-                    
-                  
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> <small class="color-green-text"> ( for site or member nominate holiday periods )</small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
 
-                   
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Hourly Care</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
+                       <div class="chek-main-lat">
+                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('UserSitterServices.sh__hourly_care',[
+                              echo $this->Form->input('UserServiceDetail.sh.holiday_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                              ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_hc_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_hc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                     <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-7 col-md-7">1st Guest Rate p/hour: $</div> 
-                      <div class="col-lg-5 col-md-5">   
-                        <!--<input type="text"></input> --> 
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_hc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
+                      
+                        
                       </div></div>
-                        
-                      </div>
+                    </div>
                     
-                    </div>
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Long Term Care</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_long_term_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Guest Rate<br/> <small class="color-green-text"> ( other than cats and dogs ) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_ltc_additional_mode',[
+                              echo $this->Form->input('UserServiceDetail.sh.small_guest_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                              ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
                           ?>
                         </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.sh_ltc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/night (after 1st night)  </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-12 col-md-12">1st Guest Rate p/night (after 1st night): $</div> 
-                      <div class="col-lg-6 col-md-6 guestRate" >   
-                        <!--<input type="text"></input>--> 
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.sh_ltc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                         </div></div>
+                      
                         
-                      </div>
+                      </div></div>
                     </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Large Guest Rate<br/> <small class="color-green-text">other than cats and dogs </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.large_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cats Rate<br/> </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.cats_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy and Kitten Rate<br/> <small class="color-green-text"> 12 months and younger </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.sh.puppy_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                      
+                    </div>
+                   
+
+                  
                      </div>
 
-                    <h3><strong>Home Sitting At Guests Home</strong></h3>
+                  
 
-
-                    <div class="row">
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> (Service load - member activated. Not automated)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
+   
+                  <h3></h3>
+                  
+<div class="row">
+ <div class="form-group col-lg-4 col-md-12">
+ 
+ <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22">Sitting at Guests House</h2></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_holiday_rate_status',[
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.service_for_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Holiday Rate: % </div> 
-                      <div class="col-lg-6 col-md-6">   
-                       <!-- <input type="text"></input> -->
-                            <?php 
-                              echo $this->Form->input('UserSitterServices.gh_holiday_rate',[
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                               echo $this->Form->input('UserServiceDetail.gh.service_for',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                      </div></div>
+                                'type'=>'hidden',
+                                'value'=>'guests_house'
+                               ]);
+                          ?>
+                        </div>
+                        </div>
                         
-                      </div>
+                      
+                        </div>
+ 
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4 col-md-12">
+ 
+ <p>Set-up and modify your settings for when you have guests at your house service loads for non-standard services</p>
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4">
+ 
+ 
+ <div class="row">
+ 
+ <div class="col-lg-4">  <label for="" class="f14 color-green">Holiday Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.holiday_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control',
+                                'hiddenField' => false
+                               ]);
+                          ?></div>
+                          
+                          <div class="col-lg-4">  <label for="" class="f14 color-green">Small Guest Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.small_guest_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control',
+                                'hiddenField' => false
+                               ]);
+                          ?></div>
+                          
+                          <div class="col-lg-4">  <label for="" class="f14 color-green">Large Guest Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.large_guest_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control',
+                                'hiddenField' => false
+                               ]);
+                          ?></div>
+ </div>
+ 
+                   
+
                     </div>
 
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy or Kitten (under 1 year old) Rate <br/>(Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_puppy_rate_status',[
+
+
+</div>
+
+
+<div class="row">
+
+<div class="form-group col-lg-4 col-md-12">
+ 
+ 
+ <div class="row">
+ <div class="col-lg-6"> <label for="" class="f14 color-green">Day Rate </label>
+                         <!--<input type="number" class="form-control" placeholder="$"> -->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.day_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control',
+                                'hiddenField' => false,
+                                'placeholder'=>"$"
+                               ]);
+                          ?>
+ </div>
+ 
+ <div class="col-lg-6"> <label for="" class="f14 color-green">Drop-in visit Rate </label>
+                          <!--<input type="number" class="form-control" placeholder="$">--> 
+                             <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.drop_visit_rate',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'number',
+                                'label' =>false,
+                                'class'=>'form-control',
+                                'hiddenField' => false,
+                                'placeholder'=>"$"
+                               ]);
+                          ?>
+ </div>
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4 col-md-12">
+ <label for="" class="f14 color-green">Night Rate </label>
+                          <!--<input type="number" class="form-control" placeholder="$"> -->
+                              <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.night_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false,
+                                  'placeholder'=>"$"
                                  ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Puppy Rate: % </div> 
-                      <div class="col-lg-6 col-md-6">  
-                       <!--<input type="text"></input> --> 
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.gh_puppy_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                     </div></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cat Rate <br/> (Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_cat_rate_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Cat Rate: % </div> 
-                      <div class="col-lg-6 col-md-6"> 
-                        <!--<input type="text"></input> -->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.gh_cat_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false,
-                                'type'=>'text'
-                              ]);
-                          ?> 
-                         </div></div>
-                        
-                      </div>
-                    </div>
+                              ?>
+ </div>
+ <div class="form-group col-lg-4">
+ <div class="row">
+ <div class="col-lg-4">  <label for="" class="f14 color-green">Cat Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                             <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.cat_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                              ?>
+                        </div>
+                          
+                          <div class="col-lg-8">  <label for="" class="f14 color-green">Puppy &kitten Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.puppy_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?>
+                        </div>
+                          
+                          
+ </div>
+ 
                    
 
-                    
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Horse  Rate <br/> (Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_horse_rate_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Horse Rate: % </div> 
-                      <div class="col-lg-6 col-md-6">  
-                       <!--<input type="text"></input>  -->
-                          <?php 
-                              echo $this->Form->input('UserSitterServices.gh_horse_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?>  
-                     </div></div>
-                        
-                      </div>
                     </div>
 
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Reptiles  Rate  <br/>(Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_reptiles_rate_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Reptiles Rate: % </div> 
-                      <div class="col-lg-6 col-md-6">   
-                        <!--<input type="text"></input>  -->
-                          <?php 
-                              echo $this->Form->input('UserSitterServices.gh_reptiles_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                      </div></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Pets  - other than cats & dogs<br/> (Service load)</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                       <!-- <input type="checkbox" checked />-->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.gh_small_pets_status',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-6 col-md-6">Pets Rate: % </div> 
-                      <div class="col-lg-6 col-md-6">   
-                        <!--<input type="text"></input> -->
-                          <?php 
-                              echo $this->Form->input('UserSitterServices.gh_small_pets_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                         </div></div>
-                        
-                      </div>
-                    </div>
-                    
-                 
-
-
-                  
-                    <div class="form-group col-lg-4 col-md-12">
-                       <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_day_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_dc_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_dc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-sm-9">1st Guest Rate:  </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $ </div> 
-                      <div class="col-lg-6 col-md-6">   
-                        <!--<input type="text"></input>  -->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.gh_dc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                      </div></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                       <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                       <!-- <input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_night_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_nc_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_nc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate:  </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
-                      <div class="col-lg-6 col-md-6">   
-                        <!--<input type="text"></input> -->
-                        <?php 
-                              echo $this->Form->input('UserSitterServices.gh_nc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                               'required'=>false 
-                              ]);
-                          ?> 
-                         </div></div>
-                        
-                      </div>
-                    </div>
-
-                  
-                    
+</div>
                   
 
-                   
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Hourly Care</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_hc_hourly_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_hc_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_hc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-7 col-md-7">1st Guest Rate p/hour: $ </div> 
-                      <div class="col-lg-5 col-md-5">  
-                       <!--<input type="text"></input>  -->
-                       <?php 
-                              echo $this->Form->input('UserSitterServices.gh_hc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                     </div></div>
-                        
-                      </div>
+                
+                  <div class="row">
+                    <div class="form-group col-lg-4 col-md-12 mt10">
                     
-                    </div>
-                      <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Long Term Care</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_ltc_long_term_care',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                       <!-- <input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_ltc_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_ltc_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/night (after 1st night)  </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-12 col-md-12">1st Guest Rate p/night (after 1st night): $ </div> 
-                      <div class="col-lg-6 col-md-6 guestRate">  
-                       <!--<input type="text"></input> --> 
-                       <?php 
-                              echo $this->Form->input('UserSitterServices.gh_ltc_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                     </div></div>
-                        
-                      </div>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Visits Per Day</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_visits_pr_day',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_vpd_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                      <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.gh_vpd_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                      <!--<div class="row"><div class="col-lg-9 col-md-9">1st Guest Rate p/hour   </div> 
-                      <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>-->
-                      <div class="row"><div class="col-lg-7 col-md-7">1 Visit Per Day: $ </div> 
-                      <div class="col-lg-5 col-md-5">  
-                       <!--<input type="text"></input>  -->
-                       <?php 
-                              echo $this->Form->input('UserSitterServices.gh_vpd_1_visit_pr_day',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                     </div></div>
-                      <div class="row"><div class="col-lg-7 col-md-7">2 Visit Per Day: $ </div> 
-                      <div class="col-lg-5 col-md-5">  
-                       <!--<input type="text"></input>  -->
-                       <?php 
-                              echo $this->Form->input('UserSitterServices.gh_vpd_2_visit_pr_day',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?> 
-                     </div></div>
-                        
-                      </div>
+                    <div class="row">
                     
-                    </div>
-                     </div>
-
-
-                     <h3>Hourly Products</h3>
-
-                     <div class="row">
-                      <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Grooming</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
+                    <div class="col-lg-12">
+                    
+                    <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Day Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('UserSitterServices.hp_grooming',[
+                              echo $this->Form->input('UserServiceDetail.gh.dc.service_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                              ]);
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.gh.dc.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'day_care'
+                               ]);
                           ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode   </div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_gm_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_gm_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
-                        <div class="col-lg-6 col-md-6 num">   
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_gm_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?>    </div></div>
-                      </div>
-                        
-                      </div>
-
-                      <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Training</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_training',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode   </div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_tr_aditional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_tr_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">1st Guest Rate: $</div> 
-                        <div class="col-lg-6 col-md-6 num">  
-                          <?php 
-                              echo $this->Form->input('UserSitterServices.hp_tr_guest_rate',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                            </div></div>
-                      </div>
-                        
-                      </div>
-
-                      <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Outdoors Recreation (walking)  </div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_outdoors_recreation',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_or_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_or_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-7 col-md-7">1 Per Day, 1 Guest: $</div> 
-                        <div class="col-lg-5 col-md-5 num">  
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_or_1_day_1_guest',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?>   
+                        </div>
                         </div></div>
-                        <div class="row"><div class="col-lg-7 col-md-7"> 2 Per Day, 1 Guest: $</div> 
-                        <div class="col-lg-5 col-md-5 num">   
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_or_2_day_1_guest',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false 
-                              ]);
-                          ?> 
-                           </div></div>
                         
-                      </div>
-                        
-                      </div>
-
-                       <div class="form-group col-lg-4 col-md-12">
-                      <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Driver Service</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_driver_service',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Away Mode</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_ds_additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />-->
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_ds_repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">  Pick-up: $</div> 
-                        <div class="col-lg-6 col-md-6 num">  <?php 
-                              echo $this->Form->input('UserSitterServices.hp_ds_pick_up',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?>   </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">Drop-off: $</div> 
-                        <div class="col-lg-6 col-md-6 num"> 
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.hp_ds_drop_off',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?>    </div></div>
-                        <div class="row"><div class="col-lg-6 col-md-6">Return: $</div> 
-                        <div class="col-lg-6 col-md-6 num">  
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Extended Stay Rate<small class="color-green-text"> (2nd consecutive stay onwards) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                           <?php 
-                              echo $this->Form->input('UserSitterServices.hp_ds_return',[
+                              echo $this->Form->input('UserServiceDetail.gh.dc.extended_stay_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'label'=>false,
-                                'required'=>false
-                              ]);
-                          ?>    </div></div>
-                      </div>
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
                         
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.dc.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.dc.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                            <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dc.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
                       </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
 
-                     <!-- <div class="form-group col-lg-4 col-md-12">
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Extended Stay Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dc.extended_stay_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                       <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dc.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dc.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    
+                    </div>
+                    
+                    
+                    <div class="col-lg-12 mt10">
+                    
+                    <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Drop-in visit</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.dv.service_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.gh.dv.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'drop_visit'
+                              ]);
+                          ?>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Extended Stay Rate<small class="color-green-text"> (2nd consecutive stay onwards) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.dv.extended_stay_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.dv.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.dv.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                          ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit  </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dv.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Extended Stay Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dv.extended_stay_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dv.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                         <!-- <input type="number" class="form-control h32  " placeholder=" % " >--> 
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.dv.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    
+                    </div>
+                    </div>
+                    
+                      
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12 mt10">
                       <div class="rules_main">
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Outdoors Recreation (walking)  </div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.repeat_client_only',[
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Night Care</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.nc.service_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Additional Guest Rate Away Mode  </div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <input type="checkbox" checked />
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.additional_mode',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false,
-                                'checked'=>'checked',
-                                'value'=>'additional_mode'
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Repeat Clients Only</div> 
-                        <div class="col-lg-3 col-md-3">   <div class="chek-main-lat">
-                        <!--<input type="checkbox" checked />
-                         <?php 
-                              echo $this->Form->input('UserSitterServices.repeat_client_only',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label'=>false
-                              ]);
-                          ?>
-                        </div>   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9">1 Per Day, 1 Guest: </div> 
-                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
-                        <div class="row"><div class="col-lg-9 col-md-9"> 1 Per Day, 1 Guest: </div> 
-                        <div class="col-lg-3 col-md-3 num">   $ 00.00   </div></div>
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                               echo $this->Form->input('UserServiceDetail.gh.nc.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'night_care'
+                               ]);
+                        ?>
+                        </div>
+                        </div></div>
                         
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Extended Stay Rate<small class="color-green-text"> (2nd consecutive stay onwards) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.nc.extended_stay_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.nc.additional_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.nc.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit  </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.nc.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
                       </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Extended Stay Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.nc.extended_stay_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>    
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.nc.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.gh.nc.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12 ">
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> <small class="color-green-text"> ( for site or member nominate holiday periods )</small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.holiday_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
                         
-                      </div>-->
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Guest Rate<br/> <small class="color-green-text"> ( other than cats and dogs ) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
 
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.small_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Large Guest Rate<br/> <small class="color-green-text">other than cats and dogs </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
 
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.large_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cats Rate<br/> </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
 
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.cats_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy and Kitten Rate<br/> <small class="color-green-text"> 12 months and younger </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
 
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.gh.puppy_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                      
+                    </div>
+                   
 
-                       
+                  
                      </div>
+                    
 
-                   <h3><i>Below <strong>4 features</strong> update the calendar to show how many spaces are availble for booking for each product </i>     
+
+                 
+                  <h3></h3>
+<div class="row">
+ <div class="form-group col-lg-4 col-md-12">
+ 
+ <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22">Market Place</h2></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.service_for_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                               echo $this->Form->input('UserServiceDetail.mp.service_for',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'hidden',
+                                'value'=>'market_place'
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        
+                      
+                        </div>
+ 
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4 col-md-12">
+ 
+ <p>Set-up and modify your settings for when you have guests at your house service loads for non-standard services</p>
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4">
+ 
+ 
+ <div class="row">
+ 
+ <div class="col-lg-4">  <label for="" class="f14 color-green">Holiday Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                         <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?></div>
+                          
+                          <div class="col-lg-4">  <label for="" class="f14 color-green">Small Guest Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.small_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+                        </div>
+                          
+                          <div class="col-lg-4">  <label for="" class="f14 color-green">Large Guest Rate %</label>
+                         <!-- <input type="number" class="form-control">-->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.large_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false,
+                                 'placeholder'=>" % "
+                                 ]);
+                            ?>
+                         </div>
+ </div>
+ 
+                   
+
+                    </div>
+
+
+
+</div>
+
+
+<div class="row">
+
+<div class="form-group col-lg-4 col-md-12">
+ 
+ 
+ <div class="row">
+ <div class="col-lg-6"> <label for="" class="f14 color-green">Grooming Rate </label>
+                         <!-- <input type="number" class="form-control"> -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.grooming_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?>
+ </div>
+ 
+ <div class="col-lg-6"> <label for="" class="f14 color-green">Recreation Rate </label>
+                         <!-- <input type="number" class="form-control"> -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.recreation_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?>
+ </div>
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4 col-md-12">
+ <div class="row">
+ <div class="col-lg-6"> <label for="" class="f14 color-green">Training Rate </label>
+                          <!--<input type="number" class="form-control"> -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.training_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?>
+ </div>
+ 
+ <div class="col-lg-6"> <label for="" class="f14 color-green">Driving Rate </label>
+                          <!--<input type="number" class="form-control"> -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.driving_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?>
+ </div>
+ 
+ </div>
+ 
+ 
+ </div>
+ 
+ <div class="form-group col-lg-4">
+ 
+ 
+ <div class="row">
+ 
+ <div class="col-lg-4">  <label for="" class="f14 color-green">Cat Rate %</label>
+                         <!-- <input type="number" class="form-control">-->
+                        <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.cat_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?></div>
+                          
+                          <div class="col-lg-8">  <label for="" class="f14 color-green">Puppy &kitten Rate %</label>
+                          <!--<input type="number" class="form-control">-->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.puppy_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control',
+                                  'hiddenField' => false
+                                 ]);
+                            ?>
+                        </div>
+                          
+                          
+ </div>
+ 
+                   
+
+                    </div>
+
+</div>
+                  
+
+                
+                  <div class="row">
+                    <div class="form-group col-lg-4 col-md-12 mt10">
+                    
+                    <div class="row">
+                    
+                    <div class="col-lg-12">
+                    
+                    <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Grooming</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.gr.service_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.mp.gr.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'grooming'
+                              ]);
+                        ?>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Premium Grooming Rate<small class="color-green-text"> (more than wash and blow dry) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.gr.grooming_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.gr.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.gr.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.gr.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Premium Grooming Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.gr.premium_grooming_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                            <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.gr.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.gr.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    
+                    </div>
+                    
+                    
+                    <div class="col-lg-12 mt10">
+                    
+                    <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Recreation (Walking)</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.re.service_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.mp.re.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'recreation'
+                              ]);
+                        ?>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Premium Recreation Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.re.premium_recreation_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.re.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.re.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                            <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.re.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Premium Recreation Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                         <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.re.premium_recreation_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.re.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.re.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    
+                    </div>
+                    </div>
+                    
+                      
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12 mt10">
+                    
+                    <div class="row">
+                    
+                    <div class="col-lg-12">
+                    
+                    <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Training</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.pt.service_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.mp.pt.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'training'
+                              ]);
+                        ?>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Premium Training Rate<small class="color-green-text"> (advanced or show dog training) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                          <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.pt.premium_training_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.pt.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                           <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.pt.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                            <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                            <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.pt.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Premium Training Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.pt.premium_training_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                          <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.pt.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.pt.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    
+                    </div>
+                    
+                    
+                    <div class="col-lg-12 mt10">
+                    
+                    <div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Driver Service</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.ds.service_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                              echo $this->Form->input('UserServiceDetail.mp.ds.service_type',[
+                                'type'=>'hidden',
+                                'value' =>'driver_service'
+                              ]);
+                        ?>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Return Trip<small class="color-green-text"> (pick up & drop off) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.ds.return_trip',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Additional Guest Rate<small class="color-green-text"> (more than one guest) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                            <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.ds.additional_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        <div class="row"><div class="col-lg-9 col-md-9 col-xs-8  ">Repeat client only</div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                        <div class="chek-main-lat">
+                        <div class="onoffswitch">
+                          <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
+                            <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.ds.repeat_client_only_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>
+                        </div>
+                        </div></div>
+                        
+                        
+                        
+                        
+                        
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Limit </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.ds.additional_guest_limit',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label ></label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Premium Driver Service Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.ds.premium_driverservice_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Additional Guest Rate% </div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                      
+                     
+ 
+
+                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.ds.additional_guest_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      <div class="row"><div class="col-lg-5 col-md-12">Holiday Rate% <small class="color-green-text"> ( override ) </small></div> 
+                      
+                      
+                      <div class="col-lg-4 col-md-6">
+                           <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <?php 
+                                echo $this->Form->input('UserServiceDetail.mp.ds.holiday_rate',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'number',
+                                  'label' =>false,
+                                  'class'=>'form-control h32',
+                                  'hiddenField' => false,
+                                  'placeholder'=>" % "
+                                 ]);
+                            ?>
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 text-right">
+                      
+                     
+ 
+
+                         <label >$00.00</label>
+ 
+ 
+ 
+ 
+
+                      
+                      </div>
+                      
+                      
+                      </div>
+                              
+                      </div>
+                    
+                    </div>
+                    </div>
+                    
+                      
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12 ">
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Holiday Rate<br/> <small class="color-green-text"> ( for site or member nominate holiday periods )</small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                         <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.holiday_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Small Guest Rate<br/> <small class="color-green-text"> ( other than cats and dogs ) </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.small_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Large Guest Rate<br/> <small class="color-green-text">other than cats and dogs </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.large_guest_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Cats Rate<br/> </div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.cats_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                    
+                    <div class="row mt10 ">
+                    <div class="col-lg-12"><div class="rules_main">
+                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8">Puppy and Kitten Rate<br/> <small class="color-green-text"> 12 months and younger </small></div> 
+                      <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                      
+                      <label class="pull-right text-right mb2">$ 00.00</label><br>
+
+                       <div class="chek-main-lat">
+                        <!--<input type="checkbox" checked />-->
+                        <?php 
+                              echo $this->Form->input('UserServiceDetail.mp.puppy_rate_status',[
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'type'=>'checkbox',
+                                'label' =>false,
+                                'class'=>'selectedCheckbox',
+                                'hiddenField' => false
+                               ]);
+                        ?>
+                        </div>   </div></div>
+                      
+                        
+                      </div></div>
+                    </div>
+                      
+                    </div>
+                   
+
+                  
+                     </div>
+                   <h3>
+                   
+                      
 </h3>
-                  <div class="row img-rightsp">
+
+<h2 class="f22 mb10">Calander<br>
+
+<small class="color-green f14"> (Daily booking limits for your sitter booking. Show how many spaces are available for each service) </small>
+</h2>
+                  <div class="row img-rightsp mt10">
                   <div class="form-group col-lg-4">
                       <label for="">1. Day Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
-                       <?php 
+                         <?php 
                               echo $this->Form->input('UserSitterServices.day_care_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
@@ -1316,35 +3340,35 @@
                                  'class'=>'form-control mzero'
                               ]);
                           ?> 
-                       
                     </div>
                     <div class="form-group col-lg-4">
                       <label for="">2. Night Care P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
                       <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
-                        <?php 
+                       <?php 
                               echo $this->Form->input('UserSitterServices.night_care_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
                                  'required'=>false,
                                 'class'=>'form-control mzero'
                               ]);
-                          ?> 
+                          ?>
+                       
                     </div>
                     <div class="form-group col-lg-4">
                       <label for="">3. Visits P/day Limit <img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
-                      <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
+                     <!-- <input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
                               echo $this->Form->input('UserSitterServices.visits_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
-                                 'required'=>false,
+                                'required'=>false,
                                 'class'=>'form-control mzero'
                               ]);
-                          ?> 
+                          ?>
                     </div>
                     <div class="form-group col-lg-4">
                       <label for="">4. Hourly Services P/Day Limit <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
-                      <!--<input type="text" placeholder="New Password" id="" class="form-control mzero">-->
+                     <!-- <input type="text" placeholder="New Password" id="" class="form-control mzero">-->
                         <?php 
                               echo $this->Form->input('UserSitterServices.hourly_services_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -1356,18 +3380,19 @@
                     </div>
                     
                   </div>
-<div class="row">
+                 <div class="row">
                     <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button></a>
                       <input type="submit" class="pull-right btn Continue" value="Submit" /></p>
                     </div>
-
-
                   <!--</form>-->
                   <?php echo $this->Form->end(); ?>
 
                   </div>
+                
 
-                </div>
+              
+
+            </div>
         
           </div>
         </div>

@@ -17,9 +17,8 @@
                   <?php echo $this->Form->create(@$sitterHouseData, [
                       'url' => ['controller' => 'dashboard', 'action' => 'sitter-house'],
                       'role'=>'form',
-                      'id'=>'generelInfo',
-					  'autocomplete'=>'off',
-                   ]);?>
+                      'id'=>'sitterHouse'
+                  ]);?>
                   <?php
                       if(@$sitterHouseId != ''){
                            echo $this->Form->input('UserSitterHouses.id',[
@@ -30,12 +29,19 @@
                   ?>
 
                   <div class="row">
-                     <h3><i class="fa fa-share-alt cir-o" aria-hidden="true"></i> Share some insights about your home
-                <span class="pull-right hed-0 coh1">You can us step-us your house profile here.</span>
-                   <p class="sub-title"><small>You can set-up your house profile here. Let us know some of the great things about your home and what guests will experience when they stay with you.</small></p>
+                     <h3><i class="fa fa-share-alt cir-o" aria-hidden="true"></i>
+                     <?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insights about your home')); ?> 
+                <span class="pull-right hed-0 coh1">
+                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('You can us step-us your house profile here.')); ?>
+                  </span>
+                   <p class="sub-title"><small>
+                   <?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here. Let us know some of the great things about your home and what guests will experience when they stay with you.')); ?>
+                    </small></p>
                 </h3>
                     <div class="form-group col-lg-4">
-                      <label for=""> Property Type</label>
+                      <label for=""> 
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Property Type')); ?>
+                      </label>
                         <?php echo $this->Form->input('UserSitterHouses.property_type',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -47,7 +53,9 @@
                     </div>
 
                     <div class="form-group col-lg-4 text-italic">
-                      <label for="">Outdoor Area</label>
+                      <label for="">
+                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Area')); ?>
+                        </label>
                       <?php echo $this->Form->input('UserSitterHouses.outdoor_area',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -59,7 +67,7 @@
                     </div>
 
                     <div class="form-group col-lg-4">
-                      <label for="">Outdoor Area Size</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Area Size')); ?></label>
                       <?php echo $this->Form->input('UserSitterHouses.outdoor_area_size',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -73,7 +81,7 @@
 
                     <div class="row">
                     <div class="form-group col-lg-4">
-                      <label for="">Outing Area (allow multiple)  </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outing Area (allow multiple)')); ?>  </label>
                       <?php echo $this->Form->input('UserSitterHouses.outing_allow_multiple',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -84,8 +92,8 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-4">
-                      <label for="">Toilet Breaks provided - every  
-                      <span><a href="#" data-toggle="tooltip" data-placement="top" title="Optional promotional video for you to include on your profile page"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png">   
+                      <label for="">  
+                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('Toilet Breaks provided - every')); ?> 
                       </label>
                       <?php echo $this->Form->input('UserSitterHouses.breaks_provided_every',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -97,7 +105,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-4">
-                    <label>Fully Fenced Outdoor Area</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Fully Fenced Outdoor Area')); ?> </label>
                     <span class="pull-right m-rights">
    
 
@@ -121,12 +129,11 @@
                     
 
                   <div class="form-group col-lg-4">
-                    <label>Smokers</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?></label>
                     <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
                               'UserSitterHouses.smokers',
                               [
-                                //'label'=>['class'=>'radio-inline'],
                                 'type'=>"radio",
                                  'label'=>false,
                                  'required'=>false,
@@ -136,14 +143,11 @@
                         </span>
                   </div>
                   <div class="form-group col-lg-4">
-                    <label>Birds in cages?</label>
-                   <!-- <span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
-                    <span class="pull-right m-rights">
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Birds in cages?')); ?></label>
+                   <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
                               'UserSitterHouses.birds_in_cages',
                               [
-                                //'label'=>['class'=>'radio-inline'],
                                 'type'=>"radio",
                                  'label'=>false,
                                  'required'=>false,
@@ -153,7 +157,7 @@
                         </span>
                   </div>
                    <div class="form-group col-lg-4">
-                    <label>Dogs in home?</label> <span class="pull-right m-rights">
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?')); ?></label> <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
                               'UserSitterHouses.dogs_in_home',
                               [
@@ -169,14 +173,11 @@
                   <div class="row">
                     
                      <div class="form-group col-lg-4">
-                    <label>Cats in home?</label>
-                    <!--<span class="pull-right m-rights"><label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">No</label> </span> -->
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cats in home?')); ?></label>
                     <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
                               'UserSitterHouses.cats_in_home',
                               [
-                                //'label'=>['class'=>'radio-inline'],
                                 'type'=>"radio",
                                  'label'=>false,
                                  'required'=>false,
@@ -191,7 +192,7 @@
                <div class="row word-limit">
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not">Tell us about your home<span class="hint--right right-width" data-hint="Make sure to include why is your home great for a guest to stay in?"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us about your home')); ?><span class="hint--right right-width" data-hint="Make sure to include why is your home great for a guest to stay in?"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                             <?php echo $this->Form->input(
                               'UserSitterHouses.about_home_desc',
                               [
@@ -199,12 +200,12 @@
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
-                          <p class="w-limit" id="about-home-preview">75 Words</p>
+                          <p class="w-limit" id="about-home-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 Words')); ?></p>
                          <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
                     </div>
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not">Describe the spaces your guest will have access to<span class="hint--right right-width" data-hint="Let your guest know where you plan to let them sleep and enjoy your home with you."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Describe the spaces your guest will have access to')); ?><span class="hint--right right-width" data-hint="Let your guest know where you plan to let them sleep and enjoy your home with you."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                            <?php echo $this->Form->input(
                               'UserSitterHouses.spaces_access_desc',
                               [
@@ -214,12 +215,12 @@
                                  
                             ]); ?>
                              <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
-                          <p class="w-limit" id="space-word-preview">75 Words</p>
+                          <p class="w-limit" id="space-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 Words')); ?></p>
                        
                     </div>
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not">What are the pets in your home like<span class="hint--right right-width" data-hint="Tell us what kind of friends your guest is going to make and some of their personality traits."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('What are the pets in your home like')); ?><span class="hint--right right-width" data-hint="Tell us what kind of friends your guest is going to make and some of their personality traits."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                            <?php echo $this->Form->input(
                               'UserSitterHouses.home_pets_desc',
                               [
@@ -228,14 +229,14 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
 
-                          <p class="w-limit" id="home-pets-preview">75 Words</p>
+                          <p class="w-limit" id="home-pets-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 Words')); ?></p>
                     </div>
 
                     
                       
                     </div>
-                  <h3>Photo</h3>
-                  <p class="browse-p">Add your profile photo<button id="browseImg" type="button" class="btn btn-primary">Browse Photo</button></p>
+                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?')); ?>Photo</h3>
+                  <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile photo')); ?><button id="browseImg" type="button" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Browse Photo')); ?></button></p>
 
                   <div class="row" id="images_preview">
                         <?php echo @$sitter_images; ?>
@@ -245,8 +246,8 @@
 
                     <div class="row">
                     <p class="col-lg-12 sp-tb">
-                    <a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button></a>
-                    <input class="pull-right btn Continue" type="submit" value="Continue" /></p>
+                    <a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
+                    <input class="pull-right btn Continue" type="submit" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Continue')); ?>" /></p>
                     </div>
                   <?php echo $this->Form->end(); ?>
                   <div class="row" id="show-all-errors">
@@ -266,7 +267,7 @@
 
                       <input type="hidden" name="image_form_submit" value="1"/>
 
-                      <label>Choose Image</label>
+                      <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Choose Image')); ?></label>
                       <input type="file" name="images[]" id="images" multiple >
                       <div class="uploading none">
                           <label>&nbsp;</label>

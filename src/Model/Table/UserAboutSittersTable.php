@@ -14,17 +14,26 @@ class UserAboutSittersTable extends Table
     }
     public function validationDefault(Validator $validator)
     {
-        $validator
-             ->notEmpty('accepted_pet_size', 'This field is required.')
-             ->notEmpty('preferred_age', 'This field is required.')
-             ->notEmpty('sitting_experience', 'This field is required.')
+        $validator 
+             ->notEmpty('your_self', 'This field is required.')
+             ->notEmpty('client_choose_desc', 'This field is required.')
+             ->notEmpty('sh_pet', 'This field is required.')
+             ->notEmpty('sh_pet_sizes', 'This field is required.')
+             ->notEmpty('sh_guest_age', 'This field is required.')
+             ->notEmpty('sh_un_neutered_pets', 'This field is required.')
+             ->notEmpty('sh_females_on_heat', 'This field is required.')
+             ->notEmpty('sh_un_spayed_females', 'This field is required.')
+             ->notEmpty('sh_un_toilet_trained', 'This field is required.')
              ->notEmpty('mixed_familes', 'This field is required.')
-             ->requirePresence('un_neutered_pets') ->notEmpty('un_neutered_pets', 'This field is required.')
-             ->requirePresence('un_spayed_females') ->notEmpty('un_spayed_females', 'This field is required.')
-             ->requirePresence('females_on_heat') ->notEmpty('females_on_heat', 'This field is required.')
-             ->requirePresence('un_trained_pets') ->notEmpty('un_trained_pets', 'This field is required.')
-             ->requirePresence('last_minute_booking') ->notEmpty('last_minute_booking', 'This field is required.')
-             ->requirePresence('longer_than_week') ->notEmpty('longer_than_week', 'This field is required.');
+             ->notEmpty('gh_pet', 'This field is required.')
+             ->notEmpty('gh_pet_sizes', 'This field is required.')
+             ->notEmpty('gh_guest_age', 'This field is required.')
+             ->notEmpty('gh_un_neutered_pets', 'This field is required.')
+             ->notEmpty('gh_females_on_heat', 'This field is required.')
+             ->notEmpty('gh_un_spayed_females', 'This field is required.')
+             ->notEmpty('gh_un_toilet_trained', 'This field is required.');
+             
+             
          return $validator;
     }
 

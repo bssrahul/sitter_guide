@@ -21,7 +21,11 @@
 		echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
 		echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js']);
 		?>
+<<<<<<< HEAD
+	         <link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+=======
 		
+>>>>>>> ccfd3cc769f9e53a182267d076535e6ea9ef205d
           
     </head>
     

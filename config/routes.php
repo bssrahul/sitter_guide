@@ -59,6 +59,7 @@ Router::scope('/', function ($routes) {
 	 /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
+
        // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
 		$routes->connect('/about-us', ['controller' => 'Pages', 'action' => 'cms','about-us']);
 		$routes->connect('/news', ['controller' => 'Pages', 'action' => 'cms','news']);
@@ -69,6 +70,7 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
 		$routes->connect('/news', ['controller' => 'Pages', 'action' => 'news']);
 		$routes->connect('/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
+
 
 
     /**
