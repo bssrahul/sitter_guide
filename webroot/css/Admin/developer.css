@@ -61,7 +61,7 @@ div.customImg > img.img-circle {
 	margin-left: 0px !important;
 	margin-top: 0px !important;
 	position: inherit;
-	z-index: 1000;
+	/*z-index: 1000; 9 may*/
 }
 .paging_full_numbers {
 	height: 50px !important;
@@ -99,6 +99,25 @@ a {
    ul.nav li ul.child_menu li a > i.fa {
 		display: none !important;
 	}
+	
+	  ul.nav li a > i.fa {
+		display: none !important;
+	}
 }
 
 
+@media only screen and (max-width: 767px) {
+    .col-md-6  em {
+	  float: left;
+	  position: relative;
+	 /* top: 95px;*/
+	  width: 100%;
+	}
+}
+label .fa.fa-asterisk {
+    font-size: 6px;
+    left: 2px;
+    position: relative;
+    top: -5px;
+    color: red;
+}

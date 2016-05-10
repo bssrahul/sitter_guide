@@ -83,10 +83,10 @@ class SearchController extends AppController
 		$UsersModel = TableRegistry::get('Users');
 		
 		$conditions = array();
-		pr($this->request->data);
+		
 		if(!empty($this->request->data)){
 			
-		
+			pr($this->request->data) ;
 			//SET CONDITIONS FOR MARKET PLACES LIKE RECREATION, GROOMING, DRIVER, TRAINING ETC
 			if(isset($this->request->data['Search']['marketplace']) && $this->request->data['Search']['marketplace'] !=""){
 				
@@ -107,18 +107,22 @@ class SearchController extends AppController
 			}
 			
 			//SET CONDITIONS FOR LANGUGE KNOW
-			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['marketplace'] !=""){
+			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
 				
-				$conditions['OR'][] = 'userProfessionalAccreditationsDetails.languages=' . $this->request->data['Search']['languages']; //find service type from comma spareted value
+				$conditions['OR'][] = 'userProfessionalAccreditationsDetails.languages LIKE "%' .$this->request->data['Search']['languages'].'%"'; //find service type from comma spareted value
 				
 			}
-			pr($conditions);			
-			$searchData = $UsersModel->find('all',['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails']])->where($conditions);
-			pr($searchData); die;
-		}
-		
-		
-		
+			
+			;		
+			$query = $UsersModel->find('all')
+			->where($conditions)
+			->contain([
+				'UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails'
+			])->toArray();
+			pr($query);die;
+			//$searchData = $UsersModel->find('all',['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails']])->where($conditions);
+			//pr($searchData); die;
+		}	
 		
 		
 		if(!isset($currentLang) && empty($currentLang)){

@@ -29,53 +29,69 @@
 				echo $this->Form->input('Users.id',[
 						'type'=>'hidden',
 						'value'=>$userInfo->id]);?>
+				
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('First Name')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 				<?php 
 				 echo $this->Form->input('Users.first_name',[
 						'class'=>'form-control',
+						'label'=>false,
 						'placeholder'=>'First Name',
 						'value'=>$userInfo->first_name != '' ?$userInfo->first_name:'']);
 				 ?>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Name')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 				<?php 
 				echo $this->Form->input('Users.last_name',[
 						'class'=>'form-control',
+						'label'=>false,
 						'placeholder'=>'Last Name',
 						'value'=>$userInfo->last_name != '' ?$userInfo->last_name:'']);
 				 ?>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Gender')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 				<?php 
 				echo $this->Form->input('Users.gender',[
 						'class'=>'form-control',
 						'type'=>'select',
+						'label'=>false,
 						'options'=>['Male'=>'Male','Female'=>'Female','Other'=>'Other'],
 						'value'=>$userInfo->gender != '' ?$userInfo->gender:'']);
 				 ?>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 				<?php 
 				echo $this->Form->input('Users.email',[
 						'class'=>'form-control',
+						'label'=>false,
 						'placeholder'=>'email',
 						'value'=>$userInfo->email != '' ?$userInfo->email:'']);
 				 ?>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Phone')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 				<?php 
 				echo $this->Form->input('Users.phone',[
 						'class'=>'form-control',
+						'label'=>false,
 						'placeholder'=>'Phone',
 						'value'=>$userInfo->phone != '' ?$userInfo->phone:'']);
 				 ?>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Zone id')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 				<?php 
 				echo $this->Form->input('Users.zone_id',[
 						'class'=>'form-control',
+						'label'=>false,
 						'type'=>'select',
 						'options'=>$zonesData,
 						'value'=>$userInfo->zone_id]);

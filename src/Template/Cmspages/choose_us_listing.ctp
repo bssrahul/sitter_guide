@@ -54,7 +54,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Choose Us Lsiting')); ?></h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-choose-us'; ?>"><button class="btn btn-success addUser" type="button">Add Choose Us</button></a></h2>-->
+					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode(' Why Choose us ')); ?></h2><!--<h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-choose-us'; ?>"><button class="btn btn-success addUser" type="button">Add Choose Us</button></a></h2>-->
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -102,7 +102,9 @@
 								<td class=" "><?php echo $work_info->title; ?></td>
 								
 								<td style="width:300px;"  class=" "><?php 
-										echo $work_info->description;
+										//echo $work_info->description;
+										$string= $work_info->description;
+										echo $descdata=substr($string,0,250).'...';
 								?></td>
 								
 								 <td><?php echo $work_info->status == 1?'Active':'Blocked';	?></td>

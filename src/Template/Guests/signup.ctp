@@ -189,7 +189,7 @@
 
                          <!--<label><input type="checkbox" name="Users[term_condition]"><?php echo __('Terms & Conditions');?></label>
                           <label for="Users[term_condition]" generated="true" class="error"></label>-->
-                        <label style="float:right" for="users-term-condition"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                        <label style="float:right" for="users-term-condition"><?php echo $this->requestAction('app/get-translate/'.base64_encode('I agree to the ')); ?><a href=<?php echo HTTP_ROOT.'terms'?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
                           <?php
                             echo $this->Form->input('Users.term_condition',[			
                             	//'label'=>'Terms & Conditions',

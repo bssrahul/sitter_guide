@@ -684,6 +684,10 @@ $(document).ready(function () {
                  "Users[zone_id]":
                 {
                     required: true
+                },
+				 "Users[image]":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
                 }
             },
             messages: {             
@@ -714,7 +718,12 @@ $(document).ready(function () {
                  "Users[zone_id]":
                 {
                     required : "This field is required"
+                },
+				 "Users[image]":
+                {
+                   accept: "Only png, jpg, jpeg, gif files allowed"
                 }
+					 
             }/*,
              errorPlacement: function (error, element) {
                     alert(error.text());
@@ -1198,11 +1207,17 @@ $(document).ready(function () {
 
 $(document).ready(function(){
 	$('div.success, div.error').on('click',function(){
-			$(this).slideUp(1000); 
+			//$(this).slideUp(1000); 
 	});
 	setInterval(function() {
 	
-	   $('div.success, div.error').slideUp();
+	  // $('div.success, div.error').slideUp();
+	}, 5000);
+	
+	
+	setInterval(function() {
+	
+	   $('div.error_msg').slideUp();
 	}, 5000);
 	
 	

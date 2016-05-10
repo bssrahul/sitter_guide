@@ -38,6 +38,22 @@ div.message {
 	top: 10px !important;
 	
 }
+div.success {
+	background: #4f9709 none repeat scroll 0 0;
+    border-radius: 5px;
+    top: 10px !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    float: right !important;
+    height: 30px;
+    opacity: 0.9 !important;
+    padding: 5px 15px;
+    position: fixed !important;
+    right: 7px;
+    text-align: center !important;
+    z-index: 9999 !important;
+    content: none !important;
+}
 </style>
 <script>
 $(document).ready(function(){

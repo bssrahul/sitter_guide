@@ -62,7 +62,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                               'class'=>'form-control dob',
                               'label'=>false,
                               'templates' => ['inputContainer' => '{{content}}'],
-                              'placeholder'=>'DD/MM/YYYY', 
+                              'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('DD/MM/YYYY')), 
                               ]);
                           ?> 
                         </div>
@@ -89,8 +89,8 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                             ?>
                         </div>
                     </div>
-                    <h3>Address
-                      <span><a href="#" data-toggle="tooltip" data-placement="top" title="Your address will not be made public. Instead, we use your address to indicate to other members how close they are to you. Example: the proximity map shown on your profile and search results."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
+                    <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address')); ?>
+                      <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Your address will not be made public. Instead, we use your address to indicate to other members how close they are to you. Example: the proximity map shown on your profile and search results.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
                     </h3>
                     <div class="row">
                     <div class="form-group col-lg-4 col-md-4">
@@ -181,7 +181,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
 
                         </div>
                           <div class="col-lg-4 col-xs-9">
-                              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="We will send an sms confirmation to this number for verification"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
+                              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will send an sms confirmation to this number for verification')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
                                  'class'=>'form-control col-lg-10',
@@ -218,7 +218,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                           </div>
                       
                     </div>
-                    <h3>Password<span><a href="#" data-toggle="tooltip" data-placement="top" title="Alphanumeric & minimum character combination is required"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></h3>
+                    <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Password')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Alphanumeric & minimum character combination is required')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></h3>
                     <div class="row">
                     <div class="form-group col-lg-4 col-md-4">
                            <?php 
@@ -267,7 +267,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                           </div>
                       
                     </div>
-                    <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contacts')); ?> <span><a href="#" data-toggle="tooltip" data-placement="top" title="Alphanumeric & minimum character combination is required"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></h3>
+                    <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contacts')); ?> <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Alphanumeric & minimum character combination is required')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></h3>
                     <div class="row">
                         <div class="form-group col-lg-4">
                           <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?> </label>
@@ -306,7 +306,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                             
                         </div>
                   </div>
-                 <h3>Photo</h3>
+                 <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?></h3>
                  <div class="row">
                      <div class="col-lg-5">
                      <div class="row d-m2">
@@ -427,13 +427,13 @@ profile photo’s, video, password and contact details.')); ?></small></p>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h3>Change Profile Picture</h3>
+               <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></h3>
             </div>
             <div class="modal-body">
                <!-- <form id="cropimage" method="post" enctype="multipart/form-data" action="profile.php">-->
                   <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data',
                   'url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
-                    Upload your image 
+                   <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload your image')); ?>  
 
                     <input style="hidden" type="file" name="image" id="image" />
 
@@ -454,8 +454,8 @@ profile photo’s, video, password and contact details.')); ?></small></p>
               <?php echo $this->Form->end(); ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="btn-crop" class="btn btn-primary">Crop & Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
+                <button type="button" id="btn-crop" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop & Save')); ?></button>
             </div>
         </div>
     </div>
@@ -475,7 +475,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
 $(document).ready(function(){
   var host = window.location.host;
   var proto = window.location.protocol;
-  var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+  var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
 
   $('#change_pic').on('click', function(e){ 
       e.preventDefault();
