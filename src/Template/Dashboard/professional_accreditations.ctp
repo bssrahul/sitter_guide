@@ -471,7 +471,7 @@
 		
 		//Document upload using ajax and return document name insert into releted text box
 		$(document).on('change', '#documentControl', function() 
-		{ 
+		{  
 			$("#"+$("#valuefor").val()).next().after('<img class="wait-img" src="<?php echo HTTP_ROOT."img/ajax-loader.gif"; ?>"/>');
 			$("#imageform").ajaxForm(
 			{
