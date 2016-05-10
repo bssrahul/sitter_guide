@@ -138,7 +138,7 @@
                         <label>What time?</label>
                         <ul>
                           <li class="day">Day
-                             <?php echo $this->Form->input('Search.what_time.day',[
+                             <?php echo $this->Form->input('Search.what_time.day_care',[
 								'label' => false,
 								'templates' => ['inputContainer' => '{{content}}'],
 								'hiddenField' => false,
@@ -149,7 +149,7 @@
 							  ?>
                           </li>
                           <li class="night">Night
-                             <?php echo $this->Form->input('Search.what_time.night',[
+                             <?php echo $this->Form->input('Search.what_time.night_care',[
 								'label' => false,
 								'templates' => ['inputContainer' => '{{content}}'],
 								'hiddenField' => false,
