@@ -69,7 +69,6 @@ class GuestsController extends AppController
 		$this->set('sliderVideo', $sliderVideo);
 		
 	}
-	
 	/**Function for landing page
 	*/
 	function home(){
@@ -421,8 +420,6 @@ class GuestsController extends AppController
 					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
 					$responseData = json_decode($verifyResponse);
                     if($responseData->success){
-						
-							//pr($this->request->data);die;
 						$this->request->data['Users']['password'] = $this->request->data['Users']['create_password'];
 						unset($this->request->data['Users']['create_password']);
 

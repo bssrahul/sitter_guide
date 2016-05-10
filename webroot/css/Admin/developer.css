@@ -99,6 +99,10 @@ a {
    ul.nav li ul.child_menu li a > i.fa {
 		display: none !important;
 	}
+	
+	  ul.nav li a > i.fa {
+		display: none !important;
+	}
 }
 
 

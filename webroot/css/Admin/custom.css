@@ -6475,7 +6475,7 @@ div.message.error {
 /*06-05-16*/
 @media (min-width:320px) and (max-width:1024px){	
 footer {margin: 0 0px;}
-body.nav-sm .container.body .left_col { overflow-y:scroll;}
+
 .dataTables_info{ width:100%;}
 .paging_full_numbers{ width:100%; float:left;  text-align:left; margin:10px 0 0 0;}
 #promocodes-discounted-coupon { width:100%;  float:left;}

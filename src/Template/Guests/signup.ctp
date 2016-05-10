@@ -25,8 +25,7 @@
 							'id'=>'addUsers',
 							'enctype'=>'multipart/form-data',
 							'role'=>'form',
-							'style'=>'display:none',
-							 'autocomplete'=>'off',
+							'style'=>'display:none'
 						  ]);
 						  ?>
 						  <div class="form-group">
@@ -190,7 +189,7 @@
 
                          <!--<label><input type="checkbox" name="Users[term_condition]"><?php echo __('Terms & Conditions');?></label>
                           <label for="Users[term_condition]" generated="true" class="error"></label>-->
-                        
+                        <label style="float:right" for="users-term-condition"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
                           <?php
                             echo $this->Form->input('Users.term_condition',[			
                             	//'label'=>'Terms & Conditions',
@@ -201,8 +200,9 @@
                             	'type' => "checkbox"
 							]);
                            ?>
-						   <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                        <label for="users-term-condition" style="position:relative"></label>  
+						   
+
+                        <!--<label for="users-term-condition" style="position:relative"></label> --> 
                         </div>
  
                        <?php
@@ -217,7 +217,10 @@
                            ?>
 						<p><span class="c-red c-red-bar"><?php echo $this->requestAction('app/get-translate/'.base64_encode('OR')); ?></span></p>
                         
-                        <a href="#" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Facebook')); ?></a>
+                        <a href="<?php echo @$facebookUrl; ?>" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Facebook')); ?></a>
+
+                        
+
                           <p class="line-signin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a Member?')); ?> 
 							<span class="signup-color">
 							  <a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In')); ?> </a>
@@ -232,7 +235,7 @@
                         </div>
                         <div class="signup-facebook">
                            <?php 
-                           echo $signupWithFacebook; ?> 
+                           echo @$signupWithFacebook; ?> 
                         </div>
                         <p><span class="signup-line"><?php echo $this->requestAction('app/get-translate/'.base64_encode('By signing up, I agree to Sitter Guide Terms of Service and <br/> confirm that I am 18 years of age or older.')); ?></span></p>
                         <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Already a member?')); ?> <span class="signup-color"><a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In Now')); ?></a></span></p>
