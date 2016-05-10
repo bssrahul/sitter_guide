@@ -83,9 +83,9 @@ class PromocodeController extends AppController
 			//echo "<pre>";print_r($this->request->data);die;
 		    $promoId = $this->request->data['PromoCodes']['id'];
 			if($this->request->data['PromoCodes']['coupon_type'] == 'fixed_coupon'){
-                 $promocodeData->discounted_coupon = null;
+                // $promocodeData->discounted_coupon = null;
 			}else{
-               $promocodeData->fixed_coupon = null;
+               //$promocodeData->fixed_coupon = null;
 			}
         
 			if (!$promocodeData->errors()){

@@ -59,7 +59,7 @@
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
 											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
-											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submits')); ?></button>
+											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
 										</div>
 									</div>
                                     <?php echo $this->form->end(); ?>
