@@ -290,7 +290,7 @@ class CmspagesController extends AppController
 					$with = array($data['ContactRequests']['reply']);
 					$this->send_email('',$replace,$with,'reply_contact',$data['ContactRequests']['email'],$data['ContactRequests']['reply']);
 			  //$this->displaySuccessMessage('Reply sent successfully');
-			  $this->Flash->error(__('Respond has been sent successfully.'));
+			  $this->Flash->success(__('Respond has been sent successfully.'));
 			  return $this->redirect(['controller'=>'cmspages','action' => 'contact-requests']);
 			}
 		}else{
