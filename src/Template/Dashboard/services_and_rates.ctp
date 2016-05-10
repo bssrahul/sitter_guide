@@ -251,14 +251,14 @@
                         <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.service_status',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.service_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
                                 'hiddenField' => false
                                ]);
-                              echo $this->Form->input('UserServiceDetail.sh.dc.service_type',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.service_type',[
                                 'type'=>'hidden',
                                 'value' =>'day_care'
                                ]);
@@ -272,7 +272,7 @@
                         <div class="onoffswitch">
                           <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.extended_stay_rate_status',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.extended_stay_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
@@ -290,7 +290,7 @@
                         <div class="onoffswitch">
                           <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.additional_guest_rate_status',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.additional_guest_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
@@ -308,7 +308,7 @@
                         <div class="onoffswitch">
                           <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.repeat_client_only_status',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.repeat_client_only_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
@@ -334,7 +334,7 @@
 
                          <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.additional_guest_limit',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.additional_guest_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'number',
                                 'label' =>false,
@@ -377,7 +377,7 @@
 
                           <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
                            <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.extended_stay_rate',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.extended_stay_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'number',
                                 'label' =>false,
@@ -421,7 +421,7 @@
 
                          <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
                            <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.additional_guest_rate',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.additional_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'number',
                                 'label' =>false,
@@ -460,7 +460,7 @@
                       <div class="col-lg-4 col-md-6">
                       <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
                            <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.dc.holiday_rate',[
+                              echo $this->Form->input('UserServiceDetail.sh.sd.dc.holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'number',
                                 'label' =>false,
