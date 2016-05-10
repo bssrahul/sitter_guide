@@ -70,9 +70,9 @@
 								<th class="column-title no-link last" ><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Badge')); ?></span>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Badges')); ?></span>
 								</th>
-								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Skill Documents')); ?></th>
+								<!--<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Skill Documents')); ?></th>-->
 							</tr>
 						</thead>
 
@@ -143,10 +143,10 @@
 												
 										<?php }?>			 								  
 									</td>
-									<td>
+								<!--	<td>
 											<a title="Download Skill Documents" href="<?php echo HTTP_ROOT.'users/download-skill-documents'?>"> Download Skill Documents </a>
 										
-									</td>
+									</td>-->
 								</tr>
 							<?php $i++; 
 							} 

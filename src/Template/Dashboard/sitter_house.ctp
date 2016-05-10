@@ -4,7 +4,7 @@
 
         <div class="profiletab-section">
           
-                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">Sitter Profile</h3>
+                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
 
                 <?php echo $this->element('frontElements/profile/sitter_nav');?>
           
@@ -107,10 +107,7 @@
                     <div class="form-group col-lg-4">
                     <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Fully Fenced Outdoor Area')); ?> </label>
                     <span class="pull-right m-rights">
-   
-
-
-                         <?php echo $this->Form->input(
+                            <?php echo $this->Form->input(
                               'UserSitterHouses.fully_fenced',
                                [
                                 //'label'=>['class'=>'radio-inline'],
@@ -192,7 +189,7 @@
                <div class="row word-limit">
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us about your home')); ?><span class="hint--right right-width" data-hint="Make sure to include why is your home great for a guest to stay in?"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us about your home')); ?><span class="hint--right right-width" data-hint="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Make sure to include why is your home great for a guest to stay in?')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                             <?php echo $this->Form->input(
                               'UserSitterHouses.about_home_desc',
                               [
@@ -205,7 +202,7 @@
                     </div>
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Describe the spaces your guest will have access to')); ?><span class="hint--right right-width" data-hint="Let your guest know where you plan to let them sleep and enjoy your home with you."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Describe the spaces your guest will have access to')); ?><span class="hint--right right-width" data-hint="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Let your guest know where you plan to let them sleep and enjoy your home with you.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                            <?php echo $this->Form->input(
                               'UserSitterHouses.spaces_access_desc',
                               [
@@ -220,7 +217,7 @@
                     </div>
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('What are the pets in your home like')); ?><span class="hint--right right-width" data-hint="Tell us what kind of friends your guest is going to make and some of their personality traits."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('What are the pets in your home like')); ?><span class="hint--right right-width" data-hint="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us what kind of friends your guest is going to make and some of their personality traits.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
                            <?php echo $this->Form->input(
                               'UserSitterHouses.home_pets_desc',
                               [

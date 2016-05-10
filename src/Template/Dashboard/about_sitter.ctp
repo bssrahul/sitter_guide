@@ -4,7 +4,7 @@
 
         <div class="profiletab-section">
           
-                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">Sitter Profile</h3>
+                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
                 
                  <?php echo $this->element('frontElements/profile/sitter_nav');?>
           
@@ -13,9 +13,9 @@
 
 
                <div id="menu2" class="tab-pane fade tab-comm active in">
-                <h2 class="head-font">Now let us know why you’re a great sitter</h2>
-                <p class="head-font2 pad-head-foot">Your sitter preferences are managed here</p>
-                 <p class="head-font2 pad-head-foot-bot">Share with us your sitting style, as well as what you will and wont accept as a sitter.</p>
+                <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Now let us know why you’re a great sitter')); ?></h2>
+                <p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your sitter preferences are managed here')); ?></p>
+                 <p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share with us your sitting style, as well as what you will and wont accept as a sitter.')); ?></p>
                 
                   <?php echo $this->Form->create(@$sitter_info, [
                       'url' => ['controller' => 'dashboard', 'action' => 'about-sitter'],
@@ -31,8 +31,8 @@
                       ?>
                   <div class="row word-limit">
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
-                          <label for="">Your headline. Describe yourself and what makes you great 
-                            <span><a href="#" data-toggle="tooltip" data-placement="top" title="This will appear at the top of your profile page and on search results"><img class="close11" src="<?php echo HTTP_ROOT;?>img/close.png"></a></span>
+                          <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your headline. Describe yourself and what makes you great')); ?> 
+                            <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('This will appear at the top of your profile page and on search results')); ?>"><img class="close11" src="<?php echo HTTP_ROOT;?>img/close.png"></a></span>
                           </label>
                          <?php echo $this->Form->input('UserAboutSitters.your_self',[
                                  'templates' => ['inputContainer' => '{{content}}'],
@@ -43,8 +43,8 @@
                           <p class="w-limit" id="35-word-preview">35 words</p>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
-                          <label for="">Your sitter profile in detail. Why should a new client choose you?   
-                          <span><a href="#" data-toggle="tooltip" data-placement="top" title="This will appear on your profile page just under your headline and on search results"><img class="close11" src="<?php echo HTTP_ROOT;?>img/close.png"></a></span>
+                          <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your sitter profile in detail. Why should a new client choose you?')); ?>   
+                          <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('This will appear on your profile page just under your headline and on search results')); ?>"><img class="close11" src="<?php echo HTTP_ROOT;?>img/close.png"></a></span>
                           </label>
                           <?php echo $this->Form->input('UserAboutSitters.client_choose_desc',[
                                  'templates' => ['inputContainer' => '{{content}}'],
@@ -52,19 +52,19 @@
                                  'label'=>false,
                                   'required'=>false
                           ]); ?>
-                          <p class="w-limit" id="75-word-preview">75 words</p>
+                          <p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 words')); ?></p>
                         </div>
                   </div>
                 
                   
-                  <p class="head-font2 pad-head-foot">Set your sitting preferences for when your sitting at your house or your guests house</p>
+                  <p class="head-font2 pad-head-foot"><p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set your sitting preferences for when your sitting at your house or your guests house')); ?></p>
                   <div class="row">
                     <div class="col-lg-6">
-                    <p class="title-head">At your house</p>
+                    <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house ')); ?></p>
                     <div class="row">
 
                     <div class="form-group col-lg-4">
-                      <label for="">Accepted Pets & breeds</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds ')); ?>Accepted Pets & breeds</label>
                       <?php echo $this->Form->input('UserAboutSitters.sh_pet',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -84,7 +84,7 @@
                           } 
                           ?>
                       <div class="form-group col-lg-4">
-                        <label for="">Accepted Pet Sizes</label>
+                        <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
                                <?php echo $this->Form->input('UserAboutSitters.sh_pet_sizes',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -100,7 +100,7 @@
                     </div>
                     <div class="row">
                       <div class="form-group col-lg-4">
-                      <label for="">Preferred Guest Ages  </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?>  </label>
                          <?php echo $this->Form->input('UserAboutSitters.sh_guest_age',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -118,7 +118,7 @@
 <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
 
 <div class="form-group pad-head-foot ">
-                    <label>Accept Un-Neutered Pets  </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept Un-Neutered Pets')); ?>  </label>
                     <span class="pull-right m-rights">
                       <?php echo $this->Form->input(
                           'UserAboutSitters.sh_un_neutered_pets',
@@ -135,7 +135,7 @@
                     </div>
                     
                     <div class="form-group ">
-                    <label>Accept females on heat </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept females on heat')); ?> </label>
                     <span class="pull-right m-rights">
                       <?php echo $this->Form->input(
                           'UserAboutSitters.sh_females_on_heat',
@@ -150,7 +150,7 @@
                     </div>
                     
                <div class="form-group ">
-                    <label>Accept un-spayed females </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-spayed females')); ?> </label>
                     <span class="pull-right m-rights">
                       <?php echo $this->Form->input(
                           'UserAboutSitters.sh_un_spayed_females',
@@ -165,7 +165,7 @@
                     </div>  
                     
                     <div class="form-group ">
-                    <label>Accept un-toilet trained pets   </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-toilet trained pets')); ?>   </label>
                     <span class="pull-right m-rights">
                        <?php echo $this->Form->input(
                           'UserAboutSitters.sh_un_toilet_trained',
@@ -180,7 +180,7 @@
                     </div>
                     
                     <div class="form-group ">
-                    <label>Mixed Familes   </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mixed Familes')); ?>    </label>
                         <?php echo $this->Form->input(
                           'UserAboutSitters.mixed_familes',
                           [
@@ -199,11 +199,11 @@
                     </div>
 
                     <div class="col-lg-6">
-                   <p class="title-head">At your house</p>
+                   <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house')); ?> </p>
                    <div class="row">
 
                     <div class="form-group col-lg-4">
-                      <label for="">Accepted Pets & breeds</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_pet',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -224,7 +224,7 @@
                     } 
                     ?>
                       <div class="form-group col-lg-4">
-                        <label for="">Accepted Pet Sizes</label>
+                        <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_pet_sizes',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -241,7 +241,7 @@
 
                     <div class="row">
                       <div class="form-group col-lg-4">
-                      <label for="">Preferred Guest Ages  </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?>  </label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_guest_age',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -258,7 +258,7 @@
 <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
 
 <div class="form-group pad-head-foot ">
-                    <label>Accept Un-Neutered Pets  </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept Un-Neutered Pets ')); ?> </label>
                     <span class="pull-right m-rights">
                       <?php echo $this->Form->input(
                           'UserAboutSitters.gh_un_neutered_pets',
@@ -273,7 +273,7 @@
                     </div>
                     
                     <div class="form-group ">
-                    <label>Accept females on heat </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept females on heat ')); ?> </label>
                     <span class="pull-right m-rights"> 
                       <?php echo $this->Form->input(
                           'UserAboutSitters.gh_females_on_heat',
@@ -288,7 +288,7 @@
                     </div>
                     
                <div class="form-group ">
-                    <label>Accept un-spayed females </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-spayed females')); ?> </label>
                      <span class="pull-right m-rights">
                       <?php echo $this->Form->input(
                           'UserAboutSitters.gh_un_spayed_females',
@@ -303,7 +303,7 @@
                     </div>  
                     
                     <div class="form-group ">
-                    <label>Accept un-toilet trained pets   </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-toilet trained pets')); ?>  </label>
                     <span class="pull-right m-rights">
                        <?php echo $this->Form->input(
                           'UserAboutSitters.gh_un_toilet_trained',
@@ -327,7 +327,7 @@
                   </div>
                  
                       <div class="row">
-                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/sitter-house'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i>Previous</button></a>
+                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/sitter-house'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
                     <input type="submit" class="pull-right btn Continue" value="Continue"></p>
                     </div>
 
