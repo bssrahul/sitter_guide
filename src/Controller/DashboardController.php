@@ -760,66 +760,71 @@ class DashboardController extends AppController
     Function for Services & Rates
     */
     function servicesAndRates(){
-    	 $this->viewBuilder()->layout('profile_dashboard');
+    	 
+		$this->viewBuilder()->layout('profile_dashboard');
 
-    	 $usersModel = TableRegistry::get('Users');
+    	$usersModel = TableRegistry::get('Users');
 
-         $session = $this->request->session();
-         $userId = $session->read('User.id');
-         $this->request->data = @$_REQUEST;
+        $session = $this->request->session();
+        $userId = $session->read('User.id');
+        $this->request->data = @$_REQUEST;
 
-        $sitterServicesModel = TableRegistry::get('UserSitterServices');
+		$sitterServicesModel = TableRegistry::get('UserSitterServices');
         $serviceDetailsModel = TableRegistry::get('UserSitterServiceDetails');
-       if(isset($this->request->data['UserSitterServices']) && !empty($this->request->data['UserSitterServices']))
-       {          
-       //pr($this->request->data); die;
-       	      $accept = array("cancellation_policy","booking"); 
-                foreach($accept as $val){ 
-               		if (!array_key_exists($val,$this->request->data['UserSitterServices'])){
-	           			$this->request->data['UserSitterServices'][$val] = 0;
-               		}
+       
+		if(isset($this->request->data['UserSitterServices']) && !empty($this->request->data['UserSitterServices']))
+		{          
+			$accept = array("cancellation_policy","booking"); 
+            foreach($accept as $val){ 
+				if (!array_key_exists($val,$this->request->data['UserSitterServices'])){
+					$this->request->data['UserSitterServices'][$val] = 0;
                	}
-       	      $serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
-       	      $serviceData->user_id = $userId;
-       	      $serviceData =  $sitterServicesModel->save($serviceData);
-		//die;
-		///if(isset($this->request->data['UserServiceDetail']) && !empty($this->request->data['UserServiceDetail']))
-		//{
-       //pr($this->request->data['UserServiceDetail']); die;
-       	      $finalArr = array();
-	   	foreach($this->request->data['UserServiceDetail'] as $service_for){
-       //  pr($service_for);die;
-            $customArray = array(); 
-			foreach($service_for as $sk=>$service){
-			       if(is_array($service_for[$sk]) && !empty($service_for[$sk])){	
-			           	foreach($service_for[$sk] as $sk => $dcVal){
-			            		$customArray[$sk] = $dcVal;
-
-						}
-					}else{
-						$customArray[$sk] = $service;
+			}
+			$serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
+			$serviceData->user_id = $userId;
+			$serviceData =  $sitterServicesModel->save($serviceData);
+			
+			//LOOP FIRST POSTED FORM DATA
+			foreach($this->request->data['UserServiceDetail'] as $service_for){
+				
+				$customServiceArr = array();
+				
+				foreach($service_for as $k=>$service){
+			    
+					if(is_array($service_for[$k]) && !empty($service_for[$k])){	
+			           	
+			           	foreach($service_for[$k] as $sk => $dcVal){
+			            	$customArray[$k][$sk] = $dcVal;
+			            }
+			            unset($service_for[$k]);
+			        }else{
+						$customServiceArr[$k] = $service;
 					}
-			}
-
-			$finalArr[] = $customArray;
-         pr($finalArr);die;
-           
-           
-         }
-	    pr($finalArr); die;
-	    foreach($finalArr as $service_val){
-	    	$services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
-						
-			foreach($services_status as $val){ 
-				if (!array_key_exists($val,$service_val)){
-					$service_val[$val] = 0;
 				}
+				
+				if(!empty($customArray)){
+					
+					foreach($customArray as $ck => $cv){
+						$saveArr[] = array_merge($cv,$customServiceArr);
+					}
+					foreach($saveArr as $saveK=>$saveV){
+						
+						$services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
+						foreach($services_status as $val){ 
+							if (!array_key_exists($val,$saveV)){
+								$saveArr[$saveK][$val] = 0;
+							}
+						}
+					}
+										
+					$serviceDetailData = $serviceDetailsModel->newEntity($saveArr);
+					$serviceDetailData->user_id = $userId;
+					$serviceDetailsModel->save($serviceDetailData);
+				}
+				
 			}
-	        $serviceDetailData = $serviceDetailsModel->newEntity($service_val);
-			$serviceDetailData->user_id = $userId;
-			$serviceDetailsModel->save($serviceDetailData);
-		}
-            return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
+			
+			return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
         }else{
             $query = $usersModel->get($userId,['contain'=>['UserSitterServices','UserSitterServiceDetails']]);
             //pr($query);die;
@@ -833,13 +838,11 @@ class DashboardController extends AppController
             
         }
 	}
+    
     function sitterProfile(){
          $this->viewBuilder()->layout('profile_dashboard');
          	$session = $this->request->session();
-         	//$session->write('bookingProduct','');
-         	//$session->write('house_details','');
-         	//$session->write('sitter_property','');
-	}
+    }
     /**
 	Function for profile edit
 	*/
