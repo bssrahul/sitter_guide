@@ -108,7 +108,7 @@
 											<span class="fa fa-fw fa-envelope"></span>
 									</a>
 							        <?php } ?>
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'ContactRequests'.'/'.base64_encode(convert_uuencode($contactrequest->id));?>" onclick="if(!confirm('Are you sure to delete this Contact Request?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'ContactRequests'.'/'.base64_encode(convert_uuencode($contactrequest->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 					           <!-- <td class=" last"><a href="#"><i class="fa fa-pencil-square"></i> Edit</a></td>-->
 							</tr>

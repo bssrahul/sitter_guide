@@ -8,7 +8,7 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Edit Promo Codessss')); ?><small></small></h2>
+                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Edit Promo Code')); ?><small></small></h2>
 									<div class="clearfix"></div>
 							    </div>
 							
@@ -47,7 +47,7 @@
 										echo $this->Form->input('PromoCodes.coupon_type',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
 												'label' => false,
-												'class'=>'form-control col-md-7 col-xs-12',
+												'class'=>'form-control col-md-7 col-xs-4',
 												'id'=>'c_type',
 												'value'=>$promocodeInfo->coupon_type != '' ?$promocodeInfo->coupon_type:'']);
 										 ?>
@@ -65,19 +65,20 @@
 												]);?>
 										</div>
 									</div>
+                                    
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="discount_rate"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Discount Rate/Fixed')); ?><span class="required">*</span>
 										</label>
 										<!--<?php 
 										if($promocodeInfo->discount_coupon != ''){
 										echo $this->Form->input('PromoCodes.discount_coupon',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-11">{{content}}</div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$promocodeInfo->discount_coupon != '' ?$promocodeInfo->discount_coupon:'']);
 										 }else{
 										 echo $this->Form->input('PromoCodes.fixed_coupon',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-11">{{content}}</div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12',
 												'value'=>$promocodeInfo->fixed_coupon != '' ?$promocodeInfo->fixed_coupon:'']);
@@ -95,26 +96,34 @@
 									
                                         
 										echo $this->Form->input('PromoCodes.discounted_coupon',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-11">{{content}}</div>'],
 												'label' => false,
 												'class'=>"form-control col-md-7 col-xs-12 discounted_coupon $addClass",
 												'value'=>$promocodeInfo->discounted_coupon != '' ?$promocodeInfo->discounted_coupon:'']);?>
 
 							             <!--<span id="discounted_coupon" class="<?php echo $hideClass; ?>">%</span>
 										   <span style="display:none" id="fixed_coupon" class="<?php $hideClass; ?>">$</span>-->
+                                           
+                                         	<div class="col-xs-1">
+										     <span class="discounted_coupon <?php echo $addClass; ?>" >%</span>									     
+									
+                                           </div>  
+                                           
 									<?php
 									 
                                             echo $this->Form->input('PromoCodes.fixed_coupon',[
-												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-11">{{content}}</div>'],
 												'label' => false,
 												'class'=>"form-control col-md-7 col-xs-12 fixed_coupon $addClassFc",
 												'value'=>$promocodeInfo->fixed_coupon != '' ?$promocodeInfo->fixed_coupon:'']);
 										 
 										 ?>
-
-										     <span class="discounted_coupon <?php echo $addClass; ?>" >%</span>
-										   <span class="fixed_coupon <?php echo $addClassFc; ?>" >$</span>
+							   
+                                         	<div class="col-xs-1">
+										    
+										     <span class="fixed_coupon <?php echo $addClassFc; ?>" >$</span>
 									
+                                    </div>
 
 									</div>
 									<div class="item form-group">
@@ -209,12 +218,14 @@
 					 if(couponval == 'discounted_coupon'){
 					 	$(".fixed_coupon").hide();
 					 	$( ".fixed_coupon" ).prop( "disabled", true );
+						$(".error").hide();
 
                         $(".discounted_coupon").show();
                         $( ".discounted_coupon" ).prop( "disabled",false );
 					 }else{
 					 	$(".discounted_coupon").hide();
 					 	$( ".discounted_coupon" ).prop( "disabled", true );
+						$(".error").hide();
 
 					 	$(".fixed_coupon").show();
 					 	$( ".fixed_coupon" ).prop( "disabled",false );
