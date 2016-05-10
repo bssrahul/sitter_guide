@@ -78,12 +78,49 @@ class SearchController extends AppController
 		$this->request->data = $_REQUEST;	
         $session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
+		
+		//ADD MODEL
+		$UsersModel = TableRegistry::get('Users');
+		
+		$conditions = array();
+		pr($this->request->data);
 		if(!empty($this->request->data)){
 			
-			$SiteModel = TableRegistry::get('siteConfigurations');
-			$siteConfiguration = $SiteModel->find('all')->first();
 		
+			//SET CONDITIONS FOR MARKET PLACES LIKE RECREATION, GROOMING, DRIVER, TRAINING ETC
+			if(isset($this->request->data['Search']['marketplace']) && $this->request->data['Search']['marketplace'] !=""){
+				
+				$marketPlacesArr = explode(",",$this->request->data['Search']['marketplace']);
+				
+				if(!empty($marketPlacesArr)){
+					$inStr = '';
+					$totalMarketPlace = count($marketPlacesArr);
+					$i=1;
+					foreach($marketPlacesArr as $marketplaceVal){
+						if($i != $totalMarketPlace){$commaAdded = ",";}else{$commaAdded='';}
+						$inStr .="'".$marketplaceVal."'".$commaAdded;
+						$conditions['OR'][] = 'UserSitterServiceDetails.'.$marketplaceVal.'=1';
+						$i++;
+					}
+					$conditions['OR'][] = 'UserSitterServiceDetails.service_type IN(' . $inStr. ')'; //find service type from comma spareted value	
+				}
+			}
+			
+			//SET CONDITIONS FOR LANGUGE KNOW
+			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['marketplace'] !=""){
+				
+				$conditions['OR'][] = 'userProfessionalAccreditationsDetails.languages=' . $this->request->data['Search']['languages']; //find service type from comma spareted value
+				
+			}
+			pr($conditions);			
+			$searchData = $UsersModel->find('all',['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails']])->where($conditions);
+			pr($searchData); die;
 		}
+		
+		
+		
+		
+		
 		if(!isset($currentLang) && empty($currentLang)){
 
 			$this->setGuestStore("en","Guests","index");
