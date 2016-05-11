@@ -797,6 +797,7 @@ class GuestsController extends AppController
 		
 		$UsersData->first_name = $fname;
 		$UsersData->last_name = $lname;
+		$UsersData->is_image_updated = 0;
 		$UsersData->email = $email;
 		$UsersData->facebook_id = $fbId;
 		$UsersData->image = "https://graph.facebook.com/".$fbId."/picture";

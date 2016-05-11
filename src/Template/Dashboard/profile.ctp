@@ -475,7 +475,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
 $(document).ready(function(){
   var host = window.location.host;
   var proto = window.location.protocol;
-  var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
+  var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 
   $('#change_pic').on('click', function(e){ 
       e.preventDefault();

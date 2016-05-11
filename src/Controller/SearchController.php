@@ -19,7 +19,7 @@ use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\I18n\Time;
-
+use Cake\Datasource\ConnectionManager;
 //require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
 //use Facebook;
 
@@ -131,7 +131,83 @@ class SearchController extends AppController
 		}
 		
 	}
-
+	
+	/**
+	* Function to search profiles
+	*/
+	function searchByLocation(){
+		
+		$this->viewBuilder()->layout('landing');
+		$session = $this->request->session();
+		$currentLang = $session->read('requestedLanguage');
+		
+		//ADD MODEL
+		$UsersModel = TableRegistry::get('Users');
+		
+		$conditions = array();
+		
+		if(!empty($this->request->data)){
+			
+			if($this->request->data['location_autocomplete_lat_long'] !=""){
+				//EXPLODE LATITUDE LONGITUDE FROM SELECTED LOCATION
+				$sourceSelectedLocation = str_replace(array("(",")"), array("",""), $this->request->data['location_autocomplete_lat_long']);
+				$explodedArrayOfSourceLocation = explode(",",$sourceSelectedLocation);
+				$sourceLocationLatitude = $explodedArrayOfSourceLocation[0];
+				$sourceLocationLongitude = $explodedArrayOfSourceLocation[1];
+			}else{
+				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
+				$sourceSelectedLocation = $this->request->data['location_autocomplete'];
+				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+				$response = curl_exec($ch);
+				curl_close($ch);
+				$response_a = json_decode($response);
+				$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+				$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+			}
+		
+			$query='SELECT
+						  id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						FROM users
+						HAVING distance < 30
+						ORDER BY distance';
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE			
+			
+			if(!empty($results)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($results as $resultsValue){
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+				}
+				
+				$userData = $UsersModel->find('all',['UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails'])
+							   ->where(['id' => $idArr], ['id' => 'integer[]'])
+							   ->toArray();
+				
+				
+			}
+		}
+		
+		$this->set('resultsData',$userData);
+		$this->set('distanceAssociation',$distanceAssociation);
+		$this->render("search");
+		
+	}
 
 }
 ?>

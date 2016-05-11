@@ -1,3 +1,4 @@
+<?php echo $this->Html->script(['Front/google_country_autocomplete']); ?>
 <header>
 <div class="head-wrap">
 <div class="container-fluid">
@@ -19,10 +20,10 @@
          <!--Logo End--> 
              <div class="top-search">
                           <div class="search-box">
-                              <input class="search-input" type="text" value="" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search Home Sitter')); ?>" />
-                            </div>
-                        </div> 
-                      <?php echo $this->element('frontElements/common/mob_language_switcher'); ?>
+							<?php echo $this->element('frontElements/common/header_search_form'); ?>
+                        </div>
+              </div> 
+              <?php echo $this->element('frontElements/common/mob_language_switcher'); ?>
                         
         </div>
         <!--/Mobile country Dropdown-->
@@ -110,3 +111,4 @@
                   
 </div>
 </header>
+<?php echo $this->element('frontElements/common/js_code_country_autocomplete'); ?>
