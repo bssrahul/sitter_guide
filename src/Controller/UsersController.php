@@ -543,6 +543,26 @@ class UsersController extends AppController
 			
 			$userId = $this->request->data['Users']['id'];
 			$image['image'] = $this->request->data['Users']['image'];
+			$latitude = $this->request->data['Users']['country'];				
+			$longitude = $this->request->data['Users']['zip'];	
+			//pr($this->request->data);die;
+			// get latitude and longitude from country and zip start	
+			$sourceSelectedLocation = $latitude." ".$longitude;
+			$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false";
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+			$response = curl_exec($ch);
+			curl_close($ch);
+			$response_a = json_decode($response);
+			$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+			$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+			$userData->latitude=$sourceLocationLatitude;					
+			$userData->longitude=$sourceLocationLongitude;					
+			// end get latitude and longitude from country and zip start				
 			if (!$userData->errors()){
 				
 				//Upload user image

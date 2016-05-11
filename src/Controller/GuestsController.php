@@ -459,8 +459,27 @@ class GuestsController extends AppController
 							$UsersData->activation_key = $activation_key;								
 							$UsersData->date_added=date('Y-m-d H:i:s');	
 							$UsersData->date_modified = date('Y-m-d h:i:s');				
+							$latitude = $this->request->data['Users']['country'];				
+							$longitude = $this->request->data['Users']['zip'];	
+							// get latitude and longitude from country and zip start	
+							$sourceSelectedLocation = $latitude." ".$longitude;
+							$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false";
+							$ch = curl_init();
+							curl_setopt($ch, CURLOPT_URL, $url);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+							curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+							$response = curl_exec($ch);
+							curl_close($ch);
+							$response_a = json_decode($response);
+							$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+							$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+							$UsersData->latitude=$sourceLocationLatitude;					
+							$UsersData->longitude=$sourceLocationLongitude;					
+							// end get latitude and longitude from country and zip start			
 							$UsersData->status = 0;
-							
+							//pr($UsersData);die;
 							if($UsersModel->save($UsersData))
 							{
 								$getUsersTempId1 = $UsersData->id;

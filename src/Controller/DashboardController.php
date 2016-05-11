@@ -1222,6 +1222,9 @@ class DashboardController extends AppController
                        $userData = $UsersModel->newEntity();
                        $userData->id = $options['userId'];
                        $userData->image = $options['USERIMG'];
+                       $userData->is_image_uploaded = 1;
+                       $session = $this->request->session();
+                       $session->write('User.is_image_uploaded', 1);
                        if($UsersModel->save($userData)){
                        	  $user = $session->write('User.image',$options['USERIMG']);
                        }
