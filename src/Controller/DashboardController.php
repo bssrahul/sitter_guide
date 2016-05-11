@@ -213,28 +213,21 @@ class DashboardController extends AppController
          $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
-		{
+		{       
 
-             if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response'])){
-					//your site secret key
-					$secret = CAPTCHA_SECRET_KEY;
-					//get verify response data
-					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
-					$responseData = json_decode($verifyResponse);
-                    if($responseData->success)
-                    {
+	if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
+		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
+          {
+	            //your site secret key
+				$secret = CAPTCHA_SECRET_KEY;
+				//get verify response data
+				$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
+				$responseData = json_decode($verifyResponse);
+            if($responseData->success)
+            {
+	            $countryCodesModel = TableRegistry::get('CountryCodes');
+				$data=$this->request->data['Usersp'];
 
-			$countryCodesModel = TableRegistry::get('CountryCodes');
-			/*pr($this->request->data['Users']['county_code']);die;
-			 foreach($this->request->data['Users']['county_code'] as $key=>$val){
-			 	$countryCodeData = $countryCodesModel->newEntity();
-			 	//echo $val;die;
-                  $countryCodeData->code = $val;
-                 $countryCodesModel->save($countryCodeData);
-			 }*/
-			 
-			 //pr($this->request->data);die;
-	            $data=$this->request->data['Usersp'];
 			    $error=$this->validate_password($data,$user_info);
 				if(count($error) > 0)
 				{
@@ -252,32 +245,61 @@ class DashboardController extends AppController
 		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 		                $userData->id = $userId;
 		                if ($usersModel->save($userData)) {
-		                	//echo "koko";die;
-							//$this->Flash->success(__('Profile has been saved Successfully'));
-
-							return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+		                	return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
 						}else{
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
 						}
-
-						unset($userData->id);
+                        unset($userData->id);
 		                $this->set('userInfo', $userData);
-
-				}
-			  }else{
+                }
+			   }else{
 						$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
 					}
 
 			}else{
 					$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
-				}
+			}
+		}else{
+			$countryCodesModel = TableRegistry::get('CountryCodes');
+				$data=$this->request->data['Usersp'];
+
+			    $error=$this->validate_password($data,$user_info);
+				if(count($error) > 0)
+				{
+                        $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		               $usersModel->save($userData);
+							
+                    unset($userData->id);
+	                $this->set('userInfo', $userData);
+                    $this->set('error',$error);
+                    $this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}else{
+                     $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		                if ($usersModel->save($userData)) {
+		                	return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+						}else{
+							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}
+                        unset($userData->id);
+		                $this->set('userInfo', $userData);
+                }
+		    }
         }else{
 		   $userData = $usersModel->get($userId);
 		   unset($userData->id);
 		  $this->set('userInfo', $userData);
 
 	    }
-	    $this->set('captchErr',@$captchErr);
+	    if($captchErr != ''){
+	      $this->set('captchErr',@$captchErr);	
+	    }else{
+	    	 $this->set('captchErr','');
+	    }
+	   
 
         $countryCodesModel = TableRegistry::get('CountryCodes');
         $countrydata = $countryCodesModel->find('all')->toArray();
@@ -338,10 +360,6 @@ class DashboardController extends AppController
 		                    }
 		                $this->set('sitter_images', $html);
 		            }
-		            
-
-
-
 		}else{
 
 		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
@@ -538,9 +556,10 @@ class DashboardController extends AppController
                    	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                    	 $html .='</div></div>';
                    }
-                  
-                   //json_encode($sitterImg);
+                  //json_encode($sitterImg);
                   echo $html; die;
+            }else{
+            	echo $html = ''; die;
             }
       }
       /*End gallery image*/
@@ -796,11 +815,13 @@ class DashboardController extends AppController
             //pr($lastArrToSave);die;
 			foreach($lastArrToSave as $fetchArr){
             	foreach($fetchArr as $newarr){
+                     //pr($newarr);die;
                       $services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
 						foreach($services_status as $val){ 
 							if (!array_key_exists($val,$newarr)){
 								$newarr[$val] = 0;
 							}
+							//pr($newarr);die;
 						}
                        $serviceDetailData = $serviceDetailsModel->newEntity($newarr);
 					   $serviceDetailData->user_id = $userId;

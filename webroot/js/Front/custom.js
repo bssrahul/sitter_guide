@@ -706,57 +706,401 @@
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
 			rules: {
-				"UserSitterServices[sh_holiday_rate]":
+				"UserServiceDetail[sh][holiday_rate]":
 				{
-					 number: true 
+					required:true, 
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_puppy_rate]":
+				"UserServiceDetail[sh][small_guest_rate]":
 				{
-					 number: true 
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_cat_rate]":
+				"UserServiceDetail[sh][large_guest_rate]":
 				{
-					 number: true 
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_horse_rate]":
+				"UserServiceDetail[sh][day_rate]":
 				{
-					 number: true 
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_reptiles_rate]":
+				"UserServiceDetail[sh][night_rate]":
 				{
-					 number: true 
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_small_pets_rate]":
-				{
-					 number: true 
+				"UserServiceDetail[sh][cat_rate]":
+				{   
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_dc_holiday_rate]":
+				"UserServiceDetail[sh][puppy_rate]":
 				{
-					 number: true  
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_nc_guest_rate]":
+				"UserServiceDetail[gh][holiday_rate]":
 				{
-					 number: true 
+					required:true, 
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_hc_guest_rate]":
+				"UserServiceDetail[gh][small_guest_rate]":
 				{
-					 number: true 
+					required:true,
+					number:true,
+					min: 0
 				},
-				"UserSitterServices[sh_ltc_guest_rate]":
+				"UserServiceDetail[gh][large_guest_rate]":
 				{
-
-					 required: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
-					
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][day_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][night_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][cat_rate]":
+				{   
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][puppy_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][drop_visit_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][holiday_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][small_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][large_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][grooming_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][recreation_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][training_rate]":
+				{   
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][driving_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][cat_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0 
+				},
+				"UserServiceDetail[mp][puppy_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][dc][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][dc][extended_stay_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][dc][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][dc][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][nc][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][nc][extended_stay_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][nc][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[sh][sd][nc][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dc][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dc][extended_stay_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dc][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dc][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][nc][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][nc][extended_stay_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][nc][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][nc][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dv][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dv][extended_stay_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dv][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[gh][sd][dv][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][gr][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][gr][premium_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][gr][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][gr][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][pt][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][pt][premium_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][pt][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][pt][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][re][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][re][premium_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][re][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][re][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][ds][additional_guest_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][ds][premium_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][ds][additional_guest_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserServiceDetail[mp][sd][ds][service_holiday_rate]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[day_care_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[night_care_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[visits_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[hourly_services_limit]":
+				{
+					required:true,
+					number:true,
+					min: 0
 				}
-			}/*,
-			submitHandler: function(form) {
-				var actionURL = $('#personalForm').attr('action');
-				gettingstarted("personalForm","submitGetting",actionURL);
-				return false;
-			}*/
+             },
+			messages: {
+				"UserServiceDetail[sh][holiday_rate]":
+				{
+					required : "This field is required"
+				}
+			}
+
+         });
 			
-		});
-		
+	
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
 			rules: {
@@ -858,7 +1202,7 @@
 			messages: {				
 				"UserSitterServices[sh_holiday_rate]":
 				{
-					required : "Number only please"
+					required : "This field is required"
 				}
 			}/*,
 			submitHandler: function(form) {

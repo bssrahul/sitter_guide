@@ -64,10 +64,10 @@
 							</div>
 							<!----NEW CHANGES ASK BY CLIENT END -->
 							<h3></h3>
-							<div class="row">
+							<!--<div class="row">
 								
 								<div class="form-group col-lg-4">
-									<h6><strong>Drivers Licence<small> (Your photo ID will not be displayed on your profile)</small></strong></h6>
+									<h6><strong class="f17">Drivers Licence<small> (Your photo ID will not be displayed on your profile)</small></strong></h6>
 									 
 									 <span><a href="#" data-toggle="tooltip" data-placement="right" title="Your photo ID will not be displayed on your profile."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
 									 
@@ -86,7 +86,7 @@
 								</div>
 								
 								<div class="form-group col-lg-4">
-									<h6><strong>Police Background Check</strong><small> (Government Issued Police Check) </small></h6>
+									<h6><strong class="f17">Police Background Check</strong><small> (Government Issued Police Check) </small></h6>
 									
 									<span><a href="#" data-toggle="tooltip" data-placement="right" title="Your photo ID will not be displayed on your profile."><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
 									
@@ -105,8 +105,48 @@
 								</div>
 								
 								
-							</div>
-							
+							</div>-->
+				<div class="row">
+                    <div class="form-group col-lg-4">
+                    <div class="mb10">
+                    <strong class="f17">Drivers Licence</strong><small class="color-green-text"> ( Your Photo ID will not be displayed on your profile ) </small><span><a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="This will appear at the top of your profile page and on search results"><img src="<?php echo HTTP_ROOT; ?>img/close.png" class="close11"></a></span></div>
+                   
+                    <div class="brow-inner">
+                        <?php echo $this->Form->input('UserProfessionals.govt.licence.scanned_certification',[
+										'class'=>'form-control',
+										'templates' => ['inputContainer' => '{{content}}'],
+										'placeholder'=>'Upload Government Proof',
+										'readonly'=>true,
+										'label'=>false,
+										'value'=>@$professional['UserProfessionals']['govt']['licence']['scanned_certification'] !=''?@$professional['UserProfessionals']['govt']['licence']['scanned_certification']:''
+					    ]); ?>
+					    <button class="uploaddoc btn btn-secondary" type="button">Browse</button>
+
+
+
+                      </div>
+                    </div>
+                    
+                    
+                    <div class="form-group col-lg-4">
+                    <div class="mb10"> <strong class="f17">Police Background Check</strong><small class="color-green-text"> ( Government Issued Police Check ) </small><span><a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="This will appear at the top of your profile page and on search results"><img src="<?php echo HTTP_ROOT; ?>img/close.png" class="close11"></a></span></div>
+                   
+                    <div class="brow-inner ">
+                      <!--<input type="text" class="form-control" id="" placeholder="Upload Government Proof">
+                      <button class="btn btn-secondary" type="button">Browse</button>-->
+                      <div class="brow-inner">
+								<?php echo $this->Form->input('UserProfessionals.check.govt.scanned_certification',[
+									 'class'=>'form-control',
+									 'templates' => ['inputContainer' => '{{content}}'],
+									 'placeholder'=>'Upload Government Proof',
+									 'readonly'=>true,
+									 'label'=>false,
+									  'value'=>@$professional['UserProfessionals']['check']['govt']['scanned_certification'] !=''?@$professional['UserProfessionals']['check']['govt']['scanned_certification']:''
+								]); ?>
+								<button type="button" class="uploaddoc btn btn-secondary">Browse</button>
+                      </div>
+                    </div>
+                </div>
 							<h3><strong>Physician (Pets)</strong><small>   (Certificate/Degree) </small></h3>
 							<div class="row">
 								<div class="form-group col-lg-4">
@@ -211,7 +251,16 @@
 							</div>
 						</div>
 						
-							<h3><strong>Other Qualifications & Specific Skills</strong><small>(Certificate/Degree)</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i> Add More</span></h3>
+							<!--<h3><strong>Other Qualifications & Specific Skills</strong><small>(Certificate/Degree)</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i> Add More</span></h3>-->
+					    <div class="row">
+                          <div class="form-group col-lg-4">
+                            <div class="brow-inner pull-left">
+                               <span id="addMore" class="pull-right add-more-n"> <i class="fa fa-plus-circle"></i>
+                               Add More</span>
+                            </div>
+                          </div>
+                        </div>
+                        <h3></h3>
 					
 					<?php 
 					//CONDITION FOR 
@@ -334,7 +383,7 @@
                   
                   <h3 id="addAfter"></h3>
 
-                  <div class="row">
+                  <!--<div class="row">
                     
 						<div class="col-lg-4">
 						  <label for="">Do you know CPR for </label>
@@ -374,9 +423,9 @@
 							'value'=>@$professional['user_professional_accreditations_details']->injected_madications !=''?@$professional['user_professional_accreditations_details']->injected_madications:'']);
 						  ?>
 						</div>
-                    </div>
+                    </div>-->
 
-                    <div class="row">
+                    <!--<div class="row">
                    
                    
                     <div class="col-lg-4">
@@ -423,6 +472,98 @@
                     </div>
                     
 
+                    </div>-->
+                    <div class="row">
+	                    <div class="col-lg-4">
+	                       <label for="">Do you know CPR for  </label>
+	                          <!--<select id="sel1" class="form-control">
+	                           <option>Adults</option>
+	                          <option>Children</option>
+	                          <option>Infants</option>
+	                          <option>Dog</option>
+	                          <option>Cat</option>
+	                          <option>Other (specify)</option>
+	                          </select>-->
+
+		                    <?php echo $this->Form->input('UserProfessionalsDetails.cpr_for',[
+								'templates' => ['inputContainer' => '{{content}}'],
+								'label' => false,
+								'type'=>'select',
+								'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
+								'class'=>'form-control',
+								'value'=>@$professional['user_professional_accreditations_details']->cpr_for !=''?@$professional['user_professional_accreditations_details']->cpr_for:'']);
+							?>
+	                      
+	                    </div>
+
+	                    <div class="col-lg-4  la1">
+	                       <label for="">I can administer Oral Medications</label>
+	                        <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+	                        <div class="chek-main-lat">
+	                          <a href="#"> <img src="<?php echo HTTP_ROOT; ?>img/yes-btn.png" width="79" height="40" alt="yes"></a> </div>
+	                        </div>
+	                    </div>
+                        <div class="col-lg-4  la1">
+	                       <label for="">I can administer Injected Medications</label>
+	                          <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+	                        <div class="chek-main-lat">
+	                         <a href="#"> <img src="<?php echo HTTP_ROOT; ?>img/no.png" width="79" height="40" alt="yes"></a> </div>
+	                        </div>
+	                    </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-lg-4 mt10">
+	                          <label for="">Experience with Behavioural Problems</label>
+	                         <!-- <select id="sel1" class="form-control">
+		                          <option>Adults</option>
+		                          <option>Children</option>
+		                          <option>Infants</option>
+		                          <option>Dog</option>
+		                          <option>Cat</option>
+		                          <option>Other (specify)</option>
+	                          </select>-->
+	                           <?php echo $this->Form->input('UserProfessionalsDetails.ex_behavioural_problems',[
+			                        'templates' => ['inputContainer' => '{{content}}'],
+			                        'label' => false,
+			                        'type'=>'select',
+			                        'options'=>[''=>'---','adults'=>'Adults','children'=>'Children','infants'=>'Infants','dog'=>'Dog','other'=>'Other (specify)'],
+			                        'class'=>'form-control',
+			                        'value'=>@$professional['user_professional_accreditations_details']->ex_behavioural_problems !=''?@$professional['user_professional_accreditations_details']->ex_behavioural_problems:'']);
+                              ?>
+	                    </div>
+	                    <div class="col-lg-4 mt10">
+	                         <label for="">Experience with Rescue Pets  </label>
+	                          <!--<select id="sel1" class="form-control">
+	                          <option>Dog</option>
+	                          <option>Cat</option>
+	                          <option>Other (specify)</option>
+	                          </select>-->
+	                        <?php echo $this->Form->input('UserProfessionalsDetails.ex_rescue_pets',[
+		                        'templates' => ['inputContainer' => '{{content}}'],
+		                        'label' => false,
+		                        'type'=>'select',
+		                        'options'=>[''=>'---','dog'=>'Dog','cat'=>'Cat','other'=>'Other (specify)'],
+		                        'class'=>'form-control',
+		                        'value'=>@$professional['user_professional_accreditations_details']->ex_rescue_pets !=''?@$professional['user_professional_accreditations_details']->ex_rescue_pets:'']);
+                            ?>
+
+	                    </div>
+	                    <div class="form-group col-lg-4 mt10">
+	                     <label for="">Familiar with Pet Training Techniques</label>
+	                          <!--<select id="sel1" class="form-control">
+	                          <option>Dog</option>
+	                          <option>Cat</option>
+	                          <option>Other (specify)</option>
+	                          </select>-->
+	                        <?php echo $this->Form->input('UserProfessionalsDetails.training_techniques',[
+			                        'templates' => ['inputContainer' => '{{content}}'],
+			                        'label' => false,
+			                        'type'=>'select',
+			                        'options'=>[''=>'---','dog'=>'Dog','cat'=>'Cat','other'=>'Other (specify)'],
+			                        'class'=>'form-control',
+			                        'value'=>@$professional['user_professional_accreditations_details']->training_techniques !=''?@$professional['user_professional_accreditations_details']->training_techniques:'']);
+                            ?>
+                        </div>
                     </div>
                    <div class="row">
                     <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i>Previous</button></a>
