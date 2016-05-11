@@ -97,6 +97,35 @@
 						'value'=>$userInfo->zone_id]);
 				 ?>
 			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+				
+				<?php 
+                                echo $this->Form->input('Users.country',[
+                                  'templates' => ['inputContainer' => '{{content}}'],
+                                  'type'=>'select',
+                                  'label'=>false,
+                                  'options'=>[''=>'Choose Country','Australia'=>'Australia','Austria'=>'Austria','Belbium'=>'Belbium','Canada'=>'Canada','Denmark'=>'Denmark','Finland'=>'Finland','France'=>'France','Germany'=>'Germany','Hong Kong S.A.R., China'=>'Hong Kong S.A.R., China','Ireland'=>'Ireland','Italy'=>'Italy','Japan'=>'Japan'],
+                                  'class' =>'form-control',
+                                  'value'=>$userInfo->country,
+                                  ]);
+                                 echo '<em class="signup_error error">'.__(@$loginerror['country'][0]).'</em>';
+                ?>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+				<label>
+				<?php echo $this->requestAction('app/get-translate/'.base64_encode('Zip Code')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+				<?php  
+								echo $this->Form->input('Users.zip',[
+								'templates' => ['inputContainer' => '{{content}}'],               
+									'class'=>'form-control',
+									'label'=>false,
+									'value'=>$userInfo->zip,
+									]);
+									echo '<em class="signup_error error">'.__(@$loginerror['zip'][0]).'</em>';
+								?>
+			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
 			<label  class="control-label" for="about_user"><?php echo $this->requestAction('users/get-translate/'.base64_encode('About User')); ?></label>
 				<?php 

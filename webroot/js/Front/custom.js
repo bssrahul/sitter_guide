@@ -68,9 +68,6 @@
 				{
 					required:true,
 					number:true,
-					minlength:'6',
-					maxlength:'6',
-					
 				},
 				"Users[birth_date]":
 				{
@@ -118,10 +115,6 @@
 				{
 					required : "This field is required",
 					number:"Zip Code should be Numbers.",
-					minlength: "Please enter minimum 6 Number.",
-					maxlength: "Please enter maximmum 6 Number.",
-					
-					
 				},
 				"Users[birth_date]":
 				{
