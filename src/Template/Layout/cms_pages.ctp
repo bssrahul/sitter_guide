@@ -19,7 +19,7 @@
 	       <link rel=icon href="<?php echo HTTP_ROOT; ?>images/create_logo.png" type="image/png">
           
     </head>
-    <body class="terms-page">
+    <body class="<?php echo ($this->request->action=='help')?$this->request->action:"terms" ?>-page">
 		<!--[content area Start]-->
 		<?php 
 			$session = $this->request->session();

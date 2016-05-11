@@ -12,6 +12,7 @@ class CategoriesTable extends Table
         $this->addBehavior('Translate', ['fields' => ['title','slug','description'],
            'translationTable' => 'I18n'
 		]);
+		$this->hasMany('faqs', ['dependent' => true]);
     }
 	
     public function validationDefault(Validator $validator)

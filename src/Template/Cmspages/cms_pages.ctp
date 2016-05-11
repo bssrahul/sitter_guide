@@ -100,6 +100,9 @@
 								<td  style="width:400px" class=" "><?php echo $pages->pageheading;?></td>
 								<td class=" last">
 								<a title="Edit" href="<?php echo HTTP_ROOT.'cmspages/cms-pages-edit/'.base64_encode(convert_uuencode($pages->id)); ?>"><span><i class="fa fa-pencil-square"></i> </span></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<a title="View Page" href="<?php echo HTTP_ROOT.$pages->pageurl; ?>"><span><i class="fa fa-eye"></i> </span></a>
+								
 								</td>
 							</tr>
 							<?php $i++; 
