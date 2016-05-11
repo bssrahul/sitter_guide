@@ -77,15 +77,14 @@ class FaqsController extends AppController
 		$faqsModel= TableRegistry::get('Faqs');
 		$CategoriesModel= TableRegistry :: get("categories");
 		$CategoryData=$CategoriesModel->find('all')->where(['slug ' => 'Faqs' ])->toArray();
+		$CategoryArr[0]="--Select Category--";
 		foreach($CategoryData as $Category){
 			
 			
 			$CategoryArr[$Category['id']]=$Category['title'];
 		}
-		$sel[]='---Select Category---';
-		$CategoryArr=$sel+$CategoryArr;
-		//pr($CategoryArr);die;
-		//pr($CategoryData);die;
+		
+		
 		$this->set('CategoryData',$CategoryArr);
 		if(isset($this->request->data)&& !empty($this->request->data))
 		{
