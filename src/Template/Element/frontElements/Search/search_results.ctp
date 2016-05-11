@@ -39,154 +39,110 @@
             <!--sitter listing 1-->           
             <div class="all-sitter-listing">
               <ul class="all-sit-list">
-                <li>
-                  <div class="sld-area">
-                    <div class="sit-pic-lft">
-                      <div class="ppic-area">
-                        <div class="sitter-pic"> 
-                        	<img src="<?php echo HTTP_ROOT; ?>img/profile-pic.png"  alt=""/>
-                        </div>
-                        <div class="sitter-p-det"> 
-                          <!--head-->
-                          <div class="sit-p-head">
-                            <p class="head-txt"><span>1</span>Alyce B <b><img src="<?php echo HTTP_ROOT; ?>img/certify-1.png"  alt=""/></b> <b><img src="<?php echo HTTP_ROOT; ?>img/certify-2.png"  alt=""/></b>
-                            </p>
-                            <p class="about-sit">Dog Loving Family</p>
-                            <p class="away">Woolloomooloo, New South Wales <span><i class="fa fa-map-marker" aria-hidden="true"></i> 9Km Away</span></p>
-                          </div>
-                          <!--/head--> 
-                          <!--rating-->
-                          <div class="sitter-rating">
-                            <div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>
-                            <div class="sit-review"> <a href="#" title="Review">105 Reviews</a> </div>
-                          </div>
-                          <!--/rating--> 
-                          <!--availability-->
-                          <div class="sit-available">
-                            <ul>
-                              <li><a href="#" title="Available this weekend">Available this weekend</a></li>
-                              <li><a href="#" title="Available on New Year">Available on New Year</a></li>
-                            </ul>
-                          </div>
-                          <!--availability--> 
-                          
-                        </div>
-                      </div>
-                      <!--sitter list-->
-                      <div class="sit-list-del">
-                        <ul>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Repeat Guests : <span>2</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last booked: <span>2 week ago</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last active <span>2 day ago</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Response Rate <span>100%</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Average Response <span>2hours</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last Contacted <span>5day ago</span></li>
-                        </ul>
-                      </div>
-                      <!--sitter list--> 
-                      <!--sitter feedback-->
-                      <div class="sit-feedback"> <img src="<?php echo HTTP_ROOT; ?>img/sit-feedback-img.png" width="52" height="52" alt=""/>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has  dummy text of the as  Ipsum has been the industry's <a href="#"> read more... </a></p>
-                      </div>                      
-                      <!--sitter feedback--> 
-                    </div>
-                    <div class="sit-pic-rgt"> 
-                      <!--per night-->
-                      <div class="per-nite">
-                        <p>from <br>
-                          <span>$25</span> per night</p>
-                      </div>
-                      <!--per night--> 
-                      <!--facilities-->
-                      <div class="facilities">
-                        <ul>
-                          <li>Grooming <span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon-1.png"  alt="Grooming"/></span></li>
-                          <li>Trainning<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png"  alt="Grooming"/></span></li>
-                          <li>Driver<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png"     alt="Grooming"/></span></li>
-                          <li>Recreation<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png" alt="Grooming"/></span></li>
-                        </ul>
-                      </div>
-                      <!--/facilities--> 
-                      <!--likebox-->
-                      <div class="likebox"> 
-                    	  <a href="#" title="LIke"><img src="<?php echo HTTP_ROOT; ?>img/like-icon.png" width="16" height="14" alt=""/></a>
-                      </div>
-                      <!--/likebox--> 
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="sld-area">
-                    <div class="sit-pic-lft">
-                      <div class="ppic-area">
-                        <div class="sitter-pic"> <img src="<?php echo HTTP_ROOT; ?>img/profile-pic.png"  alt=""/> </div>
-                        <div class="sitter-p-det"> 
-                          <!--head-->
-                          <div class="sit-p-head">
-                            <p class="head-txt"><span>1</span>Alyce B <b><img src="<?php echo HTTP_ROOT; ?>img/certify-1.png"  alt=""/></b> <b><img src="<?php echo HTTP_ROOT; ?>img/certify-2.png"  alt=""/></b>
-                            </p>
-                            <p class="about-sit">Dog Loving Family</p>
-                            <p class="away">Woolloomooloo, New South Wales <span><i class="fa fa-map-marker" aria-hidden="true"></i> 9Km Away</span></p>
-                          </div>
-                          <!--/head--> 
-                          <!--rating-->
-                          <div class="sitter-rating">
-                            <div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>
-                            <div class="sit-review"> <a href="#" title="Review">105 Reviews</a> </div>
-                          </div>
-                          <!--/rating--> 
-                          <!--availability-->
-                          <div class="sit-available">
-                            <ul>
-                              <li><a href="#" title="Available this weekend">Available this weekend</a></li>
-                              <li><a href="#" title="Available on New Year">Available on New Year</a></li>
-                            </ul>
-                          </div>
-                          <!--availability--> 
-                          
-                        </div>
-                      </div>
-                      <!--sitter list-->
-                      <div class="sit-list-del">
-                        <ul>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Repeat Guests : <span>2</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last booked: <span>2 week ago</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last active <span>2 day ago</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Response Rate <span>100%</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Average Response <span>2hours</span></li>
-                          <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last Contacted <span>5day ago</span></li>
-                        </ul>
-                      </div>
-                      <!--sitter list--> 
-                      <!--sitter feedback-->
-                      <div class="sit-feedback"> <img src="<?php echo HTTP_ROOT; ?>img/sit-feedback-img.png" width="52" height="52" alt=""/>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has  dummy text of the as  Ipsum has been the industry's <a href="#"> read more... </a></p>
-                      </div>                      
-                      <!--sitter feedback--> 
-                    </div>
-                    <div class="sit-pic-rgt"> 
-                      <!--per night-->
-                      <div class="per-nite">
-                        <p>from <br>
-                          <span>$25</span> per night</p>
-                      </div>
-                      <!--per night--> 
-                      <!--facilities-->
-                      <div class="facilities">
-                        <ul>
-                          <li>Grooming <span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon-1.png"  alt="Grooming"/></span></li>
-                          <li>Trainning<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png"  alt="Grooming"/></span></li>
-                          <li>Driver<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png"     alt="Grooming"/></span></li>
-                          <li>Recreation<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png" alt="Grooming"/></span></li>
-                        </ul>
-                      </div>
-                      <!--/facilities--> 
-                      <!--likebox-->
-                      <div class="likebox"> <a href="#" title="LIke"><img src="<?php echo HTTP_ROOT; ?>img/like-icon.png" width="16" height="14" alt=""/></a> </div>
-                      <!--/likebox--> 
-                    </div>
-                  </div>
-                </li>
+				<?php if(!empty($resultsData)){ 
+						$rankNo=1;
+						foreach($resultsData as $results){  ?>
+							<li>
+							  <div class="sld-area">
+								<div class="sit-pic-lft">
+								  <div class="ppic-area">
+									<div class="sitter-pic"> 
+										
+										<?php 
+										if($results->facebook_id !="" && $results->is_image_uploaded==0){
+											if($results->image != "")
+											{
+												$orgImg = $results->image;
+											}else{ 
+												$orgImg = 'prof_photo.png';
+											} 
+										?>
+										<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo $orgImg; ?>"> 
+
+										<?php }else{ ?>
+										
+										<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 					   
+										<?php  } ?>
+									</div>
+									<div class="sitter-p-det"> 
+									  <!--head-->
+									  <div class="sit-p-head">
+										<p class="head-txt">
+											<span><?php echo $rankNo; ?></span>
+											<?php echo $results->first_name." ".substr($results->last_name,0,1)."."; ?> <b><img src="<?php echo HTTP_ROOT; ?>img/certify-1.png"  alt=""/></b> <b><img src="<?php echo HTTP_ROOT; ?>img/certify-2.png"  alt=""/></b>
+										</p>
+										<p class="about-sit">Dog Loving Family</p>
+										
+										<p class="away">Woolloomooloo, New South Wales <span><i class="fa fa-map-marker" aria-hidden="true"></i> 
+										<?php echo round($distanceAssociation[$results->id],2); ?> Km Away</span></p>
+									  </div>
+									  <!--/head--> 
+									  <!--rating-->
+									  <div class="sitter-rating">
+										<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>
+										<div class="sit-review"> <a href="#" title="Review">105 Reviews</a> </div>
+									  </div>
+									  <!--/rating--> 
+									  <!--availability-->
+									  <div class="sit-available">
+										<ul>
+										  <li><a href="#" title="Available this weekend">Available this weekend</a></li>
+										  <li><a href="#" title="Available on New Year">Available on New Year</a></li>
+										</ul>
+									  </div>
+									  <!--availability--> 
+									  
+									</div>
+								  </div>
+								  <!--sitter list-->
+								  <div class="sit-list-del">
+									<ul>
+									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Repeat Guests : <span>2</span></li>
+									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last booked: <span>2 week ago</span></li>
+									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last active <span>2 day ago</span></li>
+									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Response Rate <span>100%</span></li>
+									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Average Response <span>2hours</span></li>
+									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last Contacted <span>5day ago</span></li>
+									</ul>
+								  </div>
+								  <!--sitter list--> 
+								  <!--sitter feedback-->
+								  <div class="sit-feedback"> <img src="<?php echo HTTP_ROOT; ?>img/sit-feedback-img.png" width="52" height="52" alt=""/>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has  dummy text of the as  Ipsum has been the industry's <a href="#"> read more... </a></p>
+								  </div>                      
+								  <!--sitter feedback--> 
+								</div>
+								<div class="sit-pic-rgt"> 
+								  <!--per night-->
+								  <div class="per-nite">
+									<p>from <br>
+									  <span>$25</span> per night</p>
+								  </div>
+								  <!--per night--> 
+								  <!--facilities-->
+								  <div class="facilities">
+									<ul>
+									  <li>Grooming <span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon-1.png"  alt="Grooming"/></span></li>
+									  <li>Trainning<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png"  alt="Grooming"/></span></li>
+									  <li>Driver<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png"     alt="Grooming"/></span></li>
+									  <li>Recreation<span><img src="<?php echo HTTP_ROOT; ?>img/fac-icon.png" alt="Grooming"/></span></li>
+									</ul>
+								  </div>
+								  <!--/facilities--> 
+								  <!--likebox-->
+								  <div class="likebox"> 
+									  <a href="#" title="LIke"><img src="<?php echo HTTP_ROOT; ?>img/like-icon.png" width="16" height="14" alt=""/></a>
+								  </div>
+								  <!--/likebox--> 
+								</div>
+							  </div>
+							</li>
+						
+						<?php 
+						$rankNo++;
+						}
+				} ?>
+                
               </ul>
             </div>            
             <!--sitter listing --> 
@@ -296,11 +252,26 @@
                         </div>                        
                     </div>
                 </div>
-             <!--<img src="<?php echo HTTP_ROOT; ?>img/search-map.png" alt=""/> -->
-              <?php echo $this->GoogleMap->map(array('width'=>'100%','height'=>'1180px','type'=>'ROADMAP')); ?>
+				<?php echo $this->GoogleMap->map(array('width'=>'100%','height'=>'1180px','type'=>'ROADMAP','latitude'=>$sourceLocationLatitude,'longitude'=>$sourceLocationLongitude)); ?>
+				<?php if(!empty($resultsData)){ 
+						$mapInc =1;
+						foreach($resultsData as $results){  
+							$position['latitude'] = $results->latitude;
+							$position['longitude'] = $results->longitude;
+							echo $this->GoogleMap->addMarker('map_canvas',$results->id,$position,array('markerTitle'=>$results->id,'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF')); 
+							$mapInc++;
+						}
+					}		
+				?>
            </div>
            <!--[Right Map End]-->
         </div>
       </div>
     </div>
   </section>
+<style>
+.searchImg{
+		width:163px;
+		height:165px;
+}
+</style>
