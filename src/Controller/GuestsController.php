@@ -152,6 +152,8 @@ class GuestsController extends AppController
 					$session->write('User.id', $getUserData->id);
 					$session->write('User.email', $getUserData->email);
 					$session->write('User.name', $getUserData->first_name." ".$getUserData->last_name);
+					$session->write('User.facebook_id', $getUserData->facebook_id);
+					$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
 					$session->write('User.image', $getUserData->image);
 					$session->write('User.last_login', $getUserData->last_login);
 					$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
@@ -798,6 +800,7 @@ class GuestsController extends AppController
 		$UsersData->first_name = $fname;
 		$UsersData->last_name = $lname;
 		$UsersData->email = $email;
+		$UsersData->is_image_uploaded = 0;
 		$UsersData->facebook_id = $fbId;
 		$UsersData->image = "https://graph.facebook.com/".$fbId."/picture";
 		

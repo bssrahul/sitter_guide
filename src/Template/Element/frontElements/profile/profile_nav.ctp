@@ -10,8 +10,17 @@
                    <?php 
                        $session = $this->request->session(); 
                        $user = $session->read('User');
+					 
                     ?>
-                   <img class="img-circle" style="width:52px" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>">  
+					
+					<?php if(($user['facebook_id'])=="" && ($user['is_image_uploaded'])== 1){?>
+                   <img class="img-circle" style="width:52px" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>"> 
+				   <?php }else{ ?>
+					   
+					    <img class="img-circle" style="width:52px" alt="<?php echo __('Profile Picture'); ?>" src="<?php if($user['image'] != ""){echo $user['image'];}
+						else{ echo $user['image']='prof_photo.png';} ?>"> 
+					   
+				 <?php  } ?>
 
                      <p><?php echo $user['name'] != ''?$user['name']:'Guest'; ?></p>
                 </div> 
