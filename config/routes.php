@@ -65,9 +65,9 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/privacy', ['controller' => 'Pages', 'action' => 'cms','privacy']);
 		$routes->connect('/terms', ['controller' => 'Pages', 'action' => 'cms','terms']);
 		$routes->connect('/safety', ['controller' => 'Pages', 'action' => 'cms','safety']);
-		
 		$routes->connect('/contact-us', ['controller' => 'Pages', 'action' => 'contactUs']);
 		$routes->connect('/news', ['controller' => 'Pages', 'action' => 'news']);
+		$routes->connect('/help', ['controller' => 'Pages', 'action' => 'help']);
 		$routes->connect('/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
 
 

@@ -1,0 +1,269 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.help-page .fun-news .fn-bot {
+    float: left;
+    margin: 0px 0 0;
+    width: 100%;
+}
+.help-page {background:#fff !important;}
+
+
+
+
+/*Banner inner pages starts*/
+.help-page .banner-area-terms {background:url(../../img/help-banner.png) no-repeat; background-position:left; height:550px;  width:100%; }
+
+.help-page .banner-area-terms h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.help-page .banner-area-terms p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/
+
+.help-ban-wrap { width:100%; float:left; background:#eaeeef url(../../img/banner-bgr-line-x.png) repeat-x bottom; margin-top:75px;}
+.outer{ width:100%; float:left; background: url(../../img/help-banner-img-1.png) no-repeat right bottom; min-height:500px; }
+.inner{ width:100%; float:left; background: url(../../img/help-banner-img-2.png) no-repeat left bottom; min-height:500px; }
+
+.help-input {padding-top:130px; max-width:70%; margin:0px auto;}
+.help-input input {height:52px;}
+.help-input button {height:52px; background:#7baf04; color:#fff; font-size:20px; padding:0 25px;}
+
+.help-ban-wrap p {color:#404040; padding-top:20px;}
+
+.pad-bottom10 {padding-bottom:10px;}
+
+.pt22 {padding-top:0px;}
+
+
+/*Tap nav starts*/
+
+
+/*Tap nav ends*/
+
+
+/*.h166 {height:168px; width:166px; border:1px solid #ccc; border-radius:none !important;}
+
+.help-page .tab-section .nav-pills .active {background-color:#7baf04;}
+
+
+.help-page .tab-section .nav-pills > li.active > a, .help-page .tab-section .nav-pills > li.active > a:focus, .help-page .tab-section .nav-pills > li.active > a:hover {
+    background-color: #72a105 ;    color: #fff;}
+
+
+.help-page .help-icon-tab .help-icons1   span {
+    background:url(../../img/search-icons.png) no-repeat -552px -411px; height:120px; width:120px; display:block;
+}
+
+
+
+.help-page .help-icon-tab .first span {
+    background: url(../../img/search-icons.png) no-repeat -552px -411px; height:120px; width:120px; display:block;
+}
+.help-page .help-icon-tab .help-icons1  span:hover {
+    background:#72a105 url(../../img/search-icons.png) no-repeat -552px -411px !important; height:120px; width:120px; display:block;
+}
+
+
+.help-page .help-icon-tab ul .active {background:#72a105;}
+.help-page .help-icon-tab ul li:hover {background:#72a105 !important;}
+
+
+
+
+.help-page .help-icon-tab .nav > li > a:focus, .help-page .help-icon-tab .nav > li > a:hover {
+    background-color: #72a105;
+    text-decoration: none;
+}
+*/
+
+.tab-section .nav > li > a:focus, .nav > li > a:hover{ background:#ffffff;}
+.tab-section  .help-icon-tab ul.nav-stacked li{ height:170px; border:#dddddd 1px solid; margin:0px;}
+.tab-section  .help-icon-tab ul.nav-stacked li a{ display:block; height:170px;}
+
+
+
+.tab-section .help-icon-tab ul.nav-stacked li.active a span i {
+    background: rgba(0, 0, 0, 0) url(../../img/arrow-rgt.png) no-repeat scroll 0 0;
+    height: 32px;
+
+    position: absolute;
+    right: -20px;
+    top: 40%;
+    width: 20px;
+}
+
+
+
+.tab-section  .help-icon-tab ul.nav-stacked li a{ border-radius:0px; height:170px;}
+.tab-section  .help-icon-tab ul.nav-stacked li a.first span{width:100px; height:108px; background:url(../../img/search-icons.png) no-repeat  0px -538px ; display:block; margin:20px auto 0;}
+.tab-section  .help-icon-tab ul.nav-stacked li a.first:focus span{ background:url(../../img/search-icons.png) no-repeat  -110px -538px;}
+.tab-section  .help-icon-tab ul.nav-stacked li.active a.first span{ background:url(../../img/search-icons.png) no-repeat  -110px -538px ;}
+
+.tab-section  .help-icon-tab ul.nav-stacked li a{ border-radius:0px; height:170px;}
+.tab-section  .help-icon-tab ul.nav-stacked li a.second span{width:100px; height:108px; background:url(../../img/search-icons.png) no-repeat  -220px -538px ; display:block; margin:20px auto 0;}
+.tab-section  .help-icon-tab ul.nav-stacked li a.second:focus span{ background:url(../../img/search-icons.png) no-repeat  -330px -538px ;}
+.tab-section  .help-icon-tab ul.nav-stacked li.active a.second span{ background:url(../../img/search-icons.png) no-repeat  -330px -538px ;}
+
+
+.tab-section .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{ background-color:#72a105 !important; }
+.tab-section.nav > li > a:focus, .nav > li > a:hover{ background:#ffffff !important;}
+
+
+
+
+
+
+
+.help-page h5 {
+    position:relative;
+    display:inline-block;
+	font-size:18px; color:#404040;
+	 font-family: 'Raleway', sans-serif;
+	 margin-bottom:17px;
+}
+.help-page h5:after {
+    content:'';
+    position:absolute;
+    left:0;right:0;
+    top:100%;
+	margin-top:5px;
+ 
+    width:45%;
+    height:2px;
+    background:#7baf04;
+}
+
+
+.tab-text li { font-family: 'Raleway', sans-serif; line-height:25px; font-weight:500;}
+
+
+
+
+.tab-section {float: left;
+    margin-top: -64px;
+    width: 100%;
+}
+
+
+
+.tab-section1 {
+    float: left;
+    margin-top: -88px;
+    width: 100%;
+}
+
+
+.help-listing1 p{font-size:13px; padding:25px 0px 0px 0px !important; line-height:25px; }
+
+
+
+.help-listing1 h3 {font-size:18px; color:#72a105; font-family: 'Raleway', sans-serif;  padding-top:30px;}
+
+
+
+.hr-pd { margin:80px 0 60px 0;}
+
+.help-view-btn{background:#59abe3; color:#fff !important; padding:10px 40px !important; font-size:20px !important; font-family: 'Raleway', sans-serif; font-weight:600 !important; border-radius:2px!important; margin:20px 5px 0px 5px; }
+.help-view-btn:hover{background:#4898ce; color:#fff !important; padding:10px 40px !important; font-size:20px !important; font-family: 'Raleway', sans-serif; font-weight:600 !important; border-radius:2px!important; margin:20px 5px 0px 5px; }
+
+.help-contact-btn{background:#72A105; color:#fff !important; padding:10px 40px !important; font-size:20px !important; font-family: 'Raleway', sans-serif; font-weight:600 !important;  border-radius:2px!important; margin:20px 5px 0px 5px; }
+.help-contact-btn:hover{background:#699305; color:#fff !important; padding:10px 40px !important; font-size:20px !important; font-family: 'Raleway', sans-serif; font-weight:600 !important;  border-radius:2px!important; margin:20px 5px 0px 5px; }
+
+
+.help-looking-title {font-size:24px; color:#404040; font-weight:400 !important; font-family: 'Raleway', sans-serif;}
+
+
+.helpqa a {font-size:18px; color:#59abe3; text-align:center; border-bottom:1px solid #59abe3; margin-top:5px; outline:none; text-decoration:none;}
+.helpqa a:hover {font-size:18px; color:#59abe3; text-align:center; border-bottom:1px solid #fff; margin-top:5px; outline:none; text-decoration:none;}
+@media (max-width:767px) {
+	
+	.tab-section .help-icon-tab ul.nav-stacked li {
+		background: rgba(0, 0, 0, 0) url(../../img/arow-rgt.png) no-repeat scroll 0 0;
+    border: 1px solid #dddddd;
+    float: left;
+    height: 170px;
+    margin: 0;
+    width: 50%;
+}
+	.tab-section .help-icon-tab ul.nav-stacked li.active a span i {
+    background: rgba(0, 0, 0, 0) url(../../img/arw-rgt.png) no-repeat scroll 0 0;
+    height: 32px;
+
+    position: absolute;
+    right: -20px;
+    top: 40%;
+    width: 20px;
+}
+
+.pt22 {padding-top:22px;}
+	
+
+	
+	}
+
+
+
+
+
+
+@media (max-width:850px) {
+	
+	
+	
+	
+.help-ban-wrap { width:100%; float:left; background:#eaeeef url(../../img/banner-bgr-line-x.png) repeat-x bottom; margin-top:75px;}
+.outer{ width:100%; float:left; background:none;}
+.inner{ width:100%; float:left; background: url(../../img/helpcvv-banner-img-2.png) no-repeat center bottom; min-height:500px; }
+
+.help-input {padding-top:130px; max-width:70%; margin:0px auto;}
+.help-input input {height:52px;}
+.help-input button {height:52px; background:#7baf04; color:#fff; font-size:20px; padding:0 25px;}
+
+.help-ban-wrap p {color:#404040; padding-top:20px;}
+	
+	
+	
+	
+	}
+	
+	
+	
+	@media (max-width:640px) {
+		
+		.inner{ width:100%; float:left; background: url(../../img/help-ner-img-2.png) no-repeat center bottom; min-height:400px; }
+		.outer{ width:100%; float:left; background: url(../../img/help-bajkner-img-1.png) no-repeat right bottom; min-height:400px; }
+		.tab-section1 {
+    float: left;
+    margin-top: -110px;
+    width: 100%;
+}
+		.help-input {
+    margin: 0 auto;
+    max-width: 70%;
+    padding-top: 95px;
+}
+		
+		}
+		
+		
+		@media (max-width:767px) {
+			
+			.tab-section1 { padding:0 15px;
+			 }
+			 
+			 
+			 .help-listing1 p {
+    font-size: 13px;
+    line-height: 25px;
+    padding: 5px 0 0 !important;
+}
+
+.help-listing1 h3 {
+    color: #72a105;
+    font-family: "Raleway",sans-serif;
+    font-size: 18px;
+    padding-top: 0;
+}
+			
+			}
+		
