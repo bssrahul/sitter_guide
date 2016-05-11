@@ -681,6 +681,16 @@ $(document).ready(function () {
                     maxlength: '10',
                     
                 },
+                "Users[zip]":
+				{
+					required:true,
+					number:true,
+										
+				},
+				"Users[country]":
+				{
+					required:true
+				},
                  "Users[zone_id]":
                 {
                     required: true
@@ -715,6 +725,16 @@ $(document).ready(function () {
                     minlength: 'Phone number should be 10 in numbers',
                     maxlength: 'Phone number should be 10 in numbers'
                 },
+                "Users[zip]":
+				{
+					required : "This field is required",
+					number:"Zip Code should be Numbers.",
+				},
+				"Users[country]":
+				{
+					required : "This field is required"
+					
+				},
                  "Users[zone_id]":
                 {
                     required : "This field is required"

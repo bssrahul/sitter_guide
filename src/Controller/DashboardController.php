@@ -747,14 +747,8 @@ class DashboardController extends AppController
 					// unset($skillsData->id); 
 					//pr($customArrForDisplayRec); die;
 					$this->set('professional', $customArrForDisplayRec);
-                  
-		    }
-            
+             }
         }
-
-
-    	
-
     }
      /**
     Function for Services & Rates
@@ -773,7 +767,9 @@ class DashboardController extends AppController
         $serviceDetailsModel = TableRegistry::get('UserSitterServiceDetails');
        
 		if(isset($this->request->data['UserSitterServices']) && !empty($this->request->data['UserSitterServices']))
-		{          
+		{
+
+		$serviceDetailsModel->deleteAll(['user_id' => $userId]);          
 			$accept = array("cancellation_policy","booking"); 
             foreach($accept as $val){ 
 				if (!array_key_exists($val,$this->request->data['UserSitterServices'])){
@@ -783,50 +779,50 @@ class DashboardController extends AppController
 			$serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
 			$serviceData->user_id = $userId;
 			$serviceData =  $sitterServicesModel->save($serviceData);
-			
 			//LOOP FIRST POSTED FORM DATA
+			$lastArrToSave = array();
+			//pr($this->request->data['UserServiceDetail']);die;
+
 			foreach($this->request->data['UserServiceDetail'] as $service_for){
-				
 				$customServiceArr = array();
-				
-				foreach($service_for as $k=>$service){
-			    
-					if(is_array($service_for[$k]) && !empty($service_for[$k])){	
-			           	
-			           	foreach($service_for[$k] as $sk => $dcVal){
-			            	$customArray[$k][$sk] = $dcVal;
-			            }
-			            unset($service_for[$k]);
-			        }else{
-						$customServiceArr[$k] = $service;
-					}
+               foreach($service_for['sd'] as $k=>$singleService){
+					 unset($service_for['sd']);
+					 $saveArr[] = array_merge($service_for,$singleService);
+                        
 				}
-				
-				if(!empty($customArray)){
-					
-					foreach($customArray as $ck => $cv){
-						$saveArr[] = array_merge($cv,$customServiceArr);
-					}
-					foreach($saveArr as $saveK=>$saveV){
-						
-						$services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
+             $lastArrToSave[] = $saveArr;
+             $saveArr = array();
+            }
+            //pr($lastArrToSave);die;
+			foreach($lastArrToSave as $fetchArr){
+            	foreach($fetchArr as $newarr){
+                      $services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
 						foreach($services_status as $val){ 
-							if (!array_key_exists($val,$saveV)){
-								$saveArr[$saveK][$val] = 0;
+							if (!array_key_exists($val,$newarr)){
+								$newarr[$val] = 0;
 							}
 						}
-					}
-										
-					$serviceDetailData = $serviceDetailsModel->newEntity($saveArr);
-					$serviceDetailData->user_id = $userId;
-					$serviceDetailsModel->save($serviceDetailData);
+                       $serviceDetailData = $serviceDetailsModel->newEntity($newarr);
+					   $serviceDetailData->user_id = $userId;
+					   $serviceDetailsModel->save($serviceDetailData);		
 				}
-				
-			}
-			
-			return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
+			}	
+			   return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
         }else{
+        	$customArrForDisplayRec = array();
             $query = $usersModel->get($userId,['contain'=>['UserSitterServices','UserSitterServiceDetails']]);
+            if(isset($query->user_sitter_service_details) && !empty($query->user_sitter_service_details)){
+            	foreach($query->user_sitter_service_details as $displayArr){
+            		$displayArr = $displayArr->toArray();
+            		foreach($displayArr as $key=>$single_val){
+            			//pr($displayArr);die;
+            			$customArrForDisplayRec['UserServiceDetail'][$displayArr['service_for']][$displayArr['service_type']][$key] = $single_val;
+            		}
+            	//$finalDisplayArr[]  
+            	}
+            	//pr($customArrForDisplayRec);die;
+            	$this->set('services_details',$customArrForDisplayRec);
+            }
             //pr($query);die;
           if(isset($query->user_sitter_services) && !empty($query->user_sitter_services)){
                    $sittersServiceData = $query->user_sitter_services[0];
@@ -1226,6 +1222,9 @@ class DashboardController extends AppController
                        $userData = $UsersModel->newEntity();
                        $userData->id = $options['userId'];
                        $userData->image = $options['USERIMG'];
+                       $userData->is_image_uploaded = 1;
+                       $session = $this->request->session();
+                       $session->write('User.is_image_uploaded', 1);
                        if($UsersModel->save($userData)){
                        	  $user = $session->write('User.image',$options['USERIMG']);
                        }

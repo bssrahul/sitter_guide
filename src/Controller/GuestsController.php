@@ -152,6 +152,8 @@ class GuestsController extends AppController
 					$session->write('User.id', $getUserData->id);
 					$session->write('User.email', $getUserData->email);
 					$session->write('User.name', $getUserData->first_name." ".$getUserData->last_name);
+					$session->write('User.facebook_id', $getUserData->facebook_id);
+					$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
 					$session->write('User.image', $getUserData->image);
 					$session->write('User.last_login', $getUserData->last_login);
 					$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
@@ -457,8 +459,27 @@ class GuestsController extends AppController
 							$UsersData->activation_key = $activation_key;								
 							$UsersData->date_added=date('Y-m-d H:i:s');	
 							$UsersData->date_modified = date('Y-m-d h:i:s');				
+							$latitude = $this->request->data['Users']['country'];				
+							$longitude = $this->request->data['Users']['zip'];	
+							// get latitude and longitude from country and zip start	
+							$sourceSelectedLocation = $latitude." ".$longitude;
+							$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false";
+							$ch = curl_init();
+							curl_setopt($ch, CURLOPT_URL, $url);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+							curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+							$response = curl_exec($ch);
+							curl_close($ch);
+							$response_a = json_decode($response);
+							$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+							$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+							$UsersData->latitude=$sourceLocationLatitude;					
+							$UsersData->longitude=$sourceLocationLongitude;					
+							// end get latitude and longitude from country and zip start			
 							$UsersData->status = 0;
-							
+							//pr($UsersData);die;
 							if($UsersModel->save($UsersData))
 							{
 								$getUsersTempId1 = $UsersData->id;
@@ -799,6 +820,7 @@ class GuestsController extends AppController
 		$UsersData->last_name = $lname;
 		$UsersData->is_image_updated = 0;
 		$UsersData->email = $email;
+		$UsersData->is_image_uploaded = 0;
 		$UsersData->facebook_id = $fbId;
 		$UsersData->image = "https://graph.facebook.com/".$fbId."/picture";
 		

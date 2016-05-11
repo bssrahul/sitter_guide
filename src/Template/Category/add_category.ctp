@@ -40,13 +40,24 @@
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="slug"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Slug')); ?><span class="required">*</span>
 										</label>
-										<?php 
+										 <?php echo $this->Form->input(
+												'Categories.slug',[
+												"type"=>"select",
+												'label' => false,
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												"options"=>['contact_us'=>"Contact Us",'faqs'=>"Faqs"],
+												'class'=>'form-control col-md-7 col-xs-12',
+												]);?>
+										
+										
+										
+										<?php /*
 										//echo "<pre>"; print_r($admininfo);
 										echo $this->Form->input('Categories.slug',[
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
 												'label' => false,
 												'class'=>'form-control col-md-7 col-xs-12']);
-										 ?>
+										*/ ?>
 									</div>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
