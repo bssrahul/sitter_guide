@@ -182,7 +182,7 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
-						HAVING distance < 30
+						HAVING distance < 300
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE			
@@ -205,6 +205,9 @@ class SearchController extends AppController
 		
 		$this->set('resultsData',$userData);
 		$this->set('distanceAssociation',$distanceAssociation);
+		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
+		$this->set('sourceLocationLongitude',$sourceLocationLongitude);
+		
 		$this->render("search");
 		
 	}

@@ -67,7 +67,7 @@ class GoogleMapHelper extends Helper {
   // Default longitude if the browser doesn't support localization or you don't want localization
   var $defaultLongitude     = -73.9514422416687;
   // Boolean to localize your position or not
-  var $defaultLocalize      = true;
+  var $defaultLocalize      = false;
   // Boolean to put a marker in the position or not
   var $defaultMarker        = true;
   // Default marker title (HTML title tag)
