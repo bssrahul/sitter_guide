@@ -61,14 +61,13 @@
                         <div class="onoffswitch">
                           <!--<input type="checkbox" checked="" class="onoffswitch-checkbox" id="onoffswitch1">
                           <label for="onoffswitch1" class="onoffswitch-label"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
-                          <?php 
-                              echo $this->Form->input('UserSitterServices.booking',[
-                                'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'checkbox',
-                                'label' =>false,
-                                'class'=>'selectedCheckbox',
-                                'hiddenField' => false
-                               ]);
+                          <?php  echo $this->Form->input('UserSitterServices.booking',[
+                                    'templates' => ['inputContainer' => '{{content}}'],
+                                    'type'=>'checkbox',
+                                    'label' =>false,
+                                    'class'=>'selectedCheckbox',
+                                    'hiddenField' => false
+                                 ]);
                           ?>
                         </div>
                         </div>
@@ -86,9 +85,11 @@
 <div class="row">
  <div class="form-group col-lg-4 col-md-12">
  <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22">Sitting at Sitter House 
-  <?php echo @$services_details['UserServiceDetail']['sitter_house']['day_care']['service_for_status']; ?></h2></div> 
+  <?php //echo @$services_details['UserServiceDetail']['sitter_house']['day_care']['service_for_status']; ?></h2></div> 
                       <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
                         <div class="chek-main-lat">
+
+                        <div class="onoffswitch">
                         <!--<input type="checkbox" checked />-->
                           <?php 
                               echo $this->Form->input('UserServiceDetail.sh.service_for_status',[
@@ -96,15 +97,18 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['service_for_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['service_for_status']:'0'
-                               ]);
+                                'hiddenField' => false
+                                
+                               ]);?>
+                              </div>
+                              <?php
                                echo $this->Form->input('UserServiceDetail.sh.service_for',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'hidden',
                                 'value'=>'sitter_house'
                                ]);
                           ?>
+
                         </div>
                         </div>
   </div>
@@ -125,12 +129,12 @@
  <div class="row">
  
  <div class="col-lg-4">  <label for="" class="f14 color-green">Holiday Rate % </label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                          
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.service_holiday_rate',[
+                              echo $this->Form->input('UserServiceDetail.sh.holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['holiday_rate'] !=''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['holiday_rate']:''
@@ -139,11 +143,11 @@
                         </div>
                           
                           <div class="col-lg-4">  <label for="" class="f14 color-green">Small Guest Rate %</label>
-                          <!--<input type="number" class="form-control">--> 
+                          <!--<input type="text" class="form-control">--> 
                           <?php 
                               echo $this->Form->input('UserServiceDetail.sh.small_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['small_guest_rate'] !=''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['small_guest_rate']:''
@@ -152,11 +156,11 @@
                           </div>
                           
                           <div class="col-lg-4">  <label for="" class="f14 color-green">Large Guest Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.sh.large_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['large_guest_rate'] !=''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['large_guest_rate']:''
@@ -179,11 +183,11 @@
 <div class="form-group col-lg-4 col-md-12">
  
   <label for="" class="f14 color-green">Day Rate </label>
-                          <!--<input type="number" class="form-control" placeholder="$"> -->
+                          <!--<input type="text" class="form-control" placeholder="$"> -->
                           <?php 
                               echo $this->Form->input('UserServiceDetail.sh.day_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'placeholder'=>"$",
@@ -198,11 +202,11 @@
  <div class="form-group col-lg-4 col-md-12">
  
   <label for="" class="f14 color-green">Night Rate </label>
-                          <!--<input type="number" class="form-control" placeholder="$">--> 
+                          <!--<input type="text" class="form-control" placeholder="$">--> 
                         <?php 
                               echo $this->Form->input('UserServiceDetail.sh.night_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'placeholder'=>"$",
@@ -217,11 +221,11 @@
  <div class="row">
  
  <div class="col-lg-4">  <label for="" class="f14 color-green">Cat Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.sh.cat_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['cat_rate'] !=''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['cat_rate']:''
@@ -230,11 +234,11 @@
                         </div>
                           
                           <div class="col-lg-8">  <label for="" class="f14 color-green">Puppy &kitten Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                           <?php 
                               echo $this->Form->input('UserServiceDetail.sh.puppy_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label'=>false,
                                 'class'=>'form-control',
                                 'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['puppy_rate'] !=''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['puppy_rate']:''
@@ -267,7 +271,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['service_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['service_status']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.sh.sd.dc.service_type',[
                                 'type'=>'hidden',
@@ -288,7 +293,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['extended_stay_rate_status']['service_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -306,8 +312,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['additional_guest_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['day_care']['additional_guest_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -344,11 +350,11 @@
                      
  
 
-                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                         <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.dc.additional_guest_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -388,11 +394,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.dc.extended_stay_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -433,11 +439,11 @@
                      
  
 
-                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                         <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.dc.additional_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -473,11 +479,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                      <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                      <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.dc.service_holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -545,8 +551,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['night_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['night_care']['extended_stay_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['night_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['night_care']['extended_stay_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -564,8 +570,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['night_care']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['night_care']['additional_guest_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['night_care']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['night_care']['additional_guest_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -583,8 +589,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['night_care']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['night_care']['repeat_client_only_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['sitter_house']['night_care']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['night_care']['repeat_client_only_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -603,11 +609,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                              <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.nc.additional_guest_limit',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -647,11 +653,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " >--> 
                              <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.nc.extended_stay_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -692,11 +698,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.nc.additional_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -733,11 +739,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                               echo $this->Form->input('UserServiceDetail.sh.sd.nc.service_holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control h32',
                                 'hiddenField' => false,
@@ -953,11 +959,11 @@
  <div class="row">
  
  <div class="col-lg-4">  <label for="" class="f14 color-green">Holiday Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                         <?php 
                               echo $this->Form->input('UserServiceDetail.gh.holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control',
                                 'hiddenField' => false,
@@ -966,11 +972,11 @@
                           ?></div>
                           
                           <div class="col-lg-4">  <label for="" class="f14 color-green">Small Guest Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                         <?php 
                               echo $this->Form->input('UserServiceDetail.gh.small_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control',
                                 'hiddenField' => false,
@@ -979,11 +985,11 @@
                           ?></div>
                           
                           <div class="col-lg-4">  <label for="" class="f14 color-green">Large Guest Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                         <?php 
                               echo $this->Form->input('UserServiceDetail.gh.large_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control',
                                 'hiddenField' => false,
@@ -1008,11 +1014,11 @@
  
  <div class="row">
  <div class="col-lg-6"> <label for="" class="f14 color-green">Day Rate </label>
-                         <!--<input type="number" class="form-control" placeholder="$"> -->
+                         <!--<input type="text" class="form-control" placeholder="$"> -->
                            <?php 
                               echo $this->Form->input('UserServiceDetail.gh.day_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control',
                                 'hiddenField' => false,
@@ -1023,11 +1029,11 @@
  </div>
  
  <div class="col-lg-6"> <label for="" class="f14 color-green">Drop-in visit Rate </label>
-                          <!--<input type="number" class="form-control" placeholder="$">--> 
+                          <!--<input type="text" class="form-control" placeholder="$">--> 
                              <?php 
                               echo $this->Form->input('UserServiceDetail.gh.drop_visit_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
-                                'type'=>'number',
+                                'type'=>'text',
                                 'label' =>false,
                                 'class'=>'form-control',
                                 'hiddenField' => false,
@@ -1047,11 +1053,11 @@
  
  <div class="form-group col-lg-4 col-md-12">
  <label for="" class="f14 color-green">Night Rate </label>
-                          <!--<input type="number" class="form-control" placeholder="$"> -->
+                          <!--<input type="text" class="form-control" placeholder="$"> -->
                               <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.night_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -1063,11 +1069,11 @@
  <div class="form-group col-lg-4">
  <div class="row">
  <div class="col-lg-4">  <label for="" class="f14 color-green">Cat Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                              <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.cat_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -1077,11 +1083,11 @@
                         </div>
                           
                           <div class="col-lg-8">  <label for="" class="f14 color-green">Puppy &kitten Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.puppy_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -1119,8 +1125,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['service_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['service_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['service_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.gh.sd.dc.service_type',[
                                 'type'=>'hidden',
@@ -1141,8 +1147,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['extended_stay_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['extended_stay_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -1160,8 +1166,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['additional_guest_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['additional_guest_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -1179,8 +1185,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['repeat_client_only_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['day_care']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['day_care']['repeat_client_only_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -1195,11 +1201,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                      <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                      <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                             <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dc.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1230,11 +1236,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dc.extended_stay_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1266,11 +1272,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                       <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                       <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dc.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1310,11 +1316,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dc.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1364,8 +1370,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['service_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['service_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['service_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.gh.sd.dv.service_type',[
                                 'type'=>'hidden',
@@ -1386,8 +1392,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['extended_stay_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['extended_stay_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -1405,8 +1411,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['additional_guest_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['additional_guest_rate_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -1424,8 +1430,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['repeat_client_only_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['drop_visit']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['drop_visit']['repeat_client_only_status']:'0'*/
                                ]);
                           ?>
                         </div>
@@ -1440,11 +1446,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dv.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1480,11 +1486,11 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dv.extended_stay_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1525,11 +1531,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dv.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1569,11 +1575,11 @@
                      
  
 
-                         <!-- <input type="number" class="form-control h32  " placeholder=" % " >--> 
+                         <!-- <input type="text" class="form-control h32  " placeholder=" % " >--> 
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.dv.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1625,8 +1631,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['service_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['service_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['service_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['service_status']:'0'*/
                                ]);
                                echo $this->Form->input('UserServiceDetail.gh.sd.nc.service_type',[
                                 'type'=>'hidden',
@@ -1647,8 +1653,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['extended_stay_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['extended_stay_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['extended_stay_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -1666,8 +1672,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['additional_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['additional_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['additional_rate_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['additional_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -1685,8 +1691,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['repeat_client_only_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['guests_house']['night_care']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['guests_house']['night_care']['repeat_client_only_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -1705,11 +1711,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " >--> 
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.nc.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1749,11 +1755,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.nc.extended_stay_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1794,11 +1800,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " >--> 
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.nc.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -1833,11 +1839,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.gh.sd.nc.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -2017,8 +2023,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['service_for_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['service_for_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['service_for_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['service_for_status']:'0'*/
                                ]);
                                echo $this->Form->input('UserServiceDetail.mp.service_for',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -2053,11 +2059,11 @@
  <div class="row">
  
  <div class="col-lg-4">  <label for="" class="f14 color-green">Holiday Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                          <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2067,11 +2073,11 @@
                             ?></div>
                           
                           <div class="col-lg-4">  <label for="" class="f14 color-green">Small Guest Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.small_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2082,11 +2088,11 @@
                         </div>
                           
                           <div class="col-lg-4">  <label for="" class="f14 color-green">Large Guest Rate %</label>
-                         <!-- <input type="number" class="form-control">-->
+                         <!-- <input type="text" class="form-control">-->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.large_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2113,11 +2119,11 @@
  
  <div class="row">
  <div class="col-lg-6"> <label for="" class="f14 color-green">Grooming Rate </label>
-                         <!-- <input type="number" class="form-control"> -->
+                         <!-- <input type="text" class="form-control"> -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.grooming_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2127,11 +2133,11 @@
  </div>
  
  <div class="col-lg-6"> <label for="" class="f14 color-green">Recreation Rate </label>
-                         <!-- <input type="number" class="form-control"> -->
+                         <!-- <input type="text" class="form-control"> -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.recreation_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2151,11 +2157,11 @@
  <div class="form-group col-lg-4 col-md-12">
  <div class="row">
  <div class="col-lg-6"> <label for="" class="f14 color-green">Training Rate </label>
-                          <!--<input type="number" class="form-control"> -->
+                          <!--<input type="text" class="form-control"> -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.training_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2165,11 +2171,11 @@
  </div>
  
  <div class="col-lg-6"> <label for="" class="f14 color-green">Driving Rate </label>
-                          <!--<input type="number" class="form-control"> -->
+                          <!--<input type="text" class="form-control"> -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.driving_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2189,11 +2195,11 @@
  <div class="row">
  
  <div class="col-lg-4">  <label for="" class="f14 color-green">Cat Rate %</label>
-                         <!-- <input type="number" class="form-control">-->
+                         <!-- <input type="text" class="form-control">-->
                         <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.cat_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2202,11 +2208,11 @@
                             ?></div>
                           
                           <div class="col-lg-8">  <label for="" class="f14 color-green">Puppy &kitten Rate %</label>
-                          <!--<input type="number" class="form-control">-->
+                          <!--<input type="text" class="form-control">-->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.puppy_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control',
                                   'hiddenField' => false,
@@ -2244,8 +2250,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['service_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['service_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['service_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.mp.sd.gr.service_type',[
                                 'type'=>'hidden',
@@ -2266,8 +2272,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['premium_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['premium_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['premium_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['premium_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2285,8 +2291,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['additional_guest_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['additional_guest_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2304,8 +2310,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['repeat_client_only_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['grooming']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['market_place']['grooming']['repeat_client_only_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2324,11 +2330,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.gr.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -2368,11 +2374,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.gr.premium_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -2413,11 +2419,11 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                             <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.gr.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -2457,11 +2463,11 @@
                      
  
 
-                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                         <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.gr.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
@@ -2511,8 +2517,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['service_status'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['service_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['service_status'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.mp.sd.re.service_type',[
                                 'type'=>'hidden',
@@ -2533,8 +2539,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false,
-                                'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['premium_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['premium_rate_status']:'0'
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['premium_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['premium_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2552,7 +2558,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                 'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['additional_guest_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2570,7 +2577,9 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['repeat_client_only_status']:'0'*/
+
                                ]);
                         ?>
                         </div>
@@ -2589,15 +2598,16 @@
                      
  
 
-                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                         <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                             <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.re.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['additional_guest_limit'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['additional_guest_limit']:''
                                  ]);
                             ?>
  
@@ -2632,15 +2642,16 @@
                      
  
 
-                         <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                         <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                          <?php 
-                                echo $this->Form->input('UserServiceDetail.mp.sd.re.premium_recreation_rate',[
+                                echo $this->Form->input('UserServiceDetail.mp.sd.re.premium_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['premium_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['premium_rate']:''
                                  ]);
                             ?>
  
@@ -2676,15 +2687,16 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.re.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['additional_guest_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['additional_guest_rate']:''
                                  ]);
                             ?>
  
@@ -2719,30 +2731,21 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.re.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['recreation']['service_holiday_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['recreation']['service_holiday_rate']:''
                                  ]);
                             ?>
- 
- 
- 
-
-                      
-                      </div>
-                      
+                        </div>
                       <div class="col-lg-3 col-md-6 text-right">
-                      
-                     
- 
-
-                         <label >$00.00</label>
+                      <label >$00.00</label>
  
  
  
@@ -2779,7 +2782,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['training']['service_status'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.mp.sd.pt.service_type',[
                                 'type'=>'hidden',
@@ -2795,12 +2799,13 @@
                         <div class="onoffswitch">
                           <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.mp.sd.pt.premium_training_rate_status',[
+                              echo $this->Form->input('UserServiceDetail.mp.sd.pt.premium_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['training']['premium_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['premium_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2818,7 +2823,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['training']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['additional_guest_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2836,7 +2842,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['training']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['repeat_client_only_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -2851,15 +2858,16 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                            <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                            <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                             <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.pt.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['training']['additional_guest_limit'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['additional_guest_limit']:''
                                  ]);
                             ?>
  
@@ -2890,37 +2898,21 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                      <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                      <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
-                                echo $this->Form->input('UserServiceDetail.mp.sd.pt.premium_training_rate',[
+                                echo $this->Form->input('UserServiceDetail.mp.sd.pt.premium_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['training']['premium_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['premium_rate']:''
                                  ]);
                             ?>
- 
- 
- 
-
-                      
                       </div>
-                      
                       <div class="col-lg-3 col-md-6 text-right">
-                      
-                     
- 
-
                          <label >$00.00</label>
- 
- 
- 
-
- 
-
-                      
                       </div>
                       
                       
@@ -2931,15 +2923,16 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                          <!-- <input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!-- <input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.pt.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['training']['additional_guest_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['additional_guest_rate']:''
                                  ]);
                             ?>
                       </div>
@@ -2965,40 +2958,21 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                      
-                     
- 
-
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                      <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.pt.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['training']['service_holiday_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['training']['service_holiday_rate']:''
                                  ]);
-                            ?>
- 
- 
- 
-
-                      
+                          ?>
                       </div>
-                      
                       <div class="col-lg-3 col-md-6 text-right">
-                      
-                     
- 
-
-                         <label >$00.00</label>
- 
- 
- 
- 
-
-                      
+                        <label >$00.00</label>
                       </div>
                       
                       
@@ -3022,7 +2996,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['service_status'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['service_status']:'0'*/
                                ]);
                               echo $this->Form->input('UserServiceDetail.mp.sd.ds.service_type',[
                                 'type'=>'hidden',
@@ -3038,12 +3013,13 @@
                         <div class="onoffswitch">
                           <!--<input type="checkbox" id="onoffswitch1" class="onoffswitch-checkbox" checked=""><label class="onoffswitch-label" for="onoffswitch1"><div class="onoffswitch-inner"></div><div class="onoffswitch-switch"></div></label>-->
                         <?php 
-                              echo $this->Form->input('UserServiceDetail.mp.sd.ds.return_trip',[
+                              echo $this->Form->input('UserServiceDetail.mp.sd.ds.premium_rate_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['premium_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['premium_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -3061,7 +3037,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['additional_guest_rate_status'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['additional_guest_rate_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -3079,7 +3056,8 @@
                                 'type'=>'checkbox',
                                 'label' =>false,
                                 'class'=>'selectedCheckbox',
-                                'hiddenField' => false
+                                'hiddenField' => false/*,
+                                'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['repeat_client_only_status'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['repeat_client_only_status']:'0'*/
                                ]);
                         ?>
                         </div>
@@ -3098,15 +3076,16 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " >--> 
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " >--> 
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.ds.additional_guest_limit',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['additional_guest_limit'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['additional_guest_limit']:''
                                  ]);
                             ?>
  
@@ -3141,15 +3120,16 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                           <?php 
-                                echo $this->Form->input('UserServiceDetail.mp.sd.ds.premium_driverservice_rate',[
+                                echo $this->Form->input('UserServiceDetail.mp.sd.ds.premium_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['premium_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['premium_rate']:''
                                  ]);
                             ?>
  
@@ -3185,15 +3165,16 @@
                      
  
 
-                          <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                          <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.ds.additional_guest_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['additional_guest_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['additional_guest_rate']:''
                                  ]);
                             ?>
  
@@ -3224,15 +3205,16 @@
                       
                       
                       <div class="col-lg-4 col-md-6">
-                           <!--<input type="number" class="form-control h32  " placeholder=" % " > -->
+                           <!--<input type="text" class="form-control h32  " placeholder=" % " > -->
                            <?php 
                                 echo $this->Form->input('UserServiceDetail.mp.sd.ds.service_holiday_rate',[
                                   'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'number',
+                                  'type'=>'text',
                                   'label' =>false,
                                   'class'=>'form-control h32',
                                   'hiddenField' => false,
-                                  'placeholder'=>" % "
+                                  'placeholder'=>" % ",
+                                  'value'=>@$services_details['UserServiceDetail']['market_place']['driver_service']['service_holiday_rate'] != ''?@$services_details['UserServiceDetail']['market_place']['driver_service']['service_holiday_rate']:''
                                  ]);
                             ?>
  
@@ -3473,7 +3455,7 @@
         </div>
 
         </div>
-      </div>
+      
 <?php echo $this->Html->css('Front/dist/jquery.onoff.css');
       echo $this->Html->script(['Front/dist/jquery.onoff.js']);
  ?>

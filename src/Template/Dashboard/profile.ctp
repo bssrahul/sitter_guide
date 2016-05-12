@@ -259,7 +259,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                             ?>
                       <!--<span class="pull-right captcha"><img src="<?php echo HTTP_ROOT; ?>img/captcha.jpg"></span>-->
 
-                      <span class="pull-right captcha">
+                      <span class="pull-right captcha" >
                         <div class="g-recaptcha" data-sitekey="<?php echo CAPTCHA_SITE_KEY; ?>"></div>
                         <br/><label generated="true" class="error"><?php echo isset($captchErr)?$captchErr:''; ?></label>
                       </span>

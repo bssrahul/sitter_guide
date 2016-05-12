@@ -422,6 +422,7 @@ class GuestsController extends AppController
 					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
 					$responseData = json_decode($verifyResponse);
                     if($responseData->success){
+
 						$this->request->data['Users']['password'] = $this->request->data['Users']['create_password'];
 						unset($this->request->data['Users']['create_password']);
 
@@ -546,7 +547,6 @@ class GuestsController extends AppController
 								$this->set('signupdata',$data);
 							} 
 						}
-							
 					}else{
 						$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
 					}
