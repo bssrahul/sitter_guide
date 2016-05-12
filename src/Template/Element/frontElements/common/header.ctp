@@ -26,7 +26,7 @@
                     
                     <div class="top-search">
 						<div class="search-box">
-							  <?php echo $this->element('frontElements/common/header_search_form'); ?>
+							  <?php echo $this->element('frontElements/Search/header_search_form'); ?>
                         </div>
                     </div> 
                     <?php echo $this->element('frontElements/common/mob_language_switcher'); ?>
@@ -83,4 +83,4 @@
 
 </header>
 <!--[Header Area End]-->
-<?php echo $this->element('frontElements/common/js_code_country_autocomplete'); ?>
+<?php echo $this->element('frontElements/Search/js_code_country_autocomplete'); ?>

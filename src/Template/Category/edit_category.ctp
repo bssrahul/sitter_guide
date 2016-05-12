@@ -47,7 +47,7 @@
 												'label' => false,
 												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
 												'value'=>$categoryInfo->slug != '' ?$categoryInfo->slug:'',
-												"options"=>['contact_us'=>"Contact Us",'faqs'=>"Faqs"],
+												"options"=>['contact_us'=>"Contact Us",'faqs'=>"Faqs",'distance'=>"Distance"],
 												'class'=>'form-control col-md-7 col-xs-12',
 												]);?>
 										
