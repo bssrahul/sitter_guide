@@ -139,5 +139,10 @@ $(function(){
 			}
 		});
 	});		
+	
+	$(".searchByDistance").change(function(){
+		$("#searchBydistance").serialize();	
+		$("#searchBydistance").submit();
+	});
     
 });
