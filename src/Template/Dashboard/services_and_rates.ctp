@@ -92,10 +92,16 @@
                         <div class="onoffswitch">
                         <!--<input type="checkbox" checked />-->
                           <?php 
+							if(@$services_details['UserServiceDetail']['sitter_house']['day_care']['service_for_status']==1){
+								$checked = 'checked';
+							}else{
+								$checked = '';
+							}
                               echo $this->Form->input('UserServiceDetail.sh.service_for_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
+                                'checked' =>$checked,
                                 'class'=>'selectedCheckbox',
                                 'hiddenField' => false
                                 
@@ -132,7 +138,7 @@
                           <!--<input type="text" class="form-control">-->
                          
                           <?php 
-                              echo $this->Form->input('UserServiceDetail.sh.holiday_rate',[
+                                echo $this->Form->input('UserServiceDetail.sh.holiday_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'text',
                                 'label'=>false,
@@ -266,10 +272,16 @@
                         <div class="chek-main-lat">
                         <!--<input type="checkbox" checked />-->
                          <?php 
+                          if(@$services_details['UserServiceDetail']['sitter_house']['day_care']['service_status']==1){
+								$checked = 'checked';
+							}else{
+								$checked = '';
+							}
                               echo $this->Form->input('UserServiceDetail.sh.sd.dc.service_status',[
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'type'=>'checkbox',
                                 'label' =>false,
+                                'checked' =>$checked ,
                                 'class'=>'selectedCheckbox',
                                 'hiddenField' => false/*,
                                 'value'=>@$services_details['UserServiceDetail']['sitter_house']['day_care']['service_status'] != ''?@$services_details['UserServiceDetail']['sitter_house']['service_status']['service_status']:'0'*/

@@ -51,6 +51,17 @@ class SearchController extends AppController
 			return $this->redirect(['controller' => 'Guests','action'=>'home']);
 			
 		}
+		
+		$categoryModel = TableRegistry::get('Categories');
+		$categoryData = $categoryModel->find('list',['fields' => ['title'],'conditions'=>['Categories.slug'=>'distance']])->toArray();
+		$distancearray = array(''=>'Distance');
+		
+		if(!empty($categoryData)){
+			foreach($categoryData as $k=>$v){
+				$distancearray[$v]= $v." Kms";
+			}
+		}
+		$this->set('distancearray', $distancearray);
     }
     
 	public function initialize()
@@ -86,7 +97,7 @@ class SearchController extends AppController
 		
 		if(!empty($this->request->data)){
 			
-			pr($this->request->data) ;
+			pr($this->request->data); die;
 			//SET CONDITIONS FOR MARKET PLACES LIKE RECREATION, GROOMING, DRIVER, TRAINING ETC
 			if(isset($this->request->data['Search']['marketplace']) && $this->request->data['Search']['marketplace'] !=""){
 				
@@ -148,6 +159,8 @@ class SearchController extends AppController
 		
 		if(!empty($this->request->data)){
 			
+			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:"100";
+			
 			if($this->request->data['location_autocomplete_lat_long'] !=""){
 				//EXPLODE LATITUDE LONGITUDE FROM SELECTED LOCATION
 				$sourceSelectedLocation = str_replace(array("(",")"), array("",""), $this->request->data['location_autocomplete_lat_long']);
@@ -185,32 +198,48 @@ class SearchController extends AppController
 						HAVING distance < 300
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
-			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE			
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
 			
 			if(!empty($results)){
 				$idArr = array();
 				$distanceAssociation = array();
 				foreach($results as $resultsValue){
 						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
-						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails'])
-							   ->where(['id' => $idArr], ['id' => 'integer[]'])
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServiceDetails','UserSitterGalleries']])
+							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				
-				
+				//SET KEYS FOR SERVICES PROVIDED BY SITTER
+				if(!empty($userData)){ 
+					$i=0;
+					foreach($userData as $k=>$usersDetail){ 
+						foreach($usersDetail->user_sitter_service_details as $sitterServicesDetail){ 
+							if($sitterServicesDetail->service_type !=''){
+								$userData[$i][$sitterServicesDetail->service_type."_check"] = $sitterServicesDetail->service_type;
+							}
+						}
+					$i++;	
+					}
+				}//END  KEYS FOR SERVICES PROVIDED BY SITTER
+			
 			}
-		}
 		
+		//pr($userData); die;
 		$this->set('resultsData',$userData);
 		$this->set('distanceAssociation',$distanceAssociation);
 		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
 		$this->set('sourceLocationLongitude',$sourceLocationLongitude);
+		$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
 		
 		$this->render("search");
 		
-	}
+		}
+	}	
+
 
 }
 ?>
