@@ -17,9 +17,9 @@
     	echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js','Front/custom.js']);
 		?>
 	       <link rel=icon href="<?php echo HTTP_ROOT; ?>images/create_logo.png" type="image/png">
-          
+          <?php //echo $this->request->action; die;?>
     </head>
-    <body class="<?php echo ($this->request->action=='help')?$this->request->action:"terms" ?>-page">
+    <body class="<?php echo ($this->request->action=='help' || $this->request->action=='helpListing')?"help":"terms" ?>-page">
 		<!--[content area Start]-->
 		<?php 
 			$session = $this->request->session();
