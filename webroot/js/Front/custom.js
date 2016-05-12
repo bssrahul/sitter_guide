@@ -653,13 +653,25 @@
 				"UserSitterHouses[cats_in_home]":
 				{
 					required:true
+				},
+				"UserSitterHouses[about_home_desc]":
+				{
+					required:true
+				},
+				"UserSitterHouses[spaces_access_desc]":
+				{
+					required:true
+				},
+				"UserSitterHouses[home_pets_desc]":
+				{
+					required:true
 				}
              },
 			messages: {
 				
 				"UserSitterHouses[property_type]":
 				{
-					required : " ok This field is required"
+					required : "This field is required"
 				},
 				"UserSitterHouses[outdoor_area]":
 				{
@@ -694,6 +706,18 @@
 					required : "This field is required"
 				},
 				"UserSitterHouses[cats_in_home]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[about_home_desc]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[spaces_access_desc]":
+				{
+					required : "This field is required"
+				},
+				"UserSitterHouses[home_pets_desc]":
 				{
 					required : "This field is required"
 				}
