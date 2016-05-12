@@ -1,5 +1,6 @@
 <script>
 var input = document.getElementById('location_autocomplete');
+
 var options = {
         types: ['(cities)'],
         componentRestrictions: {

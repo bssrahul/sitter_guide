@@ -142,7 +142,6 @@ class SearchController extends AppController
 		}
 		
 	}
-	
 	/**
 	* Function to search profiles
 	*/

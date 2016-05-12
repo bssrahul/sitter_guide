@@ -41,6 +41,7 @@
                                  'required'=>false
                           ]); ?>
                           <p class="w-limit" id="35-word-preview">35 words</p>
+                          <label class="error" for="useraboutsitters-your-self" generated="true"></label>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
                           <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your sitter profile in detail. Why should a new client choose you?')); ?>   
@@ -53,6 +54,7 @@
                                   'required'=>false
                           ]); ?>
                           <p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 words')); ?></p>
+                          <label class="error" for="useraboutsitters-client-choose-desc" generated="true"></label>
                         </div>
                   </div>
                 

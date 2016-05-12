@@ -726,8 +726,55 @@
 			}
 
          });
+	    /*For About Sitter form*/
+		$('#aboutSitter').validate({
+			rules: {
+				"UserAboutSitters[your_self]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[client_choose_desc]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[sh_pet]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[gh_pet]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[sh_pet_sizes][]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[gh_pet_sizes][]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[sh_guest_age]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[gh_guest_age]":
+				{
+					required:true 
+				},
+				"UserAboutSitters[mixed_familes]":
+				{
+					required:true 
+				}
+			},
+		    messages: {
+				"UserAboutSitters[your_self]":
+				{
+					required : "This field is required"
+				}
+			}
+
+         });
 		/*For Services and Rates form*/
-		//CODE SNIPPET FOR SUBSCRIBE
 		$('#servicesAndRates').validate({
 			rules: {
 				"UserServiceDetail[sh][holiday_rate]":
@@ -1123,7 +1170,22 @@
 			}
 
          });
-			
+		/*For Skills & Accreditations form*/
+		$('#skillsAccreditations').validate({
+			rules: {
+				"UserProfessionals[govt][licence][scanned_certification]":
+				{
+					required:true 
+				}
+			},
+		    messages: {
+				"UserProfessionals[govt][licence][scanned_certification]":
+				{
+					required : "This field is required"
+				}
+			}
+
+         });		
 	
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
@@ -1336,7 +1398,7 @@
 			 
 			success:function(res)
 			{
-				//alert(res);
+				alert(res);
 				console.log(res);
 				var response = res.split(':');
 				if($.trim(response[0]) == 'Success'){
