@@ -462,6 +462,7 @@ class GuestsController extends AppController
 							$UsersData->date_modified = date('Y-m-d h:i:s');				
 							$latitude = $this->request->data['Users']['country'];				
 							$longitude = $this->request->data['Users']['zip'];	
+							//echo $latitude.$longitude;die;
 							// get latitude and longitude from country and zip start	
 							$sourceSelectedLocation = $latitude." ".$longitude;
 							$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false";

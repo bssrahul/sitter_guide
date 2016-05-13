@@ -26,7 +26,7 @@
 							<?php echo $this->Form->create(null, [
 								'url' => ['controller' => 'dashboard', 'action' => 'professional-accreditations'],
 								'role'=>'form',
-								'id'=>'generelInfo',
+								'id'=>'skillsAccreditations',
 								'autocomplete'=>'off',
 							]);?>
                             <!----NEW CHANGES ASK BY CLIENT START -->
@@ -121,7 +121,7 @@
 										'value'=>@$professional['UserProfessionals']['govt']['licence']['scanned_certification'] !=''?@$professional['UserProfessionals']['govt']['licence']['scanned_certification']:''
 					    ]); ?>
 					    <button class="uploaddoc btn btn-secondary" type="button">Browse</button>
-
+                        <label class="error" for="userprofessionals-govt-licence-scanned-certification" generated="true"></label>                          
 
 
                       </div>
@@ -476,16 +476,7 @@
                     <div class="row">
 	                    <div class="col-lg-4">
 	                       <label for="">Do you know CPR for  </label>
-	                          <!--<select id="sel1" class="form-control">
-	                           <option>Adults</option>
-	                          <option>Children</option>
-	                          <option>Infants</option>
-	                          <option>Dog</option>
-	                          <option>Cat</option>
-	                          <option>Other (specify)</option>
-	                          </select>-->
-
-		                    <?php echo $this->Form->input('UserProfessionalsDetails.cpr_for',[
+	                          <?php echo $this->Form->input('UserProfessionalsDetails.cpr_for',[
 								'templates' => ['inputContainer' => '{{content}}'],
 								'label' => false,
 								'type'=>'select',
@@ -500,29 +491,52 @@
 	                       <label for="">I can administer Oral Medications</label>
 	                        <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 	                        <div class="chek-main-lat">
-	                          <a href="#"> <img src="<?php echo HTTP_ROOT; ?>img/yes-btn.png" width="79" height="40" alt="yes"></a> </div>
+	                         <?php
+                                 
+                              if(@$professional['user_professional_accreditations_details']->oral_madications ==1){
+                                 $checked = 'checked';
+                              }else{
+                                 $checked = '';
+                              }
+                               echo $this->Form->input('UserProfessionalsDetails.oral_madications',[
+									 'templates' => ['inputContainer' => '{{content}}'],
+	                                 'type'=>'checkbox',
+	                                 'label' =>false,
+	                                 'checked' =>$checked,
+	                                 'class'=>'selectedCheckbox',
+	                                 'hiddenField' => false
+	                                 ]);
+						      ?>
+                            </div>
 	                        </div>
 	                    </div>
                         <div class="col-lg-4  la1">
 	                       <label for="">I can administer Injected Medications</label>
 	                          <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 	                        <div class="chek-main-lat">
-	                         <a href="#"> <img src="<?php echo HTTP_ROOT; ?>img/no.png" width="79" height="40" alt="yes"></a> </div>
+	                         <?php
+	                              if(@$professional['user_professional_accreditations_details']->injected_madications ==1){
+	                                 $checked = 'checked';
+	                              }else{
+	                                 $checked = '';
+	                              }
+	                               echo $this->Form->input('UserProfessionalsDetails.injected_madications',[
+										 'templates' => ['inputContainer' => '{{content}}'],
+		                                 'type'=>'checkbox',
+		                                 'label' =>false,
+		                                 'checked' =>$checked,
+		                                 'class'=>'selectedCheckbox',
+		                                 'hiddenField' => false
+		                                 ]);
+						      ?>
+	                     </div>
 	                        </div>
 	                    </div>
                     </div>
                     <div class="row ">
                         <div class="col-lg-4 mt10">
 	                          <label for="">Experience with Behavioural Problems</label>
-	                         <!-- <select id="sel1" class="form-control">
-		                          <option>Adults</option>
-		                          <option>Children</option>
-		                          <option>Infants</option>
-		                          <option>Dog</option>
-		                          <option>Cat</option>
-		                          <option>Other (specify)</option>
-	                          </select>-->
-	                           <?php echo $this->Form->input('UserProfessionalsDetails.ex_behavioural_problems',[
+	                          <?php echo $this->Form->input('UserProfessionalsDetails.ex_behavioural_problems',[
 			                        'templates' => ['inputContainer' => '{{content}}'],
 			                        'label' => false,
 			                        'type'=>'select',
@@ -533,12 +547,7 @@
 	                    </div>
 	                    <div class="col-lg-4 mt10">
 	                         <label for="">Experience with Rescue Pets  </label>
-	                          <!--<select id="sel1" class="form-control">
-	                          <option>Dog</option>
-	                          <option>Cat</option>
-	                          <option>Other (specify)</option>
-	                          </select>-->
-	                        <?php echo $this->Form->input('UserProfessionalsDetails.ex_rescue_pets',[
+	                         <?php echo $this->Form->input('UserProfessionalsDetails.ex_rescue_pets',[
 		                        'templates' => ['inputContainer' => '{{content}}'],
 		                        'label' => false,
 		                        'type'=>'select',
@@ -550,11 +559,6 @@
 	                    </div>
 	                    <div class="form-group col-lg-4 mt10">
 	                     <label for="">Familiar with Pet Training Techniques</label>
-	                          <!--<select id="sel1" class="form-control">
-	                          <option>Dog</option>
-	                          <option>Cat</option>
-	                          <option>Other (specify)</option>
-	                          </select>-->
 	                        <?php echo $this->Form->input('UserProfessionalsDetails.training_techniques',[
 			                        'templates' => ['inputContainer' => '{{content}}'],
 			                        'label' => false,
@@ -687,3 +691,20 @@
 			margin-left: 15px;
 		}
 	</style>
+<?php echo $this->Html->css('Front/dist/jquery.onoff.css');
+      echo $this->Html->script(['Front/dist/jquery.onoff.js']);
+ ?>
+<script>
+  $(document).ready(function (){
+      $('.selectedCheckbox').click(function(){
+            $(this).parent().parent().toggleClass("selected");
+        });
+   
+    })
+   /*For on-off button*/
+    $(function(){
+          $('input[type=checkbox]').onoff();
+    });
+       /*End of-off button*/
+  
+</script>

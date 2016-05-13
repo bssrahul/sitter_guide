@@ -176,9 +176,115 @@ class PagesController extends AppController
 		$this->set('blogs_info',$blogs_info);*/
 		
 		$categoriesModel= TableRegistry::get('categories');
-		$categoriesData=$categoriesModel->find('all')->where(['slug'=>'faqs'])->contain(['faqs'])->toArray();
-		//pr($categoriesData);die;
-		$this->set('categoriesData',$categoriesData);
+		$categoriesData=$categoriesModel->find('all')->where(['categories.slug'=>'faqs'])->contain(['faqs'])->toArray();
+		$sitterArray=array();
+		$guestArray=array();
+		//pr($categoriesData); die;
+		foreach($categoriesData as $key=>$categories){
+			$sitterArray[$key]['title'][]= $categories['title'];
+			$guestArray[$key]['title'][]= $categories['title'];
+			if(is_array($categories['faqs']) && !empty($categories['faqs'])){
+				
+				foreach($categories['faqs'] as $k=>$faqData){
+					if($faqData['faq_type']=='sitter'){
+						
+						$sitterArray[$key][]=$faqData;
+					}
+					else{
+						
+						$guestArray[$key][]=$faqData;
+					}
+				}	
+			}
+
+		}
+		//pr($sitterArray);die;
+		//pr($guestArray);die;
+		$this->set('sitter',$sitterArray);
+		$this->set('guest',$guestArray);
+		//$this->set('categoriesData',$categoriesData);
 	}
+	public function helpListing($id=null,$qid=null)
+    {
+		$title_id=convert_uudecode(base64_decode($id));
+		$this->set('cat_id',$title_id);
+		$que_id=convert_uudecode(base64_decode($qid));
+		
+		//pr($search);die;
+		//pr($title_id);die;
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'help']])->first();
+		//pr($CmsPageData); die;
+	
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'help'));
+		
+		$this->loadComponent('Paginator');
+		$this->set('modelName','UserBlogs');
+		//$questiondata="";
+		if(($title_id !="") and ($que_id !=""))
+		{
+			$categoriesModel= TableRegistry::get('categories');
+			$categoriesData=$categoriesModel->find('all')->where(['slug'=>'faqs'])->where(['id'=>$title_id])->contain(['faqs'])->toArray();
+			$questionData=$Cate=$categoriesData[0]['faqs'];
+			foreach($questionData as $que){
+				if($que['id']==$que_id){
+					$questiondata=$que;
+				}
+			}
+			
+			//pr($questiondata);die;
+			$this->set('categoriesData',$categoriesData);
+			$this->set('questionData',$questiondata);
+		}
+		else{
+			$categoriesModel= TableRegistry::get('categories');
+			$categoriesData=$categoriesModel->find('all')->where(['slug'=>'faqs'])->where(['id'=>$title_id])->contain(['faqs'])->toArray();
+			//pr($categoriesData);die;
+			$this->set('categoriesData',$categoriesData);
+		}
+		
+		
+    }
+    public function helpSearchListing()
+    {
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'help']])->first();
+		//pr($CmsPageData); die;
+	
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'help'));
+		
+		$this->loadComponent('Paginator');
+		$this->set('modelName','UserBlogs');
+		
+		$category_id=$this->request->data['cat_id'];
+		$this->set('cat_id',$category_id);
+		$search=$this->request->data['search'];
+		if(!empty($category_id) and !empty($search)){
+			//echo "hello";die;
+			$faqsModel= TableRegistry::get('faqs');
+			$faqsData=$faqsModel->find('all', array('conditions'=>array('question LIKE'=>'%'.$search.'%')))->where(['category_id'=>$category_id])->contain(['Categories'])->toArray();
+			$title=$faqsData[0]['category']['title'];
+			$this->set('title',$title);
+			$this->set('faqsData',$faqsData);
+		}else if(!empty($search)){
+			
+			$faqsModel= TableRegistry::get('faqs');
+			$faqsData=$faqsModel->find('all', array('conditions'=>array('question LIKE'=>'%'.$search.'%')))->toArray();
+			//pr($faqsData);die;
+			$this->set('faqsData',$faqsData);
+		}
+    }
 		
 }
