@@ -783,79 +783,30 @@ class DashboardController extends AppController
         $this->request->data = @$_REQUEST;
 
 		$sitterServicesModel = TableRegistry::get('UserSitterServices');
-        $serviceDetailsModel = TableRegistry::get('UserSitterServiceDetails');
-       
-		if(isset($this->request->data['UserSitterServices']) && !empty($this->request->data['UserSitterServices']))
+        if(isset($this->request->data['UserSitterServices']) && !empty($this->request->data['UserSitterServices']))
 		{
-
-		$serviceDetailsModel->deleteAll(['user_id' => $userId]);          
-			$accept = array("cancellation_policy","booking"); 
-            foreach($accept as $val){ 
-				if (!array_key_exists($val,$this->request->data['UserSitterServices'])){
-					$this->request->data['UserSitterServices'][$val] = 0;
-               	}
-			}
-			$serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
-			$serviceData->user_id = $userId;
-			$serviceData =  $sitterServicesModel->save($serviceData);
-			//LOOP FIRST POSTED FORM DATA
-			$lastArrToSave = array();
-			//pr($this->request->data['UserServiceDetail']);die;
-
-			foreach($this->request->data['UserServiceDetail'] as $service_for){
-				$customServiceArr = array();
-               foreach($service_for['sd'] as $k=>$singleService){
-					 unset($service_for['sd']);
-					 $saveArr[] = array_merge($service_for,$singleService);
-                        
+			//pr($this->request->data['UserSitterServices']);die;
+			    $accept = array("cancellation_policy_status","booking_status","sitter_house_status","sh_day_care_status","sh_dc_extended_stay_rate_status","sh_dc_additional_guest_rate_status","sh_dc_repeat_client_only_status","sh_night_care_status","sh_nc_extended_stay_rate_status","sh_nc_additional_guest_rate_status","sh_nc_repeat_client_only_status","sh_holiday_rate_status","sh_small_guest_rate_status","sh_large_guest_rate_status","sh_cat_rate_status","sh_puppy_rate_status","guest_house_status","gh_day_care_status","gh_dc_extended_stay_rate_status","gh_dc_additional_guest_rate_status","gh_dc_repeat_client_only_status","gh_drop_in_visit_status","gh_dv_extended_stay_rate_status","gh_dv_additional_guest_rate_status","gh_dv_repeat_client_only_status","gh_night_care_status","gh_nc_extended_stay_rate_status","gh_nc_additional_guest_rate_status","gh_nc_repeat_client_only_status","gh_small_guest_rate_status","gh_large_guest_rate_status","gh_cat_rate_status","gh_puppy_rate_status","market_place_status","mp_grooming_status","mp_gr_premium_grooming_rate_status","mp_gr_additional_guest_rate_status","mp_gr_repeat_client_only_status","mp_recreation_status","mp_rc_premium_recreation_rate_status","mp_rc_additional_guest_rate_status","mp_rc_repeat_client_only_status","mp_training_status","mp_tr_premium_training_rate_status","mp_tr_additional_guest_rate_status","mp_tr_repeat_client_only_status","mp_driver_service_status","mp_ds_return_trip_status","mp_ds_additional_guest_rate_status","mp_ds_repeat_client_only_status","mp_holiday_rate_status","mp_small_guest_rate_status","mp_large_guest_rate_status","mp_cat_rate_status","mp_puppy_rate_status","gh_holiday_rate_status"); 
+	            foreach($accept as $val){ 
+					if (!array_key_exists($val,$this->request->data['UserSitterServices'])){
+						$this->request->data['UserSitterServices'][$val] = 0;
+	               	}
 				}
-             $lastArrToSave[] = $saveArr;
-             $saveArr = array();
-            }
-            //pr($lastArrToSave);die;
-			foreach($lastArrToSave as $fetchArr){
-            	foreach($fetchArr as $newarr){
-                     //pr($newarr);die;
-                      $services_status = array("service_for_status","service_status","extended_stay_rate_status","additional_guest_rate_status","repeat_client_only_status","holiday_rate_status","small_guest_rate_status","large_guest_rate_status","cats_rate_status","puppy_rate_status"); 
-						foreach($services_status as $val){ 
-							if (!array_key_exists($val,$newarr)){
-								$newarr[$val] = 0;
-							}
-							//pr($newarr);die;
-						}
-                       $serviceDetailData = $serviceDetailsModel->newEntity($newarr);
-					   $serviceDetailData->user_id = $userId;
-					   $serviceDetailsModel->save($serviceDetailData);		
-				}
-			}	
-			   return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
-        }else{
-        	$customArrForDisplayRec = array();
-            $query = $usersModel->get($userId,['contain'=>['UserSitterServices','UserSitterServiceDetails']]);
-            if(isset($query->user_sitter_service_details) && !empty($query->user_sitter_service_details)){
-            	foreach($query->user_sitter_service_details as $displayArr){
-            		$displayArr = $displayArr->toArray();
-            		foreach($displayArr as $key=>$single_val){
-            			//pr($displayArr);die;
-            			$customArrForDisplayRec['UserServiceDetail'][$displayArr['service_for']][$displayArr['service_type']][$key] = $single_val;
-            		}
-            	//$finalDisplayArr[]  
-            	}
-            	//pr($customArrForDisplayRec);die;
-            	$this->set('services_details',$customArrForDisplayRec);
-            }
-            //pr($query);die;
-          if(isset($query->user_sitter_services) && !empty($query->user_sitter_services)){
+		        $serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
+				$serviceData->user_id = $userId;
+				$sitterServicesModel->save($serviceData);
+            return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
+          }else{
+          	$query = $usersModel->get($userId,['contain'=>'UserSitterServices']);
+          	if(isset($query->user_sitter_services) && !empty($query->user_sitter_services)){
                    $sittersServiceData = $query->user_sitter_services[0];
                    $this->set('sitterServiceId', $sittersServiceData->id);
                    unset($sittersServiceData->id);
                    $this->set('sitter_service_info', $sittersServiceData);
 		    }
-
-            
-        }
-	}
-    
+          }
+	
+    }
     function sitterProfile(){
          $this->viewBuilder()->layout('profile_dashboard');
          	$session = $this->request->session();

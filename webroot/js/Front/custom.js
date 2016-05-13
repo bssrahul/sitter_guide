@@ -808,393 +808,393 @@
 		/*For Services and Rates form*/
 		$('#servicesAndRates').validate({
 			rules: {
-				"UserServiceDetail[sh][holiday_rate]":
+				"UserSitterServices[sh_holiday_rate]":
 				{
 					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][small_guest_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[sh][large_guest_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[sh][day_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[sh][night_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[sh][cat_rate]":
-				{   
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[sh][puppy_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][holiday_rate]":
+				"UserSitterServices[sh_small_guest_rate]":
 				{
 					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][small_guest_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][large_guest_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][day_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][night_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][cat_rate]":
-				{   
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][puppy_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[gh][drop_visit_rate]":
-				{
-					required:true,
-					number:true,
-					min: 0
-				},
-				"UserServiceDetail[mp][holiday_rate]":
+				"UserSitterServices[sh_large_guest_rate]":
 				{
 					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][small_guest_rate]":
+				"UserSitterServices[sh_day_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][large_guest_rate]":
+				"UserSitterServices[sh_night_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][grooming_rate]":
+				"UserSitterServices[sh_cat_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][recreation_rate]":
+				"UserSitterServices[sh_puppy_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][training_rate]":
-				{   
-					required:true,
+				"UserSitterServices[gh_holiday_rate]":
+				{
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][driving_rate]":
+				"UserSitterServices[gh_small_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][cat_rate]":
+				"UserSitterServices[gh_large_guest_rate]":
 				{
-					required:true,
-					number:true,
-					min: 0 
-				},
-				"UserServiceDetail[mp][puppy_rate]":
-				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][dc][additional_guest_limit]":
+				"UserSitterServices[gh_day_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][dc][extended_stay_rate]":
+				"UserSitterServices[gh_night_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][dc][additional_guest_rate]":
+				"UserSitterServices[gh_cat_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][dc][service_holiday_rate]":
+				"UserSitterServices[gh_puppy_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][nc][additional_guest_limit]":
+				"UserSitterServices[gh_drop_in_visit_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][nc][extended_stay_rate]":
+				"UserSitterServices[mp_holiday_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][nc][additional_guest_rate]":
+				"UserSitterServices[mp_small_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[sh][sd][nc][service_holiday_rate]":
+				"UserSitterServices[mp_large_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dc][additional_guest_limit]":
+				"UserSitterServices[mp_grooming_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dc][extended_stay_rate]":
+				"UserSitterServices[mp_recreation_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dc][additional_guest_rate]":
+				"UserSitterServices[mp_training_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dc][service_holiday_rate]":
+				"UserSitterServices[mp_driving_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][nc][additional_guest_limit]":
+				"UserSitterServices[mp_cat_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][nc][extended_stay_rate]":
+				"UserSitterServices[mp_puppy_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][nc][additional_guest_rate]":
+				"UserSitterServices[sh_dc_additional_guest_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][nc][service_holiday_rate]":
+				"UserSitterServices[sh_dc_extended_stay_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dv][additional_guest_limit]":
+				"UserSitterServices[sh_dc_additional_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dv][extended_stay_rate]":
+				"UserSitterServices[sh_dc_holiday_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dv][additional_guest_rate]":
+				"UserSitterServices[sh_nc_additional_guest_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[gh][sd][dv][service_holiday_rate]":
+				"UserSitterServices[sh_nc_extended_stay_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][gr][additional_guest_limit]":
+				"UserSitterServices[sh_nc_additional_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][gr][premium_rate]":
+				"UserSitterServices[sh_nc_holiday_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][gr][additional_guest_rate]":
+				"UserSitterServices[gh_dc_additional_guest_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][gr][service_holiday_rate]":
+				"UserSitterServices[gh_dc_extended_stay_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][pt][additional_guest_limit]":
+				"UserSitterServices[gh_dc_additional_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][pt][premium_rate]":
+				"UserSitterServices[gh_dc_holiday_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][pt][additional_guest_rate]":
+				"UserSitterServices[gh_nc_additional_guest_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][pt][service_holiday_rate]":
+				"UserSitterServices[gh_nc_extended_stay_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][re][additional_guest_limit]":
+				"UserSitterServices[gh_nc_additional_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][re][premium_rate]":
+				"UserSitterServices[gh_nc_holiday_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][re][additional_guest_rate]":
+				"UserSitterServices[gh_dv_additional_guest_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][re][service_holiday_rate]":
+				"UserSitterServices[gh_dv_extended_stay_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][ds][additional_guest_limit]":
+				"UserSitterServices[gh_dv_additional_guest_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][ds][premium_rate]":
+				"UserSitterServices[gh_dv_holiday_rate]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][ds][additional_guest_rate]":
+				"UserSitterServices[mp_gr_additional_guest_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
-				"UserServiceDetail[mp][sd][ds][service_holiday_rate]":
+				"UserSitterServices[mp_gr_premium_grooming_rate]":
 				{
-					required:true,
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_gr_additional_guest_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_gr_holiday_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_tr_additional_guest_limit]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_tr_premium_training_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_tr_additional_guest_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_tr_holiday_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_rc_additional_guest_limit]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_rc_premium_recreation_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_rc_additional_guest_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_rc_holiday_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_ds_additional_guest_limit]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_ds_premium_driver_service_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_ds_additional_guest_rate]":
+				{
+					required:true, 
+					number:true,
+					min: 0
+				},
+				"UserSitterServices[mp_ds_holiday_rate]":
+				{
+					required:true, 
 					number:true,
 					min: 0
 				},
 				"UserSitterServices[day_care_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
 				"UserSitterServices[night_care_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
 				"UserSitterServices[visits_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				},
 				"UserSitterServices[hourly_services_limit]":
 				{
-					required:true,
+					required:true, 
 					number:true,
 					min: 0
 				}
              },
 			messages: {
-				"UserServiceDetail[sh][holiday_rate]":
+				"UserServiceDetail[sh_holiday_rate]":
 				{
 					required : "This field is required"
 				}
