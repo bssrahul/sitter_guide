@@ -37,6 +37,9 @@ $(function(){
     $('.chooseService').click(function(){
         $('.chooseService').removeClass('active');
         $(this).addClass('active');
+        
+        $('#selected_service').val($("ul.service_selected a.active").attr('data-rel'));
+        
         $('.dropInOption').addClass('onLoadHide');
         $('.FirstThreeServices').removeClass('onLoadHide');
         $('.LastTwoServices').addClass('onLoadHide');
@@ -77,6 +80,8 @@ $(function(){
     $( "#endRange" ).val( "$" + $( "#slider-range" ).slider( "values", 1 ));
     
     /*Search JS ADD ON FORM START By Rahul jain dated on 5th May*/
+
+	
 	$("ul.pet_count li.dog-in-li").click(function() {
         $("ul.pet_count li").removeClass('active');
         $(this).addClass("active");

@@ -62,15 +62,20 @@
 									<div class="sitter-pic"> 
 										
 										<?php 
-										if(isset($results->user_sitter_galleries) && !empty($results->user_sitter_galleries)){
-											
-											
-												$orgImg =  HTTP_ROOT.'img/uploads/'.$results->user_sitter_galleries[0]->image;
-										}else{ 
-												$orgImg = HTTP_ROOT.'img/default-pet-sitter.jpg';
-										} 
+										if($results->facebook_id !="" && $results->is_image_uploaded==0){
+											if($results->image != "")
+											{
+												$orgImg = $results->image;
+											}else{ 
+												$orgImg = 'default-pet-sitter.jpg';
+											} 
 										?>
 										<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo $orgImg; ?>"> 
+
+										<?php }else{ ?>
+										
+										<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 					   
+										<?php  } ?>  
 											   
 										
 									</div>
@@ -190,11 +195,11 @@
 										</ul>
 									  </div>
 								  <!--/facilities--> 
-								  <!--likebox-->
+								  <!--likebox
 								  <div class="likebox"> 
 									  <a href="#" title="LIke"><img src="<?php echo HTTP_ROOT; ?>img/like-icon.png" width="16" height="14" alt=""/></a>
 								  </div>
-								  <!--/likebox--> 
+								 likebox--> 
 								</div>
 							  </div>
 							</li>
@@ -241,13 +246,26 @@
                         </div>                        
                     </div>
                 </div>
-				<?php echo $this->GoogleMap->map(array('width'=>'100%','height'=>'1180px','type'=>'ROADMAP','latitude'=>@$sourceLocationLatitude,'longitude'=>@$sourceLocationLongitude)); ?>
+				<?php 
+					//INITIAl GOOGLE MAP
+					echo $this->GoogleMap->map(array('width'=>'100%','height'=>'1180px','type'=>'ROADMAP','latitude'=>@$sourceLocationLatitude,	'longitude'=>@$sourceLocationLongitude)); 
+				?>
 				<?php if(!empty($resultsData)){ 
 						$mapInc =1;
 						foreach($resultsData as $results){  
 							$position['latitude'] = $results->latitude;
 							$position['longitude'] = $results->longitude;
-							echo $this->GoogleMap->addMarker('map_canvas',$results->id,$position,array('markerTitle'=>$results->id,'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF')); 
+							$full_name = $results->first_name." ".$results->last_name;
+							
+							
+							//ADD MARKER ON GOOGLE MAP	
+							echo $this->GoogleMap->addMarker('map_canvas',$results->id,$position,
+										array(
+										'markerTitle'=>$full_name,
+										'windowText'=>$full_name,
+										'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
+										)
+								  ); 
 							$mapInc++;
 						}
 					}		

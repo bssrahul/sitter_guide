@@ -1,5 +1,4 @@
 <!--[Header Area Start]-->
-<?php echo $this->Html->script(['Front/google_country_autocomplete']); ?>
 <header>
   <?php 
 	if($currentLocal == 'ru'){?>
@@ -46,7 +45,7 @@
                             <div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav nav-logout">
 									<li class="active">
-										<a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Get Free Sitting or Minding')); ?></a>
+										<a data-toggle="modal" href="#referanceModal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Get Free Sitting or Minding')); ?></a>
 									</li>
 									<li class="select"> 
 										<a  href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Become a sitter')); ?></a>
