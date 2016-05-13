@@ -1,4 +1,4 @@
-<?php echo $this->Html->script(['Front/google_country_autocomplete']); ?>
+
 <header>
 <div class="head-wrap">
 <div class="container-fluid">

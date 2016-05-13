@@ -1,5 +1,4 @@
 <!--[Header Area Start]-->
-<?php echo $this->Html->script(['Front/google_country_autocomplete']); ?>
 <header>
   <?php 
 	if($currentLocal == 'ru'){?>

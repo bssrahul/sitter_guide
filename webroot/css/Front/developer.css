@@ -156,11 +156,11 @@ ul.pet_count  li.dog-in-li:hover  {
   
 }
 
-<<<<<<< HEAD
+
 div.checkbox label.error{
     width:auto !important;
 }
-=======
+
 ul.pet_count li.active  {
     background:#72A105;
     color:#fff;
@@ -197,4 +197,3 @@ ul.booking_days li.active  {
   background: #4c4c4c url("../../img/training-icon.png") no-repeat scroll center top 5px;
   color: #ffffff;
 }
->>>>>>> ccfd3cc769f9e53a182267d076535e6ea9ef205d
