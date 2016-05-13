@@ -139,7 +139,38 @@
 			}
 			
 		});
-
+		// code for review page
+		
+		$('#addrating').validate({
+			rules: {
+				"comment":
+				{
+					required:true,
+					minlength:10,
+				},
+				"rating":
+				{
+					required:true,
+				},
+				
+			},
+			messages: {
+				"comment":
+				{
+					required : "This field is required",
+					minlength: 'Please enter minimum 6 characters.',
+					
+				},
+				"rating":
+				{
+					required : "This field is required"
+					
+				},
+				
+			}
+		});
+		
+		
 		//CODE SNIPPET FOR EDIT PROFILE
 		$('#profileedit').validate({
 			rules: {

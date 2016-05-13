@@ -1277,5 +1277,28 @@ class DashboardController extends AppController
 		   unset($_FILES['document']);
 		}
 	}
+	
+	// Function for user rating
+	
+	 public function review()
+    {
+		$session = $this->request->session();
+		$this->viewBuilder()->layout('profile_dashboard');
+		$reviewModel=TableRegistry::get('User_ratings');
+		$reviewData=$reviewModel->newEntity();
+		if($this->request->is('POST')){
+			
+			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data);
+			$reviewData->from=$session->read('User.id');
+			$reviewData->to=1;
+			//$reviewData->created_date=date('Y/m/d');
+			$reviewData->status=0;
+			//$reviewData->modified_date=date('Y/m/d');
+			if($reviewModel->save($reviewData)){
+				echo "data save";
+			}
+			
+		}	
+    }
 }
 ?>

@@ -19,7 +19,7 @@
                       <li><a href="#"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
                       <li><a href="#"><span class=" fa fa-list"></span> <span class="side-list"><?php echo __('Services').' $ '.__('rates'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transections'); ?></span></a></li>
-                      <li><a href="#"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
+                      <li><a href="review"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
                       
                       <!-- Dropdown--> 

@@ -15,7 +15,7 @@
 /*Banner inner pages starts*/
 .help-page .banner-area-terms {background:url(../../img/help-banner.png) no-repeat; background-position:left; height:550px;  width:100%; }
 
-.help-page .banner-area-terms h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.help-page .banner-area-terms h3 {text-align:center; color:#fff; font-size:30px; padding-top:0;  padding-bottom:35px;}
 .help-page .banner-area-terms p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
 
 /*Banner inner pages ends*/

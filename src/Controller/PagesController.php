@@ -160,26 +160,14 @@ class PagesController extends AppController
 		//CODE FOR MULTILIGUAL END
 		
 		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'help']])->first();
-		//pr($CmsPageData); die;
-	
-		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'help'));
 		
 		$this->loadComponent('Paginator');
 		$this->set('modelName','UserBlogs');
-	/*	$UserBlogsModel = TableRegistry::get("UserBlogs");
-		
-		//CODE FOR MULTILIGUAL START
-		$this->i18translation($UserBlogsModel);
-		$blogs_info = $UserBlogsModel->find('all',['order' => ['UserBlogs.modified' => 'desc']])->where(['status'=>1])->toArray();
-		//pr($blogs_info);die;
-		$this->set('blogs_info',$blogs_info);*/
-		
 		$categoriesModel= TableRegistry::get('categories');
 		$categoriesData=$categoriesModel->find('all')->where(['categories.slug'=>'faqs'])->contain(['faqs'])->toArray();
 		$sitterArray=array();
 		$guestArray=array();
-		//pr($categoriesData); die;
 		foreach($categoriesData as $key=>$categories){
 			$sitterArray[$key]['title'][]= $categories['title'];
 			$guestArray[$key]['title'][]= $categories['title'];
@@ -198,20 +186,18 @@ class PagesController extends AppController
 			}
 
 		}
-		//pr($sitterArray);die;
-		//pr($guestArray);die;
 		$this->set('sitter',$sitterArray);
 		$this->set('guest',$guestArray);
-		//$this->set('categoriesData',$categoriesData);
 	}
-	public function helpListing($id=null,$qid=null)
+	public function helpListing($type=null,$tid=null,$qid=null)
     {
-		$title_id=convert_uudecode(base64_decode($id));
-		$this->set('cat_id',$title_id);
+		$type_id=convert_uudecode(base64_decode($type));
+		$title_id=convert_uudecode(base64_decode($tid));
 		$que_id=convert_uudecode(base64_decode($qid));
-		
-		//pr($search);die;
-		//pr($title_id);die;
+		$this->set('cat_id',$title_id);
+		if($type_id != 2){
+			$this->set('type_id',$type_id);
+		}
 		$this->viewBuilder()->layout('cms_pages');
 		$CmsPagesModel = TableRegistry::get('CmsPages');
 		//CODE FOR MULTILIGUAL START
@@ -219,37 +205,48 @@ class PagesController extends AppController
 		//CODE FOR MULTILIGUAL END
 		
 		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'help']])->first();
-		//pr($CmsPageData); die;
-	
-		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'help'));
-		
 		$this->loadComponent('Paginator');
 		$this->set('modelName','UserBlogs');
-		//$questiondata="";
-		if(($title_id !="") and ($que_id !=""))
+		$questiondata=array();
+		if(($title_id !="") and ($type_id == 2) and ($que_id != ""))
 		{
 			$categoriesModel= TableRegistry::get('categories');
 			$categoriesData=$categoriesModel->find('all')->where(['slug'=>'faqs'])->where(['id'=>$title_id])->contain(['faqs'])->toArray();
-			$questionData=$Cate=$categoriesData[0]['faqs'];
+			$questionData=$categoriesData[0]['faqs'];
 			foreach($questionData as $que){
 				if($que['id']==$que_id){
-					$questiondata=$que;
+					$questiondata[]=$que;
 				}
 			}
-			
 			//pr($questiondata);die;
 			$this->set('categoriesData',$categoriesData);
 			$this->set('questionData',$questiondata);
 		}
 		else{
+			
+			if($type_id == 3){
+				$type="guest";
+			}
+			else{
+				$type="sitter";
+			}
 			$categoriesModel= TableRegistry::get('categories');
 			$categoriesData=$categoriesModel->find('all')->where(['slug'=>'faqs'])->where(['id'=>$title_id])->contain(['faqs'])->toArray();
-			//pr($categoriesData);die;
+			$questionsData=$categoriesData[0]['faqs'];
+			$questionsdata=array();
+			foreach($questionsData as $que){
+				
+				if(($que['faq_type']== $type)and($type_id == 3)){
+					$questionsdata[]=$que;
+				}
+				if(($que['faq_type']== $type)and($type_id == 1)){
+					$questionsdata[]=$que;
+				}
+			}
+			$this->set('questionData',$questionsdata);
 			$this->set('categoriesData',$categoriesData);
-		}
-		
-		
+		}		
     }
     public function helpSearchListing()
     {
@@ -270,19 +267,26 @@ class PagesController extends AppController
 		
 		$category_id=$this->request->data['cat_id'];
 		$this->set('cat_id',$category_id);
+		$t_id=$this->request->data['type_id'];
+		$this->set('type_id',$t_id);
 		$search=$this->request->data['search'];
+		$this->set('search',$search);
+		if($t_id==3){
+			$type="guest";
+		}
+		else{
+			$type="sitter";
+		}
 		if(!empty($category_id) and !empty($search)){
-			//echo "hello";die;
 			$faqsModel= TableRegistry::get('faqs');
-			$faqsData=$faqsModel->find('all', array('conditions'=>array('question LIKE'=>'%'.$search.'%')))->where(['category_id'=>$category_id])->contain(['Categories'])->toArray();
-			$title=$faqsData[0]['category']['title'];
+			$faqsData=$faqsModel->find('all', array('conditions'=>array('question LIKE'=>'%'.$search.'%')))->where(['category_id'=>$category_id])->where(['faq_type'=>$type])->contain(['Categories'])->toArray();
+			$title=@$faqsData[0]['category']['title'];
 			$this->set('title',$title);
 			$this->set('faqsData',$faqsData);
 		}else if(!empty($search)){
 			
 			$faqsModel= TableRegistry::get('faqs');
 			$faqsData=$faqsModel->find('all', array('conditions'=>array('question LIKE'=>'%'.$search.'%')))->toArray();
-			//pr($faqsData);die;
 			$this->set('faqsData',$faqsData);
 		}
     }
