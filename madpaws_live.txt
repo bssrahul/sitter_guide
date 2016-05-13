@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2016 at 11:52 AM
+-- Generation Time: May 13, 2016 at 11:26 AM
 -- Server version: 5.5.47-MariaDB-1ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `full_name`, `username`, `email`, `password`, `admin_img`, `status`, `type`, `date_added`, `last_login`) VALUES
-(1, 'Rahul Jain', 'admin', 'rahul.jain@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', 'Gqge72iDPhF9lSF.png', 1, '0', '2015-01-16 00:00:00', '2016-04-25 05:31:48');
+(1, 'Rahul Jain', 'admin', 'rahul.jain@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', 'Gqge72iDPhF9lSF.png', 1, '0', '2015-01-16 00:00:00', '2016-05-12 10:16:15');
 
 -- --------------------------------------------------------
 
@@ -56,31 +56,39 @@ INSERT INTO `admins` (`id`, `full_name`, `username`, `email`, `password`, `admin
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` enum('contact_us','faqs','distance') COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(11) NOT NULL DEFAULT '1',
   `description` text COLLATE utf8_unicode_ci,
   `date_added` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `title`, `slug`, `image`, `status`, `description`, `date_added`, `modified`) VALUES
-(6, 'Dogs', 'dogs', 'K0kJp5J6jalVNVh.jpg', 1, '<p>Dogs report</p>', '2015-05-15 08:22:26', '2015-05-15 08:22:26'),
-(7, 'Cat', 'cat', 'TYxgPI04NDQ0Lmk.jpg', 1, '<p> Cat Reports</p>', '2015-05-15 08:22:54', '2015-05-15 08:22:54'),
-(8, 'Hourses', 'hourses', 'Aw2V2lesQGqUDfX.jpg', 1, 'loving hourses ', NULL, '2016-04-12 09:06:33'),
-(9, 'Birds', 'birds', '844YjgTPKCTQ0oF.jpg', 1, 'Bird descriptions', NULL, '2016-04-12 07:52:37'),
-(11, 'Animal', 'Ani', 'sl5p6FZXThInwLX.jpg', 1, 'Cat', NULL, NULL),
-(12, 'Anim', 'Animz', '3zWV1p6I4jUm0Ke.jpg', 1, 'Snake', NULL, NULL),
-(13, 'Wild animal', 'AA', '5AUhVkLSNb1fOB8.jpg', 1, 'Outdoor Cat', NULL, NULL),
-(14, 'Animal', 'A', 'gz6Cwrk2aifs51I.jpg', 1, 'Leopard', NULL, NULL),
-(15, 'Image', '*', 'MTRlalsVdrC0Qjf.jpg', 0, 'Image Shrink', NULL, NULL),
-(18, 'fgfg', 'gdfgdf', '', 1, 'gdgdfg', NULL, NULL),
-(20, 'sdfsdf', 'fsdf', 'KyPMCcJUS8KdNIF.png', 0, 'bvngn', NULL, '2016-04-12 07:52:44');
+(1, 'Sydney', 'contact_us', '', 1, 'Sydney', NULL, NULL),
+(2, 'Auckland', 'contact_us', '', 1, 'Auckland', NULL, NULL),
+(3, 'London', 'contact_us', '', 1, 'London', NULL, NULL),
+(4, 'NewYork', 'contact_us', '', 1, 'NewYork', NULL, NULL),
+(5, 'Geting Started', 'faqs', '', 1, 'Geting Started', NULL, NULL),
+(6, 'My Profile & services', 'faqs', '', 1, 'My Profile & services', NULL, NULL),
+(7, 'Running My Business', 'faqs', '', 1, 'Running My Business', NULL, NULL),
+(8, 'Booking and Meet & Greets', 'faqs', '', 1, 'Booking and Meet & Greets', NULL, NULL),
+(9, 'Payments', 'faqs', '', 1, 'Payments', NULL, NULL),
+(10, 'Trust and Safety', 'faqs', '', 1, 'Trust and Safety', NULL, NULL),
+(11, '5', 'distance', '', 1, '5', NULL, NULL),
+(12, '10', 'distance', '', 1, '10', NULL, NULL),
+(13, '15', 'distance', '', 1, '15', NULL, NULL),
+(14, '20', 'distance', '', 1, '20', NULL, NULL),
+(15, '50', 'distance', '', 1, '50', NULL, NULL),
+(16, '100', 'distance', '', 1, '100', NULL, NULL),
+(17, '200', 'distance', '', 1, '200', NULL, NULL),
+(18, '300', 'distance', '', 1, '300', NULL, NULL),
+(19, '500', 'distance', '', 1, '500', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -107,17 +115,19 @@ CREATE TABLE IF NOT EXISTS `cms_pages` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `cms_pages`
 --
 
 INSERT INTO `cms_pages` (`id`, `pagename`, `pageheading`, `banner_image`, `pagecontent`, `pageurl`, `link`, `company_name`, `phone_no`, `email`, `location`, `status`, `meta_title`, `meta_keywords`, `meta_description`, `created`, `modified`) VALUES
-(1, 'Terms & Conditions', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ', 'bT1LnGwVDPXugT9.jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.<br /><br /><span style="font-size: medium;"><strong>1. Contrary to popular belief, Lorem</strong></span><br /><br />&nbsp;&nbsp;&nbsp; <strong>1. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>2. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.</p>\r\n<p><span style="font-size: medium;"><strong>2. It is a long established fact that</strong></span><br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>1. industry. Lorem Ipsum has been the industry''s</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 2. It is a long established fact that a</strong> reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br style="text-align: justify;" /></p>', 'terms', 'Home/cms/terms', '', '0', '', '', 1, 'Live3Times - Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '0000-00-00 00:00:00', '2016-04-21 06:50:51'),
-(4, 'About Us', '', '', '<h2 class="title_head">Welcome to Sitter Guide</h2>\r\n<p>Test Sitter Guide content.&nbsp;</p>\r\n<p class="strong">*Subject to Terms and Conditions*</p>', 'about-us', 'Homes/cms/about_us', 'Beta Soft Systems Pvt Ltd', '0', '', '', 1, 'Live3Times - About Us', 'About Us', 'About Us', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Privacy Policy', '', '', '<p><span style="font-size: medium;"><strong style="font-size: medium;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></span><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College Ipsum.<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <br /><br />in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br style="text-align: justify;" /></p>', 'privacy', 'Home/cms/privacy', '', '0', '', '', 0, 'Live3Times - Privacy Policy', 'Privacy Policy', 'Privacy Policy', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'Contact us', '', '', '<p><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Beta Soft Systems Pvt Ltd&nbsp;</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">Sco 398 Sector - 20 Panchkula, Haryana 134116</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">info@betasofttrainings.com</span><br style="box-sizing: border-box; color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px;" /><span style="color: #73879c; font-family: ''Helvetica Neue'', Roboto, Arial, ''Droid Sans'', sans-serif; font-size: 13px; line-height: 18.5714302062988px; background-color: rgba(38, 185, 154, 0.0666667);">0172 467 7163</span></p>', 'contact-us', 'Home/contact-us', 'Beta Soft Systems Pvt Ltd ', '0172 467 7163', 'info@betasofttrainings.com', 'Sco 398 Sector - 20 Panchkula, Haryana 134116', 1, 'Live3Times - Contact Us', 'Contact Us', 'Contact Us', '0000-00-00 00:00:00', '2016-04-13 09:59:00');
+(10, 'News', 'It is a long established fact that a reader will be distracted by the readable\r\nIt is a long established fact that a reader will.', 'sP8PxRj2E87qOcF.jpg', '<p>It is a long established fact that a reader will be distracted by the readable</p>\r\n<p>It is a long established fact that a reader will.</p>', 'news', 'news', '', '', '', '', 1, '', '', '', '2016-05-02 00:45:29', '0000-00-00 00:00:00'),
+(7, 'Contact us', 'Contact Us', '7KfRunLjnEu0cdu.png', '<div class="row">\r\n<div class="col-sm-6 col-md-3">\r\n<h4 class="country">Australia</h4>\r\n<h5><span>Tel : </span> <a href="tel:1-800-7878-09">1-800-7878-09</a></h5>\r\n<h5><span>Email : </span> <a class="f16" href="mailto:">auinfo@sitter.guide</a></h5>\r\n</div>\r\n<div class="col-sm-6 col-md-3">\r\n<h4 class="country">New Zealand</h4>\r\n<h5><span>Tel : </span> <a href="tel:1-800-7878-09">1-800-7878-09</a></h5>\r\n<h5><span>Email : </span> <a class="f16" href="mailto:">nzinfo@sitter.guide</a></h5>\r\n</div>\r\n<div class="col-sm-6 col-md-3">\r\n<h4 class="country">UK</h4>\r\n<h5><span>Tel : </span> <a href="tel:1-800-7878-09">1-800-7878-09</a></h5>\r\n<h5><span>Email : </span> <a class="f16" href="mailto:">ukinfo@sitter.guide</a></h5>\r\n</div>\r\n<div class="col-sm-6 col-md-3">\r\n<h4 class="country">USA</h4>\r\n<h5><span>Tel : </span> <a href="tel:1-800-7878-09">1-800-7878-09</a></h5>\r\n<h5><span>Email : </span> <a class="f16" href="mailto:">usinfo@sitter.guide</a></h5>\r\n</div>\r\n</div>', 'contact-us', 'Home/contact-us', 'Beta Soft Systems Pvt Ltd ', '0172 467 7163', 'info@betasofttrainings.com', 'Sco 398 Sector - 20 Panchkula, Haryana 134116', 1, 'Live3Times - Contact Us', 'Contact Us', 'Contact Us', '0000-00-00 00:00:00', '2016-04-13 09:59:00'),
+(9, 'Safety', 'It is a long established fact that a reader will be distracted by the readable\r\nIt is a long established fact that a reader will.', 'Jmmti6SiqbdGm8Y.png', '<div class="row">\r\n<div class="col-xs-12 col-md-12 col-lg-12">\r\n<h2 class="top-pad">On Sitter Guide, it&rsquo;s easy to find a neighborhood sitter you can trust.</h2>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n</div>\r\n</div>\r\n<div class="premium">\r\n<div class="row">\r\n<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">\r\n<h1><span><img src="/sitterguide_test/js/newadmin/tinymce/uploads/s-premium.png" alt="premium insurance" width="73" height="73" /></span> Premium Insurance</h1>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>\r\n<div class="row">\r\n<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">\r\n<div class="picons"><img src="/sitterguide_test/js/newadmin/tinymce/uploads/s-secure.png" alt="secure" width="78" height="78" />\r\n<p>Secure Payments</p>\r\n</div>\r\n</div>\r\n<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">\r\n<div class="picons"><img src="/sitterguide_test/js/newadmin/tinymce/uploads/s-best.png" alt="secure" width="78" height="78" />\r\n<p>Best Sitter</p>\r\n</div>\r\n</div>\r\n<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">\r\n<div class="picons"><img src="/sitterguide_test/js/newadmin/tinymce/uploads/s-trust.png" alt="secure" width="78" height="78" />\r\n<p>Trust and Safety</p>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">\r\n<div class="dog"><img src="/sitterguide_test/js/newadmin/tinymce/uploads/s-dog.png" alt="dog" width="351" height="315" /></div>\r\n</div>\r\n</div>\r\n</div>\r\n<div class="row">\r\n<div class="col-xs-12 col-sm-12  col-md-12 col-lg-12">\r\n<h3>Other key Safety Features</h3>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>\r\n<ul class=" list-unstyled">\r\n<li> We provide a platform and the advertising tools to continuously get you new bookings. </li>\r\n<li>You choose the pets you want to care for, where, when, and the fee you think is appropriate.</li>\r\n<li>Our services allow you to meet and greet clients before a booking,</li>\r\n<li>We provide excellent emergency support</li>\r\n<li>Secure and fast online payments</li>\r\n<li>Continual marketing and platform maintenance.</li>\r\n<li> Included is our Mad Paws Insurance policy that will cover you if certain accidents incur.</li>\r\n</ul>\r\n</div>\r\n</div>\r\n<div class="dog-banner">\r\n<h1>We protect our sitters and  the dogs in their care.</h1>\r\n</div>', 'safety', '', '', '', '', '', 1, '', '', '', '2016-04-29 01:32:02', '0000-00-00 00:00:00'),
+(4, 'About Us', 'Welcome to Sitter Guide', 'ILLo5YS5BNV7VSb.jpg', '<p><span style="font-size: medium;"><strong style="font-size: medium;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></span><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College Ipsum.<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <br /><br />in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br style="text-align: justify;" /></p>', 'about-us', 'Homes/cms/about_us', 'Beta Soft Systems Pvt Ltd', '0', '', '', 1, 'Live3Times - About Us', 'About Us', 'About Us', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Privacy Policy', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2tvfC3fmG5RSRiy.jpg', '<p><span style="font-size: medium;"><strong style="font-size: medium;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></span><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College Ipsum.<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word <br /><br />in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section<br /><br /><span style="font-size: medium;"><strong>There are many variations of passages of Lorem Ipsum available, but the majority</strong></span><br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br /><br />It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br style="text-align: justify;" /></p>', 'privacy', 'Home/cms/privacy', '', '0', '', '', 0, 'Live3Times - Privacy Policy', 'Privacy Policy', 'Privacy Policy', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1, 'Terms & Conditions', 'I am working with mobilyte.inc since January 2014', 'eORTrcnZl2kLtJ5.png', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.<br /><br /><span style="font-size: medium;"><strong>1. Hi Sourabh</strong></span></p>\r\n<p><span style="font-size: medium;"><strong></strong></span><br />&nbsp;&nbsp;&nbsp; <strong>1. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>2. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum.</p>\r\n<p><span style="font-size: medium;"><strong>2. It is a long established fact that</strong></span><br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>1. industry. Lorem Ipsum has been the industry''s</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Ipsum. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;<strong> 2. It is a long established fact that a</strong> reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. <br />&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; <strong>3. Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages Ipsum. <br style="text-align: justify;" /></p>', 'terms', 'Home/cms/terms', '', '0', '', '', 1, 'Live3Times - Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '0000-00-00 00:00:00', '2016-04-21 06:50:51');
 
 -- --------------------------------------------------------
 
@@ -423,6 +433,268 @@ INSERT INTO `country` (`country_code`, `country_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `country_codes`
+--
+
+CREATE TABLE IF NOT EXISTS `country_codes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iso` char(2) NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `nicename` varchar(80) NOT NULL,
+  `iso3` char(3) DEFAULT NULL,
+  `numcode` smallint(6) DEFAULT NULL,
+  `phonecode` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=240 ;
+
+--
+-- Dumping data for table `country_codes`
+--
+
+INSERT INTO `country_codes` (`id`, `iso`, `name`, `nicename`, `iso3`, `numcode`, `phonecode`) VALUES
+(1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93),
+(2, 'AL', 'ALBANIA', 'Albania', 'ALB', 8, 355),
+(3, 'DZ', 'ALGERIA', 'Algeria', 'DZA', 12, 213),
+(4, 'AS', 'AMERICAN SAMOA', 'American Samoa', 'ASM', 16, 1684),
+(5, 'AD', 'ANDORRA', 'Andorra', 'AND', 20, 376),
+(6, 'AO', 'ANGOLA', 'Angola', 'AGO', 24, 244),
+(7, 'AI', 'ANGUILLA', 'Anguilla', 'AIA', 660, 1264),
+(8, 'AQ', 'ANTARCTICA', 'Antarctica', NULL, NULL, 0),
+(9, 'AG', 'ANTIGUA AND BARBUDA', 'Antigua and Barbuda', 'ATG', 28, 1268),
+(10, 'AR', 'ARGENTINA', 'Argentina', 'ARG', 32, 54),
+(11, 'AM', 'ARMENIA', 'Armenia', 'ARM', 51, 374),
+(12, 'AW', 'ARUBA', 'Aruba', 'ABW', 533, 297),
+(13, 'AU', 'AUSTRALIA', 'Australia', 'AUS', 36, 61),
+(14, 'AT', 'AUSTRIA', 'Austria', 'AUT', 40, 43),
+(15, 'AZ', 'AZERBAIJAN', 'Azerbaijan', 'AZE', 31, 994),
+(16, 'BS', 'BAHAMAS', 'Bahamas', 'BHS', 44, 1242),
+(17, 'BH', 'BAHRAIN', 'Bahrain', 'BHR', 48, 973),
+(18, 'BD', 'BANGLADESH', 'Bangladesh', 'BGD', 50, 880),
+(19, 'BB', 'BARBADOS', 'Barbados', 'BRB', 52, 1246),
+(20, 'BY', 'BELARUS', 'Belarus', 'BLR', 112, 375),
+(21, 'BE', 'BELGIUM', 'Belgium', 'BEL', 56, 32),
+(22, 'BZ', 'BELIZE', 'Belize', 'BLZ', 84, 501),
+(23, 'BJ', 'BENIN', 'Benin', 'BEN', 204, 229),
+(24, 'BM', 'BERMUDA', 'Bermuda', 'BMU', 60, 1441),
+(25, 'BT', 'BHUTAN', 'Bhutan', 'BTN', 64, 975),
+(26, 'BO', 'BOLIVIA', 'Bolivia', 'BOL', 68, 591),
+(27, 'BA', 'BOSNIA AND HERZEGOVINA', 'Bosnia and Herzegovina', 'BIH', 70, 387),
+(28, 'BW', 'BOTSWANA', 'Botswana', 'BWA', 72, 267),
+(29, 'BV', 'BOUVET ISLAND', 'Bouvet Island', NULL, NULL, 0),
+(30, 'BR', 'BRAZIL', 'Brazil', 'BRA', 76, 55),
+(31, 'IO', 'BRITISH INDIAN OCEAN TERRITORY', 'British Indian Ocean Territory', NULL, NULL, 246),
+(32, 'BN', 'BRUNEI DARUSSALAM', 'Brunei Darussalam', 'BRN', 96, 673),
+(33, 'BG', 'BULGARIA', 'Bulgaria', 'BGR', 100, 359),
+(34, 'BF', 'BURKINA FASO', 'Burkina Faso', 'BFA', 854, 226),
+(35, 'BI', 'BURUNDI', 'Burundi', 'BDI', 108, 257),
+(36, 'KH', 'CAMBODIA', 'Cambodia', 'KHM', 116, 855),
+(37, 'CM', 'CAMEROON', 'Cameroon', 'CMR', 120, 237),
+(38, 'CA', 'CANADA', 'Canada', 'CAN', 124, 1),
+(39, 'CV', 'CAPE VERDE', 'Cape Verde', 'CPV', 132, 238),
+(40, 'KY', 'CAYMAN ISLANDS', 'Cayman Islands', 'CYM', 136, 1345),
+(41, 'CF', 'CENTRAL AFRICAN REPUBLIC', 'Central African Republic', 'CAF', 140, 236),
+(42, 'TD', 'CHAD', 'Chad', 'TCD', 148, 235),
+(43, 'CL', 'CHILE', 'Chile', 'CHL', 152, 56),
+(44, 'CN', 'CHINA', 'China', 'CHN', 156, 86),
+(45, 'CX', 'CHRISTMAS ISLAND', 'Christmas Island', NULL, NULL, 61),
+(46, 'CC', 'COCOS (KEELING) ISLANDS', 'Cocos (Keeling) Islands', NULL, NULL, 672),
+(47, 'CO', 'COLOMBIA', 'Colombia', 'COL', 170, 57),
+(48, 'KM', 'COMOROS', 'Comoros', 'COM', 174, 269),
+(49, 'CG', 'CONGO', 'Congo', 'COG', 178, 242),
+(50, 'CD', 'CONGO, THE DEMOCRATIC REPUBLIC OF THE', 'Congo, the Democratic Republic of the', 'COD', 180, 242),
+(51, 'CK', 'COOK ISLANDS', 'Cook Islands', 'COK', 184, 682),
+(52, 'CR', 'COSTA RICA', 'Costa Rica', 'CRI', 188, 506),
+(53, 'CI', 'COTE D''IVOIRE', 'Cote D''Ivoire', 'CIV', 384, 225),
+(54, 'HR', 'CROATIA', 'Croatia', 'HRV', 191, 385),
+(55, 'CU', 'CUBA', 'Cuba', 'CUB', 192, 53),
+(56, 'CY', 'CYPRUS', 'Cyprus', 'CYP', 196, 357),
+(57, 'CZ', 'CZECH REPUBLIC', 'Czech Republic', 'CZE', 203, 420),
+(58, 'DK', 'DENMARK', 'Denmark', 'DNK', 208, 45),
+(59, 'DJ', 'DJIBOUTI', 'Djibouti', 'DJI', 262, 253),
+(60, 'DM', 'DOMINICA', 'Dominica', 'DMA', 212, 1767),
+(61, 'DO', 'DOMINICAN REPUBLIC', 'Dominican Republic', 'DOM', 214, 1809),
+(62, 'EC', 'ECUADOR', 'Ecuador', 'ECU', 218, 593),
+(63, 'EG', 'EGYPT', 'Egypt', 'EGY', 818, 20),
+(64, 'SV', 'EL SALVADOR', 'El Salvador', 'SLV', 222, 503),
+(65, 'GQ', 'EQUATORIAL GUINEA', 'Equatorial Guinea', 'GNQ', 226, 240),
+(66, 'ER', 'ERITREA', 'Eritrea', 'ERI', 232, 291),
+(67, 'EE', 'ESTONIA', 'Estonia', 'EST', 233, 372),
+(68, 'ET', 'ETHIOPIA', 'Ethiopia', 'ETH', 231, 251),
+(69, 'FK', 'FALKLAND ISLANDS (MALVINAS)', 'Falkland Islands (Malvinas)', 'FLK', 238, 500),
+(70, 'FO', 'FAROE ISLANDS', 'Faroe Islands', 'FRO', 234, 298),
+(71, 'FJ', 'FIJI', 'Fiji', 'FJI', 242, 679),
+(72, 'FI', 'FINLAND', 'Finland', 'FIN', 246, 358),
+(73, 'FR', 'FRANCE', 'France', 'FRA', 250, 33),
+(74, 'GF', 'FRENCH GUIANA', 'French Guiana', 'GUF', 254, 594),
+(75, 'PF', 'FRENCH POLYNESIA', 'French Polynesia', 'PYF', 258, 689),
+(76, 'TF', 'FRENCH SOUTHERN TERRITORIES', 'French Southern Territories', NULL, NULL, 0),
+(77, 'GA', 'GABON', 'Gabon', 'GAB', 266, 241),
+(78, 'GM', 'GAMBIA', 'Gambia', 'GMB', 270, 220),
+(79, 'GE', 'GEORGIA', 'Georgia', 'GEO', 268, 995),
+(80, 'DE', 'GERMANY', 'Germany', 'DEU', 276, 49),
+(81, 'GH', 'GHANA', 'Ghana', 'GHA', 288, 233),
+(82, 'GI', 'GIBRALTAR', 'Gibraltar', 'GIB', 292, 350),
+(83, 'GR', 'GREECE', 'Greece', 'GRC', 300, 30),
+(84, 'GL', 'GREENLAND', 'Greenland', 'GRL', 304, 299),
+(85, 'GD', 'GRENADA', 'Grenada', 'GRD', 308, 1473),
+(86, 'GP', 'GUADELOUPE', 'Guadeloupe', 'GLP', 312, 590),
+(87, 'GU', 'GUAM', 'Guam', 'GUM', 316, 1671),
+(88, 'GT', 'GUATEMALA', 'Guatemala', 'GTM', 320, 502),
+(89, 'GN', 'GUINEA', 'Guinea', 'GIN', 324, 224),
+(90, 'GW', 'GUINEA-BISSAU', 'Guinea-Bissau', 'GNB', 624, 245),
+(91, 'GY', 'GUYANA', 'Guyana', 'GUY', 328, 592),
+(92, 'HT', 'HAITI', 'Haiti', 'HTI', 332, 509),
+(93, 'HM', 'HEARD ISLAND AND MCDONALD ISLANDS', 'Heard Island and Mcdonald Islands', NULL, NULL, 0),
+(94, 'VA', 'HOLY SEE (VATICAN CITY STATE)', 'Holy See (Vatican City State)', 'VAT', 336, 39),
+(95, 'HN', 'HONDURAS', 'Honduras', 'HND', 340, 504),
+(96, 'HK', 'HONG KONG', 'Hong Kong', 'HKG', 344, 852),
+(97, 'HU', 'HUNGARY', 'Hungary', 'HUN', 348, 36),
+(98, 'IS', 'ICELAND', 'Iceland', 'ISL', 352, 354),
+(99, 'IN', 'INDIA', 'India', 'IND', 356, 91),
+(100, 'ID', 'INDONESIA', 'Indonesia', 'IDN', 360, 62),
+(101, 'IR', 'IRAN, ISLAMIC REPUBLIC OF', 'Iran, Islamic Republic of', 'IRN', 364, 98),
+(102, 'IQ', 'IRAQ', 'Iraq', 'IRQ', 368, 964),
+(103, 'IE', 'IRELAND', 'Ireland', 'IRL', 372, 353),
+(104, 'IL', 'ISRAEL', 'Israel', 'ISR', 376, 972),
+(105, 'IT', 'ITALY', 'Italy', 'ITA', 380, 39),
+(106, 'JM', 'JAMAICA', 'Jamaica', 'JAM', 388, 1876),
+(107, 'JP', 'JAPAN', 'Japan', 'JPN', 392, 81),
+(108, 'JO', 'JORDAN', 'Jordan', 'JOR', 400, 962),
+(109, 'KZ', 'KAZAKHSTAN', 'Kazakhstan', 'KAZ', 398, 7),
+(110, 'KE', 'KENYA', 'Kenya', 'KEN', 404, 254),
+(111, 'KI', 'KIRIBATI', 'Kiribati', 'KIR', 296, 686),
+(112, 'KP', 'KOREA, DEMOCRATIC PEOPLE''S REPUBLIC OF', 'Korea, Democratic People''s Republic of', 'PRK', 408, 850),
+(113, 'KR', 'KOREA, REPUBLIC OF', 'Korea, Republic of', 'KOR', 410, 82),
+(114, 'KW', 'KUWAIT', 'Kuwait', 'KWT', 414, 965),
+(115, 'KG', 'KYRGYZSTAN', 'Kyrgyzstan', 'KGZ', 417, 996),
+(116, 'LA', 'LAO PEOPLE''S DEMOCRATIC REPUBLIC', 'Lao People''s Democratic Republic', 'LAO', 418, 856),
+(117, 'LV', 'LATVIA', 'Latvia', 'LVA', 428, 371),
+(118, 'LB', 'LEBANON', 'Lebanon', 'LBN', 422, 961),
+(119, 'LS', 'LESOTHO', 'Lesotho', 'LSO', 426, 266),
+(120, 'LR', 'LIBERIA', 'Liberia', 'LBR', 430, 231),
+(121, 'LY', 'LIBYAN ARAB JAMAHIRIYA', 'Libyan Arab Jamahiriya', 'LBY', 434, 218),
+(122, 'LI', 'LIECHTENSTEIN', 'Liechtenstein', 'LIE', 438, 423),
+(123, 'LT', 'LITHUANIA', 'Lithuania', 'LTU', 440, 370),
+(124, 'LU', 'LUXEMBOURG', 'Luxembourg', 'LUX', 442, 352),
+(125, 'MO', 'MACAO', 'Macao', 'MAC', 446, 853),
+(126, 'MK', 'MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF', 'Macedonia, the Former Yugoslav Republic of', 'MKD', 807, 389),
+(127, 'MG', 'MADAGASCAR', 'Madagascar', 'MDG', 450, 261),
+(128, 'MW', 'MALAWI', 'Malawi', 'MWI', 454, 265),
+(129, 'MY', 'MALAYSIA', 'Malaysia', 'MYS', 458, 60),
+(130, 'MV', 'MALDIVES', 'Maldives', 'MDV', 462, 960),
+(131, 'ML', 'MALI', 'Mali', 'MLI', 466, 223),
+(132, 'MT', 'MALTA', 'Malta', 'MLT', 470, 356),
+(133, 'MH', 'MARSHALL ISLANDS', 'Marshall Islands', 'MHL', 584, 692),
+(134, 'MQ', 'MARTINIQUE', 'Martinique', 'MTQ', 474, 596),
+(135, 'MR', 'MAURITANIA', 'Mauritania', 'MRT', 478, 222),
+(136, 'MU', 'MAURITIUS', 'Mauritius', 'MUS', 480, 230),
+(137, 'YT', 'MAYOTTE', 'Mayotte', NULL, NULL, 269),
+(138, 'MX', 'MEXICO', 'Mexico', 'MEX', 484, 52),
+(139, 'FM', 'MICRONESIA, FEDERATED STATES OF', 'Micronesia, Federated States of', 'FSM', 583, 691),
+(140, 'MD', 'MOLDOVA, REPUBLIC OF', 'Moldova, Republic of', 'MDA', 498, 373),
+(141, 'MC', 'MONACO', 'Monaco', 'MCO', 492, 377),
+(142, 'MN', 'MONGOLIA', 'Mongolia', 'MNG', 496, 976),
+(143, 'MS', 'MONTSERRAT', 'Montserrat', 'MSR', 500, 1664),
+(144, 'MA', 'MOROCCO', 'Morocco', 'MAR', 504, 212),
+(145, 'MZ', 'MOZAMBIQUE', 'Mozambique', 'MOZ', 508, 258),
+(146, 'MM', 'MYANMAR', 'Myanmar', 'MMR', 104, 95),
+(147, 'NA', 'NAMIBIA', 'Namibia', 'NAM', 516, 264),
+(148, 'NR', 'NAURU', 'Nauru', 'NRU', 520, 674),
+(149, 'NP', 'NEPAL', 'Nepal', 'NPL', 524, 977),
+(150, 'NL', 'NETHERLANDS', 'Netherlands', 'NLD', 528, 31),
+(151, 'AN', 'NETHERLANDS ANTILLES', 'Netherlands Antilles', 'ANT', 530, 599),
+(152, 'NC', 'NEW CALEDONIA', 'New Caledonia', 'NCL', 540, 687),
+(153, 'NZ', 'NEW ZEALAND', 'New Zealand', 'NZL', 554, 64),
+(154, 'NI', 'NICARAGUA', 'Nicaragua', 'NIC', 558, 505),
+(155, 'NE', 'NIGER', 'Niger', 'NER', 562, 227),
+(156, 'NG', 'NIGERIA', 'Nigeria', 'NGA', 566, 234),
+(157, 'NU', 'NIUE', 'Niue', 'NIU', 570, 683),
+(158, 'NF', 'NORFOLK ISLAND', 'Norfolk Island', 'NFK', 574, 672),
+(159, 'MP', 'NORTHERN MARIANA ISLANDS', 'Northern Mariana Islands', 'MNP', 580, 1670),
+(160, 'NO', 'NORWAY', 'Norway', 'NOR', 578, 47),
+(161, 'OM', 'OMAN', 'Oman', 'OMN', 512, 968),
+(162, 'PK', 'PAKISTAN', 'Pakistan', 'PAK', 586, 92),
+(163, 'PW', 'PALAU', 'Palau', 'PLW', 585, 680),
+(164, 'PS', 'PALESTINIAN TERRITORY, OCCUPIED', 'Palestinian Territory, Occupied', NULL, NULL, 970),
+(165, 'PA', 'PANAMA', 'Panama', 'PAN', 591, 507),
+(166, 'PG', 'PAPUA NEW GUINEA', 'Papua New Guinea', 'PNG', 598, 675),
+(167, 'PY', 'PARAGUAY', 'Paraguay', 'PRY', 600, 595),
+(168, 'PE', 'PERU', 'Peru', 'PER', 604, 51),
+(169, 'PH', 'PHILIPPINES', 'Philippines', 'PHL', 608, 63),
+(170, 'PN', 'PITCAIRN', 'Pitcairn', 'PCN', 612, 0),
+(171, 'PL', 'POLAND', 'Poland', 'POL', 616, 48),
+(172, 'PT', 'PORTUGAL', 'Portugal', 'PRT', 620, 351),
+(173, 'PR', 'PUERTO RICO', 'Puerto Rico', 'PRI', 630, 1787),
+(174, 'QA', 'QATAR', 'Qatar', 'QAT', 634, 974),
+(175, 'RE', 'REUNION', 'Reunion', 'REU', 638, 262),
+(176, 'RO', 'ROMANIA', 'Romania', 'ROM', 642, 40),
+(177, 'RU', 'RUSSIAN FEDERATION', 'Russian Federation', 'RUS', 643, 70),
+(178, 'RW', 'RWANDA', 'Rwanda', 'RWA', 646, 250),
+(179, 'SH', 'SAINT HELENA', 'Saint Helena', 'SHN', 654, 290),
+(180, 'KN', 'SAINT KITTS AND NEVIS', 'Saint Kitts and Nevis', 'KNA', 659, 1869),
+(181, 'LC', 'SAINT LUCIA', 'Saint Lucia', 'LCA', 662, 1758),
+(182, 'PM', 'SAINT PIERRE AND MIQUELON', 'Saint Pierre and Miquelon', 'SPM', 666, 508),
+(183, 'VC', 'SAINT VINCENT AND THE GRENADINES', 'Saint Vincent and the Grenadines', 'VCT', 670, 1784),
+(184, 'WS', 'SAMOA', 'Samoa', 'WSM', 882, 684),
+(185, 'SM', 'SAN MARINO', 'San Marino', 'SMR', 674, 378),
+(186, 'ST', 'SAO TOME AND PRINCIPE', 'Sao Tome and Principe', 'STP', 678, 239),
+(187, 'SA', 'SAUDI ARABIA', 'Saudi Arabia', 'SAU', 682, 966),
+(188, 'SN', 'SENEGAL', 'Senegal', 'SEN', 686, 221),
+(189, 'CS', 'SERBIA AND MONTENEGRO', 'Serbia and Montenegro', NULL, NULL, 381),
+(190, 'SC', 'SEYCHELLES', 'Seychelles', 'SYC', 690, 248),
+(191, 'SL', 'SIERRA LEONE', 'Sierra Leone', 'SLE', 694, 232),
+(192, 'SG', 'SINGAPORE', 'Singapore', 'SGP', 702, 65),
+(193, 'SK', 'SLOVAKIA', 'Slovakia', 'SVK', 703, 421),
+(194, 'SI', 'SLOVENIA', 'Slovenia', 'SVN', 705, 386),
+(195, 'SB', 'SOLOMON ISLANDS', 'Solomon Islands', 'SLB', 90, 677),
+(196, 'SO', 'SOMALIA', 'Somalia', 'SOM', 706, 252),
+(197, 'ZA', 'SOUTH AFRICA', 'South Africa', 'ZAF', 710, 27),
+(198, 'GS', 'SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS', 'South Georgia and the South Sandwich Islands', NULL, NULL, 0),
+(199, 'ES', 'SPAIN', 'Spain', 'ESP', 724, 34),
+(200, 'LK', 'SRI LANKA', 'Sri Lanka', 'LKA', 144, 94),
+(201, 'SD', 'SUDAN', 'Sudan', 'SDN', 736, 249),
+(202, 'SR', 'SURINAME', 'Suriname', 'SUR', 740, 597),
+(203, 'SJ', 'SVALBARD AND JAN MAYEN', 'Svalbard and Jan Mayen', 'SJM', 744, 47),
+(204, 'SZ', 'SWAZILAND', 'Swaziland', 'SWZ', 748, 268),
+(205, 'SE', 'SWEDEN', 'Sweden', 'SWE', 752, 46),
+(206, 'CH', 'SWITZERLAND', 'Switzerland', 'CHE', 756, 41),
+(207, 'SY', 'SYRIAN ARAB REPUBLIC', 'Syrian Arab Republic', 'SYR', 760, 963),
+(208, 'TW', 'TAIWAN, PROVINCE OF CHINA', 'Taiwan, Province of China', 'TWN', 158, 886),
+(209, 'TJ', 'TAJIKISTAN', 'Tajikistan', 'TJK', 762, 992),
+(210, 'TZ', 'TANZANIA, UNITED REPUBLIC OF', 'Tanzania, United Republic of', 'TZA', 834, 255),
+(211, 'TH', 'THAILAND', 'Thailand', 'THA', 764, 66),
+(212, 'TL', 'TIMOR-LESTE', 'Timor-Leste', NULL, NULL, 670),
+(213, 'TG', 'TOGO', 'Togo', 'TGO', 768, 228),
+(214, 'TK', 'TOKELAU', 'Tokelau', 'TKL', 772, 690),
+(215, 'TO', 'TONGA', 'Tonga', 'TON', 776, 676),
+(216, 'TT', 'TRINIDAD AND TOBAGO', 'Trinidad and Tobago', 'TTO', 780, 1868),
+(217, 'TN', 'TUNISIA', 'Tunisia', 'TUN', 788, 216),
+(218, 'TR', 'TURKEY', 'Turkey', 'TUR', 792, 90),
+(219, 'TM', 'TURKMENISTAN', 'Turkmenistan', 'TKM', 795, 7370),
+(220, 'TC', 'TURKS AND CAICOS ISLANDS', 'Turks and Caicos Islands', 'TCA', 796, 1649),
+(221, 'TV', 'TUVALU', 'Tuvalu', 'TUV', 798, 688),
+(222, 'UG', 'UGANDA', 'Uganda', 'UGA', 800, 256),
+(223, 'UA', 'UKRAINE', 'Ukraine', 'UKR', 804, 380),
+(224, 'AE', 'UNITED ARAB EMIRATES', 'United Arab Emirates', 'ARE', 784, 971),
+(225, 'GB', 'UNITED KINGDOM', 'United Kingdom', 'GBR', 826, 44),
+(226, 'US', 'UNITED STATES', 'United States', 'USA', 840, 1),
+(227, 'UM', 'UNITED STATES MINOR OUTLYING ISLANDS', 'United States Minor Outlying Islands', NULL, NULL, 1),
+(228, 'UY', 'URUGUAY', 'Uruguay', 'URY', 858, 598),
+(229, 'UZ', 'UZBEKISTAN', 'Uzbekistan', 'UZB', 860, 998),
+(230, 'VU', 'VANUATU', 'Vanuatu', 'VUT', 548, 678),
+(231, 'VE', 'VENEZUELA', 'Venezuela', 'VEN', 862, 58),
+(232, 'VN', 'VIET NAM', 'Viet Nam', 'VNM', 704, 84),
+(233, 'VG', 'VIRGIN ISLANDS, BRITISH', 'Virgin Islands, British', 'VGB', 92, 1284),
+(234, 'VI', 'VIRGIN ISLANDS, U.S.', 'Virgin Islands, U.s.', 'VIR', 850, 1340),
+(235, 'WF', 'WALLIS AND FUTUNA', 'Wallis and Futuna', 'WLF', 876, 681),
+(236, 'EH', 'WESTERN SAHARA', 'Western Sahara', 'ESH', 732, 212),
+(237, 'YE', 'YEMEN', 'Yemen', 'YEM', 887, 967),
+(238, 'ZM', 'ZAMBIA', 'Zambia', 'ZMB', 894, 260),
+(239, 'ZW', 'ZIMBABWE', 'Zimbabwe', 'ZWE', 716, 263);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `currencies`
 --
 
@@ -495,6 +767,30 @@ INSERT INTO `email_templates` (`id`, `title`, `alias`, `subject`, `allowed_vars`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faqs`
+--
+
+CREATE TABLE IF NOT EXISTS `faqs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `question` varchar(255) NOT NULL,
+  `answer` text NOT NULL,
+  `faq_type` enum('sitter','guest') NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `faqs`
+--
+
+INSERT INTO `faqs` (`id`, `category_id`, `question`, `answer`, `faq_type`, `status`, `created_date`) VALUES
+(1, 8, 'What is abcs ?', '<p>This is test answer</p>', 'sitter', 0, '2016-05-11 07:17:59');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `how_works`
 --
 
@@ -543,7 +839,7 @@ CREATE TABLE IF NOT EXISTS `i18n` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `I18N_LOCALE_FIELD` (`locale`,`model`,`foreign_key`,`field`),
   KEY `I18N_FIELD` (`model`,`foreign_key`,`field`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1101 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1154 ;
 
 --
 -- Dumping data for table `i18n`
@@ -837,7 +1133,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (569, 'it_IT', 'StaticStrings', 61, 'value', 'Immagine'),
 (571, 'it_IT', 'StaticStrings', 58, 'value', 'Nazione'),
 (573, 'it_IT', 'StaticStrings', 60, 'value', 'Descrizione'),
-(575, 'ro_RO', 'StaticStrings', 58, 'value', '?ar?'),
+(575, 'ro_RO', 'StaticStrings', 58, 'value', 'țară'),
 (577, 'ro_RO', 'StaticStrings', 61, 'value', 'Imagine'),
 (579, 'fr_FR', 'StaticStrings', 62, 'value', 'statut'),
 (581, 'ro_RO', 'StaticStrings', 60, 'value', 'Descriere'),
@@ -959,7 +1255,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (813, 'es_ES', 'StaticStrings', 79, 'value', 'Fecha de caducidad'),
 (815, 'hu_HU', 'StaticStrings', 80, 'value', 'Miért minket válasszon?'),
 (817, 'ro_RO', 'StaticStrings', 77, 'value', 'Data de început'),
-(819, 'it_IT', 'StaticStrings', 80, 'value', 'Perché sceglierci?'),
+(819, 'it_IT', 'StaticStrings', 80, 'value', 'perché sceglierciii'),
 (821, 'ru_RU', 'StaticStrings', 77, 'value', '???? ??????'),
 (823, 'ro_RO', 'StaticStrings', 80, 'value', 'Perché sceglierci?'),
 (825, 'fr_FR', 'StaticStrings', 81, 'value', 'Nom de la devise'),
@@ -1029,7 +1325,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (953, 'de_DE', 'StaticStrings', 90, 'value', 'Top PET-Sitzung Städte'),
 (955, 'hu_HU', 'StaticStrings', 90, 'value', 'Top pet ül városok'),
 (957, 'it_IT', 'StaticStrings', 90, 'value', 'Le città più pet sitting'),
-(959, 'ro_RO', 'StaticStrings', 90, 'value', 'ora?e pentru animale de companie de zi'),
+(959, 'ro_RO', 'StaticStrings', 90, 'value', 'orașe pentru animale de companie de zi\r\n'),
 (961, 'ru_RU', 'StaticStrings', 90, 'value', '?????? ?????? ??? ???????? ???????? ????'),
 (963, 'es_ES', 'StaticStrings', 90, 'value', 'Principales ciudades cuidado de mascotas'),
 (965, 'it_IT', 'StaticStrings', 7, 'value', 'Abbonato'),
@@ -1107,7 +1403,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (1053, 'ro_RO', 'StaticStrings', 109, 'value', 'Animale de companie Sitters Adelaide'),
 (1054, 'ro_RO', 'StaticStrings', 108, 'value', 'Îngrijire de noapte'),
 (1055, 'es_ES', 'StaticStrings', 109, 'value', 'Pet Sitters Adelaide'),
-(1056, 'es_ES', 'StaticStrings', 108, 'value', 'Cuidado noche'),
+(1056, 'es_ES', 'StaticStrings', 108, 'value', 'cuidado nocturno'),
 (1057, 'es_ES', 'StaticStrings', 111, 'value', 'Pet Sitters Canberr'),
 (1058, 'ro_RO', 'StaticStrings', 111, 'value', 'Canberra Sitters pentru animale de companie'),
 (1059, 'de_DE', 'StaticStrings', 112, 'value', 'Hundepension'),
@@ -1143,7 +1439,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (1089, 'de_DE', 'StaticStrings', 116, 'value', 'Hund-Walking'),
 (1090, 'hu_HU', 'StaticStrings', 116, 'value', 'kutya-járás'),
 (1091, 'ro_RO', 'StaticStrings', 116, 'value', 'câine-de mers pe jos'),
-(1092, 'es_ES', 'StaticStrings', 116, 'value', 'sacar a pasear perros'),
+(1092, 'es_ES', 'StaticStrings', 116, 'value', 'pasear al perro'),
 (1093, 'de_DE', 'StaticStrings', 115, 'value', 'Pays'),
 (1094, 'fr_FR', 'StaticStrings', 117, 'value', 'Centre d''aide'),
 (1095, 'de_DE', 'StaticStrings', 117, 'value', 'Hilfezentrum'),
@@ -1151,7 +1447,60 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 (1097, 'it_IT', 'StaticStrings', 117, 'value', 'Segítség Központ'),
 (1098, 'ro_RO', 'StaticStrings', 117, 'value', 'Centru de ajutor'),
 (1099, 'es_ES', 'StaticStrings', 117, 'value', 'Centro de ayuda'),
-(1100, 'fr_FR', 'StaticStrings', 118, 'value', 'Centre d''aide');
+(1100, 'fr_FR', 'StaticStrings', 118, 'value', 'Centre d''aide'),
+(1101, 'it_IT', 'StaticStrings', 96, 'value', 'Come funziona'),
+(1102, 'ro_RO', 'StaticStrings', 96, 'value', 'Cum funcționează'),
+(1103, 'es_ES', 'StaticStrings', 96, 'value', 'Cómo Funciona'),
+(1104, 'es_ES', 'StaticStrings', 120, 'value', 'Error de autenticación! Por favor, inténtelo de nuevo.'),
+(1105, 'es_ES', 'StaticStrings', 121, 'value', 'Contraseña'),
+(1106, 'it_IT', 'StaticStrings', 118, 'value', 'Contattaci'),
+(1107, 'es_ES', 'StaticStrings', 122, 'value', 'Enviar'),
+(1108, 'de_DE', 'StaticStrings', 118, 'value', 'Kontaktieren Sie uns'),
+(1109, 'hu_HU', 'StaticStrings', 118, 'value', 'Kapcsolat'),
+(1110, 'ro_RO', 'StaticStrings', 118, 'value', 'frecvente Contactați-ne'),
+(1111, 'es_ES', 'StaticStrings', 123, 'value', 'Has iniciado sesión correctamente'),
+(1112, 'es_ES', 'StaticStrings', 118, 'value', 'contáctenos'),
+(1113, 'fr_FR', 'StaticStrings', 124, 'value', 'Abonnez-vous à la Newsletter'),
+(1114, 'de_DE', 'StaticStrings', 124, 'value', 'Abonnieren Sie Newsletter'),
+(1115, 'hu_HU', 'StaticStrings', 124, 'value', 'Iratkozzon fel hírlevél'),
+(1116, 'it_IT', 'StaticStrings', 124, 'value', 'Iscriviti su Newsletter'),
+(1117, 'es_ES', 'StaticStrings', 124, 'value', 'Abonează-te la Newsletter'),
+(1118, 'ro_RO', 'StaticStrings', 124, 'value', 'Abonează-te la Newsletter'),
+(1119, 'fr_FR', 'StaticStrings', 125, 'value', 'En savoir plus'),
+(1120, 'de_DE', 'StaticStrings', 125, 'value', 'En savoir plus'),
+(1121, 'hu_HU', 'StaticStrings', 125, 'value', 'További'),
+(1122, 'it_IT', 'StaticStrings', 125, 'value', 'Approfondisci'),
+(1123, 'ro_RO', 'StaticStrings', 125, 'value', 'Află mai multe'),
+(1124, 'es_ES', 'StaticStrings', 125, 'value', 'Află mai multe'),
+(1125, 'fr_FR', 'StaticStrings', 126, 'value', 'Comment cela fonctionne'),
+(1126, 'de_DE', 'StaticStrings', 126, 'value', 'Wie funktioniert Sitter Führer Arbeit'),
+(1127, 'hu_HU', 'StaticStrings', 126, 'value', 'Hogyan működik Sitter Guide Work'),
+(1128, 'it_IT', 'StaticStrings', 126, 'value', 'Come funziona Sitter Guida Lavoro'),
+(1129, 'ro_RO', 'StaticStrings', 126, 'value', 'Cum Ghid de lucru Sitter'),
+(1130, 'es_ES', 'StaticStrings', 126, 'value', 'How does Sitter Guide Work'),
+(1131, 'de_DE', 'StaticStrings', 122, 'value', 'einreichen'),
+(1132, 'de_DE', 'StaticStrings', 128, 'value', 'Sicherheit\r\n'),
+(1133, 'de_DE', 'StaticStrings', 129, 'value', 'Dieses Feld wird benötigt'),
+(1134, 'de_DE', 'StaticStrings', 130, 'value', 'Sie haben erfolgreich abonniert'),
+(1136, 'fr_FR', 'StaticStrings', 135, 'value', 'Comment cela fonctionne'),
+(1135, 'fr_FR', 'StaticStrings', 122, 'value', 'soumettre'),
+(1137, 'fr_FR', 'StaticStrings', 137, 'value', 'Ils vous permettent de faire des choix individuels sur ce que vous voulez regarder. Et quand et où vous voulez regarder. Avec la nouvelle Apple TV et ses nouveaux puissants tvOS, les développeurs créent des expériences qui vont changer ce que vous attendez de votre grand écran, ce qui rend votre téléviseur se sentir aussi personnelle que votre iPhone ou votre iPad.\r\n'),
+(1138, 'es_ES', 'StaticStrings', 138, 'value', 'vikrant spanish'),
+(1139, 'es_ES', 'StaticStrings', 128, 'value', 'Safety\r\n'),
+(1140, 'ro_RO', 'StaticStrings', 139, 'value', 'partener'),
+(1141, 'es_ES', 'StaticStrings', 140, 'value', 'Regístrate'),
+(1142, 'ro_RO', 'StaticStrings', 140, 'value', 'Inscrie-te'),
+(1143, 'it_IT', 'StaticStrings', 140, 'value', 'Registrazione'),
+(1144, 'hu_HU', 'StaticStrings', 140, 'value', 'Regisztrálj'),
+(1145, 'de_DE', 'StaticStrings', 140, 'value', 'Anmelden'),
+(1146, 'fr_FR', 'StaticStrings', 140, 'value', 'S''inscrire'),
+(1147, 'fr_FR', 'HowWorks', 16, 'title', 'Trust and Safety fr'),
+(1148, 'fr_FR', 'HowWorks', 16, 'category', 'why_choose_us'),
+(1149, 'fr_FR', 'HowWorks', 16, 'description', 'Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.) fr'),
+(1150, 'de_DE', 'HowWorks', 15, 'title', 'Trust and Safety'),
+(1151, 'de_DE', 'HowWorks', 15, 'category', 'why_choose_us'),
+(1152, 'de_DE', 'HowWorks', 15, 'description', 'german Caring, personalized attention\r\nNo kennels, no cages\r\nStay locally in the community\r\nRetain familiar items (bed, toys,\r\ntreats, etc.)'),
+(1153, 'fr_FR', 'StaticStrings', 142, 'value', 'sécurité');
 
 -- --------------------------------------------------------
 
@@ -1241,7 +1590,7 @@ CREATE TABLE IF NOT EXISTS `site_configurations` (
 --
 
 INSERT INTO `site_configurations` (`id`, `site_contact_email`, `site_name`, `site_logo`, `site_favicon`, `site_footer`, `meta_title`, `meta_keyword`, `meta_description`, `ganalytics`, `timezone`, `facebook_link`, `twitter_link`, `google_link`, `instagram_link`, `youtube_link`) VALUES
-(1, 'rahul.jain@mobilyte.com', 'Sitter Guide', 'a71Uw18xmuRtUpf.jpg', 'cQ7WIYTKGf4wRhP.png', '© 2015 Sitter Guide Pty Ltd. All Rights Reserved.', 'Sitter Guides', 'Sitter Guide', 'Sitter Guide', '<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push([_setAccount, UA-XXXXX-Y]);  _gaq.push([_trackPageview]);  (function() {    var ga = document.createElement(script); ga.type = text/javascript; ga.async = true;    ga.src = (https: == document.location.protocol ? https://ssl : http://www) + .google-analytics.com/ga.js;    var s = document.getElementsByTagName(script)[0]; s.parentNode.insertBefore(ga, s);  })();</script>', 'America/New_York', 'https://faceboo', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com');
+(1, 'rahul.jain@mobilyte.com', 'Sitter Guide', '3HQsHwDOq1WJC1B.jpg', 'cQ7WIYTKGf4wRhP.png', '© 2015 Sitter Guide Pty Ltd. All Rights Reserved.', 'Sitter Guides', 'Sitter Guide', 'Sitter Guide', '<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push([_setAccount, UA-XXXXX-Y]);  _gaq.push([_trackPageview]);  (function() {    var ga = document.createElement(script); ga.type = text/javascript; ga.async = true;    ga.src = (https: == document.location.protocol ? https://ssl : http://www) + .google-analytics.com/ga.js;    var s = document.getElementsByTagName(script)[0]; s.parentNode.insertBefore(ga, s);  })();</script>', 'America/New_York', 'https://faceboo', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com', 'https://facebook.com');
 
 -- --------------------------------------------------------
 
@@ -1282,7 +1631,7 @@ CREATE TABLE IF NOT EXISTS `static_strings` (
   `created_date` datetime NOT NULL,
   `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=119 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=143 ;
 
 --
 -- Dumping data for table `static_strings`
@@ -1341,7 +1690,7 @@ INSERT INTO `static_strings` (`id`, `constant_slug`, `value`, `page_name`, `crea
 (55, 'Title', 'Title', 'admin', '2016-04-07 23:19:08', '0000-00-00 00:00:00'),
 (56, 'Alias', 'Alias', 'admin', '2016-04-07 23:20:18', '0000-00-00 00:00:00'),
 (57, 'Slug', 'Slug', 'admin', '2016-04-07 23:22:28', '0000-00-00 00:00:00'),
-(58, 'Country', 'Country', 'admin', '2016-04-07 23:25:41', '0000-00-00 00:00:00'),
+(58, 'Country', 'Country', 'admin', '2016-04-07 23:25:41', '2016-04-20 13:12:57'),
 (59, 'Name', 'Name', 'admin', '2016-04-07 23:26:40', '2016-04-14 12:17:28'),
 (60, 'Description', 'Description', 'admin', '2016-04-07 23:27:54', '0000-00-00 00:00:00'),
 (61, 'Image', 'Image', 'admin', '2016-04-07 23:28:22', '0000-00-00 00:00:00'),
@@ -1363,7 +1712,7 @@ INSERT INTO `static_strings` (`id`, `constant_slug`, `value`, `page_name`, `crea
 (77, 'Start Date', 'Start Date', 'admin', '2016-04-08 00:14:40', '0000-00-00 00:00:00'),
 (78, 'Currency Name', 'Currency Name', 'admin', '2016-04-08 00:16:47', '0000-00-00 00:00:00'),
 (79, 'Expire Date', 'Expire Date', 'admin', '2016-04-08 00:17:05', '0000-00-00 00:00:00'),
-(80, 'Why Choose us?', 'Why Choose us?', 'admin', '2016-04-08 00:18:53', '0000-00-00 00:00:00'),
+(80, 'Why Choose us?', 'Why Choose us?', 'admin', '2016-04-08 00:18:53', '2016-04-22 10:28:02'),
 (81, 'Currency Name', 'Currency Name\r\n', 'admin', '2016-04-08 00:23:06', '0000-00-00 00:00:00'),
 (82, 'Find some of the funniest pet pics & videos along with news updates here', 'Find some of the funniest pet pics & videos along with news updates here', 'front', '2016-04-08 00:25:12', '0000-00-00 00:00:00'),
 (83, 'Leading Sitting And Walkers In Your Area', 'Leading Sitting And Walkers In Your Area', 'front', '2016-04-08 00:29:26', '0000-00-00 00:00:00'),
@@ -1399,9 +1748,32 @@ INSERT INTO `static_strings` (`id`, `constant_slug`, `value`, `page_name`, `crea
 (113, 'Need Help?', 'Need Help?', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (114, 'drop-in-visit', 'drop-in-visit', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (115, 'Country', 'Country', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(116, 'dog-walking', 'dog-walking', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(116, 'dog walking', 'dog-walking', '', '0000-00-00 00:00:00', '2016-05-03 12:26:25'),
 (117, 'Help Center', 'Help Center', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(118, 'Contact Us', 'Contact Us', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(118, 'Contact Us', 'Contact Us', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(119, 'Successfully Authenticated, Please wait..', 'Successfully Authenticated, Please wait..', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(120, 'Authentication Failed! Please try again.', 'Authentication Failed! Please try again.', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(121, 'Password', 'Password', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(122, 'Submit', 'Submit', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(123, 'You have successfully logged in.', 'You have successfully logged in', '', '0000-00-00 00:00:00', '2016-04-21 05:41:05'),
+(124, 'Subscribe on News Letter', 'Subscribe on News Letter', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(125, 'Learn More', 'Learn More', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(126, 'How does Sitter Guide Work', 'How does Sitter Guide Work', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(128, 'la seguridad', 'Safety\r\n', '', '0000-00-00 00:00:00', '2016-04-27 05:22:34'),
+(129, 'This field is required', 'This field is required', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(130, 'You have been subscribe successfully', 'You have been subscribe successfully', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(131, 'pet dogs', 'chiens de compagnie', '', '0000-00-00 00:00:00', '2016-04-22 09:19:54'),
+(132, 'trusted and caringd', 'Mon petit ami était si heureuse et énergique quand je suis venu la chercher et était devenu très lié avec la sœur et son chien.', '', '0000-00-00 00:00:00', '2016-04-22 10:00:19'),
+(133, 'trusted and Caringd', 'Mon petit ami était si heureuse et énergique quand je suis venu la chercher et était devenu très lié avec la sœur et son chien.', '', '0000-00-00 00:00:00', '2016-04-22 10:09:58'),
+(134, 'Insurance & Refunds', 'Seguros y reembolsos', '', '0000-00-00 00:00:00', '2016-04-22 12:38:27'),
+(135, 'How It Works', 'How It Works', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(136, 'pet dogs', 'pet dogs', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(137, 'Pet dogs', 'jdfdf', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(138, 'vikrant', 'vikrant', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(139, 'partner', 'partner', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(140, 'Sign Up', 'Sign Up', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(141, 'Trust and Safety', '\r\nConfiance et sécurité', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(142, 'Safety', 'sécurité', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -29824,11 +30196,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `birth_date` varchar(255) NOT NULL,
   `awesome_title` varchar(255) NOT NULL,
   `your_story` varchar(255) NOT NULL,
+  `country_code` int(11) NOT NULL,
   `phone` varchar(255) NOT NULL,
+  `emergency_contacts` varchar(255) NOT NULL,
+  `emergency_who` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `is_image_uploaded` tinyint(2) NOT NULL DEFAULT '1',
+  `profile_video` varchar(255) NOT NULL,
+  `profile_banner` varchar(255) NOT NULL,
   `hear_from` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `address` text NOT NULL,
+  `address2` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
   `zip` varchar(255) DEFAULT NULL,
@@ -29850,27 +30229,65 @@ CREATE TABLE IF NOT EXISTS `users` (
   `status` int(2) NOT NULL DEFAULT '0',
   `about` text NOT NULL,
   `reference_code` varchar(255) NOT NULL,
+  `latitude` varchar(255) NOT NULL,
+  `longitude` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_type`, `facebook_id`, `title`, `first_name`, `last_name`, `email`, `password`, `org_password`, `gender`, `birth_date`, `awesome_title`, `your_story`, `phone`, `image`, `hear_from`, `country`, `address`, `city`, `state`, `zip`, `about_user`, `zone_id`, `cover_img`, `type`, `facebook_link`, `twitter_link`, `date_added`, `date_modified`, `modified`, `logged_intime`, `last_login`, `avail_status`, `activation_key`, `profile_view`, `pwd_token`, `status`, `about`, `reference_code`) VALUES
-(1, 'Basic', '', '', 'Vineet', 'Kumar', 'rahul.jain@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', 'jan,01-08-1995', '', '', '8905062665', 'sI9xuSY8aw62d3B.jpg', '', '', 'basic addresss', 'basic city', 'basic state', '125077', '', '1', '', 1, '', '', '2016-01-22 07:03:02', '2016-04-15 01:10:03', '2016-04-15 01:10:03', '2016-01-22 07:04:42', '2016-04-21 05:10:39', 'Logout', '', 0, '', 1, '', ''),
-(2, 'Basic', '', '', '123@#$xdf', 'dc123@$', '#dx@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '', 'Female', '', '', '', '9050605251', '', '', '', '', '', '', NULL, 'dfvsdf34534(*(', '2', '', 1, '', '', '2016-01-22 07:06:21', '2016-01-22 07:06:21', '0000-00-00 00:00:00', '2016-01-22 07:06:21', '2016-03-30 07:30:05', 'Logout', 'f9318f98d8bf16323137708fc6fdd963', 0, '', 1, '', ''),
-(38, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@mobilyte.com', '0192023a7bbd73250516f069df18b500', '', 'Male', '17-01-1987', '', '', '9879879879', '', 'Facebook', 'india', '#302, GH-104', 'Panchkula', 'Haryana', '127306', '', '111', '', 1, '', '', '2016-03-08 07:11:54', '2016-03-08 07:11:54', '0000-00-00 00:00:00', '2016-03-08 07:13:00', '2016-04-27 05:30:57', 'Logout', '', 0, '1f5a2c51a2b3be67632b6b8939f3c0a7', 1, '', ''),
-(3, 'Basic', '', 'Mr', 'testerd', '123', '#hcxvx.dcv@gmail.com', '', '', 'Male', '', '', '', '5434534567', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-04 07:09:55', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
-(24, 'Basic', '', '', 'Rahul', 'Jain', 'rahul@mobylite.com', '0192023a7bbd73250516f069df18b500', 'admin123', 'Other', '', '', '', '3334443332', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-02-02 09:09:08', '2016-02-02 09:09:08', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'a19d84fd7040f15ed93e8ae94fbbf03b', 0, '', 0, '', ''),
-(29, 'Basic', '', 'Mr', 'Virendar', 'kumardfdf676667', 'virender@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '01-12-1993', '', '', '2233445521', 'AMVC0VVS5XlKJIL.jpg', 'Instagram', 'Denmark', '', '', '', '125077', 'dsdfsdfdsfsdf423434535353535', '112', '', 1, '', '', '2016-03-04 04:28:02', '2016-03-04 04:28:02', '0000-00-00 00:00:00', '2016-03-04 04:28:26', '0000-00-00 00:00:00', 'Logout', '', 0, '', 1, '', ''),
-(37, 'Basic', '', 'Mr', 'Sunil', 'Kumar', 'sukhdev@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '11-12-1990', '', '', '', '', 'Facebook', 'Austria', '', '', '', '12545', '', '', '', 1, '', '', '2016-03-07 13:57:53', '2016-03-07 13:57:53', '0000-00-00 00:00:00', '2016-03-07 13:57:53', '2016-04-01 09:02:20', 'Logout', 'f044329d1e80892ad78a26989ed0f73f', 0, 'ab2a8536dd1243e6bfe48615c6dc0a68', 1, '', ''),
-(43, 'Basic', '1725316891087656', 'Mr', 'Albert', 'Gabriel', 'betasoftsystems.dummy@gmail.com', '382b2dde070fede332762171f108738a', 'IZfykHAdbG96bqD', 'Male', '', '', '', '', 'https://graph.facebook.com/1725316891087656/picture', '', '', '', '', '', NULL, '', '', '', 1, '', '', '2016-03-14 10:12:15', '2016-03-14 10:12:15', '2016-04-12 09:08:36', '2016-03-14 10:12:15', '2016-03-15 12:41:28', 'Logout', '142cc40375cf5d8ea299c1d0ad9938af', 0, 'c4334c1deec7a04704ead74a9be0d066', 1, '', ''),
-(57, 'Basic', '', 'Mr', 'test ok', 'name ok', 'test@test.com', 'a3dcb4d229de6fde0db5686dee47145d', 'asdasdasd', 'Male', '03/17/2016', '', '', '9050656545', '', 'Radio', 'Australia', '', '', '', '123123', '', '1', '', 1, '', '', '2016-03-16 09:49:24', '2016-03-16 09:49:24', '0000-00-00 00:00:00', '2016-03-16 09:49:25', '0000-00-00 00:00:00', 'Logout', 'cd2ae1bac4f7cfabbd4be3460b74b548', 0, '', 0, '', ''),
-(61, 'Basic', '888539421260409', 'Mr', 'Sukhdev', 'Kamboj', 'skanmulle111@gmail.com', 'f0f22591641f6bdf34ed109345dcd771', 'Y2QySaxjt0WuSUG', 'Male', '', '', '', '2323232323', 'j0eb2ZZNfkEHhGp.jpg', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-03-16 12:45:51', '2016-03-16 12:45:51', '0000-00-00 00:00:00', '2016-03-16 12:45:52', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', ''),
-(64, 'Basic', '', 'Mr', 'Sukant', 'Sharma', '#.sukant@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '08/01/2006', '', '', '3453654345', '', 'Other', 'Australia', '', '', '', '95131', '', '1', '', 1, '', '', '2016-03-18 06:24:01', '2016-03-18 06:24:01', '0000-00-00 00:00:00', '2016-03-18 06:24:01', '0000-00-00 00:00:00', 'Logout', 'ecffa2c1b3b9bfe0e487b7ed612b9b7e', 0, '', 0, '', ''),
-(65, 'Basic', '', 'Mr', 'Shampy', 'Singh Sanotra', 'mridula.sharma@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '05/13/1980', '', '', 'nhghyhjyy', '', 'Pinterest', 'Hong Kong S.A.R., China', '', '', '', '999077', '', '1', '', 1, '', '', '2016-03-30 16:46:43', '2016-03-30 16:46:43', '0000-00-00 00:00:00', '2016-03-30 16:46:43', '0000-00-00 00:00:00', 'Logout', '7602540cc095584b1c37e4d56e3b7e33', 0, '', 0, '', ''),
-(66, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@betasoftsystems.com', 'e00cf25ad42683b3df678c61f42c6bda', 'admin1', 'Male', '04/18/2025', '', '', '', '', 'Facebook', 'Germany', '', '', '', '123123', '', '', '', 1, '', '', '2016-04-11 12:56:41', '2016-04-11 12:56:41', '0000-00-00 00:00:00', '2016-04-11 12:56:41', '0000-00-00 00:00:00', 'Logout', '10593c835057dc8058c68f011fe4d60a', 0, '', 0, '', '');
+INSERT INTO `users` (`id`, `user_type`, `facebook_id`, `title`, `first_name`, `last_name`, `email`, `password`, `org_password`, `gender`, `birth_date`, `awesome_title`, `your_story`, `country_code`, `phone`, `emergency_contacts`, `emergency_who`, `image`, `is_image_uploaded`, `profile_video`, `profile_banner`, `hear_from`, `country`, `address`, `address2`, `city`, `state`, `zip`, `about_user`, `zone_id`, `cover_img`, `type`, `facebook_link`, `twitter_link`, `date_added`, `date_modified`, `modified`, `logged_intime`, `last_login`, `avail_status`, `activation_key`, `profile_view`, `pwd_token`, `status`, `about`, `reference_code`, `latitude`, `longitude`) VALUES
+(1, 'Basic', '', '', 'Vineet', 'Kumar', '#ra&hul.jain@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', 'jan,01-08-1995', '', '', 0, '8905062665', '', '', 'G3fVR8tGmW2bnVM.jpg', 1, '', '', '', '', 'basic addresss', '', 'basic city', 'basic state', '125077', '', '1', '', 1, '', '', '2016-01-22 07:03:02', '2016-01-22 01:33:02', '0000-00-00 00:00:00', '2016-01-22 07:04:42', '2016-03-16 07:05:08', 'Logout', '', 0, '', 1, '', '', '', ''),
+(2, 'Basic', '', '', '123@#$xdf', 'dc123@$', '#dx@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', '', 'Female', '', '', '', 0, '9050605251', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, 'dfvsdf34534(*(', '2', '', 1, '', '', '2016-01-22 07:06:21', '2016-01-22 01:36:21', '0000-00-00 00:00:00', '2016-01-22 07:06:21', '2016-03-30 02:00:05', 'Logout', 'f9318f98d8bf16323137708fc6fdd963', 0, '', 0, '', '', '', ''),
+(38, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '17-01-1987', '', '', 0, '', '', '', 'aNp91s9mvTAy4Re.jpg', 1, '', '', 'Facebook', 'Finland', '', '', '', '', '127306', '', '', '', 1, '', '', '2016-03-08 07:11:54', '2016-03-08 01:41:54', '0000-00-00 00:00:00', '2016-03-08 07:13:00', '2016-05-12 12:44:42', 'Logout', '', 0, 'd9cfc3ff8b054c0673ef8afe781af585', 1, '', '', '', ''),
+(3, 'Basic', '', 'Mr', 'testerd', '123', '#hcxvx.dcv@gmail.com', '', '', 'Male', '', '', '', 0, '5434534567', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-04 01:39:55', '2016-04-12 10:28:25', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', '', '', ''),
+(24, 'Basic', '', '', 'Rahul', 'Jain', 'rahul@mobylite.com', '0192023a7bbd73250516f069df18b500', 'admin123', 'Other', '', '', '', 0, '3334443332', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-02-02 09:09:08', '2016-02-02 03:39:08', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'a19d84fd7040f15ed93e8ae94fbbf03b', 0, '', 0, '', '', '', ''),
+(29, 'Basic', '', 'Mr', 'Virendar', 'kumardfdf676667', 'virender@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '01-12-1993', '', '', 0, '2233445521', '', '', 'AMVC0VVS5XlKJIL.jpg', 1, '', '', 'Instagram', 'Denmark', 'Test address', '', '', '', '125077', 'dsdfsdfdsfsdf423434535353535', '112', '', 1, '', '', '2016-03-04 04:28:02', '2016-03-03 22:58:02', '0000-00-00 00:00:00', '2016-03-04 04:28:26', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', '', '', ''),
+(37, 'Basic', '', 'Mr', 'Sunil', 'Kumar', 'sukhdev@betasoftsystems.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '11-12-1990', '', '', 0, '6052214564', '9050605253', 'Who?', 'WVrzZWEUq0cb5q6.jpg', 1, 'pdm.mp4', 'ni7AeWgKiWGdL0L.png', 'Facebook', 'india', 'Test address', 'Test address2', 'testCity', 'TestState', '134116', '', '30', '', 1, '', '', '2016-03-07 13:57:53', '2016-05-11 11:18:39', '2016-05-11 11:18:39', '2016-03-07 13:57:53', '2016-05-13 04:43:12', 'Logout', 'f044329d1e80892ad78a26989ed0f73f', 0, 'ab2a8536dd1243e6bfe48615c6dc0a68', 1, '', '', '30.6475006', '76.9009191'),
+(43, 'Basic', '1725316891087656', 'Mr', 'Albert', 'Gabriel', 'betasoftsystems.dummy@gmail.com', '382b2dde070fede332762171f108738a', 'IZfykHAdbG96bqD', 'Male', '', '', '', 0, '', '', '', 'https://graph.facebook.com/1725316891087656/picture', 1, '', '', '', '', '', '', '', '', NULL, '', '', '', 1, '', '', '2016-03-14 10:12:15', '2016-03-14 04:42:15', '2016-04-12 09:08:36', '2016-03-14 10:12:15', '2016-03-15 07:11:28', 'Logout', '142cc40375cf5d8ea299c1d0ad9938af', 0, 'c4334c1deec7a04704ead74a9be0d066', 1, '', '', '', ''),
+(57, 'Basic', '', 'Mr', 'test ok', 'name ok', 'test@test.com', 'a3dcb4d229de6fde0db5686dee47145d', 'asdasdasd', 'Male', '03/17/2016', '', '', 0, '9050656545', '', '', '', 1, '', '', 'Radio', 'Australia', '', '', '', '', '123123', '', '1', '', 1, '', '', '2016-03-16 09:49:24', '2016-03-16 04:19:24', '0000-00-00 00:00:00', '2016-03-16 09:49:25', '0000-00-00 00:00:00', 'Logout', 'cd2ae1bac4f7cfabbd4be3460b74b548', 0, '', 0, '', '', '', ''),
+(61, 'Basic', '888539421260409', 'Mr', 'Sukhdev', 'Kamboj', 'skanmulle111@gmail.com', 'f0f22591641f6bdf34ed109345dcd771', 'Y2QySaxjt0WuSUG', 'Male', '', '', '', 0, '2323232323', '', '', 'j0eb2ZZNfkEHhGp.jpg', 1, '', '', '', '', '', '', '', '', NULL, '', '1', '', 1, '', '', '2016-03-16 12:45:51', '2016-03-16 07:15:51', '0000-00-00 00:00:00', '2016-03-16 12:45:52', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', '', '', ''),
+(64, 'Basic', '', 'Mr', 'Sukant', 'Sharma', '#.sukant@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '08/01/2006', '', '', 0, '3453654345', '', '', '', 1, '', '', 'Other', 'Australia', '', '', '', '', '95131', '', '1', '', 1, '', '', '2016-03-18 06:24:01', '2016-03-18 00:54:01', '2016-04-12 11:31:25', '2016-03-18 06:24:01', '0000-00-00 00:00:00', 'Logout', 'ecffa2c1b3b9bfe0e487b7ed612b9b7e', 0, '', 1, '', '', '', ''),
+(65, 'Basic', '', 'Mr', 'Shampy', 'Singh Sanotra', 'mridula.sharma@mobilyte.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '05/13/1980', '', '', 0, '9876543210', '', '', 'YHh74FXsxk7s8Cn.jpg', 1, '', '', 'Pinterest', 'india', '', '', '', '', '147001', '', '1', '', 1, '', '', '2016-03-30 16:46:43', '2016-05-11 12:29:32', '2016-05-11 12:29:32', '2016-03-30 16:46:43', '0000-00-00 00:00:00', 'Logout', '7602540cc095584b1c37e4d56e3b7e33', 0, '', 0, '', '', '30.2896414', '76.3405733'),
+(66, 'Basic', '', 'Mr', 'Rahul', 'Jain', 'rahul.jain@betasoftsystems.com', 'e00cf25ad42683b3df678c61f42c6bda', 'admin1', 'Male', '04/18/2025', '', '', 0, '', '', '', '', 1, '', '', 'Facebook', 'Germany', '', '', '', '', '123123', '', '', '', 1, '', '', '2016-04-11 12:56:41', '2016-04-11 07:26:41', '0000-00-00 00:00:00', '2016-04-11 12:56:41', '0000-00-00 00:00:00', 'Logout', '10593c835057dc8058c68f011fe4d60a', 0, '', 0, '', '', '', ''),
+(74, 'Basic', '', 'Mr', 'Sukhdev', 'kamboj', 'er.sukhdevkamboj@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Male', '04/12/2016', '', '', 0, '', '', '', '', 1, '', '', 'Someone told me about Sitter Guide', 'Finland', '', '', '', '', '125047', '', '', '', 1, '', '', '2016-04-26 11:38:32', '2016-04-26 06:08:32', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', 'df38bec358174cf1f394708462dc6130', 0, '', 0, '', '', '', ''),
+(75, 'Basic', '', 'Mr', '', '', '', '', '', 'Male', '', '', '', 0, '', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, '', '', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-27 05:17:53', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', '', '', ''),
+(76, 'Basic', '', 'Mr', '', '', '', '', '', 'Male', '', '', '', 0, '', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, '', '', '', 1, '', '', '0000-00-00 00:00:00', '2016-04-27 05:19:46', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Logout', '', 0, '', 0, '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_badge`
+--
+
+CREATE TABLE IF NOT EXISTS `users_badge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `dl_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Driving licence badge',
+  `pbc_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Police check background badge',
+  `physician_pet_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Physician pets badge',
+  `physician_people_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Physician people badge',
+  `other_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Other qualification badge',
+  `cpr_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Knowledge of CRP',
+  `oral_medication_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Knowledge of oral Medication',
+  `injected_medication_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Knowledge of injected medication',
+  `rescue_pets_badge` int(11) NOT NULL DEFAULT '0' COMMENT 'Experience of rescue pets',
+  `pet_training` int(11) DEFAULT '0' COMMENT 'Expert in pet training',
+  `behavioural_problem` int(11) NOT NULL DEFAULT '0' COMMENT 'Experience of behavioural problems',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `users_badge`
+--
+
+INSERT INTO `users_badge` (`id`, `user_id`, `dl_badge`, `pbc_badge`, `physician_pet_badge`, `physician_people_badge`, `other_badge`, `cpr_badge`, `oral_medication_badge`, `injected_medication_badge`, `rescue_pets_badge`, `pet_training`, `behavioural_problem`) VALUES
+(1, 68, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1),
+(2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0),
+(4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -29881,26 +30298,34 @@ INSERT INTO `users` (`id`, `user_type`, `facebook_id`, `title`, `first_name`, `l
 CREATE TABLE IF NOT EXISTS `user_about_sitters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `accepted_pet_size` varchar(255) NOT NULL,
-  `preferred_age` varchar(255) NOT NULL,
-  `cancellation_policy` enum('flexible','moderate','strict') NOT NULL COMMENT 'Flexible,Moderate,Strict',
-  `breaks_provided_every` varchar(255) NOT NULL,
-  `sitting_experience` varchar(255) NOT NULL,
-  `mixed_familes` enum('yes','no') NOT NULL,
   `your_self` varchar(255) NOT NULL,
-  `take_care_desc` text NOT NULL,
-  `carers_description` text NOT NULL,
-  `un_neutered_pets` enum('yes','no') NOT NULL,
-  `un_spayed_females` enum('yes','no') NOT NULL,
-  `birds_in_cages` enum('yes','no') NOT NULL,
-  `females_on_heat` enum('yes','no') NOT NULL,
-  `un_trained_pets` enum('yes','no') NOT NULL,
-  `dogs_in_home` enum('yes','no') NOT NULL,
-  `last_minute_booking` enum('yes','no') NOT NULL,
-  `longer_than_week` enum('yes','no') NOT NULL,
-  `cats_in_home` enum('yes','no') NOT NULL,
+  `client_choose_desc` text NOT NULL,
+  `sh_pet` varchar(255) NOT NULL,
+  `sh_pet_sizes` varchar(255) NOT NULL,
+  `sh_guest_age` varchar(255) NOT NULL,
+  `sh_un_neutered_pets` enum('yes','no') NOT NULL,
+  `sh_females_on_heat` enum('yes','no') NOT NULL,
+  `sh_un_spayed_females` enum('yes','no') NOT NULL,
+  `sh_un_toilet_trained` enum('yes','no') NOT NULL,
+  `mixed_familes` varchar(255) NOT NULL,
+  `gh_pet` varchar(255) NOT NULL,
+  `gh_pet_sizes` varchar(255) NOT NULL,
+  `gh_guest_age` varchar(255) NOT NULL,
+  `gh_un_neutered_pets` enum('yes','no') NOT NULL,
+  `gh_females_on_heat` enum('yes','no') NOT NULL,
+  `gh_un_spayed_females` enum('yes','no') NOT NULL,
+  `gh_un_toilet_trained` enum('yes','no') NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `user_about_sitters`
+--
+
+INSERT INTO `user_about_sitters` (`id`, `user_id`, `your_self`, `client_choose_desc`, `sh_pet`, `sh_pet_sizes`, `sh_guest_age`, `sh_un_neutered_pets`, `sh_females_on_heat`, `sh_un_spayed_females`, `sh_un_toilet_trained`, `mixed_familes`, `gh_pet`, `gh_pet_sizes`, `gh_guest_age`, `gh_un_neutered_pets`, `gh_females_on_heat`, `gh_un_spayed_females`, `gh_un_toilet_trained`, `status`, `created_date`) VALUES
+(15, 37, 'Dog Caring and loving family', 'We are the best service provider in the city, you can check out review and can leave your pet at my home and get relaxation.', 'medium_pets', 'small_pets,medium_pets', '1-3', 'no', 'no', 'no', 'no', 'Yes, I agree with this.', 'medium_pets', 'small_pets,medium_pets', '9+', 'no', 'no', 'no', 'no', 1, '2016-05-12 05:35:07');
 
 -- --------------------------------------------------------
 
@@ -30126,26 +30551,27 @@ CREATE TABLE IF NOT EXISTS `user_professional_accreditations` (
   `type_professional` enum('govt','check','pets','people','other') NOT NULL COMMENT 'Pets,People,Other',
   `sector_type` varchar(255) NOT NULL,
   `qualification_title` varchar(255) NOT NULL,
-  `qualification_date` datetime NOT NULL,
-  `expiry_date` datetime NOT NULL,
+  `qualification_date` date NOT NULL,
+  `expiry_date` date NOT NULL,
   `scanned_certification` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=93 ;
 
 --
 -- Dumping data for table `user_professional_accreditations`
 --
 
 INSERT INTO `user_professional_accreditations` (`id`, `user_id`, `type_professional`, `sector_type`, `qualification_title`, `qualification_date`, `expiry_date`, `scanned_certification`, `status`, `created_date`) VALUES
-(28, 38, 'check', 'govt', 'MCAs', '2173-12-04 00:00:00', '2181-12-04 00:00:00', '38_userprofessionals-check-govt-scanned-certification.pdf', 1, '2016-04-27 06:12:36'),
-(29, 38, 'pets', 'private', 'BCAs', '1970-12-04 00:00:00', '1971-12-04 00:00:00', '38_userprofessionals-pets-private-scanned-certification.pdf', 1, '2016-04-27 06:12:36'),
-(30, 38, 'people', 'private', 'PGDCAs', '1972-12-04 00:00:00', '1973-12-04 00:00:00', '38_userprofessionals-people-private-scanned-certification.docx', 1, '2016-04-27 06:12:36'),
-(31, 38, 'govt', 'licence', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '38_userprofessionals-govt-licence-scanned-certification.pdf', 1, '2016-04-27 06:12:36'),
-(32, 38, 'other', 'other', 'New 1s', '1974-12-04 00:00:00', '1975-12-04 00:00:00', '38_scanned_certification_1.docx', 1, '2016-04-27 06:12:36'),
-(33, 38, 'other', 'other', 'New 2s', '1976-12-04 00:00:00', '1977-12-04 00:00:00', '', 1, '2016-04-27 06:12:36'),
-(34, 38, 'other', 'other', 'New 3s', '1994-12-04 00:00:00', '1995-12-04 00:00:00', '38_scanned_certification_3.pdf', 1, '2016-04-27 06:12:36');
+(85, 38, 'check', 'govt', '', '0000-00-00', '0000-00-00', '38_userprofessionals-check-govt-scanned-certification.pdf', 1, '2016-05-10 12:45:04'),
+(86, 38, 'pets', 'private', 'BCA', '2016-04-03', '2016-04-04', '38_userprofessionals-pets-private-scanned-certification.pdf', 1, '2016-05-10 12:45:04'),
+(87, 38, 'people', 'private', 'PGDCA', '2016-04-07', '2016-04-06', '38_userprofessionals-people-private-scanned-certification.pdf', 1, '2016-05-10 12:45:04'),
+(88, 38, 'govt', 'licence', '', '0000-00-00', '0000-00-00', '38_userprofessionals-govt-licence-scanned-certification.pdf', 1, '2016-05-10 12:45:04'),
+(89, 38, 'other', 'other', 'New 1', '2016-04-27', '2016-04-28', '38_scanned_certification_1.pdf', 1, '2016-05-10 12:45:04'),
+(90, 38, 'other', 'other', 'New 2', '2016-04-29', '2016-04-30', '38_scanned_certification_2.pdf', 1, '2016-05-10 12:45:04'),
+(91, 38, 'other', 'other', 'New 3', '2016-04-01', '2016-04-02', '38_scanned_certification_3.pdf', 1, '2016-05-10 12:45:04'),
+(92, 38, 'other', 'other', 'NEW 4', '2016-05-11', '2016-05-12', '38_scanned_certification_4.gif', 1, '2016-05-10 12:45:04');
 
 -- --------------------------------------------------------
 
@@ -30156,6 +30582,7 @@ INSERT INTO `user_professional_accreditations` (`id`, `user_id`, `type_professio
 CREATE TABLE IF NOT EXISTS `user_professional_accreditations_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `experience` int(11) NOT NULL,
   `first_aid_for` varchar(255) NOT NULL,
   `cpr_for` varchar(255) NOT NULL,
   `oral_madications` varchar(255) NOT NULL,
@@ -30167,14 +30594,14 @@ CREATE TABLE IF NOT EXISTS `user_professional_accreditations_details` (
   `languages` varchar(255) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `user_professional_accreditations_details`
 --
 
-INSERT INTO `user_professional_accreditations_details` (`id`, `user_id`, `first_aid_for`, `cpr_for`, `oral_madications`, `injected_madications`, `training_techniques`, `ex_behavioural_problems`, `ex_volunteer`, `ex_rescue_pets`, `languages`, `created_date`) VALUES
-(5, 38, 'adults', 'children', 'children', 'children', 'cat', 'children', 'yes', 'dog', 'en', '2016-04-27 06:12:36');
+INSERT INTO `user_professional_accreditations_details` (`id`, `user_id`, `experience`, `first_aid_for`, `cpr_for`, `oral_madications`, `injected_madications`, `training_techniques`, `ex_behavioural_problems`, `ex_volunteer`, `ex_rescue_pets`, `languages`, `created_date`) VALUES
+(15, 38, 4, '', 'adults', 'children', 'children', 'cat', 'infants', '', 'dog', 'es', '2016-05-10 12:45:04');
 
 -- --------------------------------------------------------
 
@@ -30253,7 +30680,16 @@ CREATE TABLE IF NOT EXISTS `user_sitter_galleries` (
   `user_id` int(11) NOT NULL,
   `image` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `user_sitter_galleries`
+--
+
+INSERT INTO `user_sitter_galleries` (`id`, `user_id`, `image`) VALUES
+(7, 37, 'KuSvZtVbQ1qv91Q.png'),
+(8, 37, 'XVWVPJniSAYcBo5.png'),
+(9, 37, 'kYo4kdn7e5WvpVm.png');
 
 -- --------------------------------------------------------
 
@@ -30268,10 +30704,17 @@ CREATE TABLE IF NOT EXISTS `user_sitter_houses` (
   `outdoor_area` enum('balcony','backyard') NOT NULL COMMENT 'Balcony,Backyard',
   `outdoor_area_size` enum('small','medium','large') NOT NULL COMMENT 'Small,Medium,Large',
   `outing_allow_multiple` enum('urban_streets','beach','city_park','country_side','bush') NOT NULL COMMENT 'Urban Streets,Beach,City Park,Country Side,Bush',
-  `cancellation_policy` enum('flexible','moderate','strict') NOT NULL COMMENT 'Flexible,Moderate,Strict',
   `breaks_provided_every` enum('0-2','2-4','4-8','8+') NOT NULL,
   `fully_fenced` enum('yes','no') NOT NULL,
   `smokers` enum('yes','no') NOT NULL,
+  `birds_in_cages` enum('yes','no') NOT NULL,
+  `dogs_in_home` enum('yes','no') NOT NULL,
+  `cats_in_home` enum('yes','no') NOT NULL,
+  `about_home_desc` text NOT NULL,
+  `spaces_access_desc` varchar(75) NOT NULL,
+  `home_pets_desc` varchar(75) NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -30279,8 +30722,8 @@ CREATE TABLE IF NOT EXISTS `user_sitter_houses` (
 -- Dumping data for table `user_sitter_houses`
 --
 
-INSERT INTO `user_sitter_houses` (`id`, `user_id`, `property_type`, `outdoor_area`, `outdoor_area_size`, `outing_allow_multiple`, `cancellation_policy`, `breaks_provided_every`, `fully_fenced`, `smokers`) VALUES
-(1, 38, 'flat', 'balcony', 'medium', 'urban_streets', 'flexible', '2-4', 'yes', 'yes');
+INSERT INTO `user_sitter_houses` (`id`, `user_id`, `property_type`, `outdoor_area`, `outdoor_area_size`, `outing_allow_multiple`, `breaks_provided_every`, `fully_fenced`, `smokers`, `birds_in_cages`, `dogs_in_home`, `cats_in_home`, `about_home_desc`, `spaces_access_desc`, `home_pets_desc`, `status`, `created_date`) VALUES
+(1, 37, 'flat', 'balcony', 'large', 'urban_streets', '0-2', 'yes', 'yes', 'yes', 'yes', 'yes', 'well maintained open area ', 'Luxury services for your pet', 'no pets in home', 1, '2016-05-12 07:47:59');
 
 -- --------------------------------------------------------
 
@@ -30291,35 +30734,94 @@ INSERT INTO `user_sitter_houses` (`id`, `user_id`, `property_type`, `outdoor_are
 CREATE TABLE IF NOT EXISTS `user_sitter_services` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `day_care` varchar(255) NOT NULL,
-  `visits` varchar(255) NOT NULL,
-  `night_care` varchar(255) NOT NULL,
-  `hourly` varchar(255) NOT NULL,
-  `cancellation_policy` varchar(255) NOT NULL,
-  `holiday_rate` tinytext NOT NULL,
-  `holiday_rate_status` tinyint(2) NOT NULL,
-  `puppy_rate_status` tinyint(2) NOT NULL,
-  `puppy_rate` int(11) NOT NULL,
-  `cat_rate_status` tinyint(2) NOT NULL,
-  `cat_rate` int(11) NOT NULL,
-  `horse_rate_status` tinyint(2) NOT NULL,
-  `horse_rate` int(11) NOT NULL,
-  `reptiles_rate_status` tinyint(2) NOT NULL,
-  `reptiles_rate` int(11) NOT NULL,
-  `small_pets_status` tinyint(2) NOT NULL,
-  `small_pets_rate` int(11) NOT NULL,
-  `day_care_status` tinyint(2) NOT NULL,
-  `additional_mode_status` tinyint(2) NOT NULL,
-  `repeat_clients_only` tinyint(2) NOT NULL,
-  `guest_rate` int(11) NOT NULL,
-  `1_visit_pr_day` int(11) NOT NULL,
-  `2_visit_pr_day` int(11) NOT NULL,
-  `1_day_1_guest` int(11) NOT NULL,
-  `2_day_1_guest` int(11) NOT NULL,
+  `cancellation_policy` tinyint(2) NOT NULL,
+  `booking` tinyint(2) NOT NULL,
+  `day_care_limit` varchar(255) NOT NULL,
+  `night_care_limit` varchar(255) NOT NULL,
+  `visits_limit` varchar(255) NOT NULL,
+  `hourly_services_limit` varchar(255) NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT '1',
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `user_sitter_services`
+--
+
+INSERT INTO `user_sitter_services` (`id`, `user_id`, `cancellation_policy`, `booking`, `day_care_limit`, `night_care_limit`, `visits_limit`, `hourly_services_limit`, `status`, `created_date`) VALUES
+(12, 37, 1, 1, '78', '78', '78', '98', 1, '2016-05-09 06:03:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_sitter_service_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_sitter_service_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `user_service_id` int(11) NOT NULL,
+  `service_for` varchar(255) NOT NULL DEFAULT '0',
+  `service_for_status` tinyint(2) NOT NULL DEFAULT '0',
+  `holiday_rate_status` tinyint(2) NOT NULL DEFAULT '0',
+  `small_guest_rate_status` tinyint(2) NOT NULL DEFAULT '0',
+  `large_guest_rate_status` tinyint(2) NOT NULL DEFAULT '0',
+  `cats_rate_status` int(11) NOT NULL,
+  `puppy_rate_status` int(11) NOT NULL,
+  `service_type` varchar(255) NOT NULL,
+  `extended_stay_rate_status` tinyint(2) NOT NULL DEFAULT '0',
+  `additional_guest_rate_status` tinyint(2) NOT NULL,
+  `service_holiday_rate` int(11) DEFAULT NULL,
+  `repeat_client_only_status` tinyint(2) NOT NULL,
+  `additional_guest_limit` varchar(255) NOT NULL,
+  `extended_stay_rate` int(11) DEFAULT NULL,
+  `additional_guest_rate` int(11) DEFAULT NULL,
+  `premium_rate` varchar(255) DEFAULT NULL,
+  `service_holiday_rate_status` tinyint(2) NOT NULL DEFAULT '0',
+  `service_status` tinyint(2) NOT NULL DEFAULT '0',
+  `holiday_rate` int(11) DEFAULT NULL,
+  `premium_rate_status` tinyint(2) DEFAULT '0',
+  `small_guest_rate` int(11) DEFAULT NULL,
+  `large_guest_rate` int(11) DEFAULT NULL,
+  `day_rate` int(11) DEFAULT NULL,
+  `night_rate` int(11) DEFAULT NULL,
+  `cat_rate` int(11) DEFAULT NULL,
+  `puppy_rate` int(11) DEFAULT NULL,
+  `drop_visit_rate` int(11) DEFAULT NULL,
+  `grooming_rate` int(11) DEFAULT NULL,
+  `recreation_rate` int(11) DEFAULT NULL,
+  `training_rate` int(11) DEFAULT NULL,
+  `driving_rate` varchar(255) DEFAULT NULL,
+  `grooming_status` tinyint(2) NOT NULL DEFAULT '0',
+  `recreation_rate_status` tinyint(2) NOT NULL DEFAULT '0',
+  `training_status` tinyint(2) NOT NULL DEFAULT '0',
+  `driving_service_status` tinyint(2) NOT NULL DEFAULT '0',
+  `sh_holiday` int(11) NOT NULL,
+  `day_care_limit` int(11) NOT NULL,
+  `night_care_limit` int(11) NOT NULL,
+  `visits_limit` int(11) NOT NULL,
+  `hourly_services_limit` int(11) NOT NULL,
+  `premium_grooming_rate` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=443 ;
+
+--
+-- Dumping data for table `user_sitter_service_details`
+--
+
+INSERT INTO `user_sitter_service_details` (`id`, `user_id`, `user_service_id`, `service_for`, `service_for_status`, `holiday_rate_status`, `small_guest_rate_status`, `large_guest_rate_status`, `cats_rate_status`, `puppy_rate_status`, `service_type`, `extended_stay_rate_status`, `additional_guest_rate_status`, `service_holiday_rate`, `repeat_client_only_status`, `additional_guest_limit`, `extended_stay_rate`, `additional_guest_rate`, `premium_rate`, `service_holiday_rate_status`, `service_status`, `holiday_rate`, `premium_rate_status`, `small_guest_rate`, `large_guest_rate`, `day_rate`, `night_rate`, `cat_rate`, `puppy_rate`, `drop_visit_rate`, `grooming_rate`, `recreation_rate`, `training_rate`, `driving_rate`, `grooming_status`, `recreation_rate_status`, `training_status`, `driving_service_status`, `sh_holiday`, `day_care_limit`, `night_care_limit`, `visits_limit`, `hourly_services_limit`, `premium_grooming_rate`, `status`, `created_date`) VALUES
+(442, 37, 0, 'market_place', 0, 1, 0, 0, 0, 0, 'driver_service', 0, 0, 878, 1, '87', NULL, 7, '8', 0, 1, 545, 0, 45, 45, NULL, NULL, 45, 4, NULL, 45, 4, 54, '5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(441, 37, 0, 'market_place', 0, 1, 0, 0, 0, 0, 'training', 0, 1, 7, 0, '7987987', NULL, 78, '8', 0, 0, 545, 0, 45, 45, NULL, NULL, 45, 4, NULL, 45, 4, 54, '5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(440, 37, 0, 'market_place', 0, 1, 0, 0, 0, 0, 'recreation', 0, 0, 98, 0, '8787878', NULL, 7, '78', 0, 1, 545, 0, 45, 45, NULL, NULL, 45, 4, NULL, 45, 4, 54, '5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(439, 37, 0, 'market_place', 0, 1, 0, 0, 0, 0, 'grooming', 0, 0, 987, 1, '5', NULL, 41, '4', 0, 1, 545, 0, 45, 45, NULL, NULL, 45, 4, NULL, 45, 4, 54, '5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(438, 37, 0, 'guests_house', 1, 0, 0, 0, 0, 0, 'night_care', 0, 0, 5, 0, '45', 45, 454, NULL, 0, 1, 1, 0, 2, 3, 4, 6, 7, 8, 5, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(437, 37, 0, 'guests_house', 1, 0, 0, 0, 0, 0, 'drop_visit', 0, 0, 45, 0, '4', 545, 45, NULL, 0, 0, 1, 0, 2, 3, 4, 6, 7, 8, 5, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(436, 37, 0, 'guests_house', 1, 0, 0, 0, 0, 0, 'day_care', 0, 0, 12, 0, '63', 32, 21, NULL, 0, 1, 1, 0, 2, 3, 4, 6, 7, 8, 5, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(435, 37, 0, 'sitter_house', 1, 1, 1, 1, 1, 1, 'night_care', 0, 0, 235, 0, '231', 232, 234, NULL, 0, 1, 45, 0, 22, 33, 44, 55, 66, 77, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32'),
+(434, 37, 0, 'sitter_house', 1, 1, 1, 1, 1, 1, 'day_care', 0, 0, 126, 0, '123', 124, 125, NULL, 0, 1, 45, 0, 22, 33, 44, 55, 66, 77, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2016-05-13 04:13:32');
 
 -- --------------------------------------------------------
 

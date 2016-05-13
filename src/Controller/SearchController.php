@@ -94,10 +94,29 @@ class SearchController extends AppController
 		$UsersModel = TableRegistry::get('Users');
 		
 		$conditions = array();
-		
+		//pr($this->request->data); die;
 		if(!empty($this->request->data)){
+			/*
+			//SET CONDITIONS FOR Select services
+			if(isset($this->request->data['Search']['selected_service']) && $this->request->data['Search']['selected_service'] !=""){
+				if($this->request->data['Search']['selected_service']=='day_night_care'){
+					$conditions['OR'][] = 'UserSitterServiceDetails.service_for_status = 1';
+				}	
+				
+			}
 			
-			pr($this->request->data); die;
+			//SET PRICE CONDITION
+			if(isset($this->request->data['Search']['start_price']) && isset($this->request->data['Search']['end_price'])){
+				$startPrice = str_replace("$","",$this->request->data['Search']['start_price']);
+				$endPrice = str_replace("$","",$this->request->data['Search']['end_price']);
+				
+				if($this->request->data['Search']['selected_service']=='day_night_care'){
+					$conditions['OR'][] = '(UserSitterServiceDetails.day_rate <='.$startPrice.' AND UserSitterServiceDetails.day_rate >='.$endPrice.' || UserSitterServiceDetails.night_rate <='.$startPrice.' AND UserSitterServiceDetails.night_rate >='.$endPrice.') AND (UserSitterServiceDetails.service_type = "day_care" || UserSitterServiceDetails.service_type = "night_care")';
+				}
+		
+			}	
+					
+			
 			//SET CONDITIONS FOR MARKET PLACES LIKE RECREATION, GROOMING, DRIVER, TRAINING ETC
 			if(isset($this->request->data['Search']['marketplace']) && $this->request->data['Search']['marketplace'] !=""){
 				
@@ -116,23 +135,35 @@ class SearchController extends AppController
 					$conditions['OR'][] = 'UserSitterServiceDetails.service_type IN(' . $inStr. ')'; //find service type from comma spareted value	
 				}
 			}
+			*/
 			
 			//SET CONDITIONS FOR LANGUGE KNOW
 			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
 				
-				$conditions['OR'][] = 'userProfessionalAccreditationsDetails.languages LIKE "%' .$this->request->data['Search']['languages'].'%"'; //find service type from comma spareted value
+				$conditions = ['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]; //find service type from comma spareted value
 				
-			}
+			} 
 			
-			;		
+			/*
 			$query = $UsersModel->find('all')
-			->where($conditions)
-			->contain([
-				'UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails'
-			])->toArray();
-			pr($query);die;
-			//$searchData = $UsersModel->find('all',['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails','UserSitterServiceDetails']])->where($conditions);
-			//pr($searchData); die;
+					->where($conditions)
+					->contain([
+							'UserProfessionalAccreditations','userProfessionalAccreditationsDetails']
+						)->toArray(); */
+			//pr($conditions); die;
+			$searchData = $UsersModel
+							->find('all')
+							->matching('userProfessionalAccreditationsDetails', function ($q) {
+									return $q->where(['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]);
+							 })
+							 ->contain([
+								'userProfessionalAccreditationsDetails' => function ($q) {
+									return $q->autoFields(false)
+											 ->where(['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]);
+								}
+							])
+						->toArray();
+			pr($searchData); die;
 		}	
 		
 		
@@ -234,9 +265,10 @@ class SearchController extends AppController
 		$this->set('sourceLocationLongitude',$sourceLocationLongitude);
 		$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
 		
-		$this->render("search");
+		
 		
 		}
+		$this->render("search");
 	}	
 
 

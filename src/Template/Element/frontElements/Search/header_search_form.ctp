@@ -1,3 +1,4 @@
+<?php echo $this->Html->script(['Front/google_country_autocomplete']); ?>
 <?php echo $this->Form->create(null, [
 		'url' => ['controller' => 'search', 'action' => 'search-by-location'],
 		'role'=>'form',
