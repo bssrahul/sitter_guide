@@ -951,7 +951,7 @@ $(document).ready(function () {
             } */
         });
       
-     //CODE SNIPPET FOR Edit category
+     //CODE SNIPPET FOR Add category
        $('#addcategory').validate({
             ignore: [],
             debug: false,
@@ -963,10 +963,60 @@ $(document).ready(function () {
                 "Categories[slug]":
                 {
                     required: true
-                },"Categories[description]":
+                },
+				"Categories[description]":
                 {
                     required: true
-                }
+                },
+				"Categories[image]":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
+                },
+            },
+            messages: {             
+               "Categories[title]":
+                {
+                    required : "This field is required."
+                },
+                "Categories[slug]":
+                {
+                   required : "This field is required."
+                },
+				"Categories[description]":
+                {
+                    required : "This field is required."
+                },
+				"Categories[image]":
+                {
+                    accept : "Only png, gif, jpg files are allowed."
+                },
+            }/*,
+             errorPlacement: function (error, element) {
+                    alert(error.text());
+            } */
+        });
+	
+	 //CODE SNIPPET FOR Edit category
+       $('#editcategory').validate({
+            ignore: [],
+            debug: false,
+            rules: {
+                "Categories[title]":
+                {
+                    required: true
+                },
+                "Categories[slug]":
+                {
+                    required: true
+                },
+				"Categories[description]":
+                {
+                    required: true
+                },
+				"Categories[image]":
+                {
+                   accept: "png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF"
+                },
             },
             messages: {             
                "Categories[title]":
@@ -979,13 +1029,16 @@ $(document).ready(function () {
                 },"Categories[description]":
                 {
                     required : "This field is required."
-                }
+                },
+				"Categories[image]":
+                {
+                    accept : "Only png, gif, jpg files are allowed."
+                },
             }/*,
              errorPlacement: function (error, element) {
                     alert(error.text());
             } */
         });
-
      //CODE SNIPPET FOR UPDATE CURRENCY
        $('#updatecurrencies').validate({
             ignore: [],

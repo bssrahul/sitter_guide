@@ -19,7 +19,8 @@
 }
 .pull-right {
     float: right !important;
-    margin-right: 100px !important;
+    position: relative;
+    right: 270px;
 }
 </style>
 <!-- /page content -->
