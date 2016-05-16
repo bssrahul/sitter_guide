@@ -90,69 +90,6 @@ class SearchController extends AppController
 		$UsersModel = TableRegistry::get('Users');
 		
 		$conditions = array();
-		//pr($this->request->data); die;
-		if(!empty($this->request->data)){
-			/*
-			//SET CONDITIONS FOR Select services
-			if(isset($this->request->data['Search']['selected_service']) && $this->request->data['Search']['selected_service'] !=""){
-				if($this->request->data['Search']['selected_service']=='day_night_care'){
-					$conditions['OR'][] = 'UserSitterServiceDetails.service_for_status = 1';
-				}	
-				
-			}
-			
-			//SET PRICE CONDITION
-			if(isset($this->request->data['Search']['start_price']) && isset($this->request->data['Search']['end_price'])){
-				$startPrice = str_replace("$","",$this->request->data['Search']['start_price']);
-				$endPrice = str_replace("$","",$this->request->data['Search']['end_price']);
-				
-				if($this->request->data['Search']['selected_service']=='day_night_care'){
-					$conditions['OR'][] = '(UserSitterServiceDetails.day_rate <='.$startPrice.' AND UserSitterServiceDetails.day_rate >='.$endPrice.' || UserSitterServiceDetails.night_rate <='.$startPrice.' AND UserSitterServiceDetails.night_rate >='.$endPrice.') AND (UserSitterServiceDetails.service_type = "day_care" || UserSitterServiceDetails.service_type = "night_care")';
-				}
-		
-			}	
-					
-			
-			//SET CONDITIONS FOR MARKET PLACES LIKE RECREATION, GROOMING, DRIVER, TRAINING ETC
-			if(isset($this->request->data['Search']['marketplace']) && $this->request->data['Search']['marketplace'] !=""){
-				
-				$marketPlacesArr = explode(",",$this->request->data['Search']['marketplace']);
-				
-				if(!empty($marketPlacesArr)){
-					$inStr = '';
-					$totalMarketPlace = count($marketPlacesArr);
-					$i=1;
-					foreach($marketPlacesArr as $marketplaceVal){
-						if($i != $totalMarketPlace){$commaAdded = ",";}else{$commaAdded='';}
-						$inStr .="'".$marketplaceVal."'".$commaAdded;
-						$conditions['OR'][] = 'UserSitterServiceDetails.'.$marketplaceVal.'=1';
-						$i++;
-					}
-					$conditions['OR'][] = 'UserSitterServiceDetails.service_type IN(' . $inStr. ')'; //find service type from comma spareted value	
-				}
-			}
-			*/
-			//SET CONDITIONS FOR LANGUGE KNOW
-			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
-				
-				$conditions = ['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]; //find service type from comma spareted value
-			} 
-
-			//pr($conditions); die;
-			$searchData = $UsersModel
-							->find('all')
-							->matching('userProfessionalAccreditationsDetails', function ($q)  use ($hashtags) {
-									return $q->where($conditions);
-							 })
-							 ->contain([
-								'userProfessionalAccreditationsDetails' => function ($q) {
-									return $q->autoFields(false)
-											 ->where($conditions);
-								}
-							])
-						->toArray();
-			pr($searchData); die;
-		}	
 		
 		
 		if(!isset($currentLang) && empty($currentLang)){
@@ -161,6 +98,223 @@ class SearchController extends AppController
 		}
 		
 	}
+	
+	
+	/**
+	* Function to search profiles
+	*/
+	function AjaxSearch(){
+		
+		$this->viewBuilder()->layout('landing');
+		$this->request->data = $_REQUEST;	
+        $session = $this->request->session();
+		$currentLang = $session->read('requestedLanguage');
+		
+		//ADD MODEL
+		$UsersModel = TableRegistry::get('Users');
+		
+		$conditions = array();
+		
+		if(!empty($this->request->data)){
+		
+
+			$or_condition = array();
+			$and_condition = array();
+			
+			
+			//SET CONDITIONS FOR LANGUGE KNOW (TABLE NAME : users_professional_accreditation_detail)	
+			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
+				
+				$or_condition = array_merge($or_condition,array('userProfessionalAccreditationsDetails.languages="'.$this->request->data['Search']['languages'].'"'));
+			
+			}
+			 
+			//SET CONDITIONS FOR 2+ EXP (TABLE NAME : users_professional_accreditation_detail)	
+			if(isset($this->request->data['Search']['experience']) && $this->request->data['Search']['experience'] ==1){
+				
+				$or_condition = array_merge($or_condition,array('userProfessionalAccreditationsDetails.experience >=2'));
+				
+			} 
+			
+			//SET CONDITION FOR FIRST AID (TABLE NAME : users_professional_accreditation_detail)	
+			if(isset($this->request->data['Search']['first_aid']) && $this->request->data['Search']['first_aid'] ==1){
+				
+				$or_condition = array_merge($or_condition,array('userProfessionalAccreditationsDetails.injected_madications=1'));
+				$or_condition = array_merge($or_condition,array('userProfessionalAccreditationsDetails.oral_madications=1'));
+				
+			} 
+			
+			//SET CONDITION PET IN HOME (TABLE NAME : users_sitter_house)	
+			if(isset($this->request->data['Search']['sitter_info']['own_pet']) && $this->request->data['Search']['sitter_info']['own_pet'] ==1){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterHouses.dogs_in_home=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterHouses.cats_in_home=1'));
+			
+			} 
+			
+			//SET CONDITION FOR SITTER HOUSE TYPE FARM (TABLE NAME : users_sitter_house)
+			if(isset($this->request->data['Search']['sitter_info']['farm']) && $this->request->data['Search']['sitter_info']['farm'] ==1){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterHouses.property_type="farm"'));
+				
+			} 
+			
+			//SET CONDITION FOR SITTER HOUSE TYPE FLAT (TABLE NAME : users_sitter_house)
+			if(isset($this->request->data['Search']['sitter_info']['flat']) && $this->request->data['Search']['sitter_info']['flat'] ==1){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterHouses.property_type="flat"'));
+				
+			} 
+			
+			//SET CONDITION FOR SITTER HOUSE TYPE HOUSE (TABLE NAME : users_sitter_house)
+			if(isset($this->request->data['Search']['sitter_info']['house']) && $this->request->data['Search']['sitter_info']['house'] ==1){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterHouses.property_type="house"'));
+			
+			} 
+			
+			//SET PRICE CONDITION (TABLE NAME : users_sitter_services)
+			if(isset($this->request->data['Search']['start_price']) && isset($this->request->data['Search']['end_price'])){
+				
+				//Remove $ character from the start & end price
+				$startPrice = str_replace("$","",$this->request->data['Search']['start_price']);
+				$endPrice = str_replace("$","",$this->request->data['Search']['end_price']);
+				
+				if($this->request->data['Search']['selected_service']=='day_night_care'){
+					
+					$or_condition  = array_merge($or_condition,array("(UserSitterServices.sh_day_rate >= $startPrice AND UserSitterServices.sh_day_rate <=$endPrice)"));
+					
+					$or_condition   = array_merge($or_condition,array("(UserSitterServices.sh_night_rate >= $startPrice AND UserSitterServices.sh_night_rate <= $endPrice)"));
+					
+					$or_condition  = array_merge($or_condition,array("(UserSitterServices.gh_day_rate >= $startPrice AND UserSitterServices.gh_day_rate <=$endPrice)"));
+					
+					$or_condition   = array_merge($or_condition,array("(UserSitterServices.gh_night_rate >= $startPrice AND UserSitterServices.gh_night_rate <= $endPrice)"));
+					
+				}
+		
+			}
+			
+			//SET CONDITION FOR TOP TAB SELECTED (TABLE NAME : users_sitter_services)
+			if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'house_sitting')){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sitter_house_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.guest_house_status=1'));
+			
+			}
+			else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'drop_visit')){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_drop_in_visit_status=1'));
+			
+			}else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'day_night_care')){
+			
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sh_day_care_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sh_night_care_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_day_care_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_night_care_status=1'));
+				
+			}else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'marketplace')){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterServices.market_place_status=1'));
+			
+			}
+
+
+			if(isset($this->request->data['Search']['marketplace']) && !empty($this->request->data['Search']['marketplace'])){
+			
+				 $marker_place_service = explode(",",$this->request->data['Search']['marketplace']);
+			
+				foreach($marker_place_service as $service_type)
+				{
+					if($service_type == 'training'){
+					
+						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_training_status=1'));
+					
+					}else if($service_type == 'recreation'){
+						
+						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_recreation_status=1'));
+			
+					}else if($service_type == 'grooming'){
+						
+						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_grooming_status=1'));
+					
+					}else if($service_type == 'driver'){
+						
+						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_driver_service_status=1'));
+					} 
+				}
+			}
+			
+			$finalConditions = implode(" OR ",$or_condition); 
+			
+			$sourceLocationLatitude = '30.7399738';
+			$sourceLocationLongitude = '76.7567368';
+			
+			
+			$query='SELECT
+						  Users.id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						
+						FROM 
+						users as Users JOIN user_professional_accreditations_details as userProfessionalAccreditationsDetails  
+						
+						ON  Users.id = userProfessionalAccreditationsDetails.user_id
+						
+						JOIN 
+						user_sitter_houses as UserSitterHouses ON Users.id = UserSitterHouses.user_id
+						
+						JOIN 
+						user_sitter_services as UserSitterServices ON Users.id = UserSitterServices.user_id
+						
+						WHERE 
+						
+						'.$finalConditions.'
+						
+						HAVING distance < 300
+						
+						ORDER BY distance';
+						
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+			
+			if(!empty($results)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($results as $resultsValue){
+						
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}
+				
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']])
+							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
+							   ->toArray();
+								
+				$this->set('resultsData',$userData);
+				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
+				$this->set('sourceLocationLatitude',($sourceLocationLatitude)?$sourceLocationLatitude:'');
+				$this->set('headerSearchVal',(@$this->request->data['location_autocomplete'])?@$this->request->data['location_autocomplete']:'');
+			}		
+			
+		}		
+		
+		
+		
+		if(!isset($currentLang) && empty($currentLang)){
+
+			$this->setGuestStore("en","Guests","index");
+		}
+		
+	}
+	
 	/**
 	* Function to search profiles
 	*/
@@ -231,22 +385,9 @@ class SearchController extends AppController
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				
-				//SET KEYS FOR SERVICES PROVIDED BY SITTER
-				if(!empty($userData)){ 
-					$i=0;
-					foreach($userData as $k=>$usersDetail){ 
-						foreach($usersDetail->user_sitter_service_details as $sitterServicesDetail){ 
-							if($sitterServicesDetail->service_type !=''){
-								$userData[$i][$sitterServicesDetail->service_type."_check"] = $sitterServicesDetail->service_type;
-							}
-						}
-					$i++;	
-					}
-				}//END  KEYS FOR SERVICES PROVIDED BY SITTER
-			
 			}
 		
-		//pr($userData); die;
+
 		$this->set('resultsData',$userData);
 		$this->set('distanceAssociation',$distanceAssociation);
 		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
