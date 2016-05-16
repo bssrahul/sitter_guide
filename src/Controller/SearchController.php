@@ -132,12 +132,10 @@ class SearchController extends AppController
 				}
 			}
 			*/
-			
 			//SET CONDITIONS FOR LANGUGE KNOW
 			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
 				
 				$conditions = ['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]; //find service type from comma spareted value
-				
 			} 
 
 			//pr($conditions); die;

@@ -7,7 +7,8 @@
 							else{	$count=1;
 									foreach($categoriesData as $categoryData) { 
 										?><h2 class="pt22"><?php echo $categoryData->title;?></h2>	<?php
-											if(empty($questionData)){
+											if(empty($questionData)){ 
+												
 												if(is_array($categoryData->faqs)){ 
 													foreach($categoryData->faqs as $categoryQue) { 
 														
@@ -23,19 +24,19 @@
 												}
 											}
 										}else{
-												//	pr($questionData);die;
-												//	foreach($questionData as $categoryQue) { 
-														
+													//pr($questionData);die;
+													foreach($questionData as $categoryQue) { 
+													//pr($categoryQue);die;	
 															?>
 															
 															<div>
-																	<h3><?php echo $count++.".      ".$questionData->question;?></h3>
-																	<p class="text-justify" >	<?php echo $questionData->answer;?>	</p>
+																	<h3><?php echo $count++.".      ".$categoryQue->question;?></h3>
+																	<p class="text-justify" >	<?php echo $categoryQue->answer;?>	</p>
 																										 
 															</div>
 													<?php	
 													
-												//}
+												}
 											
 											} 
 									}
