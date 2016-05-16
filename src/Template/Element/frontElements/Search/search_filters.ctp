@@ -28,7 +28,7 @@
           <!--top filter tab--> 
           <!--Tab Content area -->
 			<?php echo $this->Form->create(null, [
-				'url' => ['controller' => 'search', 'action' => 'search'],
+				'url' => ['controller' => 'search', 'action' => 'ajax-search'],
 				'role'=>'form',
 				'id'=>'searchParam',
 				'autocomplete'=>'off',
@@ -327,7 +327,7 @@
 									'templates' => ['inputContainer' => '{{content}}'],
 									'label' => false,
 									'type'=>'select',
-									'class'=>'ajaxSearch form-control',
+									'class'=>'ajaxSearchDropDown form-control',
 									'options'=>['en'=>'English','fr'=>'French','de'=>'German','hu'=>'Hungarian','it'=>'Italian','ro'=>'Romanian','ru'=>'Russian','es'=>'spanish']									
 									]);
 									?>

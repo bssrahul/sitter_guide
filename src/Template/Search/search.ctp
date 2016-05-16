@@ -10,7 +10,9 @@
 
   <!--[Search result page]--> 
   <!--[Search result Listing]-->
+  <div class='searchRes'>
   <?php echo $this->element('frontElements/Search/search_results'); ?>  
+  </div>
   <!--[/Search result Listing]--> 
   
 </section>

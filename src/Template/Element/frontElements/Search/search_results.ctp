@@ -165,36 +165,34 @@
 								  </div>
 								  <!--per night--> 
 								  <!--facilities-->
-									  <div class="facilities">
-										<ul>
-											<?php //IN CASE NO SERVICES PROVIDED BY THIS USER THEN ALL SERVICES ARE UN FILLED 
-												if(isset($results->training_check)){
-													echo '<li>Tranining<span><img src="'.HTTP_ROOT.'img/fac-icon.png"  alt="Tranining"/></span></li>';
-												}else{
-													echo '<li>Tranining<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png"  alt="Tranining"/></span></li>';
-												}
-												
-												if(isset($results->recreation_check)){
-													echo '<li>Recreation<span><img src="'.HTTP_ROOT.'img/fac-icon.png"  alt="Recreation"/></span></li>';
-												}else{
-													echo '<li>Recreation<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png"  alt="Recreation"/></span></li>';
-												}
-												
-												if(isset($results->driver_service_check)){
-													echo '<li>Driver<span><img src="'.HTTP_ROOT.'img/fac-icon.png"  alt="Driver"/></span></li>';
-												}else{
-													echo '<li>Driver<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png"  alt="Driver"/></span></li>';
-												}
-												
-												if(isset($results->grooming_check)){
-													echo '<li>Grooming<span><img src="'.HTTP_ROOT.'img/fac-icon.png"  alt="Grooming"/></span></li>';
-												}else{
-													echo '<li>Grooming<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png"  alt="Grooming"/></span></li>';
-												}
-											?>
-										</ul>
-									  </div>
-								  <!--/facilities--> 
+
+                                     <div class="facilities">
+                                        <ul>
+                                            <?php //IN CASE NO SERVICES PROVIDED BY THIS USER THEN ALL SERVICES ARE UN FILLED 
+                                                if(isset($results->user_sitter_services[0]->mp_training_status) && $results->user_sitter_services[0]->mp_training_status == 1){
+                                                    echo '<li>Tranining<span><img src="'.HTTP_ROOT.'img/fac-icon.png" alt="Tranining"/></span></li>';
+                                                }else{
+                                                    echo '<li>Tranining<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png" alt="Tranining"/></span></li>';
+                                                }
+                                                if(isset($results->user_sitter_services[0]->mp_recreation_status) && $results->user_sitter_services[0]->mp_recreation_status == 1){
+                                                    echo '<li>Recreation<span><img src="'.HTTP_ROOT.'img/fac-icon.png" alt="Recreation"/></span></li>';
+                                                }else{
+                                                    echo '<li>Recreation<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png" alt="Recreation"/></span></li>';
+                                                }
+                                                if(isset($results->user_sitter_services[0]->mp_driver_service_status) && $results->user_sitter_services[0]->mp_driver_service_status == 1){
+                                                    echo '<li>Driver<span><img src="'.HTTP_ROOT.'img/fac-icon.png" alt="Driver"/></span></li>';
+                                                }else{
+                                                    echo '<li>Driver<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png" alt="Driver"/></span></li>';
+                                                }
+                                                if(isset($results->user_sitter_services[0]->mp_grooming_status) && $results->user_sitter_services[0]->mp_grooming_status == 1){
+                                                    echo '<li>Grooming<span><img src="'.HTTP_ROOT.'img/fac-icon.png" alt="Grooming"/></span></li>';
+                                                }else{
+                                                    echo '<li>Grooming<span><img src="'.HTTP_ROOT.'img/fac-icon-1.png" alt="Grooming"/></span></li>';
+                                                }
+                                            ?>
+                                        </ul>
+                                     </div>
+                                 <!--/facilities-->
 								  <!--likebox
 								  <div class="likebox"> 
 									  <a href="#" title="LIke"><img src="<?php echo HTTP_ROOT; ?>img/like-icon.png" width="16" height="14" alt=""/></a>

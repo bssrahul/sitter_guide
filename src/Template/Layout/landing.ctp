@@ -28,7 +28,9 @@
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">
 		<!--[content area Start]-->
 		<?php 
-			echo $this->element('frontElements/guests/how_works_dropdown');
+			if($this->request->action=="home"){
+				echo $this->element('frontElements/guests/how_works_dropdown');
+			}			
 
 			$session = $this->request->session();
             $session = $session->read('User');
