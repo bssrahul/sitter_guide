@@ -4,7 +4,7 @@ var input = document.getElementById('location_autocomplete');
 var options = {
         types: ['(cities)'],
         componentRestrictions: {
-            country: 'in'
+            country: 'au'
         }
     };
     
