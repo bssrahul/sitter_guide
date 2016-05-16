@@ -12,8 +12,9 @@
 												<form action="<?php echo HTTP_ROOT."help-search-listing";?>" method="post">
 													<div class="input-group help-input">
 															
-																<input type="text" name="search" class="form-control" placeholder="Enter your search terms">
+																<input type="text" name="search" class="form-control" placeholder="Enter your search terms"  value="<?php if(!empty($search)){echo $search ;}?>">
 																<input type="hidden" name="cat_id" class="form-control" value="<?php if(!empty($cat_id)){echo $cat_id ;}?>">
+																<input type="hidden" name="type_id" class="form-control" value="<?php if(!empty($type_id)){echo $type_id ;}?>">
 																<span class="input-group-btn">
 																	<button class="btn btn-default" type="submit" ><img src="images/help-search.png"  alt="search"></button>
 																</span>
