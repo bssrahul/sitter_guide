@@ -151,3 +151,29 @@ $(function(){
 	});
     
 });
+$(document).ready(function(){
+    $('#pet_in_home').click(function(){
+          if($(this).is(":checked")){
+              $('.homePet').prop('checked', true);
+          }
+          else if($(this).is(":not(:checked)")){
+              $('.homePet').prop('checked', false);
+          }
+    });
+    $('#housing_condition').click(function(){
+          if($(this).is(":checked")){
+              $('.house-condition').prop('checked', true);
+          }
+          else if($(this).is(":not(:checked)")){
+              $('.house-condition').prop('checked', false);
+          }
+    });
+    $('#medical_experience').click(function(){
+          if($(this).is(":checked")){
+              $('.medical-experience').prop('checked', true);
+          }
+          else if($(this).is(":not(:checked)")){
+              $('.medical-experience').prop('checked', false);
+          }
+    });
+});

@@ -396,7 +396,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'ajaxSearch homePet',
 											'option'=>["doesnt_own_dog"],
 											'id'=>'doesnt_own_dog']);
 										?>
@@ -409,7 +409,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'ajaxSearch homePet',
 											'option'=>["doesnt_own_caged_dog"],
 											'id'=>'doesnt_own_caged_dog']);
 										?>
@@ -422,7 +422,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'ajaxSearch homePet',
 											'option'=>["doesnt_own_cat"],
 											'id'=>'doesnt_own_cat']);
 										?>
