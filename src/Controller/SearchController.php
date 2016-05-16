@@ -20,9 +20,6 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 use Cake\Datasource\ConnectionManager;
-//require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
-//use Facebook;
-
 use Cake\Event\Event;
 
 /**
@@ -73,7 +70,6 @@ class SearchController extends AppController
 		$siteConfiguration = $SiteModel->find('all')->first();
 		$this->set('siteConfiguration', $siteConfiguration);
 		
-
 		$sliderModel = TableRegistry::get('Sliders');
 		$sliderVideo = $sliderModel->find('all')->first();
 		$this->set('sliderVideo', $sliderVideo);
@@ -143,23 +139,17 @@ class SearchController extends AppController
 				$conditions = ['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]; //find service type from comma spareted value
 				
 			} 
-			
-			/*
-			$query = $UsersModel->find('all')
-					->where($conditions)
-					->contain([
-							'UserProfessionalAccreditations','userProfessionalAccreditationsDetails']
-						)->toArray(); */
+
 			//pr($conditions); die;
 			$searchData = $UsersModel
 							->find('all')
-							->matching('userProfessionalAccreditationsDetails', function ($q) {
-									return $q->where(['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]);
+							->matching('userProfessionalAccreditationsDetails', function ($q)  use ($hashtags) {
+									return $q->where($conditions);
 							 })
 							 ->contain([
 								'userProfessionalAccreditationsDetails' => function ($q) {
 									return $q->autoFields(false)
-											 ->where(['userProfessionalAccreditationsDetails.languages'=>$this->request->data['Search']['languages']]);
+											 ->where($conditions);
 								}
 							])
 						->toArray();
@@ -239,7 +229,7 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServiceDetails','UserSitterGalleries']])
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				
