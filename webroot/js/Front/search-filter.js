@@ -72,7 +72,10 @@ $(function(){
         $( "#startRange" ).val( "$" + ui.values[ 0 ]);
         $( "#endRange" ).val( "$" + ui.values[ 1 ]);
         
-      }
+      },
+		change: function( event, ui ) {
+		  get_search_result();
+		}
     });
     
     $( "#startRange" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ));
@@ -125,6 +128,23 @@ $(function(){
 		
 		
 	$(".ajaxSearch").click(function(){
+		get_search_result();
+	});		
+	
+	$(".ajaxSearchDropDown").Change(function(){
+		get_search_result();
+	});		
+	
+	$(".searchByDistance").change(function(){
+		$("#searchBydistance").serialize();	
+		$("#searchBydistance").submit();
+	});
+    
+});
+
+
+	function get_search_result(){
+		
 		$.ajax({
 			url: $('#searchParam').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
 			data:$('#searchParam').serialize(),//ALL SUBMITTED DATA FROM THE FORM
@@ -140,14 +160,8 @@ $(function(){
 			},
 			success:function(res)
 			{
-				
+				$(".searchRes").html(res);
 			}
 		});
-	});		
 	
-	$(".searchByDistance").change(function(){
-		$("#searchBydistance").serialize();	
-		$("#searchBydistance").submit();
-	});
-    
-});
+	}
