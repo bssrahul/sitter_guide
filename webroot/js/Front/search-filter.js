@@ -72,6 +72,10 @@ $(function(){
         $( "#startRange" ).val( "$" + ui.values[ 0 ]);
         $( "#endRange" ).val( "$" + ui.values[ 1 ]);
         
+      },
+      change: function( event, ui ) {
+         gerSearchResult();
+        
       }
     });
     
@@ -125,25 +129,23 @@ $(function(){
 		
 		
 	$(".ajaxSearch").click(function(){
-		$.ajax({
-			url: $('#searchParam').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
-			data:$('#searchParam').serialize(),//ALL SUBMITTED DATA FROM THE FORM
-			
-			beforeSend: function(){
-				$(".search-overlay").show();
-				$(".search-overlay").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
-			},
-			
-			complete: function(){
-				$(".search-overlay").hide();
-				$(".search-overlay").html('');
-			},
-			success:function(res)
-			{
-				
-			}
-		});
-	});		
+		  gerSearchResult();
+	});
+
+  $(".ajaxSearchDropDown").change(function(){
+      gerSearchResult();
+  });
+
+  $(".ajaxPopUpSearch").click(function(){
+       //alert("okokok");
+      gerSearchResult();
+         $('#pet_in_home').prop('checked', false);
+         $('#housing_condition').prop('checked', false);
+         $('#medical_experience').prop('checked', false);
+         $('.homePet').prop('checked', false);
+         $('.house-condition').prop('checked', false);
+         $('.medical-experience').prop('checked', false);
+  });		
 	
 	$(".searchByDistance").change(function(){
 		$("#searchBydistance").serialize();	
@@ -151,6 +153,7 @@ $(function(){
 	});
     
 });
+  //FUNCTIONALITY FOR SITTER MORE INFO
 $(document).ready(function(){
     $('#pet_in_home').click(function(){
           if($(this).is(":checked")){
@@ -176,4 +179,36 @@ $(document).ready(function(){
               $('.medical-experience').prop('checked', false);
           }
     });
+   /* $('.sitterInfoUncheck').click(function(){
+         $('#pet_in_home').prop('checked', false);
+         $('#housing_condition').prop('checked', false);
+         $('#medical_experience').prop('checked', false);
+         $('.homePet').prop('checked', false);
+         $('.house-condition').prop('checked', false);
+         $('.medical-experience').prop('checked', false);
+    });*/
+    
 });
+
+function gerSearchResult(){
+
+  $.ajax({
+        url: $('#searchParam').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
+        data:$('#searchParam').serialize(),//ALL SUBMITTED DATA FROM THE FORM
+        
+        beforeSend: function(){
+          $(".search-overlay").show();
+          $(".search-overlay").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+        },
+        
+        complete: function(){
+          $(".search-overlay").hide();
+          $(".search-overlay").html('');
+        },
+        success:function(res)
+        {
+          $(".searchRes").html(res);
+        }
+      });
+
+}

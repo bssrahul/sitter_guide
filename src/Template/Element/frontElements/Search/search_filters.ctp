@@ -379,7 +379,6 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
 											'option'=>["pet_in_home"],
 											'id'=>'pet_in_home']);
 										?>
@@ -396,7 +395,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch homePet',
+											'class'=>'homePet',
 											'option'=>["doesnt_own_dog"],
 											'id'=>'doesnt_own_dog']);
 										?>
@@ -409,7 +408,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch homePet',
+											'class'=>'homePet',
 											'option'=>["doesnt_own_caged_dog"],
 											'id'=>'doesnt_own_caged_dog']);
 										?>
@@ -422,7 +421,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch homePet',
+											'class'=>'homePet',
 											'option'=>["doesnt_own_cat"],
 											'id'=>'doesnt_own_cat']);
 										?>
@@ -431,11 +430,11 @@
                                   </ul>
                                 </div>
                               </div>
-                              <div class="more-sit-info">
+                              <!--<div class="more-sit-info">
                                 <div class="msi-head">
                                   <ul>
                                     <li>
-                                       <!-- Search Field PET COUNT Start-->
+                                       <!-- Search Field PET COUNT Start
 										<?php echo $this->Form->input('Search.sitter_info.child_in_home',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
@@ -452,7 +451,7 @@
                                 <div id="demo11" class="in more-drop">
                                   <ul>
                                     <li>
-                                       <!-- Search Field PET COUNT Start-->
+                                       <!-- Search Field PET COUNT Start
 										<?php echo $this->Form->input('Search.sitter_info.no_child_under_5',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
@@ -465,7 +464,7 @@
 										<label class="unbold" for="no_child_under_5">No children 0-5 yrs old</label>
 									</li>	
                                       <li>
-                                       <!-- Search Field PET COUNT Start-->
+                                       <!-- Search Field PET COUNT Start
 										<?php echo $this->Form->input('Search.sitter_info.no_child_under_12',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
@@ -479,7 +478,7 @@
 									</li>	
                                   </ul>
                                 </div>
-                              </div>
+                              </div>-->
                               <div class="more-sit-info">
                                 <div class="msi-head">
                                   <ul>
@@ -490,7 +489,6 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
 											'option'=>["housing_condition"],
 											'id'=>'housing_condition']);
 										?>
@@ -507,7 +505,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'house-condition',
 											'option'=>["has_house"],
 											'id'=>'has_house']);
 										?>
@@ -521,7 +519,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'house-condition',
 											'option'=>["outdoor_area"],
 											'id'=>'outdoor_area']);
 										?>
@@ -535,7 +533,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'house-condition',
 											'option'=>["non_smoker"],
 											'id'=>'non_smoker']);
 										?>
@@ -549,7 +547,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'house-condition',
 											'option'=>["outdoor_play_area"],
 											'id'=>'outdoor_play_area']);
 										?>
@@ -563,7 +561,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'house-condition',
 											'option'=>["has_fenced_yard"],
 											'id'=>'has_fenced_yard']);
 										?>
@@ -583,7 +581,6 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
 											'option'=>["medical_experience"],
 											'id'=>'medical_experience']);
 										?>
@@ -601,7 +598,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'medical-experience',
 											'option'=>["administer_cpr"],
 											'id'=>'administer_cpr']);
 										?>
@@ -615,7 +612,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'medical-experience',
 											'option'=>["pet_training_experience"],
 											'id'=>'pet_training_experience']);
 										?>
@@ -629,7 +626,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'medical-experience',
 											'option'=>["administer_injections"],
 											'id'=>'administer_injections']);
 										?>
@@ -643,7 +640,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'medical-experience',
 											'option'=>["begavioural_experience"],
 											'id'=>'begavioural_experience']);
 										?>
@@ -657,7 +654,7 @@
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
 											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
+											'class'=>'medical-experience',
 											'option'=>["certified_oral_medication"],
 											'id'=>'certified_oral_medication']);
 										?>
@@ -669,8 +666,8 @@
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" data-dismiss="modal" class="btn btn-default" >Cancel</button>
-                              <button type="submit" class="btn btn-success" >Search</button>
+                              <button type="button" data-dismiss="modal" class="btn btn-default sitterInfoUncheck" >Cancel</button>
+                              <button type="button" class="btn btn-success ajaxPopUpSearch" data-dismiss="modal">Search</button>
                             </div>
                           </div>
                         </div>
