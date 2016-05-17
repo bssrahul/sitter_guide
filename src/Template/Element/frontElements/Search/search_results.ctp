@@ -57,10 +57,9 @@
 						foreach($resultsData as $results){  ?>
 							<li>
 							  <div class="sld-area">
-								<div class="sit-pic-lft">
+             <div class="sit-pic-lft" onclick="location.href = '<?php echo HTTP_ROOT."search/sitter-details"; ?>'" >
 								  <div class="ppic-area">
 									<div class="sitter-pic"> 
-										
 										<?php 
 										if($results->facebook_id !="" && $results->is_image_uploaded==0){
 											if($results->image != "")
