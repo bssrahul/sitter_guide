@@ -13,23 +13,18 @@
                   <div class="sort-by">
                     <p>Sort By</p>
                     <?php 
-						echo $this->Form->create(null, [
-							'url' => ['controller' => 'search', 'action' => 'search-by-location'],
-							'role'=>'form',
-							'id'=>'searchBydistance',
-							'autocomplete'=>'off',
-						]);
-						
+					
 						echo $this->Form->input(
 							'Search.distance',[
 							"type"=>"select",
 							'label' => false,
 							'id' => 'sel1',
 							"options"=>$distancearray,
+							"value"=>@$searchByDistance,
 							'class'=>'form-control searchByDistance',
 						]);
 						
-						echo $this->Form->end();
+						
 					?>
                   </div>
                 </div>
@@ -244,9 +239,30 @@
                         </div>                        
                     </div>
                 </div>
-				<?php 
+                <?php
+				  // Override any of the following default options to customize your map
+				  $map_options = array(
+					'id' => 'map_canvas',
+					'width' => '100%',
+					'height' => '1180px',
+					'style' => '',
+					'zoom' => 6,
+					'type' => 'ROADMAP',
+					'custom' => null,
+					'localize' => false,
+					'latitude' => @$sourceLocationLatitude,
+					'longitude' => @$sourceLocationLongitude,
+					'marker' => true,
+					'markerTitle' => 'Guest current location',
+					'markerIcon' => 'http://google-maps-icons.googlecode.com/files/home.png',
+					'markerShadow' => 'http://google-maps-icons.googlecode.com/files/shadow.png',
+					'infoWindow' => true,
+					'windowText' => 'Guest current location',
+					'draggableMarker' => false
+				  );
+				
 					//INITIAl GOOGLE MAP
-					echo $this->GoogleMap->map(array('width'=>'100%','height'=>'1180px','type'=>'ROADMAP','latitude'=>@$sourceLocationLatitude,	'longitude'=>@$sourceLocationLongitude)); 
+					echo $this->GoogleMap->map($map_options); 
 				?>
 				<?php if(!empty($resultsData)){ 
 						$mapInc =1;

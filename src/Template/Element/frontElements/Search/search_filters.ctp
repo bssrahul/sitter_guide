@@ -40,6 +40,14 @@
 			'readonly'=>true,
 			'value'=>'bording',
 			'id'=>'selected_service']);
+		  
+		  echo $this->Form->input('Search.distance',[
+			'label' => false,
+			'type'=>'hidden',
+			'readonly'=>true,
+			'value'=>'200',
+			'id'=>'hidden_distance']
+			);
 		  ?>		
           <div class="tab-content">
             <div class="tab-pane fade in active" id="boarding" >

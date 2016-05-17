@@ -167,7 +167,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                      
                       <div class="row">
                           
-                          <div class="col-lg-2 col-xs-3">
+                          <div class="col-lg-3 col-xs-3">
                             <label for="county_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.county_code',[
@@ -180,7 +180,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                             ?>
 
                         </div>
-                          <div class="col-lg-4 col-xs-9">
+                          <div class="col-lg-3 col-xs-9">
                               <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will send an sms confirmation to this number for verification')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
@@ -475,7 +475,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
 $(document).ready(function(){
   var host = window.location.host;
   var proto = window.location.protocol;
-  var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+  var ajax_url = proto+"//"+host+"/<?php echo ROOT_PATH; ?>/"; 
 
   $('#change_pic').on('click', function(e){ 
       e.preventDefault();
