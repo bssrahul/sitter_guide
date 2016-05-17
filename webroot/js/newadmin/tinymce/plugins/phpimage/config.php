@@ -34,13 +34,15 @@ echo __FILE__;
 
 //$server_image_directory		= $_cur_dir.'/uploads/images';  //e.g. '/home/user/public_html/uploads'; 
 
+$root	= explode('/',$_SERVER['REQUEST_URI']);
+$folder_name	= isset($root[1])?$root[1]."/":'';
 
 
-$server_image_directory		= '/var/www/maheswarDev/app/webroot/img/uploads';  //e.g. '/home/user/public_html/uploads'; 
+$server_image_directory		= $_SERVER['DOCUMENT_ROOT'].'/'.$folder_name.'webroot/img/uploads';  //e.g. '/home/user/public_html/uploads'; 
 
 // URL directory to stored images (relative or absoulte) - IMPORTANT CHANGE PATH TO SUIT YOUR NEEDS!!!
 
-$url_image_directory			= 'http://'.$_SERVER['HTTP_HOST'].'/maheswarDev/app/webroot/img/uploads'; 
+$url_image_directory			= 'http://'.$_SERVER['HTTP_HOST'].'/'.$folder_name.'webroot/img/uploads'; 
 
 // file_safe_name formats the filename (spaces changed to _) (default: true)
 

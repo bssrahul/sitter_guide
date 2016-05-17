@@ -43,12 +43,13 @@ body {overflow-x:hidden; background:#fff;}
 
 #contact .getintouch select {
     -moz-appearance: none;
-    background: #eaeaea url("../images/arw.png") no-repeat scroll right 10px center;
+    background: #eaeaea url("../../img/arw.png") no-repeat scroll right 10px center;
     border: 1px solid #aaaaaa;
     border-radius: 2px;
     box-shadow: none;
     height: 31px;
 	width:154px; color:#404040; font-weight:500;
+	-webkit-appearance:none; -moz-appearance:none;
 }
 
 
@@ -100,7 +101,7 @@ body {overflow-x:hidden; background:#fff;}
 
 
 /*Banner inner pages starts*/
-.banner-area-contact {background:url(../images/contact-banner.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+.banner-area-contact {background:url(../../img/contact-banner.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
 
 .banner-area-contact h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
 .banner-area-contact p {text-align:center; color:#fff; font-size:14px; line-height:25px; }

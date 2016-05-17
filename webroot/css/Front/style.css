@@ -3,6 +3,7 @@
 /* CSS Document */
 
 /* this Stylesheet only use to give universal styling for all webpages */
+@import 'about.css';
 @import 'bootstrap.min.css';
 @import 'header.css';
 @import 'content.css';
@@ -20,6 +21,7 @@
 @import 'terms.css';
 @import 'news.css';
 @import 'help.css';
+@import 'sitter-detail.css';
 
 @font-face {
 	font-family: 'Conv_Raleway-Regular';

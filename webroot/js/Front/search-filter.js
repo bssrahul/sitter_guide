@@ -2,152 +2,213 @@
 	var proto = window.location.protocol;
 	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
-$(function(){
+	$(function(){
+		//DATE PICKER SCRIPT FOR FROM DATE
+		$( "#boardingFrom" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  onClose: function( selectedDate ) {
+			$( "#boardingTo" ).datepicker( "option", "minDate", selectedDate );
+		  }
+		});
+		
+		//DATE PICKER SCRIPT FOR TO DATE
+		$( "#boardingTo" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  onClose: function( selectedDate ) {
+			$( "#boardingFrom" ).datepicker( "option", "maxDate", selectedDate );
+		  }
+		});
+		
+		//OPEN DATE PICKER ONCLICK ON CALENDER ICON FOR TO AND FROM DATE
+		$('#cIconFrom').click(function(){
+			$( "#boardingFrom" ).focus();
 
-	$( "#boardingFrom" ).datepicker({
-      defaultDate: "+1",
-      changeMonth: true,
-      numberOfMonths: 1,
-      yearRange: "-50:+0",
-      onClose: function( selectedDate ) {
-        $( "#boardingTo" ).datepicker( "option", "minDate", selectedDate );
-      }
-    });
+		});
+
+		$('#cIconTo').click(function(){
+			$( "#boardingTo" ).focus();
+
+		});
+		
+		//SCRIPT FOR CHOOSE SERVICES SYNCRONIZATION WITH FOR CODE 
+		$('.chooseService').click(function(){
+			$('.chooseService').removeClass('active');
+			$(this).addClass('active');
+			
+			$('#selected_service').val($("ul.service_selected a.active").attr('data-rel'));
+			
+			$('.dropInOption').addClass('onLoadHide');
+			$('.FirstThreeServices').removeClass('onLoadHide');
+			$('.LastTwoServices').addClass('onLoadHide');
+			$('.mPlacesOption').children().removeClass('onLoadHide');
+
+			if($(this).hasClass('d-visit')){
+				$('.dropInOption').removeClass('onLoadHide');
+			}
+
+			if($(this).hasClass('dn-care')){
+				$('.FirstThreeServices').addClass('onLoadHide');
+				$('.LastTwoServices').removeClass('onLoadHide');
+			}
+
+			if($(this).hasClass('m-place')){
+				$('.FirstThreeServices').addClass('onLoadHide');
+				$('.LastTwoServices').removeClass('onLoadHide');
+				$('.mPlacesOption').children().addClass('onLoadHide');
+			}
+
+
+		});
+		
+		//SCRIPT FOR PRICE SLIDER CODE 
+		$( "#slider-range" ).slider({
+		  range: true,
+		  min: 0,
+		  max: 500,
+		  values: [ 75, 200 ],
+		  slide: function( event, ui ) {
+			$( "#startRange" ).val( "$" + ui.values[ 0 ]);
+			$( "#endRange" ).val( "$" + ui.values[ 1 ]);
+			
+		  },
+		  change: function( event, ui ) {
+			 gerSearchResult();
+			
+		  }
+
+		});
     
-    $( "#boardingTo" ).datepicker({
-      defaultDate: "+1",
-      changeMonth: true,
-      numberOfMonths: 1,
-      yearRange: "-50:+0",
-      onClose: function( selectedDate ) {
-        $( "#boardingFrom" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-
-    $('#cIconFrom').click(function(){
-        $( "#boardingFrom" ).focus();
-
-    })
-
-    $('#cIconTo').click(function(){
-        $( "#boardingTo" ).focus();
-
-    })
-
-    $('.chooseService').click(function(){
-        $('.chooseService').removeClass('active');
-        $(this).addClass('active');
-        
-        $('#selected_service').val($("ul.service_selected a.active").attr('data-rel'));
-        
-        $('.dropInOption').addClass('onLoadHide');
-        $('.FirstThreeServices').removeClass('onLoadHide');
-        $('.LastTwoServices').addClass('onLoadHide');
-        $('.mPlacesOption').children().removeClass('onLoadHide');
-
-        if($(this).hasClass('d-visit')){
-            $('.dropInOption').removeClass('onLoadHide');
-        }
-
-        if($(this).hasClass('dn-care')){
-            $('.FirstThreeServices').addClass('onLoadHide');
-            $('.LastTwoServices').removeClass('onLoadHide');
-        }
-
-        if($(this).hasClass('m-place')){
-            $('.FirstThreeServices').addClass('onLoadHide');
-            $('.LastTwoServices').removeClass('onLoadHide');
-            $('.mPlacesOption').children().addClass('onLoadHide');
-        }
-
-
-    });
-
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 500,
-      values: [ 75, 200 ],
-      slide: function( event, ui ) {
-        $( "#startRange" ).val( "$" + ui.values[ 0 ]);
-        $( "#endRange" ).val( "$" + ui.values[ 1 ]);
-        
-      }
-    });
-    
-    $( "#startRange" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ));
+		$( "#startRange" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ));
    
-    $( "#endRange" ).val( "$" + $( "#slider-range" ).slider( "values", 1 ));
+		$( "#endRange" ).val( "$" + $( "#slider-range" ).slider( "values", 1 ));
     
-    /*Search JS ADD ON FORM START By Rahul jain dated on 5th May*/
-
-	
-	$("ul.pet_count li.dog-in-li").click(function() {
-        $("ul.pet_count li").removeClass('active');
-        $(this).addClass("active");
-        $('#pet_count').val($("ul.pet_count li.active span").attr('data-rel'));
-        
-	});
-	
-	$("ul.booking_days li.dog-in-li").click(function() {
-        
-        if($(this).hasClass("active")==true){
-			$(this).removeClass("active");
-		}else{
+		
+		/*Search JS ADD ON FORM START By Rahul jain dated on 5th May*/
+		$("ul.pet_count li.dog-in-li").click(function() {
+			$("ul.pet_count li").removeClass('active');
 			$(this).addClass("active");
-		}
-		
-		var textArray = $('ul.booking_days li.active').find('span:first').map(function(){
-			return $(this).attr('data-rel');
-		}).get(); // ["sunday", "monday"]
-
-		var textString = textArray.join(); // "sanday, monday"
-		$('#booking_days').val(textString);
-        
-	});
+			$('#pet_count').val($("ul.pet_count li.active span").attr('data-rel'));
+			
+		});
 	
-	$("ul.marketplace li.marketplace_li").click(function() {
-        
-        if($(this).hasClass("active")==true){
-			$(this).removeClass("active");
-		}else{
-			$(this).addClass("active");
-		}
-		
-		var textArray = $('ul.marketplace li.active').find('a:first').map(function(){
-			return $(this).attr('data-rel');
-		}).get(); // ["sunday", "monday"]
+		$("ul.booking_days li.dog-in-li").click(function() {
+			
+			if($(this).hasClass("active")==true){
+				$(this).removeClass("active");
+			}else{
+				$(this).addClass("active");
+			}
+			
+			var textArray = $('ul.booking_days li.active').find('span:first').map(function(){
+				return $(this).attr('data-rel');
+			}).get(); // ["sunday", "monday"]
 
-		var textString = textArray.join(); // "sanday, monday"
-		$('#marketplace').val(textString);
-        
+			var textString = textArray.join(); // "sanday, monday"
+			$('#booking_days').val(textString);
+			
+		});
+	
+		$("ul.marketplace li.marketplace_li").click(function() {
+			
+			if($(this).hasClass("active")==true){
+				$(this).removeClass("active");
+			}else{
+				$(this).addClass("active");
+			}
+			
+			var textArray = $('ul.marketplace li.active').find('a:first').map(function(){
+				return $(this).attr('data-rel');
+			}).get(); // ["sunday", "monday"]
+
+			var textString = textArray.join(); // "sanday, monday"
+			$('#marketplace').val(textString);
+			
+		});
+		
+		//PERFORM SEARCH FUNCTIONALITY USING AJAX
+		$(".ajaxSearch").click(function(){
+
+			  gerSearchResult();
+	
+		});
+
+		$(".ajaxSearchDropDown").change(function(){
+
+			gerSearchResult();
+
+		});
+
+		$(".ajaxPopUpSearch").click(function(){
+
+			gerSearchResult();
+			$('#pet_in_home').prop('checked', false);
+			$('#housing_condition').prop('checked', false);
+			$('#medical_experience').prop('checked', false);
+			$('.homePet').prop('checked', false);
+			$('.house-condition').prop('checked', false);
+			$('.medical-experience').prop('checked', false);
+
+		});		
+		
+		//FUNCTIONALITY FOR SITTER MORE INFO
+		$('#pet_in_home').click(function(){
+			  if($(this).is(":checked")){
+				  $('.homePet').prop('checked', true);
+			  }
+			  else if($(this).is(":not(:checked)")){
+				  $('.homePet').prop('checked', false);
+			  }
+		});
+		$('#housing_condition').click(function(){
+			  if($(this).is(":checked")){
+				  $('.house-condition').prop('checked', true);
+			  }
+			  else if($(this).is(":not(:checked)")){
+				  $('.house-condition').prop('checked', false);
+			  }
+		});
+		$('#medical_experience').click(function(){
+			  if($(this).is(":checked")){
+				  $('.medical-experience').prop('checked', true);
+			  }
+			  else if($(this).is(":not(:checked)")){
+				  $('.medical-experience').prop('checked', false);
+			  }
+		});
+   
 	});
-		
-		
-	$(".ajaxSearch").click(function(){
-		$.ajax({
+
+	function gerSearchResult(){
+
+	  $.ajax({
 			url: $('#searchParam').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
 			data:$('#searchParam').serialize(),//ALL SUBMITTED DATA FROM THE FORM
 			
 			beforeSend: function(){
-				$(".search-overlay").show();
-				$(".search-overlay").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+			  $(".search-overlay").show();
+			  $(".search-overlay").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
 			},
 			
 			complete: function(){
-				$(".search-overlay").hide();
-				$(".search-overlay").html('');
+			  $(".search-overlay").hide();
+			  $(".search-overlay").html('');
 			},
 			success:function(res)
 			{
-				
+			  $(".searchRes").html(res);
 			}
-		});
-	});		
+		  });
+
+	}
 	
-	$(".searchByDistance").change(function(){
-		$("#searchBydistance").serialize();	
-		$("#searchBydistance").submit();
-	});
-    
-});
+	$(document).on( 'change', '.searchByDistance', function (e){
+		$('#hidden_distance').val($(this).val());
+		gerSearchResult();
+	 });
+	

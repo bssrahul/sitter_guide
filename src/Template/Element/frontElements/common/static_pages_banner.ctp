@@ -35,7 +35,7 @@
 	
 	
 	
-<?php}else{?>
+<?php }else{ ?>
 	
 		<!--[Banner Area Start]-->
 		<section class="banner-area-terms" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($CmsPageData->banner_image != ''?$CmsPageData->banner_image:'default_banner.jpg'); ?>')">
