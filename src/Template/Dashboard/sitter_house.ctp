@@ -197,7 +197,8 @@
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
-                          <p class="w-limit" id="about-home-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 Words')); ?></p>
+								<?php $max=75; if(!empty($sitterHouseData['about_home_desc'])){ $rem = $max-str_word_count ($sitterHouseData['about_home_desc']);} ?>
+                          <p class="w-limit" id="about-home-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
                          <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
                     </div>
 
@@ -211,8 +212,9 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                                  
                             ]); ?>
+							<?php $max=75; if(!empty($sitterHouseData['spaces_access_desc'])){ $rem = $max-str_word_count ($sitterHouseData['spaces_access_desc']);} ?>
                              <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
-                          <p class="w-limit" id="space-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 Words')); ?></p>
+                          <p class="w-limit" id="space-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
                        
                     </div>
 
@@ -225,14 +227,14 @@
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
-
-                          <p class="w-limit" id="home-pets-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 Words')); ?></p>
+					<?php $max=75; if(!empty($sitterHouseData['home_pets_desc'])){ $rem = $max-str_word_count ($sitterHouseData['home_pets_desc']);} ?>
+                          <p class="w-limit" id="home-pets-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
                     </div>
 
                     
                       
                     </div>
-                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?')); ?>Photo</h3>
+                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?  Photo')); ?></h3>
                   <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile photo')); ?><button id="browseImg" type="button" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Browse Photo')); ?></button></p>
 
                   <div class="row" id="images_preview">
