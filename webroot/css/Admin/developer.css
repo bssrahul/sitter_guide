@@ -95,13 +95,31 @@ body.nav-sm .container.body .left_col {
 a {
 	text-decoration:none !important ;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 670px) {
    ul.nav li ul.child_menu li a > i.fa {
 		display: none !important;
 	}
 	
 	  ul.nav li a > i.fa {
 		display: none !important;
+	}
+	
+	.pull-right {
+		
+	 position: relative; 
+	 right: 20px !important;
+		
+}
+	
+	}
+}
+
+@media (min-width: 501px) and (max-width:1024px) {
+
+	.pull-right {
+	
+		//position: relative;
+		right: 10px !important;
 	}
 }
 
@@ -120,4 +138,14 @@ label .fa.fa-asterisk {
     position: relative;
     top: -5px;
     color: red;
+}
+table.mceLayout, textarea.tinyMCE {
+    width: 100% !important;
+}
+
+/* on large screens, I use a different layout, so 600px are sufficient */
+@media only screen and (min-width: 600px) {
+    table.mceLayout, textarea.richEditor {
+       width: 600px !important;
+    }
 }

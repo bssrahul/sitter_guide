@@ -8,6 +8,32 @@ tr.mceLast
 	display:none;
 }
 #elm1_ifr{height:400px !important;}
+table.mceLayout, textarea.tinyMCE {width:100%!important;}
+ table.mceLayout, textarea.tinyMCE {
+    width: 100% !important;
+}
+
+.mceToolbar td {
+    display:table-row;
+    float: left;
+}
+.mceToolbar td:nth-of-type(11){
+    clear: left;
+}
+
+@media only screen and (min-width: 600px) {
+    table.mceLayout, textarea.richEditor {
+       width: 600px !important;
+    }
+    
+    .mceToolbar td {
+        display:table-cell;
+        float: none;
+    }
+    mceToolbar td:nth-of-type(11){
+        clear: none;
+    }
+}
 </style>
 <?php  echo $this->Html->script('newadmin/tinymce/tiny_mce.js'); ?>
 <script type="text/javascript">
