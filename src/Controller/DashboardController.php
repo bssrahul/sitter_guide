@@ -656,74 +656,105 @@ class DashboardController extends AppController
 			$UserProfessionalDetailsModel->deleteAll(['user_id' => $userId]);
 			
 			//ADD FIRST FIELD START
-			$userProfessionalData = $UserProfessionalModel->newEntity();
-			$userProfessionalData->user_id = $userId;
-			$userProfessionalData->type_professional = 'check';
-			$userProfessionalData->sector_type = "govt";
-			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
-			$UserProfessionalModel->save($userProfessionalData);
+			if(isset($this->request->data['UserProfessionals']['check']['govt']) && !empty($this->request->data['UserProfessionals']['check']['govt'])){
+				$userProfessionalData = $UserProfessionalModel->newEntity();
+				$userProfessionalData->user_id = $userId;
+				$userProfessionalData->type_professional = 'check';
+				$userProfessionalData->sector_type = "govt";
+				$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['check']['govt']);
+				$UserProfessionalModel->save($userProfessionalData);
+			}
 			
 			//ADD SECOND FIELD START
-			$userProfessionalData = $UserProfessionalModel->newEntity();
-			$userProfessionalData->user_id = $userId;
-			$userProfessionalData->type_professional = 'pets';
-			$userProfessionalData->sector_type = "private";
-			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
-			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['qualification_date'], 'UTC');
-			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['expiry_date'], 'UTC');
-			$UserProfessionalModel->save($userProfessionalData);
+			if(isset($this->request->data['UserProfessionals']['pets']['private']) && !empty($this->request->data['UserProfessionals']['pets']['private'])){
+				$userProfessionalData = $UserProfessionalModel->newEntity();
+				$userProfessionalData->user_id = $userId;
+				$userProfessionalData->type_professional = 'pets';
+				$userProfessionalData->sector_type = "private";
+				$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['pets']['private']);
+				if(isset( $this->request->data['UserProfessionals']['pets']['private']['qualification_date']) &&  $this->request->data['UserProfessionals']['pets']['private']['qualification_date'] !=''){
+					$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['qualification_date'], 'UTC');
+				}
+				
+				if(isset( $this->request->data['UserProfessionals']['pets']['private']['expiry_date']) &&  $this->request->data['UserProfessionals']['pets']['private']['expiry_date'] !=''){
+					$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['pets']['private']['expiry_date'], 'UTC');
+				}
+				
+				
+				$UserProfessionalModel->save($userProfessionalData);
+			}
 			
 			//ADD THIRD FIELD START
-			$userProfessionalData = $UserProfessionalModel->newEntity();
-			$userProfessionalData->user_id = $userId;
-			$userProfessionalData->type_professional = 'people';
-			$userProfessionalData->sector_type = "private";
+			if(isset($this->request->data['UserProfessionals']['people']['private']) && !empty($this->request->data['UserProfessionals']['people']['private'])){
+				$userProfessionalData = $UserProfessionalModel->newEntity();
+				$userProfessionalData->user_id = $userId;
+				$userProfessionalData->type_professional = 'people';
+				$userProfessionalData->sector_type = "private";
 
-			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
-			$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['people']['private']['qualification_date'], 'UTC');
-			$userProfessionalData->expiry_date = Time::createFromFormat('Y-m-d', $this->request->data['UserProfessionals']['people']['private']['expiry_date'], 'UTC');
-			$UserProfessionalModel->save($userProfessionalData);
-			
+				$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['people']['private']);
+				
+				if(isset($this->request->data['UserProfessionals']['people']['private']['qualification_date']) &&  $this->request->data['UserProfessionals']['people']['private']['qualification_date'] !=''){
+					$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d',$this->request->data['UserProfessionals']['people']['private']['qualification_date'], 'UTC');
+				}
+				
+				if(isset($this->request->data['UserProfessionals']['people']['private']['expiry_date']) &&  $this->request->data['UserProfessionals']['people']['private']['expiry_date'] !=''){
+					$userProfessionalData->qualification_date = Time::createFromFormat('Y-m-d',$this->request->data['UserProfessionals']['people']['private']['qualification_date'], 'UTC');
+				}
+
+				$UserProfessionalModel->save($userProfessionalData);
+			}
 			//ADD FOURTH FIELD START
-			$userProfessionalData = $UserProfessionalModel->newEntity();
-			$userProfessionalData->user_id = $userId;
-			$userProfessionalData->type_professional = 'govt';
-			$userProfessionalData->sector_type = "licence";
+			if(isset($this->request->data['UserProfessionals']['govt']['licence']) && !empty($this->request->data['UserProfessionals']['govt']['licence'])){
+				$userProfessionalData = $UserProfessionalModel->newEntity();
+				$userProfessionalData->user_id = $userId;
+				$userProfessionalData->type_professional = 'govt';
+				$userProfessionalData->sector_type = "licence";
 
-			$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['govt']['licence']);
-			$UserProfessionalModel->save($userProfessionalData);
-
-			for($i=0;$i<count($this->request->data['qualification_title']);$i++){
-
-				 $userProfessionalData = $UserProfessionalModel->newEntity();
-
-				 $userProfessionalData->user_id = $userId; 
-				 $userProfessionalData->type_professional = 'other';
-				 $userProfessionalData->sector_type = "other";
-
-				 $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
-				 $userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
-				 $userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
-				 $userProfessional['scanned_certification'] = $this->request->data['scanned_certification'][$i];
-
-				 $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
-				 $userProfessionalData->qualification_date = $this->request->data['qualification_date'][$i];
-				 $userProfessionalData->expiry_date = $this->request->data['expiry_date'][$i];
+				$userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$this->request->data['UserProfessionals']['govt']['licence']);
+				$UserProfessionalModel->save($userProfessionalData);
+			}
 			
-				 $UserProfessionalModel->save($userProfessionalData);
+			if(isset($this->request->data['qualification_title']) && !empty($this->request->data['qualification_title'])){
+				for($i=0;$i<count($this->request->data['qualification_title']);$i++){
+
+					 $userProfessionalData = $UserProfessionalModel->newEntity();
+
+					 $userProfessionalData->user_id = $userId; 
+					 $userProfessionalData->type_professional = 'other';
+					 $userProfessionalData->sector_type = "other";
+
+					 $userProfessional['qualification_title'] = $this->request->data['qualification_title'][$i];
+					 
+					 if(isset($this->request->data['qualification_date'][$i]) &&  $this->request->data['qualification_date'][$i] !=''){
+						$userProfessional['qualification_date'] = $this->request->data['qualification_date'][$i];
+					 }
+					 
+					 if(isset($this->request->data['qualification_date'][$i]) &&  $this->request->data['qualification_date'][$i] !=''){
+						$userProfessional['expiry_date'] = $this->request->data['expiry_date'][$i];
+					 }
+					 					  
+					 $userProfessional['scanned_certification'] = $this->request->data['scanned_certification'][$i];
+
+					 $userProfessionalData = $UserProfessionalModel->patchEntity($userProfessionalData,$userProfessional);
+					 $userProfessionalData->qualification_date = $this->request->data['qualification_date'][$i];
+					 $userProfessionalData->expiry_date = $this->request->data['expiry_date'][$i];
+				
+					 $UserProfessionalModel->save($userProfessionalData);
+				}
 			}
+			
+			if(isset($this->request->data['UserProfessionalsDetails']) && !empty($this->request->data['UserProfessionalsDetails'])){
+				$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
+				$userProfessionalDetailData->user_id = $userId;
+				$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
+				$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
 
-			$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
-			$userProfessionalDetailData->user_id = $userId;
-			$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
-			$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
-
-			if ($UserProfessionalDetailsModel->save($userProfessionalDetailData)){
-				 return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
-			}else{
-				$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				if ($UserProfessionalDetailsModel->save($userProfessionalDetailData)){
+					 return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
+				}else{
+					$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
 			}
-
                
 		}else{
 			
