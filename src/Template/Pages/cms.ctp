@@ -7,7 +7,12 @@
 			<div id="<?php echo $CmsPageData->pageurl; ?>">
 				<?php echo isset($CmsPageData->pagecontent)?$CmsPageData->pagecontent:__("Content not added yet"); ?>
 			<div>
-	<?php }else{ ?>
+	<?php }else if($CmsPageData->pageurl=="about-us"){ ?>
+			
+				<?php echo isset($CmsPageData->pagecontent)?$CmsPageData->pagecontent:__("Content not added yet"); ?>
+			
+		
+		 <?php }else{ ?>
 			<div id="privacy">
    
 				<div class="row">

@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.about-page .fun-news .fn-bot {
+    float: left;
+    margin: 0px 0 0;
+    width: 100%;
+}
+.about-page {background:#fff !important;}
+
+
+
+
+/*Banner inner pages starts*/
+.about-page .banner-area-terms {background:url(../../img/about-banner.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+
+.about-page .banner-area-terms h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.about-page .banner-area-terms p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/
+
+
+#about .top-para {font-size:14px; color:#404040; font-family: 'Raleway', sans-serif; padding-top:40px; padding-bottom:50px; line-height:28px;}
+
+#about h3 {font-size:22px; color:#404040; font-family: 'Raleway', sans-serif;  padding-bottom:20px;}
+
+#about .dog-2{ margin:0px auto; float:left;}
+
+#about .media {padding-top:36px;}
+
+#about .media-heading { font-size:18px; color:#696969;  margin-bottom: 0; margin-top:5px;}
+
+#about .media-body p {padding-top:10px; font-size:13px; color:#696969;}
+#about .media-left, .media > .pull-left {
+    padding-right: 30px;
+} 
+
+#about .two-dog {padding-top:30px;}
+
+
+.padd-hr {margin:80px 0 70px 0;}
+
+#about .heading-bottom {padding-top:105px;}
+
+
+
+#about ul li {
+    background: rgba(0, 0, 0, 0) url("../../img/s-arrow.png") no-repeat scroll left top;
+    height: auto;
+    line-height: 14px;
+    margin-top: 25px;
+    padding-left: 25px;
+    padding-top: 0;
+    width: 100%;
+}
+
+
+
+@media (max-width:767px) {
+	
+	#about .dog-2{ margin:0px auto; float:none;}
+	#safety ul li {
+    background: rgba(0, 0, 0, 0) url("../../img/s-arrow.png") no-repeat scroll left top;
+    height: auto;
+    line-height: 19px;
+    margin-top: 25px;
+    padding-left: 25px;
+    padding-top: 0;
+    width: 100%;
+}

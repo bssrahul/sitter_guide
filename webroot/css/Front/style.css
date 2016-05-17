@@ -3,6 +3,7 @@
 /* CSS Document */
 
 /* this Stylesheet only use to give universal styling for all webpages */
+@import 'about.css';
 @import 'bootstrap.min.css';
 @import 'header.css';
 @import 'content.css';
