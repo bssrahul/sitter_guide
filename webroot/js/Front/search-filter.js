@@ -155,15 +155,7 @@
 			$('.medical-experience').prop('checked', false);
 
 		});		
-
-		$(".searchByDistance").change(function(){
-			$("#searchBydistance").serialize();	
 		
-			$("#searchBydistance").submit();
-		
-		});
-    
-	
 		//FUNCTIONALITY FOR SITTER MORE INFO
 		$('#pet_in_home').click(function(){
 			  if($(this).is(":checked")){
@@ -214,3 +206,9 @@
 		  });
 
 	}
+	
+	$(document).on( 'change', '.searchByDistance', function (e){
+		$('#hidden_distance').val($(this).val());
+		gerSearchResult();
+	 });
+	
