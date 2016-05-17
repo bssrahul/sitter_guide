@@ -481,8 +481,15 @@ class SearchController extends AppController
 	/**
     Function for sitter details
 	*/	
-	function sitterDetails(){
+	function sitterDetails($userId = null){
 		$this->viewBuilder()->layout('landing');
+		$userId = convert_uudecode(base64_decode($userId));
+
+        $UsersModel = TableRegistry::get('Users');
+        $userData = $UsersModel->get($userId,['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']]);
+			
+		$this->set('userData',$userData);
+		//pr($userData->image);die;
 	}
 
 

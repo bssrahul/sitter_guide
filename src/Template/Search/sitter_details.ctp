@@ -3,7 +3,7 @@
 <!--[Banner Area Start]-->
 
 
-<section class="banner-sitter-detail">
+<section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
 <div class="container">
 
 <div class="row">
@@ -12,10 +12,12 @@
 <div class="banner-info-inner">
 <div class="client-image center-block">
 
-
-  <img src="<?php echo HTTP_ROOT; ?>img/detail-client.jpg" class="img-responsive img-circle" alt="client"> </div>
+<?php //echo @$userData->image; ?>
+  <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client"> </div>
   
-  <h2 class="name-banner text-center">Lisa Smith</h2>
+  <h2 class="name-banner text-center">
+  <?php echo $userData->first_name." ".substr(($userData->last_name)?$userData->last_name:"",0,1)."."; ?> 
+  </h2>
 <h3 class="punch-line">Reliable & Loving Petsitter </h3>
 <h4 class="city-banner">Midtown, New York City, NY</h4>
 
@@ -109,7 +111,7 @@
    <div class="row">
    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
    
-   <h3 class="mid-sec-title border-bot pt30 ">About Lisa</h3>
+   <h3 class="mid-sec-title border-bot pt30 ">About <?php echo @$userData->first_name; ?></h3>
   
    
     <h3 class="mid-sec-title1 ">Reliable & Loving Pet Sitter</h3>
@@ -142,7 +144,7 @@
     
  </div>
  
- <h3 class="mid-sec-title1 pb15 ">Lisa's clients</h3>
+ <h3 class="mid-sec-title1 pb15 "><?php echo @$userData->first_name; ?>'s clients</h3>
  
    
    <div class="row">
@@ -728,14 +730,14 @@
      
      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7">
      <div class=" pt30">
-       <img src="<?php echo HTTP_ROOT; ?>img/detail-client-title.jpg" title="sitter image" class="img-responsive" alt="sitter"> </div>
+       <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" title="sitter image" class="img-responsive" alt="sitter"> </div>
      </div>
      
      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
      <div class="detail-sitter-detail">
-    <h4 class="detail-sitter-name">Lisa Smith</h4>
-    <p class="detail-sitter-location">New York City</p>
-    <p class="detail-sitter-joined">Joined : Jan 2011</p>
+    <h4 class="detail-sitter-name"> <?php echo $userData->first_name." ".substr(($userData->last_name)?$userData->last_name:"",0,1)."."; ?> </h4>
+    <p class="detail-sitter-location"> <?php echo $userData->city." ".$userData->state.",".$userData->country  ?> </p>
+    <p class="detail-sitter-joined">Joined : <?php echo date_format($userData->date_added,'F Y');  ?></p>
     <a class="reviews" href="#">( 20 reviews )</a></div>
      </div>
      </div>
@@ -745,7 +747,7 @@
      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
      
      <div class="recent-act-widget">
-     <div class="recent-act">Lisa's Recent Activity</div>
+     <div class="recent-act"><?php echo @$userData->first_name; ?>'s Recent Activity</div>
      <ul class="list-unstyled">
      <li><i class="fa fa-reply icon-width30"></i>Response Rate : <b>100%</b></li>
      <li><span class="book"></span>Average Response Time : <b>With in Hour</b></li>
@@ -769,7 +771,7 @@
       
     
        <div class="btn-group btn-width100 pt15">
-  <button type="button" class="btn btn-detsil-contact">Contact Lisa</button>
+  <button type="button" class="btn btn-detsil-contact">Contact <?php echo @$userData->first_name; ?></button>
  <!-- <button type="button" class="btn btn-heart"><i class="fa fa-heart-o heart-pos"></i></button>-->
  <button  type="button" class="btn btn-heart lock">
     <i class="icon-unlock fa fa-heart-o heart-pos"></i>
@@ -881,7 +883,7 @@
       <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="border-bot pt30"></div>
-        <h3 class="mid-sec-title pt30  ">Lisa Neighborhood </h3>
+        <h3 class="mid-sec-title pt30  "><?php echo @$userData->first_name; ?> Neighborhood </h3>
       <div class="detail-cal-widget">
       
         <img src="<?php echo HTTP_ROOT; ?>img/detail-map-dumy.png" class="img-responsive" alt="calender"> </div>
