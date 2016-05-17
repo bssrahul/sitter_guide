@@ -57,10 +57,8 @@
        <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/sitter-house"; ?>'" >
         
         <h4 class="orange">Sitter House</h4>
-        
           <!--<div class="sh-icon">
-              
-            </div>-->
+          </div>-->
           <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i2.png" alt="General Profile" class=" img-thumbnail">
           
           <div class="border-top" >
