@@ -1235,21 +1235,33 @@ class DashboardController extends AppController
     {
 		$session = $this->request->session();
 		$this->viewBuilder()->layout('profile_dashboard');
-		$reviewModel=TableRegistry::get('User_ratings');
-		$reviewData=$reviewModel->newEntity();
+		$reviewModel=TableRegistry::get('UserRatings');
+		$reviewData= $reviewModel->newEntity();
 		if($this->request->is('POST')){
 			
-			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data);
-			$reviewData->from=$session->read('User.id');
-			$reviewData->to=1;
-			//$reviewData->created_date=date('Y/m/d');
-			$reviewData->status=0;
-			//$reviewData->modified_date=date('Y/m/d');
+			$reviewData->user_from = $session->read('User.id');
+			$reviewData->user_to = 1;
+			$reviewData->status = 0;
+			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
+			
+			
+			//pr($reviewData);die;
 			if($reviewModel->save($reviewData)){
-				echo "data save";
-			}
+				$this->Flash->success(__('Record has been added Successfully'));
+				//return $this->redirect(['controller' => 'category', 'action' => 'categories-listing']);
+			}	
 			
 		}	
     }
+	public function editReview(){
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		$session=$this->request->session();
+		$user_id=$session->read('User.id');
+		$reviewModel=TableRegistry::get('UserRatings');
+		$reviewData= $reviewModel->find('all')->where(['user_from'=>$user_id])->where(['user_to'=>2])->toArray();
+		//pr($reviewData);die;
+		$this->set('reviewData',$reviewData);
+	}
 }
 ?>
