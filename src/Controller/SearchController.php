@@ -268,7 +268,7 @@ class SearchController extends AppController
 					} 
 				}
 			}
-			//pr($this->request->data['Search']['sitter_info']);die;
+		
 			//SET CONDITION FOR TOP TAB SELECTED (TABLE NAME : users_sitter_services)
 			if(isset($this->request->data['Search']['sitter_info'])){
                 if(isset($this->request->data['Search']['sitter_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_info']['doesnt_own_dog']) ){
@@ -327,7 +327,7 @@ class SearchController extends AppController
 			
 			$sourceLocationLatitude = '30.7399738';
 			$sourceLocationLongitude = '76.7567368';
-			
+			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:"200";
 			
 			$query='SELECT
 						  Users.id, (
@@ -355,7 +355,7 @@ class SearchController extends AppController
 						
 						'.$finalConditions.'
 						
-						HAVING distance < 300
+						HAVING distance < '.$searchByDistance.'
 						
 						ORDER BY distance';
 			//echo $query; die;			
@@ -378,8 +378,10 @@ class SearchController extends AppController
 							   ->toArray();
 								
 				$this->set('resultsData',$userData);
+				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
 				$this->set('sourceLocationLatitude',($sourceLocationLatitude)?$sourceLocationLatitude:'');
+				$this->set('sourceLocationLongitude',($sourceLocationLongitude)?$sourceLocationLongitude:'');
 				$this->set('headerSearchVal',(@$this->request->data['location_autocomplete'])?@$this->request->data['location_autocomplete']:'');
 			}		
 			

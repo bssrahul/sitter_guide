@@ -146,6 +146,7 @@ class GuestsController extends AppController
 					$getUserData =  $getValidUserData->first();
 					$UserData->id = $getUserData->id;
 					$UserData->last_login = date('Y-m-d h:i:s');
+					$UserData->avail_status = "Login";
 				 
 					$UsersModel->save($UserData);
 				 
@@ -394,8 +395,21 @@ class GuestsController extends AppController
 	/**Function for logout
 	*/	
 	function logout(){
+		
 		// Loaded Session Component
 		$session = $this->request->session();
+		
+		$UsersModel = TableRegistry::get('Users');
+		
+		$getUserData = $UsersModel->find('all',['conditions' => ['Users.id' => $session->read('User.id')]])->first();
+		
+		$UserData = $UsersModel->newEntity();
+		$UserData->id = $getUserData->id;
+		$UserData->last_login = date('Y-m-d h:i:s');
+		$UserData->avail_status = "Logout";
+		
+		$UsersModel->save($UserData);
+		
 		$session->delete('User');
 		$session->delete('requestedLanguage');
 		$session->delete('setRequestedLanguageLocale');

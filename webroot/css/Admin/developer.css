@@ -149,3 +149,10 @@ table.mceLayout, textarea.tinyMCE {
        width: 600px !important;
     }
 }
+i.fa.fa-sign-out {
+    float: right !important;
+    position: absolute;
+    right: 15px;
+}
+
+.f
