@@ -237,7 +237,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                             <?php 
                                 echo $this->Form->input('Usersp.password',[                
                                  'class'=>'form-control',
-                                 'placeholder'=>'New Password',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('New Password')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -427,7 +427,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></h3>
+               <h3 class="pop-top-pop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></h3>
             </div>
             <div class="modal-body">
                <!-- <form id="cropimage" method="post" enctype="multipart/form-data" action="profile.php">-->
@@ -455,7 +455,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
-                <button type="button" id="btn-crop" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop & Save')); ?></button>
+                <button type="button" id="btn-crop" class="btn btn-crop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop & Save')); ?></button>
             </div>
         </div>
     </div>
