@@ -40,7 +40,8 @@
                                  'label'=>false,
                                  'required'=>false
                           ]); ?>
-                          <p class="w-limit" id="35-word-preview">35 words</p>
+						  <?php $max=35; if(!empty($sitter_info['your_self'])){ $rem = $max-str_word_count ($sitter_info['your_self']);} ?>
+                          <p class="w-limit" id="35-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-your-self" generated="true"></label>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
@@ -53,7 +54,8 @@
                                  'label'=>false,
                                   'required'=>false
                           ]); ?>
-                          <p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('75 words')); ?></p>
+						   <?php $max=75; if(!empty($sitter_info['client_choose_desc'])){ $rem = $max-str_word_count ($sitter_info['client_choose_desc']);} ?>
+                          <p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-client-choose-desc" generated="true"></label>
                         </div>
                   </div>
