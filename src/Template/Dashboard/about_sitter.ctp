@@ -132,7 +132,7 @@
                              'required'=>false,
                              "options"=>["yes"=>"Yes","no"=>"No"],
                              'default' => 'no',
-                              'templates' => ['inputContainer' => '{{content}}']
+                             'templates' => ['inputContainer' => '{{content}}']
                         ]); ?>
                     </span> 
 
