@@ -304,7 +304,7 @@ class DashboardController extends AppController
         $countryCodesModel = TableRegistry::get('CountryCodes');
         $countrydata = $countryCodesModel->find('all')->toArray();
 		 foreach($countrydata as $key=>$val){
-                $country_info[$val['phonecode']] = $val['iso3']."(".$val['phonecode'].")"; 
+                $country_info[$val['phonecode']] = $val['iso']."     (".$val['phonecode'].")"; 
 		 }
 		 $this->set('counry_info',$country_info);
           //pr($country_info);die;
@@ -336,6 +336,7 @@ class DashboardController extends AppController
 			   $sitterHouseData = $sitterHousesModel->newEntity();
                $sitterHouseData = $sitterHousesModel->patchEntity($sitterHouseData, $this->request->data['UserSitterHouses'],['validate'=>true]);
                 $sitterHouseData->user_id = $userId;
+				//pr($sitterHouseData);die;
              // pr($sitterHouseData->errors());  die;
                 if ($sitterHousesModel->save($sitterHouseData)){
                	     return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
@@ -365,6 +366,7 @@ class DashboardController extends AppController
 		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
 		    if(isset($query->user_sitter_house) && !empty($query->user_sitter_house)){
                    $sitterHouseData = $query->user_sitter_house;
+				  // pr($sitterHouseData);die;
                    $this->set('sitterHouseId', $sitterHouseData->id);
                    $this->set('sitterHouseData', $sitterHouseData);
 		    }
@@ -417,6 +419,7 @@ class DashboardController extends AppController
                // pr($aboutSitterData);die;
 	        $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
             $aboutSitterData->user_id = $userId;
+			//pr($aboutSitterData);die;
                if ($aboutSittersModel->save($aboutSitterData)){
 
                       return $this->redirect(['controller'=>'dashboard','action'=>'professional-accreditations']);
@@ -435,6 +438,9 @@ class DashboardController extends AppController
           
            if(isset($query->user_about_sitter) && !empty($query->user_about_sitter)){
                    $aboutSitterData = $query->user_about_sitter;
+				   $sizeArr=$aboutSitterData['gh_pet_sizes'];
+				   $json_sizeArr=json_encode($sizeArr);
+				   $this->set('json_sizeArr',$json_sizeArr);
                    $this->set('aboutSitterId', $aboutSitterData->id);
                    unset($aboutSitterData->id);
                    //pr($aboutSitterData);die;
@@ -1266,21 +1272,33 @@ class DashboardController extends AppController
     {
 		$session = $this->request->session();
 		$this->viewBuilder()->layout('profile_dashboard');
-		$reviewModel=TableRegistry::get('User_ratings');
-		$reviewData=$reviewModel->newEntity();
+		$reviewModel=TableRegistry::get('UserRatings');
+		$reviewData= $reviewModel->newEntity();
 		if($this->request->is('POST')){
 			
-			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data);
-			$reviewData->from=$session->read('User.id');
-			$reviewData->to=1;
-			//$reviewData->created_date=date('Y/m/d');
-			$reviewData->status=0;
-			//$reviewData->modified_date=date('Y/m/d');
+			$reviewData->user_from = $session->read('User.id');
+			$reviewData->user_to = 1;
+			$reviewData->status = 0;
+			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
+			
+			
+			//pr($reviewData);die;
 			if($reviewModel->save($reviewData)){
-				echo "data save";
-			}
+				$this->Flash->success(__('Record has been added Successfully'));
+				//return $this->redirect(['controller' => 'category', 'action' => 'categories-listing']);
+			}	
 			
 		}	
     }
+	public function editReview(){
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		$session=$this->request->session();
+		$user_id=$session->read('User.id');
+		$reviewModel=TableRegistry::get('UserRatings');
+		$reviewData= $reviewModel->find('all')->where(['user_from'=>$user_id])->where(['user_to'=>2])->toArray();
+		//pr($reviewData);die;
+		$this->set('reviewData',$reviewData);
+	}
 }
 ?>
