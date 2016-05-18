@@ -67,8 +67,41 @@ label.error {
 }
 
 
+#myModal21 .top-close {
+    background: #ffffff none repeat scroll 0 0;
+    border-bottom: 1px solid #efefef;
+    height: 40px;
+    width: 100%;
+}
 
-.pop-top-pop {color:#72A105; margin-bottom:0px; margin-top:4px;}
+#myModal21 .modal-footer {
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 0 0 15px;
+    text-align: right;
+}
+
+
+#myModal21 .sitter-quike-view .sqv-box .top-close p {
+    color: #404040;
+    float: left;
+    font-size: 18px;
+    line-height: 13px;
+}
+
+#preview-avatar-profile {text-align:center; margin-top:20px;}
+
+
+#myModal21 .sitter-quike-view .sqv-box .top-close a {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    float: right;
+    height: 25px;
+    margin: -2px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.pop-top-pop {color:#72A105 !important; margin-bottom:0px; margin-top:4px;}
 
 .btn-crop {background:#72A105; color:#fff !important; font-size:14px;}
 
