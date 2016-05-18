@@ -2,7 +2,7 @@
 
 <!--[Banner Area Start]-->
 
-
+<div class="saerch-s-det">
 <section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
 <div class="container">
 
@@ -19,7 +19,7 @@
   <?php echo $userData->first_name." ".substr(($userData->last_name)?$userData->last_name:"",0,1)."."; ?> 
   </h2>
 <h3 class="punch-line">Reliable & Loving Petsitter </h3>
-<h4 class="city-banner">Midtown, New York City, NY</h4>
+<h4 class="city-banner"> <?php echo $userData->city.", ".$userData->state.", ".$userData->country; ?></h4>
 
 <div class="badage-detail">
 <ul class="list-inline text-center">
@@ -49,12 +49,12 @@
 <div class="row">
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px ">
 
-<h3 class="rates-detail marginrightminus"> <span>$20</span> per day</h3>
+<h3 class="rates-detail marginrightminus"> <span><?php echo '$'.$userData->user_sitter_services[0]->sh_day_rate; ?></span> per day</h3>
 <p class="rates-detail-caption">(Boarding in sitter)</p>
 
 </div> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
 
-<h3 class="rates-detail marginleftminus xs-padt10"> <span>$20</span> per day</h3>
+<h3 class="rates-detail marginleftminus xs-padt10"> <span><?php echo '$'.$userData->user_sitter_services[0]->gh_day_rate; ?></span> per day</h3>
 <p class="rates-detail-caption">(House sitting)</p>
 
 </div>
@@ -63,19 +63,19 @@
 </div>
 <div class="row"><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px  ">
 
-<h3 class="rates-detail pad-t10 marginrightminus"> <span>$20</span> per day</h3>
+<h3 class="rates-detail pad-t10 marginrightminus"> <span><?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?></span> per day</h3>
 <p class="rates-detail-caption">(Drop visit home)</p>
 
 </div> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
 
-<h3 class="rates-detail pad-t10  marginleftminus"> <span>$20</span> per day</h3>
+<h3 class="rates-detail pad-t10  marginleftminus"> <span><?php echo '$'.(($userData->user_sitter_services[0]->sh_day_rate)+($userData->user_sitter_services[0]->sh_night_rate)); ?></span> per day</h3>
 <p class="rates-detail-caption">(D/Nt. care home)</p>
 
 </div></div>
 </div>
 </div>
 
-<h5 class="additional"><a href="#"> Additional Services & Rates </a></h5>
+<h5 class="additional"><a href="#" data-toggle="modal" data-target="#myModal7"> Additional Services & Rates </a></h5>
 <div class="text-center">
 <button class="btn btn-cont">Contact</button>
 </div>
@@ -248,11 +248,12 @@
    
    <div class="row">
    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="speak"></span>Can speak english & French</p>
+    <?php $langArr = array('en'=>'english','fr'=>'french','de'=>'german','hu'=>'hungarian','it'=>'italian','ro'=>'romanian','es'=>'spanish'); ?>
+   <p class="pt10"><span class="speak"></span>Can speak  <?php echo $langArr[$userData->user_professional_accreditations_details[0]->languages]; ?></p>
    
    
    </div>  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="experience"></span>20+ years of experience</p>
+   <p class="pt10"><span class="experience"></span><?php echo $userData->user_professional_accreditations_details[0]->experience;?> + years of experience</p>
    
    
    </div>
@@ -262,7 +263,7 @@
     
    <div class="row">
    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="familar"></span>Familiar with dog training techniques </p>
+   <p class="pt10"><span class="familar"></span>Familiar with <?php echo $userData->user_professional_accreditations_details[0]->training_techniques; ?> training techniques </p>
    
    
    </div>  
@@ -286,17 +287,30 @@
    
    
    <div class="row">
+    <?php if($userData->user_professional_accreditations_details[0]->ex_behavioural_problems !=''){ ?>
    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="behave"></span>Behavioural problems </p>
+   <p class="pt10"><span class="behave"></span>Experience with Behavioural Problems</p>
    
    
-   </div>  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+   </div> 
+   <?php } ?>
+   <?php if($userData->user_professional_accreditations_details[0]->ex_rescue_pets !=''){ ?>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
    <p class="pt10"><span class="rescue"></span>Rescuing pets</p>
    
    
    </div>
+   <?php }
+
+      if(($userData->user_professional_accreditations_details[0]->ex_behavioural_problems =='') && ($userData->user_professional_accreditations_details[0]->ex_rescue_pets =='')){ 
+   
+   ?>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+   <p class="pt10"><span class="rescue"></span>Sitter have no experience with medications</p>
    
    
+   </div>
+   <?php } ?>
    </div>
     
    
@@ -315,17 +329,29 @@
    
    
    <div class="row">
-   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="book"></span>Last minute bookings </p>
-   
-   
-   </div>  
+   <?php if($userData->user_sitter_services[0]->booking_status =='1'){ ?> 
+     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+       <p class="pt10"><span class="book"></span>Last minute bookings </p>
+     </div> 
+   <?php }
+   if($userData->user_sitter_services[0]->cancellation_policy_status =='1'){ 
+    ?> 
    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
    <p class="pt10"><span class="cancel"></span>Moderate cancellation policy</p>
    
    
    </div>
+   <?php } 
+   if(($userData->user_sitter_services[0]->booking_status !='1') && ($userData->user_sitter_services[0]->cancellation_policy_status !='1')){ 
+   ?>
+   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+   <p class="pt10">No Benefits</p>
    
+   
+   </div>
+
+   <?php } ?>
+
    </div>
    
    
@@ -337,49 +363,43 @@
    <div class="one">
    <div class="border-bot pt30"></div>
    
-   <h5 class="small-title">Specified Skills &nbsp;<span>
+   <h5 class="small-title">About <?php echo $userData->first_name; ?>'s Home&nbsp;<span>
 <i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
 <i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
 </span></h5>
    
-   
+  
    <div class="row">
-     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="fence"></span>Has a fenced yard</p>
-   
-   
+      <?php if($userData->user_sitter_house->fully_fenced =='yes'){ ?> 
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+              <p class="pt10"><span class="fence"></span>Has a fenced yard</p>
+          </div>
+     <?php } 
+      if($userData->user_sitter_house->smokers =='no'){ 
+     ?>
+         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+           <p class="pt10"><span class="smoke"></span>Non-Smoking Household </p>
+          </div>
+     <?php } 
+      if($userData->user_sitter_house->cats_in_home =='yes'){ ?>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <p class="pt10"><span class="onecat"></span>Has One Cat</p>
+        </div> 
+     <?php } 
+       if($userData->user_sitter_house->dogs_in_home =='yes'){ 
+     ?>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <p class="pt10"><span class="onedog"></span>Has Two Dogs </p>
+        </div>
+    <?php } 
+     if(($userData->user_sitter_house->fully_fenced =='yes') && ($userData->user_sitter_house->smokers =='no') && ($userData->user_sitter_house->cats_in_home =='yes') && ($userData->user_sitter_house->dogs_in_home =='yes')){ ?>   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <p class="pt10"><span class="onedog"></span>No information added on sitter home.</p>
+        </div>
+     <?php } ?>
+       
    </div>
-   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="smoke"></span>Non-Smoking Household </p>
+
    
-   
-   </div>
-   
-   </div>
-   
-   <div class="row">
-   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="onecat"></span>Has One Cat</p>
-   
-   
-   </div>  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="onedog"></span>Has Two Dogs </p>
-   
-   
-   </div>
-   
-   
-   </div>
-    
-   <div class="row">
-   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-   <p class="pt10"><span class="child"></span>Children 6-12 Years Old </p>
-   
-   
-   </div>  
-   
-   
-   </div>
    </div>
    
    
@@ -389,8 +409,11 @@
    <h5 class="small-title">About my home</h5>
    
    
-   <p class="detail-text text-justify">   Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-2" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
+   <p class="detail-text text-justify">  
+    <?php echo $userData->user_sitter_house->about_home_desc; ?>
+
+   <!-- Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
+ animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-2" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>-->
 <br>
 <a  href="#search-col-2" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
                  </a>
@@ -409,8 +432,10 @@
    <h5 class="small-title">Description of places you will have access to</h5>
    
    
-   <p class="detail-text text-justify">   Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-3" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
+   <p class="detail-text text-justify">   
+ <?php echo $userData->user_sitter_house->spaces_access_desc; ?>
+    <!--Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
+ animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-3" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>-->
 <br>
 <a  href="#search-col-3" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
                  </a>
@@ -449,8 +474,10 @@
    <h5 class="small-title">My Pets</h5>
    
    
-   <p class="detail-text text-justify">   Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of f situation, all types of f situation,all types of f situation, we will make it work. I have worked with all types of
- animals and love and can care for them all.  pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-4" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
+   <p class="detail-text text-justify"> 
+   <?php echo $userData->user_sitter_house->home_pets_desc; ?> 
+   <!-- Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of f situation, all types of f situation,all types of f situation, we will make it work. I have worked with all types of
+ animals and love and can care for them all.  pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-4" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>-->
 <br>
 <a  href="#search-col-4" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
                  </a>
@@ -751,7 +778,8 @@
      <ul class="list-unstyled">
      <li><i class="fa fa-reply icon-width30"></i>Response Rate : <b>100%</b></li>
      <li><span class="book"></span>Average Response Time : <b>With in Hour</b></li>
-      <li><i class="fa fa-user icon-width30 icon-p15"></i>Last Activity : <b>1 hour 15 min ago</b></li>
+      <li><i class="fa fa-user icon-width30 icon-p15"></i>Last Activity : <b>
+        <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; ?> 1 hour 15 min ago</b></li>
        <li><i class="fa fa-refresh icon-width30 icon-p15"></i>Repeat Guest : <b> 15</b></li>
      </ul>
    
@@ -1095,3 +1123,248 @@
   
 </main>
 <!--[content area End]-->
+<!--Additional Services Popup-->
+  <div class="modal fade" id="myModal7" role="dialog">
+    <div class="modal-dialog">
+       <div class="sitter-quike-view">
+          <div class="sqv-box">
+              <div class="top-close"> 
+                <p>Geraldo Rates</p>
+                  <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a>           
+                </div>    
+                
+                
+                <!--Additional Services-->          
+                  <div class="additional-services">  
+                      <div class="as-area">
+                          <div class="h-box">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <p><b></b>House Sitting <br>
+                                in your home </p>
+                                </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+                                 <span><?php echo '$'.$userData->user_sitter_services[0]->gh_night_rate; ?> <b>per night</b></span>
+                                </div>                                
+                            </div>
+                            
+                                
+                                
+                               
+                                
+                            </div>
+                            <ul>
+                              <li>
+                                 <div class="cate">
+                                  <p><b>Holiday Rate</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->gh_holiday_rate; ?> </p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Additional Dog Rate</b>
+                                      per night per additional dog 
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->gh_nc_additional_guest_rate; ?></p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Stays of 4 Nights or More</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p>$40</p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Puppy Rate</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->gh_puppy_rate; ?></p>
+                                   </div> 
+                                </li>                               
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Cat Care</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->gh_cat_rate; ?></p>
+                                   </div> 
+                                </li>
+                               
+                            </ul>
+                        </div> 
+                        <div class="as-area">
+                          <div class="h-box h-box-2">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <p><b></b>Dog Boarding<br>
+                                the sitter's home</p>
+                                </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+                                 <span><?php echo '$'.$userData->user_sitter_services[0]->sh_night_rate; ?>  <b>per night</b></span>
+                                </div>                                
+                            </div>
+                            
+                                
+                                
+                               
+                                
+                            </div>
+                            <ul>
+                              <li>
+                                 <div class="cate">
+                                  <p><b>Holiday Rate</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->sh_holiday_rate; ?></p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Additional Dog Rate</b>
+                                      per night per additional dog 
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->sh_nc_additional_guest_rate; ?></p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Stays of 4 Nights or More</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p>$40</p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Puppy Rate</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->sh_puppy_rate; ?></p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b> Pick-Up and Drop-Off</b>
+                                      per round trip  
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p>$20</p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Cat Care</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->sh_cat_rate; ?></p>
+                                   </div> 
+                                </li>
+                               
+                            </ul>
+                        </div> 
+                         <div class="as-area">
+                          <div class="h-box h-box-3">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <p><b></b>Drop-In Visits<br>
+                                30-minute check-ins </p>
+                                </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+                                 <span>$18  <b>per visit</b></span>
+                                </div>                                
+                            </div>                                
+                            </div>
+                            <ul>
+                              <li>
+                                 <div class="cate">
+                                  <p><b>Holiday Rate</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p>$10</p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Additional Dog Rate</b>
+                                      per night per additional dog 
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p>$25</p>
+                                   </div> 
+                                </li>
+                                <li>
+                                 <div class="cate">
+                                  <p><b>Stays of 4 Nights or More</b>
+                                      per night
+                  </p>
+                                 </div>
+                                 <div class="prce">
+                                  <p>$40</p>
+                                   </div> 
+                                </li>
+                              
+                               
+                            </ul>
+                        </div> 
+                         <div class="as-area">
+                          <div class="h-box h-box-3">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <p><b></b>Doggy Day Care <br>
+                                n the sitter's home  </p>
+                                </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+                                 <span>$25  <b>per day</b></span>
+                                </div>                                
+                            </div>                                
+                            </div>
+                            
+                        </div>                    
+                    </div> 
+                <!--Additional Services-->           
+                
+            </div>          
+         </div>  
+    </div>
+  </div> 
+
+<!--Additional Services Popup-->
+
+</div>
+<script>
+$(document).ready(function(){
+$('.carousel').carousel({
+    pause: true,
+    interval: false
+}); 
+});
+</script>

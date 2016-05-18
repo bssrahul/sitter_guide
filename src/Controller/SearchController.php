@@ -488,10 +488,10 @@ class SearchController extends AppController
 		$userId = convert_uudecode(base64_decode($userId));
 
         $UsersModel = TableRegistry::get('Users');
-        $userData = $UsersModel->get($userId,['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']]);
+        $userData = $UsersModel->get($userId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails']]);
 			
 		$this->set('userData',$userData);
-		//pr($userData->image);die;
+		//pr($userData);die;
 	}
 
 

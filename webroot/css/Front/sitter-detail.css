@@ -12,7 +12,7 @@
 
 
 
-
+.saerch-s-det {font-family: 'Raleway', sans-serif !important;}
 
 /*Banner inner pages starts*/
 .banner-sitter-detail {background:url(../../img/sitter-detail-banner.jpg) repeat; background-position:center; height:550px;  width:100%; margin-top:75px;}
@@ -46,25 +46,25 @@
 
 .banner-sitter-detail .banner-info-wrapper .client-image {width:64px; height:64px; text-align:center; padding-top:35px;}
 
-.banner-sitter-detail .banner-info-wrapper .name-banner { font-size:25px; font-weight:700; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; margin-top:45px;}
+.banner-sitter-detail .banner-info-wrapper .name-banner { font-size:25px; font-weight:700; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; margin-top:45px; margin-bottom: 0px;}
 
 
-.banner-sitter-detail .banner-info-wrapper .punch-line { font-size:20px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:5px;}
+.banner-sitter-detail .banner-info-wrapper .punch-line { font-size:20px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:5px; margin-top: 0px; margin-bottom: 0px;}
 
-.banner-sitter-detail .banner-info-wrapper .city-banner { font-size:15px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:8px;}
+.banner-sitter-detail .banner-info-wrapper .city-banner { font-size:15px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:8px; margin-top: 0px; margin-bottom: 0px;}
 
 .banner-sitter-detail .banner-info-wrapper .details-stars ul li {padding-left:0px; padding-right:0px;}
 
-.banner-sitter-detail .banner-info-wrapper .details-stars ul li {padding-left:0px; padding-right:0px; font-size:13px; color:#fff;}
+.banner-sitter-detail .banner-info-wrapper .details-stars ul li {padding-left:0px; padding-right:0px; font-size:13px; color:#fff; font-family: 'Raleway', sans-serif;}
 .banner-sitter-detail .banner-info-wrapper .details-stars .pad-review { position:relative; top:2px;}
 
 .banner-sitter-detail .banner-info-wrapper .badage-detail {padding-top:8px;}
 .banner-sitter-detail .banner-info-wrapper .badage-detail ul { margin-bottom:0px;}
 
-.banner-sitter-detail .banner-info-wrapper .rates-detail { font-size:25px; font-weight:700; color:#fff; text-align:center; font-family: 'Raleway', sans-serif;}
+.banner-sitter-detail .banner-info-wrapper .rates-detail { font-size:25px; font-weight:700; color:#fff; text-align:center; font-family: 'Raleway', sans-serif; margin-top: 0px; margin-bottom: 0px;}
 .banner-sitter-detail .banner-info-wrapper .rates-detail span { font-size:25px; font-weight:700; color:#6eb6ff; text-align:center; font-family: 'Raleway', sans-serif; border-top:hidden !important;}
 
-.banner-sitter-detail .banner-info-wrapper .rates-detail-caption { font-size:14px; font-weight:500; color:#fff; text-align:center; font-family: 'Raleway', sans-serif; }
+.banner-sitter-detail .banner-info-wrapper .rates-detail-caption { font-size:14px; font-weight:500; color:#fff; text-align:center; font-family: 'Raleway', sans-serif; margin-bottom: 0px; }
 
 .banner-sitter-detail .banner-info-wrapper  .center-line {background:url(../../img/detail-center-line.png) no-repeat; width:100%px; height:108px; background-position:center; margin-top:20px;}
 
@@ -75,9 +75,9 @@
 
 .banner-sitter-detail .banner-info-wrapper  .center-line .marginrightminus { margin-right:-30px;}
 
-.banner-sitter-detail .banner-info-wrapper .additional {font-size:18px; color:#6eb6ff; text-align:center; font-weight:400; padding-top:7px; clear:both;}
+.banner-sitter-detail .banner-info-wrapper .additional {font-size:18px; color:#6eb6ff; text-align:center; font-weight:400; padding-top:7px; clear:both; margin-top: 0px; margin-bottom: 0px; font-family: 'Raleway', sans-serif;}
 
-.banner-sitter-detail .banner-info-wrapper .additional a {font-size:18px; color:#6eb6ff !important; text-align:center; font-weight:400; padding-top:7px;}
+.banner-sitter-detail .banner-info-wrapper .additional a {font-size:18px; color:#6eb6ff !important; text-align:center; font-weight:400; padding-top:7px; font-family: 'Raleway', sans-serif;}
 
 .banner-sitter-detail .banner-info-wrapper .btn-cont {background-color:#72a105; color:#fff;  border-radius: 50%;
     -moz-border-radius: 50%;
@@ -88,9 +88,9 @@
 
 
 .pt30 {padding-top:30px;}
-.detail-content .mid-sec-title {font-size:20px; color:#72a105; font-weight:400;}
-.detail-content .mid-sec-title1 {font-size:19px; color:#72a105; font-weight:400; padding-top:13px;}
-.detail-content .small-title {font-size:16px; color:#72a105; font-weight:400; padding-top:15px;}
+.detail-content .mid-sec-title {font-size:20px; color:#72a105; font-weight:400; margin-top: 0px; margin-bottom:0px;}
+.detail-content .mid-sec-title1 {font-size:19px; color:#72a105; font-weight:400; padding-top:13px; margin-top: 0px; margin-bottom:0px;}
+.detail-content .small-title {font-size:16px; color:#72a105; font-weight:400; padding-top:15px; margin-top: 0px; margin-bottom: 0px;}
 
 .border-bot { border-bottom:1px solid #ddd; line-height:50px;}
 .detail-content .detail-text {padding-top:10px; line-height:22px;}
@@ -100,6 +100,8 @@
 .pb15 { padding-bottom:15px;}
 .pt10 { padding-top:10px;}
 .pt15 { padding-top:15px;}
+
+.one p {margin-bottom: 0px;}
 
 .reviews-bold {font-size:16px; font-weight:600; color:#404040; }
 .summary {font:13px; color:#999; font-weight:500;}
@@ -114,8 +116,9 @@
 .review-comments ul li  { padding-left:0px; padding-right:0px; }
 
 
-.btn-read-more-reviews {border:1px solid #5aabe3; color:#5aabe3; text-align:center; background-color:transparent; height:40px; font-size:14px; padding:0 35px; border-radius:2px; margin-top:40px;}
-.btn-read-more-reviews:hover {border:1px solid #5aabe3; background-color:#5aabe3; color:#fff; text-align:center; height:40px; font-size:14px; padding:0 35px; border-radius:2px; margin-top:40px;}
+.btn-read-more-reviews {border:1px solid #5aabe3 !important; color:#5aabe3; text-align:center; background-color:transparent; height:40px; font-size:14px; padding:0 35px !important; border-radius:2px; margin-top:40px;}
+.btn-read-more-reviews:hover {border:1px solid #5aabe3; background-color:#5aabe3; color:#fff !important; text-align:center; height:40px; font-size:14px; padding:0 35px !important; border-radius:2px; margin-top:40px; outline: none; text-decoration: none;}
+.btn-read-more-reviews:focus {border:1px solid #5aabe3; background-color:#5aabe3; color:#fff !important; text-align:center; height:40px; font-size:14px; padding:0 35px !important; border-radius:2px; margin-top:40px; outline: none; text-decoration: none;}
 .responsive-margin {padding-left:30px;}
 
 .imgWrap {
@@ -156,18 +159,18 @@
 
 .detail-sitter-name {color: #6eb6ff;
     font-size: 24px;
-    font-weight: 500; padding-top:30px}
+    font-weight: 500; padding-top:30px; margin-top: 0px; margin-bottom: 0px;}
 .detail-sitter-location {
 color: #404040;
     font-family: "Raleway",sans-serif;
     font-size: 16px;
-    font-weight: 500; padding-top:3px;
+    font-weight: 500; padding-top:3px; margin-bottom: 0px;
 }
 .detail-sitter-joined {
 color: #404040;
     font-family: "Raleway",sans-serif;
     font-size: 14px;
-    font-weight: 300; padding-top:3px;
+    font-weight: 300; padding-top:3px; margin-bottom: 0px;
 }
 .detail-sitter-detail .reviews { color:#999 !important; text-decoration:none; outline:none;}
 .detail-sitter-detail .reviews:hover { color:#666 !important; text-decoration:none; outline:none;}
@@ -186,12 +189,12 @@ color: #404040;
     border: 1px solid #72a105;
     border-radius: 2px;
     color: #fff !important;
-    font-size: 22px;
+    font-size: 22px !important;
     height: 40px;
-    padding-top:4px;
+    padding-top:5px !important;
    
-    text-align: left;
-	width:80%; font-weight:500;
+    text-align: left !important;
+	width:80%; font-weight:500 !important;
 }
 
 .btn-detsil-contact:hover, .btn-detsil-contact:focus {
@@ -199,17 +202,17 @@ color: #404040;
     border: 1px solid #72a105;
     border-radius: 2px;
     color: #fff !important;
-    font-size: 22px;
-    height: 40px; padding-top:4px;
+    font-size: 22px !important;
+    height: 40px; padding-top:5px !important;
    
    
-    text-align:left;
+    text-align:left important;
 	width:80%;
 	font-weight:500;
 }
 
 
-.btn-heart { background-color:transparent; color:#DA6A14 !important; width:20%; font-size:38px; outline:none !important; text-decoration:none !important;}
+.btn-heart { background-color:transparent; color:#DA6A14 !important; width:20%; font-size:38px !important; outline:none !important; text-decoration:none !important;}
 .btn-heart:hover { background-color:transparent; color:#DA6A14 !important; width:20%; font-size:38px; outline:none !important; text-decoration:none !important;}
 .lock:hover .icon-unlock,
 .lock .icon-lock {
@@ -267,7 +270,7 @@ color: #404040;
 }
 
 
-.dog-title1 {font-size:16px; padding-top:20px;}
+.dog-title1 {font-size:16px; padding-top:20px; margin-bottom: 0px;}
 
 ul.pet-list{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left;}
 ul.pet-list li{ float:left; text-align:center; font-size:12px; width:25%;}
@@ -286,7 +289,7 @@ ul.pet-list li.pet-7 span{ background:url(../../img/search-icons.png) no-repeat 
     float: left;
     font-size: 14px;
     font-weight: 500;
-    padding-top: 10px;
+    padding-top: 10px; margin-bottom: 0px;
 }
 
 .pet-list .pound {
@@ -294,7 +297,7 @@ ul.pet-list li.pet-7 span{ background:url(../../img/search-icons.png) no-repeat 
     color: #999999;
     float: left;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 500; margin-bottom: 0px;
 }
 
 .bod-bot {border-bottom:none !important;}

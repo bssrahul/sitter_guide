@@ -650,7 +650,7 @@ class DashboardController extends AppController
 			
 			//pr($this->request->data['UserProfessionals']['check']['govt']); die;
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
-			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
+			$UserProfessionalDetailsModel = TableRegistry::get('UserProfessionalAccreditationsDetails'); 
 
 			$UserProfessionalModel->deleteAll(['user_id' => $userId]);
 			$UserProfessionalDetailsModel->deleteAll(['user_id' => $userId]);
@@ -758,7 +758,7 @@ class DashboardController extends AppController
                
 		}else{
 			
-            $query = $usersModel->get($userId,['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails']]);
+            $query = $usersModel->get($userId,['contain'=>['UserProfessionalAccreditations','UserProfessionalAccreditationsDetails']]);
          
 		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
 				 

@@ -22,6 +22,7 @@
 @import 'news.css';
 @import 'help.css';
 @import 'sitter-detail.css';
+@import 'search-result.css';
 
 @font-face {
 	font-family: 'Conv_Raleway-Regular';
