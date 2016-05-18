@@ -341,26 +341,26 @@ $(document).ready(function(){
                 alert("You've reached the maximum allowed words. Extra words removed.");
           }
         });
-
+var maxSPDWords = 75;
  $( "#usersitterhouses-spaces-access-desc" ).keypress(function() {
          var len = (this).value.length;
-          var $this, wordcount;
+          var $this, spd_wordcount;
            $this = $(this);
-           wordcount = $this.val().split(/\b[\s,\.-:;]*/).length;
-            if (wordcount > maxWords) {
-              jQuery(".word_count span").text("" + maxWords);
+           spd_wordcount = $this.val().split(/\b[\s,\.-:;]*/).length;
+            if (spd_wordcount > maxSPDWords) {
+              jQuery(".word_count span").text("" + maxSPDWords);
             
               return false;
           } else {
-              return jQuery('#space-word-preview').text(maxWords - wordcount+" words remainings");
+              return jQuery('#space-word-preview').text(maxSPDWords - spd_wordcount+" words remainings");
           }
 
  });
  $('#usersitterhouses-spaces-access-desc').change(function() {
-            var words = $(this).val().split(/\b[\s,\.-:;]*/);
-          if (words.length > maxWords) {
-                words.splice(maxWords);
-                $(this).val(words.join(" "));
+            var spd_words = $(this).val().split(/\b[\s,\.-:;]*/);
+          if (spd_words.length > maxSPDWords) {
+                spd_words.splice(maxSPDWords);
+                $(this).val(spd_words.join(" "));
                 alert("You've reached the maximum allowed words. Extra words removed.");
           }
         });
