@@ -214,7 +214,7 @@ class DashboardController extends AppController
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
-
+         // pr();die;
 	if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
 		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
           {
@@ -675,7 +675,7 @@ class DashboardController extends AppController
 			
 			//pr($this->request->data['UserProfessionals']['check']['govt']); die;
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
-			$UserProfessionalDetailsModel = TableRegistry::get('userProfessionalAccreditationsDetails'); 
+			$UserProfessionalDetailsModel = TableRegistry::get('UserProfessionalAccreditationsDetails'); 
 
 			$UserProfessionalModel->deleteAll(['user_id' => $userId]);
 			$UserProfessionalDetailsModel->deleteAll(['user_id' => $userId]);
@@ -783,7 +783,7 @@ class DashboardController extends AppController
                
 		}else{
 			
-            $query = $usersModel->get($userId,['contain'=>['UserProfessionalAccreditations','userProfessionalAccreditationsDetails']]);
+            $query = $usersModel->get($userId,['contain'=>['UserProfessionalAccreditations','UserProfessionalAccreditationsDetails']]);
          
 		     if(isset($query->user_professional_accreditations) && !empty($query->user_professional_accreditations)){
 				 

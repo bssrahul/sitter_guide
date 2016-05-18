@@ -52,7 +52,7 @@
 						foreach($resultsData as $results){  ?>
 							<li>
 							  <div class="sld-area">
-             <div class="sit-pic-lft" onclick="location.href = '<?php echo HTTP_ROOT."search/sitter-details"; ?>'" >
+             <div class="sit-pic-lft">
 								  <div class="ppic-area">
 									<div class="sitter-pic"> 
 										<?php 
@@ -78,7 +78,8 @@
 									  
 										  <div class="sit-p-head">
 											
-											<p class="head-txt">
+											<p class="head-txt" onclick="location.href = '<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>'">
+
 												<span><?php echo $rankNo; ?></span>
 												<?php echo $results->first_name." ".substr(($results->last_name)?$results->last_name:"",0,1)."."; ?> 
 												<b><img src="<?php echo HTTP_ROOT; ?>img/certify-1.png"  alt=""/></b> 
