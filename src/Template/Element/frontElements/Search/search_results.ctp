@@ -187,11 +187,28 @@
                                         </ul>
                                      </div>
                                  <!--/facilities-->
-								  <!--likebox
-								  <div class="likebox"> 
-									  <a href="#" title="LIke"><img src="<?php echo HTTP_ROOT; ?>img/like-icon.png" width="16" height="14" alt=""/></a>
+								  <!--likebox-->
+								  <div class="likebox favourite_sitter1"> 
+									<button class="btn btn-heart lock" type="button">
+										<i class="icon-unlock fa fa-heart-o heart-pos"></i>
+										<i class="icon-lock fa fa-heart heart-pos"></i>
+									</button>
+									  <?php //echo $results->is_favourite; ?>
+										<?php if(trim($results->is_favourite)=='yes'){ ?>
+											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="fa fa-heart"></i>
+											</a>
+										<?php }else{ ?>
+																	
+											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="like favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>">
+											 <i class="fa fa-heart-o"></i>
+											</a>
+										<?php } ?>
+										<div class="Title_sub likeLoader" style="display:none;position: relative; float: right; right: 30px; bottom: 3px;"> 
+											<img src="<?php echo HTTP_ROOT.'img/loader.gif' ?>"> 
+										</div>
+																  
 								  </div>
-								 likebox--> 
+								 <!--likebox--> 
 								</div>
 							  </div>
 							</li>
@@ -294,4 +311,5 @@
 		width:163px;
 		height:165px;
 }
+.favouriteSection{text-decoration:none !important;}
 </style>
