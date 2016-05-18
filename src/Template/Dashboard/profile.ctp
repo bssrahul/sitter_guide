@@ -322,11 +322,11 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                        $user = $session->read('User');
                     ?>
              <!--<button id="change_pic" class="btn "></button>-->
-               <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload" aria-hidden="true"></i>
+               <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i>
                 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?>
                          
                </button>
-              <!--<button type="button" class="btn btn-upload center-block" data-toggle="modal" data-target="#myModal">
+              <!--<button type="button" class="btn btn-upload center-block" data-toggle="modal" data-target="#myModal21">
                 Upload photo
               </button>-->
                     
@@ -421,19 +421,25 @@ profile photo’s, video, password and contact details.')); ?></small></p>
 
 
 
-    <!--model box -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
+
+
+  <div class="modal fade" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></h3>
-            </div>
-            <div class="modal-body">
+       <div class="sitter-quike-view">
+         	<div class="sqv-box">
+            	<div class="top-close"> 
+                <p class="pop-top-pop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></p>
+                	<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
+                </div>    
+                
+                
+                <!--Additional Services-->          
+                	<div class="additional-services">  
+                    	  <div class="modal-body">
                <!-- <form id="cropimage" method="post" enctype="multipart/form-data" action="profile.php">-->
                   <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data',
                   'url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
-                   <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload your image')); ?>  
+                  <b> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop your image')); ?> </b> <br/> <br/> 
 
                     <input style="hidden" type="file" name="image" id="image" />
 
@@ -453,13 +459,33 @@ profile photo’s, video, password and contact details.')); ?></small></p>
               <!--  </form>-->
               <?php echo $this->Form->end(); ?>
             </div>
-            <div class="modal-footer">
+                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
-                <button type="button" id="btn-crop" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop & Save')); ?></button>
-            </div>
-        </div>
+                <button type="button" id="btn-crop" class="btn btn-crop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop & Save')); ?></button>
+            </div>        
+                          
+                                           	
+                    </div> 
+                <!--Additional Services-->           
+                
+            </div>         	
+         </div>  
     </div>
-</div>
+  </div
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--model box -->
+	
 <?php echo $this->Form->create(null,['id'=>'profileVideo','enctype'=>'multipart/form-data',
                   'url'=>['controller'=>'dashboard','action'=>'save-profile-video'],
                   'style'=>"visibility: hidden"]); ?>
@@ -486,7 +512,7 @@ $(document).ready(function(){
   $('#image').on('change', function()   
   { 
     $("#preview-avatar-profile").html('');
-   $("#preview-avatar-profile").html('Uploading....');
+   $("#preview-avatar-profile").html("<img src='<?php echo HTTP_ROOT."img/search-loader.gif" ?>'>");
     $("#cropimage").ajaxForm(
     {
     target: '#preview-avatar-profile',
@@ -562,7 +588,7 @@ function saveCropImage(params) {
         type: 'Post',
        success: function (response) {
         //alert(response);
-                $('#myModal').modal('hide');
+                $('#myModal21').modal('hide');
                 location.reload();
                 jQuery(".imgareaselect-border1,.imgareaselect-border2,.imgareaselect-border3,.imgareaselect-border4,.imgareaselect-border2,.imgareaselect-outer").css('display', 'none');
                 

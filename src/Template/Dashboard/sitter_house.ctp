@@ -115,6 +115,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                 'templates' => ['inputContainer' => '{{content}}']
                         ]); ?>
                           
@@ -135,6 +136,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -149,6 +151,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -162,6 +165,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -179,6 +183,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
