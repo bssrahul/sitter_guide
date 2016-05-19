@@ -368,7 +368,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                             ?>
                                 <img id="preview-profile-banner" class="img-responsive" src="<?php echo @$pathBanner; ?>">
                                  <?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
-                              </div>
+                        </div>
                         </div>
                      </div>
                 </div>
@@ -388,6 +388,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                     </button>
                     </div>
                     <div class="col-lg-6">
+					<span class="videoBanner">&nbsp;</span>
                       <?php if(@$userInfo->profile_video != ''){
                            $path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
                       }else{
@@ -614,17 +615,26 @@ $(document).ready(function(){
     //$("#preview-avatar-profile").html('Uploading....');
     $("#profileVideo").ajaxForm(
     {
+	beforeSend: function(){
+	  $(".videoBanner").show();
+	  $(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+	},
+	
+	complete: function(){
+	  $(".videoBanner").hide();
+	  $(".videoBanner").html('');
+	},	
     //target: '#preview-profile-video',
     success: function(res) { 
         var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
                 //alert(response[1]);
                   $("#preview-profile-video").attr('src',response[1]);
-              }
-              if($.trim(response[0]) == 'Error'){
+              }else  if($.trim(response[0]) == 'Error'){
                 $('.clr').html(''); //Emtpy Error MESSAGE
                 $('.addError').html(response[1]); //DISPLAY SUCCESS MESSAGE
               }
+			   // $('.clr').html(''); //Emtpy Error MESSAGE
             }
       
        
@@ -642,6 +652,15 @@ $(document).ready(function(){
     //$("#preview-avatar-profile").html('Uploading....');
     $("#profileBanner").ajaxForm(
     {
+		beforeSend: function(){
+		  $(".profileBanner").show();
+		  $(".profileBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+		},
+	
+		complete: function(){
+		  $(".profileBanner").hide();
+		  $(".profileBanner").html('');
+		},	
     //target: '#preview-profile-video',
     success: function(res) { 
       //alert(res);
@@ -664,3 +683,19 @@ $(document).ready(function(){
 
  
 </script>
+<style>
+.videoBanner {
+    background: #e17f59 none repeat scroll 0 0;
+    display: none;
+    float: left !important;
+    height: 20px !important;
+    margin: 0 0 0 22px;
+    opacity: 0.5;
+    position: relative;
+    top: 25px;
+    width: 93% !important;
+    z-index: 10035;
+	text-align:center;
+}
+
+</style>

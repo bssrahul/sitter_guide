@@ -293,6 +293,7 @@ class AppController extends Controller{
 			else if($type == 'audio' || $type == 'video')
 			{
 				//echo 'okokok'.$type;die;
+				//pr($FileArr); die;
 				$imgName = pathinfo($FileArr['name']);
 				$file = $FileArr;
 				$fileName = $FileArr['name'];
