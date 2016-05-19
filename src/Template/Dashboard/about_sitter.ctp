@@ -45,7 +45,7 @@
                                  'required'=>false
                           ]); ?>
                           <?php $max=35; if(!empty($sitter_info['your_self'])){ $rem = $max-str_word_count ($sitter_info['your_self']);} ?>
-                          <p class="w-limit" id="35-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <p class="w-limit" id="35-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "35";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-your-self" generated="true"></label>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
@@ -59,7 +59,7 @@
                                   'required'=>false
                           ]); ?>
                           <?php $max=75; if(!empty($sitter_info['client_choose_desc'])){ $rem = $max-str_word_count ($sitter_info['client_choose_desc']);} ?>
-                          <p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <p class="w-limit" id="75-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-client-choose-desc" generated="true"></label>
                         </div>
                   </div>
@@ -470,31 +470,35 @@ $('#useraboutsitters-client-choose-desc').change(function(){
 				array("value"=>"any","label"=>"Any"),
 
 				);
-				$newArr=explode(",",$sizeArr);
-				$jsonval = json_encode($testArr);
-				$mainArray=array();
-				foreach($testArr as $key=> $arr)
-				{ 
-				$new=$arr['value'];
-				$new2=$arr['label'];
-				if(in_array($new,$newArr) )
-						{
-							$mainArray[]=array("value"=>$new,"label"=>$new2);
+				if(!empty($sizeArr)){
+						$newArr=explode(",",$sizeArr);
+						$jsonval = json_encode($testArr);
+						$mainArray=array();
+						foreach($testArr as $key=> $arr)
+						{ 
+						$new=$arr['value'];
+						$new2=$arr['label'];
+						if(in_array($new,$newArr) )
+								{
+									$mainArray[]=array("value"=>$new,"label"=>$new2);
+								}
 						}
-				}
-				$editJsonArr=json_encode($mainArray);
-															
-				$ghmainArray=array();
-				foreach($testArr as $key=> $arr)
-				{ 
-				$val=$arr['value'];
-				$lab=$arr['label'];
-				if(in_array($val,$ghSizeArr) )
+						$editJsonArr=json_encode($mainArray);
+				}	
+				if(!empty($ghSizeArr)){
+					$ghmainArray=array();
+					foreach($testArr as $key=> $arr)
+					{ 
+						$val=$arr['value'];
+						$lab=$arr['label'];
+						if(in_array($val,$ghSizeArr) )
 						{
 							$ghmainArray[]=array("value"=>$val,"label"=>$lab);
 						}
+					}
+					$editghJsonArr=json_encode($ghmainArray);	
 				}
-				$editghJsonArr=json_encode($ghmainArray);											
+														
 				//pr($editghJsonArr);die;										
 				?>
 <script>

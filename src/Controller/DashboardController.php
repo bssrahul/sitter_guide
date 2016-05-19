@@ -598,7 +598,7 @@ class DashboardController extends AppController
           $userId = $session->read('User.id');
 
        if(isset($_FILES['profile_video']) && !empty($_FILES['profile_video'])){
-     
+		//pr($_FILES['profile_video']);
      	$userData = $usersModel->newEntity();
      	$userData->id = $userId;
      	  //Upload video
