@@ -190,18 +190,15 @@
                                  <!--/facilities-->
 								  <!--likebox-->
 								  <div class="likebox favourite_sitter1"> 
-									<button class="btn btn-heart lock" type="button">
-										<i class="icon-unlock fa fa-heart-o heart-pos"></i>
-										<i class="icon-lock fa fa-heart heart-pos"></i>
-									</button>
-									  <?php //echo $results->is_favourite; ?>
+									
+										<?php //echo $results->is_favourite; ?>
 										<?php if(trim($results->is_favourite)=='yes'){ ?>
-											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="fa fa-heart"></i>
+											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="icon-lock fa fa-heart heart-pos"></i>
 											</a>
 										<?php }else{ ?>
 																	
 											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="like favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>">
-											 <i class="fa fa-heart-o"></i>
+											 <i class="icon-unlock fa fa-heart-o heart-pos"></i>
 											</a>
 										<?php } ?>
 										<div class="Title_sub likeLoader" style="display:none;position: relative; float: right; right: 30px; bottom: 3px;"> 
@@ -312,5 +309,12 @@
 		width:163px;
 		height:165px;
 }
-.favouriteSection{text-decoration:none !important;}
+
+.favouriteSection {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    color: #da6a14;
+    font-size: 25px;
+    text-decoration:none !important;
+    outline:none;
+}
 </style>
