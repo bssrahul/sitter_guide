@@ -66,6 +66,48 @@ label.error {
 
 }
 
+
+#myModal21 .top-close {
+    background: #ffffff none repeat scroll 0 0;
+    border-bottom: 1px solid #efefef;
+    height: 40px;
+    width: 100%;
+}
+
+#myModal21 .modal-footer {
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 0 0 15px;
+    text-align: right;
+}
+
+
+#myModal21 .sitter-quike-view .sqv-box .top-close p {
+    color: #404040;
+    float: left;
+    font-size: 18px;
+    line-height: 13px;
+}
+
+#preview-avatar-profile {text-align:center; margin-top:20px;}
+
+
+#myModal21 .sitter-quike-view .sqv-box .top-close a {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    float: right;
+    height: 25px;
+    margin: -2px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.pop-top-pop {color:#72A105 !important; margin-bottom:0px; margin-top:4px;}
+
+.btn-crop {background:#72A105; color:#fff !important; font-size:14px;}
+
+.btn-crop:hover {background:#668d0b; color:#fff !important; font-size:14px;}
+
+.btn-crop:focus {background:#668d0b; color:#fff !important; font-size:14px;}
 /*End sing up*/
 
 /*CSS for footer subscribe error message*/
@@ -94,7 +136,7 @@ margin: 10px 25px 0 0 !important;
 	border: 1px solid #aaaaaa;
 	border-radius: 2px;
 	box-shadow: none;
-	height: 47px;
+	height: 40px;
 }
 
 .dob{width:100% !important;}
@@ -197,16 +239,36 @@ ul.booking_days li.active  {
   background: #4c4c4c url("../../img/training-icon.png") no-repeat scroll center top 5px;
   color: #ffffff;
 }
-
-
+<<<<<<< HEAD
 <!-- for star rating-->
+
+ .rating {
+          overflow: hidden;
+          display: inline-block;
+      }
+      .rating-input {
+          position: absolute;
+          left: 0;
+          top: -50px;
+      }
+      .rating-star {        
+          display: block;
+          float: right;        
+          width: 16px;
+          height: 16px;
+          background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+      }
+      .rating-star:hover,
+      .rating-star:hover ~ .rating-star,
+      .rating-input:checked ~ .rating-star {
+          background-position: 0 0;
+      }
 
 /* Just for the demo */
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 fieldset, label { margin: 0; padding: 0; }
-
 h1 { font-size: 1.5em; margin: 10px; }
 
 /****** Style Star Rating Widget *****/
@@ -231,7 +293,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 }
 
 .rating > label { 
-  color: #e0e0d1; 
+  color: #b8b894; 
  float: right; 
 }
 
@@ -239,7 +301,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #ffcc00;  } /* hover previous stars in list */
+.rating:not(:checked) > label:hover ~ label { color: #cc9900;  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,

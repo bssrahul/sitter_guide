@@ -115,6 +115,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                 'templates' => ['inputContainer' => '{{content}}']
                         ]); ?>
                           
@@ -135,6 +136,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -149,6 +151,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -162,6 +165,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -179,6 +183,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
+								 'default' => 'no',
                                   'templates' => ['inputContainer' => '{{content}}']
                     ]); ?>
                         </span>
@@ -198,7 +203,7 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
 								<?php $max=75; if(!empty($sitterHouseData['about_home_desc'])){ $rem = $max-str_word_count ($sitterHouseData['about_home_desc']);} ?>
-                          <p class="w-limit" id="about-home-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <p class="w-limit" id="about-home-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                          <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
                     </div>
 
@@ -214,7 +219,7 @@
                             ]); ?>
 							<?php $max=75; if(!empty($sitterHouseData['spaces_access_desc'])){ $rem = $max-str_word_count ($sitterHouseData['spaces_access_desc']);} ?>
                              <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
-                          <p class="w-limit" id="space-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <p class="w-limit" id="space-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                        
                     </div>
 
@@ -228,7 +233,7 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
 					<?php $max=75; if(!empty($sitterHouseData['home_pets_desc'])){ $rem = $max-str_word_count ($sitterHouseData['home_pets_desc']);} ?>
-                          <p class="w-limit" id="home-pets-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <p class="w-limit" id="home-pets-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                     </div>
 
                     

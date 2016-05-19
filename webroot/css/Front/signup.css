@@ -184,36 +184,39 @@ width: 0;
 .profiletab-section ul li.active > a, .profiletab-section ul li.active > a:focus, .profiletab-section ul li.active > a:hover {
     /* background-color:#7eae10; */
 }
-.profiletab-section ul li.gen:hover, .profiletab-section ul li.gen a:hover { background-color:#59a8e1; }
+.profiletab-section ul li.gen:hover, .profiletab-section ul li.gen a:hover { background-color:#59a8e1 !important; }
+.profiletab-section ul li.gen a:focus { background-color:#59a8e1 !important; }
 .profiletab-section ul li.active.gen::after {border-color: #59a8e1 transparent; }
-.profiletab-section ul li.active.gen a{ background-color:#59a8e1; }
+.profiletab-section ul li.active.gen a{ background-color:#59a8e1 !important; }
 .profiletab-section ul li.active.gen { background-color:#59a8e1; }
 
 .profiletab-section ul li.active.hou::after { border-color: #FFAD03 transparent;}
-.profiletab-section ul li.active.hou a{ background-color:#FFAD03; }
+.profiletab-section ul li.active.hou a{ background-color:#FFAD03 !important; }
 .profiletab-section ul li.active.hou { background-color:#FFAD03; }
-.profiletab-section ul li.hou:hover, .profiletab-section ul li.hou a:hover { background-color:#FFAD03; }
+.profiletab-section ul li.hou:hover, .profiletab-section ul li.hou a:hover { background-color:#FFAD03 !important; }
+.profiletab-section ul li.hou a:focus { background-color:#FFAD03 !important; }
 .profiletab-section ul li.active.hou {background-color:#FFAD03;}
 
 .profiletab-section ul li.active.sitt::after { border-color: #72A105 transparent;}
-.profiletab-section ul li.active.sitt a{ background-color:#72A105; }
+.profiletab-section ul li.active.sitt a{ background-color:#72A105 !important; }
 .profiletab-section ul li.active.sitt { background-color:#72A105; }
 
-.profiletab-section ul li.sitt:hover, .profiletab-section ul li.sitt a:hover { background-color:#72A105; }
+.profiletab-section ul li.sitt:hover, .profiletab-section ul li.sitt a:hover { background-color:#72A105 !important;}
+.profiletab-section ul li.sitt a:focus { background-color:#72A105 !important;}
 .profiletab-section ul li.active.sitt {background-color:#72A105;}
 
 .profiletab-section ul li.active.proa::after { border-color: #E17F59 transparent;}
 .profiletab-section ul li.active.proa a{ background-color:#E17F59; }
 .profiletab-section ul li.active.proa { background-color:#E17F59; }
 
-.profiletab-section ul li.proa:hover, .profiletab-section ul li.proa a:hover { background-color:#E17F59; }
-
+.profiletab-section ul li.proa:hover, .profiletab-section ul li.proa a:hover { background-color:#E17F59 !important; }
+.profiletab-section ul li.proa a:focus { background-color:#E17F59 !important; }
 .profiletab-section ul li.active.serv::after { border-color: #E159A6 transparent;}
-.profiletab-section ul li.active.serv a{ background-color:#E159A6; }
+.profiletab-section ul li.active.serv a{ background-color:#E159A6 !important; }
 .profiletab-section ul li.active.serv { background-color:#E159A6; }
 
-.profiletab-section ul li.serv:hover, .profiletab-section ul li.serv a:hover { background-color:#E159A6; }
-
+.profiletab-section ul li.serv:hover, .profiletab-section ul li.serv a:hover { background-color:#E159A6 !important;}
+.profiletab-section ul li.serv a:focus { background-color:#E159A6 !important;}
 .profiletab-section .form-control.mzero {margin: 0;}
 .profiletab-section ul li {
     display: table-cell;
@@ -554,6 +557,7 @@ padding-left: 15px;
     border-radius: 2px;
     position: relative;
     width: 100%;
+    margin-bottom: 17px;
 }
 .sitter-gal a {
     position: absolute;
@@ -742,6 +746,22 @@ i.cir-o {
 }
 .w-limit {
     text-align: right;
+}
+
+
+
+.captcha {width:100%;}
+
+
+.pull-right.m-rights > label {
+    padding: 0 7px;
+}
+
+
+
+.pull-right.m-rights > label input[type="radio"] {
+    line-height: normal;
+    margin: 3px 4px 0;
 }
 
 

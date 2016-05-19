@@ -1,4 +1,8 @@
-
+<link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
+<link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
+<script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
+<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
  <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
         <div class="row">
 
@@ -40,8 +44,8 @@
                                  'label'=>false,
                                  'required'=>false
                           ]); ?>
-						  <?php $max=35; if(!empty($sitter_info['your_self'])){ $rem = $max-str_word_count ($sitter_info['your_self']);} ?>
-                          <p class="w-limit" id="35-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <?php $max=35; if(!empty($sitter_info['your_self'])){ $rem = $max-str_word_count ($sitter_info['your_self']);} ?>
+                          <p class="w-limit" id="35-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "35";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-your-self" generated="true"></label>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
@@ -54,26 +58,27 @@
                                  'label'=>false,
                                   'required'=>false
                           ]); ?>
-						   <?php $max=75; if(!empty($sitter_info['client_choose_desc'])){ $rem = $max-str_word_count ($sitter_info['client_choose_desc']);} ?>
-                          <p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode($rem .' words remainings')); ?></p>
+                          <?php $max=75; if(!empty($sitter_info['client_choose_desc'])){ $rem = $max-str_word_count ($sitter_info['client_choose_desc']);} ?>
+                          <p class="w-limit" id="75-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-client-choose-desc" generated="true"></label>
                         </div>
                   </div>
                 
                   
-                  <p class="head-font2 pad-head-foot"><p class="w-limit" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set your sitting preferences for when your sitting at your house or your guests house')); ?></p>
+                  <p class="head-font2 pad-head-foot"><p class="" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set your sitting preferences for when your sitting at your house or your guests house')); ?></p>
                   <div class="row">
                     <div class="col-lg-6">
                     <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house ')); ?></p>
                     <div class="row">
 
-                    <div class="form-group col-lg-4">
-                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds ')); ?>Accepted Pets & breeds</label>
+                    <div class="form-group col-lg-8">
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds ')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.sh_pet',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                          'required' => false,
                         'type'=>'select',
+						
                         'options'=>[''=>'---','small_pets'=>'I accept small pets(0-7kg)','medium_pets'=>'I accept Medium pets (8-18kg)','large_pets'=>'I accept Large dogs (18-45kg)','gaint_dogs'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
                         'class'=>'form-control'
                         ]);
@@ -83,27 +88,45 @@
                       
                     </div>
                     <div class="row">
-                         <?php if(!empty(@$sitter_info->gh_pet_sizes)){
-                               $shSizeArr = explode(",",@$sitter_info->sh_pet_sizes);
-                          } 
-                          ?>
-                      <div class="form-group col-lg-4">
+                        <div class="form-group">
+						   <div class="form-group col-lg-8">
+								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>						
+							<input class="form-control col-md-7 col-xs-12" id="skillAuto" type="text" name="sh_pet_size" value="" >
+						  </div>
+						</div> 
+					</div>
+                    <!--  <div class="form-group col-lg-8">
                         <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
-                               <?php echo $this->Form->input('UserAboutSitters.sh_pet_sizes',[
+                        <?php echo $this->Form->input('UserAboutSitters.sh_pet_size',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                          'required' => false,
                          'value'=>@$shSizeArr,
+						 'id'=>'petsize',
                         'type'=>'select',
+
                         'options'=>[''=>'---','0-7'=>'I accept small pets(0-7kg)','8-18'=>'I accept Medium pets (8-18kg)','18-45'=>'I accept Large dogs (18-45kg)','45+'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
                         'class'=>'form-control mmm',
                         'multiple'=>"true"
+
+                        
+
                         ]);
                       ?>
-                      </div>
-                    </div>
+					  </div>
+					   <div class="form-group col-lg-8">
+					  <?php echo $this->Form->input('UserAboutSitters.sh_pet_size',[
+                                 'templates' => ['inputContainer' => '{{content}}'],
+                                 'type'=>'text',
+								 'id'=>'shpetsize',
+                                 'label'=>false,
+                                 'class'=>'shpetsize form-control', 
+                                  'required'=>false
+                          ]); ?>
+                      </div>-->
+
                     <div class="row">
-                      <div class="form-group col-lg-4">
+                      <div class="form-group col-lg-8">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?>  </label>
                          <?php echo $this->Form->input('UserAboutSitters.sh_guest_age',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -206,7 +229,7 @@
                    <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house')); ?> </p>
                    <div class="row">
 
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-8">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_pet',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -222,12 +245,23 @@
                       
                     </div>
                     
-                    <div class="row">
+					 <div class="row">
+                        <div class="form-group">
+						   <div class="form-group col-lg-8">
+								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>						
+							<input class="form-control col-md-7 col-xs-12" id="gh_pet_sizes" type="text" name="gh_pet_sizes" value="" >
+						  </div>
+						</div> 
+					</div>
+					
+					
+					
+                  <!--  <div class="row">
                       <?php if(!empty(@$sitter_info->gh_pet_sizes)){
                          $ghSizeArr = explode(",",@$sitter_info->gh_pet_sizes);
                     } 
                     ?>
-                      <div class="form-group col-lg-4">
+                      <div class="form-group col-lg-8">
                         <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_pet_sizes',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -241,10 +275,10 @@
                         ]);
                       ?>
                       </div>
-                    </div>
-
+                    </div> -->
+							
                     <div class="row">
-                      <div class="form-group col-lg-4">
+                      <div class="form-group col-lg-8">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?>  </label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_guest_age',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -423,3 +457,117 @@ $('#useraboutsitters-client-choose-desc').change(function(){
 });
 /*End multiple profile photos*/
 </script>
+<?php 
+
+				$testArr = array(
+				array("value"=>"0-7","label"=>"I accept small pets(0-7kg)"),
+				array("value"=>"8-18","label"=>"I accept Medium pets (8-18kg)"),
+				array("value"=>"18-45","label"=>"I accept Large dogs (18-45kg)"),
+				array("value"=>"45+","label"=>"I accept Giant dogs (45+kg)"),
+				array("value"=>"cats","label"=>"I accept cats"),
+				array("value"=>"puppies_under_1_year","label"=>"I accept puppies under 1 year"),
+				array("value"=>"kittens_under_1_year","label"=>"I accept kittens under 1 year"),
+				array("value"=>"ferrets","label"=>"I accept ferrets"),
+				array("value"=>"small_animals","label"=>"I accept small animals (rodents, rabbits birds…)"),
+				array("value"=>"other","label"=>"Other (specify)"),
+				array("value"=>"any","label"=>"Any"),
+
+				);
+				if(!empty($sizeArr)){
+						$newArr=explode(",",$sizeArr);
+						$jsonval = json_encode($testArr);
+						$mainArray=array();
+						foreach($testArr as $key=> $arr)
+						{ 
+						$new=$arr['value'];
+						$new2=$arr['label'];
+						if(in_array($new,$newArr) )
+								{
+									$mainArray[]=array("value"=>$new,"label"=>$new2);
+								}
+						}
+						$editJsonArr=json_encode($mainArray);
+				}	
+				if(!empty($ghSizeArr)){
+					$ghmainArray=array();
+					foreach($testArr as $key=> $arr)
+					{ 
+						$val=$arr['value'];
+						$lab=$arr['label'];
+						if(in_array($val,$ghSizeArr) )
+						{
+							$ghmainArray[]=array("value"=>$val,"label"=>$lab);
+						}
+					}
+					$editghJsonArr=json_encode($ghmainArray);	
+				}
+														
+				//pr($editghJsonArr);die;										
+				?>
+<script>
+  $(document).ready(function() {
+
+
+    //$("#skillAuto").tokenfield({});
+    $('#skillAuto').tokenfield({
+      autocomplete: {
+      source: <?php echo $jsonval; ?>,
+      delay: 100
+    },
+      showAutocompleteOnFocus: true,
+
+    });
+
+    $('#skillAuto').on('tokenfield:createtoken', function (event) {
+      var existingTokens = $(this).tokenfield('getTokens');
+      $.each(existingTokens, function(index, token) {
+          if (token.value === event.attrs.value)
+              event.preventDefault();
+    });
+});
+  });
+</script>
+
+<?php if(@$skillFlag) { ?>
+    <script>
+    $(document).ready(function() {
+    
+      $('#skillAuto').tokenfield('setTokens', <?php echo $editJsonArr; ?>);
+    });
+    </script>
+<?php } ?>
+
+
+
+<script>
+  $(document).ready(function() {
+
+
+    //$("#skillAuto").tokenfield({});
+    $('#gh_pet_sizes').tokenfield({
+      autocomplete: {
+      source: <?php echo $jsonval; ?>,
+      delay: 100
+    },
+      showAutocompleteOnFocus: true,
+
+    });
+
+    $('#gh_pet_sizes').on('tokenfield:createtoken', function (event) {
+      var existingTokens = $(this).tokenfield('getTokens');
+      $.each(existingTokens, function(index, token) {
+          if (token.value === event.attrs.value)
+              event.preventDefault();
+    });
+});
+  });
+</script>
+
+<?php if(@$gh_pet_sizesFlag) { ?>
+    <script>
+    $(document).ready(function() {
+    
+      $('#gh_pet_sizes').tokenfield('setTokens', <?php echo $editghJsonArr; ?>);
+    });
+    </script>
+<?php } ?>

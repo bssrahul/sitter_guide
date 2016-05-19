@@ -15,18 +15,18 @@
 .sr-area .top-filter-tab ul li a{ text-align:left; text-decoration:none; color:#404040; text-align:left; font-size:14px; line-height:18px; padding:15px 0 10px 0; display:block;}
 .sr-area .top-filter-tab ul li a span{ width:31px; height:29px; display:block; background:red; float:left; margin:3px 12px 0 35px; }
 .sr-area .top-filter-tab ul li a b{ font-weight:normal; font-size:12px;}
-.sr-area .top-filter-tab ul li a:hover, .sr-area .top-filter-tab ul li a:focus{ cursor:pointer;color:#72a105; background:url(../../img/search-tab-bgr-x.png) repeat-x bottom; }
-.sr-area .top-filter-tab ul li a.boarding span {background:url(../../img/search-icons.png) no-repeat 0px -470px;}
-.sr-area .top-filter-tab ul li a.boarding:hover span, .sr-area .top-filter-tab ul li a.boarding:focus span {background:url(../../img/search-icons.png) no-repeat 0px -500px;}
-.sr-area .top-filter-tab ul li a.h-sitting span {background:url(../../img/search-icons.png) no-repeat -31px -470px;}
-.sr-area .top-filter-tab ul li a.h-sitting:hover span, .sr-area .top-filter-tab ul li a.h-sitting:focus span {background:url(../../img/search-icons.png) no-repeat -31px -500px;}
-.sr-area .top-filter-tab ul li a.d-visit span {background:url(../../img/search-icons.png) no-repeat -62px -470px;}
-.sr-area .top-filter-tab ul li a.d-visit:hover span, .sr-area .top-filter-tab ul li a.d-visit:focus span {background:url(../../img/search-icons.png) no-repeat -62px -500px;}
-.sr-area .top-filter-tab ul li a.dn-care span {background:url(../../img/search-icons.png) no-repeat -93px -470px;}
-.sr-area .top-filter-tab ul li a.dn-care:hover span, .sr-area .top-filter-tab ul li a.dn-care:focus span {background:url(../../img/search-icons.png) no-repeat -93px -500px;}
-.sr-area .top-filter-tab ul li a.m-place span{background:url(../../img/search-icons.png) no-repeat -124px -470px;}
-.sr-area .top-filter-tab ul li a.m-place:hover span, .sr-area .top-filter-tab ul li a.m-place:focus span{background:url(../../img/search-icons.png) no-repeat -124px -500px;}
-.sr-area .top-filter-tab ul li a.active{ color:#72a105; background:url(../../img/search-tab-bgr-x.png) repeat-x bottom; }
+.sr-area .top-filter-tab ul li a:hover, .sr-area .top-filter-tab ul li a:focus{ cursor:pointer;color:#72a105; background:url(../images/search-tab-bgr-x.png) repeat-x bottom; }
+.sr-area .top-filter-tab ul li a.boarding span {background:url(../images/search-icons.png) no-repeat 0px -470px;}
+.sr-area .top-filter-tab ul li a.boarding:hover span, .sr-area .top-filter-tab ul li a.boarding:focus span {background:url(../images/search-icons.png) no-repeat 0px -500px;}
+.sr-area .top-filter-tab ul li a.h-sitting span {background:url(../images/search-icons.png) no-repeat -31px -470px;}
+.sr-area .top-filter-tab ul li a.h-sitting:hover span, .sr-area .top-filter-tab ul li a.h-sitting:focus span {background:url(../images/search-icons.png) no-repeat -31px -500px;}
+.sr-area .top-filter-tab ul li a.d-visit span {background:url(../images/search-icons.png) no-repeat -62px -470px;}
+.sr-area .top-filter-tab ul li a.d-visit:hover span, .sr-area .top-filter-tab ul li a.d-visit:focus span {background:url(../images/search-icons.png) no-repeat -62px -500px;}
+.sr-area .top-filter-tab ul li a.dn-care span {background:url(../images/search-icons.png) no-repeat -93px -470px;}
+.sr-area .top-filter-tab ul li a.dn-care:hover span, .sr-area .top-filter-tab ul li a.dn-care:focus span {background:url(../images/search-icons.png) no-repeat -93px -500px;}
+.sr-area .top-filter-tab ul li a.m-place span{background:url(../images/search-icons.png) no-repeat -124px -470px;}
+.sr-area .top-filter-tab ul li a.m-place:hover span, .sr-area .top-filter-tab ul li a.m-place:focus span{background:url(../images/search-icons.png) no-repeat -124px -500px;}
+.sr-area .top-filter-tab ul li a.active{ color:#72a105; background:url(../images/search-tab-bgr-x.png) repeat-x bottom; }
 #slider-range .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { border-bottom-right-radius:10px; border-bottom-left-radius:10px; border-top-right-radius:10px; border-top-left-radius:10px; }
 #slider-range.ui-slider-horizontal {height: 0.3em;}
 #slider-range.ui-slider-horizontal .ui-slider-handle {	top: -0.5em; }
@@ -278,7 +278,7 @@
 
 /*Contact Sitter Css Start*/
 .cont-sitter{ width:100%; float:left;}	
-.cont-sitter .cs-ban-area{ width:100%; float:left; background: url(../../img/contact-sit-banner.jpg) no-repeat center; background-size:cover; min-height:350px; }
+.cont-sitter .cs-ban-area{ width:100%; float:left; background: url(../images/contact-sit-banner.jpg) no-repeat center; background-size:cover; min-height:350px; }
 .cont-sitter .cs-ban-area .csb-cont{ width:100%; float:left; text-align:center; padding:65px 0;}
 .cont-sitter .cs-ban-area .csb-cont img{ width:90px; height:90px; border-radius:50%; border:#ffffff 7px solid;}
 .cont-sitter .cs-ban-area .csb-cont h1{ color:#72a105; font-size:35px; padding:15px 0 15px 0;}
@@ -320,8 +320,8 @@
 .additional-services .as-area{ width:100%; overflow:hidden; border:#f0f0f0 1px solid; border-radius:3px 3px 0 0; margin:0 0 15px 0;}
 .additional-services .as-area .h-box{ background:#f8f8f8; width:100%; border-radius:3px 3px 0 0; padding:10px 15px; border:#f5f5f5 1px solid; text-align:left;}  
 .additional-services .as-area .h-box p{font-size:14px;}
-.additional-services .as-area .h-box p b{ width:31px; height:28px; display:block; background:url(../../img/search-icons.png) no-repeat 0px -470px;  margin:5px 10px 0px 0; float:left;}
-.additional-services .as-area .h-box-2 p b{ width:31px; height:28px; display:block; background:url(../../img/search-icons.png) no-repeat -31px -470px;  margin:5px 10px 0px 0; float:left;}
+.additional-services .as-area .h-box p b{ width:31px; height:28px; display:block; background:url(../images/search-icons.png) no-repeat 0px -470px;  margin:5px 10px 0px 0; float:left;}
+.additional-services .as-area .h-box-2 p b{ width:31px; height:28px; display:block; background:url(../images/search-icons.png) no-repeat -31px -470px;  margin:5px 10px 0px 0; float:left;}
 .additional-services .as-area .h-box span{ float:right; font-size:20px; font-weight:bold; text-align:center; }
 .additional-services .as-area .h-box span b{ display:block; font-size:12px; font-weight:normal;}
 

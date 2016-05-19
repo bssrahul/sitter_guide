@@ -181,7 +181,8 @@
 				  $('.medical-experience').prop('checked', false);
 			  }
 		});
-   
+		
+		
 	});
 
 	function gerSearchResult(){
@@ -210,5 +211,38 @@
 	$(document).on( 'change', '.searchByDistance', function (e){
 		$('#hidden_distance').val($(this).val());
 		gerSearchResult();
-	 });
+	});
+	
+	$(document).on('click','.favouriteSection',function(){
+
+		var objLike = $(this);
+		var actionURL = objLike.data("href");
+		objLike.parent('.favourite_sitter1').children('.likeLoader').show();
+		$.ajax({
+			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+			success:function(res)
+			{
+				var response = res.split(':');
+				
+				if($.trim(response[0]) == 'Success'){
+				
+					if($.trim(response[1])=='unlike')
+					{
+						objLike.removeClass('unlike');
+						objLike.addClass('like');					
+						objLike.html('&nbsp;<i class="fa fa-heart-o"></i>');
+					}
+					else
+					{
+						objLike.removeClass('like');
+						objLike.addClass('unlike');		
+						objLike.html('&nbsp;<i class="fa fa-heart"></i>');
+					}
+				}else if($.trim(response[0]) == 'Error'){
+					window.location.href=ajax_url+"guests/login";
+				}
+				objLike.parent('.favourite_sitter1').children('.likeLoader').hide();
+			}
+		});
+	});	/*FAVOURITE SECTION END*/
 	

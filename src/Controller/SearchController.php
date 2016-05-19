@@ -59,6 +59,8 @@ class SearchController extends AppController
 			}
 		}
 		$this->set('distancearray', $distancearray);
+		$session = $this->request->session();
+		$this->set('logedInUserId', $session->read('User.id'));
     }
     
 	public function initialize()
@@ -112,6 +114,7 @@ class SearchController extends AppController
 		
 		//ADD MODEL
 		$UsersModel = TableRegistry::get('Users');
+		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
 		
 		$conditions = array();
 		
@@ -376,7 +379,22 @@ class SearchController extends AppController
 				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
+				$loggedInUserID = $session->read('User.id');
+				if($loggedInUserID !=''){
+					if(!empty($userData)){
+						foreach($userData as $k=>$eachRow){
 								
+							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
+							if($UserSitterFavourite>0){
+								$userData[$k]['is_favourite'] =  "yes";
+							}else{
+								$userData[$k]['is_favourite'] =  "no";
+							}
+								
+						}	 
+					}
+				}
+				
 				$this->set('resultsData',$userData);
 				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
@@ -407,7 +425,7 @@ class SearchController extends AppController
 		
 		//ADD MODEL
 		$UsersModel = TableRegistry::get('Users');
-		
+		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
 		$conditions = array();
 		
 		if(!empty($this->request->data)){
@@ -465,10 +483,25 @@ class SearchController extends AppController
 				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
-				
+				$loggedInUserID = $session->read('User.id');
+				if($loggedInUserID !=''){
+					if(!empty($userData)){
+						foreach($userData as $k=>$eachRow){
+								
+							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
+							
+							if($UserSitterFavourite > 0){
+								$userData[$k]['is_favourite'] =  "yes";
+							}else{
+								$userData[$k]['is_favourite'] =  "no";
+							}
+								
+						}	 
+					}
+				}
 			}
 		
-
+		//pr($userData); die;
 		$this->set('resultsData',$userData);
 		$this->set('distanceAssociation',$distanceAssociation);
 		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
@@ -508,7 +541,46 @@ class SearchController extends AppController
 		
 		//pr($userData);die;
 	}
-
+	
+	function favoriteSitter($sitterId = NULL, $userId = NULL)
+	{
+		
+		if($userId==""){
+			
+			$this->setErrorMessage($this->stringTranslate(base64_encode('Kindly login before perform this action.')));
+			echo "Error:not-loggedin";die;
+			
+		}else{
+			$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
+			if($sitterId!='' || $userId!='')
+			{
+				$sitterId = convert_uudecode(base64_decode($sitterId)); 
+				$userId = convert_uudecode(base64_decode($userId)); 
+				
+			
+				$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$sitterId,'UserSitterFavourites.user_id'=>$userId]]);
+				
+				$UserSitterFavouriteRes = $UserSitterFavourite->first();
+				
+				if($UserSitterFavourite->count() > 0){
+				
+					$entity = $UserSitterFavouriteModel->get($UserSitterFavouriteRes->id);
+					$UserSitterFavouriteModel->delete($entity);
+					echo "Success:unlike";die;
+				}
+				else
+				{
+					$UserSitterFavouriteData = $UserSitterFavouriteModel->newEntity();
+					
+					$UserSitterFavouriteData->sitter_id = $sitterId;
+					$UserSitterFavouriteData->user_id = $userId;
+					$UserSitterFavouriteModel->save($UserSitterFavouriteData);
+					echo "Success:like";die;
+				}
+			}	
+		}	
+		
+	}
 
 }
 ?>
