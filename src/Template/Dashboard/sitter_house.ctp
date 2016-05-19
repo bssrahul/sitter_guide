@@ -1,4 +1,4 @@
- <?php //echo "<pre>";print_r($houseInfo); die;?>
+<?php //echo "<pre>";print_r($houseInfo); die;?>
  <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
         <div class="row">
 
@@ -14,7 +14,7 @@
  <div id="menu11" class="tab-pane fade tab-comm active in">
           
                   <!--<form role="form">-->
-                  <?php echo $this->Form->create(@$sitterHouseData, [
+                  <?php echo $this->Form->create(@$sitterHouseData,[
                       'url' => ['controller' => 'dashboard', 'action' => 'sitter-house'],
                       'role'=>'form',
                       'id'=>'sitterHouse'
@@ -294,6 +294,8 @@ $(document).ready(function(){
                 $('.uploading').show();
             },
             success:function(res){
+              console.log(res);
+              
              var data = jQuery.parseJSON(res);
             if($.trim(data[0]) != ''){
               $('#show-all-errors').html(data[0]); //DISPLAY SUCCESS MESSAGE

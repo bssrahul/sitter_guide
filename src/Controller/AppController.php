@@ -214,7 +214,6 @@ class AppController extends Controller{
 	{
 	
 		$this->loadComponent('Resize');
-		//echo $type;print_r($FileArr);die;
 		$this->viewBuilder()->layout('');
 		$this->autoRender=false;
 		
@@ -250,11 +249,27 @@ class AppController extends Controller{
 				$logoSize="4194304";
 				$logoKb = '4 MB';
 			}
+			else if($type == 'profileVideoImg')
+			{
+				$uploadFolder="uploads";	
+				$logoWidth = "1000";
+				$logoHeight = "372";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
+			}
 			else if($type == 'petImage')
 			{
 				$uploadFolder="petImages";	
 				$logoWidth = "400";
 				$logoHeight = "400";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
+			}
+			else if($type == 'sitterGallery')
+			{
+				$uploadFolder="uploads";	
+				$logoWidth = "800";
+				$logoHeight = "550";
 				$logoSize="4194304";
 				$logoKb = '4 MB';
 			}

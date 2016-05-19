@@ -78,10 +78,12 @@
 									  
 										  <div class="sit-p-head">
 											
-											<p class="head-txt" onclick="location.href = '<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>'">
+											<p class="head-txt">
 
 												<span><?php echo $rankNo; ?></span>
+												<a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">
 												<?php echo $results->first_name." ".substr(($results->last_name)?$results->last_name:"",0,1)."."; ?> 
+											   </a>
 												<b><img src="<?php echo HTTP_ROOT; ?>img/certify-1.png"  alt=""/></b> 
 												<b><img src="<?php echo HTTP_ROOT; ?>img/certify-2.png"  alt=""/></b>
 											</p>

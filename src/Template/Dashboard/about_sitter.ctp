@@ -95,7 +95,7 @@
                          'required' => false,
                          'value'=>@$shSizeArr,
                         'type'=>'select',
-                        'options'=>[''=>'---','small_pets'=>'I accept small pets(0-7kg)','medium_pets'=>'I accept Medium pets (8-18kg)','large_pets'=>'I accept Large dogs (18-45kg)','gaint_dogs'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
+                        'options'=>[''=>'---','0-7'=>'I accept small pets(0-7kg)','8-18'=>'I accept Medium pets (8-18kg)','18-45'=>'I accept Large dogs (18-45kg)','45+'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
                         'class'=>'form-control mmm',
                         'multiple'=>"true"
                         ]);

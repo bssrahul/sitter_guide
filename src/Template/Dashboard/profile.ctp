@@ -402,6 +402,36 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                         </div>
                 </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
+                       <div class="row d-m2">
+                       <div class="col-lg-7">
+                      <p class="browse-p">
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile video image')); ?>
+                        <!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
+                      <p  class="min-hh">
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
+                           
+                      </p>
+                      <button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
+                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
+                        </button>
+
+                        </div>
+                        <div class="col-lg-5">
+                          <?php if(@$userInfo->profile_video_image != ''){
+                                  $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
+                            }else{
+                                 $pathVideoImg = HTTP_ROOT.'img/deta-video.png'; 
+                            }
+                         
+                            ?>
+                                <img id="preview-profile-video-image" class="img-responsive" src="<?php echo @$pathVideoImg; ?>">
+                                 <?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
+                              </div>
+                        </div>
+                     </div>
+                </div>
                   <div class="row pull-right sp-tb">
                     <p class="col-lg-12">
                       <input type="submit" class="btn Continue" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Continue')); ?>" >
@@ -469,6 +499,11 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                   'url'=>['controller'=>'dashboard','action'=>'save-profile-banner'],
                   'style'=>"visibility: hidden"]); ?>
                 <input type="file" name="profile_banner" id="profile_banner" />
+<?php echo $this->Form->end(); ?>
+<?php echo $this->Form->create(null,['id'=>'videoImage','enctype'=>'multipart/form-data',
+                  'url'=>['controller'=>'dashboard','action'=>'save-profile-video-image'],
+                  'style'=>"visibility: hidden"]); ?>
+                <input type="file" name="profile_video_image" id="profile_video_image" />
 <?php echo $this->Form->end(); ?>
 
       <script>
@@ -605,7 +640,7 @@ $(document).ready(function(){
     }).submit();
   });
   /*End profile video*/
-  /*End profile banner*/
+  /*Start profile banner*/
   $("#browseBanner").on('click',function(){
         $("#profile_banner").trigger("click");    
         });
@@ -628,6 +663,35 @@ $(document).ready(function(){
               if($.trim(response[0]) == 'Error'){
                 $('.clr').html(''); //Emtpy Error MESSAGE
                 $('.addBannerError').html(response[1]); //DISPLAY SUCCESS MESSAGE
+              }
+            }
+      
+       
+    }).submit();
+  });
+  /*Start profile video image*/
+  $("#browseVideoImage").on('click',function(){
+    $("#profile_video_image").trigger("click");    
+        });
+
+  $(document).on('change','#profile_video_image', function(){ 
+
+    //$("#preview-avatar-profile").html('');
+    //$("#preview-avatar-profile").html('Uploading....');
+    $("#videoImage").ajaxForm(
+    {
+    //target: '#preview-profile-video',
+    success: function(res) { 
+      //alert(res);
+        var response = res.split('::');
+              if($.trim(response[0]) == 'Success'){
+                //alert(response[1]);
+                 $('.clr').html(''); //Emtpy Error MESSAGE
+                  $("#preview-profile-video-image").attr('src',response[1]);
+              }
+              if($.trim(response[0]) == 'Error'){
+                $('.clr').html(''); //Emtpy Error MESSAGE
+                $('.addVideoImgError').html(response[1]); //DISPLAY SUCCESS MESSAGE
               }
             }
       
