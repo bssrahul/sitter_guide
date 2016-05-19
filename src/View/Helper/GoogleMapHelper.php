@@ -571,9 +571,10 @@ class GoogleMapHelper extends Helper {
           fillColor: '{$fillColor}',
           fillOpacity: {$fillOpacity},
           center: center,
-          radius: {$radius}
+          radius: {$radius},
+          map:{$map_id}
         });
-        {$id}Circle.setMap({$map_id});
+        
 
       </script>
       ";
