@@ -12,7 +12,6 @@
 <div class="banner-info-inner">
 <div class="client-image center-block">
 
-<?php //echo @$userData->image; ?>
   <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client"> </div>
   
   <h2 class="name-banner text-center">
@@ -77,7 +76,7 @@
 
 <h5 class="additional"><a href="#" data-toggle="modal" data-target="#myModal7"> Additional Services & Rates </a></h5>
 <div class="text-center">
-<button class="btn btn-cont">Contact</button>
+<button class="btn btn-cont" onclick="location.href='<?php echo HTTP_ROOT.'search/sitter-contact'; ?>'">Contact</button>
 </div>
 </div>
 
@@ -115,15 +114,17 @@
   
    
     <h3 class="mid-sec-title1 ">Reliable & Loving Pet Sitter</h3>
-    
-    <p class="detail-text text-justify">   Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
+    <p class="detail-text text-justify">  
+    <?php echo @$userData->user_about_sitter->your_self; ?>
+
+    <!--ABout Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
  animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-1" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
 
 
 <br>
 
 <a  href="#search-col-1" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>
+                 </a>-->
 
 
  </p>
@@ -135,16 +136,17 @@
     
     
        <div class="imgWrap">
-       
        <a data-toggle="modal" href="#" data-target="#myModal2">
-  <img src="<?php echo HTTP_ROOT; ?>img/deta-video.png" class="img-responsive" alt="polaroid" />
+
+         
+  <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->profile_video_image != ''?@$userData->profile_video_image:'dummy-video.png'); ?>" class="img-responsive" alt="polaroid" />
   <p class="imgDescription"><img src="<?php echo HTTP_ROOT; ?>img/detail-play.png" class="play-video-btn" width="90" height="64" alt="play"></p></a>
 </div>
     
     
  </div>
  
- <h3 class="mid-sec-title1 pb15 "><?php echo @$userData->first_name; ?>'s clients</h3>
+ <h3 class="mid-sec-title1 pb15 "><?php echo @$userData->first_name; ?>'s profile photos</h3>
  
    
    <div class="row">
@@ -156,67 +158,38 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
+    <?php if(isset($userData->user_sitter_galleries)){ 
+    
+    ?>
     <div class="item active">
-    <div class="row"> 
-   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client1.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client4.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     </div>
-    </div>
+      <div class="row"> 
+       <?php 
+         $i = 1;
+        foreach($userData->user_sitter_galleries as $key=>$single_image){ ?>
 
-    <div class="item">
-    <div class="row">  
-   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client1.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client4.jpg" class="img-responsive responsivept15" alt="client1"> </div></div>
-    </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+           <img src="<?php echo HTTP_ROOT.'img/uploads/'.$single_image->image; ?>"  class="img-responsive responsivept15" alt="client1">
+          </div>
+        <?php 
+           if($i%4==0){
+           
+            echo '</div></div>';
+            }
 
-    <div class="item">
-   <div class="row">    
-   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client1.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client4.jpg" class="img-responsive responsivept15" alt="client1"> </div></div>
-    </div>
+            if($i%4==0 && (count($userData->user_sitter_galleries) != $i))
+            {
+              $continue;
+             echo '<div class="item"><div class="row">'; 
+            }
 
-    <div class="item">
-    <div class="row">    
-   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client1.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-     
-     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-     <img src="<?php echo HTTP_ROOT; ?>img/detail-client4.jpg" class="img-responsive responsivept15" alt="client1"> </div></div>
-    </div>
+         $i++;
+        
+        }
+        if(count($userData->user_sitter_galleries)<4){echo "</div></div>"; }
+        ?>
+       
+    <?php 
+     } ?>
   </div>
 
   <!-- Left and right controls -->
@@ -413,10 +386,10 @@
     <?php echo $userData->user_sitter_house->about_home_desc; ?>
 
    <!-- Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-2" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>-->
+ animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-2" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
 <br>
 <a  href="#search-col-2" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>
+                 </a>-->
 
 
  </p>
@@ -435,10 +408,10 @@
    <p class="detail-text text-justify">   
  <?php echo $userData->user_sitter_house->spaces_access_desc; ?>
     <!--Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-3" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>-->
+ animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-3" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
 <br>
 <a  href="#search-col-3" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>
+                 </a>-->
 
 
  </p>
@@ -448,7 +421,7 @@
    
    </div>
    
-   <div class="row pt10 ">
+   <!--<div class="row pt10 ">
    
    
    
@@ -465,7 +438,7 @@
      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
      <img src="<?php echo HTTP_ROOT; ?>img/detail-space4.jpg" class="img-responsive responsivept15" alt="client1"> </div>
    
-   </div>
+   </div>-->
    
    
     <div class="one">
@@ -477,10 +450,10 @@
    <p class="detail-text text-justify"> 
    <?php echo $userData->user_sitter_house->home_pets_desc; ?> 
    <!-- Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of f situation, all types of f situation,all types of f situation, we will make it work. I have worked with all types of
- animals and love and can care for them all.  pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-4" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>-->
+ animals and love and can care for them all.  pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-4" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
 <br>
 <a  href="#search-col-4" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>
+                 </a>-->
 
 
  </p>
@@ -779,7 +752,22 @@
      <li><i class="fa fa-reply icon-width30"></i>Response Rate : <b>100%</b></li>
      <li><span class="book"></span>Average Response Time : <b>With in Hour</b></li>
       <li><i class="fa fa-user icon-width30 icon-p15"></i>Last Activity : <b>
-        <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; ?> 1 hour 15 min ago</b></li>
+        <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
+        if($userData->avail_status == 'Login'){
+            echo '<span style="color:green">Available<//span>';
+        }else{
+            $seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime($userData->last_login);
+            $days    = floor($seconds / 86400);
+            $hours = floor(($seconds - ($days * 86400)) / 3600);
+            $minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+            $seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+
+            echo $hours." hours ".$minutes." min "."ago";
+        }
+       
+
+        ?>
+        </b></li>
        <li><i class="fa fa-refresh icon-width30 icon-p15"></i>Repeat Guest : <b> 15</b></li>
      </ul>
    
@@ -831,31 +819,48 @@
      
     
      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-     
-       <ul class="pet-list">
-      <li class="pet-1">
-        <span></span>
-       <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-        <li class="pet-2">
-        <span></span>
-       <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-        <li class="pet-3">
-        <span></span>
-        <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-        <li class="pet-4">
-        <span></span>
-        <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-     </ul> 
-     
-     
+      <?php
+         @$petSizesArr = explode(',',@$userData->user_about_sitter->sh_pet_sizes);
+      ?>
+        
+        <ul class="pet-list">
+         <?php  foreach($petSizesArr as $size_val){
+          //if(isset($size_val == '0-7')){ 
+           //echo 'ok'.$size_val;
+           if($size_val == '0-7'){
+           ?>
+            <li class="pet-1">
+              <span></span>
+               <p class="weight"><?php echo $size_val; ?></p>
+               <p class="pound">Kg</p>
+            </li>
+            <?php } 
+            else if($size_val == '8-18'){
+            ?>
+            <li class="pet-2">
+            <span></span>
+               <p class="weight"><?php echo $size_val; ?></p>
+               <p class="pound">Kg</p>
+            </li>
+            <?php }
+             else if($size_val == '18-45'){
+             ?>
+            <li class="pet-3">
+              <span></span>
+              <p class="weight"><?php echo $size_val; ?></p>
+              <p class="pound">Kg</p>
+            </li>
+            <?php }
+             else if($size_val == '45+'){
+             ?>
+            <li class="pet-4">
+              <span></span>
+              <p class="weight"><?php echo $size_val; ?></p>
+              <p class="pound">Kg</p>
+            </li>
+          <?php } 
+        } ?>
+        </ul> 
      </div>
      
      
@@ -865,25 +870,37 @@
      <p class="dog-title1"><b>Additional prefrences</b></p>
      
        <ul class="pet-list">
-      <li class="pet-5">
-        <span></span>
-       <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-        <li class="pet-6">
-        <span></span>
-        <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-        <li class="pet-7">
-        <span></span>
-         <p class="weight">0-15</p>
-    <p class="pound">Pounds</p>
-        </li>
-        <li class="pet-4">
-        &nbsp;
-        </li>
-     </ul>
+        <?php  foreach($petSizesArr as $size_val){
+
+          if($size_val == 'cat'){
+          ?>
+          <li class="pet-5">
+            <span></span>
+            <p class="weight">0-15</p>
+            <p class="pound">Pounds</p>
+          </li>
+          <?php }
+           else if($size_val == 'small_animals'){
+           ?>
+          <li class="pet-6">
+              <span></span>
+              <p class="weight">0-15</p>
+              <p class="pound">Pounds</p>
+          </li>
+          <?php }
+           else if($size_val == 'small_animals'){
+           ?>
+          <li class="pet-7">
+              <span></span>
+              <p class="weight">0-15</p>
+              <p class="pound">Pounds</p>
+          </li>
+          <?php } 
+        } ?>
+          <li class="pet-4">
+              &nbsp;
+          </li>
+       </ul>
    
      </div>
      </div>
@@ -1123,6 +1140,36 @@
   
 </main>
 <!--[content area End]-->
+<!--video popup start-->
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog video-box" >  
+    <div class="modal-header bod-bot">
+          <button aria-label="Close" data-dismiss="modal" class="close" style="color:#fff; opacity:1;" type="button"><span aria-hidden="true"></span> <i class="fa fa-close"></i></button>
+         
+        </div>
+      
+   <div id="myCarousel13" class="carousel slide" data-ride="carousel">    
+      <div class="carousel-inner video-box" role="listbox">
+      <div class="item active video-iner">      
+       <video width="80%" height="auto" autoplay class="header_video">
+        <?php if(@$userData->profile_video != ''){
+          $videoPath = HTTP_ROOT.'files/video/'.@$userData->profile_video;
+        }else{
+         $videoPath = HTTP_ROOT.'files/video/pdm.mp4';
+        } ?>
+        <source class="video_img" type="video/mp4" src="<?php echo $videoPath; ?>"></source>
+      </video>    
+      </div>
+
+    
+    </div>
+    <!-- Left and right controls -->
+    
+       <!-- Left and right controls -->
+  </div>   
+    </div>
+  </div>  
+<!--video popup ends-->
 <!--Additional Services Popup-->
   <div class="modal fade" id="myModal7" role="dialog">
     <div class="modal-dialog">
@@ -1272,7 +1319,7 @@
                   </p>
                                  </div>
                                  <div class="prce">
-                                  <p>$20</p>
+                                 <p><?php echo '$'.$userData->user_sitter_services[0]->mp_ds_premium_driver_service_rate; ?></p>
                                    </div> 
                                 </li>
                                 <li>
@@ -1296,7 +1343,7 @@
                                 30-minute check-ins </p>
                                 </div>
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
-                                 <span>$18  <b>per visit</b></span>
+                                 <span><?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>  <b>per visit</b></span>
                                 </div>                                
                             </div>                                
                             </div>
@@ -1308,7 +1355,7 @@
                   </p>
                                  </div>
                                  <div class="prce">
-                                  <p>$10</p>
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?></p>
                                    </div> 
                                 </li>
                                 <li>
@@ -1318,7 +1365,7 @@
                   </p>
                                  </div>
                                  <div class="prce">
-                                  <p>$25</p>
+                                  <p><?php echo '$'.$userData->user_sitter_services[0]->gh_nc_additional_guest_rate; ?></p>
                                    </div> 
                                 </li>
                                 <li>
@@ -1343,7 +1390,7 @@
                                 n the sitter's home  </p>
                                 </div>
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
-                                 <span>$25  <b>per day</b></span>
+                                 <span><?php echo '$'.$userData->user_sitter_services[0]->sh_day_rate; ?>  <b>per day</b></span>
                                 </div>                                
                             </div>                                
                             </div>
