@@ -307,8 +307,7 @@ class DashboardController extends AppController
                 $country_info[$val['phonecode']] = $val['iso']."     (".$val['phonecode'].")"; 
 		 }
 		 $this->set('counry_info',$country_info);
-          //pr($country_info);die;
-		 $zonesModel = TableRegistry::get('Zones');
+         $zonesModel = TableRegistry::get('Zones');
 		 $zones_data = $zonesModel->find('all')->toArray();
 		 foreach($zones_data as $key=>$val){
                 $zones_info[$key] = $val['zone_name']; 
@@ -327,35 +326,26 @@ class DashboardController extends AppController
           $userId = $session->read('User.id');
    
         $sitterHousesModel = TableRegistry::get('UserSitterHouses');
-
-		//$this->request->data = @$_REQUEST;
-		//pr($this->request->data); die;
-		if(isset($this->request->data['UserSitterHouses']) && !empty($this->request->data['UserSitterHouses']))
+        if(isset($this->request->data['UserSitterHouses']) && !empty($this->request->data['UserSitterHouses']))
 		{
-			//pr($this->request->data['UserSitterHouses']);die;
-			   $sitterHouseData = $sitterHousesModel->newEntity();
+			$sitterHouseData = $sitterHousesModel->newEntity();
                $sitterHouseData = $sitterHousesModel->patchEntity($sitterHouseData, $this->request->data['UserSitterHouses'],['validate'=>true]);
                 $sitterHouseData->user_id = $userId;
-				//pr($sitterHouseData);die;
-             // pr($sitterHouseData->errors());  die;
-                if ($sitterHousesModel->save($sitterHouseData)){
+			    if ($sitterHousesModel->save($sitterHouseData)){
                	     return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
 				}else{
-					//pr($sitterHouseData->errors());die;
-					$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				  $this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}
 			 	unset($sitterHouseData->id);
 		       $this->set('sitterHouseData', $sitterHouseData);
 
-		            //echo @$sitterHouseId;die;
-				     $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+		            $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
 		           if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
 		                  $images_arr = $query->user_sitter_galleries;
 		                  $sitterImg = array();
 		                   $html = " ";
 		                   foreach($images_arr as $key=>$val){
-		                   	//echo $val->id;die;
-		                     $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+		                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
 		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
 		                   	 $html .='</div></div>';
 		                    }
@@ -366,19 +356,16 @@ class DashboardController extends AppController
 		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
 		    if(isset($query->user_sitter_house) && !empty($query->user_sitter_house)){
                    $sitterHouseData = $query->user_sitter_house;
-				  // pr($sitterHouseData);die;
-                   $this->set('sitterHouseId', $sitterHouseData->id);
+				  $this->set('sitterHouseId', $sitterHouseData->id);
                    $this->set('sitterHouseData', $sitterHouseData);
 		    }
-		    //echo @$sitterHouseId;die;
-		     $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+		    $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
            if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
                   $images_arr = $query->user_sitter_galleries;
                   $sitterImg = array();
                    $html = " ";
                    foreach($images_arr as $key=>$val){
-                   	//echo $val->id;die;
-                     $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
                    	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                    	 $html .='</div></div>';
                     }
@@ -403,7 +390,6 @@ class DashboardController extends AppController
 
 		if(isset($this->request->data['UserAboutSitters']))
 		{
-			    //pr($this->request->data); die;
 			$aboutSitterData = $aboutSittersModel->newEntity();
 
             if(!empty($this->request->data['UserAboutSitters']['sh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['sh_pet_sizes'][0])){
@@ -414,13 +400,9 @@ class DashboardController extends AppController
 	              $petSizeArr = $this->request->data['UserAboutSitters']['gh_pet_sizes'];
 	             $aboutSitterData->gh_pet_sizes = $this->request->data['UserAboutSitters']['gh_pet_sizes'] = implode(",",$petSizeArr);
 	        }
-		       //pr($this->request->data); die;
-               //$aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>false]);
-               // pr($aboutSitterData);die;
-	        $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
+		     $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
             $aboutSitterData->user_id = $userId;
-			//pr($aboutSitterData);die;
-               if ($aboutSittersModel->save($aboutSitterData)){
+			  if ($aboutSittersModel->save($aboutSitterData)){
 
                       return $this->redirect(['controller'=>'dashboard','action'=>'professional-accreditations']);
 				}else{
@@ -432,7 +414,6 @@ class DashboardController extends AppController
 			 		$this->set('aboutSitterId', $aboutSitterData->id);
 			 	}
 		       $this->set('sitter_info', $aboutSitterData);
-               //return $this->redirect(['controller'=>'dashboard','action'=>'professional-accreditations']); 
         }else{
             $query = $usersModel->get($userId,['contain'=>'UserAboutSitters']);
           
@@ -462,7 +443,6 @@ class DashboardController extends AppController
 				   $this->set('ghSizeArr',$ghSizeArr);
                    $this->set('aboutSitterId', $aboutSitterData->id);
                    unset($aboutSitterData->id);
-                   //pr($aboutSitterData);die;
                    $this->set('sitter_info', $aboutSitterData);
 		    }
 		   
@@ -474,14 +454,12 @@ class DashboardController extends AppController
     Function for Professional Accreditations
     */
     function sitterGallery(){
-    	//echo "<pre>";print_r($_FILES);die;
     	$sitterGallriesModel = TableRegistry::get('UserSitterGalleries');
     	$usersModel = TableRegistry::get('Users');
 
           $session = $this->request->session();
           $userId = $session->read('User.id');
-      //echo "<pre>";print_r($_FILES);die;
-               $images_arr = array();
+              $images_arr = array();
 			    $errors = array();
 			   for($i=0;$i<count($_FILES['images']['name']);$i++){
 			       $FileArr['name'] = $_FILES['images']['name'][$i];
@@ -497,9 +475,7 @@ class DashboardController extends AppController
 						if($Img[0]=='error'){
 							
 							$errors[] = 'File:'.$_FILES['images']['name'][$i].':'.$Img[1];
-							//pr($errors);die;
-							//continue;
-                        }else{
+						}else{
 						   $sitterGalleryData = $sitterGallriesModel->newEntity();
                            $sitterGalleryData->user_id = $userId;
                            $sitterGalleryData->image = $Img[1];
@@ -510,19 +486,9 @@ class DashboardController extends AppController
 					   unset($_FILES['images']);
 					}
 		                $FileArr = array();      
-
-                  //pr($FileArr);die;
-
-
-			        /*$target_dir = "uploads/";
-			        $target_file = $target_dir.$_FILES['images']['name'][$key];
-			        if(move_uploaded_file($_FILES['images']['tmp_name'][$key],$target_file)){
-			            $images_arr[] = $target_file;
-			        }*/
-			    }
+                   }
          
             $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
-            //pr($query);die;
             if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
                   $images_arr = $query->user_sitter_galleries;
                   $sitterImg = array();
@@ -533,19 +499,13 @@ class DashboardController extends AppController
                    	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg"  data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle"></i></a>';
                    	 $html .='</div></div>';
                    }
-                  //pr($errors);die;
                   if($errors != ''){
                    $error ="";
                   	  foreach($errors as $key=>$val){
-                  	  //echo "<em class='signup_error error'>".$val."</em>";die;
-                  	  	
-                           $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
+                  	     $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
                       }
                   }
-                 
-                  //echo $error;die;
-                  echo (json_encode(array($error,$html)));die;
-                  //echo 'Success::'.$html; die;
+                 echo (json_encode(array($error,$html)));die;
             }
       }
       /**
@@ -581,7 +541,6 @@ class DashboardController extends AppController
                    	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                    	 $html .='</div></div>';
                    }
-                  //json_encode($sitterImg);
                   echo $html; die;
             }else{
             	echo $html = ''; die;
@@ -606,8 +565,7 @@ class DashboardController extends AppController
 				$profileVideo = $this->admin_upload_file('video',$_FILES['profile_video']);
 				$profileVideo = explode(':',$profileVideo);
 				if($profileVideo[0]=='error'){
-					//$this->Flash->error(__($profileVideo[1]));
-				    echo $errors = 'Error::'.$profileVideo[1];die;
+					echo $errors = 'Error::'.$profileVideo[1];die;
 				}else{
 					$userData->profile_video = $profileVideo[1];
                      if($usersModel->save($userData)){
@@ -639,8 +597,7 @@ class DashboardController extends AppController
 				$profileBanner = $this->admin_upload_file('profileBanner',$_FILES['profile_banner']);
 				$profileBanner = explode(':',$profileBanner);
 				if($profileBanner[0]=='error'){
-					//$this->Flash->error(__($profileBanner[1]));
-				    echo $errors = 'Error::'.$profileBanner[1];die;
+					echo $errors = 'Error::'.$profileBanner[1];die;
 				}else{
 					$userData->profile_banner = $profileBanner[1];
                      if($usersModel->save($userData)){
@@ -653,9 +610,40 @@ class DashboardController extends AppController
 			}
 			 
 		}
-
      }
-     /**
+      /**
+         Function for save profile video image
+      */
+     function saveProfileVideoImage(){
+     	$usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+
+       if(isset($_FILES['profile_video_image']) && !empty($_FILES['profile_video_image'])){
+        $userData = $usersModel->newEntity();
+     	$userData->id = $userId;
+     	//pr($_FILES['profile_video_image']);die;
+     	  //Upload video
+			if($_FILES['profile_video_image']['name']!=''){
+				$profileVideoImg = $this->admin_upload_file('profileVideoImg',$_FILES['profile_video_image']);
+				$profileVideoImg = explode(':',$profileVideoImg);
+				if($profileVideoImg[0]=='error'){
+					echo $errors = 'Error::'.$profileVideoImg[1];die;
+				}else{
+					$userData->profile_video_image = $profileVideoImg[1];
+                     if($usersModel->save($userData)){
+		                   $userInfo = $usersModel->get($userId);
+		                   echo 'Success::'.HTTP_ROOT.'img/uploads/'.$userInfo->profile_video_image;die;
+			         }
+				}				
+			}else{
+				 unset($_FILES['profile_video_image']);
+			}
+			 
+		}
+     }
+    /**
     Function for Professional Accreditations
     */
     function professionalAccreditations(){
@@ -673,7 +661,6 @@ class DashboardController extends AppController
 		if(isset($this->request->data['UserProfessionals']) && !empty($this->request->data['UserProfessionals']))
 		{
 			
-			//pr($this->request->data['UserProfessionals']['check']['govt']); die;
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('UserProfessionalAccreditationsDetails'); 
 

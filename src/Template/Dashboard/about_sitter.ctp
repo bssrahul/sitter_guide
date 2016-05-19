@@ -104,10 +104,13 @@
                          'value'=>@$shSizeArr,
 						 'id'=>'petsize',
                         'type'=>'select',
-                        'options'=>[''=>'---','small_pets'=>'I accept small pets(0-7kg)','medium_pets'=>'I accept Medium pets (8-18kg)','large_pets'=>'I accept Large dogs (18-45kg)','gaint_dogs'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
-						 'class'=>'form-control ',
-                       // 'class'=>'form-control mmm',
-                        //'multiple'=>"true"
+
+                        'options'=>[''=>'---','0-7'=>'I accept small pets(0-7kg)','8-18'=>'I accept Medium pets (8-18kg)','18-45'=>'I accept Large dogs (18-45kg)','45+'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
+                        'class'=>'form-control mmm',
+                        'multiple'=>"true"
+
+                        
+
                         ]);
                       ?>
 					  </div>
@@ -457,10 +460,10 @@ $('#useraboutsitters-client-choose-desc').change(function(){
 <?php 
 
 				$testArr = array(
-				array("value"=>"small_pets","label"=>"I accept small pets(0-7kg)"),
-				array("value"=>"medium_pets","label"=>"I accept Medium pets (8-18kg)"),
-				array("value"=>"large_pets","label"=>"I accept Large dogs (18-45kg)"),
-				array("value"=>"gaint_dogs","label"=>"I accept Giant dogs (45+kg)"),
+				array("value"=>"0-7","label"=>"I accept small pets(0-7kg)"),
+				array("value"=>"8-18","label"=>"I accept Medium pets (8-18kg)"),
+				array("value"=>"18-45","label"=>"I accept Large dogs (18-45kg)"),
+				array("value"=>"45+","label"=>"I accept Giant dogs (45+kg)"),
 				array("value"=>"cats","label"=>"I accept cats"),
 				array("value"=>"puppies_under_1_year","label"=>"I accept puppies under 1 year"),
 				array("value"=>"kittens_under_1_year","label"=>"I accept kittens under 1 year"),
