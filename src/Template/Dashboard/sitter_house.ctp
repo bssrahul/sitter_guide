@@ -12,7 +12,9 @@
             <div class="tab-content">
 
  <div id="menu11" class="tab-pane fade tab-comm active in">
-          
+          <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insight about your home')); ?></h2>
+          <p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
+          <p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
                   <!--<form role="form">-->
                   <?php echo $this->Form->create(@$sitterHouseData,[
                       'url' => ['controller' => 'dashboard', 'action' => 'sitter-house'],
@@ -29,15 +31,15 @@
                   ?>
 
                   <div class="row">
-                     <h3><i class="fa fa-share-alt cir-o" aria-hidden="true"></i>
-                     <?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insights about your home')); ?> 
+                     <!--<h3><i class="fa fa-share-alt cir-o" aria-hidden="true"></i>
+                     <?php //echo $this->requestAction('app/get-translate/'.base64_encode('Share some insights about your home')); ?> 
                 <span class="pull-right hed-0 coh1">
-                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('You can us step-us your house profile here.')); ?>
+                  
                   </span>
                    <p class="sub-title"><small>
                    <?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here. Let us know some of the great things about your home and what guests will experience when they stay with you.')); ?>
                     </small></p>
-                </h3>
+                </h3>-->
                     <div class="form-group col-lg-4">
                       <label for=""> 
                         <?php echo $this->requestAction('app/get-translate/'.base64_encode('Property Type')); ?>

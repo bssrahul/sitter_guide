@@ -239,8 +239,6 @@ ul.booking_days li.active  {
   background: #4c4c4c url("../../img/training-icon.png") no-repeat scroll center top 5px;
   color: #ffffff;
 }
-<<<<<<< HEAD
-<!-- for star rating-->
 
  .rating {
           overflow: hidden;
@@ -307,3 +305,5 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #cc9900;  } 
+
+a:hover, a:focus, a:active{outline :none !important;}

@@ -27,17 +27,20 @@
               'id'=>'generelInfo',
 			   'autocomplete'=>'off',
           ]);?>
-
+				  <div class="row">
+					     <div class="form-group col-lg-4 col-md-4">
+							<h2 class="head-font"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?> </h2>
+					     </div>
+					     
+					     <div class="form-group col-lg-8">
+							<p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></p>
+					     </div>
+					</div>	
+					
                   <div class="row">
-                    <h3><i aria-hidden="true" class="fa fa-hand-pointer-o cir-o"></i>
-                    <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?> 
-                <span class="pull-right hed-0">
-                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></span>
-                   <p class="sub-title"><small>
-      <?php echo $this->requestAction('app/get-translate/'.base64_encode('This page is just about you in general and allows you to update your
-profile photo’s, video, password and contact details.')); ?></small></p>
-                </h3>
-                        <div class="form-group col-lg-4 col-md-4">
+                    
+                
+                      <div class="form-group col-lg-4 col-md-4">
                           <label for="title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Title')); ?></label>
                       <?php 
                       echo $this->Form->input('Users.title',[
@@ -50,8 +53,8 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                       ?>
                         </div>
 
-                        <div class="form-group col-lg-8 noned">
-                       
+                       <div class="form-group col-lg-8">
+							<p class="head-font2 pad-head-foot padT5"><?php echo $this->requestAction('app/get-translate/'.base64_encode('This page is just about you in general and allowsyou to update your profile photos, video, password and contact details')); ?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -761,5 +764,7 @@ $(document).ready(function(){
     z-index: 10035;
 	text-align:center;
 }
-
+.padT5{
+padding-top:15px !important;	
+}
 </style>
