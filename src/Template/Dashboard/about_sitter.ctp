@@ -473,6 +473,8 @@ $('#useraboutsitters-client-choose-desc').change(function(){
 				array("value"=>"any","label"=>"Any"),
 
 				);
+				$jsonval = json_encode($testArr);
+				//pr(@$ghSizeArr);die;
 				if(!empty($sizeArr)){
 						$newArr=explode(",",$sizeArr);
 						$jsonval = json_encode($testArr);
