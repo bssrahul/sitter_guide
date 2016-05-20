@@ -1,72 +1,73 @@
-
-
 <!--[Banner Area Start]-->
+	<div class="saerch-s-det">
+		<section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+						<div class="banner-info-wrapper">
+							<div class="banner-info-inner">
+								<div class="client-image center-block">
+									<img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client"> 
+								</div>
+								<h2 class="name-banner text-center">
+									<?php echo $userData->first_name." ".substr(($userData->last_name)?$userData->last_name:"",0,1)."."; ?> 
+								</h2>
+								
+								<h3 class="punch-line">Reliable & Loving Petsitter </h3>
+								<h4 class="city-banner"> <?php echo $userData->city.", ".$userData->state.", ".$userData->country; ?></h4>
+								<div class="badage-detail">
+									<ul class="list-inline text-center">
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/certify-1.png"></li>
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></li>
+									</ul>
+								</div>
+								
+								<div class="details-stars">
+									<ul class="list-inline text-center">
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+										<li>&nbsp;</li>
+										<li class="pad-review" ><span >(Reviews 20)</span></li>
+									</ul>
+								</div>
 
-<div class="saerch-s-det">
-<section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
-<div class="container">
+								<div class="center-line">
 
-<div class="row">
-<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
-<div class="banner-info-wrapper">
-<div class="banner-info-inner">
-<div class="client-image center-block">
+									<div class="col-lg-12 col-xs-12 col-md-12 col-xs-12">
 
-  <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client"> </div>
-  
-  <h2 class="name-banner text-center">
-  <?php echo $userData->first_name." ".substr(($userData->last_name)?$userData->last_name:"",0,1)."."; ?> 
-  </h2>
-<h3 class="punch-line">Reliable & Loving Petsitter </h3>
-<h4 class="city-banner"> <?php echo $userData->city.", ".$userData->state.", ".$userData->country; ?></h4>
+										<div class="row">
+											
+											<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px ">
 
-<div class="badage-detail">
-<ul class="list-inline text-center">
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/certify-1.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></li>
-</ul>
-</div>
-<div class="details-stars">
-<ul class="list-inline text-center">
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li>&nbsp;</li>
-<li class="pad-review" ><span >(Reviews 20)</span></li>
+												<h3 class="rates-detail marginrightminus"> 
+													<span><?php echo '$'.$userData->user_sitter_services[0]->sh_day_rate; ?></span> per day</h3>
+													<p class="rates-detail-caption">(Boarding in sitter)</p>
 
-</ul>
-</div>
+											</div> 
+											
+											<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
 
+												<h3 class="rates-detail marginleftminus xs-padt10"> <span><?php echo '$'.$userData->user_sitter_services[0]->gh_day_rate; ?></span> per day</h3>
+												<p class="rates-detail-caption">(House sitting)</p>
 
+											</div>
 
-<div class="center-line">
+										</div>
+										
+										<div class="row">
+											<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px  ">
 
-<div class="col-lg-12 col-xs-12 col-md-12 col-xs-12">
-
-<div class="row">
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px ">
-
-<h3 class="rates-detail marginrightminus"> <span><?php echo '$'.$userData->user_sitter_services[0]->sh_day_rate; ?></span> per day</h3>
-<p class="rates-detail-caption">(Boarding in sitter)</p>
-
-</div> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
-
-<h3 class="rates-detail marginleftminus xs-padt10"> <span><?php echo '$'.$userData->user_sitter_services[0]->gh_day_rate; ?></span> per day</h3>
-<p class="rates-detail-caption">(House sitting)</p>
-
-</div>
-
-
-</div>
-<div class="row"><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px  ">
-
-<h3 class="rates-detail pad-t10 marginrightminus"> <span><?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?></span> per day</h3>
-<p class="rates-detail-caption">(Drop visit home)</p>
-
-</div> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
-
+												<h3 class="rates-detail pad-t10 marginrightminus"> 
+													<span>
+														<?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?></span> per day
+												</h3>
+												<p class="rates-detail-caption">(Drop visit home)</p>
+											</div> 
+											
+											<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
 <h3 class="rates-detail pad-t10  marginleftminus"> <span><?php echo '$'.(($userData->user_sitter_services[0]->sh_day_rate)+($userData->user_sitter_services[0]->sh_night_rate)); ?></span> per day</h3>
 <p class="rates-detail-caption">(D/Nt. care home)</p>
 

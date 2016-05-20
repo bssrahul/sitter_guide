@@ -18,7 +18,7 @@
             <div class="tab-content">
 
 
- <div id="home1" class="tab-pane fade in active tab-comm">
+	<div id="home1" class="tab-pane fade in active tab-comm">
                 
                   <!--<form role="form">-->
             <?php echo $this->Form->create(@$userInfo, [
@@ -33,7 +33,7 @@
 					     </div>
 					     
 					     <div class="form-group col-lg-8">
-							<p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></p>
+							<p class="head-font2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></p>
 					     </div>
 					</div>	
 					
@@ -59,17 +59,6 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-4 col-md-4">
-                          <label for="Users['birth_date']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?></label>
-                          <?php  
-                              echo $this->Form->input('Users.birth_date',[               
-                              'class'=>'form-control dob',
-                              'label'=>false,
-                              'templates' => ['inputContainer' => '{{content}}'],
-                              'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('DD/MM/YYYY')), 
-                              ]);
-                          ?> 
-                        </div>
-                        <div class="form-group col-lg-4 col-md-4">
                            <label for="Users['first_name']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('First Name')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.first_name',[                
@@ -90,6 +79,17 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
                             ?>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4">
+                          <label for="Users['birth_date']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?></label>
+                          <?php  
+                              echo $this->Form->input('Users.birth_date',[               
+                              'class'=>'form-control dob',
+                              'label'=>false,
+                              'templates' => ['inputContainer' => '{{content}}'],
+                              'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('DD/MM/YYYY')), 
+                              ]);
+                          ?> 
                         </div>
                     </div>
                     <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address')); ?>
@@ -361,7 +361,7 @@
                         </button>
 
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
                           <?php if(@$userInfo->profile_banner != ''){
                                   $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
                             }else{
@@ -691,13 +691,13 @@ $(document).ready(function(){
     $("#profileBanner").ajaxForm(
     {
 		beforeSend: function(){
-		  $(".profileBanner").show();
-		  $(".profileBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+		  $(".videoBanner").show();
+		  $(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
 		},
-	
+		
 		complete: function(){
-		  $(".profileBanner").hide();
-		  $(".profileBanner").html('');
+		  $(".videoBanner").hide();
+		  $(".videoBanner").html('');
 		},	
     //target: '#preview-profile-video',
     success: function(res) { 
@@ -752,8 +752,7 @@ $(document).ready(function(){
 </script>
 <style>
 .videoBanner {
-    background: #e17f59 none repeat scroll 0 0;
-    display: none;
+    display: block;
     float: left !important;
     height: 20px !important;
     margin: 0 0 0 22px;
