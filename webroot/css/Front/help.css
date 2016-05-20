@@ -106,7 +106,7 @@
 
 
 .tab-section .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{ background-color:#72a105 !important; }
-.tab-section.nav > li > a:focus, .nav > li > a:hover{ background:#000 !important; }
+.tab-section.nav > li > a:focus, .nav > li > a:hover{ background:#fff !important; }
 
 
 

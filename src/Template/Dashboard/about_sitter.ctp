@@ -69,9 +69,21 @@
                   <div class="row">
                     <div class="col-lg-6">
                     <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house ')); ?></p>
-                    <div class="row">
+                   
 
-                    <div class="form-group col-lg-8">
+					 <div class="row">
+                        <div class="form-group">
+						   <div class="form-group col-lg-8">
+								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>						
+							<input class="form-control col-md-7 col-xs-12" id="Petsbreeds" type="text" name="sh_pet" value="" >
+						  </div>
+						</div> 
+					</div>
+					
+					
+					
+					
+                  <!--  <div class="form-group col-lg-8">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds ')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.sh_pet',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -83,10 +95,11 @@
                         'class'=>'form-control'
                         ]);
                       ?>
-                    </div>
+					   </div>
+                    </div>-->
 
                       
-                    </div>
+                   
                     <div class="row">
                         <div class="form-group">
 						   <div class="form-group col-lg-8">
@@ -228,8 +241,15 @@
                     <div class="col-lg-6">
                    <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house')); ?> </p>
                    <div class="row">
+                        <div class="form-group">
+						   <div class="form-group col-lg-8">
+								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>						
+							<input class="form-control col-md-7 col-xs-12" id="gh_petbreeds" type="text" name="gh_pet" value="" >
+						  </div>
+						</div> 
+					</div>
 
-                    <div class="form-group col-lg-8">
+                  <!--  <div class="form-group col-lg-8">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_pet',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -243,7 +263,7 @@
                     </div>
 
                       
-                    </div>
+                    </div>-->
                     
 					 <div class="row">
                         <div class="form-group">
@@ -474,10 +494,24 @@ $('#useraboutsitters-client-choose-desc').change(function(){
 
 				);
 				$jsonval = json_encode($testArr);
-				//pr(@$ghSizeArr);die;
+				
+				$pettypeArr = array(
+				array("value"=>"boxer","label"=>"Boxer"),
+				array("value"=>"rottweiler ","label"=>"Rottweiler "),
+				array("value"=>"poodle ","label"=>"Poodle "),
+				array("value"=>"yorkshire_terrier","label"=>"Yorkshire Terrier"),
+				array("value"=>"french_bulldog","label"=>"French Bulldog"),
+				array("value"=>"beagle","label"=>"beagle"),
+				array("value"=>"bulldog","label"=>"bulldog"),
+				array("value"=>"golden_retriever","label"=>"Golden Retriever"),
+				array("value"=>"german_shepherd_dogs","label"=>"German Shepherd Dogs"),
+				array("value"=>"labrador_retriever","label"=>" Labrador Retriever"),
+				);
+				$petjsonval = json_encode($pettypeArr);
+				//pr(@$jsonval);die;
 				if(!empty($sizeArr)){
+						
 						$newArr=explode(",",$sizeArr);
-						$jsonval = json_encode($testArr);
 						$mainArray=array();
 						foreach($testArr as $key=> $arr)
 						{ 
@@ -485,26 +519,60 @@ $('#useraboutsitters-client-choose-desc').change(function(){
 						$new2=$arr['label'];
 						if(in_array($new,$newArr) )
 								{
-									$mainArray[]=array("value"=>$new,"label"=>$new2);
+										$mainArray[]=array("value"=>$new,"label"=>$new2);
 								}
 						}
 						$editJsonArr=json_encode($mainArray);
 				}	
 				if(!empty($ghSizeArr)){
+					
 					$ghmainArray=array();
 					foreach($testArr as $key=> $arr)
 					{ 
-						$val=$arr['value'];
-						$lab=$arr['label'];
-						if(in_array($val,$ghSizeArr) )
+						$new=$arr['value'];
+						$new2=$arr['label'];
+						if(in_array($new,$ghSizeArr) )
 						{
-							$ghmainArray[]=array("value"=>$val,"label"=>$lab);
+							$ghmainArray[]=array("value"=>$new,"label"=>$new2);
 						}
 					}
 					$editghJsonArr=json_encode($ghmainArray);	
 				}
-														
-				//pr($editghJsonArr);die;										
+				
+				if(!empty($shArr)){
+						
+						$newArr=explode(",",$shArr);
+						$shmainArray=array();
+						foreach($pettypeArr as $key=> $arr)
+						{ 
+						$new=$arr['value'];
+						$new2=$arr['label'];
+						if(in_array(trim($new),$newArr) )
+								{
+									$shmainArray[]=array("value"=>$new,"label"=>$new2);
+								}
+						}
+						$shJsonArr=json_encode($shmainArray);
+				}
+			
+				
+				if(!empty($ghArr)){
+						$newArr=explode(",",$ghArr);
+						$ghmainArray=array();
+						foreach($pettypeArr as $key=> $arr)
+						{ 
+						$new=$arr['value'];
+						$new2=$arr['label'];
+							
+						if(in_array($new,$newArr) )
+								{
+									
+									$ghmainArray[]=array("value"=>$new,"label"=>$new2);
+								}
+						}
+						$ghJsonArr=json_encode($ghmainArray);
+				}											
+				//pr($ghJsonArr);die;										
 				?>
 <script>
   $(document).ready(function() {
@@ -570,6 +638,77 @@ $('#useraboutsitters-client-choose-desc').change(function(){
     $(document).ready(function() {
     
       $('#gh_pet_sizes').tokenfield('setTokens', <?php echo $editghJsonArr; ?>);
+    });
+    </script>
+<?php } ?>
+
+
+<script>
+  $(document).ready(function() {
+
+
+    //$("#skillAuto").tokenfield({});
+    $('#Petsbreeds').tokenfield({
+      autocomplete: {
+      source: <?php echo $petjsonval; ?>,
+      delay: 100
+    },
+      showAutocompleteOnFocus: true,
+
+    });
+
+    $('#Petsbreeds').on('tokenfield:createtoken', function (event) {
+      var existingTokens = $(this).tokenfield('getTokens');
+      $.each(existingTokens, function(index, token) {
+          if (token.value === event.attrs.value)
+              event.preventDefault();
+    });
+});
+  });
+</script>
+
+<?php if(@$shFlag) { ?>
+	
+    <script>
+    $(document).ready(function() {
+    
+      $('#Petsbreeds').tokenfield('setTokens', <?php echo $shJsonArr; ?>);
+    });
+    </script>
+<?php } ?>
+
+
+
+<script>
+  $(document).ready(function() {
+
+
+    //$("#skillAuto").tokenfield({});
+    $('#gh_petbreeds').tokenfield({
+      autocomplete: {
+      source: <?php echo $petjsonval; ?>,
+      delay: 100
+    },
+      showAutocompleteOnFocus: true,
+
+    });
+
+    $('#gh_petbreeds').on('tokenfield:createtoken', function (event) {
+      var existingTokens = $(this).tokenfield('getTokens');
+      $.each(existingTokens, function(index, token) {
+          if (token.value === event.attrs.value)
+              event.preventDefault();
+    });
+});
+  });
+</script>
+
+<?php if(@$ghFlag) { //echo $ghJsonArr;die;		?>
+	
+    <script>
+    $(document).ready(function() {
+    
+      $('#gh_petbreeds').tokenfield('setTokens', <?php echo $ghJsonArr; ?>);
     });
     </script>
 <?php } ?>

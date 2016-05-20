@@ -419,8 +419,11 @@ class DashboardController extends AppController
           
            if(isset($query->user_about_sitter) && !empty($query->user_about_sitter)){
                    $aboutSitterData = $query->user_about_sitter;
+				   //pr($aboutSitterData);die;
 				   $sizeArr=$aboutSitterData['sh_pet_sizes'];
 				   $ghSizeArr=$aboutSitterData['gh_pet_sizes'];
+				   $shArr=$aboutSitterData['sh_pet'];
+				   $ghArr=$aboutSitterData['gh_pet'];
 					if(!empty($sizeArr)){
 						
 						$skillFlag=1;
@@ -435,8 +438,26 @@ class DashboardController extends AppController
 					else{
 						$gh_pet_sizesFlag=0;
 					}
+					if(!empty($shArr)){
+						
+						$shFlag=1;
+					}
+					else{
+						$shFlag=0;
+					}
+					if(!empty($ghArr)){
+						
+						$ghFlag=1;
+					}
+					else{
+						$ghFlag=0;
+					}
 				  // $json_sizeArr=json_encode($sizeArr);
 				  // pr($json_sizeArr);die;
+				   $this->set('shArr',$shArr);
+				   $this->set('ghArr',$ghArr);
+				   $this->set('shFlag',$shFlag);
+				   $this->set('ghFlag',$ghFlag);
 				   $this->set('skillFlag',$skillFlag);
 				   $this->set('gh_pet_sizesFlag',$gh_pet_sizesFlag);
 				   $this->set('sizeArr',$sizeArr);
