@@ -113,7 +113,24 @@
 			$('#booking_days').val(textString);
 			
 		});
-	
+	   ////////////////
+	   /*$("ul.booking_days li.dog-in-li").click(function() {
+			
+			if($(this).hasClass("active")==true){
+				$(this).removeClass("active");
+			}else{
+				$(this).addClass("active");
+			}
+			
+			var textArray = $('ul.booking_days li.active').find('span:first').map(function(){
+				return $(this).attr('data-rel');
+			}).get(); // ["sunday", "monday"]
+
+			var textString = textArray.join(); // "sanday, monday"
+			$('#booking_days').val(textString);
+			
+		});*/
+	   ///////////
 		$("ul.marketplace li.marketplace_li").click(function() {
 			
 			if($(this).hasClass("active")==true){
