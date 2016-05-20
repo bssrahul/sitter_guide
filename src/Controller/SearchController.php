@@ -516,32 +516,58 @@ class SearchController extends AppController
 	/**
     Function for sitter details
 	*/	
-	function sitterDetails($userId = null){
+	function sitterDetails($sitterId = null){
 		$this->viewBuilder()->layout('landing');
-		$userId = convert_uudecode(base64_decode($userId));
+		$sitterId = convert_uudecode(base64_decode($sitterId));
 
         $UsersModel = TableRegistry::get('Users');
-        $userData = $UsersModel->get($userId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails']]);
+        $userData = $UsersModel->get($sitterId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails']]);
 			
 		$this->set('userData',$userData);
 		
 		//pr($userData);die;
 	}
 	/**
-    Function for sitter contact
+    Function for booking requests
 	*/	
-	function sitterContact($userId = null){
+	function sitterContact($sitterId = null){
+		$sitterId = convert_uudecode(base64_decode($sitterId));
+        
 		$this->viewBuilder()->layout('landing');
-		/*$userId = convert_uudecode(base64_decode($userId));
 
-        $UsersModel = TableRegistry::get('Users');
-        $userData = $UsersModel->get($userId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails']]);
-			
-		$this->set('userData',$userData);*/
-		
-		//pr($userData);die;
-	}
+        $session = $this->request->session();
+        $userId = $session->read('User.id');
 	
+        $bookingRequestsModel = TableRegistry::get('BookingRequests');
+		
+		
+		if(isset($this->request->data['BookingRequests']) && !empty($this->request->data['BookingRequests']))
+		{
+			//pr($this->request->data['BookingRequests']);die;
+			$bookingRequestData = $bookingRequestsModel->newEntity();
+               $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>true]);
+                $bookingRequestData->user_id = $userId;
+                $bookingRequestData->sitter_id = $sitterId;
+                pr($bookingRequestData);die;
+			    if ($bookingRequestsModel->save($bookingRequestData)){
+			    	//echo "oko save";die;
+               	     return $this->redirect(['controller'=>'search','action'=>'thankyou']);
+				}else{
+					//echo "not save";die;
+				  $this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
+			 $this->set('booking_data', $bookingRequestData);
+		}else{
+			$this->set('sitter_id',base64_encode(convert_uuencode($sitterId)));
+		}
+	}
+	/**
+	 Function for Thank you message
+	*/
+	function thankyou()
+	{
+          $this->viewBuilder()->layout('landing');
+	}	
 	function favoriteSitter($sitterId = NULL, $userId = NULL)
 	{
 		
