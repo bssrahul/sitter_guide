@@ -3,7 +3,7 @@
 		function initialize() {
 			var input = document.getElementById('location_autocomplete');
 			var autocomplete = new google.maps.places.Autocomplete(input);
-
+			
 			autocomplete.addListener('place_changed', function() {
 				var place = autocomplete.getPlace();
 				var latlong = place.geometry.location;
