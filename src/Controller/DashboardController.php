@@ -172,7 +172,16 @@ class DashboardController extends AppController
 		$errors=array();
 		if(trim($data['current_password'])=='')
 		{
-			//$errors['current_password'][]="Required field\n";
+	            if(trim($data['password']) !='')
+				{
+					$errors['current_password'][]="Required field\n";
+				}
+				
+				if(trim($data['re_password'])!='')
+				{
+					$errors['current_password'][]="Required field\n";
+				}
+				
 		}else{
 
 				if(trim(md5($data['current_password'])) != $user_info->password)
@@ -214,8 +223,7 @@ class DashboardController extends AppController
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
-         // pr();die;
-	if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
+    if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
 		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
           {
 	            //your site secret key

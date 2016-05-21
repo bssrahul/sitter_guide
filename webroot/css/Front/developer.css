@@ -307,3 +307,11 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > input:checked ~ label:hover ~ label { color: #cc9900;  } 
 
 a:hover, a:focus, a:active{outline :none !important;}
+
+.pac-item-query{
+	font-family: 'Conv_Raleway-Regular !important';
+	font-weight: normal;
+	font-style: normal;
+    font-size: 12px;
+    color: #404040;
+}
