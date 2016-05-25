@@ -82,4 +82,3 @@
 
 </header>
 <!--[Header Area End]-->
-<?php echo $this->element('frontElements/Search/js_code_country_autocomplete'); ?>

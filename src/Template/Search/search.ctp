@@ -1,6 +1,7 @@
 <?php echo $this->Html->css(['Front/jquery-ui.css','Front/search-result.css']);  ?>
 <?php echo $this->Html->script(['Front/jquery-ui.js','Front/search-filter.js']);  ?>
-<?php echo $this->Html->script('http://maps.google.com/maps/api/js?sensor=true'); ?>
+<?php //echo $this->Html->script('http://maps.google.com/maps/api/js?sensor=true'); ?>
+
 
 <!--[Inner Content]-->
 <section class="inner-cont"> 
