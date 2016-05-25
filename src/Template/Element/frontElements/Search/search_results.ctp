@@ -47,7 +47,9 @@
             <!--sitter listing 1-->           
             <div class="all-sitter-listing">
               <ul class="all-sit-list">
-				<?php if(!empty($resultsData)){ 
+				<?php if(!empty($resultsData)){// pr($resultsData);die;
+				//pr($resultsData);
+			//	pr($resultsData[0]['user_sitter_galleries'][0]['image']);die;
 						$rankNo=1;
 						foreach($resultsData as $results){  ?>
 							<li>
@@ -55,22 +57,97 @@
              <div class="sit-pic-lft">
 								  <div class="ppic-area">
 									<div class="sitter-pic"> 
-										<?php 
-										if($results->facebook_id !="" && $results->is_image_uploaded==0){
-											if($results->image != "")
-											{
-												$orgImg = $results->image;
-											}else{ 
-												$orgImg = 'default-pet-sitter.jpg';
-											} 
-										?>
-										<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo $orgImg; ?>"> 
-
-										<?php }else{ ?>
+										<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
 										
-										<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 					   
-										<?php  } ?>  
-											   
+									?>
+									
+										  <!--Profile Picture Slide area-->
+											<div class="sit-pic-area">                      
+												<script>
+												$(function(){
+														$('.customCrousal<?php echo $rankNo; ?>').carousel({
+														interval: false
+													}); 
+														
+												})
+												
+												</script>	
+												  <div id="myCarousel" class="carousel customCrousal<?php echo $rankNo; ?> slide" data-interval="false" data-ride="carousel">   
+															<div class="carousel-inner" role="listbox">   
+                                                              <?php 
+																
+																//pr($sub_galleries_result);die;
+																if(!empty(@$sub_galleries_result)){
+																$flag=0;
+																
+																		 foreach($sub_galleries_result as $sub_galleries){
+																			
+																		//if($results->facebook_id !="" && $results->is_image_uploaded==0){
+																		
+																			if($sub_galleries->image != "")
+																			{
+																				
+																				if($flag == 0 ){ $flag=1;
+																					?>
+																					<div class="item active">
+																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
+																					</div>
+																			<?php	}else{?>
+																					<div class="item ">
+																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
+																					</div>
+																				
+																			<?php	}
+																			}
+																		}
+																 }else{ ?>
+																		<div class="item active">
+																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/XVWVPJniSAYcBo5.png'; ?>"> 
+																			</div>
+																				
+																	<?php } 
+																	
+																	
+																	?>															
+															  <!-- <div class="item active">
+																<img src="images/profile-pic.png" >       
+															  </div>
+															 <div class="item">
+																<img src="images/profile-pic.png" >        
+															  </div>    
+															  <div class="item">
+																<img src="images/profile-pic.png" >        
+															  </div>
+															  <div class="item">
+																<img src="images/profile-pic.png" >   
+																</div> -->																
+															</div>
+														
+															<!-- Left and right controls -->
+															<a class="left carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="prev">
+															  <span class="fa fa-chevron-left" aria-hidden="true"></span>
+															  <span class="sr-only">Previous</span>
+															</a>
+															<a class="right carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="next">
+															  <span class="fa fa-chevron-right" aria-hidden="true"></span>
+															  <span class="sr-only">Next</span>
+															</a>                                        
+															
+															
+												</div>                                                    	
+											
+												<!--quick view-->
+											
+													<div class="quick-view">
+															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i> Quick View</a>
+													</div>
+											
+												<!--/quick view-->                       
+											
+											</div>
+												<!--/Profile Picture Slide area-->   
+														
+										<?php// } ?>   	
 										
 									</div>
 									<div class="sitter-p-det"> 
@@ -105,7 +182,38 @@
 									 
 									  <!--rating-->
 										  <div class="sitter-rating">
-											<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>
+											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
+											<?php $ratingData=$results->user_ratings;
+													$sum=0;$count=0;
+													foreach($ratingData as $rating){
+														
+															$count++;
+															$rate=$rating->rating;
+															$sum=$sum+$rate;
+													}
+													if($count > 0){
+														 $avg=$sum/$count;
+													}
+													
+													?>
+													
+										<div class="rating-box">
+											<span class="rating">
+											<?php	//if(!empty($avg)){ 	
+                                            ?>
+													<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+													<input type="radio"  value="4.5" <?php if(!empty($avg)){if($avg <= 4.5 && $avg > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio"  value="4"  <?php if(!empty($avg)){ if($avg <= 4 && $avg > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+													<input type="radio"  value="3.5"  <?php if(!empty($avg)){ if($avg <= 3.5 && $avg > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio"  value="3" <?php if(!empty($avg)){ if($avg <= 3 && $avg > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+													<input type="radio"  value="2.5" <?php if(!empty($avg)){ if($avg <= 2.5 && $avg > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio"   value="2"  <?php if(!empty($avg)){ if($avg <= 2 && $avg > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio"  value="1.5" <?php if(!empty($avg)){ if($avg <= 1.5 && $avg > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+													<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+											<?php// } ?>
+											</span>
+										</div>
 											<div class="sit-review"> <a href="#" title="Review">105 Reviews</a> </div>
 										  </div>
 									  <!--/rating--> 
@@ -306,6 +414,187 @@
       </div>
     </div>
   </section>
+						
+						
+						
+					<!--info popup-->
+			<?php if(!empty($resultsData)){ ?>
+				<div role="dialog" id="myModal2" class="modal fade in" style="display: none;">
+							
+								<div class="modal-dialog">    
+								   <div data-ride="carousel" class="carousel slide"  data-interval="false"  id="myCarousel2">    
+									  <div role="listbox" class="carousel-inner">
+									  <?php
+				
+			//	pr($resultsData);die;
+							$qvModal = 1;	
+							foreach($resultsData as $results){
+							?>
+																
+								
+									  <div class="item qvModal<?php echo $qvModal; ?>">      
+										 <div class="sitter-quike-view">
+											<div class="sqv-box">
+												<div class="top-close"> 
+												<p>Sitter Quick Details</p>
+													<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
+												</div>
+												<div class="sit-head">
+													<div class="row">
+														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8"> 
+														  <div class="lft-head">                       	
+															<p class="s-name"><?php if(@$results->first_name != ""){ echo $results->first_name."  ".$results->last_name;}?></p>
+															<p class="s-det">Special needs is my specialty.</p>
+															<p class="s-ads">Morningside Heights, New York, NY, 10027</p>
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+														<div class="rgt-hours">
+															<p>
+																  from
+																 <span>$35</span>
+																	per night
+																	</p>
+														</div>            
+														</div>
+													</div>                	
+												</div>
+												<!--quick slide-->
+												<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
+												$innerSlideNO=1;
+												if(!empty(@$sub_galleries_result)){ echo @$innerSlideNO;
+													
+													$setimage=0; $imagecount=0;
+															//pr($sub_galleries->image);die;
+												?>					
+													<div class="quick-slide">
+													<script>
+														$(function(){
+																$('.innermyCarousel<?php echo $innerSlideNO; ?>').carousel({
+																interval: false
+														}); 
+														
+														})
+												
+												</script>
+													  <div id="myCarousel" class="carousel slide innermyCarousel<?php echo $innerSlideNO; ?>" data-ride="carousel">
+
+														<div class="carousel-inner" role="listbox">
+																
+																         <?php  foreach($sub_galleries_result as $sub_galleries){
+																									$newarr[]=$sub_galleries->image;
+																									$imagecount ++;
+																							}	
+																							$rownmbr=$imagecount/3;
+																							$imginrow=$imagecount/$rownmbr;
+																							//print_r($newarr);
+																							$index=0;
+																							for($i=1;$i<=($rownmbr+1);$i++)
+																							{ 
+																							 if($i == 1){ $ac="active";}else{$ac=" ";}?>
+																								<div class="item <?php echo $ac; ?>">
+																								<div class='row'>      
+																								<ul> <?php
+																								for($j=0;$j<$imginrow;$j++)
+																								{
+																									//echo $newarr[$index]; ?>
+																									<li>
+																									<?php if(@$newarr[$index] != ''){?>
+																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($newarr[$index] != ''?$newarr[$index]:'prof_photo.png'); ?>">
+																									<?php } ?>
+																									</li>
+																								<?php	$index++;
+
+																								}	echo "</ul> </div></div>";
+																							}?>
+																					
+																
+														</div>
+																  <!-- Left and right controls -->
+																<a class="left carousel-control" href=".innermyCarousel<?php echo $innerSlideNO; ?>" role="button" data-slide="prev">
+																	<span class="fa fa-chevron-left" aria-hidden="true"></span>
+																	<span class="sr-only">Previous</span>
+																</a>
+																<a class="right carousel-control" href=".innermyCarousel<?php echo $innerSlideNO; ?>" role="button" data-slide="next">
+																	<span class="fa fa-chevron-right" aria-hidden="true"></span>
+																	<span class="sr-only">Next</span>
+																</a>
+												</div>
+											<?php 
+													$innerSlideNO++;	
+													
+												}
+															?>
+												<!--quick slide-->
+												<div class="sqv-mid">
+													<div class="row">
+														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+														<div class="sqv-mid-lft">
+															<p class="md-head">About Geraldo</p>    
+															<ul>
+																<li>27 Years Of Experience</li>
+																<li>Oral Medication Administration</li>
+																<li>Injected Medication Administration</li>
+																<li>Senior Dog Experience </li>
+															</ul>   
+															<p class="md-head">Geraldo's Home</p> 
+															 <ul>
+																<li>House</li>
+																<li>Fenced Yard</li>
+																<li>Non-Smoking Household</li>
+																<li>Has 1 Dog, No Other Pets</li>
+																<li>No Children Present</li>
+																<li>Dogs Allowed On Bed</li>
+																<li>Dogs Allowed On Furniture</li>
+																<li>Potty Breaks Every 0-2 Hours</li>
+															</ul>                                                
+														</div>
+													</div>
+														<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">                 
+														<div class="sqv-mid-rgt">
+															<div class="sqvmr-btn">
+															<a title="Contact Sitter" href="#">Contact Sitter</a>
+															<a title="View Full Profile" href="#">View Full Profile</a>
+															<a title="Save Sitter" href="#">Save Sitter</a>
+															</div>
+															<div class="sqvmd-rt-bot">
+																<ul>
+																 <li>90% response rate
+																 <span> Sitter responds to most requests within 24 hours</span></li>
+																 <li>A few minutes <span>Sitter responds in a few minutes</span></li>
+																 <li>30% of stays <span>Sitter rarely sends photos through Rover</span></li>
+																 <li>8 repeat clients <span>Sitter had repeat clients</span></li>
+																	</ul>
+															</div>
+														</div>
+													</div>     
+													</div>               
+												</div>
+												
+											</div>         	
+										 </div>     
+									  </div>
+
+									 
+									
+								<?php $qvModal++; } ?></div>
+									<!-- Left and right controls -->
+											<a data-slide="prev" role="button" href="#myCarousel2" class="left carousel-control">
+											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a data-slide="next" role="button" href="#myCarousel2" class="right carousel-control">
+											  <span aria-hidden="true" class="fa fa-chevron-right"></span>
+											  <span class="sr-only">Next</span>
+											</a>
+											   <!-- Left and right controls -->
+										  </div>   
+								</div>
+					
+				</div> <?php } ?>	
+									
+								
+                    <!--/info popup--> 
 <style>
 .searchImg{
 		width:163px;
@@ -320,3 +609,18 @@
     outline:none;
 }
 </style>
+
+<script>
+$(function(){
+	$(document).on('click',".qvBtn",function(){
+	
+	var qv = $(this).attr('data-rel');
+	/*$(".item").removeClass('active');*/
+	$(".qvModal"+qv).addClass('active');
+	
+	
+});
+	
+})
+
+</script>

@@ -269,6 +269,7 @@ ul.booking_days li.active  {
 fieldset, label { margin: 0; padding: 0; }
 h1 { font-size: 1.5em; margin: 10px; }
 
+
 /****** Style Star Rating Widget *****/
 
 .rating { 
@@ -305,6 +306,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #cc9900;  } 
+
 
 a:hover, a:focus, a:active{outline :none !important;}
 
@@ -355,4 +357,8 @@ a:hover, a:focus, a:active{outline :none !important;}
 }
 .pac-matched {
   font-family: raleway !important;
+}
+ul.booking-services li.new_active{
+   border-top: 5px solid #b4b05d !important;
+
 }

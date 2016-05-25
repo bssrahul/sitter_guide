@@ -114,7 +114,7 @@
 				"Users[zip]":
 				{
 					required : "This field is required",
-					number:"Zip Code should be Numbers.",
+					number:"Zip Code should be Numbers."
 				},
 				"Users[birth_date]":
 				{
@@ -177,26 +177,26 @@
 				"Comment":
 				{
 					required:true,
-					minlength:10,
+					minlength:10
 				},
 				"rating":
 				{
-					required:true,
-				},
+					required:true
+				}
 				
 			},
 			messages: {
 				"comment":
 				{
 					required : "This field is required",
-					minlength: 'Please enter minimum 6 characters.',
+					minlength: 'Please enter minimum 6 characters.'
 					
 				},
 				"rating":
 				{
 					required : "This field is required"
 					
-				},
+				}
 				
 			}
 		});
@@ -1365,30 +1365,30 @@
 			rules: {
 				"name":
 				{
-					required: true,
+					required: true
 				},
 				"email":
 				{
 					required: true,
-					email: true,
+					email: true
 				},
 				"phone_no":
 				{	
 				    required: true,
 					number:true,
 					minlength: '10',
-					maxlength:'10',
+					maxlength:'10'
 															
 				},
 				"message":
 				{
-					required: true,
+					required: true
 					
 				},
 				"location":
 				{
-					required: true,
-				},
+					required: true
+				}
 				
 			},
 			messages:{				
@@ -1399,7 +1399,7 @@
 				"email":
 				{
 					required : "This field is required",
-					email: 'Kindly use valid email address ',
+					email: 'Kindly use valid email address '
 					
 				},
 				"phone_no":
@@ -1407,21 +1407,49 @@
 					required : "This field is required",
 					number: "Please enter a valid 10-digit mobile number (04XX XXX XXX).",
 					minlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
-					maxlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX).",
+					maxlength:"Please enter a valid 10-digit mobile number (04XX XXX XXX)."
 				},
 				"message":
 				{
-					 required: "This field is required.",	
+					 required: "This field is required."	
 				},
 				"location":
 				{
-					required:"This field is required.",
-				},
+					required:"This field is required."
+				}
 				
 			}
 			
 		});
 	/*End contact form*/
+		/*For booking contact form*/
+		$('#bookingContact').validate({
+			rules: {
+				"BookingRequests[booking_start_date]":
+				{
+					required:true 
+				},
+				"BookingRequests[booking_end_date]":
+				{
+					required:true 
+				},
+				"BookingRequests[message]":
+				{
+					required:true 
+				}/*,
+				"BookingRequests[required_services]":
+				{
+					required:true 
+				}*/
+			},
+		    messages: {
+				"BookingRequests[booking_start_date]":
+				{
+					required : "This field is required"
+				}
+			}
+
+         });
 	});
 		//End base profile
 	function gettingstarted(formID,btnID,actionURL){

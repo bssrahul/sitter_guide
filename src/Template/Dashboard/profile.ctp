@@ -361,7 +361,9 @@
                         </button>
 
                         </div>
+
                         <div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
+
                           <?php if(@$userInfo->profile_banner != ''){
                                   $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
                             }else{
