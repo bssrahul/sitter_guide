@@ -13,7 +13,7 @@
 		
 		<!-- Bootstrap Core CSS -->
 		<?php 
-			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/dist/imageselect.css','Front/hint.css']); 
+			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/developer.css','Front/dist/imageselect.css','Front/hint.css']); 
 			echo $this->Html->script(['Front/jquery.min.js','Front/jquery.validate.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js']);
 		
 			if($sitefavicon != null){ ?>

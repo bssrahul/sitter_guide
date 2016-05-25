@@ -12,7 +12,7 @@
 					<h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
 					<p class="head-font2 pad-head-foot pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can select and modify your settings in this central control panel')); ?></p>
 								
-					<h4><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="#" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('to update your callender settings')); ?> </h4>
+					<h4><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="#" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('to update your callender settings')); ?> </h4>
 				 
 				 <h3></h3>
 					 <?php 
@@ -54,7 +54,7 @@
 									</div>
 							<div class="row">
 								<div class="col-lg-8 col-md-9 col-xs-8 col-lg-offset-1 mt10 ">
-									<b><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking')); ?></b><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Under 24 hours')); ?> ) </small></div> 
+									<b><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking')); ?></b><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Under 24 hours')); ?> ) </small></div> 
 									<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 										<div class="chek-main-lat">
 											<div class="onoffswitch">
@@ -253,7 +253,7 @@
                         
                     <div class="row">
 						<div class="col-lg-9 col-md-9 col-xs-8  ">
-							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode(' more than one guest')); ?> )</small>
+							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate')); ?><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' more than one guest')); ?> )</small>
 						</div> 
 						<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 								<div class="chek-main-lat">
@@ -397,7 +397,7 @@
 					</div>
                     <div class="row">
 							<div class="col-lg-9 col-md-9 col-xs-8  ">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?>)  </small>
+								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?> <small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?>)  </small>
 							</div> 
 							<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 									<div class="chek-main-lat">
@@ -419,7 +419,7 @@
                     <div class="row">
 						<div class="col-lg-9 col-md-9 col-xs-8  ">
 							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate')); ?>
-								<small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('more than one guest')); ?>  )
+								<small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('more than one guest')); ?> )
 								</small>
 						</div> 
 						<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
@@ -772,7 +772,7 @@
 										'label' =>false,
 										'class'=>'form-control',
 										'hiddenField' => false,
-										'placeholder'=> $this->requestAction('app/get-translate/'.base64_encode('"$"')),
+										'placeholder'=> $this->requestAction('app/get-translate/'.base64_encode('$')),
 									   ]);
 								  ?>
 					</div>
@@ -785,7 +785,7 @@
 										'label' =>false,
 										'class'=>'form-control',
 										'hiddenField' => false,
-										'placeholder'=> $this->requestAction('app/get-translate/'.base64_encode('"$"')),
+										'placeholder'=> $this->requestAction('app/get-translate/'.base64_encode('$')),
 									   ]);
 								  ?>
 					</div>
@@ -802,7 +802,7 @@
 										  'label' =>false,
 										  'class'=>'form-control',
 										  'hiddenField' => false,
-										  'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('"$"')),
+										  'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('$')),
 										 ]);
 									  ?>
 			</div>
@@ -863,7 +863,7 @@
                         
 										<div class="row">
 												<div class="col-lg-9 col-md-9 col-xs-8  ">
-														<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?>)  </small>
+														<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?>)  </small>
 												</div> 
 												  <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 														<div class="chek-main-lat">
@@ -884,7 +884,7 @@
                         
 										<div class="row">
 											<div class="col-lg-9 col-md-9 col-xs-8  ">
-													<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('more than one guest')); ?> ) </small>
+													<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate')); ?><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('more than one guest')); ?> ) </small>
 											</div> 
 											<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 													<div class="chek-main-lat">
@@ -1035,7 +1035,7 @@
 							 </div>
 								
 							<div class="row">
-									<div class="col-lg-9 col-md-9 col-xs-8  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?> ) </small>
+									<div class="col-lg-9 col-md-9 col-xs-8  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?> ) </small>
 									</div> 
 									<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 											<div class="chek-main-lat">
@@ -1208,7 +1208,7 @@
 								</div>
 
 								<div class="row">
-										<div class="col-lg-9 col-md-9 col-xs-8  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?> )</small>
+										<div class="col-lg-9 col-md-9 col-xs-8  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate')); ?><small class="color-green-text"> ( <?php echo $this->requestAction('app/get-translate/'.base64_encode('2nd consecutive stay onwards')); ?> )</small>
 										</div> 
 										<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 												<div class="chek-main-lat">
@@ -1687,7 +1687,7 @@
 												</div>
 
 												<div class="row">
-														<div class="col-lg-9 col-md-9 col-xs-8  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Grooming Rate')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('more than wash and blow dry')); ?> ) </small>
+														<div class="col-lg-9 col-md-9 col-xs-8  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Grooming Rate')); ?><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('more than wash and blow dry')); ?> ) </small>
 														</div> 
 														<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 																<div class="chek-main-lat">

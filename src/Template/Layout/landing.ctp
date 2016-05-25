@@ -18,7 +18,7 @@
 		<?php }?>
 			<!-- Bootstrap Core CSS -->
 		<?php 
-		echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/bootstrap.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
+		echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/bootstrap.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
 		echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js']);
 		?>
 
