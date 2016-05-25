@@ -358,7 +358,7 @@ profile photo’s, video, password and contact details.')); ?></small></p>
                         </button>
 
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-5"><span class="profileBanner"></span>
                           <?php if(@$userInfo->profile_banner != ''){
                                   $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
                             }else{
