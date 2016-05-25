@@ -39,14 +39,17 @@ class SearchController extends AppController
 	public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-		if($this->CheckGuestSession() && ($this->request->action == 'login' || $this->request->action == 'signup' || $this->request->action=="forgotPassword"))
+        if(!$this->CheckGuestSession()){
+        	return $this->redirect(['controller' => 'Guests','action'=>'home']);
+        }
+		/*if($this->CheckGuestSession() && ($this->request->action == 'login' || $this->request->action == 'signup' || $this->request->action=="forgotPassword"))
 		{
 			$this->setErrorMessage($this->stringTranslate(base64_encode('You can not access this page because you are already loggedin.')));
 			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
 		}
 		if(!$this->CheckGuestSession() && in_array($this->request->action,array('profile','profileEdit','addUserPet'))){
 			return $this->redirect(['controller' => 'Guests','action'=>'home']);
-		}
+		}*/
 		
 		$categoryModel = TableRegistry::get('Categories');
 		$categoryData = $categoryModel->find('list',['fields' => ['title'],'conditions'=>['Categories.slug'=>'distance']])->toArray();
