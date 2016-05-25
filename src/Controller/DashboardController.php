@@ -1295,16 +1295,41 @@ class DashboardController extends AppController
 	
 	// Function for user rating
 	
-	 public function review()
+	 public function review($user=null)
     {
 		$session = $this->request->session();
+		$UserModel=TableRegistry::get('Users');
+		$UserData=$UserModel->find('all')->toArray();
+		//pr($UserData);die;
+		$this->set('UserData',$UserData);
 		$this->viewBuilder()->layout('profile_dashboard');
 		$reviewModel=TableRegistry::get('UserRatings');
+		//$userid=$this->request->get('selectuserid');
+		//pr($userid);die;
+		
+		
+		
+		/* $reviewcheckdata=$reviewModel->find('all')->toArray();
+		$userToArr=array();
+		$boolingIdArr=array(); */
+		/* foreach($reviewcheckdata as $reviewcheck){
+				$userToArr[]=$reviewcheck['user_to'];
+				$boolingIdArr[]=$reviewcheck['booking_id'];
+		} */
+		//pr($userToArr);
+		//pr($boolingIdArr);die;
+		//$reviewcheckdata['user_to'];
 		$reviewData= $reviewModel->newEntity();
 		if($this->request->is('POST')){
 			
 			$reviewData->user_from = $session->read('User.id');
-			$reviewData->user_to = 1;
+			/* $userTo=$this->request->data['user_to'];
+			$bookingId=$this->request->data['booking_id'];
+			if((in_array($userTo,$userToArr)) && (in_array($userTo,$userToArr)))
+			{
+				
+			} */
+			
 			$reviewData->status = 0;
 			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
 			
@@ -1316,6 +1341,29 @@ class DashboardController extends AppController
 			}	
 			
 		}	
+		if( $this->request->is('ajax') ) {
+
+			  //  if(isset($_REQUEST['user']) && !empty($_REQUEST['user'])){
+			    	$userid=@$_REQUEST['user'];
+					$reviewdata=$reviewModel->find('all')->where(['user_to'=>$userid])->toArray();
+					//pr($reviewdata);
+					$book_id=array();
+					foreach($reviewdata as $review){
+						
+						
+						 $book_id[]=$review->booking_id;
+						
+						
+					}
+								
+					?>							<option value="">-- Select Booking --</option>
+												<option value="1" <?php if(in_array(1,$book_id)){?> class="bk" <?php }?> > First Time </option>
+												<option value="2"  <?php if(in_array(2,$book_id)){?> class="bk" <?php }?>> Second Time </option>
+												<option value="3"  <?php if(in_array(3,$book_id)){?> class="bk" <?php }?>> Third Time </option>
+												<option value="4"  <?php if(in_array(4,$book_id)){?> class="bk" <?php }?>> Forth Time </option>
+												<option value="5"  <?php if(in_array(5,$book_id)){?> class="bk" <?php }?>> Fifth Time </option> <?php
+					die;
+			 }
     }
 	public function editReview(){
 		

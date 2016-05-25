@@ -20,6 +20,36 @@
 										'autocomplete' =>'off',
 									]);?>
 									
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Rate To')); ?><span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select name="user_to" id="userto" class='form-control col-md-7 col-xs-12 userto' >
+												
+											<?php if($UserData != ""){
+												
+												foreach($UserData as $users){?>
+												<option value="<?php echo $users->id;?>"><?php echo $users->first_name."  ".$users->last_name;?> </option>
+											<?php } } ?>
+											</select>
+											
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Booking')); ?><span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select name="booking_id" id="booking" class='form-control col-md-7 col-xs-12'>
+											<?php	// pr($book_id);?>
+										
+											
+											</select>
+											
+										</div>
+									</div>
+									
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Comment')); ?><span class="required">*</span>
 										</label>
@@ -38,30 +68,17 @@
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
-											<!--<fieldset class="rating">
-												<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-												<input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-												<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-												<input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-												<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-												<input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-												<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-												<input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-												<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-												<input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-											</fieldset>-->
-											
 											<span class="rating">
-											<input type='radio' id="star5" name='rating' value='5' /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-											<input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-											<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-											<input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-											<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-											<input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-											<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-											<input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-											<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-											<input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+													<input type='radio' id="star5" name='rating' value='5' /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
 											</span>
 										</div>
 									</div>
@@ -142,3 +159,34 @@
 	});
 	</script>
 </div></div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+ 
+ <script>
+ /*For Remove profile image */
+var host = window.location.host;
+var proto = window.location.protocol;
+ var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+ $(document).ready(function(){
+	
+	 
+		$("#userto").change(function() { 
+			var userid = $("#userto option:selected").val();
+			//alert("You have selected the userid - " + userid);
+					 $.ajax({
+					 type:'POST',
+					
+					 url: ajax_url+'dashboard/review', 
+					 data:'user='+userid,
+					 success: function(result){
+			
+					$("#booking").html(result);
+				 $(".bk").hide();
+          }
+        });
+   }); 
+ });  
+
+ /*End profile image*/
+</script>
