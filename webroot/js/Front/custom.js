@@ -1422,6 +1422,34 @@
 			
 		});
 	/*End contact form*/
+		/*For booking contact form*/
+		$('#bookingContact').validate({
+			rules: {
+				"BookingRequests[booking_start_date]":
+				{
+					required:true 
+				},
+				"BookingRequests[booking_end_date]":
+				{
+					required:true 
+				},
+				"BookingRequests[message]":
+				{
+					required:true 
+				}/*,
+				"BookingRequests[required_services]":
+				{
+					required:true 
+				}*/
+			},
+		    messages: {
+				"BookingRequests[booking_start_date]":
+				{
+					required : "This field is required"
+				}
+			}
+
+         });
 	});
 		//End base profile
 	function gettingstarted(formID,btnID,actionURL){

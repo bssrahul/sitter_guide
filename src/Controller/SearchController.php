@@ -36,7 +36,7 @@ class SearchController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
-    public function beforeFilter(Event $event)
+	public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 		if($this->CheckGuestSession() && ($this->request->action == 'login' || $this->request->action == 'signup' || $this->request->action=="forgotPassword"))
@@ -46,7 +46,6 @@ class SearchController extends AppController
 		}
 		if(!$this->CheckGuestSession() && in_array($this->request->action,array('profile','profileEdit','addUserPet'))){
 			return $this->redirect(['controller' => 'Guests','action'=>'home']);
-			
 		}
 		
 		$categoryModel = TableRegistry::get('Categories');
@@ -62,8 +61,7 @@ class SearchController extends AppController
 		$session = $this->request->session();
 		$this->set('logedInUserId', $session->read('User.id'));
     }
-    
-	public function initialize()
+    public function initialize()
     {
 
 		parent::initialize();
@@ -537,6 +535,8 @@ class SearchController extends AppController
 
         $session = $this->request->session();
         $userId = $session->read('User.id');
+        $userEmail = $session->read('User.email');
+        $userName = $session->read('User.name');
 	
         $bookingRequestsModel = TableRegistry::get('BookingRequests');
 		
@@ -544,29 +544,41 @@ class SearchController extends AppController
 		if(isset($this->request->data['BookingRequests']) && !empty($this->request->data['BookingRequests']))
 		{
 			//pr($this->request->data['BookingRequests']);die;
+			$sitter_id = convert_uudecode(base64_decode($this->request->data['BookingRequests']['sitter_id']));
+
 			$bookingRequestData = $bookingRequestsModel->newEntity();
-               $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>true]);
+               $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
                 $bookingRequestData->user_id = $userId;
-                $bookingRequestData->sitter_id = $sitterId;
-                pr($bookingRequestData);die;
-			    if ($bookingRequestsModel->save($bookingRequestData)){
-			    	//echo "oko save";die;
-               	     return $this->redirect(['controller'=>'search','action'=>'thankyou']);
+                $bookingRequestData->sitter_id = $sitter_id;
+                $bookingRequestData->booking_start_date = $this->request->data['BookingRequests']['booking_start_date'];
+                $bookingRequestData->booking_end_date = $this->request->data['BookingRequests']['booking_end_date'];
+                if ($bookingRequestsModel->save($bookingRequestData)){
+                	
+                	$replace = array('{name}','{email}');
+					$with = array($userName,$userEmail);
+					$this->send_email('',$replace,$with,'booking_request',$userEmail);
+				    
+				     return $this->redirect(['controller'=>'search','action'=>'thank-you']);
 				}else{
-					//echo "not save";die;
-				  $this->Flash->error(__('Error found, Kindly fix the errors.'));
+				     $this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}
 			 $this->set('booking_data', $bookingRequestData);
 		}else{
 			$this->set('sitter_id',base64_encode(convert_uuencode($sitterId)));
+
+			$UsersModel = TableRegistry::get('Users');
+            $userData = $UsersModel->get($sitterId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails']]);
+			$this->set('userData',$userData);
+
 		}
 	}
 	/**
 	 Function for Thank you message
 	*/
-	function thankyou()
+	function thankYou()
 	{
           $this->viewBuilder()->layout('landing');
+          //echo "Thoank You";die;
 	}	
 	function favoriteSitter($sitterId = NULL, $userId = NULL)
 	{

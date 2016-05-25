@@ -1,5 +1,82 @@
 
+<?php echo $this->Html->css(['Front/dist/jquery.datepicker.css','Front/dist/jquery.datepicker.min.css']); 
+echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.datepicker.min.js']); ?>
+<script type="text/javascript">
+        // Localization
 
+       /* jQueryDatepicker.day_names_short = {
+            1: 'Mon',
+            2: 'Tue',
+            3: 'Wed',
+            4: 'Thu',
+            5: 'Fri',
+            6: 'Sat',
+            7: 'Sun'
+        };
+
+        jQueryDatepicker.day_names = {
+            1: 'Monday',
+            2: 'Tuesday',
+            3: 'Wednesday',
+            4: 'Thursday',
+            5: 'Friday',
+            6: 'Saturday',
+            7: 'Sunday'
+        };
+
+        jQueryDatepicker.month_names = {
+            1: 'January',
+            2: 'February',
+            3: 'March',
+            4: 'Apri',
+            5: 'May',
+            6: 'June',
+            7: 'July',
+            8: 'Agust',
+            9: 'September',
+            10: 'October',
+            11: 'November',
+            12: 'December'
+        };*/
+        $(document).ready(function () {
+            var $selected = $('.selected');
+
+            $some_datepicker = $('.some_datepicker');
+            
+            $some_datepicker.datepicker({
+                next_button: '&gt;',
+                prev_button: '&lt;'
+            });
+
+            $some_datepicker.setStartDate({
+                year: 2016,
+                // jquery.datepicker accepts first month as 1
+                // (built-in Date() class accepts first month as 0)
+                month: 5,
+                day: 10
+            });
+
+
+             
+  
+            /*  
+            $some_datepicker.on('date_selected.datepicker', function (event, date) {
+                $selected.show().html('Selected date is: '+date.date.toString());
+                //alert(date.date.toString());
+            }); */
+        });
+    </script>
+    <style type="text/css">
+        .a,
+        .a:visited {
+            color: #176bb8;
+            text-decoration: none;
+        }
+
+        .a:hover {
+            text-decoration: underline;
+        }
+    </style>
 <!--[Banner Area Start]-->
 
 <div class="saerch-s-det">
@@ -925,8 +1002,14 @@
         <h3 class="mid-sec-title pt30  ">Availability</h3>
       <div class="detail-cal-widget">
       
-        <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> </div>
-      
+        <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender">
+       <!--Start availability calender-->
+        
+         <div class="some_datepicker">
+          </div>
+        
+      <!--end calender-->
+      </div>
       </div>
       
       
