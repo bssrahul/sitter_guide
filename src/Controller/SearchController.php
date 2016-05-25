@@ -449,8 +449,8 @@ class SearchController extends AppController
 				$response = curl_exec($ch);
 				curl_close($ch);
 				$response_a = json_decode($response);
-				$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
-				$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
 			}
 		
 			$query='SELECT
@@ -478,7 +478,7 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']])
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				$loggedInUserID = $session->read('User.id');
