@@ -214,9 +214,9 @@
 					     changeMonth: true,
 					     changeYear: true,
 					     dateFormat: 'yy-mm-dd',
-					           onClose: function( selectedDate ) {
-                      $( "#promocodes-expire-date" ).datepicker( "option", "minDate", selectedDate );
-      }
+						   onClose: function( selectedDate ) {
+	                      $( "#promocodes-expire-date" ).datepicker( "option", "minDate", selectedDate );
+	                      }
 					   }
 					);
 				$(".fa-calendar").click(function(){ $("#promocodes-start-date").focus();});
@@ -227,7 +227,7 @@
 					     dateFormat: 'yy-mm-dd',
 					           onClose: function( selectedDate ) {
                        $( "#promocodes-start-date" ).datepicker( "option", "maxDate", selectedDate );
-      }
+                         }
 					   }
 					);
 				$(".fa-calendar").click(function(){ $("#promocodes-expire-date").focus();});

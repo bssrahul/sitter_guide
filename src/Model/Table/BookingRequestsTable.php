@@ -17,13 +17,10 @@ class BookingRequestsTable extends Table
         $validator
              ->notEmpty('booking_start_date', 'This field is required.')
              ->notEmpty('booking_end_date', 'This field is required.')
-             ->notEmpty('message', 'This field is required.')
-             ->notEmpty('recieved_photo_during_stay', 'This field is required.');
+             ->notEmpty('required_services', 'This field is required.')
+             ->notEmpty('message', 'This field is required.');
             
-             
-              
-               return $validator;
+             return $validator;
     }
-	
 }
 ?>

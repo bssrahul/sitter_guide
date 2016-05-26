@@ -184,6 +184,91 @@ div.checkbox label.error{
     width:auto !important;
 }
 /*Search CSS ADD ON START*/
+ul.pet_count li.dog-in-li span {
+    float: left;
+    position: relative;
+    text-align: center;
+    top: 10px;
+    width: 100%;
+}
+
+ul.pet_count  li.dog-in-li:hover  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+
+div.checkbox label.error{
+    width:auto !important;
+}
+
+ul.pet_count li.active  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+
+ul.booking_days li.dog-in-li span {
+    float: left;
+    position: relative;
+    text-align: center;
+    top: 10px;
+    width: 100%;
+}
+
+ul.booking_days  li.dog-in-li:hover  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+ul.booking_days li.active  {
+    background:#72A105;
+    color:#fff;
+  
+}
+
+.unbold {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.market-place ul li.active a{
+  background: #4c4c4c url("../../img/training-icon.png") no-repeat scroll center top 5px;
+  color: #ffffff;
+}
+
+ .rating {
+          overflow: hidden;
+          display: inline-block;
+      }
+      .rating-input {
+          position: absolute;
+          left: 0;
+          top: -50px;
+      }
+      .rating-star {        
+          display: block;
+          float: right;        
+          width: 16px;
+          height: 16px;
+          background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+      }
+      .rating-star:hover,
+      .rating-star:hover ~ .rating-star,
+      .rating-input:checked ~ .rating-star {
+          background-position: 0 0;
+      }
+
+/* Just for the demo */
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+h1 { font-size: 1.5em; margin: 10px; }
+
 
 /****** Style Star Rating Widget *****/
 
@@ -221,3 +306,59 @@ div.checkbox label.error{
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #cc9900;  } 
+
+
+a:hover, a:focus, a:active{outline :none !important;}
+
+
+.pac-item-query{
+
+	font-weight: normal;
+	font-style: normal;
+    font-size: 12px;
+    color: #404040;
+    font-family:'CenturyGothic-Regular';
+   
+}
+
+.pac-container{
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-shadow: none;
+    box-shadow: 0px 2px 4px -2px rgba(161, 161, 161, 0.47);
+    
+}
+.pac-container:after {
+    background-image: none !important;
+    display: none;
+
+}
+
+.pac-item{
+    padding: 2px 1em;
+    background-color: #F9F9F9;
+    font-family: 'Conv_Raleway-Regular';
+}
+.pac-item:hover{
+    background-color: #fff;
+}
+.pac-item:first-child{
+    border-top: none;
+}
+.pac-matched{
+    font-weight: normal;
+    font-family:'comic sans ms';
+}
+.pac-icon{
+    display: none;
+}
+.pac-item-query {
+  font-family: raleway !important;
+}
+.pac-matched {
+  font-family: raleway !important;
+}
+ul.booking-services li.new_active{
+   border-top: 5px solid #b4b05d !important;
+
+}
