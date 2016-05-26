@@ -18,8 +18,8 @@
 		<?php }?>
 			<!-- Bootstrap Core CSS -->
 		<?php 
-		echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/bootstrap.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
-		echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js']);
+		echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/custom-style.css','Front/owl.carousel.css','Front/style.css','Front/bootstrap.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
+		echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js','Front/owl.carousel.min.js']);
 		?>
 
           
