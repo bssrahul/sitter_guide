@@ -404,7 +404,7 @@ class GuestsController extends AppController
 		$getUserData = $UsersModel->find('all',['conditions' => ['Users.id' => $session->read('User.id')]])->first();
 		
 		$UserData = $UsersModel->newEntity();
-		$UserData->id = $getUserData->id;
+		@$UserData->id = $getUserData->id;
 		$UserData->last_login = date('Y-m-d h:i:s');
 		$UserData->avail_status = "Logout";
 		

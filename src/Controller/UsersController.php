@@ -463,9 +463,9 @@ class UsersController extends AppController
 					if($AdminsModel->save($AdminData)){
 						$replace = array('{user}','{new_password}');
 						$with = array($getAdminData->username,$new_password);
-						//$this->send_email('',$replace,$with,'admin_forgot_password',$getAdminData->email);
+						$this->send_email('',$replace,$with,'admin_forgot_password',$getAdminData->email);
+						$this->redirect( ['controller' => 'guests', 'action' => 'home']);
 						$this->Flash->success(__('Password sent on your email address'));
-						
 					}
 				}
 			}else{

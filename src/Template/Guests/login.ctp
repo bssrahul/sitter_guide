@@ -17,19 +17,21 @@
   <div class="form-group">
     <label for="email"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?></label>
     <div class="icon-input">
+	
        <?php 
         echo $this->Form->input('Users.email',[
-              'class' =>'form-control',
+              'class' =>'form-control ',
               'label'=>false
               
           ]);
        ?>
-      <i class="fa fa-envelope"></i>
+      
     </div>
   </div>
   <div class="form-group">
     <label for="password"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Password')); ?></label>
     <div class="icon-input">
+	
        <?php 
         echo $this->Form->input('Users.password',[
               'class' =>'form-control',
@@ -37,7 +39,7 @@
 
           ]);
        ?>
-      <i class="fa fa-key"></i>
+     
     </div>
       
   </div>

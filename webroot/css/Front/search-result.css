@@ -252,10 +252,13 @@
 .sitter-quike-view .sqv-box .sit-head  .rgt-hours p{ font-size:13px; text-align:center; line-height:25px;}
 .sitter-quike-view .sqv-box .sit-head  .rgt-hours p span{ font-size:30px; display:block; font-weight:bold; color:#ee9f06;}
 .sitter-quike-view .sqv-box .quick-slide{ width:100%; padding:15px 15px; border:#f5f5f5 1px solid; overflow:hidden; margin:15px 0 0 0;}
+
 .sitter-quike-view .sqv-box .quick-slide ul{ margin:0px; padding:0px; list-style-type:none;}
-.sitter-quike-view .sqv-box .quick-slide ul li{ float:left; width:32%; margin:0 2% 0 0; }
-.sitter-quike-view .sqv-box .quick-slide ul li img{ width:100%;}
+.sitter-quike-view .sqv-box .quick-slide ul li{ float:left; width:100%; margin:0 2% 0 0; }
+.sitter-quike-view .sqv-box .quick-slide ul li img{width:100%;}
 .sitter-quike-view .sqv-box .quick-slide ul li:last-child{ margin-right:0px;}
+.sitter-quike-view .sqv-box .quick-slide .item{ display:block; background:red;}
+.sitter-quike-view .sqv-box .quick-slide .item img {width:100%;}
 
 .sitter-quike-view .sqv-box .sqv-mid{ width:100%; margin:20px 0 0 0;}
 .sitter-quike-view .sqv-box .sqv-mid .sqv-mid-lft {width:100%;}
