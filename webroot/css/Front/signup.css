@@ -875,6 +875,6 @@ p.min-hh {
 }
 .signup-container .form-part ul { margin:0px; padding:0px; list-style-type:none; width:100%; clear:left;}
 .signup-container .form-part ul li{ width:50%; float:left; }
-.signup-container .form-part ul li .form-group{ width:97%;}
-
+.signup-container .form-part ul li .form-group{ width:96.5%;}
+.signup-container .form-part ul li:nth-child(2) .form-group{ float:right;}
 .signup-container .form-part ul li #users-country{ height:47px;}
