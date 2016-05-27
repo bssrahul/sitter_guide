@@ -148,7 +148,7 @@ margin: 10px 25px 0 0 !important;
 .dobDiv > .text{width:85% !important;width: 80% !important;float: left;}
 
 
-label.error{margin-top:5px;}
+label.error{margin-top:5px;float:left;}
 
 .radio label, .checkbox>input{
     margin-left:3px !important;

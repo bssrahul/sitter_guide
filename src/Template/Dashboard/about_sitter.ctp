@@ -41,11 +41,13 @@
                          <?php echo $this->Form->input('UserAboutSitters.your_self',[
                                  'templates' => ['inputContainer' => '{{content}}'],
                                  'type'=>'textarea',
+								 'id'=>'your_self_txtarea',
+								  'maxlength'=>"5000",
                                  'label'=>false,
                                  'required'=>false
                           ]); ?>
                           <?php $max=35; if(!empty($sitter_info['your_self'])){ $rem = $max-str_word_count ($sitter_info['your_self']);} ?>
-                          <p class="w-limit" id="35-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "35";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
+                          <p class="w-limit" id="your_self_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "35";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-your-self" generated="true"></label>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm 6 col-xs-12">
@@ -55,11 +57,13 @@
                           <?php echo $this->Form->input('UserAboutSitters.client_choose_desc',[
                                  'templates' => ['inputContainer' => '{{content}}'],
                                  'type'=>'textarea',
+								 'id'=>'client_txtarea',
+								  'maxlength'=>"5000",
                                  'label'=>false,
                                   'required'=>false
                           ]); ?>
                           <?php $max=75; if(!empty($sitter_info['client_choose_desc'])){ $rem = $max-str_word_count ($sitter_info['client_choose_desc']);} ?>
-                          <p class="w-limit" id="75-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
+                          <p class="w-limit" id="client_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                           <label class="error" for="useraboutsitters-client-choose-desc" generated="true"></label>
                         </div>
                   </div>
@@ -424,58 +428,74 @@ $(document).ready(function(){
         }).submit();
     });
    /*For 35 limit*/
-   var max35Words = 35;
-   $( "#useraboutsitters-your-self" ).keypress(function() {
-         var len = (this).value.length;
-
-          var $this, wordCount;
-           $this = $(this);
-           wordCount = $this.val().split(/\b[\s,\.-:;]*/).length;
-          if (wordCount > max35Words) {
-              jQuery(".word_count span").text("" + max35Words);
-            
-              return false;
-          } else {
-            //alert(len);
-              return jQuery('#35-word-preview').text(max35Words - wordCount+" words remainings...");
-          }
-
- });
- $('#useraboutsitters-your-self').change(function(){
-            var selfwords = $(this).val().split(/\b[\s,\.-:;]*/);
-          if (selfwords.length > max35Words) {
-                selfwords.splice(max35Words);
-                $(this).val(selfwords.join(" "));
-                alert("You've reached the maximum allowed words. Extra words removed.");
-          }
-        });
- /*end 35*/
- /*For 75 limit*/
-  var maxWords = 75;
-  $( "#useraboutsitters-client-choose-desc" ).keypress(function(){
-         var len = (this).value.length;
-          var $this, wordcount;
-           $this = $(this);
-           wordcount = $this.val().split(/\b[\s,\.-:;]*/).length;
-            if (wordcount > maxWords) {
-              jQuery(".word_count span").text("" + maxWords);
-            
-              return false;
-          } else {
-              return jQuery('#75-word-preview').text(maxWords - wordcount+" words remainings...");
-          }
-});
-$('#useraboutsitters-client-choose-desc').change(function(){
-            var words = $(this).val().split(/\b[\s,\.-:;]*/);
-          if (words.length > maxWords) {
-                words.splice(maxWords);
-                $(this).val(words.join(" "));
-                alert("You've reached the maximum allowed words. Extra words removed.");
-          }
-        });
- /*end 75*/
+   
 });
 /*End multiple profile photos*/
+
+
+function wprdCount(id){
+		var regex = /\s+/gi;
+		var maxWords = 75;
+		
+		var value = $(id).val();
+
+		if (value.length == 0) {
+			
+			$(id+"_text").text(  75+" words remainings" );
+			return ;
+		}
+
+		
+		var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+		
+		if( wordCount < 76 ){
+		
+			$(id+"_text").text(maxWords - wordCount+" words remainings");
+		}
+		else{
+			alert("You've reached the maximum allowed words. Extra words removed.");
+		}
+		
+	}
+	
+	$(document).ready(function(){
+		
+		$('#client_txtarea').keyup(function() {
+			wprdCount('#client_txtarea');
+		});
+		$('#your_self_txtarea').keyup(function() {
+			wprdCount35('#your_self_txtarea');
+		});
+		
+	}); 
+
+	function wprdCount35(id){
+		var regex = /\s+/gi;
+		var maxWords = 35;
+		
+		var value = $(id).val();
+
+		if (value.length == 0) {
+			
+			$(id+"_text").text(  35+" words remainings" );
+			return ;
+		}
+
+		
+		var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+		
+		if( wordCount < 36 ){
+		
+			$(id+"_text").text(maxWords - wordCount+" words remainings");
+		}
+		else{
+			alert("You've reached the maximum allowed words. Extra words removed.");
+		}
+		
+	}
+	
+	
+
 </script>
 <?php 
 

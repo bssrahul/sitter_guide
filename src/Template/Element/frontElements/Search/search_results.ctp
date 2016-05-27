@@ -1,3 +1,35 @@
+<script type="text/javascript" src="js/Front/owl.carousel.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {  
+		var owl = $('.owl-carousel-1');
+		owl.owlCarousel({
+        nav:true,
+	    loop:true,
+	    margin:0,
+	    autoplay:false,
+	    autoplayTimeout:1000,
+	    autoplayHoverPause:true,
+		responsiveClass:true,
+	   
+	    responsive:{
+    	    0:{
+        	    items:2,
+            	nav:true
+	        },
+    	    768:{
+        	    items:3,
+            	nav:true
+	        },
+    	    1024:{
+        	    items:3,
+            	nav:true
+	        }
+			    }
+		});
+		
+});
+</script>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
@@ -441,7 +473,7 @@
 									  <?php
 				
 			//	pr($resultsData);die;
-							$qvModal = 1;	
+							$qvModal = 1;$innerSlideNO=1;	
 							foreach($resultsData as $results){
 							?>
 																
@@ -475,71 +507,43 @@
 												</div>
 												<!--quick slide-->
 												<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
-												$innerSlideNO=1;
-												if(!empty(@$sub_galleries_result)){ echo @$innerSlideNO;
-													
-													$setimage=0; $imagecount=0;
+												
+												if(!empty(@$sub_galleries_result)){  
 															//pr($sub_galleries->image);die;
 												?>					
 													<div class="quick-slide">
-													<script>
-														$(function(){
-																$('.innermyCarousel<?php echo $innerSlideNO; ?>').carousel({
-																interval: false
-														}); 
-														
-														})
-												
-												</script>
-													  <div id="myCarousel" class="carousel slide innermyCarousel<?php echo $innerSlideNO; ?>" data-ride="carousel">
-
-														<div class="carousel-inner" role="listbox">
-																
-																         <?php  foreach($sub_galleries_result as $sub_galleries){
-																									$newarr[]=$sub_galleries->image;
-																									$imagecount ++;
-																							}	
-																							$rownmbr=$imagecount/3;
-																							$imginrow=$imagecount/$rownmbr;
-																							//print_r($newarr);
-																							$index=0;
-																							for($i=1;$i<=($rownmbr+1);$i++)
-																							{ 
-																							 if($i == 1){ $ac="active";}else{$ac=" ";}?>
-																								<div class="item <?php echo $ac; ?>">
-																								<div class='row'>      
-																								<ul> <?php
-																								for($j=0;$j<$imginrow;$j++)
-																								{
-																									//echo $newarr[$index]; ?>
-																									<li>
-																									<?php if(@$newarr[$index] != ''){?>
-																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($newarr[$index] != ''?$newarr[$index]:'prof_photo.png'); ?>">
+														<div class="ms-area">
+															<ul class="owl-carousel-1">
+																<?php  foreach($sub_galleries_result as $sub_galleries){
+																			if($sub_galleries->image != ""){?>
+																					<div class="item">
+																						 <li>
+																								<?php if(@$sub_galleries->image != ''){// echo @$newarr[$index];?>
+																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>">
 																									<?php } ?>
-																									</li>
-																								<?php	$index++;
-
-																								}	echo "</ul> </div></div>";
-																							}?>
+																						 </li>
+																					</div>
+																				
+																	<?php		}
+																	}	?>
 																					
-																
+																					
+																</ul>
 														</div>
-																  <!-- Left and right controls -->
-																<a class="left carousel-control" href=".innermyCarousel<?php echo $innerSlideNO; ?>" role="button" data-slide="prev">
-																	<span class="fa fa-chevron-left" aria-hidden="true"></span>
-																	<span class="sr-only">Previous</span>
-																</a>
-																<a class="right carousel-control" href=".innermyCarousel<?php echo $innerSlideNO; ?>" role="button" data-slide="next">
-																	<span class="fa fa-chevron-right" aria-hidden="true"></span>
-																	<span class="sr-only">Next</span>
-																</a>
 												</div>
-											<?php 
-													$innerSlideNO++;	
-													
-												}
-															?>
+												<?php	}	?>
 												<!--quick slide-->
+												
+												
+												<!--content area Start-->
+
+												
+												
+												
+												
+												
+												
+												
 												<div class="sqv-mid">
 													<div class="row">
 														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -593,11 +597,11 @@
 									
 								<?php $qvModal++; } ?></div>
 									<!-- Left and right controls -->
-											<a data-slide="prev" role="button" href="#myCarousel2" class="left carousel-control">
+											<a data-slide="prev" role="button" href="#myCarousel2" class="left myCarousel2next carousel-control">
 											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
 											  <span class="sr-only">Previous</span>
 											</a>
-											<a data-slide="next" role="button" href="#myCarousel2" class="right carousel-control">
+											<a data-slide="next" role="button" href="#myCarousel2" class="right myCarousel2next carousel-control">
 											  <span aria-hidden="true" class="fa fa-chevron-right"></span>
 											  <span class="sr-only">Next</span>
 											</a>
@@ -631,16 +635,29 @@
 </style>
 
 <script>
-$(function(){
-	$(document).on('click',".qvBtn",function(){
+	$(function(){
+		$(document).on('click',".qvBtn",function(){
+		
+			var qv = $(this).attr('data-rel');
+			/*$(".item").removeClass('active');*/
+			$(".qvModal"+qv).addClass('active');
+			/* setTimeout(function(){
+				$(".innnerGallery1").addClass("active");	
+			}, 500); */	
+		
+		});
+		$('#myCarousel2').bind('slide.bs.carousel', function (e) {
+		
+			
+			
+		}); 
+	})
 	
-	var qv = $(this).attr('data-rel');
-	/*$(".item").removeClass('active');*/
-	$(".qvModal"+qv).addClass('active');
 	
 	
-});
-	
-})
 
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39d3915099cfb7a6f610431589c6d12be90d4b7

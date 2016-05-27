@@ -525,37 +525,32 @@ $(document).ready(function () {
                  "SiteConfigurations[facebook_link]":
                 {
                     required: true,
-                    nourl: true
+					validateURL:true
                 },
                  "SiteConfigurations[twitter_link]":
                 {
                     required: true,
-					url: true,
-                    nourl: true
+					validateURL:true
                 },
                  "SiteConfigurations[google_link]":
                 {
                     required: true,
-					url: true,
-                    nourl: true
+					validateURL:true
                 },
                  "SiteConfigurations[linkedin_link]":
                 {
                     required: true,
-					url: true,
-                    nourl: true
+					validateURL:true
                 },
                  "SiteConfigurations[instagram_link]":
                 {
                     required: true,
-					url: true,
-                    nourl: true
+					validateURL:true
                 },
                  "SiteConfigurations[youtube_link]":
                 {
                     required: true,
-					url: true,
-                    nourl: true
+					validateURL:true
                 },
                  "admin_img":
                 {
@@ -573,7 +568,7 @@ $(document).ready(function () {
             messages: {             
                 "Admins[full_name]":
                 {
-                    required : "This field is required"
+                    required : "This name field is required"
                 },
                  "Admins[username]":
                 {
@@ -1308,3 +1303,12 @@ $(document).ready(function(){
 	}, 5000);
 });
 /** ******  /scrollview  *********************** **/
+/*function validateURL(textval) {
+	alert("okokok");
+  var urlregex = new RegExp(
+        "^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)");
+  return urlregex.test(textval);
+}*/
+jQuery.validator.addMethod("validateURL", function(value, element) {
+  return this.optional(element) || /^(http:\/\/|http:\/\/www.|https:\/\/www.|https:\/\/|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)/i.test(value);
+}, "Invalid URL only please"); 
