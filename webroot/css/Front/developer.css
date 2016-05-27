@@ -76,8 +76,13 @@ label.error {
 
 #myModal21 .modal-footer {
     border-top: 1px solid #e5e5e5;
-    padding: 15px 0 0 15px;
+    padding: 5px !important; 
     text-align: right;
+}
+#myModal21 .modal-body {
+  
+    padding: 5px;
+   
 }
 
 
@@ -88,7 +93,7 @@ label.error {
     line-height: 13px;
 }
 
-#preview-avatar-profile {text-align:center; margin-top:20px;}
+#preview-avatar-profile {text-align:center; margin-top:5px;}
 
 
 #myModal21 .sitter-quike-view .sqv-box .top-close a {
@@ -300,12 +305,12 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #cc9900;  } /* hover previous stars in list */
+.rating:not(:checked) > label:hover ~ label { color: #F0C751;  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #cc9900;  } 
+.rating > input:checked ~ label:hover ~ label { color: #F0C751;  } 
 
 
 a:hover, a:focus, a:active{outline :none !important;}
@@ -361,4 +366,8 @@ a:hover, a:focus, a:active{outline :none !important;}
 ul.booking-services li.new_active{
    border-top: 5px solid #b4b05d !important;
 
+}
+
+.d-m2 img {
+    padding: 5px !important;
 }

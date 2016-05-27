@@ -219,13 +219,15 @@ $(document).ready(function() {
 													$sum=0;$count=0;
 													foreach($ratingData as $rating){
 														
-															$count++;
+															
 															$rate=$rating->rating;
 															$sum=$sum+$rate;
+															$count++;
 													}
 													if($count > 0){
 														 $avg=$sum/$count;
 													}
+												//	echo $avg; 
 													
 													?>
 													
@@ -234,19 +236,29 @@ $(document).ready(function() {
 											<?php	//if(!empty($avg)){ 	
                                             ?>
 													<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+													
 													<input type="radio"  value="4.5" <?php if(!empty($avg)){if($avg <= 4.5 && $avg > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+													
 													<input type="radio"  value="4"  <?php if(!empty($avg)){ if($avg <= 4 && $avg > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+													
 													<input type="radio"  value="3.5"  <?php if(!empty($avg)){ if($avg <= 3.5 && $avg > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+													
 													<input type="radio"  value="3" <?php if(!empty($avg)){ if($avg <= 3 && $avg > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+													
 													<input type="radio"  value="2.5" <?php if(!empty($avg)){ if($avg <= 2.5 && $avg > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+													
 													<input type="radio"   value="2"  <?php if(!empty($avg)){ if($avg <= 2 && $avg > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+													
 													<input type="radio"  value="1.5" <?php if(!empty($avg)){ if($avg <= 1.5 && $avg > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+													
 													<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+													
 													<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+													
 											<?php// } ?>
 											</span>
 										</div>
-											<div class="sit-review"> <a href="#" title="Review">105 Reviews</a> </div>
+											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> Reviews</a> </div>
 										  </div>
 									  <!--/rating--> 
 									  
@@ -431,9 +443,11 @@ $(document).ready(function() {
 							//ADD MARKER ON GOOGLE MAP	
 							echo $this->GoogleMap->addMarker('map_canvas',$results->id,$position,
 										array(
-										'markerTitle'=>$full_name,
+										'markerTitle'=>$mapInc,
 										'windowText'=>$full_name,
-										'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
+										'windowText'=>$full_name,
+										//'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
+										'markerIcon'=>HTTP_ROOT.'img/green_pin.png',
 										)
 								  ); 
 							$mapInc++;
@@ -612,6 +626,12 @@ $(document).ready(function() {
     text-decoration:none !important;
     outline:none;
 }
+.mapIconLabel {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-family: 'DINNextRoundedLTProMediumRegular';
+}
 </style>
 
 <script>
@@ -637,4 +657,7 @@ $(document).ready(function() {
 	
 
 </script>
+<<<<<<< HEAD
+=======
 
+>>>>>>> a39d3915099cfb7a6f610431589c6d12be90d4b7
