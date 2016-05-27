@@ -310,89 +310,100 @@
                         </div>
                   </div>
                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?></h3>
-                 <div class="row">
-                     <div class="col-lg-5">
-                     <div class="row d-m2">
-                     <div class="col-lg-7">
-                    <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Photo')); ?></p>
-                    <p>
-                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels.')); ?>
-                         
-                    </p>
+                
+				<!-- ROW ONE START -->	
+				<div class="row">
+
+					 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+						   
+						   <div class="row d-m2">
+							
+								 <div class="col-lg-7">
+										
+										<p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Photo')); ?></p>
+										<p>
+											<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels.')); ?>
+										</p>
+							 
+										<?php 
+											$session = $this->request->session(); 
+											$user = $session->read('User');
+										?>
+								</div>
+								
+								<div class="col-lg-5">
+								
+								   <img  class="img-responsive height125"  src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
+								   
+									<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?></button>
+								</div>
+
+						</div>
+					
+					</div>
+						  
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+					
+						<div class="row d-m2">
+					
+							<div class="col-lg-7">
+							
+								  <p class="browse-p">
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile banner')); ?>
+								  </p>
+								  
+								  <p  class="min-hh">
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
+									   
+								  </p>
+							
+							</div>
+
+							<div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
+
+								<?php 
+									if(@$userInfo->profile_banner != ''){
+										$pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
+									}else{
+										$pathBanner = HTTP_ROOT.'img/img.png'; 
+									}
+								 ?>
+								 
+								 <img class="img-responsive height125" src="<?php echo @$pathBanner; ?>"><?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
+								 
+									<button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
+										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
+									</button>
+							</div>
+						
+						</div>
+					
+					</div>
+
+				</div>
+				<!-- ROW ONE END -->	
+                  
                  
-               <?php 
-                       $session = $this->request->session(); 
-                       $user = $session->read('User');
-                    ?>
-             <!--<button id="change_pic" class="btn "></button>-->
-               <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i>
-                <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?>
-                         
-               </button>
-              <!--<button type="button" class="btn btn-upload center-block" data-toggle="modal" data-target="#myModal21">
-                Upload photo
-              </button>-->
+<!-- ROW TWO Start -->	
+<div class="row">
+
+	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+		   
+		<div class="row d-m2">
+				
+			<div class="col-lg-7">
                     
-
-</div>
-                   <div class="col-lg-5">
-                      <!--<img src="<?php echo HTTP_ROOT; ?>img/dm.png">-->
-                       <img  id="avatar-edit-img" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
-
-                    </div>
-
-</div>
-           </div>
-              
-
-
-                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
-                       <div class="row d-m2">
-                       <div class="col-lg-7">
-                      <p class="browse-p">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile banner')); ?>
-                        <!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
-                      <p  class="min-hh">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-                           
-                      </p>
-                      <button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
-                        </button>
-
-                        </div>
-
-                        <div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
-
-                          <?php if(@$userInfo->profile_banner != ''){
-                                  $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
-                            }else{
-                                 $pathBanner = HTTP_ROOT.'img/img.png'; 
-                            }
-                         
-                            ?>
-                                <img id="preview-profile-banner" class="img-responsive" src="<?php echo @$pathBanner; ?>">
-                                 <?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
-                        </div>
-                        </div>
-                     </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-7">
-                    <div class="row d-m2">
-                    <div class="col-lg-6">
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
-                      <!-- <button type="button" class="btn btn-primary pull-right">Browse Video</button> --></p>
+                    </p>
                     <p>
                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended size is 50mb.')); ?>
-                       </p>
-                    <button class="btn btn-primary" type="button" id="browseVideo"><i class="fa fa-upload" aria-hidden="true"></i>
-                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Video')); ?>
-                          
-                    </button>
-                    </div>
-                    <div class="col-lg-6">
+                    </p>
+                    
+            </div>
+                
+			<div class="col-lg-5">
+					
 					<span class="videoBanner">&nbsp;</span>
                       <?php if(@$userInfo->profile_video != ''){
                            $path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
@@ -401,43 +412,55 @@
                       }
                       
                      ?>
-                    <iframe id="preview-profile-video" width="" height="" src="<?php echo @$path; ?>" frameborder="0" allowfullscreen>
+                    <iframe id="preview-profile-video" class="col-lg-12" src="<?php echo @$path; ?>" allowfullscreen>
                     </iframe>
+                    <button class="btn btn-primary" type="button" id="browseVideo"><i class="fa fa-upload" aria-hidden="true"></i>
+                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Video')); ?>
+                          
+                    </button>
                    <?php echo '<em class="signup_error error clr addError"></em>'; ?>
-                       </div>
-                        </div>
-                </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
-                       <div class="row d-m2">
-                       <div class="col-lg-7">
-                      <p class="browse-p">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile video image')); ?>
-                        <!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
-                      <p  class="min-hh">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-                           
-                      </p>
-                      <button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
-                        </button>
+			</div>
+		
+		</div>
+	
+	</div>
 
-                        </div>
-                        <div class="col-lg-5">
-                          <?php if(@$userInfo->profile_video_image != ''){
-                                  $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
-                            }else{
-                                 $pathVideoImg = HTTP_ROOT.'img/deta-video.png'; 
-                            }
-                         
-                            ?>
-                                <img id="preview-profile-video-image" class="img-responsive" src="<?php echo @$pathVideoImg; ?>">
-                                 <?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
-                              </div>
-                        </div>
-                     </div>
-                </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+                       
+		<div class="row d-m2">
+			
+			<div class="col-lg-7">
+				<p class="browse-p">
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile video image')); ?>
+				</p>
+				
+				<p  class="min-hh">
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
+				</p>
+                
+                
+
+			</div>
+            
+            <div class="col-lg-5">
+				  <?php if(@$userInfo->profile_video_image != ''){
+						  $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
+					}else{
+						 $pathVideoImg = HTTP_ROOT.'img/deta-video.png'; 
+					}
+				 
+					?>
+					<img class="img-responsive height125" src="<?php echo @$pathVideoImg; ?>"><?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
+					<button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
+                
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
+					
+					</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ROW TWO End --> 
                   <div class="row pull-right sp-tb">
                     <p class="col-lg-12">
                       <input type="submit" class="btn Continue" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Continue')); ?>" >
@@ -472,27 +495,22 @@
                 <!--Additional Services-->          
                 	<div class="additional-services">  
                     	  <div class="modal-body">
-               <!-- <form id="cropimage" method="post" enctype="multipart/form-data" action="profile.php">-->
-                  <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data',
-                  'url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
-                  <b> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop your image')); ?> </b> <br/> <br/> 
-
-                    <input style="hidden" type="file" name="image" id="image" />
-
-                    <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
-                    <input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
-                    <input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
-                    <input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
-                    <input type="hidden" name="hdn-y2-axis" value="" id="hdn-y2-axis" />
-                    <input type="hidden" name="hdn-thumb-width" id="hdn-thumb-width" value="" />
-                    <input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="" />
-                    <input type="hidden" name="action" value="" id="action" />
-                    <input type="hidden" name="image_name" value="" id="image_name" />
+                               <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data','url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
+								<input style="hidden" type="file" name="image" id="image" /> 
+								<input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
+								<input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
+								<input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
+								<input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
+								<input type="hidden" name="hdn-y2-axis" value="" id="hdn-y2-axis" />
+								<input type="hidden" name="hdn-thumb-width" id="hdn-thumb-width" value="" />
+								<input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="" />
+								<input type="hidden" name="action" value="" id="action" />
+								<input type="hidden" name="image_name" value="" id="image_name" />
                     
                     <div id='preview-avatar-profile'>
                     </div>
-                <div id="thumbs" style="padding:5px; width:600"></div>
-              <!--  </form>-->
+                <!--<div id="thumbs" style="padding:5px; width:600"></div>-->
+              
               <?php echo $this->Form->end(); ?>
             </div>
                  <div class="modal-footer">
@@ -507,18 +525,7 @@
             </div>         	
          </div>  
     </div>
-  </div
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 
     <!--model box -->
 	
@@ -768,4 +775,5 @@ $(document).ready(function(){
 .padT5{
 padding-top:15px !important;	
 }
+.height125{height:125px !important;width:100% !important;}
 </style>

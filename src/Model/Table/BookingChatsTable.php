@@ -4,7 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-class BookingRequestsTable extends Table
+class BookingChatsTable extends Table
 {
 	public function initialize(array $config)
     { 
