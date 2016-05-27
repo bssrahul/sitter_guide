@@ -12,7 +12,7 @@
 					<h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
 					<p class="head-font2 pad-head-foot pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can select and modify your settings in this central control panel')); ?></p>
 								
-					<h4><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="#" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('to update your callender settings')); ?> </h4>
+					<h4><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="#" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('  to update your calendar settings')); ?> </h4>
 				 
 				 <h3></h3>
 					 <?php 
@@ -107,7 +107,7 @@
 				<div class="form-group col-lg-4">
 					<div class="row">
 						<div class="col-lg-4">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?> </label>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?>  <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							  <?php 
 									echo $this->Form->input('UserSitterServices.sh_holiday_rate',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -119,7 +119,7 @@
                         </div>
                           
                         <div class="col-lg-4">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Guest Rate %')); ?></label>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Guest Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							  <?php 
 								  echo $this->Form->input('UserSitterServices.sh_small_guest_rate',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -131,7 +131,7 @@
                         </div>
                           
                         <div class="col-lg-4">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large Guest Rate %')); ?></label>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large Guest Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
                            <?php 
                               echo $this->Form->input('UserSitterServices.sh_large_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -148,7 +148,7 @@
 
 			<div class="row">
 					<div class="form-group col-lg-4 col-md-12">
-						<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Rate')); ?> </label>
+						<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                           <?php 
                               echo $this->Form->input('UserSitterServices.sh_day_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -162,7 +162,7 @@
  
 				 <div class="form-group col-lg-4 col-md-12">
 				 
-				  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Rate')); ?> </label>
+				  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
 										<?php 
 											  echo $this->Form->input('UserSitterServices.sh_night_rate',[
 												'templates' => ['inputContainer' => '{{content}}'],
@@ -177,7 +177,7 @@
 				<div class="form-group col-lg-4">
 					<div class="row">
 						<div class="col-lg-4">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate %')); ?></label>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
                            <?php 
                               echo $this->Form->input('UserSitterServices.sh_cat_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -189,7 +189,7 @@
                         </div>
                           
                         <div class="col-lg-8">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy &kitten Rate %')); ?></label>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy &kitten Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							  <?php 
 								  echo $this->Form->input('UserSitterServices.sh_puppy_rate',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -294,7 +294,7 @@
 					</div>
                     <div class="row">
 						<div class="col-lg-5 col-md-12">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> 
+								<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 						</div> 
 						<div class="col-lg-4 col-md-6">
 							<?php 
@@ -315,7 +315,7 @@
                       
 						<div class="row">
 							<div class="col-lg-5 col-md-12">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?>
+							<label>	<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							</div> 
 							<div class="col-lg-4 col-md-6">
 								  <?php 
@@ -333,7 +333,7 @@
 								<label ><?php echo $this->requestAction('app/get-translate/'.base64_encode('$00.00')); ?></label>
 						   </div>
 						</div>
-                    <div class="row"><div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> </div> 
+                    <div class="row"><div class="col-lg-5 col-md-12"><label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label> </div> 
                       	<div class="col-lg-4 col-md-6">
                             <?php 
                               echo $this->Form->input('UserSitterServices.sh_dc_additional_guest_rate',[
@@ -353,7 +353,7 @@
                       
                     <div class="row">
 							<div class="col-lg-5 col-md-12">
-									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> 
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i>
 									<small class=	"color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>  )
 									</small>
 							</div> 
@@ -380,7 +380,7 @@
 
             <div class="form-group col-lg-4 col-md-12 mt10">
                 <div class="rules_main">
-                     <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?></div> 
+                     <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?> </div> 
 							<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 								<div class="chek-main-lat">
 								  <?php 
@@ -459,7 +459,7 @@
                         
                     <div class="row">
 							<div class="col-lg-5 col-md-12">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?>  
+							<label>	<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit'));  ?>  <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							</div> 
 							<div class="col-lg-4 col-md-6">
 								<?php 
@@ -483,7 +483,7 @@
                       
                     <div class="row">
 						<div class="col-lg-5 col-md-12">
-							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?> 
+													<label>	<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%'));  ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 						</div> 
                         <div class="col-lg-4 col-md-6">
 							<?php 
@@ -509,7 +509,7 @@
                       
                     <div class="row">
 						  <div class="col-lg-5 col-md-12">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> 
+							<label>	<?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></label></i>
 						  </div> 
 						  <div class="col-lg-4 col-md-6">
 								<?php 
@@ -531,7 +531,8 @@
                     
 					<div class="row">
 							<div class="col-lg-5 col-md-12">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>)  </small>
+															<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
+															<small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('override ')); ?>)  </small>
 							</div> 
                       
                       
@@ -717,7 +718,7 @@
 			<div class="form-group col-lg-4">
 				<div class="row">
 					<div class="col-lg-4">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?></label>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							<?php 
 								  echo $this->Form->input('UserSitterServices.gh_holiday_rate',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -730,7 +731,7 @@
 					</div>
                           
                     <div class="col-lg-4">  
-						<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Guest Rate %')); ?></label>
+						<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Guest Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
                         <?php 
                               echo $this->Form->input('UserSitterServices.gh_small_guest_rate',[
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -743,7 +744,7 @@
 					</div>
                           
                     <div class="col-lg-4">  
-							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large Guest Rate %')); ?>
+							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large Guest Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i>
 							</label>
 							<?php 
 								  echo $this->Form->input('UserSitterServices.gh_large_guest_rate',[
@@ -764,7 +765,7 @@
 			<div class="form-group col-lg-4 col-md-12">
 				<div class="row">
 					<div class="col-lg-6"> 
-						<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Rate')); ?> </label>
+						<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
 								 <?php 
 									  echo $this->Form->input('UserSitterServices.gh_day_rate',[
 										'templates' => ['inputContainer' => '{{content}}'],
@@ -777,7 +778,7 @@
 								  ?>
 					</div>
 		 
-					<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-in visit Rate')); ?> </label>
+					<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-in visit Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
 								  <?php 
 									  echo $this->Form->input('UserSitterServices.gh_drop_in_visit_rate',[
 										'templates' => ['inputContainer' => '{{content}}'],
@@ -793,7 +794,7 @@
 			</div>
 			<div class="form-group col-lg-4 col-md-12">
 					<label for="" class="f14 color-green">
-							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Rate')); ?> 
+							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Rate')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i>
 					</label>
 									<?php 
 										echo $this->Form->input('UserSitterServices.gh_night_rate',[
@@ -810,7 +811,7 @@
 				<div class="row">
 					<div class="col-lg-4">  
 							<label for="" class="f14 color-green">
-									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate %')); ?>
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i>
 							</label>
 									  <?php 
 											echo $this->Form->input('UserSitterServices.gh_cat_rate',[
@@ -823,7 +824,7 @@
 									  ?>
 					</div>
 									  
-					<div class="col-lg-8">  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy &kitten Rate %')); ?></label>
+					<div class="col-lg-8">  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy &kitten Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 						<?php 
 								echo $this->Form->input('UserSitterServices.gh_puppy_rate',[
 									  'templates' => ['inputContainer' => '{{content}}'],
@@ -927,7 +928,7 @@
                         
                         
                       <div class="row">
-							<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?>
+							<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?><i class="fa fa-asterisk" aria-hidden="true"></i>
 							</div> 
 							<div class="col-lg-4 col-md-6">
 								  <?php 
@@ -948,7 +949,7 @@
                       
                       </div>
                       
-                      <div class="row"><div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?> </div> 
+                      <div class="row"><div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </div> 
                       
                       
 							  <div class="col-lg-4 col-md-6">
@@ -970,7 +971,7 @@
                       </div>
                       
                     <div class="row">
-								<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> 
+								<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i>
 								</div> 
 							<div class="col-lg-4 col-md-6">
 									<?php 
@@ -991,7 +992,7 @@
                     </div>
                       
 						<div class="row">
-								<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?> )</small>
+								<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> <small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?> )</small>
 								</div> 
 								<div class="col-lg-4 col-md-6">
 										<?php 
@@ -1094,7 +1095,7 @@
 									</div>
 							</div>
 							<div class="row">
-										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?>  
+										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?><i class="fa fa-asterisk" aria-hidden="true"></i>  
 										</div> 
 
 										<div class="col-lg-4 col-md-6">
@@ -1118,7 +1119,7 @@
 							  
 							<div class="row">
 										<div class="col-lg-5 col-md-12">
-												<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?> 
+												<?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i>
 										</div> 
 										<div class="col-lg-4 col-md-6">
 												<?php 
@@ -1142,7 +1143,7 @@
 							  
 							  
 							  <div class="row">
-										<div class="col-lg-5 col-md-12"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> 
+										<div class="col-lg-5 col-md-12"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> 
 										</div> 
 										<div class="col-lg-4 col-md-6">
 											  <?php 
@@ -1163,7 +1164,7 @@
 							  </div>
 							  
 							  <div class="row">
-									<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate% ')); ?><small class="color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>) </small>
+									<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate% ')); ?><i class="fa fa-asterisk" aria-hidden="true"></i><small class="color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>) </small>
 									</div> 
 									<div class="col-lg-4 col-md-6">
 										  <?php 
@@ -1269,7 +1270,7 @@
 								</div>
 
 								<div class="row">
-										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?>  </div> 
+										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?><i class="fa fa-asterisk" aria-hidden="true"></i>  </div> 
 												<div class="col-lg-4 col-md-6">
 														<?php 
 														echo $this->Form->input('UserSitterServices.gh_nc_additional_guest_limit',[
@@ -1291,7 +1292,7 @@
 								</div>
 
 								<div class="row">
-									<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?> </div> 
+									<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Stay Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 										<div class="col-lg-4 col-md-6">
 												<?php 
 												echo $this->Form->input('UserSitterServices.gh_nc_extended_stay_rate',[
@@ -1311,7 +1312,7 @@
 
 
 								<div class="row">
-										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> 
+										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> 
 										</div> 
 										<div class="col-lg-4 col-md-6">
 												<?php 
@@ -1332,7 +1333,7 @@
 								</div>
 
 								<div class="row">
-										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <small class=		"color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?> )</small>
+										<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> <small class=		"color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?> )</small>
 										</div> 
 										<div class="col-lg-4 col-md-6">
 													<?php 
@@ -1497,7 +1498,8 @@
 				<div class="row">
 						<div class="form-group col-lg-4 col-md-12">
 								<div class="row">
-										<div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?></h2>
+										<div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?></br>
+										<small class="color-green f14">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('services charged at an hourly rate')); ?> ) </small></h2>
 										</div> 
 									  <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 												<div class="chek-main-lat">
@@ -1517,13 +1519,13 @@
 				 
 					 <div class="form-group col-lg-4 col-md-12">
 					 
-							<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for when you have guests at your house service loads for non-standard services')); ?></p>
+							<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for your market place / hourly charged services. include service loads for non-standard services.')); ?></p>
 					 </div>
 					 
 					 <div class="form-group col-lg-4">
 							 <div class="row">
 										<div class="col-lg-4">  
-												<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?></label>
+												<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 												<?php 
 														echo $this->Form->input('UserSitterServices.mp_holiday_rate',[
 														  'templates' => ['inputContainer' => '{{content}}'],
@@ -1537,7 +1539,7 @@
 										</div>
 											  
 										<div class="col-lg-4">  
-												<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Guest Rate %')); ?></label>
+												<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Small Guest Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 												  <?php 
 														echo $this->Form->input('UserSitterServices.mp_small_guest_rate',[
 														  'templates' => ['inputContainer' => '{{content}}'],
@@ -1551,7 +1553,7 @@
 										</div>
 											  
 										<div class="col-lg-4">  
-													<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large Guest Rate %')); ?></label>
+													<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Large Guest Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 													  <?php 
 															echo $this->Form->input('UserSitterServices.mp_large_guest_rate',[
 															  'templates' => ['inputContainer' => '{{content}}'],
@@ -1574,7 +1576,7 @@
 
 
 									<div class="row">
-											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Grooming Rate')); ?> </label>
+											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Grooming Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
 													<?php 
 													echo $this->Form->input('UserSitterServices.mp_grooming_rate',[
 													'templates' => ['inputContainer' => '{{content}}'],
@@ -1586,7 +1588,7 @@
 													?>
 											</div>
 
-											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Recreation Rate')); ?> </label>
+											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Recreation Rate')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 													<?php 
 													echo $this->Form->input('UserSitterServices.mp_recreation_rate',[
 													'templates' => ['inputContainer' => '{{content}}'],
@@ -1602,7 +1604,7 @@
 
 							<div class="form-group col-lg-4 col-md-12">
 									<div class="row">
-											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Training Rate')); ?> </label>
+											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Training Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
 													<?php 
 													echo $this->Form->input('UserSitterServices.mp_training_rate',[
 													'templates' => ['inputContainer' => '{{content}}'],
@@ -1614,7 +1616,7 @@
 													?>
 											</div>
 
-											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Driving Rate')); ?> </label>
+											<div class="col-lg-6"> <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Driving Rate')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </label>
 													<?php 
 													echo $this->Form->input('UserSitterServices.mp_driving_rate',[
 													'templates' => ['inputContainer' => '{{content}}'],
@@ -1633,7 +1635,7 @@
 
 									<div class="row">
 
-											<div class="col-lg-4">  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate %')); ?></label>
+											<div class="col-lg-4">  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cat Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 													<?php 
 													echo $this->Form->input('UserSitterServices.mp_cat_rate',[
 													'templates' => ['inputContainer' => '{{content}}'],
@@ -1645,7 +1647,7 @@
 													?>
 											</div>
 
-											<div class="col-lg-8">  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy &kitten Rate %')); ?></label>
+											<div class="col-lg-8">  <label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy &kitten Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 													<?php 
 													echo $this->Form->input('UserSitterServices.mp_puppy_rate',[
 													'templates' => ['inputContainer' => '{{content}}'],
@@ -1747,7 +1749,7 @@
 												</div>
 											<div class="row">
 													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> 
-													</div> 
+													<i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 													<div class="col-lg-4 col-md-6">
 															<?php 
 															echo $this->Form->input('UserSitterServices.mp_gr_additional_guest_limit',[
@@ -1768,7 +1770,7 @@
 
 											<div class="row">
 													<div class="col-lg-5 col-md-12">
-														<?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Grooming Rate%')); ?> 
+														<?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Grooming Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i>
 													</div> 
 													<div class="col-lg-4 col-md-6">
 															<?php 
@@ -1790,7 +1792,7 @@
 
 
 											<div class="row">
-													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> </div> 
+													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </div> 
 													<div class="col-lg-4 col-md-6">
 														<?php 
 																echo $this->Form->input('UserSitterServices.mp_gr_additional_guest_rate',[
@@ -1810,7 +1812,7 @@
 											</div>
 
 											<div class="row">
-													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>) </small>
+													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>) </small>
 													</div> 
 													<div class="col-lg-4 col-md-6">
 															<?php 
@@ -1914,7 +1916,7 @@
 																</div>
 														</div>
 														<div class="row">
-																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> </div> 
+																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 																<div class="col-lg-4 col-md-6">
 																		<?php 
 																		echo $this->Form->input('UserSitterServices.mp_rc_additional_guest_limit',[
@@ -1934,7 +1936,7 @@
 														</div>
 
 														<div class="row">
-																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Recreation Rate%')); ?> </div> 
+																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Recreation Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 																<div class="col-lg-4 col-md-6">
 																		<?php 
 																		echo $this->Form->input('UserSitterServices.mp_rc_premium_recreation_rate',[
@@ -1957,7 +1959,7 @@
 
 
 														<div class="row">
-																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> 
+																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i>
 																</div> 
 																<div class="col-lg-4 col-md-6">
 																		<?php 
@@ -1978,7 +1980,7 @@
 														</div>
 
 														<div class="row">
-																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>  )</small></div> 
+																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i><small class="color-green-text">(<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>  )</small></div> 
 																<div class="col-lg-4 col-md-6">
 																		<?php 
 																		echo $this->Form->input('UserSitterServices.mp_rc_holiday_rate',[
@@ -2082,7 +2084,7 @@
 														</div>
 												</div>
 												<div class="row">
-															<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> </div> 
+															<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 															<div class="col-lg-4 col-md-6">
 																	<?php 
 																	echo $this->Form->input('UserSitterServices.mp_tr_additional_guest_limit',[
@@ -2104,7 +2106,7 @@
 												</div>
 
 												<div class="row">
-															<div class="col-lg-5 col-md-12"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Training Rate%')); ?> </div> 
+															<div class="col-lg-5 col-md-12"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Training Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 
 
 															<div class="col-lg-4 col-md-6">
@@ -2128,7 +2130,7 @@
 
 
 												<div class="row">
-																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> </div> 
+																<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 															<div class="col-lg-4 col-md-6">
 																	<?php 
 																	echo $this->Form->input('UserSitterServices.mp_tr_additional_guest_rate',[
@@ -2148,7 +2150,7 @@
 												</div>
 
 												<div class="row">
-															<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <small class="color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode(' override  ')); ?>)</small></div> 
+															<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i><small class="color-green-text">( <?php echo $this->requestAction('app/get-translate/'.base64_encode(' override  ')); ?>)</small></div> 
 
 
 															<div class="col-lg-4 col-md-6">
@@ -2254,7 +2256,7 @@
 												</div>
 
 											<div class="row">
-													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit ')); ?> </div> 
+													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Limit ')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </div> 
 													<div class="col-lg-4 col-md-6">
 															<?php 
 															echo $this->Form->input('UserSitterServices.mp_ds_additional_guest_limit',[
@@ -2274,7 +2276,7 @@
 											</div>
 
 											<div class="row">
-													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Driver Service Rate% ')); ?> </div> 
+													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Driver Service Rate% ')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> </div> 
 													<div class="col-lg-4 col-md-6">
 															<?php 
 															echo $this->Form->input('UserSitterServices.mp_ds_premium_driver_service_rate',[
@@ -2295,7 +2297,7 @@
 
 
 											<div class="row">
-															<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate% ')); ?></div> 
+															<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Guest Rate% ')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></div> 
 															<div class="col-lg-4 col-md-6">
 																	<?php 
 																	echo $this->Form->input('UserSitterServices.mp_ds_additional_guest_rate',[
@@ -2314,7 +2316,7 @@
 											</div>
 
 											<div class="row">
-													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?> <small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>) </small></div> 
+													<div class="col-lg-5 col-md-12"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate%')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> <small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode(' override ')); ?>) </small></div> 
 
 
 													<div class="col-lg-4 col-md-6">
@@ -2493,12 +2495,12 @@
 					<h3>	</h3>
 
 					<h2 class="f22 mb10">
-							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Calander')); ?><br>
+							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?><br>
 							<small class="color-green f14">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Daily booking limits for your sitter booking. Show how many spaces are available for each service')); ?> ) </small>
 					</h2>
 					<div class="row img-rightsp mt10">
 							<div class="form-group col-lg-4">
-									<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('1. Day Care P/day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
+									<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('1. Day Care P/day Limit')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i><img src="<?php echo HTTP_ROOT; ?>img/daym1.png"> </label>
 									<?php 
 									echo $this->Form->input('UserSitterServices.day_care_limit',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -2509,7 +2511,7 @@
 									?> 
 							</div>
 							<div class="form-group col-lg-4">
-									<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('2. Night Care P/day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
+									<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('2. Night Care P/day Limit')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> <img src="<?php echo HTTP_ROOT; ?>img/nightm1.png"> </label>
 									<?php 
 									echo $this->Form->input('UserSitterServices.night_care_limit',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -2521,7 +2523,7 @@
 
 							</div>
 							<div class="form-group col-lg-4">
-									<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('3. Visits P/day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
+									<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('3. Visits P/day Limit')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i><img src="<?php echo HTTP_ROOT; ?>img/visitm1.png"> </label>
 									<?php 
 									echo $this->Form->input('UserSitterServices.visits_limit',[
 									'templates' => ['inputContainer' => '{{content}}'],
@@ -2534,7 +2536,7 @@
 					</div>
 						<div class="row img-rightsp mt10">
 								<div class="form-group col-lg-4">
-										<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('4. Hourly Services P/Day Limit')); ?> <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
+										<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('4. Market Place P/Day Limit')); ?><i class="fa fa-asterisk" aria-hidden="true"></i> <img src="<?php echo HTTP_ROOT; ?>img/hourlym1.png"> </label>
 										<?php 
 										echo $this->Form->input('UserSitterServices.hourly_services_limit',[
 										'templates' => ['inputContainer' => '{{content}}'],
@@ -2561,6 +2563,26 @@
 <?php echo $this->Html->css('Front/dist/jquery.onoff.css');
 		echo $this->Html->script(['Front/dist/jquery.onoff.js']);
 ?>
+<style>
+label .fa.fa-asterisk {
+    font-size: 6px;
+    left: 2px;
+    position: relative;
+    top: -5px;
+    color: red;
+}
+.fa.fa-asterisk {
+    font-size: 6px;
+    left: 2px;
+    position: relative;
+    top: -5px;
+    color: red;
+}
+
+</style>
+
+
+
 <script>
   $(document).ready(function (){
       $('.selectedCheckbox').click(function(){
