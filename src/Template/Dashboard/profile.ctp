@@ -18,25 +18,25 @@
             <div class="tab-content">
 
 
-  <div id="home1" class="tab-pane fade in active tab-comm">
+	<div id="home1" class="tab-pane fade in active tab-comm">
                 
                   <!--<form role="form">-->
             <?php echo $this->Form->create(@$userInfo, [
               'url' => ['controller' => 'dashboard', 'action' => 'profile'],
               'role'=>'form',
               'id'=>'generelInfo',
-         'autocomplete'=>'off',
+			   'autocomplete'=>'off',
           ]);?>
-          <div class="row">
-               <div class="form-group col-lg-4 col-md-4">
-              <h2 class="head-font"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?> </h2>
-               </div>
-               
-               <div class="form-group col-lg-8">
-              <p class="head-font2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></p>
-               </div>
-          </div>  
-          
+				  <div class="row">
+					     <div class="form-group col-lg-4 col-md-4">
+							<h2 class="head-font"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?> </h2>
+					     </div>
+					     
+					     <div class="form-group col-lg-8">
+							<p class="head-font2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></p>
+					     </div>
+					</div>	
+					
                   <div class="row">
                     
                 
@@ -54,7 +54,7 @@
                         </div>
 
                        <div class="form-group col-lg-8">
-              <p class="head-font2 pad-head-foot padT5"><?php echo $this->requestAction('app/get-translate/'.base64_encode('This page is just about you in general and allows you to update your profile photos, video, password and contact details')); ?></p>
+							<p class="head-font2 pad-head-foot padT5"><?php echo $this->requestAction('app/get-translate/'.base64_encode('This page is just about you in general and allows you to update your profile photos, video, password and contact details')); ?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -311,87 +311,87 @@
                   </div>
                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?></h3>
                 
-        <!-- ROW ONE START -->  
-        <div class="row">
+				<!-- ROW ONE START -->	
+				<div class="row">
 
-           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
-               
-               <div class="row d-m2">
-              
-                 <div class="col-lg-7">
-                    
-                    <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Photo')); ?></p>
-                    <p>
-                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels.')); ?>
-                    </p>
-               
-                    <?php 
-                      $session = $this->request->session(); 
-                      $user = $session->read('User');
-                    ?>
-                </div>
-                
-                <div class="col-lg-5">
-                
-                   <img  class="img-responsive height125"  src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
-                   
-                  <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?></button>
-                </div>
+					 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+						   
+						   <div class="row d-m2">
+							
+								 <div class="col-lg-7">
+										
+										<p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Photo')); ?></p>
+										<p>
+											<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels.')); ?>
+										</p>
+							 
+										<?php 
+											$session = $this->request->session(); 
+											$user = $session->read('User');
+										?>
+								</div>
+								
+								<div class="col-lg-5">
+								
+								   <img  class="img-responsive height125"  src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
+								   
+									<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?></button>
+								</div>
 
-            </div>
-          
-          </div>
-              
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
-          
-            <div class="row d-m2">
-          
-              <div class="col-lg-7">
-              
-                  <p class="browse-p">
-                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile photo')); ?>
-                  </p>
+						</div>
+					
+					</div>
+						  
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+					
+						<div class="row d-m2">
+					
+							<div class="col-lg-7">
+							
+								  <p class="browse-p">
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile photo')); ?>
+								  </p>
+								  
+								  <p  class="min-hh">
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
+									   
+								  </p>
+							
+							</div>
+
+							<div class="col-lg-5">
+
+								<?php 
+									if(@$userInfo->profile_banner != ''){
+										$pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
+									}else{
+										$pathBanner = HTTP_ROOT.'img/img.png'; 
+									}
+								 ?>
+								 
+								 <img class="img-responsive height125" id="preview-profile-banner" src="<?php echo @$pathBanner; ?>"><?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
+								
+									<button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
+										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
+									</button>
+							</div>
+						
+						</div>
+					
+					</div>
+
+				</div>
+				<!-- ROW ONE END -->	
                   
-                  <p  class="min-hh">
-                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-                     
-                  </p>
-              
-              </div>
-
-              <div class="col-lg-5">
-
-                <?php 
-                  if(@$userInfo->profile_banner != ''){
-                    $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
-                  }else{
-                    $pathBanner = HTTP_ROOT.'img/img.png'; 
-                  }
-                 ?>
                  
-                 <img class="img-responsive height125" id="preview-profile-banner" src="<?php echo @$pathBanner; ?>"><?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
-                
-                  <button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
-                    <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
-                  </button>
-              </div>
-            
-            </div>
-          
-          </div>
-
-        </div>
-        <!-- ROW ONE END -->  
-                  
-                 
-<!-- ROW TWO Start -->  
+<!-- ROW TWO Start -->	
 <div class="row">
 
-   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
-       
-    <div class="row d-m2">
-        
-      <div class="col-lg-7">
+	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+		   
+		<div class="row d-m2">
+				
+			<div class="col-lg-7">
                     
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
@@ -402,9 +402,9 @@
                     
             </div>
                 
-      <div class="col-lg-5">
-          
-          <span class="videoBanner">&nbsp;</span>
+			<div class="col-lg-5">
+					
+				
                       <?php if(@$userInfo->profile_video != ''){
                            $video_path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
                       }else{
@@ -419,47 +419,47 @@
                           
                     </button>
                    <?php echo '<em class="signup_error error clr addError"></em>'; ?>
-      </div>
-    
-    </div>
-  
-  </div>
+			</div>
+		
+		</div>
+	
+	</div>
 
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
                        
-    <div class="row d-m2">
-      
-      <div class="col-lg-7">
-        <p class="browse-p">
-          <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile video image')); ?>
-        </p>
-        
-        <p  class="min-hh">
-          <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-        </p>
+		<div class="row d-m2">
+			
+			<div class="col-lg-7">
+				<p class="browse-p">
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile video image')); ?>
+				</p>
+				
+				<p  class="min-hh">
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
+				</p>
                 
                 
 
-      </div>
+			</div>
             
             <div class="col-lg-5">
               <span class="videoBanner">&nbsp;</span>
-          <?php if(@$userInfo->profile_video_image != ''){
-              $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
-          }else{
-             $pathVideoImg = HTTP_ROOT.'img/deta-video.png'; 
-          }
-         
-          ?>
-          <img class="img-responsive height125" id="preview-profile-video-image" src="<?php echo @$pathVideoImg; ?>"><?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
-          <button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
+				  <?php if(@$userInfo->profile_video_image != ''){
+						  $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
+					}else{
+						 $pathVideoImg = HTTP_ROOT.'img/deta-video.png'; 
+					}
+				 
+					?>
+					<img class="img-responsive height125" id="preview-profile-video-image" src="<?php echo @$pathVideoImg; ?>"><?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
+					<button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
                 
-          <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
-          
-          </button>
-      </div>
-    </div>
-  </div>
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
+					
+					</button>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- ROW TWO End --> 
                   <div class="row pull-right sp-tb">
@@ -486,27 +486,27 @@
   <div class="modal fade" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
     <div class="modal-dialog">
        <div class="sitter-quike-view">
-          <div class="sqv-box">
-              <div class="top-close"> 
+         	<div class="sqv-box">
+            	<div class="top-close"> 
                 <p class="pop-top-pop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></p>
-                  <a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
+                	<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
                 </div>    
                 
                 
                 <!--Additional Services-->          
-                  <div class="additional-services">  
-                        <div class="modal-body">
+                	<div class="additional-services">  
+                    	  <div class="modal-body">
                                <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data','url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
-                <input style="hidden" type="file" name="image" id="image" /> 
-                <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
-                <input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
-                <input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
-                <input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
-                <input type="hidden" name="hdn-y2-axis" value="" id="hdn-y2-axis" />
-                <input type="hidden" name="hdn-thumb-width" id="hdn-thumb-width" value="" />
-                <input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="" />
-                <input type="hidden" name="action" value="" id="action" />
-                <input type="hidden" name="image_name" value="" id="image_name" />
+								<input style="hidden" type="file" name="image" id="image" /> 
+								<input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
+								<input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
+								<input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
+								<input type="hidden" name="hdn-x2-axis" value="" id="hdn-x2-axis" />
+								<input type="hidden" name="hdn-y2-axis" value="" id="hdn-y2-axis" />
+								<input type="hidden" name="hdn-thumb-width" id="hdn-thumb-width" value="" />
+								<input type="hidden" name="hdn-thumb-height" id="hdn-thumb-height" value="" />
+								<input type="hidden" name="action" value="" id="action" />
+								<input type="hidden" name="image_name" value="" id="image_name" />
                     
                     <div id='preview-avatar-profile'>
                     </div>
@@ -519,17 +519,17 @@
                 <button type="button" id="btn-crop" class="btn btn-crop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop Image')); ?></button>
             </div>        
                           
-                                            
+                                           	
                     </div> 
                 <!--Additional Services-->           
                 
-            </div>          
+            </div>         	
          </div>  
     </div>
   </div>
 
     <!--model box -->
-  
+	
 <?php echo $this->Form->create(null,['id'=>'profileVideo','enctype'=>'multipart/form-data',
                   'url'=>['controller'=>'dashboard','action'=>'save-profile-video'],
                   'style'=>"visibility: hidden"]); ?>
@@ -663,24 +663,25 @@ $(document).ready(function(){
     //$("#preview-avatar-profile").html('Uploading....');
     $("#profileVideo").ajaxForm(
     {
-  beforeSend: function(){
-    $(".videoBanner").show();
-    $(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+	beforeSend: function(){
+	  //$(".videoBanner").show();
+	  //$(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+      $("#preview-profile-video").attr('src',ajax_url+'img/search-loader.gif');
   },
-  complete: function(){
-    $(".videoBanner").hide();
-    $(".videoBanner").html('');
-  },  
+	/*complete: function(){
+	  $(".videoBanner").hide();
+	  $(".videoBanner").html('');
+	},	*/
     //target: '#preview-profile-video',
     success: function(res) { 
-            var response = res.split('::');
+        var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
                   $("#preview-profile-video").attr('src',response[1]);
               }else  if($.trim(response[0]) == 'Error'){
                 $('.clr').html(''); //Emtpy Error MESSAGE
                 $('.addError').html(response[1]); //DISPLAY SUCCESS MESSAGE
               }
-            }
+			      }
       
        
     }).submit();
@@ -696,9 +697,9 @@ $(document).ready(function(){
     $("#profileBanner").ajaxForm(
     {
       beforeSend: function(){
-      $("#preview-profile-banner").attr('src',ajax_url+'img/search-loader.gif');
-    },
-    //target: '#preview-profile-video',
+		  $("#preview-profile-banner").attr('src',ajax_url+'img/search-loader.gif');
+		},
+		//target: '#preview-profile-video',
     success: function(res) { 
           var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
@@ -775,10 +776,10 @@ $(document).ready(function(){
     top: 25px;
     width: 93% !important;
     z-index: 10035;
-  text-align:center;
+	text-align:center;
 }
 .padT5{
-padding-top:15px !important;  
+padding-top:15px !important;	
 }
 .height125{height:125px !important;width:100% !important;}
 </style>

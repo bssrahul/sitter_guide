@@ -372,7 +372,15 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterServices','UserSitterGalleries']])
+				$userData = $UsersModel->find('all',['contain'=>[
+														'UserAboutSitters',
+														'UserRatings'=>[
+															'sort' => ['Comment.created' => 'DESC']],
+														'UserSitterServices',
+														'UserSitterGalleries'
+														]
+													]
+											)
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				$loggedInUserID = $session->read('User.id');
@@ -390,7 +398,7 @@ class SearchController extends AppController
 						}	 
 					}
 				}
-				
+				pr($userData); die;
 				$this->set('resultsData',$userData);
 				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
@@ -577,7 +585,8 @@ class SearchController extends AppController
 	{
           $this->viewBuilder()->layout('landing');
           //echo "Thoank You";die;
-	}	
+	}
+		
 	function favoriteSitter($sitterId = NULL, $userId = NULL)
 	{
 		

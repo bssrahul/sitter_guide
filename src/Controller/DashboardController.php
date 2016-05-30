@@ -381,6 +381,7 @@ class DashboardController extends AppController
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
     if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
+	
 		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
           {
 	            //your site secret key
@@ -407,10 +408,12 @@ class DashboardController extends AppController
                     $this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}else{
                      $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+					    $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 		                $userData->id = $userId;
-		                if ($usersModel->save($userData)) {
-		                	return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+						 $userData->password = MD5($this->request->data['Usersp']['password']);
+						 $userData->org_password = $this->request->data['Usersp']['password'];
+						 if ($usersModel->save($userData)){
+							return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
 						}else{
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
 						}
@@ -427,7 +430,7 @@ class DashboardController extends AppController
 		}else{
 			$countryCodesModel = TableRegistry::get('CountryCodes');
 				$data=$this->request->data['Usersp'];
-
+				
 			    $error=$this->validate_password($data,$user_info);
 				if(count($error) > 0)
 				{
@@ -454,6 +457,7 @@ class DashboardController extends AppController
                 }
 		    }
         }else{
+		
 		   $userData = $usersModel->get($userId);
 		   unset($userData->id);
 		  $this->set('userInfo', $userData);

@@ -196,46 +196,61 @@
                <div class="row word-limit">
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us about your home')); ?><span class="hint--right right-width" data-hint="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Make sure to include why is your home great for a guest to stay in?')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us about your home')); ?>
+						  
+						   <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Make sure to include why is your home great for a guest to stay in?')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
+						  
+						 </label>
                             <?php echo $this->Form->input(
                               'UserSitterHouses.about_home_desc',
                               [
                                  'type'=>"textarea",
                                  'label'=>false,
+								  'id'=>"about_txtarea",
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
 								<?php $max=75; if(!empty($sitterHouseData['about_home_desc'])){ $rem = $max-str_word_count ($sitterHouseData['about_home_desc']);} ?>
-                          <p class="w-limit" id="about-home-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
+                          <p class="w-limit" id="about_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                          <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
                     </div>
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Describe the spaces your guest will have access to')); ?><span class="hint--right right-width" data-hint="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Let your guest know where you plan to let them sleep and enjoy your home with you.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Describe the spaces your guest will have access to')); ?>
+						    <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Let your guest know where you plan to let them sleep and enjoy your home with you.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
+						  
+						 </label>
                            <?php echo $this->Form->input(
                               'UserSitterHouses.spaces_access_desc',
                               [
                                  'type'=>"textarea",
                                  'label'=>false,
+								 'id'=>"spaces_txtarea",
+								 'maxlength'=>"5000",
                                  'templates' => ['inputContainer' => '{{content}}']
                                  
                             ]); ?>
 							<?php $max=75; if(!empty($sitterHouseData['spaces_access_desc'])){ $rem = $max-str_word_count ($sitterHouseData['spaces_access_desc']);} ?>
                              <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
-                          <p class="w-limit" id="space-word-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
+                          <p class="w-limit" id="spaces_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                        
                     </div>
 
                     <div class="form-group col-lg-4">
-                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('What are the pets in your home like')); ?><span class="hint--right right-width" data-hint="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us what kind of friends your guest is going to make and some of their personality traits.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></span></label>
+                          <label for="" class="m-space-not"><?php echo $this->requestAction('app/get-translate/'.base64_encode('What are the pets in your home like')); ?>
+						  <span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us what kind of friends your guest is going to make and some of their personality traits.')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span>
+						  
+						 </label>
                            <?php echo $this->Form->input(
                               'UserSitterHouses.home_pets_desc',
                               [
                                  'type'=>"textarea",
                                  'label'=>false,
+								  'maxlength'=>"5000",
+								  'id'=>'home_txtarea',
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
 					<?php $max=75; if(!empty($sitterHouseData['home_pets_desc'])){ $rem = $max-str_word_count ($sitterHouseData['home_pets_desc']);} ?>
-                          <p class="w-limit" id="home-pets-preview"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
+                          <p class="w-limit" id="home_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                     </div>
 
                     
@@ -291,112 +306,86 @@
 
 <script type="text/javascript">
   /*For add multiple profile photos*/
-$(document).ready(function(){
-     
-    $('#images').on('change',function(){
-            jQuery('#multiple_upload_form').ajaxForm({
-            //display the uploaded images
-            //target:'#images_preview',
-            beforeSubmit:function(e){
-                $('.uploading').show();
-            },
-            success:function(res){
-              console.log(res);
-              
-             var data = jQuery.parseJSON(res);
-            if($.trim(data[0]) != ''){
-              $('#show-all-errors').html(data[0]); //DISPLAY SUCCESS MESSAGE
+	
+	
+	function wprdCount(id){
+		var regex = /\s+/gi;
+		var maxWords = 75;
+		
+		var value = $(id).val();
 
-            }
-          
-            if($.trim(data[1]) != ''){
-              $('#images_preview').html(data[1]); //DISPLAY SUCCESS MESSAGE
+		if (value.length == 0) {
+			
+			$(id+"_text").text(  75+" words remainings" );
+			return ;
+		}
 
-            }
-               $('.uploading').hide();
-            },
-            error:function(e){
-            }
-        }).submit();
-    });
-    $("#browseImg").on('click',function(){
-        $("#images").trigger("click");    
-        });
+		
+		var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+		
+		if( wordCount < 76 ){
+		
+			$(id+"_text").text(maxWords - wordCount+" words remainings");
+		}
+		else{
+			alert("You've reached the maximum allowed words. Extra words removed.");
+			return false;
+			
+		}
+		
+	}
+	
+	$(document).ready(function(){
+		
+		$('#about_txtarea').keyup(function() {
+			wprdCount('#about_txtarea');
+		});
+		
+		$('#spaces_txtarea').keyup(function() {
+			wprdCount('#spaces_txtarea');
+		}); 
+		
+		$('#home_txtarea').keyup(function() {
+			wprdCount('#home_txtarea');
+		}); 
+	}); 
 
+	
+		
+	$(document).ready(function(){
+		 
+		$('#images').on('change',function(){
+				jQuery('#multiple_upload_form').ajaxForm({
+				//display the uploaded images
+				//target:'#images_preview',
+				beforeSubmit:function(e){
+					$('.uploading').show();
+				},
+				success:function(res){
+				  console.log(res);
+				  
+				 var data = jQuery.parseJSON(res);
+				if($.trim(data[0]) != ''){
+				  $('#show-all-errors').html(data[0]); //DISPLAY SUCCESS MESSAGE
 
+				}
+			  
+				if($.trim(data[1]) != ''){
+				  $('#images_preview').html(data[1]); //DISPLAY SUCCESS MESSAGE
 
-  
-/*For 75 limit*/
-    var maxWords = 75;
-   $( "#usersitterhouses-about-home-desc" ).keypress(function() {
-         var len = (this).value.length;
-          var $this, wordcount;
-           $this = $(this);
-           wordcount = $this.val().split(/\b[\s,\.-:;]*/).length;
-            if (wordcount > maxWords) {
-              jQuery(".word_count span").text("" + maxWords);
-            
-              return false;
-          } else {
-              return jQuery('#about-home-preview').text(maxWords - wordcount+" words remainings");
-          }
+				}
+				   $('.uploading').hide();
+				},
+				error:function(e){
+				}
+			}).submit();
+		});
+		
+		$("#browseImg").on('click',function(){
+			$("#images").trigger("click");    
+		});
 
- });
- $('#usersitterhouses-about-home-desc').change(function() {
-            var words = $(this).val().split(/\b[\s,\.-:;]*/);
-          if (words.length > maxWords) {
-                words.splice(maxWords);
-                $(this).val(words.join(" "));
-                alert("You've reached the maximum allowed words. Extra words removed.");
-          }
-        });
-var maxSPDWords = 75;
- $( "#usersitterhouses-spaces-access-desc" ).keypress(function() {
-         var len = (this).value.length;
-          var $this, spd_wordcount;
-           $this = $(this);
-           spd_wordcount = $this.val().split(/\b[\s,\.-:;]*/).length;
-            if (spd_wordcount > maxSPDWords) {
-              jQuery(".word_count span").text("" + maxSPDWords);
-            
-              return false;
-          } else {
-              return jQuery('#space-word-preview').text(maxSPDWords - spd_wordcount+" words remainings");
-          }
-
- });
- $('#usersitterhouses-spaces-access-desc').change(function() {
-            var spd_words = $(this).val().split(/\b[\s,\.-:;]*/);
-          if (spd_words.length > maxSPDWords) {
-                spd_words.splice(maxSPDWords);
-                $(this).val(spd_words.join(" "));
-                alert("You've reached the maximum allowed words. Extra words removed.");
-          }
-        });
- 
-   $( "#usersitterhouses-home-pets-desc" ).keypress(function() {
-         var len = (this).value.length;
-          var $this, wordcount;
-           $this = $(this);
-           wordcount = $this.val().split(/\b[\s,\.-:;]*/).length;
-            if (wordcount > maxWords) {
-              jQuery(".word_count span").text("" + maxWords);
-            
-              return false;
-          } else {
-              return jQuery('#home-pets-preview').text(maxWords - wordcount+" words remainings");
-          }
-
- });
- $('#usersitterhouses-home-pets-desc').change(function() {
-            var words = $(this).val().split(/\b[\s,\.-:;]*/);
-          if (words.length > maxWords) {
-                words.splice(maxWords);
-                $(this).val(words.join(" "));
-                alert("You've reached the maximum allowed words. Extra words removed.");
-          }
-        });
-   /*End*/
-   
-});
+	   /*End*/
+	   
+	});
 </script>

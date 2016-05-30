@@ -572,7 +572,8 @@
 				},
 				"Users[phone]":
 				{
-					required:true
+					required:true,
+					number:true
 				},
 				"Users[zone_id]":
 				{
@@ -641,7 +642,8 @@
 				},
 				"Users[phone]":
 				{
-					required : "This field is required"
+					required : "This field is required",
+					number:"Mobile number should be numerical"
 				},
 				"Users[zone_id]":
 				{

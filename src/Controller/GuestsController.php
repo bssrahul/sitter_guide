@@ -158,6 +158,8 @@ class GuestsController extends AppController
 					$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
 					$session->write('User.image', $getUserData->image);
 					$session->write('User.last_login', $getUserData->last_login);
+					$session->write('User.user_type', $getUserData->user_type);
+					
 					$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
 					if ($this->request->is('ajax')) {
 					  	echo 'Success:'.$this->stringTranslate(base64_encode('Successfully Authenticated, Please wait..'));
@@ -405,7 +407,7 @@ class GuestsController extends AppController
 		$getUserData = $UsersModel->find('all',['conditions' => ['Users.id' => $session->read('User.id')]])->first();
 		
 		$UserData = $UsersModel->newEntity();
-		$UserData->id = $getUserData->id;
+		@$UserData->id = $getUserData->id;
 		$UserData->last_login = date('Y-m-d h:i:s');
 		$UserData->avail_status = "Logout";
 		

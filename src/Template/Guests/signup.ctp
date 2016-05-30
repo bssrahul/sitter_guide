@@ -67,7 +67,8 @@
 						    </div>
                          </div>
                          <div class="form-part">
-                         <div class="form-group">	
+                         <ul>
+                         	<li>      <div class="form-group">	
 						 <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
                          <?php 
                                 echo $this->Form->input('Users.country',[
@@ -79,8 +80,8 @@
                                   ]);
                                  echo '<em class="signup_error error">'.__(@$loginerror['country'][0]).'</em>';
                             ?>
-                         </div>
-							<div class='form-group'>
+                         </div>	 </li>
+                         	<li>					<div class='form-group'>
 							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Post/Zip Code')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							 <?php  
 								echo $this->Form->input('Users.zip',[
@@ -90,7 +91,9 @@
 									]);
 									echo '<em class="signup_error error">'.__(@$loginerror['zip'][0]).'</em>';
 								?>
-							</div>
+							</div></li>
+                            
+                          </ul>  
                         </div>
                        
                        <div class='form-group'>

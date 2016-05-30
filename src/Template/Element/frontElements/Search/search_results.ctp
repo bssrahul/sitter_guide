@@ -1,3 +1,35 @@
+<script type="text/javascript" src="js/Front/owl.carousel.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {  
+		var owl = $('.owl-carousel-1');
+		owl.owlCarousel({
+        nav:true,
+	    loop:true,
+	    margin:0,
+	    autoplay:false,
+	    autoplayTimeout:1000,
+	    autoplayHoverPause:true,
+		responsiveClass:true,
+	   
+	    responsive:{
+    	    0:{
+        	    items:2,
+            	nav:true
+	        },
+    	    768:{
+        	    items:3,
+            	nav:true
+	        },
+    	    1024:{
+        	    items:3,
+            	nav:true
+	        }
+			    }
+		});
+		
+});
+</script>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
@@ -187,13 +219,15 @@
 													$sum=0;$count=0;
 													foreach($ratingData as $rating){
 														
-															$count++;
+															
 															$rate=$rating->rating;
 															$sum=$sum+$rate;
+															$count++;
 													}
 													if($count > 0){
 														 $avg=$sum/$count;
 													}
+												//	echo $avg; 
 													
 													?>
 													
@@ -202,19 +236,29 @@
 											<?php	//if(!empty($avg)){ 	
                                             ?>
 													<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+													
 													<input type="radio"  value="4.5" <?php if(!empty($avg)){if($avg <= 4.5 && $avg > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+													
 													<input type="radio"  value="4"  <?php if(!empty($avg)){ if($avg <= 4 && $avg > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+													
 													<input type="radio"  value="3.5"  <?php if(!empty($avg)){ if($avg <= 3.5 && $avg > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+													
 													<input type="radio"  value="3" <?php if(!empty($avg)){ if($avg <= 3 && $avg > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+													
 													<input type="radio"  value="2.5" <?php if(!empty($avg)){ if($avg <= 2.5 && $avg > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+													
 													<input type="radio"   value="2"  <?php if(!empty($avg)){ if($avg <= 2 && $avg > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+													
 													<input type="radio"  value="1.5" <?php if(!empty($avg)){ if($avg <= 1.5 && $avg > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+													
 													<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+													
 													<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+													
 											<?php// } ?>
 											</span>
 										</div>
-											<div class="sit-review"> <a href="#" title="Review">105 Reviews</a> </div>
+											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> Reviews</a> </div>
 										  </div>
 									  <!--/rating--> 
 									  
@@ -399,9 +443,11 @@
 							//ADD MARKER ON GOOGLE MAP	
 							echo $this->GoogleMap->addMarker('map_canvas',$results->id,$position,
 										array(
-										'markerTitle'=>$full_name,
+										'markerTitle'=>$mapInc,
 										'windowText'=>$full_name,
-										'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
+										'windowText'=>$full_name,
+										//'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
+										'markerIcon'=>HTTP_ROOT.'img/green_pin.png',
 										)
 								  ); 
 							$mapInc++;
@@ -427,7 +473,7 @@
 									  <?php
 				
 			//	pr($resultsData);die;
-							$qvModal = 1;	
+							$qvModal = 1;$innerSlideNO=1;	
 							foreach($resultsData as $results){
 							?>
 																
@@ -461,71 +507,43 @@
 												</div>
 												<!--quick slide-->
 												<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
-												$innerSlideNO=1;
-												if(!empty(@$sub_galleries_result)){ echo @$innerSlideNO;
-													
-													$setimage=0; $imagecount=0;
+												
+												if(!empty(@$sub_galleries_result)){  
 															//pr($sub_galleries->image);die;
 												?>					
 													<div class="quick-slide">
-													<script>
-														$(function(){
-																$('.innermyCarousel<?php echo $innerSlideNO; ?>').carousel({
-																interval: false
-														}); 
-														
-														})
-												
-												</script>
-													  <div id="myCarousel" class="carousel slide innermyCarousel<?php echo $innerSlideNO; ?>" data-ride="carousel">
-
-														<div class="carousel-inner" role="listbox">
-																
-																         <?php  foreach($sub_galleries_result as $sub_galleries){
-																									$newarr[]=$sub_galleries->image;
-																									$imagecount ++;
-																							}	
-																							$rownmbr=$imagecount/3;
-																							$imginrow=$imagecount/$rownmbr;
-																							//print_r($newarr);
-																							$index=0;
-																							for($i=1;$i<=($rownmbr+1);$i++)
-																							{ 
-																							 if($i == 1){ $ac="active";}else{$ac=" ";}?>
-																								<div class="item <?php echo $ac; ?>">
-																								<div class='row'>      
-																								<ul> <?php
-																								for($j=0;$j<$imginrow;$j++)
-																								{
-																									//echo $newarr[$index]; ?>
-																									<li>
-																									<?php if(@$newarr[$index] != ''){?>
-																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($newarr[$index] != ''?$newarr[$index]:'prof_photo.png'); ?>">
+														<div class="ms-area">
+															<ul class="owl-carousel-1">
+																<?php  foreach($sub_galleries_result as $sub_galleries){
+																			if($sub_galleries->image != ""){?>
+																					<div class="item">
+																						 <li>
+																								<?php if(@$sub_galleries->image != ''){// echo @$newarr[$index];?>
+																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>">
 																									<?php } ?>
-																									</li>
-																								<?php	$index++;
-
-																								}	echo "</ul> </div></div>";
-																							}?>
+																						 </li>
+																					</div>
+																				
+																	<?php		}
+																	}	?>
 																					
-																
+																					
+																</ul>
 														</div>
-																  <!-- Left and right controls -->
-																<a class="left carousel-control" href=".innermyCarousel<?php echo $innerSlideNO; ?>" role="button" data-slide="prev">
-																	<span class="fa fa-chevron-left" aria-hidden="true"></span>
-																	<span class="sr-only">Previous</span>
-																</a>
-																<a class="right carousel-control" href=".innermyCarousel<?php echo $innerSlideNO; ?>" role="button" data-slide="next">
-																	<span class="fa fa-chevron-right" aria-hidden="true"></span>
-																	<span class="sr-only">Next</span>
-																</a>
 												</div>
-											<?php 
-													$innerSlideNO++;	
-													
-												}
-															?>
+												<?php	}	?>
 												<!--quick slide-->
+												
+												
+												<!--content area Start-->
+
+												
+												
+												
+												
+												
+												
+												
 												<div class="sqv-mid">
 													<div class="row">
 														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -579,11 +597,11 @@
 									
 								<?php $qvModal++; } ?></div>
 									<!-- Left and right controls -->
-											<a data-slide="prev" role="button" href="#myCarousel2" class="left carousel-control">
+											<a data-slide="prev" role="button" href="#myCarousel2" class="left myCarousel2next carousel-control">
 											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
 											  <span class="sr-only">Previous</span>
 											</a>
-											<a data-slide="next" role="button" href="#myCarousel2" class="right carousel-control">
+											<a data-slide="next" role="button" href="#myCarousel2" class="right myCarousel2next carousel-control">
 											  <span aria-hidden="true" class="fa fa-chevron-right"></span>
 											  <span class="sr-only">Next</span>
 											</a>
@@ -608,19 +626,38 @@
     text-decoration:none !important;
     outline:none;
 }
+.mapIconLabel {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-family: 'DINNextRoundedLTProMediumRegular';
+}
 </style>
 
 <script>
-$(function(){
-	$(document).on('click',".qvBtn",function(){
+	$(function(){
+		$(document).on('click',".qvBtn",function(){
+		
+			var qv = $(this).attr('data-rel');
+			/*$(".item").removeClass('active');*/
+			$(".qvModal"+qv).addClass('active');
+			/* setTimeout(function(){
+				$(".innnerGallery1").addClass("active");	
+			}, 500); */	
+		
+		});
+		$('#myCarousel2').bind('slide.bs.carousel', function (e) {
+		
+			
+			
+		}); 
+	})
 	
-	var qv = $(this).attr('data-rel');
-	/*$(".item").removeClass('active');*/
-	$(".qvModal"+qv).addClass('active');
 	
 	
-});
-	
-})
 
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39d3915099cfb7a6f610431589c6d12be90d4b7

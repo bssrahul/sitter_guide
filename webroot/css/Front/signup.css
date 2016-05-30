@@ -132,6 +132,7 @@ select {
 }
 .form-part div.form-group:nth-child(2) {
     float: right;
+	margin-left: 9px !important;
 }
 p.cap {
     float: left;
@@ -397,7 +398,7 @@ p.browse-p {
 }
 #menu2 p {
     width: 100%;
-    float: left;
+   /* float: left;*/
 }
 .upload-section img {
     background: #fff none repeat scroll 0 0;
@@ -864,3 +865,16 @@ p.min-hh {
 @media screen and (max-width:370px) {
     .full-width11 {width: 100% !important;}
  }
+ .signup-container .icon-input #users-email {
+    background: #fff url("../../img/signup-e-icon.png") no-repeat left 10px center;
+    padding: 0 0 0 30px;
+}
+.signup-container .icon-input #users-password {
+    background: #fff url("../../img/signup-p-icon.png") no-repeat left 10px center;
+    padding: 0 0 0 30px;
+}
+.signup-container .form-part ul { margin:0px; padding:0px; list-style-type:none; width:100%; clear:left;}
+.signup-container .form-part ul li{ width:50%; float:left; }
+.signup-container .form-part ul li .form-group{ width:97%;}
+
+.signup-container .form-part ul li #users-country{ height:47px;}

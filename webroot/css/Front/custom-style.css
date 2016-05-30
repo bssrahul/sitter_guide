@@ -1,0 +1,52 @@
+
+
+@charset "utf-8";
+/* CSS Document */
+
+.owl-item {
+  color: #000;
+}
+
+.item {
+  text-align: left;
+}
+
+
+.owl-nav {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.owl-prev, .owl-next {
+	float:left;
+	margin:5px;
+}
+
+
+.owl-prev {
+  background: rgba(0, 0, 0, 0) url("../../img/controls.png") repeat scroll 0 0;
+  color: #fff;
+  height: 32px;
+  left: 10px;
+  margin-top: -16px;
+  outline: 0 none;
+  position: absolute;
+  text-indent: -9999px;
+  top: 50%;
+  width: 32px;
+  z-index: 9999;
+}
+.owl-next {
+  background: rgba(0, 0, 0, 0) url("../../img/controls.png") no-repeat scroll -43px -32px;
+  color: #fff;
+  height: 32px;
+  margin-top: -16px;
+  outline: 0 none;
+  position: absolute;
+  right: 10px;
+  text-indent: -9999px;
+  top: 50%;
+  width: 32px;
+  z-index: 9999;
+}
