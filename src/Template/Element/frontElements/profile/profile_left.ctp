@@ -10,7 +10,7 @@
                   <!-- Main Menu -->
                   <div class="side-menu-container">
                     <ul class="nav navbar-nav">
-                      <li ><a href="#"><span class="fa fa-user"></span><span class="side-list"><?php echo __('Dashboard'); ?></span></a></li>
+                      <li ><a href="<?php echo HTTP_ROOT.'dashboard/dashboard-details'; ?>"><span class="fa fa-user"></span><span class="side-list"><?php echo __('Dashboard'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-smile-o"></span><span class="side-list"><?php echo __('Promote'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Tracker'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-envelope"></span><span class="side-list"><?php echo __('Inbox'); ?> </span> <span class="badge">10</span></a></li>

@@ -80,7 +80,164 @@ class DashboardController extends AppController
         //$session = $this->request->session();
         //echo $session->read('User.id'); die;
 	}
+    /**
+    Function for dashboard sitter details
+	*/
+	function dashboardDetails()
+	{
+		$this->viewBuilder()->layout('profile_dashboard');
 
+		$SiteConfigurationsModel = TableRegistry::get('SiteConfigurations');
+        $siteInfo = $SiteConfigurationsModel->find('all')->first();
+        $this->set('siteInfo',$siteInfo);
+
+        $session = $this->request->session();
+        $userId = $session->read('User.id');
+        $userType = $session->read('User.user_type');
+
+           //echo "type".$userType;die;
+           $bookingRequestModel = TableRegistry::get('BookingRequests');
+            if($userType == 'Sitter'){
+            	$query_client = $bookingRequestModel
+				    ->find()
+				    ->where(['sitter_id' =>$userId,'status' =>0])
+				    ->toArray();
+				$sitter_data['message_status'] = $bookingRequestModel
+				    ->find()
+				    ->where(['sitter_id' =>$userId,'message_status' =>0])
+				    ->count();    
+                $sitter_data['alerts'] = $bookingRequestModel
+				    ->find()
+				    ->where(['sitter_id' =>$userId,'status' =>0])
+				    ->count();
+				$sitter_data['events'] = $bookingRequestModel
+				    ->find()
+				    ->where(['sitter_id' =>$userId,'status' =>1])
+				    ->count();
+
+				/*$unread_messages = $bookingRequestModel
+				    ->find()
+				    ->where(['sitter_id' =>$userId,'status' =>1])
+				    ->count();    */     
+			  if($query_client){
+                $boarding = '';
+                foreach($query_client as $client){
+                	//pr($client['message']);die;
+                    $sitter_clients[] = $client['user_id'];
+                    $boarding .= $client['required_services'].','; 
+                    $message[] = $client['message']; 
+                }
+                //pr($sitter_clients);
+               // pr($message);die;
+
+                 $sitter_data['clients'] = count(array_unique($sitter_clients));
+
+                 $boarding = trim($boarding, ",");
+                 $boarding = explode(",",$boarding); 
+
+                     $counts = array_count_values($boarding);
+               
+	                 $total_stay = count($boarding);
+	                 if(isset($counts['boarding'])){
+	                    $boarding = $counts['boarding'];
+	                    $sitter_data['boarding_stay']  = ($boarding/$total_stay)*100;
+                     }else{
+                     	$sitter_data['boarding_stay'] = "0";
+                     }
+	                 if(isset($counts['house_sitting'])){
+	                    $house_sitting = $counts['house_sitting'];
+	                    $sitter_data['day_stay']  = ($house_sitting/$total_stay)*100;
+
+	                 }else{
+                     	$sitter_data['day_stay'] = "0";
+                     }
+	                 if(isset($counts['market_place'])){
+	                    $market_stay = $counts['market_place'];
+	                    $sitter_data['market_place_stay']  = ($market_stay/$total_stay)*100;
+                     }else{
+                     	$sitter_data['market_place_stay'] = "0";
+                     }
+                     if(isset($counts['night_stay'])){
+                     	//echo "okokok";die;
+	                    $night_stay = $counts['night_stay'];
+	                    $sitter_data['night_stay']  = ($night_stay/$total_stay)*100;
+                     }else{
+                     	$sitter_data['night_stay'] = "0";
+                     }
+                }
+            }/*else{
+               $query_client = $bookingRequestModel
+				    ->find()
+				    ->where(['user_id' =>$userId,'sitter_id' =>0])
+				    ->count();
+            }*/
+             /*General profile completed*/
+             /*$userAboutSitterHouseModel = TableRegistry::get('UserAboutSitters');
+             $aboutSitterData = $userAboutSitterHouseModel
+				    ->find()
+				    ->where(['user_id' =>$userId,'status' =>1])
+				    ->first();
+			  if($aboutSitterData){
+	            $aboutSitterData = $aboutSitterData->toArray();
+		      	foreach($aboutSitterData as $single_val){
+	                if(!empty($single_val)){
+	                   $not_empty_about_count[] = $single_val;
+			    	}
+			    }
+			    $total_about_count = count($aboutSitterData);
+			    $not_empty_about_count = count($not_empty_about_count);
+			    $about_sitter_completed = ($not_empty_about_count/$total_about_count)*100;
+	            $sitter_data['about_sitter_completed'] = floor($about_sitter_completed);
+		      }else{
+	              $sitter_data['about_sitter_completed'] = '0';
+		      }	*/		    
+		    /*End general profile*/
+            /*Sitter house completed*/
+             $userSitterHouseModel = TableRegistry::get('UserSitterHouses');
+             $sitterHouseData = $userSitterHouseModel
+				    ->find()
+				    ->where(['user_id' =>$userId,'status' =>1])
+				    ->first();
+			  if($sitterHouseData){
+	            $sitterHouseData = $sitterHouseData->toArray();
+		      	foreach($sitterHouseData as $single_val){
+	                if(!empty($single_val)){
+	                   $not_empty_count[] = $single_val;
+			    	}
+			    }
+			    $total_house_count = count($sitterHouseData);
+			    $not_empty_count = count($not_empty_count);
+			    $sitter_house_completed = ($not_empty_count/$total_house_count)*100;
+	            $sitter_data['sitter_house_completed'] = floor($sitter_house_completed);
+		      }else{
+	              $sitter_data['sitter_house_completed'] = '0';
+		      }			    
+		    /*End Sitter House*/
+		      /*About Sitter completed*/
+             $userAboutSitterHouseModel = TableRegistry::get('UserAboutSitters');
+             $aboutSitterData = $userAboutSitterHouseModel
+				    ->find()
+				    ->where(['user_id' =>$userId,'status' =>1])
+				    ->first();
+			  if($aboutSitterData){
+	            $aboutSitterData = $aboutSitterData->toArray();
+		      	foreach($aboutSitterData as $single_val){
+	                if(!empty($single_val)){
+	                   $not_empty_about_count[] = $single_val;
+			    	}
+			    }
+			    $total_about_count = count($aboutSitterData);
+			    $not_empty_about_count = count($not_empty_about_count);
+			    $about_sitter_completed = ($not_empty_about_count/$total_about_count)*100;
+	            $sitter_data['about_sitter_completed'] = floor($about_sitter_completed);
+		      }else{
+	              $sitter_data['about_sitter_completed'] = '0';
+		      }			    
+		    /*End about sitter*/
+		    //echo $sitter_data['about_sitter_completed'];die;    
+	        $this->set('sitter_data',$sitter_data);
+    }
+ 
 	/* send a reference to friend */
 	function reference(){
 		//echo "<pre>";print_r($this->request->data['email']);die;
