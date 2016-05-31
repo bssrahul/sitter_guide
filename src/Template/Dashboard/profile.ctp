@@ -395,57 +395,7 @@
 				
 			<div class="col-lg-7">
                     
-<<<<<<< HEAD
-=======
 
-</div>
-                   <div class="col-lg-5">
-                      <!--<img src="<?php echo HTTP_ROOT; ?>img/dm.png">-->
-                       <img  id="avatar-edit-img" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
-
-                    </div>
-
-</div>
-           </div>
-              
-
-
-                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
-                       <div class="row d-m2">
-                       <div class="col-lg-7">
-                      <p class="browse-p">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile photo')); ?>
-                        <!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
-                      <p  class="min-hh">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-                           
-                      </p>
-                      <button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Banner Profile Photo ')); ?>
-                        </button>
-
-                        </div>
-
-                        <div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
-
-                          <?php if(@$userInfo->profile_banner != ''){
-                                  $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
-                            }else{
-                                 $pathBanner = HTTP_ROOT.'img/img.png'; 
-                            }
-                         
-                            ?>
-                                <img id="preview-profile-banner" class="img-responsive" src="<?php echo @$pathBanner; ?>">
-                                 <?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
-                        </div>
-                        </div>
-                     </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-7">
-                    <div class="row d-m2">
-                    <div class="col-lg-6">
->>>>>>> a39d3915099cfb7a6f610431589c6d12be90d4b7
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
                     </p>
