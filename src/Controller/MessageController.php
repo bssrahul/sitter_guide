@@ -20,9 +20,6 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 
-//require_once(ROOT . DS  . 'vendor' . DS  . 'Facebook' . DS . 'src' . DS . 'Facebook' . DS . 'autoload.php');
-//use Facebook;
-
 use Cake\Event\Event;
 
 /**
@@ -35,21 +32,18 @@ use Cake\Event\Event;
 
 class MessageController extends AppController
 {
-	public $helpers = ['Form','GoogleMap'];
+	public $helpers = ['Form'];
 	/**
 	* Function which is call at very first when this controller load
 	*/
     public function beforeFilter(Event $event)
     { 
         parent::beforeFilter($event);
-		if($this->CheckGuestSession() && ($this->request->action == 'login' || $this->request->action == 'signup' || $this->request->action=="forgotPassword"))
+		if($this->CheckGuestSession()==false)
 		{
-			$this->setErrorMessage($this->stringTranslate(base64_encode('You can not access this page because you are already loggedin.')));
-			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
-		}
-		if(!$this->CheckGuestSession() && in_array($this->request->action,array('profile','profileEdit','addUserPet'))){
-			return $this->redirect(['controller' => 'Guests','action'=>'home']);
-			
+			$this->Flash->error(__('Kindly login before access this page.'));	
+			return $this->redirect(['controller' => 'guests', 'action' => 'home']);
+			exit();
 		}
     }
     
@@ -57,15 +51,11 @@ class MessageController extends AppController
     {
 
 		parent::initialize();
+		
 		// Loaded EmailTemplate Model
 		$SiteModel = TableRegistry::get('siteConfigurations');
 		$siteConfiguration = $SiteModel->find('all')->first();
 		$this->set('siteConfiguration', $siteConfiguration);
-		
-
-		$sliderModel = TableRegistry::get('Sliders');
-		$sliderVideo = $sliderModel->find('all')->first();
-		$this->set('sliderVideo', $sliderVideo);
 		
 	}
 	
@@ -73,166 +63,204 @@ class MessageController extends AppController
 	* Function to List the messages
 	*/
 	function chats($booking_id=''){
+		
 		$session = $this->request->session();
-		//print_r($session);
+		
 		$userType = $session->read('User.user_type');
-		 $class_user = $userType == 'Sitter'?'chat-me':'chat-user';
-		 
-		 $userId = $session->read('User.id');
-		//$userType = 'Sitter';
+		$class_user = $userType == 'Sitter'?'chat-me':'chat-user';
+
+		$userId = $session->read('User.id');
 		$this->set(compact('userId','userType','class_user'));
 		
-	$this->viewBuilder()->layout('profile_dashboard');
-	$session = $this->request->session();
-	//print_r($this->request);
-	//ADD MODEL
-	$BookingRequestsModel = TableRegistry::get('BookingRequests');
-	$get_requests = $BookingRequestsModel->find('all')
-    ->where(['BookingRequests.sitter_id' => '37'])
-    ->contain(['Users'])
-    ->select(['message','Users.image','created_date','id','Users.facebook_id','Users.is_image_uploaded'])
-    ->limit(10)->hydrate(false)->toArray();
-    //print_r($get_requests);die;
-    $this->set('get_requests',$get_requests);
-    if(count($get_requests)>0){
-		$default_booking_id = $get_requests[0]['id'];
-		}
-    if($booking_id != ''){
-		$this->set('booking_id',$booking_id);
-		$BookingRequestsModel = TableRegistry::get('BookingChats');
-		$get_chats = $BookingRequestsModel->find('all')
-		->where(['BookingChats.booking_request_id' => $booking_id])
-		->contain(['Users'])
-		->select(['message','Users.image','created_at','user_role'])
+		$this->viewBuilder()->layout('profile_dashboard');
+		$session = $this->request->session();
+	
+		//ADD MODEL
+		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		$UsersModel = TableRegistry::get('Users');
+		
+		$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+		
+		$get_requests = $BookingRequestsModel->find('all')
+		->where(['BookingRequests.'.$condition_field => $session->read('User.id')])
+		->contain(['BookingChats'])
+		->select(['message','created_date','id','user_id','sitter_id'])
 		->limit(10)->hydrate(false)->toArray();
-		$this->set('get_chats',$get_chats);
+		
+		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
+		if(!empty($get_requests)){
+			foreach($get_requests as $booking_key=>$booking_records){
+				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
+																->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded'])
+																->where(['Users.id' => $booking_records[$user_message_display_field]])
+																->limit(1)->hydrate(false)->first();
+			}
 		}
-	else{
-		$booking_id = $default_booking_id;
-		$this->set('booking_id',$booking_id);
-		$BookingRequestsModel = TableRegistry::get('BookingChats');
-		$get_chats = $BookingRequestsModel->find('all')
-		->where(['BookingChats.booking_request_id' => $booking_id])
-		->contain(['Users'])
-		->select(['message','Users.image','created_at','user_role'])
-		->limit(10)->hydrate(false)->toArray();
-		$this->set('get_chats',$get_chats);
+		
+		$this->set('get_requests',$get_requests);
+		
+		if(count($get_requests)>0){
+			$default_booking_id = $get_requests[0]['id'];
 		}
-	//print_r($get_requests); die;
+		
+		if($booking_id != ''){
+			
+			$this->set('booking_id',$booking_id);
+			$BookingRequestsModel = TableRegistry::get('BookingChats');
+			
+			$get_chats = $BookingRequestsModel->find('all')
+			->where(['BookingChats.booking_request_id' => $booking_id])
+			->contain(['Users'])
+			->select(['message','Users.image','created_at','user_role','user_id','Users.facebook_id','Users.is_image_uploaded'])
+			->limit(10)->hydrate(false)->toArray();
+			$this->set('get_chats',$get_chats);
+		
+		}else{
+		
+			$booking_id = $default_booking_id;
+			$this->set('booking_id',$booking_id);
+			$BookingRequestsModel = TableRegistry::get('BookingChats');
+			
+			$get_chats = $BookingRequestsModel->find('all')
+			->where(['BookingChats.booking_request_id' => $booking_id])
+			->contain(['Users'])
+			->select(['message','Users.image','created_at','user_role','user_id','Users.facebook_id','Users.is_image_uploaded'])
+			->limit(10)->hydrate(false)->toArray();
+			
+			$this->set('get_chats',$get_chats);
+		
+		}
+	$this->set('loggedin_user',$session->read('User.id'));
+	
+	//pr($get_chats); die;
 	}
 	
-		/**
+	/**
 	* Function to List the messages
 	*/
 	function chat($booking_id=''){
+		
 		$session = $this->request->session();
-		//print_r($session);
-		 $userType = $session->read('User.user_type');
-		 $class_user = $userType == 'Sitter'?'chat-me':'chat-user';
+		
+		$userType = $session->read('User.user_type');
+		$class_user = $userType == 'Sitter'?'chat-me':'chat-user';
 		 
 		 $userId = $session->read('User.id');
-		//$userType = 'Sitter';
+		
 		$this->set(compact('userId','userType','class_user'));
-	$this->viewBuilder()->layout('landing');
-	$session = $this->request->session();
-	//print_r($this->request);
-	//ADD MODEL
-	$BookingRequestsModel = TableRegistry::get('BookingRequests');
-	$get_requests = $BookingRequestsModel->find('all')
-    ->where(['BookingRequests.sitter_id' => '37'])
-    ->contain(['Users'])
-   // ->select(['message','Users.image','created_date','id'])
-     ->select(['message','Users.image','created_date','id','Users.facebook_id','Users.is_image_uploaded'])
-    ->limit(10)->hydrate(false)->toArray();
+		
+		$this->viewBuilder()->layout('landing');
+		
+		$session = $this->request->session();
+	
+		//ADD MODEL
+		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		
+		$get_requests = $BookingRequestsModel->find('all')
+		->where(['BookingRequests.sitter_id' => '37'])
+		->contain(['Users'])
+		->select(['message','Users.image','created_date','id','Users.facebook_id','Users.is_image_uploaded'])
+		->limit(10)->hydrate(false)->toArray();
     
-    $this->set('get_requests',$get_requests);
-    if(count($get_requests)>0){
-		$default_booking_id = $get_requests[0]['id'];
+		$this->set('get_requests',$get_requests);
+		
+		if(count($get_requests)>0){
+			$default_booking_id = $get_requests[0]['id'];
 		}
-    if($booking_id != ''){
-		$this->set('booking_id',$booking_id);
-		$BookingRequestsModel = TableRegistry::get('BookingChats');
-		$get_chats = $BookingRequestsModel->find('all')
-		->where(['BookingChats.booking_request_id' => $booking_id])
-		->contain(['Users'])
-		->select(['message','Users.image','created_at','user_role'])
-		->limit(10)->hydrate(false)->toArray();
-		$this->set('get_chats',$get_chats);
+		
+		if($booking_id != ''){
+			$this->set('booking_id',$booking_id);
+			$BookingRequestsModel = TableRegistry::get('BookingChats');
+			
+			$get_chats = $BookingRequestsModel->find('all')
+			->where(['BookingChats.booking_request_id' => $booking_id])
+			->contain(['Users'])
+			->select(['message','Users.image','created_at','user_role','Users.facebook_id','Users.is_image_uploaded'])
+			->limit(10)->hydrate(false)->toArray();
+			
+			$this->set('get_chats',$get_chats);
+		}else{
+		
+			$booking_id = $default_booking_id;
+			$this->set('booking_id',$booking_id);
+			$BookingRequestsModel = TableRegistry::get('BookingChats');
+			
+			$get_chats = $BookingRequestsModel->find('all')
+			->where(['BookingChats.booking_request_id' => $booking_id])
+			->contain(['Users'])
+			->select(['message','Users.image','created_at','user_role','Users.facebook_id','Users.is_image_uploaded'])
+			->limit(10)->hydrate(false)->toArray();
+			
+			$this->set('get_chats',$get_chats);
 		}
-	else{
-		$booking_id = $default_booking_id;
-		$this->set('booking_id',$booking_id);
-		$BookingRequestsModel = TableRegistry::get('BookingChats');
-		$get_chats = $BookingRequestsModel->find('all')
-		->where(['BookingChats.booking_request_id' => $booking_id])
-		->contain(['Users'])
-		->select(['message','Users.image','created_at','user_role'])
-		->limit(10)->hydrate(false)->toArray();
-		$this->set('get_chats',$get_chats);
-		}
-	//print_r($get_requests); die;
+
 	}
 	
-	
-	
-	 
 	/**
 	 * Funtion to get the chat detail
 	 */
 	 function bookingchat(){
-		 $this->request->data = $_REQUEST;	
-		 $id = $this->request->data['id'];
-		 $BookingChatsModelModel = TableRegistry::get('BookingChats');
+		$this->request->data = $_REQUEST;	
+		$id = $this->request->data['id'];
+		$BookingChatsModelModel = TableRegistry::get('BookingChats');
+	
 		$get_chats = $BookingRequestsModel->find('all')
 		->where(['BookingChats.booking_request_id' => $id])
 		->contain(['Users'])
-		->select(['message','Users.image','created_at','user_role'])
+		->select(['message','Users.image','created_at','user_role','user_id','Users.facebook_id','Users.is_image_uploaded'])
 		->limit(10)->hydrate(false)->toArray();
+		
 		$html = '<div><ul>';
-		foreach($get_chats as $chat_data){
-			$html .= "
-			<li>".$chat_data['message']."</li>
-			";
+			foreach($get_chats as $chat_data){
+				$html .= "<li>".$chat_data['message']."</li>";
 			}
-			$html .="</ul></div>";
-			echo $html; die;
-		pr($get_chats); die;
-		//$this->set('get_requests',$get_chats);
+			
+		$html .="</ul></div>";
+		echo $html; die;
+		
+		
     
-		 }
+	 }
 	
 	/**
 	 * Funtion to get the chat detail
-	 */
-	 function sendmessage(){
+	*/
+	
+	function sendmessage(){
 		
-		 $this->request->data = $_REQUEST;	
-		 $BookingChatsModel = TableRegistry::get('BookingChats');
-		 $ChatData = $BookingChatsModel->newEntity();
-		 $booking_msg_id = $this->request->data['booking_message_id'];
-		 $chat_text = $this->request->data['chat_text'];
-		 $user_type = $this->request->data['user_type'];
-		 $user_id = $this->request->data['user_id'];
-		 
-		 $ChatData->message = $chat_text;
-		 $ChatData->booking_request_id = $booking_msg_id;
-		 $ChatData->user_role = $user_type;
-		 $ChatData->user_id = $user_id;
+		$this->request->data = $_REQUEST;	
+		$BookingChatsModel = TableRegistry::get('BookingChats');
+		$ChatData = $BookingChatsModel->newEntity();
+		$booking_msg_id = $this->request->data['booking_message_id'];
+		$chat_text = $this->request->data['chat_text'];
+		$user_type = $this->request->data['user_type'];
+		$user_id = $this->request->data['user_id'];
+
+		$ChatData->message = $chat_text;
+		$ChatData->booking_request_id = $booking_msg_id;
+		$ChatData->user_role = $user_type;
+		$ChatData->user_id = $user_id;
 					
 					
 		if($BookingChatsModel->save($ChatData)){
-			echo "success";
-			}              
-		else{
-			echo "failed";
-			}
-					
-			
-		 die;
 		
-		 }
-	
-	
+			$this->request->data = $_REQUEST;	
+			$id = $this->request->data['booking_message_id'];
+			$BookingRequestsModel = TableRegistry::get('BookingChats');
+
+			$get_chats = $BookingRequestsModel->find('all')
+			->where(['BookingChats.booking_request_id' => $id])
+			->contain(['Users'])
+			->select(['message','Users.image','created_at','user_role','user_id','Users.facebook_id','Users.is_image_uploaded'])
+			->limit(10)->hydrate(false)->toArray();
+			
+			$this->set('get_chats',$get_chats);
+			
+			$session = $this->request->session();
+			$this->set('loggedin_user',$session->read('User.id'));
+		}
+		
+	}
 
 }
 ?>

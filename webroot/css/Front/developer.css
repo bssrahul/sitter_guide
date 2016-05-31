@@ -371,3 +371,7 @@ ul.booking-services li.new_active{
 .d-m2 img {
     padding: 5px !important;
 }
+
+.chat-wrapper ul li {
+  padding-top: 20px !important;
+}

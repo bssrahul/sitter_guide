@@ -14,7 +14,7 @@
 
 .message-full-wrapper select.form-control {
     -moz-appearance: none;
-    background-image: url("../../img/arw.png");
+    background-image: url("../images/arw.png");
     background-position: right 15px center;
     background-repeat: no-repeat;
     border: 1px solid #aaaaaa;
@@ -226,7 +226,7 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 
 
 .chat-user .msg-green-arrow {position:absolute; left:-19px;}
-.chat-user .user-tex-msg-area-wrap {background:url(../../img/calender-big.png) no-repeat; height:19px; width:19px;}
+.chat-user .user-tex-msg-area-wrap {background:url(../images/calender-big.png) no-repeat; height:19px; width:19px;}
 
 .chat-user .user-tex-msg-area { border:2px solid #d3d3d3; background:#fff; color:#414141; font-weight:600; text-align:left; font-size:13px; border-radius:5px; padding:10px; position:relative;}
 
@@ -234,7 +234,7 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .chat-me .my-img-chat1 {text-align:right;}
 .chat-me .my-img-chat1 img { max-width:41px; max-height:41px; float:right; }
 .chat-me .msg-orange-arrow1 {position:absolute; right:-19px;}
-.chat-me .me-tex-msg-area-wrap1 {background:url(../../img/calender-big.png) no-repeat; height:19px; width:19px;}
+.chat-me .me-tex-msg-area-wrap1 {background:url(../images/calender-big.png) no-repeat; height:19px; width:19px;}
 
 .chat-me .my-tex-msg-area { border:2px solid #94c077; background:#a1d082; color:#414141; font-weight:600; text-align:right; font-size:13px; border-radius:5px; padding:10px; position:relative;}
 

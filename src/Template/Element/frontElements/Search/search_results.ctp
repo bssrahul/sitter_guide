@@ -657,7 +657,3 @@ $(document).ready(function() {
 	
 
 </script>
-<<<<<<< HEAD
-=======
-
->>>>>>> a39d3915099cfb7a6f610431589c6d12be90d4b7
