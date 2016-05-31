@@ -85,10 +85,128 @@
 							</ul>
                          </div>
                       </li>
-                      
-                      <li >
-						  <a href="#" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Message')); ?>  <span class="badge">10</span></a>
-                      </li>
+                       <!--MESSAGE LI START -->
+                     <li  class="dropdown">
+						  <a  id="droplog3" href="#" class="dropdown-toggle" data-toggle="dropdown">Message  
+							<span class="badge">10
+							</span>
+						  </a>
+						</a>
+						<div class="dropdown-menu currency-drop drop-profile message-width  hidden-xs " id="dropcont3">
+						  <ul class="c-list c-list-2">
+							<li>
+							  <a href="#">
+								<div class="book-now-setion-inner li-p ">
+								  <div class="row">
+									<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+									  <div class="book-now-img ">
+										<img alt="img" class="img-responsive img-circle text-center center-block mCS_img_loaded" src="images/detail-client.png"> 
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 message-pad-left-0 message-pad-right-0">
+									  <div class="book-now-name">
+										<div class="new-badge">NEW
+										</div>
+										<p>Jassica A
+										</p>
+										<p>Today
+										</p>
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0 message-pad-right-0 ">
+									  <div class="book-now-name">
+										<p>Hi Steves
+										</p>
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0">
+									  <div class="book-now-name">
+										<p class="text-right">Apr 1
+										</p>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</li>         
+							<li>
+							  <a href="#">
+								<div class="book-now-setion-inner li-p ">
+								  <div class="row">
+									<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+									  <div class="book-now-img ">
+										<img alt="img" class="img-responsive img-circle text-center center-block mCS_img_loaded" src="images/detail-client.png"> 
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 message-pad-left-0 message-pad-right-0">
+									  <div class="book-now-name">
+										<div class="new-badge">NEW
+										</div>
+										<p>Jassica A
+										</p>
+										<p>Today
+										</p>
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0 message-pad-right-0 ">
+									  <div class="book-now-name">
+										<p>Hi Steves
+										</p>
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0">
+									  <div class="book-now-name">
+										<p class="text-right">Apr 1
+										</p>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</li>
+							<li>
+							  <a href="#">
+								<div class="book-now-setion-inner li-p ">
+								  <div class="row">
+									<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+									  <div class="book-now-img ">
+										<img alt="img" class="img-responsive img-circle text-center center-block mCS_img_loaded" src="images/detail-client.png"> 
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 message-pad-left-0 message-pad-right-0">
+									  <div class="book-now-name">
+										<div class="new-badge">NEW
+										</div>
+										<p>Jassica A
+										</p>
+										<p>Today
+										</p>
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0 message-pad-right-0 ">
+									  <div class="book-now-name">
+										<p>Hi Steves
+										</p>
+									  </div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0">
+									  <div class="book-now-name">
+										<p class="text-right">Apr 1
+										</p>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</li>
+							<li class="text-center pad10">
+							  <a href="#" class="colr-grn">See more
+							  </a>
+							</li>
+						  </ul>
+						</div>
+						</li>  <!--MESSAGE LI CLOSED -->
+
                       
                       <li><a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help')); ?> </a></li>
                                   

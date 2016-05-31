@@ -39,8 +39,47 @@
 				{
 					$("#chat_text").val('');
 					$('div.list_chat_ul').html(res);
-					
+					$("#content-m").mCustomScrollbar({theme:"minimal-dark"});	
+					$("#content-md").mCustomScrollbar({theme:"minimal-dark"});				
 				}
 			});
 		}
 	}
+	
+
+	(function($){
+		$(window).load(function(){
+			
+			$.mCustomScrollbar.defaults.scrollButtons.enable=true; //enable scrolling buttons by default
+			$.mCustomScrollbar.defaults.axis="yx"; //enable 2 axis scrollbars by default
+			
+		
+			
+			$("#content-m").mCustomScrollbar({theme:"minimal"});
+			
+			
+			$(".all-themes-switch a").click(function(e){
+				e.preventDefault();
+				var $this=$(this),
+					rel=$this.attr("rel"),
+					el=$(".content");
+				switch(rel){
+					case "toggle-content":
+						el.toggleClass("expanded-content");
+						break;
+				}
+			});
+			
+		});
+	})(jQuery);
+	
+	$(function(){
+		
+		$('#chat_text').keydown(function (e) {
+
+		  if (e.ctrlKey && e.keyCode == 13) {
+			$("#submit_chat").trigger('click');
+		  }
+		});
+		
+	});

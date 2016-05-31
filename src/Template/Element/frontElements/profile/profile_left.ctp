@@ -1,4 +1,4 @@
- <div class="col-md-3 col-lg-2 col-sm-4  ">
+ <div class="col-md-3 col-lg-2 col-sm-4  lg-width20">
         <div class="custom">
           <div class="sidebar">
             <div class=""> 
@@ -13,8 +13,61 @@
                       <li ><a href="#"><span class="fa fa-user"></span><span class="side-list"><?php echo __('Dashboard'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-smile-o"></span><span class="side-list"><?php echo __('Promote'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Tracker'); ?></span></a></li>
-                      <li><a href="#"><span class="fa fa-envelope"></span><span class="side-list"><?php echo __('Inbox'); ?> </span> <span class="badge">10</span></a></li>
-                      <li><a href="#"><span class="fa fa-suitcase"></span><span class="side-list"><?php echo __('Booking'); ?></span></a></li>
+                      
+                      <?php 
+                      if(trim($this->request->action)=='chats'){$inbox_class='active';}else{$inbox_class='';}
+					  ?>
+                       <li class="panel panel-default <?php echo $inbox_class; ?>" id="dropdown">
+							<a data-toggle="collapse" href="#dropdown-lvl1">
+								<span class="fa fa-envelope"></span><span class="side-list">Inbox & Bookings </span> <span class="badge">10</span>
+							</a>
+
+						
+							<div id="dropdown-lvl1" class="panel-collapse <?php if(trim($this->request->controller)=='Message'){echo 'in';}else{echo '';}?> collapse">
+								<div class="panel-body">
+									<ul class="nav navbar-nav">
+										<li>
+											<a href="#" class="<?php if(trim($this->request->action)=='chats'){echo 'active';}else{echo '';}?>">
+											<span class="fa fa-angle-double-right"></span>&nbsp;Pending
+											</a>
+										</li>
+										
+										<li>
+											<a href="#" class="<?php if(trim($this->request->action)=='upcomings'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp;Upcoming</a>
+										</li>
+										
+										<li>
+											<a href="#" class="<?php if(trim($this->request->action)=='past'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp;Past</a>
+										</li>
+										
+										<li >
+											<a href="#" class="<?php if(trim($this->request->action)=='archieved'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp;Archive</a>
+										</li>
+								
+										
+									</ul>
+								</div>
+							</div>
+						</li>
+						
+						<li class="panel panel-default" id="dropdown">
+							<a data-toggle="collapse" href="#dropdown-lvl2">
+								<span class="fa fa-thumbs-up"></span><span class="side-list">Favourites </span>
+							</a>
+
+						
+							<div id="dropdown-lvl2" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav navbar-nav">
+										<li ><a href="#" class=""><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
+										<li><a href="#"><span class="fa fa-angle-double-right"></span>&nbsp; Favourite Clients</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+                      
+                      
+                      
                       <li><a href="#"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
                       <?php if($this->request->action=='profile' || $this->request->action=='sitterHouse' || $this->request->action=='aboutSitter' || $this->request->action=='professionalAccreditations'){
 						  
@@ -38,38 +91,7 @@
                       <li><a href="#"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
                       
                       <!-- Dropdown--> 
-                      <!--<li class="panel panel-default" id="dropdown">
-            <a data-toggle="collapse" href="#dropdown-lvl1">
-              <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
-            </a>
-
-          
-            <div id="dropdown-lvl1" class="panel-collapse collapse">
-              <div class="panel-body">
-                <ul class="nav navbar-nav">
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-
-                
-                  <li class="panel panel-default" id="dropdown">
-                    <a data-toggle="collapse" href="#dropdown-lvl2">
-                      <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
-                    </a>
-                    <div id="dropdown-lvl2" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>-->
+               
                       
                     </ul>
                   </div>
