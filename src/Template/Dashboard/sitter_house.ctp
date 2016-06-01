@@ -44,7 +44,7 @@
                       <label for=""> 
                         <?php echo $this->requestAction('app/get-translate/'.base64_encode('Property Type')); ?>
                       </label>
-                        <?php echo $this->Form->input('UserSitterHouses.property_type',[
+                      <?php echo $this->Form->input('UserSitterHouses.property_type',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'required' => false,
@@ -109,7 +109,7 @@
                     <div class="form-group col-lg-4">
                     <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Fully Fenced Outdoor Area')); ?> </label>
                     <span class="pull-right m-rights">
-                            <?php echo $this->Form->input(
+                        <?php echo $this->Form->input(
                               'UserSitterHouses.fully_fenced',
                                [
                                 //'label'=>['class'=>'radio-inline'],
@@ -117,7 +117,7 @@
                                  'label'=>false,
                                  'required'=>false,
                                 "options"=>["yes"=>"Yes","no"=>"No"],
-								 'default' => 'no',
+								                'default' => 'no',
                                 'templates' => ['inputContainer' => '{{content}}']
                         ]); ?>
                           

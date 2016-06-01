@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#dashboard-profile .profiletab-section ul li {
+    
+    width: 33.3% !important;
+}
+
+
+#dashboard-profile .profiletab-section ul {
+   
+    margin-top: 30px;
+   
+}
+
+.pad-22t { padding-bottom:22px;}
+
+#dashboard-profile .tab-sectioninner { margin-bottom:30px;}
+.tab-sectioninner select.form-control {
+    -moz-appearance: none;
+    background-image: url(../../img/arw.png);
+    background-position: right 15px center;
+    background-repeat: no-repeat;
+    border: 1px solid #aaaaaa;
+    border-radius: 3px;
+    box-shadow: none;
+    height: 40px;
+}
+
+.add-multiple { background:#f3f3f3; border:1px solid #e0e0e0; padding:20px 0px 0px 30px; margin:20px 0px;}
+.add-multiple a { color:#404040 !important; font-size:20px; outline:none; text-decoration:none;}
+
+.font-fa { font-size:14px !important; color:#000;}
+.mb { margin-bottom:0px !important;}
+.pp-w { font-weight:600 !important;}
+
+.input-rt { height:35px !important;}
+
+.upload-txt { font-size:13px; padding-top:25px;}
+
+.btn-prof-upload { background-color:#337AB7; color:#fff; height:35px; width:175px; text-align:left; font-weight:500; margin-top:55px;}
+.btn-prof-upload:hover, .btn-prof-upload:focus { background-color:#337AB7; color:#fff; height:35px; text-align:left; width:175px; outline:none !important; font-weight:500;}
+.height-area { height:125px !important;} 
+
+#dashboard-profile .input-group-addon {
+    background-color: #f8f7f6;
+  
+}
+
+#dashboard-profile  .input-group-addon {
+    background-color:  #f8f7f6;
+}
+
+
+#dashboard-profile .form-control[disabled], #dashboard-profile .form-control[readonly],  #dashboard-profile fieldset[disabled] .form-control {
+    background-color:  #f8f7f6;
+    opacity: 1;
+}
+
+
+@media (min-width:992px)and (max-width:1199px){
+	.btn-prof-upload {
+   
+    margin-top: 15px;
+    
+}
+
+.upload-txt {
+    font-size: 13px;
+    padding-top: 0;
+}
+
+
+#dashboard-profile .tab-content textarea {
+    min-height: 77px;
+	margin-bottom:0px;
+}
+
+	
+	}
+
+@media (min-width:1200px)and (max-width:1440px){
+	
+	.height-area { height:77px !important;} 
+	#dashboard-profile .tab-content textarea {
+    min-height: 77px;
+}
+
+.btn-prof-upload {
+   
+    margin-top: 15px;
+    
+}
+
+
+#dashboard-profile .extend .checkbox-inline, .radio-inline {
+  
+   
+    padding-left: 13px;
+   
+}
+
+	
+	}
+
+@media (max-width:767px){
+#dashboard-profile .profiletab-section ul li {
+    display: block;  width: 100% !important;
+}
+.btn-prof-upload {
+   
+    margin-top: 15px;
+    
+}
+
+
+}

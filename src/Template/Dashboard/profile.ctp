@@ -691,7 +691,7 @@ $(document).ready(function(){
   $("#browseBanner").on('click',function(){
 
          $("#profile_banner").trigger("click");    
-        });
+  });
 
   $(document).on('change','#profile_banner', function(){ 
     $("#profileBanner").ajaxForm(
