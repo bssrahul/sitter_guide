@@ -86,12 +86,10 @@
                               echo $this->Form->input('Users.birth_date',[               
                               'class'=>'form-control dob',
                               'label'=>false,
-							  'id'=>'profile_date',
                               'templates' => ['inputContainer' => '{{content}}'],
                               'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('DD/MM/YYYY')), 
                               ]);
                           ?> 
-						  
                         </div>
                     </div>
                     <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address')); ?>
@@ -230,7 +228,7 @@
                                 echo $this->Form->input('Usersp.current_password',[                
                                  'class'=>'form-control',
                                  'type'=>'password',
-                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Current Password')),
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Cuurent Password')),
                                  'label'=>false,
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
@@ -351,7 +349,7 @@
 							<div class="col-lg-7">
 							
 								  <p class="browse-p">
-									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile banner')); ?>
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile photo')); ?>
 								  </p>
 								  
 								  <p  class="min-hh">
@@ -361,7 +359,7 @@
 							
 							</div>
 
-							<div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
+							<div class="col-lg-5">
 
 								<?php 
 									if(@$userInfo->profile_banner != ''){
@@ -371,8 +369,8 @@
 									}
 								 ?>
 								 
-								 <img class="img-responsive height125" src="<?php echo @$pathBanner; ?>"><?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
-								 
+								 <img class="img-responsive height125" id="preview-profile-banner" src="<?php echo @$pathBanner; ?>"><?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
+								
 									<button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
 										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
 									</button>
@@ -395,57 +393,6 @@
 				
 			<div class="col-lg-7">
                     
-<<<<<<< HEAD
-=======
-
-</div>
-                   <div class="col-lg-5">
-                      <!--<img src="<?php echo HTTP_ROOT; ?>img/dm.png">-->
-                       <img  id="avatar-edit-img" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
-
-                    </div>
-
-</div>
-           </div>
-              
-
-
-                    <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6 full-width11">
-                       <div class="row d-m2">
-                       <div class="col-lg-7">
-                      <p class="browse-p">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile photo')); ?>
-                        <!-- <button type="button" class="btn btn-primary pull-right">Browse Photo</button> --></p>
-                      <p  class="min-hh">
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-                           
-                      </p>
-                      <button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
-                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Banner Profile Photo ')); ?>
-                        </button>
-
-                        </div>
-
-                        <div class="col-lg-5"><span class="videoBanner">&nbsp;</span>
-
-                          <?php if(@$userInfo->profile_banner != ''){
-                                  $pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
-                            }else{
-                                 $pathBanner = HTTP_ROOT.'img/img.png'; 
-                            }
-                         
-                            ?>
-                                <img id="preview-profile-banner" class="img-responsive" src="<?php echo @$pathBanner; ?>">
-                                 <?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
-                        </div>
-                        </div>
-                     </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-7">
-                    <div class="row d-m2">
-                    <div class="col-lg-6">
->>>>>>> a39d3915099cfb7a6f610431589c6d12be90d4b7
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
                     </p>
@@ -457,15 +404,15 @@
                 
 			<div class="col-lg-5">
 					
-					<span class="videoBanner">&nbsp;</span>
+				
                       <?php if(@$userInfo->profile_video != ''){
-                           $path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
+                           $video_path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
                       }else{
-                           $path ='https://www.youtube.com/embed/GF60Iuh643I';
+                           $video_path ='https://www.youtube.com/embed/GF60Iuh643I';
                       }
                       
                      ?>
-                    <iframe id="preview-profile-video" class="col-lg-12" src="<?php echo @$path; ?>" allowfullscreen>
+                    <iframe id="preview-profile-video" class="col-lg-12" src="<?php echo @$video_path; ?>" allowfullscreen>
                     </iframe>
                     <button class="btn btn-primary" type="button" id="browseVideo"><i class="fa fa-upload" aria-hidden="true"></i>
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Video')); ?>
@@ -496,6 +443,7 @@
 			</div>
             
             <div class="col-lg-5">
+              <span class="videoBanner">&nbsp;</span>
 				  <?php if(@$userInfo->profile_video_image != ''){
 						  $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
 					}else{
@@ -503,7 +451,7 @@
 					}
 				 
 					?>
-					<img class="img-responsive height125" src="<?php echo @$pathVideoImg; ?>"><?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
+					<img class="img-responsive height125" id="preview-profile-video-image" src="<?php echo @$pathVideoImg; ?>"><?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
 					<button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
                 
 					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
@@ -716,26 +664,24 @@ $(document).ready(function(){
     $("#profileVideo").ajaxForm(
     {
 	beforeSend: function(){
-	  $(".videoBanner").show();
-	  $(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
-	},
-	
-	complete: function(){
+	  //$(".videoBanner").show();
+	  //$(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+      $("#preview-profile-video").attr('src',ajax_url+'img/search-loader.gif');
+  },
+	/*complete: function(){
 	  $(".videoBanner").hide();
 	  $(".videoBanner").html('');
-	},	
+	},	*/
     //target: '#preview-profile-video',
     success: function(res) { 
         var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
-                //alert(response[1]);
                   $("#preview-profile-video").attr('src',response[1]);
               }else  if($.trim(response[0]) == 'Error'){
                 $('.clr').html(''); //Emtpy Error MESSAGE
                 $('.addError').html(response[1]); //DISPLAY SUCCESS MESSAGE
               }
-			   // $('.clr').html(''); //Emtpy Error MESSAGE
-            }
+			      }
       
        
     }).submit();
@@ -743,36 +689,28 @@ $(document).ready(function(){
   /*End profile video*/
   /*Start profile banner*/
   $("#browseBanner").on('click',function(){
-        $("#profile_banner").trigger("click");    
+
+         $("#profile_banner").trigger("click");    
         });
 
   $(document).on('change','#profile_banner', function(){ 
-
-    //$("#preview-avatar-profile").html('');
-    //$("#preview-avatar-profile").html('Uploading....');
     $("#profileBanner").ajaxForm(
     {
-		beforeSend: function(){
-		  $(".videoBanner").show();
-		  $(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
+      beforeSend: function(){
+		  $("#preview-profile-banner").attr('src',ajax_url+'img/search-loader.gif');
 		},
-		
-		complete: function(){
-		  $(".videoBanner").hide();
-		  $(".videoBanner").html('');
-		},	
-    //target: '#preview-profile-video',
+		//target: '#preview-profile-video',
     success: function(res) { 
-      //alert(res);
-        var response = res.split('::');
+          var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
-                //alert(response[1]);
-                 $('.clr').html(''); //Emtpy Error MESSAGE
+                  $('.clr').html(''); //Emtpy Error MESSAGE
                   $("#preview-profile-banner").attr('src',response[1]);
               }
               if($.trim(response[0]) == 'Error'){
+                
                 $('.clr').html(''); //Emtpy Error MESSAGE
                 $('.addBannerError').html(response[1]); //DISPLAY SUCCESS MESSAGE
+                $("#preview-profile-banner").attr('src','<?php echo @$pathBanner; ?>');
               }
             }
       
@@ -785,23 +723,22 @@ $(document).ready(function(){
         });
 
   $(document).on('change','#profile_video_image', function(){ 
-
-    //$("#preview-avatar-profile").html('');
-    //$("#preview-avatar-profile").html('Uploading....');
-    $("#videoImage").ajaxForm(
+        $("#videoImage").ajaxForm(
     {
     //target: '#preview-profile-video',
+      beforeSend: function(){
+      $("#preview-profile-video-image").attr('src',ajax_url+'img/search-loader.gif');
+    },
     success: function(res) { 
-      //alert(res);
-        var response = res.split('::');
+             var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
-                //alert(response[1]);
-                 $('.clr').html(''); //Emtpy Error MESSAGE
+                  $('.clr').html(''); //Emtpy Error MESSAGE
                   $("#preview-profile-video-image").attr('src',response[1]);
               }
               if($.trim(response[0]) == 'Error'){
                 $('.clr').html(''); //Emtpy Error MESSAGE
                 $('.addVideoImgError').html(response[1]); //DISPLAY SUCCESS MESSAGE
+                $("#preview-profile-video-image").attr('src','<?php echo @$pathVideoImg; ?>');
               }
             }
       
@@ -809,8 +746,24 @@ $(document).ready(function(){
     }).submit();
   });
 });
+  $(document).ready(function(){
+    /*For datepicker*/ 
+    $("#users-birth-date").datepicker(
+           {
+         changeMonth: true,
+         changeYear: true,
+           maxDate: new Date(),
+           yearRange: "-50:-18",
+       dateFormat: 'dd-mm-yy',
+       defaultDate: '01-01-1998'
 
- 
+       }
+      );
+    $("#users-birth-date").click(function(){ 
+      $("#users-birth-date").focus();
+    });
+   /*End date picker*/
+ });
 </script>
 <style>
 .videoBanner {
@@ -830,22 +783,3 @@ padding-top:15px !important;
 }
 .height125{height:125px !important;width:100% !important;}
 </style>
-<script>
-	$( document ).ready(function() {
-		$("#profile_date").datepicker(
-           {
-		     changeMonth: true,
-		     changeYear: true,
-	         maxDate: new Date(),
-	         yearRange: "-50:-18",
-			 dateFormat: 'dd-mm-yy',
-			 defaultDate: '01-01-1998'
-
-		   }
-		  
-			);
-		$("#profile_date").click(function(){ $("#Users.birth_date").focus();
-			//$( "#profile_date" ).hasClass( "bar" );
-		});
-	});
-</script>
