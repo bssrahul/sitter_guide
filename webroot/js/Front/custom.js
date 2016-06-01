@@ -3,6 +3,21 @@
 	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	/*FUNCTION FOR VALIDATION*/
+	  $(document).ready(function(){
+		  $("#flip").click(function(){
+			  $("#panel").slideDown("slow");
+		  });
+		   $("#flipclose").click(function(){
+			  $("#panel").slideUp("slow");
+		  });
+		  $(window).scroll(function() {
+
+		 if ($(this).scrollTop()>775)
+		 {		
+			$('.panel-pop').hide("slow");
+		 }
+		});	  	  
+	  });
 	$(document).ready(function(){
 		
 		//SLIDEUP MESSAGES FUNCTIONALITY START

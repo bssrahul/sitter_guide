@@ -690,6 +690,7 @@ $(document).ready(function(){
   /*Start profile banner*/
   $("#browseBanner").on('click',function(){
 
+
          $("#profile_banner").trigger("click");    
   });
 
