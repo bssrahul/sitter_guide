@@ -1,8 +1,10 @@
 
 	<?php
+	
 	if(!empty($get_requests)){
 		foreach($get_requests as $req_data){
 		$req_id = $req_data['id'];
+		$folder_status = $req_data['folder_status_'.$fieldname];
 		
 		if(isset($req_data['booking_chats']) && !empty($req_data['booking_chats'])){
 			$activeClass = '';
@@ -23,7 +25,7 @@
 			$activeClass = '';
 		}
 	?>
-  <div id="tr_<?php echo $req_id; ?>"  onclick="get_req_data(<?php echo $req_id;?>);" class="book-now-setion-inner <?php echo $activeClass; ?>">
+  <div id="tr_<?php echo $req_id; ?>"  onclick="get_req_data(<?php echo "'".$folder_status."','".base64_encode(convert_uuencode($req_id))."'";?>);" class="book-now-setion-inner <?php echo $activeClass; ?>">
 	<div class="row">
 	  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 		<div class="book-now-img ">

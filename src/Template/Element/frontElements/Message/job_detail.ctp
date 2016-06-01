@@ -6,67 +6,49 @@
                         <tr>
                           <td>From : 
                           </td>
-                          <td>Aprl 1st, 2016
+                          <td><?php echo $get_booking_requests_to_display['booknig_start_date']; ?> 
                           </td>
-                          <td>
-                            <a href="#">Edit
-                            </a>
-                          </td>
+                          
                         </tr>
                         <tr>
                           <td>To :
                           </td>
-                          <td>Aprl 2nd, 2016
+                          <td><?php echo $get_booking_requests_to_display['booking_end_date']; ?> 
                           </td>
-                          <td>
-                            <a href="#">Edit
-                            </a>
-                          </td>
+                          
                         </tr>
                         <tr>
                           <td>Where :
                           </td>
                           <td>Jesica A’s Home
                           </td>
-                          <td>
-                            <a href="#">Edit
-                            </a>
-                          </td>
+                          
                         </tr>
                         <tr>
                           <td>Pets : 
                           </td>
                           <td>Hunter
                           </td>
-                          <td>
-                            <a href="#">Edit
-                            </a>
-                          </td>
+                          
                         </tr>
                         <tr>
                           <td class="width110">Stay Price : 
                           </td>
                           <td>$25.00
                           </td>
-                          <td>
-                            <a href="#">Edit
-                            </a>
-                          </td>
+                          
                         </tr>
                         <tr>
                           <td>Market Place:
                           </td>
                           <td>NIL
                           </td>
-                          <td>
-                            <a href="#">Edit
-                            </a>
-                          </td>
+                         
                         </tr>
                         <tr>
                           <td>Notes :
                           </td>
-                          <td>Please come over not later than 10
+                          <td><?php echo (@$get_booking_requests_to_display['message'] !='') ? @$get_booking_requests_to_display['message'] : ""; ?> 
                           </td>
                           <td>
                           </td>
@@ -139,20 +121,35 @@
                       <div class="media">
                         <div class="media-left media-middle w-95">
                           <a href="#">
-                            <img class="media-object sizei65 img-thumbnail" src="<?php echo HTTP_ROOT; ?>img/profile-pic.png" alt="...">
+                           
+                            <?php if(($get_booking_requests_to_display['user']['facebook_id']) !="" && ($get_booking_requests_to_display['user']['is_image_uploaded'])==0){ ?>
+			  
+								<img 
+									class="media-object sizei65 img-thumbnail" 
+									alt="<?php echo __('Profile Picture'); ?>" 
+									src="<?php if($get_booking_requests_to_display['user']['image'] != ""){echo $get_booking_requests_to_display['user']['image'];}else{echo $get_booking_requests_to_display['user']['image']='prof_photo.png';} ?>"> 
+						   
+						   <?php }else{ ?>
+							
+								<img 
+									class="media-object sizei65 img-thumbnail" 
+									alt="<?php echo __('Profile Picture'); ?>" 
+									src="<?php echo HTTP_ROOT.'img/uploads/'.($get_booking_requests_to_display['user']['image'] != ''?$get_booking_requests_to_display['user']['image']:'prof_photo.png'); ?>"> 					   
+							<?php  } ?>
                           </a>
                         </div>
                         <div class="media-body">
-                          <p class="media-heading">Jessica R
+                          <p class="media-heading"><?php echo (@$get_booking_requests_to_display['user']['first_name'] !='')? @$get_booking_requests_to_display['user']['first_name'] : ""; ?> 
+							<?php echo (@$get_booking_requests_to_display['user']['last_name'] !='')? ucwords(substr(@$get_booking_requests_to_display['user']['last_name'],0,1)) : ""; ?> 
                           </p>
                           <p class="media-heading-msince">
-                            Memeber Since : 01 Aug 2015
+                            Memeber Since : <?php echo$get_booking_requests_to_display['user']['date_added']; ?> 
                           </p>
                           <p>
                           </p>
                         </div>
                       </div>
-                      <p class="text-mem">Hello, my name is jessica, Im 27 years-old and the boy next to me in the picture in my 5 year-old son Givanni. I am a military veteran-formerly worked for the Navy as an aircraft mechanic for 8 years. Currently I am studying Human Rigths in Columbia University and my...
+                      <p class="text-mem"><?php echo (@$get_booking_requests_to_display['user']['user_about_sitter']['client_choose_desc'] !='')? $get_booking_requests_to_display['user']['user_sitter_house']['about_home_desc'] : "No added yet"; ?>
                       </p>
                       <div class="media">
                         <div class="media-left media-middle w-95">

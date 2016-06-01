@@ -3,20 +3,28 @@
                   <div class="mess-pad-top">
                     <ul class="list-inline">
                       <li> 
-                        <button id="refresh_chat" class="btn btn-ref">
+                        <button id="refresh_chat" data-rel="<?php echo @$booking_id; ?>" class="btn btn-ref">
                           <i class="fa fa-refresh">
                           </i>
                         </button>
                       </li>
                    
                       <li> 
-                        <select class="form-control moveto select-1">
-                          <option>Pending</option>
-                          <option>Current</option>
-                          <option>Past</option>
-                          <option>Archieved</option>
+                        <select class="move_to_folder form-control moveto select-1" data-rel="<?php echo $booking_id; ?>">
+                          
+                          <option <?php if(trim(@$this->request->params['pass'][0])=='' || @$this->request->params['pass'][0]=='pending'){echo 'selected';}?> value="pending">Pending</option>
+                          
+                          <option <?php if(@$this->request->params['pass'][0]=='current'){echo 'selected';}?> value="current">Current</option>
+                          
+                          <option <?php if(@$this->request->params['pass'][0]=='past'){echo 'selected';}?> value="past">Past</option>
+                          
+                          <option <?php if(@$this->request->params['pass'][0]=='archieved'){echo 'selected';}?> value="archieved">Archieved</option>
                         </select>
+                        
                       </li>
+						<li> 
+							<img style="display:none" src="<?php echo HTTP_ROOT; ?>img/ajax_wait.gif" id="move_to_folder" class="img-responsive" alt="message">
+						</li>
                     </ul>
                   </div>
                 </div>

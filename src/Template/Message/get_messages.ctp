@@ -5,7 +5,7 @@
 
 ?>
 
-<div class="col-md-9 col-lg-10 col-sm-8 lg-width80 " id="content">
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row db-top-bar-header no-padding-left no-padding-right">
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <h3>
@@ -40,40 +40,13 @@
                     </span> Inbox
                   </p>
                 </li>
-                <li>
-                  <form class="form-inline sort">
-                    <div class="form-group">
-                      <label for="exampleInputName2">Sort by
-                      </label> &nbsp;
-                      <select class="form-control">
-                        <option>Sort -1
-                        </option>
-                        <option>Sorting -2
-                        </option>
-                        <option>Sorting -3
-                        </option>
-                      </select>
-                    </div>
-                  </form>
-                </li>
-              
+                           
               </ul>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-				<p class="message-inbox">
-                    <span> 
-                      <img src="<?php echo HTTP_ROOT; ?>img/message-openletter.png"  alt="letter">
-                    </span> Message
-                  </p>
+				
               <div class="input-group s-top-width">
-				  
-                <!--<input type="text" class="form-control " placeholder="Search Mail...">
-                <span class="input-group-btn">
-                  <button class="btn  btn-sr" type="button">
-                    <i class="fa fa-search">
-                    </i>
-                  </button>
-                </span>-->
+				                  
               </div>
               <!-- /input-group -->
             </div>
@@ -99,7 +72,9 @@
                   <div class="chat-wrapper">
                     <div class="chat-title1">To : 
                       <span> 
-                        <b>Jassica A
+                        <b>
+							<?php echo (@$get_booking_requests_to_display['user']['first_name'] !='')? @$get_booking_requests_to_display['user']['first_name'] : ""; ?> 
+							<?php echo (@$get_booking_requests_to_display['user']['last_name'] !='')? ucwords(substr(@$get_booking_requests_to_display['user']['last_name'],0,1)) : ""; ?> 
                         </b>
                       </span>
                     </div>
@@ -130,44 +105,47 @@
     </div>
   </div>
 </div>
-<?php /*   if(@$booking_id !=''){ ?>
+<?php  if(@$booking_id !=''){ ?>
 <script>
 	var booking_id = '<?php echo @$booking_id; ?>';
-$(function(){
-	setInterval(function(){
-		var actionURL = ajax_url+"/message/auto-load-chat/";
-		if(booking_id !=''){
-
-			$.ajax({
-				url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-				data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
-					 
-				success:function(res)
-				{
-					$('div.list_chat_ul').html(res);
-					$("#content-m").mCustomScrollbar({theme:"minimal"});	
-				}
-			});
-		}
-	}, 1000);
+	var folder_status = '<?php echo @$folder_status; ?>';
 	
-	setInterval(function(){
-		var actionURL = ajax_url+"/message/auto-load-threads/";
-		if(booking_id !=''){
+	$(function(){
+		//SCRIPT FOR CHATS AUTOLOAD
+		setInterval(function(){
+			var actionURL = ajax_url+"/message/auto-load-chat/";
+			if(booking_id !=''){
 
-			$.ajax({
-				url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-				data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
-					 
-				success:function(res)
-				{
-					$('div.allthreads').html(res);
-					$("#content-m").mCustomScrollbar({theme:"minimal"});	
-				}
-			});
-		}
-	}, 2000);
-});
+				$.ajax({
+					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+					data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+						 
+					success:function(res)
+					{
+						$('div.list_chat_ul').html(res);
+						$("#content-m").mCustomScrollbar({theme:"minimal"});	
+					}
+				});
+			}
+		}, 2000);
+		//SCRIPT FOR THREADS AUTOLOAD
+		setInterval(function(){
+			var actionURL = ajax_url+"/message/auto-load-threads/";
+			if(booking_id !=''){
+
+				$.ajax({
+					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+					data:{booking_id,booking_id,folder_status,folder_status},//ALL SUBMITTED DATA FROM THE FORM
+						 
+					success:function(res)
+					{
+						$('div.allthreads').html(res);
+						$("#content-md").mCustomScrollbar({theme:"minimal"});	
+					}
+				});
+			}
+		}, 15000);
+	});
 </script>	
-<?php }  */ ?>
+<?php }  ?>
 

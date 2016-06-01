@@ -2,23 +2,12 @@
 	var proto = window.location.protocol;
 	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
 	
-	function get_req_data(id){
+	function get_req_data(folder_status,id){
 	
-		var actionURL = ajax_url+"/message/chats/";
-		var formData = id;
+		var actionURL = ajax_url+"message/get-messages/";
+		var formData = folder_status+'/'+id;
 		window.location.href = actionURL+formData;
 	
-		// alert(id);
-		
-		/*$.ajax({
-			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-			data:{"id":formData},//ALL SUBMITTED DATA FROM THE FORM
-			 
-			success:function(res)
-			{
-				$(".right_div").html(res);
-			}
-		});*/
 	}
 	
 	function send_chat_msg(e){
@@ -46,7 +35,7 @@
 		}
 	}
 	
-
+	//DISPLAY JQUERY SCROLL FUNCTIONALITY
 	(function($){
 		$(window).load(function(){
 			
@@ -66,20 +55,102 @@
 				switch(rel){
 					case "toggle-content":
 						el.toggleClass("expanded-content");
-						break;
+					break;
 				}
 			});
 			
 		});
-	})(jQuery);
+	})(jQuery);//END
 	
+	//RUN SCRIPT ON LOAD TIME
 	$(function(){
 		
+		//SEND CHAT MESSAGE ON CLICK CTRL+ENTER
 		$('#chat_text').keydown(function (e) {
 
 		  if (e.ctrlKey && e.keyCode == 13) {
 			$("#submit_chat").trigger('click');
 		  }
-		});
+		});//END
 		
-	});
+		//REFRESH CHAT ON CLICK ON REFRESH BUTTON
+		$('#refresh_chat').click(function() {
+			var btnObj = $(this);
+			var booking_id = btnObj.attr("data-rel");
+			var refreshOrgHtml = btnObj.html();
+			
+			$.ajax({
+				
+				url:ajax_url+"/message/auto-load-chat/",//AJAX URL WHERE THE LOGIC HAS BUILD
+				data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+				
+				beforeSend: function(){
+				  $("#content-m").addClass("chat_overlay");
+				  btnObj.html('<img style="height:21px;width:21px" class="search-img" src="'+ajax_url+'img/refresh.gif"/>');
+				},
+				
+				complete: function(){
+				   $("#content-m").removeClass("chat_overlay");
+				   btnObj.html(refreshOrgHtml);
+				},	 
+				
+				success:function(res)
+				{
+					$('div.list_chat_ul').html(res);
+					$("#content-m").mCustomScrollbar({theme:"minimal"});		
+				}
+			});
+			
+		});//END
+		
+		//Change location of folder
+		$('.move_to_folder').change(function() {
+			var btnObj = $(this);
+			var booking_id = btnObj.attr("data-rel");
+			var folder_status = btnObj.val();
+			
+			$.ajax({
+				
+				url:ajax_url+"/message/move-folder/",//AJAX URL WHERE THE LOGIC HAS BUILD
+				data:{booking_id:booking_id,folder_status,folder_status},//ALL SUBMITTED DATA FROM THE FORM
+				
+				beforeSend: function(){
+				  $("#move_to_folder").show();
+				},
+				
+				complete: function(){
+					$("#move_to_folder").hide();
+				},	 
+				
+				success:function(res)
+				{
+					window.location.reload();
+					$("#content-md").mCustomScrollbar({theme:"minimal"});		
+				}
+			});
+			
+		});//END
+		
+		//GET USER MESSAGES COUNT
+		setInterval(function(){
+				var actionURL = ajax_url+"/message/get-user-message-count/";
+				
+				$.ajax({
+					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+							 
+					success:function(res)
+					{
+						var response = res.split(':::');
+						if($.trim(response[0])>0){
+							$('.myNewCount').html(response[0]);
+						}
+						
+						$('#myNewMsgs').html(response[1]);
+						
+					}
+				});
+				
+		}, 5000);//END
+			
+		
+	});// DOCUMENT READY END
