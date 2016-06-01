@@ -6,14 +6,14 @@
                         <tr>
                           <td>From : 
                           </td>
-                          <td><?php echo $get_booking_requests_to_display['booknig_start_date']; ?> 
+                          <td><?php echo @$get_booking_requests_to_display['booknig_start_date']; ?> 
                           </td>
                           
                         </tr>
                         <tr>
                           <td>To :
                           </td>
-                          <td><?php echo $get_booking_requests_to_display['booking_end_date']; ?> 
+                          <td><?php echo @$get_booking_requests_to_display['booking_end_date']; ?> 
                           </td>
                           
                         </tr>
@@ -122,19 +122,19 @@
                         <div class="media-left media-middle w-95">
                           <a href="#">
                            
-                            <?php if(($get_booking_requests_to_display['user']['facebook_id']) !="" && ($get_booking_requests_to_display['user']['is_image_uploaded'])==0){ ?>
+                            <?php if((@$get_booking_requests_to_display['user']['facebook_id']) !="" && (@$get_booking_requests_to_display['user']['is_image_uploaded'])==0){ ?>
 			  
 								<img 
 									class="media-object sizei65 img-thumbnail" 
 									alt="<?php echo __('Profile Picture'); ?>" 
-									src="<?php if($get_booking_requests_to_display['user']['image'] != ""){echo $get_booking_requests_to_display['user']['image'];}else{echo $get_booking_requests_to_display['user']['image']='prof_photo.png';} ?>"> 
+									src="<?php if(@$get_booking_requests_to_display['user']['image'] != ""){echo @$get_booking_requests_to_display['user']['image'];}else{echo @$get_booking_requests_to_display['user']['image']='prof_photo.png';} ?>"> 
 						   
 						   <?php }else{ ?>
 							
 								<img 
 									class="media-object sizei65 img-thumbnail" 
 									alt="<?php echo __('Profile Picture'); ?>" 
-									src="<?php echo HTTP_ROOT.'img/uploads/'.($get_booking_requests_to_display['user']['image'] != ''?$get_booking_requests_to_display['user']['image']:'prof_photo.png'); ?>"> 					   
+									src="<?php echo HTTP_ROOT.'img/uploads/'.(@$get_booking_requests_to_display['user']['image'] != ''?@$get_booking_requests_to_display['user']['image']:'prof_photo.png'); ?>"> 					   
 							<?php  } ?>
                           </a>
                         </div>
@@ -143,13 +143,13 @@
 							<?php echo (@$get_booking_requests_to_display['user']['last_name'] !='')? ucwords(substr(@$get_booking_requests_to_display['user']['last_name'],0,1)) : ""; ?> 
                           </p>
                           <p class="media-heading-msince">
-                            Memeber Since : <?php echo$get_booking_requests_to_display['user']['date_added']; ?> 
+                            Memeber Since : <?php echo @$get_booking_requests_to_display['user']['date_added']; ?> 
                           </p>
                           <p>
                           </p>
                         </div>
                       </div>
-                      <p class="text-mem"><?php echo (@$get_booking_requests_to_display['user']['user_about_sitter']['client_choose_desc'] !='')? $get_booking_requests_to_display['user']['user_sitter_house']['about_home_desc'] : "No added yet"; ?>
+                      <p class="text-mem"><?php echo (@$get_booking_requests_to_display['user']['user_about_sitter']['client_choose_desc'] !='')? @$get_booking_requests_to_display['user']['user_sitter_house']['about_home_desc'] : "No added yet"; ?>
                       </p>
                       <div class="media">
                         <div class="media-left media-middle w-95">
