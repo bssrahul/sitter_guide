@@ -116,9 +116,9 @@ header.smaller .topnav-area .navbar li.select a{ background:url(../../img/select
 
 .banner-area{ width:100%; float:left; background:url(../../img/home-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:125px 0 75px 0;}
 .banner-area .ban-txt{ width:100%; float:left;  text-align:center; }
-.banner-area .ban-txt h1{font-family:'CenturyGothic-Regular'; font-size:80px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
-.banner-area .ban-txt p{font-size:25px; font-family: "Century Gothic";  color:#ffffff; padding:30px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ; }
-.banner-area .ban-txt .hworks{ width:225px; height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; font-family:"Century Gothic"; background:#59aae1; margin:65px auto 0;
+.banner-area .ban-txt h1{/*font-family:'CenturyGothic-Regular';*/ font-size:80px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
+.banner-area .ban-txt p{font-size:25px; /*font-family: "Century Gothic";*/  color:#ffffff; padding:30px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ; }
+.banner-area .ban-txt .hworks{ width:225px; height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; /*font-family:"Century Gothic";*/ background:#59aae1; margin:65px auto 0;
  border-radius:1px; }
  .banner-area .ban-txt .hworks:hover{ background:#2c80b9;}
 .banner-area .ban-txt .hworks .fa{ margin:0 12px 0 0;}
