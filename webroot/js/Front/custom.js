@@ -1488,8 +1488,8 @@
 			 
 			success:function(res)
 			{
-				alert(res);
-				console.log(res);
+				//alert(res);
+				//console.log(res);
 				var response = res.split(':');
 				if($.trim(response[0]) == 'Success'){
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE

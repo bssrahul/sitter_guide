@@ -1333,7 +1333,7 @@ class DashboardController extends AppController
 		//$reviewcheckdata['user_to'];
 		$reviewData= $reviewModel->newEntity();
 		if($this->request->is('POST')){
-			
+
 			$reviewData->user_from = $session->read('User.id');
 			/* $userTo=$this->request->data['user_to'];
 			$bookingId=$this->request->data['booking_id'];
@@ -1342,10 +1342,17 @@ class DashboardController extends AppController
 				
 			} */
 			
+			$accuracy = $this->request->data['accuracy_rating'];
+			$communication = $this->request->data['communication_rating'];
+			$cleanliness = $this->request->data['cleanliness_rating'];
+			$location = $this->request->data['location_rating'];
+			$checkin = $this->request->data['check_in_rating'];
+			$rating=($accuracy + $communication + $cleanliness + $location + $checkin )/5;
+			//pr($this->request->data);die;
 			$reviewData->status = 0;
 			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
-			
-			
+			echo $rating;
+			$reviewData->rating=$rating;
 			//pr($reviewData);die;
 			if($reviewModel->save($reviewData)){
 				$this->Flash->success(__('Record has been added Successfully'));
@@ -1383,9 +1390,60 @@ class DashboardController extends AppController
 		$session=$this->request->session();
 		$user_id=$session->read('User.id');
 		$reviewModel=TableRegistry::get('UserRatings');
-		$reviewData= $reviewModel->find('all')->where(['user_from'=>$user_id])->where(['user_to'=>2])->toArray();
+		$reviewData= $reviewModel->find('all')->where(['user_from'=>$user_id])->where(['user_to'=>37])->toArray();
 		//pr($reviewData);die;
 		$this->set('reviewData',$reviewData);
+		/* if($this->request->is('POST')){
+
+			$reviewData->user_from = $session->read('User.id');
+			/* $userTo=$this->request->data['user_to'];
+			$bookingId=$this->request->data['booking_id'];
+			if((in_array($userTo,$userToArr)) && (in_array($userTo,$userToArr)))
+			{
+				
+			} 
+			
+			$accuracy = $this->request->data['accuracy_rating'];
+			$communication = $this->request->data['communication_rating'];
+			$cleanliness = $this->request->data['cleanliness_rating'];
+			$location = $this->request->data['location_rating'];
+			$checkin = $this->request->data['check_in_rating'];
+			$rating=($accuracy + $communication + $cleanliness + $location + $checkin )/5;
+			pr($this->request->data);die;
+			$reviewData->status = 0;
+			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
+			echo $rating;
+			$reviewData->rating=$rating;
+			//pr($reviewData);die;
+			if($reviewModel->save($reviewData)){
+				$this->Flash->success(__('Record has been added Successfully'));
+				//return $this->redirect(['controller' => 'category', 'action' => 'categories-listing']);
+			}	
+			
+		}	
+		if( $this->request->is('ajax') ) {
+
+			  //  if(isset($_REQUEST['user']) && !empty($_REQUEST['user'])){
+			    	$userid=@$_REQUEST['user'];
+					$reviewdata=$reviewModel->find('all')->where(['user_to'=>$userid])->toArray();
+					//pr($reviewdata);
+					$book_id=array();
+					foreach($reviewdata as $review){
+						
+						
+						 $book_id[]=$review->booking_id;
+						
+						
+					}
+								
+					?>							<option value="">-- Select Booking --</option>
+												<option value="1" <?php if(in_array(1,$book_id)){?> class="bk" <?php }?> > First Time </option>
+												<option value="2"  <?php if(in_array(2,$book_id)){?> class="bk" <?php }?>> Second Time </option>
+												<option value="3"  <?php if(in_array(3,$book_id)){?> class="bk" <?php }?>> Third Time </option>
+												<option value="4"  <?php if(in_array(4,$book_id)){?> class="bk" <?php }?>> Forth Time </option>
+												<option value="5"  <?php if(in_array(5,$book_id)){?> class="bk" <?php }?>> Fifth Time </option> <?php
+					die;
+			 } */
 	}
 }
 ?>

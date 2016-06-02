@@ -593,17 +593,104 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
                                     <div class="one">
                                         <div class="border-bot pt30"></div>
+											<?php $UserRatingData=$userData->user_ratings; 
+												//pr($UserRatingData);
+												$accuracy_sum = 0;
+												$comm_sum = 0;
+												$clean_sum = 0;
+												$location_sum = 0;
+												$check_sum = 0;
+												$rating_sum = 0;
+												$count=0;
+												foreach($UserRatingData as $UserRating){
+													$count++;
+													$accuracy_rating=$UserRating->accuracy_rating;
+													$communication_rating=$UserRating->communication_rating;
+													$cleanliness_rating=$UserRating->cleanliness_rating;
+													$location_rating=$UserRating->location_rating;
+													$check_in_rating=$UserRating->check_in_rating;
+													$accuracy_sum = $accuracy_sum + $accuracy_rating;
+													$comm_sum = $comm_sum + $communication_rating;
+													$clean_sum = $clean_sum + $cleanliness_rating;
+													$location_sum = $location_sum + $location_rating;
+													$check_sum = $check_sum + $check_in_rating;
+												}
+												if($count > 0){
+												$ac=$accuracy_sum/$count;
+												$cm=$comm_sum/$count;
+												$cl=$clean_sum/$count;
+												$lc=$location_sum/$count;
+												$ch=$check_sum/$count;
+												$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
+												}
+											?>
+		
 
-
-
-                                        <h3 class="mid-sec-title pt15 ">Testimonials and Reviews  &nbsp <span>
-<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
-<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
-</span></h3>
+                                        <h3 class="mid-sec-title pt15 "><?php echo $this->requestAction('users/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp <span>
+										<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
+										<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
+										</span></h3>
 
                                         <ul class="list-inline pt15">
-                                            <li class="reviews-bold">6 Reviews</li>
-                                            <li><img alt="ratings" title="rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"></li>
+                                            <li class="reviews-bold"><?php echo $count. " ";?> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?></li>
+                                            <li> <div class="rating-box">
+																								
+																
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($rating_sum)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($rating_sum)){ if($rating_sum <= 5 && $rating_sum > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rating_sum)){if($rating_sum <= 4.5 && $rating_sum > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rating_sum)){ if($rating_sum <= 4 && $rating_sum > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 3.5 && $rating_sum > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rating_sum)){ if($rating_sum <= 3 && $rating_sum > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 2.5 && $rating_sum > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rating_sum)){ if($rating_sum <= 2 && $rating_sum > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 1.5 && $rating_sum > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rating_sum)){ if($rating_sum <= 1 && $rating_sum > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 0.5 && $rating_sum >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rating_sum=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($rating_sum)){ if($rating_sum <= 5 && $rating_sum > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rating_sum)){if($rating_sum <= 4.5 && $rating_sum > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rating_sum)){ if($rating_sum <= 4 && $rating_sum > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 3.5 && $rating_sum > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rating_sum)){ if($rating_sum <= 3 && $rating_sum > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 2.5 && $rating_sum > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rating_sum)){ if($rating_sum <= 2 && $rating_sum > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 1.5 && $rating_sum > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rating_sum)){ if($rating_sum <= 1 && $rating_sum > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 0.5 && $rating_sum >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rating_sum=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
+
+															
+															  <!--/rating--> 
+														</div>
+													</li>
                                         </ul>
 
                                         <div class="row">
@@ -611,6 +698,7 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                 <p class="summary">Summary</p>
 
                                             </div>
+											
                                             <div class="col-xs-12 md-sm-9 col-lg-8 col-sm-9">
                                                 <div class="row">
                                                     <div class=" col-sm-6 col-md-6 col-xs-12 col-lg-6">
@@ -621,16 +709,65 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                                 <p>Accuracy</p>
                                                             </div>
                                                             <div class="rewiw-width50">
-                                                                <ul class="list-inline text-center">
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
+															<div class="rating-box">
+															<!--rating-->
+															<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
+																									
+																
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($ac)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($ac)){ if($ac <= 5 && $ac > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($ac)){if($ac <= 4.5 && $ac > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($ac)){ if($ac <= 4 && $ac > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($ac)){ if($ac <= 3.5 && $ac > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($ac)){ if($ac <= 3 && $ac > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($ac)){ if($ac <= 2.5 && $ac > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($ac)){ if($ac <= 2 && $ac > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($ac)){ if($ac <= 1.5 && $ac > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($ac)){ if($ac <= 1 && $ac > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($ac)){ if($ac <= 0.5 && $ac >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $ac=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($ac)){ if($ac <= 5 && $ac > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($ac)){if($ac <= 4.5 && $ac > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($ac)){ if($ac <= 4 && $ac > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($ac)){ if($ac <= 3.5 && $ac > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($ac)){ if($ac <= 3 && $ac > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($ac)){ if($ac <= 2.5 && $ac > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($ac)){ if($ac <= 2 && $ac > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($ac)){ if($ac <= 1.5 && $ac > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($ac)){ if($ac <= 1 && $ac > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($ac)){ if($ac <= 0.5 && $ac >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $ac=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-
-
-                                                                </ul>
+															
+															  <!--/rating--> 
+														</div>
                                                             </div>
 
                                                         </div>
@@ -640,16 +777,64 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                                 <p>Communication</p>
                                                             </div>
                                                             <div class="rewiw-width50">
-                                                                <ul class="list-inline text-center">
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
+                                                                <div class="rating-box">
 
+													
+																
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($cm)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($cm)){ if($cm <= 5 && $cm > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($cm)){if($cm <= 4.5 && $cm > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($cm)){ if($cm <= 4 && $cm > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($cm)){ if($cm <= 3.5 && $cm > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($cm)){ if($cm <= 3 && $cm > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($cm)){ if($cm <= 2.5 && $cm > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($cm)){ if($cm <= 2 && $cm > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($cm)){ if($cm <= 1.5 && $cm > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($cm)){ if($cm <= 1 && $cm > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($cm)){ if($cm <= 0.5 && $cm >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $cm=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($cm)){ if($cm <= 5 && $cm > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($cm)){if($cm <= 4.5 && $cm > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($cm)){ if($cm <= 4 && $cm > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($cm)){ if($cm <= 3.5 && $cm > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($cm)){ if($cm <= 3 && $cm > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($cm)){ if($cm <= 2.5 && $cm > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($cm)){ if($cm <= 2 && $cm > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($cm)){ if($cm <= 1.5 && $cm > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($cm)){ if($cm <= 1 && $cm > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($cm)){ if($cm <= 0.5 && $cm >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $cm=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-
-                                                                </ul>
+															
+															  <!--/rating--> 
+														</div>
                                                             </div>
 
                                                         </div>
@@ -659,16 +844,63 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                                 <p>Cleanliness</p>
                                                             </div>
                                                             <div class="rewiw-width50">
-                                                                <ul class="list-inline text-center">
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
+                                                               <div class="rating-box">
+																	
+																
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($cl)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($cl)){ if($cl <= 5 && $cl > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($cl)){if($cl <= 4.5 && $cl > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($cl)){ if($cl <= 4 && $cl > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($cl)){ if($cl <= 3.5 && $cl > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($cl)){ if($cl <= 3 && $cl > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($cl)){ if($cl <= 2.5 && $cl > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($cl)){ if($cl <= 2 && $cl > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($cl)){ if($cl <= 1.5 && $cl > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($cl)){ if($cl <= 1 && $cl > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($cl)){ if($cl <= 0.5 && $cl >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $cl=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($cl)){ if($cl <= 5 && $cl > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($cl)){if($cl <= 4.5 && $cl > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($cl)){ if($cl <= 4 && $cl > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($cl)){ if($cl <= 3.5 && $cl > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($cl)){ if($cl <= 3 && $cl > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($cl)){ if($cl <= 2.5 && $cl > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($cl)){ if($cl <= 2 && $cl > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($cl)){ if($cl <= 1.5 && $cl > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($cl)){ if($cl <= 1 && $cl > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($cl)){ if($cl <= 0.5 && $cl >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $cl=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-
-
-                                                                </ul>
+															
+															  <!--/rating--> 
+														</div>
                                                             </div>
 
                                                         </div>
@@ -684,16 +916,62 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                                 <p>Location</p>
                                                             </div>
                                                             <div class="rewiw-width50">
-                                                                <ul class="list-inline text-center">
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
+                                                               <div class="rating-box">
+																															
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($lc)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($lc)){ if($lc <= 5 && $lc > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($lc)){if($lc <= 4.5 && $lc > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($lc)){ if($lc <= 4 && $lc > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($lc)){ if($lc <= 3.5 && $lc > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($lc)){ if($lc <= 3 && $lc > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($lc)){ if($lc <= 2.5 && $lc > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($lc)){ if($lc <= 2 && $lc > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($lc)){ if($lc <= 1.5 && $lc > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($lc)){ if($lc <= 1 && $lc > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($lc)){ if($lc <= 0.5 && $lc >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $lc=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($lc)){ if($lc <= 5 && $lc > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($lc)){if($lc <= 4.5 && $lc > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($lc)){ if($lc <= 4 && $lc > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($lc)){ if($lc <= 3.5 && $lc > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($lc)){ if($lc <= 3 && $lc > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($lc)){ if($lc <= 2.5 && $lc > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($lc)){ if($lc <= 2 && $lc > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($lc)){ if($lc <= 1.5 && $lc > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($lc)){ if($lc <= 1 && $lc > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($lc)){ if($lc <= 0.5 && $lc >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $lc=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-
-
-                                                                </ul>
+															
+															  <!--/rating--> 
+														</div>
                                                             </div>
 
                                                         </div>
@@ -703,38 +981,67 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                                 <p>Check In</p>
                                                             </div>
                                                             <div class="rewiw-width50">
-                                                                <ul class="list-inline text-center">
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
+                                                                <div class="rating-box">
+																					
+																
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($ch)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($ch)){ if($ch <= 5 && $ch > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($ch)){if($ch <= 4.5 && $ch > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($ch)){ if($ch <= 4 && $ch > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($ch)){ if($ch <= 3.5 && $ch > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($ch)){ if($ch <= 3 && $ch > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($ch)){ if($ch <= 2.5 && $ch > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($ch)){ if($ch <= 2 && $ch > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($ch)){ if($ch <= 1.5 && $ch > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($ch)){ if($ch <= 1 && $ch > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($ch)){ if($ch <= 0.5 && $ch >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $ch=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($ch)){ if($ch <= 5 && $ch > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($ch)){if($ch <= 4.5 && $ch > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($ch)){ if($ch <= 4 && $ch > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($ch)){ if($ch <= 3.5 && $ch > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($ch)){ if($ch <= 3 && $ch > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($ch)){ if($ch <= 2.5 && $ch > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($ch)){ if($ch <= 2 && $ch > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($ch)){ if($ch <= 1.5 && $ch > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($ch)){ if($ch <= 1 && $ch > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($ch)){ if($ch <= 0.5 && $ch >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $ch=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-
-
-                                                                </ul>
+															
+															  <!--/rating--> 
+														</div>
                                                             </div>
 
                                                         </div>
-                                                        <div class="rewiw-width100">
-
-                                                            <div class="rewiw-width50">
-                                                                <p>Value</p>
-                                                            </div>
-                                                            <div class="rewiw-width50">
-                                                                <ul class="list-inline text-center">
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-                                                                    <li><img src="<?php echo HTTP_ROOT; ?>img/detail-stars.png" alt=""></li>
-
-
-
-                                                                </ul>
-                                                            </div>
-
-                                                        </div>
+                                                       
 
 
 
@@ -749,7 +1056,23 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
 
                                         <div class="review-testimonial-section">
-
+										<?php if(!empty($UserRatingData)){
+											
+											//pr($UserRatingData);
+											foreach($commentUserData as $commentUser){
+												
+											foreach($UserRatingData as $UserRating){
+												//pr($UserRating->id);
+												if($commentUser->id == $UserRating->user_from){
+													$accuracy=$UserRating->accuracy_rating;
+													$communication=$UserRating->communication_rating;
+													$cleanliness=$UserRating->cleanliness_rating;
+													$location=$UserRating->location_rating;
+													$check_in=$UserRating->check_in_rating;
+													echo $rate=($accuracy + $communication + $cleanliness + $location + $check_in)/5;
+													
+													
+													?>
                                             <div class="row">
 
 
@@ -758,76 +1081,95 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
                                                     <div class=" center-block pt30">
 
-
-                                                        <img alt="client" title="client" class="img-responsive center-block img-circle" src="<?php echo HTTP_ROOT; ?>img/detail-circle-client.png"> </div>
-
+														
+                                                       <!-- <img alt="client" title="client" class="img-responsive center-block img-circle" src="<?php echo HTTP_ROOT; ?>img/detail-circle-client.png"> --> 
+														<?php if($commentUser->image){?>
+																											  
+																	<img src="<?php echo HTTP_ROOT.'img/uploads/'.$commentUser->image; ?>" alt="Profile Picture" height="80px" width="80px" class="img-circle"/>
+														 <?php }else{?>
+																	<img src="<?php echo HTTP_ROOT.'img/uploads/dm.png'; ?>" alt="Profile Picture" height="80px" width="80px" class="img-circle"/>
+														 <?php } ?></div>
                                                 </div>
 
                                                 <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 ">
                                                     <div class="review-comments pt30">
-                                                        <div><span class="pull-left color999">March 30, 2016 </span> <span class="pull-right"><ul class="list-inline text-center">
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+                                                        <div><span class="pull-left color999"><?php if(!empty($UserRating->created_date)){ echo date("F j, Y", strtotime($UserRating->created_date)); }?> </span> <span class="pull-right"><ul class="list-inline text-center">
+																<li>
+																
+																<div class="rating-box">
+														
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($rate)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($rate)){ if($rate <= 5 && $rate > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rate)){if($rate <= 4.5 && $rate > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rate)){ if($rate <= 4 && $rate > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rate)){ if($rate <= 3.5 && $rate > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rate)){ if($rate <= 3 && $rate > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rate)){ if($rate <= 2.5 && $rate > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rate)){ if($rate <= 2 && $rate > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rate)){ if($rate <= 1.5 && $rate > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rate)){ if($rate <= 1 && $rate > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rate)){ if($rate <= 0.5 && $rate >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rate=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($rate)){ if($rate <= 5 && $rate > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rate)){if($rate <= 4.5 && $rate > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rate)){ if($rate <= 4 && $rate > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rate)){ if($rate <= 3.5 && $rate > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rate)){ if($rate <= 3 && $rate > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rate)){ if($rate <= 2.5 && $rate > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rate)){ if($rate <= 2 && $rate > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rate)){ if($rate <= 1.5 && $rate > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rate)){ if($rate <= 1 && $rate > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rate)){ if($rate <= 0.5 && $rate >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rate=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-
-
-</ul></span></div>
-
-                                                        <p class="pull-left">Lisa was fantastic and took care of Molly as if she was part of their family. They sent multiple pics throughout each day and made us feel completely comfortable leaving her in such caring and responsible hands. I can't recommend them highly enough and will absolutely be taking Molly there the next time we need someone to take good care of her! </p>
-                                                        <p class="pull-right color-green">-James Doe</p>
+															
+															  <!--/rating--> 
+														</div>
+																
+																
+																
+																
+																
+																</li>
+																</ul></span></div>
+														<br/><br/>
+                                                        <p class="pull-left"><?php if(!empty($UserRating->comment)){ echo $UserRating->comment; }?> </p>
+                                                        <p class="pull-right color-green">-<?php if( $commentUser->first_name){echo $commentUser->first_name." ".$commentUser->last_name ;} ?></p>
                                                     </div>
 
                                                 </div>
 
                                             </div>
-
-                                            <div class="row">
-
-                                                <div class="col-xs-12">
-                                                    <hr/>
-
-                                                </div>
-
-                                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
-
-                                                    <div class=" center-block pt10">
-
-
-                                                        <img alt="client" title="client" class="img-responsive center-block img-circle" src="<?php echo HTTP_ROOT; ?>img/detail-circle-client.png"> </div>
-
-                                                </div>
-
-                                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 ">
-                                                    <div class="review-comments pt10">
-                                                        <div><span class="pull-left color999">March 30, 2016 </span> <span class="pull-right"><ul class="list-inline text-center">
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-
-
-
-</ul></span></div>
-
-                                                        <p class="pull-left">Lisa was fantastic and took care of Molly as if she was part of their family. They sent multiple pics throughout each day and made us feel completely comfortable leaving her in such caring and responsible hands. I can't recommend them highly enough and will absolutely be taking Molly there the next time we need someone to take good care of her! </p>
-                                                        <p class="pull-right color-green">-James Doe</p>
-                                                    </div>
-
-                                                </div>
-
-
-
-
-                                                <div class=" pt30 text-center">
-
-                                                    <button class="btn btn-read-more-reviews"> Read more reviews</button>
-                                                </div>
-
-                                            </div>
+											<?php } }
+										} }?>
+                                       
 
 
 

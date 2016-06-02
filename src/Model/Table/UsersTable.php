@@ -27,6 +27,8 @@ class UsersTable extends Table
 		$this->hasMany('UserSitterServiceDetails', ['dependent' => true]);
 		$this->hasMany('UserRatings', ['dependent' => true,
 		 'foreignKey' => 'user_to']);
+		 $this->hasMany('UserSitterFavourites', ['dependent' => true,
+		 'foreignKey' => 'sitter_id']);
     }
 	
     public function validationDefault(Validator $validator)
