@@ -3,8 +3,7 @@
   echo $this->Html->css(['Front/jquery-ui.css']); 
   echo $this->Html->script(['Front/jquery-ui.js']);
 ?>
-
- <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
 
         <div class="profiletab-section">
