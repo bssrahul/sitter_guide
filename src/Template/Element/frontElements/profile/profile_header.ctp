@@ -63,12 +63,9 @@
 								</li>
 								
 								<li>
-									<a href="#"><i class="fa fa-envelope"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox')); ?></a>
+									<a href="<?php echo HTTP_ROOT.'Message/get-messages' ?>"><i class="fa fa-envelope"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox & Bookings')); ?></a>
 								</li>
 								
-								<li>
-									<a href="#"><i class="fa fa-book"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking')); ?></a>
-								</li>
 								
 								<li>
 									<a href="#"><i class="fa fa-calendar"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calender')); ?></a>
@@ -85,10 +82,19 @@
 							</ul>
                          </div>
                       </li>
-                      
-                      <li >
-						  <a href="#" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Message')); ?>  <span class="badge">10</span></a>
-                      </li>
+                       <!--MESSAGE LI START -->
+                     <li  class="dropdown">
+						  <a  id="droplog3" href="#" class="dropdown-toggle" data-toggle="dropdown">Message  
+							<span class="badge myNewCount"></span>
+						  </a>
+						</a>
+						<div class="dropdown-menu currency-drop drop-profile message-width  hidden-xs " id="dropcont3">
+						  <ul id="myNewMsgs" class="c-list c-list-2">
+						  
+						  </ul>
+						</div>
+						</li>  <!--MESSAGE LI CLOSED -->
+
                       
                       <li><a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help')); ?> </a></li>
                                   
@@ -110,4 +116,3 @@
                   
 </div>
 </header>
-

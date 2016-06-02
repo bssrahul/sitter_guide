@@ -2,50 +2,155 @@
 	var proto = window.location.protocol;
 	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
 	
-function get_req_data(id){
-//	var actionURL = ajax_url+"/message/bookingchat/";
-	var actionURL = ajax_url+"/message/chat/";
-	var formData = id;
-	window.location.href = actionURL+formData;
+	function get_req_data(folder_status,id){
 	
-		// alert(id);
-		
-		/*$.ajax({
-			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-			data:{"id":formData},//ALL SUBMITTED DATA FROM THE FORM
-			 
-			success:function(res)
-			{
-				$(".right_div").html(res);
-			}
-		});*/
+		var actionURL = ajax_url+"message/get-messages/";
+		var formData = folder_status+'/'+id;
+		window.location.href = actionURL+formData;
+	
 	}
 	
-function send_chat_msg(e){
-	alert('eee');
-//	var actionURL = ajax_url+"/message/bookingchat/";
-	var actionURL = ajax_url+"/message/sendmessage/";
-	var formData = $(e).parents('form#chat_form').serialize();
+	function send_chat_msg(e){
+		var actionURL = ajax_url+"/message/sendmessage/";
+		var formData = $(e).parents('form#chat_form').serialize();
 	
 	
-		 alert(actionURL);
+
 		var chat_msg = $("#chat_text").val();
+	
 		if(chat_msg !=''){
-			alert('ajax');
-		$.ajax({
-			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-			data:formData,//ALL SUBMITTED DATA FROM THE FORM
-			 
-			success:function(res)
-			{
-				if(res == 'success'){
+
+			$.ajax({
+				url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+				data:formData,//ALL SUBMITTED DATA FROM THE FORM
+					 
+				success:function(res)
+				{
 					$("#chat_text").val('');
-				//$(".right_div").find('ul').append('<li>'+chat_msg+'</li>');
-				var li_chat_content = '<li><div class="chat-user"><div class="row"><div class="col-lg-2 col-md-2 col-sm-2 col-xs-4"><div class="user-img-chat"><img src="" class="img-responsive" alt="pic"> </div></div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-8"><div class=" user-tex-msg-area"><i class="msg-green-arrow"><img src="" width="19" height="17" alt="arrow"></i><p>'+chat_msg+'</p></div></div></div></div></li>';
-				$('ul.chat_ul').append(li_chat_content);
-				
+					$('div.list_chat_ul').html(res);
+					$("#content-m").mCustomScrollbar({theme:"minimal-dark"});	
+					$("#content-md").mCustomScrollbar({theme:"minimal-dark"});				
 				}
-			}
-		});
+			});
 		}
 	}
+	
+	//DISPLAY JQUERY SCROLL FUNCTIONALITY
+	(function($){
+		$(window).load(function(){
+			
+			$.mCustomScrollbar.defaults.scrollButtons.enable=true; //enable scrolling buttons by default
+			$.mCustomScrollbar.defaults.axis="yx"; //enable 2 axis scrollbars by default
+			
+		
+			
+			$("#content-m").mCustomScrollbar({theme:"minimal"});
+			
+			
+			$(".all-themes-switch a").click(function(e){
+				e.preventDefault();
+				var $this=$(this),
+					rel=$this.attr("rel"),
+					el=$(".content");
+				switch(rel){
+					case "toggle-content":
+						el.toggleClass("expanded-content");
+					break;
+				}
+			});
+			
+		});
+	})(jQuery);//END
+	
+	//RUN SCRIPT ON LOAD TIME
+	$(function(){
+		
+		//SEND CHAT MESSAGE ON CLICK CTRL+ENTER
+		$('#chat_text').keydown(function (e) {
+
+		  if (e.ctrlKey && e.keyCode == 13) {
+			$("#submit_chat").trigger('click');
+		  }
+		});//END
+		
+		//REFRESH CHAT ON CLICK ON REFRESH BUTTON
+		$('#refresh_chat').click(function() {
+			var btnObj = $(this);
+			var booking_id = btnObj.attr("data-rel");
+			var refreshOrgHtml = btnObj.html();
+			
+			$.ajax({
+				
+				url:ajax_url+"/message/auto-load-chat/",//AJAX URL WHERE THE LOGIC HAS BUILD
+				data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+				
+				beforeSend: function(){
+				  $("#content-m").addClass("chat_overlay");
+				  btnObj.html('<img style="height:21px;width:21px" class="search-img" src="'+ajax_url+'img/refresh.gif"/>');
+				},
+				
+				complete: function(){
+				   $("#content-m").removeClass("chat_overlay");
+				   btnObj.html(refreshOrgHtml);
+				},	 
+				
+				success:function(res)
+				{
+					$('div.list_chat_ul').html(res);
+					$("#content-m").mCustomScrollbar({theme:"minimal"});		
+				}
+			});
+			
+		});//END
+		
+		//Change location of folder
+		$('.move_to_folder').change(function() {
+			var btnObj = $(this);
+			var booking_id = btnObj.attr("data-rel");
+			var folder_status = btnObj.val();
+			
+			$.ajax({
+				
+				url:ajax_url+"/message/move-folder/",//AJAX URL WHERE THE LOGIC HAS BUILD
+				data:{booking_id:booking_id,folder_status,folder_status},//ALL SUBMITTED DATA FROM THE FORM
+				
+				beforeSend: function(){
+				  $("#move_to_folder").show();
+				},
+				
+				complete: function(){
+					$("#move_to_folder").hide();
+				},	 
+				
+				success:function(res)
+				{
+					window.location.reload();
+					$("#content-md").mCustomScrollbar({theme:"minimal"});		
+				}
+			});
+			
+		});//END
+		
+		//GET USER MESSAGES COUNT
+		setInterval(function(){
+				var actionURL = ajax_url+"/message/get-user-message-count/";
+				
+				$.ajax({
+					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+							 
+					success:function(res)
+					{
+						var response = res.split(':::');
+						if($.trim(response[0])>0){
+							$('.myNewCount').html(response[0]);
+						}
+						
+						$('#myNewMsgs').html(response[1]);
+						
+					}
+				});
+				
+		}, 5000);//END
+			
+		
+	});// DOCUMENT READY END

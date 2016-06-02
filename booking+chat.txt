@@ -1,0 +1,86 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 01, 2016 at 05:56 PM
+-- Server version: 5.5.47-MariaDB-1ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `madpaws_live`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_chats`
+--
+
+CREATE TABLE IF NOT EXISTS `booking_chats` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `booking_request_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_role` enum('Basic','Sitter') NOT NULL,
+  `read_status` enum('unread','read') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `booking_chats`
+--
+
+INSERT INTO `booking_chats` (`id`, `booking_request_id`, `message`, `user_id`, `user_role`, `read_status`, `created_at`) VALUES
+(12, 1, 'hi', 38, 'Basic', 'unread', '2016-06-01 08:59:33'),
+(13, 1, 'Hi Tamanna JI', 38, 'Basic', 'unread', '2016-06-01 10:16:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_requests`
+--
+
+CREATE TABLE IF NOT EXISTS `booking_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `sitter_id` int(11) NOT NULL,
+  `read_status` enum('unread','read') NOT NULL,
+  `read_status_posted_by` enum('','Sitter','Basic') NOT NULL,
+  `folder_status_sitter` enum('pending','past','current','archieved') NOT NULL,
+  `folder_status_guest` enum('pending','past','upcoming','archieved') NOT NULL,
+  `booknig_start_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `booking_end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `guest_id_for_bookinig` varchar(255) NOT NULL,
+  `recieved_photo_during_stay` tinyint(4) NOT NULL,
+  `required_service` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `message_status` tinyint(4) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `booking_requests`
+--
+
+INSERT INTO `booking_requests` (`id`, `user_id`, `sitter_id`, `read_status`, `read_status_posted_by`, `folder_status_sitter`, `folder_status_guest`, `booknig_start_date`, `booking_end_date`, `guest_id_for_bookinig`, `recieved_photo_during_stay`, `required_service`, `message`, `message_status`, `status`, `created_date`, `modified_date`) VALUES
+(1, 38, 37, 'read', 'Basic', 'past', 'pending', '2016-06-01 10:33:55', '2016-05-24 18:30:00', '1,5,9', 1, 'Drop Visit', 'Day Care services required', 0, 1, '2016-05-09 20:30:07', '0000-00-00 00:00:00'),
+(2, 38, 37, 'read', 'Basic', 'past', 'pending', '2016-06-01 08:56:31', '2016-05-26 18:30:00', '2,5,9,12', 1, 'House Sitting', 'Services wanted for my pet snowy', 0, 1, '2016-05-17 23:48:09', '0000-00-00 00:00:00'),
+(3, 43, 37, 'unread', '', 'pending', 'pending', '2016-05-30 07:55:58', '2016-05-19 18:30:00', '', 0, '', 'Grooming required', 0, 0, '2016-05-17 20:34:05', '0000-00-00 00:00:00');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

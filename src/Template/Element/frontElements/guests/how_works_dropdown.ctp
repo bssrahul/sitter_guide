@@ -1,8 +1,8 @@
 <!--How it work dropdown-->
-<div id="panel">
+<div id="panel" class="panel-pop">
   <div class="container">
       <div class="topdrop-area">
-          <div class="close"><a href="#" title="Close" id="close"><i class="fa fa-times-circle"></i></a></div>      
+          <div class="close"><a href="#" title="Close" id="flipclose"><i class="fa fa-times-circle"></i></a></div>      
         <div class="row">
 		<?php $i=1; foreach($works_data as $work) { if($i==1){$boxclass="";$newclass="";}else{$newclass="td-img-".$i;$boxclass="td-box-".$i;}?>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

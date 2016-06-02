@@ -322,7 +322,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 
 a:hover, a:focus, a:active{outline :none !important;}
-
+button:hover, button:focus, button:active{outline :none !important;}
 
 .pac-item-query{
 
@@ -381,32 +381,10 @@ ul.booking-services li.new_active{
 }
 
 
+
 /* For rating review*/
 
 
-.rating { 
-  border: none;
-  float: left;
-}
-
-.rating > input { display: none; } 
-.rating > label:before { 
-  margin: 5px 1px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.rating > .half:before { 
-  content: "\f089";
-  position: absolute;
-}
-
-.rating > label { 
-  color: #b8b894; 
- float: right; 
-}
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 .rating_review { 
@@ -441,4 +419,18 @@ ul.booking-services li.new_active{
 .rating_review > input:checked ~ label:hover,
 .rating_review > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating_review > input:checked ~ label:hover ~ label { color: #F0C751;  } 
+
+.chat-wrapper ul li {
+  padding-top: 20px !important;
+}
+
+.topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
+    margin: 11px 12px 0 0 !important;
+}
+
+.chat_overlay {
+	background: #78bf45 none repeat scroll 0 0 !important;
+	opacity: 0.4;
+	z-index: 999;
+}
 

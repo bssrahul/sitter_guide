@@ -13,6 +13,7 @@ class BookingRequestsTable extends Table
 		]);
 		
 		$this->belongsTo('Users');
+		$this->hasMany('BookingChats', ['dependent' => true]);
     }
 	
 }

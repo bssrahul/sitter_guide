@@ -13,6 +13,7 @@ class BookingChatsTable extends Table
 		]);
 		
 		$this->belongsTo('Users');
+		
     }
 	
 }
