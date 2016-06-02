@@ -384,7 +384,12 @@ ul.booking-services li.new_active{
 
 /* For rating review*/
 
-
+a{
+	color:#000;
+}
+a:hover{
+	color:#000;
+}
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 .rating_review { 

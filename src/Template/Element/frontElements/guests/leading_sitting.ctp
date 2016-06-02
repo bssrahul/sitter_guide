@@ -14,7 +14,8 @@
 					<?php if(!empty($FavUsersdata)){ $flag=0;
 								foreach(@$FavUsersdata as $favourate){ 
 									if($flag < 3){?>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode(@$favourate[0]->id)); ?>" title="">
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="lswb-area">
                                 <div class="img-area">
                                     <div class="img-box">
@@ -126,8 +127,9 @@
 									<?php 
 											$about_sitter=$favourate[0]->user_about_sitter;
 											if(!empty(@$about_sitter->your_self)){
-												
-													echo @$about_sitter->your_self;
+													$string= $about_sitter->your_self;
+													echo $descdata=substr($string,0,24).'...';
+												//	echo @$about_sitter->your_self;
 											}
 											else{
 												
@@ -180,7 +182,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> </a>
 								<?php $flag++;	} }
 					}
 					 ?>
@@ -206,7 +208,7 @@
 					  <ul>
                        <?php if(!empty($FavUsersdata)){ 
 							foreach(@$FavUsersdata as $favourate){ ?>    
-                            <li><a href="" title="">
+                            <li><a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode(@$favourate[0]->id)); ?>" title="">
                               <?php if(!empty($favourate[0]->image)){?>
 												
 												 <img src="<?php echo HTTP_ROOT.'img/uploads/'.((@$favourate[0]->image) != '' ?(@$favourate[0]->image):'dm.png'); ?>" alt="Profile Picture" height="80px" width="80px" class="img-circle"/>

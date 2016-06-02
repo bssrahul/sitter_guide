@@ -1536,8 +1536,8 @@ class DashboardController extends AppController
 	    
 //echo "okokovk";
 	   // echo $path ;die;//= explode(".", $path);die;
-	    $t_width = 300; // Maximum thumbnail width
-	    $t_height = 300;    // Maximum thumbnail height
+	    $t_width = 328; // Maximum thumbnail width
+	    $t_height = 184;    // Maximum thumbnail height
 
 	if(isset($_POST['t']) and $_POST['t'] == "ajax")
 	{
@@ -1553,8 +1553,9 @@ class DashboardController extends AppController
         //echo $ext;die;
 	    $imagePath = $path.'/'.$img;
 	    $ratio = ($t_width/$w1); 
+	    $ratio1 = ($t_height/$h1); 
 	    $nw = ceil($w1 * $ratio);
-	    $nh = ceil($h1 * $ratio);
+	    $nh = ceil($h1 * $ratio1);
 	    $nimg = imagecreatetruecolor($nw,$nh);
 	    if($ext=='png'){
 	    	//echo "okokoo";die;

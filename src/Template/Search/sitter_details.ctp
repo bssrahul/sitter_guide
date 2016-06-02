@@ -1069,7 +1069,7 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 													$cleanliness=$UserRating->cleanliness_rating;
 													$location=$UserRating->location_rating;
 													$check_in=$UserRating->check_in_rating;
-													echo $rate=($accuracy + $communication + $cleanliness + $location + $check_in)/5;
+													@$rate=($accuracy + $communication + $cleanliness + $location + $check_in)/5;
 													
 													
 													?>
@@ -1165,10 +1165,50 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                     </div>
 
                                                 </div>
-
+												<!--<div class=" pt30 text-center">
+													<button class="btn btn-read-more-reviews"> Read more reviews</button>
+												</div>-->
                                             </div>
 											<?php } }
-										} }?>
+										} }else{?>
+											
+											   <div class="row">
+
+
+
+                                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+
+                                                    <div class=" center-block pt30">
+
+														
+
+														 </div>
+                                                </div>
+
+                                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 ">
+                                                    <div class="review-comments pt30">
+                                                        <div><span class="pull-left color999"> </span> <span class="pull-right"><ul class="list-inline text-center">
+																<li>
+																
+
+																
+																
+																
+																
+																
+																</li>
+																</ul></span></div>
+														<br/><br/>
+                                                        <p class="pull-left"><?php if(empty($UserRating->comment)){ echo "<h2>".$this->requestAction('users/get-translate/'.base64_encode('No Any Feedback'))."<h2>";   }?> </p>
+                                                        <p class="pull-right color-green"></p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+											
+											
+										<?php } ?>
                                        
 
 
@@ -1185,9 +1225,16 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="responsive    -margin">
+                            <div class="responsive-margin">
                                 <div class="row">
-
+									        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+								<div class="insure-wrap">
+          <div class="insur">
+            <p> <i> &nbsp;
+              All stays booked on Sitter Guide receive premium insurance, 24/7 support, and our reservation guarantee. </p>
+          </div></i>
+        </div>
+      </div>
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7">
                                         <div class=" pt30">
                                             <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" title="sitter image" class="img-responsive" alt="sitter"> </div>
