@@ -26,7 +26,7 @@
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<select name="user_to" id="userto" class='form-control col-md-7 col-xs-12 userto' >
-												
+												<option value="">--Select Users--</option>
 											<?php if($UserData != ""){
 												
 												foreach($UserData as $users){?>
@@ -64,25 +64,101 @@
 									</div>
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Accuracy Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
 											<span class="rating">
-													<input type='radio' id="star5" name='rating' value='5' /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-													<input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-													<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-													<input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-													<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-													<input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-													<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-													<input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-													<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-													<input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+													<input type='radio' id="star5" name='accuracy_rating' value='5' /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="star4half" name="accuracy_rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="star4" name="accuracy_rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="star3half" name="accuracy_rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="star3" name="accuracy_rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="star2half" name="accuracy_rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="star2" name="accuracy_rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="star1half" name="accuracy_rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="star1" name="accuracy_rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="starhalf" name="accuracy_rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+											</span>
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Communication Rating')); ?> <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+									
+											<span class="rating">
+													<input type='radio' id="c_star5" name='communication_rating' value='5' /><label class = "full" for="c_star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="c_star4half" name="communication_rating" value="4.5" /><label class="half" for="c_star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="c_star4" name="communication_rating" value="4" /><label class = "full" for="c_star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="c_star3half" name="communication_rating" value="3.5" /><label class="half" for="c_star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="c_star3" name="communication_rating" value="3" /><label class = "full" for="c_star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="c_star2half" name="communication_rating" value="2.5" /><label class="half" for="c_star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="c_star2" name="communication_rating" value="2" /><label class = "full" for="c_star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="c_star1half" name="communication_rating" value="1.5" /><label class="half" for="c_star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="c_star1" name="communication_rating" value="1" /><label class = "full" for="c_star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="c_starhalf" name="communication_rating" value="0.5" /><label class="half" for="c_starhalf" title="Sucks big time - 0.5 stars"></label>
 											</span>
 										</div>
 									</div>
 									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cleanliness Rating')); ?> <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+									
+											<span class="rating">
+													<input type='radio' id="cl_star5" name='cleanliness_rating' value='5' /><label class = "full" for="cl_star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="cl_star4half" name="cleanliness_rating" value="4.5" /><label class="half" for="cl_star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="cl_star4" name="cleanliness_rating" value="4" /><label class = "full" for="cl_star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="cl_star3half" name="cleanliness_rating" value="3.5" /><label class="half" for="cl_star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="cl_star3" name="cleanliness_rating" value="3" /><label class = "full" for="cl_star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="cl_star2half" name="cleanliness_rating" value="2.5" /><label class="half" for="cl_star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="cl_star2" name="cleanliness_rating" value="2" /><label class = "full" for="cl_star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="cl_star1half" name="cleanliness_rating" value="1.5" /><label class="half" for="cl_star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="cl_star1" name="cleanliness_rating" value="1" /><label class = "full" for="cl_star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="cl_starhalf" name="cleanliness_rating" value="0.5" /><label class="half" for="cl_starhalf" title="Sucks big time - 0.5 stars"></label>
+											</span>
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Location Rating')); ?> <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+									
+											<span class="rating">
+													<input type='radio' id="l_star5" name='location_rating' value='5' /><label class = "full" for="l_star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="l_star4half" name="location_rating" value="4.5" /><label class="half" for="l_star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="l_star4" name="location_rating" value="4" /><label class = "full" for="l_star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="l_star3half" name="location_rating" value="3.5" /><label class="half" for="l_star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="l_star3" name="location_rating" value="3" /><label class = "full" for="l_star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="l_star2half" name="location_rating" value="2.5" /><label class="half" for="l_star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="l_star2" name="location_rating" value="2" /><label class = "full" for="l_star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="l_star1half" name="location_rating" value="1.5" /><label class="half" for="l_star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="l_star1" name="location_rating" value="1" /><label class = "full" for="l_star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="l_starhalf" name="location_rating" value="0.5" /><label class="half" for="l_starhalf" title="Sucks big time - 0.5 stars"></label>
+											</span>
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Check In Rating')); ?> <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+									
+											<span class="rating">
+													<input type='radio' id="ch_star5" name='check_in_rating' value='5' /><label class = "full" for="ch_star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="ch_star4half" name="check_in_rating" value="4.5" /><label class="half" for="ch_star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="ch_star4" name="check_in_rating" value="4" /><label class = "full" for="ch_star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="ch_star3half" name="check_in_rating" value="3.5" /><label class="half" for="ch_star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="ch_star3" name="check_in_rating" value="3" /><label class = "full" for="ch_star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="ch_star2half" name="check_in_rating" value="2.5" /><label class="half" for="ch_star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="ch_star2" name="check_in_rating" value="2" /><label class = "full" for="ch_star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="ch_star1half" name="check_in_rating" value="1.5" /><label class="half" for="ch_star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="ch_star1" name="check_in_rating" value="1" /><label class = "full" for="ch_star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="ch_starhalf" name="check_in_rating" value="0.5" /><label class="half" for="ch_starhalf" title="Sucks big time - 0.5 stars"></label>
+											</span>
+										</div>
+									</div>
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">

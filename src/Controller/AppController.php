@@ -237,8 +237,8 @@ class AppController extends Controller{
 			}else if($type == 'profilePic')
 			{
 				$uploadFolder="uploads";	
-				$logoWidth = "300";
-				$logoHeight = "300";
+				$logoWidth = "328";
+				$logoHeight = "184";
 				$logoSize="4194304";
 				$logoKb = '4 MB';
 			}else if($type == 'profileBanner')

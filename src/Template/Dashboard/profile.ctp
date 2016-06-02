@@ -392,6 +392,7 @@
 				
 			<div class="col-lg-7">
                     
+
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
                     </p>
