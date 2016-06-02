@@ -152,7 +152,11 @@ class GuestsController extends AppController
 				 
 					$session->write('User.id', $getUserData->id);
 					$session->write('User.email', $getUserData->email);
+
+					$session->write('User.user_type', $getUserData->user_type);
+
 					$session->write('User.name', ucwords($getUserData->first_name." ".substr($getUserData->last_name,0,1)));
+
 					$session->write('User.facebook_id', $getUserData->facebook_id);
 					$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
 					$session->write('User.image', $getUserData->image);

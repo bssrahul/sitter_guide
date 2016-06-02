@@ -1054,7 +1054,11 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                         <h3 class="mid-sec-title pt30  ">Availability</h3>
                                         <div class="detail-cal-widget">
 
-                                            <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> </div>
+                                            <!--<img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender">
+                                         -->
+                                          <div class="some_datepicker">
+                                          </div>
+                                        </div>
 
                                     </div>
 

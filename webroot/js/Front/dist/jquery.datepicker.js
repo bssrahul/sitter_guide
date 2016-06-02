@@ -124,7 +124,6 @@ var jQueryDatepicker = function (parameters) {
                             $_day.attr({
                                 day: _day
                             });
-
                             $_day.addClass('datepicker_1_calendar_1_months_month_weekdays_weekday_days_day-day-'+_day);
 
                             if (
@@ -206,13 +205,14 @@ var jQueryDatepicker = function (parameters) {
                 if (
                     calendar_current_year == calendar_current_year_other &&
                     calendar_current_month == calendar_current_month_other
-                ) {
+                ){
                     $datepicker.find('.datepicker_1_calendar_1_months_month_weekdays_weekday_days_day-day-'+calendar_current_day_other).addClass('__current_other');
                 }
 
                 if (selected_year == calendar_current_year_other) {
                     if (selected_month == calendar_current_month_other) {
                         for (var i=calendar_current_day_other+1; i < calendar_current_day; i++) {
+                           
                             $datepicker.find('.datepicker_1_calendar_1_months_month-month-'+selected_month)
                                        .find('.datepicker_1_calendar_1_months_month_weekdays_weekday_days_day-day-'+i)
                                        .addClass('__current_other_diff');
