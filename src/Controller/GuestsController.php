@@ -656,7 +656,7 @@ class GuestsController extends AppController
 								
 								
 								if ($this->request->is('ajax')) {
-										echo "Success:".$this->stringTranslate(base64_encode(SIGN_UP)).":guests/login";
+										//echo "Success:".$this->stringTranslate(base64_encode(SIGN_UP)).":guests/login";
 										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
 										die;
 									}else{

@@ -100,20 +100,21 @@
                               <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Join The Sitter Guide Pack')); ?></p>
                               <ul>
 									<li>
-										<a href="<?php echo isset($siteConfiguration->facebook_link)? "http://".$siteConfiguration->facebook_link:""; ?>" title=""><i class="fa fa-facebook"></i></a>
+										<a href="<?php echo isset($siteConfiguration->facebook_link)? $siteConfiguration->facebook_link:""; ?>" title=""><i class="fa fa-facebook"></i></a>
 									</li>
                                     <li>
-										<a href="<?php echo isset($siteConfiguration->google_link)? "http://".$siteConfiguration->google_link:""; ?>" title=""><i class="fa fa-google-plus"></i></a>
+										<a href="<?php echo isset($siteConfiguration->google_link)? $siteConfiguration->google_link:""; ?>" title=""><i class="fa fa-google-plus"></i></a>
 									</li>
                                     <li>
-										<a href="<?php echo isset($siteConfiguration->twitter_link)? "http://".$siteConfiguration->twitter_link:""; ?>" title=""><i class="fa fa-twitter"></i></a>
+										<a href="<?php echo isset($siteConfiguration->twitter_link)? $siteConfiguration->twitter_link:""; ?>" title=""><i class="fa fa-twitter"></i></a>
 									</li>
                                     <li>
-										<a href="<?php echo isset($siteConfiguration->instagram_link)? "http://".$siteConfiguration->instagram_link:""; ?>" title=""><i class="fa fa-instagram"></i></a>
+										<a href="<?php echo isset($siteConfiguration->instagram_link)? $siteConfiguration->instagram_link:""; ?>" title=""><i class="fa fa-instagram"></i></a>
 									</li>
-                                    <li>
-										<a href="<?php echo isset($siteConfiguration->youtube_link)? "http://".$siteConfiguration->youtube_links:""; ?>" title=""><i class="fa fa-youtube"></i></a>
+									<li>
+										<a href="<?php echo isset($siteConfiguration->youtube_link)? $siteConfiguration->youtube_link:""; ?>" title=""><i class="fa fa-youtube"></i></a>
 									</li>
+                                   
                                 </ul>
                             </div>
                         </div>
