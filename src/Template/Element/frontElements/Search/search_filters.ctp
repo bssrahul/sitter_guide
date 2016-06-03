@@ -13,13 +13,13 @@
           <!--top filter tab-->
           <div class="top-filter-tab">
             <ul class="service_selected">
-              <li><a  data-rel="bording" class="boarding ajaxSearch chooseService"> <span></span> Boarding<br>
+              <li><a data-rel="bording" class="boarding ajaxSearch chooseService active"> <span></span> Boarding<br>
                 <b>in the sitter home</b> </a></li>
-              <li><a  data-rel="house_sitting" class="h-sitting ajaxSearch chooseService"><span></span> House Sitting<br>
+              <li><a data-rel="house_sitting" class="h-sitting ajaxSearch chooseService"><span></span> House Sitting<br>
                 <b>in your home</b></a></li>
-              <li><a  data-rel="drop_visit" class="d-visit ajaxSearch chooseService"><span></span> Drop-in Visit<br>
+              <li><a data-rel="drop_visit" class="d-visit ajaxSearch chooseService"><span></span> Drop-in Visit<br>
                 <b>in your home</b></a></li>
-              <li><a  data-rel="day_night_care" class="dn-care ajaxSearch chooseService"><span></span> Day / Night Care<br>
+              <li><a data-rel="day_night_care" class="dn-care ajaxSearch chooseService"><span></span> Day / Night Care<br>
                 <b>in the sitter’s home</b></a></li>
               <li ><a data-rel="marketplace" class="m-place ajaxSearch chooseService"><span></span> Market Place<br>
                 <b>exercise, groom, train+</b></a></li>

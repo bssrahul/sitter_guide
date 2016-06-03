@@ -132,7 +132,6 @@ select {
 }
 .form-part div.form-group:nth-child(2) {
     float: right;
-	margin-left: 9px !important;
 }
 p.cap {
     float: left;
@@ -186,7 +185,6 @@ width: 0;
     /* background-color:#7eae10; */
 }
 .profiletab-section ul li.gen:hover, .profiletab-section ul li.gen a:hover { background-color:#59a8e1 !important; }
-.profiletab-section ul li.gen a:focus { background-color:#59a8e1 !important; }
 .profiletab-section ul li.active.gen::after {border-color: #59a8e1 transparent; }
 .profiletab-section ul li.active.gen a{ background-color:#59a8e1 !important; }
 .profiletab-section ul li.active.gen { background-color:#59a8e1; }
@@ -195,29 +193,27 @@ width: 0;
 .profiletab-section ul li.active.hou a{ background-color:#FFAD03 !important; }
 .profiletab-section ul li.active.hou { background-color:#FFAD03; }
 .profiletab-section ul li.hou:hover, .profiletab-section ul li.hou a:hover { background-color:#FFAD03 !important; }
-.profiletab-section ul li.hou a:focus { background-color:#FFAD03 !important; }
 .profiletab-section ul li.active.hou {background-color:#FFAD03;}
 
 .profiletab-section ul li.active.sitt::after { border-color: #72A105 transparent;}
 .profiletab-section ul li.active.sitt a{ background-color:#72A105 !important; }
 .profiletab-section ul li.active.sitt { background-color:#72A105; }
 
-.profiletab-section ul li.sitt:hover, .profiletab-section ul li.sitt a:hover { background-color:#72A105 !important;}
-.profiletab-section ul li.sitt a:focus { background-color:#72A105 !important;}
+.profiletab-section ul li.sitt:hover, .profiletab-section ul li.sitt a:hover { background-color:#72A105 !important; }
 .profiletab-section ul li.active.sitt {background-color:#72A105;}
 
 .profiletab-section ul li.active.proa::after { border-color: #E17F59 transparent;}
-.profiletab-section ul li.active.proa a{ background-color:#E17F59; }
+.profiletab-section ul li.active.proa a{ background-color:#E17F59 !important; }
 .profiletab-section ul li.active.proa { background-color:#E17F59; }
 
 .profiletab-section ul li.proa:hover, .profiletab-section ul li.proa a:hover { background-color:#E17F59 !important; }
-.profiletab-section ul li.proa a:focus { background-color:#E17F59 !important; }
+
 .profiletab-section ul li.active.serv::after { border-color: #E159A6 transparent;}
 .profiletab-section ul li.active.serv a{ background-color:#E159A6 !important; }
 .profiletab-section ul li.active.serv { background-color:#E159A6; }
 
-.profiletab-section ul li.serv:hover, .profiletab-section ul li.serv a:hover { background-color:#E159A6 !important;}
-.profiletab-section ul li.serv a:focus { background-color:#E159A6 !important;}
+.profiletab-section ul li.serv:hover, .profiletab-section ul li.serv a:hover { background-color:#E159A6 !important; }
+
 .profiletab-section .form-control.mzero {margin: 0;}
 .profiletab-section ul li {
     display: table-cell;
@@ -398,7 +394,7 @@ p.browse-p {
 }
 #menu2 p {
     width: 100%;
-   /* float: left;*/
+    float: left;
 }
 .upload-section img {
     background: #fff none repeat scroll 0 0;
@@ -558,7 +554,6 @@ padding-left: 15px;
     border-radius: 2px;
     position: relative;
     width: 100%;
-    margin-bottom: 17px;
 }
 .sitter-gal a {
     position: absolute;
@@ -583,7 +578,7 @@ padding-left: 15px;
 
 
 .radio-main .custom-checkbox {
-    background: rgba(0, 0, 0, 0) url("../../img/radio1.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../radio1.png") no-repeat scroll 0 0;
     display: inline-block;
     height: 21px;
     position: relative;
@@ -597,7 +592,7 @@ padding-left: 15px;
     background: rgba(0, 0, 0, 0) url("../radio-h.png") no-repeat scroll 0 0;
 }*/
 .radio-main .custom-checkbox.selected {
-    background: rgba(0, 0, 0, 0) url("../../img/radio-h.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../radio-h.png") no-repeat scroll 0 0;
 }
 .radio-main .custom-checkbox input[type="checkbox"] {
     cursor: pointer;
@@ -750,22 +745,6 @@ i.cir-o {
 }
 
 
-
-.captcha {width:100%;}
-
-
-.pull-right.m-rights > label {
-    padding: 0 7px;
-}
-
-
-
-.pull-right.m-rights > label input[type="radio"] {
-    line-height: normal;
-    margin: 3px 4px 0;
-}
-
-
 /***** media start *****/
 
 @media screen and (min-width: 1920px) {
@@ -864,6 +843,7 @@ p.min-hh {
 
 @media screen and (max-width:370px) {
     .full-width11 {width: 100% !important;}
+<<<<<<< HEAD
  }
  .signup-container .icon-input #users-email {
     background: #fff url("../../img/signup-e-icon.png") no-repeat left 10px center;
@@ -875,6 +855,7 @@ p.min-hh {
 }
 .signup-container .form-part ul { margin:0px; padding:0px; list-style-type:none; width:100%; clear:left;}
 .signup-container .form-part ul li{ width:50%; float:left; }
-.signup-container .form-part ul li .form-group{ width:97%;}
-
+.signup-container .form-part ul li .form-group{ width:96.5%;}
+.signup-container .form-part ul li:nth-child(2) .form-group{ float:right;}
 .signup-container .form-part ul li #users-country{ height:47px;}
+

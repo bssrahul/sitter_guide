@@ -1,35 +1,4 @@
-<script type="text/javascript" src="js/Front/owl.carousel.min.js"></script>
-<script type="text/javascript">
 
-$(document).ready(function() {  
-		var owl = $('.owl-carousel-1');
-		owl.owlCarousel({
-        nav:true,
-	    loop:true,
-	    margin:0,
-	    autoplay:false,
-	    autoplayTimeout:1000,
-	    autoplayHoverPause:true,
-		responsiveClass:true,
-	   
-	    responsive:{
-    	    0:{
-        	    items:2,
-            	nav:true
-	        },
-    	    768:{
-        	    items:3,
-            	nav:true
-	        },
-    	    1024:{
-        	    items:3,
-            	nav:true
-	        }
-			    }
-		});
-		
-});
-</script>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
@@ -171,7 +140,7 @@ $(document).ready(function() {
 												<!--quick view-->
 											
 													<div class="quick-view">
-															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i> Quick View</a>
+															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><?php echo $this->requestAction('users/get-translate/'.base64_encode('Quick View')); ?> </a>
 													</div>
 											
 												<!--/quick view-->                       
@@ -205,7 +174,7 @@ $(document).ready(function() {
 												<?php echo ($results->country !="")?ucwords($results->country):""; ?>
 												<span>
 													<i class="fa fa-map-marker" aria-hidden="true"></i> 
-													<?php echo round($distanceAssociation[$results->id],2); ?> Km Away
+													<?php echo round($distanceAssociation[$results->id],2); ?><?php echo $this->requestAction('users/get-translate/'.base64_encode('Km Away')); ?> 
 												</span>
 											</p>
 										  </div>
@@ -227,13 +196,13 @@ $(document).ready(function() {
 													if($count > 0){
 														 $avg=$sum/$count;
 													}
-												//	echo $avg; 
+													//echo $avg; 
 													
 													?>
 													
 										<div class="rating-box">
 											<span class="rating">
-											<?php	//if(!empty($avg)){ 	
+											<?php	if(!empty($avg)){ 	
                                             ?>
 													<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 													
@@ -254,8 +223,31 @@ $(document).ready(function() {
 													<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
 													
 													<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-													
-											<?php// } ?>
+													<?php $avg=0;?>
+											<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($avg)){if($avg <= 4.5 && $avg > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($avg)){ if($avg <= 4 && $avg > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($avg)){ if($avg <= 3.5 && $avg > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($avg)){ if($avg <= 3 && $avg > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($avg)){ if($avg <= 2.5 && $avg > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($avg)){ if($avg <= 2 && $avg > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($avg)){ if($avg <= 1.5 && $avg > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $avg=0;?>
+																		
+																		
+																<?php	} ?> 
 											</span>
 										</div>
 											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> Reviews</a> </div>
@@ -447,7 +439,7 @@ $(document).ready(function() {
 										'windowText'=>$full_name,
 										'windowText'=>$full_name,
 										//'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
-										'markerIcon'=>HTTP_ROOT.'img/green_pin.png',
+										'markerIcon'=>HTTP_ROOT.'img/markers/markers_orange/number_'.$mapInc.'.png',
 										)
 								  ); 
 							$mapInc++;
@@ -657,3 +649,4 @@ $(document).ready(function() {
 	
 
 </script>
+

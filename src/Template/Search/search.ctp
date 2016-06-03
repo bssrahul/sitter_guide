@@ -1,8 +1,35 @@
-<?php echo $this->Html->css(['Front/jquery-ui.css','Front/search-result.css']);  ?>
-<?php echo $this->Html->script(['Front/jquery-ui.js','Front/search-filter.js']);  ?>
-<?php //echo $this->Html->script('http://maps.google.com/maps/api/js?sensor=true'); ?>
+<?php echo $this->Html->css(['Front/search-result.css']);  ?>
+<script type="text/javascript">
 
-
+$(document).ready(function() {  
+		var owl = $('.owl-carousel-1');
+		owl.owlCarousel({
+        nav:true,
+	    loop:true,
+	    margin:0,
+	    autoplay:false,
+	    autoplayTimeout:1000,
+	    autoplayHoverPause:true,
+		responsiveClass:true,
+	   
+	    responsive:{
+    	    0:{
+        	    items:2,
+            	nav:true
+	        },
+    	    768:{
+        	    items:3,
+            	nav:true
+	        },
+    	    1024:{
+        	    items:3,
+            	nav:true
+	        }
+			    }
+		});
+		
+});
+</script>
 <!--[Inner Content]-->
 <section class="inner-cont"> 
 <span class="search-overlay"></span>	

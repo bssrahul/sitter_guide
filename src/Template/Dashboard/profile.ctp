@@ -3,8 +3,7 @@
   echo $this->Html->css(['Front/jquery-ui.css']); 
   echo $this->Html->script(['Front/jquery-ui.js']);
 ?>
-
- <div class="col-md-9 col-lg-10 col-sm-8 " id="content">
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
 
         <div class="profiletab-section">
@@ -393,6 +392,7 @@
 				
 			<div class="col-lg-7">
                     
+
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
                     </p>
@@ -690,8 +690,9 @@ $(document).ready(function(){
   /*Start profile banner*/
   $("#browseBanner").on('click',function(){
 
+
          $("#profile_banner").trigger("click");    
-        });
+  });
 
   $(document).on('change','#profile_banner', function(){ 
     $("#profileBanner").ajaxForm(

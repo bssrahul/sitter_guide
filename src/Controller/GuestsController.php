@@ -19,6 +19,7 @@ use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\I18n\Time;
+use Cake\Datasource\ConnectionManager;
 
 
 
@@ -94,8 +95,112 @@ class GuestsController extends AppController
 		//pr($blogsInfo); die;
 		$this->set('blogsInfo',$blogsInfo);
 		
-        
+        //Fetch Data Leading-sitting
+		$UsersModel=TableRegistry :: get('Users');
+		$FavourateModel=TableRegistry :: get('UserSitterFavourites');
+		$favourateData = $FavourateModel->find('all', [
+		'fields' => [
+					'sitter_id' => 'UserSitterFavourites.sitter_id',
+					'count_favourate' => 'COUNT(UserSitterFavourites.sitter_id)',
+					
+					],
+					 'order' => ['count_favourate' => 'DESC'],
+					 'limit'=>'6',
+					'group' => ['UserSitterFavourites.sitter_id'],
+					])->contain(['Users'])->toArray();
+				//pr($favourateData);die;
+		$favUsersdata=array();
+		foreach($favourateData as $favourate){
+			
+				$sitter_id=$favourate->sitter_id;
+				$fav_no=$favourate->count_favourate;
+			//$favUsersdata[]=$UsersModel->find('all')->where(['id'=>$sitter_id])->contain(['UserRatings'])->toArray();
+			$favUsersdata[] = $UsersModel->find('all',['contain'=>[
+														'UserAboutSitters',
+														'UserRatings','UserSitterServices'
+													]]
+											)
+							   ->where(['Users.id' => $sitter_id])
+							   ->toArray();
+			
+		}
+		//pr($favUsersdata);die;
+		$this->set('FavUsersdata',$favUsersdata);
+			
+		//pr($selUserData);die;
+		/*For getting a  distance form another user's*/
+		
+		$sourceLocationLatitude = '30.7399738';
+		$sourceLocationLongitude = '76.7567368';
+		$query='SELECT
+						  id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						FROM users
+						
+						ORDER BY distance';
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+			//pr($results);die;
+			$finalDistanceArr=array();
+			foreach($results as $result){
+				foreach($favUsersdata as $favData){
+						$selUserData=$favData[0]->id;
+						if(in_array($selUserData,$result)){
+							
+							$finalDistanceArr[]=$result;
+						}
+				}
+			}
+			
+			//pr($finalDistanceArr);
+			//die;
+			
 
+		
+			if(!empty($finalDistanceArr)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($finalDistanceArr as $resultsValue){
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}
+				//pr($distanceAssociation);die;
+				$this->set('distanceAssociation',$distanceAssociation);	
+				/* $userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
+							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
+							   ->toArray();
+				//pr($distanceAssociation);die;
+				$loggedInUserID = $session->read('User.id');
+				/* if($loggedInUserID !=''){
+					if(!empty($userData)){
+						foreach($userData as $k=>$eachRow){
+								
+							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
+							
+							if($UserSitterFavourite > 0){
+								$userData[$k]['is_favourite'] =  "yes";
+							}else{
+								$userData[$k]['is_favourite'] =  "no";
+							}
+								
+						}	 
+					}
+				} */ 
+			}
+		
+		
+		
+		
+		
+		
         //Fetch data how works
 		$worksModel = TableRegistry::get('HowWorks');
 		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'How_it_works']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
@@ -152,7 +257,11 @@ class GuestsController extends AppController
 				 
 					$session->write('User.id', $getUserData->id);
 					$session->write('User.email', $getUserData->email);
+
+					$session->write('User.user_type', $getUserData->user_type);
+
 					$session->write('User.name', ucwords($getUserData->first_name." ".substr($getUserData->last_name,0,1)));
+
 					$session->write('User.facebook_id', $getUserData->facebook_id);
 					$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
 					$session->write('User.image', $getUserData->image);
@@ -552,7 +661,7 @@ class GuestsController extends AppController
 										die;
 									}else{
 										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
-								return $this->redirect(['controller' => 'guests', 'action' => 'login']);		
+										return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou']);			
 								//die;
 									}
 							 
@@ -855,7 +964,7 @@ class GuestsController extends AppController
 				$userInfo = $UsersModel->get($getUsersTempId1);
 				$this->UsersessionSet($userInfo);
 				$this->setSuccessMessage(SIGN_UP);
-				return $this->redirect(['controller' => 'guests', 'action' => 'home']);		
+				return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou']);		
 				
 			}
 		}else{
@@ -904,7 +1013,14 @@ class GuestsController extends AppController
 		}
 		$this->set('detect',$detect);
 	}
-
+	public function signThankyou(){
+		$this->viewBuilder()->layout('landing');
+		$SiteModel = TableRegistry::get('SiteConfigurations');
+		$siteConfigurationData=$SiteModel->find('all')->toArray();
+		$this->set('siteConfigurationData',$siteConfigurationData);
+		//pr($siteConfigurationData);die;
+	}
+	
 
 }
 ?>
