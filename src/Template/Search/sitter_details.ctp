@@ -1,70 +1,4 @@
-<?php echo $this->Html->css(['Front/dist/jquery.datepicker.css','Front/dist/jquery.datepicker.min.css']); 
-echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.datepicker.min.js']); ?>
-<script type="text/javascript">
-        // Localization
 
-       /* jQueryDatepicker.day_names_short = {
-            1: 'Mon',
-            2: 'Tue',
-            3: 'Wed',
-            4: 'Thu',
-            5: 'Fri',
-            6: 'Sat',
-            7: 'Sun'
-        };
-
-        jQueryDatepicker.day_names = {
-            1: 'Monday',
-            2: 'Tuesday',
-            3: 'Wednesday',
-            4: 'Thursday',
-            5: 'Friday',
-            6: 'Saturday',
-            7: 'Sunday'
-        };
-
-        jQueryDatepicker.month_names = {
-            1: 'January',
-            2: 'February',
-            3: 'March',
-            4: 'Apri',
-            5: 'May',
-            6: 'June',
-            7: 'July',
-            8: 'Agust',
-            9: 'September',
-            10: 'October',
-            11: 'November',
-            12: 'December'
-        };*/
-        $(document).ready(function () {
-            var $selected = $('.selected');
-
-            $some_datepicker = $('.some_datepicker');
-            
-            $some_datepicker.datepicker({
-                next_button: '&gt;',
-                prev_button: '&lt;'
-            });
-
-            $some_datepicker.setStartDate({
-                year: 2016,
-                // jquery.datepicker accepts first month as 1
-                // (built-in Date() class accepts first month as 0)
-                month: 5,
-                day: 10
-            });
-
-
-             
-  
-            /*  
-            $some_datepicker.on('date_selected.datepicker', function (event, date) {
-                $selected.show().html('Selected date is: '+date.date.toString());
-                //alert(date.date.toString());
-            }); */
-        });
-    </script>
     <style type="text/css">
         .a,
         .a:visited {
@@ -79,14 +13,15 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
 <!--[Banner Area Start]-->
 	<div class="saerch-s-det">
+		
 		<section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
 						<div class="banner-info-wrapper">
-							<div class="banner-info-inner">
+							<div class="banner-info-inner"><?php //pr($userData); ?>
 								<div class="client-image center-block">
-									<img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client"> 
+									<img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client" > 
 								</div>
 								<h2 class="name-banner text-center">
 									<?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> 
@@ -103,13 +38,96 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 								
 								<div class="details-stars">
 									<ul class="list-inline text-center">
-										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
-										<li><img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-stars.png"></li>
+									
+										<?php  	$UserRatingData=$userData->user_ratings; 
+												//pr($UserRatingData);
+												$accuracy_sum = 0;
+												$comm_sum = 0;
+												$clean_sum = 0;
+												$location_sum = 0;
+												$check_sum = 0;
+												$rating_sum = 0;
+												$count=0;
+												foreach($UserRatingData as $UserRating){
+													$count++;
+													$accuracy_rating=$UserRating->accuracy_rating;
+													$communication_rating=$UserRating->communication_rating;
+													$cleanliness_rating=$UserRating->cleanliness_rating;
+													$location_rating=$UserRating->location_rating;
+													$check_in_rating=$UserRating->check_in_rating;
+													$accuracy_sum = $accuracy_sum + $accuracy_rating;
+													$comm_sum = $comm_sum + $communication_rating;
+													$clean_sum = $clean_sum + $cleanliness_rating;
+													$location_sum = $location_sum + $location_rating;
+													$check_sum = $check_sum + $check_in_rating;
+												}
+												if($count > 0){
+												$ac=$accuracy_sum/$count;
+												$cm=$comm_sum/$count;
+												$cl=$clean_sum/$count;
+												$lc=$location_sum/$count;
+												$ch=$check_sum/$count;
+												$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
+												}
+																	
+																	
+														?>
+                                                        <li>
+														<!--	<p class="r-star rat-wt"> -->
+																
+																	<span class="rating ">
+																	<?php	if(!empty($rating_sum)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($rating_sum)){ if($rating_sum <= 5 && $rating_sum > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rating_sum)){if($rating_sum <= 4.5 && $rating_sum > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rating_sum)){ if($rating_sum <= 4 && $rating_sum > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 3.5 && $rating_sum > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rating_sum)){ if($rating_sum <= 3 && $rating_sum > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 2.5 && $rating_sum > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rating_sum)){ if($rating_sum <= 2 && $rating_sum > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 1.5 && $rating_sum > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rating_sum)){ if($rating_sum <= 1 && $rating_sum > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 0.5 && $rating_sum >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rating_sum=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($rating_sum)){ if($rating_sum <= 5 && $rating_sum > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rating_sum)){if($rating_sum <= 4.5 && $rating_sum > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rating_sum)){ if($rating_sum <= 4 && $rating_sum > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 3.5 && $rating_sum > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rating_sum)){ if($rating_sum <= 3 && $rating_sum > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 2.5 && $rating_sum > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rating_sum)){ if($rating_sum <= 2 && $rating_sum > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 1.5 && $rating_sum > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rating_sum)){ if($rating_sum <= 1 && $rating_sum > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 0.5 && $rating_sum >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rating_sum=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+															<!--/rating--> 
+													</li>
 										<li>&nbsp;</li>
-										<li class="pad-review" ><span >(Reviews 20)</span></li>
+										<li class="pad-review" ><span > <?php if($count != ""){ echo "( ".$count. " reviews )" ;}else{echo "( 0 reviews )" ;} ?> </span></li>
 									</ul>
 								</div>
 
@@ -155,11 +173,11 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 </div>
 </div>
 
-<h5 class="additional"><a href="#" data-toggle="modal" data-target="#myModal7"> Additional Services & Rates </a></h5>
-<div class="text-center">
-    <button class="btn btn-cont" onclick="location.href='<?php echo HTTP_ROOT.'search/sitter-contact/'.base64_encode(convert_uuencode(@$userData->id)); ?>'">
- 
-  Contact</button>
+
+  <h5 class="additional"><a href="#" data-toggle="modal" data-target="#myModal7"> More Services Available </a></h5>
+            <div class="text-center">
+              <button class="btn btn-cont" onclick="location.href='<?php echo HTTP_ROOT.'search/sitter-contact/'.base64_encode(convert_uuencode(@$userData->id)); ?>'">Book Now</button>
+            </div>
 </div>
 </div>
 
@@ -178,19 +196,145 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 <!--content area Start-->
 <main>
 
-
-
-
-
+			
+			
     <!-- Get in Touch starts-->
-
-
-
+	 
     <section class="detail-content">
         <div class="container">
 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+					
+			<div class="row spad-top ">
+			  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				
+				<div class="row">
+				  
+				  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="spad-top ">   
+					  <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" title="sitter image" class="img-responsive" alt="sitter"> 
+					</div>
+				  </div>
+				  
+				  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="detail-sitter-detail">
+					  <h4 class="detail-sitter-name"> 
+						<?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?>
+					  </h4>
+					  <p class="detail-sitter-location">  
+						<?php echo @$userData->city." ".@$userData->state.",".@$userData->country  ?>
+					  </p>
+					  <p class="detail-sitter-joined">Joined : 
+						<?php echo date_format(@$userData->date_added,'F Y');  ?>
+					  </p>
+					  <a class="reviews" href="#review-section">
+						<?php if($count != ""){ echo "( ".$count. " reviews )" ;}else{echo "( 0 reviews )" ;} ?>
+					  </a>
+					</div>
+				  </div>
+				
+				</div>
+				
+				<div class="btn-group btn-width100 pt15">
+				  <button class="btn btn-detsil-contact" type="button">Contact  
+					<?php echo @$userData->first_name; ?>
+				  </button>
+				  <!-- <button type="button" class="btn btn-heart"><i class="fa fa-heart-o heart-pos"></i></button>
+				  <button class="btn btn-heart lock" type="button"> 
+					<i class="icon-unlock fa fa-heart-o heart-pos">
+					</i> 
+					<i class="icon-lock fa fa-heart heart-pos">
+					</i> 
+				  </button>-->
+				  
+				  
+				  								  <div class="likebox favourite_sitter1"> 
+									
+										
+										<?php if(trim($userData->is_favourite)=='yes'){ ?>
+											<a data-count="<?php echo $userData->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($userData->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="icon-lock fa fa-heart heart-pos"></i>
+											</a>
+										<?php }else{ ?>
+																	
+											<a data-count="<?php echo $userData->id; ?>" href="javascript:void(0);" class="like favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($userData->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>">
+											 <i class="icon-unlock fa fa-heart-o heart-pos"></i>
+											</a>
+										<?php } ?>
+										
+																  
+								  </div>
+				</div>
+				
+				</br>
+			  </br>
+			<div>
+			  <div class="availability">
+				<h5>
+				  <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> is available this Weekend
+				</h5>
+			  </div>
+			</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			  <div class="recent-act-widget">
+				<div class="recent-act"> 
+				  <?php echo @$userData->first_name; ?>'s Recent Activity
+				</div>
+				<ul class="list-unstyled">
+				  <li>
+					<i class="fa fa-reply icon-width30">
+					</i>Response Rate : 
+					<b>100%
+					</b>
+				  </li>
+				  <li>
+					<span class="book">
+					</span>Average Response Time : 
+					<b>With in Hour
+					</b>
+				  </li>
+				  <li>
+					<i class="fa fa-user icon-width30 icon-p15">
+					</i>Last Activity : 
+					<b>
+					  <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
+			if(@$userData->avail_status == 'Login'){
+			echo '<span style="color:green">Available<//span>';
+			}else{
+			$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$userData->last_login);
+			$days    = floor($seconds / 86400);
+			$hours = floor(($seconds - ($days * 86400)) / 3600);
+			$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+			$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+			echo $days." days ".$hours." hours ".$minutes." min "."ago";
+			}
+			?>
+					</b>
+				  </li>
+				  <li>
+					<i class="fa fa-refresh icon-width30 icon-p15">
+					</i>Repeat Guest : 
+					<b> 15
+					</b>
+				  </li>
+				</ul>
+				<div class="border-bot">
+				</div>
+				<ul class="list-unstyled verified">
+				  <li>
+					<i class="fa fa-check icon-width30 font-size20">
+					</i> SMS Verified
+				  </li>
+				  <li>
+					<i class="fa fa-check icon-width30 font-size20">
+					</i> Email Verified
+				  </li>
+				</ul>
+			  </div>
+			</div>
+			</div>
+
 
                     <h3 class="mid-sec-title border-bot pt30 ">About <?php echo @$userData->first_name; ?></h3>
 
@@ -198,15 +342,6 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                     <h3 class="mid-sec-title1 ">Reliable & Loving Pet Sitter</h3>
                     <p class="detail-text text-justify">
                         <?php echo @$userData->user_about_sitter->your_self; ?>
-
-                        <!--ABout Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-1" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
-
-
-<br>
-
-<a  href="#search-col-1" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>-->
 
 
                     </p>
@@ -227,55 +362,43 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
 
                     </div>
-
+					<?php if(isset($userData->user_sitter_galleries) && !empty($userData->user_sitter_galleries)){  ?>
                     <h3 class="mid-sec-title1 pb15 "><?php echo @$userData->first_name; ?>'s profile photos</h3>
 
 
                     <div class="row">
                         <div class="col-xs-12 col-md-12 col-sm-12 c0l-lg-12">
 
-                            <div id="myCarousel5" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
+								<?php	
+								$total_img=count($userData->user_sitter_galleries);?>
+								<div id="myCarousel5" class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner" role="listbox">
+										<div class="item active">
+											<div class="row">
+												<?php 
+													$i = 1;
+													foreach($userData->user_sitter_galleries as $key=>$single_image){ ?>
+																	
+															<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+																<?php $fg=1; ?>
+																<img src="<?php echo HTTP_ROOT.'img/uploads/'.$single_image->image; ?>" class="img-responsive responsivept15" alt="client1">
+															</div>
+															
 
+															<?php 
+															if($i%4==0 && $i < $total_img){
+																echo '</div></div><div class="item"><div class="row">';
+															}
+															
 
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
-                                    <?php if(isset($userData->user_sitter_galleries)){ 
-    
-    ?>
-                                    <div class="item active">
-                                        <div class="row">
-                                            <?php 
-         $i = 1;
-        foreach($userData->user_sitter_galleries as $key=>$single_image){ ?>
-
-                                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                                                <img src="<?php echo HTTP_ROOT.'img/uploads/'.$single_image->image; ?>" class="img-responsive responsivept15" alt="client1">
-                                            </div>
-                                            <?php 
-           if($i%4==0){
-           
-            echo '</div></div>';
-            }
-
-            if($i%4==0 && (count($userData->user_sitter_galleries) != $i))
-            {
-              $continue;
-             echo '<div class="item"><div class="row">'; 
-            }
-
-         $i++;
-        
-        }
-        if(count($userData->user_sitter_galleries)<4){echo "</div></div>"; }
-        ?>
-
-                                            <?php 
-     } ?>
-                                        </div>
-
-                                        <!-- Left and right controls -->
-                                        <a class="left carousel-control" href="#myCarousel5" role="button" data-slide="prev">
+														$i++;
+									
+													} 
+													//if(count($userData->user_sitter_galleries)<4){echo "</div></div>"; } ?>
+												</div>
+											</div>
+										</div>
+										<a class="left carousel-control" href="#myCarousel5" role="button" data-slide="prev">
                                             <span class=" fa fa-chevron-circle-left" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
                                         </a>
@@ -284,19 +407,21 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                             <span class="sr-only">Next</span>
                                         </a>
                                     </div>
-                                </div>
-                            </div>
-
+										
+								<!-- Left and right controls -->
+                        </div>
+                    </div>
+					<?php } ?>
 
 
 
                             <div class="one">
                                 <div class="border-bot pt30"></div>
 
-                                <h5 class="small-title">Specified Skills &nbsp;<span>
-<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
-<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
-</span></h5>
+									<h5 class="small-title">Specified Skills &nbsp;<span>
+									<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
+									<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
+									</span></h5>
 
 
 
@@ -339,9 +464,9 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                 <div class="border-bot pt30"></div>
 
                                 <h5 class="small-title">I have experience with &nbsp;<span>
-<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
-<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
-</span></h5>
+										<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
+										<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
+										</span></h5>
 
 
 
@@ -383,9 +508,9 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                 <div class="border-bot pt30"></div>
 
                                 <h5 class="small-title">Benefits &nbsp;<span>
-<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
-<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
-</span></h5>
+									<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
+									<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
+									</span></h5>
 
 
                                 <div class="row">
@@ -424,9 +549,9 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                 <div class="border-bot pt30"></div>
 
                                 <h5 class="small-title">About <?php echo $userData->first_name; ?>'s Home&nbsp;<span>
-<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
-<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
-</span></h5>
+								<i><img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > </i>
+								<i> <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png"></i>
+								</span></h5>
 
 
                                 <div class="row">
@@ -472,14 +597,6 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
                                 <p class="detail-text text-justify">
                                     <?php echo @$userData->user_sitter_house->about_home_desc; ?>
-
-                                    <!-- Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-2" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
-<br>
-<a  href="#search-col-2" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>-->
-
-
                                 </p>
 
 
@@ -495,13 +612,6 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
                                 <p class="detail-text text-justify">
                                     <?php echo @$userData->user_sitter_house->spaces_access_desc; ?>
-                                    <!--Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of
- animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-3" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
-<br>
-<a  href="#search-col-3" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>-->
-
-
                                 </p>
 
 
@@ -537,24 +647,10 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 
                                 <p class="detail-text text-justify">
                                     <?php echo @$userData->user_sitter_house->home_pets_desc; ?>
-                                    <!-- Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of f situation, all types of f situation,all types of f situation, we will make it work. I have worked with all types of
- animals and love and can care for them all.  pet supply customer service call center and shadowed as a dog trainer.<span id="search-col-4" class="panel-collapse collapse " aria-expanded="true">work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog trainer. I treat my four legged clients like family. I can help you train your pup while you are away or Willing to work with any dogs, regardless of situation, we will make it work. I have worked with all types of animals and love and can care for them all. I have previously worked at a pet store, dog daycare, two animal shelters, pet supply customer service call center and shadowed as a dog</span>
-<br>
-<a  href="#search-col-4" data-toggle="collapse" onclick="javascript:changeText(1)" id="element1">More.. 
-                 </a>-->
-
-
                                 </p>
-
-
-
-
-                            </div>
+							</div>
 
                             <div class="row pt10 ">
-
-
-
 
                                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                     <div class="img-thumbnail"> <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1">
@@ -632,7 +728,7 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 										</span></h3>
 
                                         <ul class="list-inline pt15">
-                                            <li class="reviews-bold"><?php echo $count. " ";?> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?></li>
+                                            <li class="reviews-bold"><?php echo $count. "  Reviews ";?> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?></li>
                                             <li> <div class="rating-box">
 																								
 																
@@ -1069,7 +1165,7 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
 													$cleanliness=$UserRating->cleanliness_rating;
 													$location=$UserRating->location_rating;
 													$check_in=$UserRating->check_in_rating;
-													echo $rate=($accuracy + $communication + $cleanliness + $location + $check_in)/5;
+													@$rate=($accuracy + $communication + $cleanliness + $location + $check_in)/5;
 													
 													
 													?>
@@ -1165,10 +1261,50 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                                     </div>
 
                                                 </div>
-
+												<!--<div class=" pt30 text-center">
+													<button class="btn btn-read-more-reviews"> Read more reviews</button>
+												</div>-->
                                             </div>
 											<?php } }
-										} }?>
+										} }else{?>
+											
+											   <div class="row">
+
+
+
+                                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+
+                                                    <div class=" center-block pt30">
+
+														
+
+														 </div>
+                                                </div>
+
+                                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 ">
+                                                    <div class="review-comments pt30">
+                                                        <div><span class="pull-left color999"> </span> <span class="pull-right"><ul class="list-inline text-center">
+																<li>
+																
+
+																
+																
+																
+																
+																
+																</li>
+																</ul></span></div>
+														<br/><br/>
+                                                        <p class="pull-left"><?php if(empty($UserRating->comment)){ echo "<h5>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> </p>
+                                                        <p class="pull-right color-green"></p>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+											
+											
+										<?php } ?>
                                        
 
 
@@ -1185,89 +1321,11 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="responsive    -margin">
-                                <div class="row">
-
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7">
-                                        <div class=" pt30">
-                                            <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" title="sitter image" class="img-responsive" alt="sitter"> </div>
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
-                                        <div class="detail-sitter-detail">
-                                            <h4 class="detail-sitter-name"> <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> </h4>
-                                            <p class="detail-sitter-location">
-                                                <?php echo @$userData->city." ".@$userData->state.",".@$userData->country  ?> </p>
-                                            <p class="detail-sitter-joined">Joined :
-                                                <?php echo date_format(@$userData->date_added,'F Y');  ?>
-                                            </p>
-                                            <a class="reviews" href="#">( 20 reviews )</a></div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                                        <div class="recent-act-widget">
-                                            <div class="recent-act">
-                                                <?php echo @$userData->first_name; ?>'s Recent Activity</div>
-                                            <ul class="list-unstyled">
-                                                <li><i class="fa fa-reply icon-width30"></i>Response Rate : <b>100%</b></li>
-                                                <li><span class="book"></span>Average Response Time : <b>With in Hour</b></li>
-                                                <li><i class="fa fa-user icon-width30 icon-p15"></i>Last Activity : <b>
-        <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
-        if(@$userData->avail_status == 'Login'){
-            echo '<span style="color:green">Available<//span>';
-        }else{
-            $seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$userData->last_login);
-            $days    = floor($seconds / 86400);
-            $hours = floor(($seconds - ($days * 86400)) / 3600);
-            $minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
-            $seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
-
-            echo $days." days ".$hours." hours ".$minutes." min "."ago";
-        }
-       
-
-        ?>
-        </b></li>
-                                                <li><i class="fa fa-refresh icon-width30 icon-p15"></i>Repeat Guest : <b> 15</b></li>
-                                            </ul>
-
-
-                                            <div class="border-bot"></div>
-                                            <ul class="list-unstyled verified">
-                                                <li><i class="fa fa-check icon-width30 font-size20"></i> SMS Verified</li>
-                                                <li><i class="fa fa-check icon-width30 font-size20"></i> Email Verified</li>
-
-                                            </ul>
-                                            <div class="border-bot"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-
-                                        <div class="btn-group btn-width100 pt15">
-                                            <button type="button" class="btn btn-detsil-contact">Contact <?php echo @$userData->first_name; ?></button>
-                                            <!-- <button type="button" class="btn btn-heart"><i class="fa fa-heart-o heart-pos"></i></button>-->
-                                            <button type="button" class="btn btn-heart lock">
-    <i class="icon-unlock fa fa-heart-o heart-pos"></i>
-    <i class="icon-lock fa fa-heart heart-pos"></i>
-</button>
-                                        </div>
-
-
-
-                                    </div>
-
-
-
-
-                                </div>
-
+								          <div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											  <div class="banner-offer"> <a href="#"> <img src="<?php echo HTTP_ROOT."img/weekend-offer.png";?>"  class="img-responsive" alt="offer"> </a></div>
+											</div>
+										  </div>
 
                                 <div class="row">
 
@@ -1493,8 +1551,17 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                         </div>
 
                         <div class="row">
+						<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+													<div class="insure-wrap">
+															<div class="insur">
+																<p> <i> &nbsp;
+																		All stays booked on Sitter Guide receive premium insurance, 24/7 support, and our reservation guarantee. </p>
+															</div></i>
+													</div>
+											</div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
+											
                                 <h3 class="mid-sec-title pt30 ">More sitters near you &nbsp; </h3>
 
 
@@ -1509,49 +1576,116 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                             <div class="container">
                                                 <div class="ms-area">
                                                     <ul>
-                                                        <li><a title="" href="">
+														<?php if(!empty($nearbyUsers)){
+																foreach($nearbyUsers as $nearbyUser){
+																	 $UserRatingData=$nearbyUser->user_ratings; 
+												//pr($UserRatingData);
+												$accuracy_sum = 0;
+												$comm_sum = 0;
+												$clean_sum = 0;
+												$location_sum = 0;
+												$check_sum = 0;
+												$rating_sum = 0;
+												$count=0;
+												foreach($UserRatingData as $UserRating){
+													$count++;
+													$accuracy_rating=$UserRating->accuracy_rating;
+													$communication_rating=$UserRating->communication_rating;
+													$cleanliness_rating=$UserRating->cleanliness_rating;
+													$location_rating=$UserRating->location_rating;
+													$check_in_rating=$UserRating->check_in_rating;
+													$accuracy_sum = $accuracy_sum + $accuracy_rating;
+													$comm_sum = $comm_sum + $communication_rating;
+													$clean_sum = $clean_sum + $cleanliness_rating;
+													$location_sum = $location_sum + $location_rating;
+													$check_sum = $check_sum + $check_in_rating;
+												}
+												if($count > 0){
+												$ac=$accuracy_sum/$count;
+												$cm=$comm_sum/$count;
+												$cl=$clean_sum/$count;
+												$lc=$location_sum/$count;
+												$ch=$check_sum/$count;
+												$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
+												}
+																	
+																	
+														?>
+                                                        <li>
+															<a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode(@$nearbyUser->id)); ?>" title="">
+																														
+															  <img alt="" src="<?php if(!empty($nearbyUser->image)){ echo HTTP_ROOT."img/uploads/".$nearbyUser->image;}else{ echo HTTP_ROOT."img/uploads/dm.png";}?>" class=" img-responsive img-circle">
+															  <p class="name"><?php if(!empty($nearbyUser->first_name)){ echo $nearbyUser->first_name." ".$nearbyUser->last_name; }?></p>
+																<p class="loc"><?php if(!empty($nearbyUser->city)){ echo $nearbyUser->city; }?></p>
+																 <p class="r-star rat-wt">
+																 
+																		
+																								
+																
+																	<span class="rating no-topmg">
+																	<?php	if(!empty($rating_sum)){ 	
+																	?>
+																			<input type='radio'  value='5' <?php if(!empty($rating_sum)){ if($rating_sum <= 5 && $rating_sum > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rating_sum)){if($rating_sum <= 4.5 && $rating_sum > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rating_sum)){ if($rating_sum <= 4 && $rating_sum > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 3.5 && $rating_sum > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rating_sum)){ if($rating_sum <= 3 && $rating_sum > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 2.5 && $rating_sum > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rating_sum)){ if($rating_sum <= 2 && $rating_sum > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 1.5 && $rating_sum > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rating_sum)){ if($rating_sum <= 1 && $rating_sum > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 0.5 && $rating_sum >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rating_sum=0;?>
+																			
+																	<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($rating_sum)){ if($rating_sum <= 5 && $rating_sum > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($rating_sum)){if($rating_sum <= 4.5 && $rating_sum > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($rating_sum)){ if($rating_sum <= 4 && $rating_sum > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 3.5 && $rating_sum > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($rating_sum)){ if($rating_sum <= 3 && $rating_sum > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 2.5 && $rating_sum > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($rating_sum)){ if($rating_sum <= 2 && $rating_sum > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($rating_sum)){ if($rating_sum <= 1.5 && $rating_sum > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($rating_sum)){ if($rating_sum <= 1 && $rating_sum > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($rating_sum)){ if($rating_sum <= 0.5 && $rating_sum >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $rating_sum=0;?>
+																		
+																		
+																<?php	} ?>
+																	</span>
+																
 
-                              <img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-dummy-sitter1.png">
-                              <p class="name">Lex</p>
-                                <p class="loc">Newyork</p>
-                                 <p class="r-star"><img alt="Rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png">
-                                 <p class="grey">( 20 reviews )</p>
-                            </a></li>
-                                                        <li><a title="" href="">
-                              <img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-dummy-sitter2.png">
-                              <p class="name">Lex</p>
-                                <p class="loc">Newyork</p>
-                                 <p class="r-star"><img alt="Rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png">
-                                 <p class="grey">( 20 reviews )</p>
-                            </a></li>
-                                                        <li><a title="" href="">
-                              <img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-dummy-sitter3.png">
-                            <p class="name">Lex</p>
-                                <p class="loc">Newyork</p>
-                                 <p class="r-star"><img alt="Rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png">
-                                 <p class="grey">( 20 reviews )</p>                             
-                            </a></li>
-                                                        <li><a title="" href="">
-                              <img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-dummy-sitter1.png">
-                              <p class="name">Lex</p>
-                                <p class="loc">Newyork</p>
-                                 <p class="r-star"><img alt="Rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png">
-                                 <p class="grey">( 20 reviews )</p>
-                            </a></li>
-                                                        <li><a title="" href="">
-                              <img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-dummy-sitter2.png">
-                              <p class="name">Lex</p>
-                                <p class="loc">Newyork</p>
-                                 <p class="r-star"><img alt="Rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png">
-                                 <p class="grey">( 20 reviews )</p>
-                            </a></li>
-                                                        <li><a title="" href="">
-                              <img alt="" src="<?php echo HTTP_ROOT; ?>img/detail-dummy-sitter3.png">
-                            <p class="name">Lex</p>
-                                <p class="loc">Newyork</p>
-                                 <p class="r-star"><img alt="Rating" src="<?php echo HTTP_ROOT; ?>img/rating-icons.png">
-                                 <p class="grey">( 20 reviews )</p>                             
-                            </a></li>
+															
+															  <!--/rating--> 
+													
+																 
+																 
+																</p> 
+																</br>
+																 <p class="grey"><?php if($count != ""){ echo $count. " reviews" ;}else{echo "0 reviews" ;} ?></p>
+															
+															</a>
+															
+														</li>
+														<?php }} ?>					
                                                     </ul>
                                                 </div>
                                             </div>
@@ -1559,22 +1693,10 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
                                         <!--more sitter near you-->
                                     </div>
                                 </div>
-
-
-
-
-
-                            </div>
-
-
+							</div>
                         </div>
-
-
-
-
-
-                    </div>
-    </section>
+					</div>
+	</section>
 
 
 
@@ -1678,11 +1800,13 @@ echo $this->Html->script(['Front/dist/jquery.datepicker.js','Front/dist/jquery.d
         <div id="myCarousel13" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner video-box" role="listbox">
                 <div class="item active video-iner">
-                    <video width="80%" height="auto" autoplay class="header_video">
+                    <video width="90%" height="530px"  class="header_video" autoplay controls>
         <?php if(@$userData->profile_video != ''){
           @$videoPath = HTTP_ROOT.'files/video/'.@$userData->profile_video;
+		   //echo $videoPath; 
         }else{
          @$videoPath = HTTP_ROOT.'files/video/pdm.mp4';
+		 //echo $videoPath; 
         } ?>
         <source class="video_img" type="video/mp4" src="<?php echo $videoPath; ?>"></source>
       </video>

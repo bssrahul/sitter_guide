@@ -183,7 +183,8 @@
 									 
 									  <!--rating-->
 										  <div class="sitter-rating">
-											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
+											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->								  <?php //echo $results->is_favourite; 
+										//pr($results->is_favourite);?>
 											<?php $ratingData=$results->user_ratings;
 													$sum=0;$count=0;
 													foreach($ratingData as $rating){
@@ -335,9 +336,10 @@
                                      </div>
                                  <!--/facilities-->
 								  <!--likebox-->
+
 								  <div class="likebox favourite_sitter1"> 
 									
-										<?php //echo $results->is_favourite; ?>
+										
 										<?php if(trim($results->is_favourite)=='yes'){ ?>
 											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="icon-lock fa fa-heart heart-pos"></i>
 											</a>

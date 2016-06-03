@@ -13,8 +13,9 @@
 		
 		<!-- Bootstrap Core CSS -->
 		<?php 
-			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/developer.css','Front/dist/imageselect.css','Front/hint.css']); 
-			echo $this->Html->script(['Front/jquery.min.js','Front/jquery.validate.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js']);
+			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/developer.css','Front/dist/imageselect.css','Front/hint.css','Front/jquery-ui.css','Front/search-result.css']); 
+			
+			echo $this->Html->script(['Front/jquery.min.js','Front/jquery.validate.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js','Front/jquery-ui.js','Front/search-filter.js']);
 		
 			if($sitefavicon != null){ ?>
 				<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
@@ -22,6 +23,7 @@
 				<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
 			<?php }?>
 	      
+			
           
     </head>
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">

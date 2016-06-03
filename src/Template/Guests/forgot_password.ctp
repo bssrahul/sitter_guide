@@ -26,12 +26,12 @@
                               ]);
                               echo '<em class="signup_error error">'.__(@$loginerror['email'][0]).'</em>';
                              ?>
-                            <i class="fa fa-envelope"></i>
+                         
                           </div>
                         </div>
                         <button type="submit" class="btn btn-default" id="reset-pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 
-                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Want to go back at')); ?><a href="javascript:void(0)"><span onclick="window.history.back()" class="c-red"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click Here')); ?></span></a></p>
+                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Want to go back at ')); ?><a href="javascript:void(0)"><span onclick="window.history.back()" class="c-red"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click Here')); ?></span></a></p>
                           
                       </form>
                     </div>

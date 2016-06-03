@@ -553,7 +553,9 @@ padding-left: 15px;
     border: 1px solid #949494;
     border-radius: 2px;
     position: relative;
-    width: 100%;
+	width: 101%;
+	height: 72px;
+	margin-top: 10px;
 }
 .sitter-gal a {
     position: absolute;
@@ -564,6 +566,7 @@ padding-left: 15px;
 .sitter-gal a i {
     color: #ff4f4f;
     font-size: 17px;
+	margin-top: 10px;
 }
 .browse-p {
     margin-bottom: 25px;
