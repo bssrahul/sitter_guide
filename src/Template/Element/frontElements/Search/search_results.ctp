@@ -171,7 +171,7 @@ $(document).ready(function() {
 												<!--quick view-->
 											
 													<div class="quick-view">
-															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i> Quick View</a>
+															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><?php echo $this->requestAction('users/get-translate/'.base64_encode('Quick View')); ?> </a>
 													</div>
 											
 												<!--/quick view-->                       
@@ -205,7 +205,7 @@ $(document).ready(function() {
 												<?php echo ($results->country !="")?ucwords($results->country):""; ?>
 												<span>
 													<i class="fa fa-map-marker" aria-hidden="true"></i> 
-													<?php echo round($distanceAssociation[$results->id],2); ?> Km Away
+													<?php echo round($distanceAssociation[$results->id],2); ?><?php echo $this->requestAction('users/get-translate/'.base64_encode('Km Away')); ?> 
 												</span>
 											</p>
 										  </div>
@@ -214,7 +214,8 @@ $(document).ready(function() {
 									 
 									  <!--rating-->
 										  <div class="sitter-rating">
-											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
+											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->								  <?php //echo $results->is_favourite; 
+										//pr($results->is_favourite);?>
 											<?php $ratingData=$results->user_ratings;
 													$sum=0;$count=0;
 													foreach($ratingData as $rating){
@@ -227,13 +228,13 @@ $(document).ready(function() {
 													if($count > 0){
 														 $avg=$sum/$count;
 													}
-												//	echo $avg; 
+													//echo $avg; 
 													
 													?>
 													
 										<div class="rating-box">
 											<span class="rating">
-											<?php	//if(!empty($avg)){ 	
+											<?php	if(!empty($avg)){ 	
                                             ?>
 													<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 													
@@ -254,8 +255,31 @@ $(document).ready(function() {
 													<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
 													
 													<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-													
-											<?php// } ?>
+													<?php $avg=0;?>
+											<?php }else{?>
+																		<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+																			
+																			<input type="radio"  value="4.5" <?php if(!empty($avg)){if($avg <= 4.5 && $avg > 4){ echo "checked"; } } ?> /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+																			
+																			<input type="radio"  value="4"  <?php if(!empty($avg)){ if($avg <= 4 && $avg > 3.5){ echo "checked"; }} ?> /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+																			
+																			<input type="radio"  value="3.5"  <?php if(!empty($avg)){ if($avg <= 3.5 && $avg > 3){ echo "checked"; } } ?> /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+																			
+																			<input type="radio"  value="3" <?php if(!empty($avg)){ if($avg <= 3 && $avg > 2.5){ echo "checked"; } } ?>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+																			
+																			<input type="radio"  value="2.5" <?php if(!empty($avg)){ if($avg <= 2.5 && $avg > 2){ echo "checked"; } } ?>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+																			
+																			<input type="radio"   value="2"  <?php if(!empty($avg)){ if($avg <= 2 && $avg > 1.5){ echo "checked"; } } ?>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+																			
+																			<input type="radio"  value="1.5" <?php if(!empty($avg)){ if($avg <= 1.5 && $avg > 1){ echo "checked"; } } ?>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+																			
+																			<input type="radio"  value="1" <?php if(!empty($avg)){ if($avg <= 1 && $avg > 0.5){ echo "checked"; } } ?>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+																			
+																			<input type="radio"  value="0.5"  <?php if(!empty($avg)){ if($avg <= 0.5 && $avg >= 0){ echo "checked"; } } ?>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+																			<?php $avg=0;?>
+																		
+																		
+																<?php	} ?> 
 											</span>
 										</div>
 											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> Reviews</a> </div>
@@ -343,9 +367,10 @@ $(document).ready(function() {
                                      </div>
                                  <!--/facilities-->
 								  <!--likebox-->
+
 								  <div class="likebox favourite_sitter1"> 
 									
-										<?php //echo $results->is_favourite; ?>
+										
 										<?php if(trim($results->is_favourite)=='yes'){ ?>
 											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="icon-lock fa fa-heart heart-pos"></i>
 											</a>
@@ -657,3 +682,4 @@ $(document).ready(function() {
 	
 
 </script>
+

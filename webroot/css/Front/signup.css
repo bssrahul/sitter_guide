@@ -553,7 +553,9 @@ padding-left: 15px;
     border: 1px solid #949494;
     border-radius: 2px;
     position: relative;
-    width: 100%;
+	width: 101%;
+	height: 72px;
+	margin-top: 10px;
 }
 .sitter-gal a {
     position: absolute;
@@ -564,6 +566,7 @@ padding-left: 15px;
 .sitter-gal a i {
     color: #ff4f4f;
     font-size: 17px;
+	margin-top: 10px;
 }
 .browse-p {
     margin-bottom: 25px;
@@ -843,4 +846,19 @@ p.min-hh {
 
 @media screen and (max-width:370px) {
     .full-width11 {width: 100% !important;}
+<<<<<<< HEAD
  }
+ .signup-container .icon-input #users-email {
+    background: #fff url("../../img/signup-e-icon.png") no-repeat left 10px center;
+    padding: 0 0 0 30px;
+}
+.signup-container .icon-input #users-password {
+    background: #fff url("../../img/signup-p-icon.png") no-repeat left 10px center;
+    padding: 0 0 0 30px;
+}
+.signup-container .form-part ul { margin:0px; padding:0px; list-style-type:none; width:100%; clear:left;}
+.signup-container .form-part ul li{ width:50%; float:left; }
+.signup-container .form-part ul li .form-group{ width:96.5%;}
+.signup-container .form-part ul li:nth-child(2) .form-group{ float:right;}
+.signup-container .form-part ul li #users-country{ height:47px;}
+

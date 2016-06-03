@@ -24,12 +24,12 @@
                           <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Top Pet Sitting Cities')); ?></p>            
          
                               <ul>
-                                  <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Sydney')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Sydney')); ?></a> </li>
-                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Melbourne')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Melbourne')); ?></a> </li>
-                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Brisbane')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Brisbane')); ?></a> </li>
-                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Perth')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Perth')); ?></a> </li>
-                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Adelaide')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Adelaide')); ?></a> </li>
-                                    <li><a href="#" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Canberr')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Canberr')); ?></a> </li>
+                                  <li><a href="<?php echo HTTP_ROOT."search/search-by-cities/Sydney";?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Sydney')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Sydney')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT."search/search-by-cities/Melbourne";?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Melbourne')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Melbourne')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT."search/search-by-cities/Brisbane";?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Brisbane')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Brisbane')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT."search/search-by-cities/Perth";?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Perth')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Perth')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT."search/search-by-cities/Adelaide";?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Adelaide')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Adelaide')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT."search/search-by-cities/Canberr";?>" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Canberr')); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Sitters Canberr')); ?></a> </li>
                                 </ul>
                                
                         </div>
@@ -100,20 +100,21 @@
                               <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Join The Sitter Guide Pack')); ?></p>
                               <ul>
 									<li>
-										<a href="<?php echo isset($siteConfiguration->facebook_link)? "http://".$siteConfiguration->facebook_link:""; ?>" title=""><i class="fa fa-facebook"></i></a>
+										<a href="<?php echo isset($siteConfiguration->facebook_link)? $siteConfiguration->facebook_link:""; ?>" title=""><i class="fa fa-facebook"></i></a>
 									</li>
                                     <li>
-										<a href="<?php echo isset($siteConfiguration->google_link)? "http://".$siteConfiguration->google_link:""; ?>" title=""><i class="fa fa-google-plus"></i></a>
+										<a href="<?php echo isset($siteConfiguration->google_link)? $siteConfiguration->google_link:""; ?>" title=""><i class="fa fa-google-plus"></i></a>
 									</li>
                                     <li>
-										<a href="<?php echo isset($siteConfiguration->twitter_link)? "http://".$siteConfiguration->twitter_link:""; ?>" title=""><i class="fa fa-twitter"></i></a>
+										<a href="<?php echo isset($siteConfiguration->twitter_link)? $siteConfiguration->twitter_link:""; ?>" title=""><i class="fa fa-twitter"></i></a>
 									</li>
                                     <li>
-										<a href="<?php echo isset($siteConfiguration->instagram_link)? "http://".$siteConfiguration->instagram_link:""; ?>" title=""><i class="fa fa-instagram"></i></a>
+										<a href="<?php echo isset($siteConfiguration->instagram_link)? $siteConfiguration->instagram_link:""; ?>" title=""><i class="fa fa-instagram"></i></a>
 									</li>
-                                    <li>
-										<a href="<?php echo isset($siteConfiguration->youtube_link)? "http://".$siteConfiguration->youtube_links:""; ?>" title=""><i class="fa fa-youtube"></i></a>
+									<li>
+										<a href="<?php echo isset($siteConfiguration->youtube_link)? $siteConfiguration->youtube_link:""; ?>" title=""><i class="fa fa-youtube"></i></a>
 									</li>
+                                   
                                 </ul>
                             </div>
                         </div>

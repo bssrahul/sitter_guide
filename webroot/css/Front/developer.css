@@ -277,6 +277,15 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 /****** Style Star Rating Widget *****/
 
+.no-topmg > label::before {margin-top:0px !important; margin-bottom:0px !important;}
+
+.like-box {
+    padding: 3px 8px 0 0;
+}
+
+.rat-wt { margin:0px auto; width:90px;}
+
+
 .rating { 
   border: none;
   float: left;
@@ -284,7 +293,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating > input { display: none; } 
 .rating > label:before { 
-  margin: 5px;
+  margin: 5px 1px;
   font-size: 1.25em;
   font-family: FontAwesome;
   display: inline-block;
@@ -302,10 +311,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
-
 .rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #F0C751;  } /* hover previous stars in list */
+/*.rating:not(:checked) > label:hover, /* hover current star */
+/*.rating:not(:checked) > label:hover ~ label { color: #F0C751;  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
@@ -372,6 +380,51 @@ ul.booking-services li.new_active{
     padding: 5px !important;
 }
 
+
+
+/* For rating review*/
+
+a{
+	color:#000;
+}
+a:hover{
+	color:#000;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.rating_review { 
+  border: none;
+  float: left;
+}
+
+.rating_review > input { display: none; } 
+.rating_review > label:before { 
+  margin: 5px ;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating_review > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating_review > label { 
+  color: #b8b894; 
+ float: right; 
+}
+
+.rating_review > input:checked ~ label, /* show gold star when clicked */
+.rating_review:not(:checked) > label:hover, /* hover current star */
+.rating_review:not(:checked) > label:hover ~ label { color: #F0C751;  } /* hover previous stars in list */
+
+.rating_review > input:checked + label:hover, /* hover current star when changing rating */
+.rating_review > input:checked ~ label:hover,
+.rating_review > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating_review > input:checked ~ label:hover ~ label { color: #F0C751;  } 
+
 .chat-wrapper ul li {
   padding-top: 20px !important;
 }
@@ -384,4 +437,12 @@ ul.booking-services li.new_active{
 	background: #78bf45 none repeat scroll 0 0 !important;
 	opacity: 0.4;
 	z-index: 999;
+}
+.favouriteSection {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    color: #da6a14 !important;
+    font-size: 25px;
+    text-decoration: none !important;
+    outline: none;
+	margin-left:5px;
 }
