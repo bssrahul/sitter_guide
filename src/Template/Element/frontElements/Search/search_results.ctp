@@ -1,35 +1,4 @@
-<script type="text/javascript" src="js/Front/owl.carousel.min.js"></script>
-<script type="text/javascript">
 
-$(document).ready(function() {  
-		var owl = $('.owl-carousel-1');
-		owl.owlCarousel({
-        nav:true,
-	    loop:true,
-	    margin:0,
-	    autoplay:false,
-	    autoplayTimeout:1000,
-	    autoplayHoverPause:true,
-		responsiveClass:true,
-	   
-	    responsive:{
-    	    0:{
-        	    items:2,
-            	nav:true
-	        },
-    	    768:{
-        	    items:3,
-            	nav:true
-	        },
-    	    1024:{
-        	    items:3,
-            	nav:true
-	        }
-			    }
-		});
-		
-});
-</script>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
@@ -472,7 +441,7 @@ $(document).ready(function() {
 										'windowText'=>$full_name,
 										'windowText'=>$full_name,
 										//'markerIcon'=>'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='.$mapInc.'|72A105|FFFFFF',
-										'markerIcon'=>HTTP_ROOT.'img/green_pin.png',
+										'markerIcon'=>HTTP_ROOT.'img/markers/markers_orange/number_'.$mapInc.'.png',
 										)
 								  ); 
 							$mapInc++;

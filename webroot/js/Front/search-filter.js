@@ -30,13 +30,58 @@
 			$( "#boardingFrom" ).focus();
 
 		});
+		
+		$('.searchBtn').click(function(){
+			var orgBtn = $(this).val();
+			$(this).val('Searching...');
+
+		});
 
 		$('#cIconTo').click(function(){
 			$( "#boardingTo" ).focus();
 
 		});
 		
-		//SCRIPT FOR CHOOSE SERVICES SYNCRONIZATION WITH FOR CODE 
+		//SCRIPT FOR CHOOSE SERVICES SYNCRONIZATION WITH FOR CODE ON HOME PAGE
+		$('.chooseService').click(function(){
+			
+			$('.chooseService').removeClass('active');
+			
+			$(this).addClass('active');
+			
+			$('#selected_service').val($("ul.service_selected a.active").attr('data-rel'));
+			
+			$('.zipOption').removeClass('onLoadHide');
+			$('.dogOption').addClass('onLoadHide');
+			
+			$('.FirstThreeServices').removeClass('onLoadHide');
+			$('.LastTwoServices').addClass('onLoadHide');
+			
+			if($(this).hasClass('d-visit')){
+				$('.zipOption').addClass('onLoadHide');
+				$('.dogOption').removeClass('onLoadHide');
+			}
+
+			if($(this).hasClass('dn-care')){
+				
+				$('.FirstThreeServices').addClass('onLoadHide');
+				$('.mpOption').addClass('onLoadHide');
+				$('.dnOption').removeClass('onLoadHide');
+				
+			}		
+
+			if($(this).hasClass('m-place')){
+				$('.FirstThreeServices').addClass('onLoadHide');
+				$('.dnOption').addClass('onLoadHide');
+				$('.mpOption').removeClass('onLoadHide');
+				
+			}
+
+
+		});
+		
+		
+		//SCRIPT FOR CHOOSE SERVICES SYNCRONIZATION WITH FOR CODE ON SEARCH PAGE	
 		$('.chooseService').click(function(){
 			$('.chooseService').removeClass('active');
 			$(this).addClass('active');
@@ -148,6 +193,19 @@
 			
 		});
 		
+		//GET VALUE OF DOG SIZES
+		$("ul.dog_size li.dog_size_li").click(function() {
+			
+			if($(this).find('a:first').hasClass("active")==true){
+				$(this).find('a:first').removeClass("active");
+			}else{
+				$(this).find('a:first').addClass("active");
+			}
+			
+			$('#dog_size').val($(this).find('a:first').attr('data-rel'));
+			
+		});
+		
 		//PERFORM SEARCH FUNCTIONALITY USING AJAX
 		$(".ajaxSearch").click(function(){
 
@@ -230,6 +288,7 @@
 		gerSearchResult();
 	});
 	
+	/*FAVOURITE SECTION START*/
 	$(document).on('click','.favouriteSection',function(){
 
 		var objLike = $(this);
