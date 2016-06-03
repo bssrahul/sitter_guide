@@ -1,3 +1,12 @@
+  <?php $action = $this->request->params['action'];
+  $actions = array("home","frontDashboard","aboutSitter", "professionalAccreditations", "aboutGuest", "servicesAndRates","profile","house");
+
+   if (in_array($action, $actions)){
+	   $profile_class = 'class="active"';
+   }else{
+    $profile_class = 'class=""';
+   }
+  ?>
  <div class="col-md-3 col-lg-2 col-sm-4  lg-width20">
         <div class="custom">
           <div class="sidebar">
@@ -66,14 +75,9 @@
                       
                       
                       <li><a href="#"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
-                      <?php if($this->request->action=='profile' || $this->request->action=='sitterHouse' || $this->request->action=='aboutSitter' || $this->request->action=='professionalAccreditations'){
-						  
-						  $profile_class='class="active"';
-					  }else{
-						  $profile_class='class=""';
-						  
-					  }?>
-					  <li <?php echo $profile_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/profile' ?>"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
+                      
+                    
+					  <li <?php echo $profile_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard' ?>"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
                        <?php if($this->request->action=='servicesAndRates'){
 						  
 						  $service_class='class="active"';

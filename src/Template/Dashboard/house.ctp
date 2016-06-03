@@ -17,7 +17,7 @@
           <p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
                   <!--<form role="form">-->
                   <?php echo $this->Form->create(@$sitterHouseData,[
-                      'url' => ['controller' => 'dashboard', 'action' => 'sitter-house'],
+                      'url' => ['controller' => 'dashboard', 'action' => 'house'],
                       'role'=>'form',
                       'id'=>'sitterHouse'
                   ]);?>
