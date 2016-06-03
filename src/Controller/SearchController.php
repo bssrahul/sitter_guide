@@ -495,7 +495,7 @@ class SearchController extends AppController
 						foreach($userData as $k=>$eachRow){
 								
 							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
-							
+							//pr($UserSitterFavourite);die;
 							if($UserSitterFavourite > 0){
 								$userData[$k]['is_favourite'] =  "yes";
 							}else{
@@ -523,20 +523,36 @@ class SearchController extends AppController
     Function for sitter details
 	*/	
 	function sitterDetails($sitterId = null){
+		$session = $this->request->session();
 		$this->viewBuilder()->layout('landing');
 		$sitterId = convert_uudecode(base64_decode($sitterId));
-
+		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
         $userData = $UsersModel->get($sitterId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
-		//pr($userData);die;
+		$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
+		$user_sitter_id_Arr=array();
+		foreach($UserFavData as $UserFav){
+			
+			 $user_sitter_id_Arr[]=$UserFav->sitter_id;
+			
+		}
+		if(in_array($userData->id,$user_sitter_id_Arr)){
+				$userData['is_favourite'] =  "yes";
+		}else{
+			$userData['is_favourite'] =  "no";
+		}
+		$loggedInUserID = $session->read('User.id');
+		
+		//pr($user_sitter_id_Arr);die;
+		//pr($userData['is_favourite']);die;
 		$Userratingdata=$userData->user_ratings;
 		$userFromArr=array();
 		foreach($Userratingdata as $Userrating){
 			
 			$userFromArr[]=$Userrating->user_from;
 		}
-		$gettingUserData=$UsersModel->find('all')->toArray();
-		$commentUserData=array();
+		$gettingUserData=$UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']])->toArray();
+		 $commentUserData=array();
 		foreach($gettingUserData as $gettingUser){
 		
 				if(in_array($gettingUser->id,$userFromArr)){
@@ -544,11 +560,81 @@ class SearchController extends AppController
 					$commentUserData[]=$gettingUser;
 				} 
 		}
+		//pr($commentUserData);
+		
+		$sourceLocationLatitude =$userData->latitude;
+		$sourceLocationLongitude =$userData->longitude;
+		$query='SELECT
+						  id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						FROM users
+						HAVING distance < 300
+						ORDER BY distance';
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+			//pr($results);die;
+			$finalDistanceArr=array();
+			foreach($results as $result){
+				foreach($gettingUserData as $favData){
+						$selUserData=$favData->id;
+						if(in_array($selUserData,$result)){
+							
+							$finalDistanceArr[]=$result;
+						} 
+				} 
+			}
+			
+			if(!empty($finalDistanceArr)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($finalDistanceArr as $resultsValue){
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+			}}
+			//pr($distanceAssociation);die;
+			$nearUseridArr=array();	
+			
+			foreach($distanceAssociation as $key=>$diatance){
+						
+						if($diatance != 0){
+								$nearUseridArr[]=$key;
+						}
+						
+			}	
+			//pr($nearUseridArr);die;	
+				$this->set('distanceAssociation',$distanceAssociation);	
+			$getUsersArr=array();$flag=0;
+			foreach($gettingUserData as $gettingUser){
+					if(in_array($gettingUser->id,$nearUseridArr)){
+						$flag++;
+						if($flag < 7){
+							$getUsersArr[]=$gettingUser;
+						}
+						
+					}
+					
+			
+				
+			}
+			
+			//pr($getUsersArr);die;
+			$this->set('nearbyUsers',$getUsersArr);	
+			$this->set('loggedInUserID',$loggedInUserID);	
+			
+		
 		
 		//pr($commentUserData);die;
 		$this->set('userData',$userData);
 		
-		$this->set('commentUserData',$commentUserData);
+		$this->set('commentUserData',@$commentUserData);
 		
 		//pr($userData);die;
 	}

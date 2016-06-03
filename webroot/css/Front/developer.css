@@ -438,4 +438,11 @@ a:hover{
 	opacity: 0.4;
 	z-index: 999;
 }
-
+.favouriteSection {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    color: #da6a14 !important;
+    font-size: 25px;
+    text-decoration: none !important;
+    outline: none;
+	margin-left:5px;
+}

@@ -181,7 +181,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 
 .reson-pad {padding-top:30px; margin-bottom:0px; padding-bottom:7px;}
 .bt-pad {margin-top:15px;}
-.insur {font-size:20px; font-weight:500; color:#fff; padding:25px 15px; background:url(../images/s-trust1.png) no-repeat; background-position:left; }
+.insur {font-size:20px; font-weight:500; color:#fff; padding:25px 15px; background:url(../../img/s-trust1.png) no-repeat; background-position:left; }
 .insur p {margin-left:65px;}
 .insure-wrap {background: #5aabe3 none repeat scroll 0 0; box-shadow: 0 3px 0 #4598d1; padding:0px 15px; margin-bottom: 20px; margin-top:50px;  }
 
@@ -211,7 +211,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .banner-sitter-detail .banner-info-wrapper  .center-line .marginrightminus { margin-right:-30px;}
 .banner-sitter-detail .banner-info-wrapper .additional {font-size:18px; color:#6eb6ff; text-align:center; font-weight:400; padding-top:7px; clear:both;}
 .banner-sitter-detail .banner-info-wrapper .additional a {font-size:18px; color:#6eb6ff !important; text-align:center; font-weight:400; padding-top:7px;}
-.banner-sitter-detail .banner-info-wrapper .btn-cont {background-color:#72a105; color:#fff;  border-radius: 50%;  -moz-border-radius: 50%;   -webkit-border-radius: 50%; text-align:center; font-size:21px; font-weight:500; padding:8px 20px; margin-top:15px; outline:none;}
+.banner-sitter-detail .banner-info-wrapper .btn-cont {background-color:#72a105; color:#fff;  border-radius: 50%;  -moz-border-radius: 50%;   -webkit-border-radius: 50%; text-align:center; font-size:21px; font-weight:500; padding:8px 20px; /*margin-top:15px;*/ outline:none;}
 .banner-sitter-detail .banner-info-wrapper .xs-padt10 {padding-top:0px;}
 
 /*Banner inner pages ends*/
@@ -287,7 +287,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .lock:hover .icon-lock {    display: inline;}
 
 /*.btn-heart:hover { background-color:transparent; color:#e66f14; width:20%; font-size:38px; outline:none !important; text-decoration:none !important;}*/
-.heart-pos {position:relative; top:-13px;}
+.heart-pos {position:relative; margin-left: 10px !important;}
 .btn-width100 {width:100% !important;}
 .dog12 span {height:50px; width:50px;}
 .xsdog { background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -530px -50px; display: inline-block; height: 22px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 35px;}

@@ -269,7 +269,7 @@ class AppController extends Controller{
 			{
 				$uploadFolder="uploads";	
 				$logoWidth = "800";
-				$logoHeight = "550";
+				$logoHeight = "800";
 				$logoSize="4194304";
 				$logoKb = '4 MB';
 			}
