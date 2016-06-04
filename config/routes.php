@@ -53,12 +53,8 @@ Router::scope('/', function ($routes) {
 
 	$routes->connect('/', ['controller' => 'Guests', 'action' => 'home']);
     $routes->connect('/dashboard', ['controller' => 'dashboard', 'action' => 'home']);
-    $routes->connect('/Search', ['controller' => 'Search', 'action' => 'search']);
-
-	
-	 /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
+    $routes->connect('/search', ['controller' => 'search', 'action' => 'search']);
+  
 
        // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'cms']);
 		$routes->connect('/about-us', ['controller' => 'Pages', 'action' => 'cms','about-us']);
