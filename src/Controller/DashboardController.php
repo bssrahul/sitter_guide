@@ -19,6 +19,11 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\Event\Event;
 use Cake\I18n\Time;
+
+require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
+use Calendar;
+
+
 /**
  * Static content controller
  *
@@ -1836,5 +1841,40 @@ class DashboardController extends AppController
 					die;
 			 } */
 	}
+	public function calender()
+    {
+			//$session=$this->request->session();
+			//$user_id=$session->read('User.id');
+			$Session=$this->request->session();
+			$user_id=$Session->read('User.id');
+			//pr($user_id);die;
+			$this->viewBuilder()->layout('profile_dashboard');
+			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
+			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			//pr($UserServicesData[0]['day_care_limit']);
+			$services_array=array();
+			foreach($UserServicesData as $UserServices){
+				$services_array["day_care_limit"]= $UserServices->day_care_limit;
+				$services_array["night_care_limit"]= $UserServices->night_care_limit;
+				$services_array["visits_limit"]= $UserServices->visits_limit;
+				$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
+			}
+			//pr($services_array);
+			//echo "hello";die;
+			
+			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
+			$calendar = new  \Calendar();
+
+			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
+			$this->set('calender',$calendar->show($services_array));
+    }
+	
+	public function ajaxCalendar()
+    {
+			
+			$calendar = new  \Calendar();
+			$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
+			$this->set('calender',$calendar->show($services_array));
+    }
 }
 ?>

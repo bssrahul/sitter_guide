@@ -206,7 +206,7 @@ Type::build('datetime')->useLocaleParser();
  * Configure the cache for model and datasource caches. This cache configuration
  * is used to store schema descriptions, and table listings in connections.
  */
- 
+ //pr($_SERVER); die;
 $root	= explode('/',$_SERVER['REQUEST_URI']);
 $rootPath	= isset($root[1])?$root[1]:'';
 define("ROOT_PATH",$rootPath);

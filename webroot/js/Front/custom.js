@@ -1680,7 +1680,20 @@ $(function () {
 	    e.stopPropagation();
 	});
  /*Last Drop down country- currency listing*/
-});
 
+ 
+});
+/*Last Drop down country- currency listing*/
+   $(document).on( 'click', '.getCalender', function (){
+	   var actionURl = $(this).attr('data-rel');
+		$.ajax({
+			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
+			success:function(res)
+			{
+				$('#myCalender').html(res);	//DISPLAY RESPONSE ERRORS
+			}
+		});
+	});
+ /*Last Drop down country- currency listing*/
 /*End profile video*/
 
