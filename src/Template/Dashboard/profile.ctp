@@ -180,13 +180,13 @@
                       <div class="row">
                           
                           <div class="col-lg-3 col-xs-3">
-                            <label for="county_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
+                            <label for="country_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <?php 
-                                echo $this->Form->input('Users.county_code',[
+                                echo $this->Form->input('Users.country_code',[
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'select',
                                   'label'=>false,
-                                  'options'=>@$counry_info,
+                                  'options'=>@$country_info,
                                   'class' =>'form-control'
                                   ]);
                             ?>

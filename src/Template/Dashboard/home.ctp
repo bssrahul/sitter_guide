@@ -8,7 +8,9 @@
      $profile = $session->read('profile');?>
      
         <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> 
-        <?php if($profile == 'sitter'){ echo "Sitter Profile Status"; }else{ 'Guest Profile Status'; }?>
+        <?php 
+        echo  ucfirst($profile).' Profile';
+       ?>
       </h3>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -39,23 +41,19 @@
               <ul class="list-unstyled text-left">
                 <li>
                   <span class="check-icon">
-                  </span> Details
+                  </span> Basic Detail
                 </li>
                 <li>
                   <span class="check-icon">
-                  </span> Photos
+                  </span> Contact Detail
                 </li>
                 <li>
                   <span class="cross-icon">
-                  </span> Testimonials
+                  </span> Emergency Contact
                 </li>
                 <li>
                   <span class="check-icon">
-                  </span> Safety
-                </li>
-                <li class="border-none">
-                  <span class="check-icon">
-                  </span> Background
+                  </span> Media
                 </li>
               </ul>
             </div>
@@ -205,26 +203,52 @@
             <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i1.png" alt="General Profile" class=" img-thumbnail">
             <div class="border-top" >
               <ul class="list-unstyled text-left">
-                <li>
-                  <span class="check-icon">
-                  </span> Details
-                </li>
-                <li>
-                  <span class="check-icon">
-                  </span> Photos
-                </li>
-                <li>
-                  <span class="cross-icon">
-                  </span> Testimonials
-                </li>
-                <li>
-                  <span class="check-icon">
-                  </span> Safety
-                </li>
-                <li class="border-none">
-                  <span class="check-icon">
-                  </span> Background
-                </li>
+				  <?php  
+				   if($profile_status['basic_detail'] == 'yes'){ ?>
+				  <li>
+					  <span class="check-icon">
+					  </span> Basic Detail
+                  </li>
+				 <?php }else{ ?>
+					  <li>
+						  <span class="cross-icon">
+						  </span> Basic Detail
+                      </li>
+				<?php } 
+				  if($profile_status['contact_detail'] == 'yes'){ ?>
+				  
+				  <li>
+					  <span class="check-icon">
+					  </span> Contact Detail
+                  </li>
+				 <?php }else{ ?>
+					  <li>
+						  <span class="cross-icon">
+						  </span> Contact Detail
+                      </li>
+				<?php } 
+				   if($profile_status['emergency_contact_detail'] == 'yes'){ ?>
+				  <li>
+					  <span class="check-icon">
+					  </span> Emergency Contact Detail
+                  </li>
+				 <?php }else{ ?>
+					  <li>
+						  <span class="cross-icon">
+						  </span> Emergency Contact Detail
+                      </li>
+				<?php }
+				 if($profile_status['media'] == 'yes'){ ?>
+				  <li>
+					  <span class="check-icon">
+					  </span> Media
+                  </li>
+				 <?php }else{ ?>
+					  <li>
+						  <span class="cross-icon">
+						  </span> Media
+                      </li>
+				<?php } ?>
               </ul>
             </div>
           </div>
@@ -240,23 +264,23 @@
               <ul class="list-unstyled text-left">
                 <li>
                   <span class="check-icon">
-                  </span> Details
+                  </span> About Property
                 </li>
                 <li>
+                  <span class="check-icon">
+                  </span> Description
+                </li>
+                <li>
+                  <span class="check-icon">
+                  </span> Photo
+                </li>
+                  <li>
                   <span class="cross-icon">
-                  </span>  Photos
-                </li>
-                <li>
-                  <span class="check-icon">
-                  </span> Testimonials
-                </li>
-                <li>
-                  <span class="check-icon">
-                  </span> Safety
+                  </span>  Pet in Home
                 </li>
                 <li class="border-none">
                   <span class="check-icon">
-                  </span> Background
+                  </span> Smokers
                 </li>
               </ul>
             </div>
@@ -271,23 +295,19 @@
               <ul class="list-unstyled text-left">
                 <li>
                   <span class="check-icon">
-                  </span> Details
+                  </span> Basic Detail
                 </li>
                 <li>
                   <span class="cross-icon">
-                  </span>  Photos
+                  </span>  Description
                 </li>
                 <li>
                   <span class="check-icon">
-                  </span>Testimonials
+                  </span>Photo
                 </li>
                 <li>
                   <span class="check-icon">
-                  </span> Safety
-                </li>
-                <li class="border-none">
-                  <span class="check-icon">
-                  </span> Background
+                  </span> Extended Profile
                 </li>
               </ul>
             </div>

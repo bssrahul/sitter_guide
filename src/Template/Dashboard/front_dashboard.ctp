@@ -86,7 +86,7 @@
         </div>
         <div class="easy-body">
           <div class="create-easy-step-green">
-            <h3>Create your guest profile with esay step
+            <h3>Create your sitter profile with esay step
             </h3>
             <p>Lorem Lorem ipsum adipisc dolor sit amet, consec adipiscing adipisc elLorem adipisc ipsamet, ipsum adipisc
               dolor sit amet, consec adipiscing adipisc 

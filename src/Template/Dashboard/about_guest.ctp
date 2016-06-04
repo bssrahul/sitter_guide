@@ -185,7 +185,22 @@
               </label>
               <div class="row" id="images_preview_1" >
 				  
-                <?php echo @$guest_images; ?>
+                <?php 
+                 if(@$guest_images != 'no_image'){
+					 echo @$guest_images;
+				 }else{ ?>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
+					  <img src="<?php echo HTTP_ROOT.'img/profile-dummy.png'?>" class="img-responsive center-block text-center" alt="img">
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
+					  <img src="<?php echo HTTP_ROOT.'img/profile-dummy.png'?>" class="img-responsive center-block text-center" alt="img">
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
+					  <img src="<?php echo HTTP_ROOT.'img/profile-dummy.png'?>" class="img-responsive center-block text-center" alt="img">
+					</div>
+					
+				<?php }
+                 ?>
               </div>
             </div>
             <div class="form-group col-lg-4 col-md-12">
@@ -787,13 +802,12 @@
             $('#browseImgDataRel').val(j);
   });
   $(document).ready(function(){
-
-   
-    //////////////////////////////
      //For browse images and save guest images
       $('#guest_images').on('change',function(){
         var j = $("#browseImgDataRel").val();
-         
+        
+        var guest_images = $('#images_preview_'+j).html();
+        
         jQuery('#multiple_upload_form').ajaxForm({
         //display the uploaded images
         //target:'#images_preview',
@@ -802,17 +816,20 @@
         },
         success:function(res){
           console.log(res);
-          //alert(res);
+        
         var data = jQuery.parseJSON(res);
-        //alert(data);
         if($.trim(data[0]) != ''){
+		  $('#show-all-errors_'+j).html("");	
           $('#show-all-errors_'+j).html(data[0]); //DISPLAY SUCCESS MESSAGE
 
         }
-        if($.trim(data[1]) != ' '){
+        if($.trim(data[1]) != ""){
           $('#images_preview_'+j).html(data[1]); //DISPLAY SUCCESS MESSAGE
 
         }
+        /*if($.trim(data[1]) != 'no_upload'){
+			$('#images_preview_'+j).html(guest_images);
+		}*/
            $('.uploading').hide();
         },
         error:function(e){

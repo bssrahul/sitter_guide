@@ -66,7 +66,6 @@ class DashboardController extends AppController
 		
 
 	}
-	
 	/**Function for landing page
 	*/
 	function home()
@@ -82,8 +81,14 @@ class DashboardController extends AppController
          $userId = $session->read('User.id');
             //For redirect on about guest tab
 				 $userData = $usersModel->find('all',['contain'=>[
-															'UserSitterHouses' 
-															]
+															'UserSitterHouses',
+															'UserPets'=>['UserPetGalleries'], 
+															'UserSitterServices', 
+															'UserProfessionalAccreditationsDetails',
+															'UserProfessionalAccreditations',
+															'UserAboutSitters',
+															'UserSitterGalleries'
+													            ]
 														]
 												)
 								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
@@ -98,20 +103,150 @@ class DashboardController extends AppController
 						$session->write('dog_in_home_status','no');
 					}
 				}
+				
+				$userInfo = $usersModel->get($userId)->toArray();
 			   //End
-        
+          //Profile Status
+         // pr($userData[0]->user_sitter_house->toArray());die;
+          //For basic details
+          $details_fields = array("first_name","last_name","email","password","gender","birth_date","address","country","city","state","zip","zone_id");
+         
+          $check_status = $this->check_fields_status($details_fields,$userInfo);
+          if($check_status){
+		     $profile_status['basic_detail'] = "yes";
+		  }else{
+			 $profile_status['basic_detail'] = "no";
+		  }
+		  //Contact detail
+		  $contact_fields = array("country_code","phone");
+         
+          $check_status = $this->check_fields_status($contact_fields,$userInfo);
+          if($check_status){
+		     $profile_status['contact_detail'] = "yes";
+		  }else{
+			 $profile_status['contact_detail'] = "no";
+		  }
+		  //Emergency contact detail
+		  $emergency_contact_field = array("emergency_contacts");
+         
+          $check_status = $this->check_fields_status($emergency_contact_field,$userInfo);
+          if($check_status){
+		     $profile_status['emergency_contact_detail'] = "yes";
+		  }else{
+			 $profile_status['emergency_contact_detail'] = "no";
+		  }
+          //media
+          $media_fields = array("image","profile_video","profile_video_image","profile_banner");
+          
+          $check_status = $this->check_fields_status($media_fields,$userInfo);
+          if($check_status){
+		     $profile_status['media'] = "yes";
+		  }else{
+			 $profile_status['media'] = "no";
+		  }
+		  //House details
+		  //pr($userData[0]);die;
+		  if(isset($userData[0]->user_sitter_house) && !empty($userData[0]->user_sitter_house)){
+				  $houseInfo = $userData[0]->user_sitter_house->toArray();
+				// pr($houseInfo);die;
+				  //About Property 
+				  $property_fields = array("about_home_desc","spaces_access_desc","home_pets_desc");
+				  
+				  $check_status = $this->check_fields_status($property_fields,$houseInfo);
+				  if($check_status){
+					 $profile_status['house_description'] = "yes";
+				  }else{
+					 $profile_status['house_description'] = "no";
+				  }
+				  //Pet in home
+				  $property_fields = array("birds_in_cages","dogs_in_home","cats_in_home");
+					 foreach($property_fields as $key=>$val){
+						if($houseInfo[$val] == 'yes'){
+							$profile_status['pet_in_home'] = "yes";
+						}else{
+							$profile_status['pet_in_home'] = "no";
+						}
+					  } 
+				//Description
+				  $description_fields = array("property_type","outdoor_area","outdoor_area_size","outing_allow_multiple","breaks_provided_every");
+				  
+				  $check_status = $this->check_fields_status($description_fields,$houseInfo);
+				  if($check_status){
+					 $profile_status['about_property'] = "yes";
+				  }else{
+					 $profile_status['about_property'] = "no";
+				  }
+					 //Photos
+					if(isset($userData[0]->user_sitter_galleries) && !empty($userData[0]->user_sitter_galleries)){
+						  $profile_status['profile_gallery_photo'] = "no";	
+					}
+					//Smokers
+					if($houseInfo['smokers'] == 'yes'){
+						$profile_status['smokers'] = "yes";
+					}else{
+						$profile_status['pet_in_home'] = "no";
+					}
+						
+			}
+		  
+		  
+		  //Guest details
+		  if(isset($userData[0]->user_pets) && !empty($userData[0]->user_pets)){
+			  
+			  $guestInfo = $userData[0]->user_pets[0]->toArray();
+			  
+			  //Basic detail
+			  $basic_fields = array("guest_name","guest_type","guest_breed","guest_weight","guest_age");
+			  $check_status = $this->check_fields_status($basic_fields,$guestInfo);
+			  if($check_status){
+				 $profile_status['guest_basic_detail'] = "yes";
+			  }else{
+				 $profile_status['guest_basic_detail'] = "no";
+			  }
+			  //Description
+			  $description_fields = array("guest_description");
+			  $check_status = $this->check_fields_status($description_fields,$guestInfo);
+			  if($check_status){
+				 $profile_status['guest_description'] = "yes";
+			  }else{
+				 $profile_status['guest_description'] = "no";
+			  }
+			  //Guest Photos
+			  if(isset($guestInfo['user_pet_galleries']) && !empty($guestInfo['user_pet_galleries'])){
+				  $profile_status['guest_photos'] = "yes";
+			  }else{
+				  $profile_status['guest_photos'] = "yes";
+			  }
+			 //pr($guestInfo);die;
+		  }
+		  $this->set('profile_status',$profile_status);
+		  
+		  //pr($profile_status);die;
+          //End
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
 				 $session->write('profile','sitter');
 			 }else{
 				 $session->write('profile','guest');
 			 }
-		}
+		 }
           //echo($session->read('profile'));die;
         $this->set('siteInfo',$siteInfo);
 
         //$session = $this->request->session();
         //echo $session->read('User.id'); die;
+	}
+	/**Function for check fields ampty or not
+	*/
+	function check_fields_status($fields = array(),$main_array = array()){
+		
+	   foreach($fields as $key=>$val){
+			    if(!empty($main_array[$val])){
+				   return true;
+		        }else{
+				   return false;
+				}
+		   } 
 	}
     /**
     Function for dashboard sitter details
@@ -462,6 +597,7 @@ class DashboardController extends AppController
          $this->request->data = @$_REQUEST;
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
+			
     if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
 	
 		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
@@ -557,7 +693,7 @@ class DashboardController extends AppController
 		 foreach($countrydata as $key=>$val){
                 $country_info[$val['phonecode']] = $val['iso']."     (".$val['phonecode'].")"; 
 		 }
-		 $this->set('counry_info',$country_info);
+		 $this->set('country_info',$country_info);
          $zonesModel = TableRegistry::get('Zones');
 		 $zones_data = $zonesModel->find('all')->toArray();
 		 foreach($zones_data as $key=>$val){
@@ -741,7 +877,7 @@ class DashboardController extends AppController
 	     
 
     }
-     /**
+    /**
     Function for about guest
     */
     function aboutGuest(){
@@ -804,20 +940,20 @@ class DashboardController extends AppController
                 if($count_pets == 1){
                    $this->set('guest_data', $userPetsData->user_pets[0]);
                   //For guest images
+                   $html = "no_image";
                   if(isset($userPetsData->user_pets[0]->user_pet_galleries) && !empty($userPetsData->user_pets[0]->user_pet_galleries)) {
                     $images_arr = $userPetsData->user_pets[0]->user_pet_galleries;
-                   $html = " ";
-                  
+                  $html = '';
                   $guest_images = array();
                   foreach($images_arr as $key=>$val){
 					   $guest_images[] = $val->image;
                    	   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
 						  <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center" alt="img">
 						</div>';
-                    }
+                   }
                   $session->write('UserPets.Guest1',$guest_images);
-                  $this->set('guest_images', $html);
                  }
+                  $this->set('guest_images', $html);
                 //End
                 }else{
                    $this->set('guests_data', $userPetsData->user_pets); 
@@ -839,13 +975,11 @@ class DashboardController extends AppController
 			     }
 			    //End
 		     	}
-                 
-		     }else{
+             }else{
 				$session->write("UserPets",'');
 		     	$this->set('guest1','guest1');
 		     }
 	      }
-           
     }
     /**
     Function for add pets
@@ -854,9 +988,11 @@ class DashboardController extends AppController
     	$petGalleryModel = TableRegistry::get('UserPetGalleries');
     	$usersModel = TableRegistry::get('Users');
          $guest_num = 'Guest'.$_REQUEST['guest'];
+           $session = $this->request->session();
+           
          $session->write("UserPets.$guest_num",'');
          
-          $session = $this->request->session();
+        
           $userId = $session->read('User.id');
               $images_arr = array();
 			    $errors = array();
@@ -890,15 +1026,20 @@ class DashboardController extends AppController
 					}else{
 					   unset($_FILES['images']);
 					}
-		                $FileArr = array();      
+		                $FileArr = array();  
+		                if($i > 2){
+							$errors[] = "You can select only three images for your pet";
+						}    
                 }
+                
+                
             $query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
-            //pr($query);die;
+          
              $guest_images = $session->read('guest_images');
              $html = "";
+            if($errors[0] != "You can select only three images for your pet"){ 
             if(isset($guest_images) && !empty($guest_images)){
-             //pr($guest_images);die;
-             	$i = 1;
+                 $i = 1;
 	             foreach($guest_images as $guest_image){
 	                   	   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
 	                  <img src="'.HTTP_ROOT.'img/uploads/'.$guest_image.'" class="img-responsive center-block text-center" alt="img">
@@ -911,6 +1052,7 @@ class DashboardController extends AppController
 	             }
 	             $session->write("UserPets.$guest_num",$guest_images);
             }
+		  }
             $error ="";
 	        if(!empty($errors)){
 	              foreach($errors as $key=>$val){
