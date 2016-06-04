@@ -345,9 +345,47 @@ class MessageController extends AppController
 		die;
 	}
 	
+	
 	/**
 	 * Funtion to get the chat detail
 	 */
+	 function getUserMessageCount(){
+	
+		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		$UsersModel = TableRegistry::get('Users');
+		
+		$session = $this->request->session();
+		$userType = $session->read('User.user_type');
+		
+		$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+		$fieldname = $userType == 'Sitter'?'folder_status_sitter':'folder_status_guest';
+		
+		$get_requests = $BookingRequestsModel->find('all')
+		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.read_status' => 'unread'])
+		->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
+															return $q->order(['BookingChats.id' => 'DESC']);
+														}
+									]
+		          ]
+		)
+		->select(['id'])
+		->hydrate(false)->toArray();
+	
+		$displayMessage = array();
+		$html='';
+		if(!empty($get_requests)){
+			echo count($get_requests);
+		}else{
+			echo 0;
+		}
+		die;
+			
+		
+	}
+	
+	/**
+	 * Funtion to get the chat detail
+	
 	 function getUserMessageCount(){
 	
 		$BookingRequestsModel = TableRegistry::get('BookingRequests');
@@ -457,7 +495,7 @@ class MessageController extends AppController
 			  </a>
 			</li>';
 		}die;
-	}
+	}*/
 	
 
 }

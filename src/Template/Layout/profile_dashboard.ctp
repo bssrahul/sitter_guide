@@ -35,8 +35,16 @@
 
 			echo $this->element('frontElements/profile/profile_header');
 			echo $this->element('frontElements/profile/profile_nav');?>
-			 <?php echo $this->Flash->render(); ?>
-			<div class="container-fluid main-container addBgColor">
+			 <?php echo $this->Flash->render();
+			 
+				if($this->request->action=='review'){
+					$bgClass='bg-fff';
+				}else{
+					$bgClass='addBgColor';
+				}
+			?>
+					  
+			<div class="container-fluid main-container <?php echo $bgClass; ?>">
 			   <div class=" main-container-outer">
 			      <div class="table-row">
 	                  <?php 
