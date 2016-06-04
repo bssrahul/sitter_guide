@@ -243,39 +243,48 @@ class GuestsController extends AppController
 				$email = trim($this->request->data['Users']['email']);
 				$password = md5(trim($this->request->data['Users']['password']));
 				$getValidUserData = 	$UsersModel->find('all',
-											['conditions' => ['Users.email' => $email,'Users.password' => $password,'status'=>'1']]
+											['conditions' => ['Users.email' => $email,'Users.password' => $password]]
 										);
 
 				if($getValidUserData->count()>0)
 				{
-					$getUserData =  $getValidUserData->first();
-					$UserData->id = $getUserData->id;
-					$UserData->last_login = date('Y-m-d h:i:s');
-					$UserData->avail_status = "Login";
-				 
-					$UsersModel->save($UserData);
-				 
-					$session->write('User.id', $getUserData->id);
-					$session->write('User.email', $getUserData->email);
-
-					$session->write('User.user_type', $getUserData->user_type);
-
-					$session->write('User.name', ucwords($getUserData->first_name." ".substr($getUserData->last_name,0,1)));
-
-					$session->write('User.facebook_id', $getUserData->facebook_id);
-					$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
-					$session->write('User.image', $getUserData->image);
-					$session->write('User.last_login', $getUserData->last_login);
-					$session->write('User.user_type', $getUserData->user_type);
-					
-					$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
-					if ($this->request->is('ajax')) {
-					  	echo 'Success:'.$this->stringTranslate(base64_encode('Successfully Authenticated, Please wait..'));
-					  	 //echo "<pre>";print_r($session->read('User')); die;
-					  	die;
-					}else{
-						return $this->redirect(['controller' => 'Guests', 'action' => 'home']);	
+					$getUserData =  $getValidUserData->first();	
+					if($getUserData->status==0){
+						if ($this->request->is('ajax')) {
+						  	echo 'Error:'.$this->stringTranslate(base64_encode('Email not verified yet.Kindly verify your email.'));
+						  	die;
+						}else{
+							$this->setErrorMessage($this->stringTranslate(base64_encode('Email not verified yet.Kindly verify your email.')));
 						}
+					}else{
+						
+						$UserData->id = $getUserData->id;
+						$UserData->last_login = date('Y-m-d h:i:s');
+						$UserData->avail_status = "Login";
+					 
+						$UsersModel->save($UserData);
+					 
+						$session->write('User.id', $getUserData->id);
+						$session->write('User.email', $getUserData->email);
+
+						$session->write('User.user_type', $getUserData->user_type);
+
+						$session->write('User.name', ucwords($getUserData->first_name." ".substr($getUserData->last_name,0,1)));
+
+						$session->write('User.facebook_id', $getUserData->facebook_id);
+						$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
+						$session->write('User.image', $getUserData->image);
+						$session->write('User.last_login', $getUserData->last_login);
+						$session->write('User.user_type', $getUserData->user_type);
+						
+						$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
+						if ($this->request->is('ajax')) {
+							echo 'Success:'.$this->stringTranslate(base64_encode('Successfully Authenticated, Please wait..'));
+							die;
+						}else{
+							return $this->redirect(['controller' => 'Guests', 'action' => 'home']);	
+						}
+					}	
 				}else{
 						if ($this->request->is('ajax')) {
 						  	echo 'Error:'.$this->stringTranslate(base64_encode('Authentication Failed! Please try again.'));

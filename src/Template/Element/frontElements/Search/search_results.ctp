@@ -47,10 +47,9 @@
             	<div class="sit-list-outer">            
             <!--sitter listing 1-->           
             <div class="all-sitter-listing">
+              <?php if(!empty($resultsData)){ ?>
               <ul class="all-sit-list">
-				<?php if(!empty($resultsData)){// pr($resultsData);die;
-				//pr($resultsData);
-			//	pr($resultsData[0]['user_sitter_galleries'][0]['image']);die;
+					<?php
 						$rankNo=1;
 						foreach($resultsData as $results){  ?>
 							<li>
@@ -183,8 +182,7 @@
 									 
 									  <!--rating-->
 										  <div class="sitter-rating">
-											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->								  <?php //echo $results->is_favourite; 
-										//pr($results->is_favourite);?>
+											<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
 											<?php $ratingData=$results->user_ratings;
 													$sum=0;$count=0;
 													foreach($ratingData as $rating){
@@ -336,10 +334,9 @@
                                      </div>
                                  <!--/facilities-->
 								  <!--likebox-->
-
 								  <div class="likebox favourite_sitter1"> 
 									
-										
+										<?php //echo $results->is_favourite; ?>
 										<?php if(trim($results->is_favourite)=='yes'){ ?>
 											<a data-count="<?php echo $results->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($results->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> <i class="icon-lock fa fa-heart heart-pos"></i>
 											</a>
@@ -361,16 +358,18 @@
 						
 						<?php 
 						$rankNo++;
-						}
-				}else{ ?>
-				
-					<div class="noresult-found">
-								<p>We couldn't find any sitters that matched your criteria.<br>
-								<span>Try changing your search criteria or updating your location.</span></p>
-					</div>
-			<?php } ?>
+						} ?>
+			
+
                 
               </ul>
+              <?php }else{ ?>
+				<div class="noresult-found">
+						<p>We couldn't find any sitters that matched your criteria.<br>
+						<span>Try changing your search criteria or updating your location.</span></p>
+				 </div>
+			  <?php } ?>	  
+              
             </div>            
             <!--sitter listing --> 
 				

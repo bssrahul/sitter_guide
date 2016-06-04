@@ -455,3 +455,11 @@ ul.dog_size li a.active {
 	margin-left:5px;
 
 }
+
+.rating {
+  border: medium none;
+  float: left;
+  left: -14px;
+  position: relative;
+  top: -7px;
+}
