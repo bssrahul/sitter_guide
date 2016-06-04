@@ -438,6 +438,14 @@ a:hover{
 	opacity: 0.4;
 	z-index: 999;
 }
+
+
+
+ul.dog_size li a.active {
+    border: 3px solid #72a105;
+    display: block;
+    padding: 3px 0;
+}
 .favouriteSection {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
     color: #da6a14 !important;
@@ -445,4 +453,13 @@ a:hover{
     text-decoration: none !important;
     outline: none;
 	margin-left:5px;
+
+}
+
+.rating {
+  border: medium none;
+  float: left;
+  left: -14px;
+  position: relative;
+  top: -7px;
 }

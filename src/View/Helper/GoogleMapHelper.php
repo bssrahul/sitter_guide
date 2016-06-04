@@ -246,6 +246,10 @@ class GoogleMapHelper extends Helper {
 
         $map .= "
       function setMarker(map, id, position, title, icon, shadow, content, showInfoWindow, draggableMarker){
+        
+        var iconHover  = icon.replace('markers_orange','');
+       
+        
         var index = markers.length;
         markersIds[markersIds.length] = id;
         markers[index] = new google.maps.Marker({
@@ -256,6 +260,14 @@ class GoogleMapHelper extends Helper {
                 draggable: draggableMarker,
                 title:title
             });
+            
+           google.maps.event.addListener(markers[index], 'mouseover', function() {
+				markers[index].setIcon(iconHover);
+			});
+			google.maps.event.addListener(markers[index], 'mouseout', function() {
+				markers[index].setIcon(icon);
+			}); 
+            
            if(content != '' && showInfoWindow){
              var infowindow = new google.maps.InfoWindow({
                   content: content

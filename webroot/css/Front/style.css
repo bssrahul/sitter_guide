@@ -26,7 +26,13 @@
 @import 'sign-up-thankyou.css';
 @import 'message.css';
 @import 'dashboard-profile.css';
+
 @import 'db-front-dashboard.css';
+
+@import 'db-front-details.css';
+@import 'db-review.css';
+@import 'db-communication.css';
+
 
 @font-face {
 	font-family: 'Conv_Raleway-Regular';

@@ -19,7 +19,18 @@
                   <!-- Main Menu -->
                   <div class="side-menu-container">
                     <ul class="nav navbar-nav">
-                      <li ><a href="<?php echo HTTP_ROOT.'dashboard/dashboard-details'; ?>"><span class="fa fa-user"></span><span class="side-list"><?php echo __('Dashboard'); ?></span></a></li>
+                      
+                      <?php if($this->request->action=='dashboardDetails'){
+						  
+						  $dashboard_class='class="active"';
+					  }else{
+						  $dashboard_class='class=""';
+						  
+					  }?>
+					  
+                      <li <?php echo $dashboard_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/dashboard-details'; ?>"><span class="fa fa-user"></span><span class="side-list"><?php echo __('Dashboard'); ?></span></a></li>
+                      
+                      
                       <li><a href="#"><span class="fa fa-smile-o"></span><span class="side-list"><?php echo __('Promote'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Tracker'); ?></span></a></li>
                       
@@ -88,7 +99,17 @@
 					  <li <?php echo $service_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates' ?>"><span class=" fa fa-list"></span> <span class="side-list"><?php echo __('Services').' $ '.__('rates'); ?></span></a></li>
                       
 					  <li><a href="#"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transections'); ?></span></a></li>
-                      <li><a href="review"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
+					  
+                      <?php if($this->request->action=='review'){
+						  
+						  $review_class='class="active"';
+					  }else{
+						  $review_class='class=""';
+						  
+					  }?>
+					  
+                      <li <?php echo $service_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/review' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
+                      
                       <li><a href="#"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
                       
                       <!-- Dropdown--> 

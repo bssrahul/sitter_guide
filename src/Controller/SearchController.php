@@ -39,12 +39,7 @@ class SearchController extends AppController
 	public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-         if(!$this->CheckGuestSession() && in_array($this->request->action,array('searchByLocation','sitterDetails'))){
-	     
-	     }else if(!$this->CheckGuestSession()){
-	     	$this->setErrorMessage($this->stringTranslate(base64_encode('Kindly login before perform this action.')));
-	     	return $this->redirect(['controller' => 'Guests','action'=>'home']);
-	     }
+        
          
 	    $categoryModel = TableRegistry::get('Categories');
 		$categoryData = $categoryModel->find('list',['fields' => ['title'],'conditions'=>['Categories.slug'=>'distance']])->toArray();
@@ -89,6 +84,193 @@ class SearchController extends AppController
 		
 		$conditions = array();
 		
+		if(!empty($this->request->data)){
+		
+			//pr($this->request->data); die;
+			$or_condition = array();
+			$and_condition = array();
+			
+			//SET CONDITION FOR TOP TAB SELECTED (TABLE NAME : users_sitter_services)
+			if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'house_sitting')){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sitter_house_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.guest_house_status=1'));
+			
+			}
+			else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'drop_visit' || $this->request->data['Search']['selected_service'] == 'bording')){
+				
+				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_drop_in_visit_status=1'));
+			
+			}else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'day_night_care')){
+			
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sh_day_care_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sh_night_care_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_day_care_status=1'));
+				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_night_care_status=1'));
+				
+			}else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'marketplace')){
+				$or_condition = array_merge($or_condition,array('UserSitterServices.market_place_status=1'));
+            }
+
+
+			if(isset($this->request->data['Search']['marketplace']) && !empty($this->request->data['Search']['marketplace'])){
+			
+				 $marker_place_service = explode(",",$this->request->data['Search']['marketplace']);
+			
+				foreach($marker_place_service as $service_type)
+				{
+					if($service_type == 'training'){
+					
+						$and_condition = array_merge($and_condition,array('UserSitterServices.mp_training_status=1'));
+					
+					}else if($service_type == 'recreation'){
+						
+						$and_condition = array_merge($and_condition,array('UserSitterServices.mp_recreation_status=1'));
+			
+					}else if($service_type == 'grooming'){
+						
+						$and_condition = array_merge($and_condition,array('UserSitterServices.mp_grooming_status=1'));
+					
+					}else if($service_type == 'driver'){
+						
+						$and_condition = array_merge($and_condition,array('UserSitterServices.mp_driver_service_status=1'));
+					} 
+				}
+			}
+		
+			
+			if(isset($this->request->data['Search']['dog_size']) && ($this->request->data['Search']['dog_size'] != '')){
+				
+				$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$this->request->data['Search']['dog_size'].'", UserAboutSitters.sh_pet_sizes)'));
+				
+			
+			}
+			
+            //pr($or_condition);die;
+			if(!empty($or_condition)){
+				$final_OR_Conditions = implode(" OR ",$or_condition); 
+				$where_finalConditions = 'WHERE ('.$final_OR_Conditions.")";
+			}else{
+				$where_finalConditions='';
+			}
+			
+			if(!empty($and_condition)){
+				$final_AND_Conditions = implode(" OR ",$and_condition); 
+				$where_finalConditions .= ' OR ('.$final_AND_Conditions.")";
+			}else{
+				$where_finalConditions='';
+			}
+			
+			//echo $where_finalConditions; die;
+			if($this->request->data['Search']['zip_code'] ==""){
+				
+				//SET LAT LONG AS PER IP ADDRESS
+				$sourceLocationLatitude = '30.7399738';
+				$sourceLocationLongitude = '76.7567368';
+			}else{
+				
+				//GET LATITUDE LONGITUDE FROM SELECTED ZIP CODE
+				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($this->request->data['Search']['zip_code'])."&sensor=false"; 
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+				$response = curl_exec($ch);
+				curl_close($ch);
+				$response_a = json_decode($response);
+				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+			}
+
+		
+			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:"200";
+			
+			$query='SELECT
+						  Users.id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						
+						FROM 
+						users as Users JOIN user_professional_accreditations_details as userProfessionalAccreditationsDetails  
+						
+						ON  Users.id = userProfessionalAccreditationsDetails.user_id
+						
+						JOIN 
+						user_sitter_houses as UserSitterHouses ON Users.id = UserSitterHouses.user_id
+						
+						JOIN 
+						user_about_sitters as UserAboutSitters ON Users.id = UserAboutSitters.user_id
+						
+						JOIN 
+						user_sitter_services as UserSitterServices ON Users.id = UserSitterServices.user_id
+						
+						'.$where_finalConditions.'
+						
+						HAVING distance < '.$searchByDistance.'
+						
+						ORDER BY distance';
+					
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+			
+			if(!empty($results)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($results as $resultsValue){
+						
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}
+				
+				$userData = $UsersModel->find('all',['contain'=>[
+														'UserAboutSitters',
+														'UserRatings',
+														'UserSitterServices',
+														'UserSitterGalleries'
+														]
+													]
+											)
+							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
+							   ->toArray();
+				$loggedInUserID = $session->read('User.id');
+				if($loggedInUserID !=''){
+					if(!empty($userData)){
+						foreach($userData as $k=>$eachRow){
+								
+							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
+							if($UserSitterFavourite>0){
+								$userData[$k]['is_favourite'] =  "yes";
+							}else{
+								$userData[$k]['is_favourite'] =  "no";
+							}
+								
+						}	 
+					}
+				}
+				
+				$this->set('resultsData',$userData);
+				$this->set('searchByDistance',$searchByDistance);
+				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
+				$this->set('sourceLocationLatitude',($sourceLocationLatitude)?$sourceLocationLatitude:'');
+				$this->set('sourceLocationLongitude',($sourceLocationLongitude)?$sourceLocationLongitude:'');
+				$this->set('headerSearchVal',(@$this->request->data['location_autocomplete'])?@$this->request->data['location_autocomplete']:'');
+			}		
+			
+		}		
+		
+		
+		
+		
 		
 		if(!isset($currentLang) && empty($currentLang)){
 
@@ -103,7 +285,7 @@ class SearchController extends AppController
 	*/
 	function AjaxSearch(){
 		
-		
+		//$this->viewBuilder()->layout('');
 		$this->request->data = $_REQUEST;	
         $session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
@@ -178,6 +360,7 @@ class SearchController extends AppController
 				$endPrice = str_replace("$","",$this->request->data['Search']['end_price']);
 				
 				if($this->request->data['Search']['selected_service']=='day_night_care' || $this->request->data['Search']['selected_service']=='house_sitting' || $this->request->data['Search']['selected_service'] == 'drop_visit'){
+					
 					//SET PRICE CONDITION FOR ONLY DAY OR NIGHT (TABLE NAME : users_sitter_services)
 					if(isset($this->request->data['Search']['what_time']) && !empty($this->request->data['Search']['what_time'])){
 						    if(array_key_exists ( 'day_care', $this->request->data['Search']['what_time']) && array_key_exists ( 'night_care', $this->request->data['Search']['what_time'])){
@@ -374,8 +557,7 @@ class SearchController extends AppController
 				
 				$userData = $UsersModel->find('all',['contain'=>[
 														'UserAboutSitters',
-														'UserRatings'=>[
-															'sort' => ['Comment.created' => 'DESC']],
+														'UserRatings',
 														'UserSitterServices',
 														'UserSitterGalleries'
 														]
@@ -398,7 +580,7 @@ class SearchController extends AppController
 						}	 
 					}
 				}
-				pr($userData); die;
+				
 				$this->set('resultsData',$userData);
 				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
@@ -519,8 +701,97 @@ class SearchController extends AppController
 		}
 		$this->render("search");
 	}
+	
+   /**
+	* Function to search profiles
+	*/
+	function searchByCities($city=null){
+	
+		$this->viewBuilder()->layout('landing');
+		$session = $this->request->session();
+		$currentLang = $session->read('requestedLanguage');
+		
+		//ADD MODEL
+		$UsersModel = TableRegistry::get('Users');
+		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
+		$conditions = array();
+		if(!empty($city)){
+		
+				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
+				$sourceSelectedLocation =$city;
+				//pr($sourceSelectedLocation);die;
+				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+				$response = curl_exec($ch);
+				curl_close($ch);
+				$response_a = json_decode($response);
+				//pr($response_a); die;
+				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+			
+		
+			$query='SELECT
+						  id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						FROM users
+						HAVING distance < 300
+						ORDER BY distance';
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+		}
+			if(!empty($results)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($results as $resultsValue){
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}
+				
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
+							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
+							   ->toArray();
+				$loggedInUserID = $session->read('User.id');
+				if($loggedInUserID !=''){
+					if(!empty($userData)){
+						foreach($userData as $k=>$eachRow){
+								
+							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
+							
+							if($UserSitterFavourite > 0){
+								$userData[$k]['is_favourite'] =  "yes";
+							}else{
+								$userData[$k]['is_favourite'] =  "no";
+							}
+								
+						}	 
+					}
+				}
+			}
+		
+		//pr($userData); die;
+		$this->set('resultsData',@$userData);
+		$this->set('distanceAssociation',@$distanceAssociation);
+		$this->set('sourceLocationLatitude',@$sourceLocationLatitude);
+		$this->set('sourceLocationLongitude',@$sourceLocationLongitude);
+		//$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
+		$this->render("search");
+	}
+	
 	/**
-    Function for sitter details
+	 Function for sitter details
 	*/	
 	function sitterDetails($sitterId = null){
 		$session = $this->request->session();
@@ -690,7 +961,7 @@ class SearchController extends AppController
 	*/
 	function thankYou()
 	{
-          $this->viewBuilder()->layout('landing');
+          $this->viewBuilder()->layout('landing');  
           //echo "Thoank You";die;
 	}
 		
@@ -733,93 +1004,6 @@ class SearchController extends AppController
 		}	
 		
 	}
-/**
-	* Function to search profiles
-	*/
-	function searchByCities($city=null){
-	
-		$this->viewBuilder()->layout('landing');
-		$session = $this->request->session();
-		$currentLang = $session->read('requestedLanguage');
-		
-		//ADD MODEL
-		$UsersModel = TableRegistry::get('Users');
-		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
-		$conditions = array();
-		if(!empty($city)){
-		
-				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
-				$sourceSelectedLocation =$city;
-				//pr($sourceSelectedLocation);die;
-				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $url);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-				$response = curl_exec($ch);
-				curl_close($ch);
-				$response_a = json_decode($response);
-				//pr($response_a); die;
-				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
-				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
-			
-		
-			$query='SELECT
-						  id, (
-							3959 * acos (
-							  cos ( radians('.$sourceLocationLatitude.') )
-							  * cos( radians( latitude ) )
-							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
-							  + sin ( radians('.$sourceLocationLatitude.') )
-							  * sin( radians( latitude ) )
-							)
-						  ) AS distance
-						FROM users
-						HAVING distance < 300
-						ORDER BY distance';
-			$connection = ConnectionManager::get('default');
-			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
-		}
-			if(!empty($results)){
-				$idArr = array();
-				$distanceAssociation = array();
-				foreach($results as $resultsValue){
-						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
-						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
-						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
-				}
-				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
-							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
-							   ->toArray();
-				$loggedInUserID = $session->read('User.id');
-				if($loggedInUserID !=''){
-					if(!empty($userData)){
-						foreach($userData as $k=>$eachRow){
-								
-							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
-							
-							if($UserSitterFavourite > 0){
-								$userData[$k]['is_favourite'] =  "yes";
-							}else{
-								$userData[$k]['is_favourite'] =  "no";
-							}
-								
-						}	 
-					}
-				}
-			}
-		
-		//pr($userData); die;
-		$this->set('resultsData',@$userData);
-		$this->set('distanceAssociation',@$distanceAssociation);
-		$this->set('sourceLocationLatitude',@$sourceLocationLatitude);
-		$this->set('sourceLocationLongitude',@$sourceLocationLongitude);
-		//$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
-		$this->render("search");
-	}
-	
+
 }
 ?>

@@ -1,4 +1,4 @@
-<div class="col-md-9 col-lg-10 col-sm-8 " >
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
           <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
             <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
               <h3><img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Dashboard</h3>
@@ -66,12 +66,12 @@
               <div class=" top-box">
                 <div class="client-icon"></div>
                 <div class="topbox-text">
-                  <h4><?php echo @$sitter_data['clients']; ?></h4>
+                  <h4><?php echo isset($sitter_data['clients'])?$sitter_data['clients']:0; ?></h4>
                   <p>New clients</p>
                 </div>
               </div>
               <div class="below-top-box">
-                <p>You have <?php echo @$sitter_data['clients']; ?> new clients</p>
+                <p>You have <?php echo isset($sitter_data['clients'])?$sitter_data['clients']:0; ?> new clients</p>
               </div>
               <div class="second-box-header">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -213,12 +213,12 @@
               <div class=" top-box">
                 <div class="event-icon"></div>
                 <div class="topbox-text">
-                  <h4><?php echo @$sitter_data['events']; ?></h4>
+                  <h4><?php echo isset($sitter_data['events'])?$sitter_data['events']:0; ?></h4>
                   <p>Events</p>
                 </div>
               </div>
               <div class="below-top-box">
-                <p>You have currently <?php echo @$sitter_data['events']; ?> new events</p>
+                <p>You have currently <?php echo isset($sitter_data['events'])?$sitter_data['events']:0; ?> new events</p>
               </div>
               <div class="second-box-header">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -266,12 +266,12 @@
               <div class=" top-box">
                 <div class="alerts-icon"></div>
                 <div class="topbox-text">
-                  <h4><?php echo @$sitter_data['alerts']; ?></h4>
+                  <h4><?php echo isset($sitter_data['alerts'])?$sitter_data['alerts']:0; ?></h4>
                   <p>Alerts</p>
                 </div>
               </div>
               <div class="below-top-box">
-                <p><?php echo @$sitter_data['alerts']; ?> Unread message</p>
+                <p><?php echo isset($sitter_data['alerts'])?$sitter_data['alerts']:0; ?> Unread message</p>
               </div>
               <div class="second-box-header">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
