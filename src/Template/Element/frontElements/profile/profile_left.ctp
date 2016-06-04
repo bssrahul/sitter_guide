@@ -83,12 +83,22 @@
 							</div>
 						</li>
                       
+        
                       
-                      
-                      <li><a href="#"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
-                      
+                      <?php if($this->request->action=='profile' || $this->request->action=='sitterHouse' || $this->request->action=='aboutSitter' || $this->request->action=='professionalAccreditations'){
+						  
+						  $profile_class='class="active"';
+					  }else{
+						  $profile_class='class=""';
+						  
+					  }?>
                     
 					  <li <?php echo $profile_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard' ?>"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
+
+                      <li><a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
+                      
+
+
                        <?php if($this->request->action=='servicesAndRates'){
 						  
 						  $service_class='class="active"';
