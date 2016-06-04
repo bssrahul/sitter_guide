@@ -76,7 +76,7 @@
                       
                       
                       
-                      <li><a href="#"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
+                      <li><a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
                       <?php if($this->request->action=='profile' || $this->request->action=='sitterHouse' || $this->request->action=='aboutSitter' || $this->request->action=='professionalAccreditations'){
 						  
 						  $profile_class='class="active"';
