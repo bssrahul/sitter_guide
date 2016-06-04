@@ -55,7 +55,7 @@
 							  <ul class="c-list c-list-2">  
 								
 								<li>
-								  <a href="<?php echo HTTP_ROOT.'dashboard/home' ?>"><i class="fa fa-dashboard"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Dashboard')); ?></a>
+								  <a href="<?php echo HTTP_ROOT.'dashboard/dashboard-details'; ?>"><i class="fa fa-dashboard"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Dashboard')); ?></a>
 								</li>
 								
 								<li>
@@ -84,15 +84,15 @@
                       </li>
                        <!--MESSAGE LI START -->
                      <li  class="dropdown">
-						  <a  id="droplog3" href="#" class="dropdown-toggle" data-toggle="dropdown">Message  
+						  <a  id="droplog3" href="<?php echo HTTP_ROOT.'Message/get-messages/pending'; ?>" > Message   <!--class="dropdown-toggle" data-toggle="dropdown"--> 
 							<span class="badge myNewCount"></span>
 						  </a>
 						</a>
-						<div class="dropdown-menu currency-drop drop-profile message-width  hidden-xs " id="dropcont3">
+						<!--<div class="dropdown-menu currency-drop drop-profile message-width  hidden-xs " id="dropcont3">
 						  <ul id="myNewMsgs" class="c-list c-list-2">
 						  
 						  </ul>
-						</div>
+						</div>-->
 						</li>  <!--MESSAGE LI CLOSED -->
 
                       

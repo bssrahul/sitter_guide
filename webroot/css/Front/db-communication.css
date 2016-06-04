@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+.communication-wrap { background:#eaeaea; padding:0px 30px 30px 30px; margin-top:30px; margin-bottom:30px; }
+.communication-wrap .comm-text { background:#fff; padding:20px; margin-top:30px;}
+.communication-wrap .comm-text select > option {  padding:2px 15px;}
+
+.communication-wrap .comm-text h5 { color:#828281; font-size:18px;  font-family: 'Raleway', sans-serif; font-weight:400; padding-bottom:15px; }
+
+.communication-wrap .comm-box1 { background:#fff; margin-top:20px; padding:15px 20px;}
+.communication-wrap .comm-box1 h6 { color:#828281; font-size:15px;  font-family: 'Raleway', sans-serif; font-weight:400; line-height:22px; }
+
+.communication-wrap .chek-main-lat .onoffswitch {
+    -moz-user-select: none;
+    bottom: -3px;
+    margin-bottom: 0;
+    position: relative;
+    width: 70px;
+}
+
+.communication-wrap .box-small-text { text-align:right; font-size:11px; font-style:italic; color:#828281; padding-top:10px;}
+.communication-wrap .box-text {  font-size:14px;  color:#828281;}
+
+.communication-wrap select.form-control {
+    -moz-appearance: none;
+    background-image: url("../images/arw.png");
+    background-position: right 15px center;
+    background-repeat: no-repeat;
+    border: 0px solid #aaaaaa;
+    border-radius: 3px; color:#828281;
+    box-shadow: none; font-size:13px;
+    height: 30px; background-color:#eaeaea;
+}
+
+.box-padt { padding-top:15px;}
+.btn-comm-save { background:#72a105; color:#fff !important; height:47px; width:150px; outline:none; text-decoration:none; margin-top:30px; border-radius:0px; text-transform:uppercase;}
+.btn-comm-save:hover, .btn-comm-save:focus  { background:#6c9905; color:#fff; height:47px; width:150px; outline:none; text-decoration:none; margin-top:30px; border-radius:0px; text-transform:uppercase;}
+
+@media  ( max-width:1600px)
+
+
+{
+	.communication-wrap .comm-text h5 {  font-size:14px;}
+	
+	
+	
+	}
+	
+	
+	
+	@media  ( max-width:767px){
+		
+		
+		.communication-wrap { background:#eaeaea; padding:0px 10px 10px 10px; margin-top:30px; margin-bottom:30px; }
+		
+		
+		.communication-wrap .comm-text {
+  
+    margin-top: 10px;
+   
+}
+	
+	.communication-wrap .comm-box1 {
+    
+    margin-top: 10px;
+    
+}
+	
+	
+	.btn-comm-save { margin-top:10px;}
+	.btn-comm-save:hover, .btn-comm-save:focus  { margin-top:10px;}
+		
+		}

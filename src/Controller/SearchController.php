@@ -39,12 +39,7 @@ class SearchController extends AppController
 	public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-         if(!$this->CheckGuestSession() && in_array($this->request->action,array('search','AjaxSearch','searchByLocation','searchByCities'))){
-	     
-	     }else if(!$this->CheckGuestSession()){
-	     	$this->setErrorMessage($this->stringTranslate(base64_encode('Kindly login before perform this action.')));
-	     	return $this->redirect(['controller' => 'Guests','action'=>'home']);
-	     }
+        
          
 	    $categoryModel = TableRegistry::get('Categories');
 		$categoryData = $categoryModel->find('list',['fields' => ['title'],'conditions'=>['Categories.slug'=>'distance']])->toArray();
@@ -290,7 +285,7 @@ class SearchController extends AppController
 	*/
 	function AjaxSearch(){
 		
-		$this->viewBuilder()->layout('');
+		//$this->viewBuilder()->layout('');
 		$this->request->data = $_REQUEST;	
         $session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
@@ -966,7 +961,7 @@ class SearchController extends AppController
 	*/
 	function thankYou()
 	{
-          $this->viewBuilder()->layout('landing');
+          $this->viewBuilder()->layout('landing');  
           //echo "Thoank You";die;
 	}
 		
