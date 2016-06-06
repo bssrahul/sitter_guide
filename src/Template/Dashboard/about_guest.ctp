@@ -12,7 +12,7 @@
 
   <div id="menu2" class="tab-pane fade tab-comm active in">
         
-        <h2 class="head-font">Now let us know who the sitter will be looking after.
+        <h2 id="basic-details" class="head-font">Now let us know who the sitter will be looking after.
         </h2>
         <p class="head-font2 pad-head-foot pad-22t">Your guest preferences are managed here
         </p>

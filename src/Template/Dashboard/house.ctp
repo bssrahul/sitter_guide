@@ -13,8 +13,8 @@
 
  <div id="menu11" class="tab-pane fade tab-comm active in">
           <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insight about your home')); ?></h2>
-          <p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
-          <p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
+          <p id="about-property" class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
+          <p  class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
                   <!--<form role="form">-->
                   <?php echo $this->Form->create(@$sitterHouseData,[
                       'url' => ['controller' => 'dashboard', 'action' => 'house'],

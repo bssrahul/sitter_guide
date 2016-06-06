@@ -17,7 +17,7 @@
 
 
                <div id="menu2" class="tab-pane fade tab-comm active in">
-                <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Now let us know why you’re a great sitter')); ?></h2>
+                <h2 id="yourself-description" class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Now let us know why you’re a great sitter')); ?></h2>
                 <p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your sitter preferences are managed here')); ?></p>
                  <p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share with us your sitting style, as well as what you will and wont accept as a sitter.')); ?></p>
                 

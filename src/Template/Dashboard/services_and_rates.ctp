@@ -12,7 +12,7 @@
 					<h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
 					<p class="head-font2 pad-head-foot pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can select and modify your settings in this central control panel')); ?></p>
 								
-					<h4><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="#" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('  to update your calendar settings')); ?> </h4>
+					<h4 id="terms" ><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="#" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('  to update your calendar settings')); ?> </h4>
 				 
 				 <h3></h3>
 					 <?php 
