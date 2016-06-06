@@ -118,36 +118,36 @@ class DashboardController extends AppController
          
           $check_status = $this->check_fields_status($details_fields,$userInfo);
           if($check_status){
-		     $profile_status['basic_detail'] = "yes";
+		     $profile_status['User']['basic_detail'] = "yes";
 		  }else{
-			 $profile_status['basic_detail'] = "no";
+			 $profile_status['User']['basic_detail'] = "no";
 		  }
 		  //Contact detail
 		  $contact_fields = array("country_code","phone");
          
           $check_status = $this->check_fields_status($contact_fields,$userInfo);
           if($check_status){
-		     $profile_status['contact_detail'] = "yes";
+		     $profile_status['User']['contact_detail'] = "yes";
 		  }else{
-			 $profile_status['contact_detail'] = "no";
+			 $profile_status['User']['contact_detail'] = "no";
 		  }
 		  //Emergency contact detail
 		  $emergency_contact_field = array("emergency_contacts");
          
           $check_status = $this->check_fields_status($emergency_contact_field,$userInfo);
           if($check_status){
-		     $profile_status['emergency_contact_detail'] = "yes";
+		     $profile_status['User']['emergency_contact_detail'] = "yes";
 		  }else{
-			 $profile_status['emergency_contact_detail'] = "no";
+			 $profile_status['User']['emergency_contact_detail'] = "no";
 		  }
           //media
           $media_fields = array("image","profile_video","profile_video_image","profile_banner");
           
           $check_status = $this->check_fields_status($media_fields,$userInfo);
           if($check_status){
-		     $profile_status['media'] = "yes";
+		     $profile_status['User']['media'] = "yes";
 		  }else{
-			 $profile_status['media'] = "no";
+			 $profile_status['User']['media'] = "no";
 		  }
 		  //House details
 		  //pr($userData[0]);die;
@@ -159,17 +159,17 @@ class DashboardController extends AppController
 				  
 				  $check_status = $this->check_fields_status($property_fields,$houseInfo);
 				  if($check_status){
-					 $profile_status['house_description'] = "yes";
+					 $profile_status['House']['house_description'] = "yes";
 				  }else{
-					 $profile_status['house_description'] = "no";
+					 $profile_status['House']['house_description'] = "no";
 				  }
 				  //Pet in home
 				  $property_fields = array("birds_in_cages","dogs_in_home","cats_in_home");
 					 foreach($property_fields as $key=>$val){
 						if($houseInfo[$val] == 'yes'){
-							$profile_status['pet_in_home'] = "yes";
+							$profile_status['House']['pet_in_home'] = "yes";
 						}else{
-							$profile_status['pet_in_home'] = "no";
+							$profile_status['House']['pet_in_home'] = "no";
 						}
 					  } 
 				//Description
@@ -177,19 +177,19 @@ class DashboardController extends AppController
 				  
 				  $check_status = $this->check_fields_status($description_fields,$houseInfo);
 				  if($check_status){
-					 $profile_status['about_property'] = "yes";
+					 $profile_status['House']['about_property'] = "yes";
 				  }else{
-					 $profile_status['about_property'] = "no";
+					 $profile_status['House']['about_property'] = "no";
 				  }
 					 //Photos
 					if(isset($userData[0]->user_sitter_galleries) && !empty($userData[0]->user_sitter_galleries)){
-						  $profile_status['profile_gallery_photo'] = "no";	
+						  $profile_status['House']['profile_gallery_photo'] = "no";	
 					}
 					//Smokers
 					if($houseInfo['smokers'] == 'yes'){
-						$profile_status['smokers'] = "yes";
+						$profile_status['House']['smokers'] = "yes";
 					}else{
-						$profile_status['pet_in_home'] = "no";
+						$profile_status['House']['smokers'] = "no";
 					}
 						
 			}
@@ -204,29 +204,144 @@ class DashboardController extends AppController
 			  $basic_fields = array("guest_name","guest_type","guest_breed","guest_weight","guest_age");
 			  $check_status = $this->check_fields_status($basic_fields,$guestInfo);
 			  if($check_status){
-				 $profile_status['guest_basic_detail'] = "yes";
+				 $profile_status['UserPets']['guest_basic_detail'] = "yes";
 			  }else{
-				 $profile_status['guest_basic_detail'] = "no";
+				 $profile_status['UserPets']['guest_basic_detail'] = "no";
 			  }
 			  //Description
 			  $description_fields = array("guest_description");
 			  $check_status = $this->check_fields_status($description_fields,$guestInfo);
 			  if($check_status){
-				 $profile_status['guest_description'] = "yes";
+				 $profile_status['UserPets']['guest_description'] = "yes";
 			  }else{
-				 $profile_status['guest_description'] = "no";
+				 $profile_status['UserPets']['guest_description'] = "no";
 			  }
 			  //Guest Photos
-			  if(isset($guestInfo['user_pet_galleries']) && !empty($guestInfo['user_pet_galleries'])){
-				  $profile_status['guest_photos'] = "yes";
+			  if(isset($guestInfo['UserPets']['user_pet_galleries']) && !empty($guestInfo['user_pet_galleries'])){
+				  $profile_status['UserPets']['guest_photos'] = "yes";
 			  }else{
-				  $profile_status['guest_photos'] = "yes";
+				  $profile_status['UserPets']['guest_photos'] = "yes";
+			  }
+			  //Behaviour
+			  $behaviour_fields = array("veterinary_name","friendly_with","care_instructions");
+			  $check_status = $this->check_fields_status($behaviour_fields,$guestInfo);
+			  if($check_status){
+				 $profile_status['UserPets']['behaviour'] = "yes";
+			  }else{
+				 $profile_status['UserPets']['behaviour'] = "no";
 			  }
 			 //pr($guestInfo);die;
 		  }
+		  //About Sitter
+		   if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
+			  $aboutSitterInfo = $userData[0]->user_about_sitter->toArray();
+			  //Sitter description
+			  $description_fields = array("your_self","client_choose_desc");
+			  $check_status = $this->check_fields_status($description_fields,$aboutSitterInfo);
+			  if($check_status){
+				 $profile_status['AboutSitter']['sitter_description'] = "yes";
+			  }else{
+				 $profile_status['AboutSitter']['sitter_description'] = "no";
+			  }
+			  //Accepted pet
+			  $accepted_fields = array("sh_pet","sh_pet_sizes");
+			  $check_status = $this->check_fields_status($accepted_fields,$aboutSitterInfo);
+			  if($check_status){
+				 $profile_status['AboutSitter']['accepted_pet'] = "yes";
+			  }else{
+				 $profile_status['AboutSitter']['accepted_pet'] = "no";
+			  }
+			  //Preferred guest ages pet
+			  $preferred_fields = array("sh_guest_age");
+			  $check_status = $this->check_fields_status($preferred_fields,$aboutSitterInfo);
+			  if($check_status){
+				 $profile_status['AboutSitter']['preferred_age'] = "yes";
+			  }else{
+				 $profile_status['AboutSitter']['preferred_age'] = "no";
+			  }
+			  
+		   }
+		    if(isset($userData[0]->user_professional_accreditations_details) && !empty($userData[0]->user_professional_accreditations_details) && isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)){
+			  $skillsAccreditations =$userData[0]->user_professional_accreditations[0]->toArray();
+			  $skillsAccreditationsDetailsInfo = $userData[0]->user_professional_accreditations_details[0]->toArray();
+			 
+			  foreach($userData[0]->user_professional_accreditations as $key=>$val){
+				 if(($val->type_professional == "check") && ($val->sector_type == "govt") && !empty($val->scanned_certification)){
+				     //echo $val->type_professional.$val->sector_type.$val->scanned_certification;
+				     $profile_background_check['police_background_check'] = "yes";
+			     }else{
+					 $profile_background_check['police_background_check'] = "no";
+				 } 
+				 if(($val->type_professional == "govt") && ($val->sector_type == "licence") && !empty($val->scanned_certification)){
+				  	 $profile_background_check['licence'] = "yes";
+			     }else{
+					 $profile_background_check['licence'] = "no";
+				 }
+			  }
+			  if(($profile_background_check['police_background_check'] == 'yes') && ($profile_background_check['licence'] == 'yes')){
+				   $profile_status['skillsAndAccreditationDetails']['background_check'] = "yes";
+			  }else{
+				   $profile_status['skillsAndAccreditationDetails']['background_check'] = "no";
+			  }
+			  //Experience
+			  $experience_fields = array("experience");
+			  $check_status = $this->check_fields_status($experience_fields,$skillsAccreditationsDetailsInfo);
+			  if($check_status){
+				 $profile_status['skillsAndAccreditationDetails']['experience'] = "yes";
+			  }else{
+				 $profile_status['skillsAndAccreditationDetails']['experience'] = "no";
+			  }
+			  //Language
+			  $languages_fields = array("languages");
+			  $check_status = $this->check_fields_status($languages_fields,$skillsAccreditationsDetailsInfo);
+			  if($check_status){
+				 $profile_status['skillsAndAccreditationDetails']['language'] = "yes";
+			  }else{
+				 $profile_status['skillsAndAccreditationDetails']['language'] = "no";
+			  }
+			}
+			if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
+			     $servicesInfo = $userData[0]->user_sitter_services[0]->toArray();
+			     //pr($servicesInfo);die;
+			  //Terms
+			  if(($servicesInfo['cancellation_policy_status'] == 1) && ($servicesInfo['booking_status'] == 1)){
+				 $profile_status['servicesAndRates']['terms'] = "yes";
+			  }else{
+				 $profile_status['servicesAndRates']['terms'] = "no";
+			  }
+			  //Sitter House
+			  if($servicesInfo['sitter_house_status'] == 1){
+				 $profile_status['servicesAndRates']['sitter_house_status'] = "yes";
+			  }else{
+				 $profile_status['servicesAndRates']['sitter_house_status'] = "no";
+			  }
+			  //Guest House
+			  if($servicesInfo['guest_house_status'] == 1){
+				 $profile_status['servicesAndRates']['guest_house_status'] = "yes";
+			  }else{
+				 $profile_status['servicesAndRates']['guest_house_status'] = "no";
+			  }
+			  //Maket Place
+			  if($servicesInfo['market_place_status'] == 1){
+				 $profile_status['servicesAndRates']['market_place_status'] = "yes";
+			  }else{
+				 $profile_status['servicesAndRates']['market_place_status'] = "no";
+			  }
+			  //Calender
+			  $calender_fields = array("sh_dc_additional_guest_limit","sh_nc_additional_guest_limit","	gh_dc_additional_guest_limit","gh_nc_additional_guest_limit");
+			  $check_status = $this->check_fields_status($calender_fields,$servicesInfo);
+			  if($check_status){
+				 $profile_status['servicesAndRates']['calender'] = "yes";
+			  }else{
+				 $profile_status['servicesAndRates']['calender'] = "no";
+			  }
+		    }
+		    //Skills and Accreditations 
 		  $this->set('profile_status',$profile_status);
+		  //pr($profile_status['skillsAndAccreditationDetails']);die;
 		  
-		  //pr($profile_status);die;
+		 //pr($userData[0]->user_sitter_services);die;
+		 // pr($profile_status);die;
           //End
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
