@@ -463,3 +463,8 @@ ul.dog_size li a.active {
   position: relative;
   top: -7px;
 }
+
+topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
+    
+    margin: 10px 12px 0 0 !important;
+}

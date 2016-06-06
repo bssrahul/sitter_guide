@@ -81,6 +81,7 @@ class SearchController extends AppController
 		
 		//ADD MODEL
 		$UsersModel = TableRegistry::get('Users');
+		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
 		
 		$conditions = array();
 		
