@@ -82,6 +82,9 @@
 							<li>
 							   <a href="<?php echo HTTP_ROOT."cmspages/blogs-listing" ?>"><i class="fa fa-bullhorn"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Manage Blog')); ?> </span></a>
 							</li>
+							<li>
+							   <a href="<?php echo HTTP_ROOT."services/services-listing" ?>"><i class="fa fa-pie-chart"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Manage Services')); ?> </span></a>
+							</li>
 						</ul>
                     </li>
 					
