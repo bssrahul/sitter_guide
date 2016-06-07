@@ -463,3 +463,9 @@ ul.dog_size li a.active {
   position: relative;
   top: -7px;
 }
+.row.ajaxAdd {
+    padding: 0 20px;
+}
+.showHideBreed1{
+      display:none;
+}
