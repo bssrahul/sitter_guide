@@ -59,7 +59,7 @@ class ServicesController extends AppController
 		//Load Services model
 		$ServicesModel = TableRegistry::get("Services");
 		
-		//Upload category image
+		//Upload services image
 	    if(isset($this->request->data) && !empty($this->request->data)) {
 				   
 			$ServicesData = $ServicesModel->newEntity($this->request->data['Services'],['validate' => true]);
@@ -83,7 +83,7 @@ class ServicesController extends AppController
 				   unset($ServicesData->image);
 				}
 			
-				//Save Category data
+				//Save services data
 		        //CODE FOR MULTILIGUAL START
 				$this->i18translation($ServicesModel);
 				$this->i18translation($ServicesData);
@@ -105,40 +105,54 @@ class ServicesController extends AppController
 	/**Function for edit user
 	*/
 	function editServices($id = NULL){
-		
 		$this->viewBuilder()->layout('admin_dashboard');
+		$id=convert_uudecode(base64_decode($id));
 		$ServicesModel = TableRegistry::get("Services");
-		
-	    if(isset($this->request->data) && !empty($this->request->data))
-		{
-			
-		   $ServicesData = $ServicesModel->newEntity();
-            $Servicesimage = $this->request->data['Services']['image']['name'];
-				
-				$ServicesData = $ServicesModel->patchEntity($ServicesData, $this->request->data['Services'],['validate'=>'update']);
-		        if($Servicesimage!=''){
-					$ServicesMed = $this->admin_upload_file('ServicesImg',$this->request->data['Services']['image']);
-					$ServicesMed = explode(':',$ServicesMed);
-					if($ServicesMed[0]=='error'){
-					   $this->Flash->error(__($ServicesMed[1]));
+	 
+		if(isset($this->request->data) && !empty($this->request->data)){
+			//pr($this->request->data); die;
+			$ServicesData = $ServicesModel->newEntity($this->request->data['Services'],['validate' => true]);
+			$ServicesData->id = $servicesId = $this->request->data['Services']['id'];
+			$imagename = $this->request->data['Services']['image']['name'];
+			 
+			if (!$ServicesData->errors()){
+				//Upload user image
+				if($imagename!=''){
+					$servicesImg = $this->admin_upload_file('ServicesImg',$this->request->data['Services']['image']);
+					
+					$servicesImg = explode(':',$servicesImg);
+					if($servicesImg[0]=='error'){
+					  $this->Flash->error(__($servicesImg[1]));
 					   return $this->redirect($this->referer());
 					}else{
-						$ServicesData->image = $ServicesMed[1];
+						$ServicesData->image = $servicesImg[1];
 					}				
 				}else{
-				   unset($this->request->data['Services']['image']);
+				   unset($ServicesData->image);
 				}
+
+				//CODE FOR MULTILIGUAL START
+				$this->i18translation($ServicesModel);
+				$this->i18translation($ServicesData);
+				//CODE FOR MULTILIGUAL END
 				
-		        if ($ServicesModel->save($ServicesData)) {
-					$this->Flash->success(__("Record has been updated Successfully"));
-					return $this->redirect(['controller'=>'Services','action'=>'Services-listing']);
-				}else{
-					$this->Flash->error(__('Error found, Kindly fix the errors.'));
+				
+				if($ServicesModel->save($ServicesData)){
+					$this->Flash->success(__('Record has been added Successfully'));
+					return $this->redirect(['action'=>'services-listing','controller'=>'Services']);
 				}
-	    }else{
-		   $ServicesData = $ServicesModel->get(convert_uudecode(base64_decode($id)));
-	    }
-	  $this->set('ServicesInfo', $ServicesData);
+			}else{
+				$servicesInfo = $ServicesModel->get($servicesId);
+				$this->set('servicesInfo',$servicesInfo);
+				$this->set([
+				'errors' => $ServicesData->errors(), 
+				'_serialize' => ['errors']]);
+				return;
+			}
+		}else{
+			$servicesInfo = $ServicesModel->get($id);
+			$this->set('ServicesInfo',$servicesInfo);
+		}
 	}
 	
 	/**Function for Services list*/

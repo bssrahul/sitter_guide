@@ -95,7 +95,7 @@
 								</td>
 								<td class="text-center">
 									<div class="text-centerimage view-first">
-										<img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($services_info->image != ''?$services_info->image:'dummy.jpg'); ?>"/>
+										<img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/services/'.($services_info->image != ''?$services_info->image:'dummy.jpg'); ?>"/>
 										
 									</div>
 								      

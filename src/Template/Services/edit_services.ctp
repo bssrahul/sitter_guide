@@ -36,6 +36,19 @@
 												'value'=>$ServicesInfo->title != '' ?$ServicesInfo->title:'']);
 										 ?>
 									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Read More Link')); ?> <span class="required">*</span>
+										</label>
+										<?php 
+										 echo $this->Form->input('Services.read_more_url',[
+												'templates' => ['inputContainer' => '<div class="col-md-6 col-sm-6 col-xs-12">{{content}}</div>'],
+												'label' => false, 
+												 'value'=>$ServicesInfo->read_more_url != '' ?$ServicesInfo->read_more_url:'',
+												'class'=>'form-control col-md-7 col-xs-12']);
+										 ?>
+									</div>
+									
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
 										</label>
@@ -56,7 +69,7 @@
 												  'class'=>'form-control col-md-7 col-xs-12']);
 											?>
 										    <br/>
-										    <img alt="Image not found" class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/'.($ServicesInfo->image != ''?$ServicesInfo->image:'dummy.jpg'); ?>"/>
+										    <img alt="Image not found" class="img-circle profile_img catImg" style="width:100px !important"  src="<?php echo HTTP_ROOT.'img/uploads/services/'.($ServicesInfo->image != ''?$ServicesInfo->image:'dummy.jpg'); ?>"/>
 										    
 										   
 										</div>
