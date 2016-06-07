@@ -72,7 +72,7 @@
 								</li>
 								
 								<li>
-									<a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"><i class="fa fa-user"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile')); ?></a>
+									<a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard'; ?>"><i class="fa fa-user"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile')); ?></a>
 								</li>
 								
 								<li>
