@@ -49,7 +49,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Users Listing')); ?></h2>
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Users Listing')); ?></h2>
 					
 					<div class="clearfix"></div>
 				</div>
@@ -61,18 +61,18 @@
 							<tr class="headings">
 								<th >
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
-								<th class="column-title" style="width:100px;"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
-								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
-								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
-								<th class="column-title no-link last" ><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title" style="width:100px;"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?></th>
+								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title no-link last" ><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Badges')); ?></span>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Badges')); ?></span>
 								</th>
-								<!--<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Skill Documents')); ?></th>-->
+								<!--<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Skill Documents')); ?></th>-->
 							</tr>
 						</thead>
 
@@ -152,7 +152,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
+									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>
