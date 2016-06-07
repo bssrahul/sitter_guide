@@ -19,24 +19,24 @@
     </div>
   </div>
   <div class="row">
-	 <?php  if(@$profile_status == 'sitter_update'){
+	 <?php  if(@$profileStatus == 'sitter_update'){
 		 $addStyle = "style='text-align:center'";
 	  }else{
 		  $addStyle = "";
 	  }
 	  ?> 
-    <div <?php echo $addStyle; ?> class="col-xs-12 col-sm-12 col-md-12 col-lg-<?php echo $profile_status != 'sitter_update'?'6':'12' ?>">
+    <div <?php echo $addStyle; ?> class="col-xs-12 col-sm-12 col-md-12 col-lg-<?php echo @$profileStatus != 'sitter_update'?'6':'12' ?>">
       <a href="<?php echo HTTP_ROOT.'dashboard/home/sitter'; ?>"> 
         <div class="create-sitter-wrapper">
           <div class="s-left"> 
             <span>
             </span>
             <h1><?php 
-                 if($profile_status == 'sitter_update'){
+                 if(@$profileStatus == 'sitter_update'){
 					echo 'Update your Sitter Profile'; 
-				 }else if($profile_status == 'both_create'){
+				 }else if(@$profileStatus == 'both_create'){
 				    echo 'Create your Sitter Profile'; 
-				 }else if($profile_status == 'guest_update'){
+				 }else if(@$profileStatus == 'guest_update'){
 					 echo 'Create your Sitter Profile';
 				 }else{
 					 echo 'Create your Sitter Profile'; 
@@ -52,7 +52,7 @@
     </div>
 	  <?php  
 	  
-	  if($profile_status != 'sitter_update'){
+	  if($profileStatus != 'sitter_update'){
 	  ?>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
       <a href="<?php echo HTTP_ROOT.'dashboard/home/guest'; ?>">    
@@ -61,9 +61,9 @@
             <span>
             </span>
             <h1>
-		    <?php if($profile_status == 'both_create'){
+		    <?php if(@$profileStatus == 'both_create'){
 				echo 'Create your Guest Profile '; 
-			 }else if($profile_status == 'guest_update'){
+			 }else if(@$profileStatus == 'guest_update'){
 				 echo 'Update your Guest Profile';
 			 }else{
 				 echo 'Create your Guest Profile'; 
@@ -104,7 +104,7 @@
           <div class="create-easy-step-grey">
             <h3>
 				<?php 
-			if($profile_status != 'sitter_update'){ ?>
+			if($profileStatus != 'sitter_update'){ ?>
 				<a href="<?php echo HTTP_ROOT,'dashboard/home/guest'; ?>">Add a Pet </a>
 		    <?php }else{
 	  
