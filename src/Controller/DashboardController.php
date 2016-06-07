@@ -1068,7 +1068,7 @@ class DashboardController extends AppController
                   foreach($images_arr as $key=>$val){
 					   $guest_images[] = $val->image;
                    	   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
-						  <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center" alt="img">
+						  <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center thumbnail" alt="img">
 						</div>';
                    }
                   $session->write('UserPets.Guest1',$guest_images);
@@ -1112,7 +1112,7 @@ class DashboardController extends AppController
            
          $session->write("UserPets.$guest_num",'');
          
-        
+       
           $userId = $session->read('User.id');
               $images_arr = array();
 			    $errors = array();
@@ -1148,37 +1148,46 @@ class DashboardController extends AppController
 					}
 		                $FileArr = array();  
 		                if($i > 2){
+							$errors = array();
 							$errors[] = "You can select only three images for your pet";
 						}    
                 }
                 
-                
+            
             $query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
           
              $guest_images = $session->read('guest_images');
+             //pr($guest_images);die;
+             
              $html = "";
-            if($errors[0] != "You can select only three images for your pet"){ 
-            if(isset($guest_images) && !empty($guest_images)){
-                 $i = 1;
+            if(isset($errors[0]) && ($errors[0] == "You can select only three images for your pet")){
+				
+			}else{
+				if(isset($guest_images) && !empty($guest_images)){
+                 $j = 1;
 	             foreach($guest_images as $guest_image){
+					 $new_n[] = $guest_image;
 	                   	   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
-	                  <img src="'.HTTP_ROOT.'img/uploads/'.$guest_image.'" class="img-responsive center-block text-center" alt="img">
+	                  <img src="'.HTTP_ROOT.'img/uploads/'.$guest_image.'" class="img-responsive center-block text-center thumbnail" alt="img">
 	                </div>';
 	               
-	               if($i == 3){
+	               if($j == 3){
 	                  break;
 	               }
-	               $i++;
+	               $j++;
 	             }
 	             $session->write("UserPets.$guest_num",$guest_images);
-            }
-		  }
+              }
+			}
+           
+		
             $error ="";
 	        if(!empty($errors)){
 	              foreach($errors as $key=>$val){
-	          	     $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
+					 $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
 	            }
 	        }
+	     //pr($new_n);die;
 	        //pr($session->read("UserPets"));die;
 	        echo (json_encode(array($error,$html)));die;
 	      
