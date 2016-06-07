@@ -281,7 +281,79 @@
 			}*/
 			
 		});
-
+		// code for calender pop-up
+		
+		$('#SetAvailablity').validate({
+			rules: {
+				"start_date":
+				{
+					required:true,
+					
+				},
+				"end_date":
+				{
+					required:true
+				},
+				"day_care":
+				{
+					required:true,
+					number:true
+					
+				},
+				"night_care":
+				{
+					required:true,
+					number:true
+				},
+				"visit":
+				{
+					required:true,
+					number:true
+				},
+				"market_place":
+				{
+					required:true,
+					number:true
+				}
+				
+			},
+			messages: {
+				"start_date":
+				{
+					required : "This field is required",
+										
+				},
+				"end_date":
+				{
+					required : "This field is required"
+					
+				},
+				"day_care":
+				{
+					required : "This field is required",
+					number:"This field should be numeric"
+					
+				},
+				"night_care":
+				{
+					required : "This field is required",
+					number:"This field should be numeric"
+					
+				},
+				"visit":
+				{
+					required : "This field is required",
+					number:"This field should be numeric"
+					
+				},
+				"market_place":
+				{
+					required : "This field is required",
+					number:"This field should be numeric"
+				}
+				
+			}
+		});
 		//CODE SNIPPET FOR FORGOT PASSWORD
 		$('#forgotPasswordForm').validate({
 			rules: {
@@ -1691,9 +1763,33 @@ $(function () {
 			success:function(res)
 			{
 				$('#myCalender').html(res);	//DISPLAY RESPONSE ERRORS
+				 
+				$('input[type=checkbox]').onoff();
+			
 			}
 		});
 	});
  /*Last Drop down country- currency listing*/
+ 
+	$(document).on('click','#saveLimitSeat', function(){ 
+	
+		var actionURl = ajax_url+"dashboard/ajax-set-limit";
+		var formData = $("#SetAvailablity").serialize();
+		
+		$.ajax({
+			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
+			data:formData,
+			beforeSend: function() {
+       			confirm('Are you sure you want to Change Value of this Date?');
+			},
+			success:function(res)
+			{
+					 location.reload();
+					$('#myModal21').modal('hide');
+					
+			}
+		});
+	
+	});
 /*End profile video*/
 

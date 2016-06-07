@@ -1843,38 +1843,154 @@ class DashboardController extends AppController
 	}
 	public function calender()
     {
-			//$session=$this->request->session();
-			//$user_id=$session->read('User.id');
+			
 			$Session=$this->request->session();
 			$user_id=$Session->read('User.id');
-			//pr($user_id);die;
+			
 			$this->viewBuilder()->layout('profile_dashboard');
+			$calendarModel=TableRegistry :: get("Calendar");
+			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+		
+			
+			$unavailbe_array=array();
+			foreach($calenderData as $k=>$UserServices){
+				
+				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+				$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
+				$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
+				$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
+				$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
+				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+			}
+			//pr($unavailbe_array);die;
+			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
+			
+			
+			
 			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
 			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			
 			//pr($UserServicesData[0]['day_care_limit']);
 			$services_array=array();
 			foreach($UserServicesData as $UserServices){
 				$services_array["day_care_limit"]= $UserServices->day_care_limit;
 				$services_array["night_care_limit"]= $UserServices->night_care_limit;
 				$services_array["visits_limit"]= $UserServices->visits_limit;
-				$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
+				$services_array["marketplace_limit"]= $UserServices->hourly_services_limit;
 			}
-			//pr($services_array);
+			//pr($services_array);die;
 			//echo "hello";die;
 			
 			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
 			$calendar = new  \Calendar();
 
 			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
-			$this->set('calender',$calendar->show($services_array));
+			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
     }
+	public function setLimit(){
+		
+		$Session=$this->request->session();
+		$user_id=$Session->read('User.id');
+		$this->viewBuilder()->layout('profile_dashboard');
+		$calendarModel=TableRegistry :: get("Calendar");
+		$calenderData=$calendarModel->newEntity();
+		
+		
+		if ($this->request->is(POST)) {
+			
+			$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
+			$calenderData->user_id=$user_id;
+			
+			$calenderData->avail_status=0;
+			if($calendarModel->save($calenderData)){
+			
+				$this->Flash->success(__('Record has been added by ajax Successfully'));
+				return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+			}
+			else{
+				$this->Flash->error(__('Record can not be added '));
+			
+			}	
+		}
+	
+			
+		 
+		
+		
+	}
+	public function ajaxSetLimit(){
+		
+		$this->request->data = $_REQUEST;
+		$Session=$this->request->session();
+		$user_id=$Session->read('User.id');
+		
+		$calendarModel=TableRegistry :: get("Calendar");
+		$calenderData=$calendarModel->newEntity();
+		
+		$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
+		$calenderData->user_id=$user_id;
+		
+		$calenderData->avail_status=1;
+		if($calendarModel->save($calenderData)){
+		
+			$this->Flash->success(__('Record has been added by ajax Successfully'));
+			return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+		}
+		else{
+			$this->Flash->error(__('Record can not be added '));
+		
+		}	
+		die;
+	}
 	
 	public function ajaxCalendar()
     {
 			
+		
+			$Session=$this->request->session();
+			$user_id=$Session->read('User.id');
+			
+			//$this->viewBuilder()->layout('profile_dashboard');
+			$calendarModel=TableRegistry :: get("Calendar");
+			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+		
+			
+			$unavailbe_array=array();
+			foreach($calenderData as $k=>$UserServices){
+				
+				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+				$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
+				$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
+				$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
+				$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
+				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+			}
+			//pr($unavailbe_array);die;
+			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
+			
+			
+			
+			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
+			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			
+			//pr($UserServicesData[0]['day_care_limit']);
+			$services_array=array();
+			foreach($UserServicesData as $UserServices){
+				$services_array["day_care_limit"]= $UserServices->day_care_limit;
+				$services_array["night_care_limit"]= $UserServices->night_care_limit;
+				$services_array["visits_limit"]= $UserServices->visits_limit;
+				$services_array["marketplace_limit"]= $UserServices->hourly_services_limit;
+			}
+			//pr($services_array);die;
+			//echo "hello";die;
+			
+			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
 			$calendar = new  \Calendar();
-			$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
-			$this->set('calender',$calendar->show($services_array));
+
+			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
+			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
     }
 }
 ?>
