@@ -546,7 +546,8 @@
            <?php 
             if($o != '1'){ 
 				?> 
-            <h3><strong>Guest Info</strong><button onclick="location.href='<?php echo HTTP_ROOT.'dashboard/delete-guest/'.base64_encode(convert_uuencode(@$guest_data->id)); ?>'" data-rel="ajaxAdd<?php $o; ?>" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right">Delete </button></h3>
+            <h3><strong>Guest Info</strong><button onclick="if(confirm('Are you sure to delete this record?') == true){location.href='<?php echo HTTP_ROOT.'dashboard/delete-guest/'.base64_encode(convert_uuencode(@$guest_data->id)); ?>'}else {return false;}" 
+              data-rel="ajaxAdd<?php $o; ?>" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right">Delete </button></h3>
           <?php } ?>
            <div class="row">
             <div class="form-group col-lg-4 col-md-6">
