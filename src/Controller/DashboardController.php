@@ -370,6 +370,63 @@ class DashboardController extends AppController
 	}
     /*=================End password validation========*/
     /**
+<<<<<<< HEAD
+=======
+    Function for Front profile dashboard
+    */
+    function frontDashboard(){
+		$this->viewBuilder()->layout('profile_dashboard');
+		$usersModel = TableRegistry::get('Users');
+		
+		 $session = $this->request->session();
+         $userId = $session->read('User.id');
+          //For Update profile status
+			  $userData = $usersModel->find('all',['contain'=>[
+													'UserSitterServices', 
+													'UserProfessionalAccreditationsDetails',
+													'UserProfessionalAccreditations',
+													'UserAboutSitters',
+													'UserPets',
+													'UserSitterHouses'
+													]
+												]
+										)
+						   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
+						   ->toArray();
+				//pr($userData);die;
+				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
+				{
+					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
+						 $dog_in_home = 'yes';
+					}else{
+						$dog_in_home = 'no';
+					}
+					$this->set('dog_in_home',$dog_in_home);
+				}else{
+					$this->set('dog_in_home',"no");
+					}
+				
+				 
+			    if(isset($userData[0]->user_sitter_house) && empty($userData[0]->user_sitter_house) && isset($userData[0]->user_pets) && empty($userData[0]->user_pets) && empty($userData[0]->user_sitter_house) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
+				      //echo "both_create";die;
+				      $this->set('profileStatus','both_create');
+				}else if(!empty($userData[0]->user_professional_accreditations_details) || !empty($userData[0]->user_sitter_services)){
+				     //echo "sitter_update";die;
+				     $this->set('profileStatus','sitter_update');
+				}else if((!empty($userData[0]->user_sitter_house) || !empty($userData[0]->user_pets) ) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
+				    //echo "guest_update";die;
+				     $this->set('profileStatus','guest_update');
+				}else{
+					$this->set('profileStatus','');
+					}
+				//pr($userData);die;	   
+			//End
+       				   
+	 					   
+							   
+	}
+    /**
+>>>>>>> 7b437ebbbc14e4944b8cadd8fdcd68a887112be3
     Function for Profile
     */
     function profile(){
@@ -1843,10 +1900,11 @@ class DashboardController extends AppController
 	}
 	public function calender()
     {
-			
+			//$session=$this->request->session();
+			//$user_id=$session->read('User.id');
 			$Session=$this->request->session();
 			$user_id=$Session->read('User.id');
-			
+			//pr($user_id);die;
 			$this->viewBuilder()->layout('profile_dashboard');
 			$calendarModel=TableRegistry :: get("user_sitter_availability");
 			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
@@ -1868,18 +1926,18 @@ class DashboardController extends AppController
 			
 			
 			
+
 			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
 			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
-			
 			//pr($UserServicesData[0]['day_care_limit']);
 			$services_array=array();
 			foreach($UserServicesData as $UserServices){
 				$services_array["day_care_limit"]= $UserServices->day_care_limit;
 				$services_array["night_care_limit"]= $UserServices->night_care_limit;
 				$services_array["visits_limit"]= $UserServices->visits_limit;
-				$services_array["marketplace_limit"]= $UserServices->hourly_services_limit;
+				$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
 			}
-			//pr($services_array);die;
+			//pr($services_array);
 			//echo "hello";die;
 			
 			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
@@ -1888,6 +1946,7 @@ class DashboardController extends AppController
 			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
 			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
     }
+
 	public function setLimit(){
 		
 		$Session=$this->request->session();
@@ -1943,18 +2002,18 @@ class DashboardController extends AppController
 		}	
 		die;
 	}
+
 	
 	public function ajaxCalendar()
     {
 			
-		
 			$Session=$this->request->session();
 			$user_id=$Session->read('User.id');
-			
-			//$this->viewBuilder()->layout('profile_dashboard');
+			//pr($user_id);die;
+			$this->viewBuilder()->layout('profile_dashboard');
 			$calendarModel=TableRegistry :: get("user_sitter_availability");
 			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
-		
+			
 			
 			$unavailbe_array=array();
 			foreach($calenderData as $k=>$UserServices){
@@ -1972,25 +2031,27 @@ class DashboardController extends AppController
 			
 			
 			
+
 			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
 			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
-			
 			//pr($UserServicesData[0]['day_care_limit']);
 			$services_array=array();
 			foreach($UserServicesData as $UserServices){
 				$services_array["day_care_limit"]= $UserServices->day_care_limit;
 				$services_array["night_care_limit"]= $UserServices->night_care_limit;
 				$services_array["visits_limit"]= $UserServices->visits_limit;
-				$services_array["marketplace_limit"]= $UserServices->hourly_services_limit;
+				$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
 			}
 			//pr($services_array);die;
 			//echo "hello";die;
 			
 			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
-			$calendar = new  Calendar();
+			$calendar = new  \Calendar();
 
 			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
 			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
+			
+
     }
 }
 ?>
