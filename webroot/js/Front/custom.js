@@ -1779,9 +1779,7 @@ $(function () {
 		$.ajax({
 			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
 			data:formData,
-			beforeSend: function() {
-       			confirm('Are you sure you want to Change Value of this Date?');
-			},
+			
 			success:function(res)
 			{
 					 location.reload();
