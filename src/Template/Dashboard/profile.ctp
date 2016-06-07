@@ -763,10 +763,10 @@ $(document).ready(function(){
            {
          changeMonth: true,
          changeYear: true,
-           maxDate: new Date(),
-           yearRange: "-50:-18",
-       dateFormat: 'dd-mm-yy',
-       defaultDate: '01-01-1998'
+         maxDate: new Date(),
+         yearRange: "-50:-18",
+			dateFormat: 'dd-mm-yy',
+			defaultDate: '01-01-1998'
 
        }
       );
