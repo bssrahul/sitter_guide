@@ -53,6 +53,12 @@ class PagesController extends AppController
 
 			$this->setGuestStore("en");
 		}
+		
+		$servicesModel = TableRegistry::get('Services');
+		
+		$servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
+		
+		$this->set('servicesInfo',$servicesInfo);
 
 		
 	}
@@ -67,8 +73,7 @@ class PagesController extends AppController
 		//CODE FOR MULTILIGUAL END
 		
 		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> $url]])->first();
-		//pr($CmsPageData); die;
-		
+				
 		$this->pageTitle = $CmsPageData->meta_title;
 		$this->pageKeyword = $CmsPageData->meta_keywords;
 		$this->pageDescription = $CmsPageData->meta_description;
@@ -85,11 +90,11 @@ class PagesController extends AppController
 		//CODE FOR MULTILIGUAL END
 		
 		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'contact-us']])->first();
-		//pr($CmsPageData); die;
+		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, 'contact-us'));
 		$CategoriesModel=TableRegistry::get('Categories');
 		$Categoriesdata=$CategoriesModel->find('all')->where(['slug'=>'Contact-us'])->toArray();
-		//pr($Categoriesdata);die;
+		
 		$this->set('Categoriesdata',$Categoriesdata);
 		$SiteModel = TableRegistry::get('SiteConfigurations');
 		$SiteData=$SiteModel->find('all')->toArray();
@@ -186,9 +191,11 @@ class PagesController extends AppController
 			}
 
 		}
+		//pr($sitterArray); die;
 		$this->set('sitter',$sitterArray);
 		$this->set('guest',$guestArray);
 	}
+	
 	public function helpListing($type=null,$tid=null,$qid=null)
     {
 		$type_id=convert_uudecode(base64_decode($type));
@@ -248,6 +255,7 @@ class PagesController extends AppController
 			$this->set('categoriesData',$categoriesData);
 		}		
     }
+    
     public function helpSearchListing()
     {
 		$this->viewBuilder()->layout('cms_pages');
