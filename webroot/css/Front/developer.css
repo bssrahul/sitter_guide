@@ -463,8 +463,15 @@ ul.dog_size li a.active {
   position: relative;
   top: -7px;
 }
+.row.ajaxAdd {
+    padding: 0 20px;
+}
+.showHideBreed1{
+      display:none;
+}
 
 topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
     
     margin: 10px 12px 0 0 !important;
+
 }
