@@ -1335,7 +1335,9 @@
 			}
 
          });		
-	
+	    /*For About Guest form*/
+		   $('#about_guest').validate();	
+			
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
 			rules: {

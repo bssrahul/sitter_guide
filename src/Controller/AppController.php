@@ -304,7 +304,15 @@ class AppController extends Controller{
 				$logoHeight = "400";
 				$logoSize="4194304";
 				$logoKb = '4 MB';
+			}else if($type == 'ServicesImg')
+			{
+				$uploadFolder="uploads/services";	
+				$logoWidth = "385";
+				$logoHeight = "500";
+				$logoSize="4194304";
+				$logoKb = '4 MB';
 			}
+			
 			else if($type == 'audio' || $type == 'video')
 			{
 				//echo 'okokok'.$type;die;

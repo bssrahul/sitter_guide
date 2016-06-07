@@ -7,9 +7,19 @@
         <div class="row">
 
         <div class="profiletab-section">
-          
+        
                 <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
-                  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
+                 <?php  $session = $this->request->session();
+				 $profile = $session->read('profile');
+			   if($profile == 'sitter'){
+				   echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); 
+			   }else{
+				    echo $this->requestAction('app/get-translate/'.base64_encode('Guest Profile')); 
+			   }  
+			  ?>
+                  
+                  
+                  </h3>
 
                 <?php echo $this->element('frontElements/profile/sitter_nav');?>
           
@@ -170,13 +180,13 @@
                       <div class="row">
                           
                           <div class="col-lg-3 col-xs-3">
-                            <label for="county_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
+                            <label for="country_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <?php 
-                                echo $this->Form->input('Users.county_code',[
+                                echo $this->Form->input('Users.country_code',[
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'select',
                                   'label'=>false,
-                                  'options'=>@$counry_info,
+                                  'options'=>@$country_info,
                                   'class' =>'form-control'
                                   ]);
                             ?>

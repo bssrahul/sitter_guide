@@ -27,8 +27,9 @@
 @import 'message.css';
 @import 'dashboard-profile.css';
 
-@import 'calender.css';
 
+@import 'db-front-dashboard.css';
+@import 'calender.css';
 @import 'db-front-details.css';
 @import 'db-review.css';
 @import 'db-communication.css';

@@ -86,14 +86,14 @@ class GuestsController extends AppController
 		
 
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
-		//$blogsInfo = $UserBlogsModel->find('all',['contain'=>'Users']);//->toArray();
-		/* $blogsInfo = $UserBlogsModel->find('all', ['conditions' =>['UserBlogs.featured' =>1],'order' => [
-																	'UserBlogs.modified' => 'desc'
-																]])->toArray(); */
+		$servicesModel = TableRegistry::get('Services');
 		
 		$blogsInfo = $UserBlogsModel->find('all', ['order' => ['UserBlogs.modified' => 'desc']]) ->limit(3)->where(['UserBlogs.featured' =>1])->where(['UserBlogs.status' =>1])->toArray();
-		//pr($blogsInfo); die;
 		$this->set('blogsInfo',$blogsInfo);
+		
+		$servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
+		//pr($servicesInfo);die;
+		$this->set('servicesInfo',$servicesInfo);
 		
         //Fetch Data Leading-sitting
 		$UsersModel=TableRegistry :: get('Users');
@@ -108,7 +108,7 @@ class GuestsController extends AppController
 					 'limit'=>'6',
 					'group' => ['UserSitterFavourites.sitter_id'],
 					])->contain(['Users'])->toArray();
-				//pr($favourateData);die;
+				
 		$favUsersdata=array();
 		foreach($favourateData as $favourate){
 			
