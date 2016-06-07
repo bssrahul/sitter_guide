@@ -687,14 +687,16 @@ class DashboardController extends AppController
 				 
 			    if(isset($userData[0]->user_sitter_house) && empty($userData[0]->user_sitter_house) && isset($userData[0]->user_pets) && empty($userData[0]->user_pets) && empty($userData[0]->user_sitter_house) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
 				      //echo "both_create";die;
-				      $this->set('profile_status','both_create');
+				      $this->set('profileStatus','both_create');
 				}else if(!empty($userData[0]->user_professional_accreditations_details) || !empty($userData[0]->user_sitter_services)){
 				     //echo "sitter_update";die;
-				     $this->set('profile_status','sitter_update');
+				     $this->set('profileStatus','sitter_update');
 				}else if((!empty($userData[0]->user_sitter_house) || !empty($userData[0]->user_pets) ) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
 				    //echo "guest_update";die;
-				     $this->set('profile_status','guest_update');
-				}
+				     $this->set('profileStatus','guest_update');
+				}else{
+					$this->set('profileStatus','');
+					}
 				//pr($userData);die;	   
 			//End
        				   
