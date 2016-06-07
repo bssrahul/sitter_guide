@@ -67,7 +67,13 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/help-listing', ['controller' => 'Pages', 'action' => 'help-listing']);
 		$routes->connect('/help-search-listing', ['controller' => 'Pages', 'action' => 'help-search-listing']);
 		$routes->connect('/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
-
+		
+		//Services Pages
+		$routes->connect('/day-night-care', ['controller' => 'Pages', 'action' => 'cms','day-night-care']);
+		$routes->connect('/marketplace', ['controller' => 'Pages', 'action' => 'cms','marketplace']);
+		$routes->connect('/drop-in-visit', ['controller' => 'Pages', 'action' => 'cms','drop-in-visit']);
+		$routes->connect('/house-sitting', ['controller' => 'Pages', 'action' => 'cms','house-sitting']);
+		$routes->connect('/boarding', ['controller' => 'Pages', 'action' => 'cms','boarding']);
 
 
     /**

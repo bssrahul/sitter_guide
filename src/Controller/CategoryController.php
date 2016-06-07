@@ -106,7 +106,7 @@ class CategoryController extends AppController
 		if(isset($this->request->data) && !empty($this->request->data)){
 			
 			$categoryData = $CategoriesModel->newEntity($this->request->data['Categories'],['validate' => true]);
-			$categoryData->id = $promocodeId = convert_uudecode(base64_decode($this->request->data['categoryId']));
+			$categoryData->id = $categoryId = convert_uudecode(base64_decode($this->request->data['categoryId']));
 			$imagename = $this->request->data['Categories']['image']['name'];
 			 
 			if (!$categoryData->errors()){
