@@ -2255,6 +2255,7 @@ Function for Front profile dashboard
 		$calendar = new  \Calendar();
 
 		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
+		$this->set('services_array',$services_array);
     }
 
 	public function setLimit(){
