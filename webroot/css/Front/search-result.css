@@ -1,5 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
+
+
+.pac-container { background:#fff; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);}
+.pac-item  { background:#fff; color:#000; font-size:14px;}
+.pac-item:hover  { background:#e2e2e2; color:#000; font-size:14px;}
+.pac-matched { font-size:13px;}
+.pac-item-query { font-size:13px;}
+
 .cust-container{ width:1200px; margin:0 auto; padding:0 15px;}
 /*Inner Search area*/
 .inner-cont{ width:100%; float:left; background:#ffffff; padding:0 0 75px 0; margin:75px 0 0 0;}
@@ -167,7 +175,7 @@
 .sld-area .sit-pic-lft .ppic-area .sitter-pic .sit-pic-area .quick-view{ width:100%; float:left; position:absolute; bottom:0px; height:33px; background:rgba(0, 0, 0, 0.6); text-align:center; color:#ffffff; line-height:33px;}
 .sld-area .sit-pic-lft .ppic-area .sitter-pic .sit-pic-area .quick-view a{ color:#ffffff; font-size:13px; text-decoration:none;}
 
-
+.sit-p-head b { color:#404040;}
 
 
 .sld-area .sit-pic-lft .ppic-area .sitter-p-det{ float:left; width:100%; max-width:375px; padding:0 0px 0 15px;}

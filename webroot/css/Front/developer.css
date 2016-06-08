@@ -459,9 +459,9 @@ ul.dog_size li a.active {
 .rating {
   border: medium none;
   float: left;
-  left: -14px;
+  left: 0px;
   position: relative;
-  top: -7px;
+  top: -5px;
 }
 .row.ajaxAdd {
     padding: 0 20px;
@@ -534,5 +534,17 @@ topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
     position: relative;
     top: 200px;
     
+}
+.ui-widget-header {
+    background: none !important;
+    border: 1px solid #d4ccb0;
+    color: #433f38;
+    font-weight: normal !important;
+}
+
+datepicker-month, .ui-datepicker select.ui-datepicker-year {
+    width: 45%;
+    background:#fff !important;
+    padding:0px 5px !important;
 }
 /*Calendar END START*/
