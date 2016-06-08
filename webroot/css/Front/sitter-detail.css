@@ -100,7 +100,7 @@
 #payment-box .cont-sitter .cs-mid-cont .csmc-area .msg .txtarea { border: 1px solid #dddddd; height: 186px; margin: 10px 0 10px;width: 100%; padding:10px;}
 #payment-box .cont-sitter .cs-mid-cont .csmc-area .msg { float: left; margin: 5px 0 0; width: 100%;}
 
-.include-addit {background:url(../images/search-icons.png) no-repeat -124px -469px; display: block;float: left;height: 29px;margin: -3px 3px 0 0px;width: 31px;}
+.include-addit {background:url(../../img/search-icons.png) no-repeat -124px -469px; display: block;float: left;height: 29px;margin: -3px 3px 0 0px;width: 31px;}
 #payment-box .cs-mid-cont .csmc-area .msg h3 { color: #72a105;font-size: 20px; font-weight: 500; margin: 0 0 10px;}
 
 #payment-box .boardng-rates h1 {color: #72a105; font-size: 20px; margin: 0 0 10px;}
@@ -189,7 +189,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .sitter-detail-page .fun-news { float: left; padding: 0px 0 0 !important;  width: 100%;}
 
 /*Banner inner pages starts*/
-.banner-sitter-detail {background:url(../images/sitter-detail-banner.jpg) repeat; background-position:center; height:550px;  width:100%; margin-top:75px;}
+.banner-sitter-detail {background:url(../../img/sitter-detail-banner.jpg) repeat; background-position:center; height:550px;  width:100%; margin-top:75px;}
 .banner-sitter-detail .banner-info-wrapper{ height:475px; width:475px; background:rgba(77, 80, 51, 0.4);    border-radius: 50%;  -moz-border-radius: 50%; -webkit-border-radius: 50%;margin-top:35px;   }
 .banner-info-inner {height:475px; width:475px; background:rgba(77, 80, 51, 0.2);  border-radius: 50%; -moz-border-radius: 50%;  -webkit-border-radius: 50%; position:relative;left:20px;margin-top:35px;}
 .banner-sitter-detail .banner-info-wrapper .client-image {width:90px; height:90px; text-align:center; padding-top:13px;}
@@ -205,7 +205,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .banner-sitter-detail .banner-info-wrapper .rates-detail { font-size:25px; font-weight:700; color:#fff; text-align:center; font-family: 'Raleway', sans-serif;}
 .banner-sitter-detail .banner-info-wrapper .rates-detail span { font-size:25px; font-weight:700; color:#6eb6ff; text-align:center; font-family: 'Raleway', sans-serif; border-top:hidden !important;}
 .banner-sitter-detail .banner-info-wrapper .rates-detail-caption { font-size:14px; font-weight:500; color:#fff; text-align:center; font-family: 'Raleway', sans-serif; }
-.banner-sitter-detail .banner-info-wrapper  .center-line {background:url(../images/detail-center-line.png) no-repeat; width:100%px; height:108px; background-position:center; margin-top:20px;}
+.banner-sitter-detail .banner-info-wrapper  .center-line {background:url(../../img/detail-center-line.png) no-repeat; width:100%px; height:108px; background-position:center; margin-top:20px;}
 .banner-sitter-detail .banner-info-wrapper  .center-line .pad-t10 { padding-top:10px;}
 .banner-sitter-detail .banner-info-wrapper  .center-line .marginleftminus { margin-left:-30px;}
 .banner-sitter-detail .banner-info-wrapper  .center-line .marginrightminus { margin-right:-30px;}
@@ -290,23 +290,23 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .heart-pos {position:relative; margin-left: 10px !important;}
 .btn-width100 {width:100% !important;}
 .dog12 span {height:50px; width:50px;}
-.xsdog { background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -530px -50px; display: inline-block; height: 22px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 35px;}
-.smdog {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -568px -46px; display: inline-block; height: 25px;margin: 0 10px 0 auto;position: relative;top: 4px; width: 35px;}
-.mddog {  background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -615px -28px; display: inline-block;height: 43px; margin: 0 10px 0 auto;position: relative;top: 4px;width: 54px;}
-.lgdog {  background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -530px -50px; display: inline-block; height: 22px; margin: 0 10px 0 auto;position: relative;top: 4px; width: 35px;}
+.xsdog { background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -530px -50px; display: inline-block; height: 22px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 35px;}
+.smdog {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -568px -46px; display: inline-block; height: 25px;margin: 0 10px 0 auto;position: relative;top: 4px; width: 35px;}
+.mddog {  background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -615px -28px; display: inline-block;height: 43px; margin: 0 10px 0 auto;position: relative;top: 4px;width: 54px;}
+.lgdog {  background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -530px -50px; display: inline-block; height: 22px; margin: 0 10px 0 auto;position: relative;top: 4px; width: 35px;}
 
 .dog-title1 {font-size:16px; padding-top:20px;}
 
 ul.pet-list{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left;}
 ul.pet-list li{ float:left; text-align:center; font-size:12px; width:25%;}
 ul.pet-list li span{ width:43px; height:47px;  display:block; margin:0 auto; float:left;}
-ul.pet-list li.pet-1 span{ background:url(../images/search-icons.png) no-repeat 0px -663px;}
-ul.pet-list li.pet-2 span{ background:url(../images/search-icons.png) no-repeat -43px -663px;}
-ul.pet-list li.pet-3 span{ background:url(../images/search-icons.png) no-repeat -86px -663px;}
-ul.pet-list li.pet-4 span{ background:url(../images/search-icons.png) no-repeat -129px -663px;}
-ul.pet-list li.pet-5 span{ background:url(../images/search-icons.png) no-repeat -172px -663px;}
-ul.pet-list li.pet-6 span{ background:url(../images/search-icons.png) no-repeat -215px -663px;}
-ul.pet-list li.pet-7 span{ background:url(../images/search-icons.png) no-repeat -258px -663px;}
+ul.pet-list li.pet-1 span{ background:url(../../img/search-icons.png) no-repeat 0px -663px;}
+ul.pet-list li.pet-2 span{ background:url(../../img/search-icons.png) no-repeat -43px -663px;}
+ul.pet-list li.pet-3 span{ background:url(../../img/search-icons.png) no-repeat -86px -663px;}
+ul.pet-list li.pet-4 span{ background:url(../../img/search-icons.png) no-repeat -129px -663px;}
+ul.pet-list li.pet-5 span{ background:url(../../img/search-icons.png) no-repeat -172px -663px;}
+ul.pet-list li.pet-6 span{ background:url(../../img/search-icons.png) no-repeat -215px -663px;}
+ul.pet-list li.pet-7 span{ background:url(../../img/search-icons.png) no-repeat -258px -663px;}
 
 .pet-list .weight {clear: left; display: block; float: left; font-size: 14px; font-weight: 500; padding-top: 10px;}
 .pet-list .pound {clear: left; color: #999999; float: left; font-size: 12px; font-weight: 500;}
@@ -337,7 +337,7 @@ ul.pet-list li.pet-7 span{ background:url(../images/search-icons.png) no-repeat 
 .detail-full-wrapper .leading-area .more-sitter .ms-area ul li{ width:100%; border-bottom:none; padding:25px 0 25px 0; min-height:240px;}
 	
 /*	banner area starts*/
-.banner-sitter-detail {background:url(../images/sitter-detail-banner.jpg) no-repeat; background-position:center; background-size:cover; height:650px;  width:100%; margin-top:75px;}
+.banner-sitter-detail {background:url(../../img/sitter-detail-banner.jpg) no-repeat; background-position:center; background-size:cover; height:650px;  width:100%; margin-top:75px;}
 .banner-sitter-detail .banner-info-wrapper{ height:auto; width:100%; background:rgba(77, 80, 51, 0.4); border-radius:0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;margin-top:35px;}
 .banner-info-inner {height:auto; width:100%; background:rgba(77, 80, 51, 0.2); border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;position:relative; left:0px; margin-top:45px;}
 .banner-sitter-detail .banner-info-wrapper .client-image {width:64px; height:64px; text-align:center; padding-top:20px;}
@@ -367,21 +367,21 @@ ul.pet-list li.pet-7 span{ background:url(../images/search-icons.png) no-repeat 
 }
 
 /*Sprit icons starts*/
-.speak {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -234px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto;position: relative; top: 4px; width: 23px;}
-.experience {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -264px -482px;display: inline-block; height: 23px;margin: 0 10px 0 auto;position: relative;top: 4px; width: 23px;}
-.familar{background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -287px -482px;display: inline-block;height: 23px; margin: 0 10px 0 auto;position: relative;top: 4px; width: 23px;}
-.behave{background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -313px -482px; display: inline-block;height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.rescue{ background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -343px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto;position: relative; top: 4px;width: 23px;}
-.book {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -366px -482px;display: inline-block; height: 23px; margin: 0 10px 0 auto;position: relative; top: 4px; width: 23px;}
-.cancel {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -392px -482px;display: inline-block;height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.fence {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -414px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative;  top: 4px;  width: 23px;}
-.smoke { background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -445px -482px; display: inline-block;  height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.onecat { background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -473px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.onedog {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -500px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.child {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -523px -482px;display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.oral { background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -548px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
-.inject { background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -572px -482px;display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px;width: 23px;}
-.licence {background: rgba(0, 0, 0, 0) url(../images/search-icons.png) no-repeat scroll -602px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative;top: 6px;width: 23px;}
+.speak {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -234px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto;position: relative; top: 4px; width: 23px;}
+.experience {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -264px -482px;display: inline-block; height: 23px;margin: 0 10px 0 auto;position: relative;top: 4px; width: 23px;}
+.familar{background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -287px -482px;display: inline-block;height: 23px; margin: 0 10px 0 auto;position: relative;top: 4px; width: 23px;}
+.behave{background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -313px -482px; display: inline-block;height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.rescue{ background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -343px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto;position: relative; top: 4px;width: 23px;}
+.book {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -366px -482px;display: inline-block; height: 23px; margin: 0 10px 0 auto;position: relative; top: 4px; width: 23px;}
+.cancel {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -392px -482px;display: inline-block;height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.fence {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -414px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative;  top: 4px;  width: 23px;}
+.smoke { background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -445px -482px; display: inline-block;  height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.onecat { background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -473px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.onedog {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -500px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.child {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -523px -482px;display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.oral { background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -548px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px; width: 23px;}
+.inject { background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -572px -482px;display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative; top: 4px;width: 23px;}
+.licence {background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -602px -482px; display: inline-block; height: 23px; margin: 0 10px 0 auto; position: relative;top: 6px;width: 23px;}
 
 
 /*Sprit icons ends*/
