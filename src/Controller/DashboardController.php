@@ -2153,84 +2153,63 @@ Function for Front profile dashboard
 	}
 	
 	// Function for user rating
-	
-	 public function review($user=null)
+	public function review($user=null)
     {
 		$session = $this->request->session();
 		$UserModel=TableRegistry::get('Users');
 		$UserData=$UserModel->find('all')->toArray();
-		//pr($UserData);die;
+	
 		$this->set('UserData',$UserData);
 		$this->viewBuilder()->layout('profile_dashboard');
 		$reviewModel=TableRegistry::get('UserRatings');
-		//$userid=$this->request->get('selectuserid');
-		//pr($userid);die;
-		
-		
-		
-		/* $reviewcheckdata=$reviewModel->find('all')->toArray();
-		$userToArr=array();
-		$boolingIdArr=array(); */
-		/* foreach($reviewcheckdata as $reviewcheck){
-				$userToArr[]=$reviewcheck['user_to'];
-				$boolingIdArr[]=$reviewcheck['booking_id'];
-		} */
-		//pr($userToArr);
-		//pr($boolingIdArr);die;
-		//$reviewcheckdata['user_to'];
+	
 		$reviewData= $reviewModel->newEntity();
 		if($this->request->is('POST')){
 
 			$reviewData->user_from = $session->read('User.id');
-			/* $userTo=$this->request->data['user_to'];
-			$bookingId=$this->request->data['booking_id'];
-			if((in_array($userTo,$userToArr)) && (in_array($userTo,$userToArr)))
-			{
-				
-			} */
-			
 			$accuracy = $this->request->data['accuracy_rating'];
 			$communication = $this->request->data['communication_rating'];
 			$cleanliness = $this->request->data['cleanliness_rating'];
 			$location = $this->request->data['location_rating'];
 			$checkin = $this->request->data['check_in_rating'];
 			$rating=($accuracy + $communication + $cleanliness + $location + $checkin )/5;
-			//pr($this->request->data);die;
+	
 			$reviewData->status = 0;
 			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
-			echo $rating;
+	
 			$reviewData->rating=$rating;
-			//pr($reviewData);die;
+	
 			if($reviewModel->save($reviewData)){
 				$this->Flash->success(__('Record has been added Successfully'));
-				//return $this->redirect(['controller' => 'category', 'action' => 'categories-listing']);
+	
 			}	
 			
 		}	
 		if( $this->request->is('ajax') ) {
 
-			  //  if(isset($_REQUEST['user']) && !empty($_REQUEST['user'])){
-			    	$userid=@$_REQUEST['user'];
-					$reviewdata=$reviewModel->find('all')->where(['user_to'=>$userid])->toArray();
-					//pr($reviewdata);
-					$book_id=array();
-					foreach($reviewdata as $review){
-						
-						
-						 $book_id[]=$review->booking_id;
-						
-						
-					}
-								
-					?>							<option value="">-- Select Booking --</option>
-												<option value="1" <?php if(in_array(1,$book_id)){?> class="bk" <?php }?> > First Time </option>
-												<option value="2"  <?php if(in_array(2,$book_id)){?> class="bk" <?php }?>> Second Time </option>
-												<option value="3"  <?php if(in_array(3,$book_id)){?> class="bk" <?php }?>> Third Time </option>
-												<option value="4"  <?php if(in_array(4,$book_id)){?> class="bk" <?php }?>> Forth Time </option>
-												<option value="5"  <?php if(in_array(5,$book_id)){?> class="bk" <?php }?>> Fifth Time </option> <?php
+	
+			$userid=@$_REQUEST['user'];
+			$reviewdata=$reviewModel->find('all')->where(['user_to'=>$userid])->toArray();
+
+			$book_id=array();
+			foreach($reviewdata as $review){
+				
+				
+				 $book_id[]=$review->booking_id;
+				
+				
+			}?>
+				<option value="">-- Select Booking --</option>
+				<option value="1" <?php if(in_array(1,$book_id)){?> class="bk" <?php }?> > First Time </option>
+				<option value="2"  <?php if(in_array(2,$book_id)){?> class="bk" <?php }?>> Second Time </option>
+				<option value="3"  <?php if(in_array(3,$book_id)){?> class="bk" <?php }?>> Third Time </option>
+				<option value="4"  <?php if(in_array(4,$book_id)){?> class="bk" <?php }?>> Forth Time </option>
+				<option value="5"  <?php if(in_array(5,$book_id)){?> class="bk" <?php }?>> Fifth Time </option> 
+				<?php
 					die;
 			 }
     }
+    
 	public function editReview(){
 		
 		$this->viewBuilder()->layout('profile_dashboard');
@@ -2238,107 +2217,48 @@ Function for Front profile dashboard
 		$user_id=$session->read('User.id');
 		$reviewModel=TableRegistry::get('UserRatings');
 		$reviewData= $reviewModel->find('all')->where(['user_from'=>$user_id])->where(['user_to'=>37])->toArray();
-		//pr($reviewData);die;
+	
 		$this->set('reviewData',$reviewData);
-		/* if($this->request->is('POST')){
-
-			$reviewData->user_from = $session->read('User.id');
-			/* $userTo=$this->request->data['user_to'];
-			$bookingId=$this->request->data['booking_id'];
-			if((in_array($userTo,$userToArr)) && (in_array($userTo,$userToArr)))
-			{
-				
-			} 
-			
-			$accuracy = $this->request->data['accuracy_rating'];
-			$communication = $this->request->data['communication_rating'];
-			$cleanliness = $this->request->data['cleanliness_rating'];
-			$location = $this->request->data['location_rating'];
-			$checkin = $this->request->data['check_in_rating'];
-			$rating=($accuracy + $communication + $cleanliness + $location + $checkin )/5;
-			pr($this->request->data);die;
-			$reviewData->status = 0;
-			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
-			echo $rating;
-			$reviewData->rating=$rating;
-			//pr($reviewData);die;
-			if($reviewModel->save($reviewData)){
-				$this->Flash->success(__('Record has been added Successfully'));
-				//return $this->redirect(['controller' => 'category', 'action' => 'categories-listing']);
-			}	
-			
-		}	
-		if( $this->request->is('ajax') ) {
-
-			  //  if(isset($_REQUEST['user']) && !empty($_REQUEST['user'])){
-			    	$userid=@$_REQUEST['user'];
-					$reviewdata=$reviewModel->find('all')->where(['user_to'=>$userid])->toArray();
-					//pr($reviewdata);
-					$book_id=array();
-					foreach($reviewdata as $review){
-						
-						
-						 $book_id[]=$review->booking_id;
-						
-						
-					}
-								
-					?>							<option value="">-- Select Booking --</option>
-												<option value="1" <?php if(in_array(1,$book_id)){?> class="bk" <?php }?> > First Time </option>
-												<option value="2"  <?php if(in_array(2,$book_id)){?> class="bk" <?php }?>> Second Time </option>
-												<option value="3"  <?php if(in_array(3,$book_id)){?> class="bk" <?php }?>> Third Time </option>
-												<option value="4"  <?php if(in_array(4,$book_id)){?> class="bk" <?php }?>> Forth Time </option>
-												<option value="5"  <?php if(in_array(5,$book_id)){?> class="bk" <?php }?>> Fifth Time </option> <?php
-					die;
-			 } */
+	
 	}
+	
 	public function calender()
     {
-			//$session=$this->request->session();
-			//$user_id=$session->read('User.id');
-			$Session=$this->request->session();
-			$user_id=$Session->read('User.id');
-			//pr($user_id);die;
-			$this->viewBuilder()->layout('profile_dashboard');
-			$calendarModel=TableRegistry :: get("user_sitter_availability");
-			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
-		
 			
-			$unavailbe_array=array();
-			foreach($calenderData as $k=>$UserServices){
-				
-				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
-				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
-				$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
-				$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
-				$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
-				$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
-				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
-			}
-			//pr($unavailbe_array);die;
-			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
-			
-			
-			
+		$Session=$this->request->session();
+		$user_id=$Session->read('User.id');
 
-			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
-			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
-			//pr($UserServicesData[0]['day_care_limit']);
-			$services_array=array();
-			foreach($UserServicesData as $UserServices){
-				$services_array["day_care_limit"]= $UserServices->day_care_limit;
-				$services_array["night_care_limit"]= $UserServices->night_care_limit;
-				$services_array["visits_limit"]= $UserServices->visits_limit;
-				$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
-			}
-			//pr($services_array);
-			//echo "hello";die;
+		$this->viewBuilder()->layout('profile_dashboard');
+		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
 			
-			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
-			$calendar = new  \Calendar();
+		$unavailbe_array=array();
+		foreach($calenderData as $k=>$UserServices){
+			
+			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+			$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
+			$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
+			$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
+			$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
+			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+		}
 
-			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
-			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
+		$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
+		$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
+
+		$services_array=array();
+		foreach($UserServicesData as $UserServices){
+			$services_array["day_care_limit"]= $UserServices->day_care_limit;
+			$services_array["night_care_limit"]= $UserServices->night_care_limit;
+			$services_array["visits_limit"]= $UserServices->visits_limit;
+			$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
+		}
+			
+		$calendar = new  \Calendar();
+
+		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
+		$this->set('services_array',$services_array);
     }
 
 	public function setLimit(){
@@ -2348,8 +2268,7 @@ Function for Front profile dashboard
 		$this->viewBuilder()->layout('profile_dashboard');
 		$calendarModel=TableRegistry :: get("user_sitter_availability");
 		$calenderData=$calendarModel->newEntity();
-		
-		
+			
 		if ($this->request->is(POST)) {
 			
 			$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
@@ -2362,16 +2281,14 @@ Function for Front profile dashboard
 				return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
 			}
 			else{
+	
 				$this->Flash->error(__('Record can not be added '));
 			
 			}	
 		}
-	
-			
-		 
-		
 		
 	}
+	
 	public function ajaxSetLimit(){
 		
 		$this->request->data = $_REQUEST;
@@ -2397,54 +2314,42 @@ Function for Front profile dashboard
 		die;
 	}
 
-	
 	public function ajaxCalendar()
     {
 			
-			$Session=$this->request->session();
-			$user_id=$Session->read('User.id');
-			//pr($user_id);die;
-			$this->viewBuilder()->layout('profile_dashboard');
-			$calendarModel=TableRegistry :: get("user_sitter_availability");
-			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+		$Session=$this->request->session();
+		$user_id=$Session->read('User.id');
+	
+		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+		
+		
+		$unavailbe_array=array();
+		foreach($calenderData as $k=>$UserServices){
 			
-			
-			$unavailbe_array=array();
-			foreach($calenderData as $k=>$UserServices){
-				
-				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
-				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
-				$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
-				$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
-				$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
-				$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
-				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
-			}
-			//pr($unavailbe_array);die;
-			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
-			
-			
-			
+			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+			$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
+			$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
+			$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
+			$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
+			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+		}
 
-			$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
-			$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
-			//pr($UserServicesData[0]['day_care_limit']);
-			$services_array=array();
-			foreach($UserServicesData as $UserServices){
-				$services_array["day_care_limit"]= $UserServices->day_care_limit;
-				$services_array["night_care_limit"]= $UserServices->night_care_limit;
-				$services_array["visits_limit"]= $UserServices->visits_limit;
-				$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
-			}
-			//pr($services_array);die;
-			//echo "hello";die;
-			
-			//require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
-			$calendar = new  \Calendar();
+		$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
+		$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
 
-			//$services_array = array("day_care"=>1,"night_care"=>2,"drop_visit"=>3,"markeplace"=>10);
-			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
-			
+		$services_array=array();
+		foreach($UserServicesData as $UserServices){
+			$services_array["day_care_limit"]= $UserServices->day_care_limit;
+			$services_array["night_care_limit"]= $UserServices->night_care_limit;
+			$services_array["visits_limit"]= $UserServices->visits_limit;
+			$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
+		}
+
+		$calendar = new  \Calendar();
+
+		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
 
     }
 }
