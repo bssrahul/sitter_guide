@@ -1,7 +1,8 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <?php 
-  echo $this->Html->css(['Front/jquery-ui.css']); 
-  echo $this->Html->script(['Front/jquery-ui.js']);
+  echo $this->Html->css(['Front/jquery-ui.css','Front/dd.css']); 
+  echo $this->Html->script(['Front/jquery-ui.js','Front/jquery.dd.min']);
+  echo $this->Html->css(['Front/flags.css']); 
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
@@ -182,14 +183,26 @@
                           <div class="col-lg-3 col-xs-3">
                             <label for="country_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <?php 
-                                echo $this->Form->input('Users.country_code',[
+                               /* echo $this->Form->input('Users.country_code',[
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'select',
                                   'label'=>false,
                                   'options'=>@$country_info,
                                   'class' =>'form-control'
-                                  ]);
+                                  ]);*/
                             ?>
+                            <select class='form-control' name="Users[country_code]" id="countries">
+								 <?php 
+									if(!empty($country_info)){
+										foreach($country_info as $cc_key=>$cc_val){
+											?>
+											<option <?php if($userInfo['country_code']==$cc_key){echo "selected"; }?> value='<?php echo $cc_key; ?>' data-image="<?php echo HTTP_ROOT; ?>img/blank.gif" data-imagecss="flag <?php echo strtolower($cc_val); ?>"><?php echo $cc_key; ?></option>
+											<?php
+										}
+									}
+								?>
+								 
+							</select>    
 
                         </div>
                           <div class="col-lg-3 col-xs-9">
@@ -775,7 +788,12 @@ $(document).ready(function(){
     });
    /*End date picker*/
  });
+
+	$(document).ready(function() {
+		$("#countries").msDropdown();
+	})
 </script>
+
 <style>
 .videoBanner {
     display: block;

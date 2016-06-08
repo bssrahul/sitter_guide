@@ -755,88 +755,91 @@ Function for Front profile dashboard
 
          $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
          $this->request->data = @$_REQUEST;
+		
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
-    if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
-	
-		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
-          {
-	            //your site secret key
-				$secret = CAPTCHA_SECRET_KEY;
-				//get verify response data
-				$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
-				$responseData = json_decode($verifyResponse);
-            if($responseData->success)
-            {
-	            $countryCodesModel = TableRegistry::get('CountryCodes');
-				$data=$this->request->data['Usersp'];
+			//pr($this->request->data); die;
+			if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
+			
+				if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
+				  {
+						//your site secret key
+						$secret = CAPTCHA_SECRET_KEY;
+						//get verify response data
+						$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
+						$responseData = json_decode($verifyResponse);
+					if($responseData->success)
+					{
+						$countryCodesModel = TableRegistry::get('CountryCodes');
+						$data=$this->request->data['Usersp'];
 
-			    $error=$this->validate_password($data,$user_info);
-				if(count($error) > 0)
-				{
-                        $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		               $usersModel->save($userData);
-							
-                    unset($userData->id);
-	                $this->set('userInfo', $userData);
-                    $this->set('error',$error);
-                    $this->Flash->error(__('Error found, Kindly fix the errors.'));
-				}else{
-                     $userData = $usersModel->newEntity();
-					    $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-						 $userData->password = MD5($this->request->data['Usersp']['password']);
-						 $userData->org_password = $this->request->data['Usersp']['password'];
-						 if ($usersModel->save($userData)){
-							return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
-						}else{
+						$error=$this->validate_password($data,$user_info);
+						if(count($error) > 0)
+						{
+								$userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+							   $usersModel->save($userData);
+									
+							unset($userData->id);
+							$this->set('userInfo', $userData);
+							$this->set('error',$error);
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}else{
+							 $userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+								 $userData->password = MD5($this->request->data['Usersp']['password']);
+								 $userData->org_password = $this->request->data['Usersp']['password'];
+								 if ($usersModel->save($userData)){
+									return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+								}else{
+									$this->Flash->error(__('Error found, Kindly fix the errors.'));
+								}
+								unset($userData->id);
+								$this->set('userInfo', $userData);
 						}
-                        unset($userData->id);
-		                $this->set('userInfo', $userData);
-                }
-			   }else{
-						$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
+					   }else{
+								$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
+							}
+
+					}else{
+							$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
 					}
-
-			}else{
-					$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
-			}
-		}else{
-			$countryCodesModel = TableRegistry::get('CountryCodes');
-				$data=$this->request->data['Usersp'];
-				
-			    $error=$this->validate_password($data,$user_info);
-				if(count($error) > 0)
-				{
-                        $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		               $usersModel->save($userData);
-							
-                    unset($userData->id);
-	                $this->set('userInfo', $userData);
-                    $this->set('error',$error);
-                    $this->Flash->error(__('Error found, Kindly fix the errors.'));
 				}else{
-                     $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		                if ($usersModel->save($userData)) {
-		                	return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
-						}else{
+					$countryCodesModel = TableRegistry::get('CountryCodes');
+						$data=$this->request->data['Usersp'];
+						
+						$error=$this->validate_password($data,$user_info);
+						if(count($error) > 0)
+						{
+								$userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+							   $usersModel->save($userData);
+									
+							unset($userData->id);
+							$this->set('userInfo', $userData);
+							$this->set('error',$error);
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}else{
+							 $userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+								if ($usersModel->save($userData)) {
+									return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+								}else{
+									$this->Flash->error(__('Error found, Kindly fix the errors.'));
+								}
+								unset($userData->id);
+								$this->set('userInfo', $userData);
 						}
-                        unset($userData->id);
-		                $this->set('userInfo', $userData);
-                }
-		    }
+					}
         }else{
 		
 		   $userData = $usersModel->get($userId);
 		   unset($userData->id);
+		   //pr($userData); die;
 		  $this->set('userInfo', $userData);
 
 	    }
@@ -848,11 +851,12 @@ Function for Front profile dashboard
 	   
 
         $countryCodesModel = TableRegistry::get('CountryCodes');
-        $countrydata = $countryCodesModel->find('all')->toArray();
+        $countrydata = $countryCodesModel->find('all')->order(['CountryCodes.phonecode'=>"ASC"])->toArray();
 		 foreach($countrydata as $key=>$val){
-                $country_info[$val['phonecode']] = $val['iso']."     (".$val['phonecode'].")"; 
+                $country_info[$val['phonecode']] = $val['iso']; 
 		 }
-		 $this->set('counry_info',$country_info);
+		// pr($country_info); die;
+		 $this->set('country_info',$country_info);
          $zonesModel = TableRegistry::get('Zones');
 		 $zones_data = $zonesModel->find('all')->toArray();
 		 foreach($zones_data as $key=>$val){
