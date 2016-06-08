@@ -14,10 +14,10 @@
 </section>
 <style>
 .search-overlay {
-  background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0;
+  background: #fff none repeat scroll 0 0;
   height: 100%;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.8;
   position: fixed;
   top: 0;
   transition: all 0.3s ease 0s;
