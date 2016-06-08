@@ -792,7 +792,7 @@ Function for Front profile dashboard
 								 $userData->password = MD5($this->request->data['Usersp']['password']);
 								 $userData->org_password = $this->request->data['Usersp']['password'];
 								 if ($usersModel->save($userData)){
-									return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{
 									$this->Flash->error(__('Error found, Kindly fix the errors.'));
 								}
@@ -827,7 +827,7 @@ Function for Front profile dashboard
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 								$userData->id = $userId;
 								if ($usersModel->save($userData)) {
-									return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
+									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{
 									$this->Flash->error(__('Error found, Kindly fix the errors.'));
 								}
