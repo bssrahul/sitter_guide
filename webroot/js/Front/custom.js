@@ -1760,6 +1760,15 @@ $(function () {
 	   var actionURl = $(this).attr('data-rel');
 		$.ajax({
 			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
+			beforeSend: function(){
+			  $(".ajax_overlay").show();
+			  $(".ajax_overlay").html('<img class="search-img" src="'+ajax_url+'img/walking.gif"/>');
+			},
+			
+			complete: function(){
+			  $(".ajax_overlay").hide();
+			  $(".ajax_overlay").html('');
+			},
 			success:function(res)
 			{
 				$('#myCalender').html(res);	//DISPLAY RESPONSE ERRORS
@@ -1779,11 +1788,11 @@ $(function () {
 		$.ajax({
 			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
 			data:formData,
-			
+				
 			success:function(res)
 			{
-					 location.reload();
-					$('#myModal21').modal('hide');
+				location.reload();
+				$('#myModal21').modal('hide');
 					
 			}
 		});

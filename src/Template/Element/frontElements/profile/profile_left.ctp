@@ -88,8 +88,14 @@
 					   }?>
                     
 					  <li <?php echo $profile_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard' ?>"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
-
-                      <li><a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
+					 <?php if($this->request->action=='calender'){
+						  
+						  $calendar_class='class="active"';
+					  }else{
+						  $calendar_class='class=""';
+						  
+					  }?>	
+                      <li <?php echo $calendar_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
                       
 
 
@@ -102,7 +108,7 @@
 					  }?>
 					  <li <?php echo $service_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates' ?>"><span class=" fa fa-list"></span> <span class="side-list"><?php echo __('Services').' $ '.__('rates'); ?></span></a></li>
                       
-					  <li><a href="#"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transections'); ?></span></a></li>
+					  <li><a href="#"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transactions'); ?></span></a></li>
 					  
                       <?php if($this->request->action=='review'){
 						  
@@ -112,7 +118,7 @@
 						  
 					  }?>
 					  
-                      <li <?php echo $service_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/review' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
+                      <li <?php echo $review_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/review' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
                       
                       <li><a href="#"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
                       

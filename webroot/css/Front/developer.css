@@ -459,9 +459,9 @@ ul.dog_size li a.active {
 .rating {
   border: medium none;
   float: left;
-  left: -14px;
+  left: 0px;
   position: relative;
-  top: -7px;
+  top: -5px;
 }
 .row.ajaxAdd {
     padding: 0 20px;
@@ -480,40 +480,71 @@ topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
 }
 /*Calendar CSS START*/
 .disable {
-		background: #ccc none repeat scroll 0 0 !important;
-	}
-	.center{
-		width: 150px;
-		margin: 40px auto;
-	  
-	}
-	.btn-number{
-		height:35px !important;
-		width:35px !important;
-	}
-	.input-group {
-		width:130px;
-		text-align:center;
-		padding-left:5px;
-		margin-top:5px;
+	background: #ccc none repeat scroll 0 0 !important;
+}
+.center{
+	width: 150px;
+	margin: 40px auto;
+  
+}
+.btn-number{
+	height:35px !important;
+	width:35px !important;
+}
+.input-group {
+	width:130px;
+	text-align:center;
+	padding-left:5px;
+	margin-top:5px;
 
-	}
+}
 
-	#ui-datepicker-div
-	{
-		z-index: 9999999 !important;
-	}
-	.unavailable{
-		
-		float:left;
-	}
-	.not_display {
-		display: none;
-	}
-	.content_disable{
-		color:#afafaf  !important;
-	}
-	.onoff_hideClass{
-		 display: none;
-	}
+#ui-datepicker-div
+{
+	z-index: 9999999 !important;
+}
+.unavailable{
+	
+	float:left;
+}
+.not_display {
+    display: none;
+}
+.content_disable{
+    color:#afafaf  !important;
+}
+.onoff_hideClass{
+	 display: none;
+}
+.ajax_overlay {
+    background: #fff none repeat scroll 0 0;
+    height: 97%;
+    position: absolute;
+    top: 0;
+    width: 94.5%;
+    display:none;
+    z-index:99999;
+    margin:0 auto;
+    text-align:center;
+    opacity:0.5px
+}
+
+.ajax_overlay img {
+    
+    position: relative;
+    top: 200px;
+    
+}
+.ui-widget-header {
+    background: none !important;
+    border: 1px solid #d4ccb0;
+    color: #433f38;
+    font-weight: normal !important;
+}
+
+datepicker-month, .ui-datepicker select.ui-datepicker-year {
+    width: 45%;
+    background:#fff !important;
+    padding:0px 5px !important;
+}
 /*Calendar END START*/
