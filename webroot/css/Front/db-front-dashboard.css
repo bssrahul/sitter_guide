@@ -10,7 +10,7 @@ a { outline:none !important; text-decoration:none !important;}
 .create-sitter-wrapper p { color:#fff; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:400; padding-top:5px; padding-left:150px; outline:none; text-decoration:none !important;}
 
 
-.create-sitter-wrapper .s-left span { width:66px; height:66px; background:url(../images/search-icons.png) no-repeat -528px -50px; margin-left:40px; margin-top:8px; float:left; position:relative; top:0px;}
+.create-sitter-wrapper .s-left span { width:66px; height:66px; background:url(../../img/search-icons.png) no-repeat -528px -50px; margin-left:40px; margin-top:8px; float:left; position:relative; top:0px;}
 
 
 .create-sitter-wrapper1 { background:#59aae1; width:100%; height:auto; padding:38px 15px 42px 0; margin-top:30px; border-radius:4px;} 
