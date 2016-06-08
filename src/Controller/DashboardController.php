@@ -80,7 +80,7 @@ class DashboardController extends AppController
 
 		$SiteConfigurationsModel = TableRegistry::get('SiteConfigurations');
         $siteInfo = $SiteConfigurationsModel->find('all')->first();
-<<<<<<< HEAD
+
         
          $usersModel = TableRegistry::get('Users');
          
@@ -383,12 +383,22 @@ class DashboardController extends AppController
 			 }
 		 }
           //echo($session->read('profile'));die;
-=======
->>>>>>> 505c52e23b6818721f2c7579f18eb4ca0aad3953
-        $this->set('siteInfo',$siteInfo);
+
 
         //$session = $this->request->session();
         //echo $session->read('User.id'); die;
+	}
+	/**Function for check fields ampty or not
+	*/
+	function check_fields_status($fields = array(),$main_array = array()){
+		
+	   foreach($fields as $key=>$val){
+			    if(!empty($main_array[$val])){
+				   return true;
+		        }else{
+				   return false;
+				}
+		   } 
 	}
     /**
     Function for dashboard sitter details
@@ -675,8 +685,7 @@ class DashboardController extends AppController
 	}
     /*=================End password validation========*/
     /**
-
-    Function for Front profile dashboard
+Function for Front profile dashboard
     */
     function frontDashboard(){
 		$this->viewBuilder()->layout('profile_dashboard');
@@ -730,7 +739,7 @@ class DashboardController extends AppController
 							   
 	}
     /**
-   Function for Profile
+  Function for Profile
     */
     function profile(){
     	 $this->viewBuilder()->layout('profile_dashboard');
@@ -849,6 +858,85 @@ class DashboardController extends AppController
 		 $this->set('zones_info',$zones_info);
     	
     }
+      /**
+    Function for Sitter House
+    */
+    function house(){
+    	  $this->viewBuilder()->layout('profile_dashboard');
+          $usersModel = TableRegistry::get('Users');
+
+          $session = $this->request->session();
+          $userId = $session->read('User.id');
+   
+        $sitterHousesModel = TableRegistry::get('UserSitterHouses');
+        if(isset($this->request->data['UserSitterHouses']) && !empty($this->request->data['UserSitterHouses']))
+		{
+			$sitterHouseData = $sitterHousesModel->newEntity();
+               $sitterHouseData = $sitterHousesModel->patchEntity($sitterHouseData, $this->request->data['UserSitterHouses'],['validate'=>true]);
+                $sitterHouseData->user_id = $userId;
+			    if ($sitterHousesModel->save($sitterHouseData)){
+				//For redirect on about guest tab
+				 $userData = $usersModel->find('all',['contain'=>[
+															'UserSitterHouses' 
+															]
+														]
+												)
+								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
+								   ->toArray();
+							  
+				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
+				{
+					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
+						 $session->write('dog_in_home_status','yes');
+						return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
+					}else{
+						$session->write('dog_in_home_status','no');
+						return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+					}
+				}
+			   //End
+				}else{
+				  $this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
+			 	unset($sitterHouseData->id);
+		       $this->set('sitterHouseData', $sitterHouseData);
+
+		            $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+		           if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
+		                  $images_arr = $query->user_sitter_galleries;
+		                  $sitterImg = array();
+		                   $html = " ";
+		                   foreach($images_arr as $key=>$val){
+		                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+		                   	 $html .='</div></div>';
+		                    }
+		                $this->set('sitter_images', $html);
+		            }
+		}else{
+
+		    $query = $usersModel->get($userId,['contain'=>'UserSitterHouses']);
+		    if(isset($query->user_sitter_house) && !empty($query->user_sitter_house)){
+                   $sitterHouseData = $query->user_sitter_house;
+				  $this->set('sitterHouseId', $sitterHouseData->id);
+                   $this->set('sitterHouseData', $sitterHouseData);
+		    }
+		    $query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
+           if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
+                  $images_arr = $query->user_sitter_galleries;
+                  $sitterImg = array();
+                   $html = " ";
+                   foreach($images_arr as $key=>$val){
+                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                   	 $html .='</div></div>';
+                    }
+                $this->set('sitter_images', $html);
+            }
+            
+            
+        }
+	}
     /**
     Function for Sitter House
     */
