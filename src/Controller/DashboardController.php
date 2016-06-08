@@ -107,7 +107,9 @@ class DashboardController extends AppController
 					}else{
 						$session->write('dog_in_home_status','no');
 					}
-				}
+				}else{
+					$session->write('dog_in_home_status','no');
+					}
 				
 				$userInfo = $usersModel->get($userId)->toArray();
 			   //End
@@ -192,7 +194,13 @@ class DashboardController extends AppController
 						$profile_status['House']['smokers'] = "no";
 					}
 						
-			}
+			}else{
+				$profile_status['House']['house_description'] = "no";
+				$profile_status['House']['pet_in_home'] = "no";
+				$profile_status['House']['about_property'] = "no";
+				$profile_status['House']['smokers'] = "no";
+				
+				}
 		  
 		  
 		  //Guest details
@@ -220,7 +228,7 @@ class DashboardController extends AppController
 			  if(isset($guestInfo['UserPets']['user_pet_galleries']) && !empty($guestInfo['user_pet_galleries'])){
 				  $profile_status['UserPets']['guest_photos'] = "yes";
 			  }else{
-				  $profile_status['UserPets']['guest_photos'] = "yes";
+				  $profile_status['UserPets']['guest_photos'] = "no";
 			  }
 			  //Behaviour
 			  $behaviour_fields = array("veterinary_name","friendly_with","care_instructions");
@@ -231,6 +239,11 @@ class DashboardController extends AppController
 				 $profile_status['UserPets']['behaviour'] = "no";
 			  }
 			 //pr($guestInfo);die;
+		  }else{
+			  $profile_status['UserPets']['guest_basic_detail'] = "no";
+			  $profile_status['UserPets']['guest_description'] = "no";
+			  $profile_status['UserPets']['guest_photos'] = "no";
+			  $profile_status['UserPets']['behaviour'] = "no";
 		  }
 		  //About Sitter
 		   if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
@@ -260,7 +273,11 @@ class DashboardController extends AppController
 				 $profile_status['AboutSitter']['preferred_age'] = "no";
 			  }
 			  
-		   }
+		   }else{
+			   $profile_status['AboutSitter']['sitter_description'] = "no";
+			   $profile_status['AboutSitter']['accepted_pet'] = "no";
+			   $profile_status['AboutSitter']['preferred_age'] = "no";
+			   }
 		    if(isset($userData[0]->user_professional_accreditations_details) && !empty($userData[0]->user_professional_accreditations_details) && isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)){
 			  $skillsAccreditations =$userData[0]->user_professional_accreditations[0]->toArray();
 			  $skillsAccreditationsDetailsInfo = $userData[0]->user_professional_accreditations_details[0]->toArray();
@@ -299,8 +316,15 @@ class DashboardController extends AppController
 			  }else{
 				 $profile_status['skillsAndAccreditationDetails']['language'] = "no";
 			  }
+			}else{
+				
+				$profile_status['skillsAndAccreditationDetails']['background_check'] = "no";
+				$profile_status['skillsAndAccreditationDetails']['background_check'] = "no";
+				$profile_status['skillsAndAccreditationDetails']['experience'] = "no";
+				$profile_status['skillsAndAccreditationDetails']['language'] = "no";
 			}
-			if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
+			//pr($userData[0]);die;
+			if(isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
 			     $servicesInfo = $userData[0]->user_sitter_services[0]->toArray();
 			     //pr($servicesInfo);die;
 			  //Terms
@@ -335,7 +359,13 @@ class DashboardController extends AppController
 			  }else{
 				 $profile_status['servicesAndRates']['calender'] = "no";
 			  }
-		    }
+		    }else{
+				  $profile_status['servicesAndRates']['terms'] = "no";
+				  $profile_status['servicesAndRates']['sitter_house_status'] = "no";
+				  $profile_status['servicesAndRates']['guest_house_status'] = "no";
+				  $profile_status['servicesAndRates']['market_place_status'] = "no";
+				  $profile_status['servicesAndRates']['calender'] = "no";
+				}
 		    //Skills and Accreditations 
 		  $this->set('profile_status',$profile_status);
 		  //pr($profile_status['skillsAndAccreditationDetails']);die;
