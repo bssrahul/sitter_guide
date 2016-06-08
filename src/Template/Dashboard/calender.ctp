@@ -6,7 +6,7 @@
 <div class="col-md-9 col-lg-10 col-sm-8  lg-width80" id="content">
 	  <div class="cal-wrap">
         <div class="row">
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent"></i>&nbsp; Recent Activities </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span> </div>             
                   <div class="col-xs-12 recent-activity-table">
@@ -106,7 +106,7 @@
                 </table>
               </div> </div>
           </div>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-heading title-panel">
 			       <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-cal.png" ?>"  alt="calender"></i>&nbsp; Calender </span>

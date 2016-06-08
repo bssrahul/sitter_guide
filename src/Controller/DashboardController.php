@@ -2320,26 +2320,32 @@ Function for Front profile dashboard
 
 	public function ajaxCalendar()
     {
-			
-		$Session=$this->request->session();
-		$user_id=$Session->read('User.id');
-	
-		$calendarModel=TableRegistry :: get("user_sitter_availability");
-		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
-		
-		
-		$unavailbe_array=array();
-		foreach($calenderData as $k=>$UserServices){
-			
-			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
-			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
-			$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
-			$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
-			$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
-			$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
-			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
-		}
 
+			$Session=$this->request->session();
+			$user_id=$Session->read('User.id');
+			//pr($user_id);die;
+			//$this->viewBuilder()->layout('profile_dashboard');
+			$calendarModel=TableRegistry :: get("user_sitter_availability");
+			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			
+			
+			$unavailbe_array=array();
+			foreach($calenderData as $k=>$UserServices){
+				
+				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+				$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
+				$unavailbe_array[$k]["night_care_limit"]= $UserServices->night_care;
+				$unavailbe_array[$k]["visits_limit"]= $UserServices->visit;
+				$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
+				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+			}
+			//pr($unavailbe_array);die;
+			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
+			
+			
+
+	
 		$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
 		$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
 
@@ -2356,5 +2362,6 @@ Function for Front profile dashboard
 		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
 
     }
+	
 }
 ?>
