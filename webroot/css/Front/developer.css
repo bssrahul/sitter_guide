@@ -475,3 +475,45 @@ topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
     margin: 10px 12px 0 0 !important;
 
 }
+.profiletab-section ul li a{
+     font-size: 13px !important;
+}
+/*Calendar CSS START*/
+.disable {
+		background: #ccc none repeat scroll 0 0 !important;
+	}
+	.center{
+		width: 150px;
+		margin: 40px auto;
+	  
+	}
+	.btn-number{
+		height:35px !important;
+		width:35px !important;
+	}
+	.input-group {
+		width:130px;
+		text-align:center;
+		padding-left:5px;
+		margin-top:5px;
+
+	}
+
+	#ui-datepicker-div
+	{
+		z-index: 9999999 !important;
+	}
+	.unavailable{
+		
+		float:left;
+	}
+	.not_display {
+		display: none;
+	}
+	.content_disable{
+		color:#afafaf  !important;
+	}
+	.onoff_hideClass{
+		 display: none;
+	}
+/*Calendar END START*/
