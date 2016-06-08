@@ -2010,7 +2010,7 @@ class DashboardController extends AppController
 			$Session=$this->request->session();
 			$user_id=$Session->read('User.id');
 			//pr($user_id);die;
-			$this->viewBuilder()->layout('profile_dashboard');
+			//$this->viewBuilder()->layout('profile_dashboard');
 			$calendarModel=TableRegistry :: get("user_sitter_availability");
 			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
 			
@@ -2052,6 +2052,10 @@ class DashboardController extends AppController
 			$this->set('calender',$calendar->show($services_array,$unavailbe_array));
 			
 
+    }
+	 public function house()
+    {
+				$this->viewBuilder()->layout('profile_dashboard');
     }
 }
 ?>
