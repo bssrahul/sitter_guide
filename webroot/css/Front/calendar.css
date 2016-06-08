@@ -93,29 +93,9 @@ div#calendar ul.label li div#calendar ul.dates {
     display: table;
 }
 /** overall width = width+padding-right**/
-
-div#calendar ul.dates li {
-    margin: 0px;
-    padding: 0px 0 0 1%;
-    margin-right: 0px;
-    margin-top: 0px;
-    vertical-align: top;
-    float: left;
-    list-style-type: none;
-    width: 14.28%;
-    height: 90px;
-    font-size: 12px;
-    background-color: #DDD;
-    color: #000;
-    text-align: left;
-    border: #dddddd 1px solid;
-    background: #ffffff;
-    border-collapse: collapse;
-    display: table-cell;
-    margin: -1px 0 0 -1px;
-    vertical-align: left;
-    background: left;
-}
+.dates { margin-left:-40px;}
+div#calendar ul.dates li{ margin:0px; padding:0px 0 0 1%; margin-right:0px; margin-top:0px; vertical-align:top; float:left; list-style-type:none; width:14.42%; height:108px; font-size:12px;background-color: #DDD; color:#000; 
+text-align:left;   border:#dddddd 1px solid; background:#ffffff; border-collapse: collapse; display:table-cell; margin:-1px 0 0 -1px; vertical-align:left; background:left;}
 :focus {
     outline: none;
 }
@@ -208,7 +188,7 @@ div#calendar ul.dates li .sp-box {
 div#calendar ul.dates li .sp-box ul.sp-list {
     width: 100%;
     float: left;
-    margin: 0px;
+    margin: 12px 0 0 0;
     padding: 0px;
 }
 div#calendar ul.dates li .sp-box ul.sp-list li {
@@ -250,6 +230,8 @@ div#calendar ul.dates li .sp-box ul.sp-list li span.yellow {
     display: block;
 }
 @media (min-width: 481px) and (max-width: 640px) {
+	.hide-l { display:none;}
+	
     div#calendar ul.dates li {
         width: 25%;
     }
