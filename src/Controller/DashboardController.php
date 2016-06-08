@@ -187,8 +187,10 @@ class DashboardController extends AppController
 				  }
 					 //Photos
 					if(isset($userData[0]->user_sitter_galleries) && !empty($userData[0]->user_sitter_galleries)){
-						  $profile_status['House']['profile_gallery_photo'] = "no";	
-					}
+						  $profile_status['House']['profile_gallery_photo'] = "yes";	
+					}else{
+						$profile_status['House']['profile_gallery_photo'] = "no";	
+						}
 					//Smokers
 					if($houseInfo['smokers'] == 'yes'){
 						$profile_status['House']['smokers'] = "yes";
@@ -199,6 +201,7 @@ class DashboardController extends AppController
 			}else{
 				$profile_status['House']['house_description'] = "no";
 				$profile_status['House']['pet_in_home'] = "no";
+				$profile_status['House']['profile_gallery_photo'] = "no";	
 				$profile_status['House']['about_property'] = "no";
 				$profile_status['House']['smokers'] = "no";
 				
