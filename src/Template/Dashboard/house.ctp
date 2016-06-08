@@ -305,10 +305,8 @@
       </div>
 
 <script type="text/javascript">
-  /*For add multiple profile photos*/
-	
-	
-	function wprdCount(id){
+ 
+ function wprdCount(id){
 		var regex = /\s+/gi;
 		var maxWords = 75;
 		
@@ -351,7 +349,7 @@
 	}); 
 
 	
-		
+	 /*For add multiple profile photos*/	
 	$(document).ready(function(){
 		 
 		$('#images').on('change',function(){

@@ -79,7 +79,7 @@
                       
         
                       
-                      <?php $actions = array("home","frontDashboard","aboutSitter", "professionalAccreditations", "aboutGuest", "servicesAndRates","profile","house");
+                      <?php $actions = array("home","frontDashboard","aboutSitter", "professionalAccreditations", "aboutGuest","profile","house");
 
 					   if (in_array($action, $actions)){
 						   $profile_class = 'class="active"';

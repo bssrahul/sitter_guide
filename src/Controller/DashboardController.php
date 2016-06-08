@@ -807,6 +807,14 @@ Function for Front profile dashboard
 							$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
 					}
 				}else{
+
+                     $userData = $usersModel->newEntity();
+		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+		                $userData->id = $userId;
+		                if ($usersModel->save($userData)) {
+							return $this->redirect(['controller'=>'dashboard','action'=>'house']);
+		                }else{
+
 					$countryCodesModel = TableRegistry::get('CountryCodes');
 						$data=$this->request->data['Usersp'];
 						
@@ -821,6 +829,7 @@ Function for Front profile dashboard
 							unset($userData->id);
 							$this->set('userInfo', $userData);
 							$this->set('error',$error);
+
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
 						}else{
 							 $userData = $usersModel->newEntity();
@@ -835,6 +844,7 @@ Function for Front profile dashboard
 								$this->set('userInfo', $userData);
 						}
 					}
+				}
         }else{
 		
 		   $userData = $usersModel->get($userId);
@@ -843,14 +853,13 @@ Function for Front profile dashboard
 		  $this->set('userInfo', $userData);
 
 	    }
+	    
 	    if($captchErr != ''){
 	      $this->set('captchErr',@$captchErr);	
 	    }else{
 	    	 $this->set('captchErr','');
 	    }
-	   
-
-        $countryCodesModel = TableRegistry::get('CountryCodes');
+	    $countryCodesModel = TableRegistry::get('CountryCodes');
         $countrydata = $countryCodesModel->find('all')->order(['CountryCodes.phonecode'=>"ASC"])->toArray();
 		 foreach($countrydata as $key=>$val){
                 $country_info[$val['phonecode']] = $val['iso']; 
