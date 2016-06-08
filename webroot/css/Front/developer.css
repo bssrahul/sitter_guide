@@ -475,3 +475,6 @@ topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
     margin: 10px 12px 0 0 !important;
 
 }
+.profiletab-section ul li a{
+     font-size: 13px !important;
+}

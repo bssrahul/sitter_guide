@@ -903,7 +903,7 @@ class SearchController extends AppController
 			
 		
 		
-		//pr($commentUserData);die;
+		//pr($userData);die;
 		$this->set('userData',$userData);
 		
 		$this->set('commentUserData',@$commentUserData);
