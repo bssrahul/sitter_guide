@@ -389,7 +389,15 @@
                   </div>
                  
                       <div class="row">
-                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/sitter-house'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
+                    <p class="col-lg-12 sp-tb"><a href="<?php 
+                     $session = $this->request->session();
+                     $dog_in_home_status = $session->read('dog_in_home_status');
+                     if($dog_in_home_status == 'yes'){
+						 echo HTTP_ROOT.'dashboard/about-guest';
+					 }else{
+						  echo HTTP_ROOT.'dashboard/house';
+						 }
+                     ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
                     <input type="submit" class="pull-right btn Continue" value="Continue"></p>
                     </div>
 
