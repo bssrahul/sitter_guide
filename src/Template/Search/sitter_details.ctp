@@ -1914,7 +1914,7 @@ $check_in=$UserRating->check_in_rating;
                             <!--  <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> -->
 							  <!--Calendar Box Start-->
 			
-									<div id="myCalender"><?php echo $this->element('frontElements/search/calender');?></div>
+									<div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?></div>
 			
 							 <!--Calendar Box End  -->		
                             </div>
