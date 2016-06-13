@@ -70,7 +70,7 @@
 							<div id="dropdown-lvl2" class="panel-collapse collapse">
 								<div class="panel-body">
 									<ul class="nav navbar-nav">
-										<li ><a href="#" class=""><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
+										<li ><a href="<?php echo HTTP_ROOT.'dashboard/search-results-favourites'?>" class=""><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
 										<li><a href="#"><span class="fa fa-angle-double-right"></span>&nbsp; Favourite Clients</a></li>
 									</ul>
 								</div>

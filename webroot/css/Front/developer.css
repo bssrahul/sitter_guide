@@ -548,3 +548,69 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     padding:0px 5px !important;
 }
 /*Calendar END START*/
+.starPad {
+    margin-left: 100px !important;
+}
+.favourite-wrap .review-pagination li a{
+	color:#337AB7 !important;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover{
+	color:#FFF !important;
+}
+.pagenavi{
+	 clear: both;
+    font: normal 11px Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    text-align: right;
+    padding: 20px 15px;
+
+}
+/* .show_post_pag {
+    width: 87%;
+    background: #e1e1e1;
+    border: 5px solid #fff;
+    margin: 0% 5%;
+    padding: 10px;
+    text-align: center;
+}
+ */
+
+
+ /* .show_post_pag{
+	 
+	 width:87%;
+	background:#e1e1e1;
+	 border:5px solid #fff; 
+	 margin:0% 5%;
+	
+	 padding:10px;
+	 text-align:center;
+ } */ 
+ .show_post_pag ul{
+	 text-decoration:none;
+}
+.show_post_pag ul li{
+	 text-decoration:none;
+	 display:inline;
+	 font-size:14px;
+	 
+}
+.pagenavi .pages1{
+	float:left;
+}
+.pagenavi .pages ul {
+	text-decoration:none !important;
+	display:inline !important;
+	margin-left:5px !important;
+	color:#FFF !important;
+	padding:3px 8px !important;
+	border-radius:7px !important;
+}
+.pagenavi a, .pagenavi .current {
+  background: #f9fbfc none repeat scroll 0 0 !important;
+  border: 1px solid #d9e3cb !important;
+  color: #939393 !important;
+  margin-left: 3px !important;
+  padding: 3px 8px !important;
+  text-decoration: none !important;
+}

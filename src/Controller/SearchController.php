@@ -21,6 +21,8 @@ use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
+require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'availabilityCalendar.php');
+use availabilityCalendar;
 
 /**
  * Static content controller
@@ -669,7 +671,7 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				$loggedInUserID = $session->read('User.id');
@@ -689,8 +691,7 @@ class SearchController extends AppController
 					}
 				}
 			}
-		
-		//pr($userData); die;
+	
 		$this->set('resultsData',$userData);
 		$this->set('distanceAssociation',$distanceAssociation);
 		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
@@ -800,7 +801,7 @@ class SearchController extends AppController
 		$sitterId = convert_uudecode(base64_decode($sitterId));
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
-        $userData = $UsersModel->get($sitterId,['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
+        $userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
 		$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
 		$user_sitter_id_Arr=array();
 		foreach($UserFavData as $UserFav){
@@ -908,6 +909,35 @@ class SearchController extends AppController
 		
 		$this->set('commentUserData',@$commentUserData);
 		
+		
+		
+		
+		
+		
+		
+		$Session=$this->request->session();
+		$user_id=$Session->read('User.id');
+
+		//$this->viewBuilder()->layout('profile_dashboard');
+		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			
+		$unavailbe_array=array();
+		foreach($calenderData as $k=>$UserServices){
+			
+			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+		}
+
+					
+		$calendar = new  \Calendar();
+
+		$this->set('calender',$calendar->show($unavailbe_array));
+		//$this->set('services_array',$services_array);
+		
+		
+		
 		//pr($userData);die;
 	}
 	/**
@@ -1005,6 +1035,42 @@ class SearchController extends AppController
 		}	
 		
 	}
+	
+	/*weekend calender */
+	
+	
+	
+	
+	public function ajaxCalendar()
+    {
+
+			$Session=$this->request->session();
+			$user_id=$Session->read('User.id');
+			//pr($user_id);die;
+			//$this->viewBuilder()->layout('profile_dashboard');
+			$calendarModel=TableRegistry :: get("user_sitter_availability");
+			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			
+			
+			$unavailbe_array=array();
+			foreach($calenderData as $k=>$UserServices){
+				
+				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+			}
+			//pr($unavailbe_array);die;
+			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
+			
+		
+		
+		$calendar = new  \Calendar();
+
+		$this->set('calender',$calendar->show($unavailbe_array));
+
+    }
+	
+	
 
 }
 ?>

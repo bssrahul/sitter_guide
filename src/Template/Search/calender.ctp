@@ -6,79 +6,106 @@
 <div class="col-md-9 col-lg-10 col-sm-8  lg-width80" id="content">
 	  <div class="cal-wrap">
         <div class="row">
-          
-          	<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-						
-						<div class="panel panel-default">
-							
-							<div class="panel-heading title-panel"> 
-								<span class="title-panel1">
-									<i>
-										<img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent">
-									</i>
-									&nbsp; Sitter Availablity 
-								</span>
-								<span class="pull-right">
-									<a href="#">
-										<img src="<?php echo HTTP_ROOT."img/plus.png" ?>" >
-									</a>
-								</span> 
-							</div>             
-								
-							<div class="col-xs-12 recent-activity-table">
-								
-								<table class="table table-hover">
-									<thead>
-										<tr class="table-row-heading">
-										  <th>Services</th>
-										  <th>Spaces</th>
-										</tr>
-									</thead>
-									
-									<tbody class="table-row-text">
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green">
-												</span>  Day Care 
-											</td>
-										  <td><?php echo isset($services_array["day_care_limit"])?$services_array["day_care_limit"]:0; ?> Spaces </td>
-										</tr>
-										
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green">
-												</span>  Night Care
-											</td>
-										  <td><?php echo isset($services_array["night_care_limit"])?$services_array["night_care_limit"]:0; ?> Spaces </td>
-										</tr>
-										
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-orange.png" ?>" width="11" height="11" alt="green">
-												</span>  Drop Visit
-											</td>
-										  <td><?php echo isset($services_array["visits_limit"])?$services_array["visits_limit"]:0; ?> Spaces </td>
-										</tr>
-										
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-yellow.png" ?>" width="11" height="11" alt="green">
-												</span>  Marketplace 
-											</td>
-										  <td><?php echo isset($services_array["markeplace_limit"])?$services_array["markeplace_limit"]:0; ?> Spaces </td>
-										</tr>
-										
-									</tbody>
-									
-								</table>
-						</div>
-						</div>
-			   
-					</div>
+          <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent"></i>&nbsp; Recent Activities </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span> </div>             
+                  <div class="col-xs-12 recent-activity-table">
+                  <table class="table table-hover">
+                  <thead>
+                    <tr class="table-row-heading">
+                      <th>Activity</th>
+                      <th>User Name</th>
+                      <th>User ID</th>
+                      <th>Notes</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-row-text">
+                    <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green"></span>  Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green"></span> Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-orange.png"?>" width="11" height="11" alt="green"></span>   Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                    
+                     <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-yellow.png" ?>" width="11" height="11" alt="green"></span>  Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                   
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="clearfix">
+            <div style="margin:10px 0;"></div></div>
+            <div class="panel panel-default clearfix">
+              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>"  alt="recent"></i>&nbsp; Recent Activities </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span> </div>
+            <div class="col-xs-12 recent-activity-table1">
+                <table class="table table-hover">
+                  <thead>
+                    <tr class="table-row-heading">
+                      <th>Activity</th>
+                      <th>User Name</th>
+                      <th>User ID</th>
+                      <th>Notes</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-row-text">
+                    <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green"></span> Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green"></span>  Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-orange.png"?>" width="11" height="11" alt="green"></span>  Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                    
+                     <tr>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-yellow.png" ?>" width="11" height="11" alt="green"></span>  Lorem Ipsum </td>
+                      <td>Name </td>
+                      <td>Mr John Deo</td>
+                      <td>Lorem Ipsum  dummy text</td>
+                      <td>15.30  -  06/10/15 </td>
+                    </tr>
+                  
+                  </tbody>
+                </table>
+              </div> </div>
+          </div>
           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-heading title-panel">
@@ -86,67 +113,14 @@
 			     <span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span>
 			  </div>
               <!--Calendar Box Start-->
-			<div class="ajax_overlay">&nbsp;</div>
+			
 			<div id="myCalender"><?php echo $this->element('frontElements/profile/calender');?></div>
 			
 			  <!--Calendar Box End  -->		  
 			 
 			  </div>
            
-            <div class="panel panel-default">
-              <div class="panel-heading"> Calender <i class="fa fa-question-circle"></i> </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <ul class="list-unstyled">
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon green-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2 " placeholder="Day Care" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon red-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Night Care" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <ul class="list-unstyled">
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon orange-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Drop in visit" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon yellow-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Hourly Services" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-12">
-                    <ul class="list-inline">
-                      <li class="refresh"> <img src="<?php echo HTTP_ROOT.'img/refresh_red.png'?>" class="text-center" width="15" height="19" alt="refresh"> </li>
-                      <li class="sync"> <a href="#">Sync your Calender</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-         </div>
+          </div>
         </div>
       </div>
 	  </div>
@@ -296,10 +270,9 @@
 	  
 	  
 	  
-	<?php 
-		echo $this->Html->css('Front/dist/jquery.onoff.css');
+	<?php echo $this->Html->css('Front/dist/jquery.onoff.css');
 		echo $this->Html->script(['Front/dist/jquery.onoff.js']);
-	?>
+?>
 <script>
 	function show_date_picker_on_start_date(){
 
@@ -463,3 +436,42 @@
 	});
   
 </script>
+<style>
+.disable {
+	background: #ccc none repeat scroll 0 0 !important;
+}
+.center{
+	width: 150px;
+	margin: 40px auto;
+  
+}
+.btn-number{
+	height:35px !important;
+	width:35px !important;
+}
+.input-group {
+	width:130px;
+	text-align:center;
+	padding-left:5px;
+	margin-top:5px;
+
+}
+
+#ui-datepicker-div
+{
+	z-index: 9999999 !important;
+}
+.unavailable{
+	
+	float:left;
+}
+.not_display {
+    display: none;
+}
+.content_disable{
+    color:#afafaf  !important;
+}
+.onoff_hideClass{
+	 display: none;
+}
+</style>
