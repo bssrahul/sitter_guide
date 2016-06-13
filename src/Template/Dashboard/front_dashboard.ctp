@@ -20,6 +20,7 @@
   </div>
   <div class="row">
 	 <?php  if(@$profileStatus == 'sitter_update'){
+		 
 		 $addStyle = "style='text-align:center'";
 	  }else{
 		  $addStyle = "";
@@ -105,14 +106,19 @@
             <h3>
 				<?php 
 			if($profileStatus != 'sitter_update'){ ?>
-				<a href="<?php echo HTTP_ROOT,'dashboard/home/guest'; ?>">Add a Pet </a>
+				<a href="<?php echo HTTP_ROOT,'dashboard/about-guest'; 
+				$session = $this->request->session();
+				$session->write("profile","guest");
+				?>">Add a Pet </a>
 		    <?php }else{
-	  
-				if(@$dog_in_home == 'yes'){ ?>
-				    <a href="<?php echo HTTP_ROOT,'dashboard/home/sitter'; ?>">Add a Pet </a>
-				<?php }else{ ?>
+				$session = $this->request->session();
+				$session->write("profile","sitter");
+	             if(@$dog_in_home == 'yes'){ 
+					?>
+				    <a href="<?php echo HTTP_ROOT,'dashboard/house#usersitterhouses-outdoor-area-size'; ?>">Add a Pet </a>
+				 <?php }else{ ?>
 				  	<a data-toggle="modal" data-target="#dogInHomeStatusAlert" href="javascript:void(0)">Add a Pet </a>
-				<?php } 
+				 <?php } 
 			}?>
               
               
@@ -138,7 +144,7 @@
 				<p>Are you enable pet status then click on continue?</p>
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-primary" ="location.href = '<?php echo HTTP_ROOT."dashboard/about-guest"; ?>'" >Continue</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/house#usersitterhouses-outdoor-area-size"; ?>'" >Continue</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 			  </div>
 			</div>
 

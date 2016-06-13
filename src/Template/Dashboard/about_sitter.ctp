@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
 <link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
 <script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
-<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
  <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
 
@@ -389,7 +388,15 @@
                   </div>
                  
                       <div class="row">
-                    <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/sitter-house'; ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
+                    <p class="col-lg-12 sp-tb"><a href="<?php 
+                     $session = $this->request->session();
+                     $dog_in_home_status = $session->read('dog_in_home_status');
+                     if($dog_in_home_status == 'yes'){
+						 echo HTTP_ROOT.'dashboard/about-guest';
+					 }else{
+						  echo HTTP_ROOT.'dashboard/house';
+						 }
+                     ?>"><button type="button" class="btn previous pull-left"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
                     <input type="submit" class="pull-right btn Continue" value="Continue"></p>
                     </div>
 
@@ -514,7 +521,7 @@ function wprdCount(id){
 
 				);
 				$jsonval = json_encode($testArr);
-				
+				//pr($jsonval);
 				$pettypeArr = array(
 				array("value"=>"boxer","label"=>"Boxer"),
 				array("value"=>"rottweiler ","label"=>"Rottweiler "),
@@ -528,9 +535,8 @@ function wprdCount(id){
 				array("value"=>"labrador_retriever","label"=>" Labrador Retriever"),
 				);
 				$petjsonval = json_encode($pettypeArr);
-				//pr(@$jsonval);die;
+				//pr($sizeArr);
 				if(!empty($sizeArr)){
-						
 						$newArr=explode(",",$sizeArr);
 						$mainArray=array();
 						foreach($testArr as $key=> $arr)
@@ -542,10 +548,12 @@ function wprdCount(id){
 										$mainArray[]=array("value"=>$new,"label"=>$new2);
 								}
 						}
+						//pr($mainArray);
 						$editJsonArr=json_encode($mainArray);
+						//pr($editJsonArr);
 				}	
+				pr($testArr);
 				if(!empty($ghSizeArr)){
-					
 					$ghmainArray=array();
 					foreach($testArr as $key=> $arr)
 					{ 
@@ -608,13 +616,13 @@ function wprdCount(id){
 
     });
 
-    $('#skillAuto').on('tokenfield:createtoken', function (event) {
+    $('#skillAuto').on('tokenfield:createtoken', function (event){
       var existingTokens = $(this).tokenfield('getTokens');
       $.each(existingTokens, function(index, token) {
           if (token.value === event.attrs.value)
               event.preventDefault();
+     });
     });
-});
   });
 </script>
 

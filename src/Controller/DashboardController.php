@@ -771,104 +771,117 @@ Function for Front profile dashboard
 
          $user_info = $usersModel->get($userId,['fields'=>['id','password']]);
          $this->request->data = @$_REQUEST;
+		
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
-    if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
-	
-		if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
-          {
-	            //your site secret key
-				$secret = CAPTCHA_SECRET_KEY;
-				//get verify response data
-				$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
-				$responseData = json_decode($verifyResponse);
-            if($responseData->success)
-            {
-	            $countryCodesModel = TableRegistry::get('CountryCodes');
-				$data=$this->request->data['Usersp'];
+			//pr($this->request->data); die;
+			if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
+			
+				if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
+				  {
+						//your site secret key
+						$secret = CAPTCHA_SECRET_KEY;
+						//get verify response data
+						$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$this->request->data['g-recaptcha-response']);
+						$responseData = json_decode($verifyResponse);
+					if($responseData->success)
+					{
+						$countryCodesModel = TableRegistry::get('CountryCodes');
+						$data=$this->request->data['Usersp'];
 
-			    $error=$this->validate_password($data,$user_info);
-				if(count($error) > 0)
-				{
-                        $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		               $usersModel->save($userData);
-							
-                    unset($userData->id);
-	                $this->set('userInfo', $userData);
-                    $this->set('error',$error);
-                    $this->Flash->error(__('Error found, Kindly fix the errors.'));
-				}else{
-                     $userData = $usersModel->newEntity();
-					    $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-						 $userData->password = MD5($this->request->data['Usersp']['password']);
-						 $userData->org_password = $this->request->data['Usersp']['password'];
-						 if ($usersModel->save($userData)){
-							return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
-						}else{
+						$error=$this->validate_password($data,$user_info);
+						if(count($error) > 0)
+						{
+								$userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+							   $usersModel->save($userData);
+									
+							unset($userData->id);
+							$this->set('userInfo', $userData);
+							$this->set('error',$error);
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}else{
+							 $userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+								 $userData->password = MD5($this->request->data['Usersp']['password']);
+								 $userData->org_password = $this->request->data['Usersp']['password'];
+								 if ($usersModel->save($userData)){
+									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
+								}else{
+									$this->Flash->error(__('Error found, Kindly fix the errors.'));
+								}
+								unset($userData->id);
+								$this->set('userInfo', $userData);
 						}
-                        unset($userData->id);
-		                $this->set('userInfo', $userData);
-                }
-			   }else{
-						$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
-					}
+					   }else{
+								$captchErr = $this->stringTranslate(base64_encode('Robot verification failed, please try again'));
+							}
 
-			}else{
-					$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
-			}
-		}else{
-			$countryCodesModel = TableRegistry::get('CountryCodes');
-				$data=$this->request->data['Usersp'];
-				
-			    $error=$this->validate_password($data,$user_info);
-				if(count($error) > 0)
-				{
-                        $userData = $usersModel->newEntity();
-		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-		                $userData->id = $userId;
-		               $usersModel->save($userData);
-							
-                    unset($userData->id);
-	                $this->set('userInfo', $userData);
-                    $this->set('error',$error);
-                    $this->Flash->error(__('Error found, Kindly fix the errors.'));
+					}else{
+							$captchErr = $this->stringTranslate(base64_encode('Please click on the reCAPTCHA box'));
+					}
 				}else{
+
                      $userData = $usersModel->newEntity();
 		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 		                $userData->id = $userId;
 		                if ($usersModel->save($userData)) {
-		                	return $this->redirect(['controller'=>'dashboard','action'=>'sitter-house']);
-						}else{
+							return $this->redirect(['controller'=>'dashboard','action'=>'house']);
+		                }else{
+
+					$countryCodesModel = TableRegistry::get('CountryCodes');
+						$data=$this->request->data['Usersp'];
+						
+						$error=$this->validate_password($data,$user_info);
+						if(count($error) > 0)
+						{
+								$userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+							   $usersModel->save($userData);
+									
+							unset($userData->id);
+							$this->set('userInfo', $userData);
+							$this->set('error',$error);
+
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
+						}else{
+							 $userData = $usersModel->newEntity();
+								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
+								$userData->id = $userId;
+								if ($usersModel->save($userData)) {
+									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
+								}else{
+									$this->Flash->error(__('Error found, Kindly fix the errors.'));
+								}
+								unset($userData->id);
+								$this->set('userInfo', $userData);
 						}
-                        unset($userData->id);
-		                $this->set('userInfo', $userData);
-                }
-		    }
+					}
+				}
         }else{
 		
 		   $userData = $usersModel->get($userId);
 		   unset($userData->id);
+		   //pr($userData); die;
 		  $this->set('userInfo', $userData);
 
 	    }
+	    
 	    if($captchErr != ''){
 	      $this->set('captchErr',@$captchErr);	
 	    }else{
 	    	 $this->set('captchErr','');
 	    }
-	   
-
-        $countryCodesModel = TableRegistry::get('CountryCodes');
-        $countrydata = $countryCodesModel->find('all')->toArray();
+	    $countryCodesModel = TableRegistry::get('CountryCodes');
+        $countrydata = $countryCodesModel->find('all')->order(['CountryCodes.phonecode'=>"ASC"])->toArray();
 		 foreach($countrydata as $key=>$val){
-                $country_info[$val['phonecode']] = $val['iso']."     (".$val['phonecode'].")"; 
+                $country_info[$val['phonecode']] = $val['iso']; 
 		 }
-		 $this->set('counry_info',$country_info);
+		// pr($country_info); die;
+		 $this->set('country_info',$country_info);
          $zonesModel = TableRegistry::get('Zones');
 		 $zones_data = $zonesModel->find('all')->toArray();
 		 foreach($zones_data as $key=>$val){
@@ -1066,7 +1079,6 @@ Function for Front profile dashboard
 				   $shArr=$aboutSitterData['sh_pet'];
 				   $ghArr=$aboutSitterData['gh_pet'];
 					if(!empty($sizeArr)){
-						
 						$skillFlag=1;
 					}
 					else{
@@ -1093,8 +1105,6 @@ Function for Front profile dashboard
 					else{
 						$ghFlag=0;
 					}
-				  // $json_sizeArr=json_encode($sizeArr);
-				  // pr($json_sizeArr);die;
 				   $this->set('shArr',$shArr);
 				   $this->set('ghArr',$ghArr);
 				   $this->set('shFlag',$shFlag);
@@ -1112,239 +1122,242 @@ Function for Front profile dashboard
 	     
 
     }
-     /**
-    Function for about guest
-    */
-    function aboutGuest(){
-    	$this->viewBuilder()->layout('profile_dashboard');
-          $usersModel = TableRegistry::get('Users');
-
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
-   
-        $userPetsModel = TableRegistry::get('UserPets');
-        $petGalleryModel = TableRegistry::get('UserPetGalleries');
-          
-         
-        if(isset($this->request->data['UserPets']) && !empty($this->request->data['UserPets']))
-		{
-			$guest_images['UserPets'] = $session->read('UserPets');
-           // pr($guest_images); 
-			//pr($this->request->data);die;
-			foreach($this->request->data['UserPets'] as $key=>$single_guest){
-               $guest_age = array($single_guest['guest_years'],$single_guest['guest_months']);
-               if(!empty($guest_age)){
-                  $guest_age = implode(",",$guest_age);
-               }else{
-               	  $guest_age = '';
-               }
-               $petsData = $userPetsModel->newEntity($single_guest);
-               $petsData->user_id = $userId;
-               $petsData->guest_age = $guest_age;
-               //Save guest data
-               $userPetsModel->save($petsData);
-
-               if(array_key_exists($key,$guest_images['UserPets'])){
-                  //$petGalleryModel->delete($record);
-               	 if(isset($this->request->data['UserPets'][$key]['user_pet_id']) && !empty($this->request->data['UserPets'][$key]['user_pet_id'])){
-               	  $petGalleryModel->deleteAll([
-						   'user_id'=>$userId,
-						   'user_pet_id'=>$this->request->data['UserPets'][$key]['user_pet_id']
-						 ]);
-               	}
-                foreach($guest_images['UserPets'][$key] as $guest_image){
-               		
-               	   $petGalleryData = $petGalleryModel->newEntity();
-
-                   $petGalleryData->user_id = $userId;
-                   $petGalleryData->user_pet_id = $petsData->id;
-                   $petGalleryData->image = $guest_image;
-
-                   $petGalleryModel->save($petGalleryData);
-                }    
-               }
-			}
-			pr($petGalleryData);die;
-			pr($petsData);die;
-
-               //$petsData = $userPetsModel->patchEntity($petsData, $this->request->data['UserPets'],['validate'=>false]);
-                
-      
-          return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
-
-
-
-			    /*if ($userPetsModel->save($petsData)){
-               	     return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
-				}else{
-				  $this->Flash->error(__('Error found, Kindly fix the errors.'));
-				}
-			 	unset($petsData->id);
-		       $this->set('guest_data', $guestData);
-                  
-		            $query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
-		            if(isset($query->user_pet_galleries) && !empty($query->user_pet_galleries)) {
-		                  $images_arr = $query->user_pet_galleries;
-		                   $html = " ";
-		                   foreach($images_arr as $key=>$val){
-		                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg"  data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle"></i></a>';
-		                   	 $html .='</div></div>';
-		                    }
-		                $this->set('pet_images', $html);
-		            }*/
-		     $session->write("UserPets",'');
-		}else{
-             $session->write("UserPets",'');
-
-		     $userPetsData = $usersModel->get($userId,['contain'=>'UserPets']);
-		     //pr($userPetsData);die;
-
-		     if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)) {
-		     	$count_pets = count($userPetsData->user_pets);
-                if($count_pets == 1){
-                   $this->set('guest_data', $userPetsData->user_pets[0]);
-                }else{
-                   $this->set('guests_data', $userPetsData->user_pets); 
-		     	}
-                 
-		     }else{
-		     	$this->set('guest1','guest1');
-		     }
-		  
-   /*$query = $usersModel->find()->contain(['UserPetGalleries'=> ['queryBuilder' =>                            function ($q) {
-                                        return $q->order(['UserPetGalleries.id' => 'DESC'])->limit(3);
-                                    }
-                                            ]
-                         ]
-                );*/
-                       /*contain([
-							        'queryBuilder' => function ($q){
-							                return $q->order(['UserPetGalleries.created_date' =>'DESC'])->limit(3);
-							            }
-							    ]
-							]);*/
-           //pr($query);die;
-        //pr($query);die;
-           $query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
-           if(isset($query->user_pet_galleries) && !empty($query->user_pet_galleries)) {
-                  $images_arr = $query->user_pet_galleries;
-                   $html = " ";
-                   foreach($images_arr as $key=>$val){
-                   	   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
-                  <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center" alt="img">
-                </div>';
-                    }
-                $this->set('pet_images', $html);
-            }
-            
-            
-        }
-           
-    }
+  
     /**
+    Function for about guest
+*/
+function aboutGuest(){
+    $this->viewBuilder()->layout('profile_dashboard');
+	$usersModel = TableRegistry::get('Users');
+	$session = $this->request->session();
+	$userId = $session->read('User.id');
+
+	$userPetsModel = TableRegistry::get('UserPets');
+	$petGalleryModel = TableRegistry::get('UserPetGalleries');
+
+     if(isset($this->request->data['UserPets']) && !empty($this->request->data['UserPets'])) 
+     {
+		
+		//pr($this->request->data);die;
+					$userPetsModel->deleteAll(['UserPets.user_id'=>$userId]);
+					$petGalleryModel->deleteAll(['UserPetGalleries.user_id'=>$userId]);
+					
+					foreach($this->request->data['UserPets'] as $key=>$single_guest){
+						
+						    $guest_age = array($single_guest['guest_years'],$single_guest['guest_months']);
+							if(!empty($guest_age)){
+							$guest_age = implode(",",$guest_age);
+							}else{
+								 $guest_age = '';
+							}
+							$petsData = $userPetsModel->newEntity($single_guest);
+							$petsData->user_id = $userId;
+							$petsData->guest_age = $guest_age;
+							//Save guest data
+							$userPetsModel->save($petsData);
+										 if(!empty($session->read('UserPets'))){
+											 $guest_images['UserPets'] = $session->read('UserPets');
+											 //pr($guest_images);die;
+											 if(array_key_exists($key,$guest_images['UserPets'])){
+												$flag = 1;
+												foreach($guest_images['UserPets'][$key] as $guest_image){
+													
+												 $petGalleryData = $petGalleryModel->newEntity();
+												 $petGalleryData->user_id = $userId;
+												 $petGalleryData->user_pet_id = $petsData->id;
+												 $petGalleryData->image = $guest_image;
+												 $petGalleryModel->save($petGalleryData);
+												 if($flag == 3){
+													 break;
+												 }
+												}
+											 }
+										 }
+				}
+				return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+		//$session->write("UserPets",'');
+        }else{
+			$session->write("UserPets",'');
+					 $userPetsData = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);
+					 if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)) {
+						 $count_pets = count($userPetsData->user_pets);
+			if($count_pets == 1){
+			$this->set('guest_data', $userPetsData->user_pets[0]);
+			//For guest images
+			$html = "no_image";
+			if(isset($userPetsData->user_pets[0]->user_pet_galleries) && !empty($userPetsData->user_pets[0]->user_pet_galleries)) {
+			$images_arr = $userPetsData->user_pets[0]->user_pet_galleries;
+			$html = '';
+			$guest_images = array();
+			foreach($images_arr as $key=>$val){
+								 $guest_images[] = $val->image;
+					 $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									 <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center thumbnail" alt="img">
+									</div>';
+			}
+			$session->write('UserPets.Guest1',$guest_images);
+			}
+			$this->set('guest_images', $html);
+			//End
+			}else{
+			$this->set('guests_data', $userPetsData->user_pets);
+			//For guest images
+			     $G = 1;
+				foreach($userPetsData->user_pets as $single_data){
+									 $single_data = $single_data->toArray();
+									 $guest_images = array();
+								 if(isset($single_data['user_pet_galleries']) && !empty($single_data['user_pet_galleries'])) {
+										
+									 foreach($single_data['user_pet_galleries'] as $key=>$val){
+											$guest_images[] = $val['image'];
+										}
+									}
+									 $guest_num = 'Guest'.$G;
+									 $session->write("UserPets.$guest_num",$guest_images);
+									
+									 $G++;
+							 }
+							 //End
+							 }
+				}else{
+								$session->write("UserPets",'');
+							 $this->set('guest_images', 'no_image');
+							 $this->set('guest1','guest1');
+						 }
+			$dogBreedsModel = TableRegistry::get('DogBreeds');
+			 $dogBreeds = $dogBreedsModel->find("all")->toArray();
+			 $allBreeds = array();
+			 $i = 0;
+			 foreach($dogBreeds as $key=>$val){
+				 $allBreeds[$i]['value'] = "$val->id";
+				 $allBreeds[$i]['label'] = "$val->breed_name";
+				 $i++;
+			}
+			$this->set('dog_breeds',$allBreeds);
+	}
+}
+   /**
     Function for add pets
-    */
-    function addPets(){
-    	$petGalleryModel = TableRegistry::get('UserPetGalleries');
-    	$usersModel = TableRegistry::get('Users');
-         $guest_num = 'Guest'.$_REQUEST['guest'];
-          $session = $this->request->session();
-          $userId = $session->read('User.id');
-              $images_arr = array();
-			    $errors = array();
-			    for($i=0;$i<count($_FILES['images']['name']);$i++){
-			       $FileArr['name'] = $_FILES['images']['name'][$i];
-                   $FileArr['type'] = $_FILES['images']['type'][$i];
-                   $FileArr['tmp_name'] = $_FILES['images']['tmp_name'][$i];
-                   $FileArr['error'] = $_FILES['images']['error'][$i];
-                   $FileArr['size'] = $_FILES['images']['size'][$i];
-                  
-			      //upload and stored images
-                    $session->write('guest_images','');
+*/
+function addPets(){
+		$petGalleryModel = TableRegistry::get('UserPetGalleries');
+		$usersModel = TableRegistry::get('Users');
+			$guest_num = 'Guest'.$_REQUEST['guest'];
+			$session = $this->request->session();
 
-                  if($_FILES['images']['name'][$i]!=''){
-						$Img = $this->admin_upload_file('sitterGallery',$FileArr);
-						$Img = explode(':',$Img);
-						if($Img[0]=='error'){
-							$errors[] = 'File:'.$_FILES['images']['name'][$i].':'.$Img[1];
-							//pr($errors);die;
-						}else{
+			$session->write("UserPets.$guest_num",'');
 
-						   /*$petGalleryData = $petGalleryModel->newEntity();
-                           $petGalleryData->user_id = $userId;
-                           $petGalleryData->image = $Img[1];
-                           $petGalleryModel->save($petGalleryData);*/
-                           $guest_images[] = $Img[1];
-                           //$guest_img[$guest_num][] = $Img[1];
-                           $session->write('guest_images',$guest_images);
-                             
-						}				
-					}else{
-					   unset($_FILES['images']);
+
+			$userId = $session->read('User.id');
+			$images_arr = array();
+						 $errors = array();
+						 for($i=0;$i<count($_FILES['images']['name']);$i++){
+						 $FileArr['name'] = $_FILES['images']['name'][$i];
+			$FileArr['type'] = $_FILES['images']['type'][$i];
+			$FileArr['tmp_name'] = $_FILES['images']['tmp_name'][$i];
+			$FileArr['error'] = $_FILES['images']['error'][$i];
+			$FileArr['size'] = $_FILES['images']['size'][$i];
+
+						 //upload and stored images
+			$session->write('guest_images','');
+			if($_FILES['images']['name'][$i]!=''){
+									$Img = $this->admin_upload_file('sitterGallery',$FileArr);
+									$Img = explode(':',$Img);
+									if($Img[0]=='error'){
+										$errors[] = 'File:'.$_FILES['images']['name'][$i].':'.$Img[1];
+										//pr($errors);die;
+									}else{
+									 /*$petGalleryData = $petGalleryModel->newEntity();
+			$petGalleryData->user_id = $userId;
+			$petGalleryData->image = $Img[1];
+			$petGalleryModel->save($petGalleryData);*/
+			
+			$guest_images[] = $Img[1];
+			//$guest_img[$guest_num][] = $Img[1];
+			$session->write('guest_images',$guest_images);
+
+									}                
+								}else{
+								 unset($_FILES['images']);
+								}
+					 $FileArr = array();
+					 if($i > 2){
+						$errors = array();
+						$errors[] = "You can select only three images for your pet";
 					}
-		                $FileArr = array();      
-                }
-            $query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
-            //pr($query);die;
-             $guest_images = $session->read('guest_images');
-             $html = "";
-            if(isset($guest_images) && !empty($guest_images)){
-             //pr($guest_images);die;
-             	$i = 1;
-	             foreach($guest_images as $guest_image){
-	                   	   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
-	                  <img src="'.HTTP_ROOT.'img/uploads/'.$guest_image.'" class="img-responsive center-block text-center" alt="img">
-	                </div>';
-	               
-	               if($i == 3){
-	                  break;
-	               }
-	               $i++;
-	             }
-	             $session->write("UserPets.$guest_num",$guest_images);
-            }
-            $error ="";
-	        if(!empty($errors)){
-	              foreach($errors as $key=>$val){
-	          	     $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
-	            }
-	        }
-	        //pr($session->read("UserPets"));die;
-	        echo (json_encode(array($error,$html)));die;
-	      
-            /*if(isset($query->user_pet_galleries) && !empty($query->user_pet_galleries)) {
-                  $images_arr = $query->user_pet_galleries;
-                  $sitterImg = array();
-                   $html = " ";
-                   foreach($images_arr as $key=>$val){
-                   
-                   	$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg"  data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle"></i></a>';
-                   	 $html .='</div></div>';
-                   }
-                  if($errors != ''){
-                   $error ="";
-                  	  foreach($errors as $key=>$val){
-                  	     $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
-                      }
-                  }
+			}
 
-                 echo (json_encode(array($error,$html)));die;
-            }*/
-           
-    }
+
+			$query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
+
+			$guest_images = $session->read('guest_images');
+			//pr($guest_images);die;
+
+			$html = "";
+			if(isset($errors[0]) && ($errors[0] == "You can select only three images for your pet")){
+							
+						}else{
+							if(isset($guest_images) && !empty($guest_images)){
+			$j = 1;
+				 foreach($guest_images as $guest_image){
+								 $new_n[] = $guest_image;
+						  $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				 <img src="'.HTTP_ROOT.'img/uploads/'.$guest_image.'" class="img-responsive center-block text-center thumbnail" alt="img">
+				 </div>';
+				
+				 if($j == 3){
+				 break;
+				 }
+				 $j++;
+				 }
+				 $session->write("UserPets.$guest_num",$guest_images);
+			}
+						}
+
+					
+			$error ="";
+				 if(!empty($errors)){
+				 foreach($errors as $key=>$val){
+								 $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
+				 }
+				 }
+				 //pr($new_n);die;
+				 //pr($session->read("UserPets"));die;
+				 echo (json_encode(array($error,$html)));die;
+				
+			/*if(isset($query->user_pet_galleries) && !empty($query->user_pet_galleries)) {
+			$images_arr = $query->user_pet_galleries;
+			$sitterImg = array();
+			$html = " ";
+			foreach($images_arr as $key=>$val){
+
+				$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+				$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg" data-rel="'.$val->id.'" href="jav * ascript:void(0);"><i class="fa fa-minus-circle"></i></a>';
+				 $html .='</div></div>';
+			}
+			if($errors != ''){
+			$error ="";
+				 foreach($errors as $key=>$val){
+				 $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
+			}
+			}
+			echo (json_encode(array($error,$html)));die;
+			}*/
+
+}
     /**
     Function for Delete guest record
-    */
-    function deleteGuest($guestId = null){
-    	$userPetsModel = TableRegistry::get('UserPets');
-        $guestId = convert_uudecode(base64_decode($guestId));
-        //echo $guestId;die;
-        $userPetsModel->deleteAll($guestId);
-       
-       return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
-    }
+	*/
+	function deleteGuest($guestId = null){
+			$userPetsModel = TableRegistry::get('UserPets');
+			$petGalleryModel = TableRegistry::get('UserSitterGalleries');
+			
+			$guestId = convert_uudecode(base64_decode($guestId));
+			$entity = $userPetsModel->get($guestId);
+		    $result = $userPetsModel->delete($entity);
+
+		  return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
+	}
     /**
     Function for Professional Accreditations
     */
@@ -1554,9 +1567,9 @@ Function for Front profile dashboard
 		
 		if(isset($this->request->data['UserProfessionals']) && !empty($this->request->data['UserProfessionals']))
 		{
-			//pr($this->request->data);die;
-
-			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
+			//echo str_replace(' ', '',$this->request->data['UserProfessionalsDetails']['languages']);die;
+			
+            $UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('UserProfessionalAccreditationsDetails'); 
 
 			$UserProfessionalModel->deleteAll(['user_id' => $userId]);
@@ -1653,6 +1666,7 @@ Function for Front profile dashboard
 				$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
 				$userProfessionalDetailData->user_id = $userId;
 				$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
+				$userProfessionalDetailData->languages = str_replace(' ', '',$this->request->data['UserProfessionalsDetails']['languages']);
 				$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
 
 				if ($UserProfessionalDetailsModel->save($userProfessionalDetailData)){
@@ -1705,6 +1719,9 @@ Function for Front profile dashboard
 					$this->set('professional', $customArrForDisplayRec);
 					//pr($customArrForDisplayRec);die;
              }
+            $all_languages = [['value'=>'en','label'=>'English'],['value'=>'fr','label'=>'French'],['value'=>'de','label'=>'German'],['value'=>'hu','label'=>'Hungarian'],['value'=>'it','label'=>'Italian'],['value'=>'ro','label'=>'Romanian'],['value'=>'ru','label'=>'Russian'],['value'=>'es','label'=>'spanish']];
+          
+            $this->set('all_languages',$all_languages);
         }
     }
      /**
