@@ -1241,3 +1241,11 @@ body .ui-tooltip {
 	filter: Alpha(Opacity=20); /* support: IE8 */
 	border-radius: 10px;
 }
+
+.ui-slider-handle.ui-state-default.ui-corner-all {background:rgb(114, 161, 5);}
+
+select.ui-datepicker-month {
+    background: #fff;
+    color:#444444;
+    padding: 0px 4px;
+}
