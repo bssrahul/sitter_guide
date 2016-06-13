@@ -252,7 +252,7 @@
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
-                                                        <button class="btn btn-cont" onclick="location.href='<?php echo HTTP_ROOT.'search/sitter-contact/'.base64_encode(convert_uuencode(@$userData->id)); ?>'">Book Now
+                                                        <button class="btn btn-cont" data-toggle="modal" data-target="#myModal7">Book Now
                                                         </button>
                                                       </div>
                                                       </div>
@@ -1715,7 +1715,7 @@ $check_in=$UserRating->check_in_rating;
 											$sitterServiceData=$userData->user_sitter_services[0];
 											if(!empty($sitterServiceData)){
 								  ?>
-															<img src="images/day-care.png" width="18" height="17" alt=""> Day Care : 
+															<img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> Day Care : 
 															<span><?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$ ".$sitterServiceData->sh_day_rate;						
@@ -1729,7 +1729,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/night-care.png" width="18" height="17" alt=""> Night Care : 
+															<img src="<?php echo HTTP_ROOT; ?>img/night-care.png" width="18" height="17" alt=""> Night Care : 
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_night_rate))
 																		{	
@@ -1744,7 +1744,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/lt-care.png" width="18" height="17" alt=""> Long Terms Care : 
+															<img src="<?php echo HTTP_ROOT; ?>img/lt-care.png" width="18" height="17" alt=""> Long Terms Care : 
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
@@ -1759,7 +1759,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/hourly-care.png" width="18" height="17" alt=""> Hourly Care : 
+															<img src="<?php echo HTTP_ROOT; ?>img/hourly-care.png" width="18" height="17" alt=""> Hourly Care : 
 															<span> 
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
@@ -1774,7 +1774,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/house-setting.png" width="18" height="17" alt=""> House Setting : 
+															<img src="<?php echo HTTP_ROOT; ?>img/house-setting.png" width="18" height="17" alt=""> House Setting : 
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
@@ -1789,7 +1789,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/out-about.png" width="18" height="17" alt=""> Out & About : 
+															<img src="<?php echo HTTP_ROOT; ?>img/out-about.png" width="18" height="17" alt=""> Out & About : 
 															<span> 
 																	<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
@@ -1804,7 +1804,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/grooming.png" width="18" height="17" alt=""> Grooming : 
+															<img src="<?php echo HTTP_ROOT; ?>img/grooming.png" width="18" height="17" alt=""> Grooming : 
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_grooming_rate))
 																		{	
@@ -1819,7 +1819,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/training.png" width="18" height="17" alt=""> Training : 
+															<img src="<?php echo HTTP_ROOT; ?>img/training.png" width="18" height="17" alt=""> Training : 
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_training_rate))
 																		{	
@@ -1834,7 +1834,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/drive-upto.png" width="18" height="17" alt=""> Drive(up 10km one way) : 
+															<img src="<?php echo HTTP_ROOT; ?>img/drive-upto.png" width="18" height="17" alt=""> Drive(up 10km one way) : 
 															<span> 
 															<?php  if(!empty($sitterServiceData->mp_driving_rate))
 																		{	
@@ -1849,7 +1849,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/visit-perday.png" width="18" height="17" alt=""> House Setting : 
+															<img src="<?php echo HTTP_ROOT; ?>img/visit-perday.png" width="18" height="17" alt=""> House Setting : 
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
@@ -1864,7 +1864,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="images/meet-greet.png" width="18" height="17" alt=""> Meet &amp; Greet: 
+															<img src="<?php echo HTTP_ROOT; ?>img/meet-greet.png" width="18" height="17" alt=""> Meet &amp; Greet: 
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
@@ -1895,9 +1895,9 @@ $check_in=$UserRating->check_in_rating;
 <div class="wl-top"> <a href="#" title="Save to Wish List" ><i class="fa fa-heart-o"></i> Save to Wish List</a> </div>
 <div class="wl-bot">
 <ul>
-<li><a href="" title=""><img src="images/contact-icon.png" width="16" height="13" alt=""> Contact</a></li>
-<li><a href="" title=""><img src="images/verified.png" width="16" height="13" alt="">Verified</a></li>
-<li><a href="" title=""><img src="images/share-icon.png" width="16" height="13" alt=""> Share</a></li>
+<li><a href="" title=""><img src="<?php echo HTTP_ROOT; ?>img/contact-icon.png" width="16" height="13" alt=""> Contact</a></li>
+<li><a href="" title=""><img src="<?php echo HTTP_ROOT; ?>img/verified.png" width="16" height="13" alt="">Verified</a></li>
+<li><a href="" title=""><img src="<?php echo HTTP_ROOT; ?>img/share-icon.png" width="16" height="13" alt=""> Share</a></li>
 </ul>
 </div>
 </div>--> 
@@ -2434,295 +2434,10 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                   </div>
                                                   </div>
                                                 <!--video popup ends-->
-                                                <!--Additional Services Popup-->
-                                                <div class="modal fade" id="myModal7" role="dialog">
-                                                  <div class="modal-dialog">
-                                                    <div class="sitter-quike-view">
-                                                      <div class="sqv-box">
-                                                        <div class="top-close">
-                                                          <p>Geraldo Rates
-                                                          </p>
-                                                          <a href="#" title="Close" data-dismiss="modal">
-                                                            <i class="fa fa-times" aria-hidden="true">
-                                                            </i>
-                                                          </a>
-                                                        </div>
-                                                        <!--Additional Services-->
-                                                        <div class="additional-services">
-                                                          <div class="as-area">
-                                                            <div class="h-box">
-                                                              <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <p>
-                                                                    <b>
-                                                                    </b>House Sitting 
-                                                                    <br> in your home 
-                                                                  </p>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <span>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_night_rate; ?> 
-                                                                    <b>per night
-                                                                    </b>
-                                                                  </span>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                            <ul>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Holiday Rate
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_holiday_rate; ?> 
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Additional Dog Rate
-                                                                    </b> per night per additional dog
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_nc_additional_guest_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Stays of 4 Nights or More
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>$40
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Puppy Rate
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_puppy_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Cat Care
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_cat_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                            </ul>
-                                                          </div>
-                                                          <div class="as-area">
-                                                            <div class="h-box h-box-2">
-                                                              <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <p>
-                                                                    <b>
-                                                                    </b>Dog Boarding
-                                                                    <br> the sitter's home
-                                                                  </p>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <span>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->sh_night_rate; ?>  
-                                                                    <b>per night
-                                                                    </b>
-                                                                  </span>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                            <ul>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Holiday Rate
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->sh_holiday_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Additional Dog Rate
-                                                                    </b> per night per additional dog
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->sh_nc_additional_guest_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Stays of 4 Nights or More
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>$40
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Puppy Rate
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->sh_puppy_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b> Pick-Up and Drop-Off
-                                                                    </b> per round trip
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->mp_ds_premium_driver_service_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Cat Care
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->sh_cat_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                            </ul>
-                                                          </div>
-                                                          <div class="as-area">
-                                                            <div class="h-box h-box-3">
-                                                              <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <p>
-                                                                    <b>
-                                                                    </b>Drop-In Visits
-                                                                    <br> 30-minute check-ins 
-                                                                  </p>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <span>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>  
-                                                                    <b>per visit
-                                                                    </b>
-                                                                  </span>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                            <ul>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Holiday Rate
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Additional Dog Rate
-                                                                    </b> per night per additional dog
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->gh_nc_additional_guest_rate; ?>
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <div class="cate">
-                                                                  <p>
-                                                                    <b>Stays of 4 Nights or More
-                                                                    </b> per night
-                                                                  </p>
-                                                                </div>
-                                                                <div class="prce">
-                                                                  <p>$40
-                                                                  </p>
-                                                                </div>
-                                                              </li>
-                                                            </ul>
-                                                          </div>
-                                                          <div class="as-area">
-                                                            <div class="h-box h-box-3">
-                                                              <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <p>
-                                                                    <b>
-                                                                    </b>Doggy Day Care 
-                                                                    <br> n the sitter's home 
-                                                                  </p>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                  <span>
-                                                                    <?php echo '$'.$userData->user_sitter_services[0]->sh_day_rate; ?>  
-                                                                    <b>per day
-                                                                    </b>
-                                                                  </span>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                        <!--Additional Services-->
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                                <!--Additional Services Popup-->
+                                                
+                                               
 													
-                                                </div>
+                                              
                                                 
                                               <script>
                                                 $(document).ready(function() {
@@ -2753,3 +2468,313 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 }
 
 </style>
+
+
+
+<!--Additional Services Popup-->
+<div class="modal fade" id="myModal7" role="dialog">
+  <div class="modal-dialog">
+    <div class="sitter-quike-view">
+      <div class="sqv-box">
+        <div class="top-close">
+          <p>Reservation Request</p>
+          <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
+        <div class="row">
+        
+        
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 ">
+          
+          
+          
+          
+          
+          
+     <!--     starts-->
+          
+     <div class="sr-area-outer">
+        <div class="row st-head-txt">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 visible-lg">
+            <p>When you are Away</p>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 visible-lg">
+            <p>while you are at Home</p>
+          </div>
+        </div>
+        <div class="sr-area"> 
+          <!--top filter tab-->
+          <div class="top-filter-tab">
+            <ul>
+              <li class="active"><a class="boarding" href="#boarding" data-toggle="tab"> <span></span> Boarding<br>
+                <b>in the sitter home</b> </a></li>
+              <li><a class="h-sitting" href="#hsitting" data-toggle="tab"><span></span> House Sitting<br>
+                <b>in your home</b></a></li>
+              <li><a class="d-visit" href="#dvisit" data-toggle="tab"><span></span> Drop-in Visit<br>
+                <b>in your home</b></a></li>
+              <li><a class="dn-care" href="#dncare" data-toggle="tab"><span></span> Day / Night Care<br>
+                <b>in the sitter’s home</b></a></li>
+              <li><a class="m-place" href="#mplace" data-toggle="tab"><span></span> Market Place<br>
+                <b>exercise, groom, train+</b></a></li>
+            </ul>
+          </div>
+          <!--top filter tab--> 
+          <!--Tab Content area -->
+          
+             <div class="tab-content">
+              <div class="tab-pane  in active" id="boarding" >
+          <div  class="cont-sitter"> 
+                    <div class="cs-mid-cont">
+                    <div class="csmc-area">
+                      
+                      <div class="boardng-rates">
+                      <h1 class="">Boarding Rates</h1>
+                      <ul class="list-unstyled">
+              <li> <i class="fa fa-angle-right right-gr"></i>$20 one night for one guest</li>
+              <li><i class="fa fa-angle-right right-gr"></i>20% discount for multiple pets </li>
+              <li><i class="fa fa-angle-right right-gr"></i>20% discount for multiple nights (made in some booking) </li>
+            
+          
+              </ul>
+                      </div>
+                      
+                      
+                      <!--Date-->      
+                      	<div class="hs-date">
+                        	<h1 class="hsd-head"> Boarding Dates</h1>
+                        	<div class="row">
+                            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                               	  <div class="fromto">
+                                    	<input type="text"><a title="Calender" href="#"><img width="21" height="21" alt="Calender" src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"></a>
+                                    </div>
+                                </div>
+                            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                	<div class="fromto">
+                                    	<input type="text"><a title="Calender" href="#"><img width="21" height="21" alt="Calender" src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"></a>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <p>For your safety &amp; security, Rover will not expose your phone number until you've booked your stay. Messages from Agatha will come from 858-914-2079, a number owned by sitter guide. </p>
+                        </div>
+                      <!--/Date-->  
+                      <!--add dog-->
+                      <div class="ad-dog"> 
+                      		<h2>Dogs</h2>   
+                            <div class="row">
+                            	<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+                                	<div class="dog-list">
+                                	<ul>
+                                    	<li><input type="checkbox"> Dog Name</li>
+                                        <li><input type="checkbox"> Dog Name</li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                                	<div class="ad">
+                                    	<a title="Add Dogs" href="#"><i aria-hidden="true" class="fa fa-plus-circle"></i> Add Another Dogs</a>
+                                    </div>
+                                </div>                                                                
+                            </div>
+                       </div>    
+                      <!--/add dog-->
+                      
+                      <div class="row">
+                      
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="include"> <a href="#" data-toggle="collapse" data-target="#bott"><span class="include-addit"></span> &nbsp; Include additional services from Market place?</a></div>
+                      
+                      <div id="bott" class="collapse">
+                      
+                      <!--<ul style="width:100%; float:left">
+                      <li  style="width:100%; float:left; display:inline;">about your dog an</li>
+                       <li  style="width:100%; float:left; display:inline;">about your dog an</li>
+                         <li  style="width:100%; float:left; display:inline;">about your dog an</li>
+                       <li  style="width:100%; float:left; display:inline;">about your dog an</li>
+                      </ul>-->
+                      
+                      <div class="container-fluid">
+                      <div class="row">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp
+Grooming </div>
+                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Training </div>
+                           
+                     
+                      </div>
+                      <div class="row">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Recreation (Walking) </div>
+                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Driver Service </div>
+                           
+                     
+                      </div>
+                      </div></div>
+                      </div>
+                      </div>
+                      
+                      
+                      <!--message-->
+                      	<div class="msg">
+                        
+                        	<h3>Message</h3>
+                            <p class="no-bot">Share a little info about your dog and why they'd have a great time with Agatha. </p>
+                             <p>Don't forget if you need to make any changes to your dates you can update these later on. </p>
+                            <textarea class="txtarea"></textarea>
+                            <p><input type="checkbox">&nbsp I'd like to receive photos of my dog(s) during this stay. </p>
+                          
+                            <p>All stays booked through Rover are covered by premium insurance. </p>
+                        </div>
+                      <!--/message-->
+                      
+                      <div class="row">
+                      
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="best-pract1"><p><b>Best Practice :</b> We recommend contacting the sitter before finalizing your reservation.</p></div>
+          </div></div>
+        		</div></div>
+          
+          </div>
+          </div>
+          
+          
+           <!-- <div class="tab-pane fade" id="hsitting" ></div>
+             <div class="tab-pane fade" id="dvisit" ></div>
+              <div class="tab-pane fade" id="dncare" ></div>
+               <div class="tab-pane fade" id="mplace" ></div>-->
+            
+          </div>
+          
+          <!--Tab Content area--> 
+          
+        </div>
+      </div>     
+          
+          
+          
+       <!--   ends
+          -->
+      
+          
+           
+          </div>
+          
+          <div class=" col-xs-12 col-md-4 col-sm-4 col-lg-3  ">
+            <div class="right-content-wrap">
+              <div class="top-box-wrap">
+                <div class="row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img src="<?php echo HTTP_ROOT; ?>img/detail-pop-img1.png" width="50" height="50" class="img-responsive img-circle text-center center-block" alt="image"> </div>
+                  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <ul class="list-unstyled">
+                      <li class="f14">Jenifer</li>
+                      <li class="f13">Banksia 2016</li>
+                    </ul>
+                  </div>
+                </div>
+                
+              </div>
+              
+              <div class="booking-summ">
+              <h3>Your  Book Summary</h3>
+              
+              </div>
+              
+              <div class="pet-info-wrap alert">
+                <div class="pet-info-head">
+                  <p>Guest Hunter  <span class="pull-right text-right"> <a href="#"    class="close close-cross" data-dismiss="alert" aria-label="close" ><i class="fa fa-times-circle close-cross"></i></a></span></p>
+                </div>
+                <div class="pet-info-inner">
+                  
+                <ul class="list-unstyled">
+                   <li>House Sitting for 1 night</li>
+                    <li>23/05/2016 to 24/05/2016</li>
+                       <li>$20 x 1 nigh @ 20p/night</li>
+                
+                </ul>
+
+                </div>
+                
+                <div class="pet-info-bot">
+                  <p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p>
+                </div>
+              </div>
+              
+              <div class="pet-info-wrap alert">
+                <div class="pet-info-head">
+                  <p>Guest Hunter  <span class="pull-right text-right"> <a href="#"    class="close close-cross" data-dismiss="alert" aria-label="close" ><i class="fa fa-times-circle close-cross"></i></a></span></p>
+                </div>
+                <div class="pet-info-inner">
+                  
+                <ul class="list-unstyled">
+                   <li>House Sitting for 1 night</li>
+                    <li>23/05/2016 to 24/05/2016</li>
+                       <li>$20 x 1 nigh @ 20p/night</li>
+                
+                </ul>
+
+                </div>
+                
+                <div class="pet-info-bot">
+                  <p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p>
+                </div>
+              </div>
+              
+              
+              
+              <div class="table-wrap">
+                <table class="table">
+                
+                  
+                  <tbody>
+                    
+                    <tr>
+                    
+                      <td class="tbfont">Cancellation Policy</td>
+                      <td class="tbfont">Flexible</td>
+                    </tr>
+                    <tr>
+                    
+                      <td class="tbfont">Total Amount</td>
+                      <td class="tbfont">AU $20</td>
+                    </tr>
+                    
+                    <tr>
+                    
+                      <td class="tbfont">Booking Fee</td>
+                      <td class="tbfont">Free</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                
+                
+                <button class="btn btn-req-bok btn-block">Request Booking</button>
+              </div>
+              
+              
+              
+              <div class="pay-through">
+              <h6 class="pay-head">Booking through Sitter Guide Covers you for:</h6>
+              <ul class="list-unstyled">
+              <li> <i class="fa fa-angle-right right-gr"></i>Premium Insurance</li>
+              <li><i class="fa fa-angle-right right-gr"></i>100% Satisfection</li>
+              <li><i class="fa fa-angle-right right-gr"></i>Money Back</li>
+              <li><i class="fa fa-angle-right right-gr"></i>24/support</li>
+              <li><i class="fa fa-angle-right right-gr"></i>Daily Photo Update</li>
+          
+              </ul>
+              
+              
+              </div>
+              
+            </div>
+          </div>
+          
+          
+          
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--Additional Services Popup--> 
