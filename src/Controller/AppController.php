@@ -366,7 +366,6 @@ class AppController extends Controller{
 				{
 					$extCheckStr = implode(',',$extCheckArr);
 					$return = "error:Only ".strtoupper($extCheckStr)." files are allowed!";
-					//echo "oko".$return;die;
 					return $return;exit();
 				}
 			}
@@ -389,7 +388,7 @@ class AppController extends Controller{
 			$explodeExt = explode('.',$image);
 			$explodeExt =  end($explodeExt);
 			
-		
+		     $explodeExt = strtolower($explodeExt);
 			if($explodeExt=='jpg' || $explodeExt=='jpeg' || $explodeExt=='png' || $explodeExt=='gif' || $explodeExt=='bmp')
 			{
 				
@@ -398,7 +397,6 @@ class AppController extends Controller{
 					$image = $this->RandomStringGenerator(15);
 					$destination = realpath('../webroot/img/'.$uploadFolder).'/'.$image.$ext;
 					$src = $FileArr['tmp_name'];
-					//echo $destination;die;
 					list( $width, $height, $source_type ) = getimagesize($src);	
 					
 					if($width == $logoWidth && $height == $logoHeight)

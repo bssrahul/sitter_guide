@@ -260,8 +260,22 @@
 			
 			<ul>
 				  <li>
-						<div class="md-size"><label>My Dog Size</label>
+						<div class="md-size"><label>
+							<?php if(isset($sitter_guests_info) && !empty($sitter_guests_info)){ echo 'Your Pets:'; }else{
+								echo 'My Dog Size'; 
+								}?>
+							 </label>
 							<ul class="dog_size">
+								<?php //pr($sitter_pet_info);
+								if(isset($sitter_guests_info) && !empty($sitter_guests_info)){
+								foreach($sitter_guests_info as $single_guest){
+								 ?>
+								    <label style="margin:3px" for="<?php $single_guest['guest_name'];?>">
+									<input id="<?php $single_guest['guest_name'];?>" type="checkbox" checked >
+									<?php echo $single_guest['guest_name']; ?>
+									</label>
+								<?php } 
+								}else{  ?>		
 								
 								<li class="dog_size_li ">
 									 <div class="d-size"> 
@@ -270,7 +284,6 @@
 										</a>
 										
 								</li>
-								
 								<li class="dog_size_li ">
 									 <div class="d-size"> 
 										<a href="javascript:void(0);" class="training" data-rel="16-40" title="Training">
@@ -278,7 +291,6 @@
 										</a>
 										
 								</li>
-								
 								<li class="dog_size_li ">
 									 <div class="d-size"> 
 										<a href="javascript:void(0);" class="training" data-rel="41-100" title="Training">
@@ -286,7 +298,6 @@
 										</a>
 										
 								</li>
-								
 								<li class="dog_size_li ">
 									 <div class="d-size"> 
 										<a href="javascript:void(0);" class="training" data-rel="101+" title="Training">
@@ -294,6 +305,7 @@
 										</a>
 										
 								</li>
+								<?php } ?>
 								
 							</ul>	
 						</div>
