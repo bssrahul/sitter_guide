@@ -1319,6 +1319,8 @@
 			}
 
          });
+         $('#about_guest').validate();
+         
 		/*For Skills & Accreditations form*/
 		$('#skillsAccreditations').validate({
 			rules: {
