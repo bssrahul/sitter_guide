@@ -86,7 +86,7 @@
 			     <span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span>
 			  </div>
               <!--Calendar Box Start-->
-			
+			<div class="ajax_overlay">&nbsp;</div>
 			<div id="myCalender"><?php echo $this->element('frontElements/profile/calender');?></div>
 			
 			  <!--Calendar Box End  -->		  
@@ -243,9 +243,10 @@
 	  
 	  
 	  
-	<?php echo $this->Html->css('Front/dist/jquery.onoff.css');
+	<?php 
+		echo $this->Html->css('Front/dist/jquery.onoff.css');
 		echo $this->Html->script(['Front/dist/jquery.onoff.js']);
-?>
+	?>
 <script>
 	function show_date_picker_on_start_date(){
 
@@ -409,42 +410,3 @@
 	});
   
 </script>
-<style>
-.disable {
-	background: #ccc none repeat scroll 0 0 !important;
-}
-.center{
-	width: 150px;
-	margin: 40px auto;
-  
-}
-.btn-number{
-	height:35px !important;
-	width:35px !important;
-}
-.input-group {
-	width:130px;
-	text-align:center;
-	padding-left:5px;
-	margin-top:5px;
-
-}
-
-#ui-datepicker-div
-{
-	z-index: 9999999 !important;
-}
-.unavailable{
-	
-	float:left;
-}
-.not_display {
-    display: none;
-}
-.content_disable{
-    color:#afafaf  !important;
-}
-.onoff_hideClass{
-	 display: none;
-}
-</style>
