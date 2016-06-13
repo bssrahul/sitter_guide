@@ -1917,6 +1917,7 @@ $check_in=$UserRating->check_in_rating;
 									<div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?></div>
 			
 							 <!--Calendar Box End  -->		
+
                             </div>
                           </div>
                         </div>
