@@ -1106,9 +1106,8 @@ Function for Front profile dashboard
 	     
 
     }
-  
-    /**
-    Function for about guest
+/**
+	Function for about guest
 */
 function aboutGuest(){
     $this->viewBuilder()->layout('profile_dashboard');

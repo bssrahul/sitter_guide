@@ -807,7 +807,7 @@
                         'type'=>'textarea',
                         'label' => false,
                         'required' => false,
-                        'class'=>'form-control height-area required',
+                        'class'=>'form-control height-area required about_txtarea',
                         'value'=>@$guest_data['guest_description'] !=''?@$guest_data['guest_description']:''
                         ]);
               ?>
@@ -1267,7 +1267,7 @@
 		}
       });
       //Word count
-      function wprdCount(textClass){
+   function wprdCount(textClass){
 		var regex = /\s+/gi;
 		var maxWords = 75;
 		
@@ -1288,10 +1288,9 @@
 			return false;
 			
 		}
-		
-	}
+	 }
 	$(document).on('keyup','.about_txtarea',function(){
-		   wprdCount(this);
+		  wprdCount(this);
 	});
 	
 </script>
