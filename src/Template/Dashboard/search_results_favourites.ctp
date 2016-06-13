@@ -1,8 +1,8 @@
  <?php echo $this->Html->script('Front/bootbag_paginate.js'); ?>
- <div class="col-md-9 col-lg-10 col-sm-8 " >
+ <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
           <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
             <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
-              <h3><img src="images/db-profile-home-icon.png" alt="db-profile-home-icon"> Favourites</h3>
+              <h3><img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Favourites</h3>
             </div>
             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
               <ol class="breadcrumb text-right">
