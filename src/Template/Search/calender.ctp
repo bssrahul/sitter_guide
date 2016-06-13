@@ -120,60 +120,7 @@
 			 
 			  </div>
            
-            <div class="panel panel-default">
-              <div class="panel-heading"> Calender <i class="fa fa-question-circle"></i> </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <ul class="list-unstyled">
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon green-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2 " placeholder="Day Care" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon red-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Night Care" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <ul class="list-unstyled">
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon orange-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Drop in visit" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                           <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="input-group group-padd"><span id="" class="input-group-addon yellow-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Hourly Services" aria-label="Text input with segmented button dropdown" >
-                          <div class="input-group-btn">
-                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-12">
-                    <ul class="list-inline">
-                      <li class="refresh"> <img src="<?php echo HTTP_ROOT.'img/refresh_red.png'?>" class="text-center" width="15" height="19" alt="refresh"> </li>
-                      <li class="sync"> <a href="#">Sync your Calender</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-         </div>
+          </div>
         </div>
       </div>
 	  </div>

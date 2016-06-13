@@ -161,8 +161,29 @@
 												<a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">
 												<?php echo $results->first_name." ".substr(($results->last_name)?$results->last_name:"",0,1)."."; ?> 
 											   </a>
-												<b><img src="<?php echo HTTP_ROOT; ?>img/certify-1.png"  alt=""/></b> 
-												<b><img src="<?php echo HTTP_ROOT; ?>img/certify-2.png"  alt=""/></b>
+											
+											   
+											   <?php if(($results['users_badge'])!= ""){
+													if($results['users_badge']->dl_pcb_badge){?>
+														
+														<b><img src="<?php echo HTTP_ROOT. 'img/detail-backcheck.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></b>
+														
+													<?php	}
+													if($results['users_badge']->cpr_rescue_badge){?>
+														<b><img src="<?php echo HTTP_ROOT. 'img/certify-2.png'; ?>" alt="Dl & PCB Badge"	height="20px" width="20px"/></b>
+													<?php	}
+													if($results['users_badge']->oral_injucted_badge){?>
+														<b><img src="<?php echo HTTP_ROOT. 'img/detail_medical.jpg'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></b>
+													<?php	}
+													if($results['users_badge']->ffo_area_badge){?>
+														<b><img src="<?php echo HTTP_ROOT. 'img/detail-fence.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></b>
+													<?php	}
+											}?>
+											   
+											   
+											   
+											 
+												
 											</p>
 											
 											<p class="about-sit"><?php echo (@$results->user_about_sitter->your_self !="")?@$results->user_about_sitter->your_self:"Profile headline not set yet"; ?>  </p>
@@ -279,6 +300,18 @@
 								  <!--sitter feedback-->
 								  <div class="sit-feedback"> 
 									<?php 
+								
+									$lastcomment="";
+									$userRating=$results->user_ratings;
+									foreach($userRating as $rating){
+										
+											$commentdata=$rating;
+										
+									}
+									//pr($commentdata);
+									$lastcomment=$commentdata->comment;
+									$UserImage=$commentdata->user->image;
+									//pr($UserImage);
 									if($results->facebook_id !="" && $results->is_image_uploaded==0){
 										if($results->image != "")
 										{
@@ -291,9 +324,9 @@
 
 									<?php }else{ ?>
 									
-									<img Width="52" height="52" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 					   
+									<img Width="52" height="52" alt="<?php echo __('Profile Picture'); ?>" src="<?php if(!empty($UserImage)){echo HTTP_ROOT.'img/uploads/'.$UserImage ; }else{ echo HTTP_ROOT.'img/uploads/prof_photo.png' ;} ?>"> 					   
 									<?php  } ?>  
-									<p><?php echo (@$results->user_about_sitter->client_choose_desc !="")?@$results->user_about_sitter->client_choose_desc:"Why client choose you content not set yet"; ?></p>
+									<p><?php echo (@$lastcomment !="")?@$lastcomment:"Why client choose you content not set yet"; ?></p>
 								  </div>                      
 								  <!--sitter feedback--> 
 								</div>

@@ -224,6 +224,7 @@ class GuestsController extends AppController
 		$this->viewBuilder()->layout('landing');
 		// Loaded Admin Model
 		$UsersModel = TableRegistry::get('Users');
+	
 		
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UsersModel);
@@ -546,6 +547,8 @@ class GuestsController extends AppController
 		$error=array();
 		$captchErr="";
 		$this->request->data = @$_REQUEST;
+		$UserBadgeModel=TableRegistry :: get("Users_badge");
+		$UserBadgedata=$UserBadgeModel->newEntity();
 
 		if(isset($this->request->data['signup-submit']) && $this->request->data['signup-submit']=='Sign Up')
 		{ 
@@ -621,7 +624,10 @@ class GuestsController extends AppController
 							if($UsersModel->save($UsersData))
 							{
 								$getUsersTempId1 = $UsersData->id;
+								$UserBadgedata->user_id= $UsersData->id;
+								$UserBadgeModel->save($UserBadgedata);
 								
+								//pr($UsersData->id);die;
 								$uid = base64_encode($this->request->data['Users']['email']);
 								$link = HTTP_ROOT.'guests/activation/'.$uid.'/'.$activation_key.'/success:registerSuccess';
 								$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate(base64_encode('Click Here For Activate Your Account')).'</a>';
