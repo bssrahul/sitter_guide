@@ -692,8 +692,8 @@ class SearchController extends AppController
 				}
 			}
 	
-		$this->set('resultsData',$userData);
-		$this->set('distanceAssociation',$distanceAssociation);
+		$this->set('resultsData',@$userData);
+		$this->set('distanceAssociation',@$distanceAssociation);
 		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
 		$this->set('sourceLocationLongitude',$sourceLocationLongitude);
 		$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
