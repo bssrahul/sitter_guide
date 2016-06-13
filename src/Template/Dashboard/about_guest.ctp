@@ -64,7 +64,7 @@
                         'type'=>'text',
                         'label' => false,
                         'required' => false,
-                        'class'=>'form-control required ma2',
+                        'class'=>'form-control required',
                         'value'=>@$guest_data['guest_name'] !=''?@$guest_data['guest_name']:''
                       ]);
               ?>
