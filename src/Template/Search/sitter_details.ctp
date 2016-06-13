@@ -30,47 +30,58 @@
               </h4>
               <div class="badage-detail">
                 <ul class="list-inline text-center">
-                  <li>
-                    <img alt="" src="<?php echo HTTP_ROOT; ?>img/certify-1.png">
-                  </li>
-                  <li>
-                    <img alt="" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                  </li>
-                </ul>
+				  <?php if(($userData['users_badge'])!= ""){
+							
+							if($userData['users_badge']->dl_pcb_badge){?>
+								
+								 <li><img src="<?php echo HTTP_ROOT. 'img/detail-backcheck.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+								
+							<?php	}
+							if($userData['users_badge']->cpr_rescue_badge){?>
+								 <li><img src="<?php echo HTTP_ROOT. 'img/certify-2.png'; ?>" alt="Dl & PCB Badge"	height="20px" width="20px"/></li>
+							<?php	}
+							if($userData['users_badge']->oral_injucted_badge){?>
+								 <li><img src="<?php echo HTTP_ROOT. 'img/detail_medical.jpg'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+							<?php	}
+							if($userData['users_badge']->ffo_area_badge){?>
+								 <li><img src="<?php echo HTTP_ROOT. 'img/detail-fence.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+							<?php	}
+				}?>
+				</ul>
               </div>
-              <div class="details-stars">
+              <div class="details-stars starPad">
                 <ul class="list-inline text-center">
                   <?php  	$UserRatingData=$userData->user_ratings; 
-//pr($UserRatingData);
-$accuracy_sum = 0;
-$comm_sum = 0;
-$clean_sum = 0;
-$location_sum = 0;
-$check_sum = 0;
-$rating_sum = 0;
-$count=0;
-foreach($UserRatingData as $UserRating){
-$count++;
-$accuracy_rating=$UserRating->accuracy_rating;
-$communication_rating=$UserRating->communication_rating;
-$cleanliness_rating=$UserRating->cleanliness_rating;
-$location_rating=$UserRating->location_rating;
-$check_in_rating=$UserRating->check_in_rating;
-$accuracy_sum = $accuracy_sum + $accuracy_rating;
-$comm_sum = $comm_sum + $communication_rating;
-$clean_sum = $clean_sum + $cleanliness_rating;
-$location_sum = $location_sum + $location_rating;
-$check_sum = $check_sum + $check_in_rating;
-}
-if($count > 0){
-$ac=$accuracy_sum/$count;
-$cm=$comm_sum/$count;
-$cl=$clean_sum/$count;
-$lc=$location_sum/$count;
-$ch=$check_sum/$count;
-$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
-}
-?>
+							//pr($UserRatingData);
+							$accuracy_sum = 0;
+							$comm_sum = 0;
+							$clean_sum = 0;
+							$location_sum = 0;
+							$check_sum = 0;
+							$rating_sum = 0;
+							$count=0;
+							foreach($UserRatingData as $UserRating){
+							$count++;
+							$accuracy_rating=$UserRating->accuracy_rating;
+							$communication_rating=$UserRating->communication_rating;
+							$cleanliness_rating=$UserRating->cleanliness_rating;
+							$location_rating=$UserRating->location_rating;
+							$check_in_rating=$UserRating->check_in_rating;
+							$accuracy_sum = $accuracy_sum + $accuracy_rating;
+							$comm_sum = $comm_sum + $communication_rating;
+							$clean_sum = $clean_sum + $cleanliness_rating;
+							$location_sum = $location_sum + $location_rating;
+							$check_sum = $check_sum + $check_in_rating;
+							}
+							if($count > 0){
+							$ac=$accuracy_sum/$count;
+							$cm=$comm_sum/$count;
+							$cl=$clean_sum/$count;
+							$lc=$location_sum/$count;
+							$ch=$check_sum/$count;
+							$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
+							}
+						?>
                   <li>
                     <!--	<p class="r-star rat-wt"> -->
                     <span class="rating ">
@@ -1700,90 +1711,182 @@ $check_in=$UserRating->check_in_rating;
                                   </p>
                                 </div>
                                 <ul class="care-list">
-                                  <li>
-                                    <img src="images/day-care.png" width="18" height="17" alt=""> Day Care : 
-                                    <span> $40 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/night-care.png" width="18" height="17" alt=""> Night Care : 
-                                    <span>$50 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i> 
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/lt-care.png" width="18" height="17" alt=""> Long Terms Care : 
-                                    <span>$20 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/hourly-care.png" width="18" height="17" alt=""> Hourly Care : 
-                                    <span> $40 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/house-setting.png" width="18" height="17" alt=""> House Setting : 
-                                    <span> $80 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/out-about.png" width="18" height="17" alt=""> Out & About : 
-                                    <span> $40 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/grooming.png" width="18" height="17" alt=""> Grooming : 
-                                    <span>$50 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/training.png" width="18" height="17" alt=""> Training : 
-                                    <span>$20 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/drive-upto.png" width="18" height="17" alt=""> Drive(up 10km one way) : 
-                                    <span> $40 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/visit-perday.png" width="18" height="17" alt=""> House Setting : 
-                                    <span> $80 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                  <li>
-                                    <img src="images/meet-greet.png" width="18" height="17" alt=""> Meet &amp; Greet: 
-                                    <span> $80 
-                                      <i class="fa fa-exclamation-circle">
-                                      </i>
-                                    </span>
-                                  </li>
-                                </ul>
-                                <div class="guest-list"> 
-                                  <a href="#" title="Request Booking" class="r-booking">Book Now
-                                  </a> 
-                                </div>
-                              </div>
-                              <!--/Service list--> 
+                                  <li><?php //pr($userData->user_sitter_services[0]);
+											$sitterServiceData=$userData->user_sitter_services[0];
+											if(!empty($sitterServiceData)){
+								  ?>
+															<img src="images/day-care.png" width="18" height="17" alt=""> Day Care : 
+															<span><?php  if(!empty($sitterServiceData->sh_day_rate))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/night-care.png" width="18" height="17" alt=""> Night Care : 
+															<span>
+															<?php  if(!empty($sitterServiceData->sh_night_rate))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_night_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i> 
+															</span>
+														  </li>
+														  <li>
+															<img src="images/lt-care.png" width="18" height="17" alt=""> Long Terms Care : 
+															<span>
+															<?php  if(!empty($sitterServiceData->sh_day_rates))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/hourly-care.png" width="18" height="17" alt=""> Hourly Care : 
+															<span> 
+															<?php  if(!empty($sitterServiceData->sh_day_rates))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/house-setting.png" width="18" height="17" alt=""> House Setting : 
+															<span>
+															<?php  if(!empty($sitterServiceData->sh_day_rates))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/out-about.png" width="18" height="17" alt=""> Out & About : 
+															<span> 
+																	<?php  if(!empty($sitterServiceData->sh_day_rates))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>															
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/grooming.png" width="18" height="17" alt=""> Grooming : 
+															<span>
+																<?php  if(!empty($sitterServiceData->mp_grooming_rate))
+																		{	
+																				echo "$ ".$sitterServiceData->mp_grooming_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/training.png" width="18" height="17" alt=""> Training : 
+															<span>
+																<?php  if(!empty($sitterServiceData->mp_training_rate))
+																		{	
+																				echo "$ ".$sitterServiceData->mp_training_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/drive-upto.png" width="18" height="17" alt=""> Drive(up 10km one way) : 
+															<span> 
+															<?php  if(!empty($sitterServiceData->mp_driving_rate))
+																		{	
+																				echo "$ ".$sitterServiceData->mp_driving_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/visit-perday.png" width="18" height="17" alt=""> House Setting : 
+															<span> 
+																<?php  if(!empty($sitterServiceData->sh_day_rates))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														  <li>
+															<img src="images/meet-greet.png" width="18" height="17" alt=""> Meet &amp; Greet: 
+															<span> 
+																<?php  if(!empty($sitterServiceData->sh_day_rates))
+																		{	
+																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																		}else{
+																			
+																			echo "$ --";
+																		}																
+																	?>
+															  <i class="fa fa-exclamation-circle">
+															  </i>
+															</span>
+														  </li>
+														</ul>
+														<div class="guest-list"> 
+														  <a href="#" title="Request Booking" class="r-booking">Book Now
+														  </a> 
+														</div>
+													  </div>
+													  <!--/Service list--> 
+													  
+											<?php }  ?>
                             </div>
                           </div>
                           <!--Service Type End--> 
@@ -1808,7 +1911,12 @@ $check_in=$UserRating->check_in_rating;
                             <h3 class="mid-sec-title pt30  ">Availability
                             </h3>
                             <div class="detail-cal-widget"> 
-                              <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> 
+                            <!--  <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> -->
+							  <!--Calendar Box Start-->
+			
+									<div id="myCalender"><?php echo $this->element('frontElements/search/calender');?></div>
+			
+							 <!--Calendar Box End  -->		
                             </div>
                           </div>
                         </div>
@@ -2628,3 +2736,22 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                 }
                                                                  );
                                               </script>
+
+											  
+  
+	
+
+<style>
+.pre_day_disable{
+	background-color:#f2f2f2 !important;
+}
+
+.not_display {
+    display: none;
+	
+}
+.display_green {
+    background-color: #7BAB0D !important;
+}
+
+</style>

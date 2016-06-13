@@ -619,10 +619,13 @@ class UsersController extends AppController
 	{
 		$this->viewBuilder()->layout('admin_dashboard');
 		
+		$session=$this->request->session();
+		$user_id=$session->read('User.id');
+		
 		$this->loadComponent('Paginator');
 		$this->set('modelName','Users');
 		$UsersModel = TableRegistry::get("Users");
-		$Userdata=$UsersModel->find('all')->contain(['Users_badge'])->toArray();
+		$Userdata=$UsersModel->find('all')->contain(['Users_badge','UserProfessionalAccreditationsDetails','UserProfessionalAccreditations','UserSitterHouses'])->toArray();
 		
 		//pr($Userdata);die;
 		//CODE FOR MULTILIGUAL START

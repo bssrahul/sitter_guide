@@ -13,12 +13,14 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */ 
 namespace App\Controller;
+use Cake\View\Helper\PaginatorHelper;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\Event\Event;
 use Cake\I18n\Time;
+
 
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
 use Calendar;
@@ -37,6 +39,15 @@ class DashboardController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
+	
+	
+	public $paginate = [
+        'limit' => 12,
+        'order' => [
+            'Users.id' => 'DESC'
+        ]
+    ];
+
 	 public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -46,8 +57,12 @@ class DashboardController extends AppController
 			exit();
 		}
     }
+	
+	//public $paginate = ['favUsersdata'=>['limit' => 1]];
 	public function initialize()
     {
+		
+		
 		parent::initialize();
 
        //GET LOCALE VALUE
@@ -69,7 +84,8 @@ class DashboardController extends AppController
 		$sliderVideo = $sliderModel->find('all')->first();
 		$this->set('sliderVideo', $sliderVideo);
 		
-
+		//$this->loadComponent('Paginator');
+		 $this->loadComponent('Paginator');
 	}
 	
 	/**Function for landing page
@@ -2374,6 +2390,58 @@ function addPets(){
 		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
 
     }
+	public function searchResultsFavourites(){
+		$session = $this->request->session();
+        $userId = $session->read('User.id');
+		
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		//Fetch Data Leading-sitting
+		$UsersModel=TableRegistry :: get('Users');
+		$FavourateModel=TableRegistry :: get('UserSitterFavourites');
+		
+		$favourateData = $FavourateModel->find('all', [
+		'fields' => [
+					'sitter_id' => 'UserSitterFavourites.sitter_id',
+					'count_favourate' => 'COUNT(UserSitterFavourites.sitter_id)',
+					
+					],
+					 'order' => ['count_favourate' => 'DESC'],
+					 'group' => ['UserSitterFavourites.sitter_id'],
+					])->where(['user_id'=>$userId])->hydrate(false)->contain(['Users'=> 
+					function ($q){
+						return $q
+						->select(['id','image','first_name','last_name','city'])
+						->contain(['UserRatings'])
+						;
+					}
+					]);
+		//	pr($favourateData);die;			
+						
+		/*		
 	
+		$favUsersdata=array();
+		foreach($favourateData as $favourate){
+			
+			$sitter_id=$favourate->sitter_id;
+			$fav_no=$favourate->count_favourate;
+			//$favUsersdata[]=$UsersModel->find('all')->where(['id'=>$sitter_id])->contain(['UserRatings'])->toArray();
+			$favUsersdata[] = $UsersModel->find('all',['contain'=>[
+														'UserAboutSitters',
+														'UserRatings','UserSitterServices'
+													]]
+											)
+							   ->where(['Users.id' => $sitter_id])
+							   ->toArray();
+			}
+										
+		 */ 		
+		//pr($favUsersdata);die;
+		//$this->set('Posts',$this->paginate($Posts));
+	
+		$this->set('FavUsersdata',$this->paginate($favourateData));
+	
+		
+	}
 }
 ?>

@@ -68,7 +68,7 @@
 								
 								
 								<li>
-									<a href="#"><i class="fa fa-calendar"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calender')); ?></a>
+									<a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><i class="fa fa-calendar"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calender')); ?></a>
 								</li>
 								
 								<li>
