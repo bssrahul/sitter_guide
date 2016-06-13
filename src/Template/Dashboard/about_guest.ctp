@@ -1,4 +1,27 @@
-<?php //echo "<pre>";print_r($guests_data);?>
+<?php //pr(@$guest_data); ?>
+<link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
+<link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
+<script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
+<script>
+	
+  $(document).ready(function(){
+		$('.dogBreeds').tokenfield({
+		  autocomplete: {
+		  source: <?php echo $allBreed = json_encode($dog_breeds); ?>,
+		  delay: 100
+		},
+		  showAutocompleteOnFocus: true,
+
+		});
+		$('.dogBreeds').on('tokenfield:createtoken', function (event){
+		  var existingTokens = $(this).tokenfield('getTokens');
+		  $.each(existingTokens, function(index, token) {
+			  if (token.value === event.attrs.value)
+				  event.preventDefault();
+		 });
+		});
+  });
+</script>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row">
     <div class="profiletab-section">
@@ -30,6 +53,7 @@
               ]);
          
           ?>
+         
         <div id="ajaxAdd1" class="row ajaxAdd">
            <div class="row">
             <div class="form-group col-lg-4 col-md-6">
@@ -64,8 +88,31 @@
 				 <div class="form-group col-lg-4 col-md-6 showHideBreed1" style="display:block">
                  <label for="">Breed
                  </label>
+                 <?php  if(!empty($guest_data['guest_breed'])){
+							$breeds = explode(",",$guest_data['guest_breed']); 
+							
+							$selectedBreed =array();
+							 foreach($dog_breeds as $key=> $arr)
+								{ 
+									$value=$arr['value'];
+									$label=$arr['label'];
+									if(in_array($value,$breeds) )
+									{
+										$selectedBreed[]=array("value"=>$value,"label"=>$label);
+									}
+								}
+								$selectedBreed=json_encode($selectedBreed);	
+						}      
+				   ?>
+                 <script>
+					$(document).ready(function() {
+
+					  $('#userpets-guest1-guest-breed').tokenfield('setTokens',<?php echo $selectedBreed; ?>);
+					});
+				 </script>
+                 <input class="form-control required dogBreeds" id="userpets-guest1-guest-breed" type="text" name="UserPets[Guest1][guest_breed]" value="" >
               
-               <?php echo $this->Form->input('UserPets.Guest1.guest_breed',[
+               <!--<?php echo $this->Form->input('UserPets.Guest1.guest_breed',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'required' => false,
@@ -74,16 +121,15 @@
                         'class'=>'form-control required',
                         'value'=>@$guest_data['guest_breed'] !=''?@$guest_data['guest_breed']:''
                         ]);
-                ?>
-
-
-            </div>
+                ?>-->
+              </div>
 				<?php }else{ ?>
 					 <div class="form-group col-lg-4 col-md-6 showHideBreed1" style="display:none">
               <label for="">Breed
               </label>
+              <input class="form-control required dogBreeds" id="userpets-guest1-guest-breed" type="text" name="UserPets[Guest1][guest_breed]" value="" >
               
-               <?php echo $this->Form->input('UserPets.Guest1.guest_breed',[
+               <!-- <?php echo $this->Form->input('UserPets.Guest1.guest_breed',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'required' => false,
@@ -92,7 +138,7 @@
                         'class'=>'form-control required',
                         'value'=>@$guest_data['guest_breed'] !=''?@$guest_data['guest_breed']:''
                         ]);
-                ?>
+                ?> -->
 
 
             </div>
@@ -104,9 +150,9 @@
               <div class="row">
 				  <?php if(@$guest_data['guest_type'] == 'dog'){ ?>
 					  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed1" style="display:block">
-                  <label for="">Size
-                  </label>
-                  <?php echo $this->Form->input('UserPets.Guest1.guest_weight',[
+						 <label for="">Size
+                        </label>
+					<?php echo $this->Form->input('UserPets.Guest1.guest_weight',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'type'=>'select',
                         'label' => false,
@@ -115,12 +161,14 @@
                         'class'=>'form-control required',
                         'value'=>@$guest_data['guest_weight'] !=''?@$guest_data['guest_weight']:''
                       ]);
-                  ?>
+                  ?> 
                 </div>
 					  <?php }else{ ?>
-						 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="display:none">
+						 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed1" style="display:none">
                   <label for="">Size
                   </label>
+                         
+                         
                   <?php echo $this->Form->input('UserPets.Guest1.guest_weight',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'type'=>'select',
@@ -585,7 +633,30 @@
 			       <div class="form-group col-lg-4 col-md-6 showHideBreed<?php echo $o; ?>" style="display:block">
               <label for="">Breed
               </label>
-                <?php echo $this->Form->input("UserPets.$guest.guest_breed",[
+                 <?php  if(!empty($guest_data['guest_breed'])){
+							$breeds = explode(",",$guest_data['guest_breed']); 
+							
+							$selectedBreed =array();
+							 foreach($dog_breeds as $key=> $arr)
+								{ 
+									$value=$arr['value'];
+									$label=$arr['label'];
+									if(in_array($value,$breeds) )
+									{
+										$selectedBreed[]=array("value"=>$value,"label"=>$label);
+									}
+								}
+								$selectedBreed=json_encode($selectedBreed);	
+						}      
+				   ?>
+                 <script>
+					$(document).ready(function() {
+                        $('#userpets-<?php echo $guest; ?>-guest-breed').tokenfield('setTokens', <?php echo @$selectedBreed;?>);
+					});
+				 </script>
+                 <input class="form-control required dogBreeds" id="userpets-<?php echo $guest; ?>-guest-breed" type="text" name="UserPets[<?php echo $guest ?>][guest_breed]" value="" >
+                 
+                <!--<?php echo $this->Form->input("UserPets.$guest.guest_breed",[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'required' => false,
@@ -594,13 +665,15 @@
                         'class'=>'form-control required',
                         'value'=>@$guest_data['guest_breed'] !=''?@$guest_data['guest_breed']:''
                         ]);
-                ?>
+                ?>-->
             </div>
 			<?php }else{ ?>
 				<div class="form-group col-lg-4 col-md-6 showHideBreed<?php echo $o; ?>" style="display:none">
               <label for="">Breed
               </label>
-                <?php echo $this->Form->input("UserPets.$guest.guest_breed",[
+              <input class="form-control required dogBreeds" id="userpets-<?php echo $guest; ?>-guest-breed" type="text" name="UserPets[<?php echo $guest ?>][guest_breed]" value="" >
+              
+                <!--<?php echo $this->Form->input("UserPets.$guest.guest_breed",[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
                         'required' => false,
@@ -609,7 +682,7 @@
                         'class'=>'form-control required',
                         'value'=>@$guest_data['guest_breed'] !=''?@$guest_data['guest_breed']:''
                         ]);
-                ?>
+                ?>-->
             </div>
 				<?php } ?>  
             
@@ -650,6 +723,7 @@
                   ?>
                 </div>
 				<?php } ?>
+				
                 <?php if(@$guest_data['guest_age'] != ''){
                   $guest_age_arr = explode(",",$guest_data['guest_age']);
                 } ?>
@@ -1094,6 +1168,7 @@
 <!--Form for upload Photo Library-->
 
 <script>
+	
   $(document).on('click','.browseImg',function(){
     $("#guest_images").trigger("click"); 
     var j = $(this).attr('data-rel');
@@ -1148,9 +1223,33 @@
      $("#addMultipleGuest").on('click',function(){
 		 var i=$( ".ajaxAdd" ).length;
         i = parseInt(i)+1;
+       
+					
+                /* <select id="userpets-guest'+i+'-guest-breed" class="form-control required" name="UserPets[Guest'+i+'][guest_breed]"><option value="">---</option><option value="afgan">Afghan Hound</option><option value="affen">Affenpinscher</option><option value="african">Africans</option><option value="aidi">Aidi</option></select>*/
+					
+				 
+                 
       
+      $("#addAfter").append('<div id="ajaxAdd'+i+'" class="ajaxAdd"><h3><strong>Guest Info</strong><button data-rel="ajaxAdd'+i+'" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right">Delete </button></h3><div class="row"> <div class="form-group col-lg-4 col-md-6"> <label for="userpets-guest'+i+'-guest-name">Guest Name </label> <input type="text" id="userpets-guest'+i+'-guest-name" class="form-control required" name="UserPets[Guest'+i+'][guest_name]"> </div><div class="form-group col-lg-4 col-md-6"> <label for="userpets-guest'+i+'-guest-type">Type </label> <select data-rel="showHideBreed'+i+'" id="userpets-guest'+i+'-guest-type" class="selectPetType form-control required" name="UserPets[Guest'+i+'][guest_type]"><option value="">---</option><option value="dog">Dog</option><option value="cat">Cat</option><option value="horse">Horse</option><option value="rabbit">Rabbit</option><option value="guinee_pig">Guinne Pig</option><option value="ferret">Ferret</option><option value="bird">Bird</option><option value="reptile">Reptile</option><option value="farm_animal">Farm Animal</option></select> </div><div class="form-group col-lg-4 col-md-6 showHideBreed'+i+'" style="display:none"> <label for="userpets-guest'+i+'-guest-breed">Breed </label><input class="form-control required dogBreeds" id="userpets-guest'+i+'-guest-breed" type="text" name="UserPets[Guest'+i+'][guest_breed]" value="" ></div></div><div class="row"> <div class="form-group col-lg-4 col-md-6"> <div class="row"> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed'+i+'" style="display:none"> <label for="userpets-guest'+i+'-guest-weight">Size </label><select id="userpets-guest'+i+'-guest-weight" class="form-control required" name="UserPets[Guest'+i+'][guest_weight]"><option selected="selected" value="">---</option><option value="0-7">Small(0-7kg)</option><option value="8-18">Medium(8-18kg)</option><option value="18-45">Large(18-45kg)</option><option value="45+">Giant(45+kg)</option><option value="aidi">Aidi</option></select></div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="row"> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <label for="userpets-guest'+i+'-guest-years">Age </label> <input type="text" id="userpets-guest'+i+'-guest-years" class="form-control required number" name="UserPets[Guest'+i+'][guest_years]"> </div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <label for="userpets-guest'+i+'-guest-months">&nbsp; </label> <input type="text" id="userpets-guest'+i+'-guest-months" class="form-control required number" name="UserPets[Guest'+i+'][guest_months]"> </div></div></div></div></div><div class="form-group col-lg-4 col-md-6"> <div class="row"> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <label for="">Gender </label> <div class="row"> <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> <div class="input-group"> <span class="input-group-addon"> <input checked type="radio" aria-label="..." name="UserPets[Guest'+i+'][guest_gender]" value="male"> </span> <input type="text" disabled="" aria-label="..." value="Male" class="form-control"> </div></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> <div class="input-group"> <span class="input-group-addon"> <input type="radio" aria-label="..." name="UserPets[Guest'+i+'][guest_gender]" value="female"> </span> <input type="text" disabled="" aria-label="..." value="Female" class="form-control"> </div></div></div></div></div></div></div><div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="userpets-guest'+i+'-guest-description">Short Description </label> <textarea rows="5" id="userpets-guest'+i+'-guest-description" class="form-control height-area about_txtarea" name="UserPets[Guest'+i+'][guest_description]"></textarea><p id="userpets-guest'+i+'-guest-description_text" class="w-limit">74 words remainings</p></div><div class="form-group col-lg-4 col-md-6"> <label for="images_preview_'+i+'">Photo Library </label> <div id="images_preview_'+i+'" class="row"> <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img alt="img" class="img-responsive center-block text-center" src="<?php echo HTTP_ROOT; ?>/img/profile-dummy.png"> </div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img alt="img" class="img-responsive center-block text-center" src="<?php echo HTTP_ROOT; ?>/img/profile-dummy.png"> </div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img alt="img" class="img-responsive center-block text-center" src="<?php echo HTTP_ROOT; ?>/img/profile-dummy.png"> </div></div></div><div class="form-group col-lg-4 col-md-12"> <p class="upload-txt">It is a long established fact that a reader will be by the page when looking at its layout. </p><button type="button" class="btn btn-prof-upload browseImg" data-rel="'+i+'"> <i class="fa fa-upload "> </i> &nbsp;&nbsp; Upload Image </button> <div id="show-all-errors_'+i+'" class="row"> </div></div></div><h3>Extended Profile </h3> <div class="extend"> <div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Microchipped </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-microchipped-unknow"><input class="ma2" type="radio" id="userpets-guest'+i+'-microchipped-unknow" value="unknow" name="UserPets[Guest'+i+'][microchipped]">Unknown</label><label for="userpets-guest'+i+'-microchipped-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-microchipped-yes" value="yes" name="UserPets[Guest'+i+'][microchipped]">Yes</label><label for="userpets-guest'+i+'-microchipped-no"><input class="ma2" type="radio" checked="checked" id="userpets-guest'+i+'-microchipped-no" value="no" name="UserPets[Guest'+i+'][microchipped]">No</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Spayed / Neuted </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-spayed-or-neuted-unknow"><input class="ma2" type="radio" id="userpets-guest'+i+'-spayed-or-neuted-unknow" value="unknow" name="UserPets[Guest'+i+'][spayed_or_neuted]">Unknown</label><label for="userpets-guest'+i+'-spayed-or-neuted-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-spayed-or-neuted-yes" value="yes" name="UserPets[Guest'+i+'][spayed_or_neuted]">Yes</label><label for="userpets-guest'+i+'-spayed-or-neuted-no"><input type="radio" class="ma2" checked="checked" id="userpets-guest'+i+'-spayed-or-neuted-no" value="no" name="UserPets[Guest'+i+'][spayed_or_neuted]">No</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Flea Treated </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-flea-treated-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-flea-treated-yes" value="yes" name="UserPets[Guest'+i+'][flea_treated]">Yes</label><label for="userpets-guest'+i+'-flea-treated-no"><input type="radio" class="ma2" checked="checked" id="userpets-guest'+i+'-flea-treated-no" value="no" name="UserPets[Guest'+i+'][flea_treated]">No</label> </div></div></div><div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Vaccinated </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-vaccinated-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-vaccinated-yes" value="yes" name="UserPets[Guest'+i+'][vaccinated]">Yes</label><label for="userpets-guest'+i+'-vaccinated-no"><input class="ma2" type="radio" checked="checked" id="userpets-guest'+i+'-vaccinated-no" value="no" name="UserPets[Guest'+i+'][vaccinated]">No</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">House Trained </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-house-trained-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-house-trained-yes" value="yes" name="UserPets[Guest'+i+'][house_trained]">Yes</label><label for="userpets-guest'+i+'-house-trained-no"><input type="radio" class="ma2" checked="checked" id="userpets-guest'+i+'-house-trained-no" value="no" name="UserPets[Guest'+i+'][house_trained]">No</label><label for="userpets-guest'+i+'-house-trained-addition_detail_needed"><input class="ma2" type="radio" id="userpets-guest'+i+'-house-trained-addition_detail_needed" value="addition_detail_needed" name="UserPets[Guest'+i+'][house_trained]">Additional detail if needed</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Mediacation </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-mediacation-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-mediacation-yes" value="yes" name="UserPets[Guest'+i+'][mediacation]">Yes</label><label for="userpets-guest'+i+'-mediacation-no"><input type="radio" checked="checked" class="ma2" id="userpets-guest'+i+'-mediacation-no" value="no" name="UserPets[Guest'+i+'][mediacation]">No</label> </div></div></div><div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Veterinary Name and Contact Info </label> <input type="text" id="userpets-guest'+i+'-veterinary-name" class="form-control input-rt required" name="UserPets[Guest'+i+'][veterinary_name]"> </div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Friendly with </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-friendly-with-dog"><input checked type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with-dog" value="dog" name="UserPets[Guest'+i+'][friendly_with]">Dog</label><label for="userpets-guest'+i+'-friendly-with-cat"><input type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with-cat" value="cat" name="UserPets[Guest'+i+'][friendly-with]">Cat</label><label for="userpets-guest'+i+'-friendly-with--10yrs"><input type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with--10yrs" value="-10yrs" name="UserPets[Guest'+i+'][friendly-with]">Kids -10yrs</label><label for="userpets-guest'+i+'-friendly-with-+10yrs"><input type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with-+10yrs" value="+10yrs" name="UserPets[Guest'+i+'][friendly-with]">Kids +10yrs</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Add care instructions for "guests name" </label> <input type="text" id="userpets-guest'+i+'-care-instructions" class="form-control input-rt required" name="UserPets[Guest'+i+'][care_instructions]"></div></div></div><h3></h3></div>');
       
-      $("#addAfter").append('<div id="ajaxAdd'+i+'" class="ajaxAdd"><h3><strong>Guest Info</strong><button data-rel="ajaxAdd'+i+'" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right">Delete </button></h3><div class="row"> <div class="form-group col-lg-4 col-md-6"> <label for="userpets-guest'+i+'-guest-name">Guest Name </label> <input type="text" id="userpets-guest'+i+'-guest-name" class="form-control required" name="UserPets[Guest'+i+'][guest_name]"> </div><div class="form-group col-lg-4 col-md-6"> <label for="userpets-guest'+i+'-guest-type">Type </label> <select data-rel="showHideBreed'+i+'" id="userpets-guest'+i+'-guest-type" class="selectPetType form-control required" name="UserPets[Guest'+i+'][guest_type]"><option value="">---</option><option value="dog">Dog</option><option value="cat">Cat</option><option value="horse">Horse</option><option value="rabbit">Rabbit</option><option value="guinee_pig">Guinne Pig</option><option value="ferret">Ferret</option><option value="bird">Bird</option><option value="reptile">Reptile</option><option value="farm_animal">Farm Animal</option></select> </div><div class="form-group col-lg-4 col-md-6 showHideBreed'+i+'" style="display:none"> <label for="userpets-guest'+i+'-guest-breed">Breed </label> <select id="userpets-guest'+i+'-guest-breed" class="form-control required" name="UserPets[Guest'+i+'][guest_breed]"><option value="">---</option><option value="afgan">Afghan Hound</option><option value="affen">Affenpinscher</option><option value="african">Africans</option><option value="aidi">Aidi</option></select> </div></div><div class="row"> <div class="form-group col-lg-4 col-md-6"> <div class="row"> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed'+i+'" style="display:none"> <label for="userpets-guest'+i+'-guest-weight">Size </label><select id="userpets-guest'+i+'-guest-weight" class="form-control required" name="UserPets[Guest'+i+'][guest_weight]"><option selected="selected" value="">---</option><option value="0-7">Small(0-7kg)</option><option value="8-18">Medium(8-18kg)</option><option value="18-45">Large(18-45kg)</option><option value="45+">Giant(45+kg)</option><option value="aidi">Aidi</option></select></div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="row"> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <label for="userpets-guest'+i+'-guest-years">Age </label> <input type="text" id="userpets-guest'+i+'-guest-years" class="form-control required number" name="UserPets[Guest'+i+'][guest_years]"> </div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <label for="userpets-guest'+i+'-guest-months">&nbsp; </label> <input type="text" id="userpets-guest'+i+'-guest-months" class="form-control required number" name="UserPets[Guest'+i+'][guest_months]"> </div></div></div></div></div><div class="form-group col-lg-4 col-md-6"> <div class="row"> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <label for="">Gender </label> <div class="row"> <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> <div class="input-group"> <span class="input-group-addon"> <input checked type="radio" aria-label="..." name="UserPets[Guest'+i+'][guest_gender]" value="male"> </span> <input type="text" disabled="" aria-label="..." value="Male" class="form-control"> </div></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> <div class="input-group"> <span class="input-group-addon"> <input type="radio" aria-label="..." name="UserPets[Guest'+i+'][guest_gender]" value="female"> </span> <input type="text" disabled="" aria-label="..." value="Female" class="form-control"> </div></div></div></div></div></div></div><div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="userpets-guest'+i+'-guest-description">Short Description </label> <textarea rows="5" id="userpets-guest'+i+'-guest-description" class="form-control height-area about_txtarea" name="UserPets[Guest'+i+'][guest_description]"></textarea><p id="userpets-guest'+i+'-guest-description_text" class="w-limit">74 words remainings</p></div><div class="form-group col-lg-4 col-md-6"> <label for="images_preview_'+i+'">Photo Library </label> <div id="images_preview_'+i+'" class="row"> <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img alt="img" class="img-responsive center-block text-center" src="<?php echo HTTP_ROOT; ?>/img/profile-dummy.png"> </div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img alt="img" class="img-responsive center-block text-center" src="<?php echo HTTP_ROOT; ?>/img/profile-dummy.png"> </div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img alt="img" class="img-responsive center-block text-center" src="<?php echo HTTP_ROOT; ?>/img/profile-dummy.png"> </div></div></div><div class="form-group col-lg-4 col-md-12"> <p class="upload-txt">It is a long established fact that a reader will be by the page when looking at its layout. </p><button type="button" class="btn btn-prof-upload browseImg" data-rel="'+i+'"> <i class="fa fa-upload "> </i> &nbsp;&nbsp; Upload Image </button> <div id="show-all-errors_'+i+'" class="row"> </div></div></div><h3>Extended Profile </h3> <div class="extend"> <div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Microchipped </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-microchipped-unknow"><input class="ma2" type="radio" id="userpets-guest'+i+'-microchipped-unknow" value="unknow" name="UserPets[Guest'+i+'][microchipped]">Unknown</label><label for="userpets-guest'+i+'-microchipped-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-microchipped-yes" value="yes" name="UserPets[Guest'+i+'][microchipped]">Yes</label><label for="userpets-guest'+i+'-microchipped-no"><input class="ma2" type="radio" checked="checked" id="userpets-guest'+i+'-microchipped-no" value="no" name="UserPets[Guest'+i+'][microchipped]">No</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Spayed / Neuted </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-spayed-or-neuted-unknow"><input class="ma2" type="radio" id="userpets-guest'+i+'-spayed-or-neuted-unknow" value="unknow" name="UserPets[Guest'+i+'][spayed_or_neuted]">Unknown</label><label for="userpets-guest'+i+'-spayed-or-neuted-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-spayed-or-neuted-yes" value="yes" name="UserPets[Guest'+i+'][spayed_or_neuted]">Yes</label><label for="userpets-guest'+i+'-spayed-or-neuted-no"><input type="radio" class="ma2" checked="checked" id="userpets-guest'+i+'-spayed-or-neuted-no" value="no" name="UserPets[Guest'+i+'][spayed_or_neuted]">No</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Flea Treated </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-flea-treated-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-flea-treated-yes" value="yes" name="UserPets[Guest'+i+'][flea_treated]">Yes</label><label for="userpets-guest'+i+'-flea-treated-no"><input type="radio" class="ma2" checked="checked" id="userpets-guest'+i+'-flea-treated-no" value="no" name="UserPets[Guest'+i+'][flea_treated]">No</label> </div></div></div><div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Vaccinated </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-vaccinated-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-vaccinated-yes" value="yes" name="UserPets[Guest'+i+'][vaccinated]">Yes</label><label for="userpets-guest'+i+'-vaccinated-no"><input class="ma2" type="radio" checked="checked" id="userpets-guest'+i+'-vaccinated-no" value="no" name="UserPets[Guest'+i+'][vaccinated]">No</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">House Trained </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-house-trained-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-house-trained-yes" value="yes" name="UserPets[Guest'+i+'][house_trained]">Yes</label><label for="userpets-guest'+i+'-house-trained-no"><input type="radio" class="ma2" checked="checked" id="userpets-guest'+i+'-house-trained-no" value="no" name="UserPets[Guest'+i+'][house_trained]">No</label><label for="userpets-guest'+i+'-house-trained-addition_detail_needed"><input class="ma2" type="radio" id="userpets-guest'+i+'-house-trained-addition_detail_needed" value="addition_detail_needed" name="UserPets[Guest'+i+'][house_trained]">Additional detail if needed</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Mediacation </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-mediacation-yes"><input type="radio" class="ma2" id="userpets-guest'+i+'-mediacation-yes" value="yes" name="UserPets[Guest'+i+'][mediacation]">Yes</label><label for="userpets-guest'+i+'-mediacation-no"><input type="radio" checked="checked" class="ma2" id="userpets-guest'+i+'-mediacation-no" value="no" name="UserPets[Guest'+i+'][mediacation]">No</label> </div></div></div><div class="row"> <div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Veterinary Name and Contact Info </label> <input type="text" id="userpets-guest'+i+'-veterinary-name" class="form-control input-rt required" name="UserPets[Guest'+i+'][veterinary_name]"> </div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Friendly with </label> <div class=" m-rights"> <label for="userpets-guest'+i+'-friendly-with-dog"><input checked type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with-dog" value="dog" name="UserPets[Guest'+i+'][friendly_with]">Dog</label><label for="userpets-guest'+i+'-friendly-with-cat"><input type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with-cat" value="cat" name="UserPets[Guest'+i+'][friendly-with]">Cat</label><label for="userpets-guest'+i+'-friendly-with--10yrs"><input type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with--10yrs" value="-10yrs" name="UserPets[Guest'+i+'][friendly-with]">Kids -10yrs</label><label for="userpets-guest'+i+'-friendly-with-+10yrs"><input type="radio" class="ma2" id="userpets-guest'+i+'-friendly-with-+10yrs" value="+10yrs" name="UserPets[Guest'+i+'][friendly-with]">Kids +10yrs</label> </div></div><div class="form-group col-lg-4 col-md-12"> <label for="" class="pp-w">Add care instructions for "guests name" </label> <input type="text" id="userpets-guest'+i+'-care-instructions" class="form-control input-rt required" name="UserPets[Guest'+i+'][care_instructions]"></div></div></div><h3></h3></div>');
+      setTimeout(function(){
+				$('#userpets-guest'+i+'-guest-breed').tokenfield({
+				  autocomplete: {
+				  source: <?php echo $allBreed = json_encode($dog_breeds); ?>,
+				  delay: 100
+				},
+				  showAutocompleteOnFocus: true,
+
+				});
+				$('#userpets-guest'+i+'-guest-breed').on('tokenfield:createtoken', function (event){
+				  var existingTokens = $(this).tokenfield('getTokens');
+				  $.each(existingTokens, function(index, token) {
+					  if (token.value === event.attrs.value)
+						  event.preventDefault();
+				 });
+				});
+		  
+	  },200);
 
       
     }); 
@@ -1196,6 +1295,17 @@
 	});
 	
 </script>
+
+
+
+<!--<script>
+$(document).ready(function() {
+
+  $('#userpets-guest1-guest-breed').tokenfield('setTokens', [{"value":"1","label":"Small pets(0-7kg)"}]);
+});
+</script>-->
+
+
 <!--Start multiple upload-->
                   <?php echo $this->Form->create(@$sitter_info, [
                       'url' => ['controller' => 'dashboard', 'action' => 'add-pets'],

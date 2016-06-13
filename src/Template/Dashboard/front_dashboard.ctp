@@ -106,20 +106,19 @@
             <h3>
 				<?php 
 			if($profileStatus != 'sitter_update'){ ?>
-				<a href="<?php echo HTTP_ROOT,'dashboard/house#usersitterhouses-outdoor-area-size'; 
+				<a href="<?php echo HTTP_ROOT,'dashboard/about-guest'; 
 				$session = $this->request->session();
 				$session->write("profile","guest");
 				?>">Add a Pet </a>
 		    <?php }else{
 				$session = $this->request->session();
 				$session->write("profile","sitter");
-	            if(@$dog_in_home == 'yes'){ 
-					
+	             if(@$dog_in_home == 'yes'){ 
 					?>
-				    <a href="<?php echo HTTP_ROOT,'dashboard/home/sitter'; ?>">Add a Pet </a>
-				<?php }else{ ?>
+				    <a href="<?php echo HTTP_ROOT,'dashboard/house#usersitterhouses-outdoor-area-size'; ?>">Add a Pet </a>
+				 <?php }else{ ?>
 				  	<a data-toggle="modal" data-target="#dogInHomeStatusAlert" href="javascript:void(0)">Add a Pet </a>
-				<?php } 
+				 <?php } 
 			}?>
               
               

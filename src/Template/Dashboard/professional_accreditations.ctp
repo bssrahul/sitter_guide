@@ -1,3 +1,26 @@
+<link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
+<link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
+<script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
+<script>
+	$(document).ready(function(){
+		//For multiple language
+		$('#userprofessionalsdetails-languages').tokenfield({
+				  autocomplete: {
+				  source: <?php echo json_encode($all_languages); ?>,
+				  delay: 100
+				},
+				  showAutocompleteOnFocus: true,
+
+				});
+				$('#userprofessionalsdetails-languages').on('tokenfield:createtoken', function (event){
+				  var existingTokens = $(this).tokenfield('getTokens');
+				  $.each(existingTokens, function(index, token) {
+					  if (token.value === event.attrs.value)
+						  event.preventDefault();
+				 });
+				});
+	});
+</script>
 <?php 
   echo $this->Html->css(['Front/jquery-ui.css']); 
   echo $this->Html->script(['Front/jquery-ui.js']);
@@ -50,15 +73,39 @@
 									<label for="">
 										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Languages')); ?>
 									</label>
-									  
-									<?php echo $this->Form->input('UserProfessionalsDetails.languages',[
-									'templates' => ['inputContainer' => '{{content}}'],
-									'label' => false,
-									'type'=>'select',
-									'options'=>['en'=>'English','fr'=>'French','de'=>'German','hu'=>'Hungarian','it'=>'Italian','ro'=>'Romanian','ru'=>'Russian','es'=>'spanish'],
-									'class'=>'form-control',
-									'value'=>@$professional['user_professional_accreditations_details']->languages !=''?@$professional['user_professional_accreditations_details']->languages:'']);
-									?>
+								      <?php  
+								           if(!empty($professional['user_professional_accreditations_details']->languages)){
+										   
+										   $selected_languages=array();
+												$selected_languages = explode(", ",trim($professional['user_professional_accreditations_details']->languages)); 
+												$selected_lang =array();
+												foreach($all_languages as $key=> $arr)
+												{ 
+													$value=$arr['value'];
+													$label=$arr['label'];
+													if(in_array($value,$selected_languages) )
+													{
+														$selected_lang[]=array("value"=>$value,"label"=>$label);
+													}
+												}
+												  $selected_lang =json_encode($selected_lang);	
+											?>
+                                          <script>
+											$(document).ready(function() {
+                                                    $('#userprofessionalsdetails-languages').tokenfield('setTokens',<?php echo $selected_lang; ?>);
+											});
+										 </script>
+										 <?php } ?>
+										    <input class="form-control required" id="userprofessionalsdetails-languages" type="text" name="UserProfessionalsDetails[languages]" value="" >
+              
+								    <!--<?php echo $this->Form->input('UserProfessionalsDetails.languages',[
+											'templates' => ['inputContainer' => '{{content}}'],
+											'label' => false,
+											'type'=>'select',
+											'options'=>['en'=>'English','fr'=>'French','de'=>'German','hu'=>'Hungarian','it'=>'Italian','ro'=>'Romanian','ru'=>'Russian','es'=>'spanish'],
+											'class'=>'form-control',
+											'value'=>@$professional['user_professional_accreditations_details']->languages !=''?@$professional['user_professional_accreditations_details']->languages:'']);
+									?>-->
 								</div>
                     
 							</div>
@@ -674,6 +721,7 @@
 			}, 500);
 			
 		}); 
+		
 	});
 	</script>
 	<style>
