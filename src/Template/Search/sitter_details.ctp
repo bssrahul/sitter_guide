@@ -1913,8 +1913,11 @@ $check_in=$UserRating->check_in_rating;
                             <div class="detail-cal-widget"> 
                             <!--  <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> -->
 							  <!--Calendar Box Start-->
-			                     <div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?></div>
-			                 <!--Calendar Box End  -->		
+			
+									<div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?></div>
+			
+							 <!--Calendar Box End  -->		
+
                             </div>
                           </div>
                         </div>
