@@ -66,11 +66,15 @@
 									<a href="<?php echo HTTP_ROOT.'Message/get-messages' ?>"><i class="fa fa-envelope"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox & Bookings')); ?></a>
 								</li>
 								
-								
+							  <?php 
+							  $session=$this->request->session();
+                              $user_type = $session->read('User.user_type');
+                              
+							  if($user_type == 'Sitter'){ ?>
 								<li>
-									<a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><i class="fa fa-calendar"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calender')); ?></a>
+									<a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><i class="fa fa-calendar"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?></a>
 								</li>
-								
+							  <?php } ?>
 								<li>
 									<a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard'; ?>"><i class="fa fa-user"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile')); ?></a>
 								</li>

@@ -16,7 +16,7 @@
 									<i>
 										<img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent">
 									</i>
-									&nbsp; Sitter Availablity 
+									&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Availablity')); ?> 
 								</span>
 								<span class="pull-right">
 									<a href="#">
@@ -30,8 +30,8 @@
 								<table class="table table-hover">
 									<thead>
 										<tr class="table-row-heading">
-										  <th>Services</th>
-										  <th>Spaces</th>
+										  <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Services')); ?></th>
+										  <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?></th>
 										</tr>
 									</thead>
 									
@@ -40,36 +40,36 @@
 											<td scope="row">
 												<span class="table-image-pad">
 													<img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green">
-												</span>  Day Care 
+												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?> 
 											</td>
-										  <td><?php echo isset($services_array["day_care_limit"])?$services_array["day_care_limit"]:0; ?> Spaces </td>
+										  <td><?php echo isset($services_array["day_care_limit"])?$services_array["day_care_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 										<tr>
 											<td scope="row">
 												<span class="table-image-pad">
 													<img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green">
-												</span>  Night Care
+												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?>
 											</td>
-										  <td><?php echo isset($services_array["night_care_limit"])?$services_array["night_care_limit"]:0; ?> Spaces </td>
+										  <td><?php echo isset($services_array["night_care_limit"])?$services_array["night_care_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 										<tr>
 											<td scope="row">
 												<span class="table-image-pad">
 													<img src="<?php echo HTTP_ROOT."img/t-orange.png" ?>" width="11" height="11" alt="green">
-												</span>  Drop Visit
+												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop Visit')); ?>
 											</td>
-										  <td><?php echo isset($services_array["visits_limit"])?$services_array["visits_limit"]:0; ?> Spaces </td>
+										  <td><?php echo isset($services_array["visits_limit"])?$services_array["visits_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 										<tr>
 											<td scope="row">
 												<span class="table-image-pad">
 													<img src="<?php echo HTTP_ROOT."img/t-yellow.png" ?>" width="11" height="11" alt="green">
-												</span>  Marketplace 
+												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Marketplace')); ?> 
 											</td>
-										  <td><?php echo isset($services_array["markeplace_limit"])?$services_array["markeplace_limit"]:0; ?> Spaces </td>
+										  <td><?php echo isset($services_array["markeplace_limit"])?$services_array["markeplace_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 									</tbody>
@@ -82,7 +82,7 @@
           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-heading title-panel">
-			       <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-cal.png" ?>"  alt="calender"></i>&nbsp; Calender </span>
+			       <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-cal.png" ?>"  alt="calender"></i>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?> </span>
 			     <span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span>
 			  </div>
               <!--Calendar Box Start-->
@@ -94,7 +94,7 @@
 			  </div>
            
             <div class="panel panel-default">
-              <div class="panel-heading"> Calender <i class="fa fa-question-circle"></i> </div>
+              <div class="panel-heading"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?> <i class="fa fa-question-circle"></i> </div>
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
@@ -137,12 +137,7 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="col-xs-12">
-                    <ul class="list-inline">
-                      <li class="refresh"> <img src="<?php echo HTTP_ROOT.'img/refresh_red.png'?>" class="text-center" width="15" height="19" alt="refresh"> </li>
-                      <li class="sync"> <a href="#">Sync your Calender</a></li>
-                    </ul>
-                  </div>
+                  
                 </div>
               </div>
             </div>

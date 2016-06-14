@@ -248,11 +248,11 @@
                                                         </div>
                                                       </div>
                                                       <h5 class="additional">
-                                                        <a href="#" data-toggle="modal" data-target="#myModal7"> More Services Available 
+                                                        <a href="#" data-toggle="modal" data-target="#myModal79"> More Services Available 
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
-                                                        <button class="btn btn-cont" data-toggle="modal" data-target="#myModal7">Book Now
+                                                        <button class="btn btn-cont" data-toggle="modal" data-target="#myModal79">Book Now
                                                         </button>
                                                       </div>
                                                       </div>
@@ -2472,7 +2472,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 
 
 <!--Additional Services Popup-->
-<div class="modal fade" id="myModal7" role="dialog">
+<div class="modal fade" id="myModal79" role="dialog">
   <div class="modal-dialog">
     <div class="sitter-quike-view">
       <div class="sqv-box">
