@@ -164,7 +164,7 @@
 .sld-area .sit-pic-lft{ width:100%; max-width:554px; float:left; border-right:#cfcfcf 1px solid; }
 .sld-area .sit-pic-rgt{ width:100%; max-width:125px; float:left;  }
 
-.noresult-found{ width:100%; float:left; padding:125px 0; text-align:center; color:#404040; border-bottom:#cfcfcf 1px solid; display:none;}
+.noresult-found{ width:100%; float:left; padding:125px 0; text-align:center; color:#404040; border-bottom:#cfcfcf 1px solid;}
 .noresult-found p{ text-align:center; font-size:20px;}
 .noresult-found p span{ font-size:14px; color:#666666;}
 

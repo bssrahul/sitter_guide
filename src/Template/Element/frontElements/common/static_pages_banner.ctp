@@ -22,7 +22,19 @@
 													</div><!-- /input-group -->
 											</form>
 												<div class="text-center">
-													<p><b>Popular Topics  :</b>  <span>Getting started,</span> <span>How taxes works,</span> <span>Payments,</span>
+													<p>
+														<b>
+															<?php echo $this->requestAction('app/get-translate/'.base64_encode('Popular Topics')); ?> :
+														</b>  
+														<span>
+															<?php echo $this->requestAction('app/get-translate/'.base64_encode('Getting started')); ?>,
+														</span> 
+														<span>
+															<?php echo $this->requestAction('app/get-translate/'.base64_encode('How taxes works')); ?>,
+														</span> 
+														<span>
+															<?php echo $this->requestAction('app/get-translate/'.base64_encode('Payments')); ?>,
+														</span>
 													</p>
 												</div>
 											</div>
@@ -43,7 +55,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<h3 class="text-center"><?php echo isset($CmsPageData->pagename)?$CmsPageData->pagename:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet')); ?></h3>
-						<p><?php echo isset($CmsPageData->pageheading)?$CmsPageData->pageheading:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet'));; ?></p>
+						<p><?php echo isset($CmsPageData->pageheading)?$CmsPageData->pageheading:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet')); ?></p>
 					</div>
 				</div>
 			</div>

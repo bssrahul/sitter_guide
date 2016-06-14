@@ -1,5 +1,4 @@
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
-<!--<script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyAC9Ygt1oslhl8rB58NlsiwgP05bjUsfHQ"></script>-->
 
 <?php echo $this->Form->create(null, [
 		'url' => ['controller' => 'search', 'action' => 'search-by-location'],
