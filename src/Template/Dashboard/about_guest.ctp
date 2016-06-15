@@ -9,7 +9,8 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
 		$('.dogBreeds').tokenfield({
 		  autocomplete: {
 		  source: <?php echo $allBreed = json_encode($dog_breeds); ?>,
-		  delay: 100
+		  delay: 100,
+		  minHeight:200
 		},
 		  showAutocompleteOnFocus: true,
 
