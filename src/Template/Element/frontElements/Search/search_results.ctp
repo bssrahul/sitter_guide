@@ -4,12 +4,14 @@
         <div class="toptext">
           <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book on Sitter Guide and receive: Free sitter guide Premium Insurance, Local Australian Customer Support and a Booking Guarantee')); ?>.</p>
         </div>
+        
         <div class="ssr-list-area">
           <div class="sl-area"> 
             <!--distance-->
             <div class="distance">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  
                   <div class="sort-by">
                     <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sort By')); ?></p>
                     <?php 
@@ -435,7 +437,8 @@
             <!--[Sitter Listing Outer End]-->            
                      
           </div>
-          <!--[Right Map Start]-->
+          
+			<!--[Right Map Start]-->
             <div class="sl-map">            	
             	<!--<div class="enlarge-map">
                 	<div class="row">
@@ -496,6 +499,7 @@
 				?>
            </div>
            <!--[Right Map End]-->
+           
         </div>
       </div>
     </div>

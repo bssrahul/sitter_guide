@@ -268,7 +268,7 @@
 			
 			beforeSend: function(){
 			  $(".search-overlay").show();
-			  $(".search-overlay").html('<img class="search-img" src="'+ajax_url+'img/walking.gif"/>');
+			  $(".sl-area").html('<span class="search-overlay"><img class="search-img" src="'+ajax_url+'img/walking.gif"/></span>');
 			},
 			
 			complete: function(){
