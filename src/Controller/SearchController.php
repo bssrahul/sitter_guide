@@ -1083,7 +1083,129 @@ class SearchController extends AppController
 
     }
 	
-	
+	/**
+	 Function for sitter details
+	*/	
+	function viewProfile($sitterId = null){
+		
+		$this->viewBuilder()->layout('landing');
+		
+		$session = $this->request->session();
+		$sitterId = convert_uudecode(base64_decode($sitterId));
+		
+        $UsersModel = TableRegistry::get('Users');
+                
+		$userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
+		
+		$Userratingdata=$userData->user_ratings;
+		
+		$userFromArr=array();
+		foreach($Userratingdata as $Userrating){
+			
+			$userFromArr[]=$Userrating->user_from;
+		}
+		
+		$gettingUserData=$UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']])->toArray();
+		 $commentUserData=array();
+		
+		foreach($gettingUserData as $gettingUser){
+		
+			if(in_array($gettingUser->id,$userFromArr)){
+				
+				$commentUserData[]=$gettingUser;
+			} 
+		}
+		
+		$sourceLocationLatitude =$userData->latitude;
+		$sourceLocationLongitude =$userData->longitude;
+		$query='SELECT
+						  id, (
+							3959 * acos (
+							  cos ( radians('.$sourceLocationLatitude.') )
+							  * cos( radians( latitude ) )
+							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+							  + sin ( radians('.$sourceLocationLatitude.') )
+							  * sin( radians( latitude ) )
+							)
+						  ) AS distance
+						FROM users
+						HAVING distance < 300
+						ORDER BY distance';
+			$connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+			//pr($results);die;
+			$finalDistanceArr=array();
+			foreach($results as $result){
+				foreach($gettingUserData as $favData){
+						$selUserData=$favData->id;
+						if(in_array($selUserData,$result)){
+							
+							$finalDistanceArr[]=$result;
+						} 
+				} 
+			}
+			
+			if(!empty($finalDistanceArr)){
+				$idArr = array();
+				$distanceAssociation = array();
+				foreach($finalDistanceArr as $resultsValue){
+						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+			}}
+			$nearUseridArr=array();	
+			foreach($distanceAssociation as $key=>$diatance){
+					if($diatance != 0){
+							$nearUseridArr[]=$key;
+					}
+			}
+		
+		$getUsersArr=array();$flag=0;
+		foreach($gettingUserData as $gettingUser){
+				if(in_array($gettingUser->id,$nearUseridArr)){
+					$flag++;
+					if($flag < 7){
+						$getUsersArr[]=$gettingUser;
+					}
+					
+				}
+		}
+			
+		$this->set('nearbyUsers',$getUsersArr);	
+
+		$this->set('userData',$userData);
+		$this->set('commentUserData',@$commentUserData);
+
+		$Session=$this->request->session();
+		$user_id=$Session->read('User.id');
+
+
+		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calenderData=$calendarModel->find('all')->where(['user_id'=>$sitterId])->toArray();
+
+		$unavailbe_array=array();
+		foreach($calenderData as $k=>$UserServices){
+			
+			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+		}
+
+						
+		$calendar = new  \Calendar();
+
+		$this->set('calender',$calendar->show($unavailbe_array));
+		//$this->set('services_array',$services_array);
+		if(!empty($session->read("User.id"))){
+			$userId = $session->read("User.id");
+			 $userPetsModel = TableRegistry::get('UserPets');
+			 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
+			 $this->set("sitter_guests_info",$userPetsData);
+		}
+		$this->set('sitter_id',$sitterId);
+		
+		
+	}	
 
 }
 ?>
