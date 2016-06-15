@@ -815,6 +815,12 @@ class SearchController extends AppController
 		{
 			$sitter_id = convert_uudecode(base64_decode($this->request->data['BookingRequests']['sitter_id']));
             $bookingRequestData = $bookingRequestsModel->newEntity();
+            
+              if(!empty($this->request->data['guest_id_for_booking'])){
+				  $booking_guests = implode(",",$this->request->data['guest_id_for_booking']);
+				  $bookingRequestData->guest_id_for_bookinig = $booking_guests;
+			  }
+			
                $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
                 $bookingRequestData->user_id = $userId;
                 $bookingRequestData->sitter_id = $sitter_id;
