@@ -74,6 +74,10 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/drop-in-visit', ['controller' => 'Pages', 'action' => 'cms','drop-in-visit']);
 		$routes->connect('/house-sitting', ['controller' => 'Pages', 'action' => 'cms','house-sitting']);
 		$routes->connect('/boarding', ['controller' => 'Pages', 'action' => 'cms','boarding']);
+		
+		$routes->connect('/view-profile/*', ['controller' => 'Search', 'action' => 'viewProfile']);
+		
+		
 
 
     /**

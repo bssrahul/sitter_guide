@@ -7,7 +7,6 @@
           <div class="sidebar">
             <div class=""> 
               <!-- uncomment code for absolute positioning tweek see top comment in css --> 
-              <?php //pr(); die; ?>
               <!-- Menu -->
               <div class="side-menu">
                 <nav class="navbar navbar-inverse" role="navigation"> 
@@ -80,13 +79,14 @@
                       
         
                       
-                      <?php $actions = array("home","frontDashboard","aboutSitter", "professionalAccreditations", "aboutGuest","profile","house");
-
-					   if (in_array($action, $actions)){
-						   $profile_class = 'class="active"';
-					   }else{
+                      <?php 
+						$actions = array("home","frontDashboard","aboutSitter", "professionalAccreditations", "aboutGuest","profile","house");
+						if (in_array($action, $actions)){
+							$profile_class = 'class="active"';
+						}else{
 						   $profile_class = 'class=""';
-					   }?>
+						}
+						?>
                     
 					  <li <?php echo $profile_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard' ?>"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
 					 <?php if($this->request->action=='calender'){
@@ -97,7 +97,7 @@
 						  
 					  }
 					  if($user_type == 'Sitter'){ 
-						  echo $user_type; 
+						  
 						  ?>
 						  <li <?php echo $calendar_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
 						   <?php if($this->request->action=='servicesAndRates'){

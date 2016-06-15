@@ -306,19 +306,19 @@ h1 { font-size: 1.5em; margin: 10px; }
 }
 
 .rating > label { 
-  color: #b8b894; 
+  color: #D8D8D8 ;/*#b8b894; */
  float: right; 
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 .rating > input:checked ~ label, /* show gold star when clicked */
 /*.rating:not(:checked) > label:hover, /* hover current star */
-/*.rating:not(:checked) > label:hover ~ label { color: #F0C751;  } /* hover previous stars in list */
+/*.rating:not(:checked) > label:hover ~ label { color: #FDD003;  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #F0C751;  } 
+.rating > input:checked ~ label:hover ~ label { color: #FDD003;  } 
 
 
 a:hover, a:focus, a:active{outline :none !important;}
@@ -418,12 +418,12 @@ a:hover{
 
 .rating_review > input:checked ~ label, /* show gold star when clicked */
 .rating_review:not(:checked) > label:hover, /* hover current star */
-.rating_review:not(:checked) > label:hover ~ label { color: #F0C751;  } /* hover previous stars in list */
+.rating_review:not(:checked) > label:hover ~ label { color: #FDD003;  } /* hover previous stars in list */
 
 .rating_review > input:checked + label:hover, /* hover current star when changing rating */
 .rating_review > input:checked ~ label:hover,
 .rating_review > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating_review > input:checked ~ label:hover ~ label { color: #F0C751;  } 
+.rating_review > input:checked ~ label:hover ~ label { color: #FDD003;  } 
 
 .chat-wrapper ul li {
   padding-top: 20px !important;
@@ -551,9 +551,7 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 .starPad {
     margin-left: 100px !important;
 }
-.favourite-wrap .review-pagination li a{
-	color:#337AB7 !important;
-}
+
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover{
 	color:#FFF !important;
 }
@@ -624,3 +622,30 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
   height: 35px !important;
   text-align: center;
 }
+
+.pre_day_disable{
+	background-color:#fff !important;
+}
+
+.not_display {
+    display: none;
+	
+}
+.display_green {
+    background-color: #7BAB0D !important;
+}
+
+ .favPagination li {
+	background: #69aadb none repeat scroll 0 0;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    height: 30px;
+    padding-top: 5px;
+    width: 30px;
+    margin:0 2px;
+ } 
+  
+  
+  

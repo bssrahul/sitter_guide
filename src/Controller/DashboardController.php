@@ -42,7 +42,7 @@ class DashboardController extends AppController
 	
 	
 	public $paginate = [
-        'limit' => 12,
+        'limit' => 1,
         'order' => [
             'Users.id' => 'DESC'
         ]
@@ -2259,10 +2259,10 @@ function addPets(){
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		$this->viewBuilder()->layout('profile_dashboard');
-		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calendarModel=TableRegistry :: get("UserSitterAvailability");
 		$calenderData=$calendarModel->newEntity();
 			
-		if ($this->request->is(POST)) {
+		if ($this->request->is('POST')) {
 			
 			$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
 			$calenderData->user_id=$user_id;
@@ -2288,21 +2288,23 @@ function addPets(){
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		
-		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calendarModel=TableRegistry :: get("UserSitterAvailability");
 		$calenderData=$calendarModel->newEntity();
 		
 		$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
 		$calenderData->user_id=$user_id;
 		
 		$calenderData->avail_status=1;
+		
 		if($calendarModel->save($calenderData)){
 		
-			$this->Flash->success(__('Record has been added by ajax Successfully'));
-			return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+			$this->Flash->success(__('Changes has been done'));
+			echo "Changes has been done";
+			//return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
 		}
 		else{
-			$this->Flash->error(__('Record can not be added '));
-		
+			$this->Flash->error(__('Record can not be added'));
+			echo "Record can not be added";
 		}	
 		die;
 	}
