@@ -203,7 +203,6 @@
             } else {
                 $(this).addClass("new_active");
             }
-
             var textArray = $('ul.booking-services li.new_active').find('a:first').map(function() {
                 return $(this).attr('data-rel');
             }).get(); // ["boarding", "house_sitting"]
