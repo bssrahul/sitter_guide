@@ -2459,7 +2459,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 
 <style>
 .pre_day_disable{
-	background-color:#f2f2f2 !important;
+	background-color:#ffffff !important;
 }
 
 .not_display {
@@ -2600,16 +2600,17 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                             <div class="row">
                             	<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
                                 	<div class="dog-list">
-                                	<ul>
+                                	<ul id="all-guests">
                                     	<?php if(isset($sitter_guests_info) && !empty($sitter_guests_info)){
 											foreach($sitter_guests_info as $single_guest){
 								        ?>
-											<li><input type="checkbox"> <?php echo $single_guest['guest_name'];?></li>
+											<li><input name="guest_id_for_booking[]"  type="checkbox" value="<?php echo $single_guest['id'];?>"> <?php echo $single_guest['guest_name'];?></li>
 										<?php }
 										}
 										?>
                                     </ul>
                                     </div>
+                                    <label class="error" for="guest_id_for_booking[]" generated="true"></label>
                                 </div>
                             	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 	<div class="ad">
@@ -2637,7 +2638,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       <div class="container-fluid">
                       <div class="row">
                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp
-Grooming </div>
+                      Grooming </div>
                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Training </div>
                            
                      
@@ -2673,6 +2674,7 @@ Grooming </div>
                                 'templates' => ['inputContainer' => '{{content}}'],
                                 'label'=>false,
                                 'type'=>'checkbox',
+                                'checked'=>'checked',
                                 'hiddenField'=>false 
                                 ]);
                               ?> &nbsp I'd like to receive photos of my dog(s) during this stay. </p>
@@ -2780,28 +2782,25 @@ Grooming </div>
                     <tr>
                     
                       <td class="tbfont">Cancellation Policy</td>
-                      <td class="tbfont">Flexible</td>
+                      <td class="tbfont"><?php echo @$userData->user_sitter_services[0]->cancellation_policy_status == 1?'Flexible':'---'; ?></td>
                     </tr>
                     <tr>
                     
                       <td class="tbfont">Total Amount</td>
-                      <td class="tbfont">AU $20</td>
+                      <td class="tbfont" id="show-total-amount"></td>
                     </tr>
                     
                     <tr>
                     
                       <td class="tbfont">Booking Fee</td>
-                      <td class="tbfont">Free</td>
+                      <td class="tbfont"><?php echo @$userData->user_sitter_services[0]->booking_status == 1?'Free':'---'; ?></td>
                     </tr>
                   </tbody>
                 </table>
                 
-                
-                
                 <button type="submit" class="btn btn-req-bok btn-block">Request Booking</button>
-                  <?php echo $this->Form->end(); ?>
               </div>
-              
+              <?php echo $this->Form->end(); ?>
               
               
               <div class="pay-through">
@@ -2814,8 +2813,6 @@ Grooming </div>
               <li><i class="fa fa-angle-right right-gr"></i>Daily Photo Update</li>
           
               </ul>
-              
-              
               </div>
               
             </div>
@@ -2843,10 +2840,14 @@ Grooming </div>
 <input id="day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_day_rate; ?>">
 <input id="night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_night_rate; ?>">
 
-<input id="mp_grooming_rate" type="mp_grooming_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_grooming_rate; ?>">
-<input id="mp_training_rate" type="mp_training_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_training_rate; ?>">
-<input id="mp_recreation_rate" type="mp_recreation_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_recreation_rate; ?>">
-<input id="mp_driving_rate" type="mp_driving_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_driving_rate; ?>">
+<input id="mp_grooming_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_grooming_rate; ?>">
+<input id="mp_training_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_training_rate; ?>">
+<input id="mp_recreation_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_recreation_rate; ?>">
+<input id="mp_driving_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_driving_rate; ?>">
+
+<input id="total_days" type="hidden" value="">
+<input id="start_date" type="hidden" value="">
+<input id="end_date" type="hidden" value="">
 
 <!--Additional Services Popup--> 
 <script>
@@ -2863,10 +2864,12 @@ Grooming </div>
                 $("#bookingrequests-booking-end-date").datepicker("option", "minDate", selectedDate);
             }
         });
+        
         $(".display-calender1").click(function() {
             $("#bookingrequests-booking-start-date").focus();
 
         });
+        
         $("#bookingrequests-booking-end-date").datepicker({
             changeMonth: true,
             changeYear: true,
@@ -2874,9 +2877,19 @@ Grooming </div>
             minDate: 0,
             onClose: function(selectedDate) {
                 $("#bookingrequests-booking-start-date").datepicker("option", "maxDate", selectedDate);
-            }
-
+            },
+            onSelect: function (dateStr) {
+				var max = $(this).datepicker('getDate'); // Get selected date
+				$('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
+				var start = $("#bookingrequests-booking-start-date").datepicker("getDate");
+				var end = $("#bookingrequests-booking-end-date").datepicker("getDate");
+				var days = (end - start) / (1000 * 60 * 60 * 24);
+				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
+				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
+				$("#total_days").val(days);
+			}
         });
+        
         $(".display-calender").click(function() {
             $("#bookingrequests-booking-end-date").focus();
 
@@ -2889,7 +2902,17 @@ Grooming </div>
                 //var id = $(this).attr('id');
                 //$('.'+id).hide();
             }else{*/
-				$("ul.booking-services li").each(function(){
+            var guest_num = 0;
+            $('#all-guests li>input').each(function(){
+                var guest_checked = $(this).prop("checked");
+                if(guest_checked){
+					guest_num++;
+				}
+            });
+			   if(guest_num == 0){
+				   guest_num = 1;
+			   }
+               $("ul.booking-services li").each(function(){
 				      $(this).removeClass("new_active");
 				});
 				$(this).addClass("new_active");
@@ -2899,36 +2922,85 @@ Grooming </div>
                 var month = d.getMonth()+1;
 				var day = d.getDate();
 
-				var output_date = (day<10 ? '0' : '') + day + '/' + (month<10 ? '0' : '') + month + '/' +(d.getFullYear()) ;
-					
-              var service_id = $(this).attr('id');
+				var current_date = (day<10 ? '0' : '') + day + '/' + (month<10 ? '0' : '') + month + '/' +(d.getFullYear()) ;
+				
+				 var total_days,from_date,to_date;
+				 	 
+				 	 
+				 var total_days_date_picker = $("#total_days").val();
+				 //alert(total_days_date_picker);
+				 if(total_days_date_picker != ""){
+					   total_days = parseInt(total_days_date_picker)+1;
+					   
+					   from_date = $("#start_date").val();
+				       to_date = $("#end_date").val();
+				 }else{
+					  total_days = 1;
+					  from_date = current_date;
+					  to_date = current_date;
+				 }
+				var service_id = $(this).attr('id');
               
               if(service_id == 'li_boarding'){
-				  var day_rate = $("#boarding_day_rate").val();
-				  var night_rate = $("#boarding_night_rate").val();
+				 var day_rate = $("#boarding_day_rate").val();
+				 var night_rate = $("#boarding_night_rate").val();
 				  
+				 var day_total = day_rate*total_days;
+				 var night_total = night_rate*total_days;
+				 var total = day_total+night_total;
+				  $("#show-total-amount").text("AU"+total);
 				  
-				  var main_content = "Boarding for 1 day<br>"+output_date;
+				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			  }
 			  if(service_id == 'li_house_sitting'){
-				  $("#boarding_day_rate").val();
-				  $("#boarding_night_rate").val();
-			  }
+				 var hs_day_rate = $("#house_sitting_day_rate").val();
+				 var hs_night_rate = $("#house_sitting_night_rate").val();
+				  
+				 var day_total = hs_day_rate*total_days;
+				 var night_total = hs_night_rate*total_days;
+				 
+				 var total = day_total+night_total;
+				  $("#show-total-amount").text("AU"+total);
+				  
+				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
+			  }else
 			   if(service_id == 'li_drop_in_visit'){
-				  $("#dorp_in_visit").val();
-			   }
+				 var drop_visit_rate = $("#dorp_in_visit").val();
+				  
+				  var total = drop_visit_rate*total_days;
+				  $("#show-total-amount").text("AU"+total);
+				 
+				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
+			   }else
 			   if(service_id == 'li_day_night'){
-				  $("#day_rate").val();
-				  $("#night_rate").val();
-			 }
+				 var day_rate = $("#day_rate").val();
+				 var night_rate = $("#night_rate").val();
+				  
+				 var day_total = day_rate*total_days;
+				 var night_total = night_rate*total_days;
+				 var total = day_total+night_total;
+				  $("#show-total-amount").text("AU"+total);
+				  
+				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+			 }else
 			   if(service_id == 'li_maket_place'){
-				  $("#mp_grooming_rate").val();
-				  $("#mp_training_rate").val();
-				  $("#mp_recreation_rate").val();
-				  $("#mp_driving_rate").val();
+				 var mp_grooming_rate = $("#mp_grooming_rate").val();
+				 var mp_training_rate = $("#mp_training_rate").val();
+				 var mp_recreation_rate = $("#mp_recreation_rate").val();
+				 var mp_driving_rate = $("#mp_driving_rate").val();
+				  
+				 var mp_grooming_total = mp_grooming_rate*total_days;
+				 var mp_training_total = mp_training_rate*total_days;
+				 var mp_recreation_total = mp_recreation_rate*total_days;
+				 var mp_driving_total = mp_driving_rate*total_days;
+				 
+				 var total = mp_grooming_total+mp_training_total+mp_recreation_total+mp_driving_total;
+				  $("#show-total-amount").text("AU"+total);
+				  
+				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
 			   }
 			  
-               $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" >'+service_id+'<div class="pet-info-inner"><ul class="list-unstyled"><li>House Sitting for 1 night</li><li>'+main_content+'</li><li>$20 x 1 nigh @ 20p/night</li></ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p></div></div>');
+               $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" ><div class="pet-info-inner"><ul class="list-unstyled">'+main_content+'</ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$'+total+'</b></span></p></div></div>');
             //}
             
             var textArray = $('ul.booking-services li.new_active').find('a:first').map(function() {
