@@ -1675,7 +1675,7 @@ function addPets(){
 												)
 								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 								   ->toArray();
-						if(isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations) && isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
+						if((isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)) || (isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services))){
 						   $UserData = $usersModel->newEntity();
 						   $UserData->id =  $userId;
 						   $UserData->user_type = 'Sitter';
@@ -1775,7 +1775,7 @@ function addPets(){
 												)
 								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 								   ->toArray();
-						if(isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations) && isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
+						if((isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)) || (isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services))){
 						   $UserData = $usersModel->newEntity();
 						   $UserData->id =  $userId;
 						   $UserData->user_type = 'Sitter';
@@ -2241,12 +2241,12 @@ function addPets(){
 			$calenderData->avail_status=0;
 			if($calendarModel->save($calenderData)){
 			
-				$this->Flash->success(__('Record has been added by ajax Successfully'));
+				$this->Flash->success(__('Changes has been done.'));
 				return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
-			}
-			else{
+			
+			}else{
 	
-				$this->Flash->error(__('Record can not be added '));
+				$this->Flash->error(__('Changes has been done.'));
 			
 			}	
 		}

@@ -614,3 +614,13 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
   padding: 3px 8px !important;
   text-decoration: none !important;
 }
+
+.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#SetAvailablity > .input-group input[type="text"] {
+  height: 35px !important;
+  text-align: center;
+}
