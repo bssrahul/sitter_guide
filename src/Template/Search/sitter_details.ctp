@@ -296,7 +296,7 @@
                                                         </div>
                                                       </div>
                                                       <div class="btn-group btn-width100 pt15">
-                                                        <button class="btn btn-detsil-contact" type="button">Contact  
+                                                        <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#myModal79">Contact  
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
                                                         <!-- <button type="button" class="btn btn-heart"><i class="fa fa-heart-o heart-pos"></i></button>
@@ -1643,7 +1643,7 @@ $check_in=$UserRating->check_in_rating;
                                     </p>
                                     </div>
                                   </div>
-                                <!--<div class=" pt30 text-center">
+                    <!--<div class=" pt30 text-center">
 <button class="btn btn-read-more-reviews"> Read more reviews</button>
 </div>-->
                                 </div>
@@ -1697,7 +1697,8 @@ $check_in=$UserRating->check_in_rating;
                         <div class="profile-rgt" > 
                           <!--Service Type Start-->
                           <div class="st-outer"  >
-                            <div class="st-inner"> 
+							<div class="st-inner"> 
+								
                               <!--Service drop-->
                               <div class="s-drop">
                                 <div class="form-group"> Services & Rates 
@@ -1712,10 +1713,14 @@ $check_in=$UserRating->check_in_rating;
                                 </div>
                                 <ul class="care-list">
                                   <li><?php //pr($userData->user_sitter_services[0]);
-											$sitterServiceData=$userData->user_sitter_services[0];
-											if(!empty($sitterServiceData)){
-								  ?>
-															<img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> Day Care : 
+											
+											if((isset($userData->user_sitter_services[0])) && !empty($userData->user_sitter_services[0]))
+											{
+												$sitterServiceData=$userData->user_sitter_services[0];
+											}
+												
+												
+								  ?>                       <img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> Day Care : 
 															<span><?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$ ".$sitterServiceData->sh_day_rate;						
@@ -1851,7 +1856,7 @@ $check_in=$UserRating->check_in_rating;
 														  <li>
 															<img src="<?php echo HTTP_ROOT; ?>img/visit-perday.png" width="18" height="17" alt=""> House Setting : 
 															<span> 
-																<?php  if(!empty($sitterServiceData->sh_day_rates))
+																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$ ".$sitterServiceData->sh_day_rate;						
 																		}else{
@@ -1866,7 +1871,7 @@ $check_in=$UserRating->check_in_rating;
 														  <li>
 															<img src="<?php echo HTTP_ROOT; ?>img/meet-greet.png" width="18" height="17" alt=""> Meet &amp; Greet: 
 															<span> 
-																<?php  if(!empty($sitterServiceData->sh_day_rates))
+																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$ ".$sitterServiceData->sh_day_rate;						
 																		}else{
@@ -1885,9 +1890,7 @@ $check_in=$UserRating->check_in_rating;
 														</div>
 													  </div>
 													  <!--/Service list--> 
-													  
-											<?php }  ?>
-                            </div>
+							 </div>
                           </div>
                           <!--Service Type End--> 
                           <!--Wishlist Area--> 
@@ -2472,6 +2475,10 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 
 
 <!--Additional Services Popup-->
+<?php 
+  echo $this->Html->css(['Front/jquery-ui.css']); 
+  echo $this->Html->script(['Front/jquery-ui.js']);
+?>
 <div class="modal fade" id="myModal79" role="dialog">
   <div class="modal-dialog">
     <div class="sitter-quike-view">
@@ -2481,16 +2488,16 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
           <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
         <div class="row">
         
-        
+                <?php echo $this->Form->create(@$booking_data, [
+                          'url' => ['controller' => 'search', 'action' => 'sitter-details'],
+                          'id'=>'bookingContact',
+                        ]);
+                        echo $this->Form->input('BookingRequests.sitter_id',[
+                            'type' =>'hidden',
+                            'value'=>@$sitter_id]);
+                        ?>
           <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 ">
-          
-          
-          
-          
-          
-          
-     <!--     starts-->
-          
+      <!--starts-->
      <div class="sr-area-outer">
         <div class="row st-head-txt">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 visible-lg">
@@ -2503,18 +2510,28 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
         <div class="sr-area"> 
           <!--top filter tab-->
           <div class="top-filter-tab">
-            <ul>
-              <li class="active"><a class="boarding" href="#boarding" data-toggle="tab"> <span></span> Boarding<br>
-                <b>in the sitter home</b> </a></li>
-              <li><a class="h-sitting" href="#hsitting" data-toggle="tab"><span></span> House Sitting<br>
+            <ul class="booking-services">
+              <li class="new_active" id="li_boarding"><a class="boarding" data-rel="boarding" href="#boarding" data-toggle="tab" >    <span></span>Boarding<br>
+                  <b>in the sitter home</b> </a>
+              </li>
+              <li id="li_house_sitting"><a class="h-sitting" data-rel="house_sitting" href="#hsitting" data-toggle="tab"><span></span> House Sitting<br>
                 <b>in your home</b></a></li>
-              <li><a class="d-visit" href="#dvisit" data-toggle="tab"><span></span> Drop-in Visit<br>
+              <li id="li_drop_in_visit" ><a class="d-visit" data-rel="drop_in_visit" href="#dvisit" data-toggle="tab"><span></span> Drop-in Visit<br>
                 <b>in your home</b></a></li>
-              <li><a class="dn-care" href="#dncare" data-toggle="tab"><span></span> Day / Night Care<br>
+              <li id="li_day_night"><a class="dn-care" data-rel="day_nigth_care" href="#dncare" data-toggle="tab"><span></span> Day / Night Care<br>
                 <b>in the sitter’s home</b></a></li>
-              <li><a class="m-place" href="#mplace" data-toggle="tab"><span></span> Market Place<br>
+              <li id="li_maket_place"><a class="m-place" data-rel="market_place" href="#mplace" data-toggle="tab"><span></span> Market Place<br>
                 <b>exercise, groom, train+</b></a></li>
             </ul>
+                        <!-- Start Required service-->
+                        <?php echo $this->Form->input('BookingRequests.required_services',[
+                            'label' => false,
+                            'type'=>'hidden',
+                            'value'=>'boarding',
+                            //'id'=>'required_services'
+                            ]);
+                            ?>
+                        <label class="error service_error" for="bookingrequests-required-services" generated="true"></label>
           </div>
           <!--top filter tab--> 
           <!--Tab Content area -->
@@ -2535,7 +2552,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
           
               </ul>
                       </div>
-                      
+                    
                       
                       <!--Date-->      
                       	<div class="hs-date">
@@ -2543,12 +2560,34 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                         	<div class="row">
                             	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                	  <div class="fromto">
-                                    	<input type="text"><a title="Calender" href="#"><img width="21" height="21" alt="Calender" src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"></a>
+                                    	<!--<input type="text"><a title="Calender" href="#"><img width="21" height="21" alt="Calender" src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"></a>-->
+                                     <?php  
+                                        echo $this->Form->input('BookingRequests.booking_start_date',[               
+											'templates' => ['inputContainer' => '{{content}}'],
+											'label'=>false,
+											'readonly'=>true,
+											'type'=>'text',
+											'placeholder'=>'YYYY-MM-DD'
+                                        ]);
+                                      ?>
+                                        <a href="javascript:void(0)" title="Calender" class="display-calender1"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png" width="21" height="21" alt="Calender"></a>
+                                        <label class="error" for="bookingrequests-booking-start-date" generated="true"></label>
                                     </div>
                                 </div>
                             	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 	<div class="fromto">
-                                    	<input type="text"><a title="Calender" href="#"><img width="21" height="21" alt="Calender" src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"></a>
+                                    	<!--<input type="text"><a title="Calender" href="#"><img width="21" height="21" alt="Calender" src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"></a>-->
+                                     <?php  
+                                        echo $this->Form->input('BookingRequests.booking_end_date',[               
+											'templates' => ['inputContainer' => '{{content}}'],
+											'label'=>false,
+											'type'=>'text',
+											'readonly'=>true,
+											'placeholder'=>'YYYY-MM-DD' 
+                                        ]);
+                                      ?>
+                                        <a href="javascript:void(0)" title="Calender" class="display-calender"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png" width="21" height="21" alt="Calender"></a>
+                                        <label class="error" for="bookingrequests-booking-end-date" generated="true"></label>
                                     </div>
                                 </div>                                
                             </div>
@@ -2562,8 +2601,13 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                             	<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
                                 	<div class="dog-list">
                                 	<ul>
-                                    	<li><input type="checkbox"> Dog Name</li>
-                                        <li><input type="checkbox"> Dog Name</li>
+                                    	<?php if(isset($sitter_guests_info) && !empty($sitter_guests_info)){
+											foreach($sitter_guests_info as $single_guest){
+								        ?>
+											<li><input type="checkbox"> <?php echo $single_guest['guest_name'];?></li>
+										<?php }
+										}
+										?>
                                     </ul>
                                     </div>
                                 </div>
@@ -2615,11 +2659,27 @@ Grooming </div>
                         	<h3>Message</h3>
                             <p class="no-bot">Share a little info about your dog and why they'd have a great time with Agatha. </p>
                              <p>Don't forget if you need to make any changes to your dates you can update these later on. </p>
-                            <textarea class="txtarea"></textarea>
-                            <p><input type="checkbox">&nbsp I'd like to receive photos of my dog(s) during this stay. </p>
+                           <!--<textarea class="txtarea"></textarea>-->
+                            <?php  
+                                echo $this->Form->input('BookingRequests.message',[               
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'label'=>false,
+                                'class'=>'txtarea',
+                                'type'=>'textarea' 
+                                ]);
+                              ?>
+                            <p><?php  
+                                echo $this->Form->input('BookingRequests.recieved_photo_during_stay',[               
+                                'templates' => ['inputContainer' => '{{content}}'],
+                                'label'=>false,
+                                'type'=>'checkbox',
+                                'hiddenField'=>false 
+                                ]);
+                              ?> &nbsp I'd like to receive photos of my dog(s) during this stay. </p>
                           
                             <p>All stays booked through Rover are covered by premium insurance. </p>
                         </div>
+                      
                       <!--/message-->
                       
                       <div class="row">
@@ -2649,10 +2709,7 @@ Grooming </div>
           
        <!--   ends
           -->
-      
-          
-           
-          </div>
+         </div>
           
           <div class=" col-xs-12 col-md-4 col-sm-4 col-lg-3  ">
             <div class="right-content-wrap">
@@ -2669,12 +2726,12 @@ Grooming </div>
                 
               </div>
               
-              <div class="booking-summ">
-              <h3>Your  Book Summary</h3>
-              
+              <div class="booking-summ" id="bookingPetInfo">
+                 <h3>Your  Book Summary</h3>
               </div>
-              
-              <div class="pet-info-wrap alert">
+             <!--Start pet info-->
+             
+             <!-- <div class="pet-info-wrap alert">
                 <div class="pet-info-head">
                   <p>Guest Hunter  <span class="pull-right text-right"> <a href="#"    class="close close-cross" data-dismiss="alert" aria-label="close" ><i class="fa fa-times-circle close-cross"></i></a></span></p>
                 </div>
@@ -2692,17 +2749,15 @@ Grooming </div>
                 <div class="pet-info-bot">
                   <p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p>
                 </div>
-              </div>
+              </div>-->
               
-              <div class="pet-info-wrap alert">
-                <div class="pet-info-head">
-                  <p>Guest Hunter  <span class="pull-right text-right"> <a href="#"    class="close close-cross" data-dismiss="alert" aria-label="close" ><i class="fa fa-times-circle close-cross"></i></a></span></p>
-                </div>
-                <div class="pet-info-inner">
+              <div class="pet-info-wrap alert appendService">
+               <div class="pet-info-inner">li_boarding
                   
                 <ul class="list-unstyled">
                    <li>House Sitting for 1 night</li>
-                    <li>23/05/2016 to 24/05/2016</li>
+                    <li>
+					     <?php echo date("d/m/Y"); ?> to <?php echo date("d/m/Y"); ?></li>
                        <li>$20 x 1 nigh @ 20p/night</li>
                 
                 </ul>
@@ -2713,7 +2768,7 @@ Grooming </div>
                   <p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p>
                 </div>
               </div>
-              
+              <!--end-->
               
               
               <div class="table-wrap">
@@ -2743,7 +2798,8 @@ Grooming </div>
                 
                 
                 
-                <button class="btn btn-req-bok btn-block">Request Booking</button>
+                <button type="submit" class="btn btn-req-bok btn-block">Request Booking</button>
+                  <?php echo $this->Form->end(); ?>
               </div>
               
               
@@ -2776,5 +2832,111 @@ Grooming </div>
   </div>
 </div>
 </div>
+<input id="boarding_day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_day_rate; ?>">
+<input id="boarding_night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_night_rate; ?>">
+
+<input id="house_sitting_day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_day_rate; ?>">
+<input id="house_sitting_night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_night_rate; ?>">
+
+<input id="dorp_in_visit" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>">
+
+<input id="day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_day_rate; ?>">
+<input id="night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_night_rate; ?>">
+
+<input id="mp_grooming_rate" type="mp_grooming_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_grooming_rate; ?>">
+<input id="mp_training_rate" type="mp_training_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_training_rate; ?>">
+<input id="mp_recreation_rate" type="mp_recreation_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_recreation_rate; ?>">
+<input id="mp_driving_rate" type="mp_driving_rate" value="<?php echo @$userData->user_sitter_services[0]->mp_driving_rate; ?>">
 
 <!--Additional Services Popup--> 
+<script>
+    //SCRIPT FOR ADD DATEPICKER
+    $(document).ready(function() {
+		
+		//Datepicker
+        $("#bookingrequests-booking-start-date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd',
+             minDate: 0,
+            onClose: function(selectedDate) {
+                $("#bookingrequests-booking-end-date").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $(".display-calender1").click(function() {
+            $("#bookingrequests-booking-start-date").focus();
+
+        });
+        $("#bookingrequests-booking-end-date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd',
+            minDate: 0,
+            onClose: function(selectedDate) {
+                $("#bookingrequests-booking-start-date").datepicker("option", "maxDate", selectedDate);
+            }
+
+        });
+        $(".display-calender").click(function() {
+            $("#bookingrequests-booking-end-date").focus();
+
+        });
+        /*Add different services with coma spareate */
+        $("ul.booking-services li").click(function(){
+            /*if ($(this).hasClass("new_active") == true){
+                $(this).removeClass("new_active");
+                
+                //var id = $(this).attr('id');
+                //$('.'+id).hide();
+            }else{*/
+				$("ul.booking-services li").each(function(){
+				      $(this).removeClass("new_active");
+				});
+				$(this).addClass("new_active");
+                $('.appendService').hide();
+                
+                var d = new Date();
+                var month = d.getMonth()+1;
+				var day = d.getDate();
+
+				var output_date = (day<10 ? '0' : '') + day + '/' + (month<10 ? '0' : '') + month + '/' +(d.getFullYear()) ;
+					
+              var service_id = $(this).attr('id');
+              
+              if(service_id == 'li_boarding'){
+				  var day_rate = $("#boarding_day_rate").val();
+				  var night_rate = $("#boarding_night_rate").val();
+				  
+				  
+				  var main_content = "Boarding for 1 day<br>"+output_date;
+			  }
+			  if(service_id == 'li_house_sitting'){
+				  $("#boarding_day_rate").val();
+				  $("#boarding_night_rate").val();
+			  }
+			   if(service_id == 'li_drop_in_visit'){
+				  $("#dorp_in_visit").val();
+			   }
+			   if(service_id == 'li_day_night'){
+				  $("#day_rate").val();
+				  $("#night_rate").val();
+			 }
+			   if(service_id == 'li_maket_place'){
+				  $("#mp_grooming_rate").val();
+				  $("#mp_training_rate").val();
+				  $("#mp_recreation_rate").val();
+				  $("#mp_driving_rate").val();
+			   }
+			  
+               $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" >'+service_id+'<div class="pet-info-inner"><ul class="list-unstyled"><li>House Sitting for 1 night</li><li>'+main_content+'</li><li>$20 x 1 nigh @ 20p/night</li></ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p></div></div>');
+            //}
+            
+            var textArray = $('ul.booking-services li.new_active').find('a:first').map(function() {
+                return $(this).attr('data-rel');
+            }).get(); // ["boarding", "house_sitting"]
+            
+            var textString = textArray.join(); // "boarding", "house_sitting"
+            $('#bookingrequests-required-services').val(textString);
+        });
+    });
+</script>

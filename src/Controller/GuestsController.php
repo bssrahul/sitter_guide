@@ -150,7 +150,6 @@ class GuestsController extends AppController
 						}
 				}
 			}
-			
 			if(!empty($finalDistanceArr)){
 				$idArr = array();
 				$distanceAssociation = array();
@@ -159,28 +158,7 @@ class GuestsController extends AppController
 						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
-				//pr($distanceAssociation);die;
 				$this->set('distanceAssociation',$distanceAssociation);	
-				/* $userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
-							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
-							   ->toArray();
-				//pr($distanceAssociation);die;
-				$loggedInUserID = $session->read('User.id');
-				/* if($loggedInUserID !=''){
-					if(!empty($userData)){
-						foreach($userData as $k=>$eachRow){
-								
-							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
-							
-							if($UserSitterFavourite > 0){
-								$userData[$k]['is_favourite'] =  "yes";
-							}else{
-								$userData[$k]['is_favourite'] =  "no";
-							}
-								
-						}	 
-					}
-				} */ 
 			}
 		
 		if(!empty($session->read("User.id"))){
