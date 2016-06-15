@@ -1768,7 +1768,7 @@ function addPets(){
 		        $serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
 				$serviceData->user_id = $userId;
 				$sitterServicesModel->save($serviceData);
-<<<<<<< HEAD
+
 					  //For Update profile status
 					  $userData = $usersModel->find('all',['contain'=>[
 															'UserSitterServices', 
@@ -1794,9 +1794,7 @@ function addPets(){
 						    $session->write('User.user_type','Basic');
 						}
 					   //End
-=======
-					  
->>>>>>> a1a46cb8ddd094395d0e4cb1f996e8719881470a
+
 				
             return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
           }else{
