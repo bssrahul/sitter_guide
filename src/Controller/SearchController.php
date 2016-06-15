@@ -796,11 +796,46 @@ class SearchController extends AppController
 	 Function for sitter details
 	*/	
 	function sitterDetails($sitterId = null){
+		
 		$session = $this->request->session();
 		$this->viewBuilder()->layout('landing');
 		$sitterId = convert_uudecode(base64_decode($sitterId));
+		
+		 
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
+        
+        /////////////////////
+        $userId = $session->read('User.id');
+        $userEmail = $session->read('User.email');
+        $userName = $session->read('User.name');
+	    $bookingRequestsModel = TableRegistry::get('BookingRequests');
+        
+		if(isset($this->request->data['BookingRequests']) && !empty($this->request->data['BookingRequests']))
+		{
+			$sitter_id = convert_uudecode(base64_decode($this->request->data['BookingRequests']['sitter_id']));
+            $bookingRequestData = $bookingRequestsModel->newEntity();
+               $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
+                $bookingRequestData->user_id = $userId;
+                $bookingRequestData->sitter_id = $sitter_id;
+                $bookingRequestData->booking_start_date = $this->request->data['BookingRequests']['booking_start_date'];
+                $bookingRequestData->booking_end_date = $this->request->data['BookingRequests']['booking_end_date'];
+                //pr($bookingRequestData);die;
+                if ($bookingRequestsModel->save($bookingRequestData)){
+                	
+                	/*$replace = array('{name}','{email}');
+					$with = array($userName,$userEmail);
+					$this->send_email('',$replace,$with,'booking_request',$userEmail);*/
+				    
+				     return $this->redirect(['controller'=>'search','action'=>'thank-you']);
+				}
+				/*
+				else{
+				     $this->Flash->error(__('Error found, Kindly fix the errors.'));
+				}
+			 $this->set('booking_data', $bookingRequestData);*/
+		}else{
+        ////////////////////
         $userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
 		$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
 		$user_sitter_id_Arr=array();
@@ -816,8 +851,6 @@ class SearchController extends AppController
 		}
 		$loggedInUserID = $session->read('User.id');
 		
-		//pr($user_sitter_id_Arr);die;
-		//pr($userData['is_favourite']);die;
 		$Userratingdata=$userData->user_ratings;
 		$userFromArr=array();
 		foreach($Userratingdata as $Userrating){
@@ -833,8 +866,6 @@ class SearchController extends AppController
 					$commentUserData[]=$gettingUser;
 				} 
 		}
-		//pr($commentUserData);
-		
 		$sourceLocationLatitude =$userData->latitude;
 		$sourceLocationLongitude =$userData->longitude;
 		$query='SELECT
@@ -872,18 +903,13 @@ class SearchController extends AppController
 						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 			}}
-			//pr($distanceAssociation);die;
 			$nearUseridArr=array();	
-			
 			foreach($distanceAssociation as $key=>$diatance){
-						
-						if($diatance != 0){
-								$nearUseridArr[]=$key;
-						}
-						
+					if($diatance != 0){
+							$nearUseridArr[]=$key;
+					}
 			}	
-			//pr($nearUseridArr);die;	
-				$this->set('distanceAssociation',$distanceAssociation);	
+			$this->set('distanceAssociation',$distanceAssociation);	
 			$getUsersArr=array();$flag=0;
 			foreach($gettingUserData as $gettingUser){
 					if(in_array($gettingUser->id,$nearUseridArr)){
@@ -893,27 +919,11 @@ class SearchController extends AppController
 						}
 						
 					}
-					
-			
-				
 			}
-			
-			//pr($getUsersArr);die;
 			$this->set('nearbyUsers',$getUsersArr);	
 			$this->set('loggedInUserID',$loggedInUserID);	
-			
-		
-		
-		//pr($userData);die;
-		$this->set('userData',$userData);
-		
-		$this->set('commentUserData',@$commentUserData);
-		
-		
-		
-		
-		
-		
+		   $this->set('userData',$userData);
+		   $this->set('commentUserData',@$commentUserData);
 		
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
@@ -935,9 +945,14 @@ class SearchController extends AppController
 
 		$this->set('calender',$calendar->show($unavailbe_array));
 		//$this->set('services_array',$services_array);
-		
-		
-		
+		if(!empty($session->read("User.id"))){
+			$userId = $session->read("User.id");
+			 $userPetsModel = TableRegistry::get('UserPets');
+			 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
+			 $this->set("sitter_guests_info",$userPetsData);
+		}
+		$this->set('sitter_id',base64_encode(convert_uuencode($sitterId)));
+	}
 		//pr($userData);die;
 	}
 	/**
@@ -958,10 +973,8 @@ class SearchController extends AppController
 		
 		if(isset($this->request->data['BookingRequests']) && !empty($this->request->data['BookingRequests']))
 		{
-			//pr($this->request->data['BookingRequests']);die;
 			$sitter_id = convert_uudecode(base64_decode($this->request->data['BookingRequests']['sitter_id']));
-
-			$bookingRequestData = $bookingRequestsModel->newEntity();
+            $bookingRequestData = $bookingRequestsModel->newEntity();
                $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
                 $bookingRequestData->user_id = $userId;
                 $bookingRequestData->sitter_id = $sitter_id;

@@ -751,6 +751,8 @@ Function for Front profile dashboard
 				}else{
 					$this->set('profileStatus','');
 					}
+					
+					$session->write('User.user_type',$userData[0]->user_type);
 				//pr($userData);die;	   
 			//End
        				   
@@ -1766,6 +1768,7 @@ function addPets(){
 		        $serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
 				$serviceData->user_id = $userId;
 				$sitterServicesModel->save($serviceData);
+<<<<<<< HEAD
 					  //For Update profile status
 					  $userData = $usersModel->find('all',['contain'=>[
 															'UserSitterServices', 
@@ -1791,6 +1794,9 @@ function addPets(){
 						    $session->write('User.user_type','Basic');
 						}
 					   //End
+=======
+					  
+>>>>>>> a1a46cb8ddd094395d0e4cb1f996e8719881470a
 				
             return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
           }else{
@@ -1801,6 +1807,31 @@ function addPets(){
                    unset($sittersServiceData->id);
                    $this->set('sitter_service_info', $sittersServiceData);
 		    }
+			  //For Update profile status
+			  $userData = $usersModel->find('all',['contain'=>[
+													'UserSitterServices', 
+													'UserProfessionalAccreditations',
+													]
+												]
+										)
+						   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
+						   ->toArray();
+				if((isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)) || (isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services))){
+				   $UserData = $usersModel->newEntity();
+				   $UserData->id =  $userId;
+				   $UserData->user_type = 'Sitter';
+				   
+				   $usersModel->save($UserData);
+				   $session->write('User.user_type','Sitter');
+				}else{
+				   $UserData = $usersModel->newEntity();
+				   $UserData->id =  $userId;
+				   $UserData->user_type = 'Basic';
+				   
+				   $usersModel->save($UserData);	
+				   $session->write('User.user_type','Basic');
+				}
+			   //End
           }
 	
     }
