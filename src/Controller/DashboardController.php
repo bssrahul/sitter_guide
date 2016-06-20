@@ -173,8 +173,7 @@ class DashboardController extends AppController
 		  //House details
 		  if(isset($userData[0]->user_sitter_house) && !empty($userData[0]->user_sitter_house)){
 				  $houseInfo = $userData[0]->user_sitter_house->toArray();
-				// pr($houseInfo);die;
-				  //About Property 
+				 //About Property 
 				  $property_fields = array("about_home_desc","spaces_access_desc","home_pets_desc");
 				  
 				  $check_status = $this->check_fields_status($property_fields,$houseInfo);
@@ -259,7 +258,9 @@ class DashboardController extends AppController
 			  }else{
 				 $profile_status['UserPets']['behaviour'] = "no";
 			  }
+
 		 }else{
+
 			  $profile_status['UserPets']['guest_basic_detail'] = "no";
 			  $profile_status['UserPets']['guest_description'] = "no";
 			  $profile_status['UserPets']['guest_photos'] = "no";
@@ -304,7 +305,6 @@ class DashboardController extends AppController
 			 
 			  foreach($userData[0]->user_professional_accreditations as $key=>$val){
 				 if(($val->type_professional == "check") && ($val->sector_type == "govt") && !empty($val->scanned_certification)){
-				     //echo $val->type_professional.$val->sector_type.$val->scanned_certification;
 				     $profile_background_check['police_background_check'] = "yes";
 			     }else{
 					 $profile_background_check['police_background_check'] = "no";
@@ -343,7 +343,6 @@ class DashboardController extends AppController
 				$profile_status['skillsAndAccreditationDetails']['experience'] = "no";
 				$profile_status['skillsAndAccreditationDetails']['language'] = "no";
 			}
-			//pr($userData[0]);die;
 			if(isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
 			     $servicesInfo = $userData[0]->user_sitter_services[0]->toArray();
 			  //Terms
@@ -392,21 +391,18 @@ class DashboardController extends AppController
 				}
 		    //Skills and Accreditations 
 		  $this->set('profile_status',$profile_status);
+
 		 
           //End
+
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
-				 $session->write('profile','sitter');
+				 $session->write('profile','Sitter');
 			 }else{
-				 $session->write('profile','guest');
+				 $session->write('profile','Guest');
 			 }
 		 }
-          //echo($session->read('profile'));die;
-
-
-        //$session = $this->request->session();
-        //echo $session->read('User.id'); die;
-	}
+     }
 	/**Function for check fields ampty or not
 	*/
 	function check_fields_status($fields = array(),$main_array = array()){
@@ -1158,7 +1154,6 @@ function aboutGuest(){
 							$userPetsModel->save($petsData);
 										 if(!empty($session->read('UserPets'))){
 											 $guest_images['UserPets'] = $session->read('UserPets');
-											 //pr($guest_images);die;
 											 if(array_key_exists($key,$guest_images['UserPets'])){
 												$flag = 1;
 												foreach($guest_images['UserPets'][$key] as $guest_image){
@@ -1176,51 +1171,53 @@ function aboutGuest(){
 										 }
 				}
 				return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
-		//$session->write("UserPets",'');
-        }else{
-			$session->write("UserPets",'');
+		}else{
+			         $session->write("UserPets",'');
 					 $userPetsData = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);
-					 if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)) {
+					 $session->write('profile',$userPetsData->user_type);
+					 //echo $session->read('profile');die;
+					
+					 if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)){
 						 $count_pets = count($userPetsData->user_pets);
-			if($count_pets == 1){
-			$this->set('guest_data', $userPetsData->user_pets[0]);
-			//For guest images
-			$html = "no_image";
-			if(isset($userPetsData->user_pets[0]->user_pet_galleries) && !empty($userPetsData->user_pets[0]->user_pet_galleries)) {
-			$images_arr = $userPetsData->user_pets[0]->user_pet_galleries;
-			$html = '';
-			$guest_images = array();
-			foreach($images_arr as $key=>$val){
-								 $guest_images[] = $val->image;
-					 $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-									 <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center thumbnail" alt="img">
-									</div>';
-			}
-			$session->write('UserPets.Guest1',$guest_images);
-			}
-			$this->set('guest_images', $html);
-			//End
-			}else{
-			$this->set('guests_data', $userPetsData->user_pets);
-			//For guest images
-			     $G = 1;
-				foreach($userPetsData->user_pets as $single_data){
-									 $single_data = $single_data->toArray();
-									 $guest_images = array();
-								 if(isset($single_data['user_pet_galleries']) && !empty($single_data['user_pet_galleries'])) {
-										
-									 foreach($single_data['user_pet_galleries'] as $key=>$val){
-											$guest_images[] = $val['image'];
-										}
-									}
-									 $guest_num = 'Guest'.$G;
-									 $session->write("UserPets.$guest_num",$guest_images);
-									
-									 $G++;
-							 }
-							 //End
-							 }
-				}else{
+							if($count_pets == 1){
+							$this->set('guest_data', $userPetsData->user_pets[0]);
+							//For guest images
+							$html = "no_image";
+							if(isset($userPetsData->user_pets[0]->user_pet_galleries) && !empty($userPetsData->user_pets[0]->user_pet_galleries)){
+							$images_arr = $userPetsData->user_pets[0]->user_pet_galleries;
+							$html = '';
+							$guest_images = array();
+							foreach($images_arr as $key=>$val){
+												 $guest_images[] = $val->image;
+									 $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+													 <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center thumbnail" alt="img">
+													</div>';
+							}
+							$session->write('UserPets.Guest1',$guest_images);
+							}
+							$this->set('guest_images', $html);
+							//End
+							}else{
+							$this->set('guests_data', $userPetsData->user_pets);
+							//For guest images
+								 $G = 1;
+								foreach($userPetsData->user_pets as $single_data){
+													 $single_data = $single_data->toArray();
+													 $guest_images = array();
+												 if(isset($single_data['user_pet_galleries']) && !empty($single_data['user_pet_galleries'])) {
+														
+													 foreach($single_data['user_pet_galleries'] as $key=>$val){
+															$guest_images[] = $val['image'];
+														}
+													}
+													 $guest_num = 'Guest'.$G;
+													 $session->write("UserPets.$guest_num",$guest_images);
+													
+													 $G++;
+				    }
+				 //End
+				 }
+		}else{
 								$session->write("UserPets",'');
 							 $this->set('guest_images', 'no_image');
 							 $this->set('guest1','guest1');

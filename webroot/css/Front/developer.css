@@ -625,6 +625,7 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
   text-align: center;
 }
 
+
 .pre_day_disable{
 	background-color:#fff !important;
 }
@@ -649,9 +650,6 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     margin:0 2px;
  } 
   
-  
-  
-
 /* Captcha Responsive Style Start*/ 
 .rc-anchor-normal .rc-anchor-content {
     height: 74px;
@@ -661,7 +659,6 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 .rc-anchor-normal .rc-anchor-checkbox-label {
     width: 89px !important;
 }
-
 
 .rc-anchor-checkbox-label {
     font-family: Roboto,helvetica,arial,sans-serif;
@@ -685,21 +682,13 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     width: 100%;
 }
 
-
-
 .pddtop { padding-top:15px;}
-
 
 
 #rc-imageselect {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
 
 @media screen and (max-height: 575px){
 #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
-
-
-
-
-
 
 
 /* Captcha Responsive Style End*/ 
@@ -724,27 +713,27 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 
 @media (max-width:480px) {
 
-.signup-container a {
-    background: #f1f1f1 none repeat scroll 0 0;
-    font-size: 15px;
-}
+	.signup-container a {
+		background: #f1f1f1 none repeat scroll 0 0;
+		font-size: 15px;
+	}
 
-#addUsers .form-part div.form-group {
-    float: left;
-    width: 100%;
-}
-
-
-#addUsers .form-part div.form-group:nth-child(2) {
-    float: right;
-    margin-left: 0px !important;
-}
+	#addUsers .form-part div.form-group {
+		float: left;
+		width: 100%;
+	}
 
 
+	#addUsers .form-part div.form-group:nth-child(2) {
+		float: right;
+		margin-left: 0px !important;
+	}
 
-.signup-container .form-part ul li {
-    float: left;
-    width: 100% !important;
-}
+
+
+	.signup-container .form-part ul li {
+		float: left;
+		width: 100% !important;
+	}
 
 }
