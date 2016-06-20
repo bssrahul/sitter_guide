@@ -49,6 +49,9 @@ Router::scope('/', function ($routes) {
      */
     $routes->connect('/fb_login', ['controller' => 'Facebook', 'action' => 'fb_login']);
     $routes->connect('/guests', ['controller' => 'guests', 'action' => 'home']);
+    $routes->connect('/Guests/index', ['controller' => 'guests', 'action' => 'home']);
+    $routes->connect('/guests/index', ['controller' => 'guests', 'action' => 'home']);
+    
     $routes->connect('/admin', ['controller' => 'users', 'action' => 'login', 'home']);
 
 	$routes->connect('/', ['controller' => 'Guests', 'action' => 'home']);

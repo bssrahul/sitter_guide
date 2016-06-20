@@ -9,6 +9,17 @@
   }
 </style>
 <!--[Banner Area Start]-->
+                         <?php
+                            $session = $this->request->session();
+                            $cuntry_currency = $session->read("currency.currency");
+                            $cuntry_price = $session->read("currency.price");
+                            $cuntry_sign_code = $session->read("currency.sign_code");
+                            
+			       @$sh_day_rate = @$userData->user_sitter_services[0]->sh_day_rate != ''?@$userData->user_sitter_services[0]->sh_day_rate:0;
+				   @$sh_night_rate = @$userData->user_sitter_services[0]->sh_night_rate != ''?@$userData->user_sitter_services[0]->sh_night_rate:0;
+				   @$gh_day_rate = @$userData->user_sitter_services[0]->gh_day_rate != ''?@$userData->user_sitter_services[0]->gh_day_rate:0;
+				   @$gh_night_rate = @$userData->user_sitter_services[0]->gh_night_rate != ''?@$userData->user_sitter_services[0]->gh_night_rate:0;
+                         ?>
 <div class="saerch-s-det">
   <section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
     <div class="container">
@@ -209,7 +220,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px ">
                                                               <h3 class="rates-detail marginrightminus"> 
                                                                 <span>
-                                                                  <?php echo '$'.@$userData->user_sitter_services[0]->sh_day_rate; ?>
+                                                                  <?php echo "$cuntry_sign_code ".@$sh_day_rate; ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(Boarding in sitter)
@@ -218,7 +229,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
                                                               <h3 class="rates-detail marginleftminus xs-padt10"> 
                                                                 <span>
-                                                                  <?php echo '$'.@$userData->user_sitter_services[0]->gh_day_rate; ?>
+                                                                  <?php echo "$cuntry_sign_code ".@$gh_day_rate; ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(House sitting)
@@ -229,7 +240,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px  ">
                                                               <h3 class="rates-detail pad-t10 marginrightminus"> 
                                                                 <span>
-                                                                  <?php echo '$'.@$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>
+                                                                  <?php echo "$cuntry_sign_code ".(@$userData->user_sitter_services[0]->gh_drop_in_visit_rate != ''?@$userData->user_sitter_services[0]->gh_drop_in_visit_rate:0); ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(Drop visit home)
@@ -238,7 +249,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
                                                               <h3 class="rates-detail pad-t10  marginleftminus"> 
                                                                 <span>
-                                                                  <?php echo '$'.((@$userData->user_sitter_services[0]->sh_day_rate)+(@$userData->user_sitter_services[0]->sh_night_rate)); ?>
+                                                                  <?php echo "$cuntry_sign_code ".(@$sh_day_rate + @$sh_night_rate); ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(D/Nt. care home)
@@ -353,17 +364,17 @@
                                                         </i>Last Activity : 
                                                         <b>
                                                           <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
-if(@$userData->avail_status == 'Login'){
-echo '<span style="color:green">Available<//span>';
-}else{
-$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$userData->last_login);
-$days    = floor($seconds / 86400);
-$hours = floor(($seconds - ($days * 86400)) / 3600);
-$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
-$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
-echo $days." days ".$hours." hours ".$minutes." min "."ago";
-}
-?>
+															if(@$userData->avail_status == 'Login'){
+																echo '<span style="color:green">Available<//span>';
+															}else{
+																$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$userData->last_login);
+																$days    = floor($seconds / 86400);
+																$hours = floor(($seconds - ($days * 86400)) / 3600);
+																$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+																$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+																echo $days." days ".$hours." hours ".$minutes." min "."ago";
+															}
+															?>
                                                         </b>
                                                       </li>
                                                       <li>
@@ -452,7 +463,22 @@ $i++;
                                                 </div>
                                               </div>
                                               <?php } ?>
-                                              <div class="one">
+                                              
+                                               <?php 
+                                              if(!empty(@$userData->user_professional_accreditations_details)){
+											   /*$skills = ["languages","experience","training_techniques"]; 
+												 foreach($petSizesArr as $size_val){
+														  if(in_array($size_val, $skills))
+														  {
+															 $matchaddSkills = "match_found";
+															 break;
+														  }else{
+															 $matchaddSkills = "match_not_found";
+														  }
+												}
+												if($matchaddSkills == "match_found"){	*/
+												?>
+                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
                                                 <h5 class="small-title">Specified Skills &nbsp;
@@ -466,8 +492,9 @@ $i++;
                                                   </span>
                                                 </h5>
                                                 <div class="row">
+												 
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                                    <?php $langArr = array('en'=>'english','fr'=>'french','de'=>'german','hu'=>'hungarian','it'=>'italian','ro'=>'romanian','es'=>'spanish'); ?>
+													<?php $langArr = array('en'=>'english','fr'=>'french','de'=>'german','hu'=>'hungarian','it'=>'italian','ro'=>'romanian','es'=>'spanish'); ?>
                                                     <p class="pt10">
                                                       <span class="speak">
                                                       </span>Can speak
@@ -481,6 +508,7 @@ $i++;
                                                       <?php echo @$userData->user_professional_accreditations_details[0]->experience;?> + years of experience
                                                     </p>
                                                   </div>
+                                                  
                                                 </div>
                                                 <div class="row">
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
@@ -493,7 +521,7 @@ $i++;
                                                 </div>
                                               </div>
                                               <div class="one">
-                                                <div class="border-bot pt30">
+												<div class="border-bot pt30">
                                                 </div>
                                                 <h5 class="small-title">I have experience with &nbsp;
                                                   <span>
@@ -534,8 +562,11 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                 </div>
                                               </div>
                                               <div class="one">
-                                                <div class="border-bot pt30">
-                                                </div>
+											 <?php } 
+											  if(!empty(@$userData->user_sitter_services)){
+											 ?>
+											 <div class="border-bot pt30">
+                                             </div>
                                                 <h5 class="small-title">Benefits &nbsp;
                                                   <span>
                                                     <i>
@@ -555,8 +586,8 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                     </p>
                                                   </div>
                                                   <?php }
-if(@$userData->user_sitter_services[0]->cancellation_policy_status =='1'){ 
-?>
+														if(@$userData->user_sitter_services[0]->cancellation_policy_status =='1'){ 
+                                                  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="cancel">
@@ -564,8 +595,8 @@ if(@$userData->user_sitter_services[0]->cancellation_policy_status =='1'){
                                                     </p>
                                                   </div>
                                                   <?php } 
-if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->user_sitter_services[0]->cancellation_policy_status !='1')){ 
-?>
+												     if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->user_sitter_services[0]->cancellation_policy_status !='1')){ 
+												  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">No Benefits
                                                     </p>
@@ -573,6 +604,9 @@ if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->u
                                                   <?php } ?>
                                                 </div>
                                               </div>
+                                              <?php } 
+                                                 if(!empty(@$userData->user_sitter_house)){
+                                              ?>
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -632,6 +666,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php } ?>
                                                 </div>
                                               </div>
+                                              
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -641,6 +676,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php echo @$userData->user_sitter_house->about_home_desc; ?>
                                                 </p>
                                               </div>
+                                              
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -650,6 +686,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php echo @$userData->user_sitter_house->spaces_access_desc; ?>
                                                 </p>
                                               </div>
+                                             <?php } ?>
                                               <!--<div class="row pt10 ">
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space1.jpg" class="img-responsive responsivept15" alt="client1"> </div>
@@ -659,7 +696,9 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space3.jpg" class="img-responsive responsivept15" alt="client1"> </div>
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space4.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-</div>-->
+</div>-->  
+                                            <?php if(!empty($userData->user_pets[0]->user_pet_galleries)){ ?>
+                                            
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -669,17 +708,23 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php echo @$userData->user_sitter_house->home_pets_desc; ?>
                                                 </p>
                                               </div>
+                                               
+                                              
                                               <div class="row pt10 ">
-                                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+												<?php foreach(@$userData->user_pets[0]->user_pet_galleries as $single_pet){
+													
+													 ?>
+												<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
-                                                    <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1">
+                                                    <img  src="<?php echo HTTP_ROOT.'img/uploads/'.$single_pet->image; ?>" class="img-responsive responsivept15" alt="client1">
                                                     <p class="dogname">Jackey
                                                     </p>
                                                     <p class="dogbreed">Dachshund
                                                     </p>
                                                   </div>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                                <?php } ?>
+                                                <!--<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client4.jpg" class="img-responsive responsivept15" alt="client1">
                                                     <p class="dogname">Harry
@@ -688,6 +733,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     </p>
                                                   </div>
                                                 </div>
+                                                
                                                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client1.jpg" class="img-responsive responsivept15" alt="client1">
@@ -696,7 +742,8 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     <p class="dogbreed">Dachshund
                                                     </p>
                                                   </div>
-                                                </div>
+                                                </div>-->
+                                                
                                                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1">
@@ -706,44 +753,46 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     </p>
                                                   </div>
                                                 </div>
+                                                
                                               </div>
+                                              
+                                              <?php } ?>
                                               <div class="row">
                                                 <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
                                                   <div class="one">
                                                     <div class="border-bot pt30">
                                                     </div>
                                                     <?php $UserRatingData=$userData->user_ratings; 
-//pr($UserRatingData);
-$accuracy_sum = 0;
-$comm_sum = 0;
-$clean_sum = 0;
-$location_sum = 0;
-$check_sum = 0;
-$rating_sum = 0;
-$count=0;
-foreach($UserRatingData as $UserRating){
-$count++;
-$accuracy_rating=$UserRating->accuracy_rating;
-$communication_rating=$UserRating->communication_rating;
-$cleanliness_rating=$UserRating->cleanliness_rating;
-$location_rating=$UserRating->location_rating;
-$check_in_rating=$UserRating->check_in_rating;
-$accuracy_sum = $accuracy_sum + $accuracy_rating;
-$comm_sum = $comm_sum + $communication_rating;
-$clean_sum = $clean_sum + $cleanliness_rating;
-$location_sum = $location_sum + $location_rating;
-$check_sum = $check_sum + $check_in_rating;
-}
-if($count > 0){
-$ac=$accuracy_sum/$count;
-$cm=$comm_sum/$count;
-$cl=$clean_sum/$count;
-$lc=$location_sum/$count;
-$ch=$check_sum/$count;
-$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
-}
-?>
-                                                    <h3 class="mid-sec-title pt15 ">
+													$accuracy_sum = 0;
+													$comm_sum = 0;
+													$clean_sum = 0;
+													$location_sum = 0;
+													$check_sum = 0;
+													$rating_sum = 0;
+													$count=0;
+													foreach($UserRatingData as $UserRating){
+													$count++;
+													$accuracy_rating=$UserRating->accuracy_rating;
+													$communication_rating=$UserRating->communication_rating;
+													$cleanliness_rating=$UserRating->cleanliness_rating;
+													$location_rating=$UserRating->location_rating;
+													$check_in_rating=$UserRating->check_in_rating;
+													$accuracy_sum = $accuracy_sum + $accuracy_rating;
+													$comm_sum = $comm_sum + $communication_rating;
+													$clean_sum = $clean_sum + $cleanliness_rating;
+													$location_sum = $location_sum + $location_rating;
+													$check_sum = $check_sum + $check_in_rating;
+													}
+													if($count > 0){
+													$ac=$accuracy_sum/$count;
+													$cm=$comm_sum/$count;
+													$cl=$clean_sum/$count;
+													$lc=$location_sum/$count;
+													$ch=$check_sum/$count;
+													$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
+													}
+													?>
+													 <h3 class="mid-sec-title pt15 ">
                                                       <?php echo $this->requestAction('users/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp 
                                                       <span>
                                                         <i>
@@ -1015,9 +1064,6 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                                                                                                                     <input type='radio'  value='5' 
 <?php if(!empty($cm)){ if($cm 
                                                                                                                                                     <= 5 && $cm > 4.5){ echo "checked"; } }?> />
-                                                                                                                                                      <label class = "full" for="star5" title="Awesome - 5 stars">
-                                                                                                                                                      </label>
-                                                                                                                                                      <input type="radio"  value="4.5" 
 <?php if(!empty($cm)){if($cm 
                                                                                                                                                       <= 4.5 && $cm > 4){ echo "checked"; } } ?> />
 <label class="half" for="star4half" title="Pretty good - 4.5 stars">
@@ -1723,10 +1769,10 @@ $check_in=$UserRating->check_in_rating;
 								  ?>                       <img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> Day Care : 
 															<span><?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1738,7 +1784,7 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_night_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_night_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_night_rate;						
 																		}else{
 																			
 																			echo "$ --";
@@ -1753,10 +1799,10 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1768,10 +1814,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1783,10 +1829,10 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1798,10 +1844,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 																	<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>															
 															  <i class="fa fa-exclamation-circle">
@@ -1813,10 +1859,10 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_grooming_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->mp_grooming_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->mp_grooming_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1828,10 +1874,10 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_training_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->mp_training_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->mp_training_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1843,10 +1889,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 															<?php  if(!empty($sitterServiceData->mp_driving_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->mp_driving_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->mp_driving_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1858,10 +1904,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1873,10 +1919,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1885,7 +1931,7 @@ $check_in=$UserRating->check_in_rating;
 														  </li>
 														</ul>
 														<div class="guest-list"> 
-														  <a href="#" title="Request Booking" class="r-booking">Book Now
+														  <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking">Book Now
 														  </a> 
 														</div>
 													  </div>
@@ -1919,7 +1965,9 @@ $check_in=$UserRating->check_in_rating;
 			                     <div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?></div>
 			                 <!--Calendar Box End  -->		
                             </div>
+                           
                           </div>
+                           
                         </div>
                          <!--<div class="row">new one
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -1935,15 +1983,85 @@ $check_in=$UserRating->check_in_rating;
                             </div>
                           </div>
                         </div>-->
-                    <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       <?php
+         if(!empty(@$userData->user_about_sitter->sh_pet_sizes)){
+			 @$petSizesArr = explode(',',@$userData->user_about_sitter->sh_pet_sizes);
+      ?>
+               <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="recent-act mgt35">Hosting Preferences
                     </div>
-                    <p class="dog-title1">Dogs
-                    </p>
+                   
                     <div class="row">
+						
+				   <?php $addPre = ["0-7","8-18","18-45","45+"]; 
+                     foreach($petSizesArr as $size_val){
+					          if(in_array($size_val, $addPre))
+							  {
+							     $matchaddPre = "match_found";
+							     break;
+							  }else{
+							     $matchaddPre = "match_not_found";
+							  }
+					}
+					if($matchaddPre == "match_found"){	
+				    ?>
+				    
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <ul class="pet-list">
+						   <p class="dog-title1">Dogs
+                          </p>
+						  <ul class="pet-list">
+							 <?php  foreach($petSizesArr as $size_val){
+							  //if(isset($size_val == '0-7')){ 
+							   //echo 'ok'.$size_val;
+							   if($size_val == '0-7'){
+							   ?>
+								 <li class="pet-1" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 0-7">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								<?php } 
+								else if(@$size_val == '8-18'){
+								?>
+								<li class="pet-2" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 8-18">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								<?php }
+								 else if(@$size_val == '18-45'){
+								 ?>
+								<li class="pet-3" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 18-45">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								<?php }
+								 else if(@$size_val == '45+'){
+								 ?>
+								<li class="pet-4" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 45+">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								  <?php } 
+								  }
+								 ?>
+							</ul> 
+                        <!--<ul class="pet-list">
                           <li class="pet-1" > 
                             <span data-toggle="tooltip" data-placement="top" title="Dog
                                                                                     0-15 pounds ">
@@ -1980,14 +2098,70 @@ $check_in=$UserRating->check_in_rating;
                             <p class="pound">kg's / lbs
                             </p>
                           </li>
-                        </ul>
+                        </ul>-->
                       </div>
+                      <?php }
+                     $addPre = ["cat","small_pets","medium_pets"]; 
+                     foreach($petSizesArr as $size_val){
+					          if (in_array($size_val, $addPre))
+							  {
+							     $matchaddPre = "match_found";
+							     break;
+							  }else{
+							     $matchaddPre = "match_not_found";
+							  }
+					}
+					if($matchaddPre == "match_found"){	
+                      ?>
                       <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
                         <p class="dog-title1">
                           <b>Additional prefrences
                           </b>
                         </p>
-                        <ul class="pet-list">
+                           <ul class="pet-list">
+								<?php  
+							   foreach($petSizesArr as $size_val){
+
+								  if($size_val == 'cat'){
+								  ?>
+								  <li class="pet-5"> 
+									<span data-toggle="tooltip" data-placement="top" title="Cat 15-20 pounds ">
+									</span>
+									<p class="weight">0-15
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								  </li>
+								  <?php }
+								   else if($size_val == 'medium_pets'){
+								   ?>
+								 <li class="pet-6"> 
+										<span data-toggle="tooltip" data-placement="top" title="Rabit 15-20 pounds ">
+										</span>
+										<p class="weight">0-15
+										</p>
+										<p class="pound">kg's / lbs
+										</p>
+								   </li>
+								  <?php }
+								   else if($size_val == 'small_pets'){
+								   ?>
+								  <li class="pet-7"> 
+									    <span data-toggle="tooltip" data-placement="top" title="Bird 15-20 pounds ">
+										</span>
+										<p class="weight">0-15
+										</p>
+										<p class="pound">kg's / lbs
+										</p>
+								  </li>
+									<?php } 
+								  }
+								?>
+								  <li class="pet-4">
+									  &nbsp;
+								  </li>
+							   </ul>
+                        <!--<ul class="pet-list">
                           <li class="pet-5"> 
                             <span data-toggle="tooltip" data-placement="top" title="Cat
                                                                                     15-20 pounds ">
@@ -2017,12 +2191,14 @@ $check_in=$UserRating->check_in_rating;
                           </li>
                           <li class="pet-4"> &nbsp; 
                           </li>
-                        </ul>
+                        </ul>-->
+                        
                       </div>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
-                
+                <?php } ?>
                 <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="border-bot pt30">
@@ -2100,7 +2276,11 @@ $check_in=$UserRating->check_in_rating;
                               </style>
                             </div>
                           </div>
+                              <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+								<p class="report1"><a data-target="#myModal8" data-toggle="modal" href="#"><i class=" fa fa-remove"></i> &nbsp; Report this Profile</a></p>
+							  </div>
                         </div>
+                       
                       </div>
                     </div>
                     
@@ -2300,7 +2480,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                       </section>
                                                     <!-- Get in Touch ends-->
                                                     <!--[Fun News]-->
-                                                    <section class="fun-news">
+                                                    <?php echo $this->element('frontElements/guests/fun_and_news'); ?>
+                                                    <!--<section class="fun-news">
                                                       <div class="fn-bot">
                                                         <ul>
                                                           <li>
@@ -2401,7 +2582,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                         </ul>
                                                       </div>
                                                     </section>
-                                                    <!--[Fun News]-->
+                                                   
+                                                   --> <!--[Fun News]-->
                                                     </main>
                                                   <!--[content area End]-->
                                                   <!--video popup start-->
@@ -2487,8 +2669,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
           <p>Reservation Request</p>
           <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
         <div class="row">
-        
-                <?php echo $this->Form->create(@$booking_data, [
+              <?php 
+                            
+                         echo $this->Form->create(@$booking_data, [
                           'url' => ['controller' => 'search', 'action' => 'sitter-details'],
                           'id'=>'bookingContact',
                         ]);
@@ -2524,14 +2707,14 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                 <b>exercise, groom, train+</b></a></li>
             </ul>
                         <!-- Start Required service-->
-                        <?php echo $this->Form->input('BookingRequests.required_services',[
+                        <?php echo $this->Form->input('BookingRequests.required_service',[
                             'label' => false,
                             'type'=>'hidden',
                             'value'=>'boarding',
                             //'id'=>'required_services'
                             ]);
                             ?>
-                        <label class="error service_error" for="bookingrequests-required-services" generated="true"></label>
+                        <label class="error service_error" for="bookingrequests-required-service" generated="true"></label>
           </div>
           <!--top filter tab--> 
           <!--Tab Content area -->
@@ -2602,10 +2785,14 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                 	<div class="dog-list">
                                 	<ul id="all-guests">
                                     	<?php if(isset($sitter_guests_info) && !empty($sitter_guests_info)){
+											$guest_count = 0;
 											foreach($sitter_guests_info as $single_guest){
 								        ?>
-											<li><input name="guest_id_for_booking[]"  type="checkbox" value="<?php echo $single_guest['id'];?>"> <?php echo $single_guest['guest_name'];?></li>
-										<?php }
+											<li><input class="guests" checked name="guest_id_for_booking[]"  type="checkbox" value="<?php echo $single_guest['id'];?>"> <?php echo $single_guest['guest_name'];?></li>
+										    <?php $guest_count++;
+										  }
+										}else{
+										  $guest_count = 1;
 										}
 										?>
                                     </ul>
@@ -2614,7 +2801,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                 </div>
                             	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 	<div class="ad">
-                                    	<a title="Add Dogs" href="#"><i aria-hidden="true" class="fa fa-plus-circle"></i> Add Another Dogs</a>
+                                    	<a title="Add Dogs" href="<?php echo HTTP_ROOT.'dashboard/about-guest'; ?>"><i aria-hidden="true" class="fa fa-plus-circle"></i> Add Another Dogs</a>
                                     </div>
                                 </div>                                                                
                             </div>
@@ -2712,16 +2899,15 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
        <!--   ends
           -->
          </div>
-          
           <div class=" col-xs-12 col-md-4 col-sm-4 col-lg-3  ">
             <div class="right-content-wrap">
               <div class="top-box-wrap">
                 <div class="row">
-                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img src="<?php echo HTTP_ROOT; ?>img/detail-pop-img1.png" width="50" height="50" class="img-responsive img-circle text-center center-block" alt="image"> </div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" width="50" height="50" class="img-responsive img-circle text-center center-block" alt="image"> </div>
                   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                     <ul class="list-unstyled">
-                      <li class="f14">Jenifer</li>
-                      <li class="f13">Banksia 2016</li>
+                      <li class="f14"><?php echo ucfirst(@$userData->first_name); ?></li>
+                      <li class="f13"><?php echo ucfirst(@$userData->last_name)." ".date_format(@$userData->date_added,"Y");  ?></li>
                     </ul>
                   </div>
                 </div>
@@ -2732,48 +2918,34 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                  <h3>Your  Book Summary</h3>
               </div>
              <!--Start pet info-->
-             
-             <!-- <div class="pet-info-wrap alert">
-                <div class="pet-info-head">
-                  <p>Guest Hunter  <span class="pull-right text-right"> <a href="#"    class="close close-cross" data-dismiss="alert" aria-label="close" ><i class="fa fa-times-circle close-cross"></i></a></span></p>
-                </div>
-                <div class="pet-info-inner">
-                  
-                <ul class="list-unstyled">
-                   <li>House Sitting for 1 night</li>
-                    <li>23/05/2016 to 24/05/2016</li>
-                       <li>$20 x 1 nigh @ 20p/night</li>
-                
-                </ul>
-
-                </div>
-                
-                <div class="pet-info-bot">
-                  <p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p>
-                </div>
-              </div>-->
-              
               <div class="pet-info-wrap alert appendService">
-               <div class="pet-info-inner">li_boarding
-                  
+               <div class="pet-info-inner">
                 <ul class="list-unstyled">
-                   <li>House Sitting for 1 night</li>
-                    <li>
-					     <?php echo date("d/m/Y"); ?> to <?php echo date("d/m/Y"); ?></li>
-                       <li>$20 x 1 nigh @ 20p/night</li>
-                
+                     <li>Boarding for 1 day</li>
+                     <li>
+					     <?php echo date("d/m/Y"); ?> to <?php echo date("d/m/Y"); ?>
+					 </li>
+                     <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 day ".@$guest_count." guest @ ".(@$sh_day_rate*@$guest_count)." p/day"; ?>
+					 </li><hr>
+                     <li>Boarding for 1 night</li>
+                     <li>
+					     <?php echo date("d/m/Y"); ?> to <?php echo date("d/m/Y"); ?>
+					 </li>
+                     <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 night x ".@$guest_count." guest @ ".(@$sh_night_rate*@$guest_count)." p/night"; ?></li>
                 </ul>
 
                 </div>
                 
                 <div class="pet-info-bot">
-                  <p>Total  :<span class="pull-right text-right"> <b>$20</b></span></p>
+                  <p>Total  :<span class="pull-right text-right"> <b>
+                  <?php echo "$cuntry_sign_code ".@$total_amount = (@$sh_day_rate+@$sh_night_rate)*@$guest_count; ?>
+                  </b></span></p>
                 </div>
               </div>
-              <!--end-->
-              
-              
-              <div class="table-wrap">
+              <!--end 
+                <li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>
+              -->
+             <div class="table-wrap">
                 <table class="table">
                 
                   
@@ -2787,7 +2959,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                     <tr>
                     
                       <td class="tbfont">Total Amount</td>
-                      <td class="tbfont" id="show-total-amount"></td>
+                    
+                      <td class="tbfont" id="show-total-amount"><?php echo @$cuntry_currency." ".@$total_amount; ?></td>
                     </tr>
                     
                     <tr>
@@ -2829,21 +3002,51 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
   </div>
 </div>
 </div>
-<input id="boarding_day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_day_rate; ?>">
-<input id="boarding_night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_night_rate; ?>">
 
-<input id="house_sitting_day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_day_rate; ?>">
-<input id="house_sitting_night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_night_rate; ?>">
+<!--Report popup starts-->
 
-<input id="dorp_in_visit" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>">
+<div class="modal fade" id="myModal8" role="dialog">
+  <div class="modal-dialog">
+    <div class="sitter-quike-view">
+      <div class="sqv-box">
+        <div class="top-close">
+          <p>Report This Profile</p>
+          <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
+        
+        <!--Additional Services-->
+        <div>
+		<?php ?>
+          <p class="reson-pad">Reason for reporting (required):</p>
+          <textarea class="form-control" rows="5"></textarea>
+          
+          <div class="pull-right bt-pad">
+            <button class="btn btn-default" data-dismiss="modal">cancel</button>
+            &nbsp;
+            <button class="btn btn-success">Submit</button>
+          </div>
+        </div>
+        <!--Additional Services--> 
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!--Report popup ends--> 
+<input id="boarding_day_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
+<input id="boarding_night_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
 
-<input id="day_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_day_rate; ?>">
-<input id="night_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->sh_night_rate; ?>">
+<input id="house_sitting_day_rate" type="hidden" value="<?php echo @$gh_day_rate; ?>">
+<input id="house_sitting_night_rate" type="hidden" value="<?php echo @$gh_night_rate; ?>">
 
-<input id="mp_grooming_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_grooming_rate; ?>">
-<input id="mp_training_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_training_rate; ?>">
-<input id="mp_recreation_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_recreation_rate; ?>">
-<input id="mp_driving_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_driving_rate; ?>">
+<input id="dorp_in_visit" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->gh_drop_in_visit_rate != ''?@$userData->user_sitter_services[0]->gh_drop_in_visit_rate:0; ?>">
+
+<input id="day_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
+<input id="night_rate" type="hidden" value="<?php echo @$sh_night_rate; ?>">
+
+<input id="mp_grooming_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_grooming_rate != ''?@$userData->user_sitter_services[0]->mp_grooming_rate:0; ?>">
+<input id="mp_training_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_training_rate != ''?@$userData->user_sitter_services[0]->mp_training_rate:0; ?>">
+<input id="mp_recreation_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_recreation_rate != ''?@$userData->user_sitter_services[0]->mp_recreation_rate:0; ?>">
+<input id="mp_driving_rate" type="hidden" value="<?php echo @$userData->user_sitter_services[0]->mp_driving_rate != ''?@$userData->user_sitter_services[0]->mp_driving_rate:0; ?>">
 
 <input id="total_days" type="hidden" value="">
 <input id="start_date" type="hidden" value="">
@@ -2887,6 +3090,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
 				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
 				$("#total_days").val(days);
+				if(days){
+					appendService();
+				}
 			}
         });
         
@@ -2947,8 +3153,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				  
 				 var day_total = day_rate*total_days;
 				 var night_total = night_rate*total_days;
-				 var total = day_total+night_total;
-				  $("#show-total-amount").text("AU"+total);
+				 var total = (day_total+night_total)*guest_num;
+				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
 				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			  }
@@ -2959,16 +3165,16 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				 var day_total = hs_day_rate*total_days;
 				 var night_total = hs_night_rate*total_days;
 				 
-				 var total = day_total+night_total;
-				  $("#show-total-amount").text("AU"+total);
+				 var total = (day_total+night_total)*guest_num;
+				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
 				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
 			  }else
 			   if(service_id == 'li_drop_in_visit'){
 				 var drop_visit_rate = $("#dorp_in_visit").val();
 				  
-				  var total = drop_visit_rate*total_days;
-				  $("#show-total-amount").text("AU"+total);
+				  var total = drop_visit_rate*total_days*guest_num;
+				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				 
 				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
 			   }else
@@ -2978,8 +3184,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				  
 				 var day_total = day_rate*total_days;
 				 var night_total = night_rate*total_days;
-				 var total = day_total+night_total;
-				  $("#show-total-amount").text("AU"+total);
+				 
+				 var total = (day_total+night_total)*guest_num
+				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
 				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			 }else
@@ -2994,8 +3201,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				 var mp_recreation_total = mp_recreation_rate*total_days;
 				 var mp_driving_total = mp_driving_rate*total_days;
 				 
-				 var total = mp_grooming_total+mp_training_total+mp_recreation_total+mp_driving_total;
-				  $("#show-total-amount").text("AU"+total);
+				 var total = (mp_grooming_total+mp_training_total+mp_recreation_total+mp_driving_total)*guest_num;
+				 
+				 $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
 				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
 			   }
@@ -3008,7 +3216,210 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
             }).get(); // ["boarding", "house_sitting"]
             
             var textString = textArray.join(); // "boarding", "house_sitting"
-            $('#bookingrequests-required-services').val(textString);
+            $('#bookingrequests-required-service').val(textString);
         });
+        //Click on guest
+         $("input.guests").click(function(){
+          
+            var guest_num = 0;
+            $('#all-guests li>input').each(function(){
+                var guest_checked = $(this).prop("checked");
+                if(guest_checked){
+					guest_num++;
+				}
+            });
+			   if(guest_num == 0){
+				   guest_num = 1;
+			   }
+			   $('.appendService').hide();
+                
+                var d = new Date();
+                var month = d.getMonth()+1;
+				var day = d.getDate();
+
+				var current_date = (day<10 ? '0' : '') + day + '/' + (month<10 ? '0' : '') + month + '/' +(d.getFullYear()) ;
+				
+				 var total_days,from_date,to_date;
+				 	 
+				 	 
+				 var total_days_date_picker = $("#total_days").val();
+				 //alert(total_days_date_picker);
+				 if(total_days_date_picker != ""){
+					   total_days = parseInt(total_days_date_picker)+1;
+					   
+					   from_date = $("#start_date").val();
+				       to_date = $("#end_date").val();
+				 }else{
+					  total_days = 1;
+					  from_date = current_date;
+					  to_date = current_date;
+				 }
+				var service_id = $("#bookingrequests-required-service").val();
+              if(service_id == 'boarding'){
+				 var day_rate = $("#boarding_day_rate").val();
+				 var night_rate = $("#boarding_night_rate").val();
+				  
+				 var day_total = day_rate*total_days;
+				 var night_total = night_rate*total_days;
+				 var total = (day_total+night_total)*guest_num;
+				  $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+			  }
+			  if(service_id == 'house_sitting'){
+				 var hs_day_rate = $("#house_sitting_day_rate").val();
+				 var hs_night_rate = $("#house_sitting_night_rate").val();
+				  
+				 var day_total = hs_day_rate*total_days;
+				 var night_total = hs_night_rate*total_days;
+				 
+				 var total = (day_total+night_total)*guest_num;
+				  $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
+			  }else
+			   if(service_id == 'drop_in_visit'){
+				 var drop_visit_rate = $("#dorp_in_visit").val();
+				  
+				  var total = drop_visit_rate*total_days*guest_num;
+				  $("#show-total-amount").text("AU"+total);
+				 
+				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
+			   }else
+			   if(service_id == 'day_nigth_care'){
+				 var day_rate = $("#day_rate").val();
+				 var night_rate = $("#night_rate").val();
+				  
+				 var day_total = day_rate*total_days;
+				 var night_total = night_rate*total_days;
+				 
+				 var total = (day_total+night_total)*guest_num
+				  $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+			 }else
+			   if(service_id == 'market_place'){
+				 var mp_grooming_rate = $("#mp_grooming_rate").val();
+				 var mp_training_rate = $("#mp_training_rate").val();
+				 var mp_recreation_rate = $("#mp_recreation_rate").val();
+				 var mp_driving_rate = $("#mp_driving_rate").val();
+				  
+				 var mp_grooming_total = mp_grooming_rate*total_days;
+				 var mp_training_total = mp_training_rate*total_days;
+				 var mp_recreation_total = mp_recreation_rate*total_days;
+				 var mp_driving_total = mp_driving_rate*total_days;
+				 
+				 var total = (mp_grooming_total+mp_training_total+mp_recreation_total+mp_driving_total)*guest_num;
+				 
+				 $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
+			   }
+			  
+               $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" ><div class="pet-info-inner"><ul class="list-unstyled">'+main_content+'</ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$'+total+'</b></span></p></div></div>');
+           
+        });
+        //End
+        //Click on end datepicker
+        function appendService(){
+            var guest_num = 0;
+            $('#all-guests li>input').each(function(){
+                var guest_checked = $(this).prop("checked");
+                if(guest_checked){
+					guest_num++;
+				}
+            });
+			   if(guest_num == 0){
+				   guest_num = 1;
+			   }
+			   $('.appendService').hide();
+                
+                var d = new Date();
+                var month = d.getMonth()+1;
+				var day = d.getDate();
+
+				var current_date = (day<10 ? '0' : '') + day + '/' + (month<10 ? '0' : '') + month + '/' +(d.getFullYear()) ;
+				
+				 var total_days,from_date,to_date;
+				 	 
+				 	 
+				 var total_days_date_picker = $("#total_days").val();
+				 //alert(total_days_date_picker);
+				 if(total_days_date_picker != ""){
+					   total_days = parseInt(total_days_date_picker)+1;
+					   
+					   from_date = $("#start_date").val();
+				       to_date = $("#end_date").val();
+				 }else{
+					  total_days = 1;
+					  from_date = current_date;
+					  to_date = current_date;
+				 }
+				var service_id = $("#bookingrequests-required-service").val();
+              if(service_id == 'boarding'){
+				 var day_rate = $("#boarding_day_rate").val();
+				 var night_rate = $("#boarding_night_rate").val();
+				  
+				 var day_total = day_rate*total_days;
+				 var night_total = night_rate*total_days;
+				 var total = (day_total+night_total)*guest_num;
+				  $("#show-total-amount").text("AU"+total);
+				  
+				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+			  }
+			  if(service_id == 'house_sitting'){
+				 var hs_day_rate = $("#house_sitting_day_rate").val();
+				 var hs_night_rate = $("#house_sitting_night_rate").val();
+				  
+				 var day_total = hs_day_rate*total_days;
+				 var night_total = hs_night_rate*total_days;
+				 
+				 var total = (day_total+night_total)*guest_num;
+				  $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
+			  }else
+			   if(service_id == 'drop_in_visit'){
+				 var drop_visit_rate = $("#dorp_in_visit").val();
+				  
+				  var total = drop_visit_rate*total_days*guest_num;
+				  $("#show-total-amount").text("AU"+total);
+				 
+				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
+			   }else
+			   if(service_id == 'day_nigth_care'){
+				 var day_rate = $("#day_rate").val();
+				 var night_rate = $("#night_rate").val();
+				  
+				 var day_total = day_rate*total_days;
+				 var night_total = night_rate*total_days;
+				 
+				 var total = (day_total+night_total)*guest_num
+				  $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+			 }else
+			   if(service_id == 'market_place'){
+				 var mp_grooming_rate = $("#mp_grooming_rate").val();
+				 var mp_training_rate = $("#mp_training_rate").val();
+				 var mp_recreation_rate = $("#mp_recreation_rate").val();
+				 var mp_driving_rate = $("#mp_driving_rate").val();
+				  
+				 var mp_grooming_total = mp_grooming_rate*total_days;
+				 var mp_training_total = mp_training_rate*total_days;
+				 var mp_recreation_total = mp_recreation_rate*total_days;
+				 var mp_driving_total = mp_driving_rate*total_days;
+				 
+				 var total = (mp_grooming_total+mp_training_total+mp_recreation_total+mp_driving_total)*guest_num;
+				 
+				 $("#show-total-amount").text("AU "+total);
+				  
+				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
+			   }
+			  
+               $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" ><div class="pet-info-inner"><ul class="list-unstyled">'+main_content+'</ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$'+total+'</b></span></p></div></div>');
+           
+        }
+        //End
     });
 </script>
