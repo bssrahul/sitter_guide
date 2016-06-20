@@ -502,6 +502,8 @@ class GuestsController extends AppController
 		$session->delete('setRequestedLanguageLocale');
 		$session->delete('profile');
 		$session->delete('dog_in_home_status');
+		$session->delete("currency");
+		
 		return $this->redirect(['controller' => 'guests']);
 	}
 		

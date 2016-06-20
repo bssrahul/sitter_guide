@@ -29,7 +29,14 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
     <div class="profiletab-section">
       <h3>
         <img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"> 
-        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?>
+             <?php  $session = $this->request->session();
+				 $profile = $session->read('profile');
+			   if($profile == 'sitter'){
+				   echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); 
+			   }else{
+				    echo $this->requestAction('app/get-translate/'.base64_encode('Guest Profile')); 
+			   }  
+			  ?>
       </h3>
       <?php echo $this->element('frontElements/profile/sitter_nav');?>
       <div class="tab-sectioninner book-pro">

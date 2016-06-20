@@ -48,10 +48,21 @@ class AppController extends Controller{
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
+		if($session->read("currency")==""){
+			$this->setCurrency('en_EN');
+            /*$currencyModel = TableRegistry::get('Currencies');
+			$currencyData = $currencyModel->find('all')->select(['price','currency','sign_code'])->where(['locale'=>'en_US'])->toArray();
+			
+			$session->write('currency.currency',$currencyData[0]->currency);
+			$session->write('currency.price',$currencyData[0]->price);
+			$session->write('currency.sign_code',$currencyData[0]->sign_code);*/
+		}
+		
 		if($session->read("requestedLanguage")==""){
 
 			$this->setGuestStore("en");
 		}
+		
 
 		//$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale');
 		$currentLocal = substr($setRequestedLanguageLocale,0,2);
@@ -100,7 +111,36 @@ class AppController extends Controller{
 	
 	/** Function for set language locale as per language selection on front end
 	*/
-	public function setGuestStore($langCode=null,$controller='Guests',$action='index'){
+	public function setCurrency($currcyCode=null,$controller='Guests',$action='index',$params=null){
+
+		//CHANGES REQUEST LANGUAGE SESSION AND LOCALE
+		$currencySession = $this->request->session();
+		
+		//$langCode return en|fr|de|es|hu|it|ro|ru
+		if(isset($currcyCode) && $currcyCode !=""){
+			$requestedCurrency = $currcyCode;
+		}else{
+		    $requestedCurrency="en_AU";
+		}
+		
+			$currencyModel = TableRegistry::get('Currencies');
+			$currencyData = $currencyModel->find('all')->select(['price','currency','sign_code'])->where(['locale'=>$requestedCurrency])->toArray();
+			
+			$currencySession->write('currency.currency',$currencyData[0]->currency);
+			$currencySession->write('currency.price',$currencyData[0]->price);
+			$currencySession->write('currency.sign_code',$currencyData[0]->sign_code);
+			
+		if (strpos($action,'edit') != false){
+			return $this->redirect(['controller'=>$controller,'action' => 'index' ]);
+		}else{
+		  //return $this->redirect(['controller'=>$controller,'action' => $action]);
+		   return $this->redirect("/$controller/$action/".$params);
+		}
+	}
+	
+	/** Function for set language locale as per language selection on front end
+	*/
+	public function setGuestStore($langCode=null,$controller='Guests',$action='index',$params=null){
 
 		//CHANGES REQUEST LANGUAGE SESSION AND LOCALE
 		$languageSession = $this->request->session();
@@ -139,7 +179,7 @@ class AppController extends Controller{
 		if (strpos($action,'edit') != false) {
 			return $this->redirect(['controller'=>$controller,'action' => 'index' ]);
 		}else{
-		   return $this->redirect(['controller'=>$controller,'action' => $action]);
+		   return $this->redirect("/$controller/$action/".$params);
 		}
 	}	
 	

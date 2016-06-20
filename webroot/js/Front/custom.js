@@ -1537,6 +1537,10 @@
 				"BookingRequests[booking_start_date]":
 				{
 					required : "This field is required"
+				},
+				"guest_id_for_booking[]":
+				{
+					required:"Please select your pet" 
 				}
 			}
 

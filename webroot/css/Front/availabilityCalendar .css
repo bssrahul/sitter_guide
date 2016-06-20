@@ -102,13 +102,13 @@ div#calendar ul.dates li{
     display: table-cell;
     float: left;
     font-size: 14px;
-    height: 70px;
+    height: 40px;
     list-style-type: none;
     margin: -1px 0 0 -0.5px;
-    padding: 0 0 0 1%;
-    text-align: left;
+    padding: 9px 0 0 1%;
+    text-align: center;
     vertical-align: top;
-    width: 14.42%;}
+    width: 12.42%;}
 :focus {
     outline: none;
 }

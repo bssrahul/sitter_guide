@@ -42,8 +42,7 @@ class SearchController extends AppController
     {
         parent::beforeFilter($event);
         
-         
-	    $categoryModel = TableRegistry::get('Categories');
+        $categoryModel = TableRegistry::get('Categories');
 		$categoryData = $categoryModel->find('list',['fields' => ['title'],'conditions'=>['Categories.slug'=>'distance']])->toArray();
 		$distancearray = array(''=>'Distance');
 		
@@ -55,6 +54,14 @@ class SearchController extends AppController
 		$this->set('distancearray', $distancearray);
 		$session = $this->request->session();
 		$this->set('logedInUserId', $session->read('User.id'));
+		
+		if(!$this->CheckGuestSession() && in_array($this->request->action,array('sitterDetails','thankYou','sitterContact'))){
+			$this->setErrorMessage($this->stringTranslate(base64_encode('Authentication Failed! Please log in before.')));
+			
+			return $this->redirect(['controller' => 'Guests','action'=>'home']);
+		}
+		
+		
     }
     public function initialize()
     {
@@ -68,6 +75,15 @@ class SearchController extends AppController
 		$sliderModel = TableRegistry::get('Sliders');
 		$sliderVideo = $sliderModel->find('all')->first();
 		$this->set('sliderVideo', $sliderVideo);
+		//For fun and news
+		$UserBlogsModel = TableRegistry::get('UserBlogs');
+		$servicesModel = TableRegistry::get('Services');
+		
+		$blogsInfo = $UserBlogsModel->find('all', ['order' => ['UserBlogs.modified' => 'desc']]) ->limit(3)->where(['UserBlogs.featured' =>1])->where(['UserBlogs.status' =>1])->toArray();
+		$this->set('blogsInfo',$blogsInfo);
+		
+		$servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
+		$this->set('servicesInfo',$servicesInfo);
 		
 	}
 	
@@ -842,7 +858,8 @@ class SearchController extends AppController
 			 $this->set('booking_data', $bookingRequestData);*/
 		}else{
         ////////////////////
-        $userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
+        $userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings','UserPets'=>['UserPetGalleries']]]);
+        //pr($userData->user_pets[0]->user_pet_galleries);;die;
 		$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
 		$user_sitter_id_Arr=array();
 		foreach($UserFavData as $UserFav){
@@ -950,14 +967,19 @@ class SearchController extends AppController
 		$calendar = new  \Calendar();
 
 		$this->set('calender',$calendar->show($unavailbe_array));
-		//$this->set('services_array',$services_array);
+		//For booking request
 		if(!empty($session->read("User.id"))){
-			$userId = $session->read("User.id");
+			 $userId = $session->read("User.id");
 			 $userPetsModel = TableRegistry::get('UserPets');
 			 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
 			 $this->set("sitter_guests_info",$userPetsData);
 		}
 		$this->set('sitter_id',base64_encode(convert_uuencode($sitterId)));
+		
+		$currencyModel = TableRegistry::get('Currencies');
+		$currencies = $currencyModel->find("all")->toArray();
+		$this->set('currencies',$currencies);
+		//pr($currencies);die;
 	}
 		//pr($userData);die;
 	}
