@@ -180,7 +180,7 @@
                      
                       <div class="row">
                           
-                          <div class="col-lg-3 col-xs-3">
+                          <div class="col-lg-3 col-xs-4">
                             <label for="country_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <?php 
                                /* echo $this->Form->input('Users.country_code',[
@@ -205,7 +205,7 @@
 							</select>    
 
                         </div>
-                          <div class="col-lg-3 col-xs-9">
+                          <div class="col-lg-3 col-xs-8">
                               <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will send an sms confirmation to this number for verification')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
@@ -216,7 +216,7 @@
                                   ]);
                             ?>
                           </div>
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-xs-12 col-xsm-12 col-md-12 col-lg-12">
                           <label class="invisi-no" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('im-vi')); ?></label>
                             <div class="varify-mobile">
                               
@@ -336,7 +336,7 @@
 				<!-- ROW ONE START -->	
 				<div class="row">
 
-					 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+					 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
 						   
 						   <div class="row d-m2">
 							
@@ -364,7 +364,7 @@
 					
 					</div>
 						  
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
 					
 						<div class="row d-m2">
 					
@@ -409,7 +409,7 @@
 <!-- ROW TWO Start -->	
 <div class="row">
 
-	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
 		   
 		<div class="row d-m2">
 				
@@ -435,7 +435,7 @@
                       }
                       
                      ?>
-                    <iframe id="preview-profile-video" class="col-lg-12" src="<?php echo @$video_path; ?>" allowfullscreen>
+                    <iframe id="preview-profile-video" src="<?php echo @$video_path; ?>" allowfullscreen>
                     </iframe>
                     <button class="btn btn-primary" type="button" id="browseVideo"><i class="fa fa-upload" aria-hidden="true"></i>
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Video')); ?>
@@ -448,7 +448,7 @@
 	
 	</div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 full-width11">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
                        
 		<div class="row d-m2">
 			
@@ -690,7 +690,17 @@ $(document).ready(function(){
 	  //$(".videoBanner").show();
 	  //$(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
       $("#preview-profile-video").attr('src',ajax_url+'img/search-loader.gif');
+      //var percentVal = 0;
+     // //$("#preview-profile-video").contents().html("<html><body><div> Loading...("+percentVal+") </div></body></html>");
+      
   },
+  uploadProgress: function(event, position, total, percentComplete) {
+        var percentVal = percentComplete + '%';
+      //  bar.width(percentVal)
+        //percent.html(percentVal);
+       // $("#preview-profile-video").contents().html("<html><body><div> Loading...("+percentVal+") </div></body></html>");
+        console.log(percentVal);
+    },
 	/*complete: function(){
 	  $(".videoBanner").hide();
 	  $(".videoBanner").html('');

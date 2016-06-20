@@ -209,9 +209,10 @@
 								  'id'=>"about_txtarea",
                                  'templates' => ['inputContainer' => '{{content}}']
                             ]); ?>
+                           <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
 								<?php $max=75; if(!empty($sitterHouseData['about_home_desc'])){ $rem = $max-str_word_count ($sitterHouseData['about_home_desc']);} ?>
                           <p class="w-limit" id="about_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
-                         <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
+                        
                     </div>
 
                     <div class="form-group col-lg-4">
@@ -229,8 +230,9 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                                  
                             ]); ?>
+                          <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
 							<?php $max=75; if(!empty($sitterHouseData['spaces_access_desc'])){ $rem = $max-str_word_count ($sitterHouseData['spaces_access_desc']);} ?>
-                             <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
+                             
                           <p class="w-limit" id="spaces_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
                        
                     </div>

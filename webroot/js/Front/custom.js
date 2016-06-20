@@ -60,7 +60,7 @@
 				},
 				"Users[last_name]":
 				{
-					lettersonly: true ,
+					lettersonly: true
 				},
 				"Users[email]":
 				{
@@ -631,7 +631,12 @@
 				},
 				"Users[first_name]":
 				{
-					required:true
+					required:true,
+					lettersonly: true ,
+				},
+				"Users[first_name]":
+				{
+				    lettersonly: true
 				},
 				"Users[address]":
 				{
@@ -643,7 +648,8 @@
 				},
                 "Users[city]":
 				{
-					required:true
+					required:true,
+					lettersonly: true
 				},
 				"Users[zip]":
 				{
@@ -651,7 +657,13 @@
 				},
 				"Users[state]":
 				{
-					required:true
+					required:true,
+					lettersonly: true
+				},
+				"Users[country]":
+				{
+					required:true,
+					lettersonly: true
 				},
                 "Users[country_code]":
 				{

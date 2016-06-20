@@ -22,7 +22,7 @@ use Cake\Event\Event;
 use Cake\I18n\Time;
 
 
-require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'calendar.php');
+require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'calendar.php');
 use Calendar;
 
 
@@ -117,6 +117,8 @@ class DashboardController extends AppController
 								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 								   ->toArray();
 							  
+							  
+							  
 				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
@@ -131,8 +133,7 @@ class DashboardController extends AppController
 				
 				$userInfo = $usersModel->get($userId)->toArray();
 			   //End
-          //Profile Status
-         // pr($userData[0]->user_sitter_house->toArray());die;
+          
           //For basic details
           $details_fields = array("first_name","last_name","email","password","gender","birth_date","address","country","city","state","zip","zone_id");
          
@@ -170,7 +171,6 @@ class DashboardController extends AppController
 			 $profile_status['User']['media'] = "no";
 		  }
 		  //House details
-		  //pr($userData[0]);die;
 		  if(isset($userData[0]->user_sitter_house) && !empty($userData[0]->user_sitter_house)){
 				  $houseInfo = $userData[0]->user_sitter_house->toArray();
 				// pr($houseInfo);die;
@@ -259,8 +259,7 @@ class DashboardController extends AppController
 			  }else{
 				 $profile_status['UserPets']['behaviour'] = "no";
 			  }
-			 //pr($guestInfo);die;
-		  }else{
+		 }else{
 			  $profile_status['UserPets']['guest_basic_detail'] = "no";
 			  $profile_status['UserPets']['guest_description'] = "no";
 			  $profile_status['UserPets']['guest_photos'] = "no";
@@ -347,7 +346,6 @@ class DashboardController extends AppController
 			//pr($userData[0]);die;
 			if(isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
 			     $servicesInfo = $userData[0]->user_sitter_services[0]->toArray();
-			     //pr($servicesInfo);die;
 			  //Terms
 			  if(($servicesInfo['cancellation_policy_status'] == 1) && ($servicesInfo['booking_status'] == 1)){
 				 $profile_status['servicesAndRates']['terms'] = "yes";
@@ -377,9 +375,14 @@ class DashboardController extends AppController
 			  $check_status = $this->check_fields_status($calender_fields,$servicesInfo);
 			  if($check_status){
 				 $profile_status['servicesAndRates']['calender'] = "yes";
+				 //Set session for calendar limits
+			     $session->write('calendar_limits','yes');
 			  }else{
 				 $profile_status['servicesAndRates']['calender'] = "no";
+				 //Set session for calendar limits
+			     $session->write('calendar_limits','no');
 			  }
+			  
 		    }else{
 				  $profile_status['servicesAndRates']['terms'] = "no";
 				  $profile_status['servicesAndRates']['sitter_house_status'] = "no";
@@ -389,10 +392,7 @@ class DashboardController extends AppController
 				}
 		    //Skills and Accreditations 
 		  $this->set('profile_status',$profile_status);
-		  //pr($profile_status['skillsAndAccreditationDetails']);die;
-		  
-		 //pr($userData[0]->user_sitter_services);die;
-		 // pr($profile_status);die;
+		 
           //End
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
@@ -1794,7 +1794,18 @@ function addPets(){
 						    $session->write('User.user_type','Basic');
 						}
 					   //End
-
+                    //Set session for calendar limits
+                    if(isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
+			           $servicesInfo = $userData[0]->user_sitter_services[0]->toArray();
+                    
+                       $calender_fields = array("sh_dc_additional_guest_limit","sh_nc_additional_guest_limit","	gh_dc_additional_guest_limit","gh_nc_additional_guest_limit");
+			            $check_status = $this->check_fields_status($calender_fields,$servicesInfo);
+						  if($check_status){
+							 $session->write('calendar_limits','yes');
+						  }else{
+							$session->write('calendar_limits','no');
+						  }
+				   }
 				
             return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
           }else{
@@ -2215,16 +2226,25 @@ function addPets(){
 	
 	}
 	
-	public function calender()
+	public function calendar()
     {
 			
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
-
 		$this->viewBuilder()->layout('profile_dashboard');
 		$calendarModel=TableRegistry :: get("user_sitter_availability");
 		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
-			
+		$calenderLastModifiedData=$calendarModel->find('all',['order' => ['id' => 'DESC']])->where(['user_id'=>$user_id])->limit(1)->toArray();
+		$lastmodifieddate=array();
+		foreach($calenderLastModifiedData as $calenderLastModified){
+			$lastmodifieddate['day_care']=$calenderLastModified->day_care;
+			$lastmodifieddate['night_care']=$calenderLastModified->night_care;
+			$lastmodifieddate['visit']=$calenderLastModified->visit;
+			$lastmodifieddate['market_place']=$calenderLastModified->market_place;
+		}
+		$this->set('lastmodifieddate',$lastmodifieddate);
+		//pr($lastmodifieddate);die;	
+		//pr($calenderLastModifiedData);die;	
 		$unavailbe_array=array();
 		foreach($calenderData as $k=>$UserServices){
 			
@@ -2241,13 +2261,14 @@ function addPets(){
 		$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
 
 		$services_array=array();
+	
 		foreach($UserServicesData as $UserServices){
 			$services_array["day_care_limit"]= $UserServices->day_care_limit;
 			$services_array["night_care_limit"]= $UserServices->night_care_limit;
 			$services_array["visits_limit"]= $UserServices->visits_limit;
 			$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
 		}
-			
+		
 		$calendar = new  \Calendar();
 
 		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
@@ -2271,7 +2292,7 @@ function addPets(){
 			if($calendarModel->save($calenderData)){
 			
 				$this->Flash->success(__('Changes has been done.'));
-				return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+				return $this->redirect(['controller' => 'dashboard', 'action' => 'calendar']);
 			
 			}else{
 	
