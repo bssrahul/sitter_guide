@@ -42,7 +42,7 @@ class DashboardController extends AppController
 	
 	
 	public $paginate = [
-        'limit' => 1,
+        'limit' => 12,
         'order' => [
             'Users.id' => 'DESC'
         ]
@@ -1824,123 +1824,43 @@ function addPets(){
          	$session = $this->request->session();
     }
     /**
-	Function for profile edit
+	Function for profile report
 	*/
-	/*function profileEdit(){
-		$this->viewBuilder()->layout('profile');
-		$session = $this->request->session();
-		$userId = $session->read('User.id');
-		$UsersModel = TableRegistry::get('Users');
-		$ZonesModel = TableRegistry::get('Zones');
-		
-		if(isset($this->request->data) && !empty($this->request->data))
-		{
-			 $UserData = $UsersModel->newEntity($this->request->data['Users'],['validate' => true]);
+	function profileReport(){
+		 $fakeProfileReportModel = TableRegistry::get('UserFakeReports');
+		 $usersModel = TableRegistry::get('Users');
+		 $adminsModel = TableRegistry::get('Admins');
+		 
+		 $session = $this->request->session();
+		 $userId = $session->read('User.id');
+				 
+		 if(isset($this->request->data['ProfileReport']) && !empty($this->request->data['ProfileReport'])){
+			     $sitterId = convert_uudecode(base64_decode($_REQUEST['ProfileReport']['sitter_id']));
+ 			     $profileReportData = $fakeProfileReportModel->newEntity();
+ 			     $profileReportData->user_id = $userId;
+ 			     $profileReportData->sitter_id = $sitterId;
+ 			     $profileReportData->report_reason = $_REQUEST['ProfileReport']['report_reason'];
+ 			     if($fakeProfileReportModel->save($profileReportData)){
 			
-			 //Upload image
-			if($_FILES['image']['name']!=''){
-				$userimg = $this->admin_upload_file('profilePic',$_FILES['image']);
-				$userimg = explode(':',$userimg);
-				if($userimg[0]=='error'){
-					$this->setErrorMessage($userimg[1]);
-					$this->redirect($this->referer());
-					
-				}else{
-					$UserData->image = $userimg[1];
-				}				
-			}else{
-				 unset($_FILES['image']);
-			}
-			$UserData->id = $userId;
-			$saveUserData = $UsersModel->save($UserData);
-			if($saveUserData){
-				$this->setSuccessMessage("Profile has been edit successfully");
-				
-				$session->write('User.email', $UserData->email);
-				$session->write('User.name', $UserData->first_name." ".$UserData->last_name);
-				
-				$session->write('User.image', $UserData->image);
-				
-				return $this->redirect(['controller'=>'guests','action'=>'profile-edit']);
-			}else{
-				return $this->redirect(['controller'=>'guests']);
-			}
-		}else{
-			$userInfo = $UsersModel->get($userId);
-			$zonesData = $ZonesModel->find('list',[
-				'keyField' => 'zone_id',
-				'valueField' => 'zone_name'
-			]);
-            $zonesData = $zonesData->toArray();
-			$this->set('userInfo',$userInfo);
-			$this->set('zonesData',$zonesData);
+			$user_data = $usersModel->find('all')->select(['id','first_name','last_name','email'])->where(['id'=>$profileReportData->user_id])->toArray();
+			
+			$sitter_data = $usersModel->find('all')->select(['id','first_name','last_name','email'])->where(['id'=>$profileReportData->sitter_id])->toArray();
+			
+			$adminData = $adminsModel->find('all')->select(['id','email'])->first()->toArray();
+			         $this->setSuccessMessage($this->stringTranslate(base64_encode('Your request has been sent to the admin.')));
+					 $link = HTTP_ROOT.'view-profile/'.$_REQUEST['ProfileReport']['sitter_id'];
+						$linkOnMail = '<a href="'.$link.'" target="_blank">Click Here to view sitter profile </a>';
+						
+						$replace = array('{user_name}','{user_email}','{sitter_name}','{sitter_email}','{profile_link}','{reason_report}');
+						
+                        $with = array($user_data[0]->first_name,$user_data[0]->email,$sitter_data[0]->first_name,$sitter_data[0]->email,$linkOnMail,$profileReportData->report_reason);
+						
+					$this->send_email('',$replace,$with,'fake_profile_report',$adminData['email']);
+				}
+				$this->redirect("/search/sitter-details/".$_REQUEST['ProfileReport']['sitter_id']);
 		}
-	}*/
-	/**
-	Function for Add pet
-	*/
-	/*function addUserPet(){
-		
-		$this->viewBuilder()->layout('profile');
-		$session = $this->request->session();
-		$userId = $session->read('User.id');
-	
-		$UserPetsModel = TableRegistry::get('UserPets');
-		if(isset($this->request->data) && !empty($this->request->data))
-		{
-		
-			
-			 $UserPetData = $UserPetsModel->newEntity($this->request->data['UserPets'],['validate' => true]);
-			 
-			 $UserPetData->user_id = $userId; 
-			 
-			 $years = $this->request->data['years'];
-			 $months = $this->request->data['months'];
-			 $arr = array($years,$months);
-             $UserPetData->pet_age   = implode(",",$arr);
-			 
-			if($_FILES['pet_image']['name']!=''){
-				$petimg = $this->admin_upload_file('petImage',$_FILES['pet_image']);
-				$petimg = explode(':',$petimg);
-				if($petimg[0]=='error'){
-				
-					$this->displayErrorMessage($petimg[1]);
-					$this->redirect($this->referer());
-				}else{
-					
-					$UserPetData->pet_image = $petimg[1];
-				}				
-			}else{
-				 unset($_FILES['pet_image']);
-			}
-			
-			$saveUserPetData = $UserPetsModel->save($UserPetData);
-			if($saveUserPetData){
-				$this->setSuccessMessage("Pet has been added successfully");
-				return $this->redirect(['controller'=>'guests','action'=>'profile']);
-			}else{
-				return $this->redirect(['controller'=>'guests']);
-			}
-		}
-		
-	}*/
-	/**
-	Function for Invite Friend
-	*/
-	/*function inviteFriend(){
-        $inviteFriendsModel = TableRegistry::get('InviteFriends');
-
-	    if(isset($this->request->data) && !empty($this->request->data)){
-
-            $inviteFriendsModel->find('all',['conditions'=>['']);
-
-            $inviteFriendData = $inviteFriendsModel->newEntity($this->request->data['InviteFriends']);
-            
-            $inviteFriendsModel->save($inviteFriendData);
-
-            echo "<pre>";print_r($inviteFriendData);die;
-	    }
-	}*/
+		 
+	}
 	/*********************************************************************
      Purpose            : update image.
      Parameters         : null
@@ -2245,10 +2165,10 @@ function addPets(){
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		$this->viewBuilder()->layout('profile_dashboard');
-		$calendarModel=TableRegistry :: get("UserSitterAvailability");
+		$calendarModel=TableRegistry :: get("user_sitter_availability");
 		$calenderData=$calendarModel->newEntity();
 			
-		if ($this->request->is('POST')) {
+		if ($this->request->is(POST)) {
 			
 			$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
 			$calenderData->user_id=$user_id;
@@ -2274,23 +2194,21 @@ function addPets(){
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		
-		$calendarModel=TableRegistry :: get("UserSitterAvailability");
+		$calendarModel=TableRegistry :: get("user_sitter_availability");
 		$calenderData=$calendarModel->newEntity();
 		
 		$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
 		$calenderData->user_id=$user_id;
 		
 		$calenderData->avail_status=1;
-		
 		if($calendarModel->save($calenderData)){
 		
-			$this->Flash->success(__('Changes has been done'));
-			echo "Changes has been done";
-			//return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+			$this->Flash->success(__('Record has been added by ajax Successfully'));
+			return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
 		}
 		else{
-			$this->Flash->error(__('Record can not be added'));
-			echo "Record can not be added";
+			$this->Flash->error(__('Record can not be added '));
+		
 		}	
 		die;
 	}

@@ -1,3 +1,6 @@
+<?php $session = $this->request->session(); 
+      $currency = $session->read("currency");     
+ ?>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
@@ -25,24 +28,9 @@
 							"value"=>@$searchByDistance,
 							'class'=>'form-control searchByDistance',
 						]);
-						
-						
 					?>
                   </div>
                 </div>
-                <!--
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <div class="per-page">
-                    <p>Per Page</p>
-                    <select class="form-control" id="sel1">
-                      <option>25</option>
-                      <option>35</option>
-                      <option>45</option>
-                      <option>60</option>
-                    </select>
-                  </div>
-                </div>
-                -->
               </div>
             </div>
             <!--/distance--> 
@@ -129,7 +117,7 @@
 												<!--quick view-->
 											
 													<div class="quick-view">
-															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><?php echo $this->requestAction('users/get-translate/'.base64_encode('Quick View')); ?> </a>
+															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </a>
 													</div>
 											
 												<!--/quick view-->                       
@@ -184,7 +172,7 @@
 												<?php echo ($results->country !="")?ucwords($results->country):""; ?>
 												<span>
 													<i class="fa fa-map-marker" aria-hidden="true"></i> 
-													<?php echo round($distanceAssociation[$results->id],2); ?><?php echo $this->requestAction('users/get-translate/'.base64_encode('Km Away')); ?> 
+													<?php echo round($distanceAssociation[$results->id],2); ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('Km Away')); ?> 
 												</span>
 											</p>
 										  </div>
@@ -350,7 +338,36 @@
 								  <!--per night-->
 								  <div class="per-nite">
 									<p>from <br>
-									  <span>$25</span> per night</p>
+									  <span><?php 
+									     if(isset($selected_services) && !empty($selected_services)){ 
+											if($selected_services == 'house_sitting'){
+												 $pet_night = $results->user_sitter_services[0]->gh_night_rate;
+											}else if($selected_services == 'drop_visit'){
+												$pet_night = $results->user_sitter_services[0]->gh_drop_in_visit_rate;
+											}else if($selected_services == 'day_night_care'){
+												$pet_night = $results->user_sitter_services[0]->sh_night_rate;
+											}else if($selected_services == 'marketplace'){
+												if(isset($market_place_type) && !empty($market_place_type)){
+												  $var_sum = 0;
+												  foreach($market_place_type as $single_type){
+												     $var_sum = $var_sum+$results->user_sitter_services[0]->$single_type;
+												  }
+												  $pet_night = $var_sum;
+												  	
+												  }else{
+													   $pet_night = $results->user_sitter_services[0]->mp_training_rate;
+												  }  
+											}else{
+												 $pet_night = $results->user_sitter_services[0]->sh_night_rate;
+											}
+										}else{
+											$pet_night = $results->user_sitter_services[0]->sh_night_rate;
+										}
+									  
+									  
+									  echo $currency['sign_code']." ".ceil($pet_night*$currency['price']);
+										
+										/*if(!empty($results->user_sitter_services)){ echo $results->user_sitter_services->sh_day_rate;  };*/ ?></span> per night</p>
 								  </div>
 								  <!--per night--> 
 								  <!--facilities-->

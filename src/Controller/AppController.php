@@ -49,14 +49,8 @@ class AppController extends Controller{
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
 		if($session->read("currency")==""){
-			$this->setCurrency('en_EN');
-            /*$currencyModel = TableRegistry::get('Currencies');
-			$currencyData = $currencyModel->find('all')->select(['price','currency','sign_code'])->where(['locale'=>'en_US'])->toArray();
-			
-			$session->write('currency.currency',$currencyData[0]->currency);
-			$session->write('currency.price',$currencyData[0]->price);
-			$session->write('currency.sign_code',$currencyData[0]->sign_code);*/
-		}
+			$this->setCurrency('en_AU');
+        }
 		
 		if($session->read("requestedLanguage")==""){
 
@@ -103,8 +97,7 @@ class AppController extends Controller{
 	/**Function for display success message
 	*/
 	function setSuccessMessage($msg=null){
-
-		$session = $this->request->session();  
+        $session = $this->request->session();  
 		$session->write('error','');
 		$session->write('success',$msg);
 	}
