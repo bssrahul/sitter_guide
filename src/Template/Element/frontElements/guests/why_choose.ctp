@@ -26,7 +26,7 @@
                                   <p><?php 
                                         echo $single_data->description;?>
                                   </p>
-                                  <a href="#"  title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('READ MORE')); ?><i class="fa fa-chevron-circle-right"></i></a>
+                                  <a href="<?php echo HTTP_ROOT.str_replace(" ","-",str_replace(" ","-",strtolower($single_data->title))); ?>"  title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('READ MORE')); ?><i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
 

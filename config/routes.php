@@ -71,12 +71,21 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/help-search-listing', ['controller' => 'Pages', 'action' => 'help-search-listing']);
 		$routes->connect('/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
 		
+		$routes->connect('/house-rules', ['controller' => 'Pages', 'action' => 'cms','house-rules']);
+		$routes->connect('/benefits', ['controller' => 'Pages', 'action' => 'cms','benefits']);
+		
 		//Services Pages
-		$routes->connect('/day-night-care', ['controller' => 'Pages', 'action' => 'cms','day-night-care']);
-		$routes->connect('/marketplace', ['controller' => 'Pages', 'action' => 'cms','marketplace']);
-		$routes->connect('/drop-in-visit', ['controller' => 'Pages', 'action' => 'cms','drop-in-visit']);
-		$routes->connect('/house-sitting', ['controller' => 'Pages', 'action' => 'cms','house-sitting']);
-		$routes->connect('/boarding', ['controller' => 'Pages', 'action' => 'cms','boarding']);
+		$routes->connect('/day-night-care', ['controller' => 'Pages', 'action' => 'static-pages','day-night-care']);
+		$routes->connect('/marketplace', ['controller' => 'Pages', 'action' => 'static-pages','marketplace']);
+		$routes->connect('/drop-in-visit', ['controller' => 'Pages', 'action' => 'static-pages','drop-in-visit']);
+		$routes->connect('/house-sitting', ['controller' => 'Pages', 'action' => 'static-pages','house-sitting']);
+		$routes->connect('/boarding', ['controller' => 'Pages', 'action' => 'static-pages','boarding']);
+		
+		//Why Choose Us Pages
+		$routes->connect('/great-for-your-pet', ['controller' => 'Pages', 'action' => 'why-choose-us','great-for-your-pet']);
+		$routes->connect('/great-for-you', ['controller' => 'Pages', 'action' => 'why-choose-us','great-for-you']);
+		$routes->connect('/trust-and-safety', ['controller' => 'Pages', 'action' => 'why-choose-us','trust-and-safety']);
+		$routes->connect('/see-what-you-could-earn', ['controller' => 'Pages', 'action' => 'why-choose-us','see-what-you-could-earn']);
 		
 		$routes->connect('/view-profile/*', ['controller' => 'Search', 'action' => 'viewProfile']);
 		

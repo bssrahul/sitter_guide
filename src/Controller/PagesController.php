@@ -80,6 +80,55 @@ class PagesController extends AppController
 		
 		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, $url));
 	}
+	
+	function staticPages($url = NULL)
+	{
+		
+		// load CMSPAGE Model
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> $url]])->first();
+				
+		$this->pageTitle = $CmsPageData->meta_title;
+		$this->pageKeyword = $CmsPageData->meta_keywords;
+		$this->pageDescription = $CmsPageData->meta_description;
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, $url));
+		
+	}
+	
+	function whyChooseUs($url = NULL)
+	{
+		
+		// load CMSPAGE Model
+		$this->viewBuilder()->layout('cms_pages');
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> $url]])->first();
+				
+		$this->pageTitle = $CmsPageData->meta_title;
+		$this->pageKeyword = $CmsPageData->meta_keywords;
+		$this->pageDescription = $CmsPageData->meta_description;
+		
+		//Fetch data how works
+		$worksModel = TableRegistry::get('HowWorks');
+		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'why_choose_us']])->order(['modified'=>'desc'])->where(['status' => 1])->toArray();
+		$this->set('works_data',$workdata);
+		
+		
+		$this->set(array('CmsPageData', 'pageurl'), array($CmsPageData, $url));
+		
+	}	
+	
 	function contactUs(){
 		
 		$this->viewBuilder()->layout('cms_pages');
