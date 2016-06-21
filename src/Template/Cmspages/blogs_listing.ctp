@@ -74,6 +74,7 @@
 									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>								</th>
 								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
 								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
+								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Category')); ?></th>
 								<!--<th class="column-title"><?php echo __('Name'); ?></th>-->
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Featured')); ?></th>
@@ -110,6 +111,7 @@
 								</td>
 								<!--<td class=" "><?php echo ($blog_info->user->first_name)." ".($blog_info->user->last_name); ?></td>-->
 								<td ><?php echo $blog_info->title; ?></td>
+								<td ><?php echo $blog_info->category; ?></td>
 								<td><?php echo $blog_info->status == 1?'Active':'Blocked';	?></td>
 								<td><?php echo $blog_info->featured == 1?'Featured':'Unfeatured';	?></td>
 								<td><?php 	echo date("F  j,Y",strtotime($blog_info->created_date)); ?></td>

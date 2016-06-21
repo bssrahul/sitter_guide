@@ -1,4 +1,4 @@
-<?php //pr(@$guest_data); ?>
+
 <?php 
 echo $this->Html->css(['Front/tokenfield-typeahead.min.css','Front/bootstrap-tokenfield.min.css']);
 echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
