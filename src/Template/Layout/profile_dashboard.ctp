@@ -29,13 +29,13 @@
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">
           
 		<!--[content area Start]-->
-		<?php 
+		<?php //echo $this->Flash->render();
 			echo $this->element('frontElements/common/response_msg');
             /*ELEMENTS FOR DISPLAY SESSION ERROR AND SUCCESS MSGS */
 
 			echo $this->element('frontElements/profile/profile_header');
 			echo $this->element('frontElements/profile/profile_nav');?>
-			 <?php echo $this->Flash->render();
+			 <?php 
 				//echo $this->request->action; die;
 				if($this->request->action=='review' || $this->request->action=='searchResultsFavourites' || $this->request->action=='communication'){
 					$bgClass='bg-fff';

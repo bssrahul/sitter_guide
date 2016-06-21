@@ -2913,7 +2913,6 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                 </div>
                 
               </div>
-              
               <div class="booking-summ" id="bookingPetInfo">
                  <h3>Your  Book Summary</h3>
               </div>
@@ -2933,9 +2932,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 					 </li>
                      <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 night x ".@$guest_count." guest @ ".(@$sh_night_rate*@$guest_count)." p/night"; ?></li>
                 </ul>
-
                 </div>
-                
                 <div class="pet-info-bot">
                   <p>Total  :<span class="pull-right text-right"> <b>
                   <?php echo "$cuntry_sign_code ".@$total_amount = (@$sh_day_rate+@$sh_night_rate)*@$guest_count; ?>
@@ -2947,12 +2944,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
               -->
              <div class="table-wrap">
                 <table class="table">
-                
-                  
                   <tbody>
-                    
                     <tr>
-                    
                       <td class="tbfont">Cancellation Policy</td>
                       <td class="tbfont"><?php echo @$userData->user_sitter_services[0]->cancellation_policy_status == 1?'Flexible':'---'; ?></td>
                     </tr>
@@ -3015,22 +3008,39 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
         
         <!--Additional Services-->
         <div>
-		<?php ?>
+		<?php 
+		 echo $this->Form->create(null, [
+			  'url' => ['controller' => 'dashboard', 'action' => 'profile-report'],
+			  'id'=>'profile-report',
+			]);
+			echo $this->Form->input('ProfileReport.sitter_id',[
+				'type' =>'hidden',
+				'value'=>@$sitter_id]);
+		?>
           <p class="reson-pad">Reason for reporting (required):</p>
-          <textarea class="form-control" rows="5"></textarea>
-          
-          <div class="pull-right bt-pad">
+            <?php  
+				echo $this->Form->input('ProfileReport.report_reason',[               
+				'templates' => ['inputContainer' => '{{content}}'],
+				'label'=>false,
+				'class'=>'form-control',
+				'type'=>'textarea',
+				'row'=>'5' 
+				]);
+		  ?>
+          <!--<textarea class="form-control" rows="5"></textarea>-->
+           <div class="pull-right bt-pad">
             <button class="btn btn-default" data-dismiss="modal">cancel</button>
             &nbsp;
-            <button class="btn btn-success">Submit</button>
+            <button id="submit-report" type="submit" class="btn btn-success" >Submit</button>
           </div>
+          <?php $this->Form->end(); ?>
         </div>
         <!--Additional Services--> 
-        
       </div>
     </div>
   </div>
 </div>
+ 
 <!--Report popup ends--> 
 <input id="boarding_day_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
 <input id="boarding_night_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
@@ -3054,6 +3064,16 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 
 <!--Additional Services Popup--> 
 <script>
+	//Profile report
+	 /*$('#submit-report').on('click', function()   
+	 { 
+			$("#profile-report").ajaxForm(
+			{
+			  success: function(res) { 
+			          console.log(res);
+				}
+			}).submit();
+	  });*/
     //SCRIPT FOR ADD DATEPICKER
     $(document).ready(function() {
 		

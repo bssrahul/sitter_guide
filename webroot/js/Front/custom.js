@@ -22,7 +22,7 @@
 		
 		//SLIDEUP MESSAGES FUNCTIONALITY START
 		
-		$('.success_msg, .error_msg').on('click',function(){
+			$('.success_msg, .error_msg').on('click',function(){
 				$(this).slideUp(1000);
 		});
 		setInterval(function() {
@@ -1553,6 +1553,22 @@
 				"guest_id_for_booking[]":
 				{
 					required:"Please select your pet" 
+				}
+			}
+
+         });
+         /*For fake profile report*/
+		$('#profile-report').validate({
+			rules: {
+				"ProfileReport[report_reason]":
+				{
+					required:true 
+				}
+			},
+		    messages: {
+				"ProfileReport[report_reason]":
+				{
+					required : "This field is required"
 				}
 			}
 
