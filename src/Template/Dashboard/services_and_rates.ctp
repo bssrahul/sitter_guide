@@ -205,8 +205,8 @@
                   
 
                 
-            <div class="row">
-                <div class="form-group col-lg-4 col-md-12 mt10">
+            <div class="row clearfix">
+                <div class="form-group col-lg-4 col-md-12 mt10 clearfix">
                      <div class="rules_main">
 							<div class="row">
 								<div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?>
@@ -378,7 +378,7 @@
                
             </div>
 
-            <div class="form-group col-lg-4 col-md-12 mt10">
+            <div class="form-group col-lg-4 col-md-12 mt10 clearfix">
                 <div class="rules_main">
                      <div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?> </div> 
 							<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
@@ -555,7 +555,7 @@
                               
                 </div>
             </div>
-			<div class="form-group col-lg-4 col-md-12 ">
+			<div class="form-group col-lg-4 col-md-12 clearfix">
                 <div class="row mt10 ">
                     <div class="col-lg-12">
 						<div class="rules_main">
@@ -689,6 +689,7 @@
             </div>
 		</div>
 		<h3></h3>
+		<div class="clearfix"></div>
        <div class="row">
 			<div class="form-group col-lg-4 col-md-12">
 					<div class="row">
@@ -840,7 +841,7 @@
 		</div>
                   
         <div class="row">
-            <div class="form-group col-lg-4 col-md-12 mt10">
+            <div class="form-group col-lg-4 col-md-12 mt10 clearfix">
                  <div class="row">
 						<div class="col-lg-12">
                                <div class="rules_main">
@@ -1190,7 +1191,7 @@
 			</div>
 		</div>
 
-			<div class="form-group col-lg-4 col-md-12 mt10">
+			<div class="form-group col-lg-4 col-md-12 mt10 clearfix">
 					<div class="rules_main">
 								<div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?></div> 
 										<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
@@ -1666,7 +1667,7 @@
 
 
 				<div class="row">
-						<div class="form-group col-lg-4 col-md-12 mt10">
+						<div class="form-group col-lg-4 col-md-12 mt10 clearfix">
 							<div class="row">
 									<div class="col-lg-12">
 										<div class="rules_main">
@@ -2002,7 +2003,7 @@
 							</div>
 					</div>
 
-					<div class="form-group col-lg-4 col-md-12 mt10">
+					<div class="form-group col-lg-4 col-md-12 mt10 clearfix">
 							<div class="row">
 									<div class="col-lg-12">
 											<div class="rules_main">
@@ -2341,7 +2342,7 @@
 							</div>
 					</div>
 
-					<div class="form-group col-lg-4 col-md-12 ">
+					<div class="form-group col-lg-4 col-md-12 clearfix">
 
 							<div class="row mt10 ">
 									<div class="col-lg-12">

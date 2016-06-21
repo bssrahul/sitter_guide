@@ -42,6 +42,8 @@ span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  pad
 }
 
 
+
+
 /****sigin***/ 
 .tab-sectioninner h3 span.hed-0 {
     border-bottom: 2px solid #59A8E1;
@@ -104,7 +106,7 @@ a.signup-fb:hover {
     padding-bottom: 45px;
 }
 .signup-container form button:hover {background:#515151 ; color: #fff;}
-.signup-container input.form-control{height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;}
+.signup-container input.form-control{height: 41px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;}
 .signin-wrapper select {height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;
   -webkit-appearance: none;
    -moz-appearance:    none;
@@ -710,8 +712,9 @@ video.videoo {
     min-height: auto;
 }
 .d-m2 div > iframe {
-    border: 5px solid #72a105;
+    border: none;
     border-radius: 5px;
+    width:100%
 }
 .d-m2 {
     margin-bottom: 20px;

@@ -37,7 +37,9 @@
 							'options'=>[''=>'Choose Title','Mr'=>$this->requestAction('app/get-translate/'.base64_encode('Mr')),'Mrs'=>$this->requestAction('app/get-translate/'.base64_encode('Mrs')),'Ms'=>$this->requestAction('app/get-translate/'.base64_encode('Ms'))],
 							'class' =>'form-control'
 							]);
+							/*if(@$loginerror['first_name'][0] != ""){
 							 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
+						    }*/
 						 ?>
 
 						 </div>
@@ -50,8 +52,10 @@
 								 'label'=>false,
 								 'templates' => ['inputContainer' => '{{content}}']
 								  ]);
-								//  pr($loginerror['first_name'][0]);
-								 echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
+								//pr($loginerror['first_name'][0]);
+								if(@$loginerror['first_name'][0] != ""){
+								    echo '<em class="signup_error error">'.__(@$loginerror['first_name'][0]).'</em>';
+							    }
 								  ?>
 							</div>	  
 							<div class="form-group">
@@ -62,13 +66,17 @@
 								  'label'=>$this->requestAction('app/get-translate/'.base64_encode('Last Name')),
 								   'templates' => ['inputContainer' => '{{content}}']
 								]);
-								echo '<em class="signup_error error">'.__(@$loginerror['last_name'][0]).'</em>';
+								if(@$loginerror['last_name'][0] != ""){
+								  echo '<em class="signup_error error">'.__(@$loginerror['last_name'][0]).'</em>';
+							    }
+							    
 							?>
+							
 						    </div>
                          </div>
                          <div class="form-part">
-                         <ul>
-                         	<li>      <div class="form-group">	
+                      
+                              <div class="form-group">	
 						 <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
                          <?php 
                                 echo $this->Form->input('Users.country',[
@@ -78,10 +86,12 @@
                                   'options'=>[''=>'Choose Country','Australia'=>'Australia','Austria'=>'Austria','Belbium'=>'Belbium','Canada'=>'Canada','Denmark'=>'Denmark','Finland'=>'Finland','France'=>'France','Germany'=>'Germany','Hong Kong S.A.R., China'=>'Hong Kong S.A.R., China','Ireland'=>'Ireland','Italy'=>'Italy','Japan'=>'Japan'],
                                   'class' =>'form-control'
                                   ]);
+                                if(@$loginerror['country'][0] != ""){
                                  echo '<em class="signup_error error">'.__(@$loginerror['country'][0]).'</em>';
+							   }
                             ?>
-                         </div>	 </li>
-                         	<li>					<div class='form-group'>
+                         </div>	
+                         					<div class='form-group'>
 							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Post/Zip Code')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							 <?php  
 								echo $this->Form->input('Users.zip',[
@@ -89,11 +99,13 @@
 									'class'=>'form-control',
 									'label'=>false,
 									]);
+								if(@$loginerror['zip'][0] != ""){
 									echo '<em class="signup_error error">'.__(@$loginerror['zip'][0]).'</em>';
+								}
 								?>
-							</div></li>
+							</div>
                             
-                          </ul>  
+                       
                         </div>
                        
                        <div class='form-group'>
@@ -104,7 +116,9 @@
 							'class' =>'form-control',
 							'label'=>false,
 							]);
-							echo '<em class="signup_error error">'.__(@$loginerror['email'][0]).'</em>';
+							if(@$loginerror['email'][0] != ""){
+							    echo '<em class="signup_error error">'.__(@$loginerror['email'][0]).'</em>';
+						    }
 						?>
 					   </div>
                         <div class="form-part">
@@ -117,7 +131,9 @@
                                   'label'=>false,
                                   'class' =>'form-control'
                                 ]);
+                              if(@$loginerror['create_password'][0] != ""){  
                               echo '<em class="signup_error error">'.__(@$loginerror['create_password'][0]).'</em>';
+						  }
                              ?>
                        
                              </div>
@@ -129,7 +145,9 @@
 										'type'=>'password',
 										'class' =>'form-control'
 									  ]);
+									 if(@$loginerror['re_password'][0] != ""){    
 									echo '<em class="signup_error error">'.__(@$loginerror['re_password'][0]).'</em>';
+								}
 								   ?>
 								    
 							   </div>
@@ -147,7 +165,7 @@
 							</div>
                         
                         <div class="form-part">
-							<div class='form-group dobDiv'>
+							<div class='form-group dobDiv pddtop'>
 							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							 <?php  
 								echo $this->Form->input('Users.birth_date',[               
@@ -161,7 +179,7 @@
 								<?php echo '<em class="signup_error error">'.__(@$loginerror['birth_date'][0]).'</em>'; ?>
 								<i class="fa fa-calendar"></i>
 							</div>
-                           <div class="form-group">
+                           <div class="form-group pddtop">
 						   <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Have A Reference Code?')); ?> </label>
 							  <?php 
 								echo $this->Form->input('Users.reference_code',[								
@@ -192,18 +210,23 @@
 
                          <!--<label><input type="checkbox" name="Users[term_condition]"><?php echo __('Terms & Conditions');?></label>
                           <label for="Users[term_condition]" generated="true" class="error"></label>-->
-                        <label style="float:right" for="users-term-condition"><?php echo $this->requestAction('app/get-translate/'.base64_encode('I agree to the ')); ?><a href=<?php echo HTTP_ROOT.'terms'?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                          <?php
-                            echo $this->Form->input('Users.term_condition',[			
-                            	//'label'=>'Terms & Conditions',
-                            	 'templates' => [
-							        'inputContainer' => '{{content}}'
-							    ],
-                            	'label'=>false,
-                            	'type' => "checkbox"
-							]);
-                           ?>
-						   
+                           <div class="checkbox">
+								<label>
+								  <?php
+											echo $this->Form->input('Users.term_condition',[			
+												//'label'=>'Terms & Conditions',
+												 'templates' => [
+													'inputContainer' => '{{content}}'
+												],
+												'label'=>false,
+												'type' => "checkbox"
+											]);
+										   ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('I agree to the ')); ?><a href=<?php echo HTTP_ROOT.'terms'?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a>
+										   <label class="error" style="float:right" for="Users[term_condition]" generated="true"></label>
+										   <i class="fa fa-asterisk" aria-hidden="true"></i>  
+								
+								</label>
+							</div>
 
                         <!--<label for="users-term-condition" style="position:relative"></label> --> 
                         </div>
@@ -296,3 +319,5 @@ label .fa.fa-asterisk {
 	color:red
 }
 </style>
+
+

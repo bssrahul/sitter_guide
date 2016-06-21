@@ -520,9 +520,7 @@ class GuestsController extends AppController
 
 		if(isset($this->request->data['signup-submit']) && $this->request->data['signup-submit']=='Sign Up')
 		{ 
-			
-			
-			  if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response'])){
+			if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response'])){
 					//your site secret key
 					$secret = CAPTCHA_SECRET_KEY;
 					//get verify response data
