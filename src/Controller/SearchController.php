@@ -105,8 +105,8 @@ class SearchController extends AppController
 		
 		if(!empty($this->request->data)){
 		
-			//pr($this->request->data); die;
-			$or_condition = array();
+		
+		    $or_condition = array();
 			$and_condition = array();
 			
 			//SET CONDITION FOR TOP TAB SELECTED (TABLE NAME : users_sitter_services)
@@ -277,6 +277,7 @@ class SearchController extends AppController
 					}
 				}
 				
+			
 				$this->set('resultsData',$userData);
 				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
@@ -317,15 +318,15 @@ class SearchController extends AppController
 		
 		if(!empty($this->request->data)){
 		
-
-			$or_condition = array();
+		 //pr($this->request->data);die;
+		    $or_condition = array();
 			$and_condition = array();
 			
 			
 			//SET CONDITIONS FOR LANGUGE KNOW (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
 				
-				$or_condition = array_merge($or_condition,array('userProfessionalAccreditationsDetails.languages="'.$this->request->data['Search']['languages'].'"'));
+				$or_condition = array_merge($or_condition,array('FIND_IN_SET("'.$this->request->data['Search']['languages'].'", userProfessionalAccreditationsDetails.languages)'));
 			
 			}
 			 
@@ -355,7 +356,7 @@ class SearchController extends AppController
 			if(isset($this->request->data['Search']['sitter_info']['farm']) && $this->request->data['Search']['sitter_info']['farm'] ==1){
 				
 				$or_condition = array_merge($or_condition,array('UserSitterHouses.property_type="farm"'));
-				
+			
 			} 
 			
 			//SET CONDITION FOR SITTER HOUSE TYPE FLAT (TABLE NAME : users_sitter_house)
@@ -377,6 +378,8 @@ class SearchController extends AppController
 				//Remove $ character from the start & end price
 				$startPrice = str_replace("$","",$this->request->data['Search']['start_price']);
 				$endPrice = str_replace("$","",$this->request->data['Search']['end_price']);
+				
+				
 				
 				if($this->request->data['Search']['selected_service']=='day_night_care' || $this->request->data['Search']['selected_service']=='house_sitting' || $this->request->data['Search']['selected_service'] == 'drop_visit'){
 					
@@ -443,31 +446,31 @@ class SearchController extends AppController
 			}else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'marketplace')){
 				$or_condition = array_merge($or_condition,array('UserSitterServices.market_place_status=1'));
             }
-
-
-			if(isset($this->request->data['Search']['marketplace']) && !empty($this->request->data['Search']['marketplace'])){
+              if(isset($this->request->data['Search']['marketplace']) && !empty($this->request->data['Search']['marketplace'])){
 			
 				 $marker_place_service = explode(",",$this->request->data['Search']['marketplace']);
-			
+			      $market_place_type = array();
 				foreach($marker_place_service as $service_type)
 				{
 					if($service_type == 'training'){
-					
+					    $market_place_type[] = 'mp_training_rate';
 						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_training_status=1'));
-					
-					}else if($service_type == 'recreation'){
-						
+					}
+					if($service_type == 'recreation'){
+						$market_place_type[] = 'mp_recreation_rate';
 						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_recreation_status=1'));
-			
-					}else if($service_type == 'grooming'){
-						
+			        }
+					if($service_type == 'grooming'){
+						$market_place_type[] = 'mp_grooming_rate';
 						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_grooming_status=1'));
-					
-					}else if($service_type == 'driver'){
-						
+					}
+					if($service_type == 'driver'){
+						$market_place_type[] = 'mp_driving_rate';
 						$or_condition = array_merge($or_condition,array('UserSitterServices.mp_driver_service_status=1'));
 					} 
 				}
+			}else{
+				        $market_place_type = '';
 			}
 		
 			//SET CONDITION FOR TOP TAB SELECTED (TABLE NAME : users_sitter_services)
@@ -529,7 +532,7 @@ class SearchController extends AppController
 			$sourceLocationLatitude = '30.7399738';
 			$sourceLocationLongitude = '76.7567368';
 			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:"200";
-			
+			//pr($finalConditions);die;
 			$query='SELECT
 						  Users.id, (
 							3959 * acos (
@@ -588,7 +591,6 @@ class SearchController extends AppController
 				if($loggedInUserID !=''){
 					if(!empty($userData)){
 						foreach($userData as $k=>$eachRow){
-								
 							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
 							if($UserSitterFavourite>0){
 								$userData[$k]['is_favourite'] =  "yes";
@@ -599,19 +601,61 @@ class SearchController extends AppController
 						}	 
 					}
 				}
-				
+				 /////////////////////////
+				/* pr($userData);die;
+				foreach($userData as $results){
+					
+				 if(isset($this->request->data['Search']['selected_service']) && !empty($this->request->data['Search']['selected_service'])){ 
+					if($this->request->data['Search']['selected_service'] == 'house_sitting'){
+						
+						 $pet_night_rate = $results->user_sitter_services[0]->gh_night_rate;
+						 
+					}else if($this->request->data['Search']['selected_service'] == 'drop_visit'){
+						
+						$pet_night_rate = $results->user_sitter_services[0]->gh_drop_in_visit_rate;
+						
+					}else if($this->request->data['Search']['selected_service'] == 'day_night_care'){
+						
+						$pet_night_rate = $results->user_sitter_services[0]->sh_night_rate;
+						
+					}else if($this->request->data['Search']['selected_service'] == 'marketplace'){
+						if(isset($market_place_type) && !empty($market_place_type)){
+						  $marker_place_service = explode(",",$this->request->data['Search']['marketplace']);
+						  
+							/*if($market_place_type == 'training'){
+								 $pet_night_rate = $results->user_sitter_services[0]->mp_training_rate;
+							}else if($market_place_type == 'recreation'){
+								$pet_night_rate = $results->user_sitter_services[0]->mp_recreation_rate;
+							}else if($market_place_type == 'grooming'){
+								$pet_night_rate = $results->user_sitter_services[0]->	mp_grooming_rate;
+							}else if($market_place_type == 'driver'){
+								$pet_night_rate = $results->user_sitter_services[0]->mp_driving_rate;
+							}else{
+								$pet_night_rate = $results->user_sitter_services[0]->mp_training_rate;
+							}*/
+							
+						/* }else{
+							   $pet_night_rate = $results->user_sitter_services[0]->mp_training_rate;
+						 }  
+					}else{
+						 $pet_night_rate = $results->user_sitter_services[0]->sh_night_rate;
+					}
+				}else{
+					$pet_night_rate = $results->user_sitter_services[0]->sh_night_rate;
+				}
+			}*/
+			//echo $pet_night_rate;die;
+				/////////////////////////
 				$this->set('resultsData',$userData);
+				$this->set('market_place_type',$market_place_type);
+				$this->set('selected_services',$this->request->data['Search']['selected_service']);
 				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
 				$this->set('sourceLocationLatitude',($sourceLocationLatitude)?$sourceLocationLatitude:'');
 				$this->set('sourceLocationLongitude',($sourceLocationLongitude)?$sourceLocationLongitude:'');
 				$this->set('headerSearchVal',(@$this->request->data['location_autocomplete'])?@$this->request->data['location_autocomplete']:'');
 			}		
-			
 		}		
-		
-		
-		
 		if(!isset($currentLang) && empty($currentLang)){
 
 			$this->setGuestStore("en","Guests","index");
@@ -627,12 +671,28 @@ class SearchController extends AppController
 		$this->viewBuilder()->layout('landing');
 		$session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
+		$userId = $session->read('User.id');
 		
 		//ADD MODEL
 		$UsersModel = TableRegistry::get('Users');
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
 		$conditions = array();
 		
+		//$userPetInfo = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);
+		$userPetInfo = $UsersModel->find('all',['contain'=>[
+														'UserPets'
+											]]
+											)
+							   ->where(['Users.id' => $userId])
+							   ->toArray();
+		if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
+		   $this->set('guests_Info',$userPetInfo[0]->user_pets);	
+		}else{
+		   $this->set('guests_Info','');
+		}	
+					   
+	     //pr($userPetInfo[0]->user_pets[0]->user_pet_galleries);die;
+	    
 		if(!empty($this->request->data)){
 			
 			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:"100";
@@ -717,7 +777,11 @@ class SearchController extends AppController
 		
 		
 		}
+		
 		$this->render("search");
+		
+		
+		
 	}
 	
    /**
@@ -842,22 +906,15 @@ class SearchController extends AppController
                 $bookingRequestData->sitter_id = $sitter_id;
                 $bookingRequestData->booking_start_date = $this->request->data['BookingRequests']['booking_start_date'];
                 $bookingRequestData->booking_end_date = $this->request->data['BookingRequests']['booking_end_date'];
-                //pr($bookingRequestData);die;
                 if ($bookingRequestsModel->save($bookingRequestData)){
                 	
-                	/*$replace = array('{name}','{email}');
+                	$replace = array('{name}','{email}');
 					$with = array($userName,$userEmail);
-					$this->send_email('',$replace,$with,'booking_request',$userEmail);*/
-				    
-				     return $this->redirect(['controller'=>'search','action'=>'thank-you']);
+					$this->send_email('',$replace,$with,'booking_request',$userEmail);
+					
 				}
-				/*
-				else{
-				     $this->Flash->error(__('Error found, Kindly fix the errors.'));
-				}
-			 $this->set('booking_data', $bookingRequestData);*/
+				 return $this->redirect(['controller'=>'search','action'=>'thank-you']);
 		}else{
-        ////////////////////
         $userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings','UserPets'=>['UserPetGalleries']]]);
         //pr($userData->user_pets[0]->user_pet_galleries);;die;
 		$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();

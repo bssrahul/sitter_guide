@@ -213,22 +213,29 @@
                   <div id="search-col-1" class="panel-collapse collapse">
                     <div class="row">
                       <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+						  
+						 <?php if(isset($guests_Info) && !empty($guests_Info)){
+						 ?> 
                         <div class="your-guest">
                           <p class="head-txt">Your Guest</p>
                           <ul>
-                            <li>
-                              <?php echo $this->Form->input('Search.your_guest',[
-								'label' => false,
-								'templates' => ['inputContainer' => '{{content}}'],
-								'hiddenField' => false,
-								'type'=>'checkbox',
-								'class'=>'ajaxSearch',
-								'option'=>["hunter"],
-								'id'=>'hunter']);
-							  ?>
-                              <label class="unbold" for="hunter">Hunter</label></li>
+							  <?php   foreach($guests_Info as $guest_info){  ?>
+                             <li>
+								  <?php echo $this->Form->input('Search.your_guest',[
+									'label' => false,
+									'templates' => ['inputContainer' => '{{content}}'],
+									'hiddenField' => false,
+									'type'=>'checkbox',
+									'id'=>'hunter',
+									'value'=>@$guest_info->guest_name
+									]);
+								  ?>
+								  <label class="unbold" for="hunter"><?php echo @$guest_info->guest_name; ?></label>
+                             </li>
+                            <?php } ?> 
                           </ul>
                         </div>
+                        <?php } ?>
                         <div class="your-guest">
                           <p class="head-txt">Sitter Info</p>
                           <ul>
