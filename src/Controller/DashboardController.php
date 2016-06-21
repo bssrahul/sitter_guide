@@ -2388,5 +2388,61 @@ function addPets(){
 					]);
 		$this->set('FavUsersdata',$this->paginate($favourateData));
 	}
+	
+	// for communications
+	
+	public function communication()
+    {
+		$session = $this->request->session();
+        $userId = $session->read('User.id');
+		$UsersModel=TableRegistry :: get('Users');
+		$Userdata=$UsersModel->find('all')->where(['id'=>$userId])->toArray();
+		$phone_no=$Userdata[0]->phone;
+		$emer_phone_no=$Userdata[0]->emergency_contacts;
+		$phone=array($phone_no,$emer_phone_no);
+		$phoneArr=array();
+		foreach($phone as $k=>$v){
+			$phoneArr[$v]=$v;
+		}
+		//pr($phoneArr);die;
+		$this->set('phoneArr',$phoneArr);
+	
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		$this->request->data = @$_REQUEST;
+		$CommunicationModel=TableRegistry :: get('Communication');
+		$CommunicationData=$CommunicationModel->newEntity();
+		if(isset($this->request->data['Communication']) && !empty($this->request->data['Communication']))
+		{
+				$accept = array("quite_time","new_enquiries","new_message","new_booking_request","booking_declined","booking_confirmed","send_mms","in_area","marketing","hide_stay_image"); 
+				foreach($accept as $val){ 
+					if (!array_key_exists($val,$this->request->data['Communication'])){
+						$this->request->data['Communication'][$val] = 0;
+	               	}
+				}
+				$CommunicationData = $CommunicationModel->newEntity($this->request->data['Communication']);
+				$CommunicationData->user_id = $userId;
+				// pr($CommunicationData);die;
+				if($CommunicationModel->save($CommunicationData)){
+					 $this->Flash->success(__('Record has been added Successfully'));
+					 return $this->redirect(['controller'=>'dashboard','action'=>'communication']);
+				}
+												
+		} else{
+				$query = $UsersModel->get($userId,['contain'=>'Communication']);
+				if(isset($query->communication) && !empty($query->communication)){
+					   $CommunicationData = $query->communication[0];
+					   $this->set('communication_id', $CommunicationData->id);
+					   unset($CommunicationData->id);
+					   $this->set('communication_info', $CommunicationData);
+				}
+			
+		} 
+	}
+	
+	
+	
+    
+	
 }
 ?>
