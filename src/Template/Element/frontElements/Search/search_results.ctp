@@ -1,18 +1,19 @@
-
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
         <div class="toptext">
-          <p>Book on Sitter Guide and receive: Free sitter guide Premium Insurance, Local Australian Customer Support and a Booking Guarantee.</p>
+          <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book on Sitter Guide and receive: Free sitter guide Premium Insurance, Local Australian Customer Support and a Booking Guarantee')); ?>.</p>
         </div>
+        
         <div class="ssr-list-area">
           <div class="sl-area"> 
             <!--distance-->
             <div class="distance">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  
                   <div class="sort-by">
-                    <p>Sort By</p>
+                    <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sort By')); ?></p>
                     <?php 
 					
 						echo $this->Form->input(
@@ -29,6 +30,7 @@
 					?>
                   </div>
                 </div>
+                <!--
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                   <div class="per-page">
                     <p>Per Page</p>
@@ -40,6 +42,7 @@
                     </select>
                   </div>
                 </div>
+                -->
               </div>
             </div>
             <!--/distance--> 
@@ -75,15 +78,13 @@
 												  <div id="myCarousel" class="carousel customCrousal<?php echo $rankNo; ?> slide" data-interval="false" data-ride="carousel">   
 															<div class="carousel-inner" role="listbox">   
                                                               <?php 
-																
-																//pr($sub_galleries_result);die;
+																															
 																if(!empty(@$sub_galleries_result)){
 																$flag=0;
 																
 																		 foreach($sub_galleries_result as $sub_galleries){
 																			
-																		//if($results->facebook_id !="" && $results->is_image_uploaded==0){
-																		
+																																		
 																			if($sub_galleries->image != "")
 																			{
 																				
@@ -109,28 +110,17 @@
 																	
 																	
 																	?>															
-															  <!-- <div class="item active">
-																<img src="images/profile-pic.png" >       
-															  </div>
-															 <div class="item">
-																<img src="images/profile-pic.png" >        
-															  </div>    
-															  <div class="item">
-																<img src="images/profile-pic.png" >        
-															  </div>
-															  <div class="item">
-																<img src="images/profile-pic.png" >   
-																</div> -->																
+															 												
 															</div>
 														
 															<!-- Left and right controls -->
 															<a class="left carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="prev">
 															  <span class="fa fa-chevron-left" aria-hidden="true"></span>
-															  <span class="sr-only">Previous</span>
+															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></span>
 															</a>
 															<a class="right carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="next">
 															  <span class="fa fa-chevron-right" aria-hidden="true"></span>
-															  <span class="sr-only">Next</span>
+															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?></span>
 															</a>                                        
 															
 															
@@ -270,15 +260,22 @@
 																<?php	} ?> 
 											</span>
 										</div>
-											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> Reviews</a> </div>
+											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?></a> </div>
 										  </div>
 									  <!--/rating--> 
 									  
 									  <!--availability-->
 									  <div class="sit-available">
 										<ul>
-										  <li><a href="#" title="Available this weekend">Available this weekend</a></li>
-										  <li><a href="#" title="Available on New Year">Available on New Year</a></li>
+										  <li>
+											  <a href="#" title="Available this weekend"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Available this weekend')); ?>
+											  </a>
+										 </li>
+										
+										 <li>
+											 <a href="#" title="Available on New Year"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Available on New Year')); ?></a>
+										</li>
+										
 										</ul>
 									  </div>
 									  <!--availability--> 
@@ -288,12 +285,31 @@
 								  <!--sitter list-->
 								  <div class="sit-list-del">
 									<ul>
-									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Repeat Guests : <span>2</span></li>
-									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last booked: <span>2 week ago</span></li>
-									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last active <span>2 day ago</span></li>
-									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Response Rate <span>100%</span></li>
-									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Average Response <span>2hours</span></li>
-									  <li><img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> Last Contacted <span>5day ago</span></li>
+									  <li>
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> 
+										  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Guests')); ?>: <span>2</span>
+									  </li>
+									  
+									  <li>
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last booked')); ?>: <span>2 week ago</span>
+									  </li>
+									  
+									  <li>
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active')); ?> <span>2 day ago</span>
+									 </li>
+									
+									 <li>
+										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Response Rate')); ?> <span>100%</span>
+									 </li>
+									 
+									 <li>
+										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Average Response')); ?> <span>2 hours</span>
+									 </li>
+									 
+									 <li>
+										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Contacted')); ?> <span>5 day ago</span>
+									 </li>
+									 
 									</ul>
 								  </div>
 								  <!--sitter list--> 
@@ -309,8 +325,8 @@
 										
 									}
 									//pr($commentdata);
-									$lastcomment=$commentdata->comment;
-									$UserImage=$commentdata->user->image;
+									$lastcomment=isset($commentdata->comment)?$commentdata->comment:'';
+									$UserImage=isset($commentdata->user->image)?$commentdata->user->image:'';
 									//pr($UserImage);
 									if($results->facebook_id !="" && $results->is_image_uploaded==0){
 										if($results->image != "")
@@ -326,7 +342,7 @@
 									
 									<img Width="52" height="52" alt="<?php echo __('Profile Picture'); ?>" src="<?php if(!empty($UserImage)){echo HTTP_ROOT.'img/uploads/'.$UserImage ; }else{ echo HTTP_ROOT.'img/uploads/prof_photo.png' ;} ?>"> 					   
 									<?php  } ?>  
-									<p><?php echo (@$lastcomment !="")?@$lastcomment:"Why client choose you content not set yet"; ?></p>
+									<p><?php echo (@$lastcomment !="")?@$lastcomment:"Client's comments not given yet"; ?></p>
 								  </div>                      
 								  <!--sitter feedback--> 
 								</div>
@@ -398,8 +414,8 @@
               </ul>
               <?php }else{ ?>
 				<div class="noresult-found">
-						<p>We couldn't find any sitters that matched your criteria.<br>
-						<span>Try changing your search criteria or updating your location.</span></p>
+						<p><?php echo $this->requestAction('app/get-translate/'.base64_encode("We couldn't find any sitters that matched your criteria")); ?>.<br>
+						<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Try changing your search criteria or updating your location')); ?>.</span></p>
 				 </div>
 			  <?php } ?>	  
               
@@ -410,20 +426,21 @@
 				<?php //echo $this->element('frontElements/Search/similar_sitter'); ?>
 			<!--/sitter listing similar result--> 
           
-            <!---loading area-->
+            <!---loading area
             	<div class="loading-more">
                 	<a href="#" title="loading More">   <img src="<?php echo HTTP_ROOT; ?>img/loading-icon.png" width="22" height="22" alt=""/>  </a>
                 </div>
-            <!---loading area-->
+            loading area-->
             
                        
             </div>            
             <!--[Sitter Listing Outer End]-->            
                      
           </div>
-          <!--[Right Map Start]-->
+          
+			<!--[Right Map Start]-->
             <div class="sl-map">            	
-            	<div class="enlarge-map">
+            	<!--<div class="enlarge-map">
                 	<div class="row">
                     	<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12"> 
                         	<a href="#" title="Enlarge Map">Enlarge map</a>
@@ -432,7 +449,7 @@
                         	<input type="checkbox"> Update  when i move the map 	
                         </div>                        
                     </div>
-                </div>
+                </div>-->
                 <?php
 				  // Override any of the following default options to customize your map
 				  $map_options = array(
@@ -482,6 +499,7 @@
 				?>
            </div>
            <!--[Right Map End]-->
+           
         </div>
       </div>
     </div>
@@ -559,17 +577,8 @@
 												</div>
 												<?php	}	?>
 												<!--quick slide-->
-												
-												
 												<!--content area Start-->
 
-												
-												
-												
-												
-												
-												
-												
 												<div class="sqv-mid">
 													<div class="row">
 														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -625,11 +634,11 @@
 									<!-- Left and right controls -->
 											<a data-slide="prev" role="button" href="#myCarousel2" class="left myCarousel2next carousel-control">
 											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
-											  <span class="sr-only">Previous</span>
+											  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></span>
 											</a>
 											<a data-slide="next" role="button" href="#myCarousel2" class="right myCarousel2next carousel-control">
 											  <span aria-hidden="true" class="fa fa-chevron-right"></span>
-											  <span class="sr-only">Next</span>
+											  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?></span>
 											</a>
 											   <!-- Left and right controls -->
 										  </div>   
@@ -638,7 +647,7 @@
 				</div> <?php } ?>	
 									
 								
-                    <!--/info popup--> 
+<!--/info popup--> 
 <style>
 .searchImg{
 		width:163px;
@@ -662,25 +671,18 @@
 
 <script>
 	$(function(){
+		
 		$(document).on('click',".qvBtn",function(){
 		
 			var qv = $(this).attr('data-rel');
-			/*$(".item").removeClass('active');*/
 			$(".qvModal"+qv).addClass('active');
-			/* setTimeout(function(){
-				$(".innnerGallery1").addClass("active");	
-			}, 500); */	
 		
 		});
+		
 		$('#myCarousel2').bind('slide.bs.carousel', function (e) {
 		
 			
 			
 		}); 
-	})
-	
-	
-	
-
+	});
 </script>
-

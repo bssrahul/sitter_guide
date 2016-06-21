@@ -77,22 +77,19 @@ class GuestsController extends AppController
 		$this->viewBuilder()->layout('landing');
 		
         $session = $this->request->session();
+        
 		$currentLang = $session->read('requestedLanguage');
 		if(!isset($currentLang) && empty($currentLang)){
 
 			$this->setGuestStore("en","Guests","index");
 		}
-
-		
-
-		$UserBlogsModel = TableRegistry::get('UserBlogs');
+        $UserBlogsModel = TableRegistry::get('UserBlogs');
 		$servicesModel = TableRegistry::get('Services');
 		
 		$blogsInfo = $UserBlogsModel->find('all', ['order' => ['UserBlogs.modified' => 'desc']]) ->limit(3)->where(['UserBlogs.featured' =>1])->where(['UserBlogs.status' =>1])->toArray();
 		$this->set('blogsInfo',$blogsInfo);
 		
 		$servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
-		//pr($servicesInfo);die;
 		$this->set('servicesInfo',$servicesInfo);
 		
         //Fetch Data Leading-sitting
@@ -114,8 +111,7 @@ class GuestsController extends AppController
 			
 				$sitter_id=$favourate->sitter_id;
 				$fav_no=$favourate->count_favourate;
-			//$favUsersdata[]=$UsersModel->find('all')->where(['id'=>$sitter_id])->contain(['UserRatings'])->toArray();
-			$favUsersdata[] = $UsersModel->find('all',['contain'=>[
+			  $favUsersdata[] = $UsersModel->find('all',['contain'=>[
 														'UserAboutSitters',
 														'UserRatings','UserSitterServices'
 													]]
@@ -124,10 +120,7 @@ class GuestsController extends AppController
 							   ->toArray();
 			
 		}
-		//pr($favUsersdata);die;
 		$this->set('FavUsersdata',$favUsersdata);
-			
-		//pr($selUserData);die;
 		/*For getting a  distance form another user's*/
 		
 		$sourceLocationLatitude = '30.7399738';
@@ -147,7 +140,6 @@ class GuestsController extends AppController
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
-			//pr($results);die;
 			$finalDistanceArr=array();
 			foreach($results as $result){
 				foreach($favUsersdata as $favData){
@@ -158,12 +150,6 @@ class GuestsController extends AppController
 						}
 				}
 			}
-			
-			//pr($finalDistanceArr);
-			//die;
-			
-
-		
 			if(!empty($finalDistanceArr)){
 				$idArr = array();
 				$distanceAssociation = array();
@@ -172,36 +158,16 @@ class GuestsController extends AppController
 						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
-				//pr($distanceAssociation);die;
 				$this->set('distanceAssociation',$distanceAssociation);	
-				/* $userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
-							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
-							   ->toArray();
-				//pr($distanceAssociation);die;
-				$loggedInUserID = $session->read('User.id');
-				/* if($loggedInUserID !=''){
-					if(!empty($userData)){
-						foreach($userData as $k=>$eachRow){
-								
-							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
-							
-							if($UserSitterFavourite > 0){
-								$userData[$k]['is_favourite'] =  "yes";
-							}else{
-								$userData[$k]['is_favourite'] =  "no";
-							}
-								
-						}	 
-					}
-				} */ 
 			}
 		
-		
-		
-		
-		
-		
-        //Fetch data how works
+		if(!empty($session->read("User.id"))){
+			$userId = $session->read("User.id");
+			 $userPetsModel = TableRegistry::get('UserPets');
+			 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
+			 $this->set("sitter_guests_info",$userPetsData);
+		}
+		//Fetch data how works
 		$worksModel = TableRegistry::get('HowWorks');
 		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'How_it_works']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
 		$this->set('works_data',$workdata);
@@ -536,6 +502,8 @@ class GuestsController extends AppController
 		$session->delete('setRequestedLanguageLocale');
 		$session->delete('profile');
 		$session->delete('dog_in_home_status');
+		$session->delete("currency");
+		
 		return $this->redirect(['controller' => 'guests']);
 	}
 		

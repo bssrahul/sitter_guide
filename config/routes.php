@@ -49,6 +49,9 @@ Router::scope('/', function ($routes) {
      */
     $routes->connect('/fb_login', ['controller' => 'Facebook', 'action' => 'fb_login']);
     $routes->connect('/guests', ['controller' => 'guests', 'action' => 'home']);
+    $routes->connect('/Guests/index', ['controller' => 'guests', 'action' => 'home']);
+    $routes->connect('/guests/index', ['controller' => 'guests', 'action' => 'home']);
+    
     $routes->connect('/admin', ['controller' => 'users', 'action' => 'login', 'home']);
 
 	$routes->connect('/', ['controller' => 'Guests', 'action' => 'home']);
@@ -74,6 +77,10 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/drop-in-visit', ['controller' => 'Pages', 'action' => 'cms','drop-in-visit']);
 		$routes->connect('/house-sitting', ['controller' => 'Pages', 'action' => 'cms','house-sitting']);
 		$routes->connect('/boarding', ['controller' => 'Pages', 'action' => 'cms','boarding']);
+		
+		$routes->connect('/view-profile/*', ['controller' => 'Search', 'action' => 'viewProfile']);
+		
+		
 
 
     /**

@@ -42,7 +42,7 @@ class DashboardController extends AppController
 	
 	
 	public $paginate = [
-        'limit' => 12,
+        'limit' => 1,
         'order' => [
             'Users.id' => 'DESC'
         ]
@@ -170,11 +170,9 @@ class DashboardController extends AppController
 			 $profile_status['User']['media'] = "no";
 		  }
 		  //House details
-		  //pr($userData[0]);die;
 		  if(isset($userData[0]->user_sitter_house) && !empty($userData[0]->user_sitter_house)){
 				  $houseInfo = $userData[0]->user_sitter_house->toArray();
-				// pr($houseInfo);die;
-				  //About Property 
+				 //About Property 
 				  $property_fields = array("about_home_desc","spaces_access_desc","home_pets_desc");
 				  
 				  $check_status = $this->check_fields_status($property_fields,$houseInfo);
@@ -259,8 +257,7 @@ class DashboardController extends AppController
 			  }else{
 				 $profile_status['UserPets']['behaviour'] = "no";
 			  }
-			 //pr($guestInfo);die;
-		  }else{
+			}else{
 			  $profile_status['UserPets']['guest_basic_detail'] = "no";
 			  $profile_status['UserPets']['guest_description'] = "no";
 			  $profile_status['UserPets']['guest_photos'] = "no";
@@ -305,7 +302,6 @@ class DashboardController extends AppController
 			 
 			  foreach($userData[0]->user_professional_accreditations as $key=>$val){
 				 if(($val->type_professional == "check") && ($val->sector_type == "govt") && !empty($val->scanned_certification)){
-				     //echo $val->type_professional.$val->sector_type.$val->scanned_certification;
 				     $profile_background_check['police_background_check'] = "yes";
 			     }else{
 					 $profile_background_check['police_background_check'] = "no";
@@ -344,10 +340,8 @@ class DashboardController extends AppController
 				$profile_status['skillsAndAccreditationDetails']['experience'] = "no";
 				$profile_status['skillsAndAccreditationDetails']['language'] = "no";
 			}
-			//pr($userData[0]);die;
 			if(isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services)){
 			     $servicesInfo = $userData[0]->user_sitter_services[0]->toArray();
-			     //pr($servicesInfo);die;
 			  //Terms
 			  if(($servicesInfo['cancellation_policy_status'] == 1) && ($servicesInfo['booking_status'] == 1)){
 				 $profile_status['servicesAndRates']['terms'] = "yes";
@@ -389,24 +383,15 @@ class DashboardController extends AppController
 				}
 		    //Skills and Accreditations 
 		  $this->set('profile_status',$profile_status);
-		  //pr($profile_status['skillsAndAccreditationDetails']);die;
-		  
-		 //pr($userData[0]->user_sitter_services);die;
-		 // pr($profile_status);die;
-          //End
+		 //End
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
-				 $session->write('profile','sitter');
+				 $session->write('profile','Sitter');
 			 }else{
-				 $session->write('profile','guest');
+				 $session->write('profile','Guest');
 			 }
 		 }
-          //echo($session->read('profile'));die;
-
-
-        //$session = $this->request->session();
-        //echo $session->read('User.id'); die;
-	}
+     }
 	/**Function for check fields ampty or not
 	*/
 	function check_fields_status($fields = array(),$main_array = array()){
@@ -751,6 +736,8 @@ Function for Front profile dashboard
 				}else{
 					$this->set('profileStatus','');
 					}
+					
+					$session->write('User.user_type',$userData[0]->user_type);
 				//pr($userData);die;	   
 			//End
        				   
@@ -1122,9 +1109,8 @@ Function for Front profile dashboard
 	     
 
     }
-  
-    /**
-    Function for about guest
+/**
+	Function for about guest
 */
 function aboutGuest(){
     $this->viewBuilder()->layout('profile_dashboard');
@@ -1157,7 +1143,6 @@ function aboutGuest(){
 							$userPetsModel->save($petsData);
 										 if(!empty($session->read('UserPets'))){
 											 $guest_images['UserPets'] = $session->read('UserPets');
-											 //pr($guest_images);die;
 											 if(array_key_exists($key,$guest_images['UserPets'])){
 												$flag = 1;
 												foreach($guest_images['UserPets'][$key] as $guest_image){
@@ -1175,51 +1160,53 @@ function aboutGuest(){
 										 }
 				}
 				return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
-		//$session->write("UserPets",'');
-        }else{
-			$session->write("UserPets",'');
+		}else{
+			         $session->write("UserPets",'');
 					 $userPetsData = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);
-					 if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)) {
+					 $session->write('profile',$userPetsData->user_type);
+					 //echo $session->read('profile');die;
+					
+					 if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)){
 						 $count_pets = count($userPetsData->user_pets);
-			if($count_pets == 1){
-			$this->set('guest_data', $userPetsData->user_pets[0]);
-			//For guest images
-			$html = "no_image";
-			if(isset($userPetsData->user_pets[0]->user_pet_galleries) && !empty($userPetsData->user_pets[0]->user_pet_galleries)) {
-			$images_arr = $userPetsData->user_pets[0]->user_pet_galleries;
-			$html = '';
-			$guest_images = array();
-			foreach($images_arr as $key=>$val){
-								 $guest_images[] = $val->image;
-					 $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-									 <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center thumbnail" alt="img">
-									</div>';
-			}
-			$session->write('UserPets.Guest1',$guest_images);
-			}
-			$this->set('guest_images', $html);
-			//End
-			}else{
-			$this->set('guests_data', $userPetsData->user_pets);
-			//For guest images
-			     $G = 1;
-				foreach($userPetsData->user_pets as $single_data){
-									 $single_data = $single_data->toArray();
-									 $guest_images = array();
-								 if(isset($single_data['user_pet_galleries']) && !empty($single_data['user_pet_galleries'])) {
-										
-									 foreach($single_data['user_pet_galleries'] as $key=>$val){
-											$guest_images[] = $val['image'];
-										}
-									}
-									 $guest_num = 'Guest'.$G;
-									 $session->write("UserPets.$guest_num",$guest_images);
-									
-									 $G++;
-							 }
-							 //End
-							 }
-				}else{
+							if($count_pets == 1){
+							$this->set('guest_data', $userPetsData->user_pets[0]);
+							//For guest images
+							$html = "no_image";
+							if(isset($userPetsData->user_pets[0]->user_pet_galleries) && !empty($userPetsData->user_pets[0]->user_pet_galleries)){
+							$images_arr = $userPetsData->user_pets[0]->user_pet_galleries;
+							$html = '';
+							$guest_images = array();
+							foreach($images_arr as $key=>$val){
+												 $guest_images[] = $val->image;
+									 $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+													 <img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'" class="img-responsive center-block text-center thumbnail" alt="img">
+													</div>';
+							}
+							$session->write('UserPets.Guest1',$guest_images);
+							}
+							$this->set('guest_images', $html);
+							//End
+							}else{
+							$this->set('guests_data', $userPetsData->user_pets);
+							//For guest images
+								 $G = 1;
+								foreach($userPetsData->user_pets as $single_data){
+													 $single_data = $single_data->toArray();
+													 $guest_images = array();
+												 if(isset($single_data['user_pet_galleries']) && !empty($single_data['user_pet_galleries'])) {
+														
+													 foreach($single_data['user_pet_galleries'] as $key=>$val){
+															$guest_images[] = $val['image'];
+														}
+													}
+													 $guest_num = 'Guest'.$G;
+													 $session->write("UserPets.$guest_num",$guest_images);
+													
+													 $G++;
+				    }
+				 //End
+				 }
+		}else{
 								$session->write("UserPets",'');
 							 $this->set('guest_images', 'no_image');
 							 $this->set('guest1','guest1');
@@ -1562,14 +1549,11 @@ function addPets(){
         $session = $this->request->session();
         $userId = $session->read('User.id');
    
-        
-		$this->request->data = @$_REQUEST;
+        $this->request->data = @$_REQUEST;
 		
 		if(isset($this->request->data['UserProfessionals']) && !empty($this->request->data['UserProfessionals']))
 		{
-			//echo str_replace(' ', '',$this->request->data['UserProfessionalsDetails']['languages']);die;
-			
-            $UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
+			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('UserProfessionalAccreditationsDetails'); 
 
 			$UserProfessionalModel->deleteAll(['user_id' => $userId]);
@@ -1670,6 +1654,31 @@ function addPets(){
 				$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
 
 				if ($UserProfessionalDetailsModel->save($userProfessionalDetailData)){
+					      //For Update profile status
+					   $userData = $usersModel->find('all',['contain'=>[
+															'UserSitterServices', 
+															'UserProfessionalAccreditations',
+															]
+														]
+												)
+								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
+								   ->toArray();
+						if((isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)) || (isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services))){
+						   $UserData = $usersModel->newEntity();
+						   $UserData->id =  $userId;
+						   $UserData->user_type = 'Sitter';
+						   
+						   $usersModel->save($UserData);
+						   $session->write('User.user_type','Sitter');
+						}else{
+						   $UserData = $usersModel->newEntity();
+						   $UserData->id =  $userId;
+						   $UserData->user_type = 'Basic';
+						   
+						   $usersModel->save($UserData);
+						   $session->write('User.user_type','Basic');
+						}
+					 //End
 					 return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
 				}else{
 					$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -1712,13 +1721,8 @@ function addPets(){
 				   if(!empty($query['user_professional_accreditations_details'])){
 						$customArrForDisplayRec['user_professional_accreditations_details'] = $query['user_professional_accreditations_details'][0];
 				   }
-					// $skillsData = $query->user_professional_accreditations;
-					//  $this->set('skillId', $skillsData->id);
-					// unset($skillsData->id); 
-					//pr($customArrForDisplayRec); die;
 					$this->set('professional', $customArrForDisplayRec);
-					//pr($customArrForDisplayRec);die;
-             }
+			 }
             $all_languages = [['value'=>'en','label'=>'English'],['value'=>'fr','label'=>'French'],['value'=>'de','label'=>'German'],['value'=>'hu','label'=>'Hungarian'],['value'=>'it','label'=>'Italian'],['value'=>'ro','label'=>'Romanian'],['value'=>'ru','label'=>'Russian'],['value'=>'es','label'=>'spanish']];
           
             $this->set('all_languages',$all_languages);
@@ -1750,6 +1754,34 @@ function addPets(){
 		        $serviceData = $sitterServicesModel->newEntity($this->request->data['UserSitterServices']);
 				$serviceData->user_id = $userId;
 				$sitterServicesModel->save($serviceData);
+
+					  //For Update profile status
+					  $userData = $usersModel->find('all',['contain'=>[
+															'UserSitterServices', 
+															'UserProfessionalAccreditations',
+															]
+														]
+												)
+								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
+								   ->toArray();
+						if((isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)) || (isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services))){
+						   $UserData = $usersModel->newEntity();
+						   $UserData->id =  $userId;
+						   $UserData->user_type = 'Sitter';
+						   
+						   $usersModel->save($UserData);
+						    $session->write('User.user_type','Sitter');
+						}else{
+						   $UserData = $usersModel->newEntity();
+						   $UserData->id =  $userId;
+						   $UserData->user_type = 'Basic';
+						   
+						   $usersModel->save($UserData);	
+						    $session->write('User.user_type','Basic');
+						}
+					   //End
+
+				
             return $this->redirect(['controller'=>'dashboard','action'=>'services-and-rates']);
           }else{
           	$query = $usersModel->get($userId,['contain'=>'UserSitterServices']);
@@ -1759,6 +1791,31 @@ function addPets(){
                    unset($sittersServiceData->id);
                    $this->set('sitter_service_info', $sittersServiceData);
 		    }
+			  //For Update profile status
+			  $userData = $usersModel->find('all',['contain'=>[
+													'UserSitterServices', 
+													'UserProfessionalAccreditations',
+													]
+												]
+										)
+						   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
+						   ->toArray();
+				if((isset($userData[0]->user_professional_accreditations) && !empty($userData[0]->user_professional_accreditations)) || (isset($userData[0]->user_sitter_services) && !empty($userData[0]->user_sitter_services))){
+				   $UserData = $usersModel->newEntity();
+				   $UserData->id =  $userId;
+				   $UserData->user_type = 'Sitter';
+				   
+				   $usersModel->save($UserData);
+				   $session->write('User.user_type','Sitter');
+				}else{
+				   $UserData = $usersModel->newEntity();
+				   $UserData->id =  $userId;
+				   $UserData->user_type = 'Basic';
+				   
+				   $usersModel->save($UserData);	
+				   $session->write('User.user_type','Basic');
+				}
+			   //End
           }
 	
     }
@@ -1892,54 +1949,16 @@ function addPets(){
     public function changeAvatar() {
     	
     	$session = $this->request->session();
-    	$userId = $session->read('User.id');//$current_user->ID;
-
-        //$post = isset($_POST) ? $_POST: array();
-        //$max_width = "1024"; 
-       // $userId = $loggedInId;//isset($post['hdn-profile-id']) ? intval($post['hdn-profile-id']) : 0;
-        //$path = get_theme_root(). '\images\uploads\tmp';
-        //$uploadFolder = 'uploads';
-        //$path = realpath('../webroot/'.$uploadFolder);
-    
-        //$valid_formats = array("jpg", "png", "gif", "bmp","jpeg");
-        //$name = $_FILES['image']['name'];
-        //$size = $_FILES['image']['size'];
-        /*if(strlen($name))
-        {*/
-        /*if(isset($_FILES['image']) && !empty($_FILES['image']))
-        {*/
-		        //$userData = $usersModel->newEntity();
-		     	//$userData->id = $userId;
-     	        //Upload video
-     	        
-	    if($_FILES['image']['name']!=''){
+    	$userId = $session->read('User.id');
+          if($_FILES['image']['name']!=''){
                     ob_start();
 					$profilePic = $this->admin_upload_file('profilePic',$_FILES['image']);
 					$profilePic = explode(':',$profilePic);
 					if($profilePic[0]=='error'){
-						//$this->Flash->error(__($profileBanner[1]));
-					    echo "<em class='signup_error error clr'>".$profilePic[1]."</em>";die;//'Error::'.$profilePic[1];die;
+						echo "<em class='signup_error error clr'>".$profilePic[1]."</em>";die;
 					}else{
-					 //$userData->profile_banner = $profilePic[1];
-                    /* if($usersModel->save($userData)){
-		                   $userInfo = $usersModel->get($userId);
-		                   echo 'Success::'.HTTP_ROOT.'img/uploads/'.$userInfo->profile_banner;die;
-			         }*/
-                      ob_end_clean();
-				    		/*chmod($filePath, 0755);
-				        	//echo $filePath;die;
-				        	$width = $this->getWidth($filePath);
-				            $height = $this->getHeight($filePath);
-				            //Scale the image if it is greater than the width set above
-				            if ($width > $max_width){
-				                $scale = $max_width/$width;
-				                $uploaded = $this->resizeImage($filePath,$width,$height,$scale);
-				            }else{
-				                $scale = 1;
-				                $uploaded = $this->resizeImage($filePath,$width,$height,$scale);
-				            }*/
-
-			         $res = $this->saveAvatar(array(
+					  ob_end_clean();
+				    $res = $this->saveAvatar(array(
 				                        'userId' => isset($userId) ? intval($userId) : 0,
 				                                                'USERIMG' => isset($profilePic[1]) ? $profilePic[1] : '',
 				                        ));
@@ -1947,54 +1966,7 @@ function addPets(){
 			          $src = HTTP_ROOT.'webroot/img/uploads/'.$profilePic[1];
 				        echo "<img  id='photo' class='' src='".$src."' class='preview'/>";
 				}				
-			/*}else{
-				 unset($_FILES['profile_banner']);
-			}*/
-
-	       /*list($txt, $ext) = explode(".", $name);
-	        if(in_array(strtolower($ext),$valid_formats))
-		    {
-		        if($size<(2048*2048)) // Image size max 1 MB
-			    {
-			        $actual_image_name = 'user_img' .'_'.$this->RandomStringGenerator(15).'.'.$ext;
-			        $filePath = realpath('../webroot/img/'.$uploadFolder).'/'.$actual_image_name;
-			        $tmp = $_FILES['photoimg']['tmp_name'];
-			        //echo $tmp.$filePath;die;
-			        	ob_start();
-			        if(move_uploaded_file($tmp, $filePath))
-				    {
-				    	ob_end_clean();
-				    		chmod($filePath, 0755);
-				        	//echo $filePath;die;
-				        	$width = $this->getWidth($filePath);
-				            $height = $this->getHeight($filePath);
-				            //Scale the image if it is greater than the width set above
-				            if ($width > $max_width){
-				                $scale = $max_width/$width;
-				                $uploaded = $this->resizeImage($filePath,$width,$height,$scale);
-				            }else{
-				                $scale = 1;
-				                $uploaded = $this->resizeImage($filePath,$width,$height,$scale);
-				            }
-				      		//echo $filePath;die; 
-				      		$res = $this->saveAvatar(array(
-				                        'userId' => isset($userId) ? intval($userId) : 0,
-				                                                'USERIMG' => isset($actual_image_name) ? $actual_image_name : '',
-				                        ));
-				           //echo "<pre>";print_r($res);die;           
-				        //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");
-				     //echo "<img id='photo' class='' src='".getCustomAvatar($userId, true).'?'.time()."' class='preview'/>";
-				       $src = HTTP_ROOT.'webroot/img/uploads/'.$actual_image_name;
-				        echo "<img height='150px' width='150px' id='photo' class='' src='".$src."' class='preview'/>";
-			        }
-			        else
-			      echo "<em class='signup_error error clr'>Failed!</em>"; 
-		        }
-		        else
-		       echo "<em class='signup_error error clr'>Image file size max 1 MB!</em>"; */
-	       /* }
-	        else
-	        echo "<em class='signup_error error clr'>Only JPG, PNG, BMP or GIF files are allowed!</em>"; */
+			
 	    }else
 			 echo "<em class='signup_error error clr'>Please select image..!</em>"; die;
 			
@@ -2008,53 +1980,39 @@ function addPets(){
 		$this->viewBuilder()->layout();
 		 $UsersModel = TableRegistry::get('Users');
 	    	$session = $this->request->session();
-    	//echo "notototo";die;
-        //global $current_user;
-     //echo "<pre>";print_r($_POST);die;
-        $loggedInId = $session->read('User.id');//$current_user->ID;
+    	 $loggedInId = $session->read('User.id');
 	    $post = isset($_POST) ? $_POST: array();
 
 	    $session = $this->request->session();
     	
-        $userId = $session->read('User.id');//$current_user->ID;
-	    //$userId = isset($post['id']) ? intval($post['id']) : 0;
-	    //$path = get_theme_root(). '\\images\uploads\tmp';
-	     //$path = realpath('../webroot/'.$uploadFolder);
+        $userId = $session->read('User.id');
 	     $uploadFolder = 'uploads';
 	     $path = realpath('../webroot/img/'.$uploadFolder);
 	    
-//echo "okokovk";
-	   // echo $path ;die;//= explode(".", $path);die;
-	    $t_width = 328; // Maximum thumbnail width
+        $t_width = 328; // Maximum thumbnail width
 	    $t_height = 184;    // Maximum thumbnail height
 
 	if(isset($_POST['t']) and $_POST['t'] == "ajax")
 	{
 	    extract($_POST);
-	   // echo "<pre>";print_r($_POST);die;
-	   
-        $user = $UsersModel->get($userId);
+	   $user = $UsersModel->get($userId);
       
       
 	    $img = $user->image; //'avatar_1.jpeg'; //get_user_meta($userId, 'user_avatar', true);
-      // echo  $img;die;
         list($txt, $ext) = explode(".", $img);
-        //echo $ext;die;
-	    $imagePath = $path.'/'.$img;
+        $imagePath = $path.'/'.$img;
 	    $ratio = ($t_width/$w1); 
 	    $ratio1 = ($t_height/$h1); 
 	    $nw = ceil($w1 * $ratio);
 	    $nh = ceil($h1 * $ratio1);
 	    $nimg = imagecreatetruecolor($nw,$nh);
 	    if($ext=='png'){
-	    	//echo "okokoo";die;
 	    	$im_src = imagecreatefrompng($imagePath);
 		    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
 	    	$q=9/100;
 			$quality=$q;
 			imagepng($nimg,$imagePath,$quality);      
-		    //imagepng($nimg,$imagePath,90);
-        }else if($ext == 'jpeg' || $ext == 'jpg'){
+		}else if($ext == 'jpeg' || $ext == 'jpg'){
         	$im_src = imagecreatefromjpeg($imagePath);
 		    imagecopyresampled($nimg,$im_src,0,0,$x1,$y1,$nw,$nh,$w1,$h1);
 		    imagejpeg($nimg,$imagePath,90);
@@ -2068,12 +2026,7 @@ function addPets(){
 		    imagejpeg($nimg,$imagePath,90);
         }
 
-	     //echo "<pre>";print_r($imageCopy);die;
-	   // echo $user->image;die;
 	}
-		//echo getCustomAvatar($userId, true);
-	 /*$src = HTTP_ROOT.'webroot/img/uploads/'.$img;
-	 echo "<img id='photo' class='' src='".$src."' class='preview'/>";*/
 		exit(0);    
 		die;
 	}
@@ -2088,13 +2041,8 @@ function addPets(){
 		    $newImageHeight = ceil($height * $scale);
 		    $newImage = imagecreatetruecolor($newImageWidth,$newImageHeight);
 
-		    /*$source = imagecreatefromjpeg($image);
-		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
-		    imagejpeg($newImage,$image,90);*/
-		  
 		if($ext=='png'){
-			//echo "yes okok";die;
-	    	 $source = imagecreatefrompng($image);
+			$source = imagecreatefrompng($image);
 		    imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
             $q=9/100;
 			$quality=$q;
@@ -2219,9 +2167,7 @@ function addPets(){
 			
 		}	
 		if( $this->request->is('ajax') ) {
-
-	
-			$userid=@$_REQUEST['user'];
+            $userid=@$_REQUEST['user'];
 			$reviewdata=$reviewModel->find('all')->where(['user_to'=>$userid])->toArray();
 
 			$book_id=array();
@@ -2299,10 +2245,10 @@ function addPets(){
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		$this->viewBuilder()->layout('profile_dashboard');
-		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calendarModel=TableRegistry :: get("UserSitterAvailability");
 		$calenderData=$calendarModel->newEntity();
 			
-		if ($this->request->is(POST)) {
+		if ($this->request->is('POST')) {
 			
 			$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
 			$calenderData->user_id=$user_id;
@@ -2310,12 +2256,12 @@ function addPets(){
 			$calenderData->avail_status=0;
 			if($calendarModel->save($calenderData)){
 			
-				$this->Flash->success(__('Record has been added by ajax Successfully'));
+				$this->Flash->success(__('Changes has been done.'));
 				return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
-			}
-			else{
+			
+			}else{
 	
-				$this->Flash->error(__('Record can not be added '));
+				$this->Flash->error(__('Changes has been done.'));
 			
 			}	
 		}
@@ -2328,32 +2274,31 @@ function addPets(){
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		
-		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		$calendarModel=TableRegistry :: get("UserSitterAvailability");
 		$calenderData=$calendarModel->newEntity();
 		
 		$calenderData=$calendarModel->patchEntity($calenderData,$this->request->data);
 		$calenderData->user_id=$user_id;
 		
 		$calenderData->avail_status=1;
+		
 		if($calendarModel->save($calenderData)){
 		
-			$this->Flash->success(__('Record has been added by ajax Successfully'));
-			return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+			$this->Flash->success(__('Changes has been done'));
+			echo "Changes has been done";
+			//return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
 		}
 		else{
-			$this->Flash->error(__('Record can not be added '));
-		
+			$this->Flash->error(__('Record can not be added'));
+			echo "Record can not be added";
 		}	
 		die;
 	}
 
 	public function ajaxCalendar()
     {
-
-			$Session=$this->request->session();
+            $Session=$this->request->session();
 			$user_id=$Session->read('User.id');
-			//pr($user_id);die;
-			//$this->viewBuilder()->layout('profile_dashboard');
 			$calendarModel=TableRegistry :: get("user_sitter_availability");
 			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
 			
@@ -2369,12 +2314,6 @@ function addPets(){
 				$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
-			//pr($unavailbe_array);die;
-			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
-			
-			
-
-	
 		$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
 		$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
 
@@ -2385,13 +2324,11 @@ function addPets(){
 			$services_array["visits_limit"]= $UserServices->visits_limit;
 			$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
 		}
-
-		$calendar = new  \Calendar();
-
-		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
+        $calendar = new  \Calendar();
+        $this->set('calender',$calendar->show($services_array,$unavailbe_array));
 
     }
-	public function searchResultsFavourites(){
+    public function searchResultsFavourites(){
 		$session = $this->request->session();
         $userId = $session->read('User.id');
 		
@@ -2417,32 +2354,7 @@ function addPets(){
 						;
 					}
 					]);
-		//	pr($favourateData);die;			
-						
-		/*		
-	
-		$favUsersdata=array();
-		foreach($favourateData as $favourate){
-			
-			$sitter_id=$favourate->sitter_id;
-			$fav_no=$favourate->count_favourate;
-			//$favUsersdata[]=$UsersModel->find('all')->where(['id'=>$sitter_id])->contain(['UserRatings'])->toArray();
-			$favUsersdata[] = $UsersModel->find('all',['contain'=>[
-														'UserAboutSitters',
-														'UserRatings','UserSitterServices'
-													]]
-											)
-							   ->where(['Users.id' => $sitter_id])
-							   ->toArray();
-			}
-										
-		 */ 		
-		//pr($favUsersdata);die;
-		//$this->set('Posts',$this->paginate($Posts));
-	
 		$this->set('FavUsersdata',$this->paginate($favourateData));
-	
-		
 	}
 	
 	// for communications

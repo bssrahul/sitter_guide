@@ -5,19 +5,15 @@
 				<?php if(!empty($blogsInfo)){ ?>
             	<div class="fn-area"> 
                 	<!--heading--> 
-                	
                 	<div class="head-box">
                     	<h4> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Fun & News')); ?> </h4>
                         	<p> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Find some of the funniest pet pics & videos along with news updates here')); ?> </p>
                             <span class="head-bot"><b></b></span>
                     </div>                           	
 					<!--/heading--> 
-                	
                 	<div class="fnb-area">
-                    	
-						<?php 
+                    	<?php 
 							foreach($blogsInfo as $single_blog){ 
-								
 						?>
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<div class="fnb-outer">

@@ -51,8 +51,11 @@
                                 <li><?php echo __('$200 aud'); ?></li>
                             </ul>                         
                         </li>
-                        <li><a href="#" title="Guest"> <i class="fa fa-user"></i> <?php echo __('Guest'); ?></a></li>
-                        <li><a href="#" title="Profile"><i class="fa fa-home"></i> <?php echo __('View Profile'); ?></a></li>
+                        <!--<li><a href="#" title="Guest"> <i class="fa fa-user"></i> <?php echo __('Guest'); ?></a></li>-->
+                                 <?php 
+                                 $session = $this->request->session();
+								$userId = $session->read('User.id'); ?>
+                        <li><a href="<?php echo HTTP_ROOT.'view-profile/'.base64_encode(convert_uuencode($userId)); ?>" title="Profile"><i class="fa fa-home"></i> <?php echo __('View Profile'); ?></a></li>
                     </ul>                                 
                 </div>
             </div>            

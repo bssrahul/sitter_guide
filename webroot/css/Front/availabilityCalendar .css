@@ -94,22 +94,23 @@ div#calendar ul.label li div#calendar ul.dates {
 }
 /** overall width = width+padding-right**/
 .dates { margin-left:-40px;}
-div#calendar ul.dates li{
-	background: rgba(0, 0, 0, 0) none repeat scroll left center;
-    border: 1px solid #dddddd;
-    border-collapse: collapse;
-    color: #000;
-    display: table-cell;
-    float: left;
-    font-size: 14px;
-    height: 70px;
-    list-style-type: none;
-    margin: -1px 0 0 -0.5px;
-    padding: 0 0 0 1%;
-    text-align: left;
-    vertical-align: top;
-    width: 14.42%;}
-:focus {
+
+div#calendar ul.dates li {
+  background: rgba(0, 0, 0, 0) none repeat scroll left center;
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  color: #000;
+  display: table-cell;
+  float: left;
+  font-size: 14px;
+  height: 50px;
+  list-style-type: none;
+  margin: -1px 0 0 -0.5px;
+  padding: 15px 0 0 1%;
+  text-align: center;
+  width: 14.42%;
+}
+a :focus, button :focus {
     outline: none;
 }
 div.clear {

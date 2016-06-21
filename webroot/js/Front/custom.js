@@ -1527,16 +1527,20 @@
 				"BookingRequests[message]":
 				{
 					required:true 
-				}/*,
-				"BookingRequests[required_services]":
+				},
+				"guest_id_for_booking[]":
 				{
 					required:true 
-				}*/
+				}
 			},
 		    messages: {
 				"BookingRequests[booking_start_date]":
 				{
 					required : "This field is required"
+				},
+				"guest_id_for_booking[]":
+				{
+					required:"Please select your pet" 
 				}
 			}
 
