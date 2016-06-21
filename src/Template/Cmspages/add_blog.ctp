@@ -1,3 +1,4 @@
+<?php echo $this->element('adminElements/main_editor'); ?>
 <div class="">
                    <div class="row">
 					
@@ -33,13 +34,33 @@
 											
 										</div>
 									</div>
+									
+									
+									
+					  
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Category')); ?>
+										</label>
+										 <div class="col-md-6 col-sm-6 col-xs-12">
+										    <?php 
+													echo $this->Form->input('UserBlogs.category',[
+													'templates' => ['inputContainer' => '{{content}}'],
+													'type'=>'select',
+													'label'=>false,
+													'options'=>[''=>'-- Select Category -- ','sitter_guest'=>'Sitter Guide','timeout'=>'Timeout','event'=>'Event','news_desk'=>'News Desk'],
+													'class' =>'form-control',
+													]);
+											 ?>
+											
+										</div>
+									</div>
 									<div class="item form-group">
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->textarea('UserBlogs.description',
 											 ['escape' => false,
-											 'class'=>'form-control col-md-7']);
+											 'class'=>'form-control col-md-7  tinymce']);
 											 ?>
 										</div>
 									</div>

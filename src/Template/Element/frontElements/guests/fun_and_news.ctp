@@ -1,3 +1,14 @@
+<?php 
+	function limit_text($text, $limit) {
+	  if (str_word_count($text, 0) > $limit) {
+		  $words = str_word_count($text, 2);
+		  $pos = array_keys($words);
+		  $text = substr($text, 0, $pos[$limit]) . '...';
+	  }
+	  return $text;
+	}
+
+	?>
 		<!--[Fun News]-->
     	<section class="fun-news">
              
@@ -16,7 +27,7 @@
 							foreach($blogsInfo as $single_blog){ 
 						?>
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-								<div class="fnb-outer">
+								<div style="min-height:420px" class="fnb-outer">
 									<div class="imgb-area">
 										<div class="date">
 											<p><?php echo __( date("l jS M Y", strtotime($single_blog->created_date))); ?></p>
@@ -29,17 +40,16 @@
 									<div class="p-area">
 								
 										<ul>
-											<li><a href="#"><i class="fa fa-user"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('By user')); ?></a></li>
-											<li><a href="#"><i class="fa fa-comments"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Comments')); ?></a></li>
-											<li><a href="#"><i class="fa fa-heart"></i>40</a></li>
+											
 										</ul> 
 										<div class="p-img">
 										  
 											  
 										</div>
-										<p class="txt-head"><?php echo $single_blog->title; ?></p>									
-										<p><?php echo $single_blog->description; ?> </p>                                                                  
-										<a href="" title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?> <i class="fa fa-chevron-circle-right"></i></a>
+										<h5 class="recent-b-head"><?php echo $single_blog->title; ?></h5>									
+										<!--<p class="txt-head"><?php echo $single_blog->title; ?></p>-->
+										<p><?php echo limit_text($single_blog->description,30); ?> </p>                                                                  
+										<a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($single_blog->id)); ?>" title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?> <i class="fa fa-chevron-circle-right"></i></a>
 									</div>
 									
 								</div>
@@ -56,7 +66,7 @@
                  <div class="bot-btn-area">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a href="#"  title="" class="bot-more"><?php echo $this->requestAction('app/get-translate/'.base64_encode('More News & Updates')); ?></a>
+                            <a href="<?php echo HTTP_ROOT.'blog-listing'; ?>"  title="" class="bot-more"><?php echo $this->requestAction('app/get-translate/'.base64_encode('More News & Updates')); ?></a>
                         </div>
                     </div>
                     </div>

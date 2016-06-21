@@ -1,6 +1,9 @@
-<link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
-<link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
-<script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
+<link rel="stylesheet" href="<?php echo HTTP_ROOT; ?>css/Front/tokenfield-typeahead.min.css"/>
+<link rel="stylesheet" href="<?php echo HTTP_ROOT; ?>css/Front/bootstrap-tokenfield.min.css"/>
+<script src="<?php echo HTTP_ROOT; ?>js/Front/bootstrap-tokenfield.js"></script>
+<?php echo $this->Html->css('Front/dist/jquery.onoff.css');
+      echo $this->Html->script(['Front/dist/jquery.onoff.js']);
+ ?>
 <script>
 	$(document).ready(function(){
 		//For multiple language
@@ -21,10 +24,7 @@
 				});
 	});
 </script>
-<?php 
-  echo $this->Html->css(['Front/jquery-ui.css']); 
-  echo $this->Html->script(['Front/jquery-ui.js']);
-?>
+
 	<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
 		<div class="row">
 			
@@ -38,12 +38,13 @@
 					<div class="tab-content">
 						<div id="menu3" class="tab-pane fade tab-comm active in">
 							<div class="row">
+							<div class="col-xs-12">
 								<h2 id="sitter-experience">
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Update us on your Skill and Accreditations')); ?>
 								</h2>
 								<h3>
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will give you individual badges which increase your search results ranking for each of these updates')); ?>
-								</h3>
+								</h3> </div>
 							</div>	
                 
 							<?php echo $this->Form->create(null, [
@@ -194,8 +195,8 @@
                       </div>
                     </div>
                 </div>
-							<h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('Physician (Pets)')); ?></strong><small> <?php echo $this->requestAction('app/get-translate/'.base64_encode(' (Certificate/Degree)')); ?>  </small></h3>
-							<div class="row">
+						<div class="col-xs-12">	<h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('Physician (Pets)')); ?></strong><small> <?php echo $this->requestAction('app/get-translate/'.base64_encode(' (Certificate/Degree)')); ?>  </small></h3></div>
+							<div class="">
 								<div class="form-group col-lg-4">
 									<?php echo $this->Form->input('UserProfessionals.pets.private.qualification_title',[
 									'class'=>'form-control',
@@ -230,7 +231,7 @@
 								</div>
 							</div>
 
-							<div class="row">
+							<div class="">
 								<div class="form-group col-lg-4">
 									<div class="brow-inner">
 									  <?php echo $this->Form->input('UserProfessionals.pets.private.scanned_certification',[
@@ -246,9 +247,9 @@
 								</div>
 							</div>
 
-							<h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('Physician (People)')); ?></strong><small><?php echo $this->requestAction('app/get-translate/'.base64_encode('(Certificate/Degree)')); ?>    </small></h3>
+							<div class="col-xs-12"><h3><strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('Physician (People)')); ?></strong><small><?php echo $this->requestAction('app/get-translate/'.base64_encode('(Certificate/Degree)')); ?>    </small></h3> </div>
 						
-							<div class="row">
+							<div class="">
 								<div class="form-group col-lg-4">
 									<?php echo $this->Form->input('UserProfessionals.people.private.qualification_title',[
 										 'class'=>'form-control',
@@ -282,7 +283,7 @@
 							</div>
 						  </div>
 
-						  <div class="row">
+						  <div class="">
 							<div class="form-group col-lg-4">
 							<div class="brow-inner">
 							 <?php echo $this->Form->input('UserProfessionals.people.private.scanned_certification',[
@@ -299,7 +300,7 @@
 						</div>
 						
 							<!--<h3><strong>Other Qualifications & Specific Skills</strong><small>(Certificate/Degree)</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i> Add More</span></h3>-->
-					    <div class="row">
+					    <div class="">
                           <div class="form-group col-lg-4">
                             <div class="brow-inner pull-left">
                                <span id="addMore" class="pull-right add-more-n"> <i class="fa fa-plus-circle"></i>
@@ -307,14 +308,15 @@
                             </div>
                           </div>
                         </div>
-                        <h3></h3>
+                        <div class="col-xs-12"><h3></h3></div>
 					
 					<?php 
 					//CONDITION FOR 
 					if(!empty($professional['UserProfessionals']['other'])){ ?>
 							<?php $o=1; 
 							foreach($professional['UserProfessionals']['other'] as $otherValue){ ?>
-								  <div id="ajaxAdd<?php echo $o; ?>" class="row ajaxAdd">
+								<div class="clearfix"></div>
+								  <div id="ajaxAdd<?php echo $o; ?>" class="ajaxAdd">
                     
 										<div class="form-group col-lg-4">
 										   <?php echo $this->Form->input('qualification_title[]',[
@@ -355,9 +357,9 @@
 										</div>
 								 
 
-									  <div class="row" >
+									  <div class="" >
 										<div class="form-group col-lg-4">
-											<div class="brow-inner">
+											<div class="brow-inner input-mleft0">
 												<?php echo $this->Form->input('scanned_certification[]',[
 													 'class'=>'form-control',
 													 'id'=>'scanned_certification_'.$o,
@@ -376,7 +378,9 @@
 							<?php $o++;	
 							} //END FOREACH LOOP FOR DISPLAY MULTIPLE OTHER FIELD WHEN USER SELECT MULTIPLE FROM ADD OTHER ?>
 				<?php }else{ ?>
-						<div id="ajaxAdd1"  class="row ajaxAdd">
+					    <div class="clearfix"></div>
+						<div id="ajaxAdd1"  class="ajaxAdd">
+							
                     
 							<div class="form-group col-lg-4">
 							   <?php echo $this->Form->input('qualification_title[]',[
@@ -408,11 +412,11 @@
 							  ]); ?>
 
 							</div>
-                 
+                             <div class="clearfix"></div>
 
-							<div class="row" >
+							<div class="" >
 								<div class="form-group col-lg-4">
-									<div class="brow-inner">
+									<div class="brow-inner input-mleft0">
 										<?php echo $this->Form->input('scanned_certification[]',[
 											 'class'=>'form-control',
 											 'id'=>'scanned_certification_1',
@@ -426,9 +430,10 @@
 								</div>
 							</div>
 						</div>
+						<div class="clearfix"></div>
 					<?php } //END IF CONDITION FOR OTHER FIELDS ?>
                   
-                  <h3 id="addAfter"></h3>
+                 <div class=col-xs-12> <h3 id="addAfter"></h3></div>
 
                   <!--<div class="row">
                     
@@ -520,7 +525,8 @@
                     
 
                     </div>-->
-                    <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="">
 	                    <div class="col-lg-4">
 	                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Do you know CPR for')); ?>  </label>
 	                          <?php echo $this->Form->input('UserProfessionalsDetails.cpr_for',[
@@ -535,30 +541,43 @@
 	                    </div>
 
 	                    <div class="col-lg-4  la1">
-	                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('I can administer Oral Medications')); ?></label>
-	                        <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
-	                        <div class="chek-main-lat">
-	                         <?php
-                                 
-                              if(@$professional['user_professional_accreditations_details']->oral_madications ==1){
-                                 $checked = 'checked';
-                              }else{
-                                 $checked = '';
-                              }
-                               echo $this->Form->input('UserProfessionalsDetails.oral_madications',[
-									 'templates' => ['inputContainer' => '{{content}}'],
-	                                 'type'=>'checkbox',
-	                                 'label' =>false,
-	                                 'checked' =>$checked,
-	                                 'class'=>'selectedCheckbox',
-	                                 'hiddenField' => false
-	                                 ]);
-						      ?>
-                            </div>
-	                        </div>
+							
+							<div class="row">
+								<div class="col-lg-7 col-md-7 col-xs-7 ">  
+								<label  for="">
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('I can administer Oral Medications')); ?>
+								</label>
+								</div>
+	                        
+								<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+									<div class="chek-main-lat">
+									 <?php
+										 
+									  if(@$professional['user_professional_accreditations_details']->oral_madications ==1){
+										 $checked = 'checked';
+									  }else{
+										 $checked = '';
+									  }
+									   echo $this->Form->input('UserProfessionalsDetails.oral_madications',[
+											 'templates' => ['inputContainer' => '{{content}}'],
+											 'type'=>'checkbox',
+											 'label' =>false,
+											 'checked' =>$checked,
+											 'class'=>'selectedCheckbox',
+											 'hiddenField' => false
+											 ]);
+									  ?>
+									</div>
+								</div>
+	                  
+							</div>
 	                    </div>
                         <div class="col-lg-4  la1">
-	                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('I can administer Injected Medications')); ?></label>
+							
+							<div class="row">
+								<div class="col-lg-7 col-md-7 col-xs-7 ">  
+								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('I can administer Injected Medications')); ?></label>
+	                       </div>
 	                          <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 	                        <div class="chek-main-lat">
 	                         <?php
@@ -577,10 +596,10 @@
 		                                 ]);
 						      ?>
 	                     </div>
-	                        </div>
+	                        </div> </div>
 	                    </div>
                     </div>
-                    <div class="row ">
+                    <div class="">
                         <div class="col-lg-4 mt10">
 	                          <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience with Behavioural Problems')); ?></label>
 	                          <?php echo $this->Form->input('UserProfessionalsDetails.ex_behavioural_problems',[
@@ -616,7 +635,7 @@
                             ?>
                         </div>
                     </div>
-                   <div class="row">
+                   <div class="">
                     <p class="col-lg-12 sp-tb"><a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
                       <input class="pull-right btn Continue" type="submit" value="Continue" ></p>
                     </div>
@@ -709,7 +728,8 @@
 		$("#addMore").on('click',function(){
 		
 			i = parseInt(i)+1;
-			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="row ajaxAdd"><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input readonly id="start_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input readonly id="end_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4" style="padding-left:0px;"><div class="brow-inner" > <input class="form-control" id="scanned_certification_'+i+'" readonly name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc btn btn-secondary" type="button">Browse </button></div></div><button data-rel="ajaxAdd'+i+'" class="deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div>');
+			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="ajaxAdd row "><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input readonly id="start_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input readonly id="end_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4" style="padding-left:0px;"><div class="brow-inner" > <input class="form-control" id="scanned_certification_'+i+'" readonly name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc  btn btn-secondary" type="button">Browse </button></div></div><div class="col-lg-4"><button data-rel="ajaxAdd'+i+'" class=" deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div></div>');
+	
 
 			setTimeout(function(){ 
 				$(".addDateCalendar").datepicker(
@@ -738,10 +758,11 @@
 		.ajaxAdd .col-lg-4 .brow-inner {
 			margin-left: 15px;
 		}
+		
+		.input-mleft0 { margin-left:0px !important; }
+		
 	</style>
-<?php echo $this->Html->css('Front/dist/jquery.onoff.css');
-      echo $this->Html->script(['Front/dist/jquery.onoff.js']);
- ?>
+
 <script>
   $(document).ready(function (){
       $('.selectedCheckbox').click(function(){

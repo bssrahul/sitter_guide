@@ -42,7 +42,7 @@
 													<img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green">
 												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?> 
 											</td>
-										  <td><?php echo isset($services_array["day_care_limit"])?$services_array["day_care_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
+										  <td><?php echo isset($lastmodifieddate["day_care"])?$lastmodifieddate["day_care"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 										<tr>
@@ -51,7 +51,7 @@
 													<img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green">
 												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?>
 											</td>
-										  <td><?php echo isset($services_array["night_care_limit"])?$services_array["night_care_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
+										  <td><?php echo isset($lastmodifieddate["night_care"])?$lastmodifieddate["night_care"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 										<tr>
@@ -60,7 +60,7 @@
 													<img src="<?php echo HTTP_ROOT."img/t-orange.png" ?>" width="11" height="11" alt="green">
 												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop Visit')); ?>
 											</td>
-										  <td><?php echo isset($services_array["visits_limit"])?$services_array["visits_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
+										  <td><?php echo isset($lastmodifieddate["visit"])?$lastmodifieddate["visit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 										<tr>
@@ -69,7 +69,7 @@
 													<img src="<?php echo HTTP_ROOT."img/t-yellow.png" ?>" width="11" height="11" alt="green">
 												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Marketplace')); ?> 
 											</td>
-										  <td><?php echo isset($services_array["markeplace_limit"])?$services_array["markeplace_limit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
+										  <td><?php echo isset($lastmodifieddate["market_place"])?$lastmodifieddate["market_place"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
 										</tr>
 										
 									</tbody>
@@ -101,7 +101,7 @@
                     <ul class="list-unstyled">
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon green-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2 " placeholder="Day Care" aria-label="Text input with segmented button dropdown" >
+                          <input disabled type="text" class="form-control input-width-calender basic-addon2 " placeholder="Day Care" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -109,7 +109,7 @@
                       </li>
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon red-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Night Care" aria-label="Text input with segmented button dropdown" >
+                          <input disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="Night Care" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -121,7 +121,7 @@
                     <ul class="list-unstyled">
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon orange-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Drop in visit" aria-label="Text input with segmented button dropdown" >
+                          <input  disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="Drop in visit" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -129,7 +129,7 @@
                       </li>
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon yellow-box basic-addon2 " ></span>
-                          <input type="text" class="form-control input-width-calender basic-addon2" placeholder="Hourly Services" aria-label="Text input with segmented button dropdown" >
+                          <input disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="Hourly Services" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                             <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -336,12 +336,18 @@
 			
 			//$(this).parent().parent().parent().addClass("disable");
 			var id=$(this).prop('id');
-			var current_start_date=$(this).attr('data-rel');
+			//alert(id);
+			var current_start_date = $(this).attr('data-rel');
+			var service_limit_id = $(this).attr('data-rel1');
+			
+			//alert(current_start);
 			//var id2 = $('#limit_data3').children().children().attr('data-rel');
-			var day_care= $("#limit_data3 li:nth-child(1)").attr('data-rel');
-			var night_care= $("#limit_data3 li:nth-child(2)").attr('data-rel');
-			var visit= $("#limit_data3 li:nth-child(3)").attr('data-rel');
-			var market_place= $("#limit_data3 li:nth-child(4)").attr('data-rel');
+			var day_care= $("#"+service_limit_id+" li:nth-child(1)").attr('data-rel');
+			//alert(day_care);
+			var night_care= $("#"+service_limit_id+" li:nth-child(2)").attr('data-rel');
+			var visit= $("#"+service_limit_id+" li:nth-child(3)").attr('data-rel');
+			var market_place= $("#"+service_limit_id+" li:nth-child(4)").attr('data-rel');
+			
 			//alert(day_care+night_care+visit+market_place);
 			$('#day_care').val(day_care);
 			$('#night_care1').val(night_care);

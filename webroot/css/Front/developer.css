@@ -9,6 +9,8 @@ label.error {
     color: #ff5a5f !important;
     font-size: 12px !important;
     font-weight: normal !important;
+     margin-bottom: -18px !important;
+    text-align: right !important;
 }
 
 .response_msg_container {
@@ -58,7 +60,7 @@ p.errorMessage {
 
 label.error {
   position: relative;
-  top: -5px;
+  top: 0px;
 }
 /*For sign up*/
 .signup-color > a{
@@ -148,7 +150,7 @@ margin: 10px 25px 0 0 !important;
 .dobDiv > .text{width:85% !important;width: 80% !important;float: left;}
 
 
-label.error{margin-top:5px;float:left;}
+label.error{margin-top:0px;float:left;}
 
 .radio label, .checkbox>input{
     margin-left:3px !important;
@@ -648,5 +650,90 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     margin:0 2px;
  } 
   
-  
+/* Captcha Responsive Style Start*/ 
+.rc-anchor-normal .rc-anchor-content {
+    height: 74px;
+    width: 170px !important;
+}
 
+.rc-anchor-normal .rc-anchor-checkbox-label {
+    width: 89px !important;
+}
+
+.rc-anchor-checkbox-label {
+    font-family: Roboto,helvetica,arial,sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.rc-anchor-normal .rc-anchor-pt {
+    margin: 4px 13px 0 0;
+    padding-right: 2px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 130px !important;
+}
+
+.rc-anchor-normal {
+    height: 74px;
+    max-width: 266px !important;
+    width: 100%;
+}
+
+.pddtop { padding-top:15px;}
+
+
+#rc-imageselect {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+
+@media screen and (max-height: 575px){
+#rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+
+
+/* Captcha Responsive Style End*/ 
+
+.d-m2 div > iframe {
+    border:none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.btn-mg-left { margin-left: 15px }
+
+.f13 { font-size:13px;}
+
+.onoffswitch {
+    -moz-user-select: none;
+    position: relative;
+    right: 5px;
+    top: 0;
+    width: 40px;
+}
+
+@media (max-width:480px) {
+
+	.signup-container a {
+		background: #f1f1f1 none repeat scroll 0 0;
+		font-size: 15px;
+	}
+
+	#addUsers .form-part div.form-group {
+		float: left;
+		width: 100%;
+	}
+
+
+	#addUsers .form-part div.form-group:nth-child(2) {
+		float: right;
+		margin-left: 0px !important;
+	}
+
+
+
+	.signup-container .form-part ul li {
+		float: left;
+		width: 100% !important;
+	}
+
+}

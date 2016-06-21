@@ -37,7 +37,7 @@
 			echo $this->element('frontElements/profile/profile_nav');?>
 			 <?php 
 				//echo $this->request->action; die;
-				if($this->request->action=='review' || $this->request->action=='searchResultsFavourites'){
+				if($this->request->action=='review' || $this->request->action=='searchResultsFavourites' || $this->request->action=='communication'){
 					$bgClass='bg-fff';
 				}else{
 					$bgClass='addBgColor';
