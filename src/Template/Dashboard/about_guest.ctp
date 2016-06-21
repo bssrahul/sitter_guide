@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
 <link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
 <script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
+
 <script>
 	
   $(document).ready(function(){

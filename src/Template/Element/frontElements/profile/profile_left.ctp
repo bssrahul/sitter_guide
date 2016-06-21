@@ -94,11 +94,16 @@
 					  }else{
 						  $calendar_class='class=""';
 						  
-					  }?>	
+					  }?>
+					<?php 
+					$session=$this->request->session();
+					$usertype=$session->read('User.user_type');
+					if($usertype == 'Sitter') {
+					?>					  
                       <li <?php echo $calendar_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/calender' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
                       
 
-
+					<?php } ?>
                        <?php if($this->request->action=='servicesAndRates'){
 						  
 						  $service_class='class="active"';
@@ -120,7 +125,7 @@
 					  
                       <li <?php echo $review_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/review' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
                       
-                      <li><a href="#"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
+                      <li><a href="<?php echo HTTP_ROOT.'dashboard/communication' ?>"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
                       
                       <!-- Dropdown--> 
                
