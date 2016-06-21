@@ -54,7 +54,7 @@
           <div class="row">
            
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
-              <h6	<?php echo $this->requestAction('app/get-translate/'.base64_encode('Quite Time')); ?> 		
+              <h6>	<?php echo $this->requestAction('app/get-translate/'.base64_encode('Quite Time')); ?> 		
               </h6>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -73,7 +73,7 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Delay delivery of nighttime text messages until the following morning.')); ?>
           </p>
           <div id="box1" class="collapse">
             <div class="row box-padt">
@@ -135,7 +135,7 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Text me when I receive a new message or request.')); ?>
           </p>
           <!--<div id="box2" class="collapse">
 <div class="row box-padt">
@@ -187,7 +187,9 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Text me all my Sitter Guide messages after the initial request.
+
+')); ?>
           </p>
           <!--<div id="box3" class="collapse">
 <div class="row box-padt">
@@ -238,7 +240,9 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Text me when I have a new Sitter Guide booking request.
+
+')); ?>
           </p>
           <!--<div id="box4" class="collapse">
 <div class="row box-padt">
@@ -290,7 +294,9 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Text me when a Sitter Guide booking is declined.
+
+')); ?>
           </p>
           <!--<div id="box5" class="collapse">
 <div class="row box-padt">
@@ -342,7 +348,9 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Text me when a Sitter Guide booking is confirmed.
+
+')); ?>
           </p>
           <!--<div id="box6" class="collapse">
 <div class="row box-padt">
@@ -394,7 +402,7 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Send me an MMS for a notification containing a media file.')); ?>
           </p>
           <!--<div id="box6" class="collapse">
 <div class="row box-padt">
@@ -428,7 +436,7 @@
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
         <div class="comm-text">
-          <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Other may call my anonymized Rover number when')); ?> 		
+          <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Other may call my anonymized Sitter Guide number when')); ?> 		
           </h5>			     
 					 <?php 
 						echo $this->Form->input('Communication.phone_call',[
@@ -445,12 +453,12 @@
         </div>
         <div class="comm-box1">
           <div class="row">
-            <div class="col-xs-7 col-sm-9 col-md-9 col-lg-10"> 
-              <h6><?php echo $this->requestAction('app/get-translate/'.base64_encode("I'd prefer not to have my rates adjusted by Rover. I understand that by doing so, 
+            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-9"> 
+              <h6><?php echo $this->requestAction('app/get-translate/'.base64_encode("I'd prefer not to have my rates adjusted by Sitter Guide. I understand that by doing so, 
                 I may make less for my services than similarly situated sitters in my area.")); ?>
               </h6>
             </div>
-            <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2">
+            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-3">
               <div class="chek-main-lat">
                 <div class="onoffswitch">
                    <?php  echo $this->Form->input('Communication.in_area',[
@@ -516,7 +524,7 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide may use your public profile to help drive awareness of your services and Sitter Guide.')); ?>
           </p>
           <!--<div id="box8" class="collapse">
 <div class="row box-padt">
@@ -568,7 +576,7 @@
               </div>
             </div>
           </div>
-          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('sdfk lkdfj k lkfv s lkd flskd dk kdf sldfk lksd')); ?>
+          <p class="box-small-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Check this if you don't want photos you take during a booking to be publicly visible on your profile.")); ?>
           </p>
           <!--<div id="box9" class="collapse">
 <div class="row box-padt">

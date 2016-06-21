@@ -122,8 +122,14 @@
 					  }?>
 					  
                       <li <?php echo $review_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/review' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
-                      
-                      <li><a href="#"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
+                       <?php if($this->request->action=='communication'){
+						  
+						  $communication_class='class="active"';
+					  }else{
+						  $communication_class='class=""';
+						  
+					  }?>
+                      <li <?php echo $communication_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/communication' ?>"><span class="fa fa-group"></span> <span class="side-list"><?php echo __('Communication'); ?></span></a></li>
                       
                       <!-- Dropdown--> 
                
