@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+
+/*Banner inner pages starts*/
+.banner-area-house {background:url(../../img/house-rule.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px; margin-bottom:30px;}
+
+.banner-area-house h3 {text-align:center; color: #fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-house p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+/*Banner inner pages ends*/

@@ -32,7 +32,11 @@
              }else{
 			    echo $this->element('frontElements/common/header');	
              }
-            echo $this->element('frontElements/common/static_pages_banner');	
+             
+             if($this->request->action=='blogListing'){
+				echo $this->element('frontElements/common/static_pages_banner');		
+			 }
+            
          ?>
           <!--content area Start-->
 		<main >  
