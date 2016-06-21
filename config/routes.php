@@ -80,7 +80,8 @@ Router::scope('/', function ($routes) {
 		
 		$routes->connect('/view-profile/*', ['controller' => 'Search', 'action' => 'viewProfile']);
 		
-		
+		$routes->connect('/blog-listing/*', ['controller' => 'Blogs', 'action' => 'blogListing']);
+		$routes->connect('/blog-details/*', ['controller' => 'Blogs', 'action' => 'blogDetails']);
 
 
     /**

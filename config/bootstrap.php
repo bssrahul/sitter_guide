@@ -211,6 +211,7 @@ $root	= explode('/',$_SERVER['REQUEST_URI']);
 $rootPath	= isset($root[1])?$root[1]:'';
 define("ROOT_PATH",$rootPath);
 define("SITE_TITLE",'Sitter Guide');
+define("SITE_OWNER",'Daevid Richards');
 define("DEVELOPED_BY",'Beta-soft systems');
 define("WEBROOT_PATH",$_SERVER['DOCUMENT_ROOT']."/".ROOT_PATH."/webroot/");
 define('HTTP_ROOT','http://'.$_SERVER['HTTP_HOST'].'/'.$rootPath."/");
