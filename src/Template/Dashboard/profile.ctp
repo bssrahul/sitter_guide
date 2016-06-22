@@ -420,7 +420,7 @@
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
                     </p>
                     <p>
-                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended size is 50mb.')); ?>
+                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended size is 10mb.')); ?>
                     </p>
                     
             </div>
@@ -431,7 +431,7 @@
                       <?php if(@$userInfo->profile_video != ''){
                            $video_path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
                       }else{
-                           $video_path ='https://www.youtube.com/embed/GF60Iuh643I';
+                           $video_path = HTTP_ROOT.'files/video/pdm.mp4';
                       }
                       
                      ?>
@@ -687,13 +687,9 @@ $(document).ready(function(){
     $("#profileVideo").ajaxForm(
     {
 	beforeSend: function(){
-	  //$(".videoBanner").show();
-	  //$(".videoBanner").html('<img class="search-img" src="'+ajax_url+'img/search-loader.gif"/>');
-      $("#preview-profile-video").attr('src',ajax_url+'img/search-loader.gif');
-      //var percentVal = 0;
-     // //$("#preview-profile-video").contents().html("<html><body><div> Loading...("+percentVal+") </div></body></html>");
-      
-  },
+	  $("#preview-profile-video").attr('src',ajax_url+'img/search-loader.gif');
+	  
+    },
   uploadProgress: function(event, position, total, percentComplete) {
         var percentVal = percentComplete + '%';
       //  bar.width(percentVal)
@@ -712,7 +708,9 @@ $(document).ready(function(){
                   $("#preview-profile-video").attr('src',response[1]);
               }else  if($.trim(response[0]) == 'Error'){
                 $('.clr').html(''); //Emtpy Error MESSAGE
+                $("#preview-profile-video").attr('src',"<?php echo $video_path; ?>");
                 $('.addError').html(response[1]); //DISPLAY SUCCESS MESSAGE
+                
               }
 			      }
       

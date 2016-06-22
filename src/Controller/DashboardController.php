@@ -23,7 +23,9 @@ use Cake\I18n\Time;
 
 
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'calendar.php');
+require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'bookingCalendar.php');
 use Calendar;
+use Calendarbooking;
 
 
 /**
@@ -571,8 +573,34 @@ class DashboardController extends AppController
 		    /*End about sitter*/
 		    //echo $sitter_data['about_sitter_completed'];die;    
 	        $this->set('sitter_data',$sitter_data);
+	        $this->ajaxCalendarBooking();
+	        
+	}
+ 	public function ajaxCalendarBooking()
+    {
+
+			$Session=$this->request->session();
+			$user_id=$Session->read('User.id');
+			//pr($user_id);die;
+			//$this->viewBuilder()->layout('profile_dashboard');
+			$calendarModel=TableRegistry :: get("user_sitter_availability");
+			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+			
+			
+			$unavailbe_array=array();
+			foreach($calenderData as $k=>$UserServices){
+				
+				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+			}
+		
+		$calendar = new  \Calendarbooking();
+
+		$this->set('calender',$calendar->show($unavailbe_array));
+		//$this->render("ajax_calendar");
+      // pr($calendar->show($unavailbe_array));die;
     }
- 
 	/* send a reference to friend */
 	function reference(){
 		//echo "<pre>";print_r($this->request->data['email']);die;
@@ -1564,6 +1592,7 @@ function addPets(){
 		
 		if(isset($this->request->data['UserProfessionals']) && !empty($this->request->data['UserProfessionals']))
 		{
+			
 			$UserProfessionalModel = TableRegistry::get('UserProfessionalAccreditations');
 			$UserProfessionalDetailsModel = TableRegistry::get('UserProfessionalAccreditationsDetails'); 
 
@@ -1661,8 +1690,10 @@ function addPets(){
 				$userProfessionalDetailData = $UserProfessionalDetailsModel->newEntity();
 				$userProfessionalDetailData->user_id = $userId;
 				$userProfessionalDetailData->user_professional_accreditation_id = $userProfessionalData->id;
-				$userProfessionalDetailData->languages = str_replace(' ', '',$this->request->data['UserProfessionalsDetails']['languages']);
+				
 				$userProfessionalDetailData = $UserProfessionalDetailsModel->patchEntity($userProfessionalDetailData, $this->request->data['UserProfessionalsDetails']);
+
+				$userProfessionalDetailData->languages = str_replace(' ','',$this->request->data['UserProfessionalsDetails']['languages']);
 
 				if ($UserProfessionalDetailsModel->save($userProfessionalDetailData)){
 					      //For Update profile status
