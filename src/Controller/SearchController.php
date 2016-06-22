@@ -21,7 +21,7 @@ use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
-require_once(ROOT . DS  . 'vendor' . DS  . 'Calender' . DS . 'availabilityCalendar.php');
+require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'availabilityCalendar.php');
 use availabilityCalendar;
 
 /**
@@ -1157,15 +1157,11 @@ class SearchController extends AppController
 				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
-			//pr($unavailbe_array);die;
-			//$this->set('pre_calender',$calendar->pre_data_show($pre_services_array));
-			
-		
 		
 		$calendar = new  \Calendar();
 
 		$this->set('calender',$calendar->show($unavailbe_array));
-
+       
     }
 	
 	/**

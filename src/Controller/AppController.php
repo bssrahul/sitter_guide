@@ -368,8 +368,8 @@ class AppController extends Controller{
 				{
 
 					$uploadFolder="files/video";	
-					$fileSize= "52428800"; //10485760";
-					$fileKb = "50 MB"; //'10 MB';
+					$fileSize= "10485760";//"52428800"; 
+					$fileKb = '10 MB'; //"50 MB"; 
 					$extCheckArr = array('mp4','ogg','wmv');	
 				}
 				

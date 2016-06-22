@@ -78,7 +78,7 @@
 								           if(!empty($professional['user_professional_accreditations_details']->languages)){
 										   
 										   $selected_languages=array();
-												$selected_languages = explode(", ",trim($professional['user_professional_accreditations_details']->languages)); 
+												$selected_languages = explode(",",trim($professional['user_professional_accreditations_details']->languages)); 
 												$selected_lang =array();
 												foreach($all_languages as $key=> $arr)
 												{ 

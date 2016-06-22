@@ -498,7 +498,24 @@ $i++;
                                                     <p class="pt10">
                                                       <span class="speak">
                                                       </span>Can speak
-                                                      <?php echo @$langArr[$userData->user_professional_accreditations_details[0]->languages]; ?>
+                                                      <?php 
+                                                      $selected_langArr = explode(",",@$userData->user_professional_accreditations_details[0]->languages);
+                                                      $main_lang = "";
+                                                      $totalVal = count($selected_langArr);
+                                                      $i=1;
+                                                      foreach($selected_langArr as $single_lang){
+														if(($totalVal-1)==$i){
+															$saparated = " & ";
+														}else{
+															$saparated = ", ";
+														}
+														  $main_lang .= ucwords($langArr[$single_lang]).$saparated; 
+														  $i++;
+													  }
+													    //echo $main_lang;
+													   echo $main_lang = rtrim($main_lang,",");
+													   
+													?>
                                                     </p>
                                                   </div>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
