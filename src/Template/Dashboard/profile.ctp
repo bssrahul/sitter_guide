@@ -681,28 +681,37 @@ $(document).ready(function(){
         });
 
   $(document).on('change','#profile_video', function(){ 
-
-    //$("#preview-avatar-profile").html('');
-    //$("#preview-avatar-profile").html('Uploading....');
+	  
+    var video_size = Math.ceil(this.files[0].size/1024/1024);
+    if(video_size > 10){
+	    $('.clr').html(''); //Emtpy Error MESSAGE
+		$("#preview-profile-video").attr('src',"<?php echo $video_path; ?>");
+		$('.addError').html("File size should be less than 10MB"); //DISPLAY SUCCESS MESSAGE
+		
+		return false;
+	}else{
+	   $('.clr').html('');
+	}
     $("#profileVideo").ajaxForm(
     {
-	beforeSend: function(){
+	  beforeSend: function(){
 	  $("#preview-profile-video").attr('src',ajax_url+'img/search-loader.gif');
-	  
-    },
-  uploadProgress: function(event, position, total, percentComplete) {
+	},
+  /* uploadProgress: function(event, position, total, percentComplete) {
         var percentVal = percentComplete + '%';
       //  bar.width(percentVal)
         //percent.html(percentVal);
        // $("#preview-profile-video").contents().html("<html><body><div> Loading...("+percentVal+") </div></body></html>");
         console.log(percentVal);
-    },
+    },*/
 	/*complete: function(){
 	  $(".videoBanner").hide();
 	  $(".videoBanner").html('');
 	},	*/
     //target: '#preview-profile-video',
-    success: function(res) { 
+    success: function(res){ 
+		//alert(res);
+		//console.log(res);
         var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
                   $("#preview-profile-video").attr('src',response[1]);
@@ -712,7 +721,7 @@ $(document).ready(function(){
                 $('.addError').html(response[1]); //DISPLAY SUCCESS MESSAGE
                 
               }
-			      }
+	 }
       
        
     }).submit();
