@@ -10,10 +10,10 @@
 </style>
 <!--[Banner Area Start]-->
                          <?php
-                            $session = $this->request->session();
-                            $cuntry_currency = $session->read("currency.currency");
-                            $cuntry_price = $session->read("currency.price");
-                            $cuntry_sign_code = $session->read("currency.sign_code");
+					$session = $this->request->session();
+					$cuntry_currency = $session->read("currency.currency");
+					$cuntry_price = $session->read("currency.price");
+					$cuntry_sign_code = $session->read("currency.sign_code");
                             
 			       @$sh_day_rate = @$userData->user_sitter_services[0]->sh_day_rate != ''?@$userData->user_sitter_services[0]->sh_day_rate:0;
 				   @$sh_night_rate = @$userData->user_sitter_services[0]->sh_night_rate != ''?@$userData->user_sitter_services[0]->sh_night_rate:0;
@@ -41,21 +41,39 @@
               </h4>
               <div class="badage-detail">
                 <ul class="list-inline text-center">
+					
 				  <?php if(($userData['users_badge'])!= ""){
 							
 							if($userData['users_badge']->dl_pcb_badge){?>
 								
-								 <li><img src="<?php echo HTTP_ROOT. 'img/detail-backcheck.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+							 <li>
+								 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+														
+									<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+								</a>
+							</li>
 								
 							<?php	}
 							if($userData['users_badge']->cpr_rescue_badge){?>
-								 <li><img src="<?php echo HTTP_ROOT. 'img/certify-2.png'; ?>" alt="Dl & PCB Badge"	height="20px" width="20px"/></li>
+								 <li>
+									 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+										<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+									</a>
+								 </li>
 							<?php	}
 							if($userData['users_badge']->oral_injucted_badge){?>
-								 <li><img src="<?php echo HTTP_ROOT. 'img/detail_medical.jpg'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+								 <li>
+									 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Administer Medication</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is comfortable to administer oral and injected medication." > 
+										<img src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+									</a>	
+								 </li>
 							<?php	}
 							if($userData['users_badge']->ffo_area_badge){?>
-								 <li><img src="<?php echo HTTP_ROOT. 'img/detail-fence.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+								 <li>
+									 <a href="javascript:void(0)" data-html="true" title="<b>Fully Fenced Area</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has secure fenced garden or backyard." > 
+										<img src="<?php echo HTTP_ROOT. 'img/Picture9.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+									</a>	
+								 </li>
 							<?php	}
 				}?>
 				</ul>
@@ -483,12 +501,29 @@ $i++;
                                                 </div>
                                                 <h5 class="small-title">Specified Skills &nbsp;
                                                   <span>
-                                                    <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
-                                                    </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    <?php if(($userData['users_badge'])!= ""){
+							
+															if($userData['users_badge']->dl_pcb_badge){?>
+																
+															 <i>
+																 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+																						
+																	<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																</a>
+															</i>
+																
+															<?php	}
+															if($userData['users_badge']->cpr_rescue_badge){?>
+																 <i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+																	</a>
+																 </i>
+															<?php	}
+															
+															
+															}
+														?>
                                                   </span>
                                                 </h5>
                                                 <div class="row">
@@ -542,12 +577,28 @@ $i++;
                                                 </div>
                                                 <h5 class="small-title">I have experience with &nbsp;
                                                   <span>
-                                                    <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
-                                                    </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    
+                                                     <?php if(($userData['users_badge'])!= ""){
+							
+															
+															if($userData['users_badge']->cpr_rescue_badge){?>
+																	<i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+																	</a>
+																	</i>
+																 
+															<?php	}
+															if($userData['users_badge']->oral_injucted_badge){?>
+																	<i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Administer Medication</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is comfortable to administer oral and injected medication." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																	</a>	
+																	</i>
+															<?php	}
+															
+													}?>
+                                                    
                                                   </span>
                                                 </h5>
                                                 <div class="row">
@@ -586,12 +637,30 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                              </div>
                                                 <h5 class="small-title">Benefits &nbsp;
                                                   <span>
-                                                    <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
-                                                    </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    
+                                                     <?php if(($userData['users_badge'])!= ""){
+							
+															if($userData['users_badge']->dl_pcb_badge){?>
+																
+															 <i>
+																 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+																						
+																	<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																</a>
+															</i>
+																
+															<?php	}
+															if($userData['users_badge']->cpr_rescue_badge){?>
+																 <i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+																	</a>
+																 </i>
+															<?php	}
+															
+															
+															}?>
+                                                   
                                                   </span>
                                                 </h5>
                                                 <div class="row">
@@ -631,11 +700,18 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                   <?php echo $userData->first_name; ?>'s Home&nbsp;
                                                   <span>
                                                     <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
+                                                      <?php if(($userData['users_badge'])!= ""){
+							
+																if($userData['users_badge']->ffo_area_badge){?>
+																	
+																		 <a href="javascript:void(0)" data-html="true" title="<b>Fully Fenced Area</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has secure fenced garden or backyard." > 
+																			<img src="<?php echo HTTP_ROOT. 'img/Picture9.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																		</a>	
+																	 
+																<?php	}
+													}?>
                                                     </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    
                                                   </span>
                                                 </h5>
                                                 <div class="row">
@@ -714,7 +790,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space4.jpg" class="img-responsive responsivept15" alt="client1"> </div>
 </div>-->  
-                                            <?php if(!empty($userData->user_pets[0]->user_pet_galleries)){ ?>
+                                            <?php if(!empty($user_pets->user_pets[0]->user_pet_galleries)){ ?>
                                             
                                               <div class="one">
                                                 <div class="border-bot pt30">
@@ -2497,7 +2573,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                       </section>
                                                     <!-- Get in Touch ends-->
                                                     <!--[Fun News]-->
-                                                    <?php echo $this->element('frontElements/guests/fun_and_news'); ?>
+                                                    <?php echo $this->element('frontElements/guests/services_on_footer'); ?>
                                                     <!--<section class="fun-news">
                                                       <div class="fn-bot">
                                                         <ul>
@@ -3459,4 +3535,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
         }
         //End
     });
+
+	$(document).ready(function(){
+		$('[data-toggle="popover"]').popover();
+	});
 </script>
