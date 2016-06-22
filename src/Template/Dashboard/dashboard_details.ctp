@@ -240,7 +240,12 @@
                 </div>
               </div>
               <div  id="event1" class="below-second-box collapse in" aria-expanded="true">
-                <div class=""> <img src="<?php echo HTTP_ROOT; ?>img/calender-big2.png" class="img-responsive" style="width:100%; height:335px;" alt="calender"> </div>
+                <div class="">
+					 <!--<img src="<?php echo HTTP_ROOT; ?>img/calender-big2.png" class="img-responsive" style="width:100%; height:335px;" alt="calender"> -->
+					 
+					  <div id="myCalenderBooking"><?php echo $this->element('frontElements/Search/calender');?></div>
+					 
+					 </div>
                 <div class="padd-left-15 padd-right-15 border-top">
                   <div class="row calender-widget">
                     <div class="col-md-6 col-sm-6 col-xs-6">

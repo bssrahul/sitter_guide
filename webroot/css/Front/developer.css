@@ -737,3 +737,6 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 	}
 
 }
+div#myCalenderBooking > div#calendar ul.dates li {
+  height: 53px !important;
+}
