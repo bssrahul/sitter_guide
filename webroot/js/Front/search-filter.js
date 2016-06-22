@@ -278,6 +278,7 @@
 			success:function(res)
 			{
 			  $(".searchRes").html(res);
+			  $('[data-toggle="popover"]').popover();
 			}
 		  });
 
