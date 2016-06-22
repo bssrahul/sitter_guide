@@ -243,7 +243,8 @@
                 <div class="">
 					 <!--<img src="<?php echo HTTP_ROOT; ?>img/calender-big2.png" class="img-responsive" style="width:100%; height:335px;" alt="calender"> -->
 					 
-					  <div id="myCalenderBooking"><?php echo $this->element('frontElements/Search/calender');?></div>
+					  <div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?>
+					  </div>
 					 
 					 </div>
                 <div class="padd-left-15 padd-right-15 border-top">

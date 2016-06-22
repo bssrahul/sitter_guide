@@ -360,6 +360,7 @@ class GuestsController extends AppController
 					$with = array($name,$getUserData->email, $linkOnMail);
 					
 					$this->send_email('',$replace,$with,'forgot_password',$getUserData->email);		
+					
 				        echo 'Success:'.$this->stringTranslate(base64_encode("Email has been sent to your email address"));
 						$this->setSuccessMessage($this->stringTranslate(base64_encode('Password reset link has been sent over registered email address.')));
 	                    die;			     

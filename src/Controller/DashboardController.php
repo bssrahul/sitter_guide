@@ -578,26 +578,25 @@ class DashboardController extends AppController
 	}
  	public function ajaxCalendarBooking()
     {
-
-			$Session=$this->request->session();
-			$user_id=$Session->read('User.id');
-			//pr($user_id);die;
-			//$this->viewBuilder()->layout('profile_dashboard');
-			$calendarModel=TableRegistry :: get("user_sitter_availability");
-			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+            $Session=$this->request->session();
+			$userId=$Session->read('User.id');
+			
+			$bookingModel = TableRegistry :: get("BookingRequests");
+			$bookingData = $bookingModel->find('all')->where(['user_id'=>$userId])->toArray();
 			
 			
-			$unavailbe_array=array();
-			foreach($calenderData as $k=>$UserServices){
+			$booking_arr = array();
+			foreach($bookingData as $k=>$user_booking){
 				
-				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
-				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
-				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+				$booking_arr[$k]["start_date"]= $user_booking->booking_start_date;
+				$booking_arr[$k]["end_date"]= $user_booking->booking_end_date;
+				$booking_arr[$k]["avail_status"]= $user_booking->status;
 			}
 		
 		$calendar = new  \Calendarbooking();
-
-		$this->set('calender',$calendar->show($unavailbe_array));
+       //pr($calendar->show($booking_arr));die;
+		$this->set('calender',$calendar->show($booking_arr));
+		
 		//$this->render("ajax_calendar");
       // pr($calendar->show($unavailbe_array));die;
     }
