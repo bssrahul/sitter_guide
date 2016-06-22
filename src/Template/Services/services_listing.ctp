@@ -54,7 +54,7 @@
 						<?php 
 						$languageSession = $this->request->session();
 						if($languageSession->read('requestedLanguage')=='en'){ ?>	
-						<a style="float:right" href="<?php echo HTTP_ROOT.'services/add-services'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Services')); ?></button></a>
+						<!--<a style="float:right" href="<?php echo HTTP_ROOT.'services/add-services'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Services')); ?></button></a>-->
 						<?php } ?>	
 						</h2>
                     <div class="clearfix"></div>

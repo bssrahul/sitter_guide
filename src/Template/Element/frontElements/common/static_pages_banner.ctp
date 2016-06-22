@@ -16,7 +16,7 @@
 																<input type="hidden" name="cat_id" class="form-control" value="<?php if(!empty($cat_id)){echo $cat_id ;}?>">
 																<input type="hidden" name="type_id" class="form-control" value="<?php if(!empty($type_id)){echo $type_id ;}?>">
 																<span class="input-group-btn">
-																	<button class="btn btn-default" type="submit" ><img src="images/help-search.png"  alt="search"></button>
+																	<button class="btn btn-default" type="submit" ><img src="<?php echo HTTP_ROOT; ?>img/help-search.png"  alt="search"></button>
 																</span>
 															
 													</div><!-- /input-group -->

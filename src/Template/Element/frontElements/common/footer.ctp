@@ -43,9 +43,9 @@
                                     <li><a href="#" title=" Insurance & Refunds"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Insurance & Refunds')); ?></a> </li>
                                     
                                     
-                                    <li><a href="#" title="House Rules"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Rules')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT.'house-rules'; ?>" title="House Rules"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Rules')); ?></a> </li>
                                     <li><a href="<?php echo HTTP_ROOT.'safety'; ?>" title="Safety"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Safety')); ?></a> </li>
-                                    <li><a href="#" title="Benefits of sittings"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Benefits of sittings')); ?></a> </li>
+                                    <li><a href="<?php echo HTTP_ROOT.'benefits'; ?>" title="Benefits of sittings"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Benefits of sittings')); ?></a> </li>
                                    
                                 </ul>
                                
