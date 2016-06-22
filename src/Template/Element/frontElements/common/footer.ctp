@@ -1,5 +1,5 @@
 <!--[Footer Start]-->
-  <footer class="foot-wrap">
+  <footer class="foot-wrap" id="footer">
       <!--top foot-->
       <div class="top-foot">
           <div class="container">

@@ -141,27 +141,41 @@
 											   </a>
 											
 											   
+											   
 											   <?php if(($results['users_badge'])!= ""){
 													if($results['users_badge']->dl_pcb_badge){?>
 														
-														<b><img src="<?php echo HTTP_ROOT. 'img/detail-backcheck.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></b>
+														<b>
+															<a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+														
+																<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+															</a>
+														</b>
 														
 													<?php	}
 													if($results['users_badge']->cpr_rescue_badge){?>
-														<b><img src="<?php echo HTTP_ROOT. 'img/certify-2.png'; ?>" alt="Dl & PCB Badge"	height="20px" width="20px"/></b>
+														<b>
+															<a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+															</a>
+														</b>
 													<?php	}
 													if($results['users_badge']->oral_injucted_badge){?>
-														<b><img src="<?php echo HTTP_ROOT. 'img/detail_medical.jpg'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></b>
+														<b>
+															<a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Administer Medication</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is comfortable to administer oral and injected medication." > 
+																<img src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+															</a>	
+														</b>
 													<?php	}
 													if($results['users_badge']->ffo_area_badge){?>
-														<b><img src="<?php echo HTTP_ROOT. 'img/detail-fence.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></b>
+														<b>
+															<a href="javascript:void(0)" data-html="true" title="<b>Fully Fenced Area</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has secure fenced garden or backyard." > 
+																<img src="<?php echo HTTP_ROOT. 'img/Picture9.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+															</a>	
+														</b>
 													<?php	}
 											}?>
-											   
-											   
-											   
-											 
-												
+											   											   
 											</p>
 											
 											<p class="about-sit"><?php echo (@$results->user_about_sitter->your_self !="")?@$results->user_about_sitter->your_self:"Profile headline not set yet"; ?>  </p>
@@ -413,7 +427,7 @@
 											</a>
 										<?php } ?>
 										<div class="Title_sub likeLoader" style="display:none;position: relative; float: right; right: 30px; bottom: 3px;"> 
-											<img src="<?php echo HTTP_ROOT.'img/loader.gif' ?>"> 
+											<img src="<?php echo HTTP_ROOT; ?>img/ajax_wait.gif"> 
 										</div>
 																  
 								  </div>
@@ -427,7 +441,8 @@
 						} ?>
 			
 
-                
+						<?php echo $this->element("frontElements/common/static_search_content"); ?>
+               
               </ul>
               <?php }else{ ?>
 				<div class="noresult-found">
@@ -456,7 +471,7 @@
           </div>
           
 			<!--[Right Map Start]-->
-            <div class="sl-map">            	
+            <div class="sl-map leftsidebar">            	
             	<!--<div class="enlarge-map">
                 	<div class="row">
                     	<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12"> 
@@ -472,7 +487,7 @@
 				  $map_options = array(
 					'id' => 'map_canvas',
 					'width' => '100%',
-					'height' => '1180px',
+					'height' => '768px',
 					'style' => '',
 					'zoom' => 6,
 					'type' => 'ROADMAP',

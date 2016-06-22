@@ -243,3 +243,5 @@ define('CAPTCHA_SECRET_KEY','6Lfb9hkTAAAAAD6E1bi7D7mZ9oDXsDQfoT3yMgfW');
 
 
 ini_set('intl.default_locale', 'en_US');
+
+define("DEFAULT_RADIUS",200);

@@ -41,7 +41,7 @@
 				});
 			});
 		</script>
-<!-- Right side column. Contains the navbar and content of the page -->
+<!-- Right side column. Contains the navbar & content of the page -->
 <div class="">
  
 	
@@ -99,17 +99,17 @@
 									<?php if(($user_info['users_badge'])!= ""){
 											if($user_info['users_badge']->dl_pcb_badge){?>
 												
-												<img src="<?php echo HTTP_ROOT. 'img/detail-backcheck.png'; ?>" alt="Dl & PCB Badge" height="30px" width="30px"/>
+												<img title="This sitter has successfully passed a basic background check by a third party provider." src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
 												
 									<?php	}
 											if($user_info['users_badge']->cpr_rescue_badge){?>
-												<img src="<?php echo HTTP_ROOT. 'img/certify-2.png'; ?>" alt="Dl & PCB Badge"	height="30px" width="30px"/>
+												<img title="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
 									<?php	}
 											if($user_info['users_badge']->oral_injucted_badge){?>
-												<img src="<?php echo HTTP_ROOT. 'img/detail_medical.jpg'; ?>" alt="Dl & PCB Badge" height="30px" width="30px"/>
+												<img title="This sitter is comfortable to administer oral and injected medication." src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
 									<?php	}
 											if($user_info['users_badge']->ffo_area_badge){?>
-												<img src="<?php echo HTTP_ROOT. 'img/detail-fence.png'; ?>" alt="Dl & PCB Badge" height="30px" width="30px"/>
+												<img title="This sitter has secure fenced garden or backyard." src="<?php echo HTTP_ROOT. 'img/Picture9.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
 									<?php	}
 									}?>
 									
@@ -138,8 +138,9 @@
 									
 									<td style="width:150px;">
 									<?php
-											/* For Driving and Police background*/
+											/* For Driving & Police background*/
 										 $UPA_Data=$user_info->user_professional_accreditations;
+										 
 										$dl=0;
 										$pbc=0;
 										foreach($UPA_Data as $UPA_data){
@@ -156,28 +157,28 @@
 												
 																							
 										}  
-										/* End of Driving and Police background*/
+										/* End of Driving & Police background*/
 									
 									?>
 										<?php if(($user_info['users_badge'])!= ""){?>
 										
 											<?php 	if( $dl == 1 && $pbc == 1 ){ ?>
 											
-													<a title="<?php echo($user_info['users_badge']->dl_pcb_badge == 0?'Check Driving licence and Police Check BackGround badge':'Uncheck Driving licence and Police Check BackGround badge') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='dl_pcb_badge'.'/'.$target[$user_info['users_badge']->dl_pcb_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->dl_pcb_badge ==0?'-o':'') ?>"></span></a>
+													<a title="<?php echo($user_info['users_badge']->dl_pcb_badge == 0?'Check Driving licence & Police Check BackGround badge':'Uncheck Driving licence & Police Check BackGround badge') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='dl_pcb_badge'.'/'.$target[$user_info['users_badge']->dl_pcb_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->dl_pcb_badge ==0?'-o':'') ?>"></span></a>
 												
-											<?php  echo "Driving licence and Police Check BackGround badge </br></br>"; } ?>
+											<?php  echo "Driving licence & Police Check BackGround badge </br></br>"; } ?>
 											
 											<?php if((!empty($user_info->user_professional_accreditations_details[0]->cpr_for)) && (!empty($user_info->user_professional_accreditations_details[0]->ex_rescue_pets )) ){?>
 											
-													<a title="<?php echo($user_info['users_badge']->cpr_rescue_badge == 0?'Check Knowledge of CRP and Experience of rescue pets':'Uncheck Knowledge of CRP and Experience of rescue pets') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='cpr_rescue_badge'.'/'.$target[$user_info['users_badge']->cpr_rescue_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->cpr_rescue_badge ==0?'-o':'') ?>"></span></a>
+													<a title="<?php echo($user_info['users_badge']->cpr_rescue_badge == 0?'Check Knowledge of CRP & Experience of rescue pets':'Uncheck Knowledge of CRP & Experience of rescue pets') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='cpr_rescue_badge'.'/'.$target[$user_info['users_badge']->cpr_rescue_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->cpr_rescue_badge ==0?'-o':'') ?>"></span></a>
 												
-												<?php echo "Knowledge of CRP and Experience of rescue pets </br></br> "; }?>
+												<?php echo "Knowledge of CRP & Experience of rescue pets </br></br> "; }?>
 													
 										<?php if(!empty($user_info->user_professional_accreditations_details[0]->oral_madications) && ($user_info->user_professional_accreditations_details[0]->oral_madications == 1 ) && ($user_info->user_professional_accreditations_details[0]->injected_madications == 1 ) ){?>
 													
-													<a title="<?php echo($user_info['users_badge']->oral_injucted_badge == 0?'Check Knowledge of oral and  injected medication':'Uncheck Knowledge of oral and injected medication') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='oral_injucted_badge'.'/'.$target[$user_info['users_badge']->oral_injucted_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->oral_injucted_badge ==0?'-o':'') ?>"></span></a>
+													<a title="<?php echo($user_info['users_badge']->oral_injucted_badge == 0?'Check Knowledge of oral &  injected medication':'Uncheck Knowledge of oral & injected medication') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='oral_injucted_badge'.'/'.$target[$user_info['users_badge']->oral_injucted_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->oral_injucted_badge ==0?'-o':'') ?>"></span></a>
 													
-													<?php echo " Knowledge of oral and  injected medication </br></br>"; }?>
+													<?php echo " Knowledge of oral &  injected medication </br></br>"; }?>
 											
 											
 											
@@ -217,7 +218,9 @@
 												<a title="<?php echo($user_info['users_badge']->behavioural_problem == 0?'Fill Experience of behavioural problems':'Unfill Experience of behavioural problems') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='behavioural_problem'.'/'.$target[$user_info['users_badge']->behavioural_problem];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->behavioural_problem ==0?'-o':'') ?>"></span></a> -->
 												
 												
-										<?php }?>			 								  
+										<?php }else{
+												echo "<em style='color:#FC6C2D'>Required fields not yet set</em>";
+										}?>			 								  
 									</td>
 								<!--	<td>
 											<a title="Download Skill Documents" href="<?php echo HTTP_ROOT.'users/download-skill-documents'?>"> Download Skill Documents </a>

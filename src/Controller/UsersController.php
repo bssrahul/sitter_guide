@@ -627,7 +627,7 @@ class UsersController extends AppController
 		$UsersModel = TableRegistry::get("Users");
 		$Userdata=$UsersModel->find('all')->contain(['Users_badge','UserProfessionalAccreditationsDetails','UserProfessionalAccreditations','UserSitterHouses'])->toArray();
 		
-		//pr($Userdata);die;
+		
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UsersModel);
 		//CODE FOR MULTILIGUAL END

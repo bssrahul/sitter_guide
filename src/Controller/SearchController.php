@@ -63,6 +63,7 @@ class SearchController extends AppController
 		
 		
     }
+   
     public function initialize()
     {
 
@@ -112,11 +113,10 @@ class SearchController extends AppController
 			//SET CONDITION FOR TOP TAB SELECTED (TABLE NAME : users_sitter_services)
 			if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'house_sitting')){
 				
-				$or_condition = array_merge($or_condition,array('UserSitterServices.sitter_house_status=1'));
 				$or_condition = array_merge($or_condition,array('UserSitterServices.guest_house_status=1'));
 			
 			}
-			else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'drop_visit' || $this->request->data['Search']['selected_service'] == 'bording')){
+			else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'drop_visit')){
 				
 				$or_condition = array_merge($or_condition,array('UserSitterServices.gh_drop_in_visit_status=1'));
 			
@@ -129,6 +129,9 @@ class SearchController extends AppController
 				
 			}else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'marketplace')){
 				$or_condition = array_merge($or_condition,array('UserSitterServices.market_place_status=1'));
+            }
+            else if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'bording')){
+				$or_condition = array_merge($or_condition,array('UserSitterServices.sitter_house_status=1'));
             }
 
 
@@ -157,7 +160,7 @@ class SearchController extends AppController
 				}
 			}
 		
-			
+
 			if(isset($this->request->data['Search']['dog_size']) && ($this->request->data['Search']['dog_size'] != '')){
 				
 				$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$this->request->data['Search']['dog_size'].'", UserAboutSitters.sh_pet_sizes)'));
@@ -165,7 +168,7 @@ class SearchController extends AppController
 			
 			}
 			
-            //pr($or_condition);die;
+          
 			if(!empty($or_condition)){
 				$final_OR_Conditions = implode(" OR ",$or_condition); 
 				$where_finalConditions = 'WHERE ('.$final_OR_Conditions.")";
@@ -174,7 +177,7 @@ class SearchController extends AppController
 			}
 			
 			if(!empty($and_condition)){
-				$final_AND_Conditions = implode(" OR ",$and_condition); 
+				$final_AND_Conditions = implode(" AND ",$and_condition); 
 				$where_finalConditions .= ' OR ('.$final_AND_Conditions.")";
 			}else{
 				$where_finalConditions='';
@@ -205,7 +208,7 @@ class SearchController extends AppController
 
 		
 			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:"200";
-			
+			//echo $where_finalConditions; die;
 			$query='SELECT
 						  Users.id, (
 							3959 * acos (
@@ -250,17 +253,26 @@ class SearchController extends AppController
 						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
-				
-				$userData = $UsersModel->find('all',['contain'=>[
-														'UserAboutSitters',
-														'UserRatings',
-														'UserSitterServices',
-														'UserSitterGalleries'
-														]
-													]
-											)
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
+							   
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
+				
+				if(!empty($userData)){
+					$customArray=array();
+					foreach($userData as $arrK=>$arrayAdjust){
+						
+						if(isset($arrayAdjust['user_sitter_services']) && !empty($arrayAdjust['user_sitter_services'])){
+							$customArray[] = $arrayAdjust;
+						}else{
+							unset($userData[$arrK]);
+						}
+					}	
+				}
+				$userData = $customArray;
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX END*/
+				
 				$loggedInUserID = $session->read('User.id');
 				if($loggedInUserID !=''){
 					if(!empty($userData)){
@@ -577,16 +589,26 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>[
-														'UserAboutSitters',
-														'UserRatings',
-														'UserSitterServices',
-														'UserSitterGalleries'
-														]
-													]
-											)
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
+							   
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
+				
+				if(!empty($userData)){
+					$customArray=array();
+					foreach($userData as $arrK=>$arrayAdjust){
+						
+						if(isset($arrayAdjust['user_sitter_services']) && !empty($arrayAdjust['user_sitter_services'])){
+							$customArray[] = $arrayAdjust;
+						}else{
+							unset($userData[$arrK]);
+						}
+					}	
+				}
+				$userData = $customArray;
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX END*/
+							   
 				$loggedInUserID = $session->read('User.id');
 				if($loggedInUserID !=''){
 					if(!empty($userData)){
@@ -668,17 +690,19 @@ class SearchController extends AppController
 	*/
 	function searchByLocation(){
 		
-		$this->viewBuilder()->layout('landing');
+		$this->viewBuilder()->layout('landing'); /*CALL LAYOUT*/
+		
+		/*SET SESSION VARIABLES*/
 		$session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
 		$userId = $session->read('User.id');
 		
-		//ADD MODEL
+		/*ADD MODEL*/
 		$UsersModel = TableRegistry::get('Users');
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
 		$conditions = array();
 		
-		//$userPetInfo = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);
+		/*GET USER PETS FOR DISPLAY ON FORM*/
 		$userPetInfo = $UsersModel->find('all',['contain'=>[
 														'UserPets'
 											]]
@@ -691,20 +715,21 @@ class SearchController extends AppController
 		   $this->set('guests_Info','');
 		}	
 					   
-	     //pr($userPetInfo[0]->user_pets[0]->user_pet_galleries);die;
 	    
-		if(!empty($this->request->data)){
+	    if(!empty($this->request->data)){
 			
-			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:"100";
-			//pr($requiredDistance);die;
+			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:DEFAULT_RADIUS;
+		
 			if($this->request->data['location_autocomplete_lat_long'] !=""){
+		
 				//EXPLODE LATITUDE LONGITUDE FROM SELECTED LOCATION
-				
 				$sourceSelectedLocation = str_replace(array("(",")"), array("",""), $this->request->data['location_autocomplete_lat_long']);
 				$explodedArrayOfSourceLocation = explode(",",$sourceSelectedLocation);
 				$sourceLocationLatitude = $explodedArrayOfSourceLocation[0];
 				$sourceLocationLongitude = $explodedArrayOfSourceLocation[1];
+			
 			}else{
+				
 				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
 				$sourceSelectedLocation = $this->request->data['location_autocomplete'];
 				
@@ -721,7 +746,7 @@ class SearchController extends AppController
 				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
 				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
 			}
-		
+			/*FIND USER ID AND DISTANCE AS PER SELECTDE LOCATION*/
 			$query='SELECT
 						  id, (
 							3959 * acos (
@@ -733,8 +758,9 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
-						HAVING distance < 300
+						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
+						
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
 			
@@ -750,13 +776,35 @@ class SearchController extends AppController
 				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
+				
 				$loggedInUserID = $session->read('User.id');
+				
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
+				
+				if(!empty($userData)){
+					$customArray=array();
+					foreach($userData as $arrK=>$arrayAdjust){
+						
+						if(isset($arrayAdjust['user_sitter_services']) && !empty($arrayAdjust['user_sitter_services'])){
+							$customArray[] = $arrayAdjust;
+						}else{
+							unset($userData[$arrK]);
+						}
+					}	
+				}
+				$userData = $customArray;
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX END*/
+				
 				if($loggedInUserID !=''){
 					if(!empty($userData)){
 						foreach($userData as $k=>$eachRow){
+							
+							if(isset($eachRow['user_sitter_services']) && !empty($eachRow['user_sitter_services'])){
+								//echo $eachRow->id."<hr><br/>";
+							}
 								
 							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
-							//pr($UserSitterFavourite);die;
+							
 							if($UserSitterFavourite > 0){
 								$userData[$k]['is_favourite'] =  "yes";
 							}else{
@@ -766,21 +814,17 @@ class SearchController extends AppController
 						}	 
 					}
 				}
+			
 			}
 	
-		$this->set('resultsData',@$userData);
-		$this->set('distanceAssociation',@$distanceAssociation);
-		$this->set('sourceLocationLatitude',$sourceLocationLatitude);
-		$this->set('sourceLocationLongitude',$sourceLocationLongitude);
-		$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
-		
-		
+			$this->set('resultsData',@$userData);
+			$this->set('distanceAssociation',@$distanceAssociation);
+			$this->set('sourceLocationLatitude',$sourceLocationLatitude);
+			$this->set('sourceLocationLongitude',$sourceLocationLongitude);
+			$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
 		
 		}
-		
 		$this->render("search");
-		
-		
 		
 	}
 	
@@ -842,10 +886,28 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings','UserSitterServices','UserSitterGalleries']])
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
+							   
 				$loggedInUserID = $session->read('User.id');
+				
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
+				
+				if(!empty($userData)){
+					$customArray=array();
+					foreach($userData as $arrK=>$arrayAdjust){
+						
+						if(isset($arrayAdjust['user_sitter_services']) && !empty($arrayAdjust['user_sitter_services'])){
+							$customArray[] = $arrayAdjust;
+						}else{
+							unset($userData[$arrK]);
+						}
+					}	
+				}
+				$userData = $customArray;
+				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX END*/
+				
 				if($loggedInUserID !=''){
 					if(!empty($userData)){
 						foreach($userData as $k=>$eachRow){
@@ -1000,6 +1062,9 @@ class SearchController extends AppController
 						
 					}
 			}
+			
+			
+			
 			$this->set('nearbyUsers',$getUsersArr);	
 			$this->set('loggedInUserID',$loggedInUserID);	
 		   $this->set('userData',$userData);
@@ -1043,6 +1108,7 @@ class SearchController extends AppController
 	/**
     Function for booking requests
 	*/	
+	
 	function sitterContact($sitterId = null){
 		$sitterId = convert_uudecode(base64_decode($sitterId));
         
@@ -1085,6 +1151,7 @@ class SearchController extends AppController
 
 		}
 	}
+	
 	/**
 	 Function for Thank you message
 	*/
@@ -1135,10 +1202,6 @@ class SearchController extends AppController
 	}
 	
 	/*weekend calender */
-	
-	
-	
-	
 	public function ajaxCalendar()
     {
 
