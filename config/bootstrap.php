@@ -234,6 +234,8 @@ define('PASSWORD_SENT','Password has been sent to your email address!');
 define('SITE_OWNER_EMAIL','mike@razznation.com');
 define('CURRENT_YEAR',date("Y"));
 
+define("DEFAULT_RADIUS",30000);
+
 define('FACEBOOK_APP_ID','454914014707243');
 define('FACEBOOK_SECRET','7c9f4f1a98ebb97072b7ccb093cbc7b3');
 
@@ -244,4 +246,4 @@ define('CAPTCHA_SECRET_KEY','6Lfb9hkTAAAAAD6E1bi7D7mZ9oDXsDQfoT3yMgfW');
 
 ini_set('intl.default_locale', 'en_US');
 
-define("DEFAULT_RADIUS",200);
+

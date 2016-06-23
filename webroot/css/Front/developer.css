@@ -537,6 +537,26 @@ topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
     top: 200px;
     
 }
+.ajax_overlay_day {
+    background: #fff none repeat scroll 0 0;
+    height: 97%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94.5%;
+    display:none;
+    z-index:99999;
+    margin:0 auto;
+    text-align:center;
+    opacity:0.5px;
+}
+
+.ajax_overlay_day img {
+    
+    position: relative;
+    top: 200px;
+    
+}
 .ui-widget-header {
     background: none !important;
     border: 1px solid #d4ccb0;
