@@ -2219,12 +2219,28 @@ function addPets(){
 	
 	public function calendar()
     {
-			
+		
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 		$this->viewBuilder()->layout('profile_dashboard');
 		$calendarModel=TableRegistry :: get("user_sitter_availability");
+		
 		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+		
+		/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
+		
+		$availDaysModel=TableRegistry :: get("user_sitter_availability_days");
+		$calenderAvailValData=$availDaysModel->find('all')->select('available_days')->where(['user_id'=>$user_id])->hydrate(false)->first();
+		if(!empty($calenderAvailValData)){
+			$availblityDaysOfSitter = explode(",",$calenderAvailValData['available_days']);
+			$this->set('avail_days',$availblityDaysOfSitter);
+		}else{
+			$availblityDaysOfSitter = array();
+			$this->set('avail_days',$availblityDaysOfSitter);
+		}
+		
+		/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC END*/
+		
 		$calenderLastModifiedData=$calendarModel->find('all',['order' => ['id' => 'DESC']])->where(['user_id'=>$user_id])->limit(1)->toArray();
 		$lastmodifieddate=array();
 		foreach($calenderLastModifiedData as $calenderLastModified){
@@ -2262,10 +2278,11 @@ function addPets(){
 		
 		$calendar = new  \Calendar();
 
-		$this->set('calender',$calendar->show($services_array,$unavailbe_array));
+		$this->set('calender',$calendar->show($services_array,$unavailbe_array,$availblityDaysOfSitter));
 		$this->set('services_array',$services_array);
+		
     }
-
+	
 	public function setLimit(){
 		
 		$Session=$this->request->session();
@@ -2348,10 +2365,26 @@ function addPets(){
 			$services_array["visits_limit"]= $UserServices->visits_limit;
 			$services_array["markeplace_limit"]= $UserServices->hourly_services_limit;
 		}
+		
+		/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
+		
+		$availDaysModel=TableRegistry :: get("user_sitter_availability_days");
+		$calenderAvailValData=$availDaysModel->find('all')->select('available_days')->where(['user_id'=>$user_id])->hydrate(false)->first();
+		if(!empty($calenderAvailValData)){
+			$availblityDaysOfSitter = explode(",",$calenderAvailValData['available_days']);
+			$this->set('avail_days',$availblityDaysOfSitter);
+		}else{
+			$availblityDaysOfSitter = array();
+			$this->set('avail_days',$availblityDaysOfSitter);
+		}
+		
+		/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC END*/
+		
         $calendar = new  \Calendar();
-        $this->set('calender',$calendar->show($services_array,$unavailbe_array));
+        $this->set('calender',$calendar->show($services_array,$unavailbe_array,$availblityDaysOfSitter));
 
     }
+    
     public function searchResultsFavourites(){
 		$session = $this->request->session();
         $userId = $session->read('User.id');
@@ -2430,6 +2463,33 @@ function addPets(){
 				}
 			
 		} 
+	}
+	
+	function setAvailablityDay(){
+		$session = $this->request->session();
+        $userId = $session->read('User.id');
+        
+        $UserSitterAvailabilityDayModel = TableRegistry::get('user_sitter_availability_days');
+		
+		$userAvailablity = $UserSitterAvailabilityDayModel->find('all')
+												   ->where(['user_sitter_availability_days.user_id' => $userId]);
+									   
+		$userAvailData = $userAvailablity->first();
+		
+		$UserSitterAvailabilityDayModelData = $UserSitterAvailabilityDayModel->newEntity();
+		
+		$UserSitterAvailabilityDayModelData->available_days = $_REQUEST['selectedDay'];
+		$UserSitterAvailabilityDayModelData->user_id = $userId;
+		$UserSitterAvailabilityDayModelData->id =  $userAvailData->id;
+		
+		if($UserSitterAvailabilityDayModel->save($UserSitterAvailabilityDayModelData)){
+			echo "success";	
+		}else{
+			echo "failed";	
+		}
+		die;
+	   
+        
 	}
 	
 	
