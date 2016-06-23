@@ -1711,6 +1711,24 @@ function addPets(){
 						   
 						   $usersModel->save($UserData);
 						   $session->write('User.user_type','Sitter');
+							
+							
+							$UserSitterAvailabilityDayModel = TableRegistry::get('user_sitter_availability_days');
+							$userAvailablityCount = $UserSitterAvailabilityDayModel->find('all')
+																	   ->where(['user_sitter_availability_days.user_id' => $userId])
+																	    ->count();
+														   
+							if($userAvailablityCount < 1){
+								
+								$UserSitterAvailabilityDayModelData = $UserSitterAvailabilityDayModel->newEntity();
+								
+								$UserSitterAvailabilityDayModelData->available_days = 'sunday,monday,tuesday,wednesday,thursday,friday,saturday';
+								$UserSitterAvailabilityDayModelData->user_id =  $userId;
+								
+								$UserSitterAvailabilityDayModel->save($UserSitterAvailabilityDayModelData);
+							}   
+							
+						
 						}else{
 						   $UserData = $usersModel->newEntity();
 						   $UserData->id =  $userId;
@@ -1859,6 +1877,23 @@ function addPets(){
 				   
 				   $usersModel->save($UserData);
 				   $session->write('User.user_type','Sitter');
+				   
+				   
+					$UserSitterAvailabilityDayModel = TableRegistry::get('user_sitter_availability_days');
+					$userAvailablityCount = $UserSitterAvailabilityDayModel->find('all')
+															   ->where(['user_sitter_availability_days.user_id' => $userId])
+																->count();
+												   
+					if($userAvailablityCount < 1){
+						
+						$UserSitterAvailabilityDayModelData = $UserSitterAvailabilityDayModel->newEntity();
+						
+						$UserSitterAvailabilityDayModelData->available_days = 'sunday,monday,tuesday,wednesday,thursday,friday,saturday';
+						$UserSitterAvailabilityDayModelData->user_id =  $userId;
+						
+						$UserSitterAvailabilityDayModel->save($UserSitterAvailabilityDayModelData);
+					}  
+					
 				}else{
 				   $UserData = $usersModel->newEntity();
 				   $UserData->id =  $userId;
