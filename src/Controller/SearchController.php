@@ -966,7 +966,7 @@ class SearchController extends AppController
                $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
                 $bookingRequestData->user_id = $userId;
                 $bookingRequestData->sitter_id = $sitter_id;
-                $bookingRequestData->booking_start_date = $this->request->data['BookingRequests']['booking_start_date'];
+                $bookingRequestData->booknig_start_date = $this->request->data['BookingRequests']['booking_start_date'];
                 $bookingRequestData->booking_end_date = $this->request->data['BookingRequests']['booking_end_date'];
                 if ($bookingRequestsModel->save($bookingRequestData)){
                 	

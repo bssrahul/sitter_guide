@@ -251,24 +251,7 @@
 						  </div>
 						</div> 
 					</div>
-
-                  <!--  <div class="form-group col-lg-8">
-                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>
-                      <?php echo $this->Form->input('UserAboutSitters.gh_pet',[
-                        'templates' => ['inputContainer' => '{{content}}'],
-                        'label' => false,
-                         'required' => false,
-                        'type'=>'select',
-                        'options'=>[''=>'---','small_pets'=>'I accept small pets(0-7kg)','medium_pets'=>'I accept Medium pets (8-18kg)','large_pets'=>'I accept Large dogs (18-45kg)','gaint_dogs'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
-                        'class'=>'form-control'
-                        ]);
-                      ?>
-                    </div>
-
-                      
-                    </div>-->
-                    
-					 <div class="row">
+                    <div class="row">
                         <div class="form-group">
 						   <div class="form-group col-lg-8">
 								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>						
@@ -276,31 +259,7 @@
 						  </div>
 						</div> 
 					</div>
-					
-					
-					
-                  <!--  <div class="row">
-                      <?php if(!empty(@$sitter_info->gh_pet_sizes)){
-                         $ghSizeArr = explode(",",@$sitter_info->gh_pet_sizes);
-                    } 
-                    ?>
-                      <div class="form-group col-lg-8">
-                        <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
-                      <?php echo $this->Form->input('UserAboutSitters.gh_pet_sizes',[
-                        'templates' => ['inputContainer' => '{{content}}'],
-                        'label' => false,
-                         'required' => false,
-                        'type'=>'select',
-                        'value'=>@$ghSizeArr,
-                        'options'=>[''=>'---','small_pets'=>'I accept small pets(0-7kg)','medium_pets'=>'I accept Medium pets (8-18kg)','large_pets'=>'I accept Large dogs (18-45kg)','gaint_dogs'=>'I accept Giant dogs (45+kg)','cats'=>'I accept cats','puppies_under_1_year'=>'I accept puppies under 1 year','kittens_under_1_year'=>'I accept kittens under 1 year','ferrets'=>'I accept ferrets','small_animals'=>'I accept small animals (rodents, rabbits birds…)','other'=>'Other (specify)','any'=>'Any'],
-                        'class'=>'form-control mmm',
-                        'multiple'=>"true"
-                        ]);
-                      ?>
-                      </div>
-                    </div> -->
-							
-                    <div class="row">
+					<div class="row">
                       <div class="form-group col-lg-8">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?>  </label>
                       <?php echo $this->Form->input('UserAboutSitters.gh_guest_age',[
@@ -418,10 +377,8 @@
   /*For add multiple profile photos*/
 $(document).ready(function(){
     $('#images').on('change',function(){
-      //alert("okokok");
-        jQuery('#multiple_upload_form').ajaxForm({
+      jQuery('#multiple_upload_form').ajaxForm({
             //display the uploaded images
-            //alert("okokok");
             target:'#images_preview',
             beforeSubmit:function(e){
                 $('.uploading').show();
@@ -535,7 +492,6 @@ function wprdCount(id){
 				array("value"=>"labrador_retriever","label"=>" Labrador Retriever"),
 				);
 				$petjsonval = json_encode($pettypeArr);
-				//pr($sizeArr);
 				if(!empty($sizeArr)){
 						$newArr=explode(",",$sizeArr);
 						$mainArray=array();
@@ -548,11 +504,8 @@ function wprdCount(id){
 										$mainArray[]=array("value"=>$new,"label"=>$new2);
 								}
 						}
-						//pr($mainArray);
 						$editJsonArr=json_encode($mainArray);
-						//pr($editJsonArr);
 				}	
-				pr($testArr);
 				if(!empty($ghSizeArr)){
 					$ghmainArray=array();
 					foreach($testArr as $key=> $arr)
@@ -600,13 +553,9 @@ function wprdCount(id){
 						}
 						$ghJsonArr=json_encode($ghmainArray);
 				}											
-				//pr($ghJsonArr);die;										
 				?>
 <script>
   $(document).ready(function() {
-
-
-    //$("#skillAuto").tokenfield({});
     $('#skillAuto').tokenfield({
       autocomplete: {
       source: <?php echo $jsonval; ?>,
@@ -639,9 +588,6 @@ function wprdCount(id){
 
 <script>
   $(document).ready(function() {
-
-
-    //$("#skillAuto").tokenfield({});
     $('#gh_pet_sizes').tokenfield({
       autocomplete: {
       source: <?php echo $jsonval; ?>,
@@ -673,9 +619,6 @@ function wprdCount(id){
 
 <script>
   $(document).ready(function() {
-
-
-    //$("#skillAuto").tokenfield({});
     $('#Petsbreeds').tokenfield({
       autocomplete: {
       source: <?php echo $petjsonval; ?>,
@@ -709,9 +652,6 @@ function wprdCount(id){
 
 <script>
   $(document).ready(function() {
-
-
-    //$("#skillAuto").tokenfield({});
     $('#gh_petbreeds').tokenfield({
       autocomplete: {
       source: <?php echo $petjsonval; ?>,
@@ -731,7 +671,7 @@ function wprdCount(id){
   });
 </script>
 
-<?php if(@$ghFlag) { //echo $ghJsonArr;die;		?>
+<?php if(@$ghFlag) { 	?>
 	
     <script>
     $(document).ready(function() {

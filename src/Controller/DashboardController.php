@@ -94,33 +94,30 @@ class DashboardController extends AppController
 	*/
 	function home()
 	{
-		$this->viewBuilder()->layout('profile_dashboard');
+	    $this->viewBuilder()->layout('profile_dashboard');
 
 		$SiteConfigurationsModel = TableRegistry::get('SiteConfigurations');
         $siteInfo = $SiteConfigurationsModel->find('all')->first();
 
-        
          $usersModel = TableRegistry::get('Users');
          
          $session = $this->request->session();
          $userId = $session->read('User.id');
             //For redirect on about guest tab
-				 $userData = $usersModel->find('all',['contain'=>[
+			$userData = $usersModel->find('all',['contain'=>[
 															'UserSitterHouses',
 															'UserPets'=>['UserPetGalleries'], 
 															'UserSitterServices', 
 															'UserProfessionalAccreditationsDetails',
 															'UserProfessionalAccreditations',
 															'UserAboutSitters',
-															'UserSitterGalleries'
+															'UserSitterGalleries',
+															'UserSitterAvailability'
 													            ]
 														]
 												)
 								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 								   ->toArray();
-							  
-							  
-							  
 				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
@@ -392,9 +389,68 @@ class DashboardController extends AppController
 				  $profile_status['servicesAndRates']['calender'] = "no";
 				}
 		    //Skills and Accreditations 
-		  $this->set('profile_status',$profile_status);
-
 		 
+		  //Calculate profiles percentage
+		   $status_profile = 0;
+			    $profile_count = count($profile_status['User']);
+			    foreach($profile_status['User'] as $single_status){
+					if($single_status == "yes"){
+					  	$status_profile++;
+				    }
+				}
+				$profile_percentage['User'] = ceil(($status_profile/$profile_count)*100);
+				
+			    $profile_count = count($profile_status['House']);
+			    $status_profile = 0;
+				foreach($profile_status['House'] as $single_status){
+					if($single_status == "yes"){
+					  	$status_profile++;
+				    }
+				}
+				$profile_percentage['House'] = ceil(($status_profile/$profile_count)*100);
+				
+				 $profile_count = count($profile_status['UserPets']);
+			    $status_profile = 0;
+				foreach($profile_status['UserPets'] as $single_status){
+					if($single_status == "yes"){
+					  	$status_profile++;
+				    }
+				}
+				$profile_percentage['UserPets'] = ceil(($status_profile/$profile_count)*100);
+				
+				 $profile_count = count($profile_status['AboutSitter']);
+			    $status_profile = 0;
+				foreach($profile_status['AboutSitter'] as $single_status){
+					if($single_status == "yes"){
+					  	$status_profile++;
+				    }
+				}
+				$profile_percentage['AboutSitter'] = ceil(($status_profile/$profile_count)*100);
+				
+				 $profile_count = count($profile_status['skillsAndAccreditationDetails']);
+			    $status_profile = 0;
+				foreach($profile_status['skillsAndAccreditationDetails'] as $single_status){
+					if($single_status == "yes"){
+					  	$status_profile++;
+				    }
+				}
+				$profile_percentage['skillsAndAccreditationDetails'] = ceil(($status_profile/$profile_count)*100);
+				
+				 $profile_count = count($profile_status['servicesAndRates']);
+			    $status_profile = 0;
+				foreach($profile_status['servicesAndRates'] as $single_status){
+					if($single_status == "yes"){
+					  	$status_profile++;
+				    }
+				}
+				$profile_percentage['servicesAndRates'] = ceil(($status_profile/$profile_count)*100);
+        if(isset($userData[0]->user_sitter_availability) && !empty($userData[0]->user_sitter_availability)){
+		    $profile_percentage['calendar_setup'] = 100;
+		}else{
+		    $profile_percentage['calendar_setup'] = 0;
+		}
+		  $this->set('profile_status',$profile_status);
+		  $this->set('profile_percentage',$profile_percentage);
           //End
 
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
@@ -420,7 +476,7 @@ class DashboardController extends AppController
     /**
     Function for dashboard sitter details
 	*/
-	function dashboardDetails()
+	/*function dashboardDetails()
 	{
 		$this->viewBuilder()->layout('profile_dashboard');
 
@@ -432,174 +488,127 @@ class DashboardController extends AppController
         $userId = $session->read('User.id');
         $userType = $session->read('User.user_type');
 
-           //echo "type".$userType;die;
            $bookingRequestModel = TableRegistry::get('BookingRequests');
-            if($userType == 'Sitter'){
-            	$query_client = $bookingRequestModel
+         
+	        $this->ajaxCalendarBooking();
+	        $this->home();
+	       
+	}*/
+ 	public function dashboardDetails()
+    {
+            $session=$this->request->session();
+			$userId=$session->read('User.id');
+			$userType = $session->read('User.user_type');
+			
+			$bookingRequestModel = TableRegistry :: get("BookingRequests");
+			
+			 if($userType == 'Sitter'){
+            	$sitter_data['message_status'] = $bookingRequestModel
 				    ->find()
-				    ->where(['sitter_id' =>$userId,'status' =>0])
-				    ->toArray();
-				$sitter_data['message_status'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'message_status' =>0])
-				    ->count();    
+				    ->where(['sitter_id' =>$userId,'read_status' =>'unread'])
+				    ->count();   
+				     
                 $sitter_data['alerts'] = $bookingRequestModel
 				    ->find()
 				    ->where(['sitter_id' =>$userId,'status' =>0])
 				    ->count();
+				    
 				$sitter_data['events'] = $bookingRequestModel
 				    ->find()
 				    ->where(['sitter_id' =>$userId,'status' =>1])
 				    ->count();
-
-				/*$unread_messages = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'status' =>1])
-				    ->count();    */     
-			  if($query_client){
-                $boarding = '';
-                foreach($query_client as $client){
-                	//pr($client['message']);die;
-                    $sitter_clients[] = $client['user_id'];
-                    $boarding .= $client['required_services'].','; 
-                    $message[] = $client['message']; 
-                }
-                //pr($sitter_clients);
-               // pr($message);die;
-
-                 $sitter_data['clients'] = count(array_unique($sitter_clients));
-
-                 $boarding = trim($boarding, ",");
-                 $boarding = explode(",",$boarding); 
-
-                     $counts = array_count_values($boarding);
-               
-	                 $total_stay = count($boarding);
-	                 if(isset($counts['boarding'])){
-	                    $boarding = $counts['boarding'];
-	                    $sitter_data['boarding_stay']  = ($boarding/$total_stay)*100;
-                     }else{
-                     	$sitter_data['boarding_stay'] = "0";
-                     }
-	                 if(isset($counts['house_sitting'])){
-	                    $house_sitting = $counts['house_sitting'];
-	                    $sitter_data['day_stay']  = ($house_sitting/$total_stay)*100;
-
-	                 }else{
-                     	$sitter_data['day_stay'] = "0";
-                     }
-	                 if(isset($counts['market_place'])){
-	                    $market_stay = $counts['market_place'];
-	                    $sitter_data['market_place_stay']  = ($market_stay/$total_stay)*100;
-                     }else{
-                     	$sitter_data['market_place_stay'] = "0";
-                     }
-                     if(isset($counts['night_stay'])){
-                     	//echo "okokok";die;
-	                    $night_stay = $counts['night_stay'];
-	                    $sitter_data['night_stay']  = ($night_stay/$total_stay)*100;
-                     }else{
-                     	$sitter_data['night_stay'] = "0";
-                     }
-                }
-            }/*else{
-               $query_client = $bookingRequestModel
-				    ->find()
-				    ->where(['user_id' =>$userId,'sitter_id' =>0])
-				    ->count();
-            }*/
-             /*General profile completed*/
-             /*$userAboutSitterHouseModel = TableRegistry::get('UserAboutSitters');
-             $aboutSitterData = $userAboutSitterHouseModel
-				    ->find()
-				    ->where(['user_id' =>$userId,'status' =>1])
-				    ->first();
-			  if($aboutSitterData){
-	            $aboutSitterData = $aboutSitterData->toArray();
-		      	foreach($aboutSitterData as $single_val){
-	                if(!empty($single_val)){
-	                   $not_empty_about_count[] = $single_val;
-			    	}
-			    }
-			    $total_about_count = count($aboutSitterData);
-			    $not_empty_about_count = count($not_empty_about_count);
-			    $about_sitter_completed = ($not_empty_about_count/$total_about_count)*100;
-	            $sitter_data['about_sitter_completed'] = floor($about_sitter_completed);
-		      }else{
-	              $sitter_data['about_sitter_completed'] = '0';
-		      }	*/		    
-		    /*End general profile*/
-            /*Sitter house completed*/
-             $userSitterHouseModel = TableRegistry::get('UserSitterHouses');
-             $sitterHouseData = $userSitterHouseModel
-				    ->find()
-				    ->where(['user_id' =>$userId,'status' =>1])
-				    ->first();
-			  if($sitterHouseData){
-	            $sitterHouseData = $sitterHouseData->toArray();
-		      	foreach($sitterHouseData as $single_val){
-	                if(!empty($single_val)){
-	                   $not_empty_count[] = $single_val;
-			    	}
-			    }
-			    $total_house_count = count($sitterHouseData);
-			    $not_empty_count = count($not_empty_count);
-			    $sitter_house_completed = ($not_empty_count/$total_house_count)*100;
-	            $sitter_data['sitter_house_completed'] = floor($sitter_house_completed);
-		      }else{
-	              $sitter_data['sitter_house_completed'] = '0';
-		      }			    
-		    /*End Sitter House*/
-		      /*About Sitter completed*/
-             $userAboutSitterHouseModel = TableRegistry::get('UserAboutSitters');
-             $aboutSitterData = $userAboutSitterHouseModel
-				    ->find()
-				    ->where(['user_id' =>$userId,'status' =>1])
-				    ->first();
-			  if($aboutSitterData){
-	            $aboutSitterData = $aboutSitterData->toArray();
-		      	foreach($aboutSitterData as $single_val){
-	                if(!empty($single_val)){
-	                   $not_empty_about_count[] = $single_val;
-			    	}
-			    }
-			    $total_about_count = count($aboutSitterData);
-			    $not_empty_about_count = count($not_empty_about_count);
-			    $about_sitter_completed = ($not_empty_about_count/$total_about_count)*100;
-	            $sitter_data['about_sitter_completed'] = floor($about_sitter_completed);
-		      }else{
-	              $sitter_data['about_sitter_completed'] = '0';
-		      }			    
-		    /*End about sitter*/
-		    //echo $sitter_data['about_sitter_completed'];die;    
-	        $this->set('sitter_data',$sitter_data);
-	        $this->ajaxCalendarBooking();
-	        
-	}
- 	public function ajaxCalendarBooking()
-    {
-            $Session=$this->request->session();
-			$userId=$Session->read('User.id');
+				    
+				    $this->home();
+			}
 			
-			$bookingModel = TableRegistry :: get("BookingRequests");
-			$bookingData = $bookingModel->find('all')->where(['user_id'=>$userId])->toArray();
+			$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+			$fieldname = $userType == 'Sitter'?'sitter':'guest';
 			
-			
+			$bookingData = $bookingRequestModel->find('all')
+						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
+						->contain(['Users'=> ['queryBuilder' => function ($q) {
+																			return $q->select(['Users.id','Users.first_name','Users.last_name','Users.image','Users.city','Users.state','Users.country']);
+																		}
+													]
+								  ]
+						)
+									/*->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])*/
+									->hydrate(false)->toArray();
+			//pr($bookingData);die;					
 			$booking_arr = array();
 			foreach($bookingData as $k=>$user_booking){
 				
-				$booking_arr[$k]["start_date"]= $user_booking->booking_start_date;
-				$booking_arr[$k]["end_date"]= $user_booking->booking_end_date;
-				$booking_arr[$k]["avail_status"]= $user_booking->status;
+				$booking_arr[$k]["start_date"]= $user_booking['booknig_start_date'];
+				$booking_arr[$k]["end_date"]= $user_booking['booking_end_date'];
+				$booking_arr[$k]["avail_status"]= $user_booking['status'];
 			}
+			
+			$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
+		$booking_count = count($bookingData);	
 		
-		$calendar = new  \Calendarbooking();
-       //pr($calendar->show($booking_arr));die;
-		$this->set('calender',$calendar->show($booking_arr));
+		if(isset($bookingData) && !empty($bookingData)){
+			
+			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
+			
+			foreach($bookingData as $single_booking){
+				
+				if($single_booking['required_service'] == "house_sitting"){
+					
+					$client_stay_status["house_sitting"] = $house_sitting++;
+					
+				}else if($single_booking['required_service'] == "boarding"){
+					
+					 $client_stay_status["boarding"] = $boarding++;
+					 
+				}else if($single_booking['required_service'] == "drop_in_visit"){
+					
+					$client_stay_status["drop_in_visit"] = $drop_in_visit++;
+					
+				}else if($single_booking['required_service'] == "day_nigth_care"){
+					
+					$client_stay_status["day_nigth_care"] = $day_nigth_care++;
+					
+				}else if($single_booking['required_service'] == "market_place"){
+					
+					$client_stay_status["market_place"] = $market_place++;
+				}
+			}
+		}
+			
+		 $client_stay_status["house_sitting_clients"] = $client_stay_status["house_sitting"];
+		 $client_stay_status["boarding_clients"] = $client_stay_status["boarding"];
+		 $client_stay_status["drop_in_visit_clients"] = $client_stay_status["drop_in_visit"];
+		 $client_stay_status["day_nigth_care_clients"] = $client_stay_status["day_nigth_care"];
+		 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
+		 $client_stay_status["new_clients"] = $booking_count;
+		 
+		 $client_stay_status["house_sitting"]  = number_format((float)(($client_stay_status["house_sitting"]/$booking_count)*100), 2, '.', '');
+		 $client_stay_status["boarding"]  = number_format((float)(($client_stay_status["boarding"]/$booking_count)*100), 2, '.', '');
+		 $client_stay_status["drop_in_visit"]  = number_format((float)(($client_stay_status["drop_in_visit"]/$booking_count)*100), 2, '.', '');
+		 $client_stay_status["day_nigth_care"]  = number_format((float)(($client_stay_status["day_nigth_care"]/$booking_count)*100), 2, '.', '');
+		 $client_stay_status["market_place"]  = number_format((float)(($client_stay_status["market_place"]/$booking_count)*100), 2, '.', ''); 
 		
-		//$this->render("ajax_calendar");
-      // pr($calendar->show($unavailbe_array));die;
-    }
+		 $calendar = new  \Calendarbooking();
+		 
+         $this->set('sitter_data',$sitter_data);
+         $this->set('calender',$calendar->show($booking_arr));
+         $this->set('client_stay_status',$client_stay_status);
+         $this->set('booking_requests_info',$bookingData);	 
+		
+	}
+    /**
+     Function for change booking status
+    */
+     function changeBookingStatus($bookingId = null ){
+		 $bookingModel = TableRegistry :: get("BookingRequests");
+		 $bookingId = convert_uudecode(base64_decode($bookingId));
+		 $bookingData = $bookingModel->newEntity();
+	     $bookingData->id =$bookingId;
+	     $bookingData->folder_status_sitter = "current";
+	     
+	     $bookingModel->save($bookingData);
+	      return $this->redirect(['controller' => 'dashboard', 'action' => 'dashboard-details']);
+	 }
 	/* send a reference to friend */
 	function reference(){
 		//echo "<pre>";print_r($this->request->data['email']);die;
