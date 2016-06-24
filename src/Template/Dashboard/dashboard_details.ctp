@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
           <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
             <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
@@ -7,7 +7,7 @@
             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
               <ol class="breadcrumb text-right">
                 <li> You are here : </li>
-                <li><a href="#">Home</a></li>
+                <li><a href="<?php echo HTTP_ROOT; ?>">Home</a></li>
                 <li class="active">Profile</li>
               </ol>
             </div>
@@ -125,6 +125,7 @@
                         </div>
                       </div>
                     </div>
+                    
                     <div class="row progress-section">
                       <div class="col-md-6 col-sm-6 col-xs-6">
                         <p>Drop in visit</p>
@@ -139,6 +140,21 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row progress-section">
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>Day/Night care</p>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p class="text-right"><?php echo @$client_stay_status['day_nigth_care']; ?>% - <span class="numberclient"><?php echo $client_stay_status["day_nigth_care_clients"]; ?> clients</span></p>
+                      </div>
+                      <div class="col-xs-12">
+                        <div class="progress">
+                          <div class="progress-bar coupons-bg" role="progressbar" aria-valuenow="70"
+  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo @$client_stay_status['day_nigth_care']; ?>%"> <span class="sr-only"><?php echo @$client_stay_status['day_nigth_care']; ?>% Complete</span> </div>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <div class="row progress-section">
                       <div class="col-md-6 col-sm-6 col-xs-6">
                         <p>Market Place</p>
@@ -176,16 +192,16 @@
                   
                   <div class="row progress-helpers">
                     <div class="col-xs-12 col-sm-6">
-                      <p ><i class="fa fa-circle-o color-blue overnight-color"></i> &nbsp;Night Stay</p>
+                      <p ><i class="fa fa-circle-o color-blue overnight-color"></i> &nbsp;Boarding Stay</p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                      <p><i class="fa fa-circle-o color-blue daystay-color"></i> &nbsp;Day Stay</p>
+                      <p><i class="fa fa-circle-o color-blue daystay-color"></i> &nbsp;House Sitting Stay</p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                      <p><i class="fa fa-circle-o color-blue dayboarding-color"></i> &nbsp;Day Boarding</p>
+                      <p><i class="fa fa-circle-o color-blue dayboarding-color"></i> &nbsp;Drop in visit</p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                      <p><i class="fa fa-circle-o color-blue coupons-color"></i> &nbsp;Coupon</p>
+                      <p><i class="fa fa-circle-o color-blue coupons-color"></i> &nbsp;Day/Night care</p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <p><i class="fa fa-circle-o color-blue market-color"></i> &nbsp;Market Place</p>
@@ -200,12 +216,12 @@
               <div class=" top-box">
                 <div class="event-icon"></div>
                 <div class="topbox-text">
-                  <h4><?php echo @$client_stay_status["new_clients"]; ?></h4>
+                  <h4><?php echo @$client_stay_status["events"]; ?></h4>
                   <p>Events</p>
                 </div>
               </div>
               <div class="below-top-box">
-                <p>You have currently <?php echo @$client_stay_status["new_clients"]; ?> new events</p>
+                <p>You have currently <?php echo @$client_stay_status["events"]; ?> new events</p>
               </div>
               <div class="second-box-header">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -236,13 +252,13 @@
 					 </div>
 		   <!--Start -->
 		   <?php if(!empty($booking_requests_info)){ ?>
-		     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		     <div id="myCarousel-detail" class="carousel slide" data-ride="carousel">
 						  <!-- Indicators -->
 						<!--  <ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel" data-slide-to="1"></li>
-							<li data-target="#myCarousel" data-slide-to="2"></li>
-							<li data-target="#myCarousel" data-slide-to="3"></li>
+							<li data-target="#myCarousel-detail" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel-detail" data-slide-to="1"></li>
+							<li data-target="#myCarousel-detail" data-slide-to="2"></li>
+							<li data-target="#myCarousel-detail" data-slide-to="3"></li>
 						  </ol>-->
 
 						  <!-- Wrapper for slides -->
@@ -269,7 +285,7 @@
 											  echo date("Y/m/d H:i A",strtotime($booking_request['booknig_start_date'])); ?></p>
 											</div>
 										  </div>
-										  <div class="border-top">
+										  <div class="btn-paddin">
 											<button class="btn  btn-green btn-block mtb-15" onclick="location.href='<?php echo HTTP_ROOT.'dashboard/change-booking-status/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Accept</button>
 										  </div>
 										  <div> </div>
@@ -282,11 +298,11 @@
 
 						  <!-- Left and right controls -->
 						  <?php if($sount >1){?>
-						  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+						  <a class="left carousel-control" href="#myCarousel-detail" role="button" data-slide="prev">
 							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 							<span class="sr-only">Previous</span>
 						  </a>
-						  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+						  <a class="right carousel-control" href="#myCarousel-detail" role="button" data-slide="next">
 							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 							<span class="sr-only">Next</span>
 						  </a>
@@ -322,12 +338,12 @@
               <div class=" top-box">
                 <div class="alerts-icon"></div>
                 <div class="topbox-text">
-                  <h4><?php echo isset($sitter_data['alerts'])?$sitter_data['alerts']:0; ?></h4>
+                  <h4><?php echo $client_stay_status['alerts']; ?></h4>
                   <p>Alerts</p>
                 </div>
               </div>
               <div class="below-top-box">
-                <p><?php echo isset($sitter_data['alerts'])?$sitter_data['alerts']:0; ?> Unread message</p>
+                <p><?php echo $client_stay_status['alerts']; ?> Unread message</p>
               </div>
               <?php if(!empty($booking_requests_info)){ ?>
               <div class="second-box-header">
@@ -500,4 +516,71 @@
         </div>
 <style>
 .font12{font-size:12px !important}
+
+#myCarousel-detail .carousel-control.left {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 100%) !important;
+    background-repeat: repeat-x;
+}
+
+#myCarousel-detail .carousel-control.right { background-image:none !important;}
+.btn-paddin { padding-top:20px !important;}
+
+#myCarousel-detail .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
+    font-size: 30px;
+    height: 30px;
+    margin-top: -5px !important;
+    width: 30px;
+}
 </style>
+<script>
+	$(document).ready(function(){
+	$('.carousel').carousel({
+    pause: true,
+    interval: false
+}); 
+//For chart
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawMultSeries);
+
+function drawMultSeries() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'Time of Day');
+      data.addColumn('number', 'Motivation Level');
+      data.addColumn('number', 'Energy Level');
+
+      data.addRows([
+        [{v: [8, 0, 0], f: '8 am'}, 1, .25],
+        [{v: [9, 0, 0], f: '9 am'}, 2, .5],
+        [{v: [10, 0, 0], f:'10 am'}, 3, 1],
+        [{v: [11, 0, 0], f: '11 am'}, 4, 2.25],
+        [{v: [12, 0, 0], f: '12 pm'}, 5, 2.25],
+        [{v: [13, 0, 0], f: '1 pm'}, 6, 3],
+        [{v: [14, 0, 0], f: '2 pm'}, 7, 4],
+        [{v: [15, 0, 0], f: '3 pm'}, 8, 5.25],
+        [{v: [16, 0, 0], f: '4 pm'}, 9, 7.5],
+        [{v: [17, 0, 0], f: '5 pm'}, 10, 10],
+      ]);
+
+      var options = {
+        title: 'Motivation and Energy Level Throughout the Day',
+        hAxis: {
+          title: 'Time of Day',
+          format: 'h:mm a',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          title: 'Rating (scale of 1-10)'
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('columnchart_values'));
+
+      chart.draw(data, options);
+    }
+
+});
+</script>

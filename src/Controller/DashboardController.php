@@ -534,23 +534,48 @@ class DashboardController extends AppController
 						)
 									/*->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])*/
 									->hydrate(false)->toArray();
-			//pr($bookingData);die;					
+			//pr($bookingData);die;	
+			//////////////////////
+			$user_Data = $bookingRequestModel->find('all')
+						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
+						/*->contain(['Users'=> ['queryBuilder' => function ($q) {
+																			return $q->select(['Users.id','Users.first_name','Users.last_name','Users.image','Users.city','Users.state','Users.country']);
+																		}
+													]
+								  ]
+						)*/->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1' )
+									/*->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])*/
+									->hydrate(false)->toArray();
+			
+			$client_stay_status["new_clients"] = count($user_Data);
+			
+			/////////////////////
+			$user_current = $bookingRequestModel->find('all')
+						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
+						->hydrate(false)->count();
+		   $client_stay_status["events"] = $user_current;
+			/////////////////////
+			//pr($client_stay_status["events"]);die;		
 			$booking_arr = array();
 			foreach($bookingData as $k=>$user_booking){
-				
+				//pr($user_booking);
 				$booking_arr[$k]["start_date"]= $user_booking['booknig_start_date'];
 				$booking_arr[$k]["end_date"]= $user_booking['booking_end_date'];
 				$booking_arr[$k]["avail_status"]= $user_booking['status'];
 			}
-			
 			$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
-			$booking_count = count($bookingData);
+			
+	    $booking_count = count($bookingData);
+	    //pr($bookingData);die;
 		if(isset($bookingData) && !empty($bookingData)){
 			
 			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
+			$events=0;
 			
 			foreach($bookingData as $single_booking){
 				
+			
+				//pr($single_booking);
 				if($single_booking['required_service'] == "house_sitting"){
 					
 					$client_stay_status["house_sitting"] = $house_sitting++;
@@ -572,6 +597,7 @@ class DashboardController extends AppController
 					$client_stay_status["market_place"] = $market_place++;
 				}
 			}
+			
 		}
 			
 		 $client_stay_status["house_sitting_clients"] = $client_stay_status["house_sitting"];
@@ -579,13 +605,15 @@ class DashboardController extends AppController
 		 $client_stay_status["drop_in_visit_clients"] = $client_stay_status["drop_in_visit"];
 		 $client_stay_status["day_nigth_care_clients"] = $client_stay_status["day_nigth_care"];
 		 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
-		 $client_stay_status["new_clients"]= $booking_count;
+		 $client_stay_status["alerts"]= $booking_count;
 		 
 		 $client_stay_status["house_sitting"]  = number_format((float)(($client_stay_status["house_sitting"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["boarding"]  = number_format((float)(($client_stay_status["boarding"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["drop_in_visit"]  = number_format((float)(($client_stay_status["drop_in_visit"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["day_nigth_care"]  = number_format((float)(($client_stay_status["day_nigth_care"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["market_place"]  = number_format((float)(($client_stay_status["market_place"]/$booking_count)*100), 2, '.', ''); 
+		
+		//pr($client_stay_status);die;
 		
 		 $calendar = new  \Calendarbooking();
 		 
