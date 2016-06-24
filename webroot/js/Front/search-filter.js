@@ -7,6 +7,7 @@
 		$( "#boardingFrom" ).datepicker({
 		  defaultDate: "+1",
 		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd', 
 		  numberOfMonths: 1,
 		  yearRange: "-50:+0",
 		  onClose: function( selectedDate ) {
@@ -18,6 +19,7 @@
 		$( "#boardingTo" ).datepicker({
 		  defaultDate: "+1",
 		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd',
 		  numberOfMonths: 1,
 		  yearRange: "-50:+0",
 		  onClose: function( selectedDate ) {

@@ -2586,9 +2586,9 @@ label .fa.fa-asterisk {
 
 <script>
   $(document).ready(function (){
-      $('.selectedCheckbox').click(function(){
+       $('.selectedCheckbox').click(function(){
             $(this).parent().parent().toggleClass("selected");
-        });
+       });
    
     })
    /*For on-off button*/

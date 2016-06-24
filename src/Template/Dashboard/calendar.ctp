@@ -16,7 +16,7 @@
 									<i>
 										<img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent">
 									</i>
-									&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Availablity')); ?> 
+									&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Availablity Days')); ?> 
 								</span>
 								<span class="pull-right">
 									<a href="#">
@@ -26,52 +26,42 @@
 							</div>             
 								
 							<div class="col-xs-12 recent-activity-table">
-								
+								<div class="ajax_overlay_day">&nbsp;</div>
 								<table class="table table-hover">
 									<thead>
 										<tr class="table-row-heading">
-										  <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Services')); ?></th>
-										  <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?></th>
+										  <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></th>
+										  <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Week Days')); ?></th>
 										</tr>
 									</thead>
 									
 									<tbody class="table-row-text">
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green">
-												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?> 
-											</td>
-										  <td><?php echo isset($lastmodifieddate["day_care"])?$lastmodifieddate["day_care"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
-										</tr>
+										<form id="setDay" action="<?php echo HTTP_ROOT.'Dashboard/set-availablity-day'; ?>">
+										<?php 
 										
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green">
-												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?>
-											</td>
-										  <td><?php echo isset($lastmodifieddate["night_care"])?$lastmodifieddate["night_care"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
-										</tr>
-										
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-orange.png" ?>" width="11" height="11" alt="green">
-												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop Visit')); ?>
-											</td>
-										  <td><?php echo isset($lastmodifieddate["visit"])?$lastmodifieddate["visit"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
-										</tr>
-										
-										<tr>
-											<td scope="row">
-												<span class="table-image-pad">
-													<img src="<?php echo HTTP_ROOT."img/t-yellow.png" ?>" width="11" height="11" alt="green">
-												</span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Marketplace')); ?> 
-											</td>
-										  <td><?php echo isset($lastmodifieddate["market_place"])?$lastmodifieddate["market_place"]:0; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Spaces')); ?> </td>
-										</tr>
-										
+											$weekday=array(
+												'sunday'=>'sunday',
+												'monday'=>'monday',
+												'tuesday'=>'tuesday',
+												'wednesday'=>'wednesday',
+												'thursday'=>'thursday',
+												'friday'=>'friday',
+												'saturday'=>'saturday'); 
+								
+											foreach($weekday as $k=>$v){ ?>
+												
+												<tr>
+													<td scope="row" class="week_day_td <?php if(in_array($v,$avail_days)){ echo "";}else{echo "selected";}?>" >
+														
+														<input type="checkbox" data-rel="<?php echo $k; ?>" class="wkd_chk" <?php if(in_array($v,$avail_days)){ echo "";}else{echo "checked";}?>>
+														
+													</td>
+													<td><?php echo ucwords($v); ?> </td>
+												</tr>
+										<?php
+											}
+										?>
+										</form>	
 									</tbody>
 									
 								</table>
@@ -461,6 +451,57 @@
 	   //for hide past dates
 		
 	   
+	});
+	
+	$(function(){
+		$('.wkd_chk').click(function(){
+            $(this).parent().parent().toggleClass("selected");
+        });
+        
+        var checkboxVal=[];
+		$("input.wkd_chk").click(function(){
+			
+				$("input.wkd_chk").each(function( index ) {
+					if($(this).parent().parent().hasClass('selected')==false){
+						
+						checkboxVal.push($(this).attr('data-rel'))
+					
+					}
+				});
+				if(checkboxVal.length === 0){
+					return false;
+				}else{
+					var availDay = checkboxVal.join();
+					
+					$.ajax({
+						url: $('#setDay').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
+						
+						data:{selectedDay:availDay},//ALL SUBMITTED DATA FROM THE FORM
+						
+						beforeSend: function(){
+						    $(".ajax_overlay_day").show();
+							$(".ajax_overlay_day").html('<img class="search-img" src="'+ajax_url+'img/walking.gif"/>');
+						},
+						
+						complete: function(){
+						  $(".ajax_overlay_day").hide();
+							$(".ajax_overlay_day").html('');
+						},
+						
+						success:function(res)
+						{
+							if($.trim(res)=="success"){
+								window.location.reload();
+							}
+							
+						}
+				  });
+				}
+				
+				checkboxVal=[];
+		});
+		
+		
 	});
   
 </script>
