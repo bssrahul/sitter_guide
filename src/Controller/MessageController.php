@@ -48,9 +48,7 @@ class MessageController extends AppController
     
 	public function initialize()
     {
-
-		parent::initialize();
-		
+        parent::initialize();
 		// Loaded EmailTemplate Model
 		$SiteModel = TableRegistry::get('siteConfigurations');
 		$siteConfiguration = $SiteModel->find('all')->first();
@@ -58,9 +56,7 @@ class MessageController extends AppController
 		
 		$session = $this->request->session();
 		$this->set('loggedin_user',$session->read('User.id'));
-		
 	}
-	
 	/**
 	* Function to List the messages
 	*/
@@ -83,7 +79,6 @@ class MessageController extends AppController
 		
 		$userId = $session->read('User.id');
 		$this->set(compact('userId','userType','class_user','fieldname'));
-		
 		
 		$get_requests = $BookingRequestsModel->find('all')
 		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.folder_status_'.$fieldname => $folder_status])

@@ -476,7 +476,7 @@ class DashboardController extends AppController
     /**
     Function for dashboard sitter details
 	*/
-	/*function dashboardDetails()
+	function dashboardDetails()
 	{
 		$this->viewBuilder()->layout('profile_dashboard');
 
@@ -489,20 +489,7 @@ class DashboardController extends AppController
         $userType = $session->read('User.user_type');
 
            $bookingRequestModel = TableRegistry::get('BookingRequests');
-         
-	        $this->ajaxCalendarBooking();
-	        $this->home();
-	       
-	}*/
- 	public function dashboardDetails()
-    {
-            $session=$this->request->session();
-			$userId=$session->read('User.id');
-			$userType = $session->read('User.user_type');
-			
-			$bookingRequestModel = TableRegistry :: get("BookingRequests");
-			
-			 if($userType == 'Sitter'){
+          if($userType == 'Sitter'){
             	$sitter_data['message_status'] = $bookingRequestModel
 				    ->find()
 				    ->where(['sitter_id' =>$userId,'read_status' =>'unread'])
@@ -518,8 +505,21 @@ class DashboardController extends AppController
 				    ->where(['sitter_id' =>$userId,'status' =>1])
 				    ->count();
 				    
-				    $this->home();
+				 $this->ajaxCalendarBooking();
+	             $this->home();
 			}
+	        $this->set('sitter_data',$sitter_data);
+	       
+	}
+ 	public function ajaxCalendarBooking()
+    {
+            $session=$this->request->session();
+			$userId=$session->read('User.id');
+			$userType = $session->read('User.user_type');
+			
+			$bookingRequestModel = TableRegistry :: get("BookingRequests");
+			
+			
 			
 			$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
 			$fieldname = $userType == 'Sitter'?'sitter':'guest';
@@ -544,8 +544,7 @@ class DashboardController extends AppController
 			}
 			
 			$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
-		$booking_count = count($bookingData);	
-		
+			$booking_count = count($bookingData);
 		if(isset($bookingData) && !empty($bookingData)){
 			
 			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
@@ -580,7 +579,7 @@ class DashboardController extends AppController
 		 $client_stay_status["drop_in_visit_clients"] = $client_stay_status["drop_in_visit"];
 		 $client_stay_status["day_nigth_care_clients"] = $client_stay_status["day_nigth_care"];
 		 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
-		 $client_stay_status["new_clients"] = $booking_count;
+		 $client_stay_status["new_clients"]= $booking_count;
 		 
 		 $client_stay_status["house_sitting"]  = number_format((float)(($client_stay_status["house_sitting"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["boarding"]  = number_format((float)(($client_stay_status["boarding"]/$booking_count)*100), 2, '.', '');
@@ -590,7 +589,7 @@ class DashboardController extends AppController
 		
 		 $calendar = new  \Calendarbooking();
 		 
-         $this->set('sitter_data',$sitter_data);
+        
          $this->set('calender',$calendar->show($booking_arr));
          $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 

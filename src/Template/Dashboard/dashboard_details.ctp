@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
           <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
             <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
