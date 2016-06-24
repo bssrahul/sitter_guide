@@ -13,10 +13,9 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 
 
-<h1 class="thankyou-heading"><span><i></i></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Thanks for Registering'));?></h1>
+<h1 class="thankyou-heading"><span><i></i></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Thank you for Registration!'));?></h1>
 
-<p class="thankyou-text" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('You will receive a confimation  email as well as reminder  shorly before you get
- start with sitter guide'));?></p>
+<p class="thankyou-text" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('You will receive a confimation email as well as reminder  shorly before you get start with sitter guide'));?></p>
 
 
 </div>
