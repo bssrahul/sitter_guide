@@ -441,7 +441,7 @@
 						} ?>
 			
 
-						<?php echo $this->element("frontElements/common/static_search_content"); ?>
+						<?php // echo $this->element("frontElements/common/static_search_content"); ?>
                
               </ul>
               <?php }else{ ?>
