@@ -36,7 +36,11 @@
 	height:768px;
 }
 .leftsidebarfixed {
-    position: sticky;
+    position: sticky !important;
+    position: -webkit-sticky !important;
+  position: -moz-sticky !important;
+  position: -ms-sticky !important;
+  position: -o-sticky !important;
     top: 50px !important;
     right:59px;
 }
@@ -47,6 +51,8 @@
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
+    
+    
 });
 
     function init() {
@@ -101,4 +107,9 @@ $(function () {
     });
   }  
 });
+</script>
+
+
+<script>
+
 </script>
