@@ -126,7 +126,7 @@
 	#upload-photo-container .for-right-center1 {text-align:center; margin:0px auto; width:100%; }
 	#upload-photo-container .for-right-center2 {text-align:center; margin:0px auto; width:100%; }
 	#createyourprofile ul li { padding-top:60px; display:block;}
-	.topsixty {padding-top:110px !important;}
+	.topsixty {padding-top:45px !important;}
 
 	#upload-photo-container .widget2 .price { font-size:36px; color:#222d3d; font-family:"Times New Roman", Times, serif; font-weight:bold; padding:10px 0 0px 0;}
 	#upload-photo-container .widget1 .h3 {text-align:center !important; font-size:25px; color:#949494; padding-top:30px;}
@@ -183,7 +183,7 @@
     padding: 15px;
 }
 	
-	#squarespaceModal .popup-form { background:url(../../img/bg-family.png); background-position:right; background-repeat:no-repeat; padding:23px 0 40px 0;
+	#squarespaceModal .popup-form { background:url(../../img//bg-family.png); background-position:right; background-repeat:no-repeat; padding:23px 0 40px 0;
   
     width:100%; height:auto; 
 	
