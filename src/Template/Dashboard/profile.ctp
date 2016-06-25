@@ -1,7 +1,7 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <?php 
-  echo $this->Html->css(['Front/jquery-ui.css','Front/dd.css']); 
-  echo $this->Html->script(['Front/jquery-ui.js','Front/jquery.dd.min']);
+  echo $this->Html->css(['Front/dd.css']); 
+  echo $this->Html->script(['Front/jquery.dd.min']);
   echo $this->Html->css(['Front/flags.css']); 
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
@@ -18,17 +18,17 @@
 				    echo $this->requestAction('app/get-translate/'.base64_encode('Guest Profile')); 
 			   }  
 			  ?>
-                  
-                  
                   </h3>
-
-                <?php echo $this->element('frontElements/profile/sitter_nav');?>
+               <?php echo $this->element('frontElements/profile/sitter_nav');?>
           
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
 
 
 	<div id="home1" class="tab-pane fade in active tab-comm">
+            <h2 class="head-font">Tell us a bit about yourself</h2>
+			<p class="head-font2 pad-head-foot">Let us step you through setting up your Sitter Guide profile.</p>
+			<p class="head-font2 pad-head-foot-bot">This page is just about you in general and allowsyou to update your profile photo's, video, password and contact details</p>
                 
                   <!--<form role="form">-->
             <?php echo $this->Form->create(@$userInfo, [
@@ -37,20 +37,8 @@
               'id'=>'generelInfo',
 			   'autocomplete'=>'off',
           ]);?>
-				  <div class="row">
-					     <div class="form-group col-lg-4 col-md-4">
-							<h2 class="head-font"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?> </h2>
-					     </div>
-					     
-					     <div class="form-group col-lg-8">
-							<p class="head-font2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile.')); ?></p>
-					     </div>
-					</div>	
-					
-                  <div class="row">
-                    
-                
-                      <div class="form-group col-lg-4 col-md-4">
+				<div class="row">
+                    <div class="form-group col-lg-4 col-md-4">
                           <label for="title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Title')); ?></label>
                       <?php 
                       echo $this->Form->input('Users.title',[
@@ -62,13 +50,7 @@
                         ]);
                       ?>
                         </div>
-
-                       <div class="form-group col-lg-8">
-							<p class="head-font2 pad-head-foot padT5"><?php echo $this->requestAction('app/get-translate/'.base64_encode('This page is just about you in general and allows you to update your profile photos, video, password and contact details')); ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-lg-4 col-md-4">
+                       <div class="form-group col-lg-4 col-md-4">
                            <label for="Users['first_name']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('First Name')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.first_name',[                
@@ -90,6 +72,37 @@
                                   ]);
                             ?>
                         </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-4 col-md-4">
+                        <label for="">Email</label>
+                          <!--<input type="email" class="form-control" id="">-->
+                          <?php 
+                                echo $this->Form->input('Users.email',[                
+                                 'class'=>'form-control',
+                                 'disabled'=>'disabled',
+                                 'required'=>false,
+                                 'label'=>false,
+                                 'templates' => ['inputContainer' => '{{content}}']
+                                  ]);
+                            ?>
+                            <?php if($userInfo['status'] != 1){?>	
+                             <a href="javascript:void(0)" id="here_email_verify" style="font-size:12px;color:blue">If you din't get an  email then click here</a> 
+                             <?php } ?>
+                        </div>
+                     
+                        <div class="col-lg-4 col-md-4">
+                          <label for="" class="invisi-no">im-vi </label>
+                            <div class="varify-mobile">
+								<?php if($userInfo['status'] == 1){?>	
+                              <a class="vari" href="#"><img src="<?php echo HTTP_ROOT; ?>img/verify.png"></a>
+                              <?php }else{ ?>
+                              <a class="unvari" href="#"><img src="<?php echo HTTP_ROOT; ?>img/unverify.png"></a>
+                              <?php } ?>
+                            </div>
+                          </div>
+                          <p class="successMessage clr email_success_msg"></p><p class="errorMessage clr email_error_msg"></p>
                         <div class="form-group col-lg-4 col-md-4">
                           <label for="Users['birth_date']"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Date of Birth')); ?></label>
                           <?php  
@@ -177,20 +190,9 @@
                     </h3>
                     <div class="row">
                     <div class="form-group col-lg-8 col-md-8">
-                     
-                      <div class="row">
-                          
+                       <div class="row">
                           <div class="col-lg-3 col-xs-4">
                             <label for="country_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
-                            <?php 
-                               /* echo $this->Form->input('Users.country_code',[
-                                  'templates' => ['inputContainer' => '{{content}}'],
-                                  'type'=>'select',
-                                  'label'=>false,
-                                  'options'=>@$country_info,
-                                  'class' =>'form-control'
-                                  ]);*/
-                            ?>
                             <select class='form-control' name="Users[country_code]" id="countries">
 								 <?php 
 									if(!empty($country_info)){
@@ -201,11 +203,9 @@
 										}
 									}
 								?>
-								 
 							</select>    
-
-                        </div>
-                          <div class="col-lg-3 col-xs-8">
+                         </div>
+                         <div class="col-lg-3 col-xs-8">
                               <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will send an sms confirmation to this number for verification')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
@@ -215,13 +215,19 @@
                                  'templates' => ['inputContainer' => '{{content}}']
                                   ]);
                             ?>
+                            <?php if($userInfo['mobile_verification'] != 1){?>	
+                             <br/><a href="javascript:void(0)" style="font-size:12px;color:blue" data-toggle="modal" data-target="#otppopup"> verify you phone</a>   
+                            <?php } ?>               
                           </div>
-                        <div class="col-xs-12 col-xsm-12 col-md-12 col-lg-12">
-                          <label class="invisi-no" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('im-vi')); ?></label>
+                         
+                          <div class="col-lg-6 col-md-6">
+                          <label class="invisi-no" for="">im-vi </label>
                             <div class="varify-mobile">
-                              
+							<?php if($userInfo['mobile_verification'] == 1){?>	
+                              <a href="#" class="vari"><img src="<?php echo HTTP_ROOT; ?>img/verify.png"></a>
+                              <?php }else{ ?>
                               <a href="#" class="unvari"><img src="<?php echo HTTP_ROOT; ?>img/unverify.png"></a>
-                                 
+                              <?php } ?>
                             </div>
                           </div>
 
@@ -230,7 +236,7 @@
                     </div>
                    
                       <div class="form-group col-lg-4 col-md-4">
-                         <label class="invisi-no" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Time Zone')); ?></label>
+                         <label  for="Users[zone_id]"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Time Zone')); ?></label>
                             <?php 
                                 echo $this->Form->input('Users.zone_id',[
                                   'templates' => ['inputContainer' => '{{content}}'],
@@ -298,13 +304,12 @@
                           <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?> </label>
                               <!--<input type="text" placeholder="" id="" class="form-control mzero">-->
                                <?php 
-                                echo $this->Form->input('Users.email',[
+                                echo $this->Form->input('Users.emergency_email',[
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'label'=>false,
                                   'required'=>false,
-                                  'class' =>'form-control',
-                                  'disabled'=>'disabled'
-                                  ]);
+                                  'class' =>'form-control'
+                                 ]);
                             ?>
                         </div>
                         <div class="form-group col-lg-4">
@@ -502,11 +507,7 @@
 
       </div>
 
-
-
-
-
-  <div class="modal fade" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
+<div class="modal fade" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
     <div class="modal-dialog">
        <div class="sitter-quike-view">
          	<div class="sqv-box">
@@ -552,6 +553,59 @@
   </div>
 
     <!--model box -->
+  <!--otp popup starts-->
+<div class="modal fade" id="otppopup" role="dialog">
+  <div class="modal-dialog">
+    <div class="sitter-quike-view">
+      <div class="sqv-box">
+        <div class="top-close">
+          <p>Enter OTP</p>
+          <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
+        
+        <!--Additional Services-->
+        <div>
+			<p class="successMessage clr otp_success_msg"></p><p class="errorMessage clr otp_error_msg"></p>
+          <p class="reson-pad">To confirm the Mobile/Cell No. Please enter the OTP Sent to your Mobile No.</p><br>
+
+         <div class="row">
+         <div class="col-sm-6  col-sm-offset-2">
+			           <!-- <input class="form-control" type="text">-->
+			         <?php   
+			                echo $this->Form->create(null,['id'=>'verify_form',
+                               'url'=>['controller'=>'dashboard','action'=>'varification-mobile-number'],
+                               ]); 
+					   
+							echo $this->Form->input('Userverify.otp_verify',[                
+							 'class'=>'form-control',
+							 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Enter OTP')),
+							 'label'=>false,
+							 'autocomplete'=>'off',
+							 'maxlength'=>6,
+							 'type'=>'text',
+							 'templates' => ['inputContainer' => '{{content}}']
+							  ]);
+							 
+					 ?>
+					 
+					 <p class="successMessage clr otp_verify_success_msg"></p><p class="errorMessage clr otp_verify_error_msg"></p>
+			  </div>
+                  <div class="col-sm-3">  <button id="verify_submit" class="btn btn-success">Submit</button></div>
+                  <?php echo $this->Form->end(); ?>
+         </div> 
+         <br>
+
+         
+          <p ><small> * If you didn't received your OTP. Please <a href="javascript:void(0)" id="for_otp_generet" >Click here</a> to resend OTP again</small></p>
+
+        </div>
+        <!--Additional Services--> 
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!--otp popup ends
+-->  
 	
 <?php echo $this->Form->create(null,['id'=>'profileVideo','enctype'=>'multipart/form-data',
                   'url'=>['controller'=>'dashboard','action'=>'save-profile-video'],
@@ -674,8 +728,76 @@ function saveCropImage(params) {
         }
     });
     }
+    //Verify email
+     $(document).on('click','#here_email_verify', function(){
+		 //alert("0kook"); 
+		 $('.clr').html('');
+	    jQuery.ajax({
+			    url: ajax_url+"guests/verify-email",
+				 beforeSend: function(){
+						$(".otp_verify_msg").attr('src',ajax_url+'img/search-loader.gif');
+				  },
+				success: function (res) {
+					var response = res.split(':');
+						  if($.trim(response[0]) == 'Success'){
+							  $('.clr').html(''); //Emtpy Error MESSAGE
+							  $(".email_success_msg").html('<div class="success_msg navbar navbar-custom" role="navigation"><div class="drawer-navbar" role="banner"><div class="response_msg_container drawer-container"><span><i class="fa fa-check-square"></i>'+response[1]+'</span></div></div></div>')
+						  }else  if($.trim(response[0]) == 'Error'){
+							$('.clr').html(''); //Emtpy Error MESSAGE
+							$(".email_error_msg").html('<div class="error_msg navbar navbar-custom" role="navigation"><div class="drawer-navbar" role="banner"><div class="response_msg_container drawer-container"><span><i class="fa fa-check-square"></i>'+response[1]+'</span></div></div></div>')
+						   }
+				}
+      });
+	});
+    //For otp verify
+    $(document).on('click','#for_otp_generet', function(){ 
+		 $('.clr').html('');
+	    jQuery.ajax({
+			    url: ajax_url+"dashboard/varification-mobile-number",
+				 beforeSend: function(){
+						$(".otp_verify_msg").attr('src',ajax_url+'img/search-loader.gif');
+				  },
+				success: function (res) {
+					var response = res.split(':');
+						  if($.trim(response[0]) == 'Success'){
+							  $('.clr').html(''); //Emtpy Error MESSAGE
+							  $(".otp_success_msg").html(response[1]);
+						  }else  if($.trim(response[0]) == 'Error'){
+							$('.clr').html(''); //Emtpy Error MESSAGE
+							$(".otp_error_msg").html(response[1]);
+						   }
+				}
+      });
+	});
+	$(document).on('click','#verify_submit', function(){ 
+	 $('.clr').html('');
+	 $("#verify_form").ajaxForm(
+     {
+	  beforeSend: function(){
+	       $(".otp_verify_msg").attr('src',ajax_url+'img/search-loader.gif');
+	  },
+     success: function(res){ 
+		//alert(res);
+		//console.log(res);
+        var response = res.split(':');
+             //alert(res);
+              if($.trim(response[0]) == 'Success'){
+				  $('.clr').html(''); //Emtpy Error MESSAGE
+                  $(".otp_verify_success_msg").html(response[1]);
+                 setTimeout(function(){window.location.href = ajax_url+"dashboard/profile";},1000);
+              }else  if($.trim(response[0]) == 'Error'){
+				$('.clr').html(''); //Emtpy Error MESSAGE
+                $(".otp_verify_error_msg").html(response[1]);
+               }
+	    }
+     }).submit();
+    });
+    //End
 /*For profile video*/
+
 $(document).ready(function(){
+	
+	
     $("#browseVideo").on('click',function(){
         $("#profile_video").trigger("click");    
         });
@@ -740,8 +862,7 @@ $(document).ready(function(){
       beforeSend: function(){
 		  $("#preview-profile-banner").attr('src',ajax_url+'img/search-loader.gif');
 		},
-		//target: '#preview-profile-video',
-    success: function(res) { 
+	success: function(res) { 
           var response = res.split('::');
               if($.trim(response[0]) == 'Success'){
                   $('.clr').html(''); //Emtpy Error MESSAGE

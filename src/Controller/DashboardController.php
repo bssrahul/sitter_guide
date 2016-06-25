@@ -553,7 +553,7 @@ class DashboardController extends AppController
 			$user_current = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
 						->hydrate(false)->count();
-		   $client_stay_status["events"] = $user_current;
+		    $client_stay_status["events"] = $user_current;
 			/////////////////////
 			//pr($client_stay_status["events"]);die;		
 			$booking_arr = array();
@@ -818,6 +818,54 @@ Function for Front profile dashboard
 	 					   
 							   
 	}
+	/**
+	 function for varification
+	 */
+	 function varificationMobileNumber(){
+		 $usersModel = TableRegistry::get('Users');
+		 
+		 $session = $this->request->session();
+         $userId = $session->read('User.id');
+         $this->request->data = $_REQUEST;
+           //pr($this->request->data['Userverify']);die;
+           if(isset($this->request->data['Userverify']) && !empty($this->request->data['Userverify'])){
+			   $user_verify = $usersModel->find('all')->select(["id","otp"])
+						->where(['Users.id' => $userId])->toArray();
+						 //echo "Success:".$this->request->data['Userverify']['otp_verify'];die;
+				if($this->request->data['Userverify']['otp_verify'] == ""){	
+					       echo "Error:This field is required.";die;
+				}else{	 
+				    if(!empty($user_verify[0]->otp) && ($user_verify[0]->otp == $this->request->data['Userverify']['otp_verify'])){
+						
+						    $userData = $usersModel->newEntity();
+						    $userData->id = $userId;
+							$userData->mobile_verification = 1;
+							
+							if($usersModel->save($userData)){
+								 echo "Success:You mobile number has been verified.";die;
+							}else{
+								 echo "Error:Network not working, please try again.";die;
+							}
+					}else{
+					    echo "Error:Your mobile number verification failed, please try again";die;
+					}
+				 }
+					
+					
+		   }else{
+			    $digits = 6;
+				$four_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
+				
+				$userData = $usersModel->newEntity();
+				$userData->id = $userId;
+				$userData->otp = $four_digits;
+				if($usersModel->save($userData)){
+					 echo "Success:Verification code has been sent on your registered  mobile number.";die;
+				}else{
+				     echo "Error:Network not working, please try again.";die;
+				}
+		 }
+     }
     /**
   Function for Profile
     */
@@ -835,8 +883,7 @@ Function for Front profile dashboard
 		
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
-			//pr($this->request->data); die;
-			if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
+		  	if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
 			
 				if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
 				  {
