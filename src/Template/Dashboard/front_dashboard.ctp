@@ -171,7 +171,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
               <div class=" text-center">
-                <button class="btn btn-invite12"> Invite Friends 
+				<button class="btn btn-invite12"  data-toggle="modal" data-target="#squarespaceModal"> Invite Friend
                 </button>
               </div>
             </div>
@@ -206,3 +206,162 @@
       </div>
     </div>
   </div>
+<!--
+refer afriend modal popup stars-->
+<!-- line modal -->
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">
+            <img src="<?php echo HTTP_ROOT; ?>img/pop-cross.png" alt="cross">
+          </span>
+          <span class="sr-only">Close
+          </span>
+        </button>
+        <h2>
+          <span>Refer Friends & Get $10
+          </span>
+        </h2>
+      </div>
+      <div class="modal-body">
+        <!-- content goes here -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="to-from">
+              <div class="popup-form">
+                <!--<form class="form-horizontal">-->
+					 <?php echo $this->Form->create(@$userInfo, [
+						  'url' => ['controller' => 'dashboard', 'action' => 'refer-friend'],
+						  'class'=>'form-horizontal',
+						  'id'=>'referFriend',
+					 ]);?>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 col-lg-1 text-left no-padding-right control-label">To:
+                    </label>
+                    <div class="col-sm-6  ">
+                     <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Enter Email">-->
+                       <?php 
+							  echo $this->Form->input('UserReferences.refer_email',[
+								'templates' => ['inputContainer' => '{{content}}'],
+								'label'=>false,
+								'class' =>'form-control'
+								]);
+                       ?>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="input" class="col-sm-2 col-lg-1 no-padding-right control-label">From:
+                    </label>
+                    <div class="col-sm-6  ">
+                     <!-- <input type="email" class="form-control" id="inputPassword3" placeholder="friend@mobilyte.com">-->
+                       <?php 
+							  echo $this->Form->input('UserReferences.refer_by_email',[
+								'templates' => ['inputContainer' => '{{content}}'],
+								'label'=>false,
+								'class' =>'form-control'
+								]);
+                       ?>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <div class="pop-content">
+              <div class="col-sm-7">
+                <p>"I thought you would like $10 to use on
+                  Sitter Guide.
+                </p>
+                <br>
+                <p>Sitter Guide is the all-in-one home for
+                  thousands of people 
+                  <b>sitting for pets,
+                    people, plants & properties.
+                  </b>
+                </p>
+                <br>
+                <p>It’s really easy to search and find a sitter, conect in-person, book and stay through Sitter Guide.
+                </p>
+                <br>
+                <p>Also, check out the market place for 
+                  <b>traniers, groomers, drivers 
+                  </b>& people who want to share 
+                  <b>recreation time
+                  </b> with you too..."
+                </p>         
+              </div>
+              <div class="col-sm-5 no-padding-left no-padding-right">
+                <div class="box">
+                  <img src="<?php echo HTTP_ROOT; ?>img/pop-logo.png"  class="img-responsive text-center center-block">
+                  <p class="box-text">Give $10 to your firends to use on their first stay
+                  </p>
+                  <p class="box-text">You'll also get $10 when they complete their first booking.
+                  </p>
+                  <br>
+                  <br>
+                  <div class="pop-dog">
+                    <img src="<?php echo HTTP_ROOT; ?>img/pop-dog.png" class="img-responsive" alt="dog">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 icon-stripe no-padding-left no-padding-right">
+            <div class="col-sm-6 col-xs-7">
+              <ul class="list-inline icons-social">
+                <li>
+                  <img src="<?php echo HTTP_ROOT; ?>img/popi1.png" width="31" height="31" alt="facebook">
+                </li>
+                <li>
+                  <img src="<?php echo HTTP_ROOT; ?>img/popi2.png" width="31" height="31" alt="twitter">
+                </li>
+                <li>
+                  <img src="<?php echo HTTP_ROOT; ?>img/popi3.png" width="31" height="31" alt="message">
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-xs-5 pull-right text-right">
+              <button class="btn btn-send ">Send Mail
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="link">
+              <div class="input-group">
+                <span class="input-group-addon green" id="basic-addon2">
+                  <img src="<?php echo HTTP_ROOT; ?>img/pop-chain.png"  alt="chain">  Copy your link
+                </span>
+                <input type="text" class="form-control" value="http://refer.rover.com/v2/share" aria-describedby="basic-addon2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <p class="email">Your rewards will baerich@gmail.com
+            </p>
+          </div>
+          <div class="col-sm-12">
+            <div class="pop-footer">
+              <ul class="list-inline">
+                <li> &copy;2014,All Right Reserved
+                </li>
+                <li>|
+                </li>
+                <li>Terms and Conditions
+                </li>
+                <li>|
+                </li>
+                <li>Privacy Policy
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+refer afriend modal popup ends-->

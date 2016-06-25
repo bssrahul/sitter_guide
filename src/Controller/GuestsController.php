@@ -200,7 +200,6 @@ class GuestsController extends AppController
 		
 	    if(isset($this->request->data['Users']['email']) && !empty($this->request->data['Users']['email']))
 		{
-			
 			$data=$this->request->data;
 			$error=$this->validate_login($data);
 			
@@ -237,8 +236,7 @@ class GuestsController extends AppController
 						$session->write('User.user_type', $getUserData->user_type);
 
 						$session->write('User.name', ucwords($getUserData->first_name." ".substr($getUserData->last_name,0,1)));
-
-						$session->write('User.facebook_id', $getUserData->facebook_id);
+                        $session->write('User.facebook_id', $getUserData->facebook_id);
 						$session->write('User.is_image_uploaded', $getUserData->is_image_uploaded);
 						$session->write('User.image', $getUserData->image);
 						$session->write('User.last_login', $getUserData->last_login);
@@ -253,7 +251,7 @@ class GuestsController extends AppController
 						}
 					}	
 				}else{
-						if ($this->request->is('ajax')) {
+						if($this->request->is('ajax')){
 						  	echo 'Error:'.$this->stringTranslate(base64_encode('Authentication Failed! Please try again.'));
 						  	die;
 						}else{
@@ -535,12 +533,10 @@ class GuestsController extends AppController
 						$data=$this->request->data;
 						
 						$error=$this->validate_register($data);
-						//echo "<pre>";print_r($error);die;
 						if(count($error) == 0)
 						{
 							// Loaded Users Model
 							$UsersModel = TableRegistry::get('Users');
-							
 							// Code for Reference Code Activation
 							$referenceCodeFlag = false;
 							if(!empty($this->request->data['Users']['reference_code'])){
@@ -550,14 +546,12 @@ class GuestsController extends AppController
 							}else{
 								unset($this->request->data['Users']['reference_code']);	
 							}
-							
 							$UsersData = $UsersModel->newEntity($this->request->data['Users'],['validate' => true]);
 							//CODE FOR MULTILIGUAL START
 							$session = $this->request->session();
 							$UsersModel->_locale = $session->read('requestedLanguage');
 							//CODE FOR MULTILIGUAL END
-
-							$passwordOrg = $this->request->data['Users']['password'];
+                            $passwordOrg = $this->request->data['Users']['password'];
 							
 							$activation_key = md5(microtime());							
 							$UsersData->password = md5($passwordOrg);
@@ -587,7 +581,6 @@ class GuestsController extends AppController
 							$UsersData->longitude=$sourceLocationLongitude;					
 							// end get latitude and longitude from country and zip start			
 							$UsersData->status = 0;
-							//pr($UsersData);die;
 							if($UsersModel->save($UsersData))
 							{
 								$getUsersTempId1 = $UsersData->id;
@@ -686,50 +679,20 @@ class GuestsController extends AppController
 			$this->set('signupWithFacebook', '<a href="' . htmlspecialchars($loginUrl) . '"><i class="fa fa-facebook-square"></i> Signup with Facebook!</a>');
 	        $this->set('facebookUrl',$loginUrl);
 	}
-	/**
-    Function for signin
-	*/	
-	/*function signin(){
-		$this->viewBuilder()->layout('landing');
-	}*/
-	
-	
-	//dummy
-	/* function dummy(){
-		
-		echo $cdate= date("Y-m-d");
-     $your_date = strtotime("1998-04-29");
-     $datediff =strtotime($cdate)-$your_date;
-     $days=floor($datediff/(60*60*24));
-	 echo $days;
-	if($days < 6574){
-		echo "<br>";
-		echo "You are under eighteen";
-	}
-	else{
-		echo "<br>";
-		echo "You are above eighteen";
-	}
-	} */
-	
-	
-    /**Function for Validate SIGN UP
+	/**Function for Validate SIGN UP
 	*/
 	function validate_register($data)
 	{
-	//echo "okok"; pr($data);die;
-		$errors=array();
+	    $errors=array();
 		//Validation for first name
 		if(trim($data['Users']['first_name'])=='')
 		{
-			//echo "empty";die;
 			$errors['first_name'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
 		}else{
 			if(is_numeric($data['Users']['first_name'])){
 				$errors['first_name'][]= $this->stringTranslate(base64_encode("First name should be alphabatic"))."\n";
 			}
 		}
-		
 		//Validation for last name
 		if(trim($data['Users']['last_name'])=='')
 		{
@@ -739,8 +702,7 @@ class GuestsController extends AppController
 				$errors['last_name'][]=$this->stringTranslate(base64_encode("Last name should be alphabatic"))."\n";
 			}
 		}
-
-		//Validation for email
+         //Validation for email
 		if(trim($data['Users']['email'])=='')
 		{
 			$errors['email'][]=$this->stringTranslate(base64_encode("This is required field"))."\n";
@@ -771,10 +733,40 @@ class GuestsController extends AppController
 				$errors['re_password'][]=$this->stringTranslate(base64_encode("Password does not matched"))."\n";
 			}
 		}
-		//pr($errors);die;
 		return $errors;
 	}
-		
+	/**
+	 Function for email verify
+	*/	
+	function verifyEmail(){
+		   $session = $this->request->session();
+		   $userId = $session->read("User.id");
+		   $UsersModel = TableRegistry::get('Users');
+			 
+			    $activation_key = md5(microtime());	
+			    $UsersData= $UsersModel->newEntity();
+			    
+			    $UsersData->id = $userId;
+				$UsersData->activation_key = $activation_key;	
+				$UsersModel->save($UsersData);
+				
+			  if($UsersModel->save($UsersData)){
+				    $UsersData = $UsersModel->get($userId);
+				    $uid = base64_encode($UsersData->email);
+					$link = HTTP_ROOT.'guests/activation/'.$uid.'/'.$activation_key.'/success:registerSuccess';
+					$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate(base64_encode('Click Here For Activate Your Account')).'</a>';
+					
+					$replace = array('{full_name}','{email}','{link}');
+					$with = array($UsersData->first_name,$UsersData->email,$linkOnMail);
+					
+				$this->send_email('',$replace,$with,'new_registration',$UsersData->email,'');
+				
+				 echo "Success:Verification link has been sent on your registered  email Id.";die;
+	          
+	          }else{
+			     echo "Error:Network not working, please try again.";die;
+			  }
+	}
 	/**Function for member activation
 	*/ 
 	function activation($uid=null,$key = null)
@@ -802,13 +794,11 @@ class GuestsController extends AppController
 				$replace = array('{full_name}');
 				$with = array($count->first_name." ".$count->last_name);
 				$this->send_email('',$replace,$with,'account_activated',$count->email);
-				//$session->write('success', ACTIVATE_ACCT);
 				$this->setSuccessMessage($this->stringTranslate(base64_encode(ACTIVATE_ACCT)));
 				
 			}
 		}else{
 			$this->setErrorMessage($this->stringTranslate(base64_encode("Activation link has been expired")));
-			 //$session->write('error', "Activation link has been expired.");
 		}
 		return $this->redirect(['controller' => 'guests', 'action' => 'home']);			
 	}
@@ -816,13 +806,11 @@ class GuestsController extends AppController
       function for subscribe 
 	*/	
      function subscribe(){
-     	//echo "ok result";die;
-       $SubscribesModel = TableRegistry::get('Subscribes');
+     	$SubscribesModel = TableRegistry::get('Subscribes');
 
 		$this->request->data = @$_REQUEST;
 		
 		if(isset($this->request->data['Subscribes']['email']) && !empty($this->request->data['Subscribes']['email'])){
-			//echo $this->request->data['Subscribes']['email'];die;
 			$getSubscribeData = $SubscribesModel->find('all',['conditions' => ['Subscribes.email' => $this->request->data['Subscribes']['email']]])->first();
 				
 			if(!empty($getSubscribeData)){
@@ -844,8 +832,7 @@ class GuestsController extends AppController
 				}
 				die;
             }
-		
-     } 
+	 } 
   }/**
                  
   */

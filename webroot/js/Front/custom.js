@@ -22,7 +22,7 @@
 		
 		//SLIDEUP MESSAGES FUNCTIONALITY START
 		
-			$('.success_msg, .error_msg').on('click',function(){
+		$('.success_msg, .error_msg').on('click',function(){
 				$(this).slideUp(1000);
 		});
 		setInterval(function() {
@@ -676,7 +676,12 @@
 				},
 				"Users[zone_id]":
 				{
-					required:true
+					required:true 
+				},
+				"Users[emergency_email]":
+				{
+					required : true
+					
 				},
 				"Users[emergency_contacts]":
 				{
@@ -772,6 +777,22 @@
 			}
 
          });
+        /* //CODE SNIPPET FOR Verify
+		$('#verify_form').validate({
+			rules: {
+				"Userverify[otp_verify]":
+				{
+					required: true
+				}
+			},
+			messages: {				
+				"Userverify[otp_verify]":
+				{
+					required : "This field is required"
+				}
+			}
+		});*/
+
 	//CODE SNIPPET FOR Sitter House
 		$('#sitterHouse').validate({
 			rules: {
