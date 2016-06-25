@@ -3,7 +3,8 @@
 	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	$(function(){
-		//DATE PICKER SCRIPT FOR FROM DATE
+		
+		/*DATE PICKER SCRIPT FOR HOME PAGE CALENDER START*/
 		$( "#boardingFrom" ).datepicker({
 		  defaultDate: "+1",
 		  changeMonth: true,
@@ -33,14 +34,66 @@
 
 		});
 		
+		$('#cIconTo').click(function(){
+			$( "#boardingTo" ).focus();
+
+		});
+		
+		/*HOME PAGE CALENDER SCRIPT END*/
+		
+		
+		
+		/*DATE PICKER SCRIPT FOR SEARCH FILTER ON SEARCH PAGE CALENDER START*/
+		$( "#boardingFromFilter" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd', 
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  onClose: function( selectedDate ) {
+			$( "#boardingToFilter" ).datepicker( "option", "minDate", selectedDate );
+		  },
+		  onSelect: function(dateText, inst) {
+			setTimeout(function(){ $( "#boardingToFilter" ).focus(); }, 000);
+			
+				
+		  }
+		});
+		
+		//DATE PICKER SCRIPT FOR TO DATE
+		$( "#boardingToFilter" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd',
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  onClose: function( selectedDate ) {
+			$( "#boardingFromFilter" ).datepicker( "option", "maxDate", selectedDate );
+		  },
+		  onSelect: function(dateText, inst) {
+				 gerSearchResult();
+				
+		  }
+		});
+		
+		//OPEN DATE PICKER ONCLICK ON CALENDER ICON FOR TO AND FROM DATE
+		$('#cIconFromFilter').click(function(){
+			$( "#boardingFromFilter" ).focus();
+
+		});
+		
+		$('#cIconToFilter').click(function(){
+			$( "#boardingToFilter" ).focus();
+
+		});
+		
+		/*DATE PICKER SCRIPT FOR SEARCH FILTER ON SEARCH PAGE CALENDER END*/
+		
+		
+		//CHANGE HOME PAGE SEARCH BUTTON VALUE ON CLICK
 		$('.searchBtn').click(function(){
 			var orgBtn = $(this).val();
 			$(this).val('Searching...');
-
-		});
-
-		$('#cIconTo').click(function(){
-			$( "#boardingTo" ).focus();
 
 		});
 		
