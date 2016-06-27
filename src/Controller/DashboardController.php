@@ -2400,11 +2400,12 @@ function addPets(){
 		$calenderData->avail_status=1;
 		if($calendarModel->save($calenderData)){
 		
-			$this->Flash->success(__('Record has been added by ajax Successfully'));
-			return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
+			$this->Flash->success(__('Changes has been done'));
+			die;
+			//return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
 		}
 		else{
-			$this->Flash->error(__('Record can not be added '));
+			$this->Flash->error(__('Something went wrong'));
 		
 		}	
 		die;
