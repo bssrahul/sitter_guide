@@ -216,7 +216,7 @@
                                   ]);
                             ?>
                             <?php if($userInfo['mobile_verification'] != 1){?>	
-                             <br/><a href="javascript:void(0)" style="font-size:12px;color:blue" data-toggle="modal" data-target="#otppopup"> verify you phone</a>   
+                             <br/><a href="javascript:void(0)" id="num_verify_link" style="font-size:12px;color:blue" data-toggle="modal" data-target="#otppopup"> verify you phone</a>   
                             <?php } ?>               
                           </div>
                          
@@ -748,6 +748,9 @@ function saveCropImage(params) {
 						   }
 				}
       });
+	});
+	$(document).on('click','#num_verify_link', function(){
+		  $('.clr').html('');
 	});
     //For otp verify
     $(document).on('click','#for_otp_generet', function(){ 
