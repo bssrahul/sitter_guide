@@ -20,7 +20,7 @@ header .topnav-area .navbar li a{ color:#646464; padding:8px 10px; font-size:15p
 header .topnav-area .navbar li a:hover, header .topnav-area .navbar li a:focus{ color:#72a105; background:none ;}
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover{ background:none;}
 header .topnav-area .navbar li.select a{ background:url(../../img/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:3px; padding:7px 25px; }
-header .topnav-area .nav li.select a:hover{background:url(../../img/select-bgr-x.png) repeat-x  center; color:#000000;}
+header .topnav-area .nav li.select a:hover{background:url(../../img/select-bgr-x.png) repeat-x  center; color:#fff; opacity:0.9}
 header .topnav-area .navbar li a .badge{ background:#ff0000; margin:-15px 0 0 0; width:25px; height:25px; border:2px solid #ffffff; border-radius:50%; padding:0px; box-shadow:#c7c7c7 0px 2px 0px; line-height:20px;}
 header.smaller .topnav-area .navbar li a .badge{ margin:-11px 0 0 0;}
 
@@ -109,21 +109,22 @@ header.smaller .top-search .search-box{ height:45px;}
 header.smaller .top-search .search-box .search-input{height:45px; border:0px; line-height:50px;}
 header.smaller .topnav-area .navbar li{ padding:5.3px 9px 10.3px 9px;  }
 header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-size:15px;}
-header.smaller .topnav-area .navbar li.select a{ background:url(../../img/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:4px; padding:7px 25px; }
+
+
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
 
 /*========================================================Banner css start=====================================================*/
 
-.banner-area{ width:100%; float:left; background:url(../../img/home-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:125px 0 75px 0;}
+.banner-area{ width:100%; float:left; background:url(../../img/home-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:45px 0 75px 0;}
 .banner-area .ban-txt{ width:100%; float:left;  text-align:center; }
-.banner-area .ban-txt h1{/*font-family:'CenturyGothic-Regular';*/ font-size:80px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
-.banner-area .ban-txt p{font-size:25px; /*font-family: "Century Gothic";*/  color:#ffffff; padding:30px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ; }
-.banner-area .ban-txt .hworks{ width:225px; height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; /*font-family:"Century Gothic";*/ background:#59aae1; margin:65px auto 0;
+.banner-area .ban-txt h1{/*font-family:'CenturyGothic-Regular';*/ font-size:40px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
+.banner-area .ban-txt p{font-size:20px; /*font-family: "Century Gothic";*/  color:#ffffff; padding:10px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ; }
+.banner-area .ban-txt .hworks{ width:160px; height:40px; display:block; line-height:40px; color:#ffffff; text-decoration:none; font-size:16px; /*font-family:"Century Gothic";*/ background:#59aae1; margin:20px auto 0;
  border-radius:1px; }
  .banner-area .ban-txt .hworks:hover{ background:#2c80b9;}
 .banner-area .ban-txt .hworks .fa{ margin:0 12px 0 0;}
 
-.ban-search-area{ width:100%; float:left; margin:25px 0 0 0; }
+.ban-search-area{ width:100%; float:left; margin:0px 0 0 0; }
 .ban-search-area .bs-box{ width:100%; float:left; background-color:rgba(255, 255, 255, 0.6); min-height:250px; border-radius:5px; padding:24px;}
 .ban-search-area .bs-box .top-srch{ width:100%; float:left;}
 .ban-search-area .bs-box .top-srch p{ font-size:18px; color:#404040; margin:0 0 20px 0;}
@@ -277,7 +278,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 .banner-area{ height:100vh;}
 .ban-search-area{ margin:70px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 }
 @media (min-width:1337px) and (max-width:1440px){
 /*top head*/	
@@ -298,7 +299,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 
 .ban-search-area{ margin:70px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 }
 
 @media (min-width:1200px) and (max-width:1366px){
@@ -319,9 +320,9 @@ header .topnav-area .navbar .navbar-nav{ float:right; }
 header .topnav-area .navbar .nav-logout li{ padding:18px 4px;}
 header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*top head*/
-.banner-area{ padding:75px 0 35px 0; }
+.banner-area{ padding:45px 0 35px 0; }
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:20px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:20px auto 0;}
 .ban-search-area{ margin:50px 0 0 0;}
 
 .ban-search-area .bs-box{ margin:15px 0 0 0px;}
@@ -347,11 +348,11 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*top head*/	
 	
 /*Banner*/
-.banner-area{padding:75px 0 35px 0;}
+.banner-area{padding:45px 0 35px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:30px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -389,11 +390,11 @@ header .topnav-area .navbar .nav-logout li a{ font-size:14px;}
 /*top head*/	
 	
 /*Banner*/
-.banner-area{ height:auto; padding:75px 0 15px 0;}
+.banner-area{ height:auto; padding:45px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -452,11 +453,11 @@ header .topnav-area .navbar .navbar-nav{ width:100%;}
 /*top head*/
 
 /*Banner*/
-.banner-area{ padding:75px 0 15px 0;}
+.banner-area{ padding:45px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -504,11 +505,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*top head*/
 
 /*Banner*/
-.banner-area{ height:auto; padding:100px 0 15px 0;}
+.banner-area{ height:auto; padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -570,11 +571,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*top head*/
 
 /*Banner*/
-.banner-area{ height:auto; padding:85px 0 15px 0;}
+.banner-area{ height:auto; padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
 .banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -634,11 +635,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*--top head---*/
 	
 /*Banner*/
-.banner-area{  padding:85px 0 15px 0;}
+.banner-area{  padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
 .banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:16px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -693,8 +694,8 @@ header .topnav-area .navbar li.dd-country{padding:15.5px 9px;}
 header .topnav-area .navbar li a{ color:#646464; padding:8px 10px; font-size:15px; font-weight:300;  }
 header .topnav-area .navbar li a:hover, header .topnav-area .navbar li a:focus{ color:#72a105; background:none ;}
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover{ background:none;}
-header .topnav-area .navbar li.select a{ background:url(../../imgselect-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:3px; padding:7px 25px; }
-header .topnav-area .nav li.select a:hover{background:url(../../imgselect-bgr-x.png) repeat-x  center; color:#000000;}
+header .topnav-area .navbar li.select a{ background:url(../../img/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:3px; padding:7px 25px; }
+header .topnav-area .navbar li.select a:hover{background:url(../../img/select-bgr-x.png) repeat-x  center; color:#fff; opacity:0.9}
 header .topnav-area .navbar li a .badge{ background:#ff0000; margin:-15px 0 0 0; width:25px; height:25px; border:2px solid #ffffff; border-radius:50%; padding:0px; box-shadow:#c7c7c7 0px 2px 0px; line-height:20px;}
 header.smaller .topnav-area .navbar li a .badge{ margin:-11px 0 0 0;}
 
@@ -783,16 +784,17 @@ header.smaller .top-search .search-box{ height:45px;}
 header.smaller .top-search .search-box .search-input{height:45px; border:0px; line-height:50px;}
 header.smaller .topnav-area .navbar li{ padding:5.3px 9px 10.3px 9px;  }
 header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-size:15px;}
-header.smaller .topnav-area .navbar li.select a{ background:url(../../imgselect-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:4px; padding:7px 25px; }
+
+
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
 
 /*========================================================Banner css start=====================================================*/
 
-.banner-area{ width:100%; float:left; background:url(../../imghome-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:125px 0 75px 0;}
+.banner-area{ width:100%; float:left; background:url(../../imghome-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:45px 0 75px 0;}
 .banner-area .ban-txt{ width:100%; float:left;  text-align:center; }
-.banner-area .ban-txt h1{font-family:'CenturyGothic-Regular'; font-size:80px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
+.banner-area .ban-txt h1{font-family:'CenturyGothic-Regular'; font-size:40px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
 .banner-area .ban-txt p{font-size:25px; font-family: "Century Gothic";  color:#ffffff; padding:30px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ; }
-.banner-area .ban-txt .hworks{ width:225px; height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; font-family:"Century Gothic"; background:#59aae1; margin:65px auto 0;
+.banner-area .ban-txt .hworks{ width:160px; height:40px; display:block; line-height:40px; color:#ffffff; text-decoration:none; font-size:16px; font-family:"Century Gothic"; background:#59aae1; margin:25px auto 0;
  border-radius:1px; }
  .banner-area .ban-txt .hworks:hover{ background:#2c80b9;}
 .banner-area .ban-txt .hworks .fa{ margin:0 12px 0 0;}
@@ -951,7 +953,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 .banner-area{ height:100vh;}
 .ban-search-area{ margin:70px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 }
 @media (min-width:1337px) and (max-width:1440px){
 /*top head*/	
@@ -972,7 +974,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 
 .ban-search-area{ margin:70px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 }
 
 @media (min-width:1200px) and (max-width:1366px){
@@ -995,7 +997,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*top head*/
 .banner-area{ padding:75px 0 35px 0; }
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:20px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:20px auto 0;}
 .ban-search-area{ margin:50px 0 0 0;}
 
 .ban-search-area .bs-box{ margin:15px 0 0 0px;}
@@ -1023,9 +1025,9 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*Banner*/
 .banner-area{padding:75px 0 35px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:30px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1065,9 +1067,9 @@ header .topnav-area .navbar .nav-logout li a{ font-size:14px;}
 /*Banner*/
 .banner-area{ height:auto; padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1128,9 +1130,9 @@ header .topnav-area .navbar .navbar-nav{ width:100%;}
 /*Banner*/
 .banner-area{ padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1178,11 +1180,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*top head*/
 
 /*Banner*/
-.banner-area{ height:auto; padding:100px 0 15px 0;}
+.banner-area{ height:auto; padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1244,11 +1246,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*top head*/
 
 /*Banner*/
-.banner-area{ height:auto; padding:85px 0 15px 0;}
+.banner-area{ height:auto; padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
 .banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1308,11 +1310,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*--top head---*/
 	
 /*Banner*/
-.banner-area{  padding:85px 0 15px 0;}
+.banner-area{  padding:75px 0 15px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
 .banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
 .banner-area .ban-txt p{font-size:16px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1344,9 +1346,7 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 }
 
 
-=======
-  @charset "utf-8";
-/* CSS Document */
+
 
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
 header {width: 100%; border-bottom:#72a105 5px solid; height:75px; position:fixed; top:0; left:0;   z-index:20;background-color: #ffffff;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition:
@@ -1365,9 +1365,10 @@ header .topnav-area .navbar li{ padding:18px 9px; -webkit-transition: padding 0.
 header .topnav-area .navbar li.dd-country{padding:15.5px 9px;}
 header .topnav-area .navbar li a{ color:#646464; padding:8px 10px; font-size:15px; font-weight:300;  }
 header .topnav-area .navbar li a:hover, header .topnav-area .navbar li a:focus{ color:#72a105; background:none ;}
-.nav .open > a, .nav .open > a:focus, .nav .open > a:hover{ background:none;}
-header .topnav-area .navbar li.select a{ background:url(../../img/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:3px; padding:7px 25px; }
-header .topnav-area .nav li.select a:hover{background:url(../../img/select-bgr-x.png) repeat-x  center; color:#000000;}
+
+header.smaller .topnav-area .navbar li.select a, header.smaller .topnav-area .navbar li.select a:hover, header.smaller .topnav-area .navbar li.select a:focus{ background:url(../../img/select-bgr-x.png) repeat-x  center !important;
+color:#ffffff; border-radius:3px; padding:7px 25px; }
+
 header .topnav-area .navbar li a .badge{ background:#ff0000; margin:-15px 0 0 0; width:25px; height:25px; border:2px solid #ffffff; border-radius:50%; padding:0px; box-shadow:#c7c7c7 0px 2px 0px; line-height:20px;}
 header.smaller .topnav-area .navbar li a .badge{ margin:-11px 0 0 0;}
 
@@ -1456,21 +1457,20 @@ header.smaller .top-search .search-box{ height:45px;}
 header.smaller .top-search .search-box .search-input{height:45px; border:0px; line-height:50px;}
 header.smaller .topnav-area .navbar li{ padding:5.3px 9px 10.3px 9px;  }
 header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-size:15px;}
-header.smaller .topnav-area .navbar li.select a{ background:url(../../img/select-bgr-x.png) repeat-x  center; color:#ffffff; border-radius:4px; padding:7px 25px; }
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
 
 /*========================================================Banner css start=====================================================*/
 
-.banner-area{ width:100%; float:left; background:url(../../img/home-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:125px 0 75px 0;}
+.banner-area{ width:100%; float:left; background:url(../../img/home-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:45px 0 75px 0;}
 .banner-area .ban-txt{ width:100%; float:left;  text-align:center; }
-.banner-area .ban-txt h1{font-family:'CenturyGothic-Regular'; font-size:80px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
-.banner-area .ban-txt p{font-size:25px; font-family: "Century Gothic";  color:#ffffff; padding:30px 0 0 0; text-shadow:#000000 0.3px 1px 0.3px ; }
-.banner-area .ban-txt .hworks{ width:225px; height:56px; display:block; line-height:56px; color:#ffffff; text-decoration:none; font-size:22px; font-family:"Century Gothic"; background:#59aae1; margin:65px auto 0;
+.banner-area .ban-txt h1{font-family:'CenturyGothic-Regular'; font-size:40px; color:#ffffff; text-shadow:#858585 0.6px 2px 0.6px ; padding:25px 0 0 0;}
+.banner-area .ban-txt p{font-size:20px; font-family: "Century Gothic";  color:#ffffff; padding:0px 0 0 0; text-shadow:#858585 0.6px 2px 0.6px ; }
+.banner-area .ban-txt .hworks{ width:160px; height:40px; display:block; line-height:40px; color:#ffffff; text-decoration:none; font-size:16px; font-family:"Century Gothic"; background:#59aae1; margin:25px auto 0;
  border-radius:1px; }
  .banner-area .ban-txt .hworks:hover{ background:#2c80b9;}
 .banner-area .ban-txt .hworks .fa{ margin:0 12px 0 0;}
 
-.ban-search-area{ width:100%; float:left; margin:25px 0 0 0; }
+.ban-search-area{ width:100%; float:left; margin:5px 0 0 0; }
 .ban-search-area .bs-box{ width:100%; float:left; background-color:rgba(255, 255, 255, 0.6); min-height:250px; border-radius:5px; padding:24px;}
 .ban-search-area .bs-box .top-srch{ width:100%; float:left;}
 .ban-search-area .bs-box .top-srch p{ font-size:18px; color:#404040; margin:0 0 20px 0;}
@@ -1559,16 +1559,19 @@ header.smaller .topnav-area .navbar li.select a{ background:url(../../img/select
 .ban-search-area .bs-box .search-bot-area .sb-area ul{ margin:0px; padding:0px; list-style-type:none;}
 .ban-search-area .bs-box .search-bot-area .sb-area ul li{ width:49.5%; float:left; margin:0 1% 0 0;}
 .ban-search-area .bs-box .search-bot-area .sb-area ul li:last-child{ margin-right:0px;}
-.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size{ width:100%; float:left; }
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size{ width:100%; float:left; font-size:13px; }
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size label { margin-bottom:5px;}
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul{ margin:0px; padding:0px; list-style-type:none;}
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li{ float:left; width:24.25%; margin:0 1% 0 0; background:#ffffff;   text-align:center; 
  box-sizing: border-box; }
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a{border-radius:3px; padding:5px 0;  display:block; font-size:12px; color:#404040; text-decoration:none;  border:#d1d1d1 1px solid;}
-.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a b{font-size:16px; display:block; font-weight:500;  }
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a b{font-size:14px; display:block; font-weight:500;  }
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li:last-child{ margin-right:0px;}
 
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a:hover,.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a:focus{ border:#72a105 3px solid; display:block; padding:3px 0;}
-.ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn{ width:100%; height:50px; border:0px; font-size:18px; margin:1px 0 0 0;}
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn{ width:100%; height:46px; border:0px; font-size:18px; margin:5px 0 0 0; background:#72A105;}
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn:hover{  background:#699305;}
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn:focus{ background:#699305;}
 
 .ban-search-area .bs-box .search-bot-area .from-to-area .dog-list ul li{ margin:0px;}
 .ban-search-area .bs-box .search-bot-area .from-to-area .dog-list ul li:first-child{ border-radius:3px 0px 0px 3px; }
@@ -1579,7 +1582,6 @@ header.smaller .topnav-area .navbar li.select a{ background:url(../../img/select
 
 
 .ban-search-area .bs-box .sr-area .top-filter-tab ul li.display-mob{color: #404040;    font-size: 14px;    padding: 0 0 15px;    text-transform: uppercase; border:0px; background:none; font-weight:normal; display:none;}
-
 
 /*-------------------- New Banner Search CSS Start --------------------- */
 
@@ -1623,8 +1625,8 @@ header .topnav-area .navbar .navbar-nav{ float:right; }
 header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 .banner-area{ height:100vh;}
-.ban-search-area{ margin:70px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:5px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 }
 @media (min-width:1337px) and (max-width:1440px){
 /*top head*/	
@@ -1644,8 +1646,8 @@ header .topnav-area .navbar .navbar-nav{ float:right; }
 header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 /*top head*/
 
-.ban-search-area{ margin:70px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.ban-search-area{ margin:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 }
 
 @media (min-width:1200px) and (max-width:1366px){
@@ -1666,10 +1668,10 @@ header .topnav-area .navbar .navbar-nav{ float:right; }
 header .topnav-area .navbar .nav-logout li{ padding:18px 4px;}
 header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*top head*/
-.banner-area{ padding:75px 0 35px 0; }
-.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:20px auto 0;}
-.ban-search-area{ margin:50px 0 0 0;}
+.banner-area{ padding:45px 0 75px 0; }
+.banner-area .ban-txt p{font-size:20px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:20px auto 0;}
+.ban-search-area{ margin:20px 0 0 0;}
 
 .ban-search-area .bs-box{ margin:15px 0 0 0px;}
 
@@ -1694,12 +1696,12 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 /*top head*/	
 	
 /*Banner*/
-.banner-area{padding:75px 0 35px 0;}
-.banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
-.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
-.ban-search-area{ margin:30px 0 0 0; }
+.banner-area{padding:45px 0 75px 0;}
+.banner-area .ban-txt{ margin:0px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:20px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:20px auto 0;}
+.ban-search-area{ margin:10px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
@@ -1736,12 +1738,12 @@ header .topnav-area .navbar .nav-logout li a{ font-size:14px;}
 /*top head*/	
 	
 /*Banner*/
-.banner-area{ height:auto; padding:75px 0 15px 0;}
-.banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
-.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
-.ban-search-area{ margin:25px 0 0 0; }
+.banner-area{ height:auto; padding:45px 0 75px 0;}
+.banner-area .ban-txt{ margin:0px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:20px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
+.ban-search-area{ margin:15px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt p{ padding:15px 0 0 0;}
@@ -1799,11 +1801,11 @@ header .topnav-area .navbar .navbar-nav{ width:100%;}
 /*top head*/
 
 /*Banner*/
-.banner-area{ padding:75px 0 15px 0;}
+.banner-area{ padding:45px 0 75px 0;}
 .banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
-.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:20px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1852,10 +1854,10 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 
 /*Banner*/
 .banner-area{ height:auto; padding:100px 0 15px 0;}
-.banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:55px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
-.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt{ margin:0px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:20px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1917,11 +1919,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*top head*/
 
 /*Banner*/
-.banner-area{ height:auto; padding:85px 0 15px 0;}
-.banner-area .ban-txt{ margin:50px 0 0 0;}
-.banner-area .ban-txt h1{ font-size:40px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
-.banner-area .ban-txt p{font-size:18px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area{ height:auto; padding:100px 0 75px 0;}
+.banner-area .ban-txt{ margin:0px 0 0 0;}
+.banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
+.banner-area .ban-txt p{font-size:18px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}
@@ -1981,11 +1983,11 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 /*--top head---*/
 	
 /*Banner*/
-.banner-area{  padding:85px 0 15px 0;}
-.banner-area .ban-txt{ margin:50px 0 0 0;}
+.banner-area{  padding:100px 0 55px 0;}
+.banner-area .ban-txt{ margin:0px 0 0 0;}
 .banner-area .ban-txt h1{ font-size:28px; text-shadow:#000000 0.1px 0.5px 0.1px ;}
-.banner-area .ban-txt p{font-size:16px; padding:15px 0 0 0;}
-.banner-area .ban-txt .hworks{  font-size:22px; margin:25px auto 0;}
+.banner-area .ban-txt p{font-size:16px; padding:0px 0 0 0;}
+.banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
 .ban-search-area{ margin:25px 0 0 0; }
 .ban-search-area .bs-box .top-srch .ts-lft{ max-width:100%;}
 .ban-search-area .bs-box .top-srch .ts-rgt{ max-width:100%;}

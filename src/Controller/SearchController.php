@@ -998,12 +998,30 @@ class SearchController extends AppController
 						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
 				}
 				
-				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge']])
+				$userData = $UsersModel->find('all',['contain'=>['UserAboutSitters','UserRatings'=>['Users'],'UserSitterServices','UserSitterGalleries','Users_badge','UserProfessionalAccreditationsDetails','UserSitterHouses']])
 							   ->where(['Users.id' => $idArr], ['Users.id' => 'integer[]'])
 							   ->toArray();
 				
 				$loggedInUserID = $session->read('User.id');
-				
+			
+				///////////
+				if(!empty($userData)){
+					
+					$bookingRequestModel = TableRegistry :: get("BookingRequests");
+					foreach($userData as $udK =>$udV){
+					
+						$totalClient =  $bookingRequestModel->find('all')
+						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.folder_status_sitter' => "past"])
+						->group('BookingRequests.id HAVING COUNT(BookingRequests.id) >= 1')
+					    ->hydrate(false)->count();
+					    
+						$userData[$udK]['repeatClient'] = $totalClient;
+						
+					}
+				}
+				//pr($userData); die;
+				/////////
+			
 				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
 				
 				if(!empty($userData)){
@@ -1246,7 +1264,7 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
-						HAVING distance < 300
+						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			

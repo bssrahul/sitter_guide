@@ -441,7 +441,7 @@
 						} ?>
 			
 
-						<?php // echo $this->element("frontElements/common/static_search_content"); ?>
+						<?php //echo $this->element("frontElements/common/static_search_content"); ?>
                
               </ul>
               <?php }else{ ?>
@@ -471,7 +471,7 @@
           </div>
           
 			<!--[Right Map Start]-->
-            <div class="sl-map leftsidebar">            	
+            <div id="sidebar" class="sl-map">            	
             	<!--<div class="enlarge-map">
                 	<div class="row">
                     	<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12"> 
@@ -567,14 +567,15 @@
 														  <div class="lft-head">                       	
 															<p class="s-name"><?php if(@$results->first_name != ""){ echo $results->first_name."  ".$results->last_name;}?></p>
 															<p class="s-det">Special needs is my specialty.</p>
-															<p class="s-ads">Morningside Heights, New York, NY, 10027</p>
+															<p class="s-ads"><?php echo @$results->address." ".@$results->address2." ,".@$results->state." ,".@$results->city.", ".@$results->zip; ?> 
+                                                            </p>
 															</div>
 														</div>
 														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
 														<div class="rgt-hours">
 															<p>
 																  from
-																 <span>$35</span>
+										                 <span><?php echo $currency['sign_code']." ".((@$results->user_sitter_services[0]->sh_night_rate)*$currency['price']); ?></span>
 																	per night
 																	</p>
 														</div>            
@@ -607,7 +608,19 @@
 																</ul>
 														</div>
 												</div>
-												<?php	}	?>
+												<?php	}else{	?>
+													    <div class="quick-slide">
+														<div class="ms-area">
+															<ul class="owl-carousel-1">
+																<div class="item">
+																		 <li>
+																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.(@$results->image != ''?@$results->image:'prof_photo.png'); ?>">
+																		</li>
+																	</div>
+															 </ul>
+														</div>
+												</div>
+													<?php } ?>
 												<!--quick slide-->
 												<!--content area Start-->
 
@@ -615,32 +628,44 @@
 													<div class="row">
 														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
 														<div class="sqv-mid-lft">
-															<p class="md-head">About Geraldo</p>    
+															<p class="md-head"><?php if(@$results->first_name != ""){ echo $results->first_name."  ".$results->last_name;}?></p>    
 															<ul>
-																<li>27 Years Of Experience</li>
+																<?php if(@$results->user_professional_accreditations_details[0]->experience >0){ ?>
+																<li><?php echo @$results->user_professional_accreditations_details[0]->experience; ?> Years Of Experience</li>
+																<?php } ?>
+																 <?php if(@$results->user_professional_accreditations_details[0]->oral_madications == 1){ ?>
 																<li>Oral Medication Administration</li>
+																<?php } ?>
+																 <?php if(@$results->user_professional_accreditations_details[0]->injected_madications == 1){ ?>
 																<li>Injected Medication Administration</li>
+																<?php } ?>
+																 <?php if(@$results->user_professional_accreditations_details[0]->experience > 1){ ?>
 																<li>Senior Dog Experience </li>
+																<?php } ?>
 															</ul>   
-															<p class="md-head">Geraldo's Home</p> 
+															<p class="md-head"><?php if(@$results->first_name != ""){ echo $results->first_name."  ".$results->last_name;}?>'s Home</p> 
 															 <ul>
 																<li>House</li>
+																 <?php if(@$results->user_sitter_house->fully_fenced == "yes"){ ?>
 																<li>Fenced Yard</li>
+																<?php } ?>
+																<?php if(@$results->user_sitter_house->smokers == "no"){ ?>
 																<li>Non-Smoking Household</li>
+																<?php } ?>
+																<?php if(@$results->user_sitter_house->dogs_in_home == "yes" && @$results->user_sitter_house->birds_in_cages == "no" && @$results->user_sitter_house->cats_in_home == "no"){ ?>
 																<li>Has 1 Dog, No Other Pets</li>
-																<li>No Children Present</li>
-																<li>Dogs Allowed On Bed</li>
-																<li>Dogs Allowed On Furniture</li>
-																<li>Potty Breaks Every 0-2 Hours</li>
+																<?php } ?>
+																<?php if(!empty(@$results->user_sitter_house->breaks_provided_every)){ ?>
+																<li>Potty Breaks Every <?php echo @$results->user_sitter_houses[0]->breaks_provided_every; ?> Hours</li>
+																<?php } ?>
 															</ul>                                                
 														</div>
 													</div>
 														<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">                 
 														<div class="sqv-mid-rgt">
 															<div class="sqvmr-btn">
-															<a title="Contact Sitter" href="#">Contact Sitter</a>
-															<a title="View Full Profile" href="#">View Full Profile</a>
-															<a title="Save Sitter" href="#">Save Sitter</a>
+															<a title="Contact Sitter" href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">Contact Sitter</a>
+															<a title="View Full Profile" href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">View Full Profile</a>
 															</div>
 															<div class="sqvmd-rt-bot">
 																<ul>
@@ -648,7 +673,7 @@
 																 <span> Sitter responds to most requests within 24 hours</span></li>
 																 <li>A few minutes <span>Sitter responds in a few minutes</span></li>
 																 <li>30% of stays <span>Sitter rarely sends photos through Rover</span></li>
-																 <li>8 repeat clients <span>Sitter had repeat clients</span></li>
+																 <li><?php echo $results->repeatClient; ?> repeat clients <span>Sitter had repeat clients</span></li>
 																	</ul>
 															</div>
 														</div>
@@ -718,3 +743,10 @@
 		}); 
 	});
 </script>
+<?php
+echo $this->Html->script('Front/for-sticky.js'); ?>
+
+<script>$(document).ready(function(){
+	$("#sidebar").stick_in_parent();
+    });
+    </script>
