@@ -637,6 +637,8 @@
 			}*/
 			
 		});
+		
+		
          //CODE SNIPPET FOR General sitter profile
 		$('#generelInfo').validate({
 			rules: {
