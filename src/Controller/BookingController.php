@@ -76,6 +76,13 @@ class BookingController extends AppController
 				
 		$this->viewBuilder()->layout('profile_dashboard');
 		
+		$UserCardsModel = TableRegistry::get('UserCards');
+		$session = $this->request->session();
+		
+		$UserCardsObj = $UserCardsModel->find('all',['conditions' => ['UserCards.user_id' =>$session->read('User.id')]])->hydrate(false);
+		$UserCardsData = $UserCardsObj->first();
+		
+		$this->set('UserCardsData',$UserCardsData);
 		
 	}
 	
@@ -83,10 +90,16 @@ class BookingController extends AppController
 		
 		$this->request->data = $_REQUEST; 
 		
+		$UserCardsModel = TableRegistry::get('UserCards');
+		$session = $this->request->session();
+		
+		$UserCardsObj = $UserCardsModel->find('all',['conditions' => ['UserCards.user_id' =>$session->read('User.id')]]);
+		$UserCardsPrefilledData = $UserCardsObj->first();
+		$this->set('UserCardsData',$UserCardsPrefilledData);
 		if(isset($this->request->data['Booking']) && !empty($this->request->data['Booking'])){
 			//Check Valid data	
 			$error=$this->validate_card_detail($this->request->data);
-				
+			
 			if(count($error) == 0)
 			{
 				try {
@@ -106,10 +119,7 @@ class BookingController extends AppController
 				"exp_year" => "20".str_replace(" ",'',$explodedDate[1]),
 				"cvc" => $this->request->data['Booking']['cvv_code']  )));
 				
-				$session = $this->request->session();
 				$token = $t->id; //Token genrated by stripe
-				
-				
 				
 					if (!isset($token))
 						throw new Exception("The Stripe Token not generated correctly");
@@ -117,11 +127,8 @@ class BookingController extends AppController
 					//Check token id exists or not
 					if(isset($t->id) && $t->id !=''){
 						
-						$UserCardsModel = TableRegistry::get('UserCards');
-						$UserCardsObj = $UserCardsModel->find('all',['conditions' => ['UserCards.id' =>$session->read('User.id')]]);
-						$UserCardsData = $UserCardsObj->first();
-						
 						//Check details are saved into table or not
+			
 						if($UserCardsObj->count() <= 0){
 							
 							//Create user description for create user on stripe
@@ -147,9 +154,11 @@ class BookingController extends AppController
 								
 								$UserCardsSaveData->user_id = $session->read('User.id');
 								
-								$UserCardsSaveData->expiary_date = "20".str_replace(" ",'',$explodedDate[1]);
+								$UserCardsSaveData->expiary_date = $this->request->data['Booking']['expiary_date'];
 								
-								$UserCardsSaveData->card_number = $this->ccMasking($this->request->data['Booking']['card_number']); //Masking for card number
+								$UserCardsSaveData->cvv_code = $this->request->data['Booking']['cvv_code'];
+								
+								$UserCardsSaveData->card_number = $this->ccMasking(str_replace(" ",'',$this->request->data['Booking']['card_number'])); //Masking for card number
 								
 								//Save data into our database
 								if($UserCardsModel->save($UserCardsSaveData)){
@@ -171,13 +180,32 @@ class BookingController extends AppController
 							//Create user description for create user on stripe
 							$user_description = ucwords($session->read('User.name'))."-".$session->read('User.id')." has been updated own card details for fast payment";
 							
-							$cu = \Stripe\Customer::retrieve($UserCardsData->stripe_customer_id);
+							$cu = \Stripe\Customer::retrieve($UserCardsPrefilledData->stripe_customer_id);
 							$cu->description = $user_description;
 							$cu->source = $token; // obtained with Stripe.js
 							
 					    	 // Add additional error handling here as needed
 					
 							if($cu->save()){
+								
+								$UserCardsSaveData = $UserCardsModel->newEntity();
+								
+								$UserCardsSaveData = $UserCardsModel->patchEntity($UserCardsSaveData, $this->request->data['Booking']);
+								
+								$UserCardsSaveData->stripe_customer_id = $UserCardsPrefilledData->stripe_customer_id;
+								
+								$UserCardsSaveData->user_id = $session->read('User.id');
+								
+								$UserCardsSaveData->expiary_date = $this->request->data['Booking']['expiary_date'];
+								
+								$UserCardsSaveData->cvv_code = $this->request->data['Booking']['cvv_code'];
+								
+								$UserCardsSaveData->card_number = $this->ccMasking(str_replace(" ",'',$this->request->data['Booking']['card_number'])); //Masking for card number
+							
+								$UserCardsSaveData->id = $UserCardsPrefilledData->id;
+								//Save data into our database
+								$UserCardsModel->save($UserCardsSaveData);
+									
 								$this->setSuccessMessage($this->stringTranslate(base64_encode('Your card details have been updated.')));
 								echo "success:add_personal_details";die;
 								
@@ -200,9 +228,14 @@ class BookingController extends AppController
 					$error = $e->getMessage();
 					$errBody = $e->getJsonBody();
 					$errMsg = $e->getMessage();
-					pr($errMsg); die;
+					
 					if($errBody['error']['code']=='card_declined') {
 						$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
+						echo "error:$errMsg";die;
+					}else if($errBody['error']['code']=='invalid_expiry_year') {
+						$errMsg = 'Your card\'s expiration year is invalid.';
+						echo "error:$errMsg";die;
+					}else{
 						echo "error:$errMsg";die;
 					}
 				}
@@ -213,7 +246,7 @@ class BookingController extends AppController
 			}	
 		
 		}	
-		$this->autoRender = false ;
+		
     }
 	
 	/**Function for Validate SIGN UP
@@ -267,13 +300,84 @@ class BookingController extends AppController
 		
 		$this->viewBuilder()->layout('profile_dashboard');
 		
-		if(isset($this->request->data) && !empty($this->request->data)){
-			
+		$UserCardsModel = TableRegistry::get('UserCards');
+		$session = $this->request->session();
+		
+		$UserCardsObj = $UserCardsModel->find('all',['conditions' => ['UserCards.user_id' =>$session->read('User.id')]])->hydrate(false);
+		$UserCardsData = $UserCardsObj->first();
+		
+		$this->set('UserCardsData',$UserCardsData);
+		
+		if(isset($this->request->data['Booking']) && !empty($this->request->data['Booking'])){
+			//Check Valid data	
+			$error=$this->validate_personal_detail($this->request->data);
+				
+			if(count($error) == 0)
+			{
+				$UserCardsSaveData = $UserCardsModel->newEntity();
+				$UserCardsSaveData = $UserCardsModel->patchEntity($UserCardsSaveData, $this->request->data['Booking']);
+				$UserCardsSaveData->user_id = $session->read('User.id');
+				
+				if($UserCardsObj->count() > 0){
+							
+					$UserCardsSaveData->id =$UserCardsData['id'];
+					
+				}
+				
+				//Save data into our database
+				if($UserCardsModel->save($UserCardsSaveData)){
+					$this->setSuccessMessage($this->stringTranslate(base64_encode('Personal details has been saved.')));
+				}
+				
+			}else{
+				$this->set('formError',$error);
+				$this->set('totalError',count($error));
+			}
 		}
 	}
 		
 	function ccMasking($number, $maskingCharacter = 'X') {
-		return substr($number, 0, 4) . str_repeat($maskingCharacter, strlen($number) - 8) . substr($number, -4);
+		return str_repeat($maskingCharacter, strlen($number) - 4) . substr($number, -4);
+	}
+	
+	
+	/**Function for Validate SIGN UP
+	*/
+	function validate_personal_detail($data)
+	{
+	    $errors=array();
+		
+		//Validation for address 1
+		if(trim($data['Booking']['address_1'])=='')
+		{
+			$errors['address_1'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for address 2
+		if(trim($data['Booking']['address_2'])=='')
+		{
+			$errors['address_2'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for city
+		if(trim($data['Booking']['city'])=='')
+		{
+			$errors['city'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		
+		
+		//Validation for first name
+		if(trim($data['Booking']['zip'])=='')
+		{
+			$errors['zip'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}else{
+			if(!is_numeric($data['Booking']['zip'])){
+				$errors['zip'][]= $this->stringTranslate(base64_encode("Zip code should be numeric"))."\n";
+			}
+		}	
+		
+		return $errors;
 	}
 	
 	
