@@ -80,10 +80,10 @@ class BookingController extends AppController
 	
 	function addCardDetails(){
 		
-		//$this->viewBuilder()->layout(false);		
 		$this->request->data = $_REQUEST; 
+		
 		if(isset($this->request->data['Booking']) && !empty($this->request->data['Booking'])){
-				
+			//Check Valid data	
 			$error=$this->validate_card_detail($this->request->data);
 				
 			if(count($error) == 0)
@@ -92,37 +92,117 @@ class BookingController extends AppController
 				// See your keys here https://dashboard.stripe.com/account/apikeys
 				\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
 				
-				$explodedDate = str_replace("/","",$this->request->data['Booking']['expiary_date']);
+				//Explod expiry date from slash
 				
+				$explodedDate = explode("/",str_replace(" ",'',$this->request->data['Booking']['expiary_date']));
+				
+				
+				//if provided card details are valid then genrate token id
 				$t = \Stripe\Token::create(array( "card" => array(
 				"number" => $this->request->data['Booking']['card_number'],
 				"exp_month" => str_replace(" ",'',$explodedDate[0]),
-				"exp_year" => '2019',
+				"exp_year" => "20".str_replace(" ",'',$explodedDate[1]),
 				"cvc" => $this->request->data['Booking']['cvv_code']  )));
-				pr($t);die;
-				/*
-				// Get the credit card details submitted by the form
-				$token = $_POST['stripeToken'];
-
-				// Create a Customer
-				$customer = \Stripe\Customer::create(array(
-				  "source" => $token,
-				  "description" => "Example customer")
-				);
-
-				// Charge the Customer instead of the card
-				\Stripe\Charge::create(array(
-				  "amount" => 1000, // amount in cents, again
-				  "currency" => "aud",
-				  "customer" => $customer->id)
-				);	
 				
-				\Stripe\Charge::create(array(
-				  "amount"   => 1500, // $15.00 this time
-				  "currency" => "aud",
-				  "customer" => $customerId // Previously stored, then retrieved
-				  ));*/
+				$session = $this->request->session();
+				$token = $t->id; //Token genrated by stripe
 				
+				try {
+					if (!isset($token))
+						throw new Exception("The Stripe Token not generated correctly");
+						
+					//Check token id exists or not
+					if(isset($t->id) && $t->id !=''){
+						
+						$UserCardsModel = TableRegistry::get('UserCards');
+						$UserCardsObj = $UserCardsModel->find('all',['conditions' => ['UserCards.id' =>$session->read('User.id')]]);
+						$UserCardsData = $UserCardsObj->first();
+						
+						//Check details are saved into table or not
+						if($UserCardsObj->count() <= 0){
+							
+							//Create user description for create user on stripe
+							$user_description = ucwords($session->read('User.name'))."-".$session->read('User.id')." has been saved own card details for fast payment";
+					
+							// Create a Customer on stripe if user not exist in our database and stripe
+							$customer = \Stripe\Customer::create(array(
+							  "source" => $token,
+							   "email" => $session->read('User.email'),
+							  "description" => $user_description)
+							);		
+							
+							if (!isset($customer->id))	
+							throw new Exception("The Stripe customer not created correctly");
+							
+							if(isset($customer->id) && $customer->id !=''){
+								
+								$UserCardsSaveData = $UserCardsModel->newEntity();
+								
+								$UserCardsSaveData = $UserCardsModel->patchEntity($UserCardsSaveData, $this->request->data['Booking']);
+								
+								$UserCardsSaveData->stripe_customer_id = $customer->id;
+								
+								$UserCardsSaveData->user_id = $session->read('User.id');
+								
+								$UserCardsSaveData->expiary_date = "20".str_replace(" ",'',$explodedDate[1]);
+								
+								$UserCardsSaveData->card_number = $this->ccMasking($this->request->data['Booking']['card_number']); //Masking for card number
+								
+								//Save data into our database
+								if($UserCardsModel->save($UserCardsSaveData)){
+									$this->setSuccessMessage($this->stringTranslate(base64_encode('Your card details have been saved.')));
+									echo "success:add_personal_details";die;
+								
+								}else{
+									$this->setErrorMessage($this->stringTranslate(base64_encode('Something went wrong')));
+									echo "error:Something went wrong";die;
+								}
+								
+							}else{
+								$this->setErrorMessage($this->stringTranslate(base64_encode('Kindly use valid card details.')));
+								echo "error:Kindly use valid card details";die;
+							}
+							
+						}else{
+							
+							//Create user description for create user on stripe
+							$user_description = ucwords($session->read('User.name'))."-".$session->read('User.id')." has been updated own card details for fast payment";
+							
+							$cu = \Stripe\Customer::retrieve($UserCardsData->stripe_customer_id);
+							$cu->description = $user_description;
+							$cu->source = $token; // obtained with Stripe.js
+							
+					    	 // Add additional error handling here as needed
+					
+							if($cu->save()){
+								$this->setSuccessMessage($this->stringTranslate(base64_encode('Your card details have been updated.')));
+								echo "success:add_personal_details";die;
+								
+							}else{
+								$this->setErrorMessage($this->stringTranslate(base64_encode('Kindly use valid card details.')));
+								echo "error:Kindly use valid card details";die;
+							}
+						}
+						
+					}else{
+						$this->setErrorMessage($this->stringTranslate(base64_encode('Kindly use valid card details.')));
+						echo "error:Kindly use valid card details";die;
+					}
+				
+					
+						
+				}
+				catch (Exception $e) {
+					$error = $e->getMessage();
+					$errBody = $e->getJsonBody();
+					$errMsg = $e->getMessage();
+					pr($errBody); die;
+					if($errBody['error']['code']=='card_declined') {
+						$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
+						echo "error:$errMsg";die;
+					}
+				}
+					
 			}else{
 				$this->set('formError',$error);
 				$this->set('totalError',count($error));
@@ -187,7 +267,10 @@ class BookingController extends AppController
 			
 		}
 	}
-	
+		
+	function ccMasking($number, $maskingCharacter = 'X') {
+		return substr($number, 0, 4) . str_repeat($maskingCharacter, strlen($number) - 8) . substr($number, -4);
+	}
 	
 	
 

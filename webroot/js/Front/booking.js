@@ -140,7 +140,7 @@
 						
 						}else if($.trim(response[0])=='error'){
 						
-							$(".card_error").text("Something went wrong, Kindly enter valid details");
+							$(".card_error").text(response[1]);
 						
 						}else{
 							$("#ajax_response").html(res);
