@@ -45,7 +45,7 @@
 			'label' => false,
 			'type'=>'hidden',
 			'readonly'=>true,
-			'value'=>'200',
+			'value'=>DEFAULT_RADIUS,
 			'id'=>'hidden_distance']
 			);
 		  ?>		
