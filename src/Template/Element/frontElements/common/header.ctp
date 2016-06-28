@@ -1,5 +1,5 @@
 <!--[Header Area Start]-->
-<header>
+<header  class="smaller">
   <?php 
 	if($currentLocal == 'ru'){?>
 		<div class="rus-wrap"> 

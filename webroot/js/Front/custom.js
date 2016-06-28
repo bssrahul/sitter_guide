@@ -486,8 +486,8 @@
 		});
 		//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
-			rules: {
-				"email":
+			rules:{
+				"UserReferences[email]":
 				{
 					required: true,
 					email: true,
@@ -495,7 +495,7 @@
 				}
 			},
 			messages: {				
-				"email":
+				"UserReferences[email]":
 				{
 					required : "This field is required",
 					email: 'Kindly use valid email address',
@@ -504,12 +504,31 @@
 			},
 			submitHandler: function(form) {
 				var actionURL = $('#referForm').attr('action');
-				process_form("referForm","refer-btn",actionURL);
+				process_refer_form("referForm","refer-btn",actionURL);
 				return false;
 			}
-			
 		});
 		//END REFER FRIEND
+		//CODE SNIPPET FOR Generate refer code
+		$('#referFormPromocode').validate({
+			rules:{
+				"[UserPromocode[promocode]":
+				{
+					required: true
+				}
+			},
+			messages: {				
+				"[UserPromocode[promocode]":
+				{
+					required : "This field is required"
+				}
+			},
+			submitHandler: function(form) {
+				var actionURL = $('#referFormPromocode').attr('action');
+				process_refer_form("referFormPromocode","refer-promocode-btn",actionURL);
+				return false;
+			}
+		});
 		//CODE SNIPPET FOR SUBSCRIBE
 		$('#subscribeForm').validate({
 			rules: {
@@ -1373,7 +1392,7 @@
 
          });		
 	
-		//CODE SNIPPET FOR REFERE FRIEND
+		/*//CODE SNIPPET FOR REFERE FRIEND
 		$('#referForm').validate({
 			rules: {
 			
@@ -1484,7 +1503,7 @@
 				return false;
 			}*/
 			
-		});
+		/*});*/
 		/*End service and rates*/
 		/*Start Contact form*/
 		$('#contactform').validate({
@@ -1643,6 +1662,36 @@
 					$('#myModal_sign').html(res);	//DISPLAY RESPONSE ERRORS
 				}
 				
+				//CODE FOR CHANGE THE BUTTON STYLE AND TEXT
+				$("#"+btnID).attr('disabled',false);
+				$("#"+btnID).val(orgBtnVal);	
+			}
+		});
+		
+	}
+	/*FUNCTION FOR SUBMIT THE REFER FRIEND*/
+	function process_refer_form(formID,btnID,actionURL){
+        var orgBtnVal=$("#"+btnID).val();//GET BUTTON VALUE
+		$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
+		$("#"+btnID).val('Processing...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
+		var formData = $('#'+formID).serialize();//BIND THE FORM VALUE INTO A VARIABLE
+		$.ajax({
+			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+			data:formData,//ALL SUBMITTED DATA FROM THE FORM
+			success:function(res)
+			{
+				console.log(res);
+				alert(res);
+				var response = res.split(':');
+				if($.trim(response[0]) == 'Success'){
+					$('.clr').html('');	//Emtpy Error MESSAGE
+					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+					$('#'+formID)[0].reset();
+					setTimeout(function(){window.location.href = ajax_url;},1000);
+				}if($.trim(response[0]) == 'Error'){
+					$('.clr').html('');	//Emtpy Error MESSAGE
+					$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
+				}
 				//CODE FOR CHANGE THE BUTTON STYLE AND TEXT
 				$("#"+btnID).attr('disabled',false);
 				$("#"+btnID).val(orgBtnVal);	

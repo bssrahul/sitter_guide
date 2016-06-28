@@ -10,7 +10,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<title><?php echo SITE_TITLE; ?></title>
-		
+		<?php echo isset($metaTag)?$metaTag:''; ?>
 		<!-- Bootstrap Core CSS -->
 		<?php 
 			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/dist/imageselect.css','Front/hint.css','Front/jquery-ui.css','Front/search-result.css','Front/calendar.css','Front/developer.css']); 

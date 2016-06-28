@@ -532,33 +532,19 @@ class DashboardController extends AppController
 													]
 								  ]
 						)
-									/*->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])*/
 									->hydrate(false)->toArray();
-			//pr($bookingData);die;	
-			//////////////////////
 			$user_Data = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
-						/*->contain(['Users'=> ['queryBuilder' => function ($q) {
-																			return $q->select(['Users.id','Users.first_name','Users.last_name','Users.image','Users.city','Users.state','Users.country']);
-																		}
-													]
-								  ]
-						)*/->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1' )
-									/*->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])*/
-									->hydrate(false)->toArray();
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1' )
+					    ->hydrate(false)->toArray();
 			
 			$client_stay_status["new_clients"] = count($user_Data);
-			
-			/////////////////////
 			$user_current = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
 						->hydrate(false)->count();
 		    $client_stay_status["events"] = $user_current;
-			/////////////////////
-			//pr($client_stay_status["events"]);die;		
 			$booking_arr = array();
 			foreach($bookingData as $k=>$user_booking){
-				//pr($user_booking);
 				$booking_arr[$k]["start_date"]= $user_booking['booknig_start_date'];
 				$booking_arr[$k]["end_date"]= $user_booking['booking_end_date'];
 				$booking_arr[$k]["avail_status"]= $user_booking['status'];
@@ -566,17 +552,14 @@ class DashboardController extends AppController
 			$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
 			
 	    $booking_count = count($bookingData);
-	    //pr($bookingData);die;
-		if(isset($bookingData) && !empty($bookingData)){
+	    if(isset($bookingData) && !empty($bookingData)){
 			
 			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
 			$events=0;
 			
 			foreach($bookingData as $single_booking){
 				
-			
-				//pr($single_booking);
-				if($single_booking['required_service'] == "house_sitting"){
+			    if($single_booking['required_service'] == "house_sitting"){
 					
 					$client_stay_status["house_sitting"] = $house_sitting++;
 					
@@ -598,7 +581,6 @@ class DashboardController extends AppController
 				}
 			}
 			
-		}
 			
 		 $client_stay_status["house_sitting_clients"] = $client_stay_status["house_sitting"];
 		 $client_stay_status["boarding_clients"] = $client_stay_status["boarding"];
@@ -612,6 +594,18 @@ class DashboardController extends AppController
 		 $client_stay_status["drop_in_visit"]  = number_format((float)(($client_stay_status["drop_in_visit"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["day_nigth_care"]  = number_format((float)(($client_stay_status["day_nigth_care"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["market_place"]  = number_format((float)(($client_stay_status["market_place"]/$booking_count)*100), 2, '.', ''); 
+			
+			
+		}else{
+				 $client_stay_status["house_sitting_clients"] = $client_stay_status["house_sitting"];
+				 $client_stay_status["boarding_clients"] = $client_stay_status["boarding"];
+				 $client_stay_status["drop_in_visit_clients"] = $client_stay_status["drop_in_visit"];
+				 $client_stay_status["day_nigth_care_clients"] = $client_stay_status["day_nigth_care"];
+				 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
+				 $client_stay_status["alerts"]= 0;
+		}
+			
+		 
 		
 		//pr($client_stay_status);die;
 		
@@ -638,77 +632,120 @@ class DashboardController extends AppController
 	 }
 	/* send a reference to friend */
 	function reference(){
-		//echo "<pre>";print_r($this->request->data['email']);die;
-		//$this->viewBuilder()->layout('profile_dashboard');
-		$msg = '';
 		$this->request->data = @$_REQUEST;
-		if(isset($this->request->data) && !empty($this->request->data)) {
-			
+	 if(isset($this->request->data['UserReferences']) && !empty($this->request->data['UserReferences'])){
 			$UsersModel = TableRegistry::get('Users');
-			$checkUser = $UsersModel->find('all',['conditions'=>['Users.email'=>$this->request->data['email']]])->toArray();
+		if(!empty($this->request->data['UserReferences']['email'])){
+			
+			$checkUser = $UsersModel->find('all',['conditions'=>['Users.email'=>$this->request->data['UserReferences']['email']]])->toArray();
 			if(!count($checkUser)) { // check if user is present in users table
 				
 				$references = TableRegistry::get('UserReferences');
-				$checkReference = $references->find('all',['conditions'=>['UserReferences.email'=>$this->request->data['email']]])->toArray();
-				
-				if(!count($checkReference)) { // check if code is already generated 
+				$checkReference = $references->find('all',['conditions'=>['UserReferences.email'=>$this->request->data['UserReferences']['email']]])->toArray();
+				if(!count($checkReference)){ // check if code is already generated 
 					
 					$reference = $references->newEntity();
 					$session = $this->request->session();		
 					$reference->user_id = $session->read('User.id');
-					$reference->email = $this->request->data['email'];
-					$genReferCode = $this->RandomStringGenerator(6);
-					$reference->reference_code = $genReferCode;
+					$reference->email = $this->request->data['UserReferences']['email'];
+					//$genReferCode = $this->RandomStringGenerator(6);
+					//$reference->reference_code = $genReferCode;
 					$reference->status = 0;
-					if($references->save($reference)) {
-						//$msg = 'Reference Code sent on the email'; $type='success';
-						
-
-						$link = HTTP_ROOT.'guests/?refer=yes';
+					if($references->save($reference)){
+						$link = $this->request->data['UserReferences']['refer_url'];
 						$linkOnMail = '<a href="'.$link.'" target="_blank">Click Here For Sign Up With Reference Code</a>';
 						
-						$replace = array('{fullname}','{refcode}','{link}');
+						$replace = array('{fullname}'/*,'{refcode}'*/,'{link}');
 						
-
-                        $referEmail = $this->request->data['email'];
+                        $referEmail = $this->request->data['UserReferences']['email'];
                         $referEmail =strcspn($referEmail,"@");
-                        $referName = substr($this->request->data['email'],'0',$referEmail);
-                        //$referName = str_replace(array('_','.'),array(' ',' '),$referName); 
-
-						$with = array($referName,$genReferCode,$linkOnMail);
-						//$this->send_email('',$replace,$with,'reference_code',$this->request->data['email']);
+                        $referName = substr($this->request->data['UserReferences']['email'],'0',$referEmail);
                         
-                        echo 'Success:Reference Code sent on the email';
-						$this->setSuccessMessage('Reference Code sent on the email.');
+                        $with = array($referName/*,$genReferCode*/,$linkOnMail);
+						$this->send_email('',$replace,$with,'reference_code',$this->request->data['UserReferences']['email']);
+                        
+                        echo 'Success:Reference link has been sent on the email.';
+						$this->setSuccessMessage('Reference link has been sent on the email.');
 						die;
-						
-					} else {
-						//$msg = 'Something Went Wrong Try again later'; $type='error';
-                        echo 'Error:Something Went Wrong Try again later';
+					}else{
+						 echo 'Error:Something Went Wrong Try again later';
                         $this->setErrorMessage('Something Went Wrong Try again later');
                         die;
 					}
-					  
-				} else {
-					//$msg = 'Reference Code already generated for this email'; $type='error';
-					echo 'Error:Reference Code already generated for this email';
-                     $this->setErrorMessage('Reference Code already generated for this email');
+				}else{
+					echo 'Error:You have already refered this member,Please try another.';
+                    // $this->setErrorMessage('Reference Code already generated for this email');
 					die;
 				}
-			} else {
-				//$msg = 'User already exists, Please try any other email'; $type='error';
+			}else{
 				echo 'Error:User already exists, Please try any other email';
                 $this->setErrorMessage('User already exists, Please try any other email');
 				die;
 			}
+		}else{
+			  echo 'Error:Something Went Wrong Try again later';
+			  $this->setErrorMessage('Something Went Wrong Try again later');
+			  die;
 		}
-		//echo json_encode(array('message'=>$msg, 'type'=>$type)); exit;
 	}
 	
-	
-	/**
-	* Function to generate random string
-	*/
+}
+/**
+function for promote
+*/
+function generatePromocode(){
+			$this->request->data = @$_REQUEST;
+			
+			 $session = $this->request->session();
+             $userId = $session->read('User.id');
+         
+			 //pr($this->request->data);die;
+			 if(isset($this->request->data['UserPromocode']) && !empty($this->request->data['UserPromocode'])){
+				 $UsersModel = TableRegistry::get('Users');
+				 
+				 $checkReferenceCode = $UsersModel->get($userId);
+				 if(empty($checkReferenceCode->reference_code)){
+					  $userData = $UsersModel->newEntity();
+					  $userData->id = $userId;
+					  $userData->reference_code = $this->request->data['UserPromocode']['promocode'];
+					 if($UsersModel->save($userData)){
+					    echo 'Success:Your promocode has been generated';
+				        die;
+					 }else{
+						echo 'Error:Something Went Wrong Try again later';die;
+					 }
+					
+				 }else{
+					 echo 'Error:Your promocode allready generated';die;
+				 }
+			}else{
+				  echo 'Error:Something Went Wrong Try again later';die;
+			 }
+}
+/**
+function for promote
+*/
+function promote(){
+	   $this->viewBuilder()->layout('profile_dashboard');
+	   /////////////////
+	     $usersModel = TableRegistry :: get("Users");
+	     $session = $this->request->session();
+         $userId = $session->read('User.id');
+          //For Update profile status
+			    $userData = $usersModel->get($userId);
+				//$session->write('User.user_type',$userData[0]->user_type);
+				$userInfo =	array();
+				$refer_code = substr($userData->email, 0, strpos($userData->email, '@'));
+				//$userInfo['email'] = $userData->email;
+				$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/promocode/";
+				
+				$this->set('refer_url', $userInfo['refer_url']);
+				$this->set('reference_code', $userData->reference_code);
+	  ////////////////
+}
+/**
+* Function to generate random string
+*/
 	function RandomStringGenerator($length = 10)
 	{              
 	  $string = "";
@@ -784,7 +821,6 @@ Function for Front profile dashboard
 										)
 						   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 						   ->toArray();
-				//pr($userData);die;
 				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
@@ -795,29 +831,44 @@ Function for Front profile dashboard
 					$this->set('dog_in_home',$dog_in_home);
 				}else{
 					$this->set('dog_in_home',"no");
-					}
-				
-				 
-			    if(isset($userData[0]->user_sitter_house) && empty($userData[0]->user_sitter_house) && isset($userData[0]->user_pets) && empty($userData[0]->user_pets) && empty($userData[0]->user_sitter_house) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
-				      //echo "both_create";die;
+				}
+				if(isset($userData[0]->user_sitter_house) && empty($userData[0]->user_sitter_house) && isset($userData[0]->user_pets) && empty($userData[0]->user_pets) && empty($userData[0]->user_sitter_house) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
 				      $this->set('profileStatus','both_create');
 				}else if(!empty($userData[0]->user_professional_accreditations_details) || !empty($userData[0]->user_sitter_services)){
-				     //echo "sitter_update";die;
 				     $this->set('profileStatus','sitter_update');
 				}else if((!empty($userData[0]->user_sitter_house) || !empty($userData[0]->user_pets) ) && empty($userData[0]->user_professional_accreditations_details) && empty($userData[0]->user_sitter_services)){
-				    //echo "guest_update";die;
-				     $this->set('profileStatus','guest_update');
+				    $this->set('profileStatus','guest_update');
 				}else{
 					$this->set('profileStatus','');
-					}
-					
-					$session->write('User.user_type',$userData[0]->user_type);
-				//pr($userData);die;	   
-			//End
-       				   
-	 					   
-							   
-	}
+				}
+				 $session->write('User.user_type',$userData[0]->user_type);
+				
+				$userInfo =	array();
+				$refer_code = substr($userData[0]->email, 0, strpos($userData[0]->email, '@'));
+				$userInfo['email'] = $userData[0]->email;
+				$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/token/".base64_encode(convert_uuencode($userData[0]->id));
+				//pr($userInfo);die;
+				$this->set('refer_url', $userInfo['refer_url']);
+				$this->set('user_email', $userInfo['email']);
+				
+				
+				
+				$metaTagForShare = '<meta name="description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />
+
+				<!-- Twitter Card data -->
+				<meta name="twitter:card" value="summary">
+
+				<!-- Open Graph data -->
+				<meta property="og:title" content="Refer Friends & Get $10" />
+				<meta property="og:type" content="article" />
+				<meta property="og:url" content="'.$userInfo['refer_url'].'" />
+				<meta property="og:image" content="'.HTTP_ROOT.'img/bg-family.png" />
+				<meta property="og:description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />'; 
+				
+			    $this->set('metaTag', $metaTagForShare);
+				
+	 }
+	 
 	/**
 	 function for varification
 	 */
@@ -2402,7 +2453,6 @@ function addPets(){
 		
 			$this->Flash->success(__('Changes has been done'));
 			die;
-			//return $this->redirect(['controller' => 'dashboard', 'action' => 'calender']);
 		}
 		else{
 			$this->Flash->error(__('Something went wrong'));

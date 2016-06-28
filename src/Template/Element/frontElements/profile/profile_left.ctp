@@ -23,11 +23,18 @@
 						  $dashboard_class='class=""';
 						  
 					  }?>
+					   <?php if($this->request->action=='promote'){
+						  
+						  $promote_class='class="active"';
+					  }else{
+						  $promote_class='class=""';
+						  
+					  }?>
 					  
                       <li <?php echo $dashboard_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/dashboard-details'; ?>"><span class="fa fa-user"></span><span class="side-list"><?php echo __('Dashboard'); ?></span></a></li>
                       
                       
-                      <li><a href="#"><span class="fa fa-smile-o"></span><span class="side-list"><?php echo __('Promote'); ?></span></a></li>
+                      <li <?php echo $promote_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/promote'; ?>"><span class="fa fa-smile-o"></span><span class="side-list"><?php echo __('Promote'); ?></span></a></li>
                       <li><a href="#"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Tracker'); ?></span></a></li>
                       
                       <li class="panel panel-default <?php if(trim($this->request->controller)=='Message'){echo 'active';}else{echo '';}?>" id="dropdown">
