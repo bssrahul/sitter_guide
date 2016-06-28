@@ -108,6 +108,12 @@ div.clear {
 .cal-status label {
     margin-bottom: 0px;
 }
+
+.dates { margin-left:-40px;}
+
+
+div#calendar ul.dates li:nth-child(7n+0){ border-right:none;}
+
 .onoffswitch {
     position: relative;
     width: 40px;
@@ -237,6 +243,7 @@ div#calendar ul.dates li .sp-box ul.sp-list li span.yellow {
     }
 }
 @media (min-width: 320px) and (max-width: 480px) {
+	.hide-l { display:none;}
     div#calendar ul.dates li {
         width: 33.33%;
     }

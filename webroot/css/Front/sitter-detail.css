@@ -189,7 +189,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .sitter-detail-page .fun-news { float: left; padding: 0px 0 0 !important;  width: 100%;}
 
 /*Banner inner pages starts*/
-.banner-sitter-detail {background:url(../../img/sitter-detail-banner.jpg) repeat; background-position:center; height:550px;  width:100%; margin-top:75px;}
+.banner-sitter-detail {background:url(../../img/sitter-detail-banner.jpg) repeat; background-position:center; height:550px;  width:100%; margin-top:50px;}
 .banner-sitter-detail .banner-info-wrapper{ height:475px; width:475px; background:rgba(77, 80, 51, 0.4);    border-radius: 50%;  -moz-border-radius: 50%; -webkit-border-radius: 50%;margin-top:35px;   }
 .banner-info-inner {height:475px; width:475px; background:rgba(77, 80, 51, 0.2);  border-radius: 50%; -moz-border-radius: 50%;  -webkit-border-radius: 50%; position:relative;left:20px;margin-top:35px;}
 .banner-sitter-detail .banner-info-wrapper .client-image {width:90px; height:90px; text-align:center; padding-top:13px;}

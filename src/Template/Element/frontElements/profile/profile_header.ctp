@@ -1,4 +1,4 @@
-<header>
+<header class="smaller">
 <div class="head-wrap">
 <div class="container-fluid">
   <div class="row">

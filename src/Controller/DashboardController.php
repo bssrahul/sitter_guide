@@ -1079,6 +1079,7 @@ Function for Front profile dashboard
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
 						 $session->write('dog_in_home_status','yes');
+						// echo $session->read("profile");die;
 						return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
 					}else{
 						$session->write('dog_in_home_status','no');
