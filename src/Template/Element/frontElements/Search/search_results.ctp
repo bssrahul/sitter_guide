@@ -441,7 +441,7 @@
 						} ?>
 			
 
-						<?php //echo $this->element("frontElements/common/static_search_content"); ?>
+						<?php // echo $this->element("frontElements/common/static_search_content"); ?>
                
               </ul>
               <?php }else{ ?>
@@ -471,7 +471,7 @@
           </div>
           
 			<!--[Right Map Start]-->
-            <div id="sidebar" class="sl-map ">            	
+            <div class="sl-map leftsidebar">            	
             	<!--<div class="enlarge-map">
                 	<div class="row">
                     	<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12"> 
@@ -718,12 +718,3 @@
 		}); 
 	});
 </script>
-
-
-<?php
-echo $this->Html->script('Front/for-sticky.js'); ?>
-
-<script>$(document).ready(function(){
-	$("#sidebar").stick_in_parent();
-    });
-    </script>
