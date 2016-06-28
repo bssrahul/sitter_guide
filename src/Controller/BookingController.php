@@ -21,6 +21,7 @@ use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
+use Cake\Core\Exception\Exception;
 
 require_once(ROOT . DS  . 'vendor' . DS  . 'stripe' . DS . 'stripe-php' . DS . 'init.php');
 use Stripe;
@@ -88,6 +89,7 @@ class BookingController extends AppController
 				
 			if(count($error) == 0)
 			{
+				try {
 				// Set your secret key: remember to change this to your live secret key in production
 				// See your keys here https://dashboard.stripe.com/account/apikeys
 				\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
@@ -107,7 +109,8 @@ class BookingController extends AppController
 				$session = $this->request->session();
 				$token = $t->id; //Token genrated by stripe
 				
-				try {
+				
+				
 					if (!isset($token))
 						throw new Exception("The Stripe Token not generated correctly");
 						
@@ -192,11 +195,12 @@ class BookingController extends AppController
 					
 						
 				}
-				catch (Exception $e) {
+				catch (\Exception $e) {
+				
 					$error = $e->getMessage();
 					$errBody = $e->getJsonBody();
 					$errMsg = $e->getMessage();
-					pr($errBody); die;
+					pr($errMsg); die;
 					if($errBody['error']['code']=='card_declined') {
 						$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
 						echo "error:$errMsg";die;
@@ -209,7 +213,7 @@ class BookingController extends AppController
 			}	
 		
 		}	
-		
+		$this->autoRender = false ;
     }
 	
 	/**Function for Validate SIGN UP
