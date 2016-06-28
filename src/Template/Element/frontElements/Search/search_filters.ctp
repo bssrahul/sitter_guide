@@ -45,7 +45,7 @@
 			'label' => false,
 			'type'=>'hidden',
 			'readonly'=>true,
-			'value'=>'200',
+			'value'=>DEFAULT_RADIUS,
 			'id'=>'hidden_distance']
 			);
 		  ?>		
@@ -57,6 +57,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 FirstThreeServices">
                       <div class="date-picker">
                         <label>From</label>
+                       
                         <div class="date-box">
                           <!-- Search Field From Date Start-->
                           <?php echo $this->Form->input('Search.from_date',[
@@ -66,9 +67,9 @@
 							'class'=>'d-input',
 							'placeholder'=>'From',
 							'readonly'=>true,
-							'id'=>'boardingFrom']);
+							'id'=>'boardingFromFilter']);
 						  ?>
-                          <div class="dimg"> <a href="javascript:void(0);" id="cIconFrom"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"  alt=""/></a> </div>
+                          <div class="dimg"> <a href="javascript:void(0);" id="cIconFromFilter"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"  alt=""/></a> </div>
                         </div>
                       </div>
                     </div>
@@ -84,12 +85,13 @@
 							'placeholder'=>'To',
 							'class'=>'d-input',
 							'readonly'=>true,
-							'id'=>'boardingTo']);
+							'id'=>'boardingToFilter']);
 						  ?>
-                          <div class="dimg"> <a href="javascript:void(0);" id="cIconTo"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"  alt=""/></a> </div>
+                          <div class="dimg"> <a href="javascript:void(0);" id="cIconToFilter"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png"  alt=""/></a> </div>
                         </div>
                       </div>
                     </div>
+                    
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 FirstThreeServices"> 
                       <div class="dog-list onLoadHide dropInOption">
                         <label>How many dogs do you have?</label>
@@ -389,7 +391,7 @@
                                   <ul>
                                     <li>
                                       <!-- Search Field PET COUNT Start-->
-										<?php echo $this->Form->input('Search.sitter_info.pet_in_home',[
+										<?php echo $this->Form->input('Search.sitter_pet_info.pet_in_home',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
@@ -405,7 +407,7 @@
                                   <ul>
                                     <li>
                                       <!-- Search Field PET COUNT Start-->
-										<?php echo $this->Form->input('Search.sitter_info.doesnt_own_dog',[
+										<?php echo $this->Form->input('Search.sitter_pet_info.doesnt_own_dog',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
@@ -418,7 +420,7 @@
                                       </li>
                                     <li>
                                       <!-- Search Field PET COUNT Start-->
-										<?php echo $this->Form->input('Search.sitter_info.doesnt_own_caged_dog',[
+										<?php echo $this->Form->input('Search.sitter_pet_info.doesnt_own_caged_dog',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
@@ -431,7 +433,7 @@
                                     </li>
                                     <li>
                                        <!-- Search Field PET COUNT Start-->
-										<?php echo $this->Form->input('Search.sitter_info.doesnt_own_cat',[
+										<?php echo $this->Form->input('Search.sitter_pet_info.doesnt_own_cat',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
@@ -445,56 +447,8 @@
                                   </ul>
                                 </div>
                               </div>
-                              <!--<div class="more-sit-info">
-                                <div class="msi-head">
-                                  <ul>
-                                    <li>
-                                       <!-- Search Field PET COUNT Start
-										<?php echo $this->Form->input('Search.sitter_info.child_in_home',[
-											'label' => false,
-											'templates' => ['inputContainer' => '{{content}}'],
-											'hiddenField' => false,
-											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
-											'option'=>["child_in_home"],
-											'id'=>'child_in_home']);
-										?>
-										<label class="unbold" for="child_in_home">Children in home</label>
-									</li>	
-                                  </ul>
-                                  <a  data-toggle="collapse" data-target="#demo11"><i class="fa fa-chevron-down" aria-hidden="true"></i></a> </div>
-                                <div id="demo11" class="in more-drop">
-                                  <ul>
-                                    <li>
-                                       <!-- Search Field PET COUNT Start
-										<?php echo $this->Form->input('Search.sitter_info.no_child_under_5',[
-											'label' => false,
-											'templates' => ['inputContainer' => '{{content}}'],
-											'hiddenField' => false,
-											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
-											'option'=>["no_child_under_5"],
-											'id'=>'no_child_under_5']);
-										?>
-										<label class="unbold" for="no_child_under_5">No children 0-5 yrs old</label>
-									</li>	
-                                      <li>
-                                       <!-- Search Field PET COUNT Start
-										<?php echo $this->Form->input('Search.sitter_info.no_child_under_12',[
-											'label' => false,
-											'templates' => ['inputContainer' => '{{content}}'],
-											'hiddenField' => false,
-											'type'=>'checkbox',
-											'class'=>'ajaxSearch',
-											'option'=>["no_child_under_12"],
-											'id'=>'no_child_under_12']);
-										?>
-										<label class="unbold" for="no_child_under_12">No children 6-12 yrs old</label>
-									</li>	
-                                  </ul>
-                                </div>
-                              </div>-->
-                              <div class="more-sit-info">
+                              
+                               <div class="more-sit-info">
                                 <div class="msi-head">
                                   <ul>
                                     <li>
@@ -529,7 +483,7 @@
                                       
                                     <li>
                                       <!-- Search Field PET COUNT Start-->
-										<?php echo $this->Form->input('Search.sitter_info.outdoor_area',[
+										<?php echo $this->Form->input('Search.sitter_info.outdoor_area_balcony',[
 											'label' => false,
 											'templates' => ['inputContainer' => '{{content}}'],
 											'hiddenField' => false,
@@ -539,6 +493,20 @@
 											'id'=>'outdoor_area']);
 										?>
 										<label class="unbold" for="outdoor_area"> Outdoor Play Areas - Balcony</label>
+                                    </li>
+                                    
+                                     <li>
+                                      <!-- Search Field PET COUNT Start-->
+										<?php echo $this->Form->input('Search.sitter_info.outdoor_area_backyard',[
+											'label' => false,
+											'templates' => ['inputContainer' => '{{content}}'],
+											'hiddenField' => false,
+											'type'=>'checkbox',
+											'class'=>'house-condition',
+											'option'=>["outdoor_play_area"],
+											'id'=>'outdoor_play_area']);
+										?>
+										<label class="unbold" for="outdoor_play_area"> Outdoor Play Areas - Backyard</label>
                                     </li>
                                     
                                     <li>
@@ -553,20 +521,6 @@
 											'id'=>'non_smoker']);
 										?>
 										<label class="unbold" for="non_smoker"> Non- smoker home</label>
-                                    </li>
-                                    
-                                    <li>
-                                      <!-- Search Field PET COUNT Start-->
-										<?php echo $this->Form->input('Search.sitter_info.outdoor_play_area',[
-											'label' => false,
-											'templates' => ['inputContainer' => '{{content}}'],
-											'hiddenField' => false,
-											'type'=>'checkbox',
-											'class'=>'house-condition',
-											'option'=>["outdoor_play_area"],
-											'id'=>'outdoor_play_area']);
-										?>
-										<label class="unbold" for="outdoor_play_area"> Outdoor Play Areas - Backyard</label>
                                     </li>
                                     
                                     <li>
