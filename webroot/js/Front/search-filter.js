@@ -3,7 +3,7 @@
 	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	$(function(){
-		
+			
 		/*DATE PICKER SCRIPT FOR HOME PAGE CALENDER START*/
 		$( "#boardingFrom" ).datepicker({
 		  defaultDate: "+1",
@@ -171,7 +171,7 @@
 		  range: true,
 		  min: 0,
 		  max: 500,
-		  values: [ 75, 200 ],
+		  values: [ 1, 200 ],
 		  slide: function( event, ui ) {
 			$( "#startRange" ).val( "$" + ui.values[ 0 ]);
 			$( "#endRange" ).val( "$" + ui.values[ 1 ]);

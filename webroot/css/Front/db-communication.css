@@ -23,7 +23,7 @@
 
 .communication-wrap select.form-control {
     -moz-appearance: none;
-    background-image: url("../images/arw.png");
+    background-image: url("../../img/arw.png");
     background-position: right 15px center;
     background-repeat: no-repeat;
     border: 0px solid #aaaaaa;
