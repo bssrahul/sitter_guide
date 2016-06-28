@@ -11,6 +11,8 @@
 		<meta name="author" content="">
 		<title><?php echo SITE_TITLE; ?></title>
 		
+		
+		<?php echo isset($metaTag)?$metaTag:''; ?>
 		<?php 
 
 			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/custom-style.css','Front/owl.carousel.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/developer.css','Front/dist/imageselect.css','Front/hint.css','Front/jquery-ui.css','Front/search-result.css','Front/availabilityCalendar .css']); 

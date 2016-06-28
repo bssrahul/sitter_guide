@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="row">
-	 <?php  if(@$profileStatus == 'sitter_update'){
+     <?php  if(@$profileStatus == 'sitter_update'){
 		 
 		 $addStyle = "style='text-align:center'";
 	  }else{
@@ -42,8 +42,7 @@
 				 }else{
 					 echo 'Create your Sitter Profile'; 
 				 }
-            
-             ?>
+            ?>
             </h1> 
             <p>Lorem ipsum dolor sit amet, ctetur ctetur ading elLorem ipsum dolor
             </p>
@@ -52,8 +51,7 @@
       </a>
     </div>
 	  <?php  
-	  
-	  if($profileStatus != 'sitter_update'){
+	      if($profileStatus != 'sitter_update'){
 	  ?>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
       <a href="<?php echo HTTP_ROOT.'dashboard/home/guest'; ?>">    
@@ -228,22 +226,29 @@ refer afriend modal popup stars-->
       <div class="modal-body">
         <!-- content goes here -->
         <div class="row">
+		   <div class="col-sm-6" style="margin-left:40px">
+			 <p class="successMessage clr otp_success_msg"></p>
+             <p class="errorMessage clr otp_error_msg"></p>
+           </div> 
           <div class="col-sm-12">
+			  
             <div class="to-from">
               <div class="popup-form">
                 <!--<form class="form-horizontal">-->
-					 <?php echo $this->Form->create(@$userInfo, [
-						  'url' => ['controller' => 'dashboard', 'action' => 'refer-friend'],
+					 <?php echo $this->Form->create(@$userInfo,[
+						  'url' => ['controller' => 'dashboard', 'action' => 'reference'],
 						  'class'=>'form-horizontal',
-						  'id'=>'referFriend',
+						  'id'=>'referForm',
 					 ]);?>
+					 
                   <div class="form-group">
+					  
                     <label for="inputEmail3" class="col-sm-2 col-lg-1 text-left no-padding-right control-label">To:
                     </label>
                     <div class="col-sm-6  ">
                      <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Enter Email">-->
                        <?php 
-							  echo $this->Form->input('UserReferences.refer_email',[
+							  echo $this->Form->input('UserReferences.email',[
 								'templates' => ['inputContainer' => '{{content}}'],
 								'label'=>false,
 								'class' =>'form-control'
@@ -257,15 +262,19 @@ refer afriend modal popup stars-->
                     <div class="col-sm-6  ">
                      <!-- <input type="email" class="form-control" id="inputPassword3" placeholder="friend@mobilyte.com">-->
                        <?php 
-							  echo $this->Form->input('UserReferences.refer_by_email',[
+							  echo $this->Form->input('UserReferences.from_email',[
 								'templates' => ['inputContainer' => '{{content}}'],
 								'label'=>false,
-								'class' =>'form-control'
+								'class' =>'form-control',
+								'value'=>@$user_email,
+								'disabled'=>'disabled'
 								]);
                        ?>
+                        
                     </div>
+                   
                   </div>
-                </form>
+               <!--</form>-->
               </div>
             </div>
           </div>
@@ -313,18 +322,21 @@ refer afriend modal popup stars-->
             <div class="col-sm-6 col-xs-7">
               <ul class="list-inline icons-social">
                 <li>
-                  <img src="<?php echo HTTP_ROOT; ?>img/popi1.png" width="31" height="31" alt="facebook">
+                  <a href="javascript:void(0)" 
+								onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo $refer_url; ?>">
+								<img src="<?php echo HTTP_ROOT; ?>img/popi1.png" width="31" height="31" alt="facebook">
+					</a>
                 </li>
                 <li>
                   <img src="<?php echo HTTP_ROOT; ?>img/popi2.png" width="31" height="31" alt="twitter">
                 </li>
-                <li>
+                <!--<li>
                   <img src="<?php echo HTTP_ROOT; ?>img/popi3.png" width="31" height="31" alt="message">
-                </li>
+                </li>-->
               </ul>
             </div>
             <div class="col-sm-6 col-xs-5 pull-right text-right">
-              <button class="btn btn-send ">Send Mail
+              <button class="btn btn-send " id="refer-btn" >Send Mail
               </button>
             </div>
           </div>
@@ -334,10 +346,21 @@ refer afriend modal popup stars-->
                 <span class="input-group-addon green" id="basic-addon2">
                   <img src="<?php echo HTTP_ROOT; ?>img/pop-chain.png"  alt="chain">  Copy your link
                 </span>
-                <input type="text" class="form-control" value="http://refer.rover.com/v2/share" aria-describedby="basic-addon2">
+                
+               <!-- <input type="text" class="form-control" name="refer_url" value="<?php echo $refer_url; ?>" aria-describedby="basic-addon2">-->
+                     <?php 
+							  echo $this->Form->input('UserReferences.refer_url',[
+								'templates' => ['inputContainer' => '{{content}}'],
+								'label'=>false,
+								'class' =>'form-control',
+								'value'=>@$refer_url,
+								'readonly'=>'readonly'
+								]);
+                       ?>
               </div>
             </div>
           </div>
+          <?php echo $this->Form->end(); ?>
           <div class="col-sm-12">
             <p class="email">Your rewards will baerich@gmail.com
             </p>
@@ -365,3 +388,10 @@ refer afriend modal popup stars-->
 </div>
 <!--
 refer afriend modal popup ends-->
+<script type="text/javascript">
+function genericSocialShare(url){
+	$(".squarespaceModal").modal('hide');
+    window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+    return true;
+}
+</script>

@@ -596,7 +596,7 @@ class GuestsController extends AppController
 								$with = array($this->request->data['Users']['first_name'],$this->request->data['Users']['email'],$linkOnMail);
 								
 								// Code for Reference Code Activation
-								if ($referenceCodeFlag) {
+								/*if($referenceCodeFlag){
 									$referencesModel = TableRegistry::get('UserReferences');
 									$checkReference = $referencesModel->find('all',[
 										'conditions'=>[
@@ -622,9 +622,7 @@ class GuestsController extends AppController
 										$UsersModel->save($referenceMoneyData);
 										
 									}
-									
-							
-								}
+								 }*/
 								
 								$this->send_email('',$replace,$with,'new_registration',$this->request->data['Users']['email'],'');
 								
@@ -678,6 +676,136 @@ class GuestsController extends AppController
 
 			$this->set('signupWithFacebook', '<a href="' . htmlspecialchars($loginUrl) . '"><i class="fa fa-facebook-square"></i> Signup with Facebook!</a>');
 	        $this->set('facebookUrl',$loginUrl);
+	}
+	/**Function for Sign Up With Refer
+	*/
+	function share($shortname = null,$token=null,$referId = null)
+	{
+		$this->viewBuilder()->layout('landing');
+		
+		//$referId = convert_uudecode(base64_decode($referId));
+	    
+	    $session = $this->request->session();
+	    $userId = $session->read("User.id");
+	    $UsersModel = TableRegistry::get('Users');
+	    
+	   if(isset($token) && !empty($token) && isset($referId) && !empty($referId)){
+		    if($token == "token"){
+				
+				$this->set("rf_token",$referId);
+				
+			}else{
+				$this->set("rf_promocode",$referId);
+			}	
+		}
+		$UsersData= $UsersModel->newEntity();
+			   
+			  /////////////////////
+       if(isset($this->request->data['signup-submit']) && $this->request->data['signup-submit']=='Sign Up')
+		{ 
+			
+						$this->request->data['Users']['password'] = $this->request->data['Users']['create_password'];
+						unset($this->request->data['Users']['create_password']);
+
+						$data=$this->request->data;
+						
+						$error=$this->validate_register($data);
+						if(count($error) == 0)
+						{
+							// Loaded Users Model
+							$UsersModel = TableRegistry::get('Users');
+							$UsersData = $UsersModel->newEntity($this->request->data['Users'],['validate' => true]);
+							//CODE FOR MULTILIGUAL START
+							$session = $this->request->session();
+							$UsersModel->_locale = $session->read('requestedLanguage');
+							//CODE FOR MULTILIGUAL END
+                            $passwordOrg = $this->request->data['Users']['password'];
+							
+							$activation_key = md5(microtime());							
+							$UsersData->password = md5($passwordOrg);
+							//SET CUSTOM VARIABLES FOR SAVE
+							$UsersData->org_password = $passwordOrg;
+							$UsersData->activation_key = $activation_key;								
+							$UsersData->date_added=date('Y-m-d H:i:s');	
+							$UsersData->date_modified = date('Y-m-d h:i:s');				
+							$latitude = $this->request->data['Users']['country'];				
+							$longitude = $this->request->data['Users']['zip'];	
+							//echo $latitude.$longitude;die;
+							// get latitude and longitude from country and zip start	
+							$sourceSelectedLocation = $latitude." ".$longitude;
+							$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false";
+							$ch = curl_init();
+							curl_setopt($ch, CURLOPT_URL, $url);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+							curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+							$response = curl_exec($ch);
+							curl_close($ch);
+							$response_a = json_decode($response);
+							$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+							$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+							$UsersData->latitude=$sourceLocationLatitude;					
+							$UsersData->longitude=$sourceLocationLongitude;	
+							$UsersData->reference_id = 	$referId;			
+							//end get latitude and longitude from country and zip start			
+							$UsersData->status = 0;
+							if($UsersModel->save($UsersData))
+							{
+								$getUsersTempId1 = $UsersData->id;
+								$UserBadgedata->user_id= $UsersData->id;
+								$UserBadgeModel->save($UserBadgedata);
+								
+								//pr($UsersData->id);die;
+								$uid = base64_encode($this->request->data['Users']['email']);
+								$link = HTTP_ROOT.'guests/activation/'.$uid.'/'.$activation_key.'/success:registerSuccess';
+								$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate(base64_encode('Click Here For Activate Your Account')).'</a>';
+								
+								$replace = array('{full_name}','{email}','{link}');
+								$with = array($this->request->data['Users']['first_name'],$this->request->data['Users']['email'],$linkOnMail);
+								
+								$this->send_email('',$replace,$with,'new_registration',$this->request->data['Users']['email'],'');
+								
+								$userInfo = $UsersModel->get($getUsersTempId1);
+								if ($this->request->is('ajax')) {
+										//echo "Success:".$this->stringTranslate(base64_encode(SIGN_UP)).":guests/login";
+										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
+										die;
+									}else{
+										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
+										return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou']);			
+								//die;
+									}
+							 
+								
+							} else{
+								
+								$this->set('loginerror',$this->Member->validationErrors);
+								$this->set('totalError',count($this->Member->validationErrors));
+								$this->set('signupdata',$data);
+							} 
+						}
+					
+			}/*else{
+					
+				$this->set('loginerror',$error);
+				$this->set('totalError',count($error));
+				$this->set('signupdata',@$data);
+			}*/
+			
+			$metaTagForShare = '<meta name="description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />
+
+				<!-- Twitter Card data -->
+				<meta name="twitter:card" value="summary">
+
+				<!-- Open Graph data -->
+				<meta property="og:title" content="Refer Friends & Get $10" />
+				<meta property="og:type" content="article" />
+				<meta property="og:url" content="'.$userInfo['refer_url'].'" />
+				<meta property="og:image" content="'.HTTP_ROOT.'img/bg-family.png" />
+				<meta property="og:description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />'; 
+				
+			    $this->set('metaTag', $metaTagForShare);
 	}
 	/**Function for Validate SIGN UP
 	*/
