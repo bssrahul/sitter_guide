@@ -35,15 +35,7 @@
 .sl-map{
 	height:768px;
 }
-.leftsidebarfixed {
-    position: sticky !important;
-    position: -webkit-sticky !important;
-  position: -moz-sticky !important;
-  position: -ms-sticky !important;
-  position: -o-sticky !important;
-    top: 50px !important;
-    right:59px;
-}
+
 
 </style>
 
@@ -51,11 +43,9 @@
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
-    
-    
 });
 
-    function init() {
+    /*function init() {
         window.addEventListener('scroll', function(e){
             var distanceY = window.pageYOffset || document.documentElement.scrollTop,
                 shrinkOn = 300,
@@ -68,48 +58,8 @@ $(document).ready(function(){
                 }
             }
         });
-    }
+    }*/
     window.onload = init();
     
-$(function () {
-  
-  var msie6 = $.browser == 'msie' && $.browser.version < 7;
-  
-  if (!msie6 && $('.leftsidebar').offset()!=null) {
-    var top = $('.leftsidebar').offset().top - parseFloat($('.leftsidebar').css('margin-top').replace(/auto/, 0));
-	var height = $('.leftsidebar').height();
-	var winHeight = $(window).height();	
-	var footerTop = $('#footer').offset().top - parseFloat($('#footer').css('margin-top').replace(/auto/, 0));
-	var gap = 7;
-
-	console.log('top:'+top+'--height:'+height+'--winHeight:'+winHeight+'--FooterTop:'+footerTop+'--gap:'+gap);
-    $(window).scroll(function (event) {
-      // what the y position of the scroll is
-      var y = $(this).scrollTop();
-      console.log('top:'+top+'--height:'+height+'--winHeight:'+winHeight+'--FooterTop:'+footerTop+'--gap:'+gap);
-
-      // whether that's below the form
-      if (y+winHeight >= top+height-y && y+winHeight<=footerTop) {
-
-        // if so, ad the fixed class
-        $('.leftsidebar').addClass('leftsidebarfixed').css('top',winHeight-height-gap +'px');
-      } 
-	  else if (y+winHeight>footerTop) {
-
-        // if so, ad the fixed class
-       $('.leftsidebar').addClass('leftsidebarfixed').css('top',footerTop-height-y-gap+'px');
-      } 
-	  else 	  
-	  {
-        // otherwise remove it
-        $('.leftsidebar').removeClass('leftsidebarfixed').css('top','0px');
-      }
-    });
-  }  
-});
-</script>
-
-
-<script>
 
 </script>
