@@ -1115,7 +1115,7 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
-						HAVING distance < 300
+						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
@@ -1516,7 +1516,7 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
-						HAVING distance < 300
+						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			

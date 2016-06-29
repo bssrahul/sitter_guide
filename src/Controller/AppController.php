@@ -804,6 +804,24 @@ class AppController extends Controller{
 		pr($ConfingData);die;
 	} */
 	
+
+	function genrateOtp($otpDigit=6){
+		$usersModel = TableRegistry::get('Users');
+		$session = $this->request->session();
+		$userId = $session->read("User.id");
+		$digits = $otpDigit;
+		$four_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
+		$userData = $usersModel->newEntity();
+		$userData->id = $userId;
+		$userData->otp = $four_digits;
+
+		if($usersModel->save($userData)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	function sendMessages($to_mobile_number, $message_body){
 		require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
 		$account_sid = TWILIO_SID; 
@@ -817,24 +835,6 @@ class AppController extends Controller{
 		));
 		
 	}
-//generate otp
-function genrateOtp($otpDigit=6){
-			$usersModel = TableRegistry::get('Users');
-			$session = $this->request->session();
-			$userId = $session->read("User.id");
-			$digits = $otpDigit;
-			$four_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
-			$userData = $usersModel->newEntity();
-			$userData->id = $userId;
-			$userData->otp = $four_digits;
-			//pr($userData);die;
-			if($usersModel->save($userData)){
-				//pr($userData);die;
-			    return true;
-			}else{
-			    return false;
-			}
-}
 	
 }
 ?>
