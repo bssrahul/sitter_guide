@@ -240,3 +240,4 @@ ini_set('intl.default_locale', 'en_US');
 require ROOT . DS . 'config' . DS . 'facebook_api_credentials.php';
 require ROOT . DS . 'config' . DS . 'stripe_api_credentials.php';
 require ROOT . DS . 'config' . DS . 'captcha_api_credentials.php';
+require ROOT . DS . 'config' . DS . 'twilio.php';
