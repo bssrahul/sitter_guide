@@ -78,7 +78,8 @@ a { outline:none !important; text-decoration:none !important;}
 
 .icon-right-s {width:20px; height:25px; background:url(../../img/search-icons.png) no-repeat -33px -423px; margin-left:0px; margin-top:0px; float:left; position:relative; top:2px; margin-right:15px;}
 
-.li-pa1 { padding-top:14px;}
+.li-pa1 { padding-top:15px;}
+.card-mtop { margin-top:25px;}
 
 
 
@@ -86,7 +87,7 @@ a { outline:none !important; text-decoration:none !important;}
 	
 	.icon-right-s {
    
-    margin: 0 15px 20px 0;
+    margin: 0 15px 0px 0;
    
 }
 	

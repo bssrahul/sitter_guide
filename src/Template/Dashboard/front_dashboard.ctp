@@ -176,32 +176,35 @@
           </div>
         </div>
       </div>
-      <div class="easy-step-wrapper mgb30">
-        <div class="easy-head">
-          <h5>Become a Pet Sitter or Dog Walker on Siter Guide
-          </h5>
-        </div>
-        <div class="easy-body wrap-height">
-          <ul class="list-unstyled">
-            <li>
-              <span class="icon-right-s">
-              </span>Freedom to set your schedule and choose your rates 
-            </li>
-            <li class="li-pa1">
-              <span class="icon-right-s">
-              </span>Premium insurance with every booking 
-            </li>
-            <li class="li-pa1">
-              <span class="icon-right-s">
-              </span>Access to 24/7 support, including vet assistance 
-            </li>
-            <li class="li-pa1">
-              <span class="icon-right-s">
-              </span>Resources to help you build your business  
-            </li>
-          </ul>
-        </div>
-      </div>
+     
+		<div class="easy-step-wrapper mgb30">
+          
+			<div class="easy-head">
+				<h5>Add your payment methods</h5>
+			</div>
+          
+			<div class="easy-body wrap-height">
+				<ul class="list-unstyled">
+					<li >
+						<span class="icon-right-s"></span>
+						<a href="<?php echo HTTP_ROOT.'Booking/add-card'?>">Add/Edit your card details. </a>
+					</li>
+					<li class="li-pa1">
+						<span class="icon-right-s"></span>
+						<a href="<?php echo HTTP_ROOT.'Booking/add-card'?>">Add/Edit your billing address. </a>
+					</li>
+					
+			  
+					<li class="card-mtop">
+						<a href="<?php echo HTTP_ROOT.'Booking/add-card'?>"><img alt="" class="img-responsive" src="<?php echo HTTP_ROOT.'img/card-dummy.png'; ?>"></a>
+					</li>
+				</ul>
+            
+			<ul class="list-unstyled">  </ul>
+          
+          </div>
+       </div>
+       
     </div>
   </div>
 <!--
