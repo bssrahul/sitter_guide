@@ -27,7 +27,6 @@ require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'bookingCalendar.ph
 use Calendar;
 use Calendarbooking;
 
-
 /**
  * Static content controller
  *
@@ -41,16 +40,13 @@ class DashboardController extends AppController
 	/**
 	* Function which is call at very first when this controller load
 	*/
-	
-	
 	public $paginate = [
         'limit' => 12,
         'order' => [
             'Users.id' => 'DESC'
         ]
     ];
-
-	 public function beforeFilter(Event $event)
+    public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 		if($this->CheckGuestSession()==false)
@@ -59,12 +55,9 @@ class DashboardController extends AppController
 			exit();
 		}
     }
-	
 	//public $paginate = ['favUsersdata'=>['limit' => 1]];
 	public function initialize()
     {
-		
-		
 		parent::initialize();
 
        //GET LOCALE VALUE
@@ -89,7 +82,6 @@ class DashboardController extends AppController
 		//$this->loadComponent('Paginator');
 		 $this->loadComponent('Paginator');
 	}
-	
 	/**Function for landing page
 	*/
 	function home()
@@ -100,7 +92,6 @@ class DashboardController extends AppController
         $siteInfo = $SiteConfigurationsModel->find('all')->first();
 
          $usersModel = TableRegistry::get('Users');
-         
          $session = $this->request->session();
          $userId = $session->read('User.id');
             //For redirect on about guest tab
@@ -452,7 +443,7 @@ class DashboardController extends AppController
 		  $this->set('profile_status',$profile_status);
 		  $this->set('profile_percentage',$profile_percentage);
           //End
-
+      
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
 				 $session->write('profile','Sitter');
@@ -460,6 +451,7 @@ class DashboardController extends AppController
 				 $session->write('profile','Guest');
 			 }
 		 }
+		   
      }
 	/**Function for check fields ampty or not
 	*/
@@ -489,7 +481,7 @@ class DashboardController extends AppController
         $userType = $session->read('User.user_type');
 
            $bookingRequestModel = TableRegistry::get('BookingRequests');
-          if($userType == 'Sitter'){
+          /*if($userType == 'Sitter'){
             	$sitter_data['message_status'] = $bookingRequestModel
 				    ->find()
 				    ->where(['sitter_id' =>$userId,'read_status' =>'unread'])
@@ -505,10 +497,11 @@ class DashboardController extends AppController
 				    ->where(['sitter_id' =>$userId,'status' =>1])
 				    ->count();
 				    
-				 $this->ajaxCalendarBooking();
+				
+			}*/
+			 $this->ajaxCalendarBooking();
 	             $this->home();
-			}
-	        $this->set('sitter_data',$sitter_data);
+	       // $this->set('sitter_data',$sitter_data);
 	       
 	}
  	public function ajaxCalendarBooking()
@@ -518,9 +511,6 @@ class DashboardController extends AppController
 			$userType = $session->read('User.user_type');
 			
 			$bookingRequestModel = TableRegistry :: get("BookingRequests");
-			
-			
-			
 			$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
 			$fieldname = $userType == 'Sitter'?'sitter':'guest';
 			
@@ -539,10 +529,13 @@ class DashboardController extends AppController
 					    ->hydrate(false)->toArray();
 			
 			$client_stay_status["new_clients"] = count($user_Data);
+			
 			$user_current = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
 						->hydrate(false)->count();
+						
 		    $client_stay_status["events"] = $user_current;
+		    
 			$booking_arr = array();
 			foreach($bookingData as $k=>$user_booking){
 				$booking_arr[$k]["start_date"]= $user_booking['booknig_start_date'];
@@ -552,6 +545,9 @@ class DashboardController extends AppController
 			$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
 			
 	    $booking_count = count($bookingData);
+	    
+	    $client_stay_status["unread_message"] = $booking_count;
+	    
 	    if(isset($bookingData) && !empty($bookingData)){
 			
 			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
@@ -605,7 +601,7 @@ class DashboardController extends AppController
 				 $client_stay_status["alerts"]= 0;
 		}
 			
-		 
+		 //pr($client_stay_status);die;
 		
 		//pr($client_stay_status);die;
 		
@@ -1021,13 +1017,10 @@ Function for Front profile dashboard
 					}
 				}
         }else{
-		
 		   $userData = $usersModel->get($userId);
 		   unset($userData->id);
-		   //pr($userData); die;
-		  $this->set('userInfo', $userData);
-
-	    }
+		   $this->set('userInfo', $userData);
+        }
 	    
 	    if($captchErr != ''){
 	      $this->set('captchErr',@$captchErr);	
@@ -1039,7 +1032,6 @@ Function for Front profile dashboard
 		 foreach($countrydata as $key=>$val){
                 $country_info[$val['phonecode']] = $val['iso']; 
 		 }
-		// pr($country_info); die;
 		 $this->set('country_info',$country_info);
          $zonesModel = TableRegistry::get('Zones');
 		 $zones_data = $zonesModel->find('all')->toArray();
@@ -1047,8 +1039,7 @@ Function for Front profile dashboard
                 $zones_info[$key] = $val['zone_name']; 
 		 }
 		 $this->set('zones_info',$zones_info);
-    	
-    }
+	}
       /**
     Function for Sitter House
     */
@@ -1079,7 +1070,7 @@ Function for Front profile dashboard
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
 						 $session->write('dog_in_home_status','yes');
-						// echo $session->read("profile");die;
+						 //echo $session->read("profile");die;
 						return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
 					}else{
 						$session->write('dog_in_home_status','no');
@@ -1128,6 +1119,7 @@ Function for Front profile dashboard
             
             
         }
+       
 	}
     /**
     Function for Sitter House
@@ -1296,9 +1288,7 @@ function aboutGuest(){
 
      if(isset($this->request->data['UserPets']) && !empty($this->request->data['UserPets'])) 
      {
-		
-		//pr($this->request->data);die;
-					$userPetsModel->deleteAll(['UserPets.user_id'=>$userId]);
+		            $userPetsModel->deleteAll(['UserPets.user_id'=>$userId]);
 					$petGalleryModel->deleteAll(['UserPetGalleries.user_id'=>$userId]);
 					
 					foreach($this->request->data['UserPets'] as $key=>$single_guest){
@@ -1336,9 +1326,7 @@ function aboutGuest(){
 		}else{
 			         $session->write("UserPets",'');
 					 $userPetsData = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);
-					 $session->write('profile',$userPetsData->user_type);
-					 //echo $session->read('profile');die;
-					
+					 
 					 if(isset($userPetsData->user_pets) && !empty($userPetsData->user_pets)){
 						 $count_pets = count($userPetsData->user_pets);
 							if($count_pets == 1){
@@ -1425,15 +1413,10 @@ function addPets(){
 									$Img = explode(':',$Img);
 									if($Img[0]=='error'){
 										$errors[] = 'File:'.$_FILES['images']['name'][$i].':'.$Img[1];
-										//pr($errors);die;
 									}else{
-									 /*$petGalleryData = $petGalleryModel->newEntity();
-			$petGalleryData->user_id = $userId;
-			$petGalleryData->image = $Img[1];
-			$petGalleryModel->save($petGalleryData);*/
+									 
 			
 			$guest_images[] = $Img[1];
-			//$guest_img[$guest_num][] = $Img[1];
 			$session->write('guest_images',$guest_images);
 
 									}                
@@ -1451,8 +1434,6 @@ function addPets(){
 			$query = $usersModel->get($userId,['contain'=>'UserPetGalleries']);
 
 			$guest_images = $session->read('guest_images');
-			//pr($guest_images);die;
-
 			$html = "";
 			if(isset($errors[0]) && ($errors[0] == "You can select only three images for your pet")){
 							
@@ -1481,29 +1462,7 @@ function addPets(){
 								 $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
 				 }
 				 }
-				 //pr($new_n);die;
-				 //pr($session->read("UserPets"));die;
 				 echo (json_encode(array($error,$html)));die;
-				
-			/*if(isset($query->user_pet_galleries) && !empty($query->user_pet_galleries)) {
-			$images_arr = $query->user_pet_galleries;
-			$sitterImg = array();
-			$html = " ";
-			foreach($images_arr as $key=>$val){
-
-				$html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-				$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg" data-rel="'.$val->id.'" href="jav * ascript:void(0);"><i class="fa fa-minus-circle"></i></a>';
-				 $html .='</div></div>';
-			}
-			if($errors != ''){
-			$error ="";
-				 foreach($errors as $key=>$val){
-				 $error.= "<em class='signup_error error col-md-8 col-lg-8 col-sm-8'>".$val."</em>";
-			}
-			}
-			echo (json_encode(array($error,$html)));die;
-			}*/
-
 }
     /**
     Function for Delete guest record
@@ -1562,10 +1521,10 @@ function addPets(){
                    $sitterImg = array();
                    $html = " ";
                     foreach($images_arr as $key=>$val){
-                      $html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                   	  $html .= '<img class="img-responsive center-block text-center" alt="img" src="'.HTTP_ROOT.'img/uploads/'.$val->image.'">';
-                   	  $html .='</div>';
-                    }
+                      $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                      $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                       $html .='</div></div>';
+                   	}
                   if($errors != ''){
                    $error ="";
                   	  foreach($errors as $key=>$val){
@@ -1589,24 +1548,20 @@ function addPets(){
             if( $this->request->is('ajax') ) {
 
 			    if(isset($_REQUEST['imageId']) && !empty($_REQUEST['imageId'])){
-			    	//echo $_REQUEST['imageId'];die;
 			    	$record = $sitterGallriesModel->get($_REQUEST['imageId']);
 					$deleteResult = $sitterGallriesModel->delete($record);
-					//$this->Flash->success(__('Record has been deleted successfully.'));
-			   }
+				}
             }
 
 			$query = $usersModel->get($userId,['contain'=>'UserSitterGalleries']);
-            //pr($query);die;
             if(isset($query->user_sitter_galleries) && !empty($query->user_sitter_galleries)) {
                   $images_arr = $query->user_sitter_galleries;
                  
                    $html = " ";
                    foreach($images_arr as $key=>$val){
-                    //echo $val->id;die;
-                   	$html.='<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="sitter-gal">';
-                   	$html .= '<img class="img-responsive center-block text-center" alt="img"> src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
-                   	 $html .='</div>';
+                    $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
+                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                   	$html .='</div></div>';
                   }
                   echo $html; die;
             }else{
@@ -1624,8 +1579,7 @@ function addPets(){
           $userId = $session->read('User.id');
 
        if(isset($_FILES['profile_video']) && !empty($_FILES['profile_video'])){
-		//pr($_FILES['profile_video']);
-     	$userData = $usersModel->newEntity();
+		$userData = $usersModel->newEntity();
      	$userData->id = $userId;
      	  //Upload video
 			if($_FILES['profile_video']['name']!=''){
@@ -1690,8 +1644,7 @@ function addPets(){
        if(isset($_FILES['profile_video_image']) && !empty($_FILES['profile_video_image'])){
         $userData = $usersModel->newEntity();
      	$userData->id = $userId;
-     	//pr($_FILES['profile_video_image']);die;
-     	  //Upload video
+     	//Upload video
 			if($_FILES['profile_video_image']['name']!=''){
 				$profileVideoImg = $this->admin_upload_file('profileVideoImg',$_FILES['profile_video_image']);
 				$profileVideoImg = explode(':',$profileVideoImg);

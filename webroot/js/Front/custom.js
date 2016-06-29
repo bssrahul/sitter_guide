@@ -1795,42 +1795,36 @@ $( document ).ready(function() {
 }, "Letters only please"); 
 /*End sign up*/
 /*====For password fair line====*/
-    $( "#usersp-password" ).keyup(function() {
-    		//alert("ook");
-        var value = $(this).val();
+$("#usersp-password").keyup(function(){
+    	var value = $(this).val();
       	if((value.length) === 0){
       		$('#passwordStatus').html("");
-
         }else if((value.length) > 0 && (value.length) < 6){
-
-            $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'weak.jpg'+"'><small class='pull-right'>Weak</small>");
-
+              $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'weak.jpg'+"'><small class='pull-right'>Weak</small>");
         }else if((value.length) >= 6 && (value.length) < 9){
-
-           $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'fair.jpg'+"'><small class='pull-right'>Fair</small>");
-
+              $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'fair.jpg'+"'><small class='pull-right'>Fair</small>");
         }else if((value.length) > 9){
-
-        	$('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'good.jpg'+"'><small class='pull-right'>Good</small>");
+              $('#passwordStatus').html("<img id='password_line' src='"+ ajax_url+'img/'+'good.jpg'+"'><small class='pull-right'>Good</small>");
         }
-  });
+});
  /*====End fair line====*/
-
- /*For Remove profile image */
+/*For Remove profile image */
  $(document).on('click', '.removeProfileImg',function(){
  	var imageId = $(this).attr('data-rel');
  	   $.ajax({
-          url: ajax_url+'dashboard/remove-gallery-image', 
+		 beforeSubmit:function(e){
+				$('#wait-loader').html('<img  src="'+ajax_url+'/img/ajax_wait.gif">');
+		 },
+         url: ajax_url+'dashboard/remove-gallery-image', 
          data:'imageId='+imageId,
          success: function(result){
+			$('#wait-loader').html(''); 
             $("#images_preview").html(result);
           }
         });
    }); 
  });
  /*End profile image*/
-
-
 $(document).ready(function(){
 /*For profile video*/
     $("#browseVideo").on('click',function(){

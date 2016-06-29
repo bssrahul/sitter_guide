@@ -4,8 +4,7 @@ echo $this->Html->css(['Front/tokenfield-typeahead.min.css','Front/bootstrap-tok
 echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
 
 <script>
-	
-  $(document).ready(function(){
+$(document).ready(function(){
 		$('.dogBreeds').tokenfield({
 		  autocomplete: {
 		  source: <?php echo $allBreed = json_encode($dog_breeds); ?>,
@@ -22,7 +21,7 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
 				  event.preventDefault();
 		 });
 		});
-  });
+});
 </script>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row">
@@ -282,13 +281,11 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
               <?php $max=75; if(!empty($guest_data['guest_description'])){ $rem = $max-str_word_count ($guest_data['guest_description']);} ?>
                           <p class="w-limit" id="userpets-guest1-guest-description_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
             </div>
-            
             <div class="form-group col-lg-4 col-md-6">
               <label for="">Photo Library
               </label>
               <div class="row" id="images_preview_1" >
-				  
-                <?php 
+				<?php 
                  if(@$guest_images != 'no_image'){
 					 echo @$guest_images;
 				 }else{ ?>
