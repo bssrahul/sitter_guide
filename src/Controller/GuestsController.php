@@ -688,23 +688,146 @@ class GuestsController extends AppController
 	    $session = $this->request->session();
 	    $userId = $session->read("User.id");
 	    $UsersModel = TableRegistry::get('Users');
+	    $UserBadgeModel=TableRegistry :: get("Users_badge");
+		$UserBadgedata=$UserBadgeModel->newEntity();
 	    
 	   if(isset($token) && !empty($token) && isset($referId) && !empty($referId)){
 		    if($token == "token"){
 				
 				$this->set("rf_token",$referId);
 				
-			}else{
-				$this->set("rf_promocode",$referId);
 			}	
+			
+			
 		}
-		$UsersData= $UsersModel->newEntity();
+		
 			   
 			  /////////////////////
-       if(isset($this->request->data['signup-submit']) && $this->request->data['signup-submit']=='Sign Up')
+       if(isset($this->request->data['Users']) && $this->request->data['Users'])
 		{ 
+			//pr($this->request->data['Users']);die;
 			
-						$this->request->data['Users']['password'] = $this->request->data['Users']['create_password'];
+			    $UsersData = $UsersModel->newEntity();
+			    $UsersData = $UsersModel->patchEntity($UsersData, $this->request->data['Users'],['validate'=>'update']);
+			    //pr($userData->errors());die;
+			    
+				 /* if ($usersModel->save($userData)){
+						 $userData = $usersModel->get($userId);
+						 if(empty($userData->otp) && $userData->mobile_verification == 0){
+							$this->genrateOtp();
+						 }
+						 //echo "okokok";die;
+						return $this->redirect(['controller'=>'dashboard','action'=>'house']);
+					}else{
+						//echo "not ok";die;
+						$this->Flash->error(__('Error found, Kindly fix the errors.'));
+					}*/
+					if(!$UsersData->errors()){
+							//CODE FOR MULTILIGUAL START
+							$session = $this->request->session();
+							//$UsersModel->_locale = $session->read('requestedLanguage');
+							//CODE FOR MULTILIGUAL END
+                            $passwordOrg = $this->request->data['Users']['password'];
+							
+							$activation_key = md5(microtime());							
+							$UsersData->password = md5($this->request->data['Users']['password']);
+							//SET CUSTOM VARIABLES FOR SAVE
+							$UsersData->org_password = $this->request->data['Users']['password'];
+							$UsersData->activation_key = $activation_key;								
+							$UsersData->date_added=date('Y-m-d H:i:s');	
+							$UsersData->date_modified = date('Y-m-d h:i:s');				
+							//$latitude = $this->request->data['Users']['country'];				
+							//$longitude = $this->request->data['Users']['zip'];	
+							//echo $latitude.$longitude;die;
+							// get latitude and longitude from country and zip start	
+							//////////////////////
+							//GET LATITUDE LONGITUDE FROM SELECTED ZIP CODE
+							$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($this->request->data['Users']['zip'])."&sensor=false"; 
+								$ch = curl_init();
+								curl_setopt($ch, CURLOPT_URL, $url);
+								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+								curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+								curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+								curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+								$response = curl_exec($ch);
+								curl_close($ch);
+								$response_a = json_decode($response);
+								@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+								@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+							
+							/////////////////////
+							/*$sourceSelectedLocation = $latitude." ".$longitude;
+							$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false";
+							$ch = curl_init();
+							curl_setopt($ch, CURLOPT_URL, $url);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+							curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+							$response = curl_exec($ch);
+							curl_close($ch);
+							$response_a = json_decode($response);
+							$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+							$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+							*/
+							$UsersData->latitude=$sourceLocationLatitude;					
+							$UsersData->longitude=$sourceLocationLongitude;	
+							//$UsersData->reference_id = 	$referId;			
+							//end get latitude and longitude from country and zip start			
+							$UsersData->status = 0;
+							$UsersModel->save($UsersData);//)
+							//{
+								//$getUsersTempId1 = $userId;
+								$UserBadgedata->user_id= $userId;
+								$UserBadgeModel->save($UserBadgedata);
+								
+								//pr($UsersData->id);die;
+								$uid = base64_encode($this->request->data['Users']['email']);
+								$link = HTTP_ROOT.'guests/activation/'.$uid.'/'.$activation_key.'/success:registerSuccess';
+								$linkOnMail = '<a href="'.$link.'" target="_blank">'.$this->stringTranslate(base64_encode('Click Here For Activate Your Account')).'</a>';
+								
+								$replace = array('{full_name}','{email}','{link}');
+								$with = array($this->request->data['Users']['first_name'],$this->request->data['Users']['email'],$linkOnMail);
+								
+								$this->send_email('',$replace,$with,'new_registration',$this->request->data['Users']['email'],'');
+							
+							$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
+							return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou']);
+							//} /* else{
+								
+								/*$this->set('loginerror',$this->Member->validationErrors);
+								$this->set('totalError',count($this->Member->validationErrors));
+								$this->set('signupdata',$data);
+							} */
+							
+					}else{
+					    $this->set("userData",$UsersData);
+					}
+					
+					
+					
+					
+					
+					
+					
+			
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+						/*$this->request->data['Users']['password'] = $this->request->data['Users']['create_password'];
 						unset($this->request->data['Users']['create_password']);
 
 						$data=$this->request->data;
@@ -784,7 +907,7 @@ class GuestsController extends AppController
 								$this->set('totalError',count($this->Member->validationErrors));
 								$this->set('signupdata',$data);
 							} 
-						}
+						}*/
 					
 			}/*else{
 					
@@ -792,7 +915,7 @@ class GuestsController extends AppController
 				$this->set('totalError',count($error));
 				$this->set('signupdata',@$data);
 			}*/
-			
+			/*
 			$metaTagForShare = '<meta name="description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />
 
 				<!-- Twitter Card data -->
@@ -805,7 +928,7 @@ class GuestsController extends AppController
 				<meta property="og:image" content="'.HTTP_ROOT.'img/bg-family.png" />
 				<meta property="og:description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />'; 
 				
-			    $this->set('metaTag', $metaTagForShare);
+			    $this->set('metaTag', $metaTagForShare);*/
 	}
 	/**Function for Validate SIGN UP
 	*/
