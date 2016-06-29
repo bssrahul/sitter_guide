@@ -595,7 +595,7 @@
          <br>
 
          
-          <p ><small> * If you didn't received your OTP. Please <a href="javascript:void(0)" id="for_otp_generet" >Click here</a> to resend OTP again</small></p>
+          <p ><small> * If you didn't received your OTP. Please <a style="color:#72A105" href="javascript:void(0)" id="for_otp_generet" >Click here</a> to resend OTP again</small></p>
 
         </div>
         <!--Additional Services--> 
