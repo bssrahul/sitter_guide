@@ -178,7 +178,6 @@ class AppController extends Controller{
 		   return $this->redirect("/$controller/$action/".$params);
 		}
 	}	
-	
 	/** Function for display error message
 	*/
 	function displayErrorMessage($msg=null){
@@ -818,6 +817,24 @@ class AppController extends Controller{
 		));
 		
 	}
+//generate otp
+function genrateOtp($otpDigit=6){
+			$usersModel = TableRegistry::get('Users');
+			$session = $this->request->session();
+			$userId = $session->read("User.id");
+			$digits = $otpDigit;
+			$four_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
+			$userData = $usersModel->newEntity();
+			$userData->id = $userId;
+			$userData->otp = $four_digits;
+			//pr($userData);die;
+			if($usersModel->save($userData)){
+				//pr($userData);die;
+			    return true;
+			}else{
+			    return false;
+			}
+}
 	
 }
 ?>

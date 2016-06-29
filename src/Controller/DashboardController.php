@@ -695,7 +695,6 @@ function generatePromocode(){
 			 $session = $this->request->session();
              $userId = $session->read('User.id');
          
-			 //pr($this->request->data);die;
 			 if(isset($this->request->data['UserPromocode']) && !empty($this->request->data['UserPromocode'])){
 				 $UsersModel = TableRegistry::get('Users');
 				 
@@ -921,6 +920,7 @@ Function for Front profile dashboard
 
     	 $captchErr="";
          $usersModel = TableRegistry::get('Users');
+         $countryCodesModel = TableRegistry::get('CountryCodes');
          
          $session = $this->request->session();
          $userId = $session->read('User.id');
@@ -941,7 +941,6 @@ Function for Front profile dashboard
 						$responseData = json_decode($verifyResponse);
 					if($responseData->success)
 					{
-						$countryCodesModel = TableRegistry::get('CountryCodes');
 						$data=$this->request->data['Usersp'];
 
 						$error=$this->validate_password($data,$user_info);
@@ -950,19 +949,28 @@ Function for Front profile dashboard
 								$userData = $usersModel->newEntity();
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 								$userData->id = $userId;
-							   $usersModel->save($userData);
+							    $usersModel->save($userData);
+							    $userData = $usersModel->get($userId);
+							    if(empty($userData->otp) && $userData->mobile_verification == 0){
 									
+										$this->genrateOtp();
+							    }	
 							unset($userData->id);
 							$this->set('userInfo', $userData);
 							$this->set('error',$error);
 							$this->Flash->error(__('Error found, Kindly fix the errors.'));
 						}else{
-							 $userData = $usersModel->newEntity();
+							    $userData = $usersModel->newEntity();
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 								$userData->id = $userId;
 								 $userData->password = MD5($this->request->data['Usersp']['password']);
 								 $userData->org_password = $this->request->data['Usersp']['password'];
 								 if ($usersModel->save($userData)){
+									 $userData = $usersModel->get($userId);
+									 if(empty($userData->otp) && $userData->mobile_verification == 0){
+										$this->genrateOtp();
+									 }
+									 
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{
 									$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -983,20 +991,27 @@ Function for Front profile dashboard
 		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 		                $userData->id = $userId;
 		                if ($usersModel->save($userData)) {
+							$userData = $usersModel->get($userId);
+							if(empty($userData->otp) && $userData->mobile_verification == 0){
+								  $this->genrateOtp();
+							 }
 							return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 		                }else{
-
-					$countryCodesModel = TableRegistry::get('CountryCodes');
-						$data=$this->request->data['Usersp'];
-						
+							
+                        $data=$this->request->data['Usersp'];
 						$error=$this->validate_password($data,$user_info);
 						if(count($error) > 0)
 						{
 								$userData = $usersModel->newEntity();
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
-								$userData->id = $userId;
+							   $userData->id = $userId;
 							   $usersModel->save($userData);
-									
+							   $userData = $usersModel->get($userId);
+							   
+							   if(empty($userData->otp) && $userData->mobile_verification == 0){
+								  
+										$this->genrateOtp();
+							    }		
 							unset($userData->id);
 							$this->set('userInfo', $userData);
 							$this->set('error',$error);
@@ -1007,6 +1022,11 @@ Function for Front profile dashboard
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 								$userData->id = $userId;
 								if ($usersModel->save($userData)) {
+									$userData = $usersModel->get($userId);
+									if(empty($userData->otp) && $userData->mobile_verification == 0){
+										
+										$this->genrateOtp();
+							        }
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{
 									$this->Flash->error(__('Error found, Kindly fix the errors.'));
@@ -1027,7 +1047,7 @@ Function for Front profile dashboard
 	    }else{
 	    	 $this->set('captchErr','');
 	    }
-	    $countryCodesModel = TableRegistry::get('CountryCodes');
+	    
         $countrydata = $countryCodesModel->find('all')->order(['CountryCodes.phonecode'=>"ASC"])->toArray();
 		 foreach($countrydata as $key=>$val){
                 $country_info[$val['phonecode']] = $val['iso']; 
