@@ -34,24 +34,29 @@
 .selectpicker { background-color:#fff !important; border:1px solid #ccc !important; height:35px !important;  }
 
 .payment-last .checkbox { margin-top:0px;}
-.card-credit { background:url(../../img/card-dummy-1-345.png) no-repeat; width:345px; height:216px; margin:0px auto; }
-.name-on-card p { font-size:23px; color:#fff; padding-top:75px; text-align:right; padding-right:30px; }
-.credit-card-no p {font-size:20px; padding-top:30px; color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:30px; }
+.card-credit { background:url(../../img/card-dummy-1-345.png) no-repeat; width:345px; height:216px;  margin:0px auto; margin-bottom:30px; position:relative; }
+.name-on-card { position:absolute; top:75px; right:0px;}
+.name-on-card p { font-size:23px; color:#fff;  text-align:right; padding-right:30px; }
+.credit-card-no {position:absolute; top:138px;}
+.credit-card-no p {font-size:20px;  color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:30px; }
 .credit-card-no p span { padding:0 15px;}
 .credit-card-no li {font-size:22px; padding-top:50px; color:#fff; padding:0 18px; font-family: 'CenturyGothic-Regular'; }
-.valid-up-to p { font-size:13px;  color:#fff; padding-left:30px; padding-top:9px;}
+.valid-up-to {position:absolute; top:172px; }
+.valid-up-to p { font-size:13px;  color:#fff; padding-left:32px; }
 .valid-up-to p span { font-size:14px;  color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:15px;}
 
 
 @media (min-width:320px) and (max-width:480px) {
 	
-	.card-credit { background:url(../../img/card-dummy-1-xs.png) no-repeat; width:260px; height:162px; margin-bottom:30px; margin:0px auto;}
-	
-	.name-on-card p { font-size:18px; font-weight:500;  padding-top:56px;  padding-right:20px; }
-.credit-card-no p {font-size:14px; padding-left:23px; padding-top:20px; }
+	.card-credit { background:url(../../img/card-dummy-1-xs.png) no-repeat; width:260px; height:162px;  margin:0px auto; margin-bottom:30px;  position:relative;}
+	.name-on-card {position:absolute; top:56px; right:0px; }
+	.name-on-card p { font-size:18px; font-weight:500;    padding-right:28px; }
+	.credit-card-no { position:absolute; top:105px;}
+.credit-card-no p {font-size:14px; padding-left:23px;  }
 .credit-card-no p span { padding:0 13px;}
 .credit-card-no li {font-size:22px; padding-top:50px; color:#fff; padding:0 18px; font-family: 'CenturyGothic-Regular'; }
-.valid-up-to p { font-size:13px;  color:#fff; padding-left:25px; padding-top:5px;}
+.valid-up-to { position:absolute; top:128px;}
+.valid-up-to p { font-size:13px;  color:#fff; padding-left:25px; }
 .valid-up-to p span { font-size:14px;  color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:15px;}
 	
 	

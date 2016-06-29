@@ -88,7 +88,7 @@
                                   ]);
                             ?>
                             <?php if($userInfo['status'] != 1){?>	
-                             <a href="javascript:void(0)" id="here_email_verify" style="font-size:12px;color:blue">If you din't get an  email then click here</a> 
+                             <a href="javascript:void(0)" id="here_email_verify" style="font-size:12px;color:#72A105">If you din't get an  email then click here</a> 
                              <?php } ?>
                         </div>
                      
@@ -216,7 +216,7 @@
                                   ]);
                             ?>
                             <?php if($userInfo['mobile_verification'] != 1){?>	
-                             <br/><a href="javascript:void(0)" id="num_verify_link" style="font-size:12px;color:blue" data-toggle="modal" data-target="#otppopup"> verify you phone</a>   
+                             <br/><a href="javascript:void(0)" id="num_verify_link" style="font-size:12px;color:#72A105" data-toggle="modal" data-target="#otppopup"> verify you phone</a>   
                             <?php } ?>               
                           </div>
                          
