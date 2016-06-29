@@ -156,3 +156,10 @@
 			}
 		  });
     });
+    
+    
+    $(document).on('keyup','.autoFillCard',function(){
+		var cardElement = $(this).attr("data-rel");	
+		
+		$('.'+cardElement).text($(this).val());
+	});

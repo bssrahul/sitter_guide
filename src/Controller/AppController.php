@@ -19,6 +19,9 @@ use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
+
+
+
 /**
  * Application Controller
  *
@@ -801,6 +804,20 @@ class AppController extends Controller{
 		$ConfingData=$ConfingModel->find('all')->toArray();
 		pr($ConfingData);die;
 	} */
+	
+	function sendMessages($to_mobile_number, $message_body){
+		require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
+		$account_sid = TWILIO_SID; 
+		$auth_token = TWILIO_AUTHTOKEN; 
+		$client = new \Services_Twilio($account_sid, $auth_token); 
+		
+		$client->account->messages->create(array( 
+			'To' => $to_mobile_number, 
+			'From' => "+61425415125", 
+			'Body' => $message_body, 
+		));
+		
+	}
 	
 }
 ?>

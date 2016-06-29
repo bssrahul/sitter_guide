@@ -1,10 +1,101 @@
+<?php 
+$us_states = array(
+	'AL'	=>	'Alabama',
+	'AK'	=>	'Alaska',
+	'AS'	=>	'American Samoa',
+	'AZ'	=>	'Arizona',
+	'AR'	=>	'Arkansas',
+	'AE'	=>	'Armed Forces - Europe',
+	'AP'	=>	'Armed Forces - Pacific',
+	'AA'	=>	'Armed Forces - USA/Canada',
+	'CA'	=>	'California',
+	'CO'	=>	'Colorado',
+	'CT'	=>	'Connecticut',
+	'DE'	=>	'Delaware',
+	'DC'	=>	'District of Columbia',
+	'FL'	=>	'Florida',
+	'GA'	=>	'Georgia',
+	'GU'	=>	'Guam',
+	'HI'	=>	'Hawaii',
+	'ID'	=>	'Idaho',
+	'IL'	=>	'Illinois',
+	'IN'	=>	'Indiana',
+	'IA'	=>	'Iowa',
+	'KS'	=>	'Kansas',
+	'KY'	=>	'Kentucky',
+	'LA'	=>	'Louisiana',
+	'ME'	=>	'Maine',
+	'MD'	=>	'Maryland',
+	'MA'	=>	'Massachusetts',
+	'MI'	=>	'Michigan',
+	'MN'	=>	'Minnesota',
+	'MS'	=>	'Mississippi',
+	'MO'	=>	'Missouri',
+	'MT'	=>	'Montana',
+	'NE'	=>	'Nebraska',
+	'NV'	=>	'Nevada',
+	'NH'	=>	'New Hampshire',
+	'NJ'	=>	'New Jersey',
+	'NM'	=>	'New Mexico',
+	'NY'	=>	'New York',
+	'NC'	=>	'North Carolina',
+	'ND'	=>	'North Dakota',
+	'OH'	=>	'Ohio',
+	'OK'	=>	'Oklahoma',
+	'OR'	=>	'Oregon',
+	'PA'	=>	'Pennsylvania',
+	'PR'	=>	'Puerto Rico',
+	'RI'	=>	'Rhode Island',
+	'SC'	=>	'South Carolina',
+	'SD'	=>	'South Dakota',
+	'TN'	=>	'Tennessee',
+	'TX'	=>	'Texas',
+	'UT'	=>	'Utah',
+	'VT'	=>	'Vermont',
+	'VI'	=>	'Virgin Islands',
+	'VA'	=>	'Virginia',
+	'WA'	=>	'Washington',
+	'WV'	=>	'West Virginia',
+	'WI'	=>	'Wisconsin',
+	'WY'	=>	'Wyoming'
+);
+$canadian_provinces = array(
+	'AB'	=>	'Alberta',
+	'BC'	=>	'British Columbia',
+	'MB'	=>	'Manitoba',
+	'NB'	=>	'New Brunswick',
+	'NF'	=>	'Newfoundland and Labrador',
+	'NT'	=>	'Northwest Territories',
+	'NS'	=>	'Nova Scotia',
+	'NU'	=>	'Nunavut',
+	'ON'	=>	'Ontario',
+	'PE'	=>	'Prince Edward Island',
+	'QC'	=>	'Quebec',
+	'SK'	=>	'Saskatchewan',
+	'YT'	=>	'Yukon Territory'
+); 
+$aussie_states = array(
+	'ACT'	=>	'Australian Capital Territory',
+	'JBT'	=>	'Jervis Bay Territory',
+	'NSW'	=>	'New South Wales',
+	'NT'	=>	'Northern Territory',
+	'QLD'	=>	'Queensland',
+	'SA'	=>	'South Australia',
+	'TAS'	=>	'Tasmania',
+	'VIC'	=>	'Victoria',
+	'WA'	=>	'Western Australia'
+);
+$statesArray = array_merge($us_states,$canadian_provinces);
+$statesArray = array_merge($statesArray ,$aussie_states);
+?>
+
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
   
   <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
     
     <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
       <h3>
-        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">&nbsp Communication 
+        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">&nbsp Billing Details 
       </h3>
     </div>
     
@@ -17,7 +108,7 @@
           <a href="#">Home
           </a>
         </li>
-        <li class="active">Communication
+        <li class="active">Payment Method
         </li>
       </ol>
     </div>
@@ -29,7 +120,7 @@
       <div class="col-xs-12 col-sm-12 xol-md-12">
         <h3 class="payment-heading1">Your Payment Methods
         </h3>
-        <p class="payment-text">Select your default method for payments on Rover. Rover accepts all major credit and debit cards. 
+        <p class="payment-text">Select your default method for payments on Sitter Gudie. Sitter Gudie accepts all major credit and debit cards. 
         </p>
         <div class="pay-outside-wrap">
           <h5 class="baddress"> Billing Address
@@ -50,7 +141,9 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Address line 1',
+							'value'=>isset($UserCardsData['address_1'])?$UserCardsData['address_1']:'',
 				]);
+				echo '<span class="signup_error">'.@$formError['address_1'][0].'</span>';
 				?>
             </div>
            
@@ -64,7 +157,9 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Address line 2',
+							'value'=>isset($UserCardsData['address_2'])?$UserCardsData['address_2']:'',
 				]);
+				echo '<span class="signup_error">'.@$formError['address_2'][0].'</span>';
 				?>
             </div>
            
@@ -80,7 +175,9 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'City',
+							'value'=>isset($UserCardsData['city'])?$UserCardsData['city']:'',
 				]);
+				echo '<span class="signup_error">'.@$formError['city'][0].'</span>';
 				?>
                 </div>
               </div>
@@ -88,62 +185,17 @@
                 <div class="form-group">
                   <label>State
                   </label>
-                                 
-                  <select autocomplete="address-level1" required="" id="state" name="Booking[state]" class="form-control selectpicker">
-                    <option selected="" disabled="" value="">State</option>
-                    <option value="AL">AL</option>
-                    <option value="AK">AK</option>
-                    <option value="AZ">AZ</option>
-                    <option value="AR">AR</option>
-                    <option value="CA">CA</option>
-                    <option value="CO">CO</option>
-                    <option value="CT">CT</option>
-                    <option value="DE">DE</option>
-                    <option value="DC">DC</option>
-                    <option value="FL">FL</option>
-                    <option value="GA">GA</option>
-                    <option value="HI">HI</option>
-                    <option value="ID">ID</option>
-                    <option value="IL">IL</option>
-                    <option value="IN">IN</option>
-                    <option value="IA">IA</option>
-                    <option value="KS">KS</option>
-                    <option value="KY">KY</option>
-                    <option value="LA">LA</option>
-                    <option value="ME">ME</option>
-                    <option value="MD">MD</option>
-                    <option value="MA">MA</option>
-                    <option value="MI">MI</option>
-                    <option value="MN">MN</option>
-                    <option value="MS">MS</option>
-                    <option value="MO">MO</option>
-                    <option value="MT">MT</option>
-                    <option value="NE">NE</option>
-                    <option value="NV">NV</option>
-                    <option value="NH">NH</option>
-                    <option value="NJ">NJ</option>
-                    <option value="NM">NM</option>
-                    <option value="NY">NY</option>
-                    <option value="NC">NC</option>
-                    <option value="ND">ND</option>
-                    <option value="OH">OH</option>
-                    <option value="OK">OK</option>
-                    <option value="OR">OR</option>
-                    <option value="PA">PA</option>
-                    <option value="RI">RI</option>
-                    <option value="SC">SC</option>
-                    <option value="SD">SD</option>
-                    <option value="TN">TN</option>
-                    <option value="TX">TX</option>
-                    <option value="UT">UT</option>
-                    <option value="VT">VT</option>
-                    <option value="VA">VA</option>
-                    <option value="WA">WA</option>
-                    <option value="WV">WV</option>
-                    <option value="WI">WI</option>
-                    <option value="WY">WY</option>
-                </select>
-                  
+                  <?php echo $this->Form->input('Booking.state',[
+					'templates' => ['inputContainer' => '{{content}}'],
+					'label' => false,
+					'type'=>'select',
+					'options'=>$statesArray,
+					'class'=>'form-control selectpicker',
+					'value'=>isset($UserCardsData['state'])?$UserCardsData['state']:'',
+					]);
+					echo '<span class="signup_error">'.@$formError['state'][0].'</span>';
+				  ?>               
+                 
                 </div>
               </div>
               <div class="col-lg-2 col-sm-4 col-md-2 col-xs-12 ">
@@ -157,7 +209,9 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Zip',
+							'value'=>isset($UserCardsData['zip'])?$UserCardsData['zip']:'',
 				]);
+				echo '<span class="signup_error">'.@$formError['zip'][0].'</span>';
 				?>
                 </div>
               </div>
@@ -167,11 +221,10 @@
                 <label>
                   <?php 
 				echo $this->Form->input('Booking.save_cards',[
-							'templates' => ['inputContainer' => '{{content}}'],
-							'label' => 'Save address for future use ',
-							'type'=>'checkbox',
-							
-							
+					'templates' => ['inputContainer' => '{{content}}'],
+					'label' => 'Save address for future use ',
+					'type'=>'checkbox',
+					'value'=>isset($UserCardsData['save_cards'])?$UserCardsData['save_cards']:'',
 				]);
 				?> 
                 </label>
@@ -196,3 +249,9 @@
     </div>
   </div>
 </div>
+<style>
+.signup_error {
+    color: #c82334;
+    font-size: 12px;
+}
+</style>
