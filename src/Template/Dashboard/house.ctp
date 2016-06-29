@@ -1,5 +1,5 @@
 <?php //echo "<pre>";print_r($houseInfo); die;?>
- <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
 
         <div class="profiletab-section">
@@ -22,7 +22,7 @@
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
 
- <div id="menu11" class="tab-pane fade tab-comm active in">
+<div id="menu11" class="tab-pane fade tab-comm active in">
           <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insight about your home')); ?></h2>
           <p id="about-property" class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
           <p  class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
@@ -40,8 +40,7 @@
                               ]);
                       }     
                   ?>
-
-                  <div class="row">
+                 <div class="row">
                      <!--<h3><i class="fa fa-share-alt cir-o" aria-hidden="true"></i>
                      <?php //echo $this->requestAction('app/get-translate/'.base64_encode('Share some insights about your home')); ?> 
                 <span class="pull-right hed-0 coh1">
@@ -78,7 +77,6 @@
                         'class'=>'form-control']);
                       ?>
                     </div>
-
                     <div class="form-group col-lg-4">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Area Size')); ?></label>
                       <?php echo $this->Form->input('UserSitterHouses.outdoor_area_size',[
@@ -91,7 +89,6 @@
                       ?>
                     </div>
                     </div>
-
                     <div class="row">
                     <div class="form-group col-lg-4">
                       <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outing Area (allow multiple)')); ?>  </label>
@@ -135,10 +132,7 @@
                         </span>
                     </div>  
                     </div>
-
                     <div class="row">
-                    
-
                   <div class="form-group col-lg-4">
                     <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?></label>
                     <span class="pull-right m-rights">
@@ -185,8 +179,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    
-                     <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-4">
                     <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cats in home?')); ?></label>
                     <span class="pull-right m-rights">
                     <?php echo $this->Form->input(
@@ -270,23 +263,23 @@
                       
                     </div>
                   <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?  Photo')); ?></h3>
-                  <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile photo')); ?><button id="browseImg" type="button" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Browse Photo')); ?></button></p>
+                  <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile photo')); ?><button id="browseImg" type="button" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Browse Photo')); ?></button>
+                  <span id="wait-loader"></span>
+                  </p>
 
                   <div class="row" id="images_preview">
                         <?php echo @$sitter_images; ?>
-                   
-                    
                   </div>
+                  <div class="row" id="show-all-errors">
 
-                    <div class="row">
+                  </div>
+                 <div class="row">
                     <p class="col-lg-12 sp-tb">
                     <a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"><button class="btn previous pull-left" type="button"><i class="fa fa-chevron-left"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button></a>
                     <input class="pull-right btn Continue" type="submit" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Continue')); ?>" /></p>
                     </div>
                   <?php echo $this->Form->end(); ?>
-                  <div class="row" id="show-all-errors">
-
-                  </div>
+                  
 
               </div>
 
@@ -360,43 +353,34 @@
 			wprdCount('#home_txtarea');
 		}); 
 	}); 
+/*For add multiple profile photos*/	
+$(document).ready(function(){
+	$('#images').on('change',function(){
+			jQuery('#multiple_upload_form').ajaxForm({
+			//display the uploaded images
+			//target:'#images_preview',
+			beforeSubmit:function(e){
+				$('#wait-loader').html('<img  src="<?php echo HTTP_ROOT; ?>/img/ajax_wait.gif">');
+			},
+			success:function(res){
+			            var data = jQuery.parseJSON(res);
+						if($.trim(data[0]) != ''){
+						  $('#wait-loader').html('');
+						  $('#show-all-errors').html(data[0]); //DISPLAY SUCCESS MESSAGE
+						}
+						if($.trim(data[1]) != ''){
+						 $('#wait-loader').html('');
+						  $('#images_preview').html(data[1]); //DISPLAY SUCCESS MESSAGE
 
-	
-	 /*For add multiple profile photos*/	
-	$(document).ready(function(){
-		 
-		$('#images').on('change',function(){
-				jQuery('#multiple_upload_form').ajaxForm({
-				//display the uploaded images
-				//target:'#images_preview',
-				beforeSubmit:function(e){
-					$('.uploading').show();
-				},
-				success:function(res){
-				  console.log(res);
-				  
-				 var data = jQuery.parseJSON(res);
-				if($.trim(data[0]) != ''){
-				  $('#show-all-errors').html(data[0]); //DISPLAY SUCCESS MESSAGE
-
-				}
-			  
-				if($.trim(data[1]) != ''){
-				  $('#images_preview').html(data[1]); //DISPLAY SUCCESS MESSAGE
-
-				}
-				   $('.uploading').hide();
-				},
-				error:function(e){
-				}
-			}).submit();
-		});
-		
-		$("#browseImg").on('click',function(){
-			$("#images").trigger("click");    
-		});
-
-	   /*End*/
-	   
+						}
+			},
+			error:function(e){
+			}
+		}).submit();
 	});
+	$("#browseImg").on('click',function(){
+		$("#images").trigger("click");    
+	});
+   /*End*/
+});
 </script>

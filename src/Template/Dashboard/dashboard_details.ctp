@@ -1,4 +1,4 @@
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
           <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
             <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
@@ -387,7 +387,7 @@
               </div>
               <!--Second-widget starts-->
               <div class="below-top-box">
-                <p><?php echo @$sitter_data['message_status']; ?> Unread message</p>
+                <p><?php echo @$client_stay_status['alerts']; ?> Unread message</p>
               </div>
               <?php } ?>
               
