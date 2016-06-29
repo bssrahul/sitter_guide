@@ -515,12 +515,10 @@
                 <p class="pop-top-pop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></p>
                 	<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
                 </div>    
-                
-                
-                <!--Additional Services-->          
+                    <!--Additional Services-->          
                 	<div class="additional-services">  
                     	  <div class="modal-body">
-                               <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data','url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
+                   <?php echo $this->Form->create(null,['id'=>'cropimage','enctype'=>'multipart/form-data','url'=>['controller'=>'dashboard','action'=>'changeAvatar']]); ?>
 								<input style="hidden" type="file" name="image" id="image" /> 
 								<input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
 								<input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
@@ -535,7 +533,6 @@
                     <div id='preview-avatar-profile'>
                     </div>
                 <!--<div id="thumbs" style="padding:5px; width:600"></div>-->
-              
               <?php echo $this->Form->end(); ?>
             </div>
                  <div class="modal-footer">
