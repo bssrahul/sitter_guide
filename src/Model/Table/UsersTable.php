@@ -73,8 +73,20 @@ class UsersTable extends Table
 			->notEmpty('birth_date', 'Birth Date field is required.')
 		    ->notEmpty('term_condition', 'This field is required.') 
 			->notEmpty('zip', 'Zip field is required.')
-		  
-			->notEmpty('phone', 'Phone number field is required.')
+		    ->notEmpty('password', 'Password field is required.')
+		    ->add('email', 'unique', [
+						'rule' => 'validateUnique',
+						'provider' => 'table',
+						'message' => 'Email Id allready exist,Please try another.',
+					])
+			//->notEmpty('password', 'Password must be 6 character.')
+			->add('password', [
+			        'minLength' => [
+			            'rule' => ['minLength', 6],
+			            'last' => true,
+			            'message' => 'Password must be 6 character.',
+			        ]
+			    ])
 			->add('phone', [
 			        'minLength' => [
 			            'rule' => ['minLength', 10],

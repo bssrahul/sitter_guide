@@ -20,16 +20,18 @@
                         Claim My $20</h4>
                         
                  <div>       
-            <?php echo $this->Form->create(null, [
-              'url' => ['controller' => 'dashboard', 'action' => 'share'],
+            <?php echo $this->Form->create(@$userData, [
+              'url' => ['controller' => 'guests', 'action' => 'share'],
               'id'=>'shareSignUpInfo'
-			]);?>
-       <!--<input type="text" placeholder="First Name "  />
-       <input  type="text" placeholder="Last Name "  />
-       <input  type="text" placeholder="Zip Code "  />
-       <input type="email" placeholder="Email Address"  />
-       <input type="password" placeholder="Password"  />-->
-        <?php 
+			]);
+			
+			echo $this->Form->input('Users.reference_id',[                
+			 'type'=>'hidden',
+			 'value'=>@$rf_token
+			]);
+			
+		    ?>
+		   <?php 
 			echo $this->Form->input('Users.first_name',[                
 			 'required'=>false,
 			 'label'=>false,
@@ -50,10 +52,10 @@
 				 'templates' => ['inputContainer' => '{{content}}']
 			  ]);
 			 echo $this->Form->input('Users.email',[                
-				 'required'=>false,
 				 'label'=>false,
 				 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Email Address')),
-				 'templates' => ['inputContainer' => '{{content}}']
+				 'templates' => ['inputContainer' => '{{content}}'],
+				 'required'=>false
 			  ]);
 			  echo $this->Form->input('Users.password',[                
 				 'type'=>'password',
@@ -64,7 +66,7 @@
 			 echo '<em class="signup_error error">'.__(@$error['current_password'][0]).'</em>';
         ?>
       
-      <a href="" class="btn btn-claim btn-block">Claim My $20</a>
+      <button class="btn btn-claim btn-block" type="submit">Claim My $20</button>
       
     <?php echo $this->Form->end(); ?>
     
