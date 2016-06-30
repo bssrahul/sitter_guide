@@ -12,6 +12,7 @@
 .signup-container p {color: #404040; font-size: 13px; margin-top: 45px; margin-bottom: 45px;}
 span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  padding-bottom: 45px;  }
 .signup-color {	color: #1277bb; }
+.signup-color a, .signup-color a:hover, .signup-color a:focus  { color: #1277bb; background: none; }
 
 .head-font {font-size:26px; font-weight:400; color:#434343;}
 .head-font2 {font-size:20px; color:#434343; font-weight:400;}
@@ -65,7 +66,7 @@ border-bottom: 2px solid #FFAC04;
 
 
 .signup-container form {
-    margin: 49px auto;
+    margin: 15px auto;
     max-width: 575px;
     padding-left: 10px;
     padding-right: 10px;
@@ -123,7 +124,11 @@ select {
     padding-bottom: 0;
     padding-top: 45px;
 }
-.c-red {color: #d61a1a;}
+.c-red {color: #d61a1a; font-size:13px;}
+.c-red a, .c-red a:hover, .c-red a:focus {color: #d61a1a; font-size:13px; background: none;}
+
+
+
 .form-group.radio span {
     float: left;
     margin: 0 20px 10px 0;

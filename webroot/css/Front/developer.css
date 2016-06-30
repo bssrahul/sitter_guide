@@ -5,6 +5,9 @@ em.signup_error {
   margin-left: 5px;
 }
 
+
+.review-mainpage {position:relative; bottom:10px}
+
 label.error{
     color: #ff5a5f !important;
     font-size: 12px !important;
@@ -292,7 +295,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating > input { display: none; } 
 .rating > label:before { 
-  margin: 5px 1px;
+  margin: 0px 1px 8px 1px;
   font-size: 1.25em;
   font-family: FontAwesome;
   display: inline-block;
@@ -333,6 +336,8 @@ button:hover, button:focus, button:active{outline :none !important;}
    
 }
 
+.pad-bottom-12 { padding-bottom:12px;}
+
 .pac-container{
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -370,6 +375,8 @@ button:hover, button:focus, button:active{outline :none !important;}
 .pac-matched {
   font-family: raleway !important;
 }
+.pac-item-selected { background:#000;}
+
 ul.booking-services li.new_active{
    border-top: 5px solid #b4b05d !important;
 
@@ -459,8 +466,8 @@ ul.dog_size li a.active {
   border: medium none;
   float: left;
   left: 0px;
-  position: relative;
-  top: -5px;
+  /*position: relative;
+  top: -5px;*/
 }
 .row.ajaxAdd {
     padding: 0 20px;
@@ -756,5 +763,29 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 
 }
 
+
+
+.mt-0 {top: 0px !important; }
+.mt-1 {top: 1px !important; }
+.mt-9 {top: 9px !important; }
+.mt-15 {top:-15px !important;}
+
+.prelative { position:relative !important;}
+.pabsolute { position:absolute !important; top:0px !important;}
+.pabsolute1 { position:absolute !important; top:10px !important;}
+.rating1 {
+    border: medium none;
+    float: left;
+    left: 0;
+    position: absolute;
+    top: 0px;
+}
+
+#totalreview { margin:-7px 0 0 0;}
+
+#totalreview .rating > label:before { 
+  margin: 0px 1px 0px 1px !important;
+  
+}
 
 

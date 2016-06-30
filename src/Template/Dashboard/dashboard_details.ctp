@@ -310,22 +310,18 @@
                </div>
                 <?php }else{ ?>
 							<div class="padd-left-15 padd-right-15 border-top item">
-								  <div class="row calender-widget">
-									<div class="col-md-6 col-sm-6 col-xs-6">
+								  <div class="row calender-widget pad-bottom-12">
+									<div class="col-md-6 col-sm-6 col-xs-12">
 									  <h4><span>
 										  <!--<img class="img-circle" src="<?php echo HTTP_ROOT.'img/uploads/'.(@$booking_request['user']['image'] != ''?@$booking_request['user']['image']:'dm.png'); ?>" width="27" height="27" alt="user-pic">-->
 										  </span> No Booking Request</h4>
-									  <p>
-										<label></label>
-									  </p>
+									 
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-6">
 									  <!--<p class="text-right">Time 2:30 pm</p>-->
 									</div>
 								  </div>
-								  <div class="border-top">
-									<!--<button class="btn  btn-green btn-block mtb-15">Accept</button>-->
-								  </div>
+								 
 								  <div> </div>
 							 </div>
 			    <?php } ?>
@@ -391,7 +387,7 @@
               </div>
               <?php } ?>
               
-              <div class="second-box-header2">
+              <div class="second-box-header">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <h5>Outstanding Tasks</h5>
                 </div>
