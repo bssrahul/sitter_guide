@@ -198,7 +198,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .banner-sitter-detail .banner-info-wrapper .city-banner { font-size:15px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:8px;}
 .banner-sitter-detail .banner-info-wrapper .details-stars ul li {padding-left:0px; padding-right:0px;}
 .banner-sitter-detail .banner-info-wrapper .details-stars ul li {padding-left:0px; padding-right:0px; font-size:13px; color:#fff;}
-.banner-sitter-detail .banner-info-wrapper .details-stars .pad-review { position:relative; top:2px;}
+.banner-sitter-detail .banner-info-wrapper .details-stars .pad-review { position:relative; top:-17px;}
 .banner-sitter-detail .banner-info-wrapper .badage-detail {padding-top:8px;}
 .banner-sitter-detail .banner-info-wrapper .badage-detail ul { margin-bottom:0px;}
 

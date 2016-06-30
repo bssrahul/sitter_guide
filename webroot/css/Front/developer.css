@@ -5,6 +5,9 @@ em.signup_error {
   margin-left: 5px;
 }
 
+
+
+
 label.error{
     color: #ff5a5f !important;
     font-size: 12px !important;
@@ -569,7 +572,7 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 }
 /*Calendar END START*/
 .starPad {
-    margin-left: 100px !important;
+    /*margin-left: 100px !important;*/
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover{
@@ -699,6 +702,12 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     max-width: 266px !important;
     width: 100%;
 }
+.promolink {  font-size: 14px;
+    position: relative;
+    text-align: right;
+    top: 16px;
+    vertical-align: middle;}
+
 
 .pddtop { padding-top:15px;}
 
@@ -757,4 +766,12 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 }
 
 
+@media (max-width:991px) {
+promolink {  font-size: 14px;
+    position: relative;
+    text-align: right;
+    top: 0px !important;
+    vertical-align: middle;}
+
+}
 
