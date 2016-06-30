@@ -25,7 +25,8 @@
       <div class="earnmor2wrapper">
         <p class="text-earn ">Attract new clients and their dogs by  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since thesharing your Siter Guide profile link and promo code. Your promo code gives pet owners new to Siterguide $20 off their first booking—while you’ll still earn your full rate.  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the pet owners new to Siterguide $20 off their first booking—while you’ll still earn your full rate.  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the Lorem Ipsum is simply dummy text of Lorem Ipsum has been .
         </p>
-        <p class="generate-promo">Generate your promocode
+        <p class="generate-promo">
+			 <?php if(empty(@$reference_code)){ echo "Generate your promocode"; }else{ echo "Your Promotion Link"; }?>
         </p>
         <div class="generate-wrap">
            <?php echo $this->Form->create(null,[
@@ -39,9 +40,16 @@
 				 <p class="errorMessage clr otp_error_msg"></p>
 			   </div>  
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-					  <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12" style="vertical-align: middle; position: relative; top: 25px; float: left; text-align: right; font-size: 14px;">
+					 <?php if(empty(@$reference_code)){ ?>
+					  <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
 					  <?php echo $refer_url; ?>
 					  </div>
+					<?php }else{ ?>  
+					    <div class="col-lg-12 col-sm-12 col-md-6 col-xs-12">
+					  <?php echo $refer_url.@$reference_code; ?>
+					   </div>
+					<?php } ?>
+			 <?php if(empty(@$reference_code)){ ?>
 					  <div class="col-lg-3 col-sm-12 col-md-3 col-xs-12">
 						<!--<input type="text" class="form-control generat-field" style="width:100%;">-->
 						 <?php 
@@ -54,9 +62,8 @@
 							 ]);
                        ?>
 					  </div>
-					  <?php if(empty(@$reference_code)){ ?>
 					  <div class="col-lg-3 col-sm-12 col-md-3 col-xs-12">
-						<button class="btn btn-primary btn-block generat-btn" id="refer-promocode-btn" >Generate
+						<button type="submit" class="btn btn-primary btn-block generat-btn" id="refer-promocode-btn" >Generate
 						</button>
 					  </div>
 					  <?php } ?>

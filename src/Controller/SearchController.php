@@ -1215,7 +1215,7 @@ class SearchController extends AppController
                 	
                 	$replace = array('{name}','{email}');
 					$with = array($userName,$userEmail);
-					$this->send_email('',$replace,$with,'booking_request',$userEmail);
+					//$this->send_email('',$replace,$with,'booking_request',$userEmail);
 					
 				}
 				 return $this->redirect(['controller'=>'search','action'=>'thank-you']);

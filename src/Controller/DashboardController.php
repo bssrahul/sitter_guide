@@ -629,8 +629,11 @@ class DashboardController extends AppController
 	/* send a reference to friend */
 	function reference(){
 		$this->request->data = @$_REQUEST;
+		$session = $this->request->session();		
+		$userId = $session->read('User.id');
 	 if(isset($this->request->data['UserReferences']) && !empty($this->request->data['UserReferences'])){
 			$UsersModel = TableRegistry::get('Users');
+			
 		if(!empty($this->request->data['UserReferences']['email'])){
 			
 			$checkUser = $UsersModel->find('all',['conditions'=>['Users.email'=>$this->request->data['UserReferences']['email']]])->toArray();
@@ -641,13 +644,18 @@ class DashboardController extends AppController
 				if(!count($checkReference)){ // check if code is already generated 
 					
 					$reference = $references->newEntity();
-					$session = $this->request->session();		
-					$reference->user_id = $session->read('User.id');
+					
+					
+					$reference->user_id = $userId;
 					$reference->email = $this->request->data['UserReferences']['email'];
 					//$genReferCode = $this->RandomStringGenerator(6);
 					//$reference->reference_code = $genReferCode;
 					$reference->status = 0;
 					if($references->save($reference)){
+						/*$userData = $UsersModel->newEntity();
+						$userData->id = $userId;
+						$userData->reference_id = $userId;*/
+						
 						$link = $this->request->data['UserReferences']['refer_url'];
 						$linkOnMail = '<a href="'.$link.'" target="_blank">Click Here For Sign Up With Reference Code</a>';
 						
@@ -695,27 +703,34 @@ function generatePromocode(){
 			 $session = $this->request->session();
              $userId = $session->read('User.id');
          
-			 if(isset($this->request->data['UserPromocode']) && !empty($this->request->data['UserPromocode'])){
-				 $UsersModel = TableRegistry::get('Users');
+			 if(isset($this->request->data['UserPromocode']['promocode']) && !empty($this->request->data['UserPromocode']['promocode'])){
+		    //$regex = "/^[a-z][0-9]+$/";
+			if(ctype_alnum($this->request->data['UserPromocode']['promocode'])){
+				$UsersModel = TableRegistry::get('Users');
 				 
 				 $checkReferenceCode = $UsersModel->get($userId);
+				 //pr($checkReferenceCode);die;
 				 if(empty($checkReferenceCode->reference_code)){
 					  $userData = $UsersModel->newEntity();
 					  $userData->id = $userId;
 					  $userData->reference_code = $this->request->data['UserPromocode']['promocode'];
 					 if($UsersModel->save($userData)){
-					    echo 'Success:Your promocode has been generated';
+					    echo 'Success:You has been generated promocode';
 				        die;
 					 }else{
 						echo 'Error:Something Went Wrong Try again later';die;
 					 }
 					
 				 }else{
-					 echo 'Error:Your promocode allready generated';die;
+					 echo 'Error:You okoko have already generated promocode';die;
 				 }
+			}else {
+								
+					echo "Error:Please enter alphanumeric value only";die;
+			   }
 			}else{
 				  echo 'Error:Something Went Wrong Try again later';die;
-			 }
+			}
 }
 /**
 function for promote
@@ -816,7 +831,8 @@ Function for Front profile dashboard
 										)
 						   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 						   ->toArray();
-				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
+			  
+			  if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){
 						 $dog_in_home = 'yes';
@@ -837,6 +853,7 @@ Function for Front profile dashboard
 					$this->set('profileStatus','');
 				}
 				 $session->write('User.user_type',$userData[0]->user_type);
+				
 				
 				$userInfo =	array();
 				$refer_code = substr($userData[0]->email, 0, strpos($userData[0]->email, '@'));

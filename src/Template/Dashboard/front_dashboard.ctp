@@ -346,7 +346,7 @@ refer afriend modal popup stars-->
           <div class="col-sm-12">
             <div class="link">
               <div class="input-group">
-                <span class="input-group-addon green" id="basic-addon2">
+                <span class="input-group-addon green" id="basic-addon2" style="cursor:pointer !important;" onclick="copyToClipboard('#userreferences-refer-url')" >
                   <img src="<?php echo HTTP_ROOT; ?>img/pop-chain.png"  alt="chain">  Copy your link
                 </span>
                 
@@ -397,4 +397,46 @@ function genericSocialShare(url){
     window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
     return true;
 }
+function copyToClipboardFF(text) {
+            window.prompt("Copy to clipboard: Ctrl C, Enter", text);
+        }
+
+        function copyToClipboard(inputId) {
+        var input = $(inputId);
+            var success = true,
+                    range = document.createRange(),
+                    selection;
+            // For IE.
+            if (window.clipboardData) {
+                window.clipboardData.setData("Text", input.val());
+            } else {
+                // Create a temporary element off screen.
+                var tmpElem = $('<div>');
+                tmpElem.css({
+                    position: "absolute",
+                    left: "-1000px",
+                    top: "-1000px",
+                });
+                // Add the input value to the temp element.
+                tmpElem.text(input.val());
+                $("body").append(tmpElem);
+                // Select temp element.
+                range.selectNodeContents(tmpElem.get(0));
+                selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                // Lets copy.
+                try {
+                    success = document.execCommand("copy", false, null);
+                }
+                catch (e) {
+                    copyToClipboardFF(input.val());
+                }
+                if (success) {
+                    //alert("The text is on the clipboard, try to paste it!");
+                    // remove temp element.
+                    tmpElem.remove();
+                }
+            }
+        }
 </script>
