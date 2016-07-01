@@ -159,7 +159,6 @@ class SearchController extends AppController
 					if(isset($this->request->data['Search']['what_time']['night_care']) && !empty($this->request->data['Search']['what_time']['night_care'])){
 						
 						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_night_care_status=1 OR UserSitterServices.gh_night_care_status=1)'));
-						$and_condition = array_merge($and_condition,array(''));
 						
 					}
 				}else{
@@ -568,7 +567,7 @@ class SearchController extends AppController
 			 //pr($this->request->data['Search']); die;
 			 if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_dog'])) && @$this->request->data['Search']['sitter_info']['own_pet'] !=1){
                     
-                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.dogs_in_home="no")'));
+                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.dogs_in_home="no")')); 
                     
               }else{
 					
