@@ -42,7 +42,7 @@
                                                     <div class="like-box">
                                                         <img src="<?php echo HTTP_ROOT; ?>img/heart-icon.png" width="18" height="17" alt="">
                                                     </div>
-														<div class="rating-box">
+														<div class="rating-box prelative">
 															<!--rating-->
 															<!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
 															<?php 	
@@ -63,7 +63,7 @@
 																	?>
 													
 																
-																	<span class="rating no-topmg">
+																	<span class="pabsolute rating no-topmg pabsolute">
 																	<?php	if(!empty($avg)){ 	
 																	?>
 																			<input type='radio'  value='5' <?php if(!empty($avg)){ if($avg <= 5 && $avg > 4.5){ echo "checked"; } }?> /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -157,7 +157,7 @@
 									
 									<?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
 										if(@$favourate[0]->avail_status == 'Login'){
-											echo '<span style="color:green">Available<//span>';
+											echo '<span class="standard-green">Available<//span>';
 										}else{
 											$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$favourate[0]->last_login);
 											$days    = floor($seconds / 86400);
@@ -291,10 +291,8 @@
 
 															
 															  <!--/rating--> 
-													
-								
-									</br></br>
-							        <span>	<?php echo $count; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode(' reviews')); ?></span>
+												
+							        <span class="review-mainpage">	<?php echo $count; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode(' reviews')); ?></span>
                                 </p>                                
                             </a></li>
 					   <?php } }?>

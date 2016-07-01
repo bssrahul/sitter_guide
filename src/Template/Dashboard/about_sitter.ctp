@@ -68,7 +68,7 @@
                   </div>
                 
                   
-                  <p class="head-font2 pad-head-foot"><p class="" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set your sitting preferences for when your sitting at your house or your guests house')); ?></p>
+                  <p class="head-font2 pad-head-foot"><p class="" id="75-word-preview"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set your sitting preferences for when your sitting at your house or guests house')); ?></p>
                   <div class="row">
                     <div class="col-lg-6">
                     <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house ')); ?></p>
@@ -242,7 +242,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                   <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At your house')); ?> </p>
+                   <p class="title-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('At guest house')); ?> </p>
                    <div class="row">
                         <div class="form-group">
 						   <div class="form-group col-lg-8">

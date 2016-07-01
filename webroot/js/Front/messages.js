@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
+	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
 	
 	function get_req_data(folder_status,id){
 	
@@ -133,7 +133,7 @@
 		
 		//GET USER MESSAGES COUNT
 		setInterval(function(){
-				var actionURL = ajax_url+"/message/get-user-message-count/";
+				var actionURL = ajax_url+"message/get-user-message-count/";
 				
 				$.ajax({
 					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
@@ -142,7 +142,7 @@
 					{
 						//var response = res.split(':');
 						if($.trim(res)>0){
-							$('.myNewCount').html(response[0]);
+							$('.myNewCount').html(res);
 						}
 						
 						//$('#myNewMsgs').html(response[1]);

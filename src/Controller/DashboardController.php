@@ -968,9 +968,10 @@ Function for Front profile dashboard
 								$userData->id = $userId;
 							    $usersModel->save($userData);
 							    $userData = $usersModel->get($userId);
-							    if(empty($userData->otp) && $userData->mobile_verification == 0){
+							    if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 									
-										$this->genrateOtp();
+										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+										$this->genrateOtp($userData->phone,$msg_body);
 							    }	
 							unset($userData->id);
 							$this->set('userInfo', $userData);
@@ -984,8 +985,9 @@ Function for Front profile dashboard
 								 $userData->org_password = $this->request->data['Usersp']['password'];
 								 if ($usersModel->save($userData)){
 									 $userData = $usersModel->get($userId);
-									 if(empty($userData->otp) && $userData->mobile_verification == 0){
-										$this->genrateOtp();
+									if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
+										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+										$this->genrateOtp($userData->phone,$msg_body);
 									 }
 									 
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
@@ -1009,8 +1011,9 @@ Function for Front profile dashboard
 		                $userData->id = $userId;
 		                if ($usersModel->save($userData)) {
 							$userData = $usersModel->get($userId);
-							if(empty($userData->otp) && $userData->mobile_verification == 0){
-								  $this->genrateOtp();
+							if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
+								  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+									$this->genrateOtp($userData->phone,$msg_body);
 							 }
 							return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 		                }else{
@@ -1025,9 +1028,10 @@ Function for Front profile dashboard
 							   $usersModel->save($userData);
 							   $userData = $usersModel->get($userId);
 							   
-							   if(empty($userData->otp) && $userData->mobile_verification == 0){
+							   if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 								  
-										$this->genrateOtp();
+										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+										$this->genrateOtp($userData->phone,$msg_body);
 							    }		
 							unset($userData->id);
 							$this->set('userInfo', $userData);
@@ -1040,9 +1044,10 @@ Function for Front profile dashboard
 								$userData->id = $userId;
 								if ($usersModel->save($userData)) {
 									$userData = $usersModel->get($userId);
-									if(empty($userData->otp) && $userData->mobile_verification == 0){
+									if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 										
-										$this->genrateOtp();
+										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+										$this->genrateOtp($userData->phone,$msg_body);
 							        }
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{
@@ -1128,7 +1133,7 @@ Function for Front profile dashboard
 		                   $html = " ";
 		                   foreach($images_arr as $key=>$val){
 		                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg zIndex-1" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
 		                   	 $html .='</div></div>';
 		                    }
 		                $this->set('sitter_images', $html);
@@ -1148,7 +1153,7 @@ Function for Front profile dashboard
                    $html = " ";
                    foreach($images_arr as $key=>$val){
                    	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg zIndex-1" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                    	 $html .='</div></div>';
                     }
                 $this->set('sitter_images', $html);
@@ -1189,7 +1194,7 @@ Function for Front profile dashboard
 		                   $html = " ";
 		                   foreach($images_arr as $key=>$val){
 		                   	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+		                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg zIndex-1" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
 		                   	 $html .='</div></div>';
 		                    }
 		                $this->set('sitter_images', $html);
@@ -1209,7 +1214,7 @@ Function for Front profile dashboard
                    $html = " ";
                    foreach($images_arr as $key=>$val){
                    	 $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                   	 $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg zIndex-1" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                    	 $html .='</div></div>';
                     }
                 $this->set('sitter_images', $html);
@@ -1559,7 +1564,7 @@ function addPets(){
                    $html = " ";
                     foreach($images_arr as $key=>$val){
                       $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-                      $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                      $html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg zIndex-1" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                        $html .='</div></div>';
                    	}
                   if($errors != ''){
@@ -1597,7 +1602,7 @@ function addPets(){
                    $html = " ";
                    foreach($images_arr as $key=>$val){
                     $html.='<div class="col-lg-1 col-md-2 col-xs-3"><div class="sitter-gal">';
-                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
+                   	$html .= '<img src="'.HTTP_ROOT.'img/uploads/'.$val->image.'"><a  class="removeProfileImg zIndex-1" data-rel="'.$val->id.'" href="javascript:void(0);"><i class="fa fa-minus-circle "></i></a>';
                    	$html .='</div></div>';
                   }
                   echo $html; die;

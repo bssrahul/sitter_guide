@@ -347,5 +347,26 @@ class PagesController extends AppController
 			$this->set('faqsData',$faqsData);
 		}
     }
+    
+    function tracker(){
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		// load CMSPAGE Model
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'tracker']])->first();
+				
+		$this->pageTitle = $CmsPageData->meta_title;
+		$this->pageKeyword = $CmsPageData->meta_keywords;
+		$this->pageDescription = $CmsPageData->meta_description;
+		
+		$this->set(array('CmsPageData'), array($CmsPageData));
+		
+	}	
+	
 		
 }

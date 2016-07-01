@@ -117,7 +117,7 @@
 												<!--quick view-->
 											
 													<div class="quick-view">
-															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </a>
+															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </span></a>
 													</div>
 											
 												<!--/quick view-->                       

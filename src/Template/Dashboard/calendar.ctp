@@ -18,11 +18,7 @@
 									</i>
 									&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Availablity Days')); ?> 
 								</span>
-								<span class="pull-right">
-									<a href="#">
-										<img src="<?php echo HTTP_ROOT."img/plus.png" ?>" >
-									</a>
-								</span> 
+								
 							</div>             
 								
 							<div class="col-xs-12 recent-activity-table">
@@ -73,7 +69,7 @@
             <div class="panel panel-default">
               <div class="panel-heading title-panel">
 			       <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-cal.png" ?>"  alt="calender"></i>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?> </span>
-			     <span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span>
+			     
 			  </div>
               <!--Calendar Box Start-->
 			<div class="ajax_overlay">&nbsp;</div>
@@ -263,9 +259,9 @@
             </div>
 			</br></br></br>
                  <div class="modal-footer">
-				  <button type="submit" id="btn-save" class="btn btn-danger  unavailable" name="unavailable" > <?php echo $this->requestAction('app/get-translate/'.base64_encode('Mark as unavailable')); ?></button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
-                <button type="button" id="saveLimitSeat" class="btn btn-crop" name="saveLimitSeat" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Save')); ?></button>
+				  <button type="submit" id="btn-save" class="btn btn-danger unavailable displayB" name="unavailable" > <?php echo $this->requestAction('app/get-translate/'.base64_encode('Mark as unavailable')); ?></button>
+                <button type="button" class="btn btn-default displayB mleft " data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
+                <button type="button" id="saveLimitSeat" class="btn btn-crop displayB mleft" name="saveLimitSeat" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Save')); ?></button>
             </div>        
                  <?php echo $this->Form->end(); ?>          
                                            	
