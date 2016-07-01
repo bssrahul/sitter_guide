@@ -11,8 +11,9 @@
         
                 <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
                  <?php  $session = $this->request->session();
+                 
 				 $profile = $session->read('profile');
-			   if($profile == 'sitter'){
+			   if(strtolower($profile) == 'sitter'){
 				   echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); 
 			   }else{
 				    echo $this->requestAction('app/get-translate/'.base64_encode('Guest Profile')); 

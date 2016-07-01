@@ -25,6 +25,8 @@
 				<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
 			<?php } ?>
 
+    <!-- Script for jquery UI slider issue resolved on mobile device-->		
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
           
     </head>
     

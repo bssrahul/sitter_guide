@@ -2,11 +2,13 @@ em.signup_error {
   color: #ff5a5f;
   font-size: 13px;
   font-style: normal;
-  margin-left: 5px;
+  margin-left: 1px;
 }
 
 
+
 .review-mainpage {position:relative; bottom:10px}
+
 
 label.error{
     color: #ff5a5f !important;
@@ -576,7 +578,7 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 }
 /*Calendar END START*/
 .starPad {
-    margin-left: 100px !important;
+    /*margin-left: 100px !important;*/
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover{
@@ -706,6 +708,12 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     max-width: 266px !important;
     width: 100%;
 }
+.promolink {  font-size: 14px;
+    position: relative;
+    text-align: right;
+    top: 16px;
+    vertical-align: middle;}
+
 
 .pddtop { padding-top:15px;}
 
@@ -736,8 +744,15 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     width: 40px;
 }
 
+
+
 @media (max-width:480px) {
 
+	.displayB{display:block !important;width:100% !important; margin-bottom:10px !important;}
+	.mleft {
+    margin-left: 0 !important;
+}
+	
 	.signup-container a {
 		background: #f1f1f1 none repeat scroll 0 0;
 		font-size: 15px;
@@ -764,6 +779,14 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 }
 
 
+@media (max-width:991px) {
+promolink {  font-size: 14px;
+    position: relative;
+    text-align: right;
+    top: 0px !important;
+    vertical-align: middle;}
+
+}
 
 .mt-0 {top: 0px !important; }
 .mt-1 {top: 1px !important; }
@@ -789,3 +812,8 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
 }
 
 
+div.more-sitter img{width:125px;height:125px;}
+
+.zIndex-1 {
+  z-index: 0 !important;
+}

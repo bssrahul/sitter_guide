@@ -316,10 +316,12 @@
 	});
 
 	function gerSearchResult(){
-
+		
+	  var posted_data = $('#searchParam').serialize() + '&location=' + $("#location_autocomplete").val();//ALL SUBMITTED DATA FROM THE FORM
+	  
 	  $.ajax({
 			url: $('#searchParam').attr('action'),//AJAX URL WHERE THE LOGIC HAS BUILD
-			data:$('#searchParam').serialize(),//ALL SUBMITTED DATA FROM THE FORM
+			data:posted_data,
 			
 			beforeSend: function(){
 			  $(".search-overlay").show();

@@ -37,7 +37,8 @@
     padding-top: 5px; margin:15px;
 } 
 .starPad {
-    margin-left: 100px !important;
+margin-top:5px;
+    /*margin-left: 100px !important;*/
 }
 
 .favourite-wrap .review-pagination {

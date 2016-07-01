@@ -514,10 +514,11 @@
 			rules:{
 				"[UserPromocode[promocode]":
 				{
+					alphanumeric:true,
 					required: true
 				}
 			},
-			messages: {				
+			messages:{				
 				"[UserPromocode[promocode]":
 				{
 					required : "This field is required"
@@ -798,23 +799,67 @@
 			}
 
          });
-        /* //CODE SNIPPET FOR Verify
-		$('#verify_form').validate({
+        //CODE SNIPPET FOR share sign up
+		$('#shareSignUpInfo').validate({
 			rules: {
-				"Userverify[otp_verify]":
+				"Users[first_name]":
 				{
-					required: true
+					required:true,
+					lettersonly: true 
+				},
+				"Users[zip]":
+				{
+					required:true
+				},
+				"Users[phone]":
+				{
+					required:true,
+					number:true
+				},
+				"Users[password]":
+				{
+					required:true,
+					minlength: '6'
+				},
+				"Users[email]":
+				{
+					required: true,
+					email: true,
+					remote: ajax_url+"App/isUniqueEmailAjax"
 				}
 			},
-			messages: {				
-				"Userverify[otp_verify]":
+			messages: {
+				"Users[first_name]":
 				{
-					required : "This field is required"
+					required : "First name field is required"
+					
+				},
+				"Users[zip]":
+				{
+					required : "Zip field is required"
+					
+				},
+				"Users[phone]":
+				{
+					required : "Phone field is required",
+					number:"Mobile number should be numerical"
+				},
+                "Users[password]":
+				{
+					required : "Password field is required",
+					minlength: 'Please enter minimum 6 characters.'
+				},
+				"Users[email]":
+				{
+					required : "Email field is required",
+					email: 'Kindly use valid email address',
+					remote: "Email address already exists"
+					
 				}
-			}
-		});*/
+           }
 
-	//CODE SNIPPET FOR Sitter House
+         });
+	    //CODE SNIPPET FOR Sitter House
 		$('#sitterHouse').validate({
 			rules: {
 				"UserSitterHouses[property_type]":
@@ -1680,14 +1725,16 @@
 			data:formData,//ALL SUBMITTED DATA FROM THE FORM
 			success:function(res)
 			{
-				console.log(res);
-				alert(res);
+				//console.log(res);
+				//alert(res);
 				var response = res.split(':');
 				if($.trim(response[0]) == 'Success'){
 					$('.clr').html('');	//Emtpy Error MESSAGE
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
-					setTimeout(function(){window.location.href = ajax_url;},1000);
+					
+					//setTimeout(function(){window.location.href = ajax_url;},1000);
+				   $('#squarespaceModal').modal('hide');
 				}if($.trim(response[0]) == 'Error'){
 					$('.clr').html('');	//Emtpy Error MESSAGE
 					$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
@@ -1793,7 +1840,12 @@ $( document ).ready(function() {
 	jQuery.validator.addMethod("lettersonly", function(value, element) {
   return this.optional(element) || /^[a-z]+$/i.test(value);
 }, "Letters only please"); 
+jQuery.validator.addMethod("alphanumeric", function(value, element) {
+  return this.optional(element) || /^[a-z][0-9]+$/i.test(value);
+}, "Please enter alphanumeric value only");
 /*End sign up*/
+
+
 /*====For password fair line====*/
 $("#usersp-password").keyup(function(){
     	var value = $(this).val();
@@ -1808,6 +1860,8 @@ $("#usersp-password").keyup(function(){
         }
 });
  /*====End fair line====*/
+ 
+ 
 /*For Remove profile image */
  $(document).on('click', '.removeProfileImg',function(){
  	var imageId = $(this).attr('data-rel');
@@ -1831,7 +1885,10 @@ $(document).ready(function(){
         $("#images").trigger("click");    
         });
 /*End profile video*/
-   /*Last Drop down country- currency listing*/
+ 
+ 
+ 
+/*Last Drop down country- currency listing*/
 $(function () {
   	$('.navbar-toggle-sidebar').click(function () {
   		

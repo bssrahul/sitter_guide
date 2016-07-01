@@ -1809,7 +1809,7 @@ $check_in=$UserRating->check_in_rating;
                                     <br/>
                                     <br/>
                                     <p class="pull-left">
-                                      <?php if(empty($UserRating->comment)){ echo "<h5>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
+                                      <?php if(empty($UserRating->comment)){ echo "<h5 class='text-center'>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
                                     </p>
                                     <p class="pull-right color-green">
                                     </p>

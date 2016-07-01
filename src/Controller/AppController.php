@@ -484,14 +484,6 @@ class AppController extends Controller{
 		$getTemplateData = $EmailsModel->find('all',['conditions' => ['EmailTemplates.alias' => trim($email_template)]]);
 		$template =  $getTemplateData->first();
 		
-		if ($extraTemplate != '')
-		{
-			$template_data = $extraTemplate;
-		}
-		else
-		{
-			$template_data=$template->description;		
-		}
 		
 		$replace_fields = array_merge($replace_fields, array('/sitterguide/img/logo.png','/sitterguide/img/front/mobile_nav_logo.png'));
 		$logoSrc = HTTP_ROOT.'img/logo.jpg';

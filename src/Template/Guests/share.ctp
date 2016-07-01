@@ -20,14 +20,18 @@
                         Claim My $20</h4>
                         
                  <div>       
-            <?php echo $this->Form->create(@$userData, [
+            <?php echo $this->Form->create(@$userData,[
               'url' => ['controller' => 'guests', 'action' => 'share'],
-              'id'=>'shareSignUpInfo'
+              'id'=>'shareSignUpInfo',
+              'autocomplete'=>'off'
 			]);
-			
-			echo $this->Form->input('Users.reference_id',[                
+			echo $this->Form->input('Users.reference_promocode',[                
 			 'type'=>'hidden',
 			 'value'=>@$rf_token
+			]);
+			echo $this->Form->input('Users.reference_type',[                
+			 'type'=>'hidden',
+			 'value'=>@$rf_type
 			]);
 			
 		    ?>
@@ -144,17 +148,28 @@
 
 
 </section>
-
+<style>
+label.error, div.error-message {
+  color: #ff5a5f !important;
+  float: right !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  position: relative !important;
+  text-align: right !important;
+  top: -7px !important;
+}
+</style>
+<!--
 
 <section class="why-choose-us bg-white">
     <div class="container">
       <div class="wcu-area"> 
-        <!--heading-->
+        <!--heading
         <div class="head-box">
           <h3>Why Choose us?</h3>
           <p>Find some of the funniest pet pics & videos along with news updates here</p>
           <span class="head-bot"><b></b></span> </div>
-        <!--/heading-->
+        <!--/heading
         <div class="wcub-area refer-marginbot80px">
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -191,10 +206,13 @@
     </div>
     
   </section>
-</main>
+</main>-->
+	<?php 
+		echo $this->element('frontElements/guests/why_choose'); 
+		echo $this->element('frontElements/guests/fun_and_news');
+	?>
 
-
-<section class="fun-news refer-padding0px">
+<!--<section class="fun-news refer-padding0px">
     <div class="container">
     </div>
     <div class="fn-bot refer-margin0px">
@@ -256,4 +274,4 @@
         </li>
       </ul>
     </div>
-  </section>
+  </section>-->

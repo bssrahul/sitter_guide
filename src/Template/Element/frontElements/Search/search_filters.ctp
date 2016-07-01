@@ -1,14 +1,16 @@
 <div class="top-sr-area">
     <div class="cust-container">
+      
       <div class="sr-area-outer">
         <div class="row st-head-txt">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <p>When you are Away</p>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 hide-mob">
             <p>while you are at Home</p>
           </div>
         </div>
+        
         <div class="sr-area"> 
           <!--top filter tab-->
           <div class="top-filter-tab">
@@ -210,6 +212,8 @@
                     </div>
                   </div>
                 </div>
+                
+                <div class="clearfix" style="margin:20px 0 0 0;"></div>
                 <!--collapse content-->
                 <div class="col-cont">
                   <div id="search-col-1" class="panel-collapse collapse">
