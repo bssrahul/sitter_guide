@@ -27,7 +27,6 @@
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
           <div class="banner-info-wrapper">
             <div class="banner-info-inner">
-              <?php //pr($userData); ?>
               <div class="client-image center-block">
                 <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client" > 
               </div>
@@ -281,7 +280,7 @@
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
-                                                        <button class="btn btn-cont" data-toggle="modal" data-target="#myModal79">Book Now
+                                                        <button class="btn btn-cont before-booking-request" data-toggle="modal" data-target="#myModal79">Book Now
                                                         </button>
                                                       </div>
                                                       </div>
@@ -2025,7 +2024,7 @@ $check_in=$UserRating->check_in_rating;
 														  </li>
 														</ul>
 														<div class="guest-list"> 
-														  <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking">Book Now
+														  <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
 														  </a> 
 														</div>
 													  </div>
@@ -2033,18 +2032,7 @@ $check_in=$UserRating->check_in_rating;
 							 </div>
                           </div>
                           <!--Service Type End--> 
-                          <!--Wishlist Area--> 
-                          <!--<div class="wl-area">
-<div class="wl-top"> <a href="#" title="Save to Wish List" ><i class="fa fa-heart-o"></i> Save to Wish List</a> </div>
-<div class="wl-bot">
-<ul>
-<li><a href="" title=""><img src="<?php echo HTTP_ROOT; ?>img/contact-icon.png" width="16" height="13" alt=""> Contact</a></li>
-<li><a href="" title=""><img src="<?php echo HTTP_ROOT; ?>img/verified.png" width="16" height="13" alt="">Verified</a></li>
-<li><a href="" title=""><img src="<?php echo HTTP_ROOT; ?>img/share-icon.png" width="16" height="13" alt=""> Share</a></li>
-</ul>
-</div>
-</div>--> 
-                          <!--/Wishlist Area--> 
+                         
                         </div>
                         <!--/Profile Right End--> 
                       </div>
@@ -2063,20 +2051,7 @@ $check_in=$UserRating->check_in_rating;
                           </div>
                            
                         </div>
-                         <!--<div class="row">new one
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="border-bot pt30">
-                            </div>
-                            <h3 class="mid-sec-title pt30  ">Availability
-                            </h3>
-                            <div class="detail-cal-widget">
-                              <!--<img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender">
--->
-                              <!--<div class="some_datepicker">
-                              </div>
-                            </div>
-                          </div>
-                        </div>-->
+                         
        <?php
          if(!empty(@$userData->user_about_sitter->sh_pet_sizes)){
 			 @$petSizesArr = explode(',',@$userData->user_about_sitter->sh_pet_sizes);
@@ -2106,8 +2081,6 @@ $check_in=$UserRating->check_in_rating;
                           </p>
 						  <ul class="pet-list">
 							 <?php  foreach($petSizesArr as $size_val){
-							  //if(isset($size_val == '0-7')){ 
-							   //echo 'ok'.$size_val;
 							   if($size_val == '0-7'){
 							   ?>
 								 <li class="pet-1" > 
@@ -2155,44 +2128,7 @@ $check_in=$UserRating->check_in_rating;
 								  }
 								 ?>
 							</ul> 
-                        <!--<ul class="pet-list">
-                          <li class="pet-1" > 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    0-15 pounds ">
-                            </span>
-                            <p class="weight" >0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-2"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">15-20
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-3"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-4"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                        </ul>-->
+                        
                       </div>
                       <?php }
                      $addPre = ["cat","small_pets","medium_pets"]; 
@@ -2255,37 +2191,7 @@ $check_in=$UserRating->check_in_rating;
 									  &nbsp;
 								  </li>
 							   </ul>
-                        <!--<ul class="pet-list">
-                          <li class="pet-5"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Cat
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-6"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Rabit
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-7"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Bird
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-4"> &nbsp; 
-                          </li>
-                        </ul>-->
+                       
                         
                       </div>
                       <?php } ?>
@@ -2878,16 +2784,19 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                             	<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
                                 	<div class="dog-list">
                                 	<ul id="all-guests">
-                                    	<?php if(isset($sitter_guests_info) && !empty($sitter_guests_info)){
-											$guest_count = 0;
-											foreach($sitter_guests_info as $single_guest){
-								        ?>
-											<li><input class="guests" checked name="guest_id_for_booking[]"  type="checkbox" value="<?php echo $single_guest['id'];?>"> <?php echo $single_guest['guest_name'];?></li>
-										    <?php $guest_count++;
-										  }
-										}else{
-										  $guest_count = 1;
-										}
+										
+												<?php if(isset($sitter_guests_info) && !empty($sitter_guests_info)){
+													$guest_count = 0;
+													foreach($sitter_guests_info as $single_guest){
+												?>
+													<li><input class="guests" checked name="guest_id_for_booking[]"  type="checkbox" value="<?php echo $single_guest['id'];?>"> <?php echo $single_guest['guest_name'];?></li>
+													<?php $guest_count++;
+												  }
+												}else{
+												  $guest_count = 1;?>
+												 
+											<?php	}
+									  
 										?>
                                     </ul>
                                     </div>
@@ -2908,39 +2817,40 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       <div class="include"> <a href="#" data-toggle="collapse" data-target="#bott"><span class="include-addit"></span> &nbsp; Include additional services from Market place?</a></div>
                       
                       <div id="bott" class="collapse">
-                      
                       <!--<ul style="width:100%; float:left">
                       <li  style="width:100%; float:left; display:inline;">about your dog an</li>
                        <li  style="width:100%; float:left; display:inline;">about your dog an</li>
                          <li  style="width:100%; float:left; display:inline;">about your dog an</li>
                        <li  style="width:100%; float:left; display:inline;">about your dog an</li>
                       </ul>-->
-                      
                       <div class="container-fluid">
                       <div class="row">
-                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp
-                      Grooming </div>
-                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Training </div>
-                           
-                     
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+						  <input name="additional_services[]" type="checkbox" value="grooming">&nbsp
+                          Grooming 
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+						  <input name="additional_services[]" type="checkbox" value="training">&nbsp 
+						  Training 
+					  </div>
                       </div>
                       <div class="row">
-                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Recreation (Walking) </div>
-                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5"><input type="checkbox">&nbsp Driver Service </div>
-                           
-                     
-                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+						    <input name="additional_services[]" type="checkbox" value="walking">&nbsp Recreation (Walking) 
+					  </div>
+                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+							<input name="additional_services[]" type="checkbox" value="driver_service" >&nbsp 
+							Driver Service 
+					 </div>
+                     </div>
                       </div></div>
                       </div>
                       </div>
-                      
-                      
                       <!--message-->
                       	<div class="msg">
-                        
-                        	<h3>Message</h3>
+                            <h3>Message</h3>
                             <p class="no-bot">Share a little info about your dog and why they'd have a great time with Agatha. </p>
-                             <p>Don't forget if you need to make any changes to your dates you can update these later on. </p>
+                             <p>Don't forget if you need to make any changes to your dates you can update these later on.</p>
                            <!--<textarea class="txtarea"></textarea>-->
                             <?php  
                                 echo $this->Form->input('BookingRequests.message',[               
@@ -2949,7 +2859,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                 'class'=>'txtarea',
                                 'type'=>'textarea' 
                                 ]);
-                              ?>
+                             ?>
                             <p><?php  
                                 echo $this->Form->input('BookingRequests.recieved_photo_during_stay',[               
                                 'templates' => ['inputContainer' => '{{content}}'],
@@ -3057,7 +2967,6 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                     </tr>
                   </tbody>
                 </table>
-                
                 <button type="submit" class="btn btn-req-bok btn-block">Request Booking</button>
               </div>
               <?php echo $this->Form->end(); ?>

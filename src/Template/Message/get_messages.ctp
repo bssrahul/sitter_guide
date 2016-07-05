@@ -56,17 +56,13 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 message-pad-right-0 message-pad-left-0">
               <div id="content-md" class="cscroll">
-					
 					<div class="book-now-setion-wrapper allthreads">
 						<?php echo $this->element('frontElements/Message/all_threads'); ?>
 					</div>
-					
-              </div>
+				</div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 border-left1px">
-              
               <?php echo $this->element('frontElements/Message/static_controls'); ?>
-              
               <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 message-pad-left-0">
                   <div class="chat-wrapper">
@@ -81,21 +77,15 @@
                     <div id="content-m" class="chatscroll">
                       <div class="chat-wrapper-inner positi ">
                         <div class="container-fluid list_chat_ul">
-							
-						 <?php echo $this->element('frontElements/Message/ajax_chat_response'); ?>
-                      
+						  <?php echo $this->element('frontElements/Message/ajax_chat_response'); ?>
                         </div>
                       </div>
                     </div>
-                    
                     <?php echo $this->element('frontElements/Message/chat_form'); ?>
-                    
                   </div>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-					
 					<?php echo $this->element('frontElements/Message/job_detail'); ?>
-                  
                 </div>
               </div>
             </div>
