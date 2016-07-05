@@ -68,6 +68,11 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/news', ['controller' => 'Pages', 'action' => 'news']);
 		$routes->connect('/help', ['controller' => 'Pages', 'action' => 'help']);
 		$routes->connect('/help-listing', ['controller' => 'Pages', 'action' => 'help-listing']);
+		
+		$routes->connect('/tracker', ['controller' => 'Pages', 'action' => 'tracker']);
+		$routes->connect('/become-a-sitter', ['controller' => 'Pages', 'action' => 'becomeASitter']);
+		
+		
 		$routes->connect('/help-search-listing', ['controller' => 'Pages', 'action' => 'help-search-listing']);
 		$routes->connect('/news-detail', ['controller' => 'Pages', 'action' => 'news-detail']);
 		

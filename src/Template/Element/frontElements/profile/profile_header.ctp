@@ -59,7 +59,7 @@
 								</li>
 								
 								<li>
-									<a href="#"><i class="fa fa-question-circle"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tracker')); ?></a>
+									<a href="<?php echo HTTP_ROOT.'tracker'; ?>"><i class="fa fa-question-circle"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tracker')); ?></a>
 								</li>
 								
 								<li>
