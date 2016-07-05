@@ -379,7 +379,142 @@ class BookingController extends AppController
 		
 		return $errors;
 	}
-	
+	//Function for book now
+	function bookNow($request_booking_id= null){
+			$this->viewBuilder()->layout('landing');
+			$session = $this->request->session();
+			$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		    $UsersModel = TableRegistry::get('Users');
+			
+			$booking_id = convert_uudecode(base64_decode($request_booking_id));
+		//pr($booking_id);die;
+		//GET BOOKING RECORDS FOR DISPLAY ON RIGHT HAND SIDE DIV
+		$get_booking_requests_to_display = array();
+		$total = 0;
+		$userType = $session->read('User.user_type');
+		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
+		if(isset($booking_id) && $booking_id !=''){
+                 $get_booking_requests_to_display = $BookingRequestsModel->find('all')
+				->where(['BookingRequests.id'=>$booking_id])
+				->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
+																	return $q->order(['BookingChats.id' => 'DESC']);
+																}
+											]
+						  ]
+				)
+				->hydrate(false)->first();
+				if(!empty($get_booking_requests_to_display)){
+					    $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
+															'UserSitterHouses'
+															
+													            ]
+														])
+																		->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
+																		//->contain(['UserSitterHouses','UserSitterServices'])
+																		->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]])
+																		->limit(1)->hydrate(false)->first();
+										
+										
+										
+										
+																		
+					$userData = $UsersModel->find('all',['contain'=>[
+															    'UserSitterServices',
+															    'UserPets'
+															   ]
+														]
+												)
+								   ->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]], ['Users.id' => 'integer[]'])
+								   ->toArray();
+				}
+			 //pr($get_booking_requests_to_display);die;
+			 $selected_pets_count="";
+			 if(!empty($userData[0]->user_pets) && isset($userData[0]->user_pets)){
+				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
+				 $selected_pets = [];
+				 foreach($idPetsArr as $single_pet_id){
+					 foreach($userData[0]->user_pets as $single_pet){
+						 if($single_pet_id == $single_pet->id){
+							$selected_pets[] = $single_pet->guest_name;
+						 }
+					 }
+				 }
+			$selected_pets_count = count($selected_pets);
+		    $this->set("pets_count",$selected_pets_count);
+		     
+		    }
+		   if(!empty($userData[0]->user_sitter_services) && isset($userData[0]->user_sitter_services)){
+				 
+		        $date1 = @$get_booking_requests_to_display['booknig_start_date'];
+				$date2 = @$get_booking_requests_to_display['booking_end_date'];
+				$diff = abs(strtotime($date2) - strtotime($date1));
+				$years = floor($diff / (365*60*60*24));
+				$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+				$total_days = $days;
+				
+		     //$newdays = ($date1 - $date2) / (1000 * 60 * 60 * 24);
+			// echo $newdays;die;
+			   //echo  @$get_booking_requests_to_display['guest_id_for_bookinig'];
+			   $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
+			   $guest_num = count($selectedGuest);
+			   //pr($get_booking_requests_to_display);die;
+			  
+		     if($get_booking_requests_to_display['required_service'] == 'boarding'){
+				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
+				 $night_rate = $userData[0]->user_sitter_services[0]->sh_night_rate;
+				 
+				 $day_total = $day_rate*$total_days;
+				 $night_total = $night_rate*$total_days;
+				 $total = ($day_total+$night_total)*$guest_num;
+		     }else
+		     if($get_booking_requests_to_display['required_service']  == 'house_sitting'){
+				$hs_day_rate = $userData[0]->user_sitter_services[0]->gh_day_rate;
+				$hs_night_rate = $userData[0]->user_sitter_services[0]->gh_night_rate;
+				
+				$day_total = $hs_day_rate*$total_days;
+				$night_total = $hs_night_rate*$total_days;
+				 
+				 $total = ($day_total+$night_total)*$guest_num;
+				 //echo "guest_num:".$guest_num."total_days:".$total_days."hs_day_rate:".$hs_day_rate."hs_night_rate:".$hs_night_rate;die;
+			}else
+			 if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
+				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
+				 $night_rate = $userData[0]->user_sitter_services[0]->sh_night_rate;
+				 
+				 $day_total = $day_rate*$total_days;
+				 $night_total = $night_rate*$total_days;
+				 
+				 $total = ($day_total+$night_total)*$guest_num;
+			 }else
+			  if($get_booking_requests_to_display['required_service']  == 'maket_place'){
+				 $mp_grooming_rate = $userData[0]->user_sitter_services[0]->mp_grooming_rate;
+				 $mp_training_rate = $userData[0]->user_sitter_services[0]->mp_training_rate;
+				 $mp_recreation_rate = $userData[0]->user_sitter_services[0]->mp_recreation_rate;
+				 $mp_driving_rate = $userData[0]->user_sitter_services[0]->mp_driving_rate;
+				 
+				  $mp_grooming_total = $mp_grooming_rate*$total_days;
+				  $mp_training_total = $mp_training_rate*$total_days;
+				  $mp_recreation_total = $mp_recreation_rate*$total_days;
+				  $mp_driving_total = $mp_driving_rate*$total_days;
+				 
+				 $total = ($mp_grooming_total+$mp_training_total+$mp_recreation_total+$mp_driving_total)*$guest_num;
+				 
+			}else
+			   if($get_booking_requests_to_display['required_service']  == 'drop_in_visit'){
+				 $drop_visit_rate = $userData[0]->user_sitter_services[0]->dorp_in_visit;
+				 
+				 $total = $drop_visit_rate*$total_days*$guest_num;
+			 }
+			 $this->set("services_info",$userData[0]->user_sitter_services[0]);
+			 $this->set('total_days',$total_days);
+		  }
+		}//END
+		//pr($userData[0]);die;
+		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
+		$this->set('total',$total);
+		
+	}
 	
 
 }
