@@ -817,3 +817,30 @@ div.more-sitter img{width:125px;height:125px;}
 .zIndex-1 {
   z-index: 0 !important;
 }
+
+	.foot-wrap .bot-foot .bf-area .bot-social p {
+	  color: #ffffff;
+	  font-size: 18px;
+	  font-weight: 300;
+	  padding: 0 0 3px;
+	}
+
+	.foot-wrap .bot-foot .bf-area .bot-social {
+	  float: left;
+	  position: relative;
+	  top: -15px;
+	  width: 100%;
+	}
+
+	.foot-wrap .bot-foot .bf-area .bot-social ul li a {
+	  border: 1px solid #505050;
+	  border-radius: 50%;
+	  color: #ffffff;
+	  display: block;
+	  height: 30px;
+	  line-height: 30px;
+	  margin: 0 18px 0 0;
+	  text-align: center;
+	  width: 30px;
+	}
+

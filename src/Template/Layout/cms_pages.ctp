@@ -12,12 +12,19 @@
 		<title><?php echo "Sitter Guide";//echo @$title_for_layout; ?></title>
 		
 		<!-- Bootstrap Core CSS -->
+			
 		<?php 
-			echo $this->Html->css(['fonts/css/font-awesome.min.css','Front/style.css','Front/developer.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css']); 
-    	echo $this->Html->script(['Admin/jquery.min.js','Front/jquery.validate.js','Front/custom.js']);
-		?>
-	       <link rel=icon href="<?php echo HTTP_ROOT; ?>images/create_logo.png" type="image/png">
-          <?php //echo $this->request->action; die;?>
+			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/dist/imageselect.css','Front/hint.css','Front/developer.css']); 
+			
+			echo $this->Html->script(['Front/jquery.min.js','Front/dist/jquery.imgareaselect.js','Front/custom.js']);
+		
+			if($sitefavicon != null){ ?>
+				<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
+			<?php } else {?>
+				<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
+			<?php }?>
+	      
+	      <?php //echo $this->request->action; die;?>
     </head>
     <body class="<?php echo ($this->request->action=='help' || $this->request->action=='helpListing')?"help":"terms" ?>-page">
 		<!--[content area Start]-->
