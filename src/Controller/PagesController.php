@@ -347,5 +347,51 @@ class PagesController extends AppController
 			$this->set('faqsData',$faqsData);
 		}
     }
+    
+    function tracker(){
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		// load CMSPAGE Model
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'tracker']])->first();
+				
+		$this->pageTitle = $CmsPageData->meta_title;
+		$this->pageKeyword = $CmsPageData->meta_keywords;
+		$this->pageDescription = $CmsPageData->meta_description;
+		
+		$this->set(array('CmsPageData'), array($CmsPageData));
+		
+	}
+	
+	function becomeASitter(){
+		
+		$this->viewBuilder()->layout('cms_pages');
+		// load CMSPAGE Model
+		$CmsPagesModel = TableRegistry::get('CmsPages');
+		$worksModel = TableRegistry::get('HowWorks');
+		
+		//CODE FOR MULTILIGUAL START
+		$this->i18translation($CmsPagesModel);
+		//CODE FOR MULTILIGUAL END
+		
+		$CmsPageData = $CmsPagesModel->find("all",["conditions"=>['CmsPages.pageurl'=> 'become-a-sitter']])->first();
+				
+		$this->pageTitle = $CmsPageData->meta_title;
+		$this->pageKeyword = $CmsPageData->meta_keywords;
+		$this->pageDescription = $CmsPageData->meta_description;
+		
+		//Fetch data why choose
+		$chooseData = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'why_choose_us']])->order(['modified'=>'desc']) ->limit(4)->where(['status' => 1])->toArray();
+		$this->set('choose_data',$chooseData);
+		
+		$this->set(array('CmsPageData'), array($CmsPageData));
+		
+	}		
+	
 		
 }

@@ -2,10 +2,12 @@ em.signup_error {
   color: #ff5a5f;
   font-size: 13px;
   font-style: normal;
-  margin-left: 5px;
+  margin-left: 1px;
 }
 
 
+
+.review-mainpage {position:relative; bottom:10px}
 
 
 label.error{
@@ -295,7 +297,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating > input { display: none; } 
 .rating > label:before { 
-  margin: 5px 1px;
+  margin: 0px 1px 8px 1px;
   font-size: 1.25em;
   font-family: FontAwesome;
   display: inline-block;
@@ -336,6 +338,8 @@ button:hover, button:focus, button:active{outline :none !important;}
    
 }
 
+.pad-bottom-12 { padding-bottom:12px;}
+
 .pac-container{
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -373,6 +377,8 @@ button:hover, button:focus, button:active{outline :none !important;}
 .pac-matched {
   font-family: raleway !important;
 }
+.pac-item-selected { background:#000;}
+
 ul.booking-services li.new_active{
    border-top: 5px solid #b4b05d !important;
 
@@ -462,8 +468,8 @@ ul.dog_size li a.active {
   border: medium none;
   float: left;
   left: 0px;
-  position: relative;
-  top: -5px;
+  /*position: relative;
+  top: -5px;*/
 }
 .row.ajaxAdd {
     padding: 0 20px;
@@ -738,8 +744,15 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {
     width: 40px;
 }
 
+
+
 @media (max-width:480px) {
 
+	.displayB{display:block !important;width:100% !important; margin-bottom:10px !important;}
+	.mleft {
+    margin-left: 0 !important;
+}
+	
 	.signup-container a {
 		background: #f1f1f1 none repeat scroll 0 0;
 		font-size: 15px;
@@ -774,4 +787,60 @@ promolink {  font-size: 14px;
     vertical-align: middle;}
 
 }
+
+.mt-0 {top: 0px !important; }
+.mt-1 {top: 1px !important; }
+.mt-9 {top: 9px !important; }
+.mt-15 {top:-15px !important;}
+
+.prelative { position:relative !important;}
+.pabsolute { position:absolute !important; top:0px !important;}
+.pabsolute1 { position:absolute !important; top:10px !important;}
+.rating1 {
+    border: medium none;
+    float: left;
+    left: 0;
+    position: absolute;
+    top: 0px;
+}
+
+#totalreview { margin:-7px 0 0 0;}
+
+#totalreview .rating > label:before { 
+  margin: 0px 1px 0px 1px !important;
+  
+}
+
+
+div.more-sitter img{width:125px;height:125px;}
+
+.zIndex-1 {
+  z-index: 0 !important;
+}
+
+	.foot-wrap .bot-foot .bf-area .bot-social p {
+	  color: #ffffff;
+	  font-size: 18px;
+	  font-weight: 300;
+	  padding: 0 0 3px;
+	}
+
+	.foot-wrap .bot-foot .bf-area .bot-social {
+	  float: left;
+	  position: relative;
+	  top: -15px;
+	  width: 100%;
+	}
+
+	.foot-wrap .bot-foot .bf-area .bot-social ul li a {
+	  border: 1px solid #505050;
+	  border-radius: 50%;
+	  color: #ffffff;
+	  display: block;
+	  height: 30px;
+	  line-height: 30px;
+	  margin: 0 18px 0 0;
+	  text-align: center;
+	  width: 30px;
+	}
 

@@ -10,7 +10,7 @@
     <div class="signup-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-lg-offset-3 col-sm-offset-2 col-md-offset-2 col-xs-offset-0 col-lg-6 col-sm-8 col-md-8 col-xs-12">
+                <div class="col-lg-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-offset-0 col-lg-8 col-sm-8 col-md-8 col-xs-12">
                     <div class="signup-container">
                         <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up for Sitter Guide'));?></h2>
                         <div class="signup-email">

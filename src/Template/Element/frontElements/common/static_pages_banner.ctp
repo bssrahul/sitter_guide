@@ -47,6 +47,29 @@
 	
 	
 	
+<?php }else if($this->request->action=='becomeASitter'){ ?>
+<section class="becomesitter-banner" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($CmsPageData->banner_image != ''?$CmsPageData->banner_image:'default_banner.jpg'); ?>')"> 
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-7">
+        
+        <h3 class="refer-big-text"><?php echo isset($CmsPageData->pagename)?$CmsPageData->pagename:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet')); ?></h3>
+        
+        <p class="refer-text-small"><?php echo isset($CmsPageData->pageheading)?$CmsPageData->pageheading:$this->requestAction('app/get-translate/'.base64_encode('Content not added yet')); ?>
+        </p>
+        <div class="center-block text-center">
+          
+          <a href="<?php echo HTTP_ROOT.'guests/signup'; ?>">
+			<button class="btn btn-bsitter"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Apply Now')); ?></button>
+          </a>
+          
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+      </div>
+    </div>
+  </div>
+</section>
 <?php }else{ ?>
 	
 		<!--[Banner Area Start]-->

@@ -80,6 +80,7 @@ class MessageController extends AppController
 		$userId = $session->read('User.id');
 		$this->set(compact('userId','userType','class_user','fieldname'));
 		
+		
 		$get_requests = $BookingRequestsModel->find('all')
 		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.folder_status_'.$fieldname => $folder_status])
 		->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
@@ -90,6 +91,8 @@ class MessageController extends AppController
 		)
 		->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])
 		->hydrate(false)->toArray();
+		
+		//pr($get_requests); die;
 		
 		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
 		if(!empty($get_requests)){

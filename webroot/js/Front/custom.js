@@ -1844,6 +1844,8 @@ jQuery.validator.addMethod("alphanumeric", function(value, element) {
   return this.optional(element) || /^[a-z][0-9]+$/i.test(value);
 }, "Please enter alphanumeric value only");
 /*End sign up*/
+
+
 /*====For password fair line====*/
 $("#usersp-password").keyup(function(){
     	var value = $(this).val();
@@ -1858,6 +1860,8 @@ $("#usersp-password").keyup(function(){
         }
 });
  /*====End fair line====*/
+ 
+ 
 /*For Remove profile image */
  $(document).on('click', '.removeProfileImg',function(){
  	var imageId = $(this).attr('data-rel');
@@ -1881,7 +1885,10 @@ $(document).ready(function(){
         $("#images").trigger("click");    
         });
 /*End profile video*/
-   /*Last Drop down country- currency listing*/
+ 
+ 
+ 
+/*Last Drop down country- currency listing*/
 $(function () {
   	$('.navbar-toggle-sidebar').click(function () {
   		

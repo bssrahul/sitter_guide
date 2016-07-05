@@ -151,21 +151,19 @@ class SearchController extends AppController
 				if(isset($this->request->data['Search']['what_time']) && !empty($this->request->data['Search']['what_time'])){
 					
 					if(isset($this->request->data['Search']['what_time']['day_care']) && !empty($this->request->data['Search']['what_time']['day_care'])){
-						$or_condition = array_merge($or_condition,array('UserSitterServices.sh_day_care_status=1'));
-						$or_condition = array_merge($or_condition,array('UserSitterServices.gh_day_care_status=1'));
+						
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_day_care_status=1 OR UserSitterServices.gh_day_care_status=1)'));
+						
 					}
 					
 					if(isset($this->request->data['Search']['what_time']['night_care']) && !empty($this->request->data['Search']['what_time']['night_care'])){
 						
-						$or_condition = array_merge($or_condition,array('UserSitterServices.sh_night_care_status=1'));
-						$or_condition = array_merge($or_condition,array('UserSitterServices.gh_night_care_status=1'));
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_night_care_status=1 OR UserSitterServices.gh_night_care_status=1)'));
 						
 					}
 				}else{
-						$or_condition = array_merge($or_condition,array('UserSitterServices.sh_day_care_status=1'));
-						$or_condition = array_merge($or_condition,array('UserSitterServices.gh_day_care_status=1'));
-						$or_condition = array_merge($or_condition,array('UserSitterServices.sh_night_care_status=1'));
-						$or_condition = array_merge($or_condition,array('UserSitterServices.gh_night_care_status=1'));
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_day_care_status=1 OR UserSitterServices.gh_day_care_status=1) '));
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_night_care_status=1 OR UserSitterServices.gh_night_care_status=1) '));
 				
 				}
 				/*WHAT TIME DAY/NIGHT CONDITION END*/	
@@ -566,9 +564,10 @@ class SearchController extends AppController
 			//SET CONDITION PET IN HOME (TABLE NAME : users_sitter_house) START	
 			
 			 //STEP 1
-			 if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_dog'])) && $this->request->data['Search']['sitter_info']['own_pet'] !=1){
+			 //pr($this->request->data['Search']); die;
+			 if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_dog'])) && @$this->request->data['Search']['sitter_info']['own_pet'] !=1){
                     
-                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.dogs_in_home="no"'));
+                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.dogs_in_home="no")')); 
                     
               }else{
 					
@@ -578,22 +577,22 @@ class SearchController extends AppController
 			  }
 			  
 			  //STEP 2
-			  if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_caged_dog'])) && $this->request->data['Search']['sitter_info']['own_pet'] !=1){
+			  if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_caged_dog'])) && @$this->request->data['Search']['sitter_info']['own_pet'] !=1){
                     
-                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.doesnt_own_caged_dog="no"'));
+                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.birds_in_cages="no")'));
                     
               }else{
 				  
-				  if(isset($this->request->data['Search']['sitter_info']['own_pet']) && $this->request->data['Search']['sitter_info']['own_pet'] ==1){
+				  if(isset($this->request->data['Search']['sitter_info']['own_pet']) && @$this->request->data['Search']['sitter_info']['own_pet'] ==1){
 					$and_condition = array_merge($and_condition,array('(UserSitterHouses.dogs_in_home="no" AND UserSitterHouses.cats_in_home="no")'));
 				 }
 				 	
 			  }
 			  
 			  //STEP 3
-			  if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_cat'])) && $this->request->data['Search']['sitter_info']['own_pet'] !=1){
+			  if((isset($this->request->data['Search']['sitter_pet_info']['pet_in_home']) || isset($this->request->data['Search']['sitter_pet_info']['doesnt_own_cat'])) && @$this->request->data['Search']['sitter_info']['own_pet'] !=1){
                     
-                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.cats_in_home="no"'));
+                    $and_condition = array_merge($and_condition,array('(UserSitterHouses.cats_in_home="no")'));
                     
               }else{
 					
@@ -682,21 +681,20 @@ class SearchController extends AppController
 				if(isset($this->request->data['Search']['what_time']) && !empty($this->request->data['Search']['what_time'])){
 					
 					if(isset($this->request->data['Search']['what_time']['day_care']) && !empty($this->request->data['Search']['what_time']['day_care'])){
-						$and_condition = array_merge($and_condition,array('UserSitterServices.sh_day_care_status=1'));
-						$and_condition = array_merge($and_condition,array('UserSitterServices.gh_day_care_status=1'));
+						
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_day_care_status=1 OR UserSitterServices.gh_day_care_status=1)'));
+						
 					}
 					
 					if(isset($this->request->data['Search']['what_time']['night_care']) && !empty($this->request->data['Search']['what_time']['night_care'])){
 						
-						$and_condition = array_merge($and_condition,array('UserSitterServices.sh_night_care_status=1'));
-						$and_condition = array_merge($and_condition,array('UserSitterServices.gh_night_care_status=1'));
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_night_care_status=1 OR UserSitterServices.gh_night_care_status=1)'));
+						
 						
 					}
 				}else{
-						$and_condition = array_merge($and_condition,array('UserSitterServices.sh_day_care_status=1'));
-						$and_condition = array_merge($and_condition,array('UserSitterServices.gh_day_care_status=1'));
-						$and_condition = array_merge($and_condition,array('UserSitterServices.sh_night_care_status=1'));
-						$and_condition = array_merge($and_condition,array('UserSitterServices.gh_night_care_status=1'));
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_day_care_status=1 OR UserSitterServices.gh_day_care_status=1) '));
+						$and_condition = array_merge($and_condition,array('(UserSitterServices.sh_night_care_status=1 OR UserSitterServices.gh_night_care_status=1) '));
 				
 				}
 				/*WHAT TIME DAY/NIGHT CONDITION END*/	
@@ -744,15 +742,21 @@ class SearchController extends AppController
                         	}
                         	
 					}else{
-						$and_condition  = array_merge($and_condition,array("(UserSitterServices.sh_day_rate >= $startPrice AND UserSitterServices.sh_day_rate <=$endPrice)"));
+						if($this->request->data['Search']['selected_service'] == 'bording'){
+							
+							$and_condition  = array_merge($and_condition,array("(UserSitterServices.sh_day_rate >= $startPrice AND UserSitterServices.sh_day_rate <=$endPrice)"));
 					
-						$and_condition   = array_merge($and_condition,array("(UserSitterServices.sh_night_rate >= $startPrice AND UserSitterServices.sh_night_rate <= $endPrice)"));
+							$and_condition   = array_merge($and_condition,array("(UserSitterServices.sh_night_rate >= $startPrice AND UserSitterServices.sh_night_rate <= $endPrice)"));
 						
-						$and_condition  = array_merge($and_condition,array("(UserSitterServices.gh_day_rate >= $startPrice AND UserSitterServices.gh_day_rate <=$endPrice)"));
-						
-						$and_condition   = array_merge($and_condition,array("(UserSitterServices.gh_night_rate >= $startPrice AND UserSitterServices.gh_night_rate <= $endPrice)"));
+						}else{
 
-						$and_condition  = array_merge($and_condition,array("(UserSitterServices.gh_drop_in_visit_rate >= $startPrice AND UserSitterServices.gh_drop_in_visit_rate <=$endPrice)"));
+							$and_condition  = array_merge($and_condition,array("(UserSitterServices.gh_day_rate >= $startPrice AND UserSitterServices.gh_day_rate <=$endPrice)"));
+							
+							$and_condition   = array_merge($and_condition,array("(UserSitterServices.gh_night_rate >= $startPrice AND UserSitterServices.gh_night_rate <= $endPrice)"));
+
+							$and_condition  = array_merge($and_condition,array("(UserSitterServices.gh_drop_in_visit_rate >= $startPrice AND UserSitterServices.gh_drop_in_visit_rate <=$endPrice)"));
+						}
+						
 					}
 				    //pr($or_condition);die;
 
@@ -796,8 +800,33 @@ class SearchController extends AppController
 			
 			
 			//SET LAT LONG AS PER IP ADDRESS
-			$sourceLocationLatitude = '30.7399738';
-			$sourceLocationLongitude = '76.7567368';
+			if(isset($this->request->data['location']) && $this->request->data['location'] !=''){
+				
+				$sourceSelectedLocation = $this->request->data['location'];
+				
+				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
+				
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+				$response = curl_exec($ch);
+				curl_close($ch);
+				$response_a = json_decode($response);
+				
+				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
+				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
+			
+			}else{
+				
+				$sourceLocationLatitude = '30.7399738';
+				$sourceLocationLongitude = '76.7567368';
+			}	
+				
+				
+
 				
 			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:DEFAULT_RADIUS;
 		

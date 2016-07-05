@@ -48,7 +48,7 @@
 										<a data-toggle="modal" href="#referanceModal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Get Free Sitting or Minding')); ?></a>
 									</li>
 									<li class="select"> 
-										<a  href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Become a sitter')); ?></a>
+										<a  href="<?php echo HTTP_ROOT.'become-a-sitter' ;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Become a sitter')); ?></a>
 									</li>
 
 									<li>

@@ -112,7 +112,7 @@
 						?>
                   <li>
                     <!--	<p class="r-star rat-wt"> -->
-                    <span class="rating ">
+                    <span class="rating mt-1 ">
                       <?php	if(!empty($rating_sum)){ 	
 ?>
                       <input type='radio'  value='5' 
@@ -896,13 +896,14 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                       </span>
                                                     </h3>
                                                     <ul class="list-inline pt15">
-                                                      <li class="reviews-bold">
+                                                      <li  class="reviews-bold prelative">
+														  <span style="position:relative; top:-15px;" >
                                                         <?php echo $count. "  Reviews ";?> 
-                                                        <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?>
+                                                        <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?> </span>
                                                       </li>
-                                                      <li> 
-                                                        <div class="rating-box">
-                                                          <span class="rating no-topmg">
+                                                      <li > 
+                                                        <div class="rating-box prelative">
+                                                          <span class="rating  ">
                                                             <?php	if(!empty($rating_sum)){ 	
 ?>
                                                             <input type='radio'  value='5' 
@@ -1031,7 +1032,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                                                         <div class="rating-box">
                                                                                                           <!--rating-->
                                                                                                           <!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
-                                                                                                          <span class="rating no-topmg">
+                                                                                                          <span class="rating no-topmg mt-1 ">
                                                                                                             <?php	if(!empty($ac)){ 	
 ?>
                                                                                                             <input type='radio'  value='5' 
@@ -1150,7 +1151,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                                                                                               </div>
                                                                                                                                               <div class="rewiw-width50">
                                                                                                                                                 <div class="rating-box">
-                                                                                                                                                  <span class="rating no-topmg">
+                                                                                                                                                  <span class="rating no-topmg mt-1 ">
                                                                                                                                                     <?php	if(!empty($cm)){ 	
 ?>
                                                                                                                                                     <input type='radio'  value='5' 
@@ -1266,7 +1267,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                               </div>
                               <div class="rewiw-width50">
                                 <div class="rating-box">
-                                  <span class="rating no-topmg">
+                                  <span class="rating no-topmg mt-1 ">
                                     <?php	if(!empty($cl)){ 	
 ?>
                                     <input type='radio'  value='5' 
@@ -1387,7 +1388,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                       </div>
                                                                       <div class="rewiw-width50">
                                                                         <div class="rating-box">
-                                                                          <span class="rating no-topmg">
+                                                                          <span class="rating no-topmg mt-1 ">
                                                                             <?php	if(!empty($lc)){ 	
 ?>
                                                                             <input type='radio'  value='5' 
@@ -1506,7 +1507,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                                                               </div>
                                                                                                               <div class="rewiw-width50">
                                                                                                                 <div class="rating-box">
-                                                                                                                  <span class="rating no-topmg">
+                                                                                                                  <span class="rating no-topmg mt-1 ">
                                                                                                                     <?php	if(!empty($ch)){ 	
 ?>
                                                                                                                     <input type='radio'  value='5' 
@@ -1657,7 +1658,7 @@ $check_in=$UserRating->check_in_rating;
 <ul class="list-inline text-center">
   <li>
     <div class="rating-box">
-      <span class="rating no-topmg">
+      <span class="rating no-topmg mt-1 ">
         <?php	if(!empty($rate)){ 	
 ?>
         <input type='radio'  value='5' 
@@ -1807,7 +1808,7 @@ $check_in=$UserRating->check_in_rating;
                                     <br/>
                                     <br/>
                                     <p class="pull-left">
-                                      <?php if(empty($UserRating->comment)){ echo "<h5>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
+                                      <?php if(empty($UserRating->comment)){ echo "<h5 class='text-center'>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
                                     </p>
                                     <p class="pull-right color-green">
                                     </p>
@@ -2349,7 +2350,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                         <?php if(!empty($nearbyUser->city)){ echo $nearbyUser->city; }?>
                                       </p>
                                       <p class="r-star rat-wt">
-                                        <span class="rating no-topmg">
+                                        <span class="rating no-topmg mt-1 ">
                                           <?php	if(!empty($rating_sum)){ 	
 ?>
                                           <input type='radio'  value='5' 

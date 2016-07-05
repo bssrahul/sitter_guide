@@ -15,7 +15,7 @@
 		<?php 
 			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/dist/imageselect.css','Front/hint.css','Front/jquery-ui.css','Front/search-result.css','Front/calendar.css','Front/developer.css']); 
 			
-			echo $this->Html->script(['Front/jquery.min.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js','Front/jquery-ui.js','Front/jquery.validate.js','Front/search-filter.js']);
+			echo $this->Html->script(['Front/jquery.min.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js','Front/jquery-ui.js','Front/jquery.validate.js','Front/search-filter.js','Front/messages.js']);
 		
 			if($sitefavicon != null){ ?>
 				<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
@@ -23,8 +23,9 @@
 				<link rel=icon href="<?php echo HTTP_ROOT; ?>img/create_logo.png" type="image/png">
 			<?php }?>
 	      
-			
-          
+	<!-- Script for jquery UI slider issue resolved on mobile device-->		
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    
     </head>
     <body id="page-top" data-spy="scroll" class="drawer drawer--left">
           
@@ -37,7 +38,7 @@
 			echo $this->element('frontElements/profile/profile_nav');?>
 			 <?php 
 				//echo $this->request->action; die;
-				if($this->request->action=='review' || $this->request->action=='searchResultsFavourites' || $this->request->action=='communication'){
+				if($this->request->action=='review' || $this->request->action=='searchResultsFavourites' || $this->request->action=='communication' || $this->request->action=='tracker'){
 					$bgClass='bg-fff';
 				}else{
 					$bgClass='addBgColor';
@@ -61,10 +62,9 @@
        <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'> 
     </body>
 </html>
+
 <script>
-
 /*spinner in navsecond start*/
-
 $(function(){
 
     $('.spinner .btn:first-of-type').on('click', function() {

@@ -797,17 +797,18 @@ class AppController extends Controller{
 	} */
 	
 
-	function genrateOtp($otpDigit=6){
+	function genrateOtp($phone_number,$msg_body){
 		$usersModel = TableRegistry::get('Users');
 		$session = $this->request->session();
 		$userId = $session->read("User.id");
-		$digits = $otpDigit;
+		$digits = 6;
 		$four_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
 		$userData = $usersModel->newEntity();
 		$userData->id = $userId;
 		$userData->otp = $four_digits;
 
 		if($usersModel->save($userData)){
+			$this->sendMessages($phone_number,$msg_body);
 			return true;
 		}else{
 			return false;
@@ -820,12 +821,16 @@ class AppController extends Controller{
 		$auth_token = TWILIO_AUTHTOKEN; 
 		$client = new \Services_Twilio($account_sid, $auth_token); 
 		
-		$client->account->messages->create(array( 
-			'To' => $to_mobile_number, 
-			'From' => "+61425415125", 
-			'Body' => $message_body, 
-		));
-		
+		try {
+			$client->account->messages->create(array( 
+				'To' => $to_mobile_number, 
+				'From' => "+61425415125", 				
+				'Body' => $message_body, 
+			));
+		}
+		catch (\Exception $e) {
+			$this->setErrorMessage($this->stringTranslate(base64_encode('Something went wrong')));
+		}
 	}
 	
 }
