@@ -416,7 +416,7 @@ class BookingController extends AppController
 					  $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
 					//Booking request message  
 					if($get_user_communications_details['communication']['new_booking_request'] == 1){
-					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+					    $to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
 						$message_body = "You have been received new booking request";	
 						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
 				     } 
@@ -459,7 +459,7 @@ class BookingController extends AppController
 															   ]
 														]
 												)
-								   ->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]], ['Users.id' => 'integer[]'])
+								   ->where(['Users.id' => $get_booking_requests_to_display['sitter_id']], ['Users.id' => 'integer[]'])
 								   ->toArray();
 				}
 			  $selected_pets_count="";
@@ -501,6 +501,8 @@ class BookingController extends AppController
 		     if($get_booking_requests_to_display['required_service']  == 'house_sitting'){
 				$hs_day_rate = $userData[0]->user_sitter_services[0]->gh_day_rate;
 				$hs_night_rate = $userData[0]->user_sitter_services[0]->gh_night_rate;
+				
+				//echo $hs_day_rate." ".$hs_night_rate;die;
 				
 				$day_total = $hs_day_rate*$total_days;
 				$night_total = $hs_night_rate*$total_days;

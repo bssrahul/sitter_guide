@@ -1253,12 +1253,13 @@ class SearchController extends AppController
 								->hydrate(false)->first();
 				
 				
-					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["user_id"]);
-					   pr($get_user_communications_details);die;
+					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+					  // pr($get_user_communications_details);die;
 					   
 					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
 					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
-						$message_body = "Your booking request has been accept by ".$get_booking_requests_to_display['user']['first_name']." ".@$get_booking_requests_to_display['user']['last_name'];	
+						$message_body = "You have been received new booking request"; 
+						
 						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
 				      }
 				     //End send message
