@@ -152,17 +152,14 @@
                     } ?>
                      <?php  if($get_booking_requests_to_display['user']['user_type'] != "Basic"){ ?>
                     <p class="click-bok">Click 
-                     <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
+                     
 						 
 							<b>"Book It Now"
 							</b>
 						 
-                     <?php }else if($get_booking_requests_to_display['folder_status_sitter'] == "current"){ ?>
+                    
+						 
 						
-							<b>"Book It Now"
-							</b>
-						 
-						 <?php } ?>
                       to confirm and pay for this stay. Each Stay is covered by 
                       <a href="#">
                         <u>premium
@@ -170,12 +167,14 @@
                         </u>
                       </a>
                     </p>
-                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
-						<button class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
+                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "current" && $get_booking_requests_to_display['payment_status'] == "pending"){ ?>
+						
+						<button  class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
 						  <i class="fa fa-check-circle-o">
 						  </i> Book It Now
 						</button>
-                    <?php }else if($get_booking_requests_to_display['folder_status_sitter'] == "current"){ ?>
+                    <?php }else{ ?>
+						
 						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
 						  <i class="fa fa-check-circle-o">
 						  </i> Book It Now
@@ -186,15 +185,7 @@
                     <?php 
                     } ?>
                   </div>
-                  <div class="tip-wrapper">
-                    <p class="click-bok1">
-                      <b>Sitterguide.com Tip :
-                      </b> All transactions booked and paid on Sitterguide.com are covered by Sitterguide’s
-                      <br>
-                      <a href=""> Peace of Mind Protection
-                      </a>.
-                    </p>
-                  </div>
+                  
                   <div class="mem-sinc-15">
                     <div class="member-since1">
                       <div class="media">
@@ -254,19 +245,33 @@
                            ?>"> <?php 
                          @$age = explode(",",@$single_guest->guest_age);
                                                                echo @$age[0]." years"." ,".@$age[1]." months";
-                                                                      ?>                          </p>
+                                                                      ?>           
+                         <p class="edit-d-pro">         
                          <?php  if($get_booking_requests_to_display['user']['user_type'] != "Basic"){ ?>
-						  <p class="edit-d-pro">
+						
                             <a href="<?php echo HTTP_ROOT."dashboard/about-guest"; ?>">Edit Dog Profile
                             </a>
+                         
+                         <?php }else{ ?>
+							     <a href="">
+                            </a>
+							 <?php } ?>
                           </p>
-                         <?php } ?>
                           <p>
                           </p>
                         </div>
                       </div>
                       <?php } 
                       }?>
+                      <div class="tip-wrapper">
+						<p class="click-bok1">
+						  <b>Sitterguide.com Tip :
+						  </b> All transactions booked and paid on Sitterguide.com are covered by Sitterguide’s
+						  <br>
+						  <a href=""> Peace of Mind Protection
+						  </a>.
+						</p>
+					  </div>
                       <div class="may-call-wrapper">
                         <p class="maycall-text">You may call jessica's permanent Rover number anytime.
                         </p>
