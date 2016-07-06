@@ -218,4 +218,7 @@
     
     </div>
     </section>     
-    <!-- Get in Touch ends-->    
+    <!-- Get in Touch ends-->  
+    <?php 
+    echo $this->element('frontElements/guests/why_choose'); 
+	echo $this->element('frontElements/guests/fun_and_news');?> 

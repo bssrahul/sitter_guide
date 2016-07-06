@@ -17,8 +17,7 @@
       <!--/heading-->
       
       <div class="become-howitworks">
-      
-        <div class="row">
+       <div class="row">
            <?php 
 			   if(!empty($choose_data)){
 				$i = 1;
