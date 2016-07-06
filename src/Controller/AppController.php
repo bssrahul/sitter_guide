@@ -815,11 +815,13 @@ class AppController extends Controller{
 		}
 	}
 	
+	
 	function sendMessages($to_mobile_number, $message_body){
 		require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
 		$account_sid = TWILIO_SID; 
 		$auth_token = TWILIO_AUTHTOKEN; 
 		$client = new \Services_Twilio($account_sid, $auth_token); 
+
 		
 		try {
 			$output = $client->account->messages->create(array( 
@@ -834,6 +836,22 @@ class AppController extends Controller{
 			$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
 		}
 		return true;
+	}
+	
+	
+	function getUserCommunicationDetails($userId = null){
+		$usersModel = TableRegistry::get('Users');
+		$communicationModel = TableRegistry::get('Communication');
+		
+	    $user_communication_info = $usersModel->find('all',['contain'=>[
+															'Communication'
+														   ]
+														])
+														->select(['Users.first_name','Users.last_name','Users.image','Users.country_code','Communication.phone_notification','Communication.new_enquiries','Communication.new_message','Communication.new_booking_request'])
+	    ->where(['Users.id' => $userId])
+		->limit(1)->hydrate(false)->first();
+	   //pr($user_communication_info);die;
+	   return $user_communication_info; 
 	}
 	
 }
