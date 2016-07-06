@@ -1218,7 +1218,6 @@ class SearchController extends AppController
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
         
-        /////////////////////
         $userId = $session->read('User.id');
         $userEmail = $session->read('User.email');
         $userName = $session->read('User.name');
@@ -1248,17 +1247,30 @@ class SearchController extends AppController
                 	$replace = array('{name}','{email}');
 					$with = array($userName,$userEmail);
 					//$this->send_email('',$replace,$with,'booking_request',$userEmail);
+					//Start Send message
+					$get_booking_requests_to_display = $bookingRequestsModel->find('all')
+								->where(['BookingRequests.id'=>$bookingRequestData->id])
+								->hydrate(false)->first();
+				
+				
+					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["user_id"]);
+					   pr($get_user_communications_details);die;
+					   
+					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
+					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+						$message_body = "Your booking request has been accept by ".$get_booking_requests_to_display['user']['first_name']." ".@$get_booking_requests_to_display['user']['last_name'];	
+						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
+				      }
+				     //End send message
+					
 				}
 				 return $this->redirect(['controller'=>'search','action'=>'thank-you']);
 		}else{
 				$userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings','UserPets'=>['UserPetGalleries']]]);
-				//pr($userData);die;
 				$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
 				$user_sitter_id_Arr=array();
 				foreach($UserFavData as $UserFav){
-					
-					 $user_sitter_id_Arr[]=$UserFav->sitter_id;
-					
+					$user_sitter_id_Arr[]=$UserFav->sitter_id;
 				}
 				if(in_array($userData->id,$user_sitter_id_Arr)){
 						$userData['is_favourite'] =  "yes";
@@ -1270,15 +1282,12 @@ class SearchController extends AppController
 				$Userratingdata=$userData->user_ratings;
 				$userFromArr=array();
 				foreach($Userratingdata as $Userrating){
-					
 					$userFromArr[]=$Userrating->user_from;
 				}
 				$gettingUserData=$UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']])->toArray();
 				 $commentUserData=array();
 				foreach($gettingUserData as $gettingUser){
-				
-						if(in_array($gettingUser->id,$userFromArr)){
-							
+				        if(in_array($gettingUser->id,$userFromArr)){
 							$commentUserData[]=$gettingUser;
 						} 
 				}
@@ -1299,7 +1308,6 @@ class SearchController extends AppController
 								ORDER BY distance';
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
-			//pr($results);die;
 			$finalDistanceArr=array();
 			foreach($results as $result){
 				foreach($gettingUserData as $favData){
@@ -1310,7 +1318,6 @@ class SearchController extends AppController
 						} 
 				} 
 			}
-			
 			if(!empty($finalDistanceArr)){
 				$idArr = array();
 				$distanceAssociation = array();
@@ -1336,18 +1343,14 @@ class SearchController extends AppController
 						
 					}
 			}
-			
-			
-			
 			$this->set('nearbyUsers',$getUsersArr);	
 			$this->set('loggedInUserID',$loggedInUserID);	
-		   $this->set('userData',$userData);
-		   $this->set('commentUserData',@$commentUserData);
+		    $this->set('userData',$userData);
+		    $this->set('commentUserData',@$commentUserData);
 		
 		$Session=$this->request->session();
 		$user_id=$Session->read('User.id');
 
-		//$this->viewBuilder()->layout('profile_dashboard');
 		$calendarModel=TableRegistry :: get("user_sitter_availability");
 		$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
 			
@@ -1370,14 +1373,11 @@ class SearchController extends AppController
 			 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
 			 $this->set("sitter_guests_info",$userPetsData);
 		}
-		//echo $session->read("User.id");die;
-		//pr($userPetsData);die;
 		$this->set('sitter_id',base64_encode(convert_uuencode($sitterId)));
 		
 		$currencyModel = TableRegistry::get('Currencies');
 		$currencies = $currencyModel->find("all")->toArray();
 		$this->set('currencies',$currencies);
-		
 	}
 		
 	}

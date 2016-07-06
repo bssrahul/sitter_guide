@@ -37,6 +37,7 @@ class UsersTable extends Table
 
 		$this->hasMany('UserPetGalleries', ['dependent' => true]);
 		$this->hasMany('UserPets',['dependent' => true]);
+		$this->hasOne('Communication',['dependent' => true]);
 		
 
     }

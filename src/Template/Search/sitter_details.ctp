@@ -9,7 +9,7 @@
   }
 </style>
 <!--[Banner Area Start]-->
-                         <?php
+                <?php
 					$session = $this->request->session();
 					$cuntry_currency = $session->read("currency.currency");
 					$cuntry_price = $session->read("currency.price");

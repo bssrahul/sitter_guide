@@ -388,25 +388,13 @@ class BookingController extends AppController
 		    $UsersModel = TableRegistry::get('Users');
 			
 			$booking_id = convert_uudecode(base64_decode($request_booking_id));
-		//pr($booking_id);die;
 		//GET BOOKING RECORDS FOR DISPLAY ON RIGHT HAND SIDE DIV
 		$get_booking_requests_to_display = array();
 		$total = 0;
 		$userType = $session->read('User.user_type');
 		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
 		if(isset($booking_id) && $booking_id !=''){
-			
-			if($type == "sitter"){
-				
-				
-			   $bookingRequestData = $BookingRequestsModel->newEntity();
-			   $bookingRequestData->id = $booking_id;
-			   $bookingRequestData->folder_status_sitter = 'current';
-			   $BookingRequestsModel->save($bookingRequestData);
-			   
-			   return $this->redirect("/Message/get-messages/current/".$request_booking_id);		
-			   
-			}     
+		       
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')
 				->where(['BookingRequests.id'=>$booking_id])
 				->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
@@ -416,8 +404,23 @@ class BookingController extends AppController
 						  ]
 				)
 				->hydrate(false)->first();
+				
 				if(!empty($get_booking_requests_to_display)){
-					    $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
+					
+					
+					//pr($get_user_communications_details);die;
+				    //$this->sendMessages();
+				  if($type == "guest"){
+					  $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+					//Booking request message  
+					if($get_user_communications_details['communication']['new_booking_request'] == 1){
+					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+						$message_body = "You have been received new booking request";	
+						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
+				     } 
+				  }
+				  
+					 $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
 															'UserSitterHouses'
 															
 													            ]
@@ -428,9 +431,26 @@ class BookingController extends AppController
 																		->limit(1)->hydrate(false)->first();
 										
 										
-										
-										
-																		
+					if($type == "sitter"){
+			   
+					   $bookingRequestData = $BookingRequestsModel->newEntity();
+					   $bookingRequestData->id = $booking_id;
+					   $bookingRequestData->folder_status_sitter = 'current';
+					   //Update sitter status
+					   $BookingRequestsModel->save($bookingRequestData);
+					  //Start send message
+					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["user_id"]);
+					
+					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
+					    $to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
+						$message_body = $get_booking_requests_to_display['user']['first_name']." ".@$get_booking_requests_to_display['user']['last_name']." have accepted your request,kindly proceed for payment.";	
+						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
+				      } 
+					   
+					   
+					   return $this->redirect("/Message/get-messages/current/".$request_booking_id);		
+			        }
+			        //end send message													
 					$userData = $UsersModel->find('all',['contain'=>[
 															    'UserSitterServices',
 															    'UserPets'
@@ -440,8 +460,7 @@ class BookingController extends AppController
 								   ->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]], ['Users.id' => 'integer[]'])
 								   ->toArray();
 				}
-			 //pr($get_booking_requests_to_display);die;
-			 $selected_pets_count="";
+			  $selected_pets_count="";
 			 if(!empty($userData[0]->user_pets) && isset($userData[0]->user_pets)){
 				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
 				 $selected_pets = [];
@@ -466,13 +485,9 @@ class BookingController extends AppController
 				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 				$total_days = $days;
 				
-		     //$newdays = ($date1 - $date2) / (1000 * 60 * 60 * 24);
-			// echo $newdays;die;
-			   //echo  @$get_booking_requests_to_display['guest_id_for_bookinig'];
-			   $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
+		       $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
 			   $guest_num = count($selectedGuest);
-			   //pr($get_booking_requests_to_display);die;
-			  
+			   
 		     if($get_booking_requests_to_display['required_service'] == 'boarding'){
 				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
 				 $night_rate = $userData[0]->user_sitter_services[0]->sh_night_rate;
@@ -488,8 +503,7 @@ class BookingController extends AppController
 				$day_total = $hs_day_rate*$total_days;
 				$night_total = $hs_night_rate*$total_days;
 				 
-				 $total = ($day_total+$night_total)*$guest_num;
-				 //echo "guest_num:".$guest_num."total_days:".$total_days."hs_day_rate:".$hs_day_rate."hs_night_rate:".$hs_night_rate;die;
+				$total = ($day_total+$night_total)*$guest_num;
 			}else
 			 if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
 				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
@@ -512,8 +526,7 @@ class BookingController extends AppController
 				  $mp_driving_total = $mp_driving_rate*$total_days;
 				 
 				 $total = ($mp_grooming_total+$mp_training_total+$mp_recreation_total+$mp_driving_total)*$guest_num;
-				 
-			}else
+			 }else
 			   if($get_booking_requests_to_display['required_service']  == 'drop_in_visit'){
 				 $drop_visit_rate = $userData[0]->user_sitter_services[0]->dorp_in_visit;
 				 
@@ -523,7 +536,6 @@ class BookingController extends AppController
 			 $this->set('total_days',$total_days);
 		  }
 		}//END
-		
 		
 		//pr($userData[0]);die;
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
