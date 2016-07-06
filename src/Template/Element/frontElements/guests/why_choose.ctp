@@ -15,8 +15,7 @@
                        if(!empty($choose_data)){
                       $imgArray  =array('0'=>'','1'=>'img-box-2','2'=>'img-box-3','3'=>'img-box-4');
                       $i = 0;
-                         foreach($choose_data as $single_data){ 
-                         
+                        foreach($choose_data as $single_data){ 
                         ?>
                     	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">                        	
                         	<div class="wcu-box">
@@ -29,9 +28,7 @@
                                   <a href="<?php echo HTTP_ROOT.str_replace(" ","-",str_replace(" ","-",strtolower($single_data->title))); ?>"  title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('READ MORE')); ?><i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
-
-                       
-                        <?php  $i++;} 
+                     <?php  $i++;} 
                           } ?>
                     </div>
                    
