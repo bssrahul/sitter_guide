@@ -822,15 +822,18 @@ class AppController extends Controller{
 		$client = new \Services_Twilio($account_sid, $auth_token); 
 		
 		try {
-			$client->account->messages->create(array( 
+			$output = $client->account->messages->create(array( 
 				'To' => $to_mobile_number, 
 				'From' => "+61425415125", 				
-				'Body' => $message_body, 
+				'Body' => $message_body
 			));
+			
+			
 		}
-		catch (\Exception $e) {
-			$this->setErrorMessage($this->stringTranslate(base64_encode('Something went wrong')));
+		catch (\Exception $e) { 
+			$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
 		}
+		return true;
 	}
 	
 }
