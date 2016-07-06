@@ -148,6 +148,7 @@ class MessageController extends AppController
 		$get_booking_requests_to_display = array();
 		$total = 0;
 		if(isset($booking_id) && $booking_id !=''){
+			//echo $booking_id;die;
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')
 				->where(['BookingRequests.id'=>$booking_id])
 				->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
@@ -157,6 +158,7 @@ class MessageController extends AppController
 						  ]
 				)
 				->hydrate(false)->first();
+				//pr($get_booking_requests_to_display);die;
 			if(!empty($get_booking_requests_to_display)){
 				  $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
 															'UserSitterHouses'
@@ -174,10 +176,18 @@ class MessageController extends AppController
 															   ]
 														]
 												)
-								   ->where(['Users.id' => $get_booking_requests_to_display['user_id']], ['Users.id' => 'integer[]'])
+								   ->where(['Users.id' => $get_booking_requests_to_display['sitter_id']], ['Users.id' => 'integer[]'])
 								   ->toArray();
 					//end sk
+					 //pr($userData);die;
+					 
+					 
+					 
+					 
+					 
+					 
 			  }
+			  //pr($get_booking_requests_to_display);die;
 			  //Start sk	
 			 //pr($get_booking_requests_to_display['guest_id_for_bookinig']);die;
 			 if(!empty($userData[0]->user_pets) && isset($userData[0]->user_pets)){
@@ -196,6 +206,7 @@ class MessageController extends AppController
 		      $this->set("selected_pets",$selected_pets);
 		      //End sk
 		    }
+		   
 		    //Start sk	
 			if(!empty($userData[0]->user_sitter_services) && isset($userData[0]->user_sitter_services)){
 				 
@@ -206,9 +217,11 @@ class MessageController extends AppController
 				$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 				$total_days = $days;
-		
+		    //echo $total_days;die;
+		 
 			   $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
 			   $guest_num = count($selectedGuest);
+			   //pr($guest_num);die;
 			 
 			 if($get_booking_requests_to_display['required_service'] == 'boarding'){
 				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
@@ -216,6 +229,7 @@ class MessageController extends AppController
 				 
 				 $day_total = $day_rate*$total_days;
 				 $night_total = $night_rate*$total_days;
+				  
 				 $total = ($day_total+$night_total)*$guest_num;
 		     }else
 		     if($get_booking_requests_to_display['required_service']  == 'house_sitting'){
@@ -224,8 +238,10 @@ class MessageController extends AppController
 				
 				$day_total = $hs_day_rate*$total_days;
 				$night_total = $hs_night_rate*$total_days;
-				 
+				  //echo $hs_day_rate." ".$hs_night_rate;die;
 				 $total = ($day_total+$night_total)*$guest_num;
+				 //echo $total;die; 
+				// echo $total;die; 
 				 //echo "guest_num:".$guest_num."total_days:".$total_days."hs_day_rate:".$hs_day_rate."hs_night_rate:".$hs_night_rate;die;
 			}else
 			 if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
