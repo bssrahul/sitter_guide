@@ -41,7 +41,7 @@
                           if(!empty(@$pets)){
 							  echo implode(",",@$pets);
 						  }else{
-							  echo "_ _ _";
+							  echo "";
 							  }
                           ?>
                           </td>
@@ -117,23 +117,74 @@
                         </div>
                       </div>
                     </div>
-                   <?php  if($get_booking_requests_to_display['user']['user_type'] != "Basic"){ ?>
-                    <p class="click-bok">Click 
-                      <a href="<?php echo HTTP_ROOT."booking/book-now".@$sitter_id; ?>">
-                        <b>"Book It Now"
+                   <?php  if($get_booking_requests_to_display['user']['user_type'] == "Basic"){ ?>
+                    
+                     
+                     
+                      
+                   
+                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
+						
+                      <p class="click-bok">Click 
+                        <b>"Accept Offer"
                         </b>
-                      </a> to confirm and pay for this stay. Each Stay is covered by 
+                     to accept the offer. Each Stay is covered by 
+                     <a href="#">
+                        <u>premium
+                          insurance protection.
+                        </u>
+                      </a>
+                       </p>
+						
+						<button class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/sitter"; ?>'">
+						  <i class="fa fa-check-circle-o">
+						  </i> Accept Offer
+						</button>
+                    <?php }else if($get_booking_requests_to_display['folder_status_sitter'] == "current"){ ?>
+						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/sitter"; ?>'">
+						  <i class="fa fa-check-circle-o">
+						  </i> Offer Accepted
+						</button>
+                    <?php } ?>
+                    
+                    
+                    <?php 
+                    } ?>
+                     <?php  if($get_booking_requests_to_display['user']['user_type'] != "Basic"){ ?>
+                    <p class="click-bok">Click 
+                     <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
+						 
+							<b>"Book It Now"
+							</b>
+						 
+                     <?php }else if($get_booking_requests_to_display['folder_status_sitter'] == "current"){ ?>
+						
+							<b>"Book It Now"
+							</b>
+						 
+						 <?php } ?>
+                      to confirm and pay for this stay. Each Stay is covered by 
                       <a href="#">
                         <u>premium
                           insurance protection.
                         </u>
                       </a>
                     </p>
-                    <button class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id; ?>'">
-                      <i class="fa fa-check-circle-o">
-                      </i> Book It Now
-                    </button>
+                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
+						<button class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
+						  <i class="fa fa-check-circle-o">
+						  </i> Book It Now
+						</button>
+                    <?php }else if($get_booking_requests_to_display['folder_status_sitter'] == "current"){ ?>
+						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
+						  <i class="fa fa-check-circle-o">
+						  </i> Book It Now
+						</button>
                     <?php } ?>
+                    
+                    
+                    <?php 
+                    } ?>
                   </div>
                   <div class="tip-wrapper">
                     <p class="click-bok1">
@@ -175,31 +226,47 @@
                       </div>
                       <p class="text-mem"><?php echo (@$get_booking_requests_to_display['user']['user_about_sitter']['client_choose_desc'] !='')? @$get_booking_requests_to_display['user']['user_sitter_house']['about_home_desc'] : "No added yet"; ?>
                       </p>
-                      <div class="media">
+                      <?php 
+                      if(!empty($selected_pets)){
+                      foreach($selected_pets as $single_guest){ ?>
+                     <div class="media">
+						<?php 
+						if(!empty($single_guest->user_pet_galleries)){
+						 ?>
                         <div class="media-left media-middle w-95">
                           <a href="#">
-                            <img class="media-object sizei44 img-thumbnail " src="<?php echo HTTP_ROOT; ?>img/profile-pic.png" alt="...">
+                            <img class="media-object sizei44 img-thumbnail " src="<?php echo HTTP_ROOT.'img/uploads/'.$single_guest->user_pet_galleries[0]->image; ?>" alt="...">
                           </a>
                         </div>
+                        <?php } ?>
                         <div class="media-body">
-                          <p class="media-heading1">Hunter
+                          <p class="media-heading1"><?php echo ucwords(@$single_guest->guest_name);?>
                           </p>
                           <p class="media-heading-msince">
-                            Male
+                            <?php echo ucwords(@$single_guest->guest_gender); ?>
                           </p>
                           <p class="media-heading-msince">
-                            Labrador Retriever
+                             <?php echo ucwords(@$single_guest->guest_breed); ?>
                           </p>
-                          <p class="media-heading-msince">1 year, 2 no. old
-                          </p>
-                          <p class="edit-d-pro">
-                            <a href="">Edit Dog Profile
+                          <p class="media-heading-msince" onclick="<?php 
+                             $session = $this->request->session();
+                             $session->write('profile','Guest');
+                           ?>"> <?php 
+                         @$age = explode(",",@$single_guest->guest_age);
+                                                               echo @$age[0]." years"." ,".@$age[1]." months";
+                                                                      ?>                          </p>
+                         <?php  if($get_booking_requests_to_display['user']['user_type'] != "Basic"){ ?>
+						  <p class="edit-d-pro">
+                            <a href="<?php echo HTTP_ROOT."dashboard/about-guest"; ?>">Edit Dog Profile
                             </a>
                           </p>
+                         <?php } ?>
                           <p>
                           </p>
                         </div>
                       </div>
+                      <?php } 
+                      }?>
                       <div class="may-call-wrapper">
                         <p class="maycall-text">You may call jessica's permanent Rover number anytime.
                         </p>

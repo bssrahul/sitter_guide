@@ -380,7 +380,8 @@ class BookingController extends AppController
 		return $errors;
 	}
 	//Function for book now
-	function bookNow($request_booking_id= null){
+	function bookNow($request_booking_id= null,$type = null){
+		
 			$this->viewBuilder()->layout('landing');
 			$session = $this->request->session();
 			$BookingRequestsModel = TableRegistry::get('BookingRequests');
@@ -394,6 +395,18 @@ class BookingController extends AppController
 		$userType = $session->read('User.user_type');
 		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
 		if(isset($booking_id) && $booking_id !=''){
+			
+			if($type == "sitter"){
+				
+				
+			   $bookingRequestData = $BookingRequestsModel->newEntity();
+			   $bookingRequestData->id = $booking_id;
+			   $bookingRequestData->folder_status_sitter = 'current';
+			   $BookingRequestsModel->save($bookingRequestData);
+			   
+			   return $this->redirect("/Message/get-messages/current/".$request_booking_id);		
+			   
+			}     
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')
 				->where(['BookingRequests.id'=>$booking_id])
 				->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
@@ -510,9 +523,28 @@ class BookingController extends AppController
 			 $this->set('total_days',$total_days);
 		  }
 		}//END
+		
+		
 		//pr($userData[0]);die;
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
 		$this->set('total',$total);
+		
+		//Fetch data how works
+		$worksModel = TableRegistry::get('HowWorks');
+		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'How_it_works']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
+		$this->set('works_data',$workdata);
+
+		//Fetch data why choose
+		$chooseData = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'why_choose_us']])->order(['modified'=>'desc']) ->limit(4)->where(['status' => 1])->toArray();
+		$this->set('choose_data',$chooseData);
+
+		//Fetch data news updates
+		$news_data = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'news_updates']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
+		$this->set('news_data',$news_data);
+		
+		$servicesModel = TableRegistry::get('Services');
+	    $servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
+		$this->set('servicesInfo',$servicesInfo);
 		
 	}
 	

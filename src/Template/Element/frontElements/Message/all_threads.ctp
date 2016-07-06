@@ -1,6 +1,5 @@
 
 	<?php
-	
 	if(!empty($get_requests)){
 		foreach($get_requests as $req_data){
 		$req_id = $req_data['id'];
@@ -80,11 +79,11 @@
 		<div class="book-now-name">
 		  <p class="text-right"><?php echo date("M d",strtotime($req_data['created_date'])); ?>
 		  </p>
-		  <button class="btn  btn-block bt-now">
+		  <!--<button class="btn  btn-block bt-now">
 			<i class="fa fa-calendar">
 			</i>
 			Book Now          
-		  </button>
+		  </button>-->
 		</div>
 	  </div>
 	</div>

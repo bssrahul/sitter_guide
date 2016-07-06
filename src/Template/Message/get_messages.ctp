@@ -4,7 +4,6 @@
 	echo $this->Html->script(['Front/jquery.mCustomScrollbar.concat.min.js','Front/messages.js']); 
 
 ?>
-
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row db-top-bar-header no-padding-left no-padding-right">
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

@@ -92,8 +92,6 @@ class MessageController extends AppController
 		->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])
 		->hydrate(false)->toArray();
 		
-		//pr($get_requests); die;
-		
 		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
 		if(!empty($get_requests)){
 			foreach($get_requests as $booking_key=>$booking_records){
@@ -159,46 +157,46 @@ class MessageController extends AppController
 						  ]
 				)
 				->hydrate(false)->first();
-				//echo $get_booking_requests_to_display[$user_message_display_field];die;
-				if(!empty($get_booking_requests_to_display)){
-					    $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
+			if(!empty($get_booking_requests_to_display)){
+				  $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
 															'UserSitterHouses'
 															
 													            ]
 														])
-																		->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
-																		//->contain(['UserSitterHouses','UserSitterServices'])
-																		->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]])
-																		->limit(1)->hydrate(false)->first();
-										
-										
-										
-										
-																		
+														->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
+														//->contain(['UserSitterHouses','UserSitterServices'])
+														->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]])
+														->limit(1)->hydrate(false)->first();
+				    //Start sk				
 					$userData = $UsersModel->find('all',['contain'=>[
 															    'UserSitterServices',
-															    'UserPets'
+															    'UserPets'=>['UserPetGalleries']
 															   ]
 														]
 												)
-								   ->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]], ['Users.id' => 'integer[]'])
+								   ->where(['Users.id' => $get_booking_requests_to_display['user_id']], ['Users.id' => 'integer[]'])
 								   ->toArray();
-				}
+					//end sk
+			  }
+			  //Start sk	
+			 //pr($get_booking_requests_to_display['guest_id_for_bookinig']);die;
 			 if(!empty($userData[0]->user_pets) && isset($userData[0]->user_pets)){
 				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
 				 $selected_pets = [];
+				 $pets_name = [];
 				 foreach($idPetsArr as $single_pet_id){
 					 foreach($userData[0]->user_pets as $single_pet){
 						 if($single_pet_id == $single_pet->id){
-							$selected_pets[] = $single_pet->guest_name;
+							$pets_name[] = $single_pet->guest_name;
+							$selected_pets[] = $single_pet;
 						 }
 					 }
 				 }
-		    $this->set("pets",$selected_pets);
-		     
+		      $this->set("pets",$pets_name);
+		      $this->set("selected_pets",$selected_pets);
+		      //End sk
 		    }
-		   
-			//pr($selected_pets);die;
+		    //Start sk	
 			if(!empty($userData[0]->user_sitter_services) && isset($userData[0]->user_sitter_services)){
 				 
 		        $date1 = @$get_booking_requests_to_display['booknig_start_date'];
@@ -209,12 +207,10 @@ class MessageController extends AppController
 				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 				$total_days = $days;
 		
-			   //echo  @$get_booking_requests_to_display['guest_id_for_bookinig'];
 			   $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
 			   $guest_num = count($selectedGuest);
-			   //pr($get_booking_requests_to_display);die;
-			  
-		     if($get_booking_requests_to_display['required_service'] == 'boarding'){
+			 
+			 if($get_booking_requests_to_display['required_service'] == 'boarding'){
 				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
 				 $night_rate = $userData[0]->user_sitter_services[0]->sh_night_rate;
 				 
@@ -263,14 +259,10 @@ class MessageController extends AppController
 				
 				
 			}
-				
+				 //End sk
 				
 		}//END
-		       
-			 
-			// pr($get_booking_requests_to_display);die;
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
-		//$this->set('userData',$userData);
 		$this->set('total',$total);
 	}
 		
