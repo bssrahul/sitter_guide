@@ -2613,7 +2613,9 @@ function addPets(){
         
 	}
 	
-	
+	function thankYou(){
+		$this->viewBuilder()->layout('landing');  
+	}	
 	
     
 	
