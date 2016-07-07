@@ -26,12 +26,14 @@ p.successMessage {
     font-size: 12px !important;
     position: relative;
     top: 0px;
+    font-weight: 500 !important;
 }
 p.errorMessage {
     color: #DF1C2A;
    font-size: 12px !important;
     position: relative;
     top: 0px;
+    font-weight: 500 !important;
 }
 .success_msg{
     background: #4F9709 none repeat scroll 0 0;

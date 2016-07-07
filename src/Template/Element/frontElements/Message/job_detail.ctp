@@ -117,13 +117,9 @@
                         </div>
                       </div>
                     </div>
-                   <?php  if($get_booking_requests_to_display['user']['user_type'] == "Basic"){ ?>
+                   <?php  if(strtolower($userType) == "sitter"){ ?>
                     
-                     
-                     
-                      
-                   
-                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
+                     <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
 						
                       <p class="click-bok">Click 
                         <b>"Accept Offer"
@@ -136,12 +132,12 @@
                       </a>
                        </p>
 						
-						<button class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/sitter"; ?>'">
+						<button class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@base64_encode(convert_uuencode($get_booking_requests_to_display['id']))."/sitter"; ?>'">
 						  <i class="fa fa-check-circle-o">
 						  </i> Accept Offer
 						</button>
                     <?php }else if($get_booking_requests_to_display['folder_status_sitter'] == "current"){ ?>
-						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/sitter"; ?>'">
+						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button">
 						  <i class="fa fa-check-circle-o">
 						  </i> Offer Accepted
 						</button>
@@ -150,7 +146,8 @@
                     
                     <?php 
                     } ?>
-                     <?php  if($get_booking_requests_to_display['user']['user_type'] != "Basic"){ ?>
+                   
+                    <?php  if(strtolower($userType) == "basic"){ ?>
                     <p class="click-bok">Click 
                      
 						 
@@ -167,15 +164,15 @@
                         </u>
                       </a>
                     </p>
-                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "current" && $get_booking_requests_to_display['payment_status'] == "pending"){ ?>
+                    <?php if($get_booking_requests_to_display['folder_status_sitter'] == "current" && $get_booking_requests_to_display['payment_status'] == "Pending"){ ?>
 						
-						<button  class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
+						<button  class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@base64_encode(convert_uuencode($get_booking_requests_to_display['id']))."/guest"; ?>'">
 						  <i class="fa fa-check-circle-o">
 						  </i> Book It Now
 						</button>
                     <?php }else{ ?>
 						
-						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button" onclick="location.href='<?php echo HTTP_ROOT."booking/book-now/".@$sitter_id."/guest"; ?>'">
+						<button disabled class="btn  btn-lg bt-now12 btn-block" type="button">
 						  <i class="fa fa-check-circle-o">
 						  </i> Book It Now
 						</button>

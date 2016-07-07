@@ -971,7 +971,7 @@ Function for Front profile dashboard
 							    if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 									
 										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->phone,$msg_body);
+										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
 							    }	
 							unset($userData->id);
 							$this->set('userInfo', $userData);
@@ -987,7 +987,7 @@ Function for Front profile dashboard
 									 $userData = $usersModel->get($userId);
 									if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->phone,$msg_body);
+										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
 									 }
 									 
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
@@ -1014,7 +1014,7 @@ Function for Front profile dashboard
 							$userData = $usersModel->get($userId);
 							if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 								  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-									$this->genrateOtp($userData->phone,$msg_body);
+									$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
 							 }
 							return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 		                }else{
@@ -1032,7 +1032,7 @@ Function for Front profile dashboard
 							   if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 								  
 										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->phone,$msg_body);
+										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
 							    }		
 							unset($userData->id);
 							$this->set('userInfo', $userData);
@@ -1048,7 +1048,7 @@ Function for Front profile dashboard
 									if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 										
 										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->phone,$msg_body);
+										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
 							        }
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{
@@ -2625,7 +2625,9 @@ function addPets(){
         
 	}
 	
-	
+	function thankYou(){
+		$this->viewBuilder()->layout('landing');  
+	}	
 	
     
 	

@@ -285,6 +285,7 @@ class MessageController extends AppController
 				 //End sk
 				
 		}//END
+		 //pr($get_booking_requests_to_display);  die; 
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
 		$this->set('total',$total);
 	}

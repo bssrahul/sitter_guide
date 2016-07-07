@@ -150,7 +150,7 @@
 					}
 				});
 				
-		}, 5000);//END
+		}, 10000);//END
 			
 		
 	});// DOCUMENT READY END
