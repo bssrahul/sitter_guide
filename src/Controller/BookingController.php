@@ -1,4 +1,5 @@
 <?php 
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -94,8 +95,10 @@ class BookingController extends AppController
 		$session = $this->request->session();
 		
 		$UserCardsObj = $UserCardsModel->find('all',['conditions' => ['UserCards.user_id' =>$session->read('User.id')]]);
+		
 		$UserCardsPrefilledData = $UserCardsObj->first();
 		$this->set('UserCardsData',$UserCardsPrefilledData);
+		
 		if(isset($this->request->data['Booking']) && !empty($this->request->data['Booking'])){
 			//Check Valid data	
 			$error=$this->validate_card_detail($this->request->data);
@@ -117,7 +120,7 @@ class BookingController extends AppController
 				"number" => $this->request->data['Booking']['card_number'],
 				"exp_month" => str_replace(" ",'',$explodedDate[0]),
 				"exp_year" => "20".str_replace(" ",'',$explodedDate[1]),
-				"cvc" => $this->request->data['Booking']['cvv_code']  )));
+				"cvc" => $this->request->data['Booking']['cvv_code'])));
 				
 				$token = $t->id; //Token genrated by stripe
 				
@@ -337,10 +340,9 @@ class BookingController extends AppController
 	}
 		
 	function ccMasking($number, $maskingCharacter = 'X') {
-		return str_repeat($maskingCharacter, strlen($number) - 4) . substr($number, -4);
+		 return substr($number, 0, 4) . str_repeat($maskingCharacter, strlen($number) - 8) . substr($number, -4);
 	}
-	
-	
+		
 	/**Function for Validate SIGN UP
 	*/
 	function validate_personal_detail($data)
@@ -379,20 +381,38 @@ class BookingController extends AppController
 		
 		return $errors;
 	}
+	
 	//Function for book now
-	function bookNow($request_booking_id= null,$type = null){
+	function bookNow($request_booking_id= null,$type = 'guest'){
 		
 			$this->viewBuilder()->layout('landing');
 			$session = $this->request->session();
 			$BookingRequestsModel = TableRegistry::get('BookingRequests');
 		    $UsersModel = TableRegistry::get('Users');
 			
+			$this->set('statesArray',$this->displayStates());
+			
+			if($request_booking_id==null){
+				
+				if(isset($this->request->data) && !empty($this->request->data)){
+					
+					$request_booking_id = isset($this->request->data['Booking']['booking_id'])?$this->request->data['Booking']['booking_id']:'';
+				
+				}
+				
+			}
+			
 			$booking_id = convert_uudecode(base64_decode($request_booking_id));
+		
+		//CREATE STRIPE OBJECT
+		\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
+		
 		//GET BOOKING RECORDS FOR DISPLAY ON RIGHT HAND SIDE DIV
 		$get_booking_requests_to_display = array();
 		$total = 0;
 		$userType = $session->read('User.user_type');
 		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
+		
 		if(isset($booking_id) && $booking_id !=''){
 		       
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')
@@ -408,7 +428,7 @@ class BookingController extends AppController
 				if(!empty($get_booking_requests_to_display)){
 					
 					
-					//pr($get_user_communications_details);die;
+					//pr($get_booking_requests_to_display);die;
 				    //$this->sendMessages();
 				  if($type == "guest"){
 					  $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
@@ -539,7 +559,7 @@ class BookingController extends AppController
 		  }
 		}//END
 		
-		//pr($userData[0]);die;
+		//echo $total; die;
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
 		$this->set('total',$total);
 		
@@ -560,8 +580,406 @@ class BookingController extends AppController
 	    $servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
 		$this->set('servicesInfo',$servicesInfo);
 		
+		$UserData = $UsersModel->find('all')
+							   ->contain('UserCards')
+							   ->where(['Users.id' =>$session->read('User.id')])
+							   ->select(['Users.id','Users.first_name','Users.last_name','Users.zip','Users.city','Users.state','Users.country','Users.address','Users.address2','UserCards.card_number','UserCards.stripe_customer_id','UserCards.expiary_date','UserCards.card_holder_name'])
+							   ->hydrate(false)
+							   ->first();
+							 
+		$this->set('UserData',$UserData);					   
+		$cardData = array();
+		if(isset($UserData['user_card']) && !empty($UserData['user_card'])){
+			
+			
+			$cu = \Stripe\Customer::retrieve($UserData['user_card']['stripe_customer_id']);	
+			if(!empty($cu)){
+				$cardData['card_type'] = $cu->sources->data[0]->brand;//GET CARD TYPE
+				$cardData['exp_month'] = $cu->sources->data[0]->exp_month;//GET CARD TYPE
+				$cardData['exp_year'] = $cu->sources->data[0]->exp_year;//GET CARD TYPE
+				$cardData['last4'] = $cu->sources->data[0]->last4;//GET CARD TYPE
+				
+				
+			}
+		}
+		
+		//SET DATA IS POSTED OR NOT
+		if(isset($this->request->data) && !empty($this->request->data)){
+			
+			//Validate Data
+			$error=$this->validate_book_now($this->request->data);
+				
+			//CHECK THAT PAYMENT WILL CHARGE FROM SAVE CARD DETAILS OR NEW CARD
+			if(isset($this->request->data['payment_type']) && $this->request->data['payment_type']=='save_cards'){
+				
+				if(count($error) == 0)
+				{
+				
+					//CHECK STRIPE CUSTOMER ID EXISTS OR NOT ?
+					if(isset($UserData['user_card']['stripe_customer_id']) && !empty($UserData['user_card']['stripe_customer_id'])){
+					
+					
+						$customerId = $UserData['user_card']['stripe_customer_id'];
+						try {
+							$charge =  \Stripe\Charge::create(array(
+							  "amount"   => 1500, // $15.00 this time
+							  "currency" => "aud",
+							  "customer" => $customerId, // Previously stored, then retrieved
+							  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
+							  ));
+							  
+							 $charge_status = $charge->id; //Token genrated by stripe
+						
+							if (!isset($charge_status))
+							throw new Exception("The Stripe payment not processed correctly");
+							 
+							 if($charge_status !='') {
+								
+								$transactionData['Transactions']['stripe_transaction_id'] =  $charge_status;
+								$transactionData['Transactions']['user_id'] =  $session->read('User.id');
+								$transactionData['Transactions']['booking_id'] =  $get_booking_requests_to_display['id'];
+								$transactionData['Transactions']['amount'] =  $charge->amount;
+								$transactionData['Transactions']['currency'] =  $charge->currency;
+								$transactionData['Transactions']['status'] =  'paid';
+								$transactionData['Transactions']['description'] =  $charge->description;
+								$this->createTransaction($transactionData);
+							 }
+						}
+						catch (\Exception $e) {
+				
+							$error = $e->getMessage();
+							$errBody = $e->getJsonBody();
+							$errMsg = $e->getMessage();
+							
+							if($errBody['error']['code']=='card_declined') {
+								$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
+								$this->setErrorMessage($errMsg);
+							}else if($errBody['error']['code']=='invalid_expiry_year') {
+								$errMsg = 'Your card\'s expiration year is invalid.';
+								$this->setErrorMessage($errMsg);
+							}else{
+								$this->setErrorMessage($errMsg);
+							}
+							$this->set('errMsg',$errMsg);
+							$this->set('UserData',$this->request->data);
+						} 
+					}
+				}else{
+					$this->set('UserData',$this->request->data);
+					$this->set('formError',$error);
+				}
+			}else if(isset($this->request->data['payment_type']) && $this->request->data['payment_type']=='new_cards'){
+				
+				if(count($error) == 0)
+				{
+					try {
+						//Explod expiry date from slash
+						$explodedDate = explode("/",str_replace(" ",'',$this->request->data['Booking']['new_expiary_date']));
+										
+						//if provided card details are valid then genrate token id
+						$t = \Stripe\Token::create(array( "card" => array(
+						"number" => $this->request->data['Booking']['new_card_number'],
+						"exp_month" => str_replace(" ",'',$explodedDate[0]),
+						"exp_year" => "20".str_replace(" ",'',$explodedDate[1]),
+						"cvc" => $this->request->data['Booking']['new_cvv_code'])));
+						
+						$token = $t->id; //Token genrated by stripe
+						
+						if (!isset($token))
+							throw new Exception("The Stripe Token not generated correctly");
+								
+							//Check token id exists or not
+						if(isset($t->id) && $t->id !=''){
+							
+							if(isset($this->request->data['save_my_card']) && $this->request->data['save_my_card']=='save_my_card'){
+								
+								$UserCardsModel = TableRegistry::get('UserCardsModel'); 	
+								
+								//Create user description for create user on stripe
+								$user_description = ucwords($session->read('User.name'))."-".$session->read('User.id')." has been saved own card details for fast payment";
+						
+								// Create a Customer on stripe if user not exist in our database and stripe
+								$customer = \Stripe\Customer::create(array(
+								  "source" => $token,
+								   "email" => $session->read('User.email'),
+								  "description" => $user_description)
+								);		
+								
+								if (!isset($customer->id))	
+								throw new Exception("The Stripe customer not created correctly");
+									
+								if(isset($customer->id) && $customer->id !=''){
+									
+									$UserCardsSaveData = $UserCardsModel->newEntity();
+									
+									$UserCardsSaveData = $UserCardsModel->patchEntity($UserCardsSaveData, $this->request->data['Booking']);
+									
+									$UserCardsSaveData->stripe_customer_id = $customer->id;
+									
+									$UserCardsSaveData->user_id = $session->read('User.id');
+									
+									$UserCardsSaveData->expiary_date = $this->request->data['Booking']['new_expiary_date'];
+									
+									$UserCardsSaveData->cvv_code = $this->request->data['Booking']['new_cvv_code'];
+									
+									$UserCardsSaveData->card_number = $this->ccMasking(str_replace(" ",'',$this->request->data['Booking']['new_card_number'])); //Masking for card number
+									
+									//Save data into our database
+									if($UserCardsModel->save($UserCardsSaveData)){
+										
+										$UserData = $UsersModel->find('all')
+									   ->contain('UserCards')
+									   ->where(['Users.id' =>$session->read('User.id')])
+									   ->select(['UserCards.stripe_customer_id'])
+									   ->hydrate(false)
+									   ->first();
+									   
+										$customerId = $UserData['user_card']['stripe_customer_id'];
+										try {
+											$charge =  \Stripe\Charge::create(array(
+											  "amount"   => 1500, // $15.00 this time
+											  "currency" => "aud",
+											  "customer" => $customerId, // Previously stored, then retrieved
+											  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
+											  ));
+											  
+											 $charge_status = $charge->id; //Token genrated by stripe
+										
+											if (!isset($charge_status))
+											throw new Exception("The Stripe payment not processed correctly");
+											 
+											 if($charge_status !='') {
+												
+												$transactionData['Transactions']['stripe_transaction_id'] =  $charge_status;
+												$transactionData['Transactions']['user_id'] =  $session->read('User.id');
+												$transactionData['Transactions']['booking_id'] =  $get_booking_requests_to_display['id'];
+												$transactionData['Transactions']['amount'] =  $charge->amount;
+												$transactionData['Transactions']['currency'] =  $charge->currency;
+												$transactionData['Transactions']['status'] =  'paid';
+												$transactionData['Transactions']['description'] =  $charge->description;
+												$this->createTransaction($transactionData);
+											 }
+										}
+										catch (\Exception $e) {
+				
+											$error = $e->getMessage();
+											$errBody = $e->getJsonBody();
+											$errMsg = $e->getMessage();
+											
+											if($errBody['error']['code']=='card_declined') {
+												$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
+												$this->setErrorMessage($errMsg);
+											}else if($errBody['error']['code']=='invalid_expiry_year') {
+												$errMsg = 'Your card\'s expiration year is invalid.';
+												$this->setErrorMessage($errMsg);
+											}else{
+												$this->setErrorMessage($errMsg);
+											}
+											$this->set('errMsg',$errMsg);
+											$this->set('UserData',$this->request->data);
+										}
+									}
+								}
+							
+							}else{ /*INCASE USER DONT WANT TO SAVE HIS DETAILS AND PROCESS PAYMENT DIRECTLY*/
+								try{
+									
+									$direct_charge_status = \Stripe\Charge::create(array(
+									  "amount" => 1500,
+									  "currency" => "aud",
+									  "source" => $token, 
+									  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
+									));
+									$charge_status_id = $direct_charge_status->id; //Token genrated by stripe
+							
+									if(!isset($charge_status_id))
+									throw new Exception("The Stripe payment not processed correctly");
+									
+									 if($charge_status_id !='') {
+									
+										$transactionData['Transactions']['stripe_transaction_id'] =  $charge_status_id;
+										$transactionData['Transactions']['user_id'] =  $session->read('User.id');
+										$transactionData['Transactions']['booking_id'] =  $get_booking_requests_to_display['id'];
+										$transactionData['Transactions']['amount'] =  $direct_charge_status->amount;
+										$transactionData['Transactions']['currency'] =  $direct_charge_status->currency;
+										$transactionData['Transactions']['status'] =  'paid';
+										$transactionData['Transactions']['description'] =  $direct_charge_status->description;
+										$this->createTransaction($transactionData);
+										
+									 }
+								}
+								catch (\Exception $e) {
+				
+									$error = $e->getMessage();
+									$errBody = $e->getJsonBody();
+									$errMsg = $e->getMessage();
+									
+									if($errBody['error']['code']=='card_declined') {
+										$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
+										$this->setErrorMessage($errMsg);
+									}else if($errBody['error']['code']=='invalid_expiry_year') {
+										$errMsg = 'Your card\'s expiration year is invalid.';
+										$this->setErrorMessage($errMsg);
+									}else{
+										$this->setErrorMessage($errMsg);
+									}
+									$this->set('errMsg',$errMsg);
+									$this->set('UserData',$this->request->data);
+								}	 
+								
+							}
+							
+						}
+					}
+					catch (\Exception $e) {
+				
+							$error = $e->getMessage();
+							$errBody = $e->getJsonBody();
+							$errMsg = $e->getMessage();
+							
+							if($errBody['error']['code']=='card_declined') {
+								$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
+								$this->setErrorMessage($errMsg);
+							}else if($errBody['error']['code']=='invalid_expiry_year') {
+								$errMsg = 'Your card\'s expiration year is invalid.';
+								$this->setErrorMessage($errMsg);
+							}else{
+								$this->setErrorMessage($errMsg);
+							}
+							$this->set('errMsg',$errMsg);
+							$this->set('UserData',$this->request->data);
+						}
+				}else{
+					$this->set('UserData',$this->request->data);
+					$this->set('formError',$error);
+				}
+			}	
+		}
+		
+		$this->set('cardData',$cardData);					   
+		
 	}
 	
+	function createTransaction($bookingdata){
+		
+		$TransactionsModel = TableRegistry::get('Transactions');
+		$TransactionData = $TransactionsModel->newEntity();
+		$TransactionData = $TransactionsModel->patchEntity($TransactionData, $bookingdata);
+		
+		if($TransactionsModel->save($TransactionData)){
+			
+			$BookingRequestsModel = TableRegistry::get('BookingRequests');
+			
+			$BookingRequestsData = $BookingRequestsModel->newEntity();
+			
+			$BookingRequestsData->id = $bookingdata['Transactions']['booking_id'];
+			
+			$BookingRequestsData->folder_status_guest = 'current';
+			
+			$BookingRequestsData->payment_status = 'Paid';
+			
+			$BookingRequestsModel->save($BookingRequestsData);
+			
+			$this->setSuccessMessage($this->stringTranslate(base64_encode("Payment recieved successfully")));
+			
+			return $this->redirect(['controller' => 'Dashboard', 'action' => 'thank-you']);
+			
+		}
+		
+	}
+		
+	/**Function for Validate SIGN UP
+	*/
+	function validate_book_now($data)
+	{
+		//pr($data);
+		$errors=array();
+		//Validation for first name
+		if(trim(@$data['Booking']['card_holder_name'])=='')
+		{
+			$errors['card_holder_name'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}else{
+			if(is_numeric($data['Booking']['card_holder_name'])){
+				$errors['card_holder_name'][]= $this->stringTranslate(base64_encode("Card holder name should be alphabatic"))."\n";
+			}
+		}
+		
+		//Validation for first name
+		if(trim(@$data['Booking']['cvv_code'])=='')
+		{
+			$errors['cvv_code'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}else{
+			if(!is_numeric($data['Booking']['cvv_code'])){
+				$errors['cvv_code'][]= $this->stringTranslate(base64_encode("CVV should be numeric"))."\n";
+			}
+		}
+		
+		//Validation for first name
+		if(trim(@$data['Booking']['expiary_date'])=='')
+		{
+			$errors['expiary_date'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for address 1
+		if(trim(@$data['Booking']['address_1'])=='')
+		{
+			$errors['address_1'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for address 2
+		if(trim(@$data['Booking']['address_2'])=='')
+		{
+			$errors['address_2'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for city
+		if(trim(@$data['Booking']['city'])=='')
+		{
+			$errors['city'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for city
+		if(trim(@$data['Booking']['country'])=='')
+		{
+			$errors['country'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for first name
+		if(trim(@$data['Booking']['zip'])=='')
+		{
+			$errors['zip'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}else{
+			if(!is_numeric($data['Booking']['zip'])){
+				$errors['zip'][]= $this->stringTranslate(base64_encode("Zip code should be numeric"))."\n";
+			}
+		}
+		
+		
+		//Validation for first name
+		if(trim(@$data['Booking']['new_cvv_code'])=='')
+		{
+			$errors['new_cvv_code'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}else{
+			if(!is_numeric($data['Booking']['new_cvv_code'])){
+				$errors['new_cvv_code'][]= $this->stringTranslate(base64_encode("CVV should be numeric"))."\n";
+			}
+		}
+		
+		//Validation for first name
+		if(trim(@$data['Booking']['new_expiary_date'])=='')
+		{
+			$errors['new_expiary_date'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+		
+		//Validation for first name
+		if(trim(@$data['Booking']['new_card_number'])=='')
+		{
+			$errors['new_card_number'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		}
+			
+		return $errors;
+	}	
+
 
 }
 ?>
