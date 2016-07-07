@@ -1,3 +1,7 @@
+<?php       
+      $session = $this->request->session();
+	  $userType = $session->read("User.user_type");
+?>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
           <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
@@ -169,27 +173,7 @@
                         </div>
                       </div>
                     </div>
-                    
                   </div>
-                  
-                  <!--<ul  style="width:100% float:left; list-style:none;">
-  <li style="width:50%; float:left;" ><i class="fa fa-circle-o color-blue"></i>  &nbsp;Revenue for year 2015
-  
-  </li>
-  
-  <li style="width:50%; float:left;"><i class="fa fa-circle-o color-blue"></i>  &nbsp;Revenue for year 2015
-  
-  </li>
-  
-  <li style="width:50%; float:left;"><i class="fa fa-circle-o color-blue"></i>  &nbsp;Revenue for year 2015
-  
-  </li>
-  
-  <li style="width:50%; float:left;" ><i class="fa fa-circle-o color-blue"></i>  &nbsp;Revenue for year 2015
-  
-  </li>
-  </ul>-->
-                  
                   <div class="row progress-helpers">
                     <div class="col-xs-12 col-sm-6">
                       <p ><i class="fa fa-circle-o color-blue overnight-color"></i> &nbsp;Boarding Stay</p>
@@ -237,41 +221,26 @@
                         <div class="down-icon"></div>
                       </div>
                     </li>
-                    <!--<li><a href="#"><div class="cancel-icon"></div></a></li>-->
-                    
                   </ul>
                 </div>
               </div>
               <div  id="event1" class="below-second-box collapse in" aria-expanded="true">
                 <div class="">
-					 <!--<img src="<?php echo HTTP_ROOT; ?>img/calender-big2.png" class="img-responsive" style="width:100%; height:335px;" alt="calender"> -->
-					 
-					  <div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?>
+					 <div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?>
 					  </div>
 					 
 					 </div>
 		   <!--Start -->
 		   <?php if(!empty($booking_requests_info)){ ?>
 		     <div id="myCarousel-detail" class="carousel slide" data-ride="carousel">
-						  <!-- Indicators -->
-						<!--  <ol class="carousel-indicators">
-							<li data-target="#myCarousel-detail" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel-detail" data-slide-to="1"></li>
-							<li data-target="#myCarousel-detail" data-slide-to="2"></li>
-							<li data-target="#myCarousel-detail" data-slide-to="3"></li>
-						  </ol>-->
-
 						  <!-- Wrapper for slides -->
-			
-						  <div class="carousel-inner" role="listbox">
+			              <div class="carousel-inner" role="listbox">
 							      <?php
 							       $k = "active";
 							      $sount = count($booking_requests_info);
 							      foreach($booking_requests_info as $booking_request){ 
-									   //pr($booking_request);
 									   ?>
-									   
-										<div class="padd-left-15 padd-right-15 border-top item <?php echo @$k; ?>">
+									   <div class="padd-left-15 padd-right-15 border-top item <?php echo @$k; ?>">
 										  <div class="row calender-widget">
 											<div class="col-md-6 col-sm-6 col-xs-6">
 											  <h4><span><img class="img-circle" src="<?php echo HTTP_ROOT.'img/uploads/'.(@$booking_request['user']['image'] != ''?@$booking_request['user']['image']:'dm.png'); ?>" width="27" height="27" alt="user-pic"></span> <?php echo $booking_request['user']['first_name']." ".$booking_request['user']['last_name']; ?></h4>
@@ -461,47 +430,73 @@
           <div class="profile-status-wrapper">
           <h3>Profile Status<i class=" fa fa-question-circle topicon-ques" data-toggle="tooltip" data-placement="bottom" title="Profile @ Sitters"></i></h3>
           <div class="row">
+			  <?php if($userType == "Sitter"){ 
+				   $session->write("profile","Sitter");
+				   
+				  ?>
 			   <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
                   <ul class="list-inline blue-wrap wid100">
                   <li class="wid10"><div class="blue40"><?php echo $profile_percentage['User']."%"; ?></div></li>
                     <li class="wid80"><input type="text" class="form-control" placeholder="General Profile"></li>
-                       <li class="wid10"><a href="#"  data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+                       <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['User'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
                   </ul>
-                  
-                    
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
                   <ul class="list-inline blue-wrap wid100">
                   <li class="wid10"><div class="blue40-1"><?php echo $profile_percentage['House']."%"; ?></div></li>
                     <li class="wid80"><input type="text" class="form-control" placeholder="Sitter House"></li>
-                       <li class="wid10"><a href="#"  data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+                       <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/house'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['House'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
                   </ul>
-                  
-                    
                   </div>
-                  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
+                  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12">
                   <ul class="list-inline blue-wrap wid100">
                   <li class="wid10"><div class="blue40-2"><?php echo $profile_percentage['AboutSitter']."%"; ?></div></li>
                     <li class="wid80"><input type="text" class="form-control" placeholder="About Sitter"></li>
-                       <li class="wid10"><a href="#"  data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+                       <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['AboutSitter'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
                   </ul>
-                  
-                    
                   </div>
-                  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
+                  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12">
                   <ul class="list-inline blue-wrap wid100">
                   <li class="wid10"><div class="blue40-3"><?php echo $profile_percentage['skillsAndAccreditationDetails']."%"; ?></div></li>
                     <li class="wid80"><input type="text" class="form-control" placeholder="Skills & Accriditation"></li>
-                       <li class="wid10"><a href="#"  data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+                       <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['skillsAndAccreditationDetails'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
                   </ul>
                   </div>
-                  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
+                  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12">
                   <ul class="list-inline blue-wrap wid100">
-                  <li class="wid10"><div class="blue40-4"><?php echo $profile_percentage['servicesAndRates']."%"; ?></div></li>
+					<li class="wid10"><div class="blue40-4"><?php echo $profile_percentage['servicesAndRates']."%"; ?></div></li>
                     <li class="wid80"><input type="text" class="form-control" placeholder="Services & Rates"></li>
-                        <li class="wid10"><a href="#"  data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+                        <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates'; ?>"  data-toggle="tooltip" data-placement="bottom" 
+                        title="<?php echo $profile_percentage['servicesAndRates'] == 100?'Edit your profile':'Complete your profile'; ?>
+                       " type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
                   </ul>
                   </div>  
+                  <?php }else{ 
+					  
+					  $session->write("profile","Guest");
+					  ?>
+				      <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
+						  <ul class="list-inline blue-wrap wid100">
+						  <li class="wid10"><div class="blue40"><?php echo $profile_percentage['User']."%"; ?></div></li>
+							<li class="wid80"><input type="text" class="form-control" placeholder="General Profile"></li>
+							   <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['User'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+						  </ul>
+					 </div>
+					 <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12 ">
+						  <ul class="list-inline blue-wrap wid100">
+						  <li class="wid10"><div class="blue40-1"><?php echo $profile_percentage['House']."%"; ?></div></li>
+							<li class="wid80"><input type="text" class="form-control" placeholder="Sitter House"></li>
+							   <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/house'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['House'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+						  </ul>
+					  </div>
+					  <div class="col-sm-12 col-md-6 col-lg-4 col-xs-12">
+					  <ul class="list-inline blue-wrap wid100">
+					  <li class="wid10"><div class="blue40-2"><?php echo $profile_percentage['AboutSitter']."%"; ?></div></li>
+						<li class="wid80"><input type="text" class="form-control" placeholder="About Sitter"></li>
+						   <li class="wid10"><a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['AboutSitter'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit"><div class="question"><i class=" fa fa-question-circle icon-question"></i></div></a></li>
+					  </ul>
+					  </div>
+				  <?php } ?>
                 </div>
           </div>
           </div>

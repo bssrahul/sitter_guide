@@ -391,8 +391,8 @@ class BookingController extends AppController
 		//GET BOOKING RECORDS FOR DISPLAY ON RIGHT HAND SIDE DIV
 		$get_booking_requests_to_display = array();
 		$total = 0;
-		$userType = $session->read('User.user_type');
-		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
+		//$userType = $session->read('User.user_type');
+		//$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
 		if(isset($booking_id) && $booking_id !=''){
 		       
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')

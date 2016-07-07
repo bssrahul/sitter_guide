@@ -11,7 +11,7 @@
 <!--[Banner Area Start]-->
                 <?php
 					$session = $this->request->session();
-					$cuntry_currency = $session->read("currency.currency");
+				    $cuntry_currency = $session->read("currency.currency");
 					$cuntry_price = $session->read("currency.price");
 					$cuntry_sign_code = $session->read("currency.sign_code");
                             
@@ -19,7 +19,7 @@
 				   @$sh_night_rate = @$userData->user_sitter_services[0]->sh_night_rate != ''?@$userData->user_sitter_services[0]->sh_night_rate:0;
 				   @$gh_day_rate = @$userData->user_sitter_services[0]->gh_day_rate != ''?@$userData->user_sitter_services[0]->gh_day_rate:0;
 				   @$gh_night_rate = @$userData->user_sitter_services[0]->gh_night_rate != ''?@$userData->user_sitter_services[0]->gh_night_rate:0;
-                         ?>
+                ?>
 <div class="saerch-s-det">
   <section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
     <div class="container">
@@ -41,7 +41,7 @@
               <div class="badage-detail">
                 <ul class="list-inline text-center">
 					
-				  <?php if(($userData['users_badge'])!= ""){
+				  <?php  if(($userData['users_badge'])!= ""){
 							
 							if($userData['users_badge']->dl_pcb_badge){?>
 								
@@ -280,7 +280,7 @@
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
-                                                        <button class="btn btn-cont before-booking-request" data-toggle="modal" data-target="#myModal79">Book Now
+                                                        <button class="btn btn-cont before-booking-request check-user" data-toggle="modal" data-target="#myModal79">Book Now
                                                         </button>
                                                       </div>
                                                       </div>
@@ -2024,8 +2024,8 @@ $check_in=$UserRating->check_in_rating;
 														  </li>
 														</ul>
 														<div class="guest-list"> 
-														  <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
-														  </a> 
+														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
+														     </a> 
 														</div>
 													  </div>
 													  <!--/Service list--> 
@@ -2661,6 +2661,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
   echo $this->Html->css(['Front/jquery-ui.css']); 
   echo $this->Html->script(['Front/jquery-ui.js']);
 ?>
+
+
 <div class="modal fade" id="myModal79" role="dialog">
   <div class="modal-dialog">
     <div class="sitter-quike-view">
@@ -3064,7 +3066,15 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 <input id="total_days" type="hidden" value="">
 <input id="start_date" type="hidden" value="">
 <input id="end_date" type="hidden" value="">
-
+<!--<div class="error_msg navbar navbar-custom show-user-type-error" role="navigation" style="display: none;">
+	<div class="drawer-navbar" role="banner">
+		<div class="response_msg_container drawer-container">
+			<span><i class="fa fa-check-square"></i> 
+                   <span class="addUserTypeError">You have already sitter,Please try from</span>
+            </span>
+		</div>
+	</div>
+</div>-->
 <!--Additional Services Popup--> 
 <script>
 	//Profile report
@@ -3077,6 +3087,12 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				}
 			}).submit();
 	  });*/
+	/*$('.check-user-type').on('click', function(){
+	     $('.show-user-type-error').show();
+	}); */
+	  
+														    
+	  
     //SCRIPT FOR ADD DATEPICKER
     $(document).ready(function() {
 		

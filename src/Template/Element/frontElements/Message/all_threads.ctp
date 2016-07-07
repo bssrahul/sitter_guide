@@ -1,5 +1,4 @@
-
-	<?php
+<?php
 	if(!empty($get_requests)){
 		foreach($get_requests as $req_data){
 		$req_id = $req_data['id'];
@@ -10,17 +9,12 @@
 		
 		}else{
 			$activeClass = 'active-book';
-		
 		}
-		
 		if(isset($req_data['read_status']) && ($req_data['read_status'] =='unread' && $req_data['read_status_posted_by'] !=$userType)){
-		
-			$badges ='<div class="new-badge">NEW</div>';
+		    $badges ='<div class="new-badge">NEW</div>';
 			$activeClass = 'active-book';
-		
 		}else{
-		
-			$badges ='';
+		    $badges ='';
 			$activeClass = '';
 		}
 	?>
@@ -30,8 +24,7 @@
 		<div class="book-now-img ">
 		  
 		  <?php if(($req_data['user']['facebook_id']) !="" && ($req_data['user']['is_image_uploaded'])==0){ ?>
-			  
-				<img 
+			     <img 
 					class="img-responsive img-circle text-center center-block" 
 					alt="<?php echo __('Profile Picture'); ?>" 
 					src="<?php if($req_data['user']['image'] != ""){echo $req_data['user']['image'];}else{echo $req_data['user']['image']='prof_photo.png';} ?>"> 

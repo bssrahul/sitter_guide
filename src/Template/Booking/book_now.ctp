@@ -191,31 +191,19 @@
               <li><i class="fa fa-angle-right right-gr"></i>Money Back</li>
               <li><i class="fa fa-angle-right right-gr"></i>24/support</li>
               <li><i class="fa fa-angle-right right-gr"></i>Daily Photo Update</li>
-          
               </ul>
-              
-              
               </div>
-              
             </div>
           </div>
-          
-          
-          
-          
         </div>
-        
         <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        
         <button class="btn btn-mod-pop-1">Book Now</button>
         </div>
-        
         </div>
       </div>
     </div>
     </div>
-    
     </div>
     </section>     
     <!-- Get in Touch ends-->  

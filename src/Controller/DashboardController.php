@@ -852,8 +852,7 @@ Function for Front profile dashboard
 				}else{
 					$this->set('profileStatus','');
 				}
-				 $session->write('User.user_type',$userData[0]->user_type);
-				
+				$session->write('User.user_type',$userData[0]->user_type);
 				
 				$userInfo =	array();
 				$refer_code = substr($userData[0]->email, 0, strpos($userData[0]->email, '@'));
@@ -947,6 +946,7 @@ Function for Front profile dashboard
 		
 		if(isset($this->request->data['Users']) && !empty($this->request->data['Users']))
 		{       
+			//pr($this->request->data['Users']);die;
 		  	if(isset($this->request->data['Usersp']['current_password']) && !empty($this->request->data['Usersp']['current_password'])){
 			
 				if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response']))
@@ -1009,6 +1009,7 @@ Function for Front profile dashboard
                      $userData = $usersModel->newEntity();
 		                $userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 		                $userData->id = $userId;
+		                
 		                if ($usersModel->save($userData)) {
 							$userData = $usersModel->get($userId);
 							if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
@@ -1236,22 +1237,30 @@ Function for Front profile dashboard
         $aboutSittersModel = TableRegistry::get('UserAboutSitters');
         $this->request->data = @$_REQUEST;
 
-		if(isset($this->request->data['UserAboutSitters']))
+		if(isset($this->request->data['UserAboutSitters']) && !empty($this->request->data['UserAboutSitters']))
 		{
 			$aboutSitterData = $aboutSittersModel->newEntity();
-
-            if(!empty($this->request->data['UserAboutSitters']['sh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['sh_pet_sizes'][0])){
-	              $petSizeArr = $this->request->data['UserAboutSitters']['sh_pet_sizes'];
-	              $aboutSitterData->sh_pet_sizes = $this->request->data['UserAboutSitters']['sh_pet_sizes'] = implode(",",$petSizeArr);
-	        }
-	        if(!empty($this->request->data['UserAboutSitters']['gh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['gh_pet_sizes'][0])){
-	              $petSizeArr = $this->request->data['UserAboutSitters']['gh_pet_sizes'];
-	             $aboutSitterData->gh_pet_sizes = $this->request->data['UserAboutSitters']['gh_pet_sizes'] = implode(",",$petSizeArr);
-	        }
+           //pr($this->request->data['UserAboutSitters']);die;
+            
+           // if(!empty($this->request->data['UserAboutSitters']['sh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['sh_pet_sizes'])){
+           
+				
+		  //$petSizeArr = $this->request->data['UserAboutSitters']['sh_pet_sizes'];
+		  //$aboutSitterData->sh_pet_sizes = $this->request->data['UserAboutSitters']['sh_pet_sizes'] = implode(",",$petSizeArr);
+	       // }
+	       // if(!empty($this->request->data['UserAboutSitters']['gh_pet_sizes']) || isset($this->request->data['UserAboutSitters']['gh_pet_sizes'])){
+	              //$petSizeArr = $this->request->data['UserAboutSitters']['gh_pet_sizes'];
+	             //$aboutSitterData->gh_pet_sizes = $this->request->data['UserAboutSitters']['gh_pet_sizes'] = implode(",",$petSizeArr);
+	        //}
 		     $aboutSitterData = $aboutSittersModel->patchEntity($aboutSitterData, $this->request->data['UserAboutSitters'],['validate'=>true]);
             $aboutSitterData->user_id = $userId;
+            $aboutSitterData->sh_pet_sizes = str_replace(' ','',$this->request->data['UserAboutSitters']['sh_pet_sizes']);
+			$aboutSitterData->gh_pet_sizes = str_replace(' ','',$this->request->data['UserAboutSitters']['gh_pet_sizes']);
+			$aboutSitterData->sh_pet = str_replace(' ','',$this->request->data['UserAboutSitters']['sh_pet']);
+			$aboutSitterData->gh_pet = str_replace(' ','',$this->request->data['UserAboutSitters']['gh_pet']);
+                //pr($aboutSitterData);die;
 			  if ($aboutSittersModel->save($aboutSitterData)){
-
+                       //pr($aboutSitterData);die;
                       return $this->redirect(['controller'=>'dashboard','action'=>'professional-accreditations']);
 				}else{
 
@@ -1334,7 +1343,6 @@ function aboutGuest(){
 					$petGalleryModel->deleteAll(['UserPetGalleries.user_id'=>$userId]);
 					
 					foreach($this->request->data['UserPets'] as $key=>$single_guest){
-						
 						    $guest_age = array($single_guest['guest_years'],$single_guest['guest_months']);
 							if(!empty($guest_age)){
 							$guest_age = implode(",",$guest_age);
@@ -1364,7 +1372,11 @@ function aboutGuest(){
 											 }
 										 }
 				}
-				return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+				if($session->read("profile") == "Guest"){
+				     return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
+			    }else{
+				     return $this->redirect(['controller'=>'dashboard','action'=>'about-sitter']);
+				}
 		}else{
 			         $session->write("UserPets",'');
 					 $userPetsData = $usersModel->get($userId,['contain'=>['UserPets'=>['UserPetGalleries']]]);

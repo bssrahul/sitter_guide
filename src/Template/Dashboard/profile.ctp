@@ -360,8 +360,18 @@
 								</div>
 								
 								<div class="col-lg-5">
-								
-								   <img  class="img-responsive height125"  src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>" class=" img-responsive" alt="upload-photo">
+								    <?php 
+								   if($user['image'] != ""){
+										 if (file_exists(WEBROOT_PATH.'img/uploads/'.$user['image'])){
+											   $profile_path = HTTP_ROOT.'img/uploads/'.$user['image']; 
+										  }else{
+											    $profile_path = HTTP_ROOT.'img/uploads/prof_photo.png';
+										  }
+								    }else{
+									        $profile_path = HTTP_ROOT.'img/uploads/prof_photo.png';
+									}
+								    ?> 
+								   <img  class="img-responsive height125"  src="<?php echo $profile_path; ?>" class=" img-responsive" alt="upload-photo">
 								   
 									<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?></button>
 								</div>
@@ -391,7 +401,11 @@
 
 								<?php 
 									if(@$userInfo->profile_banner != ''){
-										$pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
+										  if (file_exists(WEBROOT_PATH.'img/uploads/'.@$userInfo->profile_banner)) {
+												$pathBanner = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_banner; 
+										  }else{
+											    $pathBanner = HTTP_ROOT.'img/img.png';
+										  }
 									}else{
 										$pathBanner = HTTP_ROOT.'img/img.png'; 
 									}
@@ -435,11 +449,16 @@
 					
 				
                       <?php if(@$userInfo->profile_video != ''){
-                           $video_path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
+                          
+                          if (file_exists(WEBROOT_PATH.'files/video/'.@$userInfo->profile_video)) {
+                                $video_path = HTTP_ROOT.'files/video/'.@$userInfo->profile_video; 
+                          }else{
+							  $video_path = HTTP_ROOT.'files/video/dm_video.png';
+						  }
                       }else{
-                           $video_path = HTTP_ROOT.'files/video/pdm.mp4';
+                          $video_path = HTTP_ROOT.'files/video/dm_video.png';
                       }
-                      
+                      //echo $video_path;
                      ?>
                     <iframe id="preview-profile-video" src="<?php echo @$video_path; ?>" allowfullscreen>
                     </iframe>
@@ -474,9 +493,15 @@
             <div class="col-lg-5">
               <span class="videoBanner">&nbsp;</span>
 				  <?php if(@$userInfo->profile_video_image != ''){
-						  $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
+						  
+						  
+						   if (file_exists(WEBROOT_PATH.'img/uploads/'.@$userInfo->profile_video_image)) {
+                                $pathVideoImg = HTTP_ROOT.'img/uploads/'.@$userInfo->profile_video_image; 
+                          }else{
+							    $pathVideoImg = HTTP_ROOT.'img/img.png'; 
+						  }
 					}else{
-						 $pathVideoImg = HTTP_ROOT.'img/deta-video.png'; 
+						 $pathVideoImg = HTTP_ROOT.'img/img.png'; 
 					}
 				 
 					?>

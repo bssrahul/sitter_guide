@@ -544,7 +544,7 @@
 				"Subscribes[email]":
 				{
 					required : "This field is required",
-					email: 'Kindly use valid email address',
+					email: 'Kindly use valid email address'
 					//remote: "Email id already subscribed."
 					
 				}
@@ -702,13 +702,13 @@
 				},
 				"Users[emergency_email]":
 				{
-					required : true
-					
+					required : true,
+					email: true
 				},
 				"Users[emergency_contacts]":
 				{
-					required : true
-					
+					required : true,
+					number:true
 				},
 				"Users[password]":
 				{
@@ -780,9 +780,15 @@
 					required : "This field is required"
 
 				},
+				"Users[emergency_email]":
+				{
+					required : "This field is required",
+					email: 'Kindly use valid email address'
+				},
 				"Users[emergency_contacts]":
 				{
-					required : "This field is required"
+					required : "This field is required",
+					number:"Contact number should be numerical"
 					
 				},
                 "Users[password]":
