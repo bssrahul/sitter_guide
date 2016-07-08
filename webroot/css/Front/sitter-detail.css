@@ -3,7 +3,7 @@
 
 
 
-#payment-box { margin:50px 0 0 0; width:100%; float:left; margin:150px 0 0 0;}
+#payment-box { width:100%; float:left; margin:100px 0 50px 0;}
 
 #payment-box .full-content-wrap .best-pract-wrap { background:#ecf7ff;}
 #payment-box .full-content-wrap .best-pract-head { background:#59aae1; margin-top:20px; }
@@ -29,8 +29,9 @@
 #payment-box .full-content-wrap .payment-info-wrap .payment-info-head p { color:#404040; font-size:14px; margin-bottom:0px; padding:10px 10px; }
 #payment-box .full-content-wrap .payment-info-wrap .payment-info-inner { padding:20px;}
 
-#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card {padding-top:15px;}
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card {padding-top:0px;}
 #payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .pl20 {padding-left:15px;}
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card label{ padding:0px 0 0 20px;}
 
 #payment-box  .pet-info-wrap.alert {border-radius: 0px; margin-bottom: 0px; padding: 0px;}
 
@@ -165,20 +166,17 @@ ul.care-list { list-style-type: none; margin: 15px 0 0; padding: 0;}
 ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 
 /*Profile Right css ends here*/
+
 .spad-top {padding-top:20px;}
 
 .report1 {color: #888;text-align:center; font-size: 13px; font-weight: 500; margin-bottom: 0;padding-bottom: 7px; padding-top: 30px;}
 .report1 a { color: #888; outline:none; text-decoration:none; }
 .report1 a:hover { color: #de5921; outline:none; text-decoration:none; }
 .report1 a:focus { color: #de5921; outline:none; text-decoration:none; }
-
 .report1 i{ border:1px solid #888;display: inline-block;border-radius: 50px; padding:1px 3px 2px 2px; font-size:10px}
-
 .report1 a:hover i{isplay: inline-block;border:1px solid #de5921; border-radius: 50px; padding:1px 3px 1px 2px; font-size:10px}
-
 .report1 a:focus i{ display: inline-block;  border-radius: 50px; box-shadow: 0px 0px 2px #de5921 !important; padding:1px 3px 1px 2px; font-size:10px}
 .banner-offer {border:1px solid #d4d4d4; padding:10px; margin-top:40px;}
-
 .reson-pad {padding-top:30px; margin-bottom:0px; padding-bottom:7px;}
 .bt-pad {margin-top:15px;}
 .insur {font-size:20px; font-weight:500; color:#fff; padding:25px 15px; background:url(../../img/s-trust1.png) no-repeat; background-position:left; }
@@ -213,6 +211,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .banner-sitter-detail .banner-info-wrapper .additional a {font-size:18px; color:#6eb6ff !important; text-align:center; font-weight:400; padding-top:7px;}
 .banner-sitter-detail .banner-info-wrapper .btn-cont {background-color:#72a105; color:#fff;  border-radius: 50%;  -moz-border-radius: 50%;   -webkit-border-radius: 50%; text-align:center; font-size:21px; font-weight:500; padding:8px 20px; /*margin-top:15px;*/ outline:none;}
 .banner-sitter-detail .banner-info-wrapper .xs-padt10 {padding-top:0px;}
+
 
 /*Banner inner pages ends*/
 

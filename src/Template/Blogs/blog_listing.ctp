@@ -1,14 +1,4 @@
-<?php 
-	function limit_text($text, $limit) {
-	  if (str_word_count($text, 0) > $limit) {
-		  $words = str_word_count($text, 2);
-		  $pos = array_keys($words);
-		  $text = substr($text, 0, $pos[$limit]) . '...';
-	  }
-	  return $text;
-	}
 
-	?>
 <section class="sev-type">
 	<div class="container">
 		<h4><?php echo $heading; ?></h4>
@@ -69,7 +59,18 @@
 										  </ul>
 										</div>
 										
-										<p><?php echo limit_text($blogs['description'],20); ?> </p> 
+										
+										<p><?php 
+												$text = $blogs['description']; 
+												$limit = 20; 
+												if(str_word_count($text, 0) > $limit)
+												{ 
+													$words = str_word_count($text, 2); 
+													$pos = array_keys($words); 
+													echo $text = substr($text, 0, $pos[$limit]) . '...';
+												}    
+											?> 
+										</p>    
 										<p> 
 										  <a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($blogs['id'])); ?>">[ Continue... ]
 										  </a>

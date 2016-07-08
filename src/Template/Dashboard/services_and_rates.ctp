@@ -29,7 +29,7 @@
 						?>
 					<div class="row">
                   
-						<div class="col-md-4">
+						<div class="col-lg-4 col-md-6">
 							<p><b><?php echo $this->requestAction('app/get-translate/'.base64_encode('Will you accept last minute')); ?></b></p>
 									<div class="row">
 										<div class="col-lg-8 col-md-9 col-xs-8 col-lg-offset-1 mt10 ">
@@ -52,7 +52,7 @@
 											</div>
 										</div>
 									</div>
-							<div class="row">
+							     <div class="row">
 								<div class="col-lg-8 col-md-9 col-xs-8 col-lg-offset-1 mt10 ">
 									<b><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking')); ?></b><small class="color-green-text"> (<?php echo $this->requestAction('app/get-translate/'.base64_encode('Under 24 hours')); ?> ) </small></div> 
 									<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
@@ -71,18 +71,24 @@
 									</div>
 							</div>
                      </div>
-                  
+                     
                   </div>
                   
                   
                   
                   <h3></h3>
-				<div class="row">
-					<div class="form-group col-lg-4 col-md-12">
-							<div class="row"><div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22">
-								<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitting at Sitter House')); ?> 
-								</h2></div> 
-									<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
+                 
+                
+                <!--Rate Drop Content Start-->
+                <div class="rate-drop-area">
+                	<!--drop head-->
+                	<div class="row">
+                    	<div class="col-lg-4 col-md-10 col-sm-10 col-xs-12">
+                        	<div class="row">
+                            <div class="col-lg-9 col-md-9 col-xs-8">
+                            <h2 class="f22"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitting at Sitter House')); ?> </h2>
+                             </div> 
+							<div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
 											<div class="chek-main-lat">
 												<div class="onoffswitch">
 													  <?php 
@@ -97,15 +103,21 @@
 											</div>
 									</div>
 							</div>
-					</div>
+                            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for when you have guests at your house service loads for non-standard services')); ?> </p>
+                        </div>
+                        <div class="col-lg-8 col-md-2 col-sm-2 col-xs-12">
+                        	<div class="drop-arrow">
+	                        	<a data-toggle="collapse" href="#collapse1"><img src="<?php echo HTTP_ROOT; ?>img/rate-down-arrow.png" id="changer" onclick="changeImage(this)" ></a>
+                            </div>    
+
+                        </div>
+                    </div>                	
+                    <!--drop head end-->
+                    <div id="collapse1" class="collapse drop-cont">
+                    	     
+				<div class="row form-group">
+				
  
-				<div class="form-group col-lg-4 col-md-12">
- 
-						<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for when you have guests at your house service loads for non-standard services')); ?> </p>
-				</div>
- 
-				<div class="form-group col-lg-4">
-					<div class="row">
 						<div class="col-lg-4">  
 							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?>  <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							  <?php 
@@ -141,9 +153,8 @@
                               ]);
                            ?>
                         </div>
-					</div>
-				</div>
-			</div>
+					
+			   </div>
 
 
 			<div class="row">
@@ -687,12 +698,23 @@
                 </div>
                       
             </div>
+                       
 		</div>
+                    </div>
+                </div>   
+                <!--Rate Drop Content End-->   
+              
+         
 		<h3></h3>
+        
 		<div class="clearfix"></div>
-       <div class="row">
-			<div class="form-group col-lg-4 col-md-12">
-					<div class="row">
+        
+        <!--Rate Drop Content Start-->
+        	<div class="rate-drop-area">
+            	<!--drop head-->
+            	<div class="row">
+                	<div class="col-lg-4 col-md-10 col-sm-10 col-xs-12">
+                    	<div class="row">
 						<div class="col-lg-9 col-md-9 col-xs-8">
 							<h2 class="f22"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitting at Guests House')); ?></h2>
 						</div> 
@@ -710,14 +732,18 @@
 							</div>
                         </div>
                     </div>
-			</div>
- 
-			 <div class="form-group col-lg-4 col-md-12">
-			 	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for when you have guests at your house service loads for non-standard services')); ?></p>
-			 </div>
- 
-			<div class="form-group col-lg-4">
-				<div class="row">
+                    	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for when you have guests at your house service loads for non-standard services')); ?></p>
+                    </div>
+                    <div class="col-lg-8 col-md-2 col-sm-2 col-xs-12">
+                    	<div class="drop-arrow">
+	                        		                        	<a data-toggle="collapse" href="#collapse2"><img src="<?php echo HTTP_ROOT; ?>img/rate-down-arrow.png" id="changer2" onclick="changeImage(this)" ></a>
+                            </div> 
+                    </div>
+                </div>
+                 <!--drop head end-->
+                  <div id="collapse2" class="collapse drop-cont">
+                  	 	 <div class="row form-group">	
+				
 					<div class="col-lg-4">  
 							<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							<?php 
@@ -756,13 +782,11 @@
 									'hiddenField' => false
 								   ]);
 							  ?>
-					</div>
-				</div>
-			</div>
+					</div>			
+		
 		</div>
 
-
-		<div class="row">
+						<div class="row">
 			<div class="form-group col-lg-4 col-md-12">
 				<div class="row">
 					<div class="col-lg-6"> 
@@ -840,7 +864,7 @@
 			</div>
 		</div>
                   
-        <div class="row">
+      					  <div class="row">
             <div class="form-group col-lg-4 col-md-12 mt10 clearfix">
                  <div class="row">
 						<div class="col-lg-12">
@@ -1458,6 +1482,7 @@
 																	'class'=>'selectedCheckbox',
 																	'hiddenField' => false
 																   ]);
+
 															?>
 															</div>  
 													</div>
@@ -1495,11 +1520,19 @@
                       
               </div>
         </div>
-				<h3></h3>
-				<div class="row">
-						<div class="form-group col-lg-4 col-md-12">
-								<div class="row">
-										<div class="col-lg-9 col-md-9 col-xs-8"><h2 class="f22"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?></br>
+                  </div>
+                
+            </div>
+        <!--Rate Drop Content End-->
+        <h3></h3>
+                  <!--Rate Drop Content Start-->
+                <div class="rate-drop-area">
+                	<!--drop head-->
+                    	<div class="row">
+                        		<div class="col-lg-4 col-md-10 col-sm-10 col-xs-12">
+                                	<div class="row">
+										<div class="col-lg-9 col-md-9 col-xs-8">
+                                        <h2 class="f22"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?></br>
 										<small class="color-green f14">(<?php echo $this->requestAction('app/get-translate/'.base64_encode('services charged at an hourly rate')); ?> ) </small></h2>
 										</div> 
 									  <div class="col-lg-3 col-md-3 col-xs-3 pull-right">  
@@ -1516,15 +1549,18 @@
 												</div>
 										</div>
 								</div>
-						</div>
-				 
-					 <div class="form-group col-lg-4 col-md-12">
-					 
-							<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for your market place / hourly charged services. include service loads for non-standard services.')); ?></p>
-					 </div>
-					 
-					 <div class="form-group col-lg-4">
-							 <div class="row">
+                                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Set-up and modify your settings for your market place / hourly charged services. include service loads for non-standard services.')); ?></p>
+                                </div>
+                                <div class="col-lg-8 col-md-2 col-sm-2 col-xs-12">
+                                	<div class="drop-arrow">
+	                        	    	                        	<a data-toggle="collapse" href="#collapse3"><img src="<?php echo HTTP_ROOT; ?>img/rate-down-arrow.png" id="changer3" onclick="changeImage(this)" ></a>
+                                   </div> 
+                                </div>
+                        </div>
+                    <!--drop head End-->
+                    
+                     <div id="collapse3" class="collapse drop-cont">
+                     	 <div class="row form-group">
 										<div class="col-lg-4">  
 												<label for="" class="f14 color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Rate %')); ?><i class="fa fa-asterisk" aria-hidden="true"></i></label>
 												<?php 
@@ -1567,11 +1603,7 @@
 														?>
 										</div>
 									</div>
-						</div>
-				</div>
-
-
-					<div class="row">
+					      <div class="row">
 
 							<div class="form-group col-lg-4 col-md-12">
 
@@ -1663,10 +1695,7 @@
 							</div>
 
 					</div>
-                  
-
-
-				<div class="row">
+				       <div class="row">
 						<div class="form-group col-lg-4 col-md-12 mt10 clearfix">
 							<div class="row">
 									<div class="col-lg-12">
@@ -2493,6 +2522,12 @@
 
 
 				</div>
+                     </div>
+                    
+                </div>
+                  <!--Rate Drop Content End-->
+					
+							
 					<h3>	</h3>
 
 					<h2 class="f22 mb10">
@@ -2596,5 +2631,13 @@ label .fa.fa-asterisk {
           $('input[type=checkbox]').onoff();
     });
        /*End of-off button*/
+
+
+   function changeImage(element) {
+         var right = "<?php echo HTTP_ROOT; ?>img/rate-down-arrow.png";
+         var left = "<?php echo HTTP_ROOT; ?>img/rate-up-arrow.png";
+         element.src = element.bln ? right : left;
+         element.bln = !element.bln;
+     }
   
 </script>

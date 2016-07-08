@@ -1,15 +1,4 @@
-<?php 
-	function limit_text($text, $limit) {
-	  if (str_word_count($text, 0) > $limit) {
-		  $words = str_word_count($text, 2);
-		  $pos = array_keys($words);
-		  $text = substr($text, 0, $pos[$limit]) . '...';
-	  }
-	  return $text;
-	}
-
-	?>
-		<!--[Fun News]-->
+	<!--[Fun News]-->
     	<section class="fun-news">
              
         	<div class="container">
@@ -48,7 +37,17 @@
 										</div>
 										<h5 class="recent-b-head"><?php echo $single_blog->title; ?></h5>									
 										<!--<p class="txt-head"><?php echo $single_blog->title; ?></p>-->
-										<p><?php echo limit_text($single_blog->description,30); ?> </p>                                                                  
+										<p><?php 
+												$text = $single_blog->description;
+												$limit = 30; 
+												if(str_word_count($text, 0) > $limit)
+												{ 
+													$words = str_word_count($text, 2); 
+													$pos = array_keys($words); 
+													echo $text = substr($text, 0, $pos[$limit]) . '...';
+												}  
+											?> 
+										</p>                                                                  
 										<a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($single_blog->id)); ?>" title="Read More" class="btn-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read More')); ?> <i class="fa fa-chevron-circle-right"></i></a>
 									</div>
 									
