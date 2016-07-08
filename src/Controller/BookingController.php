@@ -343,8 +343,7 @@ class BookingController extends AppController
 		 return substr($number, 0, 4) . str_repeat($maskingCharacter, strlen($number) - 8) . substr($number, -4);
 	}
 		
-	/**Function for Validate SIGN UP
-	*/
+	/**Function for Validate SIGN UP*/
 	function validate_personal_detail($data)
 	{
 	    $errors=array();
@@ -382,10 +381,12 @@ class BookingController extends AppController
 		return $errors;
 	}
 	
-	//Function for book now
-	function bookNow($request_booking_id= null,$type = 'guest'){
+	/*Function for book now*/
+	function bookNow($request_booking_id= null,$type = 'guest')
+	{
 		
 			$this->viewBuilder()->layout('landing');
+			
 			$session = $this->request->session();
 			$BookingRequestsModel = TableRegistry::get('BookingRequests');
 		    $UsersModel = TableRegistry::get('Users');
@@ -862,7 +863,9 @@ class BookingController extends AppController
 		
 	}
 	
-	function createTransaction($bookingdata){
+	/*Function for create transaction into database*/
+	function createTransaction($bookingdata)
+	{
 		
 		$TransactionsModel = TableRegistry::get('Transactions');
 		$TransactionData = $TransactionsModel->newEntity();
@@ -890,8 +893,7 @@ class BookingController extends AppController
 		
 	}
 		
-	/**Function for Validate SIGN UP
-	*/
+	/**Function for Validate SIGN UP*/
 	function validate_book_now($data)
 	{
 		//pr($data);

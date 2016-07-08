@@ -349,7 +349,15 @@
                         <p><?php echo $get_booking_requests_to_display['message']; ?></p>
                       </div>
                     </div>
+                    
+                    
+                    
                   </div>
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button class="btn btn-mod-pop-1">Book Now</button>
+                        </div>
+                    </div>
                 </div>
               </div>
               
@@ -453,49 +461,17 @@
                 </div>
               </div>
 
-              <div class="pay-through">
-              <h6>Pay through Sitter Guide  for:</h6>
-              <ul class="list-unstyled">
-              <li> <i class="fa fa-angle-right right-gr"></i>Premium Insurance</li>
-              <li><i class="fa fa-angle-right right-gr"></i>100% Satisfection</li>
-              <li><i class="fa fa-angle-right right-gr"></i>Money Back</li>
-              <li><i class="fa fa-angle-right right-gr"></i>24/support</li>
-              <li><i class="fa fa-angle-right right-gr"></i>Daily Photo Update</li>
-              </ul>
-              </div>
+              
             </div>
           </div>
         </div>
-        <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <button class="btn btn-mod-pop-1">Book Now</button>
-        </div>
-        </div>
+        
       </div>
     </div>
     </div>
     </div>
     </section>     
-    <!-- Get in Touch ends-->  
-    <?php 
-    echo $this->element('frontElements/guests/why_choose'); 
-	echo $this->element('frontElements/guests/fun_and_news');?> 
-
-            
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <button class="btn btn-mod-pop-1">Book Now</button>
-              </div>
-            </div>
-          </div>
-           <?php echo $this->Form->end(); ?>
-        </div>
-      </div>
-    </div>
-  </section>     
-  <!-- Get in Touch ends-->  
-  <?php echo $this->element('frontElements/guests/fun_and_news');?> 
+   
   <script>
 		
     $(document).ready(function () {
@@ -543,4 +519,4 @@
   font-size: 12px;
 }
 </style>
->>>>>>> ebb95a5945b69952fe55f213b130266c84aa65a7
+

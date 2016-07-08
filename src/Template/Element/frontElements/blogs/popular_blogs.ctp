@@ -16,8 +16,18 @@
 								
 											<div class="col-xs-12 col-sm-12  "><h5 class="recent-b-head"><?php echo $p_blogs['title']; ?></h5>
 
-											<p class="recent-b-text"><?php echo limit_text($p_blogs['description'],15); ?></p>
-
+											
+											<p class="recent-b-text"><?php 
+													$text = $p_blogs['description']; 
+													$limit = 15; 
+													if(str_word_count($text, 0) > $limit)
+													{ 
+														$words = str_word_count($text, 2); 
+														$pos = array_keys($words); 
+														echo $text = substr($text, 0, $pos[$limit]) . '...';
+													}    
+												?> 
+											</p>    
 										</div>
 
 									</div> 

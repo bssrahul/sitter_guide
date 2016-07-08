@@ -34,16 +34,16 @@
 								 function init_map() {
 									 var myOptions = {
 										 zoom: 14,
-										 center: new google.maps.LatLng(-33.86540229491878, 151.2059816894105),
+										 center: new google.maps.LatLng(-33.837823, 151.206630),
 										 mapTypeId: google.maps.MapTypeId.ROADMAP
 									 };
 									 map = new google.maps.Map(document.getElementById('gmap_canvas_sydney'), myOptions);
 									 marker = new google.maps.Marker({
 										 map: map,
-										 position: new google.maps.LatLng(-33.86540229491878, 151.2059816894105)
+										 position: new google.maps.LatLng(-33.837823, 151.206630)
 									 });
 									 infowindow = new google.maps.InfoWindow({
-										 content: '<strong>Sitter Guide</strong><br>sydney<br>'
+										 content: '<strong>Sitter Guide</strong><br>Sydney<br>'
 									 });
 									 google.maps.event.addListener(marker, 'click', function() {
 										 infowindow.open(map, marker);
@@ -69,13 +69,13 @@
                             function init_map() {
                             var myOptions = {
                             zoom: 14,
-                            center: new google.maps.LatLng(-36.84845970000001, 174.76333150000008),
+                            center: new google.maps.LatLng(-36.845254, 174.764600),
                             mapTypeId: google.maps.MapTypeId.ROADMAP
                             };
                             map = new google.maps.Map(document.getElementById('gmap_canvas_auckland'), myOptions);
                             marker = new google.maps.Marker({
                             map: map,
-                            position: new google.maps.LatLng(-36.84845970000001, 174.76333150000008)
+                            position: new google.maps.LatLng(-36.845254, 174.764600)
                             });
                             infowindow = new google.maps.InfoWindow({
                                     content: '<strong>Sitter Guide</strong><br>Auckland<br> <br>'
@@ -104,13 +104,13 @@
                                  function init_map() {
                                  var myOptions = {
                                     zoom: 14,
-                                    center: new google.maps.LatLng(51.5073509,-0.12775829999998223),
+                                    center: new google.maps.LatLng(51.509178,-0.142685),
                                     mapTypeId: google.maps.MapTypeId.ROADMAP
                                  };
                                  map = new google.maps.Map(document.getElementById('gmap_canvas_newyork'), myOptions);
                                  marker = new google.maps.Marker({
                                     map: map,
-                                    position: new google.maps.LatLng(51.5073509,-0.12775829999998223)
+                                    position: new google.maps.LatLng(51.509178,-0.142685)
                                  });
                                  infowindow = new google.maps.InfoWindow({
                                     content: '<strong>Sitter Guide</strong><br>London<br> <br>'
@@ -139,13 +139,13 @@
                                  function init_map() {
                                  var myOptions = {
                                     zoom: 14,
-                                    center: new google.maps.LatLng(40.7127837,-74.00594130000002),
+                                    center: new google.maps.LatLng(40.762517,-73.977761),
                                     mapTypeId: google.maps.MapTypeId.ROADMAP
                                  };
                                  map = new google.maps.Map(document.getElementById('gmap_canvas_london'), myOptions);
                                  marker = new google.maps.Marker({
                                     map: map,
-                                    position: new google.maps.LatLng(40.7127837,-74.00594130000002)
+                                    position: new google.maps.LatLng(40.762517,-73.977761)
                                  });
                                  infowindow = new google.maps.InfoWindow({
                                     content: '<strong>Sitter Guide</strong><br>New York<br> <br>'
