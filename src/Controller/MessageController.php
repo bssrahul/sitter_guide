@@ -73,14 +73,17 @@ class MessageController extends AppController
 		$booking_id = convert_uudecode(base64_decode($request_booking_id));
 		
 		$userType = $session->read('User.user_type');
+		//echo $userType;die;
 		$class_user = $userType == 'Sitter'?'chat-me':'chat-user';
+		
 		$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+		
 		$fieldname = $userType == 'Sitter'?'sitter':'guest';
 		
 		$userId = $session->read('User.id');
 		$this->set(compact('userId','userType','class_user','fieldname'));
 		
-		
+		//echo "okokok".$userType;die;
 		$get_requests = $BookingRequestsModel->find('all')
 		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.folder_status_'.$fieldname => $folder_status])
 		->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
@@ -93,6 +96,8 @@ class MessageController extends AppController
 		->hydrate(false)->toArray();
 		
 		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
+		//pr($get_requests);
+		//echo $user_message_display_field;die;
 		if(!empty($get_requests)){
 			foreach($get_requests as $booking_key=>$booking_records){
 				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
@@ -101,6 +106,8 @@ class MessageController extends AppController
 																->limit(1)->hydrate(false)->first();
 			}
 		}
+		//pr($get_requests);die;
+		
 		$this->set('get_requests',$get_requests);
 		if(count($get_requests)>0){
 			$default_booking_id = $get_requests[0]['id'];

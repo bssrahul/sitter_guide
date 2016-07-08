@@ -78,7 +78,7 @@
                         <div class="form-group">
 						   <div class="form-group col-lg-8">
 								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>						
-							<input class="form-control col-md-7 col-xs-12" id="Petsbreeds" type="text" name="sh_pet" value="" >
+							<input class="form-control col-md-7 col-xs-12" id="Petsbreeds" type="text" name="UserAboutSitters[sh_pet]" value="" >
 						  </div>
 						</div> 
 					</div>
@@ -107,7 +107,7 @@
                         <div class="form-group">
 						   <div class="form-group col-lg-8">
 								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>						
-							<input class="form-control col-md-7 col-xs-12" id="skillAuto" type="text" name="sh_pet_size" value="" >
+							<input class="form-control col-md-7 col-xs-12" id="skillAuto" type="text" name="UserAboutSitters[sh_pet_sizes]" value="" >
 						  </div>
 						</div> 
 					</div>
@@ -247,7 +247,7 @@
                         <div class="form-group">
 						   <div class="form-group col-lg-8">
 								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pets & breeds')); ?></label>						
-							<input class="form-control col-md-7 col-xs-12" id="gh_petbreeds" type="text" name="gh_pet" value="" >
+							<input class="form-control col-md-7 col-xs-12" id="gh_petbreeds" type="text" name="UserAboutSitters[gh_pet]" value="" >
 						  </div>
 						</div> 
 					</div>
@@ -255,7 +255,7 @@
                         <div class="form-group">
 						   <div class="form-group col-lg-8">
 								<label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>						
-							<input class="form-control col-md-7 col-xs-12" id="gh_pet_sizes" type="text" name="gh_pet_sizes" value="" >
+							<input class="form-control col-md-7 col-xs-12" id="gh_pet_sizes" type="text" name="UserAboutSitters[gh_pet_sizes]" value="" >
 						  </div>
 						</div> 
 					</div>
@@ -506,21 +506,23 @@ function wprdCount(id){
 						}
 						$editJsonArr=json_encode($mainArray);
 				}	
+				
 				if(!empty($ghSizeArr)){
-					$ghmainArray=array();
-					foreach($testArr as $key=> $arr)
-					{ 
+						$newArr=explode(",",$ghSizeArr);
+						$ghmainArray=array();
+						foreach($testArr as $key=> $arr)
+						{ 
 						$new=$arr['value'];
 						$new2=$arr['label'];
-						if(in_array($new,$ghSizeArr) )
-						{
-							$ghmainArray[]=array("value"=>$new,"label"=>$new2);
+						if(in_array($new,$newArr) )
+								{
+										$ghmainArray[]=array("value"=>$new,"label"=>$new2);
+									
+								}
 						}
-					}
-					$editghJsonArr=json_encode($ghmainArray);	
+						$editghJsonArr=json_encode($ghmainArray);
 				}
-				
-				if(!empty($shArr)){
+			    if(!empty($shArr)){
 						
 						$newArr=explode(",",$shArr);
 						$shmainArray=array();
