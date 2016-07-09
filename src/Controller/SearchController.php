@@ -55,7 +55,7 @@ class SearchController extends AppController
 		$session = $this->request->session();
 		$this->set('logedInUserId', $session->read('User.id'));
 		
-		if(!$this->CheckGuestSession() && in_array($this->request->action,array('sitterDetails','thankYou','sitterContact'))){
+		if(!$this->CheckGuestSession() && in_array($this->request->action,array('thankYou','sitterContact'))){
 			$this->setErrorMessage($this->stringTranslate(base64_encode('Authentication Failed! Please log in before.')));
 			
 			return $this->redirect(['controller' => 'Guests','action'=>'home']);
@@ -1214,11 +1214,11 @@ class SearchController extends AppController
 		$this->viewBuilder()->layout('landing');
 		$sitterId = convert_uudecode(base64_decode($sitterId));
 		
-		 
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
         
         $userId = $session->read('User.id');
+        $userType = $session->read('User.user_type');
         $userEmail = $session->read('User.email');
         $userName = $session->read('User.name');
 	    $bookingRequestsModel = TableRegistry::get('BookingRequests');
@@ -1232,10 +1232,13 @@ class SearchController extends AppController
 				  $booking_guests = implode(",",$this->request->data['guest_id_for_booking']);
 				  $bookingRequestData->guest_id_for_bookinig = $booking_guests;
 			  }
-			
+			    
                 $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
                 $bookingRequestData->user_id = $userId;
                 $bookingRequestData->sitter_id = $sitter_id;
+                if($userType == "Sitter"){
+				  $bookingRequestData->request_by_sitter_id = $userId;
+				}
                 $bookingRequestData->booknig_start_date = $this->request->data['BookingRequests']['booking_start_date'];
                 $bookingRequestData->booking_end_date = $this->request->data['BookingRequests']['booking_end_date'];
                 
@@ -1379,6 +1382,19 @@ class SearchController extends AppController
 		$currencyModel = TableRegistry::get('Currencies');
 		$currencies = $currencyModel->find("all")->toArray();
 		$this->set('currencies',$currencies);
+		
+		 //Count Repeat client
+		    $bookingRequestModel = TableRegistry :: get("BookingRequests");
+			$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+			$fieldname = $userType == 'Sitter'?'sitter':'guest';
+			
+			$repeatClient = $bookingRequestModel->find('all')
+						->where(['BookingRequests.'.$condition_field => $userId/*,'BookingRequests.folder_status_guest' => "pending"*//*,'BookingRequests.read_status' => "unread"*/])
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1' )
+					    ->hydrate(false)->toArray();
+					    
+		    $this->set('repeat_client',count($repeatClient));    
+	    //end repeat client
 	}
 		
 	}
