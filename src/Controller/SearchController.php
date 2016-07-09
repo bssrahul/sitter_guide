@@ -969,7 +969,6 @@ class SearchController extends AppController
 		   $this->set('guests_Info','');
 		}	
 					   
-	    
 	    if(!empty($this->request->data)){
 			
 			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:DEFAULT_RADIUS;
@@ -1032,25 +1031,19 @@ class SearchController extends AppController
 							   ->toArray();
 				
 				$loggedInUserID = $session->read('User.id');
-			
-				///////////
-				if(!empty($userData)){
-					
+			    //Get repeat client
+			    if(!empty($userData)){
 					$bookingRequestModel = TableRegistry :: get("BookingRequests");
 					foreach($userData as $udK =>$udV){
-					
-						$totalClient =  $bookingRequestModel->find('all')
-						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.folder_status_sitter' => "past"])
+					    $totalClient =  $bookingRequestModel->find('all')
+						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.payment_status' => "paid"])
 						->group('BookingRequests.id HAVING COUNT(BookingRequests.id) >= 1')
 					    ->hydrate(false)->count();
-					    
-						$userData[$udK]['repeatClient'] = $totalClient;
-						
+					   
+					   $userData[$udK]['repeatClient'] = $totalClient;
 					}
 				}
-				//pr($userData); die;
-				/////////
-			
+				
 				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
 				
 				if(!empty($userData)){
@@ -1249,7 +1242,7 @@ class SearchController extends AppController
                 if($bookingRequestsModel->save($bookingRequestData)){
                 	$replace = array('{name}','{email}');
 					$with = array($userName,$userEmail);
-					//$this->send_email('',$replace,$with,'booking_request',$userEmail);
+					$this->send_email('',$replace,$with,'booking_request',$userEmail);
 					//Start Send message
 					$get_booking_requests_to_display = $bookingRequestsModel->find('all')
 								->where(['BookingRequests.id'=>$bookingRequestData->id])
@@ -1257,8 +1250,6 @@ class SearchController extends AppController
 				
 				
 					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
-					  // pr($get_user_communications_details);die;
-					   
 					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
 					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
 						$message_body = "You have been received new booking request"; 
@@ -1389,8 +1380,8 @@ class SearchController extends AppController
 			$fieldname = $userType == 'Sitter'?'sitter':'guest';
 			
 			$repeatClient = $bookingRequestModel->find('all')
-						->where(['BookingRequests.'.$condition_field => $userId/*,'BookingRequests.folder_status_guest' => "pending"*//*,'BookingRequests.read_status' => "unread"*/])
-						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1' )
+						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.payment_status' =>"Paid"/*,'BookingRequests.read_status' => "unread"*/])
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) >= 1' )
 					    ->hydrate(false)->toArray();
 					    
 		    $this->set('repeat_client',count($repeatClient));    
