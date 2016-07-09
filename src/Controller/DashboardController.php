@@ -2610,7 +2610,48 @@ function addPets(){
 		$this->viewBuilder()->layout('landing');  
 	}	
 	
-    
+	function changeIdleStatus(){
+		
+		$session = $this->request->session();
+        
+        $userId = $session->read('User.id');
+        if(empty($userId)){
+			return false;
+		}else{
+		
+		}
+        $UserModel = TableRegistry::get('Users');
+		
+		$userDataObj = $UserModel->find('all')->where(['Users.id' => $userId])->hydrate(false);
+									   
+		$userData = $userDataObj->first();
+		
+		$UserModelData = $UserModel->newEntity();
+		
+		$force_change =  isset($_REQUEST['force_change'])?$_REQUEST['force_change']:0;
+		/*
+		if($userData['avail_status'] =='Dnd' && $force_change !=1){
+				echo "failed";	
+		
+		}else{*/
+			
+			$UserModelData->user_id = $userId;
+			
+			$UserModelData->avail_status =  isset($_REQUEST['avail_status'])?$_REQUEST['avail_status']:'';
+		
+			if($UserModel->save($UserModelData)){
+			
+				echo "success";	
+				
+			}else{
+				
+				echo "failed";	
+				
+			}
+		/*}*/
+		die;
+	   
+    }		
 	
 }
 ?>

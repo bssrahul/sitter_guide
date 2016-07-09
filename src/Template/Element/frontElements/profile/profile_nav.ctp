@@ -25,19 +25,43 @@
                      <p><?php echo $user['name'] != ''?$user['name']:'Guest'; ?></p>
                 </div> 
                   <div class="status-box">
-              <ul>
+					
+					<ul>
                           <li class="stat"><?php echo __('Status'); ?></li>
-                            <li class="input"> <input type="text" class="form-control" placeholder="<?php echo __('Status'); ?>" ></li>
+                            
+                            <li class="input"> <input id="display_status" type="text" class="form-control" value="<?php echo __('Online'); ?>" ></li>
+                            <!--
                             <li class="stat-drop">
+                           
                             <a href="#" data-toggle="dropdown">
-                             <img src="<?php echo HTTP_ROOT; ?>img/up-down.png" alt="<?php echo __('Select Status'); ?>"></a>
-                                <ul class="dropdown-menu">
-                                      <li><a href="#"><?php echo __('Visible'); ?></a></li>
-                                      <li><a href="#"><?php echo __('Invisible'); ?></a></li>
-                                      <li><a href="#"><?php echo __('Idle'); ?></a></li>
+                            
+                             <img id="status_dropdown" src="<?php echo HTTP_ROOT; ?>img/up-down.png" alt="<?php echo __('Select Status'); ?>"></a>
+									
+									<ul class="dropdown-menu">
+                                      
+										<li>
+											<a data-img-name="online.png" data-display-status='<?php echo __('Online'); ?>'  data-rel="Available" class="status_dropdown" href="javascript:void(0)">
+												<?php echo __('Online'); ?>
+											</a>
+										</li>
+										
+										<li>
+											<a data-img-name="away.png" data-display-status='<?php echo __('Away'); ?>'  data-rel="Idle" class="status_dropdown" href="javascript:void(0)">
+												<?php echo __('Away'); ?>
+											</a>
+										</li>
+										
+										<li>
+											<a data-img-name="dnd.png" data-display-status='<?php echo __('Do not disturb'); ?>' data-rel="Dnd" class="status_dropdown" href="javascript:void(0)">
+												<?php echo __('Do not disturb'); ?>
+											</a>
+										</li>
+										
                                     </ul>
-                            </li>
-                        </ul>                 
+                           
+                            </li> -->
+                        </ul>  
+                                       
                   </div>                        
                 </div>
                 
@@ -72,9 +96,9 @@
             <li class="status">
             <a href="#" title="<?php echo __('Status'); ?>"> 
                     <select class="form-control">
-                        <option><?php echo __('Online'); ?></option>
-                        <option><?php echo __('Invisible'); ?></option>
-                        <option><?php echo __('Offline'); ?></option>
+                        <option data-rel="Available"  value="Available"><?php echo __('Online'); ?></option>
+                        <option data-rel="Idle"  value="Idle"><?php echo __('Away'); ?></option>
+                        <option data-rel="Dnd"  value="Dnd"><?php echo __('Do not disturb'); ?></option>
                     </select>
             </a>
   </li>
