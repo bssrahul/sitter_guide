@@ -1963,3 +1963,99 @@ $(function () {
 	});
 /*End profile video*/
 
+/*Jquery for get idle state of user start*/
+var idleTimer = null;
+var idleState = false;
+var idleWait = 10000;
+
+(function ($) {
+
+	$(document).ready(function () {
+	
+		$('*').bind('mousemove keydown scroll', function () {
+		
+			clearTimeout(idleTimer);
+					
+			if (idleState == true) { 
+				
+				
+				//STATUS CHANGE INTO USER TABLE START
+				$.ajax({
+					url:  ajax_url+'/dashboard/change-idle-status',//AJAX URL WHERE THE LOGIC HAS BUILD
+					
+					data:{avail_status:'Available'},
+						
+					success:function(res)
+					{
+						if($.trim(res)=='success'){
+							
+							setTimeout(function () {
+								// Reactivated event
+								$("body").find("#display_status").val("Online");	
+								$("body").find("#display_status").css('background-image', 'url(' + ajax_url+'img/online.png' + ')');	
+							},1000);	
+							
+						}
+							
+					}
+				});
+				//STATUS CHANGE INTO USER TABLE START
+			}
+			
+			idleState = false;
+			
+			idleTimer = setTimeout(function () { 
+				
+				//STATUS CHANGE INTO USER TABLE START
+				$.ajax({
+					url:  ajax_url+'/dashboard/change-idle-status',//AJAX URL WHERE THE LOGIC HAS BUILD
+					data:{avail_status:'Idle'},
+						
+					success:function(res)
+					{
+						
+						if($.trim(res)=='success'){
+							
+
+								// Reactivated event
+								$("body").find("#display_status").val("Away");	
+								$("body").find("#display_status").css('background-image', 'url(' + ajax_url+'img/away.png' + ')');	
+
+							
+						}
+												
+					}
+				});
+				//STATUS CHANGE INTO USER TABLE START
+				
+				idleState = true; }, idleWait);
+		});
+		
+		$("body").trigger("mousemove");
+	
+	});
+}) (jQuery)
+
+	/*
+	$(document).on('click','.status_dropdown', function(){ 
+	
+		var avail_status_value = $(this).attr('data-rel');
+		var img_name = $(this).attr('data-img-name');
+		var display_status = $(this).attr('data-display-status');
+		
+		$.ajax({
+			url:  ajax_url+'/dashboard/change-idle-status',//AJAX URL WHERE THE LOGIC HAS BUILD
+			data:{avail_status:avail_status_value,force_change:1},
+				
+			success:function(res)
+			{
+				$("body").find("#display_status").val(display_status);	
+				$("body").find("#status_dropdown").trigger("click");	
+				$("body").find("#display_status").css('background-image', 'url(' + ajax_url+'img/'+img_name + ')');	
+				
+					
+			}
+		});
+	
+	});*/
+/*Jquery for get idle state of user end*/
