@@ -1181,7 +1181,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 ?>
                                                                                                                                                     <input type='radio'  value='5' 
 <?php if(!empty($cm)){ if($cm 
-                                                                                                                                                    <= 5 && $cm > 4.5){ echo "checked"; } }?> />
+                                                                                                                                                    <= 5 && $cm > 4.5){ echo "checked"; } }?> 
 <?php if(!empty($cm)){if($cm 
                                                                                                                                                       <= 4.5 && $cm > 4){ echo "checked"; } } ?> />
 <label class="half" for="star4half" title="Pretty good - 4.5 stars">
