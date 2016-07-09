@@ -1,5 +1,5 @@
  
- <ul class="nav nav-pills">
+ 
     <?php 
      $action = $this->request->params['action']; 
     //For show active tab
@@ -22,8 +22,12 @@
      $session = $this->request->session();
      $profile = $session->read('profile');
      $dog_in_home_status = $session->read('dog_in_home_status');
-     
+	
+     ?>
+	 <ul class="nav nav-pills <?php echo $dog_in_home_status == "yes"?"six-tab":"" ?>">
+     <?php
    if($profile == 'Sitter'){ ?>
+   
 	   <li class="<?php echo @$active; ?> gen"><a href="<?php echo HTTP_ROOT."dashboard/profile"; ?>"><img src="<?php echo HTTP_ROOT; ?>img/ic1.png">General</a></li>
       <li class="<?php echo @$activeHou; ?> hou"><a  href="<?php echo HTTP_ROOT."dashboard/house"; ?>"><img src="<?php echo HTTP_ROOT; ?>img/ic2.png">Sitter House</a></li>
       <?php if($dog_in_home_status == 'yes'){ ?>

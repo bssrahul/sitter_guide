@@ -1,36 +1,23 @@
 @charset "utf-8";
+
 /* CSS Document */
 
 .payment-heading1 { font-size:26px; padding-top:30px; text-align:center;}
 .payment-text { font-size:14px; padding:15px 0 30px 0; text-align:center;}
-
-.pay-outside-wrap { border:1px solid #ccc; background:#fff; padding:30px 30px 30px 30px; max-width:650px; margin:0px auto; margin-bottom:30px;  }
-
+.pay-outside-wrap { border:1px solid #ccc; background:#fff; padding:20px; max-width:650px; margin:0px auto; margin-bottom:30px;  }
 .pay-outside-wrap label { font-size:13px; font-weight:500; margin-bottom:8px; margin-top:5px; color:#404040;}
-
-.pay-outside-wrap .form-control { font-size:13px;}
-
-
+.pay-outside-wrap .form-control { font-size:13px; border-radius:0px; height:34px;}
 .pay-outside-wrap1 { border:1px solid #ccc; background:#fff; padding:30px 30px 30px 30px; width:100%; margin-bottom:30px;  }
-
 .pay-outside-wrap1 label { font-size:13px; font-weight:500; margin-bottom:8px; margin-top:5px; color:#404040;}
-
 .pay-outside-wrap1 .form-control { font-size:13px;}
-
-
-
 .paybtn { background:#72a105; color:#fff; font-size:14px; width:100px; height:35px; } 
 .paybtn:hover, .paybtn:focus { background:#689206; color:#fff; font-size:14px; width:100px; height:35px; } 
-
-
-
 .pay-outside-wrap .pay-tpborder { border-top:1px solid #ccc; padding-top:20px; margin-top:5px;}
 .pay-outside-wrap .pay-tpborder li { padding-right:0px;}
 .pay-outside-wrap1.pay-tpborder { border-top:1px solid #ccc; padding-top:20px; margin-top:5px;}
 .pay-outside-wrap1 .pay-tpborder li { padding-right:0px;}
 
 .baddress { font-size:14px; font-weight:600; padding-bottom:10px;}
-
 .selectpicker { background-color:#fff !important; border:1px solid #ccc !important; height:35px !important;  }
 
 .payment-last .checkbox { margin-top:0px;}
@@ -47,11 +34,10 @@
 
 
 @media (min-width:320px) and (max-width:480px) {
-	
-	.card-credit { background:url(../../img/card-dummy-1-xs.png) no-repeat; width:260px; height:162px;  margin:0px auto; margin-bottom:30px;  position:relative;}
-	.name-on-card {position:absolute; top:56px; right:0px; }
-	.name-on-card p { font-size:18px; font-weight:500;    padding-right:28px; }
-	.credit-card-no { position:absolute; top:105px;}
+.card-credit { background:url(../../img/card-dummy-1-xs.png) no-repeat; width:260px; height:162px;  margin:0px auto; margin-bottom:30px;  position:relative;}
+.name-on-card {position:absolute; top:56px; right:0px; }
+.name-on-card p { font-size:18px; font-weight:500;    padding-right:28px; }
+.credit-card-no { position:absolute; top:105px;}
 .credit-card-no p {font-size:14px; padding-left:23px;  }
 .credit-card-no p span { padding:0 13px;}
 .credit-card-no li {font-size:22px; padding-top:50px; color:#fff; padding:0 18px; font-family: 'CenturyGothic-Regular'; }
@@ -59,6 +45,10 @@
 .valid-up-to p { font-size:13px;  color:#fff; padding-left:25px; }
 .valid-up-to p span { font-size:14px;  color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:15px;}
 	
+
 	
+
 	
+
 	}
+

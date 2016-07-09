@@ -816,25 +816,60 @@ class AppController extends Controller{
 	}
 	
 	
-	function sendMessages($to_mobile_number, $message_body){
-		require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
-		$account_sid = TWILIO_SID; 
-		$auth_token = TWILIO_AUTHTOKEN; 
-		$client = new \Services_Twilio($account_sid, $auth_token); 
-
+	function sendMessages($to_mobile_number, $message_body,$country_code =''){
 		
-		try {
-			$output = $client->account->messages->create(array( 
-				'To' => $to_mobile_number, 
-				'From' => "+61425415125", 				
-				'Body' => $message_body
-			));
+		/*CHECK THAT PHONE NUMBER IS USA OR NOT, IF USA PHONE NUMBER EXISTS INTO REQUEST THEN WE HAVE TO USE BANDWIDTH API OTHERWISE USE TWILIO*/
+		
+		if($country_code =='+1'){
 			
+			/*INCLUDE BANDWIDTH LIABRARY*/	
+			require_once(ROOT . DS  . 'vendor' . DS  . 'php-bandwidth-master' . DS . 'source' . DS . 'Catapult.php');
+
+			/*CREATE BANDWIDTH OBJECT*/
+			$cred = new \Catapult\Credentials(BANDWIDTH_USER_ID, BANDWITH_API_TOKEN, BANDWIDTH_API_SECRET);
+			
+			$client = new \Catapult\Client($cred);
+
+			if (!(isset($to_mobile_number) || isset($message_body)))
+				throw new Exception("Please provide phone number and message for send\n\n");
+				
+			try {
+				$message = new \Catapult\Message(array(
+						"from" => '+61420415125',
+						"to" => $to_mobile_number,
+						"text" => $message_body
+				));
+
+
+			}catch  (\Exception $e) { 
+				$results = json_decode($e->result);  
+				$this->setErrorMessage($this->stringTranslate(base64_encode($results->message)));
+			}
+
+		}else{
+			
+			/*INCLUDE TWILIO LIABRARY*/
+			require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
+			
+			/*CREATE STRIPE OBJECT*/
+			$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
+
+			/*SEND MESSAGE VIA TWILIO API CALL*/
+			try {
+				$output = $client->account->messages->create(array( 
+					'To' => $to_mobile_number, 
+					'From' => "+61425415125", 				
+					'Body' => $message_body
+				));
+				
+		
+			}
+			catch (\Exception $e) { 
+				$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
+			}
 			
 		}
-		catch (\Exception $e) { 
-			$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
-		}
+		
 		return true;
 	}
 	

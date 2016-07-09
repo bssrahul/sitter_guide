@@ -241,3 +241,4 @@ require ROOT . DS . 'config' . DS . 'facebook_api_credentials.php';
 require ROOT . DS . 'config' . DS . 'stripe_api_credentials.php';
 require ROOT . DS . 'config' . DS . 'captcha_api_credentials.php';
 require ROOT . DS . 'config' . DS . 'twilio.php';
+require ROOT . DS . 'config' . DS . 'bandwidth.php';
