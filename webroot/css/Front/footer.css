@@ -26,11 +26,25 @@
 .foot-wrap .bot-foot .bf-area .drop-area .form-group .form-control option{ background:#ffffff; color:#404040;}
 .foot-wrap .bot-foot .bf-area p.crgt{ font-size:13px; font-weight:200; color:#ffffff; text-align:right;}
 
+@media (min-width:1200px) and (max-width:1440px){
+/*  CSS for help fixed button*/
+.foot-wrap .bot-foot{ padding:20px 0 45px 0;}
+.foot-wrap .bot-foot .bf-area p.crgt { padding:20px 0 0 0; clear:both;}
+/*  CSS for help fixed button*/
+}
+
 
 /*===============================================================================Media Query=========================================================================================*/
 @media (min-width:1025px) and (max-width:1199px){
 .foot-wrap .top-foot .fb-area .foot-box .news-let .nwlt-input{ font-size:12px; padding:0 0 0 5px;  width:65%;}
 .foot-wrap .top-foot .fb-area .foot-box .news-let .sb-btn{ width:35%; font-size:12px;}
+
+/*  CSS for help fixed button*/
+.foot-wrap .bot-foot{ padding:20px 0 45px 0;}
+.foot-wrap .bot-foot .bf-area p.crgt { padding:20px 0 0 0; clear:both;}
+/*  CSS for help fixed button*/
+
+
 }
 @media (min-width:992px) and (max-width:1024px){
 .foot-wrap .top-foot{ padding:15px 0 0 0;}
@@ -38,12 +52,21 @@
 .foot-wrap .top-foot .fb-area .foot-box .news-let .nwlt-input{ font-size:12px; padding:0 0 0 5px;  width:65%;}
 .foot-wrap .top-foot .fb-area .foot-box .news-let .sb-btn{ width:35%; font-size:12px;}
 .foot-wrap .bot-foot .bf-area .bot-social ul{margin:15px 0 15px 0;}
+
+/*  CSS for help fixed button*/
+.foot-wrap .bot-foot{ padding:20px 0 60px 0;}
+.foot-wrap .bot-foot .bf-area p.crgt { padding:20px 0 0 0; clear:both;}
+/*  CSS for help fixed button*/
+
+
 }
 @media (min-width:768px) and (max-width:991px){
 .foot-wrap .top-foot{ padding:15px 0 0 0;}
 .foot-wrap .top-foot .fb-area .foot-box{ border-bottom:#dfdede 1px solid; margin: 0 0 15px 0; padding:0 0 15px 0;}
 .foot-wrap .top-foot .fb-area .fb-last{ border:0px;}
 .foot-wrap .bot-foot .bf-area .bot-social ul{margin:15px 0 15px 0;}
+
+
 }
 @media (min-width:641px) and (max-width:767px){
 .foot-wrap .top-foot{ padding:15px 0 0 0;}
@@ -58,6 +81,11 @@
 .foot-wrap .bot-foot .bf-area .bot-social ul li{ width:20%; float:left; text-align:center; }
 .foot-wrap .bot-foot .bf-area .bot-social ul li a{ margin:0px auto;}
 .foot-wrap .bot-foot .bf-area p.crgt{ text-align:center;}
+
+/*  CSS for help fixed button*/
+.foot-wrap .bot-foot{ padding:0 0 70px 0;}
+/*  CSS for help fixed button*/
+
 }
 @media (min-width:481px) and (max-width:640px){
 .foot-wrap .top-foot{ padding:15px 0 0 0;}
@@ -69,6 +97,11 @@
 .foot-wrap .bot-foot .bf-area .bot-social ul li{ width:20%; float:left; text-align:center; }
 .foot-wrap .bot-foot .bf-area .bot-social ul li a{ margin:0px auto;}
 .foot-wrap .bot-foot .bf-area p.crgt{ text-align:center;}
+
+/*  CSS for help fixed button*/
+.foot-wrap .bot-foot{ padding:0 0 70px 0;}
+/*  CSS for help fixed button*/
+
 }
 
 @media (min-width:320px) and (max-width:480px){
@@ -84,5 +117,9 @@
 .foot-wrap .bot-foot .bf-area .bot-social ul li{ width:20%; float:left; text-align:center; }
 .foot-wrap .bot-foot .bf-area .bot-social ul li a{ margin:0px auto;}
 .foot-wrap .bot-foot .bf-area p.crgt{ text-align:center;}
+
+/*  CSS for help fixed button*/
+.foot-wrap .bot-foot{ padding:0 0 70px 0;}
+/*  CSS for help fixed button*/
 
 }
