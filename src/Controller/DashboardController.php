@@ -248,14 +248,13 @@ class DashboardController extends AppController
 			  }else{
 				 $profile_status['UserPets']['behaviour'] = "no";
 			  }
-
-		 }else{
-
-			  $profile_status['UserPets']['guest_basic_detail'] = "no";
-			  $profile_status['UserPets']['guest_description'] = "no";
-			  $profile_status['UserPets']['guest_photos'] = "no";
-			  $profile_status['UserPets']['behaviour'] = "no";
+          }else{
+				 $profile_status['UserPets']['guest_basic_detail'] = "no";
+				 $profile_status['UserPets']['guest_description'] = "no";
+				 $profile_status['UserPets']['guest_photos'] = "no";
+				 $profile_status['UserPets']['behaviour'] = "no";
 		  }
+		  //pr($profile_status);die;
 		  //About Sitter
 		   if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
 			  $aboutSitterInfo = $userData[0]->user_about_sitter->toArray();
@@ -398,10 +397,10 @@ class DashboardController extends AppController
 					  	$status_profile++;
 				    }
 				}
-				$profile_percentage['House'] = ceil(($status_profile/$profile_count)*100);
+				 $profile_percentage['House'] = ceil(($status_profile/$profile_count)*100);
 				
 				 $profile_count = count($profile_status['UserPets']);
-			    $status_profile = 0;
+			     $status_profile = 0;
 				foreach($profile_status['UserPets'] as $single_status){
 					if($single_status == "yes"){
 					  	$status_profile++;
@@ -409,7 +408,7 @@ class DashboardController extends AppController
 				}
 				$profile_percentage['UserPets'] = ceil(($status_profile/$profile_count)*100);
 				
-				 $profile_count = count($profile_status['AboutSitter']);
+				$profile_count = count($profile_status['AboutSitter']);
 			    $status_profile = 0;
 				foreach($profile_status['AboutSitter'] as $single_status){
 					if($single_status == "yes"){
@@ -418,7 +417,7 @@ class DashboardController extends AppController
 				}
 				$profile_percentage['AboutSitter'] = ceil(($status_profile/$profile_count)*100);
 				
-				 $profile_count = count($profile_status['skillsAndAccreditationDetails']);
+				$profile_count = count($profile_status['skillsAndAccreditationDetails']);
 			    $status_profile = 0;
 				foreach($profile_status['skillsAndAccreditationDetails'] as $single_status){
 					if($single_status == "yes"){
@@ -427,7 +426,7 @@ class DashboardController extends AppController
 				}
 				$profile_percentage['skillsAndAccreditationDetails'] = ceil(($status_profile/$profile_count)*100);
 				
-				 $profile_count = count($profile_status['servicesAndRates']);
+				$profile_count = count($profile_status['servicesAndRates']);
 			    $status_profile = 0;
 				foreach($profile_status['servicesAndRates'] as $single_status){
 					if($single_status == "yes"){
@@ -440,6 +439,8 @@ class DashboardController extends AppController
 		}else{
 		    $profile_percentage['calendar_setup'] = 0;
 		}
+		//pr($profile_status);die;
+		
 		  $this->set('profile_status',$profile_status);
 		  $this->set('profile_percentage',$profile_percentage);
           //End
@@ -480,29 +481,10 @@ class DashboardController extends AppController
         $userId = $session->read('User.id');
         $userType = $session->read('User.user_type');
 
-           $bookingRequestModel = TableRegistry::get('BookingRequests');
-          /*if($userType == 'Sitter'){
-            	$sitter_data['message_status'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'read_status' =>'unread'])
-				    ->count();   
-				     
-                $sitter_data['alerts'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'status' =>0])
-				    ->count();
-				    
-				$sitter_data['events'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'status' =>1])
-				    ->count();
-				    
-				
-			}*/
-			 $this->ajaxCalendarBooking();
-	             $this->home();
-	       // $this->set('sitter_data',$sitter_data);
-	       
+        $bookingRequestModel = TableRegistry::get('BookingRequests');
+          
+		$this->ajaxCalendarBooking();
+	    $this->home();
 	}
  	public function ajaxCalendarBooking()
     {
@@ -522,14 +504,13 @@ class DashboardController extends AppController
 													]
 								  ]
 						)
-									->hydrate(false)->toArray();
+						->hydrate(false)->toArray();
 			$user_Data = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
 						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1' )
 					    ->hydrate(false)->toArray();
-			
+				    
 			$client_stay_status["new_clients"] = count($user_Data);
-			
 			$user_current = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
 						->hydrate(false)->count();

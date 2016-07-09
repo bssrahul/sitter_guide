@@ -11,6 +11,7 @@
 <!--[Banner Area Start]-->
                 <?php
 					$session = $this->request->session();
+					$userloginstatus = $session->read("User");
 				    $cuntry_currency = $session->read("currency.currency");
 					$cuntry_price = $session->read("currency.price");
 					$cuntry_sign_code = $session->read("currency.sign_code");
@@ -280,8 +281,14 @@
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
-                                                        <button class="btn btn-cont before-booking-request check-user" data-toggle="modal" data-target="#myModal79">Book Now
-                                                        </button>
+													     <?php 
+				                                            if($userloginstatus){ ?> 
+															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79">Book Now
+															  </button>
+                                                         <?php }else{ ?>
+															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin">Book Now
+															  </button>
+														 <?php } ?>
                                                       </div>
                                                       </div>
                                                     </div>
@@ -324,9 +331,15 @@
                                                         </div>
                                                       </div>
                                                       <div class="btn-group btn-width100 pt15">
+														  <?php if($userloginstatus){ ?>
                                                         <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#myModal79">Contact  
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
+                                                        <?php }else{ ?>
+														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin">Contact  
+                                                          <?php echo @$userData->first_name; ?>
+                                                        </button>
+														<?php } ?>
                                                         <!-- <button type="button" class="btn btn-heart"><i class="fa fa-heart-o heart-pos"></i></button>
 <button class="btn btn-heart lock" type="button"> 
 <i class="icon-unlock fa fa-heart-o heart-pos">
@@ -397,7 +410,7 @@
                                                       <li>
                                                         <i class="fa fa-refresh icon-width30 icon-p15">
                                                         </i>Repeat Guest : 
-                                                        <b> 15
+                                                        <b> <?php echo $repeat_client; ?>
                                                         </b>
                                                       </li>
                                                     </ul>
@@ -405,12 +418,24 @@
                                                     </div>
                                                     <ul class="list-unstyled verified">
                                                       <li>
+														<?php if(@$userData->mobile_verification == 1){ ?>  
                                                         <i class="fa fa-check icon-width30 font-size20">
-                                                        </i> SMS Verified
+                                                        </i>
+                                                        <?php }else{ ?>
+														<i class="fa fa-times icon-width30 new-font-size20">
+                                                        </i>
+														<?php }?>	
+                                                         SMS Verified
                                                       </li>
                                                       <li>
+													   <?php if(@$userData->status == 1){ ?>  
                                                         <i class="fa fa-check icon-width30 font-size20">
-                                                        </i> Email Verified
+                                                        </i>
+                                                        <?php }else{ ?>
+															<i class="fa fa-times icon-width30 new-font-size20">
+                                                        </i>
+													    <?php } ?>
+                                                         Email Verified
                                                       </li>
                                                     </ul>
                                                   </div>
@@ -2024,8 +2049,13 @@ $check_in=$UserRating->check_in_rating;
 														  </li>
 														</ul>
 														<div class="guest-list"> 
+															 <?php if($userloginstatus){ ?>
 														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
 														     </a> 
+														     <?php }else{ ?>
+															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now
+														     </a>   	
+															 <?php } ?>
 														</div>
 													  </div>
 													  <!--/Service list--> 
@@ -3047,6 +3077,31 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 </div>
  
 <!--Report popup ends--> 
+<!--Start user check login pop up--> 
+<!-- Modal -->
+<div id="alertUserLogin" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title ">
+        
+			 <strong class="text-danger">Notification!</strong> 
+		</h2>
+      </div>
+      <div class="modal-body">
+        <p>Authentication Failed! Please log in before.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--popup ends--> 
 <input id="boarding_day_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
 <input id="boarding_night_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
 
