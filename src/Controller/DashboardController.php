@@ -256,6 +256,7 @@ class DashboardController extends AppController
 			  $profile_status['UserPets']['guest_photos'] = "no";
 			  $profile_status['UserPets']['behaviour'] = "no";
 		  }
+		  //pr($profile_status);die;
 		  //About Sitter
 		   if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
 			  $aboutSitterInfo = $userData[0]->user_about_sitter->toArray();
@@ -440,6 +441,8 @@ class DashboardController extends AppController
 		}else{
 		    $profile_percentage['calendar_setup'] = 0;
 		}
+		//pr($profile_status);die;
+		
 		  $this->set('profile_status',$profile_status);
 		  $this->set('profile_percentage',$profile_percentage);
           //End
@@ -480,29 +483,10 @@ class DashboardController extends AppController
         $userId = $session->read('User.id');
         $userType = $session->read('User.user_type');
 
-           $bookingRequestModel = TableRegistry::get('BookingRequests');
-          /*if($userType == 'Sitter'){
-            	$sitter_data['message_status'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'read_status' =>'unread'])
-				    ->count();   
-				     
-                $sitter_data['alerts'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'status' =>0])
-				    ->count();
-				    
-				$sitter_data['events'] = $bookingRequestModel
-				    ->find()
-				    ->where(['sitter_id' =>$userId,'status' =>1])
-				    ->count();
-				    
-				
-			}*/
-			 $this->ajaxCalendarBooking();
-	             $this->home();
-	       // $this->set('sitter_data',$sitter_data);
-	       
+        $bookingRequestModel = TableRegistry::get('BookingRequests');
+          
+		$this->ajaxCalendarBooking();
+	    $this->home();
 	}
  	public function ajaxCalendarBooking()
     {
@@ -522,14 +506,12 @@ class DashboardController extends AppController
 													]
 								  ]
 						)
-									->hydrate(false)->toArray();
+						->hydrate(false)->toArray();
 			$user_Data = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
 						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1' )
 					    ->hydrate(false)->toArray();
-			
 			$client_stay_status["new_clients"] = count($user_Data);
-			
 			$user_current = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
 						->hydrate(false)->count();
