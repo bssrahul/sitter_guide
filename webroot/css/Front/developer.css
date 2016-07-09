@@ -437,9 +437,7 @@ a:hover{
   padding-top: 20px !important;
 }
 
-.topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {
-    margin: 11px 12px 0 0 !important;
-}
+
 
 .chat_overlay {
 	background: #78bf45 none repeat scroll 0 0 !important;
@@ -843,5 +841,5 @@ div.more-sitter img{width:125px;height:125px;}
 	  text-align: center;
 	  width: 30px;
 	}
-
 .new-font-size20 {font-size:20px; color:#D90000;}
+

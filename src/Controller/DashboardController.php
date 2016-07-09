@@ -515,7 +515,7 @@ class DashboardController extends AppController
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
 						->hydrate(false)->count();
 						
-		    $client_stay_status["events"] = $user_current;
+			$client_stay_status["events"] = $user_current;
 		    
 			$booking_arr = array();
 			foreach($bookingData as $k=>$user_booking){
@@ -557,8 +557,6 @@ class DashboardController extends AppController
 					$client_stay_status["market_place"] = $market_place++;
 				}
 			}
-			
-			
 		 $client_stay_status["house_sitting_clients"] = $client_stay_status["house_sitting"];
 		 $client_stay_status["boarding_clients"] = $client_stay_status["boarding"];
 		 $client_stay_status["drop_in_visit_clients"] = $client_stay_status["drop_in_visit"];
@@ -572,7 +570,6 @@ class DashboardController extends AppController
 		 $client_stay_status["day_nigth_care"]  = number_format((float)(($client_stay_status["day_nigth_care"]/$booking_count)*100), 2, '.', '');
 		 $client_stay_status["market_place"]  = number_format((float)(($client_stay_status["market_place"]/$booking_count)*100), 2, '.', ''); 
 			
-			
 		}else{
 				 $client_stay_status["house_sitting_clients"] = $client_stay_status["house_sitting"];
 				 $client_stay_status["boarding_clients"] = $client_stay_status["boarding"];
@@ -581,14 +578,16 @@ class DashboardController extends AppController
 				 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
 				 $client_stay_status["alerts"]= 0;
 		}
-			
-		 //pr($client_stay_status);die;
-		
-		//pr($client_stay_status);die;
-		
+		//////////////////////////////
+		   /*$sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailabilityDays");
+		   $sitter_weekend_availability = $sitterAvailabilityModel->find('all')
+						->where(['UserSitterAvailabilityDays.user_id' => $userId])
+						->hydrate(false)->toArray();
+				    explode();die;
+        pr($sitter_weekend_availability);die;*/
+		//////////////////////////////
 		 $calendar = new  \Calendarbooking();
 		 
-        
          $this->set('calender',$calendar->show($booking_arr));
          $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 

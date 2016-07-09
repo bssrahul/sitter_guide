@@ -295,6 +295,8 @@ $(document).ready(function(){
     text-align: right !important;
     top: -7px;}
 
-
+.pac-item-selected{
+ background:#f3f3f3 !important;
+}
 
 </style>
