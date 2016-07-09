@@ -1,8 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-
-
 #payment-box { width:100%; float:left; margin:100px 0 50px 0;}
 
 #payment-box .full-content-wrap .best-pract-wrap { background:#ecf7ff;}
@@ -274,8 +272,6 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 
 .recent-act-widget .icon-p15 {padding-left:5px; font-size:15px; padding-top:7px;}
 .recent-act-widget .font-size20 {font-size:20px; color:#72a105;}
-
-
 .mb5 {margin-bottom:5px !important;}
 .recent-act-widget .verified {font-weight:500;}
 
@@ -320,7 +316,7 @@ ul.pet-list li.pet-7 span{ background:url(../../img/search-icons.png) no-repeat 
 .detail-full-wrapper .leading-area {float: left; padding: 0px 0 0; width: 100%;}
 .detail-full-wrapper .leading-area .more-sitter .ms-area ul li a p.name { color: #72a105;font-size: 16px;font-weight: 300;}
 .detail-full-wrapper .leading-area .more-sitter .ms-area ul li a p.loc {color: #2d2d2d; font-size: 14px; font-weight: 300; margin: 0;}
-.detail-full-wrapper .leading-area .more-sitter .ms-area ul li a img {  margin:0px auto; margin-bottom:4px;}
+.detail-full-wrapper .leading-area .more-sitter .ms-area ul li a img {  margin:0px auto; margin-bottom:4px; display:block; width:80px; height:80px;}
 .detail-full-wrapper .leading-area .more-sitter .grey {color:#999 !important; padding-top:5px;}
 .detail-full-wrapper .leading-area .more-sitter .ms-area ul li {float: left; text-align: center; width: 16.6%;}
 .video-box {width:90% !important; margin:0px auto;}

@@ -344,7 +344,7 @@
 									
 									<img Width="52" height="52" alt="<?php echo __('Profile Picture'); ?>" src="<?php if(!empty($UserImage)){echo HTTP_ROOT.'img/uploads/'.$UserImage ; }else{ echo HTTP_ROOT.'img/uploads/prof_photo.png' ;} ?>"> 					   
 									<?php  } ?>  
-									<p><?php echo (@$lastcomment !="")?@$lastcomment:"Client's comments not given yet"; ?></p>
+									<?php echo (@$lastcomment !="")?"<p>".@$lastcomment."<p>":"<p class='wc'>Client's comments not given yet</p>"; ?>
 								  </div>                      
 								  <!--sitter feedback--> 
 								</div>
