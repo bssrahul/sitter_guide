@@ -2610,7 +2610,7 @@ function addPets(){
 		$this->viewBuilder()->layout('landing');  
 	}	
 	
-	function changeIdleStatus(){
+    function changeIdleStatus(){
 		
 		$session = $this->request->session();
         
@@ -2651,7 +2651,7 @@ function addPets(){
 		/*}*/
 		die;
 	   
-    }		
+    }	
 	
 }
 ?>
