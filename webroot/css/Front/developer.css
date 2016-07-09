@@ -230,9 +230,7 @@ ul.booking_days li.dog-in-li span {
 }
 
 ul.booking_days  li.dog-in-li:hover  {
-    background:#72A105;
-    color:#fff;
-  
+   cursor:pointer;
 }
 
 ul.booking_days li.active  {

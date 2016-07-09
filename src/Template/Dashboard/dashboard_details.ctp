@@ -43,22 +43,17 @@
                         <div class="down-icon"></div>
                       </div>
                     </li>
-                    <!--<li><a href="#"    class="close" data-dismiss="alert" aria-label="close" ><div class="cancel-icon"></div></a></li>-->
-                    
                   </ul>
                 </div>
               </div>
               <div class="below-second-box collapse in" id="revenue1">
                 <div class="revenue-graph"  > 
-                  <!--<img src="<?php echo HTTP_ROOT; ?>img/calender-big.png" class="img-responsive" style="max-height:200px; width:100%;" alt="calender"> -->
-                  
                   <div id="columnchart_values" style="width: 100%; height: 200px;"></div>
                 </div>
                 <div class="clearfix"></div>
                 <div>
                   <h4 class="text-center cal-caption"><i class="fa fa-circle-o color-blue"></i> &nbsp;Earning for year 2015</h4>
                   <hr />
-                 <!-- <h1 class="revenue-price-bold text-center">$15.235</h1>-->
                   <p class="revenue-month text-center">Earning this month </p>
                    <div class="revenue-small-text text-center"><p>Earningsi shown are after Sitter Guide
  commission and service costs </p></div>
@@ -92,8 +87,6 @@
                         <div class="down-icon"></div>
                       </div>
                     </li>
-                    <!--<li><a href="#"><div class="cancel-icon"></div></a></li>-->
-                    
                   </ul>
                 </div>
               </div>
@@ -230,7 +223,7 @@
 					  </div>
 					 
 					 </div>
-		   <!--Start -->
+		   <!-- Start -->
 		   <?php if(!empty($booking_requests_info)){ ?>
 		     <div id="myCarousel-detail" class="carousel slide" data-ride="carousel">
 						  <!-- Wrapper for slides -->
@@ -282,12 +275,10 @@
 								  <div class="row calender-widget pad-bottom-12">
 									<div class="col-md-6 col-sm-6 col-xs-12">
 									  <h4><span>
-										  <!--<img class="img-circle" src="<?php echo HTTP_ROOT.'img/uploads/'.(@$booking_request['user']['image'] != ''?@$booking_request['user']['image']:'dm.png'); ?>" width="27" height="27" alt="user-pic">-->
 										  </span> No Booking Request</h4>
 									 
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-6">
-									  <!--<p class="text-right">Time 2:30 pm</p>-->
 									</div>
 								  </div>
 								 
@@ -370,8 +361,6 @@
                         <div class="down-icon"></div>
                       </div>
                     </li>
-                    <!--<li><a href="#"><div class="cancel-icon"></div></a></li>-->
-                    
                   </ul>
                 </div>
               </div>
