@@ -4,39 +4,37 @@
 		$cuntry_price = $session->read("currency.price");
 		$cuntry_sign_code = $session->read("currency.sign_code");
 ?>
-<div class="job-request-wrapper">
-                    <p class="job-req">Job Request Detail
-                    </p>
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>From : 
-                          </td>
-                          <td><?php echo @$get_booking_requests_to_display['booknig_start_date'] != ""?@$get_booking_requests_to_display['booknig_start_date']:"_ _ _"; 
-                            
-                            
-                         ?> 
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>To :
-                          </td>
-                          <td><?php echo @$get_booking_requests_to_display['booking_end_date'] != ""?@$get_booking_requests_to_display['booking_end_date']:"_ _ _"; ?> 
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Service :
-                          </td>
-                          <td><?php 
+	<div class="job-request-wrapper">
+		<p class="job-req">Job Request Detail</p>
+			<table class="table">
+				<tbody>
+					<tr>
+					  <td>From : </td>
+					  <td>
+						  <?php echo @$get_booking_requests_to_display['booknig_start_date'] != ""?@$get_booking_requests_to_display['booknig_start_date']:"_ _ _"; ?> 
+					  </td>
+					</tr>
+					
+                     <tr>
+						<td>To :</td>
+                        <td>
+							<?php echo @$get_booking_requests_to_display['booking_end_date'] != ""?@$get_booking_requests_to_display['booking_end_date']:"_ _ _"; ?> 
+                         </td>
+                     </tr>
+                     
+                     <tr>
+						<td>Service :</td>
+                          <td>
+							  <?php 
                           $service = str_replace("_"," ",@$get_booking_requests_to_display['required_service']);
                           $service = $service != ""?$service:"_ _ _";
                                echo ucwords(@$service); 
                           ?> 
                           </td>
-                        </tr>
-                        <tr>
-                          <td>Pets : 
-                          </td>
+					</tr>
+                        
+                    <tr>
+						<td>Pets : </td>
                           <td><?php 
                           if(!empty(@$pets)){
 							  echo implode(",",@$pets);
@@ -45,17 +43,16 @@
 							  }
                           ?>
                           </td>
-                        </tr>
-                        <tr>
-                          <td class="width110">Stay Price : 
-                          </td>
-                          <td><?php echo $cuntry_sign_code." ".$cuntry_price*@$total; ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Market Place:
-                          </td>
-                          <td>
+					</tr>
+                    
+                    <tr>
+                          <td class="width110">Stay Price : </td>
+                          <td><?php echo $cuntry_sign_code." ".$cuntry_price*@$total; ?></td>
+					</tr>
+					
+                    <tr>
+						<td>Market Place:</td>
+						<td>
 						  <?php 
 						  if(!empty(@$get_booking_requests_to_display['additional_services'])){
 							   $allAdditionalServices = [];
@@ -69,41 +66,48 @@
 							  echo "_ _ _";
 							  }
                           ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Notes :
-                          </td>
-                          <td><?php echo (@$get_booking_requests_to_display['message'] !='') ? @$get_booking_requests_to_display['message'] : "_ _ _"; ?> 
-                          </td>
-                          <td>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="rate-detail-wrapper">
-                      <div class="rate-pad">
-                        <p class="rate-det"> Rate Details: 
-                        </p>
+						</td>
+					</tr>
+					
+                    <tr>
+						<td>Notes :</td>
+						<td>
+							<?php echo (@$get_booking_requests_to_display['message'] !='') ? @$get_booking_requests_to_display['message'] : "_ _ _"; ?> 
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="rate-detail-wrapper">
+				
+				<div class="rate-pad">
+				
+					<p class="rate-det"> Rate Details: </p>
+                    
                         <table class="table">
                           <tbody>
                             <tr>
-                              <td>Hunter : 
-                              </td>
-                              <td><?php echo $cuntry_sign_code." ".$cuntry_price*@$total; ?>
-                              </td>
+                              
+                              <td>Hunter : </td>
+                              <td><?php echo $cuntry_sign_code." ".$cuntry_price*@$total; ?></td>
+                            
                             </tr>
+                            
                             <tr>
-                              <td>Extended Stay :
-                              </td>
-                              <td>X 1 night
-                              </td>
+                              
+                              <td>Extended Stay :</td>
+                              <td>X 1 night</td>
                             </tr>
+                            
                           </tbody>
                         </table>
-                      </div>
-                      <div class="sub-total">
-                        <div class="htt">
+				</div>
+                    
+                <div class="sub-total">
+             
+					<div class="htt">
+                          
                           <table class="table ">
                             <tbody>
                               <tr>
@@ -114,10 +118,15 @@
                               </tr>
                             </tbody>
                           </table>
-                        </div>
-                      </div>
-                    </div>
-                   <?php  if(strtolower($userType) == "sitter"){ ?>
+                          
+					</div>
+				</div>
+				
+			</div>
+                   
+                   <?php  
+                  
+                   if(strtolower($userActas) == "sitter"){ ?>
                     
                      <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>
 						
@@ -147,7 +156,7 @@
                     <?php 
                     } ?>
                    
-                    <?php  if(strtolower($userType) == "basic"){ ?>
+                    <?php  if(strtolower($userActas) == "guest"){ ?>
                     <p class="click-bok">Click 
                      
 						 

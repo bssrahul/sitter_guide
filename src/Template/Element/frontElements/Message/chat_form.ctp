@@ -22,6 +22,19 @@
 									<input type = "hidden" id="booking_message_id" name="booking_message_id" value="<?php echo @$booking_id; ?>" />
 									<input type = "hidden" id="user_type" name="user_type" value="<?php echo @$userType; ?>" />
 									<input type = "hidden" id="user_id" name="user_id" value="<?php echo @$userId; ?>" />
+									
+									<?php 
+										$user_guest = $get_requests[0]['user_id'];
+										$user_sitter = $get_requests[0]['sitter_id'];
+										if($userId==$user_guest){
+											$userTo = $user_sitter;
+										}else{
+											$userTo = $user_guest;
+										}
+									
+									?>
+									<input type = "hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" />
+									
 									<textarea id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control"></textarea>
 									
 								

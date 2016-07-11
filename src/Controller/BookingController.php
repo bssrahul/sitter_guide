@@ -385,25 +385,29 @@ class BookingController extends AppController
 	function bookNow($request_booking_id= null,$type = 'guest')
 	{
 		
-			$this->viewBuilder()->layout('landing');
+		$this->viewBuilder()->layout('landing');
+		$booking_id = convert_uudecode(base64_decode($request_booking_id));
+		
+		$session = $this->request->session();
+		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		$UsersModel = TableRegistry::get('Users');
+		
+		
+		
+		
+		$this->set('statesArray',$this->displayStates());
+		
+		if($request_booking_id==null){
 			
-			$session = $this->request->session();
-			$BookingRequestsModel = TableRegistry::get('BookingRequests');
-		    $UsersModel = TableRegistry::get('Users');
+			if(isset($this->request->data) && !empty($this->request->data)){
+				
+				$request_booking_id = isset($this->request->data['Booking']['booking_id'])?$this->request->data['Booking']['booking_id']:'';
 			
-			$this->set('statesArray',$this->displayStates());
-			
-			if($request_booking_id==null){
-				
-				if(isset($this->request->data) && !empty($this->request->data)){
-					
-					$request_booking_id = isset($this->request->data['Booking']['booking_id'])?$this->request->data['Booking']['booking_id']:'';
-				
-				}
-				
 			}
 			
-			$booking_id = convert_uudecode(base64_decode($request_booking_id));
+		}
+			
+		
 		
 		//CREATE STRIPE OBJECT
 		\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
@@ -411,93 +415,83 @@ class BookingController extends AppController
 		//GET BOOKING RECORDS FOR DISPLAY ON RIGHT HAND SIDE DIV
 		$get_booking_requests_to_display = array();
 		$total = 0;
-   
-		$userType = $session->read('User.user_type');
-		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
-		
+	
 
 		if(isset($booking_id) && $booking_id !=''){
 		       
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')
 				->where(['BookingRequests.id'=>$booking_id])
-				->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
-																	return $q->order(['BookingChats.id' => 'DESC']);
-																}
-											]
-						  ]
-				)
 				->hydrate(false)->first();
 				
 				if(!empty($get_booking_requests_to_display)){
 					
-					
-					//pr($get_booking_requests_to_display);die;
-				    //$this->sendMessages();
-				  if($type == "guest"){
-					  $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
-					//Booking request message  
-					if($get_user_communications_details['communication']['new_booking_request'] == 1){
-					    $to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
-						$message_body = "You have been received new booking request";	
-						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
-				     } 
-				  }
-				  
-					 $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
-															'UserSitterHouses'
-															
-													            ]
-														])
-																		->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
-																		//->contain(['UserSitterHouses','UserSitterServices'])
-																		->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]])
-																		->limit(1)->hydrate(false)->first();
-										
-										
 					if($type == "sitter"){
 			   
 					   $bookingRequestData = $BookingRequestsModel->newEntity();
 					   $bookingRequestData->id = $booking_id;
 					   $bookingRequestData->folder_status_sitter = 'current';
+					   
 					   //Update sitter status
 					   $BookingRequestsModel->save($bookingRequestData);
 					  //Start send message
 					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["user_id"]);
 					
 					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
-					    $to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
+						$to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
 						$message_body = $get_booking_requests_to_display['user']['first_name']." ".@$get_booking_requests_to_display['user']['last_name']." have accepted your request,kindly proceed for payment.";	
 						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
-				      } 
+					  } 
 					   
 					   
 					   return $this->redirect("/Message/get-messages/current/".$request_booking_id);		
-			        }
+					}
+					
+					//GET SITTER COMMUNICATION DETAILS FOR BOOKING MESSAGES
+					$get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+					
+					if($get_user_communications_details['communication']['new_booking_request'] == 1){
+					    $to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
+						$message_body = "You have been received new booking request";	
+						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
+				    } 
+				  			  
+					$get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>['UserSitterHouses']])
+																		->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
+																		->where(['Users.id' => $get_booking_requests_to_display['sitter_id']])
+																		->limit(1)->hydrate(false)->first();
+										
+										
+					
 			        //end send message													
-					$userData = $UsersModel->find('all',['contain'=>[
-															    'UserSitterServices',
-															    'UserPets'
-															   ]
-														]
-												)
+					
+					$userGuestData = $UsersModel->find('all',['contain'=>['UserPets']])
+								   ->where(['Users.id' => $get_booking_requests_to_display['user_id']], ['Users.id' => 'integer[]'])
+								   ->toArray();
+								   
+					$userData = $UsersModel->find('all',['contain'=>['UserPets','UserSitterServices']])
 								   ->where(['Users.id' => $get_booking_requests_to_display['sitter_id']], ['Users.id' => 'integer[]'])
 								   ->toArray();
 				}
-			  $selected_pets_count="";
-			 if(!empty($userData[0]->user_pets) && isset($userData[0]->user_pets)){
-				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
-				 $selected_pets = [];
-				 foreach($idPetsArr as $single_pet_id){
-					 foreach($userData[0]->user_pets as $single_pet){
-						 if($single_pet_id == $single_pet->id){
-							$selected_pets[] = $single_pet->guest_name;
+				
+				$selected_pets_count="";
+				
+				if(!empty($userGuestData[0]->user_pets) && isset($userGuestData[0]->user_pets)){
+					$idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
+					$selected_pets = [];
+					 
+					 foreach($idPetsArr as $single_pet_id){
+						 foreach($userGuestData[0]->user_pets as $single_pet){
+							 if($single_pet_id == $single_pet->id){
+								$selected_pets[] = $single_pet->guest_name;
+							 }
 						 }
 					 }
-				 }
-			$selected_pets_count = count($selected_pets);
-		    $this->set("pets_count",$selected_pets_count);
-		     
-		    }
+					
+					$selected_pets_count = count($selected_pets);
+					$this->set("pets_count",$selected_pets_count);
+
+				}
+				
 		   if(!empty($userData[0]->user_sitter_services) && isset($userData[0]->user_sitter_services)){
 				 
 		        $date1 = @$get_booking_requests_to_display['booknig_start_date'];
@@ -539,7 +533,7 @@ class BookingController extends AppController
 				 
 				 $total = ($day_total+$night_total)*$guest_num;
 			 }else
-			  if($get_booking_requests_to_display['required_service']  == 'maket_place'){
+			  if($get_booking_requests_to_display['required_service']  == 'market_place'){
 				 $mp_grooming_rate = $userData[0]->user_sitter_services[0]->mp_grooming_rate;
 				 $mp_training_rate = $userData[0]->user_sitter_services[0]->mp_training_rate;
 				 $mp_recreation_rate = $userData[0]->user_sitter_services[0]->mp_recreation_rate;
