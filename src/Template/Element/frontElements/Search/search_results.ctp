@@ -1,13 +1,12 @@
 <?php $session = $this->request->session(); 
       $currency = $session->read("currency");     
- ?>
+?>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
         <div class="toptext">
           <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book on Sitter Guide and receive: Free sitter guide Premium Insurance, Local Australian Customer Support and a Booking Guarantee')); ?>.</p>
         </div>
-        
         <div class="ssr-list-area">
           <div class="sl-area"> 
             <!--distance-->
@@ -18,8 +17,7 @@
                   <div class="sort-by">
                     <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sort By')); ?></p>
                     <?php 
-					
-						echo $this->Form->input(
+					    echo $this->Form->input(
 							'Search.distance',[
 							"type"=>"select",
 							'label' => false,
@@ -51,8 +49,7 @@
 										<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
 										
 									?>
-									
-										  <!--Profile Picture Slide area-->
+									   <!--Profile Picture Slide area-->
 											<div class="sit-pic-area">                      
 												<script>
 												$(function(){
@@ -61,47 +58,44 @@
 													}); 
 														
 												})
-												
 												</script>	
+												
 												  <div id="myCarousel" class="carousel customCrousal<?php echo $rankNo; ?> slide" data-interval="false" data-ride="carousel">   
-															<div class="carousel-inner" role="listbox">   
+															<div class="small-slider carousel-inner" role="listbox">   
                                                               <?php 
-																															
-																if(!empty(@$sub_galleries_result)){
-																$flag=0;
-																
-																		 foreach($sub_galleries_result as $sub_galleries){
-																			
-																																		
+                                                             if(!empty(@$sub_galleries_result)){
+																$flag=0;?>
+																       <?php 
+																        foreach($sub_galleries_result as $sub_galleries){
 																			if($sub_galleries->image != "")
 																			{
-																				
-																				if($flag == 0 ){ $flag=1;
+																				if($flag == 0 ){
+																				 $flag=1;
+																					if(!empty($results->image)){ ?>
+																						<div class="item active">
+																						<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 
+																						</div>	
+																					<?php }
 																					?>
-																					<div class="item active">
+																				   <div class="item <?php echo $results->image == ""?"active":"" ?>">
 																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
 																					</div>
-																			<?php	}else{?>
+																			<?php  	
+																			}else{?>
 																					<div class="item ">
 																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
 																					</div>
-																				
-																			<?php	}
+																			 <?php }
 																			}
 																		}
 																 }else{ ?>
 																		<div class="item active">
-																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/XVWVPJniSAYcBo5.png'; ?>"> 
+																		<img class="searchImg" alt="<?php echo __('Profile Picture ok'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
 																			</div>
-																				
 																	<?php } 
-																	
-																	
 																	?>															
-															 												
 															</div>
-														
-															<!-- Left and right controls -->
+														   <!-- Left and right controls -->
 															<a class="left carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="prev">
 															  <span class="fa fa-chevron-left" aria-hidden="true"></span>
 															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></span>
@@ -110,32 +104,21 @@
 															  <span class="fa fa-chevron-right" aria-hidden="true"></span>
 															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?></span>
 															</a>                                        
-															
-															
 												</div>                                                    	
-											
-												<!--quick view-->
-											
-													<div class="quick-view">
+											    <!--quick view-->
+											        <div class="quick-view">
 															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </span></a>
 													</div>
-											
-												<!--/quick view-->                       
-											
+											     <!--/quick view-->                       
 											</div>
 												<!--/Profile Picture Slide area-->   
-														
 										<?php// } ?>   	
-										
 									</div>
 									<div class="sitter-p-det"> 
 									  <!--head-->
-									  
-										  <div class="sit-p-head">
-											
+									  <div class="sit-p-head">
 											<p class="head-txt">
-
-												<span><?php echo $rankNo; ?></span>
+                                              <span><?php echo $rankNo; ?></span>
 												<a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">
 												<?php echo $results->first_name." ".substr(($results->last_name)?$results->last_name:"",0,1)."."; ?> 
 											   </a>
@@ -270,12 +253,25 @@
 									  <div class="sit-available">
 										<ul>
 										  <li>
-											  <a href="#" title="Available this weekend"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Available this weekend')); ?>
+											  <a href="#" title="Available this weekend">
+												  <?php
+												   if($results->weekend_availaibility == "yes"){
+												         echo $this->requestAction('app/get-translate/'.base64_encode('Available this weekend')); 
+												   }else{
+												        echo $this->requestAction('app/get-translate/'.base64_encode('Not available on weekend'));
+												   }
+												   ?>
 											  </a>
 										 </li>
-										
 										 <li>
-											 <a href="#" title="Available on New Year"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Available on New Year')); ?></a>
+										        <a href="#" title="Available on New Year">
+											   <?php
+												if($results->availaibility_on_new_year == "yes"){ 
+												     echo $this->requestAction('app/get-translate/'.base64_encode('Available on New Year')); 
+											    }else{
+												   echo $this->requestAction('app/get-translate/'.base64_encode('Not available on New Year')); 
+												}
+											  ?></a>
 										</li>
 										
 										</ul>
@@ -542,20 +538,16 @@
 					<!--info popup-->
 			<?php if(!empty($resultsData)){ ?>
 				<div role="dialog" id="myModal2" class="modal fade in" style="display: none;">
-							
-								<div class="modal-dialog">    
+							    <div class="modal-dialog">    
 								   <div data-ride="carousel" class="carousel slide"  data-interval="false"  id="myCarousel2">    
 									  <div role="listbox" class="carousel-inner">
 									  <?php
-				
-			//	pr($resultsData);die;
-							$qvModal = 1;$innerSlideNO=1;	
-							foreach($resultsData as $results){
-							?>
-																
-								
-									  <div class="item qvModal<?php echo $qvModal; ?>">      
-										 <div class="sitter-quike-view">
+									//pr($resultsData);die;
+									$qvModal = 1;$innerSlideNO=1;	
+									foreach($resultsData as $results){
+									?>
+										<div class="item qvModal<?php echo $qvModal; ?>">      
+										 <div data-id="<?php echo @$results->id; ?>" class="sitter-quike-view">
 											<div class="sqv-box">
 												<div class="top-close"> 
 												<p>Sitter Quick Details</p>
@@ -574,7 +566,7 @@
 														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
 														<div class="rgt-hours">
 															<p>
-																  from
+															 from
 										                 <span><?php echo $currency['sign_code']." ".((@$results->user_sitter_services[0]->sh_night_rate)*$currency['price']); ?></span>
 																	per night
 																	</p>
@@ -583,8 +575,8 @@
 													</div>                	
 												</div>
 												<!--quick slide-->
-												<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
 												
+												<!--<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
 												if(!empty(@$sub_galleries_result)){  
 															//pr($sub_galleries->image);die;
 												?>					
@@ -602,8 +594,13 @@
 																					</div>
 																				
 																	<?php		}
+																	
 																	}	?>
-																					
+																		      <div class="item">
+																					 <li>
+																						  <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
+																					  </li>
+																			  </div>			
 																					
 																</ul>
 														</div>
@@ -620,8 +617,129 @@
 															 </ul>
 														</div>
 												</div>
-													<?php } ?>
+													<?php } ?>-->
+											  <!-- <div class="quick-slide">
+														<div class="ms-area">
+															<ul class="owl-carousel-1">
+																    <div class="item active">
+																		 <li>
+																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
+																		</li>
+																	</div>
+																	<div class="item">
+																		 <li>
+																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
+																		</li>
+																	</div>
+																	<div class="item">
+																		 <li>
+																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
+																		</li>
+																	</div>
+																	<div class="item">
+																		 <li>
+																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
+																		</li>
+																	</div>
+															 </ul>
+														</div>
+												</div>-->
 												<!--quick slide-->
+												<?php $nextSlider = rand(5,15); ?>
+												<script>
+												$(function(){
+														$('.customCrousalNext<?php echo $nextSlider; ?>').carousel({
+														interval: false
+													}); 
+														
+												})
+												</script>	
+												<?php //$sub_galleries_result=$results->user_sitter_galleries; 
+												//if(!empty(@$sub_galleries_result)){ ?>
+												<div class="quick-slide">                	
+												  <div id="myCarousel3" class="carousel slide customCrousalNext<?php echo $nextSlider; ?>" data-ride="carousel">
+													<div class="carousel-inner" role="listbox">
+														
+													  <div class="item active">
+														<div class="row">      
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <?php echo rand(5, 15);?>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														</div>                  
+													  </div>
+													  
+													  <div class="item">
+														<div class="row">      
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														</div>  
+													  </div>
+													  
+													  <div class="item">
+														<div class="row">      
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+															<li>
+															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
+															</li>
+														  </div>
+														</div>  
+													  </div>
+													  
+													</div>
+													<!-- Left and right controls -->
+													<a class="left carousel-control" href=".customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
+													  <span class="fa fa-chevron-left" aria-hidden="true">
+													  </span>
+													  <span class="sr-only">Previous
+													  </span>
+													</a>
+													<a class="right carousel-control" href=".customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="next">
+													  <span class="fa fa-chevron-right" aria-hidden="true">
+													  </span>
+													  <span class="sr-only">Next
+													  </span>
+													</a>
+												  </div>               	 
+												</div>
+												<!--End quick slide-->
+												
+												
 												<!--content area Start-->
 
 												<div class="sqv-mid">
@@ -688,16 +806,23 @@
 									 
 									
 								<?php $qvModal++; } ?></div>
-									<!-- Left and right controls -->
-											<a data-slide="prev" role="button" href="#myCarousel2" class="left myCarousel2next carousel-control">
+								        <!-- Left and right controls -->
+											<a data-slide="prev" role="button" href="#myCarousel2" class="left leftPopup myCarousel2next carousel-control">
+											  
 											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
-											  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></span>
+											  
+											  <span data-rel="" class="sr-only">
+												  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
+											  </span>
 											</a>
-											<a data-slide="next" role="button" href="#myCarousel2" class="right myCarousel2next carousel-control">
-											  <span aria-hidden="true" class="fa fa-chevron-right"></span>
-											  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?></span>
+											
+											<a data-slide="next" role="button" href="#myCarousel2" class="right rightPopup myCarousel2next carousel-control">
+												<span aria-hidden="true" class="fa fa-chevron-right"></span>
+												<span data-rel="" class="sr-only">
+													<?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
+												</span>
 											</a>
-											   <!-- Left and right controls -->
+									   <!-- Left and right controls -->
 										  </div>   
 								</div>
 					
@@ -727,6 +852,8 @@
 </style>
 
 <script>
+	
+	
 	$(function(){
 		
 		$(document).on('click',".qvBtn",function(){
@@ -748,5 +875,18 @@ echo $this->Html->script('Front/for-sticky.js'); ?>
 
 <script>$(document).ready(function(){
 	$("#sidebar").stick_in_parent();
+	
+	
+	     
     });
+    $(document).on('click',".rightPopup",function(){
+	     //var text_val = $('').next('#second_child').val();
+	     alert($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id'));
+	     //alert();
+	});
+	 $(document).on('click',".leftPopup",function(){
+	     //var text_val = $('').next('#second_child').val();
+	     alert($("#myCarousel2").find("div.active").prev().find('div.sitter-quike-view').attr('data-id'));
+	     //alert();
+	});
     </script>
