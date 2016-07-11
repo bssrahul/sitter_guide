@@ -389,10 +389,14 @@
                         </li>
                         <li>
                           <span>
-                            <?php echo @$get_booking_requests_to_display['booknig_start_date'] != ""?@$get_booking_requests_to_display['booknig_start_date']:"_ _ _"; ?>
+                            <strong>
+								<?php echo date("F j, Y", strtotime(@$get_booking_requests_to_display['booknig_start_date'])) != ""?date("F j, Y", strtotime(@$get_booking_requests_to_display['booknig_start_date'])):"_ _ _"; ?>
+							</strong>	
                           </span> to 
                           <span>
-                            <?php echo @$get_booking_requests_to_display['booking_end_date'] != ""?@$get_booking_requests_to_display['booking_end_date']:"_ _ _"; ?> 
+							  <strong>
+                            <?php echo date("F j, Y", strtotime(@$get_booking_requests_to_display['booknig_end_date'])) != ""?date("F j, Y", strtotime(@$get_booking_requests_to_display['booknig_end_date'])):"_ _ _"; ?> 
+							</strong>	
                           </span>
                         </li>
                       </ul>
@@ -482,7 +486,7 @@
 			expandCollaspe();
       });
 	
-		<?php if($UserData['payment_type']=='new_cards'){ ?>	
+		<?php if(isset($UserData['payment_type']) && $UserData['payment_type'] =='new_cards'){ ?>	
 			$("#collapseOne").collapse('hide');
 			$("#collapseTwo").collapse('show');
 			$(".collapseOne").prop('disabled',true);
