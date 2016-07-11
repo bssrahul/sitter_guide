@@ -72,56 +72,73 @@ class MessageController extends AppController
 		
 		$booking_id = convert_uudecode(base64_decode($request_booking_id));
 		
-		$userType = $session->read('User.user_type');
-		//echo $userType;die;
-		$class_user = $userType == 'Sitter'?'chat-me':'chat-user';
-		
-		$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
-		
-		$fieldname = $userType == 'Sitter'?'sitter':'guest';
-		
 		$userId = $session->read('User.id');
-		$this->set(compact('userId','userType','class_user','fieldname'));
+		$this->set(compact('userId','class_user'));
 		
-		//echo "okokok".$userType;die;
 		$get_requests = $BookingRequestsModel->find('all')
-		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.folder_status_'.$fieldname => $folder_status])
+		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId"])
 		->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
 															return $q->order(['BookingChats.id' => 'DESC']);
 														}
 									]
 		          ]
 		)
-		->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])
+		->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id','request_by_sitter_id'])
 		->hydrate(false)->toArray();
 		
-		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
-		//pr($get_requests);
-		//echo $user_message_display_field;die;
+		
 		if(!empty($get_requests)){
+			
 			foreach($get_requests as $booking_key=>$booking_records){
+				
+				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
+				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Guest';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
+					
+					$user_message_display_field = 'user_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Sitter';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'guest';
+					$userType = 'Basic';
+					$userActas = 'Guest';
+					
+				}		
+				
 				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
 																->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded'])
 																->where(['Users.id' => $booking_records[$user_message_display_field]])
 																->limit(1)->hydrate(false)->first();
 			}
 		}
-		//pr($get_requests);die;
 		
-		$this->set('get_requests',$get_requests);
+		
 		if(count($get_requests)>0){
 			$default_booking_id = $get_requests[0]['id'];
 		}else{
 			$default_booking_id = '';
 		}
+		
 		if($booking_id != ''){
+		
 			$this->set('booking_id',$booking_id);
-			$this->set('folder_status',$folder_status);
+			
 			$get_chats = $BookingChatsModel->find('all')
 						->where(['BookingChats.booking_request_id' => $booking_id])
 						->contain(['Users'])
 						->select(['message','read_status','Users.image','created_at','user_role','user_id','Users.facebook_id','Users.is_image_uploaded'])
 						->hydrate(false)->toArray();
+			
 			if(!empty($get_chats)){
 				$BookingRequestsModel->query()
 						->update()
@@ -130,13 +147,10 @@ class MessageController extends AppController
 						->execute();
 				
 			}
-			$this->set('get_chats',$get_chats);
-			$this->set('sitter_id',$request_booking_id);
-		
+			
 		}else{
 		    $booking_id = $default_booking_id;
 			$this->set('booking_id',$booking_id);
-			$this->set('folder_status',$folder_status);		
 			$get_chats = $BookingChatsModel->find('all')
 						->where(['BookingChats.booking_request_id' => $booking_id])
 						->contain(['Users'])
@@ -149,13 +163,14 @@ class MessageController extends AppController
 						->where(['id' => $booking_id])
 						->execute();
 			}
-			$this->set('get_chats',$request_booking_id);
+			
 		}
 		//GET BOOKING RECORDS FOR DISPLAY ON RIGHT HAND SIDE DIV
+		
 		$get_booking_requests_to_display = array();
 		$total = 0;
 		if(isset($booking_id) && $booking_id !=''){
-			//echo $booking_id;die;
+			
                  $get_booking_requests_to_display = $BookingRequestsModel->find('all')
 				->where(['BookingRequests.id'=>$booking_id])
 				->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
@@ -165,7 +180,7 @@ class MessageController extends AppController
 						  ]
 				)
 				->hydrate(false)->first();
-				//pr($get_booking_requests_to_display);die;
+				
 			if(!empty($get_booking_requests_to_display)){
 				  $get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>[
 															'UserSitterHouses'
@@ -173,36 +188,39 @@ class MessageController extends AppController
 													            ]
 														])
 														->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
-														//->contain(['UserSitterHouses','UserSitterServices'])
+														
 														->where(['Users.id' => $get_booking_requests_to_display[$user_message_display_field]])
 														->limit(1)->hydrate(false)->first();
 				    //Start sk				
-					$userData = $UsersModel->find('all',['contain'=>[
+					$guestUserData = $UsersModel->find('all',['contain'=>[
 															    'UserSitterServices',
 															    'UserPets'=>['UserPetGalleries']
 															   ]
 														]
 												)
-								   ->where(['Users.id' => $get_booking_requests_to_display['sitter_id']], ['Users.id' => 'integer[]'])
+								   ->where(['Users.id' => $get_booking_requests_to_display['user_id']], ['Users.id' => 'integer[]'])
 								   ->toArray();
+								   
+				   $sitterUserData = $UsersModel->find('all',['contain'=>[
+												'UserSitterServices',
+												'UserPets'=>['UserPetGalleries']
+											   ]
+										]
+								)
+				   ->where(['Users.id' => $get_booking_requests_to_display['sitter_id']], ['Users.id' => 'integer[]'])
+				   ->toArray();
 					//end sk
-					 //pr($userData);die;
-					 
-					 
-					 
-					 
-					 
 					 
 			  }
-			  //pr($get_booking_requests_to_display);die;
+			// pr( $sitterUserData); die;
 			  //Start sk	
-			 //pr($get_booking_requests_to_display['guest_id_for_bookinig']);die;
-			 if(!empty($userData[0]->user_pets) && isset($userData[0]->user_pets)){
+			
+			 if(!empty($guestUserData[0]->user_pets) && isset($guestUserData[0]->user_pets)){
 				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
 				 $selected_pets = [];
 				 $pets_name = [];
 				 foreach($idPetsArr as $single_pet_id){
-					 foreach($userData[0]->user_pets as $single_pet){
+					 foreach($guestUserData[0]->user_pets as $single_pet){
 						 if($single_pet_id == $single_pet->id){
 							$pets_name[] = $single_pet->guest_name;
 							$selected_pets[] = $single_pet;
@@ -215,7 +233,8 @@ class MessageController extends AppController
 		    }
 		   
 		    //Start sk	
-			if(!empty($userData[0]->user_sitter_services) && isset($userData[0]->user_sitter_services)){
+		    //echo $get_booking_requests_to_display['required_service'] ; die;
+			if(!empty($sitterUserData[0]->user_sitter_services) && isset($sitterUserData[0]->user_sitter_services)){
 				 
 		        $date1 = @$get_booking_requests_to_display['booknig_start_date'];
 				$date2 = @$get_booking_requests_to_display['booking_end_date'];
@@ -231,17 +250,16 @@ class MessageController extends AppController
 			   //pr($guest_num);die;
 			 
 			 if($get_booking_requests_to_display['required_service'] == 'boarding'){
-				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
-				 $night_rate = $userData[0]->user_sitter_services[0]->sh_night_rate;
+				 $day_rate = $sitterUserData[0]->user_sitter_services[0]->sh_day_rate;
+				 $night_rate = $sitterUserData[0]->user_sitter_services[0]->sh_night_rate;
 				 
 				 $day_total = $day_rate*$total_days;
 				 $night_total = $night_rate*$total_days;
 				  
 				 $total = ($day_total+$night_total)*$guest_num;
-		     }else
-		     if($get_booking_requests_to_display['required_service']  == 'house_sitting'){
-				$hs_day_rate = $userData[0]->user_sitter_services[0]->gh_day_rate;
-				$hs_night_rate = $userData[0]->user_sitter_services[0]->gh_night_rate;
+		     }else if($get_booking_requests_to_display['required_service']  == 'house_sitting'){
+				$hs_day_rate = $sitterUserData[0]->user_sitter_services[0]->gh_day_rate;
+				$hs_night_rate = $sitterUserData[0]->user_sitter_services[0]->gh_night_rate;
 				
 				$day_total = $hs_day_rate*$total_days;
 				$night_total = $hs_night_rate*$total_days;
@@ -250,32 +268,29 @@ class MessageController extends AppController
 				 //echo $total;die; 
 				// echo $total;die; 
 				 //echo "guest_num:".$guest_num."total_days:".$total_days."hs_day_rate:".$hs_day_rate."hs_night_rate:".$hs_night_rate;die;
-			}else
-			 if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
-				 $day_rate = $userData[0]->user_sitter_services[0]->sh_day_rate;
-				 $night_rate = $userData[0]->user_sitter_services[0]->sh_night_rate;
+			}else if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
+				 $day_rate = $sitterUserData[0]->user_sitter_services[0]->sh_day_rate;
+				 $night_rate = $sitterUserData[0]->user_sitter_services[0]->sh_night_rate;
 				 
 				 $day_total = $day_rate*$total_days;
 				 $night_total = $night_rate*$total_days;
 				 
 				 $total = ($day_total+$night_total)*$guest_num;
-			 }else
-			  if($get_booking_requests_to_display['required_service']  == 'maket_place'){
-				 $mp_grooming_rate = $userData[0]->user_sitter_services[0]->mp_grooming_rate;
-				 $mp_training_rate = $userData[0]->user_sitter_services[0]->mp_training_rate;
-				 $mp_recreation_rate = $userData[0]->user_sitter_services[0]->mp_recreation_rate;
-				 $mp_driving_rate = $userData[0]->user_sitter_services[0]->mp_driving_rate;
+			 }else if($get_booking_requests_to_display['required_service']  == 'market_place'){
+				 $mp_grooming_rate = $sitterUserData[0]->user_sitter_services[0]->mp_grooming_rate;
+				 $mp_training_rate = $sitterUserData[0]->user_sitter_services[0]->mp_training_rate;
+				 $mp_recreation_rate = $sitterUserData[0]->user_sitter_services[0]->mp_recreation_rate;
+				 $mp_driving_rate = $sitterUserData[0]->user_sitter_services[0]->mp_driving_rate;
 				 
 				  $mp_grooming_total = $mp_grooming_rate*$total_days;
 				  $mp_training_total = $mp_training_rate*$total_days;
 				  $mp_recreation_total = $mp_recreation_rate*$total_days;
 				  $mp_driving_total = $mp_driving_rate*$total_days;
 				 
-				 $total = ($mp_grooming_total+$mp_training_total+$mp_recreation_total+$mp_driving_total)*$guest_num;
+				 $total = ($mp_grooming_total+$mp_training_total+$mp_recreation_total+$mp_driving_total)*$guest_num; 
 				 
-			}else
-			   if($get_booking_requests_to_display['required_service']  == 'drop_in_visit'){
-				 $drop_visit_rate = $userData[0]->user_sitter_services[0]->dorp_in_visit;
+			}else if($get_booking_requests_to_display['required_service']  == 'drop_in_visit'){
+				 $drop_visit_rate = $sitterUserData[0]->user_sitter_services[0]->dorp_in_visit;
 				 
 				 $total = $drop_visit_rate*$total_days*$guest_num;
 			 }
@@ -285,9 +300,16 @@ class MessageController extends AppController
 				 //End sk
 				
 		}//END
-		 //pr($get_booking_requests_to_display);  die; 
-		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
+		//echo $userId; 
+		//pr($get_requests); die;
+		
+		$this->set(compact('userId','userType','class_user','fieldname','userActas'));
+		$this->set('get_chats',$request_booking_id);
+		$this->set('get_requests',$get_requests);
+		$this->set('folder_status',$folder_status);
 		$this->set('total',$total);
+		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
+		//pr($userActas); die;
 	}
 		
 	/**
@@ -307,11 +329,13 @@ class MessageController extends AppController
 		$chat_text = $this->request->data['chat_text'];
 		$user_type = $this->request->data['user_type'];
 		$user_id = $this->request->data['user_id'];
+		$user_to = $this->request->data['user_to'];
 
 		$ChatData->message = $chat_text;
 		$ChatData->booking_request_id = $booking_msg_id;
 		$ChatData->user_role = $user_type;
 		$ChatData->user_id = $user_id;
+		$ChatData->user_to = $user_to;
 					
 					
 		if($BookingChatsModel->save($ChatData)){
@@ -329,11 +353,23 @@ class MessageController extends AppController
 			if($booking_msg_id !=''){
 					
 					//CHECK THAT PREVIOUS MESSAGE DONE BY THIS USER OR NOT, IF NOT THEN CHANGE STATUS UNREAD
+					/*
 					$BookingRequestsModel->query()
 						->update()
 						->set(['read_status' =>"unread",'read_status_posted_by' =>$user_type])
 						->where(['id' => $booking_msg_id])
-						->execute();	
+						->execute();*/
+
+
+		
+					$session = $this->request->session();
+					$userId = $session->read('User.id');
+					
+					$BookingChatsModel->query()
+						->update()
+						->set(['read_status' =>"read"])
+						->where(['booking_request_id' => $booking_msg_id ,'user_to' =>$userId])
+						->execute();		
 						
 			}
 			$this->set('get_chats',$get_chats);
@@ -366,48 +402,71 @@ class MessageController extends AppController
 		$this->request->data = $_REQUEST;	
 		$id = $this->request->data['booking_id'];
 		$folder_status = $this->request->data['folder_status'];
+		
 		$session = $this->request->session();
-		
-		$userType = $session->read('User.user_type');
-		$class_user = $userType == 'Sitter'?'chat-me':'chat-user';
-		$fieldname = $userType == 'Sitter'?'sitter':'guest';
-		
-		$userId = $session->read('User.id');
-		$this->set(compact('userId','userType','class_user','fieldname'));
-		
 		//ADD MODEL
 		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		$BookingChatsModel = TableRegistry::get('BookingChats');
 		$UsersModel = TableRegistry::get('Users');
 		
-		$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+		$booking_id =$id;
 		
-		
-		
-		
+		$userId = $session->read('User.id');
+		$this->set(compact('userId','class_user'));
 		
 		$get_requests = $BookingRequestsModel->find('all')
-		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.folder_status_'.$fieldname => $folder_status])
+		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId"])
 		->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
 															return $q->order(['BookingChats.id' => 'DESC']);
 														}
 									]
 		          ]
 		)
-		->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id'])
+		->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id','request_by_sitter_id'])
 		->hydrate(false)->toArray();
 		
-		$user_message_display_field = $userType == 'Sitter'?'user_id':'sitter_id';
 		
 		if(!empty($get_requests)){
+			
 			foreach($get_requests as $booking_key=>$booking_records){
+				
+				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
+				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
+				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Guest';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
+					
+					$user_message_display_field = 'user_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Sitter';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'guest';
+					$userType = 'Basic';
+					$userActas = 'Guest';
+					
+				}				
+				
 				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
-															->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded'])
-															->where(['Users.id' => $booking_records[$user_message_display_field]])
-															->limit(1)->hydrate(false)->first();
+																->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded'])
+																->where(['Users.id' => $booking_records[$user_message_display_field]])
+																->limit(1)->hydrate(false)->first();
 			}
 		}
 		//pr($get_requests); die;
+		
+		$this->set(compact('userId','userType','class_user','fieldname','userActas'));
+		$this->set('get_chats',$booking_id);
 		$this->set('get_requests',$get_requests);
+		$this->set('folder_status',$folder_status);
 	}
 	
 	/**
@@ -446,29 +505,35 @@ class MessageController extends AppController
 	 function getUserMessageCount(){
 	
 		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		$BookingChatsModelModel = TableRegistry::get('BookingChats');
+		
 		$UsersModel = TableRegistry::get('Users');
 		
 		$session = $this->request->session();
 		$userType = $session->read('User.user_type');
-		
+			
 		$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
 		$fieldname = $userType == 'Sitter'?'folder_status_sitter':'folder_status_guest';
 		
+		$userId = $session->read('User.id');
+		
+		
 		$get_requests = $BookingRequestsModel->find('all')
-		->where(['BookingRequests.'.$condition_field => $session->read('User.id'),'BookingRequests.read_status' => 'unread'])
-		->contain(['BookingChats'=> ['queryBuilder' => function ($q) {
-															return $q->order(['BookingChats.id' => 'DESC']);
-														}
-									]
-		          ]
-		)
+		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId",'BookingRequests.read_status' => 'unread','BookingRequests.payment_status' => 'Pending'])
 		->select(['id'])
 		->hydrate(false)->toArray();
-	
+				
+		
+		$get_chat_requests = $BookingChatsModelModel->find('all')
+		->where(["BookingChats.user_to = $userId",'BookingChats.read_status' => 'unread'])
+		->select(['id'])
+		->hydrate(false)->toArray();
+		//pr($get_chat_requests);
+		//echo count($get_chat_requests); die;
 		$displayMessage = array();
 		$html='';
 		if(!empty($get_requests)){
-			echo count($get_requests);
+			echo count($get_requests)+count($get_chat_requests);
 		}else{
 			echo 0;
 		}
