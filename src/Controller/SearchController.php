@@ -23,7 +23,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'availabilityCalendar.php');
 use availabilityCalendar;
-
 /**
  * Static content controller
  *
@@ -31,7 +30,6 @@ use availabilityCalendar;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-
 class SearchController extends AppController
 {
 	public $helpers = ['Form','GoogleMap'];
@@ -650,21 +648,16 @@ class SearchController extends AppController
                 	 $and_condition = array_merge($and_condition,array('UserProfessionalAccreditationsDetails.oral_madications=1'));
                 }
             }
-			
 			/*WEEK DAY CONDITION START*/
 			if(isset($this->request->data['Search']['booking_days']) && ($this->request->data['Search']['booking_days'] != '')){
 				$explodedDays =  explode(",",$this->request->data['Search']['booking_days']);
-				if(!empty($explodedDays)){
+			   if(!empty($explodedDays)){
 					foreach($explodedDays as $days){
-							
 							$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$days.'", UserSitterAvailabilityDays.available_days)'));
 					}
-				}
-				
+			   }
 			}
-			
 			/*DOGSIZE CONDITION END*/
-			
 			/*SERVICES CONDITION START*/
 			if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'house_sitting')){
 				
@@ -759,53 +752,38 @@ class SearchController extends AppController
 						
 					}
 				    //pr($or_condition);die;
-
-                }
-                
-				if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'marketplace'))
+                 }
+                if(isset($this->request->data['Search']['selected_service']) && ($this->request->data['Search']['selected_service'] == 'marketplace'))
 				{
 					$and_condition  = array_merge($and_condition,array("(UserSitterServices.mp_grooming_rate >= $startPrice AND UserSitterServices.mp_grooming_rate <=$endPrice)"));
 					$and_condition  = array_merge($and_condition,array("(UserSitterServices.mp_recreation_rate >= $startPrice AND UserSitterServices.mp_recreation_rate <=$endPrice)"));
 					$and_condition  = array_merge($and_condition,array("(UserSitterServices.mp_training_rate >= $startPrice AND UserSitterServices.mp_training_rate <=$endPrice)"));
 					$and_condition  = array_merge($and_condition,array("(UserSitterServices.mp_driving_rate >= $startPrice AND UserSitterServices.mp_driving_rate <=$endPrice)"));
 				}
-		
-			}
-			
+		     }
 			//SET WHERE OPPRANDS INTO MYSQL 
 			if(!empty($or_condition) || !empty($and_condition)){
 				$where_finalConditions =' WHERE ';
 			}else{
 				$where_finalConditions ='';
 			}
-						          
 			if(!empty($or_condition)){
 				$final_OR_Conditions = implode(" OR ",$or_condition); 
 				 $where_finalConditions .= '('.$final_OR_Conditions.")";
 			}
-			
 			if(!empty($and_condition)){
 				if(!empty($or_condition)){
-					
 					$final_AND_Conditions = implode(" AND ",$and_condition); 
 					$where_finalConditions .= ' AND ('.$final_AND_Conditions.")";	
-				
 				}else{
 					$final_AND_Conditions = implode(" AND ",$and_condition); 
 					$where_finalConditions .= '('.$final_AND_Conditions.")";	
 				}
-					
-				
 			}
-			
-			
 			//SET LAT LONG AS PER IP ADDRESS
 			if(isset($this->request->data['location']) && $this->request->data['location'] !=''){
-				
 				$sourceSelectedLocation = $this->request->data['location'];
-				
 				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
-				
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -818,19 +796,12 @@ class SearchController extends AppController
 				
 				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
 				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
-			
 			}else{
-				
 				$sourceLocationLatitude = '30.7399738';
 				$sourceLocationLongitude = '76.7567368';
 			}	
-				
-				
-
-				
 			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:DEFAULT_RADIUS;
-		
-			 $query='SELECT
+		    $query='SELECT
 						  Users.id, (
 							3959 * acos (
 							  cos ( radians('.$sourceLocationLatitude.') )
@@ -945,7 +916,6 @@ class SearchController extends AppController
 	function searchByLocation(){
 		
 		$this->viewBuilder()->layout('landing'); /*CALL LAYOUT*/
-		
 		/*SET SESSION VARIABLES*/
 		$session = $this->request->session();
 		$currentLang = $session->read('requestedLanguage');
@@ -959,7 +929,7 @@ class SearchController extends AppController
 		/*GET USER PETS FOR DISPLAY ON FORM*/
 		$userPetInfo = $UsersModel->find('all',['contain'=>[
 														'UserPets'
-											]]
+											   ]]
 											)
 							   ->where(['Users.id' => $userId])
 							   ->toArray();
@@ -968,8 +938,7 @@ class SearchController extends AppController
 		}else{
 		   $this->set('guests_Info','');
 		}	
-					   
-	    if(!empty($this->request->data)){
+		if(!empty($this->request->data)){
 			
 			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:DEFAULT_RADIUS;
 		
@@ -1034,17 +1003,79 @@ class SearchController extends AppController
 			    //Get repeat client
 			    if(!empty($userData)){
 					$bookingRequestModel = TableRegistry :: get("BookingRequests");
+					$sitterAvailabilityDaysModel = TableRegistry :: get("UserSitterAvailabilityDays");
+					$sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailability");
+					
 					foreach($userData as $udK =>$udV){
 					    $totalClient =  $bookingRequestModel->find('all')
 						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.payment_status' => "paid"])
 						->group('BookingRequests.id HAVING COUNT(BookingRequests.id) >= 1')
 					    ->hydrate(false)->count();
 					   
-					   $userData[$udK]['repeatClient'] = $totalClient;
+					$userData[$udK]['repeatClient'] = $totalClient;
+					//Start check weekend available   
+					$sitter_days_availability = $sitterAvailabilityDaysModel->find('all')
+									->where(['UserSitterAvailabilityDays.user_id' => $udV->id])
+									->hydrate(false)->toArray();
+					$weekend_availaibility = false;
+					if(!empty($sitter_days_availability)){ 		
+						 $day_availability = explode(",",$sitter_days_availability[0]['available_days']);
+						 $saturday_available = false;
+						 $sanday_available = false;
+						
+					     foreach($day_availability as $single_day){
+							if($single_day == 'sunday'){
+								$sanday_available = true;
+							}
+							if($single_day == 'saturday'){
+								$saturday_available = true;
+							}
+						}
+						if($sanday_available && $saturday_available){
+							$weekend_availaibility = true;
+						}
 					}
+				    $sitter_availability = $sitterAvailabilityModel->find('all')
+						->where(['UserSitterAvailability.user_id' => $udV->id])
+						->hydrate(false)->toArray();
+					$userData[$udK]['weekend_availaibility'] = "no";
+					$userData[$udK]['availaibility_on_new_year'] = "no";	
+					if(!empty($sitter_availability)){	
+						$next_sat = date('Y-m-d',strtotime('saturday'));
+						$next_sun = date('Y-m-d',strtotime('sunday'));
+						
+						$date_25_dec = date('Y')."-12-25";
+						$date_1_Jan = (date('Y')+1)."-01-01";
+						
+						//$date_to1jan = date('Y-m-d',strtotime('sunday'));
+						
+						$next_sat_sun = false;
+						$available_onnewyear = false;
+						
+		                foreach($sitter_availability as $date_val){
+							if((($next_sat >= $date_val['start_date']) && ($next_sat <= $date_val['end_date'])) && (($next_sun >= $date_val['start_date']) && ($next_sun <= $date_val['end_date']))){
+								$next_sat_sun = true;
+							}
+							///////////////
+							if((($date_25_dec >= $date_val['start_date']) && ($date_25_dec <= $date_val['end_date'])) && (($date_1_Jan >= $date_val['start_date']) && ($date_1_Jan <= $date_val['end_date']))){
+								$available_onnewyear  = true;
+							}
+							///////////////
+						}
+						if($weekend_availaibility && $next_sat_sun){
+						    $userData[$udK]['weekend_availaibility'] = "yes";
+					    }
+					    if($available_onnewyear){
+						    $userData[$udK]['availaibility_on_new_year'] = "yes";
+					    }
+					    //echo $userData[$udK]['availaibility_on_new_year'];die;
+					 }   
+					}
+					//end weekend available
+			     //pr($userData);die;
 				}
-				
-				/*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
+               				
+			  /*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
 				
 				if(!empty($userData)){
 					$customArray=array();
@@ -1634,11 +1665,33 @@ class SearchController extends AppController
 		}
 		
 		$this->set('sitter_id',$sitterId);
-		
-		
 	}
-	
-		
-
+	function sitterGallery(){
+		$this->viewBuilder()->layout('');
+		//if($this->request->is('ajax')) {
+				$sitterId = $_REQUEST["sitter"];
+				$UsersModel = TableRegistry::get('Users');
+						
+				$userData = $UsersModel->get($sitterId,['contain'=>["UserSitterGalleries"]])->toArray();
+				
+			    $sitter_gal = [];
+				if(!empty($userData['image'])){
+					 if (file_exists(WEBROOT_PATH.'img/uploads/'.$userData['image'])){
+						  $sitter_gal[] =  $userData['image'];
+					 }
+				}
+				/*if(){
+				}*/
+				if(!empty($userData["user_sitter_galleries"])){
+					foreach($userData["user_sitter_galleries"] as $single_gal){
+						$sitter_gal[] = $single_gal["image"];
+					}
+				}
+				$this->set("sitter_gallery",$sitter_gal);
+				//echo $userData["id"];
+				//pr($sitter_gal);die;
+			//die;
+      }
+	//}
 }
 ?>
