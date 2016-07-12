@@ -546,11 +546,11 @@
 									$qvModal = 1;$innerSlideNO=1;	
 									foreach($resultsData as $results){
 									?>
-										<div class="item qvModal<?php echo $qvModal; ?>">      
+										<div class="popUpSlider item qvModal<?php echo $qvModal; ?>">      
 										 <div data-id="<?php echo @$results->id; ?>" class="sitter-quike-view">
 											<div class="sqv-box">
 												<div class="top-close"> 
-												<p>Sitter Quick Details</p>
+												<p>Sitter Quick Details <?php echo @$results->id; ?></p>
 													<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
 												</div>
 												<div class="sit-head">
@@ -574,175 +574,34 @@
 														</div>
 													</div>                	
 												</div>
-												<!--quick slide-->
-												
-												<!--<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
-												if(!empty(@$sub_galleries_result)){  
-															//pr($sub_galleries->image);die;
-												?>					
-													<div class="quick-slide">
-														<div class="ms-area">
-															<ul class="owl-carousel-1">
-																<?php  foreach($sub_galleries_result as $sub_galleries){
-																			if($sub_galleries->image != ""){?>
-																					<div class="item">
-																						 <li>
-																								<?php if(@$sub_galleries->image != ''){// echo @$newarr[$index];?>
-																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>">
-																									<?php } ?>
-																						 </li>
-																					</div>
-																				
-																	<?php		}
-																	
-																	}	?>
-																		      <div class="item">
-																					 <li>
-																						  <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
-																					  </li>
-																			  </div>			
-																					
-																</ul>
-														</div>
-												</div>
-												<?php	}else{	?>
-													    <div class="quick-slide">
-														<div class="ms-area">
-															<ul class="owl-carousel-1">
-																<div class="item">
-																		 <li>
-																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.(@$results->image != ''?@$results->image:'prof_photo.png'); ?>">
-																		</li>
-																	</div>
-															 </ul>
-														</div>
-												</div>
-													<?php } ?>-->
-											  <!-- <div class="quick-slide">
-														<div class="ms-area">
-															<ul class="owl-carousel-1">
-																    <div class="item active">
-																		 <li>
-																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
-																		</li>
-																	</div>
-																	<div class="item">
-																		 <li>
-																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
-																		</li>
-																	</div>
-																	<div class="item">
-																		 <li>
-																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
-																		</li>
-																	</div>
-																	<div class="item">
-																		 <li>
-																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>">
-																		</li>
-																	</div>
-															 </ul>
-														</div>
-												</div>-->
-												<!--quick slide-->
-												<?php $nextSlider = rand(5,15); ?>
-												<script>
-												$(function(){
-														$('.customCrousalNext<?php echo $nextSlider; ?>').carousel({
-														interval: false
-													}); 
-														
-												})
-												</script>	
-												<?php //$sub_galleries_result=$results->user_sitter_galleries; 
-												//if(!empty(@$sub_galleries_result)){ ?>
+												<!--Start carousal for sitter images-->
+											    <?php $nextSlider =  @$results->id; ?>
 												<div class="quick-slide">                	
-												  <div id="myCarousel3" class="carousel slide customCrousalNext<?php echo $nextSlider; ?>" data-ride="carousel">
-													<div class="carousel-inner" role="listbox">
-														
-													  <div class="item active">
-														<div class="row">      
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <?php echo rand(5, 15);?>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														</div>                  
-													  </div>
-													  
-													  <div class="item">
-														<div class="row">      
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														</div>  
-													  </div>
-													  
-													  <div class="item">
-														<div class="row">      
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-															<li>
-															  <img src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" width="200" height="200" alt="">
-															</li>
-														  </div>
-														</div>  
-													  </div>
-													  
-													</div>
-													<!-- Left and right controls -->
-													<a class="left carousel-control" href=".customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
-													  <span class="fa fa-chevron-left" aria-hidden="true">
-													  </span>
-													  <span class="sr-only">Previous
-													  </span>
-													</a>
-													<a class="right carousel-control" href=".customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="next">
-													  <span class="fa fa-chevron-right" aria-hidden="true">
-													  </span>
-													  <span class="sr-only">Next
-													  </span>
-													</a>
-												  </div>               	 
+												<div id="customCrousalNext<?php echo $nextSlider; ?>" class="carousel slide customCrousalNext<?php echo $nextSlider; ?>" data-ride="carousel">
+												
+												<div class="carousel-inner" role="listbox" id="getImg<?php echo @$results->id; ?>"> 
+													
+													
+											    </div>
+											    <!-- Left and right controls -->
+												<a class="left ajaxSliderPrev carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
+												  <span class="fa fa-chevron-left" aria-hidden="true">
+												  </span>
+												  <span class="sr-only">Previous
+												  </span>
+												</a>
+												<a class="right ajaxSliderNext carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="next">
+												  <span class="fa fa-chevron-right" aria-hidden="true">
+												  </span>
+												  <span class="sr-only">Next
+												  </span>
+												</a>
+												</div>               	 
 												</div>
 												<!--End quick slide-->
 												
-												
 												<!--content area Start-->
-
-												<div class="sqv-mid">
+                                                 <div class="sqv-mid">
 													<div class="row">
 														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
 														<div class="sqv-mid-lft">
@@ -873,20 +732,58 @@
 <?php
 echo $this->Html->script('Front/for-sticky.js'); ?>
 
-<script>$(document).ready(function(){
-	$("#sidebar").stick_in_parent();
+<script>
+	 $(document).ready(function(){
+	 
+	 $("#sidebar").stick_in_parent();
 	
-	
-	     
-    });
-    $(document).on('click',".rightPopup",function(){
-	     //var text_val = $('').next('#second_child').val();
-	     alert($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id'));
-	     //alert();
-	});
+	 });
+	 //For slider
+     $(document).on('click',".rightPopup",function(){
+		 if($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id')){
+			sitter_images($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id'));
+	          
+	     }else{
+		    sitter_images($('.qvModal'+$('#myCarousel2 .popUpSlider').length).find('div.sitter-quike-view').attr('data-id'));
+		 } 
+	 });
 	 $(document).on('click',".leftPopup",function(){
-	     //var text_val = $('').next('#second_child').val();
-	     alert($("#myCarousel2").find("div.active").prev().find('div.sitter-quike-view').attr('data-id'));
-	     //alert();
+		 if($("#myCarousel2").find("div.active").prev().find('div.sitter-quike-view').attr('data-id')){
+			 sitter_images($("#myCarousel2").find("div.active").prev().find('div.sitter-quike-view').attr('data-id'));
+		  }else{
+			  sitter_images($('.qvModal'+$('#myCarousel2 .popUpSlider').length).find('div.sitter-quike-view').attr('data-id'));
+          }
 	});
-    </script>
+	var sitter;
+	function sitter_images(sitter){
+		           $.ajax({
+						url: "<?php echo HTTP_ROOT."search/sitter-gallery"; ?>",
+						data:{sitter:sitter},
+						type:"POST",
+						
+						beforeSend: function(){
+						  $('#getImg'+sitter).html('<div class="ajax_overlay"><img class="search-img" src="'+ajax_url+'img/walking.gif"/></div>');
+						  $(".ajax_overlay").show();
+						},
+						
+						complete: function(){
+						  $('#getImg'+sitter).html('');
+						  $(".ajax_overlay").hide();
+						},
+						success:function(res)
+						{
+							$('#getImg'+sitter).html("");
+							setTimeout(function(){
+								$('#getImg'+sitter).html(res);
+								$('.ajaxSliderNext').attr('href','#customCrousalNext'+sitter); 
+								$('.ajaxSliderPrev').attr('href','#customCrousalNext'+sitter); 
+							},1000);
+
+							setTimeout(function(){
+								$('.customCrousalNext'+sitter).carousel(); 	
+							},1500);
+							
+						}
+					});
+	}
+</script>

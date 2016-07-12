@@ -254,7 +254,7 @@
  ?>
 <script>
    
-    //window.onload = init();
+    /*window.onload = init();*/
 /*header resize*/
 $(document).ready(function(){
     $("#flip").click(function(){

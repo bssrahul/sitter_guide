@@ -23,7 +23,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'availabilityCalendar.php');
 use availabilityCalendar;
-
 /**
  * Static content controller
  *
@@ -31,7 +30,6 @@ use availabilityCalendar;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-
 class SearchController extends AppController
 {
 	public $helpers = ['Form','GoogleMap'];
@@ -1667,11 +1665,33 @@ class SearchController extends AppController
 		}
 		
 		$this->set('sitter_id',$sitterId);
-		
-		
 	}
-	
-		
-
+	function sitterGallery(){
+		$this->viewBuilder()->layout('');
+		//if($this->request->is('ajax')) {
+				$sitterId = $_REQUEST["sitter"];
+				$UsersModel = TableRegistry::get('Users');
+						
+				$userData = $UsersModel->get($sitterId,['contain'=>["UserSitterGalleries"]])->toArray();
+				
+			    $sitter_gal = [];
+				if(!empty($userData['image'])){
+					 if (file_exists(WEBROOT_PATH.'img/uploads/'.$userData['image'])){
+						  $sitter_gal[] =  $userData['image'];
+					 }
+				}
+				/*if(){
+				}*/
+				if(!empty($userData["user_sitter_galleries"])){
+					foreach($userData["user_sitter_galleries"] as $single_gal){
+						$sitter_gal[] = $single_gal["image"];
+					}
+				}
+				$this->set("sitter_gallery",$sitter_gal);
+				//echo $userData["id"];
+				//pr($sitter_gal);die;
+			//die;
+      }
+	//}
 }
 ?>
