@@ -90,9 +90,9 @@
 																		}
 																 }else{ ?>
 																		<div class="item active">
-																		<img class="searchImg" alt="<?php echo __('Profile Picture ok'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
+																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
 																			</div>
-																	<?php } 
+																 <?php } 
 																	?>															
 															</div>
 														   <!-- Left and right controls -->
@@ -107,7 +107,7 @@
 												</div>                                                    	
 											    <!--quick view-->
 											        <div class="quick-view">
-															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </span></a>
+															<a href="#" data-rel2="<?php echo $results->id; ?>" data-rel="<?php echo $rankNo; ?>" class="qvBtn select-sitter-images" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </span></a>
 													</div>
 											     <!--/quick view-->                       
 											</div>
@@ -248,7 +248,6 @@
 											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?></a> </div>
 										  </div>
 									  <!--/rating--> 
-									  
 									  <!--availability-->
 									  <div class="sit-available">
 										<ul>
@@ -283,31 +282,60 @@
 								  <!--sitter list-->
 								  <div class="sit-list-del">
 									<ul>
+									<?php if(@$results->repeatClient > 0){ ?>
 									  <li>
 										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> 
-										  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Guests')); ?>: <span>2</span>
+										  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Guests')); ?>: <span><?php echo @$results->repeatClient; ?></span>
 									  </li>
-									  
+									  <?php }
+									   if(!empty(@$results->last_booking_date)){ 
+									   ?>
 									  <li>
-										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last booked')); ?>: <span>2 week ago</span>
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last booked')); ?>: <span>
+											<?php
+											   $seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$results->last_booking_date);
+												$days    = floor($seconds / 86400);
+												$hours = floor(($seconds - ($days * 86400)) / 3600);
+												$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+												$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+												$week_ago = floor(($days)/7);
+												  if($week_ago >= 1){
+													  echo $week_ago." Week "."ago";
+												  }else{
+												       echo $days." days "."ago";	  
+												  }
+												
+											  
+											?>
+											  
+											 </span>
 									  </li>
-									  
+									  <?php } 
+									  ?>
 									  <li>
-										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active')); ?> <span>2 day ago</span>
-									 </li>
-									
-									 <li>
-										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Response Rate')); ?> <span>100%</span>
-									 </li>
-									 
-									 <li>
-										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Average Response')); ?> <span>2 hours</span>
-									 </li>
-									 
-									 <li>
-										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Contacted')); ?> <span>5 day ago</span>
-									 </li>
-									 
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active')); ?> 
+										  <span>
+											<?php 
+											if(@$results->avail_status != 'Logout'){
+																echo '<span style="color:green">'.$results->avail_status.'<//span>';
+											}else{
+												$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$results->last_login);
+												$days    = floor($seconds / 86400);
+												$hours = floor(($seconds - ($days * 86400)) / 3600);
+												$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+												$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+												$active_week_ago = floor(($days)/7);
+												  if($active_week_ago >= 1){
+													  echo $active_week_ago." Week "."ago";
+												  }else{
+												       echo $days." days "."ago";	  
+												  }
+											}
+								
+											?>
+											  
+											 </span>
+									   </li>
 									</ul>
 								  </div>
 								  <!--sitter list--> 
@@ -550,7 +578,7 @@
 										 <div data-id="<?php echo @$results->id; ?>" class="sitter-quike-view">
 											<div class="sqv-box">
 												<div class="top-close"> 
-												<p>Sitter Quick Details <?php echo @$results->id; ?></p>
+												    <p>Sitter Quick Details <?php echo @$results->id; ?></p>
 													<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
 												</div>
 												<div class="sit-head">
@@ -580,9 +608,7 @@
 												<div id="customCrousalNext<?php echo $nextSlider; ?>" class="carousel slide customCrousalNext<?php echo $nextSlider; ?>" data-ride="carousel">
 												
 												<div class="carousel-inner" role="listbox" id="getImg<?php echo @$results->id; ?>"> 
-													
-													
-											    </div>
+												</div>
 											    <!-- Left and right controls -->
 												<a class="left ajaxSliderPrev carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
 												  <span class="fa fa-chevron-left" aria-hidden="true">
@@ -599,7 +625,6 @@
 												</div>               	 
 												</div>
 												<!--End quick slide-->
-												
 												<!--content area Start-->
                                                  <div class="sqv-mid">
 													<div class="row">
@@ -661,27 +686,21 @@
 											</div>         	
 										 </div>     
 									  </div>
-
-									 
-									
 								<?php $qvModal++; } ?></div>
-								        <!-- Left and right controls -->
-											<a data-slide="prev" role="button" href="#myCarousel2" class="left leftPopup myCarousel2next carousel-control">
-											  
+								         <!-- Left and right controls -->
+											<a data-slide="prev" role="button" href="#myCarousel2" class="left leftPopup myCarousel2next carousel-control ajaxMainSliderPrev">
 											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
-											  
 											  <span data-rel="" class="sr-only">
 												  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
 											  </span>
 											</a>
-											
-											<a data-slide="next" role="button" href="#myCarousel2" class="right rightPopup myCarousel2next carousel-control">
+											<a data-slide="next" role="button" href="#myCarousel2" class="right rightPopup myCarousel2next carousel-control ajaxMainSliderNext">
 												<span aria-hidden="true" class="fa fa-chevron-right"></span>
 												<span data-rel="" class="sr-only">
 													<?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
 												</span>
 											</a>
-									   <!-- Left and right controls -->
+									     <!-- Left and right controls -->
 										  </div>   
 								</div>
 					
@@ -717,6 +736,9 @@
 		
 		$(document).on('click',".qvBtn",function(){
 		
+			if($('#myCarousel2').find("div.popUpSlider").removeClass("active")){
+				$('#myCarousel2').find("div.popUpSlider").removeClass("active");
+			}
 			var qv = $(this).attr('data-rel');
 			$(".qvModal"+qv).addClass('active');
 		
@@ -739,6 +761,16 @@ echo $this->Html->script('Front/for-sticky.js'); ?>
 	
 	 });
 	 //For slider
+	 
+     $(document).on('click',".quick-view",function(){
+		 //alert($(this).find('a.select-sitter-images').attr("data-rel2"));
+		 //$('#myCarousel2').find("active").;
+         //$( "#myCarousel2" ).hasClass("active")
+         
+         sitter_images($(this).find('a.select-sitter-images').attr("data-rel2"));
+	     
+	     
+	 });
      $(document).on('click',".rightPopup",function(){
 		 if($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id')){
 			sitter_images($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id'));
