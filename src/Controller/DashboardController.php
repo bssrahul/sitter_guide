@@ -834,8 +834,6 @@ Function for Front profile dashboard
 				$this->set('refer_url', $userInfo['refer_url']);
 				$this->set('user_email', $userInfo['email']);
 				
-				
-				
 				$metaTagForShare = '<meta name="description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />
 
 				<!-- Twitter Card data -->
@@ -1896,7 +1894,7 @@ function addPets(){
 				   }
 					$this->set('professional', $customArrForDisplayRec);
 			 }
-            $all_languages = [['value'=>'en','label'=>'English'],['value'=>'fr','label'=>'French'],['value'=>'de','label'=>'German'],['value'=>'hu','label'=>'Hungarian'],['value'=>'it','label'=>'Italian'],['value'=>'ro','label'=>'Romanian'],['value'=>'ru','label'=>'Russian'],['value'=>'es','label'=>'spanish']];
+            $all_languages = [['value'=>'en','label'=>'English'],['value'=>'fr','label'=>'French'],['value'=>'de','label'=>'German'],['value'=>'hu','label'=>'Hungarian'],['value'=>'it','label'=>'Italian'],['value'=>'ro','label'=>'Romanian'],['value'=>'es','label'=>'spanish']];
           
             $this->set('all_languages',$all_languages);
         }

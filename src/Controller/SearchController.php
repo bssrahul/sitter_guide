@@ -933,11 +933,15 @@ class SearchController extends AppController
 											)
 							   ->where(['Users.id' => $userId])
 							   ->toArray();
+		//pr($userPetInfo);die;
+		
 		if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
+			
 		   $this->set('guests_Info',$userPetInfo[0]->user_pets);	
 		}else{
-		   $this->set('guests_Info','');
+			$this->set('guests_Info','');
 		}	
+		
 		if(!empty($this->request->data)){
 			
 			$requiredDistance = isset($this->request->data['Search']['destination'])?$this->request->data['Search']['destination']:DEFAULT_RADIUS;
@@ -1000,19 +1004,27 @@ class SearchController extends AppController
 							   ->toArray();
 				
 				$loggedInUserID = $session->read('User.id');
-			    //Get repeat client
+			   
 			    if(!empty($userData)){
+					
 					$bookingRequestModel = TableRegistry :: get("BookingRequests");
 					$sitterAvailabilityDaysModel = TableRegistry :: get("UserSitterAvailabilityDays");
 					$sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailability");
-					
+					//Get repeat client
 					foreach($userData as $udK =>$udV){
-					    $totalClient =  $bookingRequestModel->find('all')
-						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.payment_status' => "paid"])
-						->group('BookingRequests.id HAVING COUNT(BookingRequests.id) >= 1')
+						$totalClient =  $bookingRequestModel->find('all')
+						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.payment_status' => "Paid"])
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1')
 					    ->hydrate(false)->count();
 					   
 					$userData[$udK]['repeatClient'] = $totalClient;
+					//Get last booking
+					 $last_booking = $bookingRequestModel->find('all',['order' => ['BookingRequests.created_date' => 'desc']])
+						->where(['BookingRequests.sitter_id' => $udV->id,'BookingRequests.payment_status' => "Paid"])
+						->hydrate(false)->first();//->toArray();
+						
+					  $userData[$udK]['last_booking_date'] = $last_booking["created_date"];
+					   
 					//Start check weekend available   
 					$sitter_days_availability = $sitterAvailabilityDaysModel->find('all')
 									->where(['UserSitterAvailabilityDays.user_id' => $udV->id])
@@ -1047,8 +1059,6 @@ class SearchController extends AppController
 						$date_25_dec = date('Y')."-12-25";
 						$date_1_Jan = (date('Y')+1)."-01-01";
 						
-						//$date_to1jan = date('Y-m-d',strtotime('sunday'));
-						
 						$next_sat_sun = false;
 						$available_onnewyear = false;
 						
@@ -1056,11 +1066,9 @@ class SearchController extends AppController
 							if((($next_sat >= $date_val['start_date']) && ($next_sat <= $date_val['end_date'])) && (($next_sun >= $date_val['start_date']) && ($next_sun <= $date_val['end_date']))){
 								$next_sat_sun = true;
 							}
-							///////////////
 							if((($date_25_dec >= $date_val['start_date']) && ($date_25_dec <= $date_val['end_date'])) && (($date_1_Jan >= $date_val['start_date']) && ($date_1_Jan <= $date_val['end_date']))){
 								$available_onnewyear  = true;
 							}
-							///////////////
 						}
 						if($weekend_availaibility && $next_sat_sun){
 						    $userData[$udK]['weekend_availaibility'] = "yes";
@@ -1068,12 +1076,11 @@ class SearchController extends AppController
 					    if($available_onnewyear){
 						    $userData[$udK]['availaibility_on_new_year'] = "yes";
 					    }
-					    //echo $userData[$udK]['availaibility_on_new_year'];die;
 					 }   
 					}
-					//end weekend available
-			     //pr($userData);die;
-				}
+					
+					//die;
+				 }
                				
 			  /*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
 				
@@ -1112,7 +1119,8 @@ class SearchController extends AppController
 				}
 			
 			}
-	
+	       // pr(@$userData);die;
+	        
 			$this->set('resultsData',@$userData);
 			$this->set('distanceAssociation',@$distanceAssociation);
 			$this->set('sourceLocationLatitude',$sourceLocationLatitude);
@@ -1282,8 +1290,6 @@ class SearchController extends AppController
 				
 				
 					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
-					  // pr($get_user_communications_details);die;
-					   
 					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
 					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
 						$message_body = "You have been received new booking request"; 
@@ -1313,6 +1319,8 @@ class SearchController extends AppController
 					foreach($Userratingdata as $Userrating){
 						$userFromArr[]=$Userrating->user_from;
 					}
+					
+					
 					$gettingUserData=$UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']])->toArray();
 					 $commentUserData=array();
 					foreach($gettingUserData as $gettingUser){
@@ -1417,8 +1425,23 @@ class SearchController extends AppController
 							
 				$this->set('repeat_client',count($repeatClient));    
 			//end repeat client
+			//For check user pet
+			/*GET USER PETS FOR DISPLAY ON FORM*/
+			$userPetInfo = $UsersModel->find('all',['contain'=>[
+															'UserPets'
+												   ]]
+												)
+								   ->where(['Users.id' => $userId])
+								   ->toArray();
+			//pr($userPetInfo);die;
+			
+			if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
+				
+			   $this->set('guests_Info',$userPetInfo[0]->user_pets);	
+			}else{
+				$this->set('guests_Info','');
+			}
 		}
-		
 	}
 	
 	/**
