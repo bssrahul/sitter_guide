@@ -2626,29 +2626,25 @@ function addPets(){
 		$userData = $userDataObj->first();
 		
 		$UserModelData = $UserModel->newEntity();
-		
-		$force_change =  isset($_REQUEST['force_change'])?$_REQUEST['force_change']:0;
-		/*
-		if($userData['avail_status'] =='Dnd' && $force_change !=1){
-				echo "failed";	
-		
-		}else{*/
-			
-			$UserModelData->user_id = $userId;
-			
-			$UserModelData->avail_status =  isset($_REQUEST['avail_status'])?$_REQUEST['avail_status']:'';
-		
-			if($UserModel->save($UserModelData)){
-			
-				echo "success";	
+		if($userDataObj->count()>0){
+			$force_change =  isset($_REQUEST['force_change'])?$_REQUEST['force_change']:0;
+						
+				$UserModelData->user_id = $userId;
 				
-			}else{
+				$UserModelData->avail_status =  isset($_REQUEST['avail_status'])?$_REQUEST['avail_status']:'';
+			
+				if($UserModel->save($UserModelData)){
 				
-				echo "failed";	
-				
-			}
-		/*}*/
-		die;
+					echo "success";	
+					
+				}else{
+					
+					echo "failed";	
+					
+				}
+		}else{
+			echo "failed";	
+		}die;
 	   
     }	
 	

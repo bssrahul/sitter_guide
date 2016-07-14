@@ -27,8 +27,13 @@
         <![endif]-->
 
 </head>
+<?php 
+$bg = array("wall","wall1","wall2","wall3");
+$bk = array_rand($bg);
+$bv = $bg[$bk];
 
-<body class="wall">
+?>
+<body class="<?php echo $bv; ?>">
 	 <?php echo $this->Flash->render(); ?>
    <?= $this->fetch('content');?>
 
