@@ -1,6 +1,5 @@
-<script>
-	
-		function initialize() {
+<script>	
+		function initialize_location_autocomplete() {
 			var input = document.getElementById('location_autocomplete');
 			var autocomplete = new google.maps.places.Autocomplete(input);
 			
@@ -12,6 +11,5 @@
 				$("#search_by_location").submit();
 			});
 		}
-		google.maps.event.addDomListener(window, 'load', initialize);
-				
+		google.maps.event.addDomListener(window, 'load', initialize_location_autocomplete);				
 </script>

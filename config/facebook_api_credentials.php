@@ -1,4 +1,4 @@
 <?php
-define('FACEBOOK_APP_ID','454914014707243');
-define('FACEBOOK_SECRET','7c9f4f1a98ebb97072b7ccb093cbc7b3');
+define('FACEBOOK_APP_ID','1767906403479347');
+define('FACEBOOK_SECRET','bd59a2828d88a0f8f05b5c3dbb8dfa22');
 ?>

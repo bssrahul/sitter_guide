@@ -63,7 +63,9 @@
 									 <!--<input type="checkbox" class="tableflat">-->
 									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
+								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Image')); ?></th>
 								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Type')); ?></th>
 								<th class="column-title" style="width:100px;"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?></th>
 								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Created')); ?></th>
 								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
@@ -88,7 +90,39 @@
 							?>
 								<tr class="<?php echo $class; ?>">
 									<td class="a-center ">
-								
+										<td class=" ">	
+										<?php if($user_info->is_image_uploaded  == 1) {
+												
+													if(!empty($user_info->image)){ ?>
+														<div class="text-centerimage view-first customImg">
+																	<img class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT .'img/uploads/'. $user_info->image; ?>" alt="Image not found">
+														</div>
+														
+												<?php }else{?>
+													
+														<div class="text-centerimage view-first customImg">
+																	<img class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" alt="Image not found">
+														</div>
+														
+												<?php } ?>
+										
+										<?php }else  {
+													if(!empty($user_info->image)){ ?>
+														
+														<div class="text-centerimage view-first customImg">
+																	<img class="img-circle profile_img catImg" src="<?php echo $user_info->image; ?>" alt="Image not found">
+														</div>
+														
+													<?php }else{?>
+														<div class="text-centerimage view-first customImg">
+																	<img class="img-circle profile_img catImg" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>" alt="Image not found">
+														</div>
+														
+												<?php } ?>
+														
+														
+											<?php } ?>
+										</td>
 									<!--<div class="icheckbox_flat-green" style="position: relative;">
 									
 									<input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;" />
@@ -114,6 +148,7 @@
 									}?>
 									
 									</td>
+									<td class=" "><?php echo $user_info->user_type ; ?>
 									<td class=" "><?php 
 												echo $user_info->email;
 									?></td>
