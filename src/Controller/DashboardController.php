@@ -495,7 +495,6 @@ class DashboardController extends AppController
 			$bookingRequestModel = TableRegistry :: get("BookingRequests");
 			$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
 			$fieldname = $userType == 'Sitter'?'sitter':'guest';
-			
 			$bookingData = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
 						->contain(['Users'=> ['queryBuilder' => function ($q) {
@@ -507,7 +506,7 @@ class DashboardController extends AppController
 						->hydrate(false)->toArray();
 			$user_Data = $bookingRequestModel->find('all')
 						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
-						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1' )
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1')
 					    ->hydrate(false)->toArray();
 				    
 			$client_stay_status["new_clients"] = count($user_Data);
@@ -578,14 +577,7 @@ class DashboardController extends AppController
 				 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
 				 $client_stay_status["alerts"]= 0;
 		}
-		//////////////////////////////
-		   /*$sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailabilityDays");
-		   $sitter_weekend_availability = $sitterAvailabilityModel->find('all')
-						->where(['UserSitterAvailabilityDays.user_id' => $userId])
-						->hydrate(false)->toArray();
-				    explode();die;
-        pr($sitter_weekend_availability);die;*/
-		//////////////////////////////
+		
 		 $calendar = new  \Calendarbooking();
 		 
          $this->set('calender',$calendar->show($booking_arr));
@@ -841,8 +833,6 @@ Function for Front profile dashboard
 				//pr($userInfo);die;
 				$this->set('refer_url', $userInfo['refer_url']);
 				$this->set('user_email', $userInfo['email']);
-				
-				
 				
 				$metaTagForShare = '<meta name="description" content="Give $10 to your firends to use on their first stay You\'ll also get $10 when they complete their first booking." />
 
@@ -1904,7 +1894,7 @@ function addPets(){
 				   }
 					$this->set('professional', $customArrForDisplayRec);
 			 }
-            $all_languages = [['value'=>'en','label'=>'English'],['value'=>'fr','label'=>'French'],['value'=>'de','label'=>'German'],['value'=>'hu','label'=>'Hungarian'],['value'=>'it','label'=>'Italian'],['value'=>'ro','label'=>'Romanian'],['value'=>'ru','label'=>'Russian'],['value'=>'es','label'=>'spanish']];
+            $all_languages = [['value'=>'en','label'=>'English'],['value'=>'fr','label'=>'French'],['value'=>'de','label'=>'German'],['value'=>'hu','label'=>'Hungarian'],['value'=>'it','label'=>'Italian'],['value'=>'ro','label'=>'Romanian'],['value'=>'es','label'=>'spanish']];
           
             $this->set('all_languages',$all_languages);
         }

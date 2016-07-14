@@ -282,10 +282,17 @@
                                                       </h5>
                                                       <div class="text-center">
 													     <?php 
-				                                            if($userloginstatus){ ?> 
-															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79">Book Now
+				                                            if($userloginstatus){ 
+																 if($guests_Info == ""){
+																 ?>
+																 <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#popPetAddNotification">Book Now
 															  </button>
-                                                         <?php }else{ ?>
+																<?php }else{ ?>
+																<button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79">Book Now
+															  </button>
+															  
+                                                         <?php }
+                                                          }else{ ?>
 															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin">Book Now
 															  </button>
 														 <?php } ?>
@@ -331,22 +338,25 @@
                                                         </div>
                                                       </div>
                                                       <div class="btn-group btn-width100 pt15">
-														  <?php if($userloginstatus){ ?>
+														  <?php if($userloginstatus){ 
+															  
+															  if($guests_Info == "" ){
+															  ?>
+															   <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#popPetAddNotification">Contact  
+                                                               <?php echo @$userData->first_name; ?>
+                                                               </button> 
+                                                        
+															  <?php }else{ ?>
                                                         <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#myModal79">Contact  
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
-                                                        <?php }else{ ?>
+                                                        <?php }
+                                                        
+                                                         }else{ ?>
 														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin">Contact  
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
 														<?php } ?>
-                                                        <!-- <button type="button" class="btn btn-heart"><i class="fa fa-heart-o heart-pos"></i></button>
-<button class="btn btn-heart lock" type="button"> 
-<i class="icon-unlock fa fa-heart-o heart-pos">
-</i> 
-<i class="icon-lock fa fa-heart heart-pos">
-</i> 
-</button>-->
                                                         <div class="likebox favourite_sitter1"> 
                                                           <?php if(trim($userData->is_favourite)=='yes'){ ?>
                                                           <a data-count="<?php echo $userData->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($userData->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> 
@@ -393,7 +403,7 @@
                                                         <i class="fa fa-user icon-width30 icon-p15">
                                                         </i>Last Activity : 
                                                         <b>
-                                                          <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
+                                                          <?php 
 															if(@$userData->avail_status == 'Login'){
 																echo '<span style="color:green">Available<//span>';
 															}else{
@@ -550,15 +560,18 @@ $i++;
 														?>
                                                   </span>
                                                 </h5>
+                                               <?php if(!empty(@$userData->user_professional_accreditations_details[0]->languages) || !empty(@$userData->user_professional_accreditations_details[0]->experience)){ ?>
                                                 <div class="row">
-												 
-                                                  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+											   <?php if(!empty(@$userData->user_professional_accreditations_details[0]->languages)){ ?>
+												 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
 													<?php $langArr = array('en'=>'english','fr'=>'french','de'=>'german','hu'=>'hungarian','it'=>'italian','ro'=>'romanian','es'=>'spanish'); ?>
+													
                                                     <p class="pt10">
                                                       <span class="speak">
                                                       </span>Can speak
                                                       <?php 
                                                       $selected_langArr = explode(",",@$userData->user_professional_accreditations_details[0]->languages);
+                                                    
                                                       $main_lang = "";
                                                       $totalVal = count($selected_langArr);
                                                       $i=1;
@@ -572,11 +585,15 @@ $i++;
 														  $i++;
 													  }
 													    //echo $main_lang;
-													   echo $main_lang = rtrim($main_lang,",");
+													   echo @$main_lang = rtrim($main_lang,",");
 													   
 													?>
                                                     </p>
                                                   </div>
+                                                  <?php } 
+                                                  
+                                                  if(!empty(@$userData->user_professional_accreditations_details[0]->experience)){
+                                                  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="experience">
@@ -584,10 +601,13 @@ $i++;
                                                       <?php echo @$userData->user_professional_accreditations_details[0]->experience;?> + years of experience
                                                     </p>
                                                   </div>
+                                                  <?php } ?>
                                                   
                                                 </div>
+                                                <?php }
+                                                if(!empty(@$userData->user_professional_accreditations_details[0]->training_techniques)){ ?>
                                                 <div class="row">
-                                                  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+												  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="familar">
                                                       </span>Familiar with
@@ -595,6 +615,7 @@ $i++;
                                                     </p>
                                                   </div>
                                                 </div>
+                                                <?php } ?>
                                               </div>
                                               <div class="one">
 												<div class="border-bot pt30">
@@ -625,6 +646,7 @@ $i++;
                                                     
                                                   </span>
                                                 </h5>
+                                                
                                                 <div class="row">
                                                   <?php if(@$userData->user_professional_accreditations_details[0]->ex_behavioural_problems !=''){ ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
@@ -2049,10 +2071,16 @@ $check_in=$UserRating->check_in_rating;
 														  </li>
 														</ul>
 														<div class="guest-list"> 
-															 <?php if($userloginstatus){ ?>
+															 <?php if($userloginstatus){ 
+																 if($guests_Info == ""){
+																 ?>
+																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request">Book Now
+														     </a> 
+																<?php }else{ ?> 
 														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
 														     </a> 
-														     <?php }else{ ?>
+														     <?php }
+														     }else{ ?>
 															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now
 														     </a>   	
 															 <?php } ?>
@@ -3076,32 +3104,10 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
   </div>
 </div>
  
-<!--Report popup ends--> 
-<!--Start user check login pop up--> 
-<!-- Modal -->
-<div id="alertUserLogin" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title ">
-        
-			 <strong class="text-danger">Notification!</strong> 
-		</h2>
-      </div>
-      <div class="modal-body">
-        <p>Authentication Failed! Please log in before.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!--popup ends--> 
+<?php
+echo $this->element('frontElements/Search/notification_pet_add');
+echo $this->element('frontElements/Search/notification_check_login');
+ ?>
 <input id="boarding_day_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
 <input id="boarding_night_rate" type="hidden" value="<?php echo @$sh_day_rate; ?>">
 
@@ -3121,34 +3127,10 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 <input id="total_days" type="hidden" value="">
 <input id="start_date" type="hidden" value="">
 <input id="end_date" type="hidden" value="">
-<!--<div class="error_msg navbar navbar-custom show-user-type-error" role="navigation" style="display: none;">
-	<div class="drawer-navbar" role="banner">
-		<div class="response_msg_container drawer-container">
-			<span><i class="fa fa-check-square"></i> 
-                   <span class="addUserTypeError">You have already sitter,Please try from</span>
-            </span>
-		</div>
-	</div>
-</div>-->
+
 <!--Additional Services Popup--> 
 <script>
-	//Profile report
-	 /*$('#submit-report').on('click', function()   
-	 { 
-			$("#profile-report").ajaxForm(
-			{
-			  success: function(res) { 
-			          console.log(res);
-				}
-			}).submit();
-	  });*/
-	/*$('.check-user-type').on('click', function(){
-	     $('.show-user-type-error').show();
-	}); */
-	  
-														    
-	  
-    //SCRIPT FOR ADD DATEPICKER
+	//SCRIPT FOR ADD DATEPICKER
     $(document).ready(function() {
 		
 		//Datepicker

@@ -314,22 +314,17 @@ class GuestsController extends AppController
 	/**Function for forgot password
 	*/
 	function forgotPassword(){
-		
 		$this->viewBuilder()->layout('landing');
 		// Loaded Admin Model
 		$UsersModel = TableRegistry::get('Users');
-		
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UsersModel);
 		//CODE FOR MULTILIGUAL END
 		
 		$this->request->data = @$_REQUEST;
-				//echo "<pre>";print_r($this->request->data['Users']['email']);die;
 		if(isset($this->request->data['Users']['email']) && !empty($this->request->data['Users']['email'])){
 	
 			$getUserData = $UsersModel->find('all',['conditions' => ['Users.email' => $this->request->data['Users']['email']]])->first();
-			//echo "<pre>";print_r($getUserData);die;	
-              
 			if(empty($getUserData)){
 				$this->setErrorMessage($this->stringTranslate(base64_encode("Email id not register with us, try again")));
 
@@ -341,8 +336,7 @@ class GuestsController extends AppController
 				$UserData->pwd_token = md5($new_password);
 				
              
-					//echo "<pre>";print_r($UserData);die;
-                if($UsersModel->save($UserData))
+				if($UsersModel->save($UserData))
 				{
 					
 					$uid = base64_encode($getUserData->email);
@@ -363,12 +357,8 @@ class GuestsController extends AppController
 						$this->setSuccessMessage($this->stringTranslate(base64_encode('Password reset link has been sent over registered email address.')));
 	                    die;			     
 				}
-                //return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
-			}
-		}/*else{
-			 echo "Error:Kindly enter email id";
-			 die;
-		}*/
+            }
+		}
 	}
 	
 	/**Function for Reset Password
@@ -377,7 +367,6 @@ class GuestsController extends AppController
 	{
 		$this->viewBuilder()->layout('landing');
 		// Loaded Admin Model
-		//echo $uid.'ok'.$key;die;
 		$UsersModel = TableRegistry::get('Users');
 		//CODE FOR MULTILIGUAL START
 		$this->i18translation($UsersModel);
@@ -385,9 +374,7 @@ class GuestsController extends AppController
 		
 		$UserData = $UsersModel->newEntity();
 		$this->request->data = @$_REQUEST;
-		//echo "<pre>";print_r(@$_REQUEST);die;
 		$uid = base64_decode($uid);
-		//pr($uid);die;
 		if($uid !=""){
 			$this->set("email",$uid);
 		}else{
@@ -428,9 +415,7 @@ class GuestsController extends AppController
 					
 					$this->setSuccessMessage($this->stringTranslate(base64_encode("Password has been reset successfully")));
 					echo "Success:".$this->stringTranslate(base64_encode("Password has been reset successfully")); die;
-			       //return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
-				
-				}else{
+			    }else{
 					$this->set('loginerror',$error);
 					$this->set('totalError',count($error));
 					$this->set('signupdata',$data);
@@ -440,7 +425,6 @@ class GuestsController extends AppController
 			$this->setErrorMessage($this->stringTranslate(base64_encode("Reset password link has been expired")));
 			return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
 		}
-		//$this->render('home');
 	}
 	
 	/**

@@ -1,13 +1,12 @@
 <?php $session = $this->request->session(); 
       $currency = $session->read("currency");     
- ?>
+?>
 <section class="sr-list-wrap">
     <div class="cust-container">
       <div class="sr-list-area">
         <div class="toptext">
           <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book on Sitter Guide and receive: Free sitter guide Premium Insurance, Local Australian Customer Support and a Booking Guarantee')); ?>.</p>
         </div>
-        
         <div class="ssr-list-area">
           <div class="sl-area"> 
             <!--distance-->
@@ -18,8 +17,7 @@
                   <div class="sort-by">
                     <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sort By')); ?></p>
                     <?php 
-					
-						echo $this->Form->input(
+					    echo $this->Form->input(
 							'Search.distance',[
 							"type"=>"select",
 							'label' => false,
@@ -51,8 +49,7 @@
 										<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
 										
 									?>
-									
-										  <!--Profile Picture Slide area-->
+									   <!--Profile Picture Slide area-->
 											<div class="sit-pic-area">                      
 												<script>
 												$(function(){
@@ -61,47 +58,44 @@
 													}); 
 														
 												})
-												
 												</script>	
+												
 												  <div id="myCarousel" class="carousel customCrousal<?php echo $rankNo; ?> slide" data-interval="false" data-ride="carousel">   
-															<div class="carousel-inner" role="listbox">   
+															<div class="small-slider carousel-inner" role="listbox">   
                                                               <?php 
-																															
-																if(!empty(@$sub_galleries_result)){
-																$flag=0;
-																
-																		 foreach($sub_galleries_result as $sub_galleries){
-																			
-																																		
+                                                             if(!empty(@$sub_galleries_result)){
+																$flag=0;?>
+																       <?php 
+																        foreach($sub_galleries_result as $sub_galleries){
 																			if($sub_galleries->image != "")
 																			{
-																				
-																				if($flag == 0 ){ $flag=1;
+																				if($flag == 0 ){
+																				 $flag=1;
+																					if(!empty($results->image)){ ?>
+																						<div class="item active">
+																						<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 
+																						</div>	
+																					<?php }
 																					?>
-																					<div class="item active">
+																				   <div class="item <?php echo $results->image == ""?"active":"" ?>">
 																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
 																					</div>
-																			<?php	}else{?>
+																			<?php  	
+																			}else{?>
 																					<div class="item ">
 																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
 																					</div>
-																				
-																			<?php	}
+																			 <?php }
 																			}
 																		}
 																 }else{ ?>
 																		<div class="item active">
-																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/XVWVPJniSAYcBo5.png'; ?>"> 
+																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
 																			</div>
-																				
-																	<?php } 
-																	
-																	
+																 <?php } 
 																	?>															
-															 												
 															</div>
-														
-															<!-- Left and right controls -->
+														   <!-- Left and right controls -->
 															<a class="left carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="prev">
 															  <span class="fa fa-chevron-left" aria-hidden="true"></span>
 															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></span>
@@ -110,32 +104,21 @@
 															  <span class="fa fa-chevron-right" aria-hidden="true"></span>
 															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?></span>
 															</a>                                        
-															
-															
 												</div>                                                    	
-											
-												<!--quick view-->
-											
-													<div class="quick-view">
-															<a href="#" data-rel="<?php echo $rankNo; ?>" class="qvBtn" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </span></a>
+											    <!--quick view-->
+											        <div class="quick-view">
+															<a href="#" data-rel2="<?php echo $results->id; ?>" data-rel="<?php echo $rankNo; ?>" class="qvBtn select-sitter-images" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search" aria-hidden="true"></i><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </span></a>
 													</div>
-											
-												<!--/quick view-->                       
-											
+											     <!--/quick view-->                       
 											</div>
 												<!--/Profile Picture Slide area-->   
-														
 										<?php// } ?>   	
-										
 									</div>
 									<div class="sitter-p-det"> 
 									  <!--head-->
-									  
-										  <div class="sit-p-head">
-											
+									  <div class="sit-p-head">
 											<p class="head-txt">
-
-												<span><?php echo $rankNo; ?></span>
+                                              <span><?php echo $rankNo; ?></span>
 												<a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">
 												<?php echo $results->first_name." ".substr(($results->last_name)?$results->last_name:"",0,1)."."; ?> 
 											   </a>
@@ -265,17 +248,29 @@
 											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?></a> </div>
 										  </div>
 									  <!--/rating--> 
-									  
 									  <!--availability-->
 									  <div class="sit-available">
 										<ul>
 										  <li>
-											  <a href="#" title="Available this weekend"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Available this weekend')); ?>
+											  <a href="#" title="Available this weekend">
+												  <?php
+												   if($results->weekend_availaibility == "yes"){
+												         echo $this->requestAction('app/get-translate/'.base64_encode('Available this weekend')); 
+												   }else{
+												        echo $this->requestAction('app/get-translate/'.base64_encode('Not available on weekend'));
+												   }
+												   ?>
 											  </a>
 										 </li>
-										
 										 <li>
-											 <a href="#" title="Available on New Year"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Available on New Year')); ?></a>
+										        <a href="#" title="Available on New Year">
+											   <?php
+												if($results->availaibility_on_new_year == "yes"){ 
+												     echo $this->requestAction('app/get-translate/'.base64_encode('Available on New Year')); 
+											    }else{
+												   echo $this->requestAction('app/get-translate/'.base64_encode('Not available on New Year')); 
+												}
+											  ?></a>
 										</li>
 										
 										</ul>
@@ -287,31 +282,60 @@
 								  <!--sitter list-->
 								  <div class="sit-list-del">
 									<ul>
+									<?php if(@$results->repeatClient > 0){ ?>
 									  <li>
 										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> 
-										  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Guests')); ?>: <span>2</span>
+										  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Guests')); ?>: <span><?php echo @$results->repeatClient; ?></span>
 									  </li>
-									  
+									  <?php }
+									   if(!empty(@$results->last_booking_date)){ 
+									   ?>
 									  <li>
-										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last booked')); ?>: <span>2 week ago</span>
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last booked')); ?>: <span>
+											<?php
+											   $seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$results->last_booking_date);
+												$days    = floor($seconds / 86400);
+												$hours = floor(($seconds - ($days * 86400)) / 3600);
+												$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+												$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+												$week_ago = floor(($days)/7);
+												  if($week_ago >= 1){
+													  echo $week_ago." Week "."ago";
+												  }else{
+												       echo $days." days "."ago";	  
+												  }
+												
+											  
+											?>
+											  
+											 </span>
 									  </li>
-									  
+									  <?php } 
+									  ?>
 									  <li>
-										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active')); ?> <span>2 day ago</span>
-									 </li>
-									
-									 <li>
-										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Response Rate')); ?> <span>100%</span>
-									 </li>
-									 
-									 <li>
-										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Average Response')); ?> <span>2 hours</span>
-									 </li>
-									 
-									 <li>
-										 <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Contacted')); ?> <span>5 day ago</span>
-									 </li>
-									 
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active')); ?> 
+										  <span>
+											<?php 
+											if(@$results->avail_status != 'Logout'){
+																echo '<span style="color:green">'.$results->avail_status.'<//span>';
+											}else{
+												$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$results->last_login);
+												$days    = floor($seconds / 86400);
+												$hours = floor(($seconds - ($days * 86400)) / 3600);
+												$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+												$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+												$active_week_ago = floor(($days)/7);
+												  if($active_week_ago >= 1){
+													  echo $active_week_ago." Week "."ago";
+												  }else{
+												       echo $days." days "."ago";	  
+												  }
+											}
+								
+											?>
+											  
+											 </span>
+									   </li>
 									</ul>
 								  </div>
 								  <!--sitter list--> 
@@ -542,23 +566,19 @@
 					<!--info popup-->
 			<?php if(!empty($resultsData)){ ?>
 				<div role="dialog" id="myModal2" class="modal fade in" style="display: none;">
-							
-								<div class="modal-dialog">    
+							    <div class="modal-dialog">    
 								   <div data-ride="carousel" class="carousel slide"  data-interval="false"  id="myCarousel2">    
 									  <div role="listbox" class="carousel-inner">
 									  <?php
-				
-			//	pr($resultsData);die;
-							$qvModal = 1;$innerSlideNO=1;	
-							foreach($resultsData as $results){
-							?>
-																
-								
-									  <div class="item qvModal<?php echo $qvModal; ?>">      
-										 <div class="sitter-quike-view">
+									//pr($resultsData);die;
+									$qvModal = 1;$innerSlideNO=1;	
+									foreach($resultsData as $results){
+									?>
+										<div class="popUpSlider item qvModal<?php echo $qvModal; ?>">      
+										 <div data-id="<?php echo @$results->id; ?>" class="sitter-quike-view">
 											<div class="sqv-box">
 												<div class="top-close"> 
-												<p>Sitter Quick Details</p>
+												    <p>Sitter Quick Details <?php echo @$results->id; ?></p>
 													<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
 												</div>
 												<div class="sit-head">
@@ -574,7 +594,7 @@
 														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
 														<div class="rgt-hours">
 															<p>
-																  from
+															 from
 										                 <span><?php echo $currency['sign_code']." ".((@$results->user_sitter_services[0]->sh_night_rate)*$currency['price']); ?></span>
 																	per night
 																	</p>
@@ -582,49 +602,31 @@
 														</div>
 													</div>                	
 												</div>
-												<!--quick slide-->
-												<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
+												<!--Start carousal for sitter images-->
+											    <?php $nextSlider =  @$results->id; ?>
+												<div class="quick-slide">                	
+												<div id="customCrousalNext<?php echo $nextSlider; ?>" class="carousel slide customCrousalNext<?php echo $nextSlider; ?>" data-ride="carousel">
 												
-												if(!empty(@$sub_galleries_result)){  
-															//pr($sub_galleries->image);die;
-												?>					
-													<div class="quick-slide">
-														<div class="ms-area">
-															<ul class="owl-carousel-1">
-																<?php  foreach($sub_galleries_result as $sub_galleries){
-																			if($sub_galleries->image != ""){?>
-																					<div class="item">
-																						 <li>
-																								<?php if(@$sub_galleries->image != ''){// echo @$newarr[$index];?>
-																										<img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>">
-																									<?php } ?>
-																						 </li>
-																					</div>
-																				
-																	<?php		}
-																	}	?>
-																					
-																					
-																</ul>
-														</div>
+												<div class="carousel-inner" role="listbox" id="getImg<?php echo @$results->id; ?>"> 
 												</div>
-												<?php	}else{	?>
-													    <div class="quick-slide">
-														<div class="ms-area">
-															<ul class="owl-carousel-1">
-																<div class="item">
-																		 <li>
-																	       <img width="200" height="200" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.(@$results->image != ''?@$results->image:'prof_photo.png'); ?>">
-																		</li>
-																	</div>
-															 </ul>
-														</div>
+											    <!-- Left and right controls -->
+												<a class="left ajaxSliderPrev carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
+												  <span class="fa fa-chevron-left" aria-hidden="true">
+												  </span>
+												  <span class="sr-only">Previous
+												  </span>
+												</a>
+												<a class="right ajaxSliderNext carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="next">
+												  <span class="fa fa-chevron-right" aria-hidden="true">
+												  </span>
+												  <span class="sr-only">Next
+												  </span>
+												</a>
+												</div>               	 
 												</div>
-													<?php } ?>
-												<!--quick slide-->
+												<!--End quick slide-->
 												<!--content area Start-->
-
-												<div class="sqv-mid">
+                                                 <div class="sqv-mid">
 													<div class="row">
 														<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
 														<div class="sqv-mid-lft">
@@ -684,20 +686,21 @@
 											</div>         	
 										 </div>     
 									  </div>
-
-									 
-									
 								<?php $qvModal++; } ?></div>
-									<!-- Left and right controls -->
-											<a data-slide="prev" role="button" href="#myCarousel2" class="left myCarousel2next carousel-control">
+								         <!-- Left and right controls -->
+											<a data-slide="prev" role="button" href="#myCarousel2" class="left leftPopup myCarousel2next carousel-control ajaxMainSliderPrev">
 											  <span aria-hidden="true" class="fa fa-chevron-left"></span>
-											  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></span>
+											  <span data-rel="" class="sr-only">
+												  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
+											  </span>
 											</a>
-											<a data-slide="next" role="button" href="#myCarousel2" class="right myCarousel2next carousel-control">
-											  <span aria-hidden="true" class="fa fa-chevron-right"></span>
-											  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?></span>
+											<a data-slide="next" role="button" href="#myCarousel2" class="right rightPopup myCarousel2next carousel-control ajaxMainSliderNext">
+												<span aria-hidden="true" class="fa fa-chevron-right"></span>
+												<span data-rel="" class="sr-only">
+													<?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
+												</span>
 											</a>
-											   <!-- Left and right controls -->
+									     <!-- Left and right controls -->
 										  </div>   
 								</div>
 					
@@ -727,10 +730,15 @@
 </style>
 
 <script>
+	
+	
 	$(function(){
 		
 		$(document).on('click',".qvBtn",function(){
 		
+			if($('#myCarousel2').find("div.popUpSlider").removeClass("active")){
+				$('#myCarousel2').find("div.popUpSlider").removeClass("active");
+			}
 			var qv = $(this).attr('data-rel');
 			$(".qvModal"+qv).addClass('active');
 		
@@ -746,7 +754,68 @@
 <?php
 echo $this->Html->script('Front/for-sticky.js'); ?>
 
-<script>$(document).ready(function(){
-	$("#sidebar").stick_in_parent();
-    });
-    </script>
+<script>
+	 $(document).ready(function(){
+	 
+	 $("#sidebar").stick_in_parent();
+	
+	 });
+	 //For slider
+	 
+     $(document).on('click',".quick-view",function(){
+		 //alert($(this).find('a.select-sitter-images').attr("data-rel2"));
+		 //$('#myCarousel2').find("active").;
+         //$( "#myCarousel2" ).hasClass("active")
+         
+         sitter_images($(this).find('a.select-sitter-images').attr("data-rel2"));
+	     
+	     
+	 });
+     $(document).on('click',".rightPopup",function(){
+		 if($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id')){
+			sitter_images($("#myCarousel2").find("div.active").next().find('div.sitter-quike-view').attr('data-id'));
+	          
+	     }else{
+		    sitter_images($('.qvModal'+$('#myCarousel2 .popUpSlider').length).find('div.sitter-quike-view').attr('data-id'));
+		 } 
+	 });
+	 $(document).on('click',".leftPopup",function(){
+		 if($("#myCarousel2").find("div.active").prev().find('div.sitter-quike-view').attr('data-id')){
+			 sitter_images($("#myCarousel2").find("div.active").prev().find('div.sitter-quike-view').attr('data-id'));
+		  }else{
+			  sitter_images($('.qvModal'+$('#myCarousel2 .popUpSlider').length).find('div.sitter-quike-view').attr('data-id'));
+          }
+	});
+	var sitter;
+	function sitter_images(sitter){
+		           $.ajax({
+						url: "<?php echo HTTP_ROOT."search/sitter-gallery"; ?>",
+						data:{sitter:sitter},
+						type:"POST",
+						
+						beforeSend: function(){
+						  $('#getImg'+sitter).html('<div class="ajax_overlay"><img class="search-img" src="'+ajax_url+'img/walking.gif"/></div>');
+						  $(".ajax_overlay").show();
+						},
+						
+						complete: function(){
+						  $('#getImg'+sitter).html('');
+						  $(".ajax_overlay").hide();
+						},
+						success:function(res)
+						{
+							$('#getImg'+sitter).html("");
+							setTimeout(function(){
+								$('#getImg'+sitter).html(res);
+								$('.ajaxSliderNext').attr('href','#customCrousalNext'+sitter); 
+								$('.ajaxSliderPrev').attr('href','#customCrousalNext'+sitter); 
+							},1000);
+
+							setTimeout(function(){
+								$('.customCrousalNext'+sitter).carousel(); 	
+							},1500);
+							
+						}
+					});
+	}
+</script>
