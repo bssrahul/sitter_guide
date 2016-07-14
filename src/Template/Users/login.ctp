@@ -66,6 +66,7 @@ $(document).ready(function(){
     padding: 10px;
     position: absolute;
     top: 0;
+    border:4px solid #d3d3d3;
 }
 body {
     color: #73879C;
