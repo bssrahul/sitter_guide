@@ -44,6 +44,10 @@ class AppController extends Controller{
     {
 		parent::initialize();
 
+
+		//$_COOKIE['anyname'] = "rahul";
+		//echo $privacyName = $_COOKIE['anyname'];
+  
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 		

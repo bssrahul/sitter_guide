@@ -1916,8 +1916,7 @@ $(function () {
 	});
  /*Last Drop down country- currency listing*/
 
- 
-});
+ });
 /*Last Drop down country- currency listing*/
    $(document).on( 'click', '.getCalender', function (){
 	   var actionURl = $(this).attr('data-rel');
@@ -2036,26 +2035,4 @@ var idleWait = 10000;
 	});
 }) (jQuery)
 
-	/*
-	$(document).on('click','.status_dropdown', function(){ 
 	
-		var avail_status_value = $(this).attr('data-rel');
-		var img_name = $(this).attr('data-img-name');
-		var display_status = $(this).attr('data-display-status');
-		
-		$.ajax({
-			url:  ajax_url+'/dashboard/change-idle-status',//AJAX URL WHERE THE LOGIC HAS BUILD
-			data:{avail_status:avail_status_value,force_change:1},
-				
-			success:function(res)
-			{
-				$("body").find("#display_status").val(display_status);	
-				$("body").find("#status_dropdown").trigger("click");	
-				$("body").find("#display_status").css('background-image', 'url(' + ajax_url+'img/'+img_name + ')');	
-				
-					
-			}
-		});
-	
-	});*/
-/*Jquery for get idle state of user end*/

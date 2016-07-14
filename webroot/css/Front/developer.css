@@ -841,11 +841,4 @@ div.more-sitter img{width:125px;height:125px;}
 	  text-align: center;
 	  width: 30px;
 	}
-.new-font-size20 {font-size:20px; color:#D90000;}
 
-.small-slider div.item {
-    min-height: 150px !important;
-}
-.small-slider div.item > img {
-    min-height: 150px !important;
-}

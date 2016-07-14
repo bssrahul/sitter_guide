@@ -1088,7 +1088,14 @@ class GuestsController extends AppController
 		$this->set('siteConfigurationData',$siteConfigurationData);
 		//pr($siteConfigurationData);die;
 	}
-	
+	//For cookie
+	function userCookie(){
+	    $cookie_name = "userCookie";
+		$cookie_value = "setUserCookie";
+		
+		setcookie($cookie_name, $cookie_value,time() + (86400 * 30), "/"); // 86400 = 1 day
+         die;
+     }
 
 }
 ?>

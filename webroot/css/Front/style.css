@@ -9,13 +9,18 @@
 @import 'content.css';
 @import 'footer.css';
 
+@import 'inner.css';
+
+
+
+
 @import 'dashboard.css';
 @import 'signup.css';
 
 @import 'db-profile.css';
 @import 'contact.css';
 @import 'profile-view.css';
-@import 'safety.css';
+/* @import 'safety.css'; */
 @import 'privacy.css';
 @import 'insurance.css';
 @import 'terms.css';
