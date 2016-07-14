@@ -214,7 +214,7 @@ define("SITE_TITLE",'Sitter Guide');
 define("SITE_OWNER",'Daevid Richards');
 define("DEVELOPED_BY",'Beta-soft systems');
 define("WEBROOT_PATH",$_SERVER['DOCUMENT_ROOT']."/".ROOT_PATH."/webroot/");
-define('HTTP_ROOT','http://'.$_SERVER['HTTP_HOST'].'/');
+define('HTTP_ROOT','http://'.$_SERVER['HTTP_HOST'].'/'.$rootPath.'/');
 define("DATE_FORMAT",'M d, Y');
 define("AUTHENTICATION_FAILED",'Authentication Failed! Please try again.');
 define("LOGGED_OUT",'You have logged out successfully.');
