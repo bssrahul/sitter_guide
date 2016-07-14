@@ -5668,8 +5668,7 @@ a.hiddenanchor{
 /** The wrapper that will contain our two forms **/
 #wrapper{
     right: 0px;
-    margin: 0px auto;
-    margin-top: 5%;
+    margin: 5% auto 0px 10%;
     max-width: 350px;
     position: relative;
 }
@@ -6350,12 +6349,55 @@ ul.notifications {
     opacity: 1;
 }
 .wall{
-	background-image:url("../../img/admin/loginbg.jpg");
-	background-repeat:no-repeat;
-	background-position:center;
-	background-size:cover;
-	height:450px;
+	background-image:url("../../img/admin/admin_login.jpg");
+	background-repeat: no-repeat;
+    background-position: center;
+   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    height: 550px;
 }
+
+.wall1{
+	background-image:url("../../img/admin/admin_login_1.jpg");
+	background-repeat: no-repeat;
+    background-position: center;
+   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    height: 550px;
+}
+
+
+.wall2{
+	background-image:url("../../img/admin/admin_login_2.jpg");
+	background-repeat: no-repeat;
+    background-position: center;
+   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    height: 550px;
+}
+
+.wall3{
+	background-image:url("../../img/admin/admin_login_3.jpg");
+	background-repeat: no-repeat;
+    background-position: center;
+   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    height: 550px;
+}
+
+
 
 
 .lockbg{
