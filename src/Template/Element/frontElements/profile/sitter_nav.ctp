@@ -1,6 +1,4 @@
- 
- 
-    <?php 
+  <?php 
      $action = $this->request->params['action']; 
     //For show active tab
      if($action == 'house'){
@@ -22,9 +20,9 @@
      $session = $this->request->session();
      $profile = $session->read('profile');
      $dog_in_home_status = $session->read('dog_in_home_status');
-	
+
      ?>
-	 <ul class="nav nav-pills <?php echo $dog_in_home_status == "yes"?"six-tab":"" ?>">
+	 <ul class="nav nav-pills <?php echo ($dog_in_home_status == "yes") && ($profile == "Sitter")?"six-tab":""; echo ($profile != "Sitter")?"three-tab":"";   ?>">
      <?php
    if($profile == 'Sitter'){ ?>
    

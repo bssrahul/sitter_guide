@@ -11,6 +11,7 @@
 <!--[Banner Area Start]-->
                 <?php
 					$session = $this->request->session();
+					
 					$userloginstatus = $session->read("User");
 				    $cuntry_currency = $session->read("currency.currency");
 					$cuntry_price = $session->read("currency.price");
@@ -41,12 +42,9 @@
               </h4>
               <div class="badage-detail">
                 <ul class="list-inline text-center">
-					
-				  <?php  if(($userData['users_badge'])!= ""){
-							
+					<?php  if(($userData['users_badge'])!= ""){
 							if($userData['users_badge']->dl_pcb_badge){?>
-								
-							 <li>
+							<li>
 								 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
 														
 									<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>

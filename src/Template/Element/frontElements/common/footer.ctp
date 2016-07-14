@@ -248,6 +248,20 @@
         <!--bot foot-->
     </footer>
 <!--[Footer End]-->
+<?php 
+if(!isset($_COOKIE["userCookie"]) && $_COOKIE["userCookie"] != "setUserCookie"){ 
+	
+	?>
+	  <div id="cookies-bot-wrap">
+			<div class="row">
+				<div class="container">
+					<div class="cbw-area">
+						<p>By using our website, you agree to the use of cookies as described in our <a href="<?php echo HTTP_ROOT."privacy"; ?>">Privacy Policy</a>  <b id="hide">X</b></p>
+					</div>
+				</div>
+			</div>
+		</div>
+<?php } ?> 
 <!----------------------------------header resize------------------------------------------>
  <?php
      echo $this->Html->script(['Front/classie.js','Admin/bootstrap.min.js','Front/custom.js']);
@@ -274,17 +288,42 @@ $(document).ready(function(){
     }); 
     //$(".cake-error").css('display','none')
   
+  
+  
+
+});
+  //For cookie
+  $(document).on('click','#hide', function(){
+		       $.ajax({
+					url: ajax_url+"guests/user-cookie",//AJAX URL WHERE THE LOGIC HAS BUILD
+					success:function(res)
+					{
+					    $("#cookies-bot-wrap").hide();
+					}
+				});
+	});
+    
+	/*Last Drop down country- currency listing */
+
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("#cookies-bot-wrap").hide();
+    });
+   
 });
 
+$(document)
+.on( 'click', '.dropdown-menu', function (e){
+    e.stopPropagation();
+});
+
+$(document)
+.on( 'click', '#cookie-close', function (e){
     
-		
-    
+});
+/* Last Drop down country- currency listing */
 </script>
-
 <style>
-	
-
-
 #loginUser label.error { color: #ff5a5f !important;
     float: right;
     font-size: 12px !important;

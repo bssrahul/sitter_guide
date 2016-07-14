@@ -78,6 +78,8 @@ display:block; margin:10px 0 0 0;}
 .topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img{ float:left; margin:7px 10px 0 0; width:18px; height:18px; border-radius:50%;}
 .topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li:last-child{ background:none;}
 
+.topnav-area .navbar-nav li.last-drop a .lang-txt{ font-size:13px; margin:2px 0 0 0; line-height:16px;}
+
 .mob-country-drop{ width:20%; float:right; display:none;}
 .mob-country-drop ul{ margin:0px; padding:0px; list-style-type:none;}
 .mob-country-drop ul li.last-drop{ position:relative;}

@@ -20,7 +20,6 @@
   </div>
   <div class="row">
      <?php  if(@$profileStatus == 'sitter_update'){
-		 
 		 $addStyle = "style='text-align:center'";
 	  }else{
 		  $addStyle = "";
@@ -138,7 +137,7 @@
 				<h4 class="modal-title">Notification</h4>
 			  </div>
 			  <div class="modal-body">
-				<p>Dear Sitter, your dog in home status currently disabled,if you still want to add pet then you need to enable the pet status.</p><br>
+				<p>Dear Sitter, your "dogs in home" status currently disabled,if you still want to add pet then you need to enable the pet status.</p><br>
 				<p>Are you enable pet status then click on continue?</p>
 			  </div>
 			  <div class="modal-footer">

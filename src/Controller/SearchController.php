@@ -1241,7 +1241,6 @@ class SearchController extends AppController
 	/**
 	 Function for sitter details
 	*/	
-	
 	function sitterDetails($sitterId = null){
 		$session = $this->request->session();
 		$this->viewBuilder()->layout('landing');
