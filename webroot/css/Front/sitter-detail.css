@@ -3,34 +3,41 @@
 
 #payment-box { width:100%; float:left; margin:100px 0 50px 0;}
 
-#payment-box .full-content-wrap .best-pract-wrap { background:#ecf7ff;}
-#payment-box .full-content-wrap .best-pract-head { background:#59aae1; margin-top:20px; }
-#payment-box .full-content-wrap .best-pract-head p { color:#fff; font-size:13px; margin-bottom:0px; padding:10px 10px; }
+#payment-box .full-content-wrap .best-pract-wrap { background:none; margin:5px 0 0 0;}
+#payment-box .full-content-wrap .best-pract-head { background:none; margin-top:20px; }
+#payment-box .full-content-wrap .best-pract-head p { color:#404040; font-size:13px; padding:0px ; }
 #payment-box .modal-dialog{ max-width:1200px; width:100%;}
-#payment-box .sitter-quike-view .sqv-box{ width:100%; max-width:1200px; padding:20px ; margin:0 auto; background:#ffffff;  border:#f0f0f0 20px solid; overflow:hidden;}
-#payment-box .full-content-wrap .best-pract-wrap .best-text { font-size:12px; color:#0d5c95; padding:10px;}
+#payment-box .sitter-quike-view .sqv-box{ width:100%; max-width:1200px; padding:0px ; margin:0 auto; background:#ffffff;  border:0px; overflow:hidden;}
+#payment-box .full-content-wrap .top-close{ border:0px;}
+#payment-box .full-content-wrap .top-close p{ margin:0 0 5px 0; font-weight:bold; font-size:18px;}
+#payment-box .full-content-wrap .best-text { font-size:13px; color:#404040; padding:0 0px 15px 0;}
+#payment-box .full-content-wrap .best-text span{ display:block; color:#72a105; font-size:16px; margin:0 0 5px 0;  }
 
-#payment-box .full-content-wrap .best-pract-wrap .msg-send-text { border-top:1px solid #e1f1fc; text-align:right; padding:2px 10px 5px 10px;}
-#payment-box .full-content-wrap .best-pract-wrap .msg-send-text a {   font-size:12px; color:#04568e !important; text-decoration:none;}
+#payment-box .full-content-wrap .best-pract-wrap .msg-send-text { border-top:0px solid #e1f1fc; text-align:right; padding:2px 0px 5px 0px; margin:15px 0 0 0;}
+#payment-box .full-content-wrap .best-pract-wrap .msg-send-text a {   font-size:14x; text-decoration:none; background:#72a105; padding:10px 15px; color:#ffffff; border-radius:2px; }
 
 
-#payment-box .full-content-wrap .bill-info-wrap { border:1px solid #dcdcdc; margin-top:20px; }
-#payment-box .full-content-wrap .bill-info-wrap .bill-info-head { background:#f8f8f8; border-bottom:1px solid #dcdcdc;  }
-#payment-box .full-content-wrap .bill-info-wrap .bill-info-head p { color:#404040; font-size:14px; margin-bottom:0px; padding:10px 10px; }
-#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner { padding:20px;}
-#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner label { color:#404040; font-size:13px; font-weight:400;}
+#payment-box .full-content-wrap .bill-info-wrap { border:0px solid #dcdcdc; margin-top:20px; }
+#payment-box .full-content-wrap .bill-info-wrap .bill-info-head { background:none; border-bottom:0px solid #dcdcdc; padding:10px 0;  }
+#payment-box .full-content-wrap .bill-info-wrap .bill-info-head p { color:#75a105; font-size:18px; margin-bottom:0px; padding:10px 0px; }
+#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner { padding:0px;}
+#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner label { color:#404040; font-size:14px; font-weight:400; margin:0 0 5px 0;}
 
-#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner .form-control { border-radius:0px;}
+#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner .form-control { border-radius:2px; height:42px;}
+#payment-box .full-content-wrap .bill-info-wrap .bill-info-inner #booking-state{ height:41px !important;}
 
-#payment-box .full-content-wrap .payment-info-wrap { border:1px solid #dcdcdc; margin-top:20px; }
-#payment-box .full-content-wrap .payment-info-wrap .payment-info-head { background:#f8f8f8; border-bottom:1px solid #dcdcdc;  }
-#payment-box .full-content-wrap .payment-info-wrap .payment-info-head p { color:#404040; font-size:14px; margin-bottom:0px; padding:10px 10px; }
-#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner { padding:20px;}
+#payment-box .full-content-wrap .payment-info-wrap { border:0px solid #dcdcdc; margin:0px 0 0 0; }
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-head { background:none; border-bottom:0px solid #dcdcdc; margin:0 0 5px 0;  }
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-head p { color:#72a105; font-size:18px; margin-bottom:0px; padding:5px 0px; }
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner { padding:0px;}
 
-#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card {padding-top:0px;}
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card {padding-top:0px; margin:15px 0 15px 0;}
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card  .pay-outside-wrap{ margin:0px; max-width:100%; padding:0px; border:0px;}
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card  .payment_type{ margin: 0 0 0 0px;}
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card p.card-radio span{ padding:0 0 0 20px; margin:-5px 0 0 0;}
 #payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .pl20 {padding-left:15px;}
-#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card label{ padding:0px 0 0 20px;}
-
+#payment-box .full-content-wrap .payment-info-wrap .payment-info-inner .c-card label{ padding:0px; font-size:14px;}
+#payment-box .full-content-wrap  .pay-outside-wrap .form-control{ height:42px;}
 #payment-box  .pet-info-wrap.alert {border-radius: 0px; margin-bottom: 0px; padding: 0px;}
 
 #payment-box  .pet-info-wrap { border:1px solid #dcdcdc; margin-top:10px; }
@@ -48,12 +55,10 @@
 #payment-box .full-content-wrap .pet-info-wrap .pet-info-inner .pdt10 {padding-top:10px;}
 #payment-box .full-content-wrap .pet-info-wrap .pet-info-inner .pdb10 { margin-bottom:10px;}
 
-
-
-#payment-box .full-content-wrap .hello-info-wrap { border:1px solid #dcdcdc; margin-top:20px; }
-#payment-box .full-content-wrap .hello-info-wrap .hello-info-head { background:#f8f8f8; border-bottom:1px solid #dcdcdc;  }
-#payment-box .full-content-wrap .hello-info-wrap .hello-info-head p { color:#404040; font-size:14px; margin-bottom:0px; padding:10px 10px; }
-#payment-box .full-content-wrap .hello-info-wrap .hello-info-inner { padding:20px;}
+#payment-box .full-content-wrap .hello-info-wrap { border:0px solid #dcdcdc; margin:0px; }
+#payment-box .full-content-wrap .hello-info-wrap .hello-info-head { background:#f8f8f8; border-bottom:1px solid #dcdcdc;  background:none; border:0px;  }
+#payment-box .full-content-wrap .hello-info-wrap .hello-info-head p { color:#72a105; font-size:18px; margin-bottom:0px; padding:0px 0 10px 0;}
+#payment-box .full-content-wrap .hello-info-wrap .hello-info-inner { padding:0px;}
 #payment-box .full-content-wrap .hello-info-wrap .hello-info-inner .hello-info-text { padding:15px 20px; border:1px solid #dcdcdc; }
 #payment-box .full-content-wrap .hello-info-wrap .hello-info-inner .hello-info-text p {font-size:12px; text-align:justify;}
 
@@ -61,17 +66,24 @@
 .btn-req-bok:hover, .btn-req-bok:focus  {  background:#699305; color: #fff; font-size: 14px; font-weight: 500; height: 40px;margin-bottom: 20px; text-transform: uppercase;}
 #payment-box .cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto input[type="text"] {    border: 0 none;float: left; height: 43px; line-height: 45px; padding: 10px; width: 90%;}
 
-#payment-box .right-content-wrap { border:1px solid #dcdcdc; margin-top:20px; padding:10px;}
+#payment-box .right-content-wrap { border:0px solid #dcdcdc; margin-top:20px; padding:0px;}
+#payment-box .right-content-wrap .top-box-wrap .center-block{ border-radius:5px; width:80px; height:80px;}
+#payment-box .right-content-wrap .pay-through h6{ font-size:18px; color:#72a105; }
 
-#payment-box .right-content-wrap .top-box-wrap { background:#ecf7ff; padding:5px; }
+#payment-box .right-content-wrap .top-box-wrap { background:none; padding:0px; }
 #payment-box .right-content-wrap .top-box-wrap ul .f14 {font-size:14px; font-weight:700;}
 #payment-box .right-content-wrap .top-box-wrap ul .f13 {font-size:13px; font-weight:500;}
 
-#payment-box .right-content-wrap .top-box-wrap .night-sitt {  border-top:1px solid #e1f1fc; text-align: center; padding:2px 10px 5px 10px;}
+#payment-box .right-content-wrap .top-box-wrap .night-sitt {  border-top:0px solid #e1f1fc; text-align: center; padding:2px 10px 5px 10px;}
 
 #payment-box .right-content-wrap .top-box-wrap .night-sitt ul { font-size:13px; color:#04568e; margin-top:10px; margin-bottom:2px;}
 #payment-box .right-content-wrap table {padding-top:10px; margin-top:15px;}
+#payment-box .right-content-wrap table tr td{ width:50%;}
+#payment-box .right-content-wrap table tr td:first-child{ font-size:25px; color:green;}
+#payment-box .right-content-wrap table tr td:nth-child(2){ text-align:left;}
 #payment-box .right-content-wrap tr td {border-top:none !important; padding:6px;}
+#payment-box  .btn-mod-pop-1 { height:40px; line-height:30px; border-radius:2px; font-size:16px;}
+
 .tbfont {font-size:12px !important;}
 .booking-summ h3 { font-size:16px; font-weight:500; padding:10px; margin-top:10px; background: #55a9e3 none repeat scroll 0 0; color:#fff;  }
 .book-blue-bg ul { font-size:13px; color:#04568e; margin-top:2px; margin-bottom:2px;}
@@ -110,6 +122,20 @@
 #payment-box .cont-sitter .cs-mid-cont .csmc-area .hs-date { float: left; margin: 5px 0 0; width: 100%;}
 #payment-box .cont-sitter .cs-mid-cont .csmc-area { display: block; margin: 0 auto; max-width: 100%; overflow: hidden; padding: 15px; width: 100%;}
 #payment-box .cont-sitter .cs-mid-cont .csmc-area .msg .send-msg { background: #72a105 none repeat scroll 0 0; border-radius: 3px; height: 40px; margin: 10px 0;text-align: center; width: 182px;}
+
+/*
+.r-request{ width:100%; float:left; background:#f3f3f3; margin:50px 0 0 0;}
+.r-request .rr-area{ width:100%; float:left; margin:50px 0 50px 0;}
+.r-request .rr-area .rr-lft{ width:100%; float:left; background:#ffffff; border-radius:2px; height:800px; padding:20px; }
+.r-request .rr-area .rr-rgt{ width:100%; float:left; background:#ffffff; border-radius:2px; height:800px; padding:20px;}
+.r-request .rr-area .rr-lft .rl-head { width:100%; float:left; border-bottom:#000 5px solid; background:red; display:block;}
+.r-request .rr-area .rr-lft .rl-head h2{ color:#404040; padding:10px 0 10px 0px; font-size:18px; }
+.r-request .rr-area .rr-lft .rl-head p{ color:#404040; font-size:13px; }
+.r-request .rr-area .rr-lft .rl-head p span{ display:block; color:#59aae1; font-size:15px; display:block; display:table-cell; vertical-align:middle;} 
+
+
+
+Reservation Request End*/
 
 @media (min-width:641px) and (max-width:1199px) {
 #payment-box .sr-area-outer { float: left; margin: 20px 0 0; width: 100%;}
