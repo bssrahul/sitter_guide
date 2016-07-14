@@ -16,13 +16,11 @@
 							  <?php }else{?>
 									 <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/logo.jpg"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
 							  <?php } ?>
-                          </div>
-                          
+                          </div>                          
                           <div class="mob-logo">
                               <a class="logo" href="#" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                           </div>                                
-                    </div>   
-                    
+                    </div>                       
                     <div class="top-search">
 						<div class="search-box">
 							  <?php echo $this->element('frontElements/Search/header_search_form'); ?>
@@ -62,7 +60,7 @@
                               
 									<li class="dd-country last-drop">
 										<a href="#"  data-toggle="dropdown"> 
-											<img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> 
+											<img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> <span class="lang-txt"> En</span>
 										</a>
 										<?php echo $this->element('frontElements/common/language_switcher'); ?>
 									</li>

@@ -109,7 +109,8 @@
                       <li><a href="#"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Help')); ?> </a></li>
                                   
                       <li class="dd-country last-drop">
-						  <a href="#"  data-toggle="dropdown"> <img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> </a>
+						  <a href="#"  data-toggle="dropdown">
+                           <img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> <span class="lang-txt">En</span> </a>
 							<?php echo $this->element('frontElements/common/language_switcher'); ?>
                        </li>
                   </ul> 
