@@ -29,6 +29,7 @@ if($session->read("User.user_type") == "Basic"){ ?>
 <?php }else{ ?>
 	 <!--Model pop up -->
         <!-- Type Sitter -->
+        
 		<div id="popPetAddNotification" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 
@@ -41,9 +42,13 @@ if($session->read("User.user_type") == "Basic"){ ?>
 				</h2>
 			  </div>
 			  <div class="modal-body">
-				<p>Dear Sitter, your "dogs in home" status currently disabled,if you still want to add pet then you need to enable the pet status.</p><br>
-				<p>Are you enable pet status then click on <a style="color:#72A105" href="<?php echo HTTP_ROOT."dashboard/about-guest"; ?>"  >Add Pet</a> for proceed booking request. </small></p>
-				
+				<?php if($dog_in_home == "no"){ ?>  
+					<p>Dear Sitter, your "dogs in home" status currently disabled,if you still want to add pet then you need to enable the pet status.</p><br>
+					<p>Are you enable pet status then click on <a style="color:#72A105" href="<?php echo HTTP_ROOT."dashboard/about-guest"; ?>"  >Add Pet</a> for proceed booking request. </small></p>
+				<?php }else{ ?>
+					 <p ><small>
+				         You didn't have any pet,Please click on <a style="color:#72A105" href="<?php echo HTTP_ROOT."dashboard/about-guest"; ?>"  >Add Pet</a> for proceed booking request. </small></p>
+				<?php } ?>
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-primary" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/house#usersitterhouses-outdoor-area-size"; ?>'" >Continue</button><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

@@ -1127,10 +1127,8 @@ class SearchController extends AppController
 		
 		}
 		$this->render("search");
-		
 	}
-	
-   /**
+	/**
 	* Function to search profiles
 	*/
 	function searchByCities($city=null){
@@ -1279,7 +1277,7 @@ class SearchController extends AppController
                 if($bookingRequestsModel->save($bookingRequestData)){
                 	$replace = array('{name}','{email}');
 					$with = array($userName,$userEmail);
-					//$this->send_email('',$replace,$with,'booking_request',$userEmail);
+					$this->send_email('',$replace,$with,'booking_request',$userEmail);
 					//Start Send message
 					$get_booking_requests_to_display = $bookingRequestsModel->find('all')
 								->where(['BookingRequests.id'=>$bookingRequestData->id])
@@ -1425,13 +1423,21 @@ class SearchController extends AppController
 			//For check user pet
 			/*GET USER PETS FOR DISPLAY ON FORM*/
 			$userPetInfo = $UsersModel->find('all',['contain'=>[
-															'UserPets'
+															'UserPets',
+															'UserSitterHouses'
 												   ]]
 												)
 								   ->where(['Users.id' => $userId])
 								   ->toArray();
 			//pr($userPetInfo);die;
-			
+			$dog_in_home = "no";
+			if(!empty($userPetInfo->user_sitter_house)){
+			   if($userPetInfo->user_sitter_house->dogs_in_home == "yes"){
+				   $dog_in_home = "yes";
+			   }
+			}
+			//echo $dog_in_home ;die;
+			$this->set('dog_in_home',$dog_in_home);
 			if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
 				
 			   $this->set('guests_Info',$userPetInfo[0]->user_pets);	
