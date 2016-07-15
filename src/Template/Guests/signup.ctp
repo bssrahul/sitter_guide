@@ -221,7 +221,15 @@
 												'label'=>false,
 												'type' => "checkbox"
 											]);
-										   ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('I agree to the ')); ?><a href=<?php echo HTTP_ROOT.'terms'?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?></a>
+										   ?> 
+										   <?php echo $this->requestAction('app/get-translate/'.base64_encode('I agree to the ')); ?>
+										    <span class="signup-color">
+											<a href=<?php echo HTTP_ROOT.'terms'?>>
+										  
+											<?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?>
+											
+										   </a>
+										   </span>
 										   <label class="error" style="float:right" for="Users[term_condition]" generated="true"></label>
 										   <i class="fa fa-asterisk" aria-hidden="true"></i>  
 								
