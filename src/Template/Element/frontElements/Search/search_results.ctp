@@ -47,9 +47,8 @@
 								  <div class="ppic-area">
 									<div class="sitter-pic"> 
 										<?php 	$sub_galleries_result=$results->user_sitter_galleries; 
-										
-									?>
-									   <!--Profile Picture Slide area-->
+									    ?>
+									    <!--Profile Picture Slide area-->
 											<div class="sit-pic-area">                      
 												<script>
 												$(function(){
@@ -59,35 +58,41 @@
 														
 												})
 												</script>	
-												
-												  <div id="myCarousel" class="carousel customCrousal<?php echo $rankNo; ?> slide" data-interval="false" data-ride="carousel">   
+												 <div id="myCarousel" class="carousel customCrousal<?php echo $rankNo; ?> slide" data-interval="false" data-ride="carousel">   
 															<div class="small-slider carousel-inner" role="listbox">   
                                                               <?php 
-                                                             if(!empty(@$sub_galleries_result)){
-																$flag=0;?>
-																       <?php 
-																        foreach($sub_galleries_result as $sub_galleries){
-																			if($sub_galleries->image != "")
-																			{
-																				if($flag == 0 ){
-																				 $flag=1;
-																					if(!empty($results->image)){ ?>
-																						<div class="item active">
-																						<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($results->image != ''?$results->image:'prof_photo.png'); ?>"> 
-																						</div>	
-																					<?php }
-																					?>
-																				   <div class="item <?php echo $results->image == ""?"active":"" ?>">
-																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
-																					</div>
-																			<?php  	
-																			}else{?>
-																					<div class="item ">
-																					<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
-																					</div>
-																			 <?php }
-																			}
+                                                             if(!empty(@$sub_galleries_result) ||  !empty($results->image)){
+																 
+																 if(!empty(@$sub_galleries_result)){ 
+																	 $flag=0;
+																	 if(!empty(@$results->image)){ 
+																		 $flag=1;
+																		 ?> 
+																		 <div class="item active">
+																			<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.$results->image; ?>"> 
+																		  </div>
+															       <?php }
+															        foreach($sub_galleries_result as $sub_galleries){ ?>
+																		          <div class="item <?php echo $flag ==0?"active":"";  ?>">
+																						<img class="searchImg" alt="<?php echo __('Pet Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
+																				   </div>	
+																		<?php  $flag=1;
 																		}
+																	}else{ 
+																		    $flag=0;
+																		  if(!empty(@$results->image)){ 
+																			   $flag=1;
+																			  ?>
+																			  <div class="item active">
+																				<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.$results->image; ?>"> 
+																			  </div>
+																		<?php }else{ ?>
+																			
+																		<div class="item <?php echo $flag==0?"active":""; ?>">
+																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
+																			</div>
+																<?php }
+																}
 																 }else{ ?>
 																		<div class="item active">
 																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
