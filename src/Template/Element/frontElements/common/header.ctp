@@ -1,4 +1,7 @@
 <!--[Header Area Start]-->
+<?php 
+echo $this->Html->script(['Front/messages.js']); ?>
+
 <header  class="smaller">
   <?php 
 	if($currentLocal == 'ru'){?>
@@ -9,11 +12,10 @@
 			<div class="row">
 				<div class="col-lg-<?php echo $currentLocal == 'ru'?'4':'5'; ?> col-md-<?php echo $currentLocal == 'ru'?'3':'4'; ?> col-sm-12 col-xs-12">
 					<div class="logo-area">
-                    
-                          <div class="desk-logo">
-							  <?php if($sitelogo != null){?>
+                         <div class="desk-logo">
+							  <?php if($sitelogo != null){ ?>
 								  <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/uploads/<?php echo $sitelogo;?>"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
-							  <?php }else{?>
+							  <?php }else{ ?>
 									 <a href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/logo.jpg"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
 							  <?php } ?>
                           </div>                          

@@ -15,7 +15,7 @@
 		<?php 
 			echo $this->Html->css(['font/fonts/css/font-awesome.min.css','Front/lang/'.$languageSession->read('requestedLanguage').'.css','Front/bootstrap.min.css','Front/style.css','Front/dist/imageselect.css','Front/hint.css','Front/jquery-ui.css','Front/search-result.css','Front/calendar.css','Front/developer.css']); 
 			
-			echo $this->Html->script(['Front/jquery.min.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js','Front/jquery-ui.js','Front/jquery.validate.js','Front/search-filter.js','Front/messages.js']);
+			echo $this->Html->script(['Front/jquery.min.js','Front/dist/jquery.imgareaselect.js','Front/dist/jquery.form.js','Front/jquery-ui.js','Front/jquery.validate.js','Front/search-filter.js']);
 		
 			if($sitefavicon != null){ ?>
 				<link rel=icon href="<?php echo HTTP_ROOT.'img/uploads/'.$sitefavicon; ?>" type="image/png">
