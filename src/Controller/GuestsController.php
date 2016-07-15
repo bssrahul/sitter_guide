@@ -242,6 +242,13 @@ class GuestsController extends AppController
 						$session->write('User.last_login', $getUserData->last_login);
 						$session->write('User.user_type', $getUserData->user_type);
 						
+						$session->write('User.address1', $getUserData->address);
+						$session->write('User.address2', $getUserData->address2);
+						$session->write('User.zip', $getUserData->zip);
+						$session->write('User.city', $getUserData->city);
+						$session->write('User.state', $getUserData->state);
+						$session->write('User.country', $getUserData->country);
+						
 						$this->setSuccessMessage($this->stringTranslate(base64_encode('You have successfully logged in.')));
 						if ($this->request->is('ajax')) {
 							echo 'Success:'.$this->stringTranslate(base64_encode('Successfully Authenticated, Please wait..'));

@@ -87,7 +87,7 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Full name',
-							'value'=>isset($UserData['Booking']['first_name'])?$UserData['Booking']['first_name']." ".$UserData['Booking']['last_name']:'',
+							'value'=>isset($UserData['Booking']['first_name'])?$UserData['Booking']['first_name']." ".$UserData['Booking']['last_name']:$sessiondata['name']
 							]);
 							echo '<span class="signup_error">'.@$formError['full_name'][0].'</span>';
 						?>
@@ -105,7 +105,7 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Address line 1',
-							'value'=>isset($UserData['Booking']['address'])?$UserData['Booking']['address']:'',
+							'value'=>isset($UserData['Booking']['address'])?$UserData['Booking']['address']:$sessiondata['address1']
 							]);
 							echo '<span class="signup_error">'.@$formError['address_1'][0].'</span>';
 							?>
@@ -123,7 +123,7 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Address line 2',
-							'value'=>isset($UserData['Booking']['address2'])?$UserData['Booking']['address2']:'',
+							'value'=>isset($UserData['Booking']['address2'])?$UserData['Booking']['address2']:$sessiondata['address2']
 							]);
 							echo '<span class="signup_error">'.@$formError['address_2'][0].'</span>';
 							?>
@@ -145,7 +145,7 @@
 									'type'=>'text',
 									'class'=>'form-control',
 									'placeholder'=>'City',
-									'value'=>isset($UserData['Booking']['city'])?$UserData['Booking']['city']:'',
+									'value'=>isset($UserData['Booking']['city'])?$UserData['Booking']['city']:$sessiondata['city']
 									]);
 									echo '<span class="signup_error">'.@$formError['city'][0].'</span>';
 									?>
@@ -161,7 +161,7 @@
 								'type'=>'select',
 								'options'=>$statesArray,
 								'class'=>'form-control selectpicker',
-								'value'=>isset($UserData['Booking']['state'])?$UserData['Booking']['state']:'',
+								'value'=>isset($UserData['Booking']['state'])?$UserData['Booking']['state']:$sessiondata['state']
 								]);
 								echo '<span class="signup_error">'.@$formError['state'][0].'</span>';
 								?>     
@@ -181,7 +181,7 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Country',
-							'value'=>isset($UserData['Booking']['country'])?$UserData['Booking']['country']:'',
+							'value'=>isset($UserData['Booking']['country'])?$UserData['Booking']['country']:$sessiondata['country']
 							]);
 							echo '<span class="signup_error">'.@$formError['country'][0].'</span>';
 							?>
@@ -202,7 +202,7 @@
 							'type'=>'text',
 							'class'=>'form-control',
 							'placeholder'=>'Zip',
-							'value'=>isset($UserData['Booking']['zip'])?$UserData['Booking']['zip']:'',
+							'value'=>isset($UserData['Booking']['zip'])?$UserData['Booking']['zip']:$sessiondata['zip']
 							]);
 							echo '<span class="signup_error">'.@$formError['zip'][0].'</span>';
 							?>
@@ -225,7 +225,7 @@
                     <div class="payment-info-inner">
                       <div>
 						<?php if(isset($cardData) && !empty($cardData)){ ?>
-                        <label class="radio-inline">
+                        <label class="radio-inline pl25">
                           <input type="radio" checked value="save_cards" name="payment_type" data-rel="save_detail" class="payment_type" >
                          Faster checkout with saved detail 
                         
@@ -320,12 +320,14 @@
                       
                       <div class="c-card">
 						  
-                        <label class="radio-inline">
-							
+                                 
+                        
+                         <label class="radio-inline pl25">
                           <input type="radio" value="new_cards" data-rel="new_detail"  name="payment_type" class="payment_type">
-                          Debit / Credit Card 
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debit / Credit Card 
+                        
                           <span class="pl20">
-							  &nbsp;<br/>
+                           &nbsp;<br/>
                           </span> 
                           
                         </label>
@@ -355,12 +357,12 @@
                   </div>
                   <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <button class="btn btn-mod-pop-1">Book Now</button>
+                        <button type="submit" class="btn btn-mod-pop-1">Book Now</button>
                         </div>
                     </div>
                 </div>
               </div>
-              
+              </form>
               <div class=" col-xs-12 col-md-4 col-sm-4 col-lg-4  ">
                 <div class="right-content-wrap">
                   <div class="top-box-wrap">
@@ -521,6 +523,12 @@
 .signup_error {
   color: red;
   font-size: 12px;
+}
+.full-content-wrap {
+    border: 3px solid #dcdcdc;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
 }
 </style>
 
