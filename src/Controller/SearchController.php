@@ -1233,7 +1233,6 @@ class SearchController extends AppController
 		//$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
 		$this->render("search");
 	}
-	
 	/**
 	 Function for sitter details
 	*/	
@@ -1375,7 +1374,29 @@ class SearchController extends AppController
 							
 						}
 				}
+				$count_services = 5;
+				if(!empty($userData->user_sitter_services)){
+					$count_services = 0;
+				   if($userData->user_sitter_services[0]->sitter_house_status == 1){
+				      $count_services++;  
+				   }
+			 	   if($userData->user_sitter_services[0]->guest_house_status == 1){ 
+			          $count_services++;	   
+				   }
+				   if($userData->user_sitter_services[0]->guest_house_status == 1 && $userData->user_sitter_services[0]->gh_drop_in_visit_status == 1){ 
+				      $count_services++;
+				   }
+				   if($userData->user_sitter_services[0]->sitter_house_status == 1 && ($userData->user_sitter_services[0]->sh_day_care_status == 1 || $userData->user_sitter_services[0]->sh_night_care_status == 1)){ 
+				      $count_services++;
+				   }
+				   if($userData->user_sitter_services[0]->market_place_status == 1){ 
+				      $count_services++;
+				   }
+				}
+				$class_service = (100/$count_services);
+			    //echo $class_service;die;
 				$this->set('nearbyUsers',$getUsersArr);	
+				$this->set('class_service',"width:$class_service%");	
 				$this->set('loggedInUserID',$loggedInUserID);	
 				$this->set('userData',$userData);
 				$this->set('commentUserData',@$commentUserData);
@@ -1428,15 +1449,15 @@ class SearchController extends AppController
 												   ]]
 												)
 								   ->where(['Users.id' => $userId])
+			
 								   ->toArray();
-			//pr($userPetInfo);die;
+			//Check dog inhome status
 			$dog_in_home = "no";
 			if(!empty($userPetInfo->user_sitter_house)){
 			   if($userPetInfo->user_sitter_house->dogs_in_home == "yes"){
 				   $dog_in_home = "yes";
 			   }
 			}
-			//echo $dog_in_home ;die;
 			$this->set('dog_in_home',$dog_in_home);
 			if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
 				

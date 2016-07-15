@@ -21,7 +21,6 @@ use Cake\Network\Email\Email;
 use Cake\I18n\Time;
 
 use Cake\Event\Event;
-
 /**
  * Static content controller
  *
@@ -88,9 +87,7 @@ class MessageController extends AppController
 		
 		
 		if(!empty($get_requests)){
-			
 			foreach($get_requests as $booking_key=>$booking_records){
-				
 				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
 				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
 					
@@ -121,8 +118,6 @@ class MessageController extends AppController
 																->limit(1)->hydrate(false)->first();
 			}
 		}
-		
-		
 		if(count($get_requests)>0){
 			$default_booking_id = $get_requests[0]['id'];
 		}else{
@@ -212,10 +207,8 @@ class MessageController extends AppController
 					//end sk
 					 
 			  }
-			// pr( $sitterUserData); die;
 			  //Start sk	
-			
-			 if(!empty($guestUserData[0]->user_pets) && isset($guestUserData[0]->user_pets)){
+			if(!empty($guestUserData[0]->user_pets) && isset($guestUserData[0]->user_pets)){
 				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
 				 $selected_pets = [];
 				 $pets_name = [];
@@ -243,11 +236,9 @@ class MessageController extends AppController
 				$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 				$total_days = $days;
-		    //echo $total_days;die;
-		 
-			   $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
+		    
+		       $selectedGuest = explode(",",@$get_booking_requests_to_display['guest_id_for_bookinig']);
 			   $guest_num = count($selectedGuest);
-			   //pr($guest_num);die;
 			 
 			 if($get_booking_requests_to_display['required_service'] == 'boarding'){
 				 $day_rate = $sitterUserData[0]->user_sitter_services[0]->sh_day_rate;
@@ -263,12 +254,8 @@ class MessageController extends AppController
 				
 				$day_total = $hs_day_rate*$total_days;
 				$night_total = $hs_night_rate*$total_days;
-				  //echo $hs_day_rate." ".$hs_night_rate;die;
-				 $total = ($day_total+$night_total)*$guest_num;
-				 //echo $total;die; 
-				// echo $total;die; 
-				 //echo "guest_num:".$guest_num."total_days:".$total_days."hs_day_rate:".$hs_day_rate."hs_night_rate:".$hs_night_rate;die;
-			}else if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
+				$total = ($day_total+$night_total)*$guest_num;
+			 }else if($get_booking_requests_to_display['required_service']  == 'day_nigth_care'){
 				 $day_rate = $sitterUserData[0]->user_sitter_services[0]->sh_day_rate;
 				 $night_rate = $sitterUserData[0]->user_sitter_services[0]->sh_night_rate;
 				 
@@ -290,26 +277,21 @@ class MessageController extends AppController
 				 $total = ($mp_grooming_total+$mp_training_total+$mp_recreation_total+$mp_driving_total)*$guest_num; 
 				 
 			}else if($get_booking_requests_to_display['required_service']  == 'drop_in_visit'){
-				 $drop_visit_rate = $sitterUserData[0]->user_sitter_services[0]->dorp_in_visit;
-				 
+				
+				 $drop_visit_rate = $sitterUserData[0]->user_sitter_services[0]->gh_drop_in_visit_rate;
 				 $total = $drop_visit_rate*$total_days*$guest_num;
 			 }
-				
-				
-			}
+		  }
 				 //End sk
 				
 		}//END
-		//echo $userId; 
-		//pr($get_requests); die;
-		
+	    //echo $total;die;	
 		$this->set(compact('userId','userType','class_user','fieldname','userActas'));
 		$this->set('get_chats',$request_booking_id);
 		$this->set('get_requests',$get_requests);
 		$this->set('folder_status',$folder_status);
 		$this->set('total',$total);
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
-		//pr($userActas); die;
 	}
 		
 	/**
