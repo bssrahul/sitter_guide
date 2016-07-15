@@ -2597,6 +2597,10 @@ function addPets(){
 	
 	function thankYou(){
 		$this->viewBuilder()->layout('landing');  
+				
+		$SiteModel = TableRegistry::get('SiteConfigurations');
+		$siteConfigurationData=$SiteModel->find('all')->toArray();
+		$this->set('siteConfigurationData',$siteConfigurationData);
 	}	
 	
     function changeIdleStatus(){

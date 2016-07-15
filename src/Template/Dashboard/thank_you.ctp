@@ -10,7 +10,7 @@
                 <span >
                   <i>
                   </i>
-                </span> Congrats! Your payment has been recieved were sent 
+                </span> Congrats! Your payment has been recieved 
               </h1>
               <p class="thankyou-title">
               </p>
@@ -28,35 +28,23 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Sitters will respond soon
+                <h3>Sitters will bound to give his best service to you
                 </h3>
                 <p>The sitters you've contacted are likely to respond in under half an hour
                 </p>
               </div>
             </div>
-            <div class="thankyou1 margt20">
-              <div class="thankyou-icon">
-                <span class="icon-2">
-                </span>
-              </div>
-              <div class="thankyou-icon-righttext">
-                <h3>Schedule a Meet & Greet
-                </h3>
-                <p>After your sitter contacts you, schedule a Meet & Greet. This is a great chance for you, your dog 
-                  and your sitter to all get to know each other
-                </p>
-              </div>
-            </div>
-            <div class="thankyou1 margt20">
+           
+           <div class="thankyou1 margt20">
               <div class="thankyou-icon">
                 <span class="icon-3">
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Book Through Rover
+                <h3>Booking will be  start as per scheduled date
                 </h3>
-                <p>Pay for your stay through Rover and your pet will be covered by our 
-                  <a href="#">premium pet insurance
+                <p>Your pet will be covered by our 
+                  <a href="<?php echo HTTP_ROOT;?>insurance">premium pet insurance
                   </a>.
                 </p>
               </div>
@@ -67,20 +55,15 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Fill out your dog's profile
+                <h3>Don't forgot to leave your rating along with valudable feedback
                 </h3>
-                <p>Your sitter wants to know all about your amazing dog! The more information your sitter has, the 
-                  better your dog's stay will be.
+                <p>Your sitter wants to know about his services! We also curious to get more information about your booking, for making better your dog's stay will be next deal.
                 </p>
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT.'search/search-by-location/'; ?>'" >Return to search
-                </button>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <button class="btn btn-update btn-block ">UPDATE YOUR DOG PROFILE 
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT; ?>" >Return to home page
                 </button>
               </div>
             </div>
@@ -90,42 +73,37 @@
         <div class="container">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <h5 class="contact-text">Connect with us for the  Latest News & Update
-              </h5>
-              <ul class="list-inline text-center thanks-social-icon">
-                <li>
-                  <a href="#">
-                    <div class="thanks-facebook-icon">
-                      <i class="fa fa-facebook" >
-                      </i>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="thanks-twiter-icon">
-                      <i class="fa fa-twitter" >
-                      </i>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="thanks-gplus-icon">
-                      <i class="fa fa-google-plus" >
-                      </i>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="thanks-linked-icon">
-                      <i class="fa fa-linkedin" >
-                      </i>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+              <h5 class="contact-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Connect with us for the  Latest News & Update'));?></h5>
+				<?php foreach($siteConfigurationData as $siteConfiguration){?>
+							  
+				<ul class="list-inline text-center thanks-social-icon">
+				<li>
+				<a href="<?php if(!empty(@$siteConfiguration->facebook_link)) {echo $siteConfiguration->facebook_link ;} ?>">
+				<div class="thanks-facebook-icon"><i class="fa fa-facebook" ></i></div>
+				</a>
+				</li>
+
+				<li>
+				<a href="<?php if(!empty(@$siteConfiguration->twitter_link)) { echo $siteConfiguration->twitter_link ; }?>">
+				<div class="thanks-twiter-icon"><i class="fa fa-twitter" ></i></div>
+				</a>
+				</li>
+
+				<li>
+				<a href="<?php if(!empty(@$siteConfiguration->google_link)) { echo $siteConfiguration->google_link ;} ?>">
+				<div class="thanks-gplus-icon"><i class="fa fa-google-plus" ></i></div>
+				</a>
+				</li>
+
+				<li>
+				<a href="<?php if(!empty(@$siteConfiguration->instagram_link)) { echo $siteConfiguration->instagram_link ;} ?>">
+				<div class="thanks-linked-icon"><i class="fa fa-linkedin" ></i></div>
+				</a>
+				</li>
+
+
+				</ul>
+				<?php } ?>
             </div>
           </div>
         </div>
