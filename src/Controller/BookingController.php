@@ -386,6 +386,35 @@ class BookingController extends AppController
 	{
 		
 		$this->viewBuilder()->layout('landing');
+		
+		if($request_booking_id==null){
+			
+			if(isset($this->request->data) && !empty($this->request->data)){
+			
+				$request_booking_id = isset($this->request->data['Booking']['booking_id'])?$this->request->data['Booking']['booking_id']:'';
+			
+			}
+			
+		}
+		
+		if(isset($this->request->data['payment_type']) && $this->request->data['payment_type']=='save_cards'){
+			
+				unset($this->request->data['Booking']['card_holder_name']);
+				unset($this->request->data['Booking']['new_card_number']);
+				unset($this->request->data['Booking']['new_expiary_date']);
+				unset($this->request->data['Booking']['new_cvv_code']);
+			
+		}
+		
+		if(isset($this->request->data['payment_type']) && $this->request->data['payment_type']=='new_cards'){
+			
+				unset($this->request->data['Booking']['card_number']);
+				unset($this->request->data['Booking']['expiary_date']);
+				unset($this->request->data['Booking']['cvv_code']);
+			
+		}
+			
+				
 		$booking_id = convert_uudecode(base64_decode($request_booking_id));
 		
 		$session = $this->request->session();
@@ -396,17 +425,6 @@ class BookingController extends AppController
 		
 		
 		$this->set('statesArray',$this->displayStates());
-		
-		if($request_booking_id==null){
-			
-			if(isset($this->request->data) && !empty($this->request->data)){
-				
-				$request_booking_id = isset($this->request->data['Booking']['booking_id'])?$this->request->data['Booking']['booking_id']:'';
-			
-			}
-			
-		}
-			
 		
 		
 		//CREATE STRIPE OBJECT
@@ -547,7 +565,7 @@ class BookingController extends AppController
 				 $total = ($mp_grooming_total+$mp_training_total+$mp_recreation_total+$mp_driving_total)*$guest_num;
 			 }else
 			   if($get_booking_requests_to_display['required_service']  == 'drop_in_visit'){
-				 $drop_visit_rate = $userData[0]->user_sitter_services[0]->dorp_in_visit;
+				 $drop_visit_rate = $userData[0]->user_sitter_services[0]->gh_drop_in_visit_rate;
 				 
 				 $total = $drop_visit_rate*$total_days*$guest_num;
 			 }
@@ -854,6 +872,7 @@ class BookingController extends AppController
 		}
 		
 		$this->set('cardData',$cardData);					   
+		$this->set('sessiondata',$session->read('User'));	
 		
 	}
 	
@@ -892,31 +911,72 @@ class BookingController extends AppController
 	{
 		//pr($data);
 		$errors=array();
-		//Validation for first name
-		if(trim(@$data['Booking']['card_holder_name'])=='')
-		{
-			$errors['card_holder_name'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
-		}else{
-			if(is_numeric($data['Booking']['card_holder_name'])){
-				$errors['card_holder_name'][]= $this->stringTranslate(base64_encode("Card holder name should be alphabatic"))."\n";
+
+		//Validation for cvv code
+		if(isset($data['Booking']['cvv_code'])){
+			
+			if(trim(@$data['Booking']['cvv_code'])=='')
+			{
+				$errors['cvv_code'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+			}else{
+				if(!is_numeric($data['Booking']['cvv_code'])){
+					$errors['cvv_code'][]= $this->stringTranslate(base64_encode("CVV should be numeric"))."\n";
+				}
 			}
 		}
 		
-		//Validation for first name
-		if(trim(@$data['Booking']['cvv_code'])=='')
-		{
-			$errors['cvv_code'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
-		}else{
-			if(!is_numeric($data['Booking']['cvv_code'])){
-				$errors['cvv_code'][]= $this->stringTranslate(base64_encode("CVV should be numeric"))."\n";
+		
+		
+		//Validation for Expiry date
+		if(isset($data['Booking']['expiary_date'])){
+				if(trim(@$data['Booking']['expiary_date'])=='')
+				{
+					$errors['expiary_date'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+				}
+		}
+		
+		
+		//Validation for NEW Card holder name
+		if(isset($data['Booking']['card_holder_name'])){
+			if(trim(@$data['Booking']['card_holder_name'])=='')
+			{
+				$errors['card_holder_name'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+			}else{
+				if(is_numeric($data['Booking']['card_holder_name'])){
+					$errors['card_holder_name'][]= $this->stringTranslate(base64_encode("Card holder name should be alphabatic"))."\n";
+				}
 			}
 		}
 		
-		//Validation for first name
-		if(trim(@$data['Booking']['expiary_date'])=='')
-		{
-			$errors['expiary_date'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+		//Validation for CVV code
+		if(isset($data['Booking']['new_cvv_code'])){
+			if(trim(@$data['Booking']['new_cvv_code'])=='')
+			{
+				$errors['new_cvv_code'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+			}else{
+				if(!is_numeric($data['Booking']['new_cvv_code'])){
+					$errors['new_cvv_code'][]= $this->stringTranslate(base64_encode("CVV should be numeric"))."\n";
+				}
+			}
 		}
+		
+		//Validation for NEW Card expiry date
+		if(isset($data['Booking']['new_expiary_date'])){
+
+			if(trim(@$data['Booking']['new_expiary_date'])=='')
+			{
+				$errors['new_expiary_date'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+			}
+		}
+		
+		
+		//Validation for NEW card number
+		if(isset($data['Booking']['new_card_number'])){
+			if(trim(@$data['Booking']['new_card_number'])=='')
+			{
+				$errors['new_card_number'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
+			}
+		}		
 		
 		//Validation for address 1
 		if(trim(@$data['Booking']['address_1'])=='')
@@ -942,7 +1002,7 @@ class BookingController extends AppController
 			$errors['country'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
 		}
 		
-		//Validation for first name
+		//Validation for zip code
 		if(trim(@$data['Booking']['zip'])=='')
 		{
 			$errors['zip'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
@@ -953,27 +1013,7 @@ class BookingController extends AppController
 		}
 		
 		
-		//Validation for first name
-		if(trim(@$data['Booking']['new_cvv_code'])=='')
-		{
-			$errors['new_cvv_code'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
-		}else{
-			if(!is_numeric($data['Booking']['new_cvv_code'])){
-				$errors['new_cvv_code'][]= $this->stringTranslate(base64_encode("CVV should be numeric"))."\n";
-			}
-		}
 		
-		//Validation for first name
-		if(trim(@$data['Booking']['new_expiary_date'])=='')
-		{
-			$errors['new_expiary_date'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
-		}
-		
-		//Validation for first name
-		if(trim(@$data['Booking']['new_card_number'])=='')
-		{
-			$errors['new_card_number'][]= $this->stringTranslate(base64_encode("This is required field"))."\n";
-		}
 			
 		return $errors;
 	}	

@@ -842,3 +842,14 @@ div.more-sitter img{width:125px;height:125px;}
 	  width: 30px;
 	}
 
+/*CSS CODE FOR BOOK IT NOW PAGE START*/
+.radio-inline.pl25 {
+  padding-left: 25px !important;
+}
+
+
+#payment-box .right-content-wrap .top-box-wrap .night-sitt {
+  text-align: center !important;
+  padding:0px !important;
+  border:none !important;
+}
