@@ -271,7 +271,17 @@
                            <?php 
                            echo @$signupWithFacebook; ?> 
                         </div>
-                        <p><span class="signup-line"><?php echo $this->requestAction('app/get-translate/'.base64_encode('By signing up, I agree to Sitter Guide Terms of Service and <br/> confirm that I am 18 years of age or older.')); ?></span></p>
+                        <p>
+							<span class="signup-line">
+								<?php echo $this->requestAction('app/get-translate/'.base64_encode('By signing up, I agree to Sitter Guide')); ?> 
+								
+									<a class="signup-color" href=<?php echo HTTP_ROOT.'terms'?>>
+										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms of Service')); ?>
+									</a><br/>
+								
+								<?php echo $this->requestAction('app/get-translate/'.base64_encode('and confirm that I am 18 years of age or older.')); ?>
+							</span>
+						</p>
                         <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Already a member?')); ?> <span class="signup-color"><a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In Now')); ?></a></span></p>
                       </div>
 
@@ -299,6 +309,8 @@
 		
 	});
 </script>
+
+
 <?php 
 }
 ?>
@@ -325,6 +337,11 @@ label .fa.fa-asterisk {
     position: relative;
     top: -5px;
 	color:red
+}
+a.signup-color {
+    font-size: 14px  !important;
+    background: #fff !important;
+    color: #3CB3EE  !important;
 }
 </style>
 
