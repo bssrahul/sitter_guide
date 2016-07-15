@@ -2604,21 +2604,20 @@ function addPets(){
 		$session = $this->request->session();
         
         $userId = $session->read('User.id');
-        if(empty($userId)){
-			return false;
-		}else{
+        		
+		if($userId !=''){
+			
+			$UserModel = TableRegistry::get('Users');
 		
-		}
-        $UserModel = TableRegistry::get('Users');
-		
-		$userDataObj = $UserModel->find('all')->where(['Users.id' => $userId])->hydrate(false);
-									   
-		$userData = $userDataObj->first();
-		
-		$UserModelData = $UserModel->newEntity();
-		if($userDataObj->count()>0){
+			$userDataObj = $UserModel->find('all')->where(['Users.id' => $userId])->hydrate(false);
+										   
+			$userData = $userDataObj->first();
+			
+			$UserModelData = $UserModel->newEntity();
+			
 			$force_change =  isset($_REQUEST['force_change'])?$_REQUEST['force_change']:0;
-						
+		
+				
 				$UserModelData->user_id = $userId;
 				
 				$UserModelData->avail_status =  isset($_REQUEST['avail_status'])?$_REQUEST['avail_status']:'';
@@ -2632,9 +2631,10 @@ function addPets(){
 					echo "failed";	
 					
 				}
-		}else{
-			echo "failed";	
-		}die;
+		}
+        
+	
+		die;
 	   
     }	
 	

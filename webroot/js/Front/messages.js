@@ -140,12 +140,13 @@
 							 
 					success:function(res)
 					{
-						//var response = res.split(':');
+						
 						if($.trim(res)>0){
 							$('.myNewCount').html(res);
 						}
-						
-						//$('#myNewMsgs').html(response[1]);
+						if($.trim(res)==0){
+							$('.myNewCount').hide();
+						}
 						
 					}
 				});
