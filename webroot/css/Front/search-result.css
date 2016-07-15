@@ -349,13 +349,15 @@
 
 /*Notification*/
 
-#popPetAddNotification{ background:red;}
+#popPetAddNotification .modal-dialog{ margin:15% auto 0;}
 #popPetAddNotification .modal-header{ padding:10px 15px; font-size:18px;}
 #popPetAddNotification .modal-header h2{  font-size:18px;}
 #popPetAddNotification .modal-header .close{ font-size:50px; font-weight:normal; line-height:32px;}
-#popPetAddNotification .modal-body p{ font-size:14px;}
+#popPetAddNotification .modal-body { padding:50px 0;}
+#popPetAddNotification .modal-body p{ font-size:16px; text-align:center; line-height:25px;}
+#popPetAddNotification .modal-body p span{ display:block;}
 #popPetAddNotification .modal-footer .continue{ background:#72a105; border:0px; color:#ffffff;} 
-#popPetAddNotification .modal-footer .close{ background:#cf1818;}
+#popPetAddNotification .modal-footer .clse{ background:#cf1818; color:#ffffff;}
 
 /*Notification*/
 

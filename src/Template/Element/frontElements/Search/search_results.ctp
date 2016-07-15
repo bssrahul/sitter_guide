@@ -62,7 +62,6 @@
 															<div class="small-slider carousel-inner" role="listbox">   
                                                               <?php 
                                                              if(!empty(@$sub_galleries_result) ||  !empty($results->image)){
-																 
 																 if(!empty(@$sub_galleries_result)){ 
 																	 $flag=0;
 																	 if(!empty(@$results->image)){ 
@@ -72,14 +71,14 @@
 																			<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.$results->image; ?>"> 
 																		  </div>
 															       <?php }
-															        foreach($sub_galleries_result as $sub_galleries){ ?>
+															       foreach($sub_galleries_result as $sub_galleries){ ?>
 																		          <div class="item <?php echo $flag ==0?"active":"";  ?>">
 																						<img class="searchImg" alt="<?php echo __('Pet Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($sub_galleries->image != ''?$sub_galleries->image:'prof_photo.png'); ?>"> 
 																				   </div>	
 																		<?php  $flag=1;
 																		}
 																	}else{ 
-																		    $flag=0;
+																		  $flag=0;
 																		  if(!empty(@$results->image)){ 
 																			   $flag=1;
 																			  ?>
@@ -87,18 +86,17 @@
 																				<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.$results->image; ?>"> 
 																			  </div>
 																		<?php }else{ ?>
-																			
-																		<div class="item <?php echo $flag==0?"active":""; ?>">
-																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
+																			<div class="item <?php echo $flag==0?"active":""; ?>">
+																				<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
 																			</div>
 																<?php }
 																}
-																 }else{ ?>
-																		<div class="item active">
-																		<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
-																			</div>
-																 <?php } 
-																	?>															
+															 }else{ ?>
+																	<div class="item active">
+																	<img class="searchImg" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/prof_photo.png'; ?>"> 
+																		</div>
+															 <?php } 
+																?>															
 															</div>
 														   <!-- Left and right controls -->
 															<a class="left carousel-control" href=".customCrousal<?php echo $rankNo; ?>" role="button" data-slide="prev">

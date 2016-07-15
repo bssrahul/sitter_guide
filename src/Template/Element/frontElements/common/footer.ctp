@@ -249,7 +249,7 @@
     </footer>
 <!--[Footer End]-->
 <?php 
-if(isset($_COOKIE["userCookie"])){ 
+if(!isset($_COOKIE["userCookie"])){ 
 	
 	?>
 	  <div id="cookies-bot-wrap">
