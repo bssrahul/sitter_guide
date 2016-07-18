@@ -110,7 +110,7 @@
                                   
                       <li class="dd-country last-drop">
 						  <a href="#"  data-toggle="dropdown">
-                           <img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> <span class="lang-txt">En</span> </a>
+                           <img src="<?php echo HTTP_ROOT.'img/flags/'.$currentLocal.'.png' ;?>" alt=""> <span class="lang-txt"><?php echo ucwords($currentLocal); ?></span> </a>
 							<?php echo $this->element('frontElements/common/language_switcher'); ?>
                        </li>
                   </ul> 

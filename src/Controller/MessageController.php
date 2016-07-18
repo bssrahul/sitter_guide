@@ -286,10 +286,11 @@ class MessageController extends AppController
 				
 		}//END
 	    //echo $total;die;	
+	    
 		$this->set(compact('userId','userType','class_user','fieldname','userActas'));
 		$this->set('get_chats',$request_booking_id);
 		$this->set('get_requests',$get_requests);
-		$this->set('folder_status',$folder_status);
+		$this->set('display_thread_folder_status',$folder_status);
 		$this->set('total',$total);
 		$this->set('get_booking_requests_to_display',$get_booking_requests_to_display);
 	}
@@ -448,7 +449,8 @@ class MessageController extends AppController
 		$this->set(compact('userId','userType','class_user','fieldname','userActas'));
 		$this->set('get_chats',$booking_id);
 		$this->set('get_requests',$get_requests);
-		$this->set('folder_status',$folder_status);
+	//	$this->set('folder_status',$folder_status);
+		$this->set('display_thread_folder_status',$folder_status);
 	}
 	
 	/**
