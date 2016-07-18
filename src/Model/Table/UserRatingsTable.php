@@ -21,6 +21,11 @@ class UserRatingsTable extends Table
 			 'bindingKey' => 'user_from'
 		 ]);
 		 
+		  $this->hasOne('Users', [
+			 'foreignKey' => 'id',
+			 'bindingKey' => 'user_to'
+		 ]);
+		 
 		 /* $this->hasMany('UserRatings', [
             'className' => 'Comments',
             'conditions' => ['Users.id' => 'UserRatings.user_from']
@@ -29,6 +34,14 @@ class UserRatingsTable extends Table
 
 		
 		
+    }
+    
+    public function validationUpdate($validator)
+    {
+        $validator
+			->notEmpty('comment', 'Your feedback is required.');
+		
+		return $validator;
     }
 }
 ?>

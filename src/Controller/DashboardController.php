@@ -59,8 +59,7 @@ class DashboardController extends AppController
 	public function initialize()
     {
 		parent::initialize();
-
-       //GET LOCALE VALUE
+        //GET LOCALE VALUE
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
@@ -2227,13 +2226,11 @@ function addPets(){
         }
              
     }
-    
-     /**
+    /**
     Function for Professional Accreditations
     */
     function uploadDocuments(){
-
-		$images_arr = array();
+        $images_arr = array();
 		$_FILES['document']['custom_name'] = $_REQUEST['valuefor'];
 		//Upload Document
 		if($_FILES['document']['name'] !=''){
@@ -2251,39 +2248,117 @@ function addPets(){
 		   unset($_FILES['document']);
 		}
 	}
-	
-	// Function for user rating
-	public function review($user=null)
+	//Function for user rating
+	public function review($bookingId=null,$user=null)
     {
 		$session = $this->request->session();
 		$UserModel=TableRegistry::get('Users');
-		$UserData=$UserModel->find('all')->toArray();
-	
+		$UserData = $UserModel->find('all')->toArray();
+		$userId = $session->read('User.id');
+		//$userType = $session->read('User.user_type');
+	    $userToId = convert_uudecode(base64_decode($user));
+	    $bookingId = 4;//convert_uudecode(base64_decode($bookingId));
+	   
+	    $this->set('user_to_id',$userToId);
+	    $this->set('booking_id',$bookingId);
+	    
 		$this->set('UserData',$UserData);
 		$this->viewBuilder()->layout('profile_dashboard');
 		$reviewModel=TableRegistry::get('UserRatings');
-	
-		$reviewData= $reviewModel->newEntity();
+		$bookingRequestModel = TableRegistry :: get("BookingRequests");
+		
+        $reviewData= $reviewModel->newEntity();
+		
 		if($this->request->is('POST')){
-
-			$reviewData->user_from = $session->read('User.id');
-			$accuracy = $this->request->data['accuracy_rating'];
-			$communication = $this->request->data['communication_rating'];
-			$cleanliness = $this->request->data['cleanliness_rating'];
-			$location = $this->request->data['location_rating'];
-			$checkin = $this->request->data['check_in_rating'];
-			$rating=($accuracy + $communication + $cleanliness + $location + $checkin )/5;
-	
-			$reviewData->status = 0;
-			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data,['validate'=>true]);
-	
-			$reviewData->rating=$rating;
-	
-			if($reviewModel->save($reviewData)){
-				$this->Flash->success(__('Record has been added Successfully'));
-	
-			}	
+			$bookingId = $this->request->data["booking_id"];
+            
+            $accept = array("accuracy_rating","communication_rating","cleanliness_rating","location_rating","check_in_rating"); 
+			foreach($accept as $val){ 
+				if (!array_key_exists($val,$this->request->data['UserRatings'])){
+					$this->request->data['UserRatings'][$val] = 1;
+				}
+			}
 			
+			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data["UserRatings"],['validate'=>"update"]);
+	        $rating_data = $reviewModel->find('all')
+				->where(["UserRatings.user_from = $userId","UserRatings.user_to = $userToId"])
+			    ->select(['id'])->toArray();
+			if(!empty($rating_data)){
+				 $reviewData->id = $rating_data[0]->id;
+			}	
+	   
+	        $accuracy = $this->request->data['UserRatings']['accuracy_rating'];
+			$communication = $this->request->data['UserRatings']['communication_rating'];
+			$cleanliness = $this->request->data['UserRatings']['cleanliness_rating'];
+			$location = $this->request->data['UserRatings']['location_rating'];
+			$checkin = $this->request->data['UserRatings']['check_in_rating'];
+			
+			$rating = ($accuracy + $communication + $cleanliness + $location + $checkin)/5;
+	        
+	        $reviewData->user_from = $userId;
+			$reviewData->status = 0;
+			$reviewData->rating = $rating;
+			$reviewData->booking_id = $bookingId;
+	   
+	   
+			if($reviewModel->save($reviewData)){
+				
+				
+			    $get_requests = $bookingRequestModel->find('all')
+				->where(["BookingRequests.id = $bookingId"])
+			    ->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id','request_by_sitter_id'])
+				->hydrate(false)->toArray();
+				
+				if(!empty($get_requests)){
+					  //SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
+						if($userId==$get_requests[0]['request_by_sitter_id'] && $userId==$get_requests[0]['user_id']){
+							
+							$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+							$fieldname = 'sitter';
+							$userType = 'Sitter';
+							$userActas = 'Guest';
+							
+						}else if($userId != $get_requests[0]['request_by_sitter_id'] && $userId !=$get_requests[0]['user_id']){
+							
+							$user_message_display_field = 'user_id'; // Set id for display user messages on each other threads
+							$fieldname = 'sitter';
+							$userType = 'Sitter';
+							$userActas = 'Sitter';
+							
+						}else if($userId != $get_requests[0]['request_by_sitter_id'] && $userId ==$get_requests[0]['user_id']){
+							
+							$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+							$fieldname = 'guest';
+							$userType = 'Basic';
+							$userActas = 'Guest';
+						}	
+					                $userActas = strtolower($userActas);
+					              
+									$bookingRequestData = $bookingRequestModel->newEntity();
+									$bookingRequestData->id = $bookingId;
+									$bookingRequestData['rating_given_by_'."$userActas"] = "done";
+									$bookingRequestData['folder_status_'."$userActas"] = "past";
+									
+									$bookingRequestModel->save($bookingRequestData);
+				}
+				
+				$this->Flash->success(__('Record has been added Successfully'));
+	        }else{
+				  $this->set("reviewData",$reviewData);
+			}	
+		}else{
+			$rating_data = $reviewModel->find('all')
+				   ->where(['user_to'=>$userToId,'user_from'=> $userId])->hydrate(false)->contain(['Users'=> 
+					 function ($q){
+						return $q
+						->select(['id','image','first_name','last_name','city','is_image_uploaded','facebook_id']);
+						//->contain(['UserRatings']);
+					 }
+					])->contain(['Users'])->hydrate(false)->first();
+					
+			//pr($rating_data); die;		
+			$this->set("to_user_info",$rating_data);
+				  //->select(['id'])->toArray();
 		}	
 		if( $this->request->is('ajax') ) {
             $userid=@$_REQUEST['user'];
@@ -2291,11 +2366,7 @@ function addPets(){
 
 			$book_id=array();
 			foreach($reviewdata as $review){
-				
-				
-				 $book_id[]=$review->booking_id;
-				
-				
+				$book_id[]=$review->booking_id;
 			}?>
 				<option value="">-- Select Booking --</option>
 				<option value="1" <?php if(in_array(1,$book_id)){?> class="bk" <?php }?> > First Time </option>
@@ -2305,7 +2376,10 @@ function addPets(){
 				<option value="5"  <?php if(in_array(5,$book_id)){?> class="bk" <?php }?>> Fifth Time </option> 
 				<?php
 					die;
-			 }
+		}
+		
+		
+		
     }
     
 	public function editReview(){
@@ -2535,7 +2609,6 @@ function addPets(){
 		//pr($phoneArr);die;
 		$this->set('phoneArr',$phoneArr);
 	
-		
 		$this->viewBuilder()->layout('profile_dashboard');
 		$this->request->data = @$_REQUEST;
 		$CommunicationModel=TableRegistry :: get('Communication');
