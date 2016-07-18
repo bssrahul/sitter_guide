@@ -13,12 +13,20 @@ class BookingRequestsTable extends Table
 		]);
 		
 		$this->belongsTo('Users');
+		
 		$this->hasMany('BookingChats', ['dependent' => true]);
-		//$this->hasMany('Users', ['dependent' => true]);
+		
 		$this->hasOne('Users', [
             'foreignKey' => 'id',
             'bindingKey' => 'user_id'
         ]);
+        
+         $this->belongsTo('Users',
+			['className' => 'Users',
+			'foreignKey' => 'sitter_id',
+            ]);
+            
+        
     }
 	
 }
