@@ -29,7 +29,7 @@ use Cake\I18n\Time;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-class RatingController extends AppController
+class TransactionController extends AppController
 {
 	public $helpers = ['Form'];
 	/**
@@ -67,49 +67,74 @@ class RatingController extends AppController
 
 	}
 	
-    public function myRating(){
+    public function paidTransaction(){
 		$session = $this->request->session();
         $userId = $session->read('User.id');
 		
 		
 		$this->viewBuilder()->layout('profile_dashboard');
 		//Fetch Data Leading-sitting
-		$ratingModel=TableRegistry :: get('UserRatings');
+		$TransactionModel=TableRegistry :: get('Transactions');
 		
-		$ratingData = $ratingModel->find('all')->where(['user_to'=>$userId])->hydrate(false)->contain(['Users'=> 
-					function ($q){
-						return $q
-						->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded']);
-					}
-					])->toArray();
-		//pr($ratingData); die;
-		$this->set('ratingsdata',$ratingData);
+		$transactionData = $TransactionModel->find('all')
+											->where(['Transactions.user_id'=>$userId])
+											->hydrate(false)
+											->contain(['Users'=> 
+															function ($q){
+																return $q
+																->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded']);
+															}])
+											->contain(['BookingRequests'=> 
+													function ($q){
+														return $q
+														->select(['sitter_id'])->contain(['Users']);
+													}
+												])				
+											->toArray();
+		//pr($transactionData); die;
+		$this->set('transactionData',$transactionData);
 	}
 	
-	 public function sharedRating(){
+	public function recievedTransaction(){
 		$session = $this->request->session();
         $userId = $session->read('User.id');
 		
 		
 		$this->viewBuilder()->layout('profile_dashboard');
-		
 		//Fetch Data Leading-sitting
+		$BookingRequestsModel = TableRegistry::get('BookingRequests');
+		$TransactionModel=TableRegistry :: get('Transactions');
 		
-		$ratingModel=TableRegistry :: get('UserRatings');
-						
-		$ratingData = 	$ratingModel->find('all')
-									->where(['user_from'=>$userId])
-									->hydrate(false)
-									->toArray();
-		if(!empty($ratingData)){
-			$userModel=TableRegistry :: get('Users');
-			foreach($ratingData as $k=>$v){
-				$ratingData[$k]['user'] = $userModel->find('all')->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded'])->where(['Users.id'=>$v['user_to']])->hydrate(false)->first();
-			}							
+		$get_requests = $BookingRequestsModel->find('all')
+		->where(["BookingRequests.sitter_id = $userId"])
+		->select(['user_id','sitter_id'])
+		->hydrate(false)->toArray();
+		//pr($get_requests); die;
+		if(!empty($get_requests)){
+			foreach($get_requests as $req){
+				
+				$transactionData = $TransactionModel->find('all')
+					->where(['Transactions.user_id'=>$req['user_id']])
+					->hydrate(false)
+					->contain(['Users'=> 
+									function ($q){
+										return $q
+										->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded']);
+									}])
+					->contain(['BookingRequests'=> 
+							function ($q){
+								return $q
+								->select(['sitter_id'])->contain(['Users']);
+							}
+						])			
+							
+					->toArray();
+					
+			}
+			
 		}
 		
-		//pr($ratingData); die;
-		$this->set('ratingsdata',$ratingData);
+		$this->set('transactionData',$transactionData);
 	}
 	
 	
