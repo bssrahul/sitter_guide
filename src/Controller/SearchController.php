@@ -1393,9 +1393,12 @@ class SearchController extends AppController
 				      $count_services++;
 				   }
 				}
+				if($count_services == 0){
+				     $count_services = 5;
+				}
 				$class_service = (100/$count_services);
-			    //echo $class_service;die;
-				$this->set('nearbyUsers',$getUsersArr);	
+			    
+			    $this->set('nearbyUsers',$getUsersArr);	
 				$this->set('class_service',"width:$class_service%");	
 				$this->set('loggedInUserID',$loggedInUserID);	
 				$this->set('userData',$userData);
