@@ -3,6 +3,8 @@
    
    $calendar_limits =$session->read('calendar_limits','yes');
    $user_type = $session->read('User.user_type');
+   $requestController = $this->request->controller; 
+   $requestAction = $this->request->action;
   ?>
  <div class="col-md-3 col-lg-2 col-sm-4  lg-width20">
         <div class="custom">
@@ -16,14 +18,14 @@
                   <div class="side-menu-container">
                     <ul class="nav navbar-nav">
                       
-                      <?php if($this->request->action=='dashboardDetails'){
+                      <?php if($requestAction=='dashboardDetails'){
 						  
 						  $dashboard_class='class="active"';
 					  }else{
 						  $dashboard_class='class=""';
 						  
 					  }?>
-					   <?php if($this->request->action=='promote'){
+					   <?php if($requestAction=='promote'){
 						  
 						  $promote_class='class="active"';
 					  }else{
@@ -31,7 +33,7 @@
 						  
 					  }?>
 					  
-					  <?php if($this->request->action=='tracker'){
+					  <?php if($requestAction=='tracker'){
 						  
 						  $tracker_class='class="active"';
 					  }else{
@@ -46,13 +48,13 @@
                       
                       <li <?php echo $tracker_class; ?>><a href="<?php echo HTTP_ROOT.'tracker'; ?>"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Tracker'); ?></span></a></li>
                       
-                      <li class="panel panel-default <?php if(trim($this->request->controller)=='Message'){echo 'active';}else{echo '';}?>" id="dropdown">
+                      <li class="panel panel-default <?php if(trim($requestController)=='Message'){echo 'active';}else{echo '';}?>" id="dropdown">
 							<a data-toggle="collapse" href="#dropdown-lvl1">
 								<span class="fa fa-envelope"></span><span class="side-list">Inbox & Bookings </span> <span class="badge myNewCount"></span>
 							</a>
 
 						
-							<div id="dropdown-lvl1" class="panel-collapse <?php if(trim($this->request->controller)=='Message'){echo 'in';}else{echo '';}?> collapse">
+							<div id="dropdown-lvl1" class="panel-collapse <?php if(trim($requestController)=='Message'){echo 'in';}else{echo '';}?> collapse">
 								<div class="panel-body">
 									<ul class="nav navbar-nav">
 										<li>
@@ -79,16 +81,16 @@
 							</div>
 						</li>
 						
-						<li class="panel panel-default" id="dropdown">
+						<li class="panel panel-default <?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')){echo 'active';}else{echo '';}?>" id="dropdown">
 							<a data-toggle="collapse" href="#dropdown-lvl2">
 								<span class="fa fa-thumbs-up"></span><span class="side-list">Favourites </span>
 							</a>
 
 						
-							<div id="dropdown-lvl2" class="panel-collapse collapse">
+							<div id="dropdown-lvl2" class="panel-collapse <?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')){echo 'in';}else{echo '';}?> collapse">
 								<div class="panel-body">
 									<ul class="nav navbar-nav">
-										<li ><a href="<?php echo HTTP_ROOT.'dashboard/search-results-favourites'?>" class=""><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
+										<li ><a href="<?php echo HTTP_ROOT.'dashboard/search-results-favourites'?>" class="<?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
 										<li><a href="#"><span class="fa fa-angle-double-right"></span>&nbsp; Favourite Clients</a></li>
 									</ul>
 								</div>
@@ -107,7 +109,7 @@
 						?>
                     
 					  <li <?php echo $profile_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/front-dashboard' ?>"><span class=" fa fa-user"></span> <span class="side-list"><?php echo __('Profile'); ?></span></a></li>
-					 <?php if($this->request->action=='calendar'){
+					 <?php if($requestAction=='calendar'){
 						  
 						  $calendar_class='class="active"';
 					  }else{
@@ -118,7 +120,7 @@
 						  
 						  ?>
 						  <li <?php echo $calendar_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/calendar' ?>"><span class="fa fa-calendar"></span> <span class="side-list"><?php echo __('Calendar'); ?></span></a></li>
-						   <?php if($this->request->action=='servicesAndRates'){
+						   <?php if($requestAction=='servicesAndRates'){
 							  
 							  $service_class='class="active"';
 						  }else{
@@ -129,7 +131,7 @@
 					  <?php } ?>
 					  <li><a href="#"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transactions'); ?></span></a></li>
 					  
-                      <?php if($this->request->action=='review'){
+                      <?php if($requestAction=='myRating' || $requestAction=='sharedRating'){
 						  
 						  $review_class='class="active"';
 					  }else{
@@ -137,8 +139,8 @@
 						  
 					  }?>
 					  
-                      <li <?php echo $review_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/review' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
-                       <?php if($this->request->action=='communication'){
+                      <li <?php echo $review_class; ?>><a href="<?php echo HTTP_ROOT.'rating/my-rating' ?>"><span class="fa fa-comment"></span> <span class="side-list"><?php echo __('Review'); ?></span></a></li>
+                       <?php if($requestAction=='communication'){
 						  
 						  $communication_class='class="active"';
 					  }else{
