@@ -30,14 +30,14 @@
 		  
 		  <?php if(($req_data['user']['facebook_id']) !="" && ($req_data['user']['is_image_uploaded'])==0){ ?>
 			     <img 
-					class="img-responsive img-circle text-center center-block" 
+					class="img-circle img-responsive" 
 					alt="<?php echo __('Profile Picture'); ?>" 
 					src="<?php if($req_data['user']['image'] != ""){echo $req_data['user']['image'];}else{echo $req_data['user']['image']='prof_photo.png';} ?>"> 
 		   
 		   <?php }else{ ?>
 			
 				<img 
-					class="img-responsive img-circle text-center center-block"  
+					class="img-circle img-responsive"  
 					alt="<?php echo __('Profile Picture'); ?>" 
 					src="<?php echo HTTP_ROOT.'img/uploads/'.($req_data['user']['image'] != ''?$req_data['user']['image']:'prof_photo.png'); ?>"> 					   
 			<?php  } ?>
