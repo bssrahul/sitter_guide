@@ -29,7 +29,7 @@ class UsersTable extends Table
 		$this->hasMany('UserSitterAvailability', ['dependent' => true]);
 		$this->hasMany('UserRatings', ['dependent' => true,
 		 'foreignKey' => 'user_to']);
-		 $this->hasMany('BookingRequests', ['dependent' => true,
+		 $this->belongsTo('BookingRequests', ['dependent' => true,
 		 'foreignKey' => 'sitter_id']);
 
 		 $this->hasMany('UserSitterFavourites', ['dependent' => true,

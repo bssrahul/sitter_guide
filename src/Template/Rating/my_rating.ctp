@@ -222,7 +222,7 @@
 				<?php	
 				}else{ ?>
 				<div class="col-md-12 col-lg-12 col-sm-12">
-					<h4>No rating recieved yet</h4>
+					<h5>No rating recieved yet</h5>
 				</div>
 				<?php	
 				}

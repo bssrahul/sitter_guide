@@ -71,7 +71,7 @@
 								
 								<?php if(($rating['booking_request']['user']['facebook_id']) !="" && ($rating['booking_request']['user']['is_image_uploaded'])==0){?>
 									<img  width="45" height="45" class="img-circle"  src="<?php if($rating['booking_request']['user']['image'] != ""){echo $rating['user']['image'];}
-									else{ echo $user['booking_request']['image']='prof_photo.png';} ?>"> 
+									else{ echo $user['booking_request']['user']['image']='prof_photo.png';} ?>"> 
 							   
 							   <?php }else{ ?>
 								<img  width="45" height="45" class="img-circle" src="<?php echo HTTP_ROOT.'img/uploads/'.($rating['booking_request']['user']['image'] != ''?$rating['booking_request']['user']['image']:'prof_photo.png'); ?>"> 					   

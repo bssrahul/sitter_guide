@@ -87,7 +87,7 @@ class TransactionController extends AppController
 											->contain(['BookingRequests'=> 
 													function ($q){
 														return $q
-														->select(['sitter_id'])->contain(['Users']);
+														->select('sitter_id')->contain(['Users']);
 													}
 												])				
 											->toArray();

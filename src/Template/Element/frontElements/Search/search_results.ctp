@@ -375,7 +375,7 @@
 								  </div>                      
 								  <!--sitter feedback--> 
 								</div>
-								<?php @$commentdata->comment=''; $lastcomment=''; $userRating = array();?>
+								<?php @$commentdata->user->image = ''; @$commentdata->comment=''; $lastcomment=''; $userRating = array();?>
 								<div class="sit-pic-rgt"> 
 								  <!--per night-->
 								  <div class="per-nite">
