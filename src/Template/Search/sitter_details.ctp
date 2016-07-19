@@ -11,7 +11,6 @@
 <!--[Banner Area Start]-->
                 <?php
 					$session = $this->request->session();
-					
 					$userloginstatus = $session->read("User");
 				    $cuntry_currency = $session->read("currency.currency");
 					$cuntry_price = $session->read("currency.price");
@@ -42,9 +41,12 @@
               </h4>
               <div class="badage-detail">
                 <ul class="list-inline text-center">
-					<?php  if(($userData['users_badge'])!= ""){
+					
+				  <?php  if(($userData['users_badge'])!= ""){
+							
 							if($userData['users_badge']->dl_pcb_badge){?>
-							<li>
+								
+							 <li>
 								 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
 														
 									<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
@@ -349,6 +351,7 @@
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
                                                         <?php }
+                                                        
                                                          }else{ ?>
 														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin">Contact  
                                                           <?php echo @$userData->first_name; ?>
@@ -2751,30 +2754,17 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
           <!--top filter tab-->
           <div class="top-filter-tab">
             <ul class="booking-services">
-			<?php  if(@$userData->user_sitter_services[0]->sitter_house_status == 1){ ?>
-              <li style="<?php echo $class_service; ?>" class="new_active" id="li_boarding"><a class="boarding" data-rel="boarding" href="#boarding" data-toggle="tab" >    <span></span>Boarding<br>
+              <li class="new_active" id="li_boarding"><a class="boarding" data-rel="boarding" href="#boarding" data-toggle="tab" >    <span></span>Boarding<br>
                   <b>in the sitter home</b> </a>
               </li>
-              <?php } 
-              if(@$userData->user_sitter_services[0]->guest_house_status == 1){ 
-              ?>
-              <li style="<?php echo $class_service; ?>" id="li_house_sitting"><a class="h-sitting" data-rel="house_sitting" href="#hsitting" data-toggle="tab"><span></span> House Sitting<br>
+              <li id="li_house_sitting"><a class="h-sitting" data-rel="house_sitting" href="#hsitting" data-toggle="tab"><span></span> House Sitting<br>
                 <b>in your home</b></a></li>
-                <?php } 
-                if(@$userData->user_sitter_services[0]->guest_house_status == 1 && @$userData->user_sitter_services[0]->gh_drop_in_visit_status == 1){ 
-					?>
-              <li style="<?php echo $class_service; ?>" id="li_drop_in_visit" ><a class="d-visit" data-rel="drop_in_visit" href="#dvisit" data-toggle="tab"><span></span> Drop-in Visit<br>
+              <li id="li_drop_in_visit" ><a class="d-visit" data-rel="drop_in_visit" href="#dvisit" data-toggle="tab"><span></span> Drop-in Visit<br>
                 <b>in your home</b></a></li>
-                <?php } 
-                if(@$userData->user_sitter_services[0]->sitter_house_status == 1 && ($userData->user_sitter_services[0]->sh_day_care_status == 1 || $userData->user_sitter_services[0]->sh_night_care_status == 1)){ 
-					?>
-              <li style="<?php echo $class_service; ?>" id="li_day_night"><a class="dn-care" data-rel="day_nigth_care" href="#dncare" data-toggle="tab"><span></span> Day / Night Care<br>
+              <li id="li_day_night"><a class="dn-care" data-rel="day_nigth_care" href="#dncare" data-toggle="tab"><span></span> Day / Night Care<br>
                 <b>in the sitter’s home</b></a></li>
-                <?php } 
-                if(@$userData->user_sitter_services[0]->market_place_status == 1){ ?>
-              <li style="<?php echo $class_service; ?>" id="li_maket_place"><a class="m-place" data-rel="market_place" href="#mplace" data-toggle="tab"><span></span> Market Place<br>
+              <li id="li_maket_place"><a class="m-place" data-rel="market_place" href="#mplace" data-toggle="tab"><span></span> Market Place<br>
                 <b>exercise, groom, train+</b></a></li>
-                <?php } ?>
             </ul>
                         <!-- Start Required service-->
                         <?php echo $this->Form->input('BookingRequests.required_service',[
@@ -2954,7 +2944,14 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
           
           </div>
           </div>
-           </div>
+          
+          
+           <!-- <div class="tab-pane fade" id="hsitting" ></div>
+             <div class="tab-pane fade" id="dvisit" ></div>
+              <div class="tab-pane fade" id="dncare" ></div>
+               <div class="tab-pane fade" id="mplace" ></div>-->
+            
+          </div>
           
           <!--Tab Content area--> 
           
@@ -3006,6 +3003,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                   </b></span></p>
                 </div>
               </div>
+              <!--end 
+                <li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>
+              -->
              <div class="table-wrap">
                 <table class="table">
                   <tbody>
@@ -3057,8 +3057,6 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
     </div>
   </div>
 </div>
-
-
 </div>
 
 <!--Report popup starts-->

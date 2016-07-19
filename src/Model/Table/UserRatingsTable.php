@@ -21,10 +21,7 @@ class UserRatingsTable extends Table
 			 'bindingKey' => 'user_from'
 		 ]);
 		 
-		  $this->hasOne('Users', [
-			 'foreignKey' => 'id',
-			 'bindingKey' => 'user_to'
-		 ]);
+		 
 		 
 		 /* $this->hasMany('UserRatings', [
             'className' => 'Comments',

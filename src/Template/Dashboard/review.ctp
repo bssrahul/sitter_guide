@@ -1,7 +1,6 @@
 <div class="col-md-9 col-lg-10 col-sm-8  lg-width80" >
 	<div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
-    
-		<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 		  <h3>
 			<img src="<?php echo HTTP_ROOT ;?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Review
 		  </h3>
@@ -20,11 +19,8 @@
 		  </ol>
 		</div>
 	  </div>
-  
-	  <div class="review1-wrap ">
-		
+      <div class="review1-wrap ">
 		<div class="row">
-		  
 		  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -55,9 +51,7 @@
 					'class'=>'userto',
 					'id'=>'userto']);
 				?>
-				
-			  <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
-				
+			<div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
 				<div class="rewiw-width100 rtp">
 					<div class="rewiw-width60">
 						<p>
@@ -65,8 +59,7 @@
 						  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Accuracy')); ?>
 						</p>
 					</div>
-				  
-					<div class="rewiw-width40">
+				   <div class="rewiw-width40">
 					  <span class="rating">
 							<input type='radio' id="star5" name='UserRatings[accuracy_rating]' value='5' /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 							<input type="radio" id="star4half" name="UserRatings[accuracy_rating]" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -79,13 +72,10 @@
 							<input type="radio" id="star1" name="UserRatings[accuracy_rating]" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
 							<input type="radio" id="starhalf" name="UserRatings[accuracy_rating]" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
 					</span>
-					
 					</div>
 				</div>
-				
-			  </div>
-			  
-			  <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
+			 </div>
+			 <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
 				<div class="rewiw-width100 rtp">
 				  <div class="rewiw-width60">
 					<p> 
@@ -109,8 +99,7 @@
 				  </div>
 				</div>
 			  </div>
-			 
-			  <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
+			 <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
 				<div class="rewiw-width100 rtp">
 				  <div class="rewiw-width60">
 					<p>
@@ -158,8 +147,7 @@
 				  </div>
 				</div>
 			  </div>
-			 
-			 <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
+			  <div class=" col-sm-12 col-md-4 col-xs-12 col-lg-4 nopadright">
 				<div class="rewiw-width100 rtp">
 				  <div class="rewiw-width60">
 					<p>
@@ -198,7 +186,8 @@
 							'required' => true,
 							'placeholder' => 'Type your feedback',
 							'class'=>'form-control' ]
-						);?>
+						); 
+					?>
 				</div>
 		        <button id="send" type="submit" class="btn btn-comm-save"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 			  </div>
@@ -212,29 +201,21 @@
 			  <h5>You are rating to
 			  </h5>
 			</div>
-			
-			<div class="inner-price-wrap ">
-			 
-				<div class="col-lg-12">
-					
-					<?php if(($to_user_info['user']['facebook_id']) !="" && ($to_user_info['user']['is_image_uploaded'])==0){?>
-						<img class="img-responsive"  src="<?php if($to_user_info['user']['image'] != ""){echo $to_user_info['user']['image'];}
-						else{ echo $to_user_info['user']['image']='prof_photo.png';} ?>"> 
-                   
-					<?php }else{ ?>
-						<img  class="img-responsive" src="<?php echo HTTP_ROOT.'img/uploads/'.($to_user_info['user']['image'] != ''?$to_user_info['user']['image']:'prof_photo.png'); ?>"> 					   
+			<div class="inner-price-wrap">
+			   <div class="col-lg-12">
+					<?php if(($to_user_info['facebook_id']) !="" && ($to_user_info['is_image_uploaded'])==0){?>
+						<img class="img-responsive"  src="<?php if($to_user_info['image'] != ""){echo $to_user_info['image'];}
+						else{ echo $to_user_info['image']='prof_photo.png';} ?>"> 
+                    <?php }else{ ?>
+						<img  class="img-responsive" src="<?php echo HTTP_ROOT.'img/uploads/'.($to_user_info['image'] != ''?$to_user_info['image']:'prof_photo.png'); ?>"> 					   
 					<?php  } ?>
-				 
-					
-					
 				</div>
-				<h5 class="text-center review1-thead"><?php echo isset($to_user_info['user']['first_name'])?$to_user_info['user']['first_name']." ".@$to_user_info['user']['last_name']:''; ?></h5>
+				<h5 class="text-center review1-thead"><?php echo isset($to_user_info['first_name'])?$to_user_info['first_name']." ".@$to_user_info['last_name']:''; ?></h5>
 			</div>
-		
-			<p class="redem-text">You can change the rating within 48 hours after that rating get freezed and you can't be able to do change.
+		    <p class="redem-text">You can change the rating within 48 hours after that rating get freezed and you can't be able to do change.
 			</p>
 			<p class="read-tanda">Read 
-			  <a href=""> Terms &amp; Conditions
+			  <a href="<?php echo HTTP_ROOT."terms"; ?>"> Terms &amp; Conditions
 			  </a>
 			</p>
 		  </div>
