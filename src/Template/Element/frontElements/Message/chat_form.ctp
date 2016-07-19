@@ -35,14 +35,14 @@
 									?>
 									<input type = "hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" />
 									
-									<textarea id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control"></textarea>
+									<textarea id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control" <?php if($booking_id ==''){echo "disabled"; } ?>></textarea>
 									
 								
 								</div>
 								
 								<div class="media">
 									<div class="media-left media-middle w-95">
-										<input class="btn bt-now1" type="button" name="submit" value="Send" id="submit_chat" onclick="send_chat_msg(this);" />
+										<input <?php if($booking_id ==''){echo "disabled"; } ?> class="btn bt-now1" type="button" name="submit" value="Send" id="submit_chat" onclick="send_chat_msg(this);" />
 									</div>
 									<div class="media-body ">
 										<p class="mess-tesxt1"> 

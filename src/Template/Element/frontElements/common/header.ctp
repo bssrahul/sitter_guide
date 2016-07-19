@@ -1,6 +1,4 @@
-<!--[Header Area Start]-->
-<?php 
-echo $this->Html->script(['Front/messages.js']); ?>
+
 
 <header  class="smaller">
   <?php 

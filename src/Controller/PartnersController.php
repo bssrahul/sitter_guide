@@ -161,10 +161,6 @@ class PartnersController extends AppController
    }
 	
 	
-	
-	
-	
-	
 }
 	
 	
