@@ -1,5 +1,4 @@
-
-
+<!--[Header Area Start]-->
 <header  class="smaller">
   <?php 
 	if($currentLocal == 'ru'){?>

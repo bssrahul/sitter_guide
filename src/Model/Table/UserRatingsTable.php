@@ -21,17 +21,7 @@ class UserRatingsTable extends Table
 			 'bindingKey' => 'user_from'
 		 ]);
 		 
-		 
-		 
-		 /* $this->hasMany('UserRatings', [
-            'className' => 'Comments',
-            'conditions' => ['Users.id' => 'UserRatings.user_from']
-            
-        ]); */
-
-		
-		
-    }
+	}
     
     public function validationUpdate($validator)
     {
