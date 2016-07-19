@@ -78,7 +78,7 @@
 		  <p class="text-right"><?php echo date("M d",strtotime($req_data['created_date'])); ?>
 		  </p>
 		  <?php if($req_data['folder_status_'.strtolower($userActas)]=='current'){ ?>
-					<a href="<?php echo HTTP_ROOT.'dahboard/review/'.base64_encode(convert_uuencode($req_id)).'/'.base64_encode(convert_uuencode($req_data['sitter_id']))?>">
+					<a href="<?php echo HTTP_ROOT.'dashboard/review/'.base64_encode(convert_uuencode($req_id)).'/'.base64_encode(convert_uuencode($req_data['sitter_id']))?>">
 						<button class="btn  btn-block bt-now">
 							<i class="fa fa-star">
 							</i>
