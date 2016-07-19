@@ -87,10 +87,24 @@ class TransactionController extends AppController
 											->contain(['BookingRequests'=> 
 													function ($q){
 														return $q
-														->select('sitter_id')->contain(['Users']);
+														->select('sitter_id');
 													}
 												])				
 											->toArray();
+		if(!empty($transactionData)){
+			
+			$userModel=TableRegistry :: get('Users');
+			
+			foreach($transactionData as $k=>$req){
+				
+				$transactionData[$k]['booking_request']['user'] = $userModel->find('all')
+					->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded'])
+					->where(['Users.id'=>$req['booking_request']['sitter_id']])
+					->hydrate(false)
+					->first();
+			}
+			
+		}
 		//pr($transactionData); die;
 		$this->set('transactionData',$transactionData);
 	}
@@ -124,11 +138,25 @@ class TransactionController extends AppController
 					->contain(['BookingRequests'=> 
 							function ($q){
 								return $q
-								->select(['sitter_id'])->contain(['Users']);
+								->select(['sitter_id']);
 							}
 						])			
 							
 					->toArray();
+				if(!empty($transactionData)){
+			
+					$userModel=TableRegistry :: get('Users');
+			
+					foreach($transactionData as $k=>$req){
+						
+						$transactionData[$k]['booking_request']['user'] = $userModel->find('all')
+							->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded'])
+							->where(['Users.id'=>$req['booking_request']['sitter_id']])
+							->hydrate(false)
+							->first();
+					}
+					
+				}	
 					
 			}
 			

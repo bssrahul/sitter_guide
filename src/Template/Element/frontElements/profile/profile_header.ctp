@@ -1,3 +1,6 @@
+<!--[Header Area Start]-->
+<?php 
+echo $this->Html->script(['Front/messages.js']); ?>
 <header class="smaller">
 <div class="head-wrap">
 <div class="container-fluid">
