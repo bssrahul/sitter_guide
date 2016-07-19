@@ -41,7 +41,7 @@ class DashboardController extends AppController
 	* Function which is call at very first when this controller load
 	*/
 	public $paginate = [
-        'limit' => 12,
+        'limit' => 6,
         'order' => [
             'Users.id' => 'DESC'
         ]
@@ -2633,7 +2633,7 @@ function addPets(){
 				$query = $UsersModel->get($userId,['contain'=>'Communication']);
 				if(isset($query->communication) && !empty($query->communication)){
 					   $CommunicationData = $query->communication[0];
-					   $this->set('communication_id', @$CommunicationData->id);
+					   $this->set('communication_id', $CommunicationData->id);
 					   unset($CommunicationData->id);
 					   $this->set('communication_info', $CommunicationData);
 				}
@@ -2681,7 +2681,7 @@ function addPets(){
 		$session = $this->request->session();
         
         $userId = $session->read('User.id');
-        /*		
+        		
 		if($userId !=''){
 			
 			$UserModel = TableRegistry::get('Users');
@@ -2708,7 +2708,7 @@ function addPets(){
 					echo "failed";	
 					
 				}
-		}*/
+		}
         
 	
 		die;

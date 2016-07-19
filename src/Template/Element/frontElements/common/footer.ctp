@@ -10,7 +10,7 @@
                           <p class="txt-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter Guide')); ?></p>          
 								<ul>
 									<li><a href="<?php echo HTTP_ROOT.'about-us'; ?>" title="About Us"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Us')); ?></a> </li>
-									<li><a href="#" title="Partners">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Partner')); ?></a> </li>
+									<li><a href="<?php echo HTTP_ROOT."partners"; ?>" title="Partners">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Partners')); ?></a> </li>
 									<li><a href="<?php echo HTTP_ROOT.'news'; ?>" title="In the News"><?php echo $this->requestAction('app/get-translate/'.base64_encode('In the News')); ?></a>
 									</li>
 									<li><a href="<?php echo HTTP_ROOT.'privacy'; ?>" title="Privacy Policy"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a> </li>

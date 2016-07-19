@@ -19,6 +19,7 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
+use Cake\View\Helper\PaginatorHelper;
 /**
  * Static content controller
  *
@@ -28,7 +29,14 @@ use Cake\I18n\I18n;
  */
 class PagesController extends AppController
 {
-
+	
+	
+        public $helpers = ['Form'];	
+        	
+		public $paginate = [
+        'limit' => 8
+		];
+		
     /**
      * Displays a view
      *
@@ -43,7 +51,7 @@ class PagesController extends AppController
     {
 
 		parent::initialize();
-				
+			
 		
         //GET LOCALE VALUE
 		$session = $this->request->session();
@@ -58,6 +66,8 @@ class PagesController extends AppController
 		
 		$servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
 		
+		 $this->loadComponent('Paginator');
+		 
 		$this->set('servicesInfo',$servicesInfo);
 
 		
@@ -391,7 +401,22 @@ class PagesController extends AppController
 		
 		$this->set(array('CmsPageData'), array($CmsPageData));
 		
-	}		
+	}
+	/** 
+	For Partners
+	*/	
+	function partners(){
+	   	   $this->viewBuilder()->layout('landing');
+	   	    
+	   	   $session = $this->request->session();
+           $userId = $session->read('User.id');
+           
+           $partnersModel = TableRegistry :: get("Partners");
+           
+		   $partnersData = $partnersModel->find('all')->order(['created_date'=>'desc'])->where(['status' => 1]);
+		   //pr($partnersData);die;
+		   $this->set("partnersData",$this->paginate($partnersData));
+	}	
 	
 		
 }

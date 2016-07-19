@@ -97,6 +97,7 @@ Router::scope('/', function ($routes) {
 		$routes->connect('/blog-listing/*', ['controller' => 'Blogs', 'action' => 'blogListing']);
 		$routes->connect('/blog-details/*', ['controller' => 'Blogs', 'action' => 'blogDetails']);
 		$routes->connect('/share/*', ['controller' => 'guests', 'action' => 'share']);
+		$routes->connect('/partners/', ['controller' => 'pages', 'action' => 'partners']);
 
 
     /**

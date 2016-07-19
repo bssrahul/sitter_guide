@@ -1,5 +1,3 @@
- <?php echo $this->Html->script('Front/bootbag_paginate.js'); ?>
- 
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
 
 	<div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
@@ -13,7 +11,7 @@
         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
               <ol class="breadcrumb text-right">
                 <li> You are here : </li>
-                <li><a href="#">Home</a></li>
+                <li><a href="<?php echo HTTP_ROOT; ?>">Home</a></li>
                 <li class="active">Favourites</li>
               </ol>
         </div>
@@ -49,10 +47,8 @@
 										<p class="loc"><?php if(!empty($FavUsers ['user']['city'])){echo $FavUsers ['user']['city'];}?></p>
 																					
 										<p class="r-star">
-										
-												 <?php  	
-												 $UserRatingData= $FavUsers ['user']['user_ratings']; 
-												//pr($UserRatingData);
+										       <?php  	
+												$UserRatingData= $FavUsers ['user']['user_ratings']; 
 												$accuracy_sum = 0;
 												$comm_sum = 0;
 												$clean_sum = 0;
@@ -194,10 +190,7 @@
 												<?php	} ?>
 												</span>
 												<!--/rating--> 
-										
-
-										</p>
-										
+                                        </p>
 										<p class="grey">
 											<span><?php if($count != ""){ echo "( ".$count. " reviews )" ;}else{echo "( 0 reviews )" ;} ?></span>
 										</p>
@@ -216,15 +209,11 @@
 					</div>
 					  
 					<div class="row">
-          
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-								<div class=" text-center ">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                              <div class=" text-center ">
 									<div class="review-pagination favPagination ">
 										<ul class=" list-inline ">
-											<?php 	//echo $this->Paginator->counter('Page {{page}} of {{pages}}');?>
 											<?php
-												//echo $this->Paginator->first("First");
 												if($this->Paginator->hasPrev()){
 													echo $this->Paginator->prev("Prev", array('tag' => 'li'), null, array('tag' => 'li','class' => 'nxt'));
 												}
@@ -232,25 +221,14 @@
 												if($this->Paginator->hasNext()){
 													echo $this->Paginator->next("Next", array('tag' => 'li'), null, array('tag' => 'li','class' => 'nxt'));
 												}
-												//echo $this->Paginator->last("Last");
-												
 											?>
-											
-										
-											<!--<li class="nxt"><a href="#">previous</a></li>
-											<li class="numbers active"><a href="#">1</a></li>
-											<li class="numbers hidden-xs"><a href="#">2</a></li>
-											<li class="numbers hidden-xs"><a href="#">3</a></li>
-											<li class="numbers"><a href="#">..</a>.</li>
-											<li class="nxt"><a href="#">next</a></li>-->
 										</ul>
 									</div>
 								</div>
 						</div>
-
-					</div>  
+                    </div>  
 				
-        
+     
 			</div>
 		</div>
 	</div>
