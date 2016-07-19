@@ -129,7 +129,17 @@
 						  }?>
 						  <li <?php echo $service_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates' ?>"><span class=" fa fa-list"></span> <span class="side-list"><?php echo __('Services').' $ '.__('rates'); ?></span></a></li>
 					  <?php } ?>
-					  <li><a href="#"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transactions'); ?></span></a></li>
+					  
+					     <?php if($requestController=='Transaction'){
+						  
+						  $transaction_class='class="active"';
+					  }else{
+						  $transaction_class='class=""';
+						  
+					  }?>
+					  
+					  
+					  <li <?php echo $transaction_class; ?>><a href="<?php echo HTTP_ROOT.'Transaction/paid-transaction' ?>"><span class="fa fa-usd"></span> <span class="side-list"><?php echo __('Transactions'); ?></span></a></li>
 					  
                       <?php if($requestAction=='myRating' || $requestAction=='sharedRating'){
 						  
