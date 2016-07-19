@@ -2257,8 +2257,10 @@ function addPets(){
 		$userId = $session->read('User.id');
 		//$userType = $session->read('User.user_type');
 	    $userToId = convert_uudecode(base64_decode($user));
-	    $bookingId = 4;//convert_uudecode(base64_decode($bookingId));
-	   
+	    $bookingId = convert_uudecode(base64_decode($bookingId));
+	    
+	    //echo $bookingId."toId".$userToId;die;
+	    
 	    $this->set('user_to_id',$userToId);
 	    $this->set('booking_id',$bookingId);
 	    
@@ -2278,11 +2280,12 @@ function addPets(){
 					$this->request->data['UserRatings'][$val] = 1;
 				}
 			}
-			
 			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data["UserRatings"],['validate'=>"update"]);
+			
 	        $rating_data = $reviewModel->find('all')
 				->where(["UserRatings.user_from = $userId","UserRatings.user_to = $userToId"])
 			    ->select(['id'])->toArray();
+			    
 			if(!empty($rating_data)){
 				 $reviewData->id = $rating_data[0]->id;
 			}	
@@ -2300,11 +2303,9 @@ function addPets(){
 			$reviewData->rating = $rating;
 			$reviewData->booking_id = $bookingId;
 	   
-	   
-			if($reviewModel->save($reviewData)){
+	      if($reviewModel->save($reviewData)){
 				
-				
-			    $get_requests = $bookingRequestModel->find('all')
+				$get_requests = $bookingRequestModel->find('all')
 				->where(["BookingRequests.id = $bookingId"])
 			    ->select(['message','read_status','read_status_posted_by','folder_status_sitter','folder_status_guest','created_date','id','user_id','sitter_id','request_by_sitter_id'])
 				->hydrate(false)->toArray();
@@ -2341,24 +2342,23 @@ function addPets(){
 									
 									$bookingRequestModel->save($bookingRequestData);
 				}
+				return $this->redirect(['controller' => 'rating', 'action' => 'shared-rating']);
 				
 				$this->Flash->success(__('Record has been added Successfully'));
 	        }else{
-				  $this->set("reviewData",$reviewData);
+				$to_user_info = $UserModel->find('all')
+				   ->where(['Users.id'=>$userToId])->hydrate(false)->select(['id','image','first_name','last_name','city','is_image_uploaded','facebook_id'])->first();
+				   
+			 	
+			  $this->set("to_user_info",$to_user_info);
+			  $this->set("reviewData",$reviewData);
 			}	
 		}else{
-			$rating_data = $reviewModel->find('all')
-				   ->where(['user_to'=>$userToId,'user_from'=> $userId])->hydrate(false)->contain(['Users'=> 
-					 function ($q){
-						return $q
-						->select(['id','image','first_name','last_name','city','is_image_uploaded','facebook_id']);
-						//->contain(['UserRatings']);
-					 }
-					])->contain(['Users'])->hydrate(false)->first();
-					
-			//pr($rating_data); die;		
-			$this->set("to_user_info",$rating_data);
-				  //->select(['id'])->toArray();
+			$to_user_info = $UserModel->find('all')
+				   ->where(['Users.id'=>$userToId])->hydrate(false)->select(['id','image','first_name','last_name','city','is_image_uploaded','facebook_id'])->first();
+				   
+			 	
+			  $this->set("to_user_info",$to_user_info);
 		}	
 		if( $this->request->is('ajax') ) {
             $userid=@$_REQUEST['user'];

@@ -66,7 +66,7 @@
 .btn-req-bok:hover, .btn-req-bok:focus  {  background:#699305; color: #fff; font-size: 14px; font-weight: 500; height: 40px;margin-bottom: 20px; text-transform: uppercase;}
 #payment-box .cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto input[type="text"] {    border: 0 none;float: left; height: 43px; line-height: 45px; padding: 10px; width: 90%;}
 
-#payment-box .right-content-wrap { border: 3px solid #dcdcdc;border-radius: 10px;padding: 10px;margin-top:20px; }
+#payment-box .right-content-wrap { border:0px solid #dcdcdc; margin-top:20px; padding:0px;}
 #payment-box .right-content-wrap .top-box-wrap .center-block{ border-radius:5px; width:80px; height:80px;}
 #payment-box .right-content-wrap .pay-through h6{ font-size:18px; color:#72a105; }
 
@@ -74,10 +74,9 @@
 #payment-box .right-content-wrap .top-box-wrap ul .f14 {font-size:14px; font-weight:700;}
 #payment-box .right-content-wrap .top-box-wrap ul .f13 {font-size:13px; font-weight:500;}
 
-#payment-box .right-content-wrap .top-box-wrap .night-sitt {   text-align: center;padding:0px;border:none;}
+#payment-box .right-content-wrap .top-box-wrap .night-sitt {  border-top:0px solid #e1f1fc; text-align: center; padding:2px 10px 5px 10px;}
 
-#payment-box .right-content-wrap .top-box-wrap .night-sitt ul {  background: #8ca705 none repeat scroll 0 0;color: #fff;font-size: 13px;
-margin-bottom: 2px;margin-top: 15px;width: 100%;padding: 10px 0px;}
+#payment-box .right-content-wrap .top-box-wrap .night-sitt ul { font-size:13px; color:#04568e; margin-top:10px; margin-bottom:2px;}
 #payment-box .right-content-wrap table {padding-top:10px; margin-top:15px;}
 #payment-box .right-content-wrap table tr td{ width:50%;}
 #payment-box .right-content-wrap table tr td:first-child{ font-size:25px; color:green;}
