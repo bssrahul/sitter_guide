@@ -79,27 +79,30 @@
 			var booking_id = btnObj.attr("data-rel");
 			var refreshOrgHtml = btnObj.html();
 			
-			$.ajax({
+			if(booking_id !=''){
+				$.ajax({
 				
-				url:ajax_url+"/message/auto-load-chat/",//AJAX URL WHERE THE LOGIC HAS BUILD
-				data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
-				
-				beforeSend: function(){
-				  $("#content-m").addClass("chat_overlay");
-				  btnObj.html('<img style="height:21px;width:21px" class="search-img" src="'+ajax_url+'img/refresh.gif"/>');
-				},
-				
-				complete: function(){
-				   $("#content-m").removeClass("chat_overlay");
-				   btnObj.html(refreshOrgHtml);
-				},	 
-				
-				success:function(res)
-				{
-					$('div.list_chat_ul').html(res);
-					$("#content-m").mCustomScrollbar({theme:"minimal"});		
-				}
-			});
+					url:ajax_url+"/message/auto-load-chat/",//AJAX URL WHERE THE LOGIC HAS BUILD
+					data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+					
+					beforeSend: function(){
+					  $("#content-m").addClass("chat_overlay");
+					  btnObj.html('<img style="height:21px;width:21px" class="search-img" src="'+ajax_url+'img/refresh.gif"/>');
+					},
+					
+					complete: function(){
+					   $("#content-m").removeClass("chat_overlay");
+					   btnObj.html(refreshOrgHtml);
+					},	 
+					
+					success:function(res)
+					{
+						$('div.list_chat_ul').html(res);
+						$("#content-m").mCustomScrollbar({theme:"minimal"});		
+					}
+				});
+			}
+			
 			
 		});//END
 		
