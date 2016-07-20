@@ -1,19 +1,94 @@
 @charset "utf-8";
 /* CSS Document */
 
-.becomesitter-banner{ width:100%; float:left; background:url(../../img/become-siter.png);  background-size:cover; background-position: center center; padding:125px 0 75px 0;}
+.becomesitter-banner {
+	width: 100%;
+	float: left;
+	background: url(../../img/become-siter.png);
+	background-size: cover;
+	background-position: center center;
+	padding: 125px 0 75px 0;
+}
+.btn-bsitter {
+	background: #59aae1;
+	border-radius: 0px;
+	padding: 10px 30px;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	center: block;
+	margin: 30px 0 20px 0;
+}
+.btn-bsitter:hover, .btn-bsitter:hover {
+	background: #2c80b9;
+	color: #fff;
+}
+.become-howitworks {
+	padding: 30px 0 0 0;
+	width: 100%;
+	float: left;
+}
+.become-howitworks h4 {
+	font-size: 25px;
+}
+.become-howitworks .media {
+	padding: 20px 0 30px 0;
+}
+.becommargin-bot {
+	padding-bottom: 50px;
+}
+.become-padr {
+	padding-right: 30px;
+}
+/*manish css*/
 
-.btn-bsitter { background:#59aae1; border-radius:0px; padding:10px 30px; color:#fff; font-size:18px; text-align:center; center:block; margin:30px 0 20px 0;}
-.btn-bsitter:hover, .btn-bsitter:hover  {background: #2c80b9; color:#fff;}
+.start_now_btn {
+	background-color: #82ae1a;
+	border-radius: 5px;
+	color: #fff;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	height: 52px;
+	margin-top: 44px;
+	padding: 11px 14px;
+	text-align: center;
+	width: 140px;
+}
 
 
-.become-howitworks {}
+.start_now_btn:hover {
+	background-color: #72a105;
+	color: #fff;
+}
 
-.become-howitworks h4 { font-size:25px;} 
-.become-howitworks .media { padding:20px 0 30px 0;} 
+.head-box .head-bot strong {
+  background: #ffffff url("../../img/search-icons.png") no-repeat scroll 2px -391px;
+  display: block;
+  height: 24px;
+  margin: 0 auto;
+  text-align: center;
+  width: 42px;
+}
 
-.becommargin-bot { padding-bottom:50px;}
+
+.head-box .head-bot1 {
+  background: rgba(0, 0, 0, 0) url("../../img/heading-bgr.png") repeat-x scroll center center;
+  display: block;
+  margin: 7px auto 0;
+  width: 290px;
+}
+
+.head-box .head-bot1 strong {
+  background: #f0f0f0 url("../../img/search-icons.png") no-repeat scroll 2px -391px;
+  display: block;
+  height: 24px;
+  margin: 0 auto;
+  text-align: center;
+  width: 42px;
+}
 
 
-.become-padr { padding-right:30px;}
 
+
+/*manish css*/
