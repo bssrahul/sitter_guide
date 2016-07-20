@@ -46,7 +46,7 @@
                       
                       <li <?php echo $promote_class; ?>><a href="<?php echo HTTP_ROOT.'dashboard/promote'; ?>"><span class="fa fa-smile-o"></span><span class="side-list"><?php echo __('Promote'); ?></span></a></li>
                       
-                      <li <?php echo $tracker_class; ?>><a href="<?php echo HTTP_ROOT.'tracker'; ?>"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Tracker'); ?></span></a></li>
+                      <li <?php echo $tracker_class; ?>><a href="<?php echo HTTP_ROOT.'tracker'; ?>"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Sitter Guide GPS'); ?></span></a></li>
                       
                       <li class="panel panel-default <?php if(trim($requestController)=='Message'){echo 'active';}else{echo '';}?>" id="dropdown">
 							<a data-toggle="collapse" href="#dropdown-lvl1">
