@@ -2283,14 +2283,14 @@ function addPets(){
 			$reviewData=$reviewModel->patchEntity($reviewData,$this->request->data["UserRatings"],['validate'=>"update"]);
 			
 	        $rating_data = $reviewModel->find('all')
-				->where(["UserRatings.user_from = $userId","UserRatings.user_to = $userToId"])
-			    ->select(['id'])->toArray();
+			->where(["UserRatings.user_from = $userId","UserRatings.user_to = $userToId","UserRatings.booking_id = $bookingId"])
+			->select(['id'])->toArray();
 			    
 			if(!empty($rating_data)){
 				 $reviewData->id = $rating_data[0]->id;
 			}	
-	   
-	        $accuracy = $this->request->data['UserRatings']['accuracy_rating'];
+			
+			$accuracy = $this->request->data['UserRatings']['accuracy_rating'];
 			$communication = $this->request->data['UserRatings']['communication_rating'];
 			$cleanliness = $this->request->data['UserRatings']['cleanliness_rating'];
 			$location = $this->request->data['UserRatings']['location_rating'];
@@ -2302,7 +2302,7 @@ function addPets(){
 			$reviewData->status = 0;
 			$reviewData->rating = $rating;
 			$reviewData->booking_id = $bookingId;
-	   
+	      
 	      if($reviewModel->save($reviewData)){
 				
 				$get_requests = $bookingRequestModel->find('all')
@@ -2346,6 +2346,7 @@ function addPets(){
 				
 				$this->Flash->success(__('Record has been added Successfully'));
 	        }else{
+				
 				$to_user_info = $UserModel->find('all')
 				   ->where(['Users.id'=>$userToId])->hydrate(false)->select(['id','image','first_name','last_name','city','is_image_uploaded','facebook_id'])->first();
 				   

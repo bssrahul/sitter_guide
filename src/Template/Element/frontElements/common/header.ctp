@@ -1,9 +1,9 @@
 <!--[Header Area Start]-->
 <header  class="smaller">
-  <?php 
-	if($currentLocal == 'ru'){?>
-		<div class="rus-wrap"> 
-  <?php } ?> 
+<?php 
+if($currentLocal == 'ru'){?>
+	<div class="rus-wrap"> 
+<?php } ?> 
 	<div class="head-wrap">
 		<div class="container-fluid">
 			<div class="row">
