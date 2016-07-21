@@ -5,13 +5,12 @@
 			<img src="<?php echo HTTP_ROOT ;?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Review
 		  </h3>
 		</div>
-    
-		<div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
 		  <ol class="breadcrumb text-right">
 			<li> You are here : 
 			</li>
 			<li>
-			  <a href="#">Home
+			  <a href="<?php echo HTTP_ROOT; ?>">Home
 			  </a>
 			</li>
 			<li class="active">Review
@@ -27,7 +26,8 @@
 				<h5 class="review1-thead">Your Ratings
 				</h5>
 			  </div>
-			   <?php echo $this->Form->create(@$reviewData, [
+			   <?php 
+			    echo $this->Form->create(@$reviewData,[
 					/*'url' => ['controller' => 'partners', 'action' => 'add-partner'],*/
 					'class'=>'form-horizontal form-label-left',
 					'id'=>'addrating',
@@ -42,8 +42,7 @@
 					'value'=> @$user_to_id,
 					'class'=>'userto',
 					'id'=>'userto']);
-					
-				echo $this->Form->input('booking_id',[
+			   echo $this->Form->input('booking_id',[
 					'label' => false,
 					'type'=>'hidden',
 					'readonly'=>true,

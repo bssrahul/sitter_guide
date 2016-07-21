@@ -3,96 +3,40 @@
 
 
 .refer-banner{ width:100%; float:left; background: url(../../img/refer-banner.png) no-repeat;  background-size:cover; background-position: center center; padding:125px 0 75px 0;}
-
 .referform-outer { background: rgba(255,255,255,1.0); padding: 20px 30px 20px 30px; -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
-	box-shadow: inset 0 -1px 0 rgba(0,0,0,.25); margin-top:30px;}
-  .claim-top-heading { font-size:18px; font-weight:500; text-align:center; color: #72A105; padding: 10px 0px 10px 0px; }
-  .btn-claim { background:#72A105; height:45px; color:#fff; font-weight:500; line-height:30px; font-size:16px; margin-top:25px;}
-    .btn-claim:hover, .btn-claim:focus  {  background: #689206; color:#fff; }
-  
-  .refer-big-text { font-size:45px; font-weight:500; line-height:60px !important; color:#fff;  -webkit-text-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
-	text-shadow: inset 0 -1px 0 rgba(0,0,0,.25); width:100%; line-height:45px; text-align:center; margin-top:40px; text-shadow: 0.6px 2px 0.6px #858585;}
-	
-	
-	.refer-text-small { font-size:16px; width:100%; line-height:30px; color:#fff; text-align:center; padding-top:20px;  text-shadow: 0.6px 2px 0.6px #858585; }
-  
- 
-.referform-outer [type=text] {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  height: 45px;
-  line-height: 45px;  
-  margin-bottom: 10px;
-  font-size: 1em;
-  color: rgba(0,0,0,.9);
-  background:none;
-}
+box-shadow: inset 0 -1px 0 rgba(0,0,0,.25); margin-top:30px;}
+.claim-top-heading { font-size:18px; font-weight:500; text-align:center; color: #72A105; padding: 10px 0px 10px 0px; }
+.btn-claim { background:#72A105; height:45px; color:#fff; font-weight:500; line-height:30px; font-size:16px; margin-top:25px;}
+.btn-claim:hover, .btn-claim:focus  {  background: #689206; color:#fff; }
+.refer-big-text { font-size:45px; font-weight:500; line-height:60px !important; color:#fff;  -webkit-text-shadow: inset 0 -1px 0 rgba(0,0,0,.25); text-shadow: inset 0 -1px 0 rgba(0,0,0,.25); width:100%; line-height:45px; text-align:center; margin-top:40px; text-shadow: 0.6px 2px 0.6px #858585;}
+.refer-text-small { font-size:16px; width:100%; line-height:30px; color:#fff; text-align:center; padding-top:20px;  text-shadow: 0.6px 2px 0.6px #858585; }
 
-.referform-outer [type=email] {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  height: 45px;
-  line-height: 45px;  
-  margin-bottom: 10px;
-  font-size: 1em;
-  color: rgba(0,0,0,.9);
-  background:none;
-}
-
-.referform-outer [type=password] {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  height: 45px;
-  line-height: 45px;  
-  margin-bottom: 10px;
-  font-size: 1em;
-  color: rgba(0,0,0,.9);
-  background:none;
-}
-
+.referform-outer [type=text] {display: block;margin: 0 auto;width: 100%; border: 0; border-bottom: 1px solid rgba(0,0,0,.2);  height: 45px;  line-height: 45px; margin-bottom: 10px;font-size: 1em; color: rgba(0,0,0,.9);
+  background:none;}
+.referform-outer [type=email] {display: block;margin: 0 auto;width: 100%; border: 0; border-bottom: 1px solid rgba(0,0,0,.2); height: 45px; line-height: 45px; margin-bottom: 10px; font-size: 1em;color: rgba(0,0,0,.9);
+  background:none;}
+.referform-outer [type=password] {display: block; margin: 0 auto; width: 100%; border: 0;  border-bottom: 1px solid rgba(0,0,0,.2); height: 45px; line-height: 45px; margin-bottom: 10px; font-size: 1em; color: rgba(0,0,0,.9);
+  background:none;}
 
 .mar80top { margin-top:80px;}
 .howworks-refer { padding:0px 0px 65px 0px;}
 .referhowitworks img { width:80px; height:80px;}
 .referhowitworks { text-align:center; margin:5px 0;}
-.referhowitworks h3 { font-size:25px; padding:20px 0px; text-align:center;}
-.referhowitworks p { padding:0px 0px 20px 0px; text-align:center;}
+.referhowitworks h3 { font-size:18px; padding:10px 0px; text-align:center;}
+.referhowitworks p { padding:0px 0px 20px 0px; text-align:center; line-height:22px;}
 
-.howworks-refer .head-box .head-bot b {
-    background: #EAEAEA url("../../img/search-icons.png") no-repeat scroll 2px -391px;
-    display: block;
-    height: 24px;
-    margin: 0 auto;
-    text-align: center;
-    width: 42px;
-}
-
-
+.howworks-refer .head-box .head-bot b {background: #EAEAEA url("../../img/search-icons.png") no-repeat scroll 2px -391px; display: block; height: 24px;margin: 0 auto; text-align: center; width: 42px;}
 .refer-padding0px{ padding: 0px;} 
 .refer-marginbot80px {margin-bottom:80px;}
 .refer-margin0px {margin:0px !important;}
 .referform-outer .prvacy-guranted { text-align:center; padding-top:15px;}
 .bg-white {background:#fff;}
 
-@media (max-width:767px) {
-	
-	 .refer-big-text {  width:100%; }
-	
-	
-	.refer-text-small {  width:100%;  }
-	
-	
-	
-	
-	}
+.becom-sit-wrap{ width:100%; float:left; background:#f0f0f0; padding:45px 0;}
+.hiw-wrap{ width:100%; float:left; background:#f0f0f0; padding:45px 0;}
 
+@media (min-width:320px) and (max-width:480px){
+
+
+}
 
