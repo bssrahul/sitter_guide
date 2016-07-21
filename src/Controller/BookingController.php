@@ -653,6 +653,7 @@ class BookingController extends AppController
 								$transactionData['Transactions']['stripe_transaction_id'] =  $charge_status;
 								$transactionData['Transactions']['user_id'] =  $session->read('User.id');
 								$transactionData['Transactions']['booking_id'] =  $get_booking_requests_to_display['id'];
+								$transactionData['Transactions']['sitter_id'] =  $get_booking_requests_to_display["sitter_id"];
 								$transactionData['Transactions']['amount'] =  $charge->amount;
 								$transactionData['Transactions']['currency'] =  $charge->currency;
 								$transactionData['Transactions']['status'] =  'paid';
@@ -768,6 +769,7 @@ class BookingController extends AppController
 												$transactionData['Transactions']['stripe_transaction_id'] =  $charge_status;
 												$transactionData['Transactions']['user_id'] =  $session->read('User.id');
 												$transactionData['Transactions']['booking_id'] =  $get_booking_requests_to_display['id'];
+												$transactionData['Transactions']['sitter_id'] =  $get_booking_requests_to_display["sitter_id"];
 												$transactionData['Transactions']['amount'] =  $charge->amount;
 												$transactionData['Transactions']['currency'] =  $charge->currency;
 												$transactionData['Transactions']['status'] =  'paid';
@@ -814,6 +816,7 @@ class BookingController extends AppController
 									
 										$transactionData['Transactions']['stripe_transaction_id'] =  $charge_status_id;
 										$transactionData['Transactions']['user_id'] =  $session->read('User.id');
+										$transactionData['Transactions']['sitter_id'] =  $get_booking_requests_to_display["sitter_id"];
 										$transactionData['Transactions']['booking_id'] =  $get_booking_requests_to_display['id'];
 										$transactionData['Transactions']['amount'] =  $direct_charge_status->amount;
 										$transactionData['Transactions']['currency'] =  $direct_charge_status->currency;
