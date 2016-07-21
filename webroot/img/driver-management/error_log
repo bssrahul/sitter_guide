@@ -1,0 +1,1 @@
+[10-Mar-2016 09:01:17 UTC] PHP Fatal error:  Call to undefined function __() in /home/pccdevenv/public_html/app/inc/driver-management/driver-list-update.php on line 44
