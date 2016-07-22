@@ -72,10 +72,10 @@
 											?> 
 										</p>    
 										<p> 
-										  <a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($blogs['id'])); ?>">[ Continue... ]
+										  <a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($blogs['id'])); ?>">[ <?php echo $this->requestAction('app/get-translate/'.base64_encode('Continue')); ?> ... ]
 										  </a>
 										</p> 
-										<p>Posted by 
+										<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Posted by')); ?> 
 										  <a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($blogs['id'])); ?>"><?php echo SITE_OWNER; ?>
 										  </a> 
 										  <span class=" pull-right"><?php echo __( date("M Y", strtotime($blogs['created_date']))); ?>
@@ -92,7 +92,7 @@
 					?>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 							<div class="blog-profile">
-								<h5 style=" background: #a1cc3f none repeat scroll 0 0;color: #fff;padding: 15px;text-align: center;">No Records Found</h5>
+								<h5 style=" background: #a1cc3f none repeat scroll 0 0;color: #fff;padding: 15px;text-align: center;"><?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </h5>
 							</div>	 
 						</div>	 	
 					<?php		

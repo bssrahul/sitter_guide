@@ -809,23 +809,29 @@ class AppController extends Controller{
 	} */
 	
 
-	function genrateOtp($phone_number,$msg_body){
+	function genrateOtp(){
 		$usersModel = TableRegistry::get('Users');
 		$session = $this->request->session();
 		$userId = $session->read("User.id");
 		$digits = 6;
-		$four_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
+		$six_digits = rand(pow(10, $digits-1), pow(10, $digits)-1);
 		$userData = $usersModel->newEntity();
 		$userData->id = $userId;
-		$userData->otp = $four_digits;
-
+		$userData->otp = $six_digits;
 		if($usersModel->save($userData)){
-			$this->sendMessages($phone_number,$msg_body);
+			$userData = $usersModel->get($userId);
+			if(!empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
+				  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+				  $phone_number = $userData->phone;
+				  $country_code = $userData->country_code;
+				 
+			      $this->sendMessages($phone_number,$msg_body,$country_code);
+			}
 			return true;
 		}else{
 			return false;
 		}
-	}
+	}	
 	
 	
 	function sendMessages($to_mobile_number, $message_body,$country_code =''){
