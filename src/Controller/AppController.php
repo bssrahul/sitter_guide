@@ -63,8 +63,6 @@ class AppController extends Controller{
 
 			$this->setGuestStore("en");
 		}
-		
-
 		//$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale');
 		$currentLocal = substr($setRequestedLanguageLocale,0,2);
 		$this->set('currentLocal', $currentLocal);
@@ -77,9 +75,7 @@ class AppController extends Controller{
 		$this->set('sitelogo',$sitelogo);
 		$this->set('sitefavicon',$sitefavicon);
 	}
-	
-	
-     /**
+	/**
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
@@ -108,7 +104,6 @@ class AppController extends Controller{
 		$session->write('error','');
 		$session->write('success',$msg);
 	}
-	
 	/** Function for set language locale as per language selection on front end
 	*/
 	public function setCurrency($currcyCode=null,$controller='Guests',$action='index',$params=null){
@@ -137,7 +132,6 @@ class AppController extends Controller{
 		   return $this->redirect("/$controller/$action/".$params);
 		}
 	}
-	
 	/** Function for set language locale as per language selection on front end
 	*/
 	public function setGuestStore($langCode=null,$controller='Guests',$action='index',$params=null){
@@ -147,10 +141,7 @@ class AppController extends Controller{
 		
 		//$langCode return en|fr|de|es|hu|it|ro|ru
 		if(isset($langCode) && $langCode !=""){
-			
-			
 			$requestedLanguage = $langCode;
-			
 			if($requestedLanguage=="en"){
 			
 				$setRequestedLanguageLocale = $requestedLanguage."_US";
@@ -738,10 +729,7 @@ class AppController extends Controller{
 	*/
 	function admin_upload_document($type = NULL, $FileArr = array())
 	{
-	
-		
-		//echo $type;print_r($FileArr);die;
-		$this->viewBuilder()->layout('');
+	    $this->viewBuilder()->layout('');
 		$this->autoRender=false;
 		
 		if($FileArr['name']!="")
@@ -799,17 +787,10 @@ class AppController extends Controller{
 			}
 		}
 	}
-	
-	//FOR FAVICON AND SITE LOGO
-	/* public function faviconLogo(){
-		
-		$ConfingModel=TableRegistry::get("site_configuration");
-		$ConfingData=$ConfingModel->find('all')->toArray();
-		pr($ConfingData);die;
-	} */
-	
 
-	function genrateOtp(){
+	//For generate OTP
+	 function genrateOtp(){
+
 		$usersModel = TableRegistry::get('Users');
 		$session = $this->request->session();
 		$userId = $session->read("User.id");
@@ -818,6 +799,7 @@ class AppController extends Controller{
 		$userData = $usersModel->newEntity();
 		$userData->id = $userId;
 		$userData->otp = $six_digits;
+
 		if($usersModel->save($userData)){
 			$userData = $usersModel->get($userId);
 			if(!empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
@@ -831,13 +813,16 @@ class AppController extends Controller{
 		}else{
 			return false;
 		}
+
 	}	
 	
 	
-	function sendMessages($to_mobile_number, $message_body,$country_code =''){
+
+	//For send message
+	function sendMessages($to_mobile_number=null, $message_body=null,$country_code=null){
 		
 		/*CHECK THAT PHONE NUMBER IS USA OR NOT, IF USA PHONE NUMBER EXISTS INTO REQUEST THEN WE HAVE TO USE BANDWIDTH API OTHERWISE USE TWILIO*/
-		
+
 		if($country_code =='+1'){
 			
 			/*INCLUDE BANDWIDTH LIABRARY*/	
@@ -853,8 +838,8 @@ class AppController extends Controller{
 				
 			try {
 				$message = new \Catapult\Message(array(
-						"from" => '+61420415125',
-						"to" => $to_mobile_number,
+						"from" => '+91872582153',
+						"to" => '+'.$country_code.$to_mobile_number,
 						"text" => $message_body
 				));
 
@@ -865,18 +850,18 @@ class AppController extends Controller{
 			}
 
 		}else{
-			
-			/*INCLUDE TWILIO LIABRARY*/
+			/*
+			//INCLUDE TWILIO LIABRARY
 			require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
 			
-			/*CREATE STRIPE OBJECT*/
+			//CREATE STRIPE OBJECT
 			$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
 
-			/*SEND MESSAGE VIA TWILIO API CALL*/
+			//SEND MESSAGE VIA TWILIO API CALL
 			try {
 				$output = $client->account->messages->create(array( 
-					'To' => $to_mobile_number, 
-					'From' => "+61425415125", 				
+					'To' => '+16518675309', 
+					'From' => "+14158141829", 				
 					'Body' => $message_body
 				));
 				
@@ -884,8 +869,38 @@ class AppController extends Controller{
 			}
 			catch (\Exception $e) { 
 				$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
-			}
+			}*/
 			
+			 
+			$id = TWILIO_SID;
+			$token = TWILIO_AUTHTOKEN;
+
+			//echo $id."TOKEN:".$token; die;
+			
+			$url = "https://api.twilio.com/2010-04-01/Accounts/AC46be08cb440574bca3ab323df8cd555d/Calls.json";
+			//"https://api.twilio.com/2010-04-01/Accounts/$id/SMS/Messages";
+			$from = "+61420415125";
+			//$from = "+14438407757";//live
+			//$phone ="+919991281944";
+			$to = '+61420415125';
+			$body = $message_body;
+			$data = array(
+				'From' => $from,
+				'To' => $to,
+				'Body' => $body,
+			);
+			$post = http_build_query($data);
+			$x = curl_init($url);
+			curl_setopt($x, CURLOPT_POST, true);
+			curl_setopt($x, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($x, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($x, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+			curl_setopt($x, CURLOPT_USERPWD, "$id:$token");
+			curl_setopt($x, CURLOPT_POSTFIELDS, $post);
+			$y = curl_exec($x);
+		                  
+              
+		
 		}
 		
 		return true;
