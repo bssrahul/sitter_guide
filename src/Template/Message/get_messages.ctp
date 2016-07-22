@@ -69,9 +69,14 @@
 							<?php echo (@$get_booking_requests_to_display['user']['first_name'] !='')? @$get_booking_requests_to_display['user']['first_name'] : ""; ?> 
 							<?php echo (@$get_booking_requests_to_display['user']['last_name'] !='')? ucwords(substr(@$get_booking_requests_to_display['user']['last_name'],0,1)) : ""; ?> 
                         </b>
+                        
+                         <button id="refresh_chat" data-rel="<?php echo @$booking_id; ?>" class="btn btn-ref">
+                          <i class="fa fa-refresh"></i>
+                        </button>
+                        
                       </span>
                     </div>
-                    <div id="content-m" class="chatscroll">
+                    <div id="//content-m" class="chatscroll">
                       <div class="chat-wrapper-inner positi ">
                         <div class="container-fluid list_chat_ul">
 						  <?php echo $this->element('frontElements/Message/ajax_chat_response'); ?>
@@ -95,7 +100,7 @@
 <?php  if(@$booking_id !=''){ ?>
 <script>
 	var booking_id = '<?php echo @$booking_id; ?>';
-	var folder_status = '<?php echo @$display_thread_folder_status; ?>';
+	var folder_status = '<?php echo @$folder_status; ?>';
 	
 	$(function(){
 		//SCRIPT FOR CHATS AUTOLOAD

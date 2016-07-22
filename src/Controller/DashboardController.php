@@ -20,7 +20,7 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\Event\Event;
 use Cake\I18n\Time;
-
+use Cake\Datasource\ConnectionManager;
 
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'calendar.php');
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'bookingCalendar.php');
@@ -95,17 +95,17 @@ class DashboardController extends AppController
          $userId = $session->read('User.id');
             //For redirect on about guest tab
 			$userData = $usersModel->find('all',['contain'=>[
-															'UserSitterHouses',
-															'UserPets'=>['UserPetGalleries'], 
-															'UserSitterServices', 
-															'UserProfessionalAccreditationsDetails',
-															'UserProfessionalAccreditations',
-															'UserAboutSitters',
-															'UserSitterGalleries',
-															'UserSitterAvailability'
-													            ]
-														]
-												)
+																'UserSitterHouses',
+																'UserPets'=>['UserPetGalleries'], 
+																'UserSitterServices', 
+																'UserProfessionalAccreditationsDetails',
+																'UserProfessionalAccreditations',
+																'UserAboutSitters',
+																'UserSitterGalleries',
+																'UserSitterAvailability'
+													         ]
+												]
+										 )
 								   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 								   ->toArray();
 				if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
@@ -473,16 +473,130 @@ class DashboardController extends AppController
 		$this->viewBuilder()->layout('profile_dashboard');
 
 		$SiteConfigurationsModel = TableRegistry::get('SiteConfigurations');
+		$transactionModel = TableRegistry::get('Transactions');
+		
         $siteInfo = $SiteConfigurationsModel->find('all')->first();
         $this->set('siteInfo',$siteInfo);
 
         $session = $this->request->session();
         $userId = $session->read('User.id');
         $userType = $session->read('User.user_type');
-
-        $bookingRequestModel = TableRegistry::get('BookingRequests');
-          
-		$this->ajaxCalendarBooking();
+        //For get total paid
+        $totalTransaction = $transactionModel->find('all')
+								   ->where(['Transactions.user_id' => $userId])
+								   ->hydrate(false)->toArray();
+        $totalPaid = 0;
+        if(!empty($totalTransaction)){
+			 foreach($totalTransaction as $single_trans){
+					$totalPaid += $single_trans['amount'];
+			 }
+		}
+		$this->set("totalPaid",$totalPaid);
+		//End
+		/////////////////
+		// $one_month_ago = new Time('1 month ago');
+		// $two_month_ago = new Time('2 month ago');
+		// $three_month_ago = new Time('3 month ago') - new Time('2 month ago');
+		 
+		$query = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
+				FROM transactions
+				WHERE `created` >= now() - INTERVAL 3 MONTH 
+				AND `user_id`= '.$userId.'
+				GROUP BY YEAR(`created`) , MONTH(`created`)
+				ORDER BY `created` ASC
+				LIMIT 3';
+				
+		    $connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 
+					
+		 $threeMonthPaid = [];
+		 foreach($results as $single_val){
+			       $threeMonthPaid[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
+			       $totalMonthPaid += $single_val['SUM( `amount` )'];
+		 }
+		 $this->set("threeMonthPaid",$threeMonthPaid);	
+		 $this->set("totalMonthPaid",$totalMonthPaid);	 
+		 // pr($threeMonthPaid);die;
+		 $query = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
+				FROM transactions
+				WHERE `created` >= now() - INTERVAL 3 MONTH 
+				AND `sitter_id`= '.$userId.'
+				GROUP BY YEAR(`created`) , MONTH(`created`)
+				ORDER BY `created` ASC
+				LIMIT 3';
+				
+		    $connection = ConnectionManager::get('default');
+			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 
+					
+		 $threeMonthEarn = [];
+		 $totalMonthErn = 0;
+		 foreach($results as $single_val){
+			 //pr($single_val);die;
+			       $threeMonthEarn[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
+			       $totalMonthErn += $single_val['SUM( `amount` )'];
+			       
+		 }
+		 $this->set("threeMonthEarn",$threeMonthEarn);	 
+		 $this->set("totalMonthErn",$totalMonthErn);	 
+		  
+		  //pr($totalMonthErn);die;
+		  
+		  
+		  
+		  
+		  
+		/* $oneMonthAgo = $transactionModel->find('all')
+								   ->where(['Transactions.user_id' => $userId])
+								   ->where(["Transactions.created >=" => $one_month_ago])
+								   ->hydrate(false)->toArray();
+		   $totalOneMonth = 0;					   
+		   if(!empty($oneMonthAgo)){
+			 foreach($oneMonthAgo as $single_one_month){
+					$totalOneMonth += $single_one_month['amount'];
+			 }
+		   }				   
+		   $this->set("totalOneMonth",$totalOneMonth);	
+		 				   
+		 $twoMonthAgo = $transactionModel->find('all')
+								   ->where(['Transactions.user_id' => $userId])
+								   ->where(["Transactions.created >=" => $two_month_ago])
+								   ->hydrate(false)->toArray();
+		   $totalTwoMonth = 0;					   
+		   if(!empty($oneMonthAgo)){
+			 foreach($twoMonthAgo as $single_two_month){
+					$totalTwoMonth += $single_two_month['amount'];
+			 }
+		   }				   
+		   $this->set("totalTwoMonth",$totalTwoMonth);
+		  					   
+		  $threeMonthAgo = $transactionModel->find('all')
+								   ->where(['Transactions.user_id' => $userId])
+								   ->where(["Transactions.created >=" => $three_month_ago])
+								   ->hydrate(false)->toArray();
+		   $totalThreeMonth = 0;					   
+		   if(!empty($oneMonthAgo)){
+			 foreach($threeMonthAgo as $single_three_month){
+					$totalThreeMonth += $single_three_month['amount'];
+			 }
+		   }	
+		   pr($threeMonthAgo);die;	*/		   
+		   //$this->set("totalThreeMonth",$totalThreeMonth);
+		//timestamp >= now()-interval 3 month
+		//pr($last3Month); die;
+		/////////////////
+		//For earning
+		$totalEarned = $transactionModel->find('all')
+								   ->where(['Transactions.sitter_id' => $userId])
+								   ->hydrate(false)->toArray();
+        $totalEarning = 0;
+        if(!empty($totalEarned)){
+			 foreach($totalEarned as $single_earn){
+					$totalEarning += $single_earn['amount'];
+			 }
+		}
+		$this->set("totalEarning",$totalEarning);
+	     //End
+        $this->ajaxCalendarBooking();
 	    $this->home();
 	}
  	public function ajaxCalendarBooking()
@@ -706,13 +820,17 @@ function generatePromocode(){
 /**
 function for promote
 */
-function promote(){
+ function promote(){
 	   $this->viewBuilder()->layout('profile_dashboard');
-	   /////////////////
-	     $usersModel = TableRegistry :: get("Users");
-	     $session = $this->request->session();
-         $userId = $session->read('User.id');
-          //For Update profile status
+	   
+			 $usersModel = TableRegistry :: get("Users");
+			 $session = $this->request->session();
+			 $userId = $session->read('User.id');
+			 
+			 /*$user_current = $bookingRequestModel->find('all')
+						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
+						->hydrate(false)->count();*/
+                //For Update profile status
 			    $userData = $usersModel->get($userId);
 				//$session->write('User.user_type',$userData[0]->user_type);
 				$userInfo =	array();
@@ -722,8 +840,7 @@ function promote(){
 				
 				$this->set('refer_url', $userInfo['refer_url']);
 				$this->set('reference_code', $userData->reference_code);
-	  ////////////////
-}
+ }
 /**
 * Function to generate random string
 */
@@ -749,12 +866,10 @@ function promote(){
 				{
 					$errors['current_password'][]="Required field\n";
 				}
-				
 				if(trim($data['re_password'])!='')
 				{
 					$errors['current_password'][]="Required field\n";
 				}
-				
 		}else{
 
 				if(trim(md5($data['current_password'])) != $user_info->password)
@@ -938,9 +1053,7 @@ Function for Front profile dashboard
 							    $usersModel->save($userData);
 							    $userData = $usersModel->get($userId);
 							    if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
-									
-										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
+									   $this->genrateOtp($userData->phone,$userData->country_code);
 							    }	
 							unset($userData->id);
 							$this->set('userInfo', $userData);
@@ -953,10 +1066,10 @@ Function for Front profile dashboard
 								 $userData->password = MD5($this->request->data['Usersp']['password']);
 								 $userData->org_password = $this->request->data['Usersp']['password'];
 								 if ($usersModel->save($userData)){
+									 
 									 $userData = $usersModel->get($userId);
 									if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
-										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
+										$this->genrateOtp();
 									 }
 									 
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
@@ -980,10 +1093,10 @@ Function for Front profile dashboard
 		                $userData->id = $userId;
 		                
 		                if ($usersModel->save($userData)) {
+							
 							$userData = $usersModel->get($userId);
 							if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
-								  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-									$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
+								   $this->genrateOtp();
 							 }
 							return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 		                }else{
@@ -996,12 +1109,11 @@ Function for Front profile dashboard
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 							   $userData->id = $userId;
 							   $usersModel->save($userData);
-							   $userData = $usersModel->get($userId);
 							   
+							   $userData = $usersModel->get($userId);
 							   if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 								  
-										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
+										$this->genrateOtp();
 							    }		
 							unset($userData->id);
 							$this->set('userInfo', $userData);
@@ -1013,11 +1125,10 @@ Function for Front profile dashboard
 								$userData = $usersModel->patchEntity($userData, $this->request->data['Users'],['validate'=>'update']);
 								$userData->id = $userId;
 								if ($usersModel->save($userData)) {
+									
 									$userData = $usersModel->get($userId);
 									if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
-										
-										$msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
-										$this->genrateOtp($userData->country_code.$userData->phone,$msg_body);
+										$this->genrateOtp();
 							        }
 									return $this->redirect(['controller'=>'dashboard','action'=>'house']);
 								}else{

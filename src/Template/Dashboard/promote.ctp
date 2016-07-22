@@ -91,25 +91,29 @@
           </p>
           <ul class=" list-unstyled prom-social">
             <li>
-              <a href="#">
+             <a href="javascript:void(0)"
+                onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo "http://localhost/sitter_guide/share/er.sukhdevkamboj/token/Ii1TMGAKYAo=" ?>')">
                 <i class="fa fa-facebook-square">
                 </i> Post On Facebook 
               </a>
             </li>
             <li>
-              <a href="#">
+			<a href="javascript:void(0)"
+              onclick="javascript:genericSocialShare('http://twitter.com/share?text=<?php echo "http://localhost/sitter_guide/share/er.sukhdevkamboj/token/Ii1TMGAKYAo=" /*urlencode($blogs_info['title']); ?>&url=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']*/; ?>')">
                 <i class="fa fa-twitter">
                 </i> Post On Twitter 
               </a>
             </li>
             <li>
-              <a href="#">
-                <i class="fa fa-pencil">
+			<a href="javascript:void(0)"
+              onclick="javascript:genericSocialShare('http://pinterest.com/pin/create/button/?url=<?php echo "http://localhost/sitter_guide/share/er.sukhdevkamboj/token/Ii1TMGAKYAo=" /*"http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>&media=<?php echo HTTP_ROOT.'img/uploads/'.$blogs_info['image']*/; ?>')">
+                <i class="fa fa-pinterest">
                 </i> Post On Craigslist 
               </a>
             </li>
-            <li>
-              <a href="#">
+           <!-- <li>
+              <a href="javascript:void(0)"
+                onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>')">
                 <i class="fa fa-linkedin-square">
                 </i> Post On Linkedin 
               </a>
@@ -131,7 +135,7 @@
                 <i class="fa fa-envelope">
                 </i> Email your Profile 
               </a>
-            </li>
+            </li>-->
           </ul>
           <p class="prom-visit"> 
             <a href="#">Visit our Sitter Resources Center for more advice on growing your business.
