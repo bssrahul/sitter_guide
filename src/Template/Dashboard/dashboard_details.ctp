@@ -7,7 +7,6 @@
 	echo $this->Html->script(['Front/prefixfree.min.js']);
 		
 ?>
-
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
         <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
 			<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
@@ -28,9 +27,7 @@
 			  </ol>
 			</div>
 		</div>
-
-
-		<div class="row">
+        <div class="row">
 			<?php if($userType == "Sitter"){ ?>
             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6">
 			 <div class="outer-db-box">
@@ -38,7 +35,7 @@
 				  <div class="revenue-icon">
 				  </div>
 				  <div class="topbox-text">
-					<h4> <?php echo @$totalEarning; ?>
+					<h4> <?php echo @$totalEarningThisMonth; ?>
 					</h4>
 					<p>Earning this month
 					</p>
@@ -48,7 +45,6 @@
 				  <p>Earning this month for (User Name)
 				  </p>
 				</div>
-				
 				<?php  if(!empty($threeMonthEarn)){ 
 					
 					$ernCountMonth = count($threeMonthEarn);
@@ -118,7 +114,7 @@
 				  <div class="revenue-icon">
 				  </div>
 				  <div class="topbox-text">
-					<h4><?php echo @$totalPaid; ?>
+					<h4><?php echo @$totalPaidThisMonth; ?>
 					</h4>
 					<p>Paid this month
 					</p>
@@ -176,21 +172,17 @@
 					</p>
 					<div class="revenue-small-text text-center">
 					  <p>Paid shown are after Sitter Guide
-						commission and service costs okokok
+						commission and service costs
 					  </p>
 					</div>
 				  </div>
 				</div>
 				<?php } ?>
-				
-				
-			  </div>
+				</div>
 			</div>
-			
-            <?php } 
+			<?php } 
            ?>
 			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6 ">
-				
 			  <div class="outer-db-box">
 			  <?php  if($userType == "Sitter"){ ?> 
 					<div class=" top-box">
@@ -1070,20 +1062,22 @@
     google.charts.setOnLoadCallback(drawChart);
     google.charts.setOnLoadCallback(drawChartPaid);
     
-    function drawChart() {
+    function drawChart(){
       <?php $colorArr = ['0'=>'#b87333','1'=>'silver','2'=>'gold']; ?>
       
       var data = google.visualization.arrayToDataTable([
          ['Element', 'Density', { role: 'style' }],
          <?php 
            $clr=0;
+        if(!empty($threeMonthEarn)){
           foreach($threeMonthEarn as $key=>$single_earn){ ?>
 			
 			 ['<?php echo $key; ?>', <?php echo @$single_earn; ?>, '<?php echo $colorArr[$clr] ?>'],  
 			 
 			<?php 
 			$clr++;
-			} ?>
+			}
+		} ?>
       ]);
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
@@ -1104,7 +1098,6 @@
       var chart = new google.visualization.ColumnChart(document.getElementById("chart"));
       chart.draw(view, options);
        <?php } ?>
-     
     }
     
      function drawChartPaid() {
@@ -1114,13 +1107,15 @@
          ['Element', 'Density', { role: 'style' }],
          <?php 
            $clr=0;
+          if(!empty($threeMonthPaid)){ 
           foreach($threeMonthPaid as $key=>$single_month){ ?>
 			
 			 ['<?php echo $key; ?>', <?php echo @$single_month; ?>, '<?php echo $colorArr[$clr] ?>'],  
 			 
 			<?php 
 			$clr++;
-			} ?>
+			} 
+		  } ?>
       ]);
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,

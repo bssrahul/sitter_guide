@@ -481,23 +481,9 @@ class DashboardController extends AppController
         $session = $this->request->session();
         $userId = $session->read('User.id');
         $userType = $session->read('User.user_type');
-        //For get total paid
-        $totalTransaction = $transactionModel->find('all')
-								   ->where(['Transactions.user_id' => $userId])
-								   ->hydrate(false)->toArray();
-        $totalPaid = 0;
-        if(!empty($totalTransaction)){
-			 foreach($totalTransaction as $single_trans){
-					$totalPaid += $single_trans['amount'];
-			 }
-		}
-		$this->set("totalPaid",$totalPaid);
-		//End
-		/////////////////
-		// $one_month_ago = new Time('1 month ago');
-		// $two_month_ago = new Time('2 month ago');
-		// $three_month_ago = new Time('3 month ago') - new Time('2 month ago');
-		 
+       
+		//Paid 
+		$current_month = date('F');
 		$query = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
 				FROM transactions
 				WHERE `created` >= now() - INTERVAL 3 MONTH 
@@ -510,14 +496,22 @@ class DashboardController extends AppController
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 
 					
 		 $threeMonthPaid = [];
+		 $totalMonthPaid = 0;
+		 $totalPaidThisMonth = 0;
 		 foreach($results as $single_val){
 			       $threeMonthPaid[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
 			       $totalMonthPaid += $single_val['SUM( `amount` )'];
+			        if($single_val['MONTHNAME(`created`)'] == $current_month){
+					     $totalPaidThisMonth = $single_val['SUM( `amount` )'];
+				   }
 		 }
+		 //pr($threeMonthPaid);die;
+		 
 		 $this->set("threeMonthPaid",$threeMonthPaid);	
-		 $this->set("totalMonthPaid",$totalMonthPaid);	 
-		 // pr($threeMonthPaid);die;
-		 $query = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
+		 $this->set("totalMonthPaid",$totalMonthPaid);	
+		 $this->set("totalPaidThisMonth",$totalPaidThisMonth); 
+		 //Earn
+		 $sitter_earn = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
 				FROM transactions
 				WHERE `created` >= now() - INTERVAL 3 MONTH 
 				AND `sitter_id`= '.$userId.'
@@ -526,78 +520,28 @@ class DashboardController extends AppController
 				LIMIT 3';
 				
 		    $connection = ConnectionManager::get('default');
-			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 
+			$earn_results = $connection->execute($sitter_earn)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 
 					
 		 $threeMonthEarn = [];
 		 $totalMonthErn = 0;
-		 foreach($results as $single_val){
-			 //pr($single_val);die;
+		 $totalEarningThisMonth = 0;
+		
+		
+		 foreach($earn_results as $single_val){
 			       $threeMonthEarn[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
 			       $totalMonthErn += $single_val['SUM( `amount` )'];
 			       
+			       if($single_val['MONTHNAME(`created`)'] == $current_month){
+					     $totalEarningThisMonth = $single_val['SUM( `amount` )'];
+				   }
 		 }
 		 $this->set("threeMonthEarn",$threeMonthEarn);	 
 		 $this->set("totalMonthErn",$totalMonthErn);	 
-		  
-		  //pr($totalMonthErn);die;
-		  
-		  
-		  
-		  
-		  
-		/* $oneMonthAgo = $transactionModel->find('all')
-								   ->where(['Transactions.user_id' => $userId])
-								   ->where(["Transactions.created >=" => $one_month_ago])
-								   ->hydrate(false)->toArray();
-		   $totalOneMonth = 0;					   
-		   if(!empty($oneMonthAgo)){
-			 foreach($oneMonthAgo as $single_one_month){
-					$totalOneMonth += $single_one_month['amount'];
-			 }
-		   }				   
-		   $this->set("totalOneMonth",$totalOneMonth);	
-		 				   
-		 $twoMonthAgo = $transactionModel->find('all')
-								   ->where(['Transactions.user_id' => $userId])
-								   ->where(["Transactions.created >=" => $two_month_ago])
-								   ->hydrate(false)->toArray();
-		   $totalTwoMonth = 0;					   
-		   if(!empty($oneMonthAgo)){
-			 foreach($twoMonthAgo as $single_two_month){
-					$totalTwoMonth += $single_two_month['amount'];
-			 }
-		   }				   
-		   $this->set("totalTwoMonth",$totalTwoMonth);
-		  					   
-		  $threeMonthAgo = $transactionModel->find('all')
-								   ->where(['Transactions.user_id' => $userId])
-								   ->where(["Transactions.created >=" => $three_month_ago])
-								   ->hydrate(false)->toArray();
-		   $totalThreeMonth = 0;					   
-		   if(!empty($oneMonthAgo)){
-			 foreach($threeMonthAgo as $single_three_month){
-					$totalThreeMonth += $single_three_month['amount'];
-			 }
-		   }	
-		   pr($threeMonthAgo);die;	*/		   
-		   //$this->set("totalThreeMonth",$totalThreeMonth);
-		//timestamp >= now()-interval 3 month
-		//pr($last3Month); die;
-		/////////////////
-		//For earning
-		$totalEarned = $transactionModel->find('all')
-								   ->where(['Transactions.sitter_id' => $userId])
-								   ->hydrate(false)->toArray();
-        $totalEarning = 0;
-        if(!empty($totalEarned)){
-			 foreach($totalEarned as $single_earn){
-					$totalEarning += $single_earn['amount'];
-			 }
-		}
-		$this->set("totalEarning",$totalEarning);
-	     //End
-        $this->ajaxCalendarBooking();
-	    $this->home();
+		 $this->set("totalEarningThisMonth",$totalEarningThisMonth);
+		 //End
+		 
+         $this->ajaxCalendarBooking();
+	     $this->home();
 	}
  	public function ajaxCalendarBooking()
     {

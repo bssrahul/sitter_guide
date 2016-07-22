@@ -508,7 +508,7 @@ class GuestsController extends AppController
 		$UserBadgeModel=TableRegistry :: get("Users_badge");
 		$UserBadgedata=$UserBadgeModel->newEntity();
 
-		if(isset($this->request->data['signup-submit']) && $this->request->data['signup-submit']=='Sign Up')
+		if(isset($this->request->data['Users']))
 		{ 
 			if(isset($this->request->data['g-recaptcha-response']) && !empty($this->request->data['g-recaptcha-response'])){
 					//your site secret key
