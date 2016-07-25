@@ -3,13 +3,14 @@
 	echo $this->Html->script(['Front/messages.js']); 
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
-  <div class="row db-top-bar-header no-padding-left no-padding-right">
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+  <div class="row  no-padding-left no-padding-right">
+  	<div class="db-top-bar-header">
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <h3>
         <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Inbox
       </h3>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
         <li> You are here : 
         </li>
@@ -21,9 +22,10 @@
         </li>
       </ol>
     </div>
+    </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="message-full-wrapper">
         <div class="top-message-strip">
           <div class="row">

@@ -2,8 +2,8 @@
 
 
 
-.db-top-bar-header { border-bottom:1px solid #ccc;}
-.db-top-bar-header h3 {color:#222d3d; font-size:20px; padding-top:15px; margin-bottom:15px;}
+.db-top-bar-header { border-bottom:1px solid #ccc; width:100%; float:left;}
+.db-top-bar-header h3 {color:#222d3d; font-size:20px; padding:12px 0;}
 .db-top-bar-header .breadcrumb {background-color:transparent; padding-top:20px; margin-bottom:0px !important;}
 .margin-right-0 {margin-right:0px !important}
 .margin-left-0 {margin-leftt:0px !important}
@@ -69,7 +69,7 @@ h1.page-header {margin-top: -5px;}
 .dbnav-wrap{ width:100%; float:left; background:#222d3d; margin:70px 0 0 0; color:#ffffff;}
 .dbprofile-area{ width:100%; float:left; padding:13px 0;}
 .dbprofile-area .dbprofile-pic{ width:100%; max-width:247px; float:left;}
-.dbprofile-area .dbprofile-pic img{ float:left; margin:0 10px 0 0; }
+.dbprofile-area .dbprofile-pic img{ float:left; margin:0 10px 0 0; width:40px; height:40px; object-fit:cover;  }
 .dbprofile-area .dbprofile-pic p{ font-size:16px; padding:10px 0 0 0;}
 .dbprofile-area .status-box{ width:100%; float:left; max-width:330px; margin:4px 0 0 0; background:#ffffff; height:38px; border-radius:2px;}
 .dbprofile-area .status-box ul{ margin:0px; padding:0px; list-style-type:none;}
@@ -356,118 +356,51 @@ transform-style: preserve-3d;
 
 /* Slide side body*/
 
-.side-body {
-
-margin-left: 5px;margin-top: 70px; position: relative;
-
-	-moz-animation: bodyslideout 300ms forwards;
-
-	-o-animation: bodyslideout 300ms forwards;
-
-	-webkit-animation: bodyslideout 300ms forwards;
-
-	animation: bodyslideout 300ms forwards;
-
-	-webkit-transform-style: preserve-3d;
-
-	transform-style: preserve-3d;
-
-}
-
-.body-slide-in {
-
-	-moz-animation: bodyslidein 300ms forwards;
-
-	-o-animation: bodyslidein 300ms forwards;
-
-	-webkit-animation: bodyslidein 300ms forwards;
-
-	animation: bodyslidein 300ms forwards;
-
-	-webkit-transform-style: preserve-3d;
-
-	transform-style: preserve-3d;
-
-}
+.side-body {margin-left: 5px;margin-top: 70px; position: relative;
+-moz-animation: bodyslideout 300ms forwards; -o-animation: bodyslideout 300ms forwards; 	-webkit-animation: bodyslideout 300ms forwards;	animation: bodyslideout 300ms forwards;	-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;}
+.body-slide-in {-moz-animation: bodyslidein 300ms forwards;	-o-animation: bodyslidein 300ms forwards; -webkit-animation: bodyslidein 300ms forwards; animation: bodyslidein 300ms forwards;	-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;}
 
 /* Hamburger */
 
 .navbar-toggle-sidebar {background-color: transparent; border: 2px solid #000; border-radius: 0; float: left; margin:0px 0 0; padding: 3px 10px;}
-
 #nav-second .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {background-color: fff !important;}
 
 /* Search */
 
 #search .panel-body .navbar-form {border-bottom: 0;}
-
 #search .panel-body .navbar-form .form-group {margin: 0;}
-
 .side-menu .navbar-header {/* this is probably redundant */	position: fixed;z-index: 3; background-color: #f8f8f8;}
 
 /* Dropdown tweek */
-
 #dropdown .panel-body .navbar-nav { margin: 0;}
-
 }
-
-
-
-
-
 
 
 @media (min-width:640px) and (max-width:767px){
-
-			.side-menu-container > .navbar-nav {
-
-	/* Add position:absolute for scrollable menu -> see top comment */
-
+.side-menu-container > .navbar-nav {
+/* Add position:absolute for scrollable menu -> see top comment */
 position: fixed; left: -300px; width: 300px; top: 43px; height: 72%; border-right: 1px solid #e7e7e7; background-color: #222d3d; overflow-x:hidden; overflow-y:auto;
-
 -moz-animation: slideout 300ms forwards;-o-animation: slideout 300ms forwards;
-
 -webkit-animation: slideout 300ms forwards;
-
 animation: slideout 300ms forwards;
-
 -webkit-transform-style: preserve-3d;
-
 transform-style: preserve-3d;
 
 }
+}
 
-			
-
-			
-
-			
-
-			}
-
-			
-
-			
-
-			
-
-					@media (min-width:480px) and (max-width:639px){
-
-			.side-menu-container > .navbar-nav {
-
+@media (min-width:480px) and (max-width:639px){
+.side-menu-container > .navbar-nav {
 	/* Add position:absolute for scrollable menu -> see top comment */
 
 position: fixed; left: -300px; width: 300px; top: 43px; height: 68%; border-right: 1px solid #e7e7e7; background-color: #222d3d; overflow-x:hidden; overflow-y:auto;
-
 -moz-animation: slideout 300ms forwards;-o-animation: slideout 300ms forwards;
-
 -webkit-animation: slideout 300ms forwards;
-
 animation: slideout 300ms forwards;
-
 -webkit-transform-style: preserve-3d;
-
 transform-style: preserve-3d;
-
 }
 
 			
@@ -480,179 +413,102 @@ transform-style: preserve-3d;
 
 			
 
-			
-
-			
-
-			
-
-	@media (min-width:360px) and (max-width:479px){
+@media (min-width:360px) and (max-width:479px){
 
 		
 
-		
-
-	.side-menu-container > .navbar-nav {
-
-	/* Add position:absolute for scrollable menu -> see top comment */
-
+.side-menu-container > .navbar-nav {
+/* Add position:absolute for scrollable menu -> see top comment */
 position: fixed; left: -300px; width: 300px; top: 43px; height: 84%; border-right: 1px solid #e7e7e7; background-color: #222d3d; overflow-x:hidden; overflow-y:auto;
-
 -moz-animation: slideout 300ms forwards;-o-animation: slideout 300ms forwards;
-
 -webkit-animation: slideout 300ms forwards;
-
 animation: slideout 300ms forwards;
-
 -webkit-transform-style: preserve-3d;
-
 transform-style: preserve-3d;
-
 }
-
-		
-
-		
-
-		}
-
-		
-
+	}
 
 
 @media (min-width:320px) and (max-width:359px){
-
-	
-
-	
-
-	.side-menu-container > .navbar-nav {
-
-	/* Add position:absolute for scrollable menu -> see top comment */
-
-position: fixed; left: -300px; width: 300px; top: 43px; height: 79%; border-right: 1px solid #e7e7e7; background-color: #222d3d; overflow-x:hidden; overflow-y:auto;
-
+.side-menu-container > .navbar-nav {
+/* Add position:absolute for scrollable menu -> see top comment */
+position: fixed; left: -300px; width: 300px; top: 43px; height: 79%; border-right: 1px solid #e7e7e7; background-color: #222d3d; overflow-x:hidden; overflow-y:auto; z-index:999;
 -moz-animation: slideout 300ms forwards;-o-animation: slideout 300ms forwards;
-
 -webkit-animation: slideout 300ms forwards;
-
 animation: slideout 300ms forwards;
-
 -webkit-transform-style: preserve-3d;
-
 transform-style: preserve-3d;
-
 }
 
-	
-
-	
-
-	
 
 	}
 
-	
-
-	
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (min-width:320px) and (max-width:400px){
-
 .ms-wrap .mob-status ul li a{ font-size:18px;}
-
 .ms-wrap .mob-status ul li.p-pic{ width:18%;}
-
 .ms-wrap .mob-status ul li.status{ width:18%;}
-
 .ms-wrap .mob-status ul li.bal{ width:28%;}
-
 .ms-wrap .mob-status ul li.user{ width:18%;}
-
 .ms-wrap .mob-status ul li.home{ width:18%;}	
-
 }
 
-
-
-
-
-
-
-
-
-
-
 #content .title-panel { background: rgb(45, 59, 80) none repeat scroll 0 0; color: #fff; font-size: 17px; font-weight: 500; height: 58px; padding: 0px 0px 0px 20px; position: relative;}
-
 #content .title-panel1 {position: absolute; top: 16px;}
-
 #content .panel-heading {border-top-left-radius: 0px; border-top-right-radius: 0px;}
-
 .green-box {width: 40px; height: 38px; background: #34a920; color:#fff; font-family:'CenturyGothic-Regular'; font-size:12px; font-weight:600; margin-right:20px;}
-
 .red-box {width: 40px; height: 38px; background: #c61d07;}
-
 .orange-box {width: 40px; height: 38px; background: #df5e00;}
-
 .yellow-box {width: 40px; height: 38px; background: #e0b800;}
-
 #content .navbar-form {padding: 0px;}
-
 #content .cal-input {margin-left: 10px; height: 38px; width: 250px;}
-
 #content .cal-btn{ height: 38px; margin-left: 2px; color: #cecece;}
-
 #content .input-width-calender {width: 94%; margin: 0 4px 0 11px; height: 38px;}
-
 .refresh {width: 50px; text-align: center;}
-
 /*table css starts*/
-
 .sync a {color: #5d5d5d !important; text-decoration: none; outline: none;}
-
 .recent-activity-table {background: #fff; margin-bottom: 30px;}
-
 .recent-activity-table table {margin-bottom: 10px !important;}
-
 .recent-activity-table th {font-size: 12px; color: #7d7d7d}
-
 .recent-activity-table .table-row-heading th {padding: 20px 0; border-bottom: 1px solid #ddd;}
-
 .recent-activity-table .table-row-text td {font-size: 11px !important; color: #7d7d7d; padding: 17px 0;}
-
 .table-image-pad {padding: 0 5px 0 0;}
-
 .recent-activity-table1 {background: #fff; margin-bottom: 0px;}
-
 .recent-activity-table1 table {margin-bottom: 10px !important;}
-
 .recent-activity-table1 th {font-size: 12px; color: #7d7d7d}
-
 .recent-activity-table1 .table-row-heading th {padding: 20px 0; border-bottom: 1px solid #ddd;}
-
 .recent-activity-table1 .table-row-text td { font-size: 11px !important; color: #7d7d7d; padding: 17px 0;}
-
 /*table css ends*/
-
-
 
 @media screen and (max-width:1024px) {
 .main-container-outer {float: left; margin-top: 116px; width: 100%;}	
 }
 
+
+@media (min-width:768px) and (max-width:991px){
+.db-top-bar-header h3{ padding:5px 0; }
+.db-top-bar-header .breadcrumb{ float:left; padding:7px 0px 10px 0; margin:3px 0 0 0; border-top:#e8e8e8 1px solid; width:100%; text-align:left;}
+.db-top-bar-header .breadcrumb li:first-child{ font-weight:bold;}
+.db-top-bar-header .breadcrumb li + li{ font-size:13px}
+}
+
+@media (min-width:641px) and (max-width:767px){
+
+.db-top-bar-header h3{ padding:5px 0; }
+.db-top-bar-header .breadcrumb{ float:left; padding:7px 0px 10px 0; margin:3px 0 0 0; border-top:#e8e8e8 1px solid; width:100%; text-align:left;}
+.db-top-bar-header .breadcrumb li:first-child{ font-weight:bold;}
+.db-top-bar-header .breadcrumb li + li{ font-size:13px}
+}
+@media (min-width:481px) and (max-width:640px){
+
+.db-top-bar-header h3{ padding:5px 0; }
+.db-top-bar-header .breadcrumb{ float:left; padding:7px 0px 10px 0; margin:5px 0; border-top:#e8e8e8 1px solid; width:100%; text-align:left;}
+.db-top-bar-header .breadcrumb li:first-child{ font-weight:bold;}
+.db-top-bar-header .breadcrumb li + li{ font-size:13px}
+}
+
+@media (min-width:320px) and (max-width:480px){
+.db-top-bar-header h3{ padding:5px 0; }
+.db-top-bar-header .breadcrumb{ float:left; padding:7px 0px 10px 0; margin:5px 0; border-top:#e8e8e8 1px solid; width:100%; text-align:left;}
+.db-top-bar-header .breadcrumb li:first-child{ font-weight:bold;}
+.db-top-bar-header .breadcrumb li + li{ font-size:13px}
+}

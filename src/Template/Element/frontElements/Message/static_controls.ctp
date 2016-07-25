@@ -31,7 +31,7 @@
                 </div>-->
               </div>
               <!--Step Image Area-->
-              
+                <!-- 
               <div class="container-fuild">
               <div class="row-fluid">
               	<div class="step-img-area">
@@ -68,7 +68,7 @@
                 </div>
               </div>
               </div>
-              <!--
+              -->
                <div class="container-fuild">
               <div class="row-fluid">
               	<div class="step-img-area">
@@ -83,8 +83,7 @@
                   </div>
                 </div>
                 </div>
-              </div>
-              </div>
+             
               
-              -->
+           
              <!--Step Image Area-->

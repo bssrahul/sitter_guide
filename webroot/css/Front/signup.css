@@ -44,7 +44,7 @@ span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  pad
 a.signup-fb {    background: #4063b3;    border: 1px solid #4063b3;    border-radius: 2px;    color: #fff;    font-size: 16px;    padding: 13px 0;    width: 100%;    display: inline-block;}
 a.signup-fb:hover {    color: #fff;}
 .line-signin {    border-bottom: 1px solid #ccc;    padding-bottom: 45px;}
-.signup-container form button:hover {background:#515151 ; color: #fff;}
+.signup-container form button:hover {background:#72a105 ; color: #fff;}
 .signup-container input.form-control{height: 41px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;}
 .signin-wrapper select {height: 47px; border-radius: 2px; border: 1px solid #aaaaaa; box-shadow: none;
   -webkit-appearance: none;   -moz-appearance:    none;   appearance:         none;   background: #fff url("../../img/arw.png") no-repeat scroll right 10px center;}
@@ -392,7 +392,15 @@ p.min-hh { min-height: 120px;}
 
 .profiletab-section ul.three-tab li { display:inline-block; border:0px; margin:0px; padding:0px 0; width:100%; float:left;border-bottom:#ffffff 1px solid; }
 .profiletab-section ul.three-tab li a{ padding:8px 0; margin:0px; display:block;}  
-.profiletab-section ul.three-tab li.active::after{ border:0px; }		
+.profiletab-section ul.three-tab li.active::after{ border:0px; }	
+
+p.browse-p{ font-size:14px;}
+.browse-p button { margin:0 0 0 10px;}	
+.tab-sectioninner label { font-size:12px;}
+
+.head-font {font-size:16px; font-weight:600;} 
+.head-font2 {font-size:14px;}
+
 
 }
 

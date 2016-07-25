@@ -505,7 +505,6 @@ class DashboardController extends AppController
 					     $totalPaidThisMonth = $single_val['SUM( `amount` )'];
 				   }
 		 }
-		 //pr($threeMonthPaid);die;
 		 
 		 $this->set("threeMonthPaid",$threeMonthPaid);	
 		 $this->set("totalMonthPaid",$totalMonthPaid);	
@@ -550,47 +549,132 @@ class DashboardController extends AppController
 			$userType = $session->read('User.user_type');
 			
 			$bookingRequestModel = TableRegistry :: get("BookingRequests");
+			
 			$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
 			$fieldname = $userType == 'Sitter'?'sitter':'guest';
-			$bookingData = $bookingRequestModel->find('all')
-						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
-						->contain(['Users'=> ['queryBuilder' => function ($q) {
+			  
+		$get_requests = $bookingRequestModel->find('all')
+		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId"])
+		->contain(['Users'=> ['queryBuilder' => function ($q) {
 																			return $q->select(['Users.id','Users.first_name','Users.last_name','Users.image','Users.city','Users.state','Users.country']);
 																		}
 													]
 								  ]
 						)
-						->hydrate(false)->toArray();
-			$user_Data = $bookingRequestModel->find('all')
-						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "pending",'BookingRequests.read_status' => "unread"])
-						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) = 1')
-					    ->hydrate(false)->toArray();
-				    
-			$client_stay_status["new_clients"] = count($user_Data);
-			$user_current = $bookingRequestModel->find('all')
-						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
-						->hydrate(false)->count();
-						
-			$client_stay_status["events"] = $user_current;
-		    
-			$booking_arr = array();
-			foreach($bookingData as $k=>$user_booking){
-				$booking_arr[$k]["start_date"]= $user_booking['booknig_start_date'];
-				$booking_arr[$k]["end_date"]= $user_booking['booking_end_date'];
-				$booking_arr[$k]["avail_status"]= $user_booking['status'];
+		->hydrate(false)->toArray();
+		
+		$UsersModel = TableRegistry::get('Users');
+		
+		$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
+		
+		$bookingData = [];
+		$user_Data = [];
+		$all_clients_ids = [];
+		$booking_arr =[];
+		$current_events = 0;
+		$sitterbookingData = [];
+		if(!empty($get_requests)){
+			$get_guest_requests = [];
+			$get_sitter_requests = [];
+			
+			foreach($get_requests as $booking_key=>$booking_records){
+				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
+				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Guest';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
+					
+					$user_message_display_field = 'user_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Sitter';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'guest';
+					$userType = 'Basic';
+					$userActas = 'Guest';
+					
+				}		
+				
+			 if($userActas == "Sitter" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_sitter'] == "pending"){
+			    $bookingData[] = $booking_records;
+			    
+			    //By guest Booking Dates
+				$booking_arr[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
+				$booking_arr[$booking_key]["end_date"]= $booking_records['booking_end_date'];
+				$booking_arr[$booking_key]["avail_status"]= $booking_records['status'];
+			 }
+			 if($userActas == "Sitter" && $booking_records['payment_status'] == "Paid"){
+			       $all_clients_ids[] = $booking_records['user_id'];
+			 }
+			 if($userActas == "Sitter" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_sitter'] == "current"){
+			     $current_events++;
+			 }
+             if($userActas == "Guest" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_guest'] == "pending"){
+				 $as_guest_records[] = $booking_records;
+			   
+			      $sitter_info = $UsersModel->find('all')
+				   ->select(['Users.id','Users.image','Users.first_name','Users.last_name','Users.city','Users.state','Users.country'])
+				   ->where(['Users.id' => $booking_records['sitter_id']], ['Users.id' => 'integer[]'])
+				   ->hydrate(false)->toArray();
+				   if(!empty($sitter_info)){
+				       $booking_records['user'] = $sitter_info[0];
+				   }
+				   $sitterbookingData[] = $booking_records;
+				   
+				//Sitter available dates
+				$booking_request[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
+				$booking_request[$booking_key]["end_date"]= $booking_records['booking_end_date'];
+				$booking_request[$booking_key]["avail_status"]= $booking_records['status'];
+			 }
+			 if($userActas == "Guest" && $booking_records['payment_status'] == "Paid"){
+			       $all_sitters_ids[] = $booking_records['sitter_id'];
+			 }
 			}
-			$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
+		}
+		$new_clients = 0;
+		$new_sitters = 0;
+	  
+	   if(!empty($all_clients_ids)){
+			$count_clients = array_count_values($all_clients_ids);
+			foreach($count_clients as $single_client){
+					 if($single_client == 1){
+					    $new_clients++; 
+					 }
+			 }
+	    }
+	    if(!empty($all_sitters_ids)){
+			$count_sitters = array_count_values($all_sitters_ids);
+			foreach($count_sitters as $single_sitter){
+					 if($single_sitter == 1){
+					    $new_sitters++; 
+					 }
+			 }
+	    }
+	    $client_stay_status["new_clients"] = $new_clients;
+	    $client_stay_status["new_sitters"] = $new_sitters;
+	    $client_stay_status["events"] = $current_events;
+	      
+		$booking_count = count($bookingData);
+		$client_stay_status["unread_message"] = $booking_count;
+		
+		
+		    $client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
 			
-	    $booking_count = count($bookingData);
-	    
-	    $client_stay_status["unread_message"] = $booking_count;
-	    
-	    if(isset($bookingData) && !empty($bookingData)){
-			
+	   
+	   
+	   if(isset($bookingData) && !empty($bookingData)){
 			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
 			$events=0;
 			
 			foreach($bookingData as $single_booking){
+				
 				
 			    if($single_booking['required_service'] == "house_sitting"){
 					
@@ -636,10 +720,15 @@ class DashboardController extends AppController
 		}
 		
 		 $calendar = new  \Calendarbooking();
+		
 		 
          $this->set('calender',$calendar->show($booking_arr));
+        
+         //$this->set('calender',$calendar->show($booking_request));
+          // pr($booking_arr);die;
          $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 
+         $this->set('sitter_booking_info',$sitterbookingData);	 
 		
 	}
     /**
@@ -2618,6 +2707,7 @@ function addPets(){
 
     }
     
+  
     public function searchResultsFavourites(){
 		$session = $this->request->session();
         $userId = $session->read('User.id');

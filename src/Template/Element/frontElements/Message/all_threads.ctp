@@ -6,6 +6,7 @@
 		
 		if(isset($req_data['booking_chats']) && !empty($req_data['booking_chats'])){
 			$activeClass = '';
+		
 		}else{
 			$activeClass = 'active-book';
 		}
@@ -16,41 +17,45 @@
 		    $badges ='';
 			$activeClass = '';
 		}
-		if(strtolower($userActas) == 'guest'){
-		  $rating_user_id = $req_data['sitter_id'];
-		}else{
-		  $rating_user_id = $req_data['user_id'];
-		}
+		//echo "($folder_status==$display_thread_folder_status)";
 		if($folder_status==$display_thread_folder_status){
-	
+		
+		
+		
 	?>
   <div id="tr_<?php echo $req_id; ?>"  onclick="get_req_data(<?php echo "'".$folder_status."','".base64_encode(convert_uuencode($req_id))."'";?>);" class="book-now-setion-inner <?php echo $activeClass; ?>">
 	<div class="row">
 	  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
-		<div class="book-now-img ">
+		<div class="book-now-img ">		  
 		  <?php if(($req_data['user']['facebook_id']) !="" && ($req_data['user']['is_image_uploaded'])==0){ ?>
 			     <img 
 					class="img-circle img-responsive" 
 					alt="<?php echo __('Profile Picture'); ?>" 
 					src="<?php if($req_data['user']['image'] != ""){echo $req_data['user']['image'];}else{echo $req_data['user']['image']='prof_photo.png';} ?>"> 
-		  <?php }else{ ?>
-			   <img 
+		   
+		   <?php }else{ ?>
+			
+				<img 
 					class="img-circle img-responsive"  
 					alt="<?php echo __('Profile Picture'); ?>" 
 					src="<?php echo HTTP_ROOT.'img/uploads/'.($req_data['user']['image'] != ''?$req_data['user']['image']:'prof_photo.png'); ?>"> 					   
-		 <?php  } ?>
+			<?php  } ?>
+			
 		</div>
-	</div>
-	  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0 message-pad-right-0">
-		<div class="book-now-name"> <?php echo $badges; ?>
-		  <p><?php echo $req_data['user']['first_name']." ".substr($req_data['user']['last_name'],0,1);?>
-		  </p>
+		
+	  </div>
+	  
+	  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 message-pad-left-0 message-pad-right-0">
+		<div class="book-now-name">
+         <?php echo $badges; ?>
+		  <p><?php echo $req_data['user']['first_name']." ".substr($req_data['user']['last_name'],0,1);?>		  </p>
 		  <span style="color:#7D7D7D;font-size:11px">
 			  <?php echo date("h:i A",strtotime($req_data['created_date'])); ?>
 		  </span>
 		</div>
 	  </div>
-	  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 message-pad-left-0 message-pad-right-0 ">
+	  
+	  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-5 message-pad-left-0 message-pad-right-0 ">
 		<div class="book-now-name">
 		  <p><?php 
 				if(isset($req_data['booking_chats']) && !empty($req_data['booking_chats'])){
@@ -59,19 +64,18 @@
 					echo substr($req_data['message'],0.20)."..."; 
 				}
 			?>
-			<br>
-			<span>Guests Hunter
-			</span>
+			
+			<span>Guests Hunter	</span>
 		  </p>
 		</div>
 	  </div>
 	  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 message-pad-left-0">
-		<div class="book-now-name">
-		  <p class="text-right"><?php echo date("M d",strtotime($req_data['created_date'])); ?>
+		<div class="book-now-name rate-box">
+		  <p><?php echo date("M d",strtotime($req_data['created_date'])); ?>
 		  </p>
 		  <?php if($req_data['folder_status_'.strtolower($userActas)]=='current'){ ?>
-					<a href="<?php echo HTTP_ROOT.'dashboard/review/'.base64_encode(convert_uuencode($req_id)).'/'.base64_encode(convert_uuencode($rating_user_id))?>">
-						<button class="btn  btn-block bt-now">
+					<a href="<?php echo HTTP_ROOT.'dashboard/review/'.base64_encode(convert_uuencode($req_id)).'/'.base64_encode(convert_uuencode($req_data['sitter_id']))?>">
+						<button class="btn  bt-now">
 							<i class="fa fa-star">
 							</i>
 							Rate now
@@ -114,6 +118,4 @@
   <?php } 
   
   ?>
-  
 
-              
