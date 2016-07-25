@@ -5,13 +5,12 @@
 	
 	echo $this->Html->css(['Front/dashboard_chart.css']); 
 	echo $this->Html->script(['Front/prefixfree.min.js']);
-		
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
         <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
 			<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 				<h3>
-					<img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Dashboard
+					<img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">Dashboard
 				</h3>
 			</div>
 			<div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
@@ -45,19 +44,16 @@
 				  <p>Earning this month for (User Name)
 				  </p>
 				</div>
-				<?php  if(!empty($threeMonthEarn)){ 
-					
+				<?php  
+				if(!empty($threeMonthEarn)){ 
 					$ernCountMonth = count($threeMonthEarn);
-					
 					$ernMonth = ['1'=>'Earning one month','2'=>'Earning two months','3'=>'Earning three months'];
-					?>
+				?>
 				<div class="second-box-header">
 				 <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
-					 
 					<h5>
 						<?php 
-						
-						echo $ernMonth[$ernCountMonth];
+						  echo $ernMonth[$ernCountMonth];
 						?>
 					</h5>
 				  </div>
@@ -78,7 +74,6 @@
 					</ul>
 				  </div>
 				</div>
-				
 				<div class="below-second-box collapse in" id="revenue1">
 				  <div class="revenue-graph"> 
 					<div  id="chart"></div>
@@ -103,8 +98,7 @@
 				  </div>
 				</div>
 				<?php } ?>
-				
-			  </div>
+			 </div>
 			</div>
             <?php } ?>
             <?php if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
@@ -124,9 +118,6 @@
 				  <p>Paid this month for (User Name)
 				  </p>
 				</div>
-				
-				
-				
 				<?php if(!empty($threeMonthPaid)){ ?>
 				<div class="second-box-header">
 				   <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
@@ -154,7 +145,6 @@
 					</ul>
 				  </div>
 				</div>
-				
 				<div class="below-second-box collapse in" id="revenue1">
 				  <div class="revenue-graph"> 
 					<div  id="paidChart"></div>
@@ -208,7 +198,7 @@
 				  </div>
 				  <div class="topbox-text">
 					<h4>
-					  <?php echo @$client_stay_status["new_clients"]; ?>
+					  <?php echo @$client_stay_status["new_sitters"]; ?>
 					</h4>
 					<p>New sitters
 					</p>
@@ -216,7 +206,7 @@
 				</div>
 				<div class="below-top-box">
 				  <p>You have 
-					<?php echo @$client_stay_status["new_clients"]; ?> new sitters
+					<?php echo @$client_stay_status["new_sitters"]; ?> new sitters
 				  </p>
 				</div>
 				<?php } ?>
@@ -428,30 +418,17 @@
 				<?php  if($userType == "Sitter"){ ?> 
 				 <div class="second-box-header">
 				 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Calendar
+					<h5>Booking Request Received
 					</h5>
 				  </div>
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
-					<ul class="list-inline pull-right ">
-					  <li>
-						<a href="#">
-						  <div class="setting-icon">
-						  </div>
-						</a>
-					  </li>
-					  <li>
-						<div class="cursor-pointer" data-target="#event1" data-toggle="collapse" type="button">
-						  <div class="down-icon">
-						  </div>
-						</div>
-					  </li>
-					</ul>
+					
 				  </div>
 				</div>
 				
-				<div  id="event1" class="below-second-box collapse in" aria-expanded="true">
+				<div  id="event1" class="below-second-box" aria-expanded="true">
 				  <div class="">
-					<div id="myCalender">
+					<div id="myCalender_recieved">
 					  <?php echo $this->element('frontElements/Search/calender');?>
 					</div>
 				  </div>
@@ -462,7 +439,7 @@
 					<div class="carousel-inner" role="listbox">
 					  <?php
 			$k = "active";
-			$sount = count($booking_requests_info);
+			$count = count($booking_requests_info);
 			foreach($booking_requests_info as $booking_request){ 
 			?>
 					  <div class="padd-left-15 padd-right-15 border-top item <?php echo @$k; ?>">
@@ -500,7 +477,7 @@
 			} ?>
 					</div>
 					<!-- Left and right controls -->
-					<?php if($sount >1){?>
+					<?php if($count >1){?>
 					<a class="left carousel-control" href="#myCarousel-detail" role="button" data-slide="prev">
 					  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
 					  </span>
@@ -538,41 +515,28 @@
 			 if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
 			 <div class="second-box-header">
 				 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Calendar
+					<h5>Booking Request Send
 					</h5>
 				  </div>
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
-					<ul class="list-inline pull-right ">
-					  <li>
-						<a href="#">
-						  <div class="setting-icon">
-						  </div>
-						</a>
-					  </li>
-					  <li>
-						<div class="cursor-pointer" data-target="#event1" data-toggle="collapse" type="button">
-						  <div class="down-icon">
-						  </div>
-						</div>
-					  </li>
-					</ul>
+					
 				  </div>
 				</div>
-				<div  id="event1" class="below-second-box collapse in" aria-expanded="true">
+				<div  id="event2" class="below-second-box" aria-expanded="true">
 				  <div class="">
-					<div id="myCalender">
+					<div id="myCalender_send">
 					  <?php echo $this->element('frontElements/Search/calender');?>
 					</div>
 				  </div>
 				  <!-- Start -->
-				  <?php if(!empty($booking_requests_info)){ ?>
+				  <?php if(!empty($sitter_booking_info)){ ?>
 				  <div id="myCarousel-detail" class="carousel slide" data-ride="carousel">
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 					  <?php
 			$k = "active";
-			$sount = count($booking_requests_info);
-			foreach($booking_requests_info as $booking_request){ 
+			$count = count($sitter_booking_info);
+			foreach($sitter_booking_info as $booking_request){ 
 			?>
 					  <div class="padd-left-15 padd-right-15 border-top item <?php echo @$k; ?>">
 						<div class="row calender-widget">
@@ -598,7 +562,7 @@
 						  </div>
 						</div>
 						<div class="btn-paddin">
-						  <button class="btn  btn-green btn-block mtb-15" onclick="location.href='<?php echo HTTP_ROOT.'dashboard/change-booking-status/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Accept
+						  <button class="btn  btn-green btn-block mtb-15" onclick="location.href='<?php echo HTTP_ROOT.'dashboard/change-booking-status/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Book It Now
 						  </button>
 						</div>
 						<div> 
@@ -609,7 +573,7 @@
 			} ?>
 					</div>
 					<!-- Left and right controls -->
-					<?php if($sount >1){?>
+					<?php if($count >1){?>
 					<a class="left carousel-control" href="#myCarousel-detail" role="button" data-slide="prev">
 					  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
 					  </span>
@@ -643,8 +607,7 @@
 				  <!--end-->
 				</div>
 			 
-		
-			<?php } ?>
+			 <?php } ?>
 			  </div>
 			</div>
 

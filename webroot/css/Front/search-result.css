@@ -363,6 +363,12 @@
 
 /*Notification*/
 
+/*Search Notification*/
+#alertUserLogin .modal-dialog{ margin:10% auto 0;}
+#alertUserLogin .modal-dialog .modal-title { font-size:25px; font-weight:normal; }
+#alertUserLogin .modal-dialog .modal-body p{ font-size:14px;}
+/*Search Notification*/
+
 
 @media (min-width:1025px) and (max-width:1199px){	
 .cust-container{ width:100%;}	

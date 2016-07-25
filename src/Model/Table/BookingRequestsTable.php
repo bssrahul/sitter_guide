@@ -21,11 +21,11 @@ class BookingRequestsTable extends Table
             'bindingKey' => 'user_id'
         ]);
         
-         $this->belongsTo('Users',
+       /* $this->belongsTo('Users',
 			['className' => 'Users',
 			'foreignKey' => 'sitter_id',
             ]);
-            
+       */
         
     }
 	

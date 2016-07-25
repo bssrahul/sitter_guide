@@ -142,6 +142,7 @@ margin: 10px 25px 0 0 !important;
 	padding: 13px 0;
 	width: 100%;
 }
+.signup-submit:hover{ background:#72a105; color:#ffffff;}
 
 #users-title, #users-hear-from, #users-country {
 	border: 1px solid #aaaaaa;
