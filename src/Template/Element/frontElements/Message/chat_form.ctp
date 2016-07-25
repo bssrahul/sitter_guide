@@ -46,9 +46,9 @@
 									</div>
 									<div class="media-body ">
 										<p class="mess-tesxt1"> 
-											<i class="fa fa-clock-o">
+											<i class="fa fa-clock-o"> 
 											</i> Stays booked through Sitterguide are covered by free 
-											<a href="#" class="colorblue">premium insurance.
+											<a href="<?php echo HTTP_ROOT."insurance"; ?>" class="colorblue">premium insurance.
 											</a>
 										</p>
 									</div>

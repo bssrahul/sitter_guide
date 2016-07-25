@@ -1,6 +1,6 @@
 <?php 
-    echo $this->Html->css(['Front/jquery-ui.css','Front/search-result.css','Front/jquery.mCustomScrollbar.css']); 
-	echo $this->Html->script(['Front/jquery.mCustomScrollbar.concat.min.js','Front/messages.js']); 
+    echo $this->Html->css(['Front/jquery-ui.css','Front/search-result.css']); 
+	echo $this->Html->script(['Front/messages.js']); 
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row db-top-bar-header no-padding-left no-padding-right">
@@ -86,7 +86,7 @@
                     <?php echo $this->element('frontElements/Message/chat_form'); ?>
                   </div>
                 </div>
-                <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 jd">
 					<?php echo $this->element('frontElements/Message/job_detail'); ?>
                 </div>
               </div>
@@ -100,12 +100,12 @@
 <?php  if(@$booking_id !=''){ ?>
 <script>
 	var booking_id = '<?php echo @$booking_id; ?>';
-	var folder_status = '<?php echo @$folder_status; ?>';
+	var folder_status = '<?php echo @$display_thread_folder_status; ?>';
 	
 	$(function(){
 		//SCRIPT FOR CHATS AUTOLOAD
 		setInterval(function(){
-			var actionURL = ajax_url+"/message/auto-load-chat/";
+			var actionURL = ajax_url+"message/auto-load-chat/";
 			if(booking_id !=''){
 
 				$.ajax({
@@ -115,14 +115,14 @@
 					success:function(res)
 					{
 						$('div.list_chat_ul').html(res);
-						$("#content-m").mCustomScrollbar({theme:"minimal"});	
+						
 					}
 				});
 			}
 		}, 2000);
 		//SCRIPT FOR THREADS AUTOLOAD
 		setInterval(function(){
-			var actionURL = ajax_url+"/message/auto-load-threads/";
+			var actionURL = ajax_url+"message/auto-load-threads/";
 			if(booking_id !=''){
 
 				$.ajax({
@@ -132,7 +132,25 @@
 					success:function(res)
 					{
 						$('div.allthreads').html(res);
-						$("#content-md").mCustomScrollbar({theme:"minimal"});	
+						
+					}
+				});
+			}
+		}, 15000);
+		
+		//SCRIPT FOR JOB DETAIL AUTOLOAD
+		setInterval(function(){
+			var actionURL = ajax_url+"message/auto-load-jd/";
+			if(booking_id !=''){
+
+				$.ajax({
+					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+					data:{folder_status,folder_status,booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+						 
+					success:function(res)
+					{
+						$('div.jd').html(res);
+						
 					}
 				});
 			}

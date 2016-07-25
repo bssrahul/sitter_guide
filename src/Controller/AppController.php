@@ -850,7 +850,7 @@ class AppController extends Controller{
 			}
 
 		}else{
-			/*
+			
 			//INCLUDE TWILIO LIABRARY
 			require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
 			
@@ -864,41 +864,12 @@ class AppController extends Controller{
 					'From' => "+14158141829", 				
 					'Body' => $message_body
 				));
-				
-		
+			
 			}
 			catch (\Exception $e) { 
 				$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
-			}*/
+			}
 			
-			 
-			$id = TWILIO_SID;
-			$token = TWILIO_AUTHTOKEN;
-
-			//echo $id."TOKEN:".$token; die;
-			
-			$url = "https://api.twilio.com/2010-04-01/Accounts/AC46be08cb440574bca3ab323df8cd555d/Calls.json";
-			//"https://api.twilio.com/2010-04-01/Accounts/$id/SMS/Messages";
-			$from = "+61420415125";
-			//$from = "+14438407757";//live
-			//$phone ="+919991281944";
-			$to = '+61420415125';
-			$body = $message_body;
-			$data = array(
-				'From' => $from,
-				'To' => $to,
-				'Body' => $body,
-			);
-			$post = http_build_query($data);
-			$x = curl_init($url);
-			curl_setopt($x, CURLOPT_POST, true);
-			curl_setopt($x, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($x, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($x, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-			curl_setopt($x, CURLOPT_USERPWD, "$id:$token");
-			curl_setopt($x, CURLOPT_POSTFIELDS, $post);
-			$y = curl_exec($x);
-		                  
               
 		
 		}

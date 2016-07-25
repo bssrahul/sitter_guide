@@ -1972,6 +1972,7 @@ var idleWait = 10000;
 				
 				
 				//STATUS CHANGE INTO USER TABLE START
+				/*
 				$.ajax({
 					url:  ajax_url+'/dashboard/change-idle-status',//AJAX URL WHERE THE LOGIC HAS BUILD
 					
@@ -1990,7 +1991,7 @@ var idleWait = 10000;
 						}
 							
 					}
-				});
+				});*/
 				//STATUS CHANGE INTO USER TABLE START
 			}
 			
@@ -1999,6 +2000,7 @@ var idleWait = 10000;
 			idleTimer = setTimeout(function () { 
 				
 				//STATUS CHANGE INTO USER TABLE START
+				/*
 				$.ajax({
 					url:  ajax_url+'/dashboard/change-idle-status',//AJAX URL WHERE THE LOGIC HAS BUILD
 					data:{avail_status:'Idle'},
@@ -2017,7 +2019,7 @@ var idleWait = 10000;
 						}
 												
 					}
-				});
+				});*/
 				//STATUS CHANGE INTO USER TABLE START
 				
 				idleState = true; }, idleWait);

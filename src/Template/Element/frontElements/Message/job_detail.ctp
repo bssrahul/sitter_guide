@@ -11,14 +11,14 @@
 					<tr>
 					  <td>From : </td>
 					  <td>
-						  <?php echo @$get_booking_requests_to_display['booknig_start_date'] != ""?@$get_booking_requests_to_display['booknig_start_date']:"_ _ _"; ?> 
+						  <?php echo @$get_booking_requests_to_display['booknig_start_date'] != ""?date("F, j Y h:i A",strtotime(@$get_booking_requests_to_display['booknig_start_date'])):"_ _ _"; ?> 
 					  </td>
 					</tr>
 					
                      <tr>
 						<td>To :</td>
                         <td>
-							<?php echo @$get_booking_requests_to_display['booking_end_date'] != ""?@$get_booking_requests_to_display['booking_end_date']:"_ _ _"; ?> 
+							<?php echo @$get_booking_requests_to_display['booking_end_date'] != ""?date("F, j Y h:i A",strtotime(@$get_booking_requests_to_display['booking_end_date'])):"_ _ _"; ?> 
                          </td>
                      </tr>
                      
@@ -167,7 +167,7 @@
 						 
 						
                       to confirm and pay for this stay. Each Stay is covered by 
-                      <a href="#">
+                      <a href="<?php echo HTTP_ROOT."insurance"; ?>">
                         <u>premium
                           insurance protection.
                         </u>
@@ -274,7 +274,7 @@
 						  <b>Sitterguide.com Tip :
 						  </b> All transactions booked and paid on Sitterguide.com are covered by Sitterguide’s
 						  <br>
-						  <a href=""> Peace of Mind Protection
+						  <a href="<?php echo HTTP_ROOT."safety"; ?>"> Peace of Mind Protection
 						  </a>.
 						</p>
 					  </div>
