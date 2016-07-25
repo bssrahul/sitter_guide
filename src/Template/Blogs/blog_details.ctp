@@ -35,7 +35,7 @@
                 <div class="blog-b-searchdrop">
                   <a href="<?php echo HTTP_ROOT.'blog-listing'; ?>">
                     <i class="fa fa-reply">
-                    </i>&nbsp; Back to News Centre
+                    </i>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Back to News Centre')); ?>
                   </a>
                 </div>
               </div>   
@@ -51,7 +51,7 @@
                       <li>
                         <i class="fa fa-user">
                         </i>&nbsp;
-                        <small> by 
+                        <small> <?php echo $this->requestAction('app/get-translate/'.base64_encode('by')); ?>
                           <a href=""><?php echo SITE_OWNER; ?>
                           </a> 
                         </small>
@@ -61,13 +61,13 @@
                       <li>
                         <i class="fa fa-calendar">
                         </i>&nbsp;
-                        <small> Posted on <?php echo __( date("l jS M Y", strtotime($blogs_info['created_date']))); ?>
+                        <small> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Posted on')); ?> <?php echo __( date("l jS M Y", strtotime($blogs_info['created_date']))); ?>
                         </small>
                       </li>
                       <li>|
                       </li>
                       <li>
-                        <small> Share it on : 
+                        <small> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Share it on')); ?> : 
                           <a href="javascript:void(0)" 
 								onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>')">
                             <i class="fa fa-facebook ">
@@ -97,7 +97,7 @@
                     
                     <div class="row">
                       <div class="col-xs-12 col-sm-12  col-md-5 col-lg-6">
-                        <p class="p40">By <?php echo SITE_OWNER; ?> <?php echo __( date("F j, Y", strtotime($blogs_info['created_date']))); ?>
+                        <p class="p40"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('By')); ?> <?php echo SITE_OWNER; ?> <?php echo __( date("F j, Y", strtotime($blogs_info['created_date']))); ?>
                         </p>
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
@@ -117,7 +117,7 @@
 								onclick="javascript:genericSocialShare('http://twitter.com/share?text=<?php echo urlencode($blogs_info['title']); ?>&url=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>')">
                             <button class="btn btn-blog-tw">
                               <i class="fa fa-twitter">
-                              </i> Tweet
+                              </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tweet')); ?> 
                             </button>
                             </a>
                           </li>
@@ -126,7 +126,7 @@
 								onclick="javascript:genericSocialShare('http://pinterest.com/pin/create/button/?url=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>&media=<?php echo HTTP_ROOT.'img/uploads/'.$blogs_info['image']; ?>')">
                             <button class="btn btn-blog-pn">
                               <i class="fa fa-pinterest">
-                              </i> Pin it
+                              </i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pin it')); ?> 
                             </button>
                             </a>
                           </li>
@@ -148,7 +148,7 @@
       
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-          <h5 class="mlike">You may also like
+          <h5 class="mlike"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You may also like')); ?> 
           </h5>
         </div>
       </div>

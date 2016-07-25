@@ -787,8 +787,10 @@ class AppController extends Controller{
 			}
 		}
 	}
+
 	//For generate OTP
 	 function genrateOtp(){
+
 		$usersModel = TableRegistry::get('Users');
 		$session = $this->request->session();
 		$userId = $session->read("User.id");
@@ -811,12 +813,16 @@ class AppController extends Controller{
 		}else{
 			return false;
 		}
-	}
+
+	}	
+	
+	
+
 	//For send message
 	function sendMessages($to_mobile_number=null, $message_body=null,$country_code=null){
 		
 		/*CHECK THAT PHONE NUMBER IS USA OR NOT, IF USA PHONE NUMBER EXISTS INTO REQUEST THEN WE HAVE TO USE BANDWIDTH API OTHERWISE USE TWILIO*/
-		
+
 		if($country_code =='+1'){
 			
 			/*INCLUDE BANDWIDTH LIABRARY*/	
@@ -865,44 +871,36 @@ class AppController extends Controller{
 				$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
 			}*/
 			
-			
-			/////////////////////////////////////////////
 			 
-                    $id = TWILIO_SID;
-                    $token = TWILIO_AUTHTOKEN;
+			$id = TWILIO_SID;
+			$token = TWILIO_AUTHTOKEN;
 
-                    //echo $id."TOKEN:".$token; die;
-                    
-                    $url = "https://api.twilio.com/2010-04-01/Accounts/AC46be08cb440574bca3ab323df8cd555d/Calls.json";
-                    //"https://api.twilio.com/2010-04-01/Accounts/$id/SMS/Messages";
-                    $from = "+61420415125";
-                    //$from = "+14438407757";//live
-                    //$phone ="+919991281944";
-                    $to = '+61420415125';
-                    $body = $message_body;
-                    $data = array(
-                        'From' => $from,
-                        'To' => $to,
-                        'Body' => $body,
-                    );
-                    $post = http_build_query($data);
-                    $x = curl_init($url);
-                    curl_setopt($x, CURLOPT_POST, true);
-                    curl_setopt($x, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($x, CURLOPT_SSL_VERIFYPEER, false);
-                    curl_setopt($x, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-                    curl_setopt($x, CURLOPT_USERPWD, "$id:$token");
-                    curl_setopt($x, CURLOPT_POSTFIELDS, $post);
-                    $y = curl_exec($x);
-                    echo '<pre>';
-                    print_r($y);
-                    echo '</pre>';
-                    die;
-                    curl_close($x);
-                    
-              
-			////////////////////////////////////////////
+			//echo $id."TOKEN:".$token; die;
 			
+			$url = "https://api.twilio.com/2010-04-01/Accounts/AC46be08cb440574bca3ab323df8cd555d/Calls.json";
+			//"https://api.twilio.com/2010-04-01/Accounts/$id/SMS/Messages";
+			$from = "+61420415125";
+			//$from = "+14438407757";//live
+			//$phone ="+919991281944";
+			$to = '+61420415125';
+			$body = $message_body;
+			$data = array(
+				'From' => $from,
+				'To' => $to,
+				'Body' => $body,
+			);
+			$post = http_build_query($data);
+			$x = curl_init($url);
+			curl_setopt($x, CURLOPT_POST, true);
+			curl_setopt($x, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($x, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($x, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+			curl_setopt($x, CURLOPT_USERPWD, "$id:$token");
+			curl_setopt($x, CURLOPT_POSTFIELDS, $post);
+			$y = curl_exec($x);
+		                  
+              
+		
 		}
 		
 		return true;

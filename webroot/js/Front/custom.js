@@ -146,11 +146,6 @@
 					required : "This field is required"
 					
 				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#addUsers').attr('action');
-				signup("addUsers","sign-up",actionURL);
-				return false;
 			}
 			
 		});
@@ -372,11 +367,6 @@
 					remote: "Email address not exists in our database"
 					
 				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#forgotPasswordForm').attr('action');
-				process_form("forgotPasswordForm","reset-pwd",actionURL);
-				return false;
 			}
 			
 		});
@@ -408,11 +398,6 @@
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				}
-			},
-			submitHandler: function(form) {
-				var actionURL = $('#resetPasswordForm').attr('action');
-				process_form("resetPasswordForm","change-pwd",actionURL);
-				return false;
 			}
 			
 		});
@@ -1690,15 +1675,25 @@
 	
 	/*FUNCTION FOR SUBMIT THE SIGNUP FORM AND DISPLAYING THERE REPOSNSE*/
 	function signup(formID,btnID,actionURL){
-		//alert(formID+btnID+actionURL);
+				
 		var orgBtnVal=$("#"+btnID).val();//GET BUTTON VALUE
-		$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
-		$("#"+btnID).val('Processing...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
 		var formData = $('#'+formID).serialize();//BIND THE FORM VALUE INTO A VARIABLE
-		//alert(formData);
+		
+		
 		$.ajax({
 			url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
 			data:formData,//ALL SUBMITTED DATA FROM THE FORM
+			
+			beforeSend: function(){
+				$("#"+btnID).attr('disabled',true);//MAKE THE BUTTON FADE AFTER CLICKED ON IT
+				$("#"+btnID).val('Processing...');//CHANGE THE BUTTON TEXT AFTER CLICKED ON IT
+			},
+			
+			complete: function(){
+			   //CODE FOR CHANGE THE BUTTON STYLE AND TEXT
+				$("#"+btnID).attr('disabled',false);
+				$("#"+btnID).val(orgBtnVal);	
+			},	
 			 
 			success:function(res)
 			{
@@ -1713,9 +1708,7 @@
 					$('#myModal_sign').html(res);	//DISPLAY RESPONSE ERRORS
 				}
 				
-				//CODE FOR CHANGE THE BUTTON STYLE AND TEXT
-				$("#"+btnID).attr('disabled',false);
-				$("#"+btnID).val(orgBtnVal);	
+				
 			}
 		});
 		

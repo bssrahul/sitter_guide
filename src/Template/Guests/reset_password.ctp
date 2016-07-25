@@ -41,7 +41,7 @@
               
           ]);
        ?>
-      <i class="fa fa-key"></i>
+     
     </div>
   </div>
   <div class="form-group">
@@ -56,11 +56,11 @@
           ]);
         
        ?>
-      <i class="fa fa-key"></i>
+      
     </div>
   </div>
  
-  <button type="submit" class="btn btn-default"  id="change-pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
+  <button type="submit" class="btn btn-default"  id="processing"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
   <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In Now?')); ?> <span class="c-red"><a href="<?php echo HTTP_ROOT.'guests/login' ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click Here')); ?></a></span></p>
 <?php echo $this->Form->end(); ?>
                       
@@ -74,3 +74,9 @@
     <!--[.signin-wrapper Area start]-->
 </div>
 <!--[.innerpage-conent Area end]-->
+<style>
+#processing:hover, #processing:focus , #processing:active{
+	background:#72a105  !important;
+	color:#fff  !important;
+}
+</style>
