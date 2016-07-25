@@ -35,9 +35,10 @@
 .book-now-setion-inner .book-now-name p.time { color: #DB6913; font-size: 11px;}
 .book-now-setion-inner .new-badge { background: #db6913 none repeat scroll 0 0; border-radius: 10px; color: #fff; font-size: 10px; font-weight: bold; max-width: 40px; text-align: center;}
 
-.book-now-setion-inner .book-now-name p span {font-size:12px; color:#7d7d7d;  }
+.book-now-setion-inner .book-now-name p span {font-size:12px; color:#7d7d7d; display:block;  }
 .book-now-setion-inner .rate-box{ width:100%; float:left; text-align:center;  }
 
+.book-now-img img{ width:50px; height:50px; border-radius:50%;}
 
 .bt-now {font-size:11px; color:#fff; font-weight:600; background:#78bf45; padding:5px 8px; height:26px; margin:7px 0 0 0;}
 .btn-ref {border:1px solid #d3d3d3; color:#7d7d7d; background:none; min-width:47px; height:38px; text-align:center; font-size:20px; padding-top:3px;}
@@ -129,7 +130,7 @@
 .bt-now1 {font-size:15px; color:#fff; font-weight:500; background:#78bf45; width:90px;  height:45px; margin-top:0px;}
 .bt-now1:hover {font-size:15px; color:#fff; font-weight:500; background:#62af2a; width:90px;   height:45px; margin-top:0px; }
 .bt-now1:focus {font-size:15px; color:#fff; font-weight:500; background:#62af2a; width:90px;   height:45px; margin-top:0px;}
-.mess-tesxt1 { color: #7d7d7d; font-size: 12px; margin-bottom: 0;  padding-top: 3px; font-weight:500;}
+.mess-tesxt1 { color: #7d7d7d; font-size: 12px; margin-bottom: 0;  padding-top:11px; font-weight:500;}
 .text-wrap-bottom { border: 1px solid #d3d3d3; padding:20px 20px; border-left:none; border-top:none;}
 a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 
@@ -137,12 +138,12 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .report { color: #888; float: right; font-size: 13px; font-weight: 500; margin-bottom: 0; padding-bottom: 7px; padding-top: 7px;}
 .report a { color: #888; outline:none; text-decoration:none; }
 .report i {display: inline-block; border-radius: 50px; box-shadow: 0px 0px 2px #222; padding:0px 2px 1px 2px; font-size:10px}
-.chat-user .user-img-chat img { max-width:41px; max-height:41px; text-align:left; }
+.chat-user .user-img-chat img { width:45px; height:45px; text-align:left; border:#eeeeee 1px solid; }
 .chat-user .msg-green-arrow {position:absolute; left:-19px;}
 .chat-user .user-tex-msg-area-wrap {background:url(../../img/calender-big.png) no-repeat; height:19px; width:19px;}
 .chat-user .user-tex-msg-area { border:2px solid #d3d3d3; background:#fff; color:#414141; font-weight:600; text-align:left; font-size:13px; border-radius:5px; padding:10px; position:relative;}
 .chat-me .my-img-chat1 {text-align:right;}
-.chat-me .my-img-chat1 img { width:50px; height:50px; float:right; }
+.chat-me .my-img-chat1 img { width:45px; height:45px; float:right; border:#eeeeee 1px solid; }
 .chat-me .msg-orange-arrow1 {position:absolute; right:-19px;}
 .chat-me .me-tex-msg-area-wrap1 {background:url(../../img/calender-big.png) no-repeat; height:19px; width:19px;}
 
@@ -187,16 +188,29 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 }
 
 
-@media (min-width:1367px) and (max-width:1440px){
+@media (min-width:1561px) and (max-width:1680px){
+.step-img-area { padding:10px;}
+.mess-tesxt1 { padding:3px 0 0 25px;}
+}
 
+
+@media (min-width:1441px) and (max-width:1560px){
+.step-img-area { padding:10px;}
+.mess-tesxt1 { padding:3px 0 0 25px;}
+}
+
+@media (min-width:1367px) and (max-width:1440px){
+.step-img-area { padding:10px;}
+.mess-tesxt1 { padding:3px 0 0 35px;}
 }
 @media (min-width:1200px) and (max-width:1366px){
-
+.step-img-area { padding:10px;}
+.mess-tesxt1{ padding:0px 0 0 43px;}
 }
 @media (min-width:1025px) and (max-width:1199px){
 	
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}	
-
+.step-img-area { padding:10px;}
 }
 
 @media (min-width:992px) and (max-width:1024px){

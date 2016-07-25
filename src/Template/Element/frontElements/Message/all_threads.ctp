@@ -82,6 +82,16 @@
 						</button>
 					</a>
 			<?php } ?>
+			
+			<?php if($req_data['folder_status_'.strtolower($userActas)]=='pending'){ ?>
+					<a class="trash_thread" href="javascript:void(0)" data-user-type="<?php echo base64_encode(convert_uuencode(strtolower($userActas))); ?>" data-rel="<?php echo base64_encode(convert_uuencode($req_id)); ?>">
+						<button class="btn btn-block bt-now">
+							<i class="fa fa-trash-o" aria-hidden="true"></i></i>
+							Trash
+						</button>
+					</a>
+					<img style="display:none" src="<?php echo HTTP_ROOT; ?>img/ajax_wait.gif" id="move_to_folder" class="img-responsive" alt="message">
+			<?php } ?>
 		  
 		</div>
 	  </div>
@@ -108,6 +118,4 @@
   <?php } 
   
   ?>
-  
 
-              

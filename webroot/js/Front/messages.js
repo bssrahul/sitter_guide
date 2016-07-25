@@ -28,14 +28,13 @@
 				{
 					$("#chat_text").val('');
 					$('div.list_chat_ul').html(res);
-					$("#content-m").mCustomScrollbar({theme:"minimal-dark"});	
-					$("#content-md").mCustomScrollbar({theme:"minimal-dark"});				
 				}
 			});
 		}
 	}
 	
 	//DISPLAY JQUERY SCROLL FUNCTIONALITY
+	/*
 	(function($){
 		$(window).load(function(){
 			
@@ -60,7 +59,8 @@
 			});
 			
 		});
-	})(jQuery);//END
+	})(jQuery);//END 
+	*/
 	
 	//RUN SCRIPT ON LOAD TIME
 	$(function(){
@@ -98,7 +98,7 @@
 					success:function(res)
 					{
 						$('div.list_chat_ul').html(res);
-						$("#content-m").mCustomScrollbar({theme:"minimal"});		
+								
 					}
 				});
 			}
@@ -128,7 +128,7 @@
 				success:function(res)
 				{
 					window.location.reload();
-					$("#content-md").mCustomScrollbar({theme:"minimal"});		
+						
 				}
 			});
 			
@@ -155,6 +155,37 @@
 				});
 				
 		}, 10000);//END
+		
+		//MAKE IT TRASH ON CLICK ON TRASH BUTTON
+		$('.trash_thread').click(function() {
+			var btnObj = $(this);
+			var booking_id = btnObj.attr("data-rel");
+			var data_user = btnObj.attr("data-user-type");
 			
+			$.ajax({
+				
+				url:ajax_url+"/message/move-folder/",//AJAX URL WHERE THE LOGIC HAS BUILD
+				data:{booking_id:booking_id,data_user:data_user},//ALL SUBMITTED DATA FROM THE FORM
+				
+				beforeSend: function(){
+				  $("#move_to_folder").show();
+				},
+				
+				complete: function(){
+					$("#move_to_folder").hide();
+				},	 
+				
+				success:function(res)
+				{
+					if($.trim(res)=='success'){
+						
+						window.location.href = ajax_url+'Message/get-messages/archieved';
+
+					}
+						
+				}
+			});
+			
+		});//END	
 		
 	});// DOCUMENT READY END

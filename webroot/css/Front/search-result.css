@@ -364,9 +364,15 @@
 /*Notification*/
 
 /*Search Notification*/
+#alertUserLogin .modal-content{ border-radius:0px; border:#f0f0f0 15px solid;}
+#alertUserLogin .modal-dialog .modal-header .close{ border:#000000 1px solid; width:35px; height:35px; font-size:35px; font-weight:normal; border-radius:50%; line-height:22px;}
+
 #alertUserLogin .modal-dialog{ margin:10% auto 0;}
 #alertUserLogin .modal-dialog .modal-title { font-size:25px; font-weight:normal; }
 #alertUserLogin .modal-dialog .modal-body p{ font-size:14px;}
+#alertUserLogin .modal-dialog .btn-primary { background:#72a105; border:0px;}
+#alertUserLogin .modal-dialog  .btn-default{ border:0px; background:#f5f5f5; }
+#alertUserLogin .modal-dialog  .btn-default:hover{ background:#404040; color:#ffffff;}
 /*Search Notification*/
 
 
@@ -867,6 +873,7 @@
 #myModal79 .cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto input[type="text"] { border: 0 none; float: left; height: 43px; line-height: 45px; padding: 10px; width: 90%;}
 #myModal79 .right-content-wrap { border: 1px solid #dcdcdc; margin-top: 20px; padding: 10px;}
 #myModal79 .right-content-wrap .top-box-wrap { background: #ecf7ff none repeat scroll 0 0; padding: 5px;}
+#myModal79 .right-content-wrap .top-box-wrap  img{ width:45px; height:45px;}
 #myModal79 .right-content-wrap .top-box-wrap ul .f14 { font-size: 14px; font-weight: 700;}
 #myModal79 .right-content-wrap .top-box-wrap ul .f13 { font-size: 13px; font-weight: 500;}
 #myModal79 .right-content-wrap .top-box-wrap .night-sitt {border-top: 1px solid #e1f1fc; padding: 2px 10px 5px;  text-align: center;}
