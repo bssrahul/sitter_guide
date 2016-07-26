@@ -1,8 +1,10 @@
 <?php
 	if(!empty($get_requests)){
+		//pr($get_requests[0]['id']); die;
 		foreach($get_requests as $req_data){
-		$req_id = $req_data['id'];
-		$folder_status = $req_data['folder_status_'.$fieldname];
+			
+			$req_id = trim(@$req_data['id']);
+			$folder_status = @$req_data['folder_status_'.trim($fieldname)];
 		
 		if(isset($req_data['booking_chats']) && !empty($req_data['booking_chats'])){
 			$activeClass = '';
@@ -63,9 +65,19 @@
 				}else{
 					echo substr($req_data['message'],0.20)."..."; 
 				}
-			?>
 			
-			<span>Guests Hunter	</span>
+			if(!empty($selected_pets)){
+					$pet=1;
+                    foreach($selected_pets as $single_guest){ ?>
+						<span><?php echo ucwords(@$single_guest->guest_name);
+							if($pet>1){
+								echo ", ";
+							}
+						?></span>
+			<?php
+					$pet++;
+				}
+			} ?>	
 		  </p>
 		</div>
 	  </div>
