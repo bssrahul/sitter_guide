@@ -306,10 +306,14 @@
 .cont-sitter .cs-mid-cont .csmc-area .hs-date{ width:100%; float:left; margin:35px 0 0 0;}
 .cont-sitter .cs-mid-cont .csmc-area .hs-date h1.hsd-head{ font-size:16px; margin:0 0 15px 0;}
 .cont-sitter .cs-mid-cont .csmc-area .hs-date p{ font-size:13px; margin:15px 0 15px 0;}
-.cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto{ background: #ffffff none repeat scroll 0 0;border: 1px solid #d1d1d1; border-radius: 2px; height: 45px;width: 100%;}
+.cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto{ background: #ffffff none repeat scroll 0 0;border: 1px solid #d1d1d1; border-radius: 2px; height: 45px;width: 100%; position:relative;}
 .cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto input[type="text"]{ width:90%; border:0px; height:43px; line-height:45px; float:left; padding:0px;}
 .cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto a{ background:#f5f5f5; border-left:#d1d1d1 1px solid; text-align:center; display:inline-block; width:10%; height:43px; vertical-align:middle;  }
 .cont-sitter .cs-mid-cont .csmc-area .hs-date .fromto a img{ margin:12px 0 0 0;}
+/*pop calendar*/
+
+
+
 .cont-sitter .cs-mid-cont .csmc-area .ad-dog{width:100%; float:left;}
 .cont-sitter .cs-mid-cont .csmc-area .ad-dog h2{ font-size:20px; color:#72a105; margin:0 0 10px 0;}
 .cont-sitter .cs-mid-cont .csmc-area .ad-dog ul{ margin:0px; padding:0px; list-style-type:none;}

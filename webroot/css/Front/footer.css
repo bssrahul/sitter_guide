@@ -75,6 +75,7 @@
 .foot-wrap .top-foot{ padding:15px 0 0 0;}
 .foot-wrap .top-foot .fb-area .foot-box{ border-bottom:#dfdede 1px solid; margin: 0 0 15px 0; padding:0 0 15px 0;}
 .foot-wrap .top-foot .fb-area .fb-last{ border:0px;}
+.foot-wrap .bot-foot .bf-area{ padding:15px 0;}
 .foot-wrap .bot-foot .bf-area .bot-social{ margin:0 0 25px 0;}
 .foot-wrap .bot-foot .bf-area .bot-social p{ text-align:center;}
 .foot-wrap .bot-foot .bf-area .bot-social ul{ width:100%; float:left; margin:10px 0 0 0;}
@@ -90,6 +91,7 @@
 @media (min-width:481px) and (max-width:640px){
 .foot-wrap .top-foot{ padding:15px 0 0 0;}
 .foot-wrap .top-foot .fb-area .foot-box{ border-bottom:#dfdede 1px solid; margin: 0 0 15px 0; padding:0 0 15px 0;}
+.foot-wrap .bot-foot .bf-area{ padding:15px 0;}
 .foot-wrap .top-foot .fb-area .fb-last{ border:0px;}
 .foot-wrap .bot-foot .bf-area .bot-social{ margin:0 0 25px 0;}
 .foot-wrap .bot-foot .bf-area .bot-social p{ text-align:center;}
@@ -111,6 +113,7 @@
 .foot-wrap .top-foot .fb-area .foot-box ul li a{ font-size:13px;}
 .foot-wrap .top-foot .fb-area .fb-last{ border:0px;}
 
+.foot-wrap .bot-foot .bf-area{ padding:15px 0;}
 .foot-wrap .bot-foot .bf-area .bot-social{ margin:0 0 25px 0;}
 .foot-wrap .bot-foot .bf-area .bot-social p{ text-align:center;}
 .foot-wrap .bot-foot .bf-area .bot-social ul{ width:100%; float:left; margin:10px 0 0 0;}

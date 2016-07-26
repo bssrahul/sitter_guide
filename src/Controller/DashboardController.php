@@ -1182,7 +1182,6 @@ Function for Front profile dashboard
 		   unset($userData->id);
 		   $this->set('userInfo', $userData);
         }
-	    
 	    if($captchErr != ''){
 	      $this->set('captchErr',@$captchErr);	
 	    }else{

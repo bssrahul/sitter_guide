@@ -185,12 +185,16 @@
                       </div>
                       
                     </div>
-                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Details')); ?>
-                    </h3>
+                  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Details')); ?>  </h3>
                     <div class="row">
                     <div class="form-group col-lg-8 col-md-8">
+                    
+                    
+                    
+                    
+                    
                        <div class="row">
-                          <div class="col-lg-3 col-xs-4">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5">
                             <label for="country_code" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Code')); ?></label>
                             <select class='form-control' name="Users[country_code]" id="countries">
 								 <?php 
@@ -204,7 +208,8 @@
 								?>
 							</select>    
                          </div>
-                         <div class="col-lg-3 col-xs-8">
+                         
+                         <div class="col-lg-3 col-md-3 col-sm-5 col-xs-7">
                               <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile/Cell')); ?><span><a href="#" data-toggle="tooltip" data-placement="top" title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will send an sms confirmation to this number for verification')); ?>"><img class="close11" src="<?php echo HTTP_ROOT; ?>img/close.png"></a></span></label>
                             <?php 
                                 echo $this->Form->input('Users.phone',[                
@@ -219,7 +224,7 @@
                             <?php } ?>               
                           </div>
                          
-                          <div class="col-lg-6 col-md-6">
+                          <div class="col-lg-6 col-md-6 col-sm-3 col-xs-12">
                           <label class="invisi-no" for="">im-vi </label>
                             <div class="varify-mobile">
 							<?php if($userInfo['mobile_verification'] == 1){?>	
@@ -232,6 +237,17 @@
 
 
                         </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     </div>
                    
                       <div class="form-group col-lg-4 col-md-4">
