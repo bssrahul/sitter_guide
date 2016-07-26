@@ -335,7 +335,8 @@ class GuestsController extends AppController
 			if(empty($getUserData)){
 				$this->setErrorMessage($this->stringTranslate(base64_encode("Email id not register with us, try again")));
 
-			    echo "Error:".$this->stringTranslate(base64_encode("Email id not register with us, try again")); die;
+			  //  echo "Error:".$this->stringTranslate(base64_encode("Email id not register with us, try again")); die;
+			  
 			}else{
 			    $UserData = $UsersModel->newEntity();
 			    $UserData->id = $getUserData->id;
@@ -360,9 +361,9 @@ class GuestsController extends AppController
 					
 					$this->send_email('',$replace,$with,'forgot_password',$getUserData->email);		
 					
-				        echo 'Success:'.$this->stringTranslate(base64_encode("Email has been sent to your email address"));
+				       // echo 'Success:'.$this->stringTranslate(base64_encode("Email has been sent to your email address"));
 						$this->setSuccessMessage($this->stringTranslate(base64_encode('Password reset link has been sent over registered email address.')));
-	                    die;			     
+	                 //   die;			     
 				}
             }
 		}
@@ -421,7 +422,7 @@ class GuestsController extends AppController
 					$this->send_email('',$replace,$with,'user_reset_password',$count->email);
 					
 					$this->setSuccessMessage($this->stringTranslate(base64_encode("Password has been reset successfully")));
-					echo "Success:".$this->stringTranslate(base64_encode("Password has been reset successfully")); die;
+					//echo "Success:".$this->stringTranslate(base64_encode("Password has been reset successfully")); die;
 			    }else{
 					$this->set('loginerror',$error);
 					$this->set('totalError',count($error));

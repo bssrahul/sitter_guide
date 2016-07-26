@@ -17,7 +17,7 @@ if($currentLocal == 'ru'){?>
 							  <?php } ?>
                           </div>                          
                           <div class="mob-logo">
-                              <a class="logo" href="#" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
+							  <a class="logo" href="<?php echo HTTP_ROOT; ?>" title="Sitter Guide"><img src="<?php echo HTTP_ROOT; ?>img/create_logo.png"  alt="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?>"></a>
                           </div>                                
                     </div>                       
                     <div class="top-search">
