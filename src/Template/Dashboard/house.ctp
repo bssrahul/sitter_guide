@@ -1,8 +1,12 @@
 <?php //echo "<pre>";print_r($houseInfo); die;?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
-          <div class="profiletab-section">
-              <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
+
+        <div class="profiletab-section">
+          
+                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
+                
+                
                  <?php  $session = $this->request->session();
 				 $profile = $session->read('profile');
 				   if(strtolower($profile) == 'sitter'){
@@ -12,9 +16,12 @@
 				   } 
 				  ?>
                 </h3>
-               <?php echo $this->element('frontElements/profile/sitter_nav');?>
+
+                <?php echo $this->element('frontElements/profile/sitter_nav');?>
+          
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
+
 <div id="menu11" class="tab-pane fade tab-comm active in">
           <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insight about your home')); ?></h2>
           <p id="about-property" class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
@@ -56,7 +63,8 @@
                         'class'=>'form-control']);
                       ?>
                     </div>
-                     <div class="form-group col-lg-4 text-italic">
+
+                    <div class="form-group col-lg-4 text-italic">
                       <label for="">
                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Area')); ?>
                         </label>
@@ -112,13 +120,15 @@
                         <?php echo $this->Form->input(
                               'UserSitterHouses.fully_fenced',
                                [
-                                 'type'=>"radio",
+                                //'label'=>['class'=>'radio-inline'],
+                                'type'=>"radio",
                                  'label'=>false,
                                  'required'=>false,
-                                 "options"=>["yes"=>"Yes","no"=>"No"],
+                                "options"=>["yes"=>"Yes","no"=>"No"],
 								                'default' => 'no',
                                 'templates' => ['inputContainer' => '{{content}}']
                         ]); ?>
+                          
                         </span>
                     </div>  
                     </div>
