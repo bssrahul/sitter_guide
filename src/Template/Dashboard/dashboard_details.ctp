@@ -8,6 +8,7 @@
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
         <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
+			
 			<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 				<h3>
 					<img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">Dashboard
@@ -27,154 +28,160 @@
 			</div>
 		</div>
         <div class="row">
-			<?php if($userType == "Sitter"){ ?>
+			
+			
+          
             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6">
-			 <div class="outer-db-box">
-				<div class=" top-box">
-				  <div class="revenue-icon">
-				  </div>
-				  <div class="topbox-text">
-					<h4> <?php echo @$totalEarningThisMonth; ?>
-					</h4>
-					<p>Earning this month
-					</p>
-				  </div>
-				</div>
-				<div class="below-top-box">
-				  <p>Earning this month for (User Name)
-				  </p>
-				</div>
-				<?php  
-				if(!empty($threeMonthEarn)){ 
-					$ernCountMonth = count($threeMonthEarn);
-					$ernMonth = ['1'=>'Earning one month','2'=>'Earning two months','3'=>'Earning three months'];
-				?>
-				<div class="second-box-header">
-				 <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
-					<h5>
-						<?php 
-						  echo $ernMonth[$ernCountMonth];
+				<?php if($userType == "Sitter"){ ?>
+					 <div class="outer-db-box">
+						<div class=" top-box">
+						  <div class="revenue-icon">
+						  </div>
+						  <div class="topbox-text">
+							<h4> <?php echo @$totalEarningThisMonth; ?>
+							</h4>
+							<p>Earning this month
+							</p>
+						  </div>
+						</div>
+						<div class="below-top-box">
+						  <p>Earning this month for (User Name)
+						  </p>
+						</div>
+						<?php  
+						if(!empty($threeMonthEarn)){ 
+							$ernCountMonth = count($threeMonthEarn);
+							$ernMonth = ['1'=>'Earning one month','2'=>'Earning two months','3'=>'Earning three months'];
 						?>
-					</h5>
-				  </div>
-				  <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows ">
-					<ul class="list-inline pull-right ">
-					  <li>
-						<a href="#">
-						  <div class="setting-icon">
+						<div class="second-box-header">
+						 <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
+							<h5>
+								<?php 
+								  echo $ernMonth[$ernCountMonth];
+								?>
+							</h5>
 						  </div>
-						</a>
-					  </li>
-					  <li>
-						<div type="button"  data-toggle="collapse" data-target="#revenue1" class="cursor-pointer">
-						  <div class="down-icon">
-						  </div>
-						</div>
-					  </li>
-					</ul>
-				  </div>
-				</div>
-				<div class="below-second-box collapse in" id="revenue1">
-				  <div class="revenue-graph"> 
-					<div  id="chart"></div>
-					</div>
-				  <div class="clearfix"></div>
-				  <div>
-					<h4 class="text-center cal-caption">
-					  <i class="fa fa-circle-o color-blue">
-					  </i> &nbsp;Earning for year <?php echo date("Y"); ?>
-					</h4>
-					<hr />
-					<p class="revenue-month text-center">
-						<?php 
-						echo "$ ".$totalMonthPaid."<br>";
-						echo $ernMonth[$ernCountMonth];?>
-					</p>
-					<div class="revenue-small-text text-center">
-					  <p>Earningsi shown are after Sitter Guide
-						commission and service costs 
-					  </p>
-					</div>
-				  </div>
-				</div>
-				<?php } ?>
-			 </div>
-			</div>
-            <?php } ?>
-            <?php if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6">
-			 <div class="outer-db-box">
-				<div class=" top-box">
-				  <div class="revenue-icon">
-				  </div>
-				  <div class="topbox-text">
-					<h4><?php echo @$totalPaidThisMonth; ?>
-					</h4>
-					<p>Paid this month
-					</p>
-				  </div>
-				</div>
-				<div class="below-top-box">
-				  <p>Paid this month for (User Name)
-				  </p>
-				</div>
-				<?php if(!empty($threeMonthPaid)){ ?>
-				<div class="second-box-header">
-				   <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
-					 <?php $monthArr = ['1'=>'Paid One Month','2'=>'Paid Two Months','3'=>'Paid Three Months']; ?>
-					<h5> <?php 
-					        $countPaidMonth = count($threeMonthPaid);
-					        echo $monthArr[$countPaidMonth];
-					  ?>
-					</h5>
-				  </div>
-				  <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows ">
-					<ul class="list-inline pull-right ">
-					  <li>
-						<a href="#">
-						  <div class="setting-icon">
-						  </div>
-						</a>
-					  </li>
-					  <li>
-						<div type="button"  data-toggle="collapse" data-target="#revenue1" class="cursor-pointer">
-						  <div class="down-icon">
+						  <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows ">
+							<ul class="list-inline pull-right ">
+							  <li>
+								<a href="#">
+								  <div class="setting-icon">
+								  </div>
+								</a>
+							  </li>
+							  <li>
+								<div type="button"  data-toggle="collapse" data-target="#revenue1" class="cursor-pointer">
+								  <div class="down-icon">
+								  </div>
+								</div>
+							  </li>
+							</ul>
 						  </div>
 						</div>
-					  </li>
-					</ul>
-				  </div>
-				</div>
-				<div class="below-second-box collapse in" id="revenue1">
-				  <div class="revenue-graph"> 
-					<div  id="paidChart"></div>
-				  </div>
-				  <div class="clearfix"></div>
-				  <div>
-					<h4 class="text-center cal-caption">
-					  <i class="fa fa-circle-o color-blue">
-					  </i> &nbsp;Paid for year <?php echo date("Y"); ?>
-					</h4>
-					<hr />
-					<p class="revenue-month text-center">
-						<?php echo "$ ".$totalMonthErn."<br>"; 
-						 echo $monthArr[$countPaidMonth]; ?>
-					</p>
-					<div class="revenue-small-text text-center">
-					  <p>Paid shown are after Sitter Guide
-						commission and service costs
-					  </p>
-					</div>
-				  </div>
-				</div>
-				<?php } ?>
-				</div>
+						<div class="below-second-box collapse in" id="revenue1">
+						  <div class="revenue-graph"> 
+							<div  id="chart"></div>
+							</div>
+						  <div class="clearfix"></div>
+						  <div>
+							<h4 class="text-center cal-caption">
+							  <i class="fa fa-circle-o color-blue">
+							  </i> &nbsp;Earning for year <?php echo date("Y"); ?>
+							</h4>
+							<hr />
+							<p class="revenue-month text-center">
+								<?php 
+								echo "$ ".$totalMonthPaid."<br>";
+								echo $ernMonth[$ernCountMonth];?>
+							</p>
+							<div class="revenue-small-text text-center">
+							  <p>Earningsi shown are after Sitter Guide
+								commission and service costs 
+							  </p>
+							</div>
+						  </div>
+						</div>
+						<?php } ?>
+					 </div>
+				 <?php } ?>	
+				 
+						 
+					 <?php if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
+					<div class="outer-db-box">
+						<div class=" top-box">
+						  <div class="revenue-icon">
+						  </div>
+						  <div class="topbox-text">
+							<h4><?php echo @$totalPaidThisMonth; ?>
+							</h4>
+							<p>Paid this month
+							</p>
+						  </div>
+						</div>
+						<div class="below-top-box">
+						  <p>Paid this month for (User Name)
+						  </p>
+						</div>
+						<?php if(!empty($threeMonthPaid)){ ?>
+						<div class="second-box-header">
+						   <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
+							 <?php $monthArr = ['1'=>'Paid One Month','2'=>'Paid Two Months','3'=>'Paid Three Months']; ?>
+							<h5> <?php 
+									$countPaidMonth = count($threeMonthPaid);
+									echo $monthArr[$countPaidMonth];
+							  ?>
+							</h5>
+						  </div>
+						  <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows ">
+							<ul class="list-inline pull-right ">
+							  <li>
+								<a href="#">
+								  <div class="setting-icon">
+								  </div>
+								</a>
+							  </li>
+							  <li>
+								<div type="button"  data-toggle="collapse" data-target="#revenue1" class="cursor-pointer">
+								  <div class="down-icon">
+								  </div>
+								</div>
+							  </li>
+							</ul>
+						  </div>
+						</div>
+						<div class="below-second-box collapse in" id="revenue1">
+						  <div class="revenue-graph"> 
+							<div  id="paidChart"></div>
+						  </div>
+						  <div class="clearfix"></div>
+						  <div>
+							<h4 class="text-center cal-caption">
+							  <i class="fa fa-circle-o color-blue">
+							  </i> &nbsp;Paid for year <?php echo date("Y"); ?>
+							</h4>
+							<hr />
+							<p class="revenue-month text-center">
+								<?php echo "$ ".$totalMonthErn."<br>"; 
+								 echo $monthArr[$countPaidMonth]; ?>
+							</p>
+							<div class="revenue-small-text text-center">
+							  <p>Paid shown are after Sitter Guide
+								commission and service costs
+							  </p>
+							</div>
+						  </div>
+						</div>
+						<?php } ?>
+						</div>
+						
+						<?php } ?>
 			</div>
-			<?php } 
-           ?>
+         
+			
 			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6 ">
+			  
 			  <div class="outer-db-box">
-			  <?php  if($userType == "Sitter"){ ?> 
+				<?php  if($userType == "Sitter"){ ?> 
 					<div class=" top-box">
 					  <div class="client-icon">
 					  </div>
@@ -191,7 +198,7 @@
 						<?php echo @$client_stay_status["new_clients"]; ?> new clients
 					  </p>
 					</div>
-			<?php }
+				<?php }
 			    if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?> 
 				<div class=" top-box">
 				  <div class="client-icon">

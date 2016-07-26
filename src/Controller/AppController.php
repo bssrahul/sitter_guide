@@ -496,9 +496,9 @@ class AppController extends Controller{
 		
 		if($_SERVER['HTTP_HOST']=='localhost')
 		{	
-			pr($template_info); die;
+			//pr($template_info); die;
 		}
-		$this->Email = new Email();
+		$this->Email = new Email('email_gmail');
 		try {
 		
 			ob_start();

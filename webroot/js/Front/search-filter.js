@@ -11,9 +11,19 @@
 		  dateFormat: 'yy-mm-dd', 
 		  numberOfMonths: 1,
 		  yearRange: "-50:+0",
-		  onClose: function( selectedDate ) {
-			$( "#boardingTo" ).datepicker( "option", "minDate", selectedDate );
+		  minDate: new Date(),
+		  onSelect: function(date){
+
+				var selectedDate = new Date(date);
+				var msecsInADay = 86400000;
+				var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+				//$("boardingTo").datepicker( "option", "minDate", endDate );
+				$( "#boardingTo" ).datepicker( "option", "minDate", date );
 		  }
+		  /*onClose: function( selectedDate ) {
+			$( "#boardingTo" ).datepicker( "option", "minDate", selectedDate );
+		  }*/
 		});
 		
 		//DATE PICKER SCRIPT FOR TO DATE
@@ -23,9 +33,10 @@
 		  dateFormat: 'yy-mm-dd',
 		  numberOfMonths: 1,
 		  yearRange: "-50:+0",
-		  onClose: function( selectedDate ) {
+		  minDate: new Date(),
+		  /*onClose: function( selectedDate ) {
 			$( "#boardingFrom" ).datepicker( "option", "maxDate", selectedDate );
-		  }
+		  }*/
 		});
 		
 		//OPEN DATE PICKER ONCLICK ON CALENDER ICON FOR TO AND FROM DATE
@@ -44,6 +55,44 @@
 		
 		
 		/*DATE PICKER SCRIPT FOR SEARCH FILTER ON SEARCH PAGE CALENDER START*/
+		$( "#boardingFromFilter" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd', 
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  minDate: new Date(),
+		  onSelect: function(date){
+
+				var selectedDate = new Date(date);
+				var msecsInADay = 86400000;
+				var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+				//$("boardingTo").datepicker( "option", "minDate", endDate );
+				$( "#boardingToFilter" ).datepicker( "option", "minDate", date );
+				gerSearchResult();
+		  }
+		  /*onClose: function( selectedDate ) {
+			$( "#boardingTo" ).datepicker( "option", "minDate", selectedDate );
+		  }*/
+		});
+		
+		//DATE PICKER SCRIPT FOR TO DATE
+		$( "#boardingToFilter" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd',
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  minDate: new Date(),
+		  onClose: function( selectedDate ) {
+			//$( "#boardingFrom" ).datepicker( "option", "maxDate", selectedDate );
+			gerSearchResult();
+		  }
+		});
+		
+		
+		/*- OLD CODE
 		$( "#boardingFromFilter" ).datepicker({
 		  defaultDate: "+1",
 		  changeMonth: true,
@@ -74,7 +123,7 @@
 				 gerSearchResult();
 				
 		  }
-		});
+		});*/
 		
 		//OPEN DATE PICKER ONCLICK ON CALENDER ICON FOR TO AND FROM DATE
 		$('#cIconFromFilter').click(function(){

@@ -300,7 +300,7 @@
 																echo $this->Form->input('Booking.cvv_code',[
 																'templates' => ['inputContainer' => '{{content}}'],
 																'label' => false,
-																'type'=>'text',
+																'type'=>'password',
 																'class'=>'security-code form-control collapseOne',
 																'placeholder'=>'CVV Code',
 																]);
