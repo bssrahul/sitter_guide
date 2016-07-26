@@ -386,8 +386,78 @@ class SearchController extends AppController
 							}else{
 								$userData[$k]['is_favourite'] =  "no";
 							}
-								
-						}	 
+						}	
+					
+					    $bookingRequestModel = TableRegistry :: get("BookingRequests");
+					    $sitterAvailabilityDaysModel = TableRegistry :: get("UserSitterAvailabilityDays");
+					    $sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailability");
+					  //Get repeat client
+					   $totalClient =  $bookingRequestModel->find('all')
+						->where(['BookingRequests.sitter_id' => $eachRow->id,'BookingRequests.payment_status' => "Paid"])
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1')
+					    ->hydrate(false)->count();
+					   
+					$userData[$k]['repeatClient'] = $totalClient;
+					//Get last booking
+					 $last_booking = $bookingRequestModel->find('all',['order' => ['BookingRequests.created_date' => 'desc']])
+						->where(['BookingRequests.sitter_id' => $eachRow->id,'BookingRequests.payment_status' => "Paid"])
+						->hydrate(false)->first();
+						
+					  $userData[$k]['last_booking_date'] = $last_booking["created_date"];
+					   
+					//Start check weekend available   
+					$sitter_days_availability = $sitterAvailabilityDaysModel->find('all')
+									->where(['UserSitterAvailabilityDays.user_id' => $eachRow->id])
+									->hydrate(false)->toArray();
+					$weekend_availaibility = false;
+					if(!empty($sitter_days_availability)){ 		
+						 $day_availability = explode(",",$sitter_days_availability[0]['available_days']);
+						 $saturday_available = false;
+						 $sanday_available = false;
+						
+					     foreach($day_availability as $single_day){
+							if($single_day == 'sunday'){
+								$sanday_available = true;
+							}
+							if($single_day == 'saturday'){
+								$saturday_available = true;
+							}
+						}
+						if($sanday_available && $saturday_available){
+							$weekend_availaibility = true;
+						}
+					}
+				    $sitter_availability = $sitterAvailabilityModel->find('all')
+						->where(['UserSitterAvailability.user_id' => $eachRow->id])
+						->hydrate(false)->toArray();
+					$userData[$k]['weekend_availaibility'] = "no";
+					$userData[$k]['availaibility_on_new_year'] = "no";	
+					if(!empty($sitter_availability)){	
+						$next_sat = date('Y-m-d',strtotime('saturday'));
+						$next_sun = date('Y-m-d',strtotime('sunday'));
+						
+						$date_25_dec = date('Y')."-12-25";
+						$date_1_Jan = (date('Y')+1)."-01-01";
+						
+						$next_sat_sun = false;
+						$available_onnewyear = false;
+						
+		                foreach($sitter_availability as $date_val){
+							if((($next_sat >= $date_val['start_date']) && ($next_sat <= $date_val['end_date'])) && (($next_sun >= $date_val['start_date']) && ($next_sun <= $date_val['end_date']))){
+								$next_sat_sun = true;
+							}
+							if((($date_25_dec >= $date_val['start_date']) && ($date_25_dec <= $date_val['end_date'])) && (($date_1_Jan >= $date_val['start_date']) && ($date_1_Jan <= $date_val['end_date']))){
+								$available_onnewyear  = true;
+							}
+						}
+						if($weekend_availaibility && $next_sat_sun){
+						    $userData[$k]['weekend_availaibility'] = "yes";
+					    }
+					    if($available_onnewyear){
+						    $userData[$k]['availaibility_on_new_year'] = "yes";
+					    }
+					 }   
+					//End
 					}
 				}
 				
@@ -401,10 +471,6 @@ class SearchController extends AppController
 			}		
 			
 		}		
-		
-		
-		
-		
 		
 		if(!isset($currentLang) && empty($currentLang)){
 
@@ -881,15 +947,92 @@ class SearchController extends AppController
 				$loggedInUserID = $session->read('User.id');
 				if($loggedInUserID !=''){
 					if(!empty($userData)){
-						foreach($userData as $k=>$eachRow){
-							$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
-							if($UserSitterFavourite>0){
-								$userData[$k]['is_favourite'] =  "yes";
-							}else{
-								$userData[$k]['is_favourite'] =  "no";
+						
+							$bookingRequestModel = TableRegistry :: get("BookingRequests");
+					        $sitterAvailabilityDaysModel = TableRegistry :: get("UserSitterAvailabilityDays");
+					        $sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailability");
+					        
+					foreach($userData as $k=>$eachRow){
+						
+						$UserSitterFavourite = $UserSitterFavouriteModel->find('all',['conditions'=>['UserSitterFavourites.sitter_id'=>$eachRow->id,'UserSitterFavourites.user_id'=>$loggedInUserID]])->count();
+						if($UserSitterFavourite>0){
+							$userData[$k]['is_favourite'] =  "yes";
+						}else{
+							$userData[$k]['is_favourite'] =  "no";
+						}
+						
+					
+					  $bookingRequestModel = TableRegistry :: get("BookingRequests");
+					  $sitterAvailabilityDaysModel = TableRegistry :: get("UserSitterAvailabilityDays");
+					  $sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailability");
+					//Get repeat client
+					   $totalClient =  $bookingRequestModel->find('all')
+						->where(['BookingRequests.sitter_id' => $eachRow->id,'BookingRequests.payment_status' => "Paid"])
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1')
+					    ->hydrate(false)->count();
+					   
+					$userData[$k]['repeatClient'] = $totalClient;
+					//Get last booking
+					 $last_booking = $bookingRequestModel->find('all',['order' => ['BookingRequests.created_date' => 'desc']])
+						->where(['BookingRequests.sitter_id' => $eachRow->id,'BookingRequests.payment_status' => "Paid"])
+						->hydrate(false)->first();
+						
+					  $userData[$k]['last_booking_date'] = $last_booking["created_date"];
+					   
+					//Start check weekend available   
+					$sitter_days_availability = $sitterAvailabilityDaysModel->find('all')
+									->where(['UserSitterAvailabilityDays.user_id' => $eachRow->id])
+									->hydrate(false)->toArray();
+					$weekend_availaibility = false;
+					if(!empty($sitter_days_availability)){ 		
+						 $day_availability = explode(",",$sitter_days_availability[0]['available_days']);
+						 $saturday_available = false;
+						 $sanday_available = false;
+						
+					     foreach($day_availability as $single_day){
+							if($single_day == 'sunday'){
+								$sanday_available = true;
 							}
-								
-						}	 
+							if($single_day == 'saturday'){
+								$saturday_available = true;
+							}
+						}
+						if($sanday_available && $saturday_available){
+							$weekend_availaibility = true;
+						}
+					}
+				    $sitter_availability = $sitterAvailabilityModel->find('all')
+						->where(['UserSitterAvailability.user_id' => $eachRow->id])
+						->hydrate(false)->toArray();
+					$userData[$k]['weekend_availaibility'] = "no";
+					$userData[$k]['availaibility_on_new_year'] = "no";	
+					if(!empty($sitter_availability)){	
+						$next_sat = date('Y-m-d',strtotime('saturday'));
+						$next_sun = date('Y-m-d',strtotime('sunday'));
+						
+						$date_25_dec = date('Y')."-12-25";
+						$date_1_Jan = (date('Y')+1)."-01-01";
+						
+						$next_sat_sun = false;
+						$available_onnewyear = false;
+						
+		                foreach($sitter_availability as $date_val){
+							if((($next_sat >= $date_val['start_date']) && ($next_sat <= $date_val['end_date'])) && (($next_sun >= $date_val['start_date']) && ($next_sun <= $date_val['end_date']))){
+								$next_sat_sun = true;
+							}
+							if((($date_25_dec >= $date_val['start_date']) && ($date_25_dec <= $date_val['end_date'])) && (($date_1_Jan >= $date_val['start_date']) && ($date_1_Jan <= $date_val['end_date']))){
+								$available_onnewyear  = true;
+							}
+						}
+						if($weekend_availaibility && $next_sat_sun){
+						    $userData[$k]['weekend_availaibility'] = "yes";
+					    }
+					    if($available_onnewyear){
+						    $userData[$k]['availaibility_on_new_year'] = "yes";
+					    }
+					 }   
+					//End
+					 }	 
 					}
 				}
 				
@@ -933,7 +1076,6 @@ class SearchController extends AppController
 											)
 							   ->where(['Users.id' => $userId])
 							   ->toArray();
-		//pr($userPetInfo);die;
 		
 		if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
 			
@@ -955,7 +1097,6 @@ class SearchController extends AppController
 				$sourceLocationLongitude = $explodedArrayOfSourceLocation[1];
 			
 			}else{
-				
 				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
 				$sourceSelectedLocation = $this->request->data['location_autocomplete'];
 				
@@ -1078,8 +1219,8 @@ class SearchController extends AppController
 					    }
 					 }   
 					}
-					
 					//die;
+				 
 				 }
                				
 			  /*CHECK IN ARRAY, IS USER HAVE SET SERVICES AND RATES VALUE OR NOT, IF NOT THEN DELETE THIS INDEX START*/
@@ -1203,6 +1344,78 @@ class SearchController extends AppController
 						}else{
 							unset($userData[$arrK]);
 						}
+						
+						$bookingRequestModel = TableRegistry :: get("BookingRequests");
+					    $sitterAvailabilityDaysModel = TableRegistry :: get("UserSitterAvailabilityDays");
+					    $sitterAvailabilityModel = TableRegistry :: get("UserSitterAvailability");
+					//Get repeat client
+					   $totalClient =  $bookingRequestModel->find('all')
+						->where(['BookingRequests.sitter_id' => $arrayAdjust->id,'BookingRequests.payment_status' => "Paid"])
+						->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1')
+					    ->hydrate(false)->count();
+					   
+					$userData[$arrK]['repeatClient'] = $totalClient;
+					//Get last booking
+					 $last_booking = $bookingRequestModel->find('all',['order' => ['BookingRequests.created_date' => 'desc']])
+						->where(['BookingRequests.sitter_id' => $arrayAdjust->id,'BookingRequests.payment_status' => "Paid"])
+						->hydrate(false)->first();
+						
+					  $userData[$arrK]['last_booking_date'] = $last_booking["created_date"];
+					   
+					//Start check weekend available   
+					$sitter_days_availability = $sitterAvailabilityDaysModel->find('all')
+									->where(['UserSitterAvailabilityDays.user_id' => $arrayAdjust->id])
+									->hydrate(false)->toArray();
+					$weekend_availaibility = false;
+					if(!empty($sitter_days_availability)){ 		
+						 $day_availability = explode(",",$sitter_days_availability[0]['available_days']);
+						 $saturday_available = false;
+						 $sanday_available = false;
+						
+					     foreach($day_availability as $single_day){
+							if($single_day == 'sunday'){
+								$sanday_available = true;
+							}
+							if($single_day == 'saturday'){
+								$saturday_available = true;
+							}
+						}
+						if($sanday_available && $saturday_available){
+							$weekend_availaibility = true;
+						}
+					}
+				    $sitter_availability = $sitterAvailabilityModel->find('all')
+						->where(['UserSitterAvailability.user_id' => $arrayAdjust->id])
+						->hydrate(false)->toArray();
+					$userData[$arrK]['weekend_availaibility'] = "no";
+					$userData[$arrK]['availaibility_on_new_year'] = "no";	
+					if(!empty($sitter_availability)){	
+						$next_sat = date('Y-m-d',strtotime('saturday'));
+						$next_sun = date('Y-m-d',strtotime('sunday'));
+						
+						$date_25_dec = date('Y')."-12-25";
+						$date_1_Jan = (date('Y')+1)."-01-01";
+						
+						$next_sat_sun = false;
+						$available_onnewyear = false;
+						
+		                foreach($sitter_availability as $date_val){
+							if((($next_sat >= $date_val['start_date']) && ($next_sat <= $date_val['end_date'])) && (($next_sun >= $date_val['start_date']) && ($next_sun <= $date_val['end_date']))){
+								$next_sat_sun = true;
+							}
+							if((($date_25_dec >= $date_val['start_date']) && ($date_25_dec <= $date_val['end_date'])) && (($date_1_Jan >= $date_val['start_date']) && ($date_1_Jan <= $date_val['end_date']))){
+								$available_onnewyear  = true;
+							}
+						}
+						if($weekend_availaibility && $next_sat_sun){
+						    $userData[$arrK]['weekend_availaibility'] = "yes";
+					    }
+					    if($available_onnewyear){
+						    $userData[$arrK]['availaibility_on_new_year'] = "yes";
+					    }
+					 }   
+					//End
+						//////////////////////////////
 					}	
 				}
 				$userData = $customArray;

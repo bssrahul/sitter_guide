@@ -559,8 +559,7 @@ class DashboardController extends AppController
 																			return $q->select(['Users.id','Users.first_name','Users.last_name','Users.image','Users.city','Users.state','Users.country']);
 																		}
 													]
-								  ]
-						)
+				])
 		->hydrate(false)->toArray();
 		
 		$UsersModel = TableRegistry::get('Users');
@@ -720,12 +719,14 @@ class DashboardController extends AppController
 		}
 		
 		 $calendar = new  \Calendarbooking();
-		
-		 
-         $this->set('calender',$calendar->show($booking_arr));
+		  
+		//pr($calendar->show($booking_arr));die;
+		// pr($booking_arr);die;
+		//$this->set('calender',$calendar->show($booking_arr));
+        //pr($calendar->show($booking_request));die;
+        $this->set('calender',$calendar->show($booking_request));
         
-         //$this->set('calender',$calendar->show($booking_request));
-          // pr($booking_arr);die;
+         //pr($booking_arr);die;
          $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 
          $this->set('sitter_booking_info',$sitterbookingData);	 
@@ -860,19 +861,24 @@ function for promote
 			 $session = $this->request->session();
 			 $userId = $session->read('User.id');
 			 
-			 /*$user_current = $bookingRequestModel->find('all')
-						->where(['BookingRequests.'.$condition_field => $userId,'BookingRequests.folder_status_guest' => "current",'BookingRequests.read_status' => "unread"])
-						->hydrate(false)->count();*/
-                //For Update profile status
+			    //For Update profile status
 			    $userData = $usersModel->get($userId);
-				//$session->write('User.user_type',$userData[0]->user_type);
+			    
 				$userInfo =	array();
 				$refer_code = substr($userData->email, 0, strpos($userData->email, '@'));
-				//$userInfo['email'] = $userData->email;
-				$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/promocode/";
 				
+				$default_url = HTTP_ROOT."share/".$refer_code."/token/".base64_encode(convert_uuencode($userData->id));
+				$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/promocode/";
+				if(!empty($userData->reference_code)){
+				    $this->set('promotion_url', $userInfo['refer_url']);
+				}else{
+				    $this->set('promotion_url', $default_url);
+				}
+		
+				 
 				$this->set('refer_url', $userInfo['refer_url']);
 				$this->set('reference_code', $userData->reference_code);
+				
  }
 /**
 * Function to generate random string
@@ -950,7 +956,6 @@ Function for Front profile dashboard
 										)
 						   ->where(['Users.id' => $userId], ['Users.id' => 'integer[]'])
 						   ->toArray();
-			  
 			  if(isset($userData[0]->user_sitter_house['dogs_in_home']) && !empty($userData[0]->user_sitter_house['dogs_in_home']))
 				{
 					if($userData[0]->user_sitter_house['dogs_in_home'] == 'yes'){

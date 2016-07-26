@@ -1,24 +1,16 @@
-
 <!--[Banner Area Start]-->
 <section class="refer-banner"> 
-
 <div class="container">
 <div class="row">
-
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-7">
-
 <h3 class="refer-big-text">You've received a $20 gift* from a friend</h3>
-
 <p class="refer-text-small">Create your free sitterguide account and the $20 credit will be automatically deposited into your account.</p>
-
 </div>
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
-
 <div class="referform-outer">
-              
-                    <h4 class="claim-top-heading">
-                        Claim My $20</h4>
-                        
+                 <h4 class="claim-top-heading">
+                        Claim My $20
+                    </h4>
                  <div>       
             <?php echo $this->Form->create(@$userData,[
               'url' => ['controller' => 'guests', 'action' => 'share'],
@@ -33,8 +25,7 @@
 			 'type'=>'hidden',
 			 'value'=>@$rf_type
 			]);
-			
-		    ?>
+			?>
 		   <?php 
 			echo $this->Form->input('Users.first_name',[                
 			 'required'=>false,

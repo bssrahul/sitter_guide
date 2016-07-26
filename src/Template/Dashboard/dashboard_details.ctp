@@ -524,7 +524,7 @@
 				</div>
 				<div  id="event2" class="below-second-box" aria-expanded="true">
 				  <div class="">
-					<div id="myCalender_send">
+					<div id="myCalender">
 					  <?php echo $this->element('frontElements/Search/calender');?>
 					</div>
 				  </div>
