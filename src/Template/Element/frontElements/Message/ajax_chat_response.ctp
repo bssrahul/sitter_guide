@@ -3,6 +3,8 @@
   ?>
   <ul class="list-unstyled chat-postioning">
    <?php 
+   if(!isset($get_chats) && !empty($get_chats)){
+
 		foreach($get_chats as $chat_data){	
 		if($chat_data['user_id']==$loggedin_user){ ?>
 			<li>
@@ -86,7 +88,9 @@
 	
 	<?php } ?>
 	
-	<?php } ?>
+	<?php } 
+	}
+	?>
 	
   </ul>
 <?php } ?>

@@ -26,7 +26,7 @@ use Cake\Event\Event;
  *
  * This controller will render views from Template/Pages/
  *
- * @link http://book.cakephp.org/3.0/en/controllers/pages-controller.html
+ * @link http://book.cakephp.org/3.0/$userActasen/controllers/pages-controller.html
  */
 
 class MessageController extends AppController
@@ -95,6 +95,10 @@ class MessageController extends AppController
 					$fieldname = 'sitter';
 					$userType = 'Sitter';
 					$userActas = 'Guest';
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 					
 				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
 					
@@ -102,6 +106,10 @@ class MessageController extends AppController
 					$fieldname = 'sitter';
 					$userType = 'Sitter';
 					$userActas = 'Sitter';
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 					
 				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
 					
@@ -109,7 +117,10 @@ class MessageController extends AppController
 					$fieldname = 'guest';
 					$userType = 'Basic';
 					$userActas = 'Guest';
-					
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 				}		
 				
 				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
@@ -118,6 +129,7 @@ class MessageController extends AppController
 																->limit(1)->hydrate(false)->first();
 			}
 		}
+		
 		if(count($get_requests)>0){
 			$default_booking_id = $get_requests[0]['id'];
 		}else{
@@ -208,7 +220,9 @@ class MessageController extends AppController
 					 
 			  }
 			  //Start sk	
+			  
 			if(!empty($guestUserData[0]->user_pets) && isset($guestUserData[0]->user_pets)){
+				 pr($get_booking_requests_to_display['guest_id_for_bookinig']); die;
 				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
 				 $selected_pets = [];
 				 $pets_name = [];
@@ -222,6 +236,7 @@ class MessageController extends AppController
 				 }
 		      $this->set("pets",$pets_name);
 		      $this->set("selected_pets",$selected_pets);
+		     
 		      //End sk
 		    }
 		   
@@ -286,7 +301,7 @@ class MessageController extends AppController
 				
 		}//END
 	    //echo $total;die;	
-	    
+	  //  pr($get_requests); die;
 		$this->set(compact('userId','userType','class_user','fieldname','userActas'));
 		$this->set('get_chats',$request_booking_id);
 		$this->set('get_requests',$get_requests);
@@ -414,13 +429,16 @@ class MessageController extends AppController
 			foreach($get_requests as $booking_key=>$booking_records){
 				
 				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
-				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
 				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
 					
 					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
 					$fieldname = 'sitter';
 					$userType = 'Sitter';
 					$userActas = 'Guest';
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 					
 				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
 					
@@ -428,6 +446,10 @@ class MessageController extends AppController
 					$fieldname = 'sitter';
 					$userType = 'Sitter';
 					$userActas = 'Sitter';
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 					
 				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
 					
@@ -435,7 +457,10 @@ class MessageController extends AppController
 					$fieldname = 'guest';
 					$userType = 'Basic';
 					$userActas = 'Guest';
-					
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 				}				
 				
 				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
@@ -669,6 +694,7 @@ class MessageController extends AppController
 		
 		if(!empty($get_requests)){
 			foreach($get_requests as $booking_key=>$booking_records){
+				
 				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
 				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
 					
@@ -676,6 +702,10 @@ class MessageController extends AppController
 					$fieldname = 'sitter';
 					$userType = 'Sitter';
 					$userActas = 'Guest';
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 					
 				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
 					
@@ -683,6 +713,10 @@ class MessageController extends AppController
 					$fieldname = 'sitter';
 					$userType = 'Sitter';
 					$userActas = 'Sitter';
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
 					
 				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
 					
@@ -690,8 +724,11 @@ class MessageController extends AppController
 					$fieldname = 'guest';
 					$userType = 'Basic';
 					$userActas = 'Guest';
-					
-				}		
+					if($folder_status != $booking_records['folder_status_'.strtolower($userActas)]){
+						unset($get_requests[$booking_key]);
+						$get_requests = array_values($get_requests);
+					}
+				}	
 				
 				$get_requests[$booking_key]['user'] = $UsersModel->find('all')
 																->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded'])

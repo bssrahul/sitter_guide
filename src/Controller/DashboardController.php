@@ -724,7 +724,7 @@ class DashboardController extends AppController
 		// pr($booking_arr);die;
 		//$this->set('calender',$calendar->show($booking_arr));
         //pr($calendar->show($booking_request));die;
-        $this->set('calender',$calendar->show($booking_request));
+        $this->set('calender',$calendar->show(@$booking_request));
         
          //pr($booking_arr);die;
          $this->set('client_stay_status',$client_stay_status);
@@ -2831,8 +2831,7 @@ function addPets(){
 		$session = $this->request->session();
         
         $userId = $session->read('User.id');
-        		
-		if($userId !=''){
+        if($userId !=''){
 			
 			$UserModel = TableRegistry::get('Users');
 		
@@ -2845,7 +2844,7 @@ function addPets(){
 			$force_change =  isset($_REQUEST['force_change'])?$_REQUEST['force_change']:0;
 		
 				
-				$UserModelData->user_id = $userId;
+				$UserModelData->id = $userId;
 				
 				$UserModelData->avail_status =  isset($_REQUEST['avail_status'])?$_REQUEST['avail_status']:'';
 			
@@ -2860,7 +2859,6 @@ function addPets(){
 				}
 		}
         
-	
 		die;
 	   
     }	
