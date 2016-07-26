@@ -211,7 +211,8 @@
                                  'type'=>"textarea",
                                  'label'=>false,
 								  'id'=>"about_txtarea",
-                                 'templates' => ['inputContainer' => '{{content}}']
+                                 'templates' => ['inputContainer' => '{{content}}'],
+								 'placeholder'=>'Tell us about your home'
                             ]); ?>
                            <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
 								<?php $max=75; if(!empty($sitterHouseData['about_home_desc'])){ $rem = $max-str_word_count ($sitterHouseData['about_home_desc']);} ?>
@@ -231,7 +232,8 @@
                                  'label'=>false,
 								 'id'=>"spaces_txtarea",
 								 'maxlength'=>"5000",
-                                 'templates' => ['inputContainer' => '{{content}}']
+                                 'templates' => ['inputContainer' => '{{content}}'],
+								 'placeholder'=>'Describe the spaces your guest will have access to'
                                  
                             ]); ?>
                           <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
@@ -253,7 +255,8 @@
                                  'label'=>false,
 								  'maxlength'=>"5000",
 								  'id'=>'home_txtarea',
-                                 'templates' => ['inputContainer' => '{{content}}']
+                                 'templates' => ['inputContainer' => '{{content}}'],
+								 'placeholder'=>'What are the pets in your home like '
                             ]); ?>
 					<?php $max=75; if(!empty($sitterHouseData['home_pets_desc'])){ $rem = $max-str_word_count ($sitterHouseData['home_pets_desc']);} ?>
                           <p class="w-limit" id="home_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
