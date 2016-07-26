@@ -3,18 +3,15 @@
         <div class="profiletab-section">
 			<h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
 				<?php echo $this->element('frontElements/profile/sitter_nav');?>
-
         </div>
         <div class="tab-sectioninner book-pro">
             <div class="tab-content">
                 <div class="tab-pane fade tab-comm active in" id="menu4">
-
-					<h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
+                    <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
 					<p class="head-font2 pad-head-foot pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can select and modify your settings in this central control panel')); ?></p>
 								
 					<h4 id="terms" ><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="<?php echo HTTP_ROOT.'dashboard/calendar' ?>" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('  to update your calendar settings')); ?> </h4>
-				 
-				 <h3></h3>
+				  <h3></h3>
 					 <?php 
 						echo $this->Form->create(@$sitter_service_info, [
 							'url' => ['controller' => 'dashboard', 'action' => 'services-and-rates'],
@@ -28,8 +25,7 @@
 													   ]);
 						?>
 					<div class="row">
-                  
-						<div class="col-lg-4 col-md-6">
+                         <div class="col-lg-4 col-md-6">
 							<p><b><?php echo $this->requestAction('app/get-translate/'.base64_encode('Will you accept last minute')); ?></b></p>
 									<div class="row">
 										<div class="col-lg-8 col-md-9 col-xs-8 col-lg-offset-1 mt10 ">
