@@ -91,22 +91,24 @@
           </p>
           <ul class=" list-unstyled prom-social">
             <li>
-             <a href="javascript:void(0)"
-                onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo "http://localhost/sitter_guide/share/er.sukhdevkamboj/token/Ii1TMGAKYAo=" ?>')">
-                <i class="fa fa-facebook-square">
-                </i> Post On Facebook 
-              </a>
-            </li>
+            
+				<a href="javascript:void(0)"
+				    onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo @$promotion_url; ?>')">
+				  <i class="fa fa-facebook-square">
+                  </i> Post On Facebook 
+               </a>   
+			   
+			</li>
             <li>
 			<a href="javascript:void(0)"
-              onclick="javascript:genericSocialShare('http://twitter.com/share?text=<?php echo "http://localhost/sitter_guide/share/er.sukhdevkamboj/token/Ii1TMGAKYAo=" /*urlencode($blogs_info['title']); ?>&url=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']*/; ?>')">
+              onclick="javascript:genericSocialShare('http://twitter.com/share?text=<?php echo @$promotion_url; ?>')">
                 <i class="fa fa-twitter">
                 </i> Post On Twitter 
               </a>
             </li>
             <li>
 			<a href="javascript:void(0)"
-              onclick="javascript:genericSocialShare('http://pinterest.com/pin/create/button/?url=<?php echo "http://localhost/sitter_guide/share/er.sukhdevkamboj/token/Ii1TMGAKYAo=" /*"http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>&media=<?php echo HTTP_ROOT.'img/uploads/'.$blogs_info['image']*/; ?>')">
+              onclick="javascript:genericSocialShare('http://pinterest.com/pin/create/button/?url=<?php echo @$promotion_url; ?>')">
                 <i class="fa fa-pinterest">
                 </i> Post On Craigslist 
               </a>
@@ -146,3 +148,9 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+function genericSocialShare(url){
+    window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+    return true;
+}
+</script>

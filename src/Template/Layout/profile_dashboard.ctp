@@ -9,6 +9,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		
+		<meta name="description" content="Give $20 to your firends to use on their first stay You\'ll also get $0 when they complete their first booking." />
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" value="summary">
+		<!-- Open Graph data -->
+		<meta property="fb:app_id" content="<?php echo FACEBOOK_APP_ID; ?>" />
+		<meta property="og:title" content="Refer Friends & Get $10" />
+		<meta property="og:type"  content="website" />
+		<meta property="og:url"   content="<?php echo "http://".$_SERVER['HTTP_HOST'].@$this->request->here; ?>" />
+		<meta property="og:image" content="<?php echo HTTP_ROOT; ?>img/bg-family.png" />
+		<meta property="og:description" content="Give $20 to your firends to use on their first stay You\'ll also get $20 when they complete their first booking." />
+		
 		<title><?php echo SITE_TITLE; ?></title>
 		<?php echo isset($metaTag)?$metaTag:''; ?>
 		<!-- Bootstrap Core CSS -->

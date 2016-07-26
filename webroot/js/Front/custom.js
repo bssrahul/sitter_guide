@@ -1718,7 +1718,6 @@
 				$("#"+btnID).val(orgBtnVal);	
 			}
 		});
-		
 	}
 	/*FUNCTION FOR SUBMIT THE REFER FRIEND*/
 	function process_refer_form(formID,btnID,actionURL){
@@ -1731,16 +1730,14 @@
 			data:formData,//ALL SUBMITTED DATA FROM THE FORM
 			success:function(res)
 			{
-				//console.log(res);
-				//alert(res);
 				var response = res.split(':');
 				if($.trim(response[0]) == 'Success'){
 					$('.clr').html('');	//Emtpy Error MESSAGE
 					$('.successMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
 					$('#'+formID)[0].reset();
 					
-					//setTimeout(function(){window.location.href = ajax_url;},1000);
-				   $('#squarespaceModal').modal('hide');
+					$('#squarespaceModal').modal('hide');
+					setTimeout(function(){window.location.href = ajax_url+"dashboard/promote";},1000);
 				}if($.trim(response[0]) == 'Error'){
 					$('.clr').html('');	//Emtpy Error MESSAGE
 					$('.errorMessage').html(response[1]);	//DISPLAY SUCCESS MESSAGE
@@ -1750,7 +1747,6 @@
 				$("#"+btnID).val(orgBtnVal);	
 			}
 		});
-		
 	}
 	
 	/*FUNCTION FOR SUBMIT THE FORGOT FORM AND DISPLAYING THERE REPOSNSE*/
