@@ -29,7 +29,7 @@
                          
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-default" id="reset-pwd"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
+                        <button type="submit" class="btn btn-default" id="processing"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 
                         <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Want to go back at ')); ?><span onclick="window.history.back()" class="c-red"><a href="javascript:void(0)"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click Here')); ?></a></span></p>
                           
@@ -42,3 +42,9 @@
     <!--[.signin-wrapper Area start]-->
 </div>
 <!--[.innerpage-conent Area end]-->
+<style>
+#processing:hover, #processing:focus , #processing:active{
+	background:#72a105  !important;
+	color:#fff  !important;
+}
+</style>

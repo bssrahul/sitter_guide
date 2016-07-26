@@ -1,3 +1,4 @@
+
 <div class="message-wrap">						
                       <div class="container-fluid">                        
                         <div class="row"> 
@@ -27,7 +28,7 @@
 											$userTo = $user_guest;
 										}									
 									?>
-									<input type = "hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" />									
+									<input type ="hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" />									
 									<textarea id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control"></textarea>								
 								
 								</div>
@@ -41,7 +42,7 @@
 										<p class="mess-tesxt1"> 
 											<i class="fa fa-clock-o">
 											</i> Stays booked through Sitterguide are covered by free 
-											<a href="#" class="colorblue">premium insurance.
+											<a href="<?php echo HTTP_ROOT."insurance"; ?>" class="colorblue">premium insurance.
 											</a>
 										</p>
 									</div>
@@ -70,4 +71,4 @@
                         </i> &nbsp; Report this conversation
                       </a>
                     </p>
-                    
+

@@ -244,11 +244,14 @@
                                 'name'=>'signup-submit',			
                             	'label'=>false,
                             	'class'=>'signup-submit btn btn-default',
-                            	'id'=>'sign-up',
+                            	'id'=>'processing',
                             	'type' => 'submit'
                             	
 							]);
+							
+							
                            ?>
+                        <!--<input type="submit" value="Sign Up" id="processing" class="signup-submit btn btn-default" name="signup-submit">-->
 						<p><span class="c-red c-red-bar"><?php echo $this->requestAction('app/get-translate/'.base64_encode('OR')); ?></span></p>
                         
                         <a href="<?php echo @$facebookUrl; ?>" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Facebook')); ?></a>
@@ -342,6 +345,11 @@ a.signup-color {
     font-size: 14px  !important;
     background: #fff !important;
     color: #3CB3EE  !important;
+}
+
+#processing:hover, #processing:focus , #processing:active{
+	background:#72a105  !important;
+	color:#fff  !important;
 }
 </style>
 
