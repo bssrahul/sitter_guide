@@ -316,27 +316,26 @@
 									  <?php } 
 									  ?>
 									  <li>
-										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active')); ?> 
+										  <img src="<?php echo HTTP_ROOT; ?>img/right-arrow.png"  alt=""/> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Last active :')); ?> 
 										  <span>
 											<?php 
 											if(@$results->avail_status != 'Logout'){
 																echo '<span style="color:green">'.$results->avail_status.'<//span>';
 											}else{
-												$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$results->last_login);
+												$seconds =  strtotime(date("Y-m-d"))-strtotime(date_format(@$results->last_login,"Y-m-d"));
 												$days    = floor($seconds / 86400);
 												$hours = floor(($seconds - ($days * 86400)) / 3600);
 												$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
 												$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+												
 												$active_week_ago = floor(($days)/7);
 												  if($active_week_ago >= 1){
 													  echo $active_week_ago." Week "."ago";
 												  }else{
-												       echo $days." days "."ago";	  
+													  echo $days == 0?"Today":$days." days "."ago";	  
 												  }
 											}
-								
-											?>
-											  
+								         ?>
 											 </span>
 									   </li>
 									</ul>
