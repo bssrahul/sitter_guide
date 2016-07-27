@@ -52,7 +52,7 @@
                     </p>
                   
                     <div class="msg-send-text"> 
-                      <a href="#"> Send a Message to Joile
+                      <a href="<?php echo HTTP_ROOT.'Message/get-messages/pending/'.$bookingID; ?>"> Send a Message to  <?php echo @$get_booking_requests_to_display['user']['first_name']; ?>
                       </a>
                     </div>
                  
@@ -385,6 +385,7 @@
                       <ul class="list-unstyled">
                         <li>
                           <?php 
+                         // pr($get_booking_requests_to_display); die;
 							$service = str_replace("_"," ",@$get_booking_requests_to_display['required_service']);
 							$service = $service != ""?$service:"_ _ _";
 							echo ucwords(@$service)." ".@$total_days." day"; ?>
@@ -397,7 +398,7 @@
                           </span> to 
                           <span>
 							  <strong>
-                            <?php echo date("F j, Y", strtotime(@$get_booking_requests_to_display['booknig_end_date'])) != ""?date("F j, Y", strtotime(@$get_booking_requests_to_display['booknig_end_date'])):"_ _ _"; ?> 
+                            <?php echo date("F j, Y", strtotime(@$get_booking_requests_to_display['booking_end_date'])) != ""?date("F j, Y", strtotime(@$get_booking_requests_to_display['booking_end_date'])):"_ _ _"; ?> 
 							</strong>	
                           </span>
                         </li>

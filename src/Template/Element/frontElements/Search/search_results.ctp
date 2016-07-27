@@ -248,7 +248,7 @@
 																<?php	} ?> 
 											</span>
 										</div>
-											<div class="sit-review"> <a href="#" title="Review"><?php echo $count; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?></a> </div>
+											<div class="sit-review"> <a href="javascript:void(0)" style="cursor:default" title="Review"><?php echo $count; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?></a> </div>
 										  </div>
 									  <!--/rating--> 
 									  <!--availability-->
