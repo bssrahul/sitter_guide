@@ -19,7 +19,6 @@
 			  ?>
               </h3>
               <?php echo $this->element('frontElements/profile/sitter_nav'); ?>
-          
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
 
