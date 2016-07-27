@@ -266,7 +266,7 @@
                       
                     </div>
                   <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?  Photo')); ?></h3>
-                  <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile photo')); ?><button id="browseImg" type="button" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Browse Photo')); ?></button>
+                  <p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your gallery photos')); ?><button id="browseImg" type="button" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Browse Photos')); ?></button>
                   <span id="wait-loader"></span>
                   </p>
 
