@@ -1,6 +1,6 @@
 	var host = window.location.host;
 	var proto = window.location.protocol;
-	var ajax_url = proto+"//"+host+"/sitter_guide/"; 
+	var ajax_url = proto+"//"+host+"/sitterguide_test/"; 
 	
 	function get_req_data(folder_status,id){
 	
@@ -28,6 +28,9 @@
 				{
 					$("#chat_text").val('');
 					$('div.list_chat_ul').html(res);
+					var objDiv = document.getElementById("scroll");
+					objDiv.scrollTop = objDiv.scrollHeight;
+					$("#scroll").scrollTop(objDiv.scrollTop);
 				}
 			});
 		}

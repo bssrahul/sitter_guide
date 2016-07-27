@@ -1456,10 +1456,11 @@ function aboutGuest(){
 
      if(isset($this->request->data['UserPets']) && !empty($this->request->data['UserPets'])) 
      {
+		 
 		            $userPetsModel->deleteAll(['UserPets.user_id'=>$userId]);
 					$petGalleryModel->deleteAll(['UserPetGalleries.user_id'=>$userId]);
 					
-					foreach($this->request->data['UserPets'] as $key=>$single_guest){
+				foreach($this->request->data['UserPets'] as $key=>$single_guest){
 						    $guest_age = array($single_guest['guest_years'],$single_guest['guest_months']);
 							if(!empty($guest_age)){
 							$guest_age = implode(",",$guest_age);
@@ -1471,7 +1472,7 @@ function aboutGuest(){
 							$petsData->guest_age = $guest_age;
 							//Save guest data
 							$userPetsModel->save($petsData);
-										 if(!empty($session->read('UserPets'))){
+									if(!empty($session->read('UserPets'))){
 											 $guest_images['UserPets'] = $session->read('UserPets');
 											 if(array_key_exists($key,$guest_images['UserPets'])){
 												$flag = 1;
@@ -1487,7 +1488,7 @@ function aboutGuest(){
 												 }
 												}
 											 }
-										 }
+									}
 				}
 				if($session->read("profile") == "Guest"){
 				     return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
@@ -1539,7 +1540,7 @@ function aboutGuest(){
 				 //End
 				 }
 		}else{
-								$session->write("UserPets",'');
+							 $session->write("UserPets",'');
 							 $this->set('guest_images', 'no_image');
 							 $this->set('guest1','guest1');
 						 }
@@ -1547,13 +1548,24 @@ function aboutGuest(){
 			 $dogBreeds = $dogBreedsModel->find("all")->toArray();
 			 $allBreeds = array();
 			 $i = 0;
+			 $dog_breeds="";
 			 foreach($dogBreeds as $key=>$val){
 				 $allBreeds[$i]['value'] = "$val->id";
 				 $allBreeds[$i]['label'] = "$val->breed_name";
 				 $i++;
+				 
+				 $all_breeds[$val->id] = $this->clean($val->breed_name);
+			     $dog_breeds	.='<option value="'.$val->id.'">'.$this->clean($val->breed_name).'</option>';
 			}
-			$this->set('dog_breeds',$allBreeds);
+			$this->set('dog_breeds',$dog_breeds);
+			$this->set('all_breeds',$all_breeds);
+		
 	}
+}
+function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 }
    /**
     Function for add pets

@@ -76,13 +76,11 @@
 				"Users[re_password]":
 				{
 					required: true,
-					//minlength: '6',
 					equalTo: '#users-create-password'
 				},
 				"Users[zip]":
 				{
-					required:true,
-					number:true,
+					required:true
 				},
 				"Users[birth_date]":
 				{
@@ -123,13 +121,11 @@
 				"Users[re_password]":
 				{
 					required : "This field is required",
-					//minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				},
 				"Users[zip]":
 				{
 					required : "This field is required",
-					number:"Zip Code should be Numbers."
 				},
 				"Users[birth_date]":
 				{
@@ -150,7 +146,6 @@
 			
 		});
 		// code for review add page
-		
 		$('#addrating').validate({
 			rules: {
 				"comment":
