@@ -125,7 +125,7 @@
 			</div>
                    
                    <?php  
-                
+               //pr($get_booking_requests_to_display['folder_status_sitter']); die;
                    if(strtolower($userActas) == "sitter"){ ?>
                     
                      <?php if($get_booking_requests_to_display['folder_status_sitter'] == "pending"){ ?>

@@ -146,7 +146,7 @@
 							 
 					success:function(res)
 					{
-						
+						console.log(res);
 						if($.trim(res)>0){
 							$('.myNewCount').html(res);
 						}

@@ -3133,7 +3133,50 @@ echo $this->element('frontElements/Search/notification_check_login');
 <script>
 	//SCRIPT FOR ADD DATEPICKER
     $(document).ready(function() {
+		$(".display-calender1").click(function() {
+            $("#bookingrequests-booking-start-date").focus();
+
+        });
+        
+         $(".display-calender").click(function() {
+            $("#bookingrequests-booking-end-date").focus();
+
+        });
+        
+		$( "#bookingrequests-booking-start-date" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd', 
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  minDate: new Date(),
+		  onSelect: function(date){
+
+				var selectedDate = new Date(date);
+				var msecsInADay = 86400000;
+				var endDate = new Date(selectedDate.getTime() + msecsInADay);
 		
+				$( "#bookingrequests-booking-end-date" ).datepicker( "option", "minDate", date );
+				
+		  }
+		 
+		});
+		
+		//DATE PICKER SCRIPT FOR TO DATE
+		$( "#bookingrequests-booking-end-date" ).datepicker({
+		  defaultDate: "+1",
+		  changeMonth: true,
+		  dateFormat: 'yy-mm-dd',
+		  numberOfMonths: 1,
+		  yearRange: "-50:+0",
+		  minDate: new Date(),
+		  onClose: function( selectedDate ) {
+			//$( "#boardingFrom" ).datepicker( "option", "maxDate", selectedDate );
+			
+		  }
+		});
+		
+		/*
 		//Datepicker
         $("#bookingrequests-booking-start-date").datepicker({
             changeMonth: true,
@@ -3142,13 +3185,23 @@ echo $this->element('frontElements/Search/notification_check_login');
              minDate: 0,
             onClose: function(selectedDate) {
                 $("#bookingrequests-booking-end-date").datepicker("option", "minDate", selectedDate);
-            }
+            },
+            onSelect: function (dateStr) {
+				var max = $(this).datepicker('getDate'); // Get selected date
+				$('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
+				var start = $("#bookingrequests-booking-start-date").datepicker("getDate");
+				var end = $("#bookingrequests-booking-end-date").datepicker("getDate");
+				var days = (end - start) / (1000 * 60 * 60 * 24);
+				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
+				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
+				$("#total_days").val(days);
+				if(days){
+					appendService();
+				}
+			}
         });
         
-        $(".display-calender1").click(function() {
-            $("#bookingrequests-booking-start-date").focus();
-
-        });
+       
         
         $("#bookingrequests-booking-end-date").datepicker({
             changeMonth: true,
@@ -3171,12 +3224,9 @@ echo $this->element('frontElements/Search/notification_check_login');
 					appendService();
 				}
 			}
-        });
+        }); */
         
-        $(".display-calender").click(function() {
-            $("#bookingrequests-booking-end-date").focus();
-
-        });
+       
         /*Add different services with coma spareate */
         $("ul.booking-services li").click(function(){
             /*if ($(this).hasClass("new_active") == true){
