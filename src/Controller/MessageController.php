@@ -222,7 +222,7 @@ class MessageController extends AppController
 			  //Start sk	
 			  
 			if(!empty($guestUserData[0]->user_pets) && isset($guestUserData[0]->user_pets)){
-				 pr($get_booking_requests_to_display['guest_id_for_bookinig']); die;
+				// pr($get_booking_requests_to_display['guest_id_for_bookinig']); die;
 				 $idPetsArr = explode(",",$get_booking_requests_to_display['guest_id_for_bookinig']);
 				 $selected_pets = [];
 				 $pets_name = [];

@@ -202,7 +202,7 @@ class SearchController extends AppController
 			}
 			/*MARKETPLACE CONDITION END*/
 			
-			/*START - END DATE CONDITION START*/
+			/*
 			if((isset($this->request->data['Search']['from_date']) && isset($this->request->data['Search']['to_date'])) && ($this->request->data['Search']['from_date'] !='' && $this->request->data['Search']['to_date'] !="")){
 			
 				$startDate = $this->request->data['Search']['from_date'];
@@ -226,6 +226,30 @@ class SearchController extends AppController
 				$and_condition  = array_merge($and_condition,array("(UserSitterAvailability.start_date >= $endDate AND UserSitterAvailability.end_date <=$endDate)"));
 				$and_condition  = array_merge($and_condition,array("UserSitterAvailability.avail_status=1"));
 			}
+			*/
+			
+			/*START - END DATE CONDITION START*/
+			if((isset($this->request->data['Search']['from_date']) && isset($this->request->data['Search']['to_date'])) && ($this->request->data['Search']['from_date'] !='' && $this->request->data['Search']['to_date'] !="")){
+			
+				$startDate = $this->request->data['Search']['from_date'];
+				$endDate = $this->request->data['Search']['to_date'];
+				
+				$and_condition  = array_merge($and_condition,array("Users.id NOT IN (SELECT USAvail.user_id from user_sitter_availability AS USAvail WHERE (USAvail.start_date <= '$startDate' AND USAvail.end_date >='$startDate') AND (USAvail.start_date <= '$endDate' AND USAvail.end_date >='$endDate') AND  USAvail.avail_status='0')"));
+				
+				
+				
+			}else if(isset($this->request->data['Search']['from_date']) && $this->request->data['Search']['from_date'] !=''){
+				
+				$startDate = $this->request->data['Search']['from_date'];
+							
+				$and_condition  = array_merge($and_condition,array("Users.id NOT IN (SELECT USAvail.user_id from user_sitter_availability AS USAvail WHERE (USAvail.start_date <= '$startDate' AND USAvail.end_date >='$startDate') AND  USAvail.avail_status='0')"));
+			
+			}else if(isset($this->request->data['Search']['to_date']) && $this->request->data['Search']['to_date'] !=''){
+				
+				$endDate = $this->request->data['Search']['to_date'];
+				
+				$and_condition  = array_merge($and_condition,array("Users.id NOT IN (SELECT USAvail.user_id from user_sitter_availability AS USAvail WHERE (USAvail.start_date <= '$endDate' AND USAvail.end_date >='$endDate') AND  USAvail.avail_status='0')"));
+			}
 			/*START - END DATE CONDITION END*/
 			
 			/*DOGSIZE CONDITION START*/
@@ -245,6 +269,14 @@ class SearchController extends AppController
 			
 			}
 			/*DOGSIZE CONDITION END*/
+			
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
+				$userID = $session->read('User.id');
+				if($userID !=''){
+					$and_condition = array_merge($and_condition,array("Users.id NOT IN ($userID)"));
+				}
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
+			
 			
 			//SET WHERE OPPRANDS INTO MYSQL 
 			if(!empty($or_condition) || !empty($and_condition)){
@@ -827,6 +859,14 @@ class SearchController extends AppController
 					$and_condition  = array_merge($and_condition,array("(UserSitterServices.mp_driving_rate >= $startPrice AND UserSitterServices.mp_driving_rate <=$endPrice)"));
 				}
 		     }
+		     
+		     /*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
+				$userID = $session->read('User.id');
+				if($userID !=''){
+					$and_condition = array_merge($and_condition,array("Users.id NOT IN ($userID)"));
+				}
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
+			
 			//SET WHERE OPPRANDS INTO MYSQL 
 			if(!empty($or_condition) || !empty($and_condition)){
 				$where_finalConditions =' WHERE ';
@@ -1113,6 +1153,26 @@ class SearchController extends AppController
 				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
 				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
 			}
+			
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
+				$userID = $session->read('User.id');
+				$and_condition = array();
+				
+				if($userID !=''){
+					$and_condition = "users.id NOT IN ($userID) ";
+				}
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
+			
+			//SET WHERE OPPRANDS INTO MYSQL 
+			
+			if(!empty($and_condition)){
+				$where_finalConditions =' WHERE ';
+				$where_finalConditions .= $and_condition; 
+			}else{
+				$where_finalConditions ='';
+			}
+			
+			
 			/*FIND USER ID AND DISTANCE AS PER SELECTDE LOCATION*/
 			$query='SELECT
 						  id, (
@@ -1125,9 +1185,10 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
+						'.$where_finalConditions.'
 						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
-						
+				
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
 			
@@ -1301,7 +1362,24 @@ class SearchController extends AppController
 				@$sourceLocationLatitude = $response_a->results[0]->geometry->location->lat;
 				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
 			
-		
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
+				$userID = $session->read('User.id');
+				$and_condition = array();
+				
+				if($userID !=''){
+					$and_condition = "users.id NOT IN ($userID) ";
+				}
+			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
+			
+			//SET WHERE OPPRANDS INTO MYSQL 
+			
+			if(!empty($and_condition)){
+				$where_finalConditions =' WHERE ';
+				$where_finalConditions .= $and_condition; 
+			}else{
+				$where_finalConditions ='';
+			}
+			
 			$query='SELECT
 						  id, (
 							3959 * acos (
@@ -1313,6 +1391,7 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
+						'.$where_finalConditions.'
 						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
 			$connection = ConnectionManager::get('default');
@@ -1929,6 +2008,7 @@ class SearchController extends AppController
 		
 		$this->set('sitter_id',$sitterId);
 	}
+	
 	function sitterGallery(){
 		$this->viewBuilder()->layout('');
 		//if($this->request->is('ajax')) {
