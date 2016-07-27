@@ -9,7 +9,6 @@
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
           <div class="banner-info-wrapper">
             <div class="banner-info-inner">
-              <?php //pr($userData); ?>
               <div class="client-image center-block">
                 <img src="<?php echo HTTP_ROOT.'img/uploads/'.(@$userData->image != ''?@$userData->image:'dm.png'); ?>" class="img-responsive img-circle" alt="client" > 
               </div>

@@ -1934,6 +1934,7 @@ $check_in=$UserRating->check_in_rating;
 															  </i> 
 															</span>
 														  </li>
+														  <!--
 														  <li>
 															<img src="<?php echo HTTP_ROOT; ?>img/lt-care.png" width="18" height="17" alt=""> Long Terms Care : 
 															<span>
@@ -1973,7 +1974,7 @@ $check_in=$UserRating->check_in_rating;
 																		}else{
 																			
 																			echo "$cuntry_sign_code --";
-																		}																
+																		}
 																	?>
 															  <i class="fa fa-exclamation-circle">
 															  </i>
@@ -1993,7 +1994,7 @@ $check_in=$UserRating->check_in_rating;
 															  <i class="fa fa-exclamation-circle">
 															  </i>
 															</span>
-														  </li>
+														  </li>-->
 														  <li>
 															<img src="<?php echo HTTP_ROOT; ?>img/grooming.png" width="18" height="17" alt=""> Grooming : 
 															<span>

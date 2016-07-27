@@ -76,7 +76,7 @@
 				"Users[re_password]":
 				{
 					required: true,
-					minlength: '6',
+					//minlength: '6',
 					equalTo: '#users-create-password'
 				},
 				"Users[zip]":
@@ -123,7 +123,7 @@
 				"Users[re_password]":
 				{
 					required : "This field is required",
-					minlength: 'Please enter minimum 6 characters.',
+					//minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				},
 				"Users[zip]":
@@ -782,7 +782,7 @@
 				},
 				"Users[re_password]":
 				{
-					 required : "This field is required",
+					required : "This field is required",
 					minlength: 'Please enter minimum 6 characters.',
 					equalTo: 'Password does not match'
 				}
@@ -1833,7 +1833,7 @@ $( document ).ready(function() {
 	    e.stopPropagation();
 	});
 	jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z]+$/i.test(value);
+  return this.optional(element) || /^[a-z][A-Z ]+$/i.test(value);
 }, "Letters only please"); 
 jQuery.validator.addMethod("alphanumeric", function(value, element) {
   return this.optional(element) || /^[a-z][0-9]+$/i.test(value);
