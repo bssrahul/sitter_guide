@@ -1616,6 +1616,25 @@ class SearchController extends AppController
 					}
 					$sourceLocationLatitude =$userData->latitude;
 					$sourceLocationLongitude =$userData->longitude;
+					
+					/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
+					$userID = $session->read('User.id');
+					$and_condition = array();
+					
+					if($userID !=''){
+						$and_condition = "users.id NOT IN ($userID) ";
+					}
+					/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
+					
+					//SET WHERE OPPRANDS INTO MYSQL 
+					
+					if(!empty($and_condition)){
+						$where_finalConditions =' WHERE ';
+						$where_finalConditions .= $and_condition; 
+					}else{
+						$where_finalConditions ='';
+					}
+					
 					$query='SELECT
 									  id, (
 										3959 * acos (
@@ -1627,6 +1646,7 @@ class SearchController extends AppController
 										)
 									  ) AS distance
 									FROM users
+									'.$where_finalConditions.'
 									HAVING distance < '.DEFAULT_RADIUS.'
 									ORDER BY distance';
 				$connection = ConnectionManager::get('default');
@@ -1921,89 +1941,237 @@ class SearchController extends AppController
 		
 		$sourceLocationLatitude =$userData->latitude;
 		$sourceLocationLongitude =$userData->longitude;
-		$query='SELECT
-						  id, (
-							3959 * acos (
-							  cos ( radians('.$sourceLocationLatitude.') )
-							  * cos( radians( latitude ) )
-							  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
-							  + sin ( radians('.$sourceLocationLatitude.') )
-							  * sin( radians( latitude ) )
-							)
-						  ) AS distance
-						FROM users
-						HAVING distance < '.DEFAULT_RADIUS.'
-						ORDER BY distance';
-			$connection = ConnectionManager::get('default');
-			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
-			//pr($results);die;
-			$finalDistanceArr=array();
-			foreach($results as $result){
-				foreach($gettingUserData as $favData){
-						$selUserData=$favData->id;
-						if(in_array($selUserData,$result)){
-							
-							$finalDistanceArr[]=$result;
-						} 
-				} 
-			}
-			
-			if(!empty($finalDistanceArr)){
-				$idArr = array();
-				$distanceAssociation = array();
-				foreach($finalDistanceArr as $resultsValue){
-						$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
-						//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
-						$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
-			}}
-			$nearUseridArr=array();	
-			foreach($distanceAssociation as $key=>$diatance){
-					if($diatance != 0){
-							$nearUseridArr[]=$key;
-					}
-			}
-		
-		$getUsersArr=array();$flag=0;
-		foreach($gettingUserData as $gettingUser){
-				if(in_array($gettingUser->id,$nearUseridArr)){
-					$flag++;
-					if($flag < 7){
-						$getUsersArr[]=$gettingUser;
-					}
+		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
+        $UsersModel = TableRegistry::get('Users');
+        
+        $userId = $session->read('User.id');
+        $userType = $session->read('User.user_type');
+        $userEmail = $session->read('User.email');
+        $userName = $session->read('User.name');
+	    $bookingRequestsModel = TableRegistry::get('BookingRequests');
+        
+		if(isset($this->request->data['BookingRequests']) && !empty($this->request->data['BookingRequests']))
+		{
+			$sitter_id = convert_uudecode(base64_decode($this->request->data['BookingRequests']['sitter_id']));
+            $bookingRequestData = $bookingRequestsModel->newEntity();
+            
+              if(!empty($this->request->data['guest_id_for_booking'])){
+				  $booking_guests = implode(",",$this->request->data['guest_id_for_booking']);
+				  $bookingRequestData->guest_id_for_bookinig = $booking_guests;
+			  }
+			    
+                $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
+                $bookingRequestData->user_id = $userId;
+                $bookingRequestData->sitter_id = $sitter_id;
+                if($userType == "Sitter"){
+				  $bookingRequestData->request_by_sitter_id = $userId;
+				}
+                $bookingRequestData->booknig_start_date = $this->request->data['BookingRequests']['booking_start_date'];
+                $bookingRequestData->booking_end_date = $this->request->data['BookingRequests']['booking_end_date'];
+                
+                if(!empty($this->request->data['additional_services'])){
+				  $additional_services = implode(",",$this->request->data['additional_services']);
+				  $bookingRequestData->additional_services = $additional_services;
+				}
+                if($bookingRequestsModel->save($bookingRequestData)){
+                	$replace = array('{name}','{email}');
+					$with = array($userName,$userEmail);
+					$this->send_email('',$replace,$with,'booking_request',$userEmail);
+					//Start Send message
+					$get_booking_requests_to_display = $bookingRequestsModel->find('all')
+								->where(['BookingRequests.id'=>$bookingRequestData->id])
+								->hydrate(false)->first();
+				
+				
+					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
+					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+						$message_body = "You have been received new booking request"; 
+						
+						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
+				      }
+				     //End send message
 					
 				}
-		}
+				 return $this->redirect(['controller'=>'search','action'=>'thank-you']);
+		}else{
+					$userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings','UserPets'=>['UserPetGalleries']]]);
+					$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
+					$user_sitter_id_Arr=array();
+					foreach($UserFavData as $UserFav){
+						$user_sitter_id_Arr[]=$UserFav->sitter_id;
+					}
+					if(in_array($userData->id,$user_sitter_id_Arr)){
+							$userData['is_favourite'] =  "yes";
+					}else{
+						$userData['is_favourite'] =  "no";
+					}
+					$loggedInUserID = $session->read('User.id');
+					
+					$Userratingdata=$userData->user_ratings;
+					$userFromArr=array();
+					foreach($Userratingdata as $Userrating){
+						$userFromArr[]=$Userrating->user_from;
+					}
+					
+					
+					$gettingUserData=$UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']])->toArray();
+					 $commentUserData=array();
+					foreach($gettingUserData as $gettingUser){
+							if(in_array($gettingUser->id,$userFromArr)){
+								$commentUserData[]=$gettingUser;
+							} 
+					}
+					$sourceLocationLatitude =$userData->latitude;
+					$sourceLocationLongitude =$userData->longitude;
+					
+					
+					
+					$query='SELECT
+									  id, (
+										3959 * acos (
+										  cos ( radians('.$sourceLocationLatitude.') )
+										  * cos( radians( latitude ) )
+										  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+										  + sin ( radians('.$sourceLocationLatitude.') )
+										  * sin( radians( latitude ) )
+										)
+									  ) AS distance
+									FROM users
+									
+									HAVING distance < '.DEFAULT_RADIUS.'
+									ORDER BY distance';
+				$connection = ConnectionManager::get('default');
+				$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+				$finalDistanceArr=array();
+				foreach($results as $result){
+					foreach($gettingUserData as $favData){
+							$selUserData=$favData->id;
+							if(in_array($selUserData,$result)){
+								
+								$finalDistanceArr[]=$result;
+							} 
+					} 
+				}
+				if(!empty($finalDistanceArr)){
+					$idArr = array();
+					$distanceAssociation = array();
+					foreach($finalDistanceArr as $resultsValue){
+							$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+							//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+							$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}}
+				$nearUseridArr=array();	
+				foreach($distanceAssociation as $key=>$diatance){
+						if($diatance != 0){
+								$nearUseridArr[]=$key;
+						}
+				}	
+				$this->set('distanceAssociation',$distanceAssociation);	
+				$getUsersArr=array();$flag=0;
+				foreach($gettingUserData as $gettingUser){
+						if(in_array($gettingUser->id,$nearUseridArr)){
+							$flag++;
+							if($flag < 7){
+								$getUsersArr[]=$gettingUser;
+							}
+							
+						}
+				}
+				$count_services = 5;
+				if(!empty($userData->user_sitter_services)){
+					$count_services = 0;
+				   if($userData->user_sitter_services[0]->sitter_house_status == 1){
+				      $count_services++;  
+				   }
+			 	   if($userData->user_sitter_services[0]->guest_house_status == 1){ 
+			          $count_services++;	   
+				   }
+				   if($userData->user_sitter_services[0]->guest_house_status == 1 && $userData->user_sitter_services[0]->gh_drop_in_visit_status == 1){ 
+				      $count_services++;
+				   }
+				   if($userData->user_sitter_services[0]->sitter_house_status == 1 && ($userData->user_sitter_services[0]->sh_day_care_status == 1 || $userData->user_sitter_services[0]->sh_night_care_status == 1)){ 
+				      $count_services++;
+				   }
+				   if($userData->user_sitter_services[0]->market_place_status == 1){ 
+				      $count_services++;
+				   }
+				}
+				if($count_services == 0){
+				     $count_services = 5;
+				}
+				$class_service = (100/$count_services);
+			    
+			    $this->set('nearbyUsers',$getUsersArr);	
+				$this->set('class_service',"width:$class_service%");	
+				$this->set('loggedInUserID',$loggedInUserID);	
+				$this->set('userData',$userData);
+				$this->set('commentUserData',@$commentUserData);
 			
-		$this->set('nearbyUsers',$getUsersArr);	
-
-		$this->set('userData',$userData);
-		$this->set('commentUserData',@$commentUserData);
-
-		$Session=$this->request->session();
-		$user_id=$Session->read('User.id');
-
-
-		$calendarModel=TableRegistry :: get("user_sitter_availability");
-		$calenderData=$calendarModel->find('all')->where(['user_id'=>$sitterId])->toArray();
-
-		$unavailbe_array=array();
-		foreach($calenderData as $k=>$UserServices){
-			
-			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
-			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
-			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
-		}
-
+			$Session=$this->request->session();
+			$user_id=$Session->read('User.id');
+			$calendarModel=TableRegistry :: get("user_sitter_availability");
+			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
+				
+			$unavailbe_array=array();
+			foreach($calenderData as $k=>$UserServices){
+				
+				$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
+				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
+				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
+			}
 						
-		$calendar = new  \Calendar();
-
-		$this->set('calender',$calendar->show($unavailbe_array));
-		//$this->set('services_array',$services_array);
-		if(!empty($session->read("User.id"))){
-			$userId = $session->read("User.id");
-			 $userPetsModel = TableRegistry::get('UserPets');
-			 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
-			 $this->set("sitter_guests_info",$userPetsData);
+			$calendar = new  \Calendar();
+			$this->set('calender',$calendar->show($unavailbe_array));
+			//For booking request
+			if(!empty($session->read("User.id"))){
+				 $userId = $session->read("User.id");
+				 $userPetsModel = TableRegistry::get('UserPets');
+				 $userPetsData = $userPetsModel->find('all')->where(['user_id'=>$userId])->toArray();
+				 $this->set("sitter_guests_info",$userPetsData);
+			}
+			$this->set('sitter_id',base64_encode(convert_uuencode($sitterId)));
+			
+			$currencyModel = TableRegistry::get('Currencies');
+			$currencies = $currencyModel->find("all")->toArray();
+			$this->set('currencies',$currencies);
+			
+			 //Count Repeat client
+				$bookingRequestModel = TableRegistry :: get("BookingRequests");
+				$condition_field = $userType == 'Sitter'?'sitter_id':'user_id';
+				$fieldname = $userType == 'Sitter'?'sitter':'guest';
+				
+				$repeatClient = $bookingRequestModel->find('all')
+							->where(['BookingRequests.'.$condition_field => $userId/*,'BookingRequests.folder_status_guest' => "pending"*//*,'BookingRequests.read_status' => "unread"*/])
+							->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1' )
+							->hydrate(false)->toArray();
+							
+				$this->set('repeat_client',count($repeatClient));    
+			//end repeat client
+			//For check user pet
+			/*GET USER PETS FOR DISPLAY ON FORM*/
+			$userPetInfo = $UsersModel->find('all',['contain'=>[
+															'UserPets',
+															'UserSitterHouses'
+												   ]]
+												)
+								   ->where(['Users.id' => $userId])
+			
+								   ->toArray();
+			//Check dog inhome status
+			$dog_in_home = "no";
+			if(!empty($userPetInfo->user_sitter_house)){
+			   if($userPetInfo->user_sitter_house->dogs_in_home == "yes"){
+				   $dog_in_home = "yes";
+			   }
+			}
+			$this->set('dog_in_home',$dog_in_home);
+			if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
+				
+			   $this->set('guests_Info',$userPetInfo[0]->user_pets);	
+			}else{
+				$this->set('guests_Info','');
+			}
 		}
 		
 		$this->set('sitter_id',$sitterId);
@@ -2023,8 +2191,7 @@ class SearchController extends AppController
 						  $sitter_gal[] =  $userData['image'];
 					 }
 				}
-				/*if(){
-				}*/
+				
 				if(!empty($userData["user_sitter_galleries"])){
 					foreach($userData["user_sitter_galleries"] as $single_gal){
 						$sitter_gal[] = $single_gal["image"];

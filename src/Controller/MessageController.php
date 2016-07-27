@@ -387,7 +387,7 @@ class MessageController extends AppController
 		->contain(['Users'])
 		->select(['message','Users.image','created_at','user_role','user_id','Users.facebook_id','Users.is_image_uploaded'])
 		->hydrate(false)->toArray();
-		
+		//pr($get_chats);die;
 		$this->set('get_chats',$get_chats);
 		$this->render('sendmessage');	
 	}
@@ -525,7 +525,7 @@ class MessageController extends AppController
 		
 		
 		$get_requests = $BookingRequestsModel->find('all')
-		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId",'BookingRequests.read_status' => 'unread','BookingRequests.payment_status' => 'Pending'])
+		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId",'BookingRequests.folder_status_guest = "pending" || BookingRequests.folder_status_sitter = "pending"'])
 		->select(['id'])
 		->hydrate(false)->toArray();
 				
@@ -534,10 +534,12 @@ class MessageController extends AppController
 		->where(["BookingChats.user_to = $userId",'BookingChats.read_status' => 'unread'])
 		->select(['id'])
 		->hydrate(false)->toArray();
+		
 		//pr($get_chat_requests);
-		//echo count($get_chat_requests); die;
+		//echo count($get_requests); die;
+		
 		$displayMessage = array();
-		$html='';
+			
 		if(!empty($get_requests)){
 			echo count($get_requests)+count($get_chat_requests);
 		}else{

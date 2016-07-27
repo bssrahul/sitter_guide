@@ -1,7 +1,26 @@
 <style type="text/css">
-
+  .a,
+  .a:visited {
+    color: #176bb8;
+    text-decoration: none;
+  }
+  .a:hover {
+    text-decoration: underline;
+  }
 </style>
 <!--[Banner Area Start]-->
+<?php
+	$session = $this->request->session();
+	$userloginstatus = $session->read("User");
+	$cuntry_currency = $session->read("currency.currency");
+	$cuntry_price = $session->read("currency.price");
+	$cuntry_sign_code = $session->read("currency.sign_code");
+			
+   @$sh_day_rate = @$userData->user_sitter_services[0]->sh_day_rate != ''?@$userData->user_sitter_services[0]->sh_day_rate:0;
+   @$sh_night_rate = @$userData->user_sitter_services[0]->sh_night_rate != ''?@$userData->user_sitter_services[0]->sh_night_rate:0;
+   @$gh_day_rate = @$userData->user_sitter_services[0]->gh_day_rate != ''?@$userData->user_sitter_services[0]->gh_day_rate:0;
+   @$gh_night_rate = @$userData->user_sitter_services[0]->gh_night_rate != ''?@$userData->user_sitter_services[0]->gh_night_rate:0;
+?>
 <div class="saerch-s-det">
   <section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
     <div class="container">
@@ -22,21 +41,39 @@
               </h4>
               <div class="badage-detail">
                 <ul class="list-inline text-center">
-				  <?php if(($userData['users_badge'])!= ""){
+					
+				  <?php  if(($userData['users_badge'])!= ""){
 							
 							if($userData['users_badge']->dl_pcb_badge){?>
 								
-								 <li><img src="<?php echo HTTP_ROOT. 'img/detail-backcheck.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+							 <li>
+								 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+														
+									<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+								</a>
+							</li>
 								
 							<?php	}
 							if($userData['users_badge']->cpr_rescue_badge){?>
-								 <li><img src="<?php echo HTTP_ROOT. 'img/certify-2.png'; ?>" alt="Dl & PCB Badge"	height="20px" width="20px"/></li>
+								 <li>
+									 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+										<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+									</a>
+								 </li>
 							<?php	}
 							if($userData['users_badge']->oral_injucted_badge){?>
-								 <li><img src="<?php echo HTTP_ROOT. 'img/detail_medical.jpg'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+								 <li>
+									 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Administer Medication</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is comfortable to administer oral and injected medication." > 
+										<img src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+									</a>	
+								 </li>
 							<?php	}
 							if($userData['users_badge']->ffo_area_badge){?>
-								 <li><img src="<?php echo HTTP_ROOT. 'img/detail-fence.png'; ?>" alt="Dl & PCB Badge" height="20px" width="20px"/></li>
+								 <li>
+									 <a href="javascript:void(0)" data-html="true" title="<b>Fully Fenced Area</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has secure fenced garden or backyard." > 
+										<img src="<?php echo HTTP_ROOT. 'img/Picture9.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+									</a>	
+								 </li>
 							<?php	}
 				}?>
 				</ul>
@@ -44,7 +81,7 @@
               <div class="details-stars starPad">
                 <ul class="list-inline text-center">
                   <?php  	$UserRatingData=$userData->user_ratings; 
-							
+							//pr($UserRatingData);
 							$accuracy_sum = 0;
 							$comm_sum = 0;
 							$clean_sum = 0;
@@ -76,7 +113,7 @@
 						?>
                   <li>
                     <!--	<p class="r-star rat-wt"> -->
-                    <span class="rating ">
+                    <span class="rating mt-1 ">
                       <?php	if(!empty($rating_sum)){ 	
 ?>
                       <input type='radio'  value='5' 
@@ -201,7 +238,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px ">
                                                               <h3 class="rates-detail marginrightminus"> 
                                                                 <span>
-                                                                  <?php echo '$'.@$userData->user_sitter_services[0]->sh_day_rate; ?>
+                                                                  <?php echo "$cuntry_sign_code ".@$sh_day_rate; ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(Boarding in sitter)
@@ -210,7 +247,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
                                                               <h3 class="rates-detail marginleftminus xs-padt10"> 
                                                                 <span>
-                                                                  <?php echo '$'.@$userData->user_sitter_services[0]->gh_day_rate; ?>
+                                                                  <?php echo "$cuntry_sign_code ".@$gh_day_rate; ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(House sitting)
@@ -221,7 +258,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right0px  ">
                                                               <h3 class="rates-detail pad-t10 marginrightminus"> 
                                                                 <span>
-                                                                  <?php echo '$'.@$userData->user_sitter_services[0]->gh_drop_in_visit_rate; ?>
+                                                                  <?php echo "$cuntry_sign_code ".(@$userData->user_sitter_services[0]->gh_drop_in_visit_rate != ''?@$userData->user_sitter_services[0]->gh_drop_in_visit_rate:0); ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(Drop visit home)
@@ -230,7 +267,7 @@
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
                                                               <h3 class="rates-detail pad-t10  marginleftminus"> 
                                                                 <span>
-                                                                  <?php echo '$'.((@$userData->user_sitter_services[0]->sh_day_rate)+(@$userData->user_sitter_services[0]->sh_night_rate)); ?>
+                                                                  <?php echo "$cuntry_sign_code ".(@$sh_day_rate + @$sh_night_rate); ?>
                                                                 </span> per day
                                                               </h3>
                                                               <p class="rates-detail-caption">(D/Nt. care home)
@@ -239,16 +276,8 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                      <!--<h5 class="additional">
-                                                        <a href="#" data-toggle="modal" data-target="#myModal79"> More Services Available 
-                                                        </a>
-                                                      </h5>
                                                       
-                                                      <div class="text-center">
-                                                        <button class="btn btn-cont" data-toggle="modal" data-target="#myModal79">Book Now
-                                                        </button>
-                                                      </div>-->
-                                                      
+                                                    
                                                       </div>
                                                     </div>
                                                   </div>
@@ -290,16 +319,47 @@
                                                         </div>
                                                       </div>
                                                       <div class="btn-group btn-width100 pt15">
-            
-                                                        <button style="font-size:14px" class="btn btn-detsil-contact" type="button"> <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> is available this Weekend
+														  <?php if($userloginstatus){ 
+															  
+															  if($guests_Info == "" ){
+															  ?>
+															   <button class="btn btn-detsil-contact" style="cursor:default" type="button">Contact  
+                                                               <?php echo @$userData->first_name; ?>
+                                                               </button> 
+                                                        
+															  <?php }else{ ?>
+                                                        <button class="btn btn-detsil-contact" style="cursor:default" type="button">Contact  
+                                                          <?php echo @$userData->first_name; ?>
                                                         </button>
-            
-                                                       
+                                                        <?php }
+                                                        
+                                                         }else{ ?>
+														  <button class="btn btn-detsil-contact" style="cursor:default" type="button">Contact  
+                                                          <?php echo @$userData->first_name; ?>
+                                                        </button>
+														<?php } ?>
+                                                        <div class="likebox favourite_sitter1"> 
+                                                          <?php if(trim($userData->is_favourite)=='yes'){ ?>
+                                                          <a data-count="<?php echo $userData->id; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($userData->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>"> 
+                                                            <i class="icon-lock fa fa-heart heart-pos">
+                                                            </i>
+                                                          </a>
+                                                          <?php }else{ ?>
+                                                          <a data-count="<?php echo $userData->id; ?>" href="javascript:void(0);" class="like favouriteSection" data-href="<?php echo HTTP_ROOT.'Search/favorite-sitter/'.base64_encode(convert_uuencode($userData->id)).'/'.base64_encode(convert_uuencode($logedInUserId)); ?>">
+                                                            <i class="icon-unlock fa fa-heart-o heart-pos">
+                                                            </i>
+                                                          </a>
+                                                          <?php } ?>
+                                                        </div>
                                                       </div>
                                                       </br>
                                                     </br>
                                                   <div>
-                                                   
+                                                    <div class="availability">
+                                                      <h5>
+                                                        <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> is available this Weekend
+                                                      </h5>
+                                                    </div>
                                                   </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -324,24 +384,24 @@
                                                         <i class="fa fa-user icon-width30 icon-p15">
                                                         </i>Last Activity : 
                                                         <b>
-                                                          <?php //echo date('Y-m-d h:i:s')-$userData->last_login ; //$userData->avail_status != 'Login'?'Available':$userData->last_login; 
-if(@$userData->avail_status == 'Login'){
-echo '<span style="color:green">Available<//span>';
-}else{
-$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$userData->last_login);
-$days    = floor($seconds / 86400);
-$hours = floor(($seconds - ($days * 86400)) / 3600);
-$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
-$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
-echo $days." days ".$hours." hours ".$minutes." min "."ago";
-}
-?>
+                                                          <?php 
+															if(@$userData->avail_status == 'Login'){
+																echo '<span style="color:green">Available<//span>';
+															}else{
+																$seconds =  strtotime(date("Y-m-d H:i:s"))-strtotime(@$userData->last_login);
+																$days    = floor($seconds / 86400);
+																$hours = floor(($seconds - ($days * 86400)) / 3600);
+																$minutes = floor(($seconds - ($days * 86400) - ($hours * 3600))/60);
+																$seconds = floor(($seconds - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+																echo $days." days ".$hours." hours ".$minutes." min "."ago";
+															}
+															?>
                                                         </b>
                                                       </li>
                                                       <li>
                                                         <i class="fa fa-refresh icon-width30 icon-p15">
                                                         </i>Repeat Guest : 
-                                                        <b> 15
+                                                        <b> <?php echo $repeat_client; ?>
                                                         </b>
                                                       </li>
                                                     </ul>
@@ -349,12 +409,24 @@ echo $days." days ".$hours." hours ".$minutes." min "."ago";
                                                     </div>
                                                     <ul class="list-unstyled verified">
                                                       <li>
+														<?php if(@$userData->mobile_verification == 1){ ?>  
                                                         <i class="fa fa-check icon-width30 font-size20">
-                                                        </i> SMS Verified
+                                                        </i>
+                                                        <?php }else{ ?>
+														<i class="fa fa-times icon-width30 new-font-size20">
+                                                        </i>
+														<?php }?>	
+                                                         SMS Verified
                                                       </li>
                                                       <li>
+													   <?php if(@$userData->status == 1){ ?>  
                                                         <i class="fa fa-check icon-width30 font-size20">
-                                                        </i> Email Verified
+                                                        </i>
+                                                        <?php }else{ ?>
+															<i class="fa fa-times icon-width30 new-font-size20">
+                                                        </i>
+													    <?php } ?>
+                                                         Email Verified
                                                       </li>
                                                     </ul>
                                                   </div>
@@ -424,28 +496,85 @@ $i++;
                                                 </div>
                                               </div>
                                               <?php } ?>
-                                              <div class="one">
+                                              
+                                               <?php 
+                                              if(!empty(@$userData->user_professional_accreditations_details)){
+											   /*$skills = ["languages","experience","training_techniques"]; 
+												 foreach($petSizesArr as $size_val){
+														  if(in_array($size_val, $skills))
+														  {
+															 $matchaddSkills = "match_found";
+															 break;
+														  }else{
+															 $matchaddSkills = "match_not_found";
+														  }
+												}
+												if($matchaddSkills == "match_found"){	*/
+												?>
+                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
                                                 <h5 class="small-title">Specified Skills &nbsp;
                                                   <span>
-                                                    <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
-                                                    </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    <?php if(($userData['users_badge'])!= ""){
+							
+															if($userData['users_badge']->dl_pcb_badge){?>
+																
+															 <i>
+																 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+																						
+																	<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																</a>
+															</i>
+																
+															<?php	}
+															if($userData['users_badge']->cpr_rescue_badge){?>
+																 <i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+																	</a>
+																 </i>
+															<?php	}
+															
+															
+															}
+														?>
                                                   </span>
                                                 </h5>
+                                               <?php if(!empty(@$userData->user_professional_accreditations_details[0]->languages) || !empty(@$userData->user_professional_accreditations_details[0]->experience)){ ?>
                                                 <div class="row">
-                                                  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                                    <?php $langArr = array('en'=>'english','fr'=>'french','de'=>'german','hu'=>'hungarian','it'=>'italian','ro'=>'romanian','es'=>'spanish'); ?>
+											   <?php if(!empty(@$userData->user_professional_accreditations_details[0]->languages)){ ?>
+												 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+													<?php $langArr = array('en'=>'english','fr'=>'french','de'=>'german','hu'=>'hungarian','it'=>'italian','ro'=>'romanian','es'=>'spanish'); ?>
+													
                                                     <p class="pt10">
                                                       <span class="speak">
                                                       </span>Can speak
-                                                      <?php echo @$langArr[$userData->user_professional_accreditations_details[0]->languages]; ?>
+                                                      <?php 
+                                                      $selected_langArr = explode(",",@$userData->user_professional_accreditations_details[0]->languages);
+                                                    
+                                                      $main_lang = "";
+                                                      $totalVal = count($selected_langArr);
+                                                      $i=1;
+                                                      foreach($selected_langArr as $single_lang){
+														if(($totalVal-1)==$i){
+															$saparated = " & ";
+														}else{
+															$saparated = ", ";
+														}
+														  $main_lang .= ucwords($langArr[$single_lang]).$saparated; 
+														  $i++;
+													  }
+													    //echo $main_lang;
+													   echo @$main_lang = rtrim($main_lang,",");
+													   
+													?>
                                                     </p>
                                                   </div>
+                                                  <?php } 
+                                                  
+                                                  if(!empty(@$userData->user_professional_accreditations_details[0]->experience)){
+                                                  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="experience">
@@ -453,9 +582,13 @@ $i++;
                                                       <?php echo @$userData->user_professional_accreditations_details[0]->experience;?> + years of experience
                                                     </p>
                                                   </div>
+                                                  <?php } ?>
+                                                  
                                                 </div>
+                                                <?php }
+                                                if(!empty(@$userData->user_professional_accreditations_details[0]->training_techniques)){ ?>
                                                 <div class="row">
-                                                  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+												  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="familar">
                                                       </span>Familiar with
@@ -463,20 +596,38 @@ $i++;
                                                     </p>
                                                   </div>
                                                 </div>
+                                                <?php } ?>
                                               </div>
                                               <div class="one">
-                                                <div class="border-bot pt30">
+												<div class="border-bot pt30">
                                                 </div>
                                                 <h5 class="small-title">I have experience with &nbsp;
                                                   <span>
-                                                    <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
-                                                    </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    
+                                                     <?php if(($userData['users_badge'])!= ""){
+							
+															
+															if($userData['users_badge']->cpr_rescue_badge){?>
+																	<i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+																	</a>
+																	</i>
+																 
+															<?php	}
+															if($userData['users_badge']->oral_injucted_badge){?>
+																	<i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Administer Medication</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is comfortable to administer oral and injected medication." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																	</a>	
+																	</i>
+															<?php	}
+															
+													}?>
+                                                    
                                                   </span>
                                                 </h5>
+                                                
                                                 <div class="row">
                                                   <?php if(@$userData->user_professional_accreditations_details[0]->ex_behavioural_problems !=''){ ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
@@ -506,16 +657,37 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                 </div>
                                               </div>
                                               <div class="one">
-                                                <div class="border-bot pt30">
-                                                </div>
+											 <?php } 
+											  if(!empty(@$userData->user_sitter_services)){
+											 ?>
+											 <div class="border-bot pt30">
+                                             </div>
                                                 <h5 class="small-title">Benefits &nbsp;
                                                   <span>
-                                                    <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
-                                                    </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    
+                                                     <?php if(($userData['users_badge'])!= ""){
+							
+															if($userData['users_badge']->dl_pcb_badge){?>
+																
+															 <i>
+																 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
+																						
+																	<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																</a>
+															</i>
+																
+															<?php	}
+															if($userData['users_badge']->cpr_rescue_badge){?>
+																 <i>
+																	 <a href="javascript:void(0)" data-html="true" title="<b>Certificate in animal handling</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is a vet nurse, studying vet sciences or has a certificate in animal handling." > 
+																		<img src="<?php echo HTTP_ROOT. 'img/Picture8.png'; ?>" alt="Dl & PCB Badge"	height="23px" width="23px"/>
+																	</a>
+																 </i>
+															<?php	}
+															
+															
+															}?>
+                                                   
                                                   </span>
                                                 </h5>
                                                 <div class="row">
@@ -527,8 +699,8 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                     </p>
                                                   </div>
                                                   <?php }
-if(@$userData->user_sitter_services[0]->cancellation_policy_status =='1'){ 
-?>
+														if(@$userData->user_sitter_services[0]->cancellation_policy_status =='1'){ 
+                                                  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="cancel">
@@ -536,8 +708,8 @@ if(@$userData->user_sitter_services[0]->cancellation_policy_status =='1'){
                                                     </p>
                                                   </div>
                                                   <?php } 
-if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->user_sitter_services[0]->cancellation_policy_status !='1')){ 
-?>
+												     if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->user_sitter_services[0]->cancellation_policy_status !='1')){ 
+												  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">No Benefits
                                                     </p>
@@ -545,6 +717,9 @@ if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->u
                                                   <?php } ?>
                                                 </div>
                                               </div>
+                                              <?php } 
+                                                 if(!empty(@$userData->user_sitter_house)){
+                                              ?>
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -552,11 +727,18 @@ if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->u
                                                   <?php echo $userData->first_name; ?>'s Home&nbsp;
                                                   <span>
                                                     <i>
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
+                                                      <?php if(($userData['users_badge'])!= ""){
+							
+																if($userData['users_badge']->ffo_area_badge){?>
+																	
+																		 <a href="javascript:void(0)" data-html="true" title="<b>Fully Fenced Area</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has secure fenced garden or backyard." > 
+																			<img src="<?php echo HTTP_ROOT. 'img/Picture9.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
+																		</a>	
+																	 
+																<?php	}
+													}?>
                                                     </i>
-                                                    <i> 
-                                                      <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-2.png">
-                                                    </i>
+                                                    
                                                   </span>
                                                 </h5>
                                                 <div class="row">
@@ -604,6 +786,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php } ?>
                                                 </div>
                                               </div>
+                                              
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -613,6 +796,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php echo @$userData->user_sitter_house->about_home_desc; ?>
                                                 </p>
                                               </div>
+                                              
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -622,6 +806,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php echo @$userData->user_sitter_house->spaces_access_desc; ?>
                                                 </p>
                                               </div>
+                                             <?php } ?>
                                               <!--<div class="row pt10 ">
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space1.jpg" class="img-responsive responsivept15" alt="client1"> </div>
@@ -631,7 +816,9 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space3.jpg" class="img-responsive responsivept15" alt="client1"> </div>
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 <img src="<?php echo HTTP_ROOT; ?>img/detail-space4.jpg" class="img-responsive responsivept15" alt="client1"> </div>
-</div>-->
+</div>-->  
+                                            <?php if(!empty($user_pets->user_pets[0]->user_pet_galleries)){ ?>
+                                            
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
@@ -641,17 +828,23 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <?php echo @$userData->user_sitter_house->home_pets_desc; ?>
                                                 </p>
                                               </div>
+                                               
+                                              
                                               <div class="row pt10 ">
-                                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+												<?php foreach(@$userData->user_pets[0]->user_pet_galleries as $single_pet){
+													
+													 ?>
+												<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
-                                                    <img src="<?php echo HTTP_ROOT; ?>img/detail-client2.jpg" class="img-responsive responsivept15" alt="client1">
+                                                    <img  src="<?php echo HTTP_ROOT.'img/uploads/'.$single_pet->image; ?>" class="img-responsive responsivept15" alt="client1">
                                                     <p class="dogname">Jackey
                                                     </p>
                                                     <p class="dogbreed">Dachshund
                                                     </p>
                                                   </div>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                                <?php } ?>
+                                                <!--<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client4.jpg" class="img-responsive responsivept15" alt="client1">
                                                     <p class="dogname">Harry
@@ -660,6 +853,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     </p>
                                                   </div>
                                                 </div>
+                                                
                                                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client1.jpg" class="img-responsive responsivept15" alt="client1">
@@ -668,7 +862,8 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     <p class="dogbreed">Dachshund
                                                     </p>
                                                   </div>
-                                                </div>
+                                                </div>-->
+                                                
                                                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1">
@@ -678,44 +873,46 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     </p>
                                                   </div>
                                                 </div>
+                                                
                                               </div>
+                                              
+                                              <?php } ?>
                                               <div class="row">
                                                 <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
                                                   <div class="one">
                                                     <div class="border-bot pt30">
                                                     </div>
                                                     <?php $UserRatingData=$userData->user_ratings; 
-//pr($UserRatingData);
-$accuracy_sum = 0;
-$comm_sum = 0;
-$clean_sum = 0;
-$location_sum = 0;
-$check_sum = 0;
-$rating_sum = 0;
-$count=0;
-foreach($UserRatingData as $UserRating){
-$count++;
-$accuracy_rating=$UserRating->accuracy_rating;
-$communication_rating=$UserRating->communication_rating;
-$cleanliness_rating=$UserRating->cleanliness_rating;
-$location_rating=$UserRating->location_rating;
-$check_in_rating=$UserRating->check_in_rating;
-$accuracy_sum = $accuracy_sum + $accuracy_rating;
-$comm_sum = $comm_sum + $communication_rating;
-$clean_sum = $clean_sum + $cleanliness_rating;
-$location_sum = $location_sum + $location_rating;
-$check_sum = $check_sum + $check_in_rating;
-}
-if($count > 0){
-$ac=$accuracy_sum/$count;
-$cm=$comm_sum/$count;
-$cl=$clean_sum/$count;
-$lc=$location_sum/$count;
-$ch=$check_sum/$count;
-$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
-}
-?>
-                                                    <h3 class="mid-sec-title pt15 ">
+													$accuracy_sum = 0;
+													$comm_sum = 0;
+													$clean_sum = 0;
+													$location_sum = 0;
+													$check_sum = 0;
+													$rating_sum = 0;
+													$count=0;
+													foreach($UserRatingData as $UserRating){
+													$count++;
+													$accuracy_rating=$UserRating->accuracy_rating;
+													$communication_rating=$UserRating->communication_rating;
+													$cleanliness_rating=$UserRating->cleanliness_rating;
+													$location_rating=$UserRating->location_rating;
+													$check_in_rating=$UserRating->check_in_rating;
+													$accuracy_sum = $accuracy_sum + $accuracy_rating;
+													$comm_sum = $comm_sum + $communication_rating;
+													$clean_sum = $clean_sum + $cleanliness_rating;
+													$location_sum = $location_sum + $location_rating;
+													$check_sum = $check_sum + $check_in_rating;
+													}
+													if($count > 0){
+													$ac=$accuracy_sum/$count;
+													$cm=$comm_sum/$count;
+													$cl=$clean_sum/$count;
+													$lc=$location_sum/$count;
+													$ch=$check_sum/$count;
+													$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
+													}
+													?>
+													 <h3 class="mid-sec-title pt15 ">
                                                       <?php echo $this->requestAction('users/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp 
                                                       <span>
                                                         <i>
@@ -727,13 +924,14 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                       </span>
                                                     </h3>
                                                     <ul class="list-inline pt15">
-                                                      <li class="reviews-bold">
+                                                      <li  class="reviews-bold prelative">
+														  <span style="position:relative; top:-15px;" >
                                                         <?php echo $count. "  Reviews ";?> 
-                                                        <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?>
+                                                        <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?> </span>
                                                       </li>
-                                                      <li> 
-                                                        <div class="rating-box">
-                                                          <span class="rating no-topmg">
+                                                      <li > 
+                                                        <div class="rating-box prelative">
+                                                          <span class="rating  ">
                                                             <?php	if(!empty($rating_sum)){ 	
 ?>
                                                             <input type='radio'  value='5' 
@@ -862,7 +1060,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                                                                         <div class="rating-box">
                                                                                                           <!--rating-->
                                                                                                           <!--<div class="rating-box"><img src="<?php echo HTTP_ROOT; ?>img/rating-icons.png"  alt=""/> </div>-->
-                                                                                                          <span class="rating no-topmg">
+                                                                                                          <span class="rating no-topmg mt-1 ">
                                                                                                             <?php	if(!empty($ac)){ 	
 ?>
                                                                                                             <input type='radio'  value='5' 
@@ -981,15 +1179,12 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                                                                                                               </div>
                                                                                                                                               <div class="rewiw-width50">
                                                                                                                                                 <div class="rating-box">
-                                                                                                                                                  <span class="rating no-topmg">
+                                                                                                                                                  <span class="rating no-topmg mt-1 ">
                                                                                                                                                     <?php	if(!empty($cm)){ 	
 ?>
                                                                                                                                                     <input type='radio'  value='5' 
 <?php if(!empty($cm)){ if($cm 
-                                                                                                                                                    <= 5 && $cm > 4.5){ echo "checked"; } }?> />
-                                                                                                                                                      <label class = "full" for="star5" title="Awesome - 5 stars">
-                                                                                                                                                      </label>
-                                                                                                                                                      <input type="radio"  value="4.5" 
+                                                                                                                                                    <= 5 && $cm > 4.5){ echo "checked"; } }?> 
 <?php if(!empty($cm)){if($cm 
                                                                                                                                                       <= 4.5 && $cm > 4){ echo "checked"; } } ?> />
 <label class="half" for="star4half" title="Pretty good - 4.5 stars">
@@ -1100,7 +1295,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                               </div>
                               <div class="rewiw-width50">
                                 <div class="rating-box">
-                                  <span class="rating no-topmg">
+                                  <span class="rating no-topmg mt-1 ">
                                     <?php	if(!empty($cl)){ 	
 ?>
                                     <input type='radio'  value='5' 
@@ -1221,7 +1416,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                                       </div>
                                                                       <div class="rewiw-width50">
                                                                         <div class="rating-box">
-                                                                          <span class="rating no-topmg">
+                                                                          <span class="rating no-topmg mt-1 ">
                                                                             <?php	if(!empty($lc)){ 	
 ?>
                                                                             <input type='radio'  value='5' 
@@ -1340,7 +1535,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                                                                               </div>
                                                                                                               <div class="rewiw-width50">
                                                                                                                 <div class="rating-box">
-                                                                                                                  <span class="rating no-topmg">
+                                                                                                                  <span class="rating no-topmg mt-1 ">
                                                                                                                     <?php	if(!empty($ch)){ 	
 ?>
                                                                                                                     <input type='radio'  value='5' 
@@ -1491,7 +1686,7 @@ $check_in=$UserRating->check_in_rating;
 <ul class="list-inline text-center">
   <li>
     <div class="rating-box">
-      <span class="rating no-topmg">
+      <span class="rating no-topmg mt-1 ">
         <?php	if(!empty($rate)){ 	
 ?>
         <input type='radio'  value='5' 
@@ -1641,7 +1836,7 @@ $check_in=$UserRating->check_in_rating;
                                     <br/>
                                     <br/>
                                     <p class="pull-left">
-                                      <?php if(empty($UserRating->comment)){ echo "<h5>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
+                                      <?php if(empty($UserRating->comment)){ echo "<h5 class='text-center'>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
                                     </p>
                                     <p class="pull-right color-green">
                                     </p>
@@ -1695,10 +1890,10 @@ $check_in=$UserRating->check_in_rating;
 								  ?>                       <img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> Day Care : 
 															<span><?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1710,7 +1905,7 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_night_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_night_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_night_rate;						
 																		}else{
 																			
 																			echo "$ --";
@@ -1720,15 +1915,16 @@ $check_in=$UserRating->check_in_rating;
 															  </i> 
 															</span>
 														  </li>
+														  <!--
 														  <li>
 															<img src="<?php echo HTTP_ROOT; ?>img/lt-care.png" width="18" height="17" alt=""> Long Terms Care : 
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1740,10 +1936,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1755,11 +1951,11 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
-																		}																
+																			echo "$cuntry_sign_code --";
+																		}
 																	?>
 															  <i class="fa fa-exclamation-circle">
 															  </i>
@@ -1770,25 +1966,25 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 																	<?php  if(!empty($sitterServiceData->sh_day_rates))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>															
 															  <i class="fa fa-exclamation-circle">
 															  </i>
 															</span>
-														  </li>
+														  </li>-->
 														  <li>
 															<img src="<?php echo HTTP_ROOT; ?>img/grooming.png" width="18" height="17" alt=""> Grooming : 
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_grooming_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->mp_grooming_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->mp_grooming_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1800,10 +1996,10 @@ $check_in=$UserRating->check_in_rating;
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_training_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->mp_training_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->mp_training_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1815,10 +2011,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 															<?php  if(!empty($sitterServiceData->mp_driving_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->mp_driving_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->mp_driving_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1830,10 +2026,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1845,10 +2041,10 @@ $check_in=$UserRating->check_in_rating;
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
-																				echo "$ ".$sitterServiceData->sh_day_rate;						
+																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$ --";
+																			echo "$cuntry_sign_code --";
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1856,13 +2052,27 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														</ul>
-														
+														<div class="guest-list"> 
+															 <?php if($userloginstatus){ 
+																 if($guests_Info == ""){
+																 ?>
+																<a href="javascript:void(0)" style='cursor:default' class="r-booking booking-request">Book Now
+														     </a> 
+																<?php }else{ ?> 
+														     <a href="javascript:void(0)" style='cursor:default' class="r-booking booking-request">Book Now
+														     </a> 
+														     <?php }
+														     }else{ ?>
+															    <a href="javascript:void(0)" style='cursor:default' class="r-booking booking-request">Book Now
+														     </a>   	
+															 <?php } ?>
+														</div>
 													  </div>
 													  <!--/Service list--> 
 							 </div>
                           </div>
+                          <!--Service Type End--> 
                          
-                          <!--/Wishlist Area--> 
                         </div>
                         <!--/Profile Right End--> 
                       </div>
@@ -1877,110 +2087,158 @@ $check_in=$UserRating->check_in_rating;
 			                     <div id="myCalender"><?php echo $this->element('frontElements/Search/calender');?></div>
 			                 <!--Calendar Box End  -->		
                             </div>
+                           
                           </div>
+                           
                         </div>
-                         <!--<div class="row">new one
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="border-bot pt30">
-                            </div>
-                            <h3 class="mid-sec-title pt30  ">Availability
-                            </h3>
-                            <div class="detail-cal-widget">
-                              <!--<img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender">
--->
-                              <!--<div class="some_datepicker">
-                              </div>
-                            </div>
-                          </div>
-                        </div>-->
-                    <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                         
+       <?php
+         if(!empty(@$userData->user_about_sitter->sh_pet_sizes)){
+			 @$petSizesArr = explode(',',@$userData->user_about_sitter->sh_pet_sizes);
+      ?>
+               <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="recent-act mgt35">Hosting Preferences
                     </div>
-                    <p class="dog-title1">Dogs
-                    </p>
+                   
                     <div class="row">
+						
+				   <?php $addPre = ["0-7","8-18","18-45","45+"]; 
+                     foreach($petSizesArr as $size_val){
+					          if(in_array($size_val, $addPre))
+							  {
+							     $matchaddPre = "match_found";
+							     break;
+							  }else{
+							     $matchaddPre = "match_not_found";
+							  }
+					}
+					if($matchaddPre == "match_found"){	
+				    ?>
+				    
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <ul class="pet-list">
-                          <li class="pet-1" > 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    0-15 pounds ">
-                            </span>
-                            <p class="weight" >0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-2"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">15-20
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-3"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-4"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Dog
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                        </ul>
+						   <p class="dog-title1">Dogs
+                          </p>
+						  <ul class="pet-list">
+							 <?php  foreach($petSizesArr as $size_val){
+							   if($size_val == '0-7'){
+							   ?>
+								 <li class="pet-1" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 0-7">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								<?php } 
+								else if(@$size_val == '8-18'){
+								?>
+								<li class="pet-2" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 8-18">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								<?php }
+								 else if(@$size_val == '18-45'){
+								 ?>
+								<li class="pet-3" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 18-45">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								<?php }
+								 else if(@$size_val == '45+'){
+								 ?>
+								<li class="pet-4" > 
+				                   <span data-toggle="tooltip" data-placement="top" title="Dog 45+">
+									</span>
+									<p class="weight" ><?php echo $size_val; ?>
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								 </li>
+								  <?php } 
+								  }
+								 ?>
+							</ul> 
+                        
                       </div>
+                      <?php }
+                     $addPre = ["cat","small_pets","medium_pets"]; 
+                     foreach($petSizesArr as $size_val){
+					          if (in_array($size_val, $addPre))
+							  {
+							     $matchaddPre = "match_found";
+							     break;
+							  }else{
+							     $matchaddPre = "match_not_found";
+							  }
+					}
+					if($matchaddPre == "match_found"){	
+                      ?>
                       <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
                         <p class="dog-title1">
                           <b>Additional prefrences
                           </b>
                         </p>
-                        <ul class="pet-list">
-                          <li class="pet-5"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Cat
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-6"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Rabit
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-7"> 
-                            <span data-toggle="tooltip" data-placement="top" title="Bird
-                                                                                    15-20 pounds ">
-                            </span>
-                            <p class="weight">0-15
-                            </p>
-                            <p class="pound">kg's / lbs
-                            </p>
-                          </li>
-                          <li class="pet-4"> &nbsp; 
-                          </li>
-                        </ul>
+                           <ul class="pet-list">
+								<?php  
+							   foreach($petSizesArr as $size_val){
+
+								  if($size_val == 'cat'){
+								  ?>
+								  <li class="pet-5"> 
+									<span data-toggle="tooltip" data-placement="top" title="Cat 15-20 pounds ">
+									</span>
+									<p class="weight">0-15
+									</p>
+									<p class="pound">kg's / lbs
+									</p>
+								  </li>
+								  <?php }
+								   else if($size_val == 'medium_pets'){
+								   ?>
+								 <li class="pet-6"> 
+										<span data-toggle="tooltip" data-placement="top" title="Rabit 15-20 pounds ">
+										</span>
+										<p class="weight">0-15
+										</p>
+										<p class="pound">kg's / lbs
+										</p>
+								   </li>
+								  <?php }
+								   else if($size_val == 'small_pets'){
+								   ?>
+								  <li class="pet-7"> 
+									    <span data-toggle="tooltip" data-placement="top" title="Bird 15-20 pounds ">
+										</span>
+										<p class="weight">0-15
+										</p>
+										<p class="pound">kg's / lbs
+										</p>
+								  </li>
+									<?php } 
+								  }
+								?>
+								  <li class="pet-4">
+									  &nbsp;
+								  </li>
+							   </ul>
+                       
+                        
                       </div>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
-                
+                <?php } ?>
                 <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="border-bot pt30">
@@ -2058,7 +2316,11 @@ $check_in=$UserRating->check_in_rating;
                               </style>
                             </div>
                           </div>
+                              <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+								<p class="report1"><a data-target="#myModal8" data-toggle="modal" href="#"><i class=" fa fa-remove"></i> &nbsp; Report this Profile</a></p>
+							  </div>
                         </div>
+                       
                       </div>
                     </div>
                     
@@ -2128,7 +2390,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                         <?php if(!empty($nearbyUser->city)){ echo $nearbyUser->city; }?>
                                       </p>
                                       <p class="r-star rat-wt">
-                                        <span class="rating no-topmg">
+                                        <span class="rating no-topmg mt-1 ">
                                           <?php	if(!empty($rating_sum)){ 	
 ?>
                                           <input type='radio'  value='5' 
@@ -2258,7 +2520,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                       </section>
                                                     <!-- Get in Touch ends-->
                                                     <!--[Fun News]-->
-                                                    <section class="fun-news">
+                                                    <?php echo $this->element('frontElements/guests/services_on_footer'); ?>
+                                                    <!--<section class="fun-news">
                                                       <div class="fn-bot">
                                                         <ul>
                                                           <li>
@@ -2359,7 +2622,8 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                                         </ul>
                                                       </div>
                                                     </section>
-                                                    <!--[Fun News]-->
+                                                   
+                                                   --> <!--[Fun News]-->
                                                     </main>
                                                   <!--[content area End]-->
                                                   <!--video popup start-->
@@ -2413,3 +2677,33 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 
 											  
   
+	
+
+<style>
+.pre_day_disable{
+	background-color:#ffffff !important;
+}
+
+.not_display {
+    display: none;
+	
+}
+.display_green {
+    background-color: #7BAB0D !important;
+}
+
+</style>
+
+
+
+<!--Additional Services Popup-->
+<?php 
+  echo $this->Html->css(['Front/jquery-ui.css']); 
+  echo $this->Html->script(['Front/jquery-ui.js']);
+?>
+
+<script>
+$(document).ready(function(){
+			$('[data-toggle="popover"]').popover();
+		});
+</script>

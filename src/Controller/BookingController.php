@@ -637,7 +637,7 @@ class BookingController extends AppController
 						$customerId = $UserData['user_card']['stripe_customer_id'];
 						try {
 							$charge =  \Stripe\Charge::create(array(
-							  "amount"   => 1500, // $15.00 this time
+							  "amount"   => $total, // $15.00 this time
 							  "currency" => "aud",
 							  "customer" => $customerId, // Previously stored, then retrieved
 							  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
@@ -709,7 +709,7 @@ class BookingController extends AppController
 							
 							if(isset($this->request->data['save_my_card']) && $this->request->data['save_my_card']=='save_my_card'){
 								
-								$UserCardsModel = TableRegistry::get('UserCardsModel'); 	
+								$UserCardsModel = TableRegistry::get('UserCards'); 	
 								
 								//Create user description for create user on stripe
 								$user_description = ucwords($session->read('User.name'))."-".$session->read('User.id')." has been saved own card details for fast payment";
@@ -727,12 +727,24 @@ class BookingController extends AppController
 								if(isset($customer->id) && $customer->id !=''){
 									
 									$UserCardsSaveData = $UserCardsModel->newEntity();
-									
-									$UserCardsSaveData = $UserCardsModel->patchEntity($UserCardsSaveData, $this->request->data['Booking']);
+									//pr($this->request->data['Booking']); die;
+									//$UserCardsSaveData = $UserCardsModel->patchEntity($UserCardsSaveData, $this->request->data['Booking']);
 									
 									$UserCardsSaveData->stripe_customer_id = $customer->id;
 									
 									$UserCardsSaveData->user_id = $session->read('User.id');
+									
+									$UserCardsSaveData->card_holder_name = $this->request->data['Booking']['card_holder_name'];
+									
+									$UserCardsSaveData->address_1 = $this->request->data['Booking']['address_1'];
+									
+									$UserCardsSaveData->address_2 = $this->request->data['Booking']['address_2'];
+									
+									$UserCardsSaveData->city = $this->request->data['Booking']['city'];
+									
+									$UserCardsSaveData->state = $this->request->data['Booking']['state'];
+									
+									$UserCardsSaveData->zip = $this->request->data['Booking']['zip'];
 									
 									$UserCardsSaveData->expiary_date = $this->request->data['Booking']['new_expiary_date'];
 									
@@ -749,11 +761,11 @@ class BookingController extends AppController
 									   ->select(['UserCards.stripe_customer_id'])
 									   ->hydrate(false)
 									   ->first();
-									   
-										$customerId = $UserData['user_card']['stripe_customer_id'];
+									 //  pr($UserData); die;
+										$customerId = $UserData['UserCards']['stripe_customer_id'];
 										try {
 											$charge =  \Stripe\Charge::create(array(
-											  "amount"   => 1500, // $15.00 this time
+											  "amount"   => $total, // $15.00 this time
 											  "currency" => "aud",
 											  "customer" => $customerId, // Previously stored, then retrieved
 											  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
@@ -782,8 +794,11 @@ class BookingController extends AppController
 											$error = $e->getMessage();
 											$errBody = $e->getJsonBody();
 											$errMsg = $e->getMessage();
-											
-											if($errBody['error']['code']=='card_declined') {
+											pr($errMsg); die;
+											if($errBody['error']['type']=='invalid_request_error') {
+												$errMsg = 'Must provide source or customer.';
+												$this->setErrorMessage($errMsg);
+											}if($errBody['error']['code']=='card_declined') {
 												$errMsg = 'Your card was declined. We arn\'t saying you broke but maybe you got another card?';
 												$this->setErrorMessage($errMsg);
 											}else if($errBody['error']['code']=='invalid_expiry_year') {
@@ -802,7 +817,7 @@ class BookingController extends AppController
 								try{
 									
 									$direct_charge_status = \Stripe\Charge::create(array(
-									  "amount" => 1500,
+									  "amount" => $total,
 									  "currency" => "aud",
 									  "source" => $token, 
 									  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
@@ -852,6 +867,7 @@ class BookingController extends AppController
 					catch (\Exception $e) {
 				
 							$error = $e->getMessage();
+							
 							$errBody = $e->getJsonBody();
 							$errMsg = $e->getMessage();
 							
