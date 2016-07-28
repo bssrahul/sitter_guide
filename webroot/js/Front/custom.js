@@ -1915,8 +1915,28 @@ $(function () {
 			},
 			success:function(res)
 			{
-				$('#myCalender').html(res);	//DISPLAY RESPONSE ERRORS
-				$('input[type=checkbox]').onoff();
+				$('#myCalender_recieved').html(res);	//DISPLAY RESPONSE ERRORS
+				//$('input[type=checkbox]').onoff();
+			}
+		});
+	});
+	  $(document).on('click', '.getCalenderSend', function(){
+	   var actionURl = $(this).attr('data-rel');
+		$.ajax({
+			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
+			beforeSend: function(){
+			  $(".ajax_overlay").show();
+			  $(".ajax_overlay").html('<img class="search-img" src="'+ajax_url+'img/walking.gif"/>');
+			},
+			complete: function(){
+			  $(".ajax_overlay").hide();
+			  $(".ajax_overlay").html('');
+			},
+			success:function(res)
+			{
+				
+				$('#myCalender_send').html(res);	//DISPLAY RESPONSE ERRORS
+				//$('input[type=checkbox]').onoff();
 			}
 		});
 	});

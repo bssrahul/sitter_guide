@@ -1,8 +1,8 @@
 
 <?php 
-echo $this->Html->css(['Front/tokenfield-typeahead.min.css','Front/bootstrap-tokenfield.min.css']);
-echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
-
+  echo $this->Html->css(['Front/tokenfield-typeahead.min.css','Front/bootstrap-tokenfield.min.css']);
+  echo $this->Html->script('Front/bootstrap-tokenfield.js');
+?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row">
     <div class="profiletab-section">
@@ -20,9 +20,7 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
       <?php echo $this->element('frontElements/profile/sitter_nav');?>
       <div class="tab-sectioninner book-pro">
             <div class="tab-content">
-
-  <div id="menu2" class="tab-pane fade tab-comm active in">
-        
+<div id="menu2" class="tab-pane fade tab-comm active in">
         <h2 id="basic-details" class="head-font">Now let us know who the sitter will be looking after.
         </h2>
         <p class="head-font2 pad-head-foot pad-22t">Your guest preferences are managed here
@@ -33,15 +31,17 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
                       'id'=>'about_guest'
               ]);
         ?>
-        <?php if(!empty($guest_data) && isset($guest_data) || isset($guest1) && !empty($guest1)){ 
-
+        <?php 
+        if(!empty($guest_data) && isset($guest_data) || isset($guest1) && !empty($guest1)){ 
                 echo $this->Form->input('UserPets.Guest1.user_pet_id',[
-                  'type'=>'hidden',
-                  'value'=>@$guest_data['id'] !=''?@$guest_data['id']:''
-              ]);
-         
-          ?>
-         
+                    'type'=>'hidden',
+                    'value'=>@$guest_data['id'] !=''?@$guest_data['id']:''
+                ]);
+                 echo $this->Form->input('UserPets.Guest1.id',[
+                    'type'=>'hidden',
+                    'value'=>@$guest_data['id'] !=''?@$guest_data['id']:''
+                ]);
+        ?>
         <div id="ajaxAdd1" class="row ajaxAdd">
            <div class="row">
             <div class="form-group col-lg-4 col-md-6">
@@ -543,7 +543,7 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
            </div>
           </div>
           <?php }else{ 
-               $o = 1; 
+                $o = 1; 
                 foreach($guests_data as $guest_data){ 
                  echo $this->Form->input('UserPets.Guest1.user_pet_id',[
                   'type'=>'hidden',
@@ -558,7 +558,12 @@ echo $this->Html->script('Front/bootstrap-tokenfield.js');?>
             <h3><strong>Guest Info</strong><button onclick="if(confirm('Are you sure to delete this record?') == true){location.href='<?php echo HTTP_ROOT.'dashboard/delete-guest/'.base64_encode(convert_uuencode(@$guest_data->id)); ?>'}else {return false;}" 
               data-rel="ajaxAdd<?php $o; ?>" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right">Delete </button></h3>
               <div class="clearfix"></div>
-          <?php } ?>
+           <?php }
+				echo $this->Form->input("UserPets.$guest.id",[
+					'type'=>'hidden',
+					'value'=>@$guest_data['id'] !=''?@$guest_data['id']:''
+				]);
+           ?>
            <div class="row">
             <div class="form-group col-lg-4 col-md-6">
               <label for="">Guest Name

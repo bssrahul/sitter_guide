@@ -24,8 +24,10 @@ use Cake\Datasource\ConnectionManager;
 
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'calendar.php');
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'bookingCalendar.php');
+require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'bookingSendCalendar.php');
 use Calendar;
 use Calendarbooking;
+use Calendarbookingsendrequest;
 
 /**
  * Static content controller
@@ -73,13 +75,12 @@ class DashboardController extends AppController
 		$siteConfiguration = $SiteModel->find('all')->first();
 		$this->set('siteConfiguration', $siteConfiguration);
 		
-
-		$sliderModel = TableRegistry::get('Sliders');
+        $sliderModel = TableRegistry::get('Sliders');
 		$sliderVideo = $sliderModel->find('all')->first();
 		$this->set('sliderVideo', $sliderVideo);
 		
 		//$this->loadComponent('Paginator');
-		 $this->loadComponent('Paginator');
+		$this->loadComponent('Paginator');
 	}
 	/**Function for landing page
 	*/
@@ -122,7 +123,6 @@ class DashboardController extends AppController
 				
 				$userInfo = $usersModel->get($userId)->toArray();
 			   //End
-          
           //For basic details
           $details_fields = array("first_name","last_name","email","password","gender","birth_date","address","country","city","state","zip","zone_id");
          
@@ -572,6 +572,7 @@ class DashboardController extends AppController
 		$booking_arr =[];
 		$current_events = 0;
 		$sitterbookingData = [];
+		$booking_request = [];
 		if(!empty($get_requests)){
 			$get_guest_requests = [];
 			$get_sitter_requests = [];
@@ -600,10 +601,9 @@ class DashboardController extends AppController
 					$userActas = 'Guest';
 					
 				}		
-				
+			
 			 if($userActas == "Sitter" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_sitter'] == "pending"){
-			    $bookingData[] = $booking_records;
-			    
+				$bookingData[] = $booking_records;
 			    //By guest Booking Dates
 				$booking_arr[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
 				$booking_arr[$booking_key]["end_date"]= $booking_records['booking_end_date'];
@@ -626,7 +626,7 @@ class DashboardController extends AppController
 				       $booking_records['user'] = $sitter_info[0];
 				   }
 				   $sitterbookingData[] = $booking_records;
-				   
+				
 				//Sitter available dates
 				$booking_request[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
 				$booking_request[$booking_key]["end_date"]= $booking_records['booking_end_date'];
@@ -717,20 +717,87 @@ class DashboardController extends AppController
 				 $client_stay_status["market_place_clients"] = $client_stay_status["market_place"];
 				 $client_stay_status["alerts"]= 0;
 		}
-		
 		 $calendar = new  \Calendarbooking();
-		  
-		//pr($calendar->show($booking_arr));die;
-		// pr($booking_arr);die;
-		//$this->set('calender',$calendar->show($booking_arr));
-        //pr($calendar->show($booking_request));die;
-        $this->set('calender',$calendar->show(@$booking_request));
+		 $calendarsend = new  \Calendarbookingsendrequest();
+		 //pr(@$booking_request);die;
+		 $this->set('calender',$calendar->show(@$booking_arr));
+		 //pr($booking_request);die;
+		 $this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
         
-         //pr($booking_arr);die;
          $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 
          $this->set('sitter_booking_info',$sitterbookingData);	 
+	}
+	public function ajaxCalendarBookingSendRequest()
+    {
 		
+            $session=$this->request->session();
+			$userId=$session->read('User.id');
+			$userType = $session->read('User.user_type');
+			
+			$bookingRequestModel = TableRegistry :: get("BookingRequests");
+			
+		 $get_requests = $bookingRequestModel->find('all')
+		->where(["BookingRequests.user_id = $userId OR BookingRequests.sitter_id = $userId"])
+		->contain(['Users'=> ['queryBuilder' => function ($q) {
+																			return $q->select(['Users.id','Users.first_name','Users.last_name','Users.image','Users.city','Users.state','Users.country']);
+																		}
+													]
+				])
+		->hydrate(false)->toArray();
+		
+		$UsersModel = TableRegistry::get('Users');
+		
+		$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
+		
+	
+		$booking_request = [];
+		if(!empty($get_requests)){
+			$get_guest_requests = [];
+			$get_sitter_requests = [];
+			
+			foreach($get_requests as $booking_key=>$booking_records){
+				//SET WHICH IS ACT AS A SITTER AND WHICH IS ACT AS A GUEST IN THIS REQUEST
+				if($userId==$booking_records['request_by_sitter_id'] && $userId==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Guest';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId !=$booking_records['user_id']){
+					
+					$user_message_display_field = 'user_id'; // Set id for display user messages on each other threads
+					$fieldname = 'sitter';
+					$userType = 'Sitter';
+					$userActas = 'Sitter';
+					
+				}else if($userId != $booking_records['request_by_sitter_id'] && $userId ==$booking_records['user_id']){
+					
+					$user_message_display_field = 'sitter_id'; // Set id for display user messages on each other threads
+					$fieldname = 'guest';
+					$userType = 'Basic';
+					$userActas = 'Guest';
+					
+				}		
+			
+			 if($userActas == "Guest" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_guest'] == "pending"){
+				 $as_guest_records[] = $booking_records;
+			   
+			      
+				
+				//Sitter available dates
+				$booking_request[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
+				$booking_request[$booking_key]["end_date"]= $booking_records['booking_end_date'];
+				$booking_request[$booking_key]["avail_status"]= $booking_records['status'];
+			 }
+			
+			}
+		}
+		
+	     $calendarsend = new  \Calendarbookingsendrequest();
+		 $this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
+        	 
 	}
     /**
      Function for change booking status
@@ -1456,9 +1523,13 @@ function aboutGuest(){
 
      if(isset($this->request->data['UserPets']) && !empty($this->request->data['UserPets'])) 
      {
+		      //pr($this->request->data);
 		 
-		            $userPetsModel->deleteAll(['UserPets.user_id'=>$userId]);
+		            //$userPetsModel->deleteAll(['UserPets.user_id'=>$userId]);
+		          
 					$petGalleryModel->deleteAll(['UserPetGalleries.user_id'=>$userId]);
+					 // pr($session->read('UserPets'));die;
+					
 					
 				foreach($this->request->data['UserPets'] as $key=>$single_guest){
 						    $guest_age = array($single_guest['guest_years'],$single_guest['guest_months']);
@@ -1472,6 +1543,8 @@ function aboutGuest(){
 							$petsData->guest_age = $guest_age;
 							//Save guest data
 							$userPetsModel->save($petsData);
+							//pr($petsData->id);
+							
 									if(!empty($session->read('UserPets'))){
 											 $guest_images['UserPets'] = $session->read('UserPets');
 											 if(array_key_exists($key,$guest_images['UserPets'])){
@@ -1490,6 +1563,9 @@ function aboutGuest(){
 											 }
 									}
 				}
+				
+				
+					
 				if($session->read("profile") == "Guest"){
 				     return $this->redirect(['controller'=>'dashboard','action'=>'about-guest']);
 			    }else{
@@ -1538,13 +1614,14 @@ function aboutGuest(){
 													 $G++;
 				    }
 				 //End
+				 //pr($userPetsData->user_pets);die;
 				 }
 		}else{
-							 $session->write("UserPets",'');
-							 $this->set('guest_images', 'no_image');
-							 $this->set('guest1','guest1');
-						 }
-			$dogBreedsModel = TableRegistry::get('DogBreeds');
+				 $session->write("UserPets",'');
+				 $this->set('guest_images', 'no_image');
+				 $this->set('guest1','guest1');
+		}
+			 $dogBreedsModel = TableRegistry::get('DogBreeds');
 			 $dogBreeds = $dogBreedsModel->find("all")->toArray();
 			 $allBreeds = array();
 			 $i = 0;
@@ -2722,12 +2799,9 @@ function addPets(){
         $this->set('calender',$calendar->show($services_array,$unavailbe_array,$availblityDaysOfSitter));
 
     }
-    
-  
     public function searchResultsFavourites(){
 		$session = $this->request->session();
         $userId = $session->read('User.id');
-		
 		
 		$this->viewBuilder()->layout('profile_dashboard');
 		//Fetch Data Leading-sitting
