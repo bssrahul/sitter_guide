@@ -115,7 +115,7 @@
 
 
 .chat-wrapper {margin-top:15px;}
-.chat-wrapper .chat-wrapper-inner {  border-right:1px solid #d3d3d3;  height:450px; overflow-y:scroll; overflow-x:hidden; }
+.chat-wrapper .chat-wrapper-inner {  border-right:1px solid #d3d3d3;  height:450px; overflow-y:scroll; overflow-x:hidden; padding:0 0 50px 0; }
 .chat-title1 { background:#efecec ; height:50px; padding:0px 0 0 15px; font-size:14px; color:#404040;  border:1px solid #c7c7c7; border-left:none; line-height:50px;}
 .chat-title1  #refresh_chat{ float:right; margin:5px 5px 0 0;}
 
@@ -151,7 +151,7 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 
 .chat-wrapper ul li {padding-top:50px; }
 .positi { position:relative;}
-.chat-postioning { width:100%; float:left; }
+
 
 @media (max-width:767px){
 .message-full-wrapper .message-pad-right-0 {padding-right:15px;}
