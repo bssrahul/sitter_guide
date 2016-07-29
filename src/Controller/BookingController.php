@@ -915,7 +915,80 @@ class BookingController extends AppController
 			
 			$BookingRequestsData->payment_status = 'Paid';
 			
-			$BookingRequestsModel->save($BookingRequestsData);
+			if($BookingRequestsModel->save($BookingRequestsData)){
+				
+				//GET SESSION ID
+				//USER WHO IS BOOKING NEW REQUEST
+				$session = $this->request->session();
+				$user_id_who_is_paid = $session->read("User.id");
+				
+				//GET USER DATA WHOM REFERED THIS PERSON
+				$UserReferData = $this->getUserCompleteData($user_id_who_is_paid);
+				
+				if(!empty($UserReferData)){
+					
+					//GET WALLET BALANCE AND ADD $20 
+					$referedby = $UserReferData->reference_id;
+					$UserReferWalletsModel = TableRegistry::get('UserReferWallets');
+		
+					//ADD AMOUNT WHOM REFERD THIS PERSON
+					$user_wallet_records = $UserReferWalletsModel->find('all')->select(['UserReferWallets.id','UserReferWallets.amount'])
+												->where(['UserReferWallets.user_id' => $referedby])
+												->limit(1)
+												->hydrate(false)
+												->first();
+					
+					$UserReferWalletsModelData= $UserReferWalletsModel->newEntity();
+					
+					if(!empty($user_records)){
+												
+						$finalBal = ($user_wallet_records->amount + REFERAL_BONUS);
+						$UserReferWalletsModelData->id = $user_wallet_records->id;
+						$UserReferWalletsModelData->amount = $finalBal;
+												
+						
+					}else{
+						
+						$UserReferWalletsModelData->amount = REFERAL_BONUS;
+						
+					}
+					
+					if($UserReferWalletsModel->save($UserReferWalletsModelData)){
+						$usersModel = TableRegistry::get('Users');
+						$usersModelData= $usersModel->newEntity();
+						$usersModelData->id = $user_id_who_is_paid;
+						$usersModelData->reference_id = '';
+						$usersModel->save($usersModelData);//Empty references relation
+					}
+					
+					//ADD AMOUNT WHO IS BOOKING REQUEST
+					$self_user_wallet_records = $UserReferWalletsModel->find('all')->select(['UserReferWallets.id','UserReferWallets.amount'])
+												->where(['UserReferWallets.user_id' => $user_id_who_is_paid])
+												->limit(1)
+												->hydrate(false)
+												->first();
+					
+					$UserReferWalletsModelData= $UserReferWalletsModel->newEntity();
+					
+					if(!empty($self_user_wallet_records)){
+												
+						$finalBal = ($self_user_wallet_records->amount + REFERAL_BONUS);
+						$UserReferWalletsModelData->id = $self_user_wallet_records->id;
+						$UserReferWalletsModelData->amount = $finalBal;
+												
+						
+					}else{
+						
+						$finalBal = REFERAL_BONUS;
+						$UserReferWalletsModelData->amount = $finalBal;
+						
+					}
+					
+					$UserReferWalletsModel->save($UserReferWalletsModelData);
+					
+				}
+			
+			}
 			
 			$this->setSuccessMessage($this->stringTranslate(base64_encode("Payment recieved successfully")));
 			
