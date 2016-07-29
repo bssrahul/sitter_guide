@@ -403,6 +403,7 @@ p.min-hh { min-height: 120px;}
 p.browse-p{ font-size:14px;}
 .browse-p button { margin:0 0 0 10px;}	
 .tab-sectioninner label { font-size:12px;}
+.pull-right.m-rights > label { padding:0 5px;}
 
 .head-font {font-size:16px; font-weight:600;} 
 .head-font2 {font-size:14px;}

@@ -1710,6 +1710,7 @@ class SearchController extends AppController
 				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
+
 			/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
 		
 			$availDaysModel=TableRegistry :: get("user_sitter_availability_days");

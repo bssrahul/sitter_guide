@@ -400,8 +400,7 @@
                                                         </b>
                                                       </li>
                                                       <li>
-                                                        <i class="fa fa-user icon-width30 icon-p15">
-                                                        </i>Last Activity : 
+                                                        <i class="fa fa-user icon-width30 icon-p15"></i>Last Activity : 
                                                         <b>
                                                           <?php 
 															if(@$userData->avail_status == 'Login'){
@@ -432,8 +431,8 @@
                                                         <i class="fa fa-check icon-width30 font-size20">
                                                         </i>
                                                         <?php }else{ ?>
-														<i class="fa fa-times icon-width30 new-font-size20">
-                                                        </i>
+														<!--<i class="fa fa-times icon-width30 new-font-size20"> </i>-->
+                                                        <i class="fa icon-width30"> <img src="<?php echo HTTP_ROOT. 'img/sms-unverify.png'; ?>" alt="/SMS Unverified" /></i>
 														<?php }?>	
                                                          SMS Verified
                                                       </li>
