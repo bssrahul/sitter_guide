@@ -19,9 +19,6 @@ use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
 use Cake\Event\Event;
 use Cake\I18n\Time;
-
-
-
 /**
  * Static content controller
  *

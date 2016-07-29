@@ -8,7 +8,6 @@
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
         <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
-			
 			<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 				<h3>
 					<img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">Dashboard
@@ -28,10 +27,7 @@
 			</div>
 		</div>
         <div class="row">
-			
-			
-          
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6">
+			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6">
 				<?php if($userType == "Sitter"){ ?>
 					 <div class="outer-db-box">
 						<div class=" top-box">
@@ -104,9 +100,7 @@
 						<?php } ?>
 					 </div>
 				 <?php } ?>	
-				 
-						 
-					 <?php if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
+				    <?php if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
 					<div class="outer-db-box">
 						<div class=" top-box">
 						  <div class="revenue-icon">
@@ -176,10 +170,7 @@
 						
 						<?php } ?>
 			</div>
-         
-			
-			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6 ">
-			  
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6 ">
 			  <div class="outer-db-box">
 				<?php  if($userType == "Sitter"){ ?> 
 					<div class=" top-box">
@@ -473,7 +464,8 @@
 						  </div>
 						</div>
 						<div class="btn-paddin">
-						  <button class="btn  btn-green btn-block mtb-15" onclick="location.href='<?php echo HTTP_ROOT.'dashboard/change-booking-status/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Accept
+						  <button class="btn  btn-green btn-block mtb-15" 
+						     onclick="location.href='<?php echo HTTP_ROOT.'message/get-messages/pending/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Accept
 						  </button>
 						</div>
 						<div> 
@@ -531,8 +523,8 @@
 				</div>
 				<div  id="event2" class="below-second-box" aria-expanded="true">
 				  <div class="">
-					<div id="myCalender">
-					  <?php echo $this->element('frontElements/Search/calender');?>
+					<div id="myCalender_send">
+					  <?php echo $this->element('frontElements/Search/calendar_send_request');?>
 					</div>
 				  </div>
 				  <!-- Start -->
@@ -569,7 +561,9 @@
 						  </div>
 						</div>
 						<div class="btn-paddin">
-						  <button class="btn  btn-green btn-block mtb-15" onclick="location.href='<?php echo HTTP_ROOT.'dashboard/change-booking-status/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Book It Now
+						  <button class="btn  btn-green btn-block mtb-15" 
+						       onclick="location.href='<?php echo HTTP_ROOT.'message/get-messages/pending/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'"
+						  >Book It Now
 						  </button>
 						</div>
 						<div> 
@@ -614,7 +608,7 @@
 				  <!--end-->
 				</div>
 			 
-			 <?php } ?>
+			 <?php }  ?>
 			  </div>
 			</div>
 

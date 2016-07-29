@@ -1,13 +1,8 @@
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
-
-	<div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
-    
-		<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
-			
+    <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
+        <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 			<h3><img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Favourites</h3>
-
-		</div>
-        
+         </div>
         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
               <ol class="breadcrumb text-right">
                 <li> You are here : </li>
@@ -15,10 +10,8 @@
                 <li class="active">Favourites</li>
               </ol>
         </div>
-	
 	</div>
-          
-	<div class="favourite-wrap ">
+    <div class="favourite-wrap ">
           
 		<div class="row">
 			
@@ -78,9 +71,10 @@
 												$ch=$check_sum/$count;
 												$rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 												}
-												?>
 												
-												<!--	<p class="r-star rat-wt"> -->
+												
+												?>
+												<!--<p class="r-star rat-wt"> -->
 												<span class="rating ">
 												<?php	if(!empty($rating_sum)){ 	
 												?>
@@ -249,7 +243,7 @@
 }
 
 .rating > label{
-    float: none !important;
+    
     overflow:auto;
 }
 

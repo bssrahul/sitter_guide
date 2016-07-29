@@ -424,11 +424,12 @@
 									}
 								 ?>
 								 
-								 <img class="img-responsive height125" id="preview-profile-banner" src="<?php echo @$pathBanner; ?>"><?php echo '<em class="signup_error error clr addBannerError"></em>'; ?>
+								 <img class="img-responsive height125" id="preview-profile-banner" src="<?php echo @$pathBanner; ?>">
 								
 									<button class="btn btn-primary" type="button" id="browseBanner"><i class="fa fa-upload" aria-hidden="true"></i>
 										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Banner')); ?>
 									</button>
+									<?php echo '<br><em class="signup_error error clr addBannerError"></em>'; ?>
 							</div>
 						
 						</div>
@@ -479,7 +480,7 @@
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Video')); ?>
                           
                     </button>
-                   <?php echo '<em class="signup_error error clr addError"></em>'; ?>
+                   <?php echo '<br><em class="signup_error error clr addError"></em>'; ?>
 			</div>
 		
 		</div>
@@ -518,12 +519,13 @@
 					}
 				 
 					?>
-					<img class="img-responsive height125" id="preview-profile-video-image" src="<?php echo @$pathVideoImg; ?>"><?php echo '<em class="signup_error error clr addVideoImgError"></em>'; ?>
+					<img class="img-responsive height125" id="preview-profile-video-image" src="<?php echo @$pathVideoImg; ?>">
 					<button class="btn btn-primary" type="button" id="browseVideoImage"><i class="fa fa-upload" aria-hidden="true"></i>
                 
 					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Video Image')); ?>
 					
 					</button>
+					<?php echo '<br><em class="signup_error error clr addVideoImgError"></em>'; ?>
 			</div>
 		</div>
 	</div>

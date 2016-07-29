@@ -7,7 +7,7 @@
    $requestAction = $this->request->action;
   ?>
  <div class="col-md-3 col-lg-2 col-sm-4  lg-width20">
-        <div class="custom">
+        <div id="getFixed" class="custom">
           <div class="sidebar">
             <div class=""> 
               <!-- uncomment code for absolute positioning tweek see top comment in css --> 
@@ -171,3 +171,23 @@
           </div>
         </div>
       </div>
+<script>
+jQuery(function($) {
+  function fixDiv() {
+    var $cache = $('#getFixed');
+    if ($(window).scrollTop() > 100)
+      $cache.css({
+        'position': 'fixed',
+        'top': '50px',
+		'max-width':'282px' 
+      });
+    else
+      $cache.css({
+        'position': 'relative',
+        'top': 'auto'
+      });
+  }
+  $(window).scroll(fixDiv);
+  fixDiv();
+});
+</script>

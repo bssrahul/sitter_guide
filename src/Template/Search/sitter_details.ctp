@@ -3283,7 +3283,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num;
 				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
-				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>Boarding for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			  }
 			  if(service_id == 'li_house_sitting'){
 				 var hs_day_rate = $("#house_sitting_day_rate").val();
@@ -3295,7 +3295,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num;
 				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
-				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>House Sitting for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
 			  }else
 			   if(service_id == 'li_drop_in_visit'){
 				 var drop_visit_rate = $("#dorp_in_visit").val();
@@ -3303,7 +3303,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				  var total = drop_visit_rate*total_days*guest_num;
 				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				 
-				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
+				  var main_content = "<li>Drop in visit for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
 			   }else
 			   if(service_id == 'li_day_night'){
 				 var day_rate = $("#day_rate").val();
@@ -3315,7 +3315,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num
 				  $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
-				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>Day/Night for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Day/Night for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			 }else
 			   if(service_id == 'li_maket_place'){
 				 var mp_grooming_rate = $("#mp_grooming_rate").val();
@@ -3332,7 +3332,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 
 				 $("#show-total-amount").text("<?php echo @$cuntry_currency; ?> "+total);
 				  
-				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
+				 var main_content = "<li>Market Place for "+total_days+" day grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for "+total_days+" day training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for "+total_days+" day recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for "+total_days+" day driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
 			   }
 			  
                $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" ><div class="pet-info-inner"><ul class="list-unstyled">'+main_content+'</ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$'+total+'</b></span></p></div></div>');
@@ -3391,7 +3391,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num;
 				  $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>Boarding for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			  }
 			  if(service_id == 'house_sitting'){
 				 var hs_day_rate = $("#house_sitting_day_rate").val();
@@ -3403,7 +3403,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num;
 				  $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>House Sitting for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
 			  }else
 			   if(service_id == 'drop_in_visit'){
 				 var drop_visit_rate = $("#dorp_in_visit").val();
@@ -3411,7 +3411,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				  var total = drop_visit_rate*total_days*guest_num;
 				  $("#show-total-amount").text("AU"+total);
 				 
-				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
+				  var main_content = "<li>Drop in visit for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
 			   }else
 			   if(service_id == 'day_nigth_care'){
 				 var day_rate = $("#day_rate").val();
@@ -3423,7 +3423,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num
 				  $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>Day/Night for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Day/Night for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			 }else
 			   if(service_id == 'market_place'){
 				 var mp_grooming_rate = $("#mp_grooming_rate").val();
@@ -3440,7 +3440,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 
 				 $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
+				 var main_content = "<li>Market Place for "+total_days+" day grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for "+total_days+" training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for "+total_days+" day recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for "+total_days+" day driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
 			   }
 			  
                $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" ><div class="pet-info-inner"><ul class="list-unstyled">'+main_content+'</ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$'+total+'</b></span></p></div></div>');
@@ -3492,7 +3492,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num;
 				  $("#show-total-amount").text("AU"+total);
 				  
-				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>Boarding for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			  }
 			  if(service_id == 'house_sitting'){
 				 var hs_day_rate = $("#house_sitting_day_rate").val();
@@ -3504,7 +3504,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num;
 				  $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>House Sitting for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>House Sitting for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(hs_day_rate*total_days*guest_num)+" p/day<hr></li><li>House Sitting for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+hs_night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(hs_night_rate*total_days*guest_num)+" p/night</li>";
 			  }else
 			   if(service_id == 'drop_in_visit'){
 				 var drop_visit_rate = $("#dorp_in_visit").val();
@@ -3512,7 +3512,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				  var total = drop_visit_rate*total_days*guest_num;
 				  $("#show-total-amount").text("AU"+total);
 				 
-				  var main_content = "<li>Drop in visit for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
+				  var main_content = "<li>Drop in visit for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+drop_visit_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(drop_visit_rate*total_days*guest_num)+" p/day";
 			   }else
 			   if(service_id == 'day_nigth_care'){
 				 var day_rate = $("#day_rate").val();
@@ -3524,7 +3524,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 var total = (day_total+night_total)*guest_num
 				  $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>Boarding for 1 day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for 1 night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
+				 var main_content = "<li>Day/Night for "+total_days+" day</li><li>"+from_date+" to "+to_date+"</li><li>$ "+day_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(day_rate*total_days*guest_num)+" p/day<hr></li><li>Boarding for "+total_days+" night</li><li>"+from_date+" to "+to_date+"</li><li>$ "+night_rate+" x "+total_days+" nigh x "+guest_num+" guest @ "+(night_rate*total_days*guest_num)+" p/night</li>";
 			 }else
 			   if(service_id == 'market_place'){
 				 var mp_grooming_rate = $("#mp_grooming_rate").val();
@@ -3541,7 +3541,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 
 				 $("#show-total-amount").text("AU "+total);
 				  
-				 var main_content = "<li>Market Place for 1 grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for 1 training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for 1 recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for 1 driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
+				 var main_content = "<li>Market Place for "+total_days+" day grooming</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_grooming_rate+" x "+total_days+" grooming x "+guest_num+" guest @ "+(mp_grooming_rate*total_days*guest_num)+" p/grooming<hr></li><li>Market Place for "+total_days+" day training</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_training_rate+" x "+total_days+" training x "+guest_num+" guest @ "+(mp_training_rate*total_days*guest_num)+" p/training</li><hr><li>Market Place for "+total_days+" day recreation</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_recreation_rate+" x "+total_days+" day x "+guest_num+" guest @ "+(mp_recreation_rate*total_days*guest_num)+" p/day<hr></li><li>Market Place for "+total_days+" day driving</li><li>"+from_date+" to "+to_date+"</li><li>$ "+mp_driving_rate+" x "+total_days+" driving x "+guest_num+" guest @ "+(mp_driving_rate*total_days*guest_num)+" p/driving</li>";
 			   }
 			  
                $("#bookingPetInfo").append('<div class="pet-info-wrap alert appendService" ><div class="pet-info-inner"><ul class="list-unstyled">'+main_content+'</ul></div><div class="pet-info-bot"><p>Total  :<span class="pull-right text-right"> <b>$'+total+'</b></span></p></div></div>');

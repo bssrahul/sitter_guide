@@ -87,7 +87,29 @@
 									<!--Rating Start-->
 									<p class="r-star">
 										<span class="rating ">
-											<?php	if(!empty($rating_sum)){ 	
+											<?php	if(!empty($rating_sum)){
+											  // pr($rating_sum);die;
+											
+														if($rating_sum > 1 && $rating_sum < 1.5){
+														   $rating_sum = 1.5;
+														}else if($rating_sum > 1.5 && $rating_sum < 2){
+															$rating_sum = 2;
+														}else if($rating_sum > 2 && $rating_sum < 2.5){
+														   $rating_sum = 2.5;
+														}else if($rating_sum > 2.5 && $rating_sum < 3){
+															$rating_sum = 3;
+														}else if($rating_sum > 3 && $rating_sum < 3.5){
+														   $rating_sum = 3.5;
+														}else if($rating_sum > 3.5 && $rating_sum < 4){
+															$rating_sum = 4;
+														}else if($rating_sum > 4 && $rating_sum < 4.5){
+														   $rating_sum = 4.5;
+														}else if($rating_sum > 4.5 && $rating_sum < 5){
+															$rating_sum = 5;
+														}
+											$myrating = $rating_sum;
+											
+											
 											?>
 											<input type='radio'  value='5' 
 											<?php if(!empty($rating_sum)){ if($rating_sum 

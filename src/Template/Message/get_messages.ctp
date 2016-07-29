@@ -79,7 +79,7 @@
                       </span>
                     </div>
                     <div id="//content-m" class="chatscroll">
-                      <div class="chat-wrapper-inner positi ">
+                      <div id="scroll" class="chat-wrapper-inner positi">
                         <div class="container-fluid list_chat_ul">
 						  <?php echo $this->element('frontElements/Message/ajax_chat_response'); ?>
                         </div>
@@ -158,6 +158,6 @@
 			}
 		}, 15000);
 	});
-</script>	
+</script>
 <?php }  ?>
 
