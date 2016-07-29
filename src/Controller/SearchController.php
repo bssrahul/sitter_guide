@@ -23,6 +23,7 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
 require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'availabilityCalendar.php');
 use availabilityCalendar;
+use Calendar;
 /**
  * Static content controller
  *
@@ -1532,6 +1533,7 @@ class SearchController extends AppController
 		$session = $this->request->session();
 		$this->viewBuilder()->layout('landing');
 		$sitterId = convert_uudecode(base64_decode($sitterId));
+		$session->write('User.sitterId',$sitterId);
 		
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
@@ -1729,8 +1731,20 @@ class SearchController extends AppController
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
 						
+			/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
+		
+			$availDaysModel=TableRegistry :: get("user_sitter_availability_days");
+			$calenderAvailValData=$availDaysModel->find('all')->select('available_days')->where(['user_id'=>$sitterId])->hydrate(false)->first();
+			if(!empty($calenderAvailValData)){
+				$availblityDaysOfSitter = explode(",",$calenderAvailValData['available_days']);
+				$this->set('avail_days',$availblityDaysOfSitter);
+			}else{
+				$availblityDaysOfSitter = array();
+				$this->set('avail_days',$availblityDaysOfSitter);
+			}		
+			//echo "<pre>";	print_r($availblityDaysOfSitter);die;
 			$calendar = new  \Calendar();
-			$this->set('calender',$calendar->show($unavailbe_array));
+			$this->set('calender',$calendar->show($unavailbe_array,$availblityDaysOfSitter));
 			//For booking request
 			if(!empty($session->read("User.id"))){
 				 $userId = $session->read("User.id");
@@ -1885,8 +1899,10 @@ class SearchController extends AppController
     {
 
 			$Session=$this->request->session();
-			$user_id=$Session->read('User.id');
-			//pr($user_id);die;
+			$user_id= $Session->read('User.sitterId'); //$Session->read('User.id');
+			
+			/*  $sitterId = $session->read('User.sitterId');
+			echo"id"; pr($sitterId);die; */
 			//$this->viewBuilder()->layout('profile_dashboard');
 			$calendarModel=TableRegistry :: get("user_sitter_availability");
 			$calenderData=$calendarModel->find('all')->where(['user_id'=>$user_id])->toArray();
@@ -1899,10 +1915,21 @@ class SearchController extends AppController
 				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
+			/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
+		
+			$availDaysModel=TableRegistry :: get("user_sitter_availability_days");
+			$calenderAvailValData=$availDaysModel->find('all')->select('available_days')->where(['user_id'=>$user_id])->hydrate(false)->first();
+			if(!empty($calenderAvailValData)){
+				$availblityDaysOfSitter = explode(",",$calenderAvailValData['available_days']);
+				$this->set('avail_days',$availblityDaysOfSitter);
+			}else{
+				$availblityDaysOfSitter = array();
+				$this->set('avail_days',$availblityDaysOfSitter);
+			}
 		
 		$calendar = new  \Calendar();
-
-		$this->set('calender',$calendar->show($unavailbe_array));
+		
+		$this->set('calender',$calendar->show($unavailbe_array,$availblityDaysOfSitter));
        
     }
 	
@@ -2120,9 +2147,20 @@ class SearchController extends AppController
 				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
-						
+			/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
+		
+			$availDaysModel=TableRegistry :: get("user_sitter_availability_days");
+			$calenderAvailValData=$availDaysModel->find('all')->select('available_days')->where(['user_id'=>$sitterId])->hydrate(false)->first();
+			if(!empty($calenderAvailValData)){
+				$availblityDaysOfSitter = explode(",",$calenderAvailValData['available_days']);
+				$this->set('avail_days',$availblityDaysOfSitter);
+			}else{
+				$availblityDaysOfSitter = array();
+				$this->set('avail_days',$availblityDaysOfSitter);
+			}		
+			//echo "<pre>";	print_r($availblityDaysOfSitter);die;
 			$calendar = new  \Calendar();
-			$this->set('calender',$calendar->show($unavailbe_array));
+			$this->set('calender',$calendar->show($unavailbe_array,$availblityDaysOfSitter));
 			//For booking request
 			if(!empty($session->read("User.id"))){
 				 $userId = $session->read("User.id");

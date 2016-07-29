@@ -35,11 +35,10 @@
 									<a href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($FavUsers ['user']['id'])); ?>" title=""> 
 										<img src="<?php if(!empty($FavUsers ['user']['image'])){echo HTTP_ROOT.'img/uploads/'.$FavUsers ['user']['image'];}else{ echo HTTP_ROOT.'img/detail-client-title.jpg'; } ?>" class="img-thumbnail img-circle text-center img-w" alt="">
 										
-										<p class="name"><?php if(!empty($FavUsers ['user']['first_name'])){echo $FavUsers ['user']['first_name']. " " .$FavUsers ['user']['last_name'];}?></p>
-										
-										<p class="loc"><?php if(!empty($FavUsers ['user']['city'])){echo $FavUsers ['user']['city'];}?></p>
-																					
-										<p class="r-star">
+										 <div class="fb-name"><p><?php if(!empty($FavUsers ['user']['first_name'])){echo $FavUsers ['user']['first_name']. " " .$FavUsers ['user']['last_name'];}?></p></div>
+										 <div class="fb-loc"><p><?php if(!empty($FavUsers ['user']['city'])){echo $FavUsers ['user']['city'];}?></p></div>																				
+                                         <div class="fb-rate">
+										<p>
 										       <?php  	
 												$UserRatingData= $FavUsers ['user']['user_ratings']; 
 												$accuracy_sum = 0;
@@ -185,9 +184,12 @@
 												</span>
 												<!--/rating--> 
                                         </p>
-										<p class="grey">
+										 </div>
+                                         <div class="fb-review">
+                                        <p>
 											<span><?php if($count != ""){ echo "( ".$count. " reviews )" ;}else{echo "( 0 reviews )" ;} ?></span>
 										</p>
+                                        </div>
 									</a>
 								
 								</div>
@@ -229,31 +231,9 @@
 </div>
 
 <style>
-.r-star {
-  width: 100% !important;
-  padding-top:5px;
-}
 
-.rating{
-	margin: 0 auto;
-    position: relative;
-    text-align: center;
-    width: 100%;
-    top: 0px !important;
-}
 
-.rating > label{
-    
-    overflow:auto;
-}
 
-.grey{
-    padding-top:15px !important;
-}
-.img-w {
-    height: 100px !important;
-    margin-bottom: 15px !important;
-    margin-top: 15px !important;
-    width: 100px !important;
-}
+
+
 </style>

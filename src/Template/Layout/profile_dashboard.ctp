@@ -59,10 +59,12 @@
 					  
 			<div class="container-fluid main-container <?php echo $bgClass; ?>">
 			   <div class=" main-container-outer">
-			      <div class="table-row">
+			      <div class="table-row" id="internalProfile">
+                  	<div id="contentHolder">
 	                  <?php 
                       echo $this->element('frontElements/profile/profile_left');
 	                  echo $this->fetch('content');?>
+                      </div>
 			      </div>
 			  </div>
 			</div>	

@@ -1901,7 +1901,26 @@ $(function () {
  /*Last Drop down country- currency listing*/
 });
 /*Last Drop down country- currency listing*/
-   $(document).on('click', '.getCalender', function(){
+ $(document).on('click', '.getCalender', function(){
+	   var actionURl = $(this).attr('data-rel');
+		$.ajax({
+			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD
+			beforeSend: function(){
+			  $(".ajax_overlay").show();
+			  $(".ajax_overlay").html('<img class="search-img" src="'+ajax_url+'img/walking.gif"/>');
+			},
+			complete: function(){
+			  $(".ajax_overlay").hide();
+			  $(".ajax_overlay").html('');
+			},
+			success:function(res)
+			{
+				$('#myCalender').html(res);	//DISPLAY RESPONSE ERRORS
+				//$('input[type=checkbox]').onoff();
+			}
+		});
+	});
+   $(document).on('click', '.getCalenderReceived', function(){
 	   var actionURl = $(this).attr('data-rel');
 		$.ajax({
 			url:  actionURl,//AJAX URL WHERE THE LOGIC HAS BUILD

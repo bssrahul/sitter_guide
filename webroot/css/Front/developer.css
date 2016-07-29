@@ -86,12 +86,6 @@ h1 { font-size: 1.5em; margin: 10px; }
 .no-topmg > label::before {margin-top:0px !important; margin-bottom:0px !important;}
 .like-box {padding: 3px 8px 0 0;}
 .rat-wt { margin:0px auto; width:90px;}
-.rating {  border: none; float: left;}
-
-.rating > input { display: none; } 
-.rating > label:before { margin: 0px 1px 8px 1px;font-size: 1.25em;font-family: FontAwesome;display: inline-block;content: "\f005";}
-.rating > .half:before { content: "\f089";position: absolute;}
-.rating > label {color: #D8D8D8 ;/*#b8b894; */  float: right; }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 .rating > input:checked ~ label, /* show gold star when clicked */
@@ -149,7 +143,6 @@ a:hover{color:#000;}
 .chat_overlay {background: #78bf45 none repeat scroll 0 0 !important;opacity: 0.4;	z-index: 999;}
 ul.dog_size li a.active {   border: 3px solid #72a105;    display: block;    padding: 3px 0;}
 .favouriteSection {    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;    color: #da6a14 !important;    font-size: 25px;    text-decoration: none !important;    outline: none;	margin-left:5px;}
-.rating { border: medium none;  float: left;  left: 0px;  /*position: relative;  top: -5px;*/}
 .row.ajaxAdd {    padding: 0 20px;}
 .showHideBreed1{      display:none;}
 topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {    margin: 10px 12px 0 0 !important;}

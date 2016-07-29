@@ -3,47 +3,30 @@
 
 
 .img-w { max-width:100px; max-height:100px; margin-top:15px;}
-
-.favourite-wrap {
-   
-    margin-bottom: 30px;
-    margin-top: 0px;
-    padding: 0 0px 30px;
-}
-
-.favourites-box { border:1px solid #ccc; margin-top:30px; }
-
-.favourites-box:hover { border:1px solid #ccc; margin-top:30px;}
-
-.favourites-box-1 { border-top: 5px solid #fff;}
+.favourite-wrap { margin-bottom: 30px; margin-top: 0px; padding: 0 0px 30px;}
+.favourites-box { border:1px solid #ccc; margin:30px 0 0 0; }
+.favourites-box:hover { border:1px solid #ccc;}
+.favourites-box-1 { border-top: 5px solid #fff; padding:15px 0;}
 .favourites-box-1:hover { border-top: 5px solid #72a105;}
-
-.favourites-box a p.name {
-    color: #72a105;
-    font-size: 16px;
-    font-weight: 300;
-}
-
-.favourites-box a p.loc {
-    color: #2d2d2d;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0;
-}
+.favourites-box a p.name {color: #72a105; font-size: 16px; font-weight: 300;}
+.favourites-box a p.loc {color: #2d2d2d; font-size: 14px; font-weight: 300; margin: 0;}
+.favourites-box a p.grey { color: #999 !important;  padding-top: 5px; margin:15px;} 
+.starPad {margin-top:5px;    /*margin-left: 100px !important;*/}
+.favourite-wrap .review-pagination {    padding-top: 30px;}
 
 
-.favourites-box a p.grey {
-    color: #999 !important;
-    padding-top: 5px; margin:15px;
-} 
-.starPad {
-margin-top:5px;
-    /*margin-left: 100px !important;*/
-}
-
-.favourite-wrap .review-pagination {
-    padding-top: 30px;
-}
+.favourites-box-1 .img-w{ width:120px; height:120px; object-fit:cover; margin:0 0 10px 0;}
+.favourites-box-1 .fb-name{ width:100%; }
+.favourites-box-1 .fb-name p{ font-size:16px; font-weight:bold; color:#404040;}
+.favourites-box-1 .fb-loc{ width:100%; }
+.favourites-box-1 .fb-loc p{ font-size:13px; color:#404040;}
+.favourites-box-1 .fb-rate{ width:100%; float:left; }
+.favourites-box-1 .fb-rate p{ text-align:center; }
+.favourites-box-1 .fb-rate span{ width:94px; margin:0 auto; display:block;}
+.rating > input { display: none; } 
+.rating > label:before { margin: 0px 1px 8px 1px;font-size: 1.25em;font-family: FontAwesome;display: inline-block;content: "\f005";}
+.rating > .half:before { content: "\f089";position: absolute;}
+.rating > label {color: #D8D8D8 ;/*#b8b894; */  float: right; }
 
 
 .favourite-wrap .review-pagination .next { background:#69aadb; height:30px; width:70px; color:#fff; border-radius:2px; font-size:12px; padding-top:5px; font-weight:500;}
