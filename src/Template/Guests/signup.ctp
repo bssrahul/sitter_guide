@@ -83,7 +83,7 @@
                                   'templates' => ['inputContainer' => '{{content}}'],
                                   'type'=>'select',
                                   'label'=>false,
-                                  'options'=>[''=>'Choose Country','Australia'=>'Australia','Austria'=>'Austria','Belbium'=>'Belbium','Canada'=>'Canada','Denmark'=>'Denmark','Finland'=>'Finland','France'=>'France','Germany'=>'Germany','Hong Kong S.A.R., China'=>'Hong Kong S.A.R., China','Ireland'=>'Ireland','Italy'=>'Italy','Japan'=>'Japan'],
+                                  'options'=>[''=>'Choose Country','Australia'=>'Australia','New Zealand'=>'New Zealand','UK'=>'UK','USA'=>'United State America'],
                                   'class' =>'form-control'
                                   ]);
                                 if(@$loginerror['country'][0] != ""){
