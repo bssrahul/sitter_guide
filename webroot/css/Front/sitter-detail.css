@@ -348,7 +348,8 @@ ul.pet-list li.pet-7 span{ background:url(../../img/search-icons.png) no-repeat 
 .video-box {width:90% !important; margin:0px auto;}
 .video-iner {/*margin-left:16% !important; margin-top:4%;*/}
 
-#myCarousel5 .carousel-control { top: 40%; background:none;}
+#myCarousel5 .carousel-control { top:35%; background:none; width:18px; height:18px;}
+#myCarousel5 .carousel-control .fa span:hover{ color:#72a105;}
 #myModal2 {background:#000;}
 
 @media (min-width:768px) and (max-width:991px){

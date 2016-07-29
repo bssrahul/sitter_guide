@@ -540,6 +540,7 @@ class DashboardController extends AppController
 		 //End
 		 
          $this->ajaxCalendarBooking();
+         $this->ajaxCalendarBookingSendRequest();
 	     $this->home();
 	}
  	public function ajaxCalendarBooking()
@@ -718,11 +719,11 @@ class DashboardController extends AppController
 				 $client_stay_status["alerts"]= 0;
 		}
 		 $calendar = new  \Calendarbooking();
-		 $calendarsend = new  \Calendarbookingsendrequest();
+		 //$calendarsend = new  \Calendarbookingsendrequest();
 		 //pr(@$booking_request);die;
 		 $this->set('calender',$calendar->show(@$booking_arr));
 		 //pr($booking_request);die;
-		 $this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
+		 //$this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
         
          $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 
@@ -796,6 +797,7 @@ class DashboardController extends AppController
 		}
 		
 	     $calendarsend = new  \Calendarbookingsendrequest();
+	     //pr();die;
 		 $this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
         	 
 	}

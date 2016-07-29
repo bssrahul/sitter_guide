@@ -1,16 +1,12 @@
-<link rel="stylesheet" href="/sitter_guide/css/Front/tokenfield-typeahead.min.css"/>
-<link rel="stylesheet" href="/sitter_guide/css/Front/bootstrap-tokenfield.min.css"/>
-<script src="/sitter_guide/js/Front/bootstrap-tokenfield.js"></script>
-
- <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
+<?php 
+	echo $this->Html->css(['Front/tokenfield-typeahead.min.css','Front/bootstrap-tokenfield.min.css']); 
+    echo $this->Html->script(['Front/bootstrap-tokenfield.js']);
+?>
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
-
         <div class="profiletab-section">
-          
                 <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
-                
-                 <?php echo $this->element('frontElements/profile/sitter_nav');?>
-          
+                <?php echo $this->element('frontElements/profile/sitter_nav');?>
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
 
