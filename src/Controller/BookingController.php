@@ -637,7 +637,7 @@ class BookingController extends AppController
 						$customerId = $UserData['user_card']['stripe_customer_id'];
 						try {
 							$charge =  \Stripe\Charge::create(array(
-							  "amount"   => $total, // $15.00 this time
+							  "amount"   => ($total*100), // $15.00 this time
 							  "currency" => "aud",
 							  "customer" => $customerId, // Previously stored, then retrieved
 							  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
@@ -765,7 +765,7 @@ class BookingController extends AppController
 										$customerId = $UserData['UserCards']['stripe_customer_id'];
 										try {
 											$charge =  \Stripe\Charge::create(array(
-											  "amount"   => $total, // $15.00 this time
+											   "amount"   => ($total*100), // $15.00 this time
 											  "currency" => "aud",
 											  "customer" => $customerId, // Previously stored, then retrieved
 											  "description" => "Charge for booking id ".$get_booking_requests_to_display['id']
