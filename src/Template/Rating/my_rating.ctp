@@ -198,7 +198,7 @@
 									</p>
 									<!--Rating End--> 
 									
-									<span class="text-center">&nbsp;&nbsp;(<?php echo $myrating." Star"; ?>)</span>
+									<br/><br/><span class="text-center">&nbsp;&nbsp;(<?php echo $myrating." Star"; ?>)</span>
 									<span>
 										<a href="#" data-html="true"  data-toggle="tooltip" data-placement="top" data-original-title="Accuracy : <?php echo $rating['accuracy_rating']; ?><br> Communication : <?php echo $rating['communication_rating']; ?><br> Cleanliness : <?php echo $rating['cleanliness_rating']; ?><br> Location : <?php echo $rating['location_rating']; ?><br> Check-in : <?php echo $rating['check_in_rating']; ?>">
 											<img class="close11" src="http://betasoftdev.com/sitterguide_test/img/close.png">
