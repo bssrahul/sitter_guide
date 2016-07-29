@@ -346,8 +346,8 @@ class SearchController extends AppController
 						FROM 
 						users as Users 
 						
-						LEFT JOIN  user_professional_accreditations_details as userProfessionalAccreditationsDetails  
-						ON  Users.id = userProfessionalAccreditationsDetails.user_id
+						LEFT JOIN  user_professional_accreditations_details as UserProfessionalAccreditationsDetails  
+						ON  Users.id = UserProfessionalAccreditationsDetails.user_id
 						
 						LEFT JOIN 
 						user_sitter_houses as UserSitterHouses 
@@ -539,21 +539,21 @@ class SearchController extends AppController
 			//SET CONDITIONS FOR LANGUGE KNOW (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
 				
-				$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$this->request->data['Search']['languages'].'", userProfessionalAccreditationsDetails.languages)'));
+				$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$this->request->data['Search']['languages'].'", UserProfessionalAccreditationsDetails.languages)'));
 			
 			}
 			 
 			//SET CONDITIONS FOR 2+ EXP (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['experience']) && $this->request->data['Search']['experience'] ==1){
 				
-				$and_condition = array_merge($and_condition,array('userProfessionalAccreditationsDetails.experience >=2'));
+				$and_condition = array_merge($and_condition,array('UserProfessionalAccreditationsDetails.experience >=2'));
 				
 			} 
 			
 			//SET CONDITION FOR FIRST AID (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['first_aid']) && $this->request->data['Search']['first_aid'] ==1){
 				
-				$and_condition = array_merge($and_condition,array('(userProfessionalAccreditationsDetails.injected_madications=1 OR userProfessionalAccreditationsDetails.oral_madications=1)'));
+				$and_condition = array_merge($and_condition,array('(UserProfessionalAccreditationsDetails.injected_madications=1 OR UserProfessionalAccreditationsDetails.oral_madications=1)'));
 				
 				
 			} 
@@ -922,8 +922,8 @@ class SearchController extends AppController
 						FROM 
 						users as Users 
 						
-						LEFT JOIN  user_professional_accreditations_details as userProfessionalAccreditationsDetails  
-						ON  Users.id = userProfessionalAccreditationsDetails.user_id
+						LEFT JOIN  user_professional_accreditations_details as UserProfessionalAccreditationsDetails  
+						ON  Users.id = UserProfessionalAccreditationsDetails.user_id
 						
 						LEFT JOIN 
 						user_sitter_houses as UserSitterHouses 
@@ -1139,7 +1139,7 @@ class SearchController extends AppController
 			
 			}else{
 				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
-				$sourceSelectedLocation = $this->request->data['location_autocomplete'];
+				$sourceSelectedLocation = (isset($this->request->data['location_autocomplete']) && $this->request->data['location_autocomplete'] !='')?$this->request->data['location_autocomplete']:DEFAULT_CITY;
 				
 				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
 				$ch = curl_init();
