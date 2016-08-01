@@ -9,7 +9,7 @@
   }
 </style>
 <!--[Banner Area Start]-->
-                <?php
+              <?php
 					$session = $this->request->session();
 					$userloginstatus = $session->read("User");
 				    $cuntry_currency = $session->read("currency.currency");
@@ -20,7 +20,7 @@
 				   @$sh_night_rate = @$userData->user_sitter_services[0]->sh_night_rate != ''?@$userData->user_sitter_services[0]->sh_night_rate:0;
 				   @$gh_day_rate = @$userData->user_sitter_services[0]->gh_day_rate != ''?@$userData->user_sitter_services[0]->gh_day_rate:0;
 				   @$gh_night_rate = @$userData->user_sitter_services[0]->gh_night_rate != ''?@$userData->user_sitter_services[0]->gh_night_rate:0;
-                ?>
+              ?>
 <div class="saerch-s-det">
   <section class="banner-sitter-detail" style="background-image:url('<?php echo HTTP_ROOT.'img/uploads/'.($userData->profile_banner != ''?$userData->profile_banner:'sitter-detail-banner.jpg') ; ?>')">
     <div class="container">
@@ -41,18 +41,14 @@
               </h4>
               <div class="badage-detail">
                 <ul class="list-inline text-center">
-					
-				  <?php  if(($userData['users_badge'])!= ""){
-							
+					  <?php  if(($userData['users_badge'])!= ""){
 							if($userData['users_badge']->dl_pcb_badge){?>
-								
 							 <li>
 								 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Background Check</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter has successfully passed a basic background check by a third party provider." > 
 														
 									<img src="<?php echo HTTP_ROOT. 'img/Picture1.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
 								</a>
 							</li>
-								
 							<?php	}
 							if($userData['users_badge']->cpr_rescue_badge){?>
 								 <li>
@@ -61,7 +57,7 @@
 									</a>
 								 </li>
 							<?php	}
-							if($userData['users_badge']->oral_injucted_badge){?>
+							if($userData['users_badge']->oral_injucted_badge){ ?>
 								 <li>
 									 <a href="javascript:void(0)" data-html="true" title="<b>Sitter Guide Administer Medication</b>" data-toggle="popover"  data-placement="top" data-trigger="hover" data-content="This sitter is comfortable to administer oral and injected medication." > 
 										<img src="<?php echo HTTP_ROOT. 'img/Picture7.png'; ?>" alt="Dl & PCB Badge" height="23px" width="23px"/>
@@ -3060,7 +3056,6 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 </div>
 
 <!--Report popup starts-->
-
 <div class="modal fade" id="myModal8" role="dialog">
   <div class="modal-dialog">
     <div class="sitter-quike-view">
@@ -3068,7 +3063,6 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
         <div class="top-close">
           <p>Report This Profile</p>
           <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
-        
         <!--Additional Services-->
         <div>
 		<?php 
@@ -3103,7 +3097,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
     </div>
   </div>
 </div>
- 
+
 <?php
 echo $this->element('frontElements/Search/notification_pet_add');
 echo $this->element('frontElements/Search/notification_check_login');

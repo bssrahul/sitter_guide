@@ -221,7 +221,7 @@ refer afriend modal popup stars-->
           </span>
         </button>
         <h2>
-          <span>Refer Friends & Get $10
+          <span>Refer Friends & Get $20
           </span>
         </h2>
       </div>
@@ -236,19 +236,15 @@ refer afriend modal popup stars-->
 			  
             <div class="to-from">
               <div class="popup-form">
-                <!--<form class="form-horizontal">-->
-					 <?php echo $this->Form->create(@$userInfo,[
+                    <?php echo $this->Form->create(@$userInfo,[
 						  'url' => ['controller' => 'dashboard', 'action' => 'reference'],
 						  'class'=>'form-horizontal',
 						  'id'=>'referForm',
 					 ]);?>
-					 
-                  <div class="form-group">
-					  
-                    <label for="inputEmail3" class="col-sm-2 col-lg-1 text-left no-padding-right control-label">To:
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 col-lg-1 text-left no-padding-right control-label">To:
                     </label>
                     <div class="col-sm-6  ">
-                     <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Enter Email">-->
                        <?php 
 							  echo $this->Form->input('UserReferences.email',[
 								'templates' => ['inputContainer' => '{{content}}'],
@@ -262,8 +258,7 @@ refer afriend modal popup stars-->
                     <label for="input" class="col-sm-2 col-lg-1 no-padding-right control-label">From:
                     </label>
                     <div class="col-sm-6  ">
-                     <!-- <input type="email" class="form-control" id="inputPassword3" placeholder="friend@mobilyte.com">-->
-                       <?php 
+                        <?php 
 							  echo $this->Form->input('UserReferences.from_email',[
 								'templates' => ['inputContainer' => '{{content}}'],
 								'label'=>false,
@@ -272,18 +267,15 @@ refer afriend modal popup stars-->
 								'disabled'=>'disabled'
 								]);
                        ?>
-                        
                     </div>
-                   
                   </div>
-               <!--</form>-->
               </div>
             </div>
           </div>
           <div class="col-sm-12 col-md-12">
             <div class="pop-content">
               <div class="col-sm-7">
-                <p>"I thought you would like $10 to use on
+                <p>"I thought you would like $20 to use on
                   Sitter Guide.
                 </p>
                 <br>
@@ -307,9 +299,9 @@ refer afriend modal popup stars-->
               <div class="col-sm-5 no-padding-left no-padding-right">
                 <div class="box">
                   <img src="<?php echo HTTP_ROOT; ?>img/pop-logo.png"  class="img-responsive text-center center-block">
-                  <p class="box-text">Give $10 to your firends to use on their first stay
+                  <p class="box-text">Give $20 to your firends to use on their first stay
                   </p>
-                  <p class="box-text">You'll also get $10 when they complete their first booking.
+                  <p class="box-text">You'll also get $20 when they complete their first booking.
                   </p>
                   <br>
                   <br>
@@ -324,17 +316,14 @@ refer afriend modal popup stars-->
             <div class="col-sm-6 col-xs-7">
               <ul class="list-inline icons-social">
                 <li>
-                  <a href="javascript:void(0)" 
+                   <a href="javascript:void(0)" 
 								onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo $refer_url; ?>">
 								<img src="<?php echo HTTP_ROOT; ?>img/popi1.png" width="31" height="31" alt="facebook">
-					</a>
+				  </a>
                 </li>
                 <li>
                   <img src="<?php echo HTTP_ROOT; ?>img/popi2.png" width="31" height="31" alt="twitter">
                 </li>
-                <!--<li>
-                  <img src="<?php echo HTTP_ROOT; ?>img/popi3.png" width="31" height="31" alt="message">
-                </li>-->
               </ul>
             </div>
             <div class="col-sm-6 col-xs-5 pull-right text-right">
@@ -348,8 +337,6 @@ refer afriend modal popup stars-->
                 <span class="input-group-addon green" id="basic-addon2" style="cursor:pointer !important;" onclick="copyToClipboard('#userreferences-refer-url')" >
                   <img src="<?php echo HTTP_ROOT; ?>img/pop-chain.png"  alt="chain">  Copy your link
                 </span>
-                
-               <!-- <input type="text" class="form-control" name="refer_url" value="<?php echo $refer_url; ?>" aria-describedby="basic-addon2">-->
                      <?php 
 							  echo $this->Form->input('UserReferences.refer_url',[
 								'templates' => ['inputContainer' => '{{content}}'],

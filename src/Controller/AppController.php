@@ -19,9 +19,6 @@ use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
 use Cake\Network\Email\Email;
-
-
-
 /**
  * Application Controller
  *
@@ -820,44 +817,35 @@ class AppController extends Controller{
 
 	//For send message
 	function sendMessages($to_mobile_number=null, $message_body=null,$country_code=null){
-		
 		/*CHECK THAT PHONE NUMBER IS USA OR NOT, IF USA PHONE NUMBER EXISTS INTO REQUEST THEN WE HAVE TO USE BANDWIDTH API OTHERWISE USE TWILIO*/
 
 		if($country_code =='+1'){
-			
 			/*INCLUDE BANDWIDTH LIABRARY*/	
 			require_once(ROOT . DS  . 'vendor' . DS  . 'php-bandwidth-master' . DS . 'source' . DS . 'Catapult.php');
-
-			/*CREATE BANDWIDTH OBJECT*/
+            /*CREATE BANDWIDTH OBJECT*/
 			$cred = new \Catapult\Credentials(BANDWIDTH_USER_ID, BANDWITH_API_TOKEN, BANDWIDTH_API_SECRET);
 			
 			$client = new \Catapult\Client($cred);
 
 			if (!(isset($to_mobile_number) || isset($message_body)))
 				throw new Exception("Please provide phone number and message for send\n\n");
-				
-			try {
+			try{
 				$message = new \Catapult\Message(array(
 						"from" => '+91872582153',
 						"to" => '+'.$country_code.$to_mobile_number,
 						"text" => $message_body
 				));
-
-
-			}catch  (\Exception $e) { 
+            }catch  (\Exception $e) { 
 				$results = json_decode($e->result);  
 				$this->setErrorMessage($this->stringTranslate(base64_encode($results->message)));
 			}
 
 		}else{
-			
 			//INCLUDE TWILIO LIABRARY
 			require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
-			
 			//CREATE STRIPE OBJECT
 			$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
-
-			//SEND MESSAGE VIA TWILIO API CALL
+            //SEND MESSAGE VIA TWILIO API CALL
 			try {
 				$output = $client->account->messages->create(array( 
 					'To' => '+16518675309', 
@@ -876,8 +864,6 @@ class AppController extends Controller{
 		
 		return true;
 	}
-	
-	
 	function getUserCommunicationDetails($userId = null){
 		$usersModel = TableRegistry::get('Users');
 		$communicationModel = TableRegistry::get('Communication');
@@ -892,7 +878,6 @@ class AppController extends Controller{
 	   //pr($user_communication_info);die;
 	   return $user_communication_info; 
 	}
-	
 	function displayStates(){
 				
 			$us_states = array(

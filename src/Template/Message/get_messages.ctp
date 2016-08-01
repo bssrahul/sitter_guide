@@ -99,6 +99,8 @@
     </div>
   </div>
 </div>
+
+
 <?php  if(@$booking_id !=''){ ?>
 <script>
 	var booking_id = '<?php echo @$booking_id; ?>';

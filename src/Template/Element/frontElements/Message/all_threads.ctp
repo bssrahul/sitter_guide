@@ -86,26 +86,26 @@
 		  <p><?php echo date("M d",strtotime($req_data['created_date'])); ?>
 		  </p>
 		  <?php if($req_data['folder_status_'.strtolower($userActas)]=='current'){ 
-				if(strtolower($userActas)=='sitter'){
-					$rated_id = 'user_id';
-				}else{
-					$rated_id = 'sitter_id';
-				}
-			  ?>
-					<a href="<?php echo HTTP_ROOT.'dashboard/review/'.base64_encode(convert_uuencode($req_id)).'/'.base64_encode(convert_uuencode($req_data[$rated_id]))?>">
-						<button class="btn  bt-now">
-							<i class="fa fa-star">
-							</i>
-							Rate now
-						</button>
-					</a>
+						if(strtolower($userActas)=='sitter'){
+							$rated_id = 'user_id';
+						}else{
+							$rated_id = 'sitter_id';
+						}
+					  ?>
+							<a href="<?php echo HTTP_ROOT.'dashboard/review/'.base64_encode(convert_uuencode($req_id)).'/'.base64_encode(convert_uuencode($req_data[$rated_id]))?>">
+								<button class="btn  bt-now">
+									<i class="fa fa-star">
+									</i>
+									Rate now
+								</button>
+							</a>
 			<?php } ?>
 			
 			<?php if($req_data['folder_status_'.strtolower($userActas)]=='pending'){ ?>
 					<a class="trash_thread" href="javascript:void(0)" data-user-type="<?php echo base64_encode(convert_uuencode(strtolower($userActas))); ?>" data-rel="<?php echo base64_encode(convert_uuencode($req_id)); ?>">
 						<button class="btn btn-block bt-now">
 							<i class="fa fa-trash-o" aria-hidden="true"></i></i>
-							Trash
+							Trash 
 						</button>
 					</a>
 					<img style="display:none" src="<?php echo HTTP_ROOT; ?>img/ajax_wait.gif" id="move_to_folder" class="img-responsive" alt="message">
