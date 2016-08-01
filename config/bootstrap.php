@@ -234,6 +234,7 @@ define('PASSWORD_SENT','Password has been sent to your email address!');
 define('SITE_OWNER_EMAIL','mike@razznation.com');
 
 define('CURRENT_YEAR',date("Y"));
+define('NEW_BOOKING_MESSAGE','You have been received new booking request');
 
 define('REFERAL_BONUS',20);
 define('DEFAULT_CITY','Sydney Australia');
