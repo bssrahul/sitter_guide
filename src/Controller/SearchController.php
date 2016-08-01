@@ -346,8 +346,8 @@ class SearchController extends AppController
 						FROM 
 						users as Users 
 						
-						LEFT JOIN  user_professional_accreditations_details as userProfessionalAccreditationsDetails  
-						ON  Users.id = userProfessionalAccreditationsDetails.user_id
+						LEFT JOIN  user_professional_accreditations_details as UserProfessionalAccreditationsDetails  
+						ON  Users.id = UserProfessionalAccreditationsDetails.user_id
 						
 						LEFT JOIN 
 						user_sitter_houses as UserSitterHouses 
@@ -539,21 +539,21 @@ class SearchController extends AppController
 			//SET CONDITIONS FOR LANGUGE KNOW (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['languages']) && $this->request->data['Search']['languages'] !=""){
 				
-				$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$this->request->data['Search']['languages'].'", userProfessionalAccreditationsDetails.languages)'));
+				$and_condition = array_merge($and_condition,array('FIND_IN_SET("'.$this->request->data['Search']['languages'].'", UserProfessionalAccreditationsDetails.languages)'));
 			
 			}
 			 
 			//SET CONDITIONS FOR 2+ EXP (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['experience']) && $this->request->data['Search']['experience'] ==1){
 				
-				$and_condition = array_merge($and_condition,array('userProfessionalAccreditationsDetails.experience >=2'));
+				$and_condition = array_merge($and_condition,array('UserProfessionalAccreditationsDetails.experience >=2'));
 				
 			} 
 			
 			//SET CONDITION FOR FIRST AID (TABLE NAME : users_professional_accreditation_detail)	
 			if(isset($this->request->data['Search']['first_aid']) && $this->request->data['Search']['first_aid'] ==1){
 				
-				$and_condition = array_merge($and_condition,array('(userProfessionalAccreditationsDetails.injected_madications=1 OR userProfessionalAccreditationsDetails.oral_madications=1)'));
+				$and_condition = array_merge($and_condition,array('(UserProfessionalAccreditationsDetails.injected_madications=1 OR UserProfessionalAccreditationsDetails.oral_madications=1)'));
 				
 				
 			} 
@@ -922,8 +922,8 @@ class SearchController extends AppController
 						FROM 
 						users as Users 
 						
-						LEFT JOIN  user_professional_accreditations_details as userProfessionalAccreditationsDetails  
-						ON  Users.id = userProfessionalAccreditationsDetails.user_id
+						LEFT JOIN  user_professional_accreditations_details as UserProfessionalAccreditationsDetails  
+						ON  Users.id = UserProfessionalAccreditationsDetails.user_id
 						
 						LEFT JOIN 
 						user_sitter_houses as UserSitterHouses 
@@ -1139,7 +1139,7 @@ class SearchController extends AppController
 			
 			}else{
 				//GET LATITUDE LONGITUDE FROM SELECTED LOCATION
-				$sourceSelectedLocation = $this->request->data['location_autocomplete'];
+				$sourceSelectedLocation = (isset($this->request->data['location_autocomplete']) && $this->request->data['location_autocomplete'] !='')?$this->request->data['location_autocomplete']:DEFAULT_CITY;
 				
 				$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($sourceSelectedLocation)."&sensor=false"; 
 				$ch = curl_init();
@@ -1620,25 +1620,6 @@ class SearchController extends AppController
 					}
 					$sourceLocationLatitude =$userData->latitude;
 					$sourceLocationLongitude =$userData->longitude;
-					
-					/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
-					$userID = $session->read('User.id');
-					$and_condition = array();
-					
-					if($userID !=''){
-						$and_condition = "users.id NOT IN ($userID) ";
-					}
-					/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
-					
-					//SET WHERE OPPRANDS INTO MYSQL 
-					
-					if(!empty($and_condition)){
-						$where_finalConditions =' WHERE ';
-						$where_finalConditions .= $and_condition; 
-					}else{
-						$where_finalConditions ='';
-					}
-					
 					$query='SELECT
 									  id, (
 										3959 * acos (
@@ -1650,7 +1631,6 @@ class SearchController extends AppController
 										)
 									  ) AS distance
 									FROM users
-									'.$where_finalConditions.'
 									HAVING distance < '.DEFAULT_RADIUS.'
 									ORDER BY distance';
 				$connection = ConnectionManager::get('default');
@@ -1732,7 +1712,7 @@ class SearchController extends AppController
 				$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
 				$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 			}
-						
+
 			/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC START*/
 		
 			$availDaysModel=TableRegistry :: get("user_sitter_availability_days");
@@ -1894,7 +1874,7 @@ class SearchController extends AppController
 			}	
 		}	
 		
-	}
+	} 
 	
 	/*weekend calender */
 	public function ajaxCalendar()
@@ -1939,37 +1919,11 @@ class SearchController extends AppController
 	 Function for sitter details
 	*/	
 	function viewProfile($sitterId = null){
-		
-		$this->viewBuilder()->layout('landing');
-		
 		$session = $this->request->session();
+		$this->viewBuilder()->layout('landing');
 		$sitterId = convert_uudecode(base64_decode($sitterId));
+		$session->write('User.sitterId',$sitterId);
 		
-        $UsersModel = TableRegistry::get('Users');
-                
-		$userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']]);
-		
-		$Userratingdata=$userData->user_ratings;
-		
-		$userFromArr=array();
-		foreach($Userratingdata as $Userrating){
-			
-			$userFromArr[]=$Userrating->user_from;
-		}
-		
-		$gettingUserData=$UsersModel->find('all',['contain'=>['UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings']])->toArray();
-		 $commentUserData=array();
-		
-		foreach($gettingUserData as $gettingUser){
-		
-			if(in_array($gettingUser->id,$userFromArr)){
-				
-				$commentUserData[]=$gettingUser;
-			} 
-		}
-		
-		$sourceLocationLatitude =$userData->latitude;
-		$sourceLocationLongitude =$userData->longitude;
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
         
@@ -2053,9 +2007,6 @@ class SearchController extends AppController
 					}
 					$sourceLocationLatitude =$userData->latitude;
 					$sourceLocationLongitude =$userData->longitude;
-					
-					
-					
 					$query='SELECT
 									  id, (
 										3959 * acos (
@@ -2067,7 +2018,6 @@ class SearchController extends AppController
 										)
 									  ) AS distance
 									FROM users
-									
 									HAVING distance < '.DEFAULT_RADIUS.'
 									ORDER BY distance';
 				$connection = ConnectionManager::get('default');
@@ -2213,7 +2163,6 @@ class SearchController extends AppController
 				$this->set('guests_Info','');
 			}
 		}
-		
 		$this->set('sitter_id',$sitterId);
 	}
 	

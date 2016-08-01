@@ -101,12 +101,17 @@
 </div>
 
 
+
 <?php  if(@$booking_id !=''){ ?>
+
+
 <script>
 	var booking_id = '<?php echo @$booking_id; ?>';
+	var new_booking_id = '<?php echo base64_encode(convert_uuencode(@$booking_id)); ?>';
 	var folder_status = '<?php echo @$display_thread_folder_status; ?>';
 	
 	$(function(){
+		
 		//SCRIPT FOR CHATS AUTOLOAD
 		setInterval(function(){
 			var actionURL = ajax_url+"message/auto-load-chat/";
@@ -131,7 +136,7 @@
 
 				$.ajax({
 					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-					data:{booking_id,booking_id,folder_status,folder_status},//ALL SUBMITTED DATA FROM THE FORM
+					data:{booking_id:booking_id,folder_status:folder_status},//ALL SUBMITTED DATA FROM THE FORM
 						 
 					success:function(res)
 					{
@@ -149,7 +154,7 @@
 
 				$.ajax({
 					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-					data:{folder_status,folder_status,booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+					data:{folder_status:folder_status,booking_id:new_booking_id},//ALL SUBMITTED DATA FROM THE FORM
 						 
 					success:function(res)
 					{

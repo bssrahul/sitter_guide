@@ -970,5 +970,19 @@ class AppController extends Controller{
 		return $statesArray = array_merge($statesArray ,$aussie_states);
 		//$this->set('statesArray',$statesArray);
 	}	
+	
+	function getUserCompleteData($userId = null){
+		
+		$usersModel = TableRegistry::get('Users');
+		
+		
+	    $user_records = $usersModel->find('all')->select(['Users.reference_id'])
+												->where(['Users.id' => $userId])
+												->limit(1)
+												->hydrate(false)
+												->first();
+	   
+	   return $user_records; 
+	}
 }
 ?>

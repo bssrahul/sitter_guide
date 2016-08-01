@@ -28,12 +28,16 @@
 											$userTo = $user_guest;
 										}									
 									?>
-									<input type ="hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" /><textarea id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control"></textarea>								
+
+									<input type ="hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" />									
+									<textarea <?php if($booking_id==''){echo "disabled";} ?> id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control"></textarea>								
+								
+
 								</div>
 								<div class="row ">
                                 	<div class="send-msg">
 										<div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-										<input class="btn bt-now1" type="button" name="submit" value="Send" id="submit_chat" onclick="send_chat_msg(this);" />
+										<input <?php if($booking_id==''){echo "disabled";} ?> class="btn bt-now1" type="button" name="submit" value="Send" id="submit_chat" onclick="send_chat_msg(this);" />
 									</div>
 										<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
 										<p class="mess-tesxt1"> 
