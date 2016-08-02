@@ -82,12 +82,7 @@ class DashboardController extends AppController
 		//$this->loadComponent('Paginator');
 		$this->loadComponent('Paginator');
 		
-		$UserReferWalletsModel = TableRegistry::get('UserReferWallets');
-		$user_avail_bal = $UserReferWalletsModel->find('all')->select(['UserReferWallets.amount'])
-												->where(['UserReferWallets.user_id' => $session->read('User.id')])
-												->first();
-												
-		$this->set('user_avail_bal', $user_avail_bal);			
+		$this->set('user_avail_bal', $this->getLoggedInUserBalance($session->read('User.id')));			
 		
 	}
 	/**Function for landing page
@@ -2866,7 +2861,7 @@ function addPets(){
 				$query = $UsersModel->get($userId,['contain'=>'Communication']);
 				if(isset($query->communication) && !empty($query->communication)){
 					   $CommunicationData = $query->communication[0];
-					   $this->set('communication_id', $CommunicationData->id);
+					   $this->set('communication_id', isset($CommunicationData->id)?$CommunicationData->id:0);
 					   unset($CommunicationData->id);
 					   $this->set('communication_info', $CommunicationData);
 				}

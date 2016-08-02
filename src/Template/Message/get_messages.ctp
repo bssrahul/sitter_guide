@@ -10,6 +10,7 @@
         <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Inbox
       </h3>
     </div>
+
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
         <li> You are here : 
@@ -24,6 +25,9 @@
     </div>
     </div>
   </div>
+  <?php if(!empty($get_requests[0]['message'])){ ?>
+	
+	
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="message-full-wrapper">
@@ -51,6 +55,7 @@
             </div>
           </div>
         </div>
+        
         <div class="container-fluid">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 message-pad-right-0 message-pad-left-0">
@@ -98,73 +103,122 @@
       </div>
     </div>
   </div>
+  
+  <?php }else{ ?>
+	
+	<div class="row">
+   
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	
+			  <div style="margin-bottom:30px !important" class="message-full-wrapper">
+	
+				<div class="top-message-strip">
+	
+				  <div class="row">
+					
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 ">
+					  
+					  <ul class="list-inline display-block">
+						<li>
+						  <p class="head-inbox">
+							<span> 
+							  <i class="fa fa-inbox">
+							  </i>
+							</span> Inbox
+						  </p>
+						</li>
+								   
+					  </ul>
+	
+					</div>
+					
+					
+					</div>
+				</div>
+			</div>
+				<div class="container-fluid" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 100%; margin-top: -30px; height: 580px; padding: 20px;">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<h5>No <?php echo ucwords($display_thread_folder_status); ?> Booking found</h5>
+						</div>
+					</div>
+				</div>		
+		</div>
+	</div>				
+  <?php } ?>	  
 </div>
 
 
 
-<?php  if(@$booking_id !=''){ ?>
+	<?php  if(@$booking_id !=''){ ?>
 
 
-<script>
-	var booking_id = '<?php echo @$booking_id; ?>';
-	var new_booking_id = '<?php echo base64_encode(convert_uuencode(@$booking_id)); ?>';
-	var folder_status = '<?php echo @$display_thread_folder_status; ?>';
-	
-	$(function(){
+	<script>
+		var booking_id = '<?php echo @$booking_id; ?>';
+		var new_booking_id = '<?php echo base64_encode(convert_uuencode(@$booking_id)); ?>';
+		var folder_status = '<?php echo @$display_thread_folder_status; ?>';
 		
-		//SCRIPT FOR CHATS AUTOLOAD
-		setInterval(function(){
-			var actionURL = ajax_url+"message/auto-load-chat/";
-			if(booking_id !=''){
+		$(function(){
+			
+			//SCRIPT FOR CHATS AUTOLOAD
+			setInterval(function(){
+				var actionURL = ajax_url+"message/auto-load-chat/";
+				if(booking_id !=''){
 
-				$.ajax({
-					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-					data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
-						 
-					success:function(res)
-					{
-						$('div.list_chat_ul').html(res);
-						
-					}
-				});
-			}
-		}, 2000);
-		//SCRIPT FOR THREADS AUTOLOAD
-		setInterval(function(){
-			var actionURL = ajax_url+"message/auto-load-threads/";
-			if(booking_id !=''){
+					$.ajax({
+						url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+						data:{booking_id,booking_id},//ALL SUBMITTED DATA FROM THE FORM
+							 
+						success:function(res)
+						{
+							$('div.list_chat_ul').html(res);
+							
+						}
+					});
+				}
+			}, 2000);
+			//SCRIPT FOR THREADS AUTOLOAD
+			setInterval(function(){
+				var actionURL = ajax_url+"message/auto-load-threads/";
+				if(booking_id !=''){
 
-				$.ajax({
-					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-					data:{booking_id:booking_id,folder_status:folder_status},//ALL SUBMITTED DATA FROM THE FORM
-						 
-					success:function(res)
-					{
-						$('div.allthreads').html(res);
-						
-					}
-				});
-			}
-		}, 15000);
-		
-		//SCRIPT FOR JOB DETAIL AUTOLOAD
-		setInterval(function(){
-			var actionURL = ajax_url+"message/auto-load-jd/";
-			if(booking_id !=''){
+					$.ajax({
+						url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+						data:{booking_id:booking_id,folder_status:folder_status},//ALL SUBMITTED DATA FROM THE FORM
+							 
+						success:function(res)
+						{
+							$('div.allthreads').html(res);
+							
+						}
+					});
+				}
+			}, 15000);
+			
+			//SCRIPT FOR JOB DETAIL AUTOLOAD
+			setInterval(function(){
+				var actionURL = ajax_url+"message/auto-load-jd/";
+				if(booking_id !=''){
 
-				$.ajax({
-					url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
-					data:{folder_status:folder_status,booking_id:new_booking_id},//ALL SUBMITTED DATA FROM THE FORM
-						 
-					success:function(res)
-					{
-						$('div.jd').html(res);
-						
-					}
-				});
-			}
-		}, 15000);
-	});
-</script>
-<?php }  ?>
+					$.ajax({
+						url: actionURL,//AJAX URL WHERE THE LOGIC HAS BUILD
+						data:{folder_status:folder_status,booking_id:new_booking_id},//ALL SUBMITTED DATA FROM THE FORM
+							 
+						success:function(res)
+						{
+							$('div.jd').html(res);
+							
+						}
+					});
+				}
+			}, 15000);
+		});
+	</script>
+	<?php }  ?>
+
+<style>
+.bt-now {
+  padding: 5px !important;
+}
+</style>
 
