@@ -224,7 +224,7 @@
 										   ?> 
 										   <?php echo $this->requestAction('app/get-translate/'.base64_encode('I agree to the ')); ?>
 										    <span class="signup-color">
-											<a href=<?php echo HTTP_ROOT.'terms'?>>
+											<a target="_blank"  href=<?php echo HTTP_ROOT.'terms'?>>
 										  
 											<?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms & Conditions')); ?>
 											
@@ -248,17 +248,11 @@
                             	'type' => 'submit'
                             	
 							]);
-							
-							
-                           ?>
+						?>
                         <!--<input type="submit" value="Sign Up" id="processing" class="signup-submit btn btn-default" name="signup-submit">-->
 						<p><span class="c-red c-red-bar"><?php echo $this->requestAction('app/get-translate/'.base64_encode('OR')); ?></span></p>
-                        
                         <a href="<?php echo @$facebookUrl; ?>" class="signup-fb"><i class="fa fa-facebook-square"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign Up with Facebook')); ?></a>
-
-                        
-
-                          <p class="line-signin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a Member?')); ?> 
+                            <p class="line-signin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Not a Member?')); ?> 
 							<span class="signup-color">
 							  <a href="<?php echo HTTP_ROOT.'guests/login'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sign In')); ?> </a>
 							 </span>

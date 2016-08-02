@@ -14,7 +14,7 @@
               </h1>
               <p class="thankyou-title">
               </p>
-              <p class="thankyou-text" >
+              <p class="thankyou-text">
                 <span>What happens now
                 </span>
                 A few tips for enjoying a great stay with Sitter Guide
@@ -75,14 +75,16 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT.'search/search-by-location/'; ?>'" >Return to search
                 </button>
               </div>
+              <!--
               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <button class="btn btn-update btn-block ">UPDATE YOUR DOG PROFILE 
                 </button>
               </div>
+              -->
             </div>
           </div>
         </div>
