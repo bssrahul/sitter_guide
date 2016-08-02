@@ -271,6 +271,10 @@ class SearchController extends AppController
 			}
 			/*DOGSIZE CONDITION END*/
 			
+			/*SET DEFAULT LANGUAGE START*/
+				$and_condition = array_merge($and_condition,array('FIND_IN_SET("en", UserProfessionalAccreditationsDetails.languages)'));
+			/*SET DEFAULT LANGUAGE END*/
+			
 			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
 				$userID = $session->read('User.id');
 				if($userID !=''){
@@ -907,7 +911,7 @@ class SearchController extends AppController
 				$sourceLocationLatitude = '30.7399738';
 				$sourceLocationLongitude = '76.7567368';
 			}	
-			$searchByDistance = isset($this->request->data['Search']['distance'])?$this->request->data['Search']['distance']:DEFAULT_RADIUS;
+			$searchByDistance = (isset($this->request->data['Search']['distance']) && $this->request->data['Search']['distance'] !='')?$this->request->data['Search']['distance']:DEFAULT_RADIUS;
 		    $query='SELECT
 						  Users.id, (
 							3959 * acos (
@@ -950,7 +954,7 @@ class SearchController extends AppController
 						HAVING distance < '.$searchByDistance.'
 						
 						ORDER BY distance';
-			//echo  $query; die;
+			
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
 			
@@ -1080,6 +1084,7 @@ class SearchController extends AppController
 				$this->set('resultsData',$userData);
 				$this->set('market_place_type',@$market_place_type);
 				$this->set('selected_services',$this->request->data['Search']['selected_service']);
+				$this->set('data',$this->request->data);
 				$this->set('searchByDistance',$searchByDistance);
 				$this->set('distanceAssociation',($distanceAssociation)?$distanceAssociation:'');
 				$this->set('sourceLocationLatitude',($sourceLocationLatitude)?$sourceLocationLatitude:'');
@@ -1155,28 +1160,45 @@ class SearchController extends AppController
 				@$sourceLocationLongitude = $response_a->results[0]->geometry->location->lng;
 			}
 			
+			
+			
 			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
 				$userID = $session->read('User.id');
 				$and_condition = array();
+				$where_finalConditions='';
 				
 				if($userID !=''){
-					$and_condition = "users.id NOT IN ($userID) ";
+					$and_condition = array("Users.id NOT IN ($userID) ");
 				}
+				
+				/*SET DEFAULT LANGUAGE START*/
+				$and_condition = array_merge($and_condition,array('FIND_IN_SET("en", UserProfessionalAccreditationsDetails.languages)'));
+				/*SET DEFAULT LANGUAGE END*/
+				
 			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
 			
 			//SET WHERE OPPRANDS INTO MYSQL 
 			
+				if(!empty($and_condition)){
+					
+						$final_AND_Conditions = implode(" AND ",$and_condition); 
+						$where_finalConditions .= " WHERE ".$final_AND_Conditions;	
+					
+				}else{
+					$where_finalConditions ='';
+				}
+			/*
 			if(!empty($and_condition)){
 				$where_finalConditions =' WHERE ';
 				$where_finalConditions .= $and_condition; 
 			}else{
 				$where_finalConditions ='';
-			}
+			}*/
 			
 			
 			/*FIND USER ID AND DISTANCE AS PER SELECTDE LOCATION*/
 			$query='SELECT
-						  id, (
+						  Users.id, (
 							3959 * acos (
 							  cos ( radians('.$sourceLocationLatitude.') )
 							  * cos( radians( latitude ) )
@@ -1186,10 +1208,13 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
+						as Users
+						LEFT JOIN  user_professional_accreditations_details as UserProfessionalAccreditationsDetails  
+						ON  Users.id = UserProfessionalAccreditationsDetails.user_id
 						'.$where_finalConditions.'
 						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
-				
+			
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
 			
@@ -1366,23 +1391,36 @@ class SearchController extends AppController
 			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST START*/
 				$userID = $session->read('User.id');
 				$and_condition = array();
-				
+				$where_finalConditions='';
 				if($userID !=''){
-					$and_condition = "users.id NOT IN ($userID) ";
+					$and_condition = array("Users.id NOT IN ($userID) ");
 				}
+				/*SET DEFAULT LANGUAGE START*/
+				$and_condition = array_merge($and_condition,array('FIND_IN_SET("en", UserProfessionalAccreditationsDetails.languages)'));
+				/*SET DEFAULT LANGUAGE END*/
+				
 			/*LOGGED IN USER NOT SHOW IN THE SEARCH LIST END*/
 			
 			//SET WHERE OPPRANDS INTO MYSQL 
 			
+				if(!empty($and_condition)){
+					
+						$final_AND_Conditions = implode(" AND ",$and_condition); 
+						$where_finalConditions .= " WHERE ".$final_AND_Conditions;	
+					
+				}else{
+					$where_finalConditions ='';
+				}
+			/*
 			if(!empty($and_condition)){
 				$where_finalConditions =' WHERE ';
 				$where_finalConditions .= $and_condition; 
 			}else{
 				$where_finalConditions ='';
-			}
+			}*/
 			
-			$query='SELECT
-						  id, (
+			 $query='SELECT
+						  Users.id, (
 							3959 * acos (
 							  cos ( radians('.$sourceLocationLatitude.') )
 							  * cos( radians( latitude ) )
@@ -1392,9 +1430,14 @@ class SearchController extends AppController
 							)
 						  ) AS distance
 						FROM users
+						as Users
+						LEFT JOIN  user_professional_accreditations_details as UserProfessionalAccreditationsDetails  
+						ON  Users.id = UserProfessionalAccreditationsDetails.user_id
+						
 						'.$where_finalConditions.'
 						HAVING distance < '.DEFAULT_RADIUS.'
 						ORDER BY distance';
+						
 			$connection = ConnectionManager::get('default');
 			$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
 		}

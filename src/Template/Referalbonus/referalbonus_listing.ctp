@@ -66,9 +66,9 @@
 				<?= $this->element('adminElements/validations'); ?>
                   <?= $this->element("adminElements/success_msg"); ?>
 				  <?= $this->element("adminElements/error_msg"); ?>
-				  
+				   <form id="transferAmt" action="<?php echo HTTP_ROOT.'referalbonus/transfer'; ?>" method="post">
 				<div class="x_content table-responsive">
-                        <form id="transferAmt" action="<?php echo HTTP_ROOT.'referalbonus/transfer'; ?>" method="post">
+                       
 						<table id="example" class="table table-bordered responsive-utilities jambo_table">
 						<thead>
 							<tr class="headings">
@@ -81,7 +81,7 @@
 									<?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
+								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Amount')); ?></th> 
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
 								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created Date')); ?></th> 
@@ -137,8 +137,9 @@
 							
 						</tbody>
 					</table>
-					</form>
+					
 				</div>
+				</form>
 			</div>
 			<div class="row">
 				<?php // echo $this->element('adminElements/new_paginator'); ?>	
@@ -159,9 +160,15 @@ $(document).ready(function(){
 	
 	
 	
-    $('#all').click(function() {
+    $('#all').on('click',function() {
+		if($(this).is(':checked')) 
+		{
+			$('.chkbox').prop('checked', true);}
+        else 
+		{
+			$('.chkbox').prop('checked', false);
+		}
 		
-        $('.chkbox').attr('checked', true);
 	});
       
 	$('#sub').click(function(){

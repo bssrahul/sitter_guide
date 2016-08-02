@@ -326,12 +326,14 @@
 		$(".ajaxPopUpSearch").click(function(){
 
 			gerSearchResult();
+			/*
 			$('#pet_in_home').prop('checked', false);
 			$('#housing_condition').prop('checked', false);
 			$('#medical_experience').prop('checked', false);
 			$('.homePet').prop('checked', false);
 			$('.house-condition').prop('checked', false);
 			$('.medical-experience').prop('checked', false);
+			*/
 
 		});		
 		

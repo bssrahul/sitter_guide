@@ -1,11 +1,7 @@
 @charset "utf-8";
 
-
-
 .no-bdr{ border:0px !important;}
-
 /* CSS Document */
-
 .content-wrap{ width:100%; float:left; background:#ffffff;}
 /*Leading css Start*/
 
@@ -65,8 +61,6 @@
 
 /*Leading css End*/
 
-
-
 /*Why Choose Us*/
 
 .why-choose-us{ width:100%; float:left; padding:70px 0 0 0;}	
@@ -83,7 +77,6 @@
 .wcub-area .wcu-box p{ font-size:13px; color:#404040; line-height:30px; text-align:center;  padding:0px;}
 .wcub-area .wcu-box p b{ font-weight:normal; display:block; }
 
-
 .wcu-bot{ width:100%; float:left; background:#59aae1; padding:75px 0; margin:80px 0 0 0;}
 .wcu-bot .wcub-box{ width:100%; float:left; text-align:center; border-right:#8eb3cc 1px solid;}
 .wcu-bot .wcub-box .img-box{ width:60px; height:50px; display:block; margin:0 auto; background:url(../../img/search-icons.png) no-repeat; background-position:0px -230px;}
@@ -95,470 +88,231 @@
 
 /*Why Choose Us*/
 
-
-
 /*Fun News*/
-
 .fun-news{ width:100%; float:left; padding:70px 0 0 0;}
-
 .fun-news .fn-area{ width:100%; float:left;}
-
 .fun-news .fn-area .fnb-area{ width:100%; float:left;}
-
 .fnb-outer{ width:100%; float:left; border:#dbdbdb 1px solid; min-height:460px; padding:0 15px 15px 15px;}
-
 .fnb-outer .imgb-area{ width:100%; float:left;}
-
-
-
 .fnb-outer .imgb-area .img{ width:100%; float:left;}
-
 .fnb-outer .imgb-area .img img{ width:100%; height:auto;}
-
 .fnb-outer .imgb-area .date{ width:215px; height:35px; line-height:35px; text-align:center; background:#ffffff; margin:-19.5px auto 0;}
-
 .fnb-outer .p-area{ width:100%; float:left; text-align:center;}
-
 .fnb-outer .p-area .p-img{ width:100%; float:left; text-align:center;}
-
 .fnb-outer .p-area .p-img img{ margin:12px 0 10px 0;}
-
 .fnb-outer .p-area .p-img p{ font-size:16px; text-align:center;  }
-
 .fnb-outer .p-area ul{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left; margin:20px 0;}
-
 .fnb-outer .p-area ul li{ float:left; text-align:center; border-right:#939393 1px solid; padding:0 20px;}
-
 .fnb-outer .p-area ul li a{ font-size:13px; color:#939393; display:inline-block; text-decoration:none;}
-
 .fnb-outer .p-area ul li a:hover{ color:#2c80b9;}
-
 .fnb-outer .p-area ul li a .fa{ margin:0 8px 0 0; font-size:12px;}
-
 .fnb-outer .p-area ul li:last-child{ border:0px;}
-
 .fnb-outer .p-area p{ font-size:13px; text-align:center; font-weight:300; }
 
-
-
 .fun-news .fn-bot{ width:100%; float:left; margin:90px 0 0 0;}
-
 .fun-news .fn-bot ul{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left;  }
-
 .fun-news .fn-bot ul li{ width:20%; float:left; }
-
 .fun-news .fn-bot ul li .fn-outer{ width:100%;  float:left; display:block; position:relative;  }
-
 .fun-news .fn-bot ul li .fn-outer .img-box { width:100%; float:left;}
-
 .fun-news .fn-bot ul li .fn-outer .img-box img{ width:100%; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box{ width:100%; height:100%; background:rgba(0, 0, 0, 0.8); position:absolute; display:block; top:0px; display:none; }  
-
 .fun-news .fn-bot ul li .fn-outer:hover .ho-box{ display:block;}
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ width:100%; float:left; margin:170px 0 0 0; text-align:center; padding:0 40px; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner p.txt-head{ font-size:28px; color:#ffffff; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner p{ font-size:14px; line-height:22px; color:#ffffff; padding:25px 0 0 0;}
 
 /*Fun News*/
 
-
-
-
-
 /*===================================================================================Media Query =======================================================================*/
-
-
-
 @media (min-width:1200px) and (max-width:1440px){
 
 /*Fun - News*/
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:70px 0 0 0;  padding:0 0px; }
-
 /*Fun - News*/
 
 }
 
-
-
 @media (min-width:1200px) and (max-width:1366px){
-
 /*Fun - News*/
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:40px 0 0 0;  padding:0 0px; }
-
 /*Fun - News*/
-
 }
 
 @media (min-width:1025px) and (max-width:1199px){
-
 /*Why choose us*/
-
 .why-choose-us{ padding:25px 0 0 0;}
-
 .wcub-area .wcu-box{ margin:50px 0 0 0;}
-
 /*Why choose us*/
 
 
-
 /*Fun - News*/
-
 .fnb-outer{ margin:35px 0 0 0;}
-
 .fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
-
 .fnb-outer .p-area ul li{ width:100%; padding:0px;}
-
 .fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
-
 .fnb-outer .p-area ul li a{ display:block; }
-
-
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:20px 0 0 0; padding:0 0px; }
-
 /*Fun - News*/
-
 }
-
-
 
 @media (min-width:992px) and (max-width:1024px){
-
 .leading-area{ padding:45px 0;}
-
 .head-box{ margin:0 0 30px 0;}		
-
 .head-box h2,h3,h4{ font-size:28px; line-height:28px;}
-
 .head-box p{ font-size:18px;}
-
 .bot-btn-area { margin:0px;}
-
 .bot-btn-area a.bot-more{ font-size:18px; max-width:100%; margin:30px 0 0 0;}
-
 .leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
-
 .leading-area .more-sitter .ms-area ul li{ width:33.3%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0; min-height:240px;}
-
 /*leading css*/
 
-
-
 /*Why choose us*/
-
 .why-choose-us{ padding:25px 0 0 0;}
-
 .wcub-area .wcu-box{ margin:50px 0 0 0;}
-
 .wcu-bot{ margin:15px 0 0 0; padding:0px;}
-
 .wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
-
 .wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
-
 /*Why choose us*/
 
-
-
 /*Fun - News*/
-
 .fnb-outer{ margin:35px 0 0 0;}
-
 .fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
-
 .fnb-outer .p-area ul li{ width:100%; padding:0px;}
-
 .fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
-
 .fnb-outer .p-area ul li a{ display:block; }
-
 .fun-news .fn-bot{ margin:15px 0 0 0;}
-
 .fun-news .fn-bot ul li{ width:100%; height:auto; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:55% 0 0 0;}
-
-
-
 /*Fun - News*/
-
 }
-
-
 
 @media (min-width:768px) and (max-width:991px){
-
 .leading-area{ padding:45px 0 0 0;}
-
 .head-box{ margin:0 0 20px 0;}		
-
 .head-box h2,h3,h4{ font-size:28px; line-height:28px;}
-
 .head-box p{ font-size:18px;}
-
 .lsw-area .lswb-area{ margin:0 0 15px 0;}	
-
 .bot-btn-area { margin:0px;}
-
 .bot-btn-area a.bot-more{ font-size:18px; max-width:100%;}		
-
 .leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
-
 .leading-area .more-sitter .ms-area ul li{ width:33.3%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0; min-height:240px;}
-
 /*leading css*/
 
-
-
 /*Why choose us*/
-
 .why-choose-us{ padding:25px 0 0 0;}
-
 .wcub-area .wcu-box{ margin:50px 0 0 0;}
-
 .wcu-bot{ margin:15px 0 0 0; padding:0px;}
-
 .wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
-
 .wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
-
 /*Why choose us*/
-
-
 
 /*Fun - News*/
-
 .fnb-outer{ margin:35px 0 0 0;}
-
 .fnb-outer .p-area ul{ margin:20px 0 20px 0;}
-
 .fnb-outer .p-area ul li{ width:33.3%; padding:0px;}
-
 .fun-news .fn-bot{ margin:15px 0 0 0;}
-
 .fun-news .fn-bot ul li{ width:100%; height:auto; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:55% 0 0 0;}
-
 /*Fun - News*/
 
 }
-
-
 
 @media (min-width:641px) and (max-width:767px){
-
 .leading-area{ padding:40px 0 0 0;}
-
 .head-box{ margin:0 0 20px 0;}		
-
 .head-box h2,h3,h4{ font-size:28px; line-height:28px;}
-
 .head-box p{ font-size:18px;}
-
 .lsw-area .lswb-area{ margin:0 0 15px 0;}	
-
 .bot-btn-area { margin:0px;}
-
 .bot-btn-area a.bot-more{ font-size:18px; max-width:100%;}	
-
 .leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
-
-.leading-area .more-sitter .ms-area ul li{ width:50%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0; min-height:240px;}
-
+.leading-area .more-sitter .ms-area ul li{ width:33.33%;  padding:25px 0 25px 0; min-height:240px;}
 /*leading css*/
 
-
-
 /*Why choose us*/
-
 .why-choose-us{ padding:25px 0 0 0;}
-
 .wcub-area .wcu-box{ margin:50px 0 0 0;}
-
 .wcu-bot{ margin:15px 0 0 0; padding:0px;}
-
 .wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
-
 .wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
-
 /*Why choose us*/
 
-
-
 /*Fun - News*/
-
 .fnb-outer{ margin:35px 0 0 0;}
-
 .fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
-
 .fnb-outer .p-area ul li{ width:100%; padding:0px;}
-
 .fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
-
 .fnb-outer .p-area ul li a{ display:block;}
-
 .fun-news .fn-bot{ margin:15px 0 0 0;}
-
 .fun-news .fn-bot ul li{ width:100%; height:auto; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:55% 0 0 0;}
-
-
-
 /*Fun - News*/
-
-
-
 }
-
-
 
 @media (min-width:481px) and (max-width:640px){
-
 .leading-area{ padding:25px 0 0 0;}		
-
 .head-box{ margin:0 0 20px 0;}
-
 .head-box h2,h3,h4{ font-size:23px; line-height:28px;}
-
 .head-box p{ font-size:16px;}	
-
 .lsw-area .lswb-area{ margin:0 0 15px 0;}	
-
 .bot-btn-area { margin:0px;}
-
 .bot-btn-area a.bot-more{ font-size:16px; max-width:100%;}
-
 .leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
-
-.leading-area .more-sitter .ms-area ul li{ width:100%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0;}
-
+.leading-area .more-sitter .ms-area ul li{ width:50%; padding:25px 0 25px 0;}
 /*leading css*/
 
-
-
 /*Why choose us*/
-
 .why-choose-us{ padding:25px 0 0 0;}
-
 .wcub-area .wcu-box{ margin:50px 0 0 0;}
-
 .wcu-bot{ margin:15px 0 0 0; padding:0px;}
-
 .wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:45px 0 45px 0;}
-
 .wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
-
 /*Why choose us*/
 
-
-
 /*Fun - News*/
-
 .fnb-outer{ margin:35px 0 0 0;}
-
 .fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
-
 .fnb-outer .p-area ul li{ width:100%; padding:0px;}
-
 .fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
-
 .fnb-outer .p-area ul li a{ display:block; }
-
 .fun-news .fn-bot{ margin:15px 0 0 0;}
-
 .fun-news .fn-bot ul li{ width:100%; height:auto; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:45% 0 0 0;}
-
 /*Fun - News*/
-
-
-
 }
 
-
-
 @media (min-width:320px) and (max-width:480px){	
-
 .leading-area{ padding:25px 0 0 0;}
-
 .head-box{ margin:0 0 20px 0;}
-
 .head-box h2,h3,h4{ font-size:18px; line-height:28px;}
-
 .head-box p{ font-size:14px;}
-
 .lsw-area .lswb-area{ margin:0 0 15px 0;}	
-
 .lsw-area .lswb-area .img-area .img-bot p.per-day{ font-size:14px;}
-
 .lsw-area .lswb-area .img-area .img-bot .rating-area .like-box{ width:15%; float:left;}
-
 .lsw-area .lswb-area .img-area .img-bot .rating-area .rating-box{ width:85%; float:left;}
-
 .bot-btn-area { margin:0px;}
-
 .bot-btn-area a.bot-more{ font-size:13px; }
-
 .leading-area .more-sitter{ padding:25px 0; margin:15px 0 0 0;}
-
 .leading-area .more-sitter .ms-area ul li{ width:50%; border-bottom:#e3e2e2 1px solid; padding:25px 0 25px 0;}
 
-
-
 /*leading css*/
-
-
-
 /*Why choose us*/
-
 .why-choose-us{ padding:25px 0 0 0;}
-
 .wcub-area .wcu-box{ margin:50px 0 0 0;}
-
 .wcu-bot{ margin:15px 0 0 0; padding:0px;}
-
 .wcu-bot .wcub-box{ border-bottom:#8eb3cc 1px solid; border-right:0px; padding:35px 0 35px 0;}
-
 .wcu-bot .wcub-box p.txt-head{ padding:20px 0 10px 0;}
-
-
-
 /*Why choose us*/
-
-
-
 /*Fun - News*/
-
 .fnb-outer{ margin:35px 0 0 0;}
-
 .fnb-outer .p-area ul{border-bottom:#e5e5e5 1px solid; margin:10px 0 10px 0;}
-
 .fnb-outer .p-area ul li{ width:100%; padding:0px;}
-
 .fnb-outer .p-area ul li {border-bottom:#e5e5e5 1px solid; border-right:0px; padding:5px 0;}
-
 .fnb-outer .p-area ul li a{ display:block; }
-
 .fun-news .fn-bot{ margin:15px 0 0 0;}
-
 .fun-news .fn-bot ul li{ width:100%; height:auto; }
-
 .fun-news .fn-bot ul li .fn-outer .ho-box .hb-inner{ margin:30% 0 0 0;}
-
 /*Fun - News*/
-
-
-
 }
 
 

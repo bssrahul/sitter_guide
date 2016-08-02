@@ -119,7 +119,7 @@ p.cap span {    float: left;    text-align: right;    width: 50%;}
 .profiletab-section ul li { display: table-cell;    text-align: center;  float:none;	border-right: 1px solid #fff;    width: 20%;    vertical-align: middle;}
 .profiletab-section ul.six-tab li { width:16.66%; }
 .profiletab-section ul.three-tab li{ width:33.33%; }
-.profiletab-section ul li a {border-radius: 0;  padding:15px 0;    color: #fff;    font-size: 16px;    letter-spacing: 1px;      }
+.profiletab-section ul li a {border-radius: 0;  padding:13px 0; color:#fff;font-size:14px;    letter-spacing: 1px;      }
 .profiletab-section ul {  display: table;    width: 100%;  background: #969696 none repeat scroll 0 0; margin-top:20px;}
 
 .tab-sectioninner { background: #fff;   padding-top: 14px;    width: 100%;    float: left;    min-height: 850px;}
@@ -180,7 +180,7 @@ p.browse-p {    font-size: 16px;    font-weight: bold;}
 .previous i {    font-size: 13px;    margin-right: 9px;}
 .sitter-gal {    position: relative;}
 .sitter-gal > img {    border: 1px solid #949494;    border-radius: 2px;    position: relative;    width: 100%;    margin-bottom: 17px;}
-.sitter-gal a {    position: absolute;    right: -2px;    top: -7px;    z-index: 100000;}
+.sitter-gal a {    position: absolute;    right: -2px;    top: -7px;    z-index:250;}
 .sitter-gal a i {    color: #ff4f4f;    font-size: 17px;}
 .browse-p {    margin-bottom: 25px;}
 .browse-p button {    background-color: #83b314;    border: 1px solid #83b314;    margin-left: 30px;}
@@ -254,7 +254,7 @@ i.cir-o { font-size: 14px; height: 18px; text-align: center; width: 18px; margin
 }
 
 @media screen and (max-width: 1775px){
-.profiletab-section ul li a {  font-size: 14px; padding-bottom: 10px; padding-top: 10px;}
+
 .rules_main img { max-width: 80px; width: 100%;}
 }
 
@@ -282,11 +282,10 @@ p.min-hh { min-height: 120px;}
 .rules_main{min-height: auto;}
 }
     
-}
+
 
 @media screen and (max-width:991px) {
-.profiletab-section ul li a {padding-left:0; padding-right:0; letter-spacing:0; font-size:15px;}
-  .rules_main input[type="text"] {margin-top: 10px;}
+.rules_main input[type="text"] {margin-top: 10px;}
 
 }
 
@@ -318,7 +317,24 @@ p.min-hh { min-height: 120px;}
 
 .signup-container .form-part ul li #users-country{ height:47px;}
 
+@media (min-width:1441px) and (max-width:1580px){
+.profiletab-section ul.nav li img { width:18px; height:18px;}
+.profiletab-section ul li a {  font-size: 14px; }
+}
 
+@media (min-width:1367px) and (max-width:1440px){
+.profiletab-section ul.nav li img { width:18px; height:18px;}
+.profiletab-section ul li a {  font-size: 13px;}
+}
+@media (min-width:1200px) and (max-width:1366px){
+.profiletab-section ul.nav li img { width:18px; height:18px;}
+.profiletab-section ul li a {  font-size: 13px; padding:5px 0;}
+}
+
+@media (min-width:1025px) and (max-width:1199px){
+.profiletab-section ul.nav li img { width:15px; height:15px;}
+.profiletab-section ul li a{ line-height:16px; padding:7px 0; font-size:13px;}
+}
 
 @media (min-width:992px) and (max-width:1024px){
 .profiletab-section ul li { display:inline-block; border:0px; margin:0px; padding:0px 0; width:50%; float:left; border:#ffffff 1px solid;}
@@ -357,7 +373,6 @@ p.min-hh { min-height: 120px;}
 .profiletab-section ul.nav li img{ display:none;}
 .profiletab-section ul.six-tab li.active::after{ border:0px; }
 
-
 .invisi-no { display:none; }
 
 }
@@ -376,9 +391,7 @@ p.min-hh { min-height: 120px;}
 .profiletab-section ul.three-tab li a{ padding:8px 0; margin:0px; display:block;}  
 .profiletab-section ul.three-tab li.active::after{ border:0px; }	
 
-
 .invisi-no { display:none; }
-
 	
 }
 
@@ -386,9 +399,7 @@ p.min-hh { min-height: 120px;}
 .profiletab-section ul li { display:inline-block; border:0px; margin:0px; padding:0px 0; width:100%; float:left;border-bottom:#ffffff 1px solid; }
 .profiletab-section ul li a{ padding:8px 0; margin:0px; display:block;}  
 .profiletab-section ul.nav li img{ display:none;}
-.profiletab-section ul li.active::after{ border:0px; }	
-	
-
+.profiletab-section ul li.active::after{ border:0px; }
 
 
 .profiletab-section ul.six-tab li { display:inline-block; border:0px; margin:0px; padding:0px 0; width:100%; float:left;border-bottom:#ffffff 1px solid; }
