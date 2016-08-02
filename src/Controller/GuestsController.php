@@ -682,7 +682,6 @@ class GuestsController extends AppController
 	    $UserBadgeModel=TableRegistry :: get("Users_badge");
 		$UserBadgedata=$UserBadgeModel->newEntity();
 	 
-		
 		if(isset($this->request->data['Users']['reference_promocode']) && $this->request->data['Users']['reference_promocode'])
 		{ 
 			    $UsersData = $UsersModel->newEntity();
@@ -694,10 +693,28 @@ class GuestsController extends AppController
 							$session = $this->request->session();
 							//CODE FOR MULTILIGUAL END
                             $passwordOrg = $this->request->data['Users']['password'];
+							if($this->request->data['Users']['reference_type']=='token'){
+								$promocode_requested =  convert_uudecode(base64_decode($this->request->data['Users']['reference_promocode']));
+							}else{
+								$promocode_requested = $this->request->data['Users']['reference_promocode'];
+							}	
+							
+							
+							
+							$ReferedUserData = $UsersModel->find('all',['conditions'=>["Users.id ='$promocode_requested' OR Users.reference_code='$promocode_requested'"]])
+							->select('Users.id')
+							->first();
+							
+							
+							if(!empty($ReferedUserData)){
+								$referID = $ReferedUserData->id;
+							}else{
+								$referID = 0;
+							}
 							
 							$activation_key = md5(microtime());							
 							$UsersData->password = md5($this->request->data['Users']['password']);
-							$UsersData->reference_id = $this->request->data['Users']['reference_promocode'];
+							$UsersData->reference_id = $referID; 
 							//SET CUSTOM VARIABLES FOR SAVE
 							$UsersData->org_password = $this->request->data['Users']['password'];
 							$UsersData->activation_key = $activation_key;								
@@ -721,8 +738,9 @@ class GuestsController extends AppController
 							$UsersData->latitude=$sourceLocationLatitude;					
 							$UsersData->longitude=$sourceLocationLongitude;	
 							$UsersData->status = 0;
+							
 							$UsersModel->save($UsersData);
-							    $UserBadgedata->user_id= $UsersData->id;
+							  $UserBadgedata->user_id= $UsersData->id;
 								$UserBadgeModel->save($UserBadgedata);
 								
 								$uid = base64_encode($this->request->data['Users']['email']);
@@ -737,19 +755,18 @@ class GuestsController extends AppController
 					}else{
 					    $this->set("userData",$UsersData);
 					}
-				}else{
-					   if(isset($token) && !empty($token) && isset($referId) && !empty($referId) && isset($shortname) && !empty($shortname)){
-								  $this->set("rf_token",$referId);
-								 if($token= "token"){
-									$this->set("rf_type","token");
-								 }else if($token= "promocode"){
-									$this->set("rf_type","promocode");
-								 }
-						  }else{
-								return $this->redirect(['controller' => 'guests']);
-								//$this->set
-							}
-			     }	
+		}else{
+			   if(isset($token) && !empty($token) && isset($referId) && !empty($referId) && isset($shortname) && !empty($shortname)){
+						  $this->set("rf_token",$referId);
+						 if($token== "promocode"){
+							$this->set("token","promocode");
+						 }else if($token== "token"){
+							$this->set("token","token"); //MEANS ID	
+						 }
+				  }else{
+						return $this->redirect(['controller' => 'guests']);
+					}
+		 }	
 			
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
 		$servicesModel = TableRegistry::get('Services');
@@ -760,9 +777,7 @@ class GuestsController extends AppController
 		$servicesInfo = $servicesModel->find('all', ['order' => ['Services.created' => 'desc']]) ->limit(5)->where(['Services.status' =>1])->toArray();
 		$this->set('servicesInfo',$servicesInfo);
 					
-			
-
-			//Fetch data how works
+		//Fetch data how works
 		$worksModel = TableRegistry::get('HowWorks');
 		$workdata = $worksModel->find('all', ['conditions' =>['HowWorks.category' => 'How_it_works']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
 		$this->set('works_data',$workdata);
@@ -774,17 +789,14 @@ class GuestsController extends AppController
 		//Fetch data news updates
 		$news_data = $worksModel->find('all',['conditions'=>['HowWorks.category'=>'news_updates']])->order(['modified'=>'desc']) ->limit(3)->where(['status' => 1])->toArray();
 		$this->set('news_data',$news_data);
-			
-			
-			//pr($choose_data);die;
-			    
-			    
-			    
 	}
 	/**Function Reference thankyou
 	 * */
-	 function referenceThankyou(){
+	function referenceThankyou(){
 		 $this->viewBuilder()->layout('landing');
+		 $SiteModel = TableRegistry::get('SiteConfigurations');
+		 $siteConfigurationData=$SiteModel->find('all')->toArray();
+		 $this->set('siteConfigurationData',$siteConfigurationData);
 	}
 	/**Function for Validate SIGN UP
 	*/
@@ -1094,7 +1106,6 @@ class GuestsController extends AppController
 		$SiteModel = TableRegistry::get('SiteConfigurations');
 		$siteConfigurationData=$SiteModel->find('all')->toArray();
 		$this->set('siteConfigurationData',$siteConfigurationData);
-		//pr($siteConfigurationData);die;
 	}
 	//For cookie
 	function userCookie(){
