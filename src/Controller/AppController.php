@@ -982,5 +982,15 @@ class AppController extends Controller{
 	   
 	   return $user_records; 
 	}
+	
+	function getLoggedInUserBalance($userId){
+		
+		$UserReferWalletsModel = TableRegistry::get('UserReferWallets');
+		$user_avail_bal = $UserReferWalletsModel->find('all')->select(['UserReferWallets.amount'])
+												->where(['UserReferWallets.user_id' => $userId])
+												->first();
+		return $user_avail_bal;
+		
+	}
 }
 ?>
