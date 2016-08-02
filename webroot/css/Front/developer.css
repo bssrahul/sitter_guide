@@ -146,7 +146,7 @@ ul.dog_size li a.active {   border: 3px solid #72a105;    display: block;    pad
 .row.ajaxAdd {    padding: 0 20px;}
 .showHideBreed1{      display:none;}
 topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {    margin: 10px 12px 0 0 !important;}
-.profiletab-section ul li a{ font-size: 13px !important;}
+
 /*Calendar CSS START*/
 .disable {	background: #ccc none repeat scroll 0 0 !important;}
 .center{width: 150px;	margin: 40px auto;}

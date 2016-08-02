@@ -111,7 +111,7 @@ width:154px; color:#404040; font-weight:500;	-webkit-appearance:none; -moz-appea
 #privacy h3 {font-size:18px; color:#72a105; font-family: 'Raleway', sans-serif;  padding-left:30px; padding-top:30px;}
 .box-marg {margin-top:50px;}
 
-#cookies-bot-wrap{ background:#a3c93a; width:100%; float:left; padding:25px 0; position:fixed; bottom:0px; }
+#cookies-bot-wrap{ background:#a3c93a; width:100%; float:left; padding:25px 0; position:fixed; bottom:0px; z-index:500; }
 #cookies-bot-wrap .cbw-area { width:100%; float:left; }
 #cookies-bot-wrap .cbw-area p{ text-align:center; color:#ffffff; font-size:16px; }
 #cookies-bot-wrap .cbw-area p a{ color:#ffffff; text-decoration:none; text-decoration: underline; }

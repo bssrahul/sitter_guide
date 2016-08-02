@@ -110,6 +110,10 @@
 					  <a href="<?php echo HTTP_ROOT."faqs/faqs-listing" ?>"><i class="fa fa-question"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Faqs')); ?> </span></a>
                       
                     </li>
+                    <li>
+					  <a href="<?php echo HTTP_ROOT."referalbonus/referalbonus-listing" ?>"><i class="fa fa-question"></i> <span><?php echo $this->requestAction('users/get-translate/'.base64_encode('Referal Bonus')); ?> </span></a>
+                      
+                    </li>
                     
 				</ul>
 			</div>
