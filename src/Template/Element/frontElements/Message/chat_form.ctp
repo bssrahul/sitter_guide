@@ -28,11 +28,12 @@
 											$userTo = $user_guest;
 										}									
 									?>
+
 									<input type ="hidden" id="user_to" name="user_to" value="<?php echo @$userTo; ?>" />									
 									<textarea <?php if($booking_id==''){echo "disabled";} ?> id="chat_text" rows="5" placeholder="Send a new message" name="chat_text" class="form-control"></textarea>								
 								
+
 								</div>
-								
 								<div class="row ">
                                 	<div class="send-msg">
 										<div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
@@ -66,9 +67,57 @@
                     </div>
                     
                     <p class="report">
-                      <a href="#">
+                      <a href="javascript:void(0)" data-target="#myModal8" data-toggle="modal">
                         <i class=" fa fa-remove">
                         </i> &nbsp; Report this conversation
                       </a>
                     </p>
 
+
+<!--Report popup starts-->
+<div class="modal fade" id="myModal8" role="dialog">
+  <div class="modal-dialog">
+    <div class="sitter-quike-view">
+      <div class="sqv-box">
+        <div class="top-close">
+          <p>Report This Profile </p>
+          <a href="javascript:void(0)" title="Close" data-target="#myModal8" data-toggle="modal" ><i class="fa fa-times" aria-hidden="true"></i></a> </div>
+        
+        <!--Additional Services-->
+        <div>
+		<?php 
+		  echo $this->Form->create(null, [
+			  'url' => ['controller' => 'dashboard', 'action' => 'profile-report'],
+			  'id'=>'profile-report',
+			]);
+		  echo $this->Form->input('ProfileReport.sitter_id',[
+				'type' =>'hidden',
+				'value'=> base64_encode(convert_uuencode(@$userTo))
+		 ]);
+		 echo $this->Form->input('ConversesionReport',[
+				'type' =>'hidden'
+		 ]);	
+		?>
+          <p class="reson-pad">Reason for reporting (required):</p>
+            <?php  
+				echo $this->Form->input('ProfileReport.report_reason',[               
+				'templates' => ['inputContainer' => '{{content}}'],
+				'label'=>false,
+				'class'=>'form-control',
+				'type'=>'textarea',
+				'row'=>'5' 
+				]);
+		  ?>
+          <!--<textarea class="form-control" rows="5"></textarea>-->
+           <div class="pull-right bt-pad">
+            <button class="btn btn-default" data-dismiss="modal">cancel</button>
+            &nbsp;
+            <button id="submit-report" type="submit" class="btn btn-success" >Submit</button>
+          </div>
+          <?php $this->Form->end(); ?>
+        </div>
+        <!--Additional Services--> 
+      </div>
+    </div>
+  </div>
+</div>

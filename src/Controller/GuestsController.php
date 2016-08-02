@@ -755,18 +755,20 @@ class GuestsController extends AppController
 					}else{
 					    $this->set("userData",$UsersData);
 					}
+
 		}else{
 			   if(isset($token) && !empty($token) && isset($referId) && !empty($referId) && isset($shortname) && !empty($shortname)){
 						  $this->set("rf_token",$referId);
-						 if($token== "promocode"){
+						 if($token == "promocode"){
 							$this->set("token","promocode");
-						 }else if($token== "token"){
+						 }else if($token == "token"){
 							$this->set("token","token"); //MEANS ID	
 						 }
 				  }else{
 						return $this->redirect(['controller' => 'guests']);
 					}
 		 }	
+
 			
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
 		$servicesModel = TableRegistry::get('Services');

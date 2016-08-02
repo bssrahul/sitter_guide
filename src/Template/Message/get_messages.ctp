@@ -100,10 +100,11 @@
   </div>
 </div>
 
-<?php 
 
 
- if(@$booking_id !=''){ ?>
+<?php  if(@$booking_id !=''){ ?>
+
+
 <script>
 	var booking_id = '<?php echo @$booking_id; ?>';
 	var new_booking_id = '<?php echo base64_encode(convert_uuencode(@$booking_id)); ?>';

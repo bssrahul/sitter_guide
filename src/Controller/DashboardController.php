@@ -218,8 +218,6 @@ class DashboardController extends AppController
 				$profile_status['House']['smokers'] = "no";
 				
 				}
-		  
-		  
 		  //Guest details
 		  if(isset($userData[0]->user_pets) && !empty($userData[0]->user_pets)){
 			  
@@ -261,8 +259,7 @@ class DashboardController extends AppController
 				 $profile_status['UserPets']['guest_photos'] = "no";
 				 $profile_status['UserPets']['behaviour'] = "no";
 		  }
-		  //pr($profile_status);die;
-		  //About Sitter
+		   //About Sitter
 		   if(isset($userData[0]->user_about_sitter) && !empty($userData[0]->user_about_sitter)){
 			  $aboutSitterInfo = $userData[0]->user_about_sitter->toArray();
 			  //Sitter description
@@ -386,8 +383,7 @@ class DashboardController extends AppController
 				  $profile_status['servicesAndRates']['calender'] = "no";
 				}
 		    //Skills and Accreditations 
-		 
-		  //Calculate profiles percentage
+		   //Calculate profiles percentage
 		   $status_profile = 0;
 			    $profile_count = count($profile_status['User']);
 			    foreach($profile_status['User'] as $single_status){
@@ -446,12 +442,9 @@ class DashboardController extends AppController
 		}else{
 		    $profile_percentage['calendar_setup'] = 0;
 		}
-		//pr($profile_status);die;
-		
 		  $this->set('profile_status',$profile_status);
 		  $this->set('profile_percentage',$profile_percentage);
           //End
-      
          if(isset($this->request->params['pass']) && !empty($this->request->params['pass'])){
 			 if($this->request->params['pass'][0] == 'sitter'){
 				 $session->write('profile','Sitter');
@@ -459,8 +452,7 @@ class DashboardController extends AppController
 				 $session->write('profile','Guest');
 			 }
 		 }
-		   
-     }
+	}
 	/**Function for check fields ampty or not
 	*/
 	function check_fields_status($fields = array(),$main_array = array()){
@@ -489,8 +481,7 @@ class DashboardController extends AppController
         $session = $this->request->session();
         $userId = $session->read('User.id');
         $userType = $session->read('User.user_type');
-       
-		//Paid 
+        //Paid 
 		$current_month = date('F');
 		$query = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
 				FROM transactions
@@ -513,7 +504,6 @@ class DashboardController extends AppController
 					     $totalPaidThisMonth = $single_val['SUM( `amount` )'];
 				   }
 		 }
-		 
 		 $this->set("threeMonthPaid",$threeMonthPaid);	
 		 $this->set("totalMonthPaid",$totalMonthPaid);	
 		 $this->set("totalPaidThisMonth",$totalPaidThisMonth); 
@@ -533,8 +523,7 @@ class DashboardController extends AppController
 		 $totalMonthErn = 0;
 		 $totalEarningThisMonth = 0;
 		
-		
-		 foreach($earn_results as $single_val){
+		foreach($earn_results as $single_val){
 			       $threeMonthEarn[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
 			       $totalMonthErn += $single_val['SUM( `amount` )'];
 			       
@@ -546,8 +535,7 @@ class DashboardController extends AppController
 		 $this->set("totalMonthErn",$totalMonthErn);	 
 		 $this->set("totalEarningThisMonth",$totalEarningThisMonth);
 		 //End
-		 
-         $this->ajaxCalendarBooking();
+		 $this->ajaxCalendarBooking();
          $this->ajaxCalendarBookingSendRequest();
 	     $this->home();
 	}
@@ -608,10 +596,8 @@ class DashboardController extends AppController
 					$fieldname = 'guest';
 					$userType = 'Basic';
 					$userActas = 'Guest';
-					
 				}		
-			
-			 if($userActas == "Sitter" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_sitter'] == "pending"){
+			if($userActas == "Sitter" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_sitter'] == "pending"){
 				$bookingData[] = $booking_records;
 			    //By guest Booking Dates
 				$booking_arr[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
@@ -635,7 +621,6 @@ class DashboardController extends AppController
 				       $booking_records['user'] = $sitter_info[0];
 				   }
 				   $sitterbookingData[] = $booking_records;
-				
 				//Sitter available dates
 				$booking_request[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
 				$booking_request[$booking_key]["end_date"]= $booking_records['booking_end_date'];
@@ -648,8 +633,7 @@ class DashboardController extends AppController
 		}
 		$new_clients = 0;
 		$new_sitters = 0;
-	  
-	   if(!empty($all_clients_ids)){
+	  if(!empty($all_clients_ids)){
 			$count_clients = array_count_values($all_clients_ids);
 			foreach($count_clients as $single_client){
 					 if($single_client == 1){
@@ -672,20 +656,14 @@ class DashboardController extends AppController
 		$booking_count = count($bookingData);
 		$client_stay_status["unread_message"] = $booking_count;
 		
-		
-		    $client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
+		 $client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
 			
-	   
-	   
 	   if(isset($bookingData) && !empty($bookingData)){
 			$house_sitting=$boarding=$drop_in_visit=$day_nigth_care=$market_place = 1;
 			$events=0;
 			
 			foreach($bookingData as $single_booking){
-				
-				
-			    if($single_booking['required_service'] == "house_sitting"){
-					
+				if($single_booking['required_service'] == "house_sitting"){
 					$client_stay_status["house_sitting"] = $house_sitting++;
 					
 				}else if($single_booking['required_service'] == "boarding"){
@@ -728,9 +706,7 @@ class DashboardController extends AppController
 		}
 		 $calendar = new  \Calendarbooking();
 		 //$calendarsend = new  \Calendarbookingsendrequest();
-		 //pr(@$booking_request);die;
 		 $this->set('calender',$calendar->show(@$booking_arr));
-		 //pr($booking_request);die;
 		 //$this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
         
          $this->set('client_stay_status',$client_stay_status);
@@ -829,28 +805,20 @@ class DashboardController extends AppController
 		$userId = $session->read('User.id');
 	 if(isset($this->request->data['UserReferences']) && !empty($this->request->data['UserReferences'])){
 			$UsersModel = TableRegistry::get('Users');
-			
-		if(!empty($this->request->data['UserReferences']['email'])){
-			
+		 if(!empty($this->request->data['UserReferences']['email'])){
 			$checkUser = $UsersModel->find('all',['conditions'=>['Users.email'=>$this->request->data['UserReferences']['email']]])->toArray();
-			if(!count($checkUser)) { // check if user is present in users table
+			if(!count($checkUser)){ // check if user is present in users table
 				
 				$references = TableRegistry::get('UserReferences');
 				$checkReference = $references->find('all',['conditions'=>['UserReferences.email'=>$this->request->data['UserReferences']['email']]])->toArray();
 				if(!count($checkReference)){ // check if code is already generated 
 					
 					$reference = $references->newEntity();
-					
-					
 					$reference->user_id = $userId;
 					$reference->email = $this->request->data['UserReferences']['email'];
-					//$genReferCode = $this->RandomStringGenerator(6);
-					//$reference->reference_code = $genReferCode;
+					
 					$reference->status = 0;
 					if($references->save($reference)){
-						/*$userData = $UsersModel->newEntity();
-						$userData->id = $userId;
-						$userData->reference_id = $userId;*/
 						
 						$link = $this->request->data['UserReferences']['refer_url'];
 						$linkOnMail = '<a href="'.$link.'" target="_blank">Click Here For Sign Up With Reference Code</a>';
@@ -1011,9 +979,9 @@ function for promote
 		return $errors;
 	}
     /*=================End password validation========*/
-    /**
+/**
 Function for Front profile dashboard
-    */
+*/
     function frontDashboard(){
 		$this->viewBuilder()->layout('profile_dashboard');
 		$usersModel = TableRegistry::get('Users');
@@ -1021,7 +989,7 @@ Function for Front profile dashboard
 		 $session = $this->request->session();
          $userId = $session->read('User.id');
           //For Update profile status
-			  $userData = $usersModel->find('all',['contain'=>[
+		  $userData = $usersModel->find('all',['contain'=>[
 													'UserSitterServices', 
 													'UserProfessionalAccreditationsDetails',
 													'UserProfessionalAccreditations',
@@ -1058,7 +1026,13 @@ Function for Front profile dashboard
 				$userInfo =	array();
 				$refer_code = substr($userData[0]->email, 0, strpos($userData[0]->email, '@'));
 				$userInfo['email'] = $userData[0]->email;
-				$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/token/".base64_encode(convert_uuencode($userData[0]->id));
+				if($userData[0]->reference_code){
+				    $userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/promocode/".$userData[0]->reference_code;
+				}else{
+					$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/token/".base64_encode(convert_uuencode($userData[0]->id));
+				}
+				
+				
 				//pr($userInfo);die;
 				$this->set('refer_url', $userInfo['refer_url']);
 				$this->set('user_email', $userInfo['email']);
@@ -2272,6 +2246,7 @@ function addPets(){
 	Function for profile report
 	*/
 	function profileReport(){
+		
 		 $fakeProfileReportModel = TableRegistry::get('UserFakeReports');
 		 $usersModel = TableRegistry::get('Users');
 		 $adminsModel = TableRegistry::get('Admins');
@@ -2280,11 +2255,16 @@ function addPets(){
 		 $userId = $session->read('User.id');
 				 
 		 if(isset($this->request->data['ProfileReport']) && !empty($this->request->data['ProfileReport'])){
+			
+			 
 			     $sitterId = convert_uudecode(base64_decode($_REQUEST['ProfileReport']['sitter_id']));
  			     $profileReportData = $fakeProfileReportModel->newEntity();
  			     $profileReportData->user_id = $userId;
  			     $profileReportData->sitter_id = $sitterId;
  			     $profileReportData->report_reason = $_REQUEST['ProfileReport']['report_reason'];
+ 			     
+ 			     //pr($profileReportData);die;
+ 			    
  			     if($fakeProfileReportModel->save($profileReportData)){
 			
 			$user_data = $usersModel->find('all')->select(['id','first_name','last_name','email'])->where(['id'=>$profileReportData->user_id])->toArray();
@@ -2302,8 +2282,14 @@ function addPets(){
 						
 					$this->send_email('',$replace,$with,'fake_profile_report',$adminData['email']);
 				}
-				$this->redirect("/search/sitter-details/".$_REQUEST['ProfileReport']['sitter_id']);
-		}
+				if(isset($this->request->data['ConversesionReport'])){
+					 $this->redirect($this->referer());
+			    }else{
+				    $this->redirect("/search/sitter-details/".$_REQUEST['ProfileReport']['sitter_id']);
+			    }
+		}else{
+			 $this->redirect("/Guests/");
+			}
 		 
 	}
 	/*********************************************************************

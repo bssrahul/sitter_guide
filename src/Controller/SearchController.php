@@ -1575,19 +1575,21 @@ class SearchController extends AppController
 					$get_booking_requests_to_display = $bookingRequestsModel->find('all')
 								->where(['BookingRequests.id'=>$bookingRequestData->id])
 								->hydrate(false)->first();
-				
-				
-					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
-					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
+				   
+				     $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+				   
+				     if($get_user_communications_details['communication']['new_booking_request'] == 1){
+						 
 					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
-						$message_body = "You have been received new booking request"; 
+					    $country_code = $get_user_communications_details['country_code'];
+					    $message_body = NEW_BOOKING_MESSAGE; 
 						
-						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
-				      }
+						$send_message = $this->sendMessages($to_mobile_number, $message_body,$country_code);   
+				     }
 				     //End send message
-					
 				}
-				 return $this->redirect(['controller'=>'search','action'=>'thank-you']);
+				
+				return $this->redirect(['controller'=>'search','action'=>'thank-you']);
 		}else{
 					$userData = $UsersModel->get($sitterId,['contain'=>['Users_badge','UserAboutSitters','UserSitterHouses','UserSitterServices','UserSitterGalleries','UserProfessionalAccreditationsDetails','UserRatings','UserPets'=>['UserPetGalleries']]]);
 					$UserFavData=$UserSitterFavouriteModel->find('all')->toArray();
