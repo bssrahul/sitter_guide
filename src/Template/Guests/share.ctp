@@ -23,7 +23,7 @@
 			]);
 			echo $this->Form->input('Users.reference_type',[                
 			 'type'=>'hidden',
-			 'value'=>@$rf_type
+			 'value'=>@$token
 			]);
 			?>
 		   <?php 

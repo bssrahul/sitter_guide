@@ -72,7 +72,14 @@
                       <li>
                           <ul class="user-bal">
                               <li><?php echo __('Account Balance'); ?></li>
-                                <li><?php echo __('$200 aud'); ?></li>
+                                <li>
+										<?php 
+										if(!empty($user_avail_bal)){
+											echo isset($user_avail_bal->amount)?"$ ".$user_avail_bal->amount." AUD":0;
+										}else{
+											echo "$ 0 AUD";
+										} ?>
+								</li>
                             </ul>                         
                         </li>
                         <!--<li><a href="#" title="Guest"> <i class="fa fa-user"></i> <?php echo __('Guest'); ?></a></li>-->
@@ -102,7 +109,16 @@
                     </select>
             </a>
   </li>
-            <li class="bal"><a href="#" title="<?php __('Balance'); ?>">$240 aud</a></li>
+            <li class="bal">
+										<a href="javascript:void(0)" style="cursor:default" title="<?php __('Balance'); ?>">
+										<?php 
+										if(!empty($user_avail_bal)){
+											echo isset($user_avail_bal->amount)?"$ ".$user_avail_bal->amount." AUD":0;
+										}else{
+											echo "$ 0 AUD";
+										} ?>
+										</a>
+			</li>
             <li class="user" ><a href="#" title="User"><i class="fa fa-user"></i></a></li>
             <li class="home"><a href="#" title="Home"><i class="fa fa-home"></i></a></li>
         </ul>    

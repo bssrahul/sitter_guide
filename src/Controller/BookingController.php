@@ -934,13 +934,11 @@ class BookingController extends AppController
 					//ADD AMOUNT WHOM REFERD THIS PERSON
 					$user_wallet_records = $UserReferWalletsModel->find('all')->select(['UserReferWallets.id','UserReferWallets.amount'])
 												->where(['UserReferWallets.user_id' => $referedby])
-												->limit(1)
-												->hydrate(false)
 												->first();
 					
 					$UserReferWalletsModelData= $UserReferWalletsModel->newEntity();
 					
-					if(!empty($user_records)){
+					if(!empty($user_wallet_records)){
 												
 						$finalBal = ($user_wallet_records->amount + REFERAL_BONUS);
 						$UserReferWalletsModelData->id = $user_wallet_records->id;
@@ -950,22 +948,23 @@ class BookingController extends AppController
 					}else{
 						
 						$UserReferWalletsModelData->amount = REFERAL_BONUS;
+						$UserReferWalletsModelData->user_id = $referedby;
 						
 					}
 					
 					if($UserReferWalletsModel->save($UserReferWalletsModelData)){
+						
 						$usersModel = TableRegistry::get('Users');
 						$usersModelData= $usersModel->newEntity();
+						
 						$usersModelData->id = $user_id_who_is_paid;
-						$usersModelData->reference_id = '';
+						$usersModelData->reference_id = 0;
 						$usersModel->save($usersModelData);//Empty references relation
 					}
 					
 					//ADD AMOUNT WHO IS BOOKING REQUEST
 					$self_user_wallet_records = $UserReferWalletsModel->find('all')->select(['UserReferWallets.id','UserReferWallets.amount'])
 												->where(['UserReferWallets.user_id' => $user_id_who_is_paid])
-												->limit(1)
-												->hydrate(false)
 												->first();
 					
 					$UserReferWalletsModelData= $UserReferWalletsModel->newEntity();
@@ -981,6 +980,7 @@ class BookingController extends AppController
 						
 						$finalBal = REFERAL_BONUS;
 						$UserReferWalletsModelData->amount = $finalBal;
+						$UserReferWalletsModelData->user_id = $user_id_who_is_paid;
 						
 					}
 					
