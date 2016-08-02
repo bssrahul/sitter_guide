@@ -215,6 +215,7 @@ ul.care-list span { color: #000000;display: inline; float: right; width: 20%;}
 .banner-sitter-detail .banner-info-wrapper{ height:475px; width:475px; background:rgba(77, 80, 51, 0.4);    border-radius: 50%;  -moz-border-radius: 50%; -webkit-border-radius: 50%;margin-top:35px;   }
 .banner-info-inner {height:475px; width:475px; background:rgba(77, 80, 51, 0.2);  border-radius: 50%; -moz-border-radius: 50%;  -webkit-border-radius: 50%; position:relative;left:20px;margin-top:35px;}
 .banner-sitter-detail .banner-info-wrapper .client-image {width:90px; height:90px; text-align:center; padding-top:13px;}
+.banner-sitter-detail .banner-info-wrapper .client-image img{ width:80px; height:80px; object-fit:cover;}
 .banner-sitter-detail .banner-info-wrapper .name-banner { font-size:25px; font-weight:700; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; margin-top:20px;}
 .banner-sitter-detail .banner-info-wrapper .punch-line { font-size:20px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:5px;}
 .banner-sitter-detail .banner-info-wrapper .city-banner { font-size:15px; font-weight:500; font-family: 'Raleway', sans-serif; color:#fff; text-align:center; padding-top:8px;}

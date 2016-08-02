@@ -401,6 +401,7 @@
 											'hiddenField' => false,
 											'type'=>'checkbox',
 											'option'=>["pet_in_home"],
+											'value'=>isset($data['Search']['sitter_pet_info']['pet_in_home'])?$data['Search']['sitter_pet_info']['pet_in_home']:'',
 											'id'=>'pet_in_home']);
 										?>
 										<label class="unbold" for="pet_in_home">Pet in the Home</label>
@@ -418,6 +419,7 @@
 											'type'=>'checkbox',
 											'class'=>'homePet',
 											'option'=>["doesnt_own_dog"],
+											'value'=>isset($data['Search']['sitter_pet_info']['doesnt_own_dog'])?$data['Search']['sitter_pet_info']['doesnt_own_dog']:'',
 											'id'=>'doesnt_own_dog']);
 										?>
 										<label class="unbold" for="doesnt_own_dog">Doesn’t own a dog</label>
@@ -431,6 +433,7 @@
 											'type'=>'checkbox',
 											'class'=>'homePet',
 											'option'=>["doesnt_own_caged_dog"],
+											'value'=>isset($data['Search']['sitter_pet_info']['doesnt_own_caged_dog'])?$data['Search']['sitter_pet_info']['doesnt_own_caged_dog']:'',
 											'id'=>'doesnt_own_caged_dog']);
 										?>
 										<label class="unbold" for="doesnt_own_dog">Doesn’t own caged pet</label>
@@ -444,6 +447,7 @@
 											'type'=>'checkbox',
 											'class'=>'homePet',
 											'option'=>["doesnt_own_cat"],
+											'value'=>isset($data['Search']['sitter_pet_info']['doesnt_own_cat'])?$data['Search']['sitter_pet_info']['doesnt_own_cat']:'',
 											'id'=>'doesnt_own_cat']);
 										?>
 										<label class="unbold" for="doesnt_own_cat">Doesn’t own cat</label>
@@ -463,6 +467,7 @@
 											'hiddenField' => false,
 											'type'=>'checkbox',
 											'option'=>["housing_condition"],
+											'value'=>isset($data['Search']['sitter_info']['housing_condition'])?$data['Search']['sitter_info']['housing_condition']:'',
 											'id'=>'housing_condition']);
 										?>
 										<label class="unbold" for="housing_condition">Housing condition</label>
@@ -480,6 +485,7 @@
 											'type'=>'checkbox',
 											'class'=>'house-condition',
 											'option'=>["has_house"],
+											'value'=>isset($data['Search']['sitter_info']['has_house'])?$data['Search']['sitter_info']['has_house']:'',
 											'id'=>'has_house']);
 										?>
 										<label class="unbold" for="has_house">Has house  (excludes apartments)</label>
@@ -494,6 +500,7 @@
 											'type'=>'checkbox',
 											'class'=>'house-condition',
 											'option'=>["outdoor_area"],
+											'value'=>isset($data['Search']['sitter_info']['outdoor_area_balcony'])?$data['Search']['sitter_info']['outdoor_area_balcony']:'',
 											'id'=>'outdoor_area']);
 										?>
 										<label class="unbold" for="outdoor_area"> Outdoor Play Areas - Balcony</label>
@@ -508,6 +515,7 @@
 											'type'=>'checkbox',
 											'class'=>'house-condition',
 											'option'=>["outdoor_play_area"],
+											'value'=>isset($data['Search']['sitter_info']['outdoor_area_backyard'])?$data['Search']['sitter_info']['outdoor_area_backyard']:'',
 											'id'=>'outdoor_play_area']);
 										?>
 										<label class="unbold" for="outdoor_play_area"> Outdoor Play Areas - Backyard</label>
@@ -522,6 +530,7 @@
 											'type'=>'checkbox',
 											'class'=>'house-condition',
 											'option'=>["non_smoker"],
+											'value'=>isset($data['Search']['sitter_info']['non_smoker'])?$data['Search']['sitter_info']['non_smoker']:'',
 											'id'=>'non_smoker']);
 										?>
 										<label class="unbold" for="non_smoker"> Non- smoker home</label>
@@ -536,6 +545,7 @@
 											'type'=>'checkbox',
 											'class'=>'house-condition',
 											'option'=>["has_fenced_yard"],
+											'value'=>isset($data['Search']['sitter_info']['has_fenced_yard'])?$data['Search']['sitter_info']['has_fenced_yard']:'',
 											'id'=>'has_fenced_yard']);
 										?>
 										<label class="unbold" for="has_fenced_yard"> Has fenced yard</label>
@@ -555,6 +565,7 @@
 											'hiddenField' => false,
 											'type'=>'checkbox',
 											'option'=>["medical_experience"],
+											'value'=>isset($data['Search']['sitter_info']['medical_experience'])?$data['Search']['sitter_info']['medical_experience']:'',
 											'id'=>'medical_experience']);
 										?>
 										<label class="unbold" for="medical_experience">  Medical Experience </label>
@@ -573,6 +584,7 @@
 											'type'=>'checkbox',
 											'class'=>'medical-experience',
 											'option'=>["administer_cpr"],
+											'value'=>isset($data['Search']['sitter_info']['administer_cpr'])?$data['Search']['sitter_info']['administer_cpr']:'',
 											'id'=>'administer_cpr']);
 										?>
 										<label class="unbold" for="administer_cpr"> Can administer CPR</label>
@@ -587,6 +599,7 @@
 											'type'=>'checkbox',
 											'class'=>'medical-experience',
 											'option'=>["pet_training_experience"],
+											'value'=>isset($data['Search']['sitter_info']['pet_training_experience'])?$data['Search']['sitter_info']['pet_training_experience']:'',
 											'id'=>'pet_training_experience']);
 										?>
 										<label class="unbold" for="pet_training_experience"> Pet Training Experience</label>
@@ -601,6 +614,7 @@
 											'type'=>'checkbox',
 											'class'=>'medical-experience',
 											'option'=>["administer_injections"],
+											'value'=>isset($data['Search']['sitter_info']['administer_injections'])?$data['Search']['sitter_info']['administer_injections']:'',
 											'id'=>'administer_injections']);
 										?>
 										<label class="unbold" for="administer_injections">  Certified to administer injections</label>
@@ -615,6 +629,7 @@
 											'type'=>'checkbox',
 											'class'=>'medical-experience',
 											'option'=>["begavioural_experience"],
+											'value'=>isset($data['Search']['sitter_info']['begavioural_experience'])?$data['Search']['sitter_info']['begavioural_experience']:'',
 											'id'=>'begavioural_experience']);
 										?>
 										<label class="unbold" for="begavioural_experience"> Experienced with behavioural problems</label>
@@ -629,6 +644,7 @@
 											'type'=>'checkbox',
 											'class'=>'medical-experience',
 											'option'=>["certified_oral_medication"],
+											'value'=>isset($data['Search']['sitter_info']['certified_oral_medication'])?$data['Search']['sitter_info']['certified_oral_medication']:'',
 											'id'=>'certified_oral_medication']);
 										?>
 										<label class="unbold" for="certified_oral_medication">  Certified to administer oral medication</label>

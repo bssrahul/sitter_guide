@@ -69,7 +69,7 @@ h1.page-header {margin-top: -5px;}
 .dbnav-wrap{ width:100%; float:left; background:#222d3d; margin:70px 0 0 0; color:#ffffff;}
 .dbprofile-area{ width:100%; float:left; padding:13px 0;}
 .dbprofile-area .dbprofile-pic{ width:100%; max-width:247px; float:left;}
-.dbprofile-area .dbprofile-pic img{ float:left; margin:0 10px 0 0; width:40px; height:40px; object-fit:cover;  }
+.dbprofile-area .dbprofile-pic img{ float:left; margin:0 10px 0 0; width:45px; height:45px; object-fit:cover;  }
 .dbprofile-area .dbprofile-pic p{ font-size:16px; padding:10px 0 0 0;}
 .dbprofile-area .status-box{ width:100%; float:left; max-width:330px; margin:4px 0 0 0; background:#ffffff; height:38px; border-radius:2px;}
 .dbprofile-area .status-box ul{ margin:0px; padding:0px; list-style-type:none;}

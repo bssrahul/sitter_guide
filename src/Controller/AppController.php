@@ -495,7 +495,7 @@ class AppController extends Controller{
 		{	
 			//pr($template_info); die;
 		}
-		$this->Email = new Email('email_gmail');
+		$this->Email = new Email('default');
 		try {
 		
 			ob_start();

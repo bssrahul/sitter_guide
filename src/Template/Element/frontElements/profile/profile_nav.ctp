@@ -13,11 +13,11 @@
 					?>
 					
 					<?php if(($user['facebook_id']) !="" && ($user['is_image_uploaded'])==0){?>
-						<img class="img-circle" style="width:52px" alt="<?php echo __('Profile Picture'); ?>" src="<?php if($user['image'] != ""){echo $user['image'];}
+						<img class="img-circle" alt="<?php echo __('Profile Picture'); ?>" src="<?php if($user['image'] != ""){echo $user['image'];}
 						else{ echo $user['image']='prof_photo.png';} ?>"> 
                    
 				   <?php }else{ ?>
-					<img class="img-circle" style="width:52px" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>"> 					   
+					<img class="img-circle" alt="<?php echo __('Profile Picture'); ?>" src="<?php echo HTTP_ROOT.'img/uploads/'.($user['image'] != ''?$user['image']:'prof_photo.png'); ?>"> 					   
 					    
 					   
 				 <?php  } ?>
