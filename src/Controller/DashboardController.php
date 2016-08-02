@@ -81,6 +81,14 @@ class DashboardController extends AppController
 		
 		//$this->loadComponent('Paginator');
 		$this->loadComponent('Paginator');
+		
+		$UserReferWalletsModel = TableRegistry::get('UserReferWallets');
+		$user_avail_bal = $UserReferWalletsModel->find('all')->select(['UserReferWallets.amount'])
+												->where(['UserReferWallets.user_id' => $session->read('User.id')])
+												->first();
+												
+		$this->set('user_avail_bal', $user_avail_bal);			
+		
 	}
 	/**Function for landing page
 	*/

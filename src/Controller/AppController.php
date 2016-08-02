@@ -978,8 +978,6 @@ class AppController extends Controller{
 		
 	    $user_records = $usersModel->find('all')->select(['Users.reference_id'])
 												->where(['Users.id' => $userId])
-												->limit(1)
-												->hydrate(false)
 												->first();
 	   
 	   return $user_records; 

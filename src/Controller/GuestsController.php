@@ -693,10 +693,28 @@ class GuestsController extends AppController
 							$session = $this->request->session();
 							//CODE FOR MULTILIGUAL END
                             $passwordOrg = $this->request->data['Users']['password'];
+							if($this->request->data['Users']['reference_type']=='token'){
+								$promocode_requested =  convert_uudecode(base64_decode($this->request->data['Users']['reference_promocode']));
+							}else{
+								$promocode_requested = $this->request->data['Users']['reference_promocode'];
+							}	
+							
+							
+							
+							$ReferedUserData = $UsersModel->find('all',['conditions'=>["Users.id ='$promocode_requested' OR Users.reference_code='$promocode_requested'"]])
+							->select('Users.id')
+							->first();
+							
+							
+							if(!empty($ReferedUserData)){
+								$referID = $ReferedUserData->id;
+							}else{
+								$referID = 0;
+							}
 							
 							$activation_key = md5(microtime());							
 							$UsersData->password = md5($this->request->data['Users']['password']);
-							$UsersData->reference_id = $this->request->data['Users']['reference_promocode'];
+							$UsersData->reference_id = $referID; 
 							//SET CUSTOM VARIABLES FOR SAVE
 							$UsersData->org_password = $this->request->data['Users']['password'];
 							$UsersData->activation_key = $activation_key;								
@@ -737,18 +755,20 @@ class GuestsController extends AppController
 					}else{
 					    $this->set("userData",$UsersData);
 					}
-				}else{
-					   if(isset($token) && !empty($token) && isset($referId) && !empty($referId) && isset($shortname) && !empty($shortname)){
-								  $this->set("rf_token",$referId);
-								 if($token= "token"){
-									$this->set("rf_type","token");
-								 }else if($token= "promocode"){
-									$this->set("rf_type","promocode");
-								 }
-						  }else{
-								return $this->redirect(['controller' => 'guests']);
-							}
-			     }	
+
+		}else{
+			   if(isset($token) && !empty($token) && isset($referId) && !empty($referId) && isset($shortname) && !empty($shortname)){
+						  $this->set("rf_token",$referId);
+						 if($token == "promocode"){
+							$this->set("token","promocode");
+						 }else if($token == "token"){
+							$this->set("token","token"); //MEANS ID	
+						 }
+				  }else{
+						return $this->redirect(['controller' => 'guests']);
+					}
+		 }	
+
 			
 		$UserBlogsModel = TableRegistry::get('UserBlogs');
 		$servicesModel = TableRegistry::get('Services');
