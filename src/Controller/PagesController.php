@@ -69,6 +69,9 @@ class PagesController extends AppController
 		 $this->loadComponent('Paginator');
 		 
 		$this->set('servicesInfo',$servicesInfo);
+		
+		$session = $this->request->session();
+		$this->set('user_avail_bal', $this->getLoggedInUserBalance($session->read('User.id')));			
 
 		
 	}

@@ -215,7 +215,7 @@
 							<?php echo (@$get_booking_requests_to_display['user']['last_name'] !='')? ucwords(substr(@$get_booking_requests_to_display['user']['last_name'],0,1)) : ""; ?> 
                           </p>
                           <p class="media-heading-msince">
-                            Memeber Since : <?php echo @$get_booking_requests_to_display['user']['date_added']; ?> 
+                            Memeber Since :  <?php echo @$get_booking_requests_to_display['user']['date_added'] != ""?date("F, j Y",strtotime(@$get_booking_requests_to_display['user']['date_added'])):"_ _ _"; ?>  
                           </p>
                           <p>
                           </p>

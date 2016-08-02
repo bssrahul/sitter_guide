@@ -64,6 +64,8 @@ class TransactionController extends AppController
 		$siteConfiguration = $SiteModel->find('all')->first();
 		$this->set('siteConfiguration', $siteConfiguration);
 		
+		$this->set('user_avail_bal', $this->getLoggedInUserBalance($session->read('User.id')));			
+		
 
 	}
 	
