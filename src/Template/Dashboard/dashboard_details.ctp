@@ -1067,7 +1067,7 @@
      function drawChartPaid() {
       <?php $colorArr = ['0'=>'#b87333','1'=>'silver','2'=>'gold']; ?>
       
-      var data = google.visualization.arrayToDataTable([
+      var data1 = google.visualization.arrayToDataTable([
          ['Element', 'Density', { role: 'style' }],
          <?php 
            $clr=0;
@@ -1081,15 +1081,15 @@
 			} 
 		  } ?>
       ]);
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
+      var view1 = new google.visualization.DataView(data1);
+      view1.setColumns([0, 1,
                        { calc: "stringify",
                          sourceColumn: 1,
                          type: "string",
                          role: "annotation" },
                        2]);
 
-      var options = {
+      var options1 = {
         title: "Density of Precious Metals, in g/cm^3",
         width: 470,
         height: 200,
@@ -1098,6 +1098,6 @@
       };
      
       var paidchart = new google.visualization.ColumnChart(document.getElementById("paidChart"));
-      paidchart.draw(view, options);
+      paidchart.draw(view1, options1);
     }
   </script>

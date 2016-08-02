@@ -506,6 +506,9 @@ class DashboardController extends AppController
 		 }
 		 $this->set("threeMonthPaid",$threeMonthPaid);	
 		 $this->set("totalMonthPaid",$totalMonthPaid);	
+		 //pr($threeMonthPaid);die;
+		 //echo "okok";
+		// pr($threeMonthPaid);die;
 		 $this->set("totalPaidThisMonth",$totalPaidThisMonth); 
 		 //Earn
 		 $sitter_earn = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
@@ -522,17 +525,19 @@ class DashboardController extends AppController
 		 $threeMonthEarn = [];
 		 $totalMonthErn = 0;
 		 $totalEarningThisMonth = 0;
-		
-		foreach($earn_results as $single_val){
-			       $threeMonthEarn[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
-			       $totalMonthErn += $single_val['SUM( `amount` )'];
-			       
-			       if($single_val['MONTHNAME(`created`)'] == $current_month){
-					     $totalEarningThisMonth = $single_val['SUM( `amount` )'];
-				   }
-		 }
+		if(!empty($earn_results)){
+			foreach($earn_results as $single_val){
+					   $threeMonthEarn[$single_val['MONTHNAME(`created`)']] = $single_val['SUM( `amount` )'];
+					   $totalMonthErn += $single_val['SUM( `amount` )'];
+					   
+					   if($single_val['MONTHNAME(`created`)'] == $current_month){
+							 $totalEarningThisMonth = $single_val['SUM( `amount` )'];
+					   }
+			 }
+	    }
 		 $this->set("threeMonthEarn",$threeMonthEarn);	 
-		 $this->set("totalMonthErn",$totalMonthErn);	 
+		 $this->set("totalMonthErn",$totalMonthErn);	
+		 //pr($threeMonthEarn);die; 
 		 $this->set("totalEarningThisMonth",$totalEarningThisMonth);
 		 //End
 		 $this->ajaxCalendarBooking();
