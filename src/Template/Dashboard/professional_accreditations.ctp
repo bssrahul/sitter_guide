@@ -24,10 +24,8 @@
 				});
 	});
 </script>
-
-	<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
+   <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
 		<div class="row">
-			
 			<div class="profiletab-section">
                 <h3>
 					<img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
@@ -46,8 +44,7 @@
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will give you individual badges which increase your search results ranking for each of these updates')); ?>
 								</h3> </div>
 							</div>	
-                
-							<?php echo $this->Form->create(null, [
+                            <?php echo $this->Form->create(null, [
 								'url' => ['controller' => 'dashboard', 'action' => 'professional-accreditations'],
 								'role'=>'form',
 								'id'=>'skillsAccreditations',
@@ -59,8 +56,7 @@
 									<label for="">
 										<?php echo $this->requestAction('app/get-translate/'.base64_encode('Years of Sitting Experience')); ?> 
 									</label>
-                      
-									  <?php echo $this->Form->input('UserProfessionalsDetails.experience',[
+                                     <?php echo $this->Form->input('UserProfessionalsDetails.experience',[
 										'templates' => ['inputContainer' => '{{content}}'],
 										'label' => false,
 										'type'=>'select',
@@ -300,6 +296,11 @@
 						</div>
 						
 							<!--<h3><strong>Other Qualifications & Specific Skills</strong><small>(Certificate/Degree)</small><span id="addMore" class="pull-right add-more-n"><i class="fa fa-plus-circle"></i> Add More</span></h3>-->
+							
+							
+							
+							
+							
 					    <div class="">
                           <div class="form-group col-lg-4">
                             <div class="brow-inner pull-left">
@@ -718,20 +719,33 @@
 			changeYear: true,
 			dateFormat: 'yy-mm-dd'
 		});
-		
 		$(".fa-calendar").click(function(){ $(".addDateCalendar").focus();});
 
-		
-		var i=$( ".ajaxAdd" ).length;
+		var i = $(".ajaxAdd").length;
 		
 		//For append other qualification
 		$("#addMore").on('click',function(){
-		
+			
+			
 			i = parseInt(i)+1;
+			
 			$("#addAfter").append('<div id="ajaxAdd'+i+'" style="padding:15px" class="ajaxAdd row "><div class="row"> <div class="form-group col-lg-4"><input class="form-control" type="text" placeholder="Qualification Title" name="qualification_title[]"> </div><div class="form-group col-lg-4"><input readonly id="start_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Date Issued" name="qualification_date[]"> </div><div class="form-group col-lg-4"><input readonly id="end_date_picker_'+i+'" class="form-control addDateCalendar" type="text" placeholder="Expiry Date of Certification" name="expiry_date[]"> </div></div><div class="row"> <div class="form-group col-lg-4" style="padding-left:0px;"><div class="brow-inner" > <input class="form-control" id="scanned_certification_'+i+'" readonly name="scanned_certification[]" type="text" placeholder="Upload Scanned Certificate "> <button class="uploaddoc  btn btn-secondary" type="button">Browse </button></div></div><div class="col-lg-4"><button data-rel="ajaxAdd'+i+'" class=" deleteOtherRow pull-lg-right btn btn-danger" type="button">Delete </button></div></div></div>');
 	
+			/*SET FOCUS ON NEWLY ADDED BLOCK START*/
+			  var $this = $(this),
+			  $toElement      = '#addMore',
+			  $focusElement   = '#ajaxAdd'+i,
+			  $offset         = 0,
+			  $speed          = 50 * 1 || 500;
 
-			setTimeout(function(){ 
+			  $('html, body').animate({
+				scrollTop: $($toElement).offset().top + $offset
+			  }, $speed);
+		  
+			if ($focusElement) $($focusElement).focus();
+			/*SET FOCUS ON NEWLY ADDED BLOCK END*/
+			
+            setTimeout(function(){ 
 				$(".addDateCalendar").datepicker(
 				{
 					changeMonth: true,
