@@ -1026,7 +1026,8 @@ Function for Front profile dashboard
 				$userInfo =	array();
 				$refer_code = substr($userData[0]->email, 0, strpos($userData[0]->email, '@'));
 				$userInfo['email'] = $userData[0]->email;
-				if($userData[0]->reference_code){
+				
+				if(!empty($userData[0]->reference_code)){
 				    $userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/promocode/".$userData[0]->reference_code;
 				}else{
 					$userInfo['refer_url'] = HTTP_ROOT."share/".$refer_code."/token/".base64_encode(convert_uuencode($userData[0]->id));

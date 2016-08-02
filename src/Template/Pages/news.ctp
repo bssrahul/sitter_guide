@@ -1,5 +1,5 @@
 
- <section>
+ <section class="news-wrap">
   <?php  if(empty($blogs_info)){?><div class="col-md-3 col-md-offset-5"><h4><?php echo "Record Not Found";?><h4></div> <?php	 }
 		else{	
 			 foreach($blogs_info as $blog_info) { ?>
@@ -7,27 +7,29 @@
 							<div class="row privacy-top">
 							</div>
 							<div class="row">
-								<div class="col-xs-12">
-									<div class="news-box" >
-										<div class="row grid-divider">
+								<div class=" col-lg-12 col-md-12 col-xs-12 col-xs-12">								
+										<div class="row">
+                                        	<div class="news-outer">
 											<div id="news">
-												<div class="col-xs-12 col-md-3 padding-right0px bord-right1px">
-													<div class="news-dummy-logo"><img src="<?php echo HTTP_ROOT.'img/uploads/'.($blog_info->image != ''?$blog_info->image:'dummy.jpg'	); ?>" class="img-responsive text-center center-block" alt="logo">
-													</div>
-												</div>
-																	
-												<div class="col-xs-12 padding-right0px col-md-9">
-													<div class="box-lr-padd">
+												<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 ">
+                                                	<div class="news-lft">													
+                                                       <img src="<?php echo HTTP_ROOT.'img/uploads/'.($blog_info->image != ''?$blog_info->image:'dummy.jpg'	); ?>" class="img-responsive" alt="logo">
+                                                    </div>   
+													 
+												</div>																	
+												<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                <div class="news-rgt">													
 														<h4><?php echo $blog_info->title; ?></h4>
 														<h5><?php echo $this->requestAction('users/get-translate/'.base64_encode('Modified Date:')); ?>  
 														<span><?php echo date("F  j,Y",strtotime($blog_info->modified_date)); ?></span></h5>
 														<p class="text-justify">
 														<?php $string=$blog_info->description;
 														echo $descdata=substr($string,0,250).'...';	?></p>
-														<a href="news-detail"><button class="btn readmorebtn"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Read more')); ?></button></a>
-													</div>
+														<a href="news-detail"><button class="btn btn-success news-btn"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Read more')); ?></button></a>                                                       
+                                                   </div>
 												</div>
 											</div>
+                                            </div>
 															
 										</div>
 									</div>

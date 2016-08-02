@@ -413,8 +413,7 @@
                                                         <i class="fa fa-check icon-width30 font-size20">
                                                         </i>
                                                         <?php }else{ ?>
-														<i class="fa fa-times icon-width30 new-font-size20">
-                                                        </i>
+														 <i class="fa icon-width30"> <img src="<?php echo HTTP_ROOT. 'img/sms-unverify.png'; ?>" alt="/SMS Unverified" /></i>
 														<?php }?>	
                                                          SMS Verified
                                                       </li>
@@ -913,7 +912,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 													}
 													?>
 													 <h3 class="mid-sec-title pt15 ">
-                                                      <?php echo $this->requestAction('users/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp 
+                                                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp 
                                                       <span>
                                                         <i>
                                                           <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
@@ -926,8 +925,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     <ul class="list-inline pt15">
                                                       <li  class="reviews-bold prelative">
 														  <span style="position:relative; top:-15px;" >
-                                                        <?php echo $count. "  Reviews ";?> 
-                                                        <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?> </span>
+                                                       <?php echo $count." ".$this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?> </span>
                                                       </li>
                                                       <li > 
                                                         <div class="rating-box prelative">
@@ -1836,7 +1834,7 @@ $check_in=$UserRating->check_in_rating;
                                     <br/>
                                     <br/>
                                     <p class="pull-left">
-                                      <?php if(empty($UserRating->comment)){ echo "<h5 class='text-center'>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
+                                      <?php if(empty($UserRating->comment)){ echo "<h5 class='text-center'>".$this->requestAction('app/get-translate/'.base64_encode('Feedback Not Added Yet'))."<h5>";   }?> 
                                     </p>
                                     <p class="pull-right color-green">
                                     </p>

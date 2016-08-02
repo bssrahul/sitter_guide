@@ -65,13 +65,14 @@
                       <p>Sitterguide is committed to a safe community. Stays booked outside of sitterguide are not covered by insurance. For your safety, never share your contact information, and report any requests to pay outside the sitter platform.
                       </p>
                     </div>
-                    
-                    <p class="report">
-                      <a href="javascript:void(0)" data-target="#myModal8" data-toggle="modal">
-                        <i class=" fa fa-remove">
-                        </i> &nbsp; Report this conversation
-                      </a>
-                    </p>
+                    <?php if(!empty(@$userTo)){ ?>
+						<p class="report">
+						  <a href="javascript:void(0)" data-target="#myModal8" data-toggle="modal">
+							<i class=" fa fa-remove">
+							</i> &nbsp; Report this conversation
+						  </a>
+						</p>
+                    <?php } ?>
 
 
 <!--Report popup starts-->

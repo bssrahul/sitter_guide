@@ -8,30 +8,25 @@
 @import 'header.css';
 @import 'content.css';
 @import 'footer.css';
-
 @import 'inner.css';
-
-
-
 
 @import 'dashboard.css';
 @import 'signup.css';
 
 @import 'db-profile.css';
-@import 'contact.css';
 @import 'profile-view.css';
+/*@import 'contact.css';*/
 /* @import 'safety.css'; */
-@import 'privacy.css';
-@import 'insurance.css';
-@import 'terms.css';
-@import 'news.css';
+/*@import 'privacy.css';*/
+/*@import 'insurance.css';*/
+/*@import 'terms.css';*/
+/*@import 'news.css';*/
 @import 'help.css';
 @import 'sitter-detail.css';
 @import 'search-result.css';
 @import 'sign-up-thankyou.css';
 @import 'message.css';
 @import 'dashboard-profile.css';
-
 
 @import 'db-front-dashboard.css';
 @import 'calender.css';

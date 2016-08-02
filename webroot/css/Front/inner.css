@@ -33,6 +33,132 @@
 #safety  .dog-banner h1 { font-size:70px; color:#fff; font-weight:normal; padding:0 100px;}
 
 
+/*Contact CSS Start*/
+.contact-page .fun-news { float: left;  padding: 0px 0 0 !important;  width: 100%;}
+.contact-page .fun-news .fn-bot {float: left; margin: 0px 0 0; width: 100%;}
+#contact {background:#fff;}
+#contact .our-location  h3 {color:#72a105; font-size:25px; font-weight:500; text-align:left; padding-top:60px;}
+#contact .our-location  .country {color:#404040; font-size:16px; font-weight:500; text-align:left; padding-top:40px;}
+#contact .our-location  h5 {color:#404040; font-size:14px; font-weight:500; text-align:left; padding-top:10px; font-family: 'Open Sans', sans-serif;}
+#contact .our-location  h5 a{color:#404040;  font-weight:500; text-align:left; text-decoration:none; outline:none; padding-top:10px; font-family: 'Open Sans', sans-serif;}
+#contact .our-location  h5 span {color:#59aae1; font-size:14px; font-weight:300; text-align:left; padding-top:10px; font-family: 'Raleway', sans-serif;}
+#contact .f16 {font-size:15px;}
+
+#contact .maps { background:#fff;}
+#contact .maps .map {padding-top:60px;}
+.padding-left3px {padding-left:3px;}
+.padding-right3px {padding-right:3px}
+.padding-left0px {padding-left:0px;}
+.padding-right0px {padding-right:0px;}
+#contact .getintouch {padding-bottom:30px;}
+
+#contact .getintouch  h3 {color:#72a105; font-size:25px; font-weight:500; text-align:left; padding-top:60px;}
+
+#contact .getintouch select { -moz-appearance: none; background: #eaeaea url("../../img/arw.png") no-repeat scroll right 10px center;  border: 1px solid #aaaaaa; border-radius: 2px; box-shadow: none; height: 31px;
+width:154px; color:#404040; font-weight:500;	-webkit-appearance:none; -moz-appearance:none;}
+
+#contact .getintouch .location-select {padding-top:60px; float:right; padding-bottom:57px;}
+#contact .getintouch input {height:45px;}
+#contact .getintouch .form-group { margin-bottom: 30px;}
+#contact .getintouch input::-webkit-input-placeholder { /* WebKit, Blink, Edge */    color:#bbbbbb;}
+#contact .getintouch input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */          color:#bbbbbb;  opacity:  1;}
+#contact .getintouch input::-moz-placeholder { /* Mozilla Firefox 19+ */             color:#bbbbbb;  opacity:  1;}
+#contact .getintouch input:-ms-input-placeholder { /* Internet Explorer 10-11 */     color:#bbbbbb;}
+
+#contact .getintouch textarea {height:197px;}
+
+#contact .getintouch textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */  color:#bbbbbb;}
+#contact .getintouch textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */        color:#bbbbbb; opacity:  1;}
+#contact .getintouch textarea::-moz-placeholder { /* Mozilla Firefox 19+ */           color:#bbbbbb; opacity:  1;}
+#contact .getintouch textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */   color:#bbbbbb;}
+#contact .getintouch .send-message {background:#72a105; color:#fff; height:50px; width:196px;  font-size:16px;}
+
+.banner-area-contact {background:url(../../img/contact-banner.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+.banner-area-contact h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-contact p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+.mapactive { border-top:4px solid #72A105;}	
+
+/*Contact CSS End*/
+
+/* Privacy css start */
+.privacyt-page {background:#fff !important;}
+.privacyt-page .fun-news { float: left; padding: 0px 0 0 !important; width: 100%;}
+.privacy-top h2{color:#72a105 !important; font-size:25px; font-weight:500; text-align:left; padding-top:60px !important;}
+
+.banner-area-privacy {background:url(../images/privacy.jpg) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+.banner-area-privacy h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-privacy p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+#privacy p{font-size:13px; padding:25px 30px 0px 30px !important; line-height:25px; }
+.outer-one {border:1px solid #e6e6e6 !important;  padding-bottom:25px;}
+#privacy h3 {font-size:18px; color:#72a105; font-family: 'Raleway', sans-serif;  padding-left:30px; padding-top:30px;}
+.box-marg {margin-top:50px;}
+
+/* Privacy css End  */
+
+/*insurance css start*/
+.insurance-page {background:#fff !important;}
+.insurance-page .fun-news { float: left; padding: 0px 0 0 !important;  width: 100%;}
+.privacy-top h2{color:#72a105 !important; font-size:25px; font-weight:500; text-align:left; padding-top:60px !important;}
+
+.banner-area-insurance {background:url(../../img/insurance.jpg) repeat; background-position:center; height:350px;  width:100%; margin-top:75px;}
+.banner-area-insurance h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-insurance p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+
+#privacy p{font-size:13px; padding:25px 30px 0px 30px !important; line-height:25px; }
+.outer-one {border:1px solid #e6e6e6 !important;  padding-bottom:25px;}
+#privacy h3 {font-size:18px; color:#72a105; font-family: 'Raleway', sans-serif;  padding-left:30px; padding-top:30px;}
+.box-marg {margin-top:50px;}
+
+#cookies-bot-wrap{ background:#a3c93a; width:100%; float:left; padding:25px 0; position:fixed; bottom:0px; }
+#cookies-bot-wrap .cbw-area { width:100%; float:left; }
+#cookies-bot-wrap .cbw-area p{ text-align:center; color:#ffffff; font-size:16px; }
+#cookies-bot-wrap .cbw-area p a{ color:#ffffff; text-decoration:none; text-decoration: underline; }
+#cookies-bot-wrap .cbw-area p b{ cursor:pointer;}
+
+/*Insurance css end*/
+
+/*terms Css Start*/
+.terms-page {background:#fff !important;}
+.terms-page .fun-news { float: left; padding: 0px 0 0 !important; width: 100%;}
+
+/*Banner inner pages starts*/
+.banner-area-terms {background:url(../images/terms.jpg) repeat; background-position:center; height:350px;  width:100%; margin-top:50px;}
+.banner-area-terms h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-terms p {text-align:center; color:#fff; font-size:14px; line-height:23px; }
+/*terms Css  End */
+
+/* News Css Start */
+.news-page {background:#fff !important;}
+.news-page .fun-news { float: left; padding: 0px 0 0 !important; width: 100%;}
+
+.banner-area-news { background:url(../images/news.jpg) repeat; background-position:center; height:350px;  width:100%; margin-top:75px; margin-bottom:30px;}
+.banner-area-news h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
+.banner-area-news p {text-align:center; color:#fff; font-size:14px; line-height:25px; }
+.news-wrap{ width:100%; float:left; }
+#news{ width:100%; float:left; border:#cccccc 1px solid; background:#ffffff; margin:30px 0 0 0;}	
+#news .border {border-left:#cccccc 1px solid; }
+#news .news-lft{ padding:15px 0;}
+#news .news-lft img{ height:155px; width:100%; object-fit:contain; }
+#news .news-rgt{ width:100%; float:left; padding:15px 0;}  
+#news .news-rgt h4{ font-size:16px; color:#72a105; }
+#news .news-rgt h5{ font-size:12px; color:#404040;padding:10px 0 15px 0;}
+#news .news-rgt p{ font-size:13px;}
+#news .news-rgt .news-btn{ width:100px; height:38px; margin:15px 0 0 0; color:#ffffff; line-height:38px; text-align:center; background:#72a105; border:0px;}
+
+/* News Css End */
+
+
+/*===============================================================Media Query with (Single Max-Min Width)=====================================================================*/
+
+@media  (max-width:767px){		
+#contact .maps .map {padding-top: 20px;}
+}
+
+
+/*======================================================================Media Query with (Min-Max Width)=====================================================================*/
+
 @media (min-width:992px) and (max-width:1199px) {
 #safety .premium h1 { font-size:36px; color:#2c6891; font-family: 'Raleway', sans-serif; line-height:26px; font-weight:600; padding-top:60px; padding-bottom:30px; }
 }
@@ -42,6 +168,16 @@
 #safety  .dog-banner h1 { font-size:45px !important; color:#fff; padding-top:170px; font-weight:300 !important; padding-bottom:190px;}
 }
 
+
+@media (min-width:992px) and (max-width:1024px) {
+.banner-area-terms { margin-top:50px; height:auto; padding:60px 0;} 	
+.banner-area-terms h3{ padding:0px;}
+.banner-area-terms p{ padding:15px 0 0 0;}
+
+/*News*/
+#news .news-lft img{ height:180px; object-fit:cover; }	
+
+}
 
 @media (min-width:768px) and (max-width:991px) {
 #safety{  margin:15px 0 0 0; padding:0 0 15px 0;}
@@ -54,6 +190,15 @@
 #safety .premium p span{ display:inline; margin:0px;}
 #safety .premium .dog{ text-align:center; width:100%; margin:35px 0 20px 0; }
 #safety .premium .dog img{ width:250px; height:250px; }
+
+/*terms*/
+.banner-area-terms { margin-top:100px; height:auto; padding:50px 0;} 	
+.banner-area-terms h3{ padding:0px;}
+.banner-area-terms p{ padding:15px 0 0 0;}
+
+/*News*/
+#news .news-lft img{ height:180px; object-fit:cover;  }	
+
 }
 
 @media (min-width:641px) and (max-width:767px) {
@@ -68,6 +213,21 @@
 #safety .premium p span{ display:inline; margin:0px;}
 #safety .premium .dog{ text-align:center; width:100%; margin:35px 0 20px 0; }
 #safety .premium .dog img{ width:250px; height:250px; }
+
+/*terms*/
+.banner-area-terms { margin-top:100px; height:auto; padding:50px 0;} 	
+.banner-area-terms h3{ padding:0px;}
+.banner-area-terms p{ padding:15px 0 0 0;}
+
+/*News*/
+.news-outer{padding:0 15px;}	
+#news { margin:15px 0 0 0;}	
+#news .news-lft img{ object-fit:cover; }
+#news .news-rgt { padding:0px 0 15px 0; text-align:center;}
+#news .news-rgt .news-btn{ width:100%;}
+#news .border{ border-left:0px;}
+
+
 }
 
 @media (min-width:481px) and (max-width:640px) {
@@ -82,6 +242,20 @@
 #safety .premium p span{ display:inline; margin:0px;}
 #safety .premium .dog{ text-align:center; width:100%; margin:35px 0 20px 0; }
 #safety .premium .dog img{ width:200px; height:200px; }
+
+/*terms*/
+.banner-area-terms { margin-top:100px; height:auto; padding:40px 0;} 	
+.banner-area-terms h3{ padding:0px;}
+.banner-area-terms p{ padding:15px 0 0 0;}
+
+/*News*/
+.news-outer{padding:0 15px;}
+#news { margin:15px 0 0 0;}	
+#news .news-lft img{ object-fit:cover; }
+#news .news-rgt { padding:0px 0 15px 0; text-align:center;}
+#news .news-rgt .news-btn{ width:100%;}
+#news .border{ border-left:0px;}
+
 }
 
 
@@ -97,5 +271,24 @@
 #safety .premium p span{ display:inline; margin:0px;}
 #safety .premium .dog{ text-align:center; width:100%; margin:35px 0 0 0; }
 #safety .premium .dog img{ width:150px; height:150px;}
+
+/*Contact Us*/
+#contact .our-location  h3 {color:#72a105; font-size:20px; font-weight:500; text-align:left; padding-top:55px;}
+#contact .getintouch  h3 {color:#72a105; font-size:20px; font-weight:500; text-align:left; padding-top:30px;}
+#contact .getintouch .location-select {float: right; padding-bottom: 57px; padding-top: 30px;}
+
+/*terms*/
+.banner-area-terms { margin-top:100px; height:auto; padding:30px 0;} 	
+.banner-area-terms h3{ padding:0px;}
+.banner-area-terms p{ padding:15px 0 0 0;}
+
+/*News*/
+.news-outer{padding:0 15px;}
+#news { margin:15px 0 0 0;}	
+#news .news-lft img{ object-fit:cover; }
+#news .news-rgt { padding:0px 0 15px 0; text-align:center;}
+#news .news-rgt .news-btn{ width:100%;}
+#news .border{ border-left:0px;}
+
 }
 

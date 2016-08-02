@@ -1579,9 +1579,9 @@ class SearchController extends AppController
 				     $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
 				   
 				     if($get_user_communications_details['communication']['new_booking_request'] == 1){
-						 
-					    $to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+						$to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
 					    $country_code = $get_user_communications_details['country_code'];
+					    
 					    $message_body = NEW_BOOKING_MESSAGE; 
 						
 						$send_message = $this->sendMessages($to_mobile_number, $message_body,$country_code);   
@@ -1770,9 +1770,9 @@ class SearchController extends AppController
 			   }
 			}
 			$this->set('dog_in_home',$dog_in_home);
+			
 			if(isset($userPetInfo[0]->user_pets) && !empty($userPetInfo[0]->user_pets)){
-				
-			   $this->set('guests_Info',$userPetInfo[0]->user_pets);	
+				$this->set('guests_Info',$userPetInfo[0]->user_pets);	
 			}else{
 				$this->set('guests_Info','');
 			}

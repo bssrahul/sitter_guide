@@ -8,7 +8,7 @@
     text-decoration: underline;
   }
 </style>
-<!--[Banner Area Start]-->
+<!-- [Banner Area Start] -->
               <?php
 					$session = $this->request->session();
 					$userloginstatus = $session->read("User");
@@ -77,7 +77,6 @@
               <div class="details-stars starPad">
                 <ul class="list-inline text-center">
                   <?php  	$UserRatingData=$userData->user_ratings; 
-							//pr($UserRatingData);
 							$accuracy_sum = 0;
 							$comm_sum = 0;
 							$clean_sum = 0;
@@ -108,7 +107,6 @@
 							}
 						?>
                   <li>
-                    <!--	<p class="r-star rat-wt"> -->
                     <span class="rating mt-1 ">
                       <?php	if(!empty($rating_sum)){ 	
 ?>
@@ -286,12 +284,11 @@
 																<?php }else{ ?>
 																<button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79">Book Now
 															  </button>
-															  
-                                                         <?php }
+														  <?php }
                                                           }else{ ?>
 															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin">Book Now
 															  </button>
-														 <?php } ?>
+													  <?php } ?>
                                                       </div>
                                                       </div>
                                                     </div>
@@ -427,8 +424,7 @@
                                                         <i class="fa fa-check icon-width30 font-size20">
                                                         </i>
                                                         <?php }else{ ?>
-														<!--<i class="fa fa-times icon-width30 new-font-size20"> </i>-->
-                                                        <i class="fa icon-width30"> <img src="<?php echo HTTP_ROOT. 'img/sms-unverify.png'; ?>" alt="/SMS Unverified" /></i>
+														 <i class="fa icon-width30"> <img src="<?php echo HTTP_ROOT. 'img/sms-unverify.png'; ?>" alt="/SMS Unverified" /></i>
 														<?php }?>	
                                                          SMS Verified
                                                       </li>
@@ -927,7 +923,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 													}
 													?>
 													 <h3 class="mid-sec-title pt15 ">
-                                                      <?php echo $this->requestAction('users/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp 
+                                                      <?php echo $this->requestAction('app/get-translate/'.base64_encode('Testimonials and Reviews')); ?>  &nbsp 
                                                       <span>
                                                         <i>
                                                           <img alt="badge" title="badge" src="<?php echo HTTP_ROOT; ?>img/certify-1.png" > 
@@ -940,8 +936,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                     <ul class="list-inline pt15">
                                                       <li  class="reviews-bold prelative">
 														  <span style="position:relative; top:-15px;" >
-                                                        <?php echo $count. "  Reviews ";?> 
-                                                        <?php echo $this->requestAction('users/get-translate/'.base64_encode('Reviews')); ?> </span>
+                                                        <?php echo $count." ".$this->requestAction('app/get-translate/'.base64_encode('Reviews')); ?> </span>
                                                       </li>
                                                       <li > 
                                                         <div class="rating-box prelative">
@@ -1850,7 +1845,8 @@ $check_in=$UserRating->check_in_rating;
                                     <br/>
                                     <br/>
                                     <p class="pull-left">
-                                      <?php if(empty($UserRating->comment)){ echo "<h5 class='text-center'>".$this->requestAction('users/get-translate/'.base64_encode('Feedback Not Added Yet'))."Feedback Not Added Yet	<h5>";   }?> 
+                                      <?php if(empty($UserRating->comment)){ 
+										  echo "<h5 class='text-center'>".$this->requestAction('app/get-translate/'.base64_encode('Feedback Not Added Yet'))."<h5>";   }?> 
                                     </p>
                                     <p class="pull-right color-green">
                                     </p>
@@ -2070,14 +2066,14 @@ $check_in=$UserRating->check_in_rating;
 															 <?php if($userloginstatus){ 
 																 if($guests_Info == ""){
 																 ?>
-																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request">Book Now
+																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request">Book Now ok
 														     </a> 
 																<?php }else{ ?> 
-														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
+														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now no
 														     </a> 
 														     <?php }
 														     }else{ ?>
-															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now
+															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now pkno
 														     </a>   	
 															 <?php } ?>
 														</div>
@@ -3149,9 +3145,20 @@ echo $this->element('frontElements/Search/notification_check_login');
 				var msecsInADay = 86400000;
 				var endDate = new Date(selectedDate.getTime() + msecsInADay);
 		
-				$( "#bookingrequests-booking-end-date" ).datepicker( "option", "minDate", date );
+			  $( "#bookingrequests-booking-end-date" ).datepicker( "option", "minDate", date );
 				
-		  }
+		        var max = $(this).datepicker('getDate'); // Get selected date
+				$('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
+				var start = $("#bookingrequests-booking-start-date").datepicker("getDate");
+				var end = $("#bookingrequests-booking-end-date").datepicker("getDate");
+				var days = (end - start) / (1000 * 60 * 60 * 24);
+				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
+				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
+				$("#total_days").val(days);
+				if(days >= 0){
+					appendService();
+				}
+			}
 		 
 		});
 		
@@ -3166,61 +3173,24 @@ echo $this->element('frontElements/Search/notification_check_login');
 		  onClose: function( selectedDate ) {
 			//$( "#boardingFrom" ).datepicker( "option", "maxDate", selectedDate );
 			
-		  }
+		  },
+		   onSelect: function (dateStr) {
+				var max = $(this).datepicker('getDate'); // Get selected date
+				$('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
+				var start = $("#bookingrequests-booking-start-date").datepicker("getDate");
+				var end = $("#bookingrequests-booking-end-date").datepicker("getDate");
+				var days = (end - start) / (1000 * 60 * 60 * 24);
+				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
+				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
+				$("#total_days").val(days);
+				if(days >= 0){
+					appendService();
+				}
+			}
+		  
 		});
 		
-		/*
-		//Datepicker
-        $("#bookingrequests-booking-start-date").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'yy-mm-dd',
-             minDate: 0,
-            onClose: function(selectedDate) {
-                $("#bookingrequests-booking-end-date").datepicker("option", "minDate", selectedDate);
-            },
-            onSelect: function (dateStr) {
-				var max = $(this).datepicker('getDate'); // Get selected date
-				$('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
-				var start = $("#bookingrequests-booking-start-date").datepicker("getDate");
-				var end = $("#bookingrequests-booking-end-date").datepicker("getDate");
-				var days = (end - start) / (1000 * 60 * 60 * 24);
-				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
-				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
-				$("#total_days").val(days);
-				if(days){
-					appendService();
-				}
-			}
-        });
-        
-       
-        
-        $("#bookingrequests-booking-end-date").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'yy-mm-dd',
-            minDate: 0,
-            onClose: function(selectedDate) {
-                $("#bookingrequests-booking-start-date").datepicker("option", "maxDate", selectedDate);
-            },
-            onSelect: function (dateStr) {
-				var max = $(this).datepicker('getDate'); // Get selected date
-				$('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
-				var start = $("#bookingrequests-booking-start-date").datepicker("getDate");
-				var end = $("#bookingrequests-booking-end-date").datepicker("getDate");
-				var days = (end - start) / (1000 * 60 * 60 * 24);
-				$("#start_date").val($.datepicker.formatDate('dd/mm/yy',start));
-				$("#end_date").val($.datepicker.formatDate('dd/mm/yy',end));
-				$("#total_days").val(days);
-				if(days){
-					appendService();
-				}
-			}
-        }); */
-        
-       
-        /*Add different services with coma spareate */
+		/*Add different services with coma spareate */
         $("ul.booking-services li").click(function(){
             /*if ($(this).hasClass("new_active") == true){
                 $(this).removeClass("new_active");
@@ -3252,9 +3222,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				
 				 var total_days,from_date,to_date;
 				 	 
-				 	 
 				 var total_days_date_picker = $("#total_days").val();
-				 //alert(total_days_date_picker);
 				 if(total_days_date_picker != ""){
 					   total_days = parseInt(total_days_date_picker)+1;
 					   
@@ -3363,7 +3331,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 	 
 				 	 
 				 var total_days_date_picker = $("#total_days").val();
-				 //alert(total_days_date_picker);
+				
 				 if(total_days_date_picker != ""){
 					   total_days = parseInt(total_days_date_picker)+1;
 					   
@@ -3464,6 +3432,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				 	 
 				 	 
 				 var total_days_date_picker = $("#total_days").val();
+				 
 				 //alert(total_days_date_picker);
 				 if(total_days_date_picker != ""){
 					   total_days = parseInt(total_days_date_picker)+1;
