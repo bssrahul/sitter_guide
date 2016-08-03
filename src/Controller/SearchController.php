@@ -1560,13 +1560,10 @@ class SearchController extends AppController
 					}
 				}
 			}
-		
-		//pr($userData); die;
 		$this->set('resultsData',@$userData);
 		$this->set('distanceAssociation',@$distanceAssociation);
 		$this->set('sourceLocationLatitude',@$sourceLocationLatitude);
 		$this->set('sourceLocationLongitude',@$sourceLocationLongitude);
-		//$this->set('headerSearchVal',$this->request->data['location_autocomplete']);
 		$this->render("search");
 	}
 	/**
@@ -1592,14 +1589,16 @@ class SearchController extends AppController
 			$sitter_id = convert_uudecode(base64_decode($this->request->data['BookingRequests']['sitter_id']));
             $bookingRequestData = $bookingRequestsModel->newEntity();
             
-              if(!empty($this->request->data['guest_id_for_booking'])){
-				  $booking_guests = implode(",",$this->request->data['guest_id_for_booking']);
-				  $bookingRequestData->guest_id_for_bookinig = $booking_guests;
-			  }
+				 if(!empty($this->request->data['guest_id_for_booking'])){
+					  $booking_guests = implode(",",$this->request->data['guest_id_for_booking']);
+					  $bookingRequestData->guest_id_for_bookinig = $booking_guests;
+				 }
 			    
                 $bookingRequestData = $bookingRequestsModel->patchEntity($bookingRequestData, $this->request->data['BookingRequests'],['validate'=>false]);
+                
                 $bookingRequestData->user_id = $userId;
                 $bookingRequestData->sitter_id = $sitter_id;
+                
                 if($userType == "Sitter"){
 				  $bookingRequestData->request_by_sitter_id = $userId;
 				}
@@ -1611,7 +1610,8 @@ class SearchController extends AppController
 				  $bookingRequestData->additional_services = $additional_services;
 				}
                 if($bookingRequestsModel->save($bookingRequestData)){
-                	$replace = array('{name}','{email}');
+					//Send email
+					$replace = array('{name}','{email}');
 					$with = array($userName,$userEmail);
 					$this->send_email('',$replace,$with,'booking_request',$userEmail);
 					//Start Send message
