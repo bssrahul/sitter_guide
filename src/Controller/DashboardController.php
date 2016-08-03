@@ -2689,7 +2689,14 @@ function addPets(){
 		}
 		
 		$calendar = new  \Calendar();
-
+		/*
+		pr($services_array);
+		echo "<br/><hr/>";
+		pr($unavailbe_array);
+		echo "<br/><hr/>";
+		pr($availblityDaysOfSitter);
+		die;
+		*/
 		$this->set('calender',$calendar->show($services_array,$unavailbe_array,$availblityDaysOfSitter));
 		$this->set('services_array',$services_array);
 		

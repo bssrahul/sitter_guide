@@ -1916,7 +1916,7 @@ $(function () {
 			success:function(res)
 			{
 				$('#myCalender').html(res);	//DISPLAY RESPONSE ERRORS
-				//$('input[type=checkbox]').onoff();
+				$('input[type=checkbox]').onoff();
 			}
 		});
 	});
@@ -1935,7 +1935,7 @@ $(function () {
 			success:function(res)
 			{
 				$('#myCalender_recieved').html(res);	//DISPLAY RESPONSE ERRORS
-				//$('input[type=checkbox]').onoff();
+				$('input[type=checkbox]').onoff();
 			}
 		});
 	});
@@ -1955,7 +1955,7 @@ $(function () {
 			{
 				
 				$('#myCalender_send').html(res);	//DISPLAY RESPONSE ERRORS
-				//$('input[type=checkbox]').onoff();
+				$('input[type=checkbox]').onoff();
 			}
 		});
 	});
