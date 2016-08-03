@@ -28,7 +28,6 @@ require_once(ROOT . DS  . 'vendor' . DS  . 'Calendar' . DS . 'bookingSendCalenda
 use Calendar;
 use Calendarbooking;
 use Calendarbookingsendrequest;
-
 /**
  * Static content controller
  *
@@ -501,9 +500,6 @@ class DashboardController extends AppController
 		 }
 		 $this->set("threeMonthPaid",$threeMonthPaid);	
 		 $this->set("totalMonthPaid",$totalMonthPaid);	
-		 //pr($threeMonthPaid);die;
-		 //echo "okok";
-		// pr($threeMonthPaid);die;
 		 $this->set("totalPaidThisMonth",$totalPaidThisMonth); 
 		 //Earn
 		 $sitter_earn = 'SELECT MONTHNAME(`created`) , SUM( `amount` )
@@ -532,7 +528,6 @@ class DashboardController extends AppController
 	    }
 		 $this->set("threeMonthEarn",$threeMonthEarn);	 
 		 $this->set("totalMonthErn",$totalMonthErn);	
-		 //pr($threeMonthEarn);die; 
 		 $this->set("totalEarningThisMonth",$totalEarningThisMonth);
 		 //End
 		 $this->ajaxCalendarBooking();
@@ -2628,7 +2623,9 @@ function addPets(){
 		$this->set('reviewData',$reviewData);
 	
 	}
-	
+	/**
+	 * Function for show sitter availablity
+	 * */
 	public function calendar()
     {
 		
@@ -2662,11 +2659,9 @@ function addPets(){
 			$lastmodifieddate['market_place']=$calenderLastModified->market_place;
 		}
 		$this->set('lastmodifieddate',$lastmodifieddate);
-		//pr($lastmodifieddate);die;	
-		//pr($calenderLastModifiedData);die;	
+		
 		$unavailbe_array=array();
 		foreach($calenderData as $k=>$UserServices){
-			
 			$unavailbe_array[$k]["start_date"]= $UserServices->start_date;
 			$unavailbe_array[$k]["end_date"]= $UserServices->end_date;
 			$unavailbe_array[$k]["day_care_limit"]= $UserServices->day_care;
@@ -2675,8 +2670,7 @@ function addPets(){
 			$unavailbe_array[$k]["marketplace_limit"]= $UserServices->market_place;
 			$unavailbe_array[$k]["avail_status"]= $UserServices->avail_status;
 		}
-
-		$UserSitterServiceModel=TableRegistry::get("UserSitterServices");
+        $UserSitterServiceModel=TableRegistry::get("UserSitterServices");
 		$UserServicesData=$UserSitterServiceModel->find('all')->where(['user_id'=>$user_id])->toArray();
 
 		$services_array=array();
@@ -2689,7 +2683,9 @@ function addPets(){
 		}
 		
 		$calendar = new  \Calendar();
-
+		
+        //pr($availblityDaysOfSitter);die;
+        
 		$this->set('calender',$calendar->show($services_array,$unavailbe_array,$availblityDaysOfSitter));
 		$this->set('services_array',$services_array);
 		

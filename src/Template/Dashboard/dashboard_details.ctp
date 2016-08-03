@@ -1,6 +1,7 @@
 <?php       
 	$session = $this->request->session();
 	$userType = $session->read("User.user_type");
+	$username = $session->read("User.name");
 	$dog_in_home = $session->read("dog_in_home_status");
 	
 	echo $this->Html->css(['Front/dashboard_chart.css']); 
@@ -34,14 +35,14 @@
 						  <div class="revenue-icon">
 						  </div>
 						  <div class="topbox-text">
-							<h4> <?php echo @$totalEarningThisMonth; ?>
+							<h4> <?php echo @$totalMonthErn; ?>
 							</h4>
 							<p>Earning this month
 							</p>
 						  </div>
 						</div>
 						<div class="below-top-box">
-						  <p>Earning this month for (User Name)
+						  <p>Earning this month for (<?php echo @$username; ?>)
 						  </p>
 						</div>
 						<?php  
