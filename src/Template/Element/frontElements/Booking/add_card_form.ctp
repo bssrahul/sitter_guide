@@ -54,7 +54,7 @@
 									'maxlength'=>16,
 									'data-rel'=>'card_number_autofill',
 									'placeholder'=>"Card Number",
-									'value'=>isset($UserCardsData['card_number'])?$UserCardsData['card_number']:'',
+									'value'=>isset($UserCardsData['card_number'])?chunk_split($UserCardsData['card_number'], 4, ' '):'',
 									
 						]);
 						echo '<span class="signup_error">'.@$formError['card_number'][0].'</span>';
@@ -124,7 +124,7 @@
           <p class="card_holder_name_autofill"><?php echo isset($UserCardsData['card_holder_name'])?$UserCardsData['card_holder_name']:'Name on Card'; ?></p>
         </div>
         <div class="credit-card-no">
-          <p class="card_number_autofill"><?php echo isset($UserCardsData['card_number'])?$UserCardsData['card_number']:'XXXX XXXX XXXX XXXX'; ?></p>
+          <p class="card_number_autofill"><?php echo isset($UserCardsData['card_number'])?chunk_split($UserCardsData['card_number'], 4, ' '):'XXXX XXXX XXXX XXXX'; ?></p>
           <!-- <ul class="list-inline"><li>1234</li> <li>1234</li> <li>1234</li><li>1234</li></ul>-->
         </div>
         <div class="valid-up-to">

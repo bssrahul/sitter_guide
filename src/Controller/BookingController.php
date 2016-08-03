@@ -917,6 +917,16 @@ class BookingController extends AppController
 			
 			if($BookingRequestsModel->save($BookingRequestsData)){
 				
+				/*MAKE ALL THE CHAT READ */
+				$BookingChatsModel = TableRegistry::get('BookingChats');
+				$BookingChatsModel->query()
+						->update()
+						->set(['read_status' =>"read"])
+						->where(['booking_request_id' =>$bookingdata['Transactions']['booking_id']])
+						->execute();		
+				/*MAKE ALL THE CHAT READ */
+				
+				
 				//GET SESSION ID
 				//USER WHO IS BOOKING NEW REQUEST
 				$session = $this->request->session();
