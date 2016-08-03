@@ -2314,9 +2314,7 @@ $check_in=$UserRating->check_in_rating;
                               </style>
                             </div>
                           </div>
-                              <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
-								<p class="report1"><a data-target="#myModal8" data-toggle="modal" href="#"><i class=" fa fa-remove"></i> &nbsp; Report this Profile</a></p>
-							  </div>
+                              
                         </div>
                        
                       </div>

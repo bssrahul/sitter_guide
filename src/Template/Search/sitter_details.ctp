@@ -2066,14 +2066,14 @@ $check_in=$UserRating->check_in_rating;
 															 <?php if($userloginstatus){ 
 																 if($guests_Info == ""){
 																 ?>
-																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request">Book Now ok
+																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request">Book Now
 														     </a> 
 																<?php }else{ ?> 
-														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now no
+														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
 														     </a> 
 														     <?php }
 														     }else{ ?>
-															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now pkno
+															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now
 														     </a>   	
 															 <?php } ?>
 														</div>
@@ -3430,10 +3430,7 @@ echo $this->element('frontElements/Search/notification_check_login');
 				
 				 var total_days,from_date,to_date;
 				 	 
-				 	 
 				 var total_days_date_picker = $("#total_days").val();
-				 
-				 //alert(total_days_date_picker);
 				 if(total_days_date_picker != ""){
 					   total_days = parseInt(total_days_date_picker)+1;
 					   
