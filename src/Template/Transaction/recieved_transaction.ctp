@@ -57,6 +57,7 @@
 							<th>Location</th>
 							
 							<th class="numeric">Time</th>
+							<th class="numeric"></th>
 							
 						  </tr>
 						</thead>
@@ -91,7 +92,11 @@
 							</td>
 							<td data-title="Time" class="numeric"><?php echo isset($rating['created'])?date("F j, Y", strtotime($rating['created'])):'-----'; ?>
 							</td>
-						   
+						    <td>
+								<button type = "button" class = "btn btn-primary">
+								   withdrawal
+							    </button>
+						    </td>
 						  </tr>
 						<?php
 					}
