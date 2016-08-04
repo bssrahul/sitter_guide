@@ -20,12 +20,12 @@
 												<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                 <div class="news-rgt">													
 														<h4><?php echo $blog_info->title; ?></h4>
-														<h5><?php echo $this->requestAction('users/get-translate/'.base64_encode('Modified Date:')); ?>  
+														<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Modified Date:')); ?>  
 														<span><?php echo date("F  j,Y",strtotime($blog_info->modified_date)); ?></span></h5>
 														<p class="text-justify">
 														<?php $string=$blog_info->description;
 														echo $descdata=substr($string,0,250).'...';	?></p>
-														<a href="news-detail"><button class="btn btn-success news-btn"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Read more')); ?></button></a>                                                       
+														<a href="<?php echo HTTP_ROOT.'blog-details/'.base64_encode(convert_uuencode($blog_info->id)); ?>"><button class="btn btn-success news-btn"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read more')); ?></button></a>                                                       
                                                    </div>
 												</div>
 											</div>
