@@ -35,7 +35,7 @@
 						  <div class="revenue-icon">
 						  </div>
 						  <div class="topbox-text">
-							<h4> <?php echo @$totalMonthErn; ?>
+							<h4> <?php echo @$totalEarningThisMonth; ?>
 							</h4>
 							<p>Earning this month
 							</p>

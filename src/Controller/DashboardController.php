@@ -553,7 +553,7 @@ class DashboardController extends AppController
 													]
 				])
 		->hydrate(false)->toArray();
-		
+		//pr($get_requests);die;
 		$UsersModel = TableRegistry::get('Users');
 		
 		$client_stay_status["house_sitting"]=$client_stay_status["boarding"]=$client_stay_status["drop_in_visit"]=$client_stay_status["day_nigth_care"]=$client_stay_status["market_place"]=0;
@@ -594,6 +594,7 @@ class DashboardController extends AppController
 				}		
 			if($userActas == "Sitter" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_sitter'] == "pending"){
 				$bookingData[] = $booking_records;
+				
 			    //By guest Booking Dates
 				$booking_arr[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
 				$booking_arr[$booking_key]["end_date"]= $booking_records['booking_end_date'];
@@ -625,6 +626,7 @@ class DashboardController extends AppController
 			       $all_sitters_ids[] = $booking_records['sitter_id'];
 			 }
 			}
+			
 		}
 		$new_clients = 0;
 		$new_sitters = 0;
@@ -700,11 +702,9 @@ class DashboardController extends AppController
 				 $client_stay_status["alerts"]= 0;
 		}
 		 $calendar = new  \Calendarbooking();
-		 //$calendarsend = new  \Calendarbookingsendrequest();
 		 $this->set('calender',$calendar->show(@$booking_arr));
-		 //$this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
-        
-         $this->set('client_stay_status',$client_stay_status);
+		
+		 $this->set('client_stay_status',$client_stay_status);
          $this->set('booking_requests_info',$bookingData);	 
          $this->set('sitter_booking_info',$sitterbookingData);	 
 	}
@@ -764,8 +764,7 @@ class DashboardController extends AppController
 			 if($userActas == "Guest" && $booking_records['read_status'] == "unread" && $booking_records['folder_status_guest'] == "pending"){
 				 $as_guest_records[] = $booking_records;
 			   
-			      
-				
+			 
 				//Sitter available dates
 				$booking_request[$booking_key]["start_date"]= $booking_records['booknig_start_date'];
 				$booking_request[$booking_key]["end_date"]= $booking_records['booking_end_date'];
@@ -776,8 +775,9 @@ class DashboardController extends AppController
 		}
 		
 	     $calendarsend = new  \Calendarbookingsendrequest();
-	     //pr();die;
+	      
 		 $this->set('calendarsendrequest',$calendarsend->show(@$booking_request));
+		 
         	 
 	}
     /**
@@ -2647,9 +2647,7 @@ function addPets(){
 			$availblityDaysOfSitter = array();
 			$this->set('avail_days',$availblityDaysOfSitter);
 		}
-		
 		/*GET AVAILABLITY DAYS LIK SUNDAY, MONDAY ETC END*/
-		
 		$calenderLastModifiedData=$calendarModel->find('all',['order' => ['id' => 'DESC']])->where(['user_id'=>$user_id])->limit(1)->toArray();
 		$lastmodifieddate=array();
 		foreach($calenderLastModifiedData as $calenderLastModified){
