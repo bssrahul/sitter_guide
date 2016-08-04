@@ -154,7 +154,10 @@ topnav-area .navbar-nav li.last-drop .tab-content ul.c-list li a img {    margin
 /*
 .input-group {width:130px;	text-align:center;	padding-left:5px;	margin-top:5px;}*/
 
-#ui-datepicker-div{	z-index: 9999999 !important;}
+#ui-datepicker-div{	z-index:10 !important; overflow:hidden !important;}
+#ui-datepicker-month{ z-index:11;}
+#ui-datepicker-month option{ background:red;}
+#ui-datepicker-year{ z-index:12;}
 .unavailable{float:left;}
 .not_display {   display: none;}
 .content_disable{    color:#afafaf  !important;}
@@ -212,10 +215,13 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {    width: 45%;    b
 @media (max-width:480px) {
 .displayB{display:block !important;width:100% !important; margin-bottom:10px !important;}
 .mleft {    margin-left: 0 !important;}
-.signup-container a {		background: #f1f1f1 none repeat scroll 0 0;		font-size: 15px;	}
+.signup-container a {font-size: 15px;	}
 #addUsers .form-part div.form-group {		float: left;		width: 100%;	}
 #addUsers .form-part div.form-group:nth-child(2) {		float: right;		margin-left: 0px !important;	}
 .signup-container .form-part ul li {		float: left;		width: 100% !important;	}
+
+.success_msg{background: #4F9709 none repeat scroll 0 0; bottom:0px; color: #fff !important; cursor: pointer !important; float: right !important; opacity: 0.9 !important; padding: 5px;position: fixed !important;
+right:0px;text-align: center !important;  z-index:501 !important; width:100%; text-align:center;}
 
 }
 
