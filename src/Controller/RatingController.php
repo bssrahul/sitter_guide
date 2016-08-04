@@ -42,20 +42,16 @@ class RatingController extends AppController
 			exit();
 		}
     }
-	
 	public function initialize()
     {
 		parent::initialize();
-
-       //GET LOCALE VALUE
+        //GET LOCALE VALUE
 		$session = $this->request->session();
 		$setRequestedLanguageLocale  = $session->read('setRequestedLanguageLocale'); 
 		I18n::locale($setRequestedLanguageLocale);
-		
 		//$currentLang = $session->read('requestedLanguage');
 		$currentLocal = substr($setRequestedLanguageLocale,0,2);
 		$this->set('currentLocal', $currentLocal);
-		
 		// Loaded EmailTemplate Model
 		$SiteModel = TableRegistry::get('siteConfigurations');
 		$siteConfiguration = $SiteModel->find('all')->first();
@@ -63,24 +59,65 @@ class RatingController extends AppController
 		
 		$this->set('user_avail_bal', $this->getLoggedInUserBalance($session->read('User.id')));			
 	}
-	
-    public function myRating(){
+	public function myRating($rating_id = null){
 		$session = $this->request->session();
         $userId = $session->read('User.id');
 		
-		
 		$this->viewBuilder()->layout('profile_dashboard');
 		//Fetch Data Leading-sitting
-		$ratingModel=TableRegistry :: get('UserRatings');
+		$ratingModel = TableRegistry :: get('UserRatings');
+		$usersModel = TableRegistry :: get('Users');
 		
-		$ratingData = $ratingModel->find('all')->where(['user_to'=>$userId])->hydrate(false)->contain(['Users'=> 
-					function ($q){
-						return $q
-						->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded']);
-					}
-					])->toArray();
-		//pr($ratingData); die;
-		$this->set('ratingsdata',$ratingData);
+		if(isset($rating_id) && !empty($rating_id)){
+			 
+		     $rating_id = convert_uudecode(base64_decode($rating_id));
+		     
+		     $ratingInfo = $ratingModel->newEntity();
+		     $ratingInfo->id = $rating_id;
+		     $ratingInfo->change_to_request = 1;
+		     
+		     $ratingModel->save($ratingInfo);
+		     
+		     $rating_data = $ratingModel->get($rating_id);
+		     
+		     $userToInfo = $usersModel->get($rating_data->user_to);
+		     $userFromInfo = $usersModel->get($rating_data->user_from);
+		     
+		     $rating = $rating_data->rating;
+		     $comment = $rating_data->comment;
+		     $from_name = $userToInfo->first_name;
+		     $from_email = $userToInfo->email;
+		     $to_name = $userFromInfo->first_name;
+		     $to_email = $userFromInfo->email;
+		     
+		       $to_replace = array('{to_name}','{from_name}','{from_email}','{rating}','{comment}');
+			   
+               $to_with = array($to_name,$from_name,$from_email,$rating,$comment);
+               $from_with = array($to_name,$from_name,$from_email,$rating,$comment);
+               
+               $this->send_email('',$to_replace,$to_with,'rating_change_request_by',$to_email);
+			   $this->send_email('',$to_replace,$from_with,'rating_change_request_to',$from_email);
+			
+		    return $this->redirect(['controller' => 'rating', 'action' => 'my-rating']); 
+		}else{ 
+			$ratingData = $ratingModel->find('all')->where(['user_to'=>$userId])->hydrate(false)->contain(['Users'=> 
+						function ($q){
+							return $q
+							->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded']);
+						}
+						])->toArray();
+		
+			$ratingChangeStatus = 1;
+			foreach($ratingData as $rating){
+				
+			   	if($rating['change_to_request'] == 0){
+				    $ratingChangeStatus = 0;
+				    break;
+				}
+			}	
+			$this->set('ratingsdata',$ratingData);
+			$this->set('ratingChangeStatus',$ratingChangeStatus);
+	    }
 	}
 	
 	 public function sharedRating(){
@@ -105,7 +142,6 @@ class RatingController extends AppController
 			}							
 		}
 		
-		//pr($ratingData); die;
 		$this->set('ratingsdata',$ratingData);
 	}
 	

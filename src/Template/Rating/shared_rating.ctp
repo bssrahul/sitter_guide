@@ -3,7 +3,7 @@
   <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
     <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
       <h3>
-        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Transaction
+        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Review
       </h3>
     </div>
     <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
@@ -11,10 +11,10 @@
         <li> You are here : 
         </li>
         <li>
-          <a href="#">Home
+          <a href="<?php echo HTTP_ROOT; ?>">Home
           </a>
         </li>
-        <li class="active">Transaction
+        <li class="active">Review
         </li>
       </ol>
     </div>
@@ -57,6 +57,8 @@
 							<th>Location</th>
 							
 							<th class="numeric">Time</th>
+							
+							
 							
 						  </tr>
 						</thead>
@@ -213,7 +215,7 @@
 							</td>
 							<td data-title="Time" class="numeric"><?php echo isset($rating['created_date'])?date("F j, Y", strtotime($rating['created_date'])):'-----'; ?>
 							</td>
-						   
+							  
 						  </tr>
 						<?php
 					}
