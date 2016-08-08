@@ -17,7 +17,7 @@
 			
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				
-				<h5 class="review1-thead">Search Results Favourites</h5>
+				<h5 class="review1-thead">Favourite Clients</h5>
 					
 					<div class="row">
 					  

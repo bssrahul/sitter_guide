@@ -58,13 +58,17 @@
 							
 							<th class="numeric">Time</th>
 							<th class="numeric"></th>
-							
+							<th> Favourate Clients</th>
 						  </tr>
 						</thead>
 						
 						<tbody>
 				<?php		
 					foreach($transactionData as $rating){
+					//	echo "<pre>"; print_r($transactionData['user_id']);
+					//	echo "us".$userId; 
+					//	echo "<pre>"; print_r($rating);
+						//echo $FillsitterId=$rating['user_id']; die;
 						?>
 						 <tr>
 							<td data-title="Member" class="width220">
@@ -97,6 +101,29 @@
 								   withdrawal
 							    </button>
 						    </td>
+						    <td>
+									 <!--likebox-->
+									
+								  <div class="likebox favourite_sitter1"> 
+									
+										<?php //echo "<pre>"; print_r($rating['fav_clients'][0]['sitter_id']); ?>
+										<?php if(!empty(@$rating['fav_clients'])){ ?>
+											<a data-count="<?php echo @$rating['fav_clients'][0]['sitter_id']; ?>" href="javascript:void(0);" class="unlike favouriteSection" data-href="<?php echo HTTP_ROOT.'Favclient/favorite-client/'.base64_encode(convert_uuencode(@$rating['fav_clients'][0]['sitter_id'])).'/'.base64_encode(convert_uuencode(@$rating['fav_clients'][0]['user_id'])); ?>"> <i class="icon-lock fa fa-heart heart-pos"></i>
+											</a>
+										<?php }else if(!empty($userId)){ ?>
+																	
+											<a data-count="<?php echo @$rating['fav_clients'][0]['sitter_id']; ?>" href="javascript:void(0);" class="like favouriteSection" data-href="<?php echo HTTP_ROOT.'Favclient/favorite-client/'.base64_encode(convert_uuencode(@$rating['user_id'])).'/'.base64_encode(convert_uuencode(@$userId)); ?>">
+											 <i class="icon-unlock fa fa-heart-o heart-pos"></i>
+											</a>
+										<?php } ?>
+										<div class="Title_sub likeLoader" style="display:none;position: relative; float: right; right: 30px; bottom: 3px;"> 
+											<img src="<?php echo HTTP_ROOT; ?>img/ajax_wait.gif"> 
+										</div>
+																  
+								  </div>
+								 
+								 <!--likebox--> 
+							</td>
 						  </tr>
 						<?php
 					}
@@ -124,3 +151,5 @@
     </div>
   </div>
 </div>
+
+
