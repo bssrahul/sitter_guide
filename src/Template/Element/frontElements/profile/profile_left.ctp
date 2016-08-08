@@ -25,6 +25,8 @@
 						  $dashboard_class='class=""';
 						  
 					  }?>
+					  
+					  
 					   <?php if($requestAction=='promote'){
 						  
 						  $promote_class='class="active"';
@@ -81,17 +83,18 @@
 							</div>
 						</li>
 						
-						<li class="panel panel-default <?php if(trim($requestController)=='Dashboard' || (trim($requestAction)=='searchResultsFavourites')){echo 'active';}else{echo '';}?>" id="dropdown">
+						<li class="panel panel-default <?php if((trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')) || (trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients'))){echo 'active';}else{echo '';}?>" id="dropdown">
 							<a data-toggle="collapse" href="#dropdown-lvl2">
 								<span class="fa fa-thumbs-up"></span><span class="side-list">Favourites </span>
 							</a>
 
 						
-							<div id="dropdown-lvl2" class="panel-collapse <?php if(trim($requestController)=='Dashboard' || (trim($requestAction)=='searchResultsFavourites')){echo 'in';}else{echo '';}?> collapse">
+							<div id="dropdown-lvl2" class="panel-collapse <?php if((trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')) || (trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients'))){echo 'in';}else{echo '';}?> collapse">
 								<div class="panel-body">
 									<ul class="nav navbar-nav">
 										<li ><a href="<?php echo HTTP_ROOT.'dashboard/search-results-favourites'?>" class="<?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
-										<li><a href="<?php echo HTTP_ROOT.'dashboard/favourite-clients'?>" class="<?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='favouriteClients')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; Favourite Clients</a></li>
+										
+										<li><a href="<?php echo HTTP_ROOT.'favclient/favourite-clients'?>" class="<?php if(trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; Favourite Clients</a></li>
 									</ul>
 								</div>
 							</div>
