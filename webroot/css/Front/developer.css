@@ -6,9 +6,7 @@ label.error{ color: #ff5a5f !important; font-size: 12px !important; font-weight:
 .response_msg_container { position: relative !important;   top: 7px !important;}
 p.successMessage {    color: #4F9709;    font-size: 12px !important;    position: relative;    top: 0px;    font-weight: 500 !important;}
 p.errorMessage {    color: #DF1C2A;   font-size: 12px !important;    position: relative;    top: 0px;    font-weight: 500 !important;}
-.success_msg{background: #4F9709 none repeat scroll 0 0; bottom: 10px; color: #fff !important; cursor: pointer !important; float: right !important; opacity: 0.9 !important; padding: 5px;position: fixed !important;
-right: 7px;text-align: center !important;  z-index: 9999 !important;}
-
+.success_msg{background: #4F9709 none repeat scroll 0 0; bottom: 10px; color:#fff ; cursor: pointer; float:right; opacity: 0.9; padding: 5px;position: fixed;right: 7px;text-align: center;  z-index: 9999;}
 .error_msg {background: #df1c2a none repeat scroll 0 0; bottom: 10px; color: #fff !important; cursor: pointer !important; float: right !important; opacity: 0.9 !important; padding: 5px; position: fixed !important;
 right: 7px;  text-align: center !important; z-index: 9999 !important;}
 label.error { position: relative; top: 0px;}
@@ -211,7 +209,7 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {    width: 45%;    b
 .btn-mg-left { margin-left: 15px }
 .f13 { font-size:13px;}
 .onoffswitch {    -moz-user-select: none;    position: relative;    right: 5px;    top: 0;    width: 40px;}
-
+}
 @media (max-width:480px) {
 .displayB{display:block !important;width:100% !important; margin-bottom:10px !important;}
 .mleft {    margin-left: 0 !important;}
@@ -219,10 +217,6 @@ datepicker-month, .ui-datepicker select.ui-datepicker-year {    width: 45%;    b
 #addUsers .form-part div.form-group {		float: left;		width: 100%;	}
 #addUsers .form-part div.form-group:nth-child(2) {		float: right;		margin-left: 0px !important;	}
 .signup-container .form-part ul li {		float: left;		width: 100% !important;	}
-
-.success_msg{background: #4F9709 none repeat scroll 0 0; bottom:0px; color: #fff !important; cursor: pointer !important; float: right !important; opacity: 0.9 !important; padding: 5px;position: fixed !important;
-right:0px;text-align: center !important;  z-index:501 !important; width:100%; text-align:center;}
-
 }
 
 @media (max-width:991px) {
@@ -237,7 +231,7 @@ promolink {  font-size: 14px;    position: relative;    text-align: right;    to
 .prelative { position:relative !important;}
 .pabsolute { position:absolute !important; top:0px !important;}
 .pabsolute1 { position:absolute !important; top:10px !important;}
-.rating1 {    border: medium none;    float: left;    left: 0;    position: absolute;    top: 0px;}
+.rating1 {    border: medium none;  float: left;    left: 0;    position: absolute;    top: 0px;}
 #totalreview { margin:-7px 0 0 0;}
 #totalreview .rating > label:before {   margin: 0px 1px 0px 1px !important;}
 
@@ -252,3 +246,10 @@ div.more-sitter img{width:125px;height:125px;}
 .radio-inline.pl25 {  padding-left: 25px !important;}
 #payment-box .right-content-wrap .top-box-wrap .night-sitt { text-align: center !important; padding:0px !important; border:none !important;}
 
+@media (min-width:481px) and (max-width:640px){
+.success_msg{ bottom:0px !important ; right:0px !important; width:100% !important; }
+}
+
+@media (min-width:320px) and (max-width:480px){
+.success_msg{ bottom:0px !important ; right:0px !important; width:100% !important; }
+}

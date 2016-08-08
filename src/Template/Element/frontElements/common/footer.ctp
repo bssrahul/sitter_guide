@@ -340,3 +340,13 @@ $(document)
 }
 
 </style>
+<?php			
+	echo $this->Html->script(['Front/vendorscript.js','Front/video.js']);
+?>
+<script>
+$(document).ready(function(){
+    $("#myBtnv").click(function(){
+        $("#myModalv").modal();
+    });
+});
+</script>
