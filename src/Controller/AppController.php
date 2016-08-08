@@ -495,8 +495,7 @@ class AppController extends Controller{
 		{	
 			//pr($template_info); die;
 		}
-		
-		$this->Email = new Email('email_gmail');
+		$this->Email = new Email();
 		try {
 		
 			ob_start();
@@ -801,7 +800,7 @@ class AppController extends Controller{
 		if($usersModel->save($userData)){
 			$userData = $usersModel->get($userId);
 			if(!empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
-				  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your phone number, Your verification code is ".$userData->otp;
+				  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your Ph No. on Sitter Guide, Your verification code is ".$userData->otp;
 				  $phone_number = $userData->phone;
 				  $country_code = $userData->country_code;
 				 
@@ -832,7 +831,7 @@ class AppController extends Controller{
 				throw new Exception("Please provide phone number and message for send\n\n");
 			try{
 				$message = new \Catapult\Message(array(
-						"from" => '+91872582153',
+						"from" => '+61400751702',
 						"to" => '+'.$country_code.$to_mobile_number,
 						"text" => $message_body
 				));
@@ -845,12 +844,15 @@ class AppController extends Controller{
 			//INCLUDE TWILIO LIABRARY
 			require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
 			//CREATE STRIPE OBJECT
+			
+			
 			$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
+							
             //SEND MESSAGE VIA TWILIO API CALL
 			try {
 				$output = $client->account->messages->create(array( 
-					'To' => '+16518675309', 
-					'From' => "+14158141829", 				
+					'From' => '+61400751702', 
+					'To' => '+'.$country_code.$to_mobile_number,
 					'Body' => $message_body
 				));
 			

@@ -457,7 +457,7 @@ class BookingController extends AppController
 					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
 						$to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
 						$message_body = $get_booking_requests_to_display['user']['first_name']." ".@$get_booking_requests_to_display['user']['last_name']." have accepted your request,kindly proceed for payment.";	
-						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
+						$send_message = $this->sendMessages($to_mobile_number, $message_body, $get_user_communications_details['country_code']);   
 					  } 
 					   
 					   

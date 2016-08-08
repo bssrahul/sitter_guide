@@ -130,25 +130,23 @@ p.cap span {    float: left;    text-align: right;    width: 50%;}
 .tab-sectioninner h3 span {color:#7cab0d; }
 .tab-sectioninner label {    font-weight: normal;    margin-bottom: 10px;    font-style: 16px;    color: #222d3d;}
 
-.tab-sectioninner input.form-control {    border-radius: 3px;    box-shadow: none;    height: 40px;    margin-bottom: 0;      border: 1px solid #aaaaaa;}
-.tab-sectioninner select.form-control {    -moz-appearance: none;    background-image: url("../../img/arw.png");    background-position: right 15px center;    background-repeat: no-repeat;    border-radius: 3px;
-    box-shadow: none;    height: 40px;      border: 1px solid #aaaaaa;      background-position-x: 97%; background-position-y: 50%;}
-.tab-content textarea{    border-radius: 3px;    box-shadow: none;    height: 46px;    margin-bottom: 15px;    min-height:100px;    width: 100%;     border: 1px solid #aaaaaa;    font-size: 12px;    font-style: italic;
-    padding: 5px;    resize: none;}
-.upload-side {     margin-left: -20px;    margin-top: 2px;    display: none !important;}
-.btn.Continue {    background: #83b314;    border: 1px solid #83b314;    border-radius: 3px;    color: #fff;    font-size: 18px; padding: 6px 34px;}
-.brow-inner button {    position: absolute;    right: 5px;    top: 3px;    background: #d8d8d8;    border: 1px solid #cccccc;}
-.brow-inner {    position: relative;}
-#menu3 h3 {    color: #434343;    font-size: 17px;}
-#menu3 h3 small {    color: #72a105;    font-size: 14px;    margin-left: 5px;}
-p.browse-p {    font-size: 16px;    font-weight: bold;}
-.sp-tb {    margin-top: 30px;    margin-bottom: 30px;}
-.btn.previous {   background: transparent none repeat scroll 0 0;   border: 1px solid #83b314;    border-radius: 3px;    color: #83b314;    font-size: 18px;    margin-right: 20px;    padding: 6px 34px;}
-.emp-mobile {    height: 32px;}
-.btn.Continue:hover {   border: 1px solid #83b314;    background: transparent;    color:#83b314; }
+.tab-sectioninner input.form-control {    border-radius: 3px;    box-shadow: none;    height: 40px;    margin-bottom: 0;      border: 1px solid #aaaaaa; background:#ffffff; font-size:13px; color:#404040;}
+.tab-sectioninner select.form-control {    -moz-appearance: none;    background-image: url("../../img/arw.png");background-position: right 15px center; background-repeat: no-repeat; border-radius: 3px; box-shadow: none;   height: 40px;   border: 1px solid #aaaaaa;      background-position-x: 97%; background-position-y: 50%;}
+.tab-content textarea{ border-radius: 3px; box-shadow:none; height:46px; margin-bottom:15px; min-height:100px; width:100%; border: 1px solid #aaaaaa;    font-size: 12px;    font-style: italic; padding: 5px;    resize: none;}
+.upload-side {  margin-left: -20px;    margin-top: 2px;    display: none !important;}
+.btn.Continue { background: #83b314;    border: 1px solid #83b314;    border-radius: 3px;    color: #fff;    font-size: 18px; padding: 6px 34px;}
+.brow-inner button { position:absolute;   right:3px;    top: 3px;    background: #d2d2d2;    border: 1px solid #bcbcbc; }
+.brow-inner { position: relative;}
+#menu3 h3 { color: #434343;    font-size: 17px;}
+#menu3 h3 small {color: #72a105;    font-size: 14px;    margin-left: 5px;}
+p.browse-p { font-size: 16px;    font-weight: bold;}
+.sp-tb { margin-top: 30px;    margin-bottom: 30px;}
+.btn.previous { background: transparent none repeat scroll 0 0;   border: 1px solid #83b314;    border-radius: 3px;    color: #83b314;    font-size: 18px;    margin-right: 20px;    padding: 6px 34px;}
+.emp-mobile { height: 32px;}
+.btn.Continue:hover { border: 1px solid #83b314;    background: transparent;    color:#83b314; }
 .tab-sectioninner h3::before {   border-top: 1px solid #7cab0d;    bottom: -1px;    content: "";    position: absolute;    right: 0;    width: 10%;}
-.text-italic input {    font-size: 13px;    font-style: italic;}
-.radio-center span {    margin-right: 30%;}
+.text-italic input {font-size: 13px;    font-style: italic;}
+.radio-center span { margin-right: 30%;}
 #menu2 p {    width: 100%;   /* float: left;*/}
 .upload-section img {   background: #fff none repeat scroll 0 0;    border: 1px solid #aaaaaa;    padding: 20px;    float: left;    margin-right: 10px;}
 .upload-section span {   color: #929191;    float: left;    font-size: 12px;    font-style: italic; }
@@ -411,6 +409,9 @@ p.min-hh { min-height: 120px;}
 .profiletab-section ul.three-tab li a{ padding:8px 0; margin:0px; display:block;}  
 .profiletab-section ul.three-tab li.active::after{ border:0px; }	
 
+#sitter-experience{ font-size:14px; font-weight:500;}
+#menu3 h3{ font-size:13px; line-height:18px;}
+
 p.browse-p{ font-size:14px;}
 .browse-p button { margin:0 0 0 10px;}	
 .tab-sectioninner label { font-size:12px;}
@@ -420,7 +421,6 @@ p.browse-p{ font-size:14px;}
 .head-font2 {font-size:14px;}
 
 .invisi-no { display:none; }
-
 
 }
 
