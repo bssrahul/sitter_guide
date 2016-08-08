@@ -106,7 +106,7 @@ class RatingController extends AppController
 							->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded']);
 						}
 						])->toArray();
-		
+		//echo"<pre>"; print_r($ratingData);die;
 			$ratingChangeStatus = 1;
 			foreach($ratingData as $rating){
 				
@@ -130,6 +130,29 @@ class RatingController extends AppController
 		//Fetch Data Leading-sitting
 		
 		$ratingModel=TableRegistry :: get('UserRatings');
+		
+		//$usersModel = TableRegistry :: get('Users');
+		
+		/*if(isset($rating_id) && !empty($rating_id)){
+			 
+		     $rating_id = convert_uudecode(base64_decode($rating_id));
+		     
+		     $ratingInfo = $ratingModel->newEntity();
+		     $ratingInfo->id = $rating_id;
+		     $ratingInfo->change_to_request = 1;
+		     
+		     $ratingModel->save($ratingInfo);
+		     
+		     $rating_infodata = $ratingModel->get($rating_id);
+			 $editRatingUserID=@$rating_infodata['user_to'];
+			 $editRatingBookinId=@$rating_infodata['booking_id'];
+		    // echo "<pre>"; print_r(@$rating_infodata);die;
+		     $this->set('rating_infodata',$rating_infodata);
+		    // $this->set('editRatingBookinId',$editRatingBookinId);
+		}*/
+		
+		
+		
 						
 		$ratingData = 	$ratingModel->find('all')
 									->where(['user_from'=>$userId])
@@ -141,7 +164,8 @@ class RatingController extends AppController
 				$ratingData[$k]['user'] = $userModel->find('all')->select(['image','first_name','last_name','state','country','facebook_id','is_image_uploaded'])->where(['Users.id'=>$v['user_to']])->hydrate(false)->first();
 			}							
 		}
-		
+		//echo $editRatingId=$ratingData[0]['user_from'];
+		//echo"<pre>"; print_r($ratingData);die;
 		$this->set('ratingsdata',$ratingData);
 	}
 	
