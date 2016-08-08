@@ -120,6 +120,9 @@ class TransactionController extends AppController
 		//Fetch Data Leading-sitting
 		$BookingRequestsModel = TableRegistry::get('BookingRequests');
 		$TransactionModel=TableRegistry :: get('Transactions');
+		$FavclientModel=TableRegistry :: get('FavClients');
+		$FavclientData= $FavclientModel->find('all')->where(['user_id'=>$userId])->toArray();
+		//echo "<pre>"; print_r($FavclientData); die;
 		
 		$get_requests = $BookingRequestsModel->find('all')
 		->where(["BookingRequests.sitter_id = $userId"])
@@ -128,7 +131,6 @@ class TransactionController extends AppController
 		//pr($get_requests); die;
 		if(!empty($get_requests)){
 			foreach($get_requests as $req){
-				
 				$transactionData = $TransactionModel->find('all')
 					->where(['Transactions.user_id'=>$req['user_id']])
 					->hydrate(false)
@@ -142,8 +144,11 @@ class TransactionController extends AppController
 								return $q
 								->select(['sitter_id']);
 							}
-						])			
-							
+						])		
+						->contain(['FavClients' => function($q) use ($userId){
+                   				return $q
+								->select(['user_id','sitter_id'])->where(['user_id'=>$userId]);
+							}])					
 					->toArray();
 				if(!empty($transactionData)){
 			
@@ -163,8 +168,10 @@ class TransactionController extends AppController
 			}
 			
 		}
-		
+		//echo "<pre>"; print_r($transactionData);die;
+		$this->set('userId',$userId);
 		$this->set('transactionData',$transactionData);
+		$this->set('FavclientData',$FavclientData);
 	}
 	
 	

@@ -20,6 +20,10 @@ class TransactionsTable extends Table
 			 'foreignKey' => 'id',
 			 'bindingKey' => 'user_id'
 		 ]);
+		 $this->hasMany('FavClients', [
+			 'foreignKey' => 'sitter_id',
+			 'bindingKey' => 'user_id'
+		 ]);
 		
 	}
 }

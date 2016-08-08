@@ -2893,6 +2893,36 @@ function addPets(){
 						;
 					}
 					]);
+										//echo "<pre>"; print_r($favourateData);die;
+		$this->set('FavUsersdata',$this->paginate($favourateData));
+	}
+	
+	public function favouriteClients(){
+		$session = $this->request->session();
+        $userId = $session->read('User.id');
+		
+		$this->viewBuilder()->layout('profile_dashboard');
+		//Fetch Data Leading-sitting
+		$UsersModel=TableRegistry :: get('Users');
+		$FavourateModel=TableRegistry :: get('FavClients');
+		
+		$favourateData = $FavourateModel->find('all', [
+		'fields' => [
+					'sitter_id' => 'FavClients.sitter_id',
+					'count_favourate' => 'COUNT(FavClients.sitter_id)',
+					
+					],
+					 'order' => ['count_favourate' => 'DESC'],
+					 'group' => ['FavClients.sitter_id'],
+					])->where(['user_id'=>$userId])->hydrate(false)->contain(['Users'=> 
+					function ($q){
+						return $q
+						->select(['id','image','first_name','last_name','city'])
+						->contain(['UserRatings'])
+						;
+					}
+					]);
+					//echo "<pre>"; print_r($favourateData);die;
 		$this->set('FavUsersdata',$this->paginate($favourateData));
 	}
 	
