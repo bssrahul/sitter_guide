@@ -2612,6 +2612,86 @@ function addPets(){
 		
     }
     
+    
+    //Function for user rating
+	public function editUserReview($bookingId=null,$userTo=null,$ratingId=null)
+    {
+		
+		$bookingId = convert_uudecode(base64_decode($bookingId))."<br>";
+		$userTo = convert_uudecode(base64_decode($userTo))."<br>";
+		$ratingId = convert_uudecode(base64_decode($ratingId))."<br>";
+		$this->viewBuilder()->layout('profile_dashboard');
+		$session = $this->request->session();
+		$userId = $session->read('User.id');
+		$ratingModel=TableRegistry :: get('UserRatings');
+		$UserRatings=$ratingModel->find('all')->where(['id'=>$ratingId])->toArray();
+		$newratingData=$ratingModel->newEntity();
+		$UserModel=TableRegistry::get('Users');
+		$to_user_info = $UserModel->find('all')
+				   ->where(['Users.id'=>$userTo])->hydrate(false)->select(['id','image','first_name','last_name','city','is_image_uploaded','facebook_id'])->first();
+				   
+			 	
+		$this->set("to_user_info",$to_user_info);	
+		if ($this->request->is('POST')) {
+			//echo "<pre>"; print_R($this->request->data);die;
+			$newratingData=$ratingModel->patchEntity($newratingData,$this->request->data['UserRatings'],['validate'=>"update"]);
+						
+						 $accuracy_rating=$this->request->data['UserRatings']['accuracy_rating'];
+						 $communication_rating=$this->request->data['UserRatings']['communication_rating'];
+						 $cleanliness_rating=$this->request->data['UserRatings']['cleanliness_rating'];
+						 $check_in_rating=$this->request->data['UserRatings']['check_in_rating'];
+						 $location_rating=$this->request->data['UserRatings']['location_rating'];
+						
+						
+						$rating=(($accuracy_rating + $communication_rating + $cleanliness_rating + $check_in_rating + $location_rating)/5);
+						
+						
+				$newratingData->id=$this->request->data['UserRatings']['id'];
+				$newratingData->user_from=$userId;
+				$newratingData->rating=$rating;
+				$newratingData->change_to_request='0';
+			
+			if($ratingModel->save($newratingData)){
+			
+				$this->Flash->success(__('Changes has been done.'));
+				return $this->redirect(['controller' => 'rating', 'action' => 'shared-rating']);
+		
+			}else{
+	
+				$this->Flash->error(__('Changes has been done.'));
+			
+			}	
+		} 
+	  
+	    
+	    
+	    
+	    /*
+		if($this->request->is('POST')){
+			echo "<pre>"; print_R($this->request->data);
+						echo $id=$this->request->data['ratingid'];
+						echo $booking_id=$this->request->data['booking_id'];
+						echo $user_to=$this->request->data['user_to'];
+						
+						echo $accuracy_rating= $this->request->data['UserRatings']['accuracy_rating'];
+						echo $communication_rating=$this->request->data['UserRatings']['communication_rating'];
+						echo $cleanliness_rating=$this->request->data['UserRatings']['cleanliness_rating'];
+						echo $check_in_rating=$this->request->data['UserRatings']['check_in_rating'];
+						echo $location_rating=$this->request->data['UserRatings']['location_rating'];
+						
+						
+						$rating=(($accuracy_rating + $communication_rating + $cleanliness_rating + $check_in_rating + $location_rating)/5);
+						
+						//echo $rating=$UserRating->rating;
+						echo $comment=$this->request->data['UserRatings']['comment'];
+						//echo $change_to_request=$UserRating->change_to_request;
+						die;
+			$bookingId = $this->request->data["booking_id"];
+		}*/
+		$this->set('UserRatings',$UserRatings);
+		
+    }
+    
 	public function editReview(){
 		
 		$this->viewBuilder()->layout('profile_dashboard');

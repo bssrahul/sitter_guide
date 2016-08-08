@@ -218,13 +218,21 @@
 							</td>
 							<td data-title="Time" class="numeric"><?php echo isset($rating['created_date'])?date("F j, Y", strtotime($rating['created_date'])):'-----'; ?>
 							</td>
+							 <td>
 							<?php if($rating['change_to_request'] == 0){ ?>
-						    <td>
+						    <!-- <td>
 								   <button type = "button" class = "btn btn-primary" onclick="location.href='<?php echo HTTP_ROOT."rating/my-rating/".base64_encode(convert_uuencode(@$rating['id'])); ?>'">
 									  Change To Request 
 								   </button>
-							 </td>
+							 </td> -->
+							 
+							
+								   <button type = "button" class = "btn btn-primary" onclick="location.href='<?php echo HTTP_ROOT."rating/shared-rating/".base64_encode(convert_uuencode(@$rating['id'])); ?>'">
+									  Change To Request 
+								   </button>
+							
 							 <?php } ?>
+							  </td> 
 						  </tr>
 						<?php
 					}
