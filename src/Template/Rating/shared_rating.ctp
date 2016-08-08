@@ -50,21 +50,23 @@
 							
 							<th class="pad-l20">Member</th>
 							
-							<th>Rating</th>
+							<th class="pad-l20">Rating</th>
 							
 							<th>Description</th>
 							
 							<th>Location</th>
 							
 							<th class="numeric">Time</th>
-							
-							
+						<?php	foreach($ratingsdata as $rating){
+								if($rating['change_to_request']== 1){ ?>
+							<th style="width=50px"></th>	
+						<?php } }?>							
 							
 						  </tr>
 						</thead>
 						
 						<tbody>
-				<?php		
+				<?php	
 					foreach($ratingsdata as $rating){
 						?>
 						 <tr>
@@ -215,7 +217,19 @@
 							</td>
 							<td data-title="Time" class="numeric"><?php echo isset($rating['created_date'])?date("F j, Y", strtotime($rating['created_date'])):'-----'; ?>
 							</td>
-							  
+							<td >
+							<?php if($rating['change_to_request'] == 1){ ?>
+						    
+								
+								 <a href="<?php echo HTTP_ROOT.'dashboard/edit-user-review/'.base64_encode(convert_uuencode($rating['booking_id'])).'/'.base64_encode(convert_uuencode($rating['user_to'])).'/'.base64_encode(convert_uuencode($rating['id']))?>">						<button class="btn  bt-now">
+							<i class="fa fa-star">
+									</i>
+									Edit Rating
+								</button>
+								</a>
+							 
+							 <?php }?>
+							 </td>
 						  </tr>
 						<?php
 					}
