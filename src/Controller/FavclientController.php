@@ -88,8 +88,7 @@ class FavclientController extends AppController
 					function ($q){
 						return $q
 						->select(['id','image','first_name','last_name','city'])
-						->contain(['UserRatings'])
-						;
+						->contain(['UserRatings']);
 					}
 					]);
 					//echo "<pre>"; print_r($favourateData);die;

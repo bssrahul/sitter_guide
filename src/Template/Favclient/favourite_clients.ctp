@@ -48,19 +48,21 @@
 												$check_sum = 0;
 												$rating_sum = 0;
 												$count=0;
-												foreach($UserRatingData as $UserRating){
-													//echo $UserRating['id'];
-												$count++;
-												$accuracy_rating=$UserRating['accuracy_rating'];
-												$communication_rating=$UserRating['communication_rating'];
-												$cleanliness_rating=$UserRating['cleanliness_rating'];
-												$location_rating=$UserRating['location_rating'];
-												$check_in_rating=$UserRating['check_in_rating'];
-												$accuracy_sum = $accuracy_sum + $accuracy_rating;
-												$comm_sum = $comm_sum + $communication_rating;
-												$clean_sum = $clean_sum + $cleanliness_rating;
-												$location_sum = $location_sum + $location_rating;
-												$check_sum = $check_sum + $check_in_rating;
+												if(!empty($UserRatingData)){
+													foreach($UserRatingData as $UserRating){
+														//echo $UserRating['id'];
+														$count++;
+														$accuracy_rating=$UserRating['accuracy_rating'];
+														$communication_rating=$UserRating['communication_rating'];
+														$cleanliness_rating=$UserRating['cleanliness_rating'];
+														$location_rating=$UserRating['location_rating'];
+														$check_in_rating=$UserRating['check_in_rating'];
+														$accuracy_sum = $accuracy_sum + $accuracy_rating;
+														$comm_sum = $comm_sum + $communication_rating;
+														$clean_sum = $clean_sum + $cleanliness_rating;
+														$location_sum = $location_sum + $location_rating;
+														$check_sum = $check_sum + $check_in_rating;
+													}
 												}
 												if($count > 0){
 												$ac=$accuracy_sum/$count;
