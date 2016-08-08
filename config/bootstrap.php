@@ -235,6 +235,7 @@ define('SITE_OWNER_EMAIL','mike@razznation.com');
 
 define('CURRENT_YEAR',date("Y"));
 define('NEW_BOOKING_MESSAGE','You have been received new booking request');
+define('BOOKING_DECLINED_MESSAGE','Your booking request has been declined.');
 
 define('REFERAL_BONUS',20);
 define('DEFAULT_CITY','Sydney Australia');

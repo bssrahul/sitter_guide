@@ -495,6 +495,41 @@ class MessageController extends AppController
 						->set(['folder_status_'.$data_user =>$folder_status])
 						->where(['id' => $booking_msg_id])
 						->execute()){
+							
+			/*SEND MESSAGE FUNCTIONALITY FOR BOOKING DECLINED */
+			
+			$get_requests = $BookingRequestsModel->find('all')
+			->where(["BookingRequests.id = $booking_msg_id"])
+			->first();
+				   
+			$get_user_communications_details = $this->getUserCommunicationDetails($get_requests->user_id);
+			
+			if(!empty($get_user_communications_details)){
+
+				  if($get_user_communications_details['communication']['booking_declined'] == 1){
+
+					$to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+
+					$country_code = $get_user_communications_details['country_code'];
+					
+					$message_body = BOOKING_DECLINED_MESSAGE; 
+					
+					$send_message = $this->sendMessages($to_mobile_number, $message_body,$country_code);   
+
+				 }
+
+			}
+			/*SEND MESSAGE FUNCTIONALITY FOR BOOKING DECLINED */
+			
+			/*SEND EMAIL FUNCTIONALITY FOR BOOKING DECLINED */
+			
+			$replace = array('{name}','{email}');
+			
+			$with = array($get_requests->first_name." ".$get_requests->last_name,$get_user_communications_details['first_name']." ".$get_user_communications_details['first_name']);
+			
+			$this->send_email('',$replace,$with,'booking_request_declined',$userEmail);
+			/*SEND EMAIL FUNCTIONALITY FOR BOOKING DECLINED */
+			
 			echo "success";
 		}else{
 			echo "failed";	
