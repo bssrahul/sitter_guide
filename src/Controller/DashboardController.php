@@ -1058,10 +1058,11 @@ Function for Front profile dashboard
 		 $session = $this->request->session();
          $userId = $session->read('User.id');
          $this->request->data = $_REQUEST;
+           $user_verify = $usersModel->find('all')->select(["id","otp","phone","first_name","country_code"])
+						->where(['Users.id' => $userId])->toArray();
            //pr($this->request->data['Userverify']);die;
            if(isset($this->request->data['Userverify']) && !empty($this->request->data['Userverify'])){
-			   $user_verify = $usersModel->find('all')->select(["id","otp"])
-						->where(['Users.id' => $userId])->toArray();
+			 
 						 //echo "Success:".$this->request->data['Userverify']['otp_verify'];die;
 				if($this->request->data['Userverify']['otp_verify'] == ""){	
 					       echo "Error:This field is required.";die;
@@ -1091,6 +1092,14 @@ Function for Front profile dashboard
 				$userData->id = $userId;
 				$userData->otp = $four_digits;
 				if($usersModel->save($userData)){
+
+						if(isset($user_verify[0]->phone) && $user_verify[0]->phone !=""){
+								 
+								 $msg_body = "Hi ".$user_verify[0]->first_name.", Thanks for adding your Ph No. on Sitter Guide, Your verification code is ".$four_digits;
+								 $this->sendMessages($user_verify[0]->phone, $msg_body,$user_verify[0]->country_code);
+							
+						}
+						
 					 echo "Success:Verification code has been sent on your registered  mobile number.";die;
 				}else{
 				     echo "Error:Network not working, please try again.";die;
@@ -2939,10 +2948,12 @@ function addPets(){
 												
 		} else{
 				$query = $UsersModel->get($userId,['contain'=>'Communication']);
+				//pr($query->communication); die;
 				if(isset($query->communication) && !empty($query->communication)){
-					   $CommunicationData = $query->communication[0];
+					   $CommunicationData = $query->communication;
 					   $this->set('communication_id', isset($CommunicationData->id)?$CommunicationData->id:0);
 					   unset($CommunicationData->id);
+					   
 					   $this->set('communication_info', $CommunicationData);
 				}
 			

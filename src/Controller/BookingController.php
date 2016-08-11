@@ -451,27 +451,47 @@ class BookingController extends AppController
 					   
 					   //Update sitter status
 					   $BookingRequestsModel->save($bookingRequestData);
-					  //Start send message
-					   $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["user_id"]);
-					
-					 if($get_user_communications_details['communication']['new_booking_request'] == 1){
-						$to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
-						$message_body = $get_booking_requests_to_display['user']['first_name']." ".@$get_booking_requests_to_display['user']['last_name']." have accepted your request,kindly proceed for payment.";	
-						$send_message = $this->sendMessages($to_mobile_number, $message_body, $get_user_communications_details['country_code']);   
-					  } 
+						
+						//Start send message to USER
+						$get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["user_id"]);
+						
+						$sitter_email_data = $this->get_email_of_user($get_booking_requests_to_display["sitter_id"]);
+						
+						 if($get_user_communications_details['communication']['booking_confirmed'] == 1){
+							$to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
+							$message_body = $sitter_email_data->first_name." ".@$sitter_email_data->last_name." has been accepted your request,kindly proceed for payment.";	
+							$send_message = $this->sendMessages($to_mobile_number, $message_body, $get_user_communications_details['country_code']);   
+						  } 
+						   
+					//SEND MESSAGE TO SITTER WORKING
+					/*
+					$get_sitter_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+			
+						if($get_sitter_communications_details['communication']['new_booking_request'] == 1){
+							
+							$message_body = BOOKING_DECLINED_ACCEPTED;	
+							$send_message = $this->sendMessages($get_sitter_communications_details['communication']['phone_notification'], $message_body,$get_sitter_communications_details['country_code']);   
+						}		
+						*/
+						
 					   
-					   
+					   //Send email
+						$replace = array('{name}','{email}');
+						$with = array($sitter_email_data->first_name." ".@$sitter_email_data->last_name,$sitter_email_data->email);
+						$this->send_email('',$replace,$with,'booking_request_declined',$sitter_email_data->email);
+						
 					   return $this->redirect("/Message/get-messages/current/".$request_booking_id);		
 					}
 					
 					//GET SITTER COMMUNICATION DETAILS FOR BOOKING MESSAGES
-					$get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+					/*
+					$get_sitter_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
 					
-					if($get_user_communications_details['communication']['new_booking_request'] == 1){
-					    $to_mobile_number = "+".$get_user_communications_details['country_code'].$get_user_communications_details['communication']['phone_notification'];
-						$message_body = "You have been received new booking request";	
-						//$send_message = $this->sendMessages($to_mobile_number, $message_body);   
-				    } 
+					if(get_sitter_communications_details['communication']['new_booking_request'] == 1){
+					    
+					    $message_body = BOOKING_DECLINED_MESSAGE;	
+						$send_message = $this->sendMessages($get_user_communications_details['communication']['phone_notification'], $message_body$get_user_communications_details['country_code']);   
+				    } */
 				  			  
 					$get_booking_requests_to_display['user'] = $UsersModel->find('all',['contain'=>['UserSitterHouses']])
 																		->select(['Users.image','Users.first_name','Users.last_name','Users.facebook_id','Users.is_image_uploaded','Users.date_added','UserSitterHouses.about_home_desc','Users.user_type'])
