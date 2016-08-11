@@ -577,7 +577,7 @@
               <?php echo $this->Form->end(); ?>
             </div>
                  <div class="modal-footer">
-					 <em style="float:left;color:#4e4e4e"><b>Note</b>: After the croping area,selected press the save image button to crop</em><br>
+					 <em style="float:left;color:#4e4e4e"><b>Note</b>: After select the croping area, Click on Save Image button to crop image</em><br>
                 <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
                 <button type="button" id="btn-crop" class="btn btn-crop"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Save Image')); ?></button>
                 

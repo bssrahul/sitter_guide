@@ -2,7 +2,7 @@
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
+ *n
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
@@ -493,8 +493,9 @@ class AppController extends Controller{
 		
 		if($_SERVER['HTTP_HOST']=='localhost')
 		{	
-			//pr($template_info); die;
+			echo $template_info; die;
 		}
+		
 		$this->Email = new Email();
 		try {
 		
@@ -796,17 +797,18 @@ class AppController extends Controller{
 		$userData = $usersModel->newEntity();
 		$userData->id = $userId;
 		$userData->otp = $six_digits;
-
+		
+		
 		if($usersModel->save($userData)){
 			$userData = $usersModel->get($userId);
-			if(!empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
+			if(empty($userData->otp) && $userData->mobile_verification == 0 && !empty($userData->phone)){
 				  $msg_body = "Hi ".$userData->first_name.", Thanks for adding your Ph No. on Sitter Guide, Your verification code is ".$userData->otp;
 				  $phone_number = $userData->phone;
 				  $country_code = $userData->country_code;
-				 
+				
 			      $this->sendMessages($phone_number,$msg_body,$country_code);
+				  return true;
 			}
-			return true;
 		}else{
 			return false;
 		}
@@ -818,53 +820,55 @@ class AppController extends Controller{
 	//For send message
 	function sendMessages($to_mobile_number=null, $message_body=null,$country_code=null){
 		/*CHECK THAT PHONE NUMBER IS USA OR NOT, IF USA PHONE NUMBER EXISTS INTO REQUEST THEN WE HAVE TO USE BANDWIDTH API OTHERWISE USE TWILIO*/
-
-		if($country_code =='+1'){
-			/*INCLUDE BANDWIDTH LIABRARY*/	
-			require_once(ROOT . DS  . 'vendor' . DS  . 'php-bandwidth-master' . DS . 'source' . DS . 'Catapult.php');
-            /*CREATE BANDWIDTH OBJECT*/
-			$cred = new \Catapult\Credentials(BANDWIDTH_USER_ID, BANDWITH_API_TOKEN, BANDWIDTH_API_SECRET);
+		
 			
-			$client = new \Catapult\Client($cred);
+			if($country_code =='1'){
+				/*INCLUDE BANDWIDTH LIABRARY*/	
+				require_once(ROOT . DS  . 'vendor' . DS  . 'php-bandwidth-master' . DS . 'source' . DS . 'Catapult.php');
+				/*CREATE BANDWIDTH OBJECT*/
+				$cred = new \Catapult\Credentials(BANDWIDTH_USER_ID, BANDWITH_API_TOKEN, BANDWIDTH_API_SECRET);
+				
+				$client = new \Catapult\Client($cred);
 
-			if (!(isset($to_mobile_number) || isset($message_body)))
-				throw new Exception("Please provide phone number and message for send\n\n");
-			try{
-				$message = new \Catapult\Message(array(
-						"from" => '+61400751702',
-						"to" => '+'.$country_code.$to_mobile_number,
-						"text" => $message_body
-				));
-            }catch  (\Exception $e) { 
-				$results = json_decode($e->result);  
-				$this->setErrorMessage($this->stringTranslate(base64_encode($results->message)));
-			}
+				if (!(isset($to_mobile_number) || isset($message_body)))
+					throw new Exception("Please provide phone number and message for send\n\n");
+				try{
+					$message = new \Catapult\Message(array(
+							"from" => '+12056245572',
+							"to" => '+'.$country_code.$to_mobile_number,
+							"text" => $message_body
+					));
+				}catch  (\Exception $e) { 
+					$results = json_decode($e->result);  
+					$this->setErrorMessage($this->stringTranslate(base64_encode($results->message)));
+				}
 
-		}else{
-			//INCLUDE TWILIO LIABRARY
-			require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
-			//CREATE STRIPE OBJECT
-			
-			
-			$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
+			}else{
+				//INCLUDE TWILIO LIABRARY
+				require_once(ROOT . DS  . 'vendor' . DS  . 'twilio-php-master' . DS . 'Services' . DS . 'Twilio.php');
+				//CREATE STRIPE OBJECT
+				
+				
+				$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
 							
-            //SEND MESSAGE VIA TWILIO API CALL
-			try {
-				$output = $client->account->messages->create(array( 
-					'From' => '+61400751702', 
-					'To' => '+'.$country_code.$to_mobile_number,
-					'Body' => $message_body
-				));
+				//SEND MESSAGE VIA TWILIO API CALL
+				try {
+					$output = $client->account->messages->create(array( 
+						'From' => '+61400751702', 
+						'To' => '+'.$country_code.$to_mobile_number,
+						'Body' => $message_body
+					));
+				
+				}
+				catch (\Exception $e) { 
+					$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
+				}
+				
+				  
 			
 			}
-			catch (\Exception $e) { 
-				$this->setErrorMessage($this->stringTranslate(base64_encode('Twilio on trial mode, So message will not be send on registered mobile number')));
-			}
 			
-              
-		
-		}
-		
+			
 		return true;
 	}
 	function getUserCommunicationDetails($userId = null){
@@ -875,7 +879,7 @@ class AppController extends Controller{
 															'Communication'
 														   ]
 														])
-														->select(['Users.first_name','Users.last_name','Users.image','Users.country_code','Communication.phone_notification','Communication.new_enquiries','Communication.new_message','Communication.new_booking_request'])
+														->select(['Users.first_name','Users.last_name','Users.image','Users.country_code','Communication.phone_notification','Communication.new_enquiries','Communication.new_message','Communication.new_booking_request','Communication.booking_confirmed','Communication.booking_declined'])
 	    ->where(['Users.id' => $userId])
 		->limit(1)->hydrate(false)->first();
 	   //pr($user_communication_info);die;
@@ -993,6 +997,16 @@ class AppController extends Controller{
 												->where(['UserReferWallets.user_id' => $userId])
 												->first();
 		return $user_avail_bal;
+		
+	}
+	
+	function get_email_of_user($userId){
+		
+		$UserModel = TableRegistry::get('Users');
+		$user_email_data = $UserModel->find('all')->select(['Users.email','Users.first_name','Users.last_name'])
+												->where(['Users.id' => $userId])
+												->first();
+		return $user_email_data;
 		
 	}
 }

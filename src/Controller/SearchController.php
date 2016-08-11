@@ -1609,18 +1609,22 @@ class SearchController extends AppController
 				  $additional_services = implode(",",$this->request->data['additional_services']);
 				  $bookingRequestData->additional_services = $additional_services;
 				}
+				
                 if($bookingRequestsModel->save($bookingRequestData)){
+					
+					$sitter_email_data = $this->get_email_of_user($sitter_id);
+				
 					//Send email
 					$replace = array('{name}','{email}');
-					$with = array($userName,$userEmail);
+					$with = array($userName,$sitter_email_data->email);
 					$this->send_email('',$replace,$with,'booking_request',$userEmail);
 					//Start Send message
 					$get_booking_requests_to_display = $bookingRequestsModel->find('all')
 								->where(['BookingRequests.id'=>$bookingRequestData->id])
 								->hydrate(false)->first();
-				   
-				     $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
-				   
+					
+				    $get_user_communications_details = $this->getUserCommunicationDetails($get_booking_requests_to_display["sitter_id"]);
+					
 				     if($get_user_communications_details['communication']['new_booking_request'] == 1){
 						$to_mobile_number = $get_user_communications_details['communication']['phone_notification'];
 					    $country_code = $get_user_communications_details['country_code'];

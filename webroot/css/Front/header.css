@@ -1,8 +1,6 @@
   @charset "utf-8";
 /* CSS Document */
 
-
-
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
 header {width: 100%; border-bottom:#72a105 5px solid; height:75px; position:fixed; top:0; left:0;   z-index:20;background-color: #ffffff;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition:
  height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
@@ -234,9 +232,25 @@ header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-
 .ban-search-area .bs-box .search-bot-area .from-to-area .dog-list ul li{ margin:0px;}
 .ban-search-area .bs-box .search-bot-area .from-to-area .dog-list ul li:first-child{ border-radius:3px 0px 0px 3px; }
 
-.ban-search-area .bs-box  .col-cont .market-place ul{ margin:0px;}
+.ban-search-area .bs-box .col-cont .market-place ul{ margin:0px;}
 .ban-search-area .bs-box .col-cont .market-place ul li a{ background:none; padding:0px 15px; height:44px; border-radius:0px; line-height:43px; background:#ffffff;}
 .ban-search-area .bs-box .col-cont .market-place ul li:last-child a{ border-right:#d1d1d1 1px solid;}
+
+.ban-search-area .bs-box .col-cont .market-place ul li a.training{ color:#404040;}
+.ban-search-area .bs-box .col-cont .market-place ul li a.training:hover{ color:#ffffff; background:#404040;}
+.ban-search-area .bs-box .col-cont .market-place ul li.active a.training { color:#ffffff; background:#404040;}
+
+.ban-search-area .bs-box .col-cont .market-place ul li a.recreation { color:#404040;}
+.ban-search-area .bs-box .col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#404040; }
+.ban-search-area .bs-box .col-cont .market-place ul li.active a.recreation{color:#ffffff;   background:#404040;}
+
+.ban-search-area .bs-box .col-cont .market-place ul li a.grooming  color:#404040;}
+.ban-search-area .bs-box .col-cont .market-place ul li a.grooming:hover{ color:#ffffff; background:#404040; }
+.ban-search-area .bs-box .col-cont .market-place ul li.active a.grooming{ color:#ffffff; background:#404040;}
+
+.ban-search-area .bs-box .col-cont .market-place ul li a.driver { color:#404040; border-right:#d1d1d1 1px solid;}
+.ban-search-area .bs-box .col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040; }
+.ban-search-area .bs-box .col-cont .market-place ul li.active a.driver{ color:#ffffff; background:#404040; }
 
 
 .ban-search-area .bs-box .sr-area .top-filter-tab ul li.display-mob{color: #404040;    font-size: 14px;    padding: 0 0 15px;    text-transform: uppercase; border:0px; background:none; font-weight:normal; display:none;}

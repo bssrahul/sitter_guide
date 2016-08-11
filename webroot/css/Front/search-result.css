@@ -92,27 +92,27 @@
 .col-cont .market-place label { font-weight:normal; padding:0 0 5px 0;} 
 .col-cont .market-place ul {margin:15px 0 0 0; padding:0px; list-style-type:none;}
 .col-cont .market-place ul li { float:left; }
-.col-cont .market-place ul li a { font-size:12px; padding:30px 23px 15px 23px; display:block; border-left:#d1d1d1 1px solid;  border-top:#d1d1d1 1px solid;  border-bottom:#d1d1d1 1px solid; border-radius:0 0 25px 25px; text-decoration:none; color:#404040;}
+.col-cont .market-place ul li a { font-size:12px; padding:30px 23px 5px 23px; display:block; border-left:#d1d1d1 1px solid;  border-top:#d1d1d1 1px solid;  border-bottom:#d1d1d1 1px solid; border-radius:0 0 10px 10px; text-decoration:none; color:#404040;}
 .col-cont .market-place ul li.driver a {border-right:#d1d1d1 1px solid; }
 
 
 .col-cont .market-place ul li a:hover, .col-cont .market-place ul li.active a {background:#404040; color:#ffffff;}
 
-.col-cont .market-place ul li a.training{background:url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#404040;}
-.col-cont .market-place ul li a.training:hover{ background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#ffffff;}
-.col-cont .market-place ul li.active a.training { background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 5px center; color:#ffffff;}
+.col-cont .market-place ul li a.training{background:url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#404040;}
+.col-cont .market-place ul li a.training:hover{ background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#ffffff;}
+.col-cont .market-place ul li.active a.training { background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#ffffff;}
 
 .col-cont .market-place ul li a.recreation {background:url(../../img/recreation-icon.png) no-repeat; background-position:top 5px center; color:#404040;}
-.col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.active a.recreation{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 5px center;}
+.col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 8px center;}
+.col-cont .market-place ul li.active a.recreation{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 8px center;}
 
-.col-cont .market-place ul li a.grooming {background:url(../../img/grooming-icon.png) no-repeat; background-position:top 5px center; color:#404040;}
-.col-cont .market-place ul li a.grooming:hover{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.active a.grooming{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 5px center;}
+.col-cont .market-place ul li a.grooming {background:url(../../img/grooming-icon.png) no-repeat; background-position:top 8px center; color:#404040;}
+.col-cont .market-place ul li a.grooming:hover{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 8px center;}
+.col-cont .market-place ul li.active a.grooming{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 8px center;}
 
-.col-cont .market-place ul li a.driver {background:url(../../img/driver-icon.png) no-repeat; background-position:top 5px center; color:#404040; border-right:#d1d1d1 1px solid;}
-.col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 5px center;}
-.col-cont .market-place ul li.active a.driver{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 5px center;}
+.col-cont .market-place ul li a.driver {background:url(../../img/driver-icon.png) no-repeat; background-position:top 8px center; color:#404040; border-right:#d1d1d1 1px solid;}
+.col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 8px center;}
+.col-cont .market-place ul li.active a.driver{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 8px center;}
 
 .price-range label.prcRangLbl{padding-bottom:20px; }
  
@@ -246,6 +246,7 @@
 
 
 /* Sitter Quick View Popup Css Start*/
+#myModal79{ z-index:10;}
 #myModal2 .modal-dialog{ width:100%;}
 #myModal2 .modal-dialog .carousel-control{ top:45%; font-size:50px; font-weight:200;}
 
