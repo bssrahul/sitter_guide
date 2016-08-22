@@ -2,18 +2,18 @@
 	<div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
         <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 		  <h3>
-			<img src="<?php echo HTTP_ROOT ;?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Review
+			<img src="<?php echo HTTP_ROOT ;?>img/db-profile-home-icon.png" alt="db-profile-home-icon"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Review')); ?> 
 		  </h3>
 		</div>
         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
 		  <ol class="breadcrumb text-right">
-			<li> You are here : 
+			<li> <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
 			</li>
 			<li>
-			  <a href="<?php echo HTTP_ROOT; ?>">Home
+			  <a href="<?php echo HTTP_ROOT; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?>
 			  </a>
 			</li>
-			<li class="active">Review
+			<li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Review')); ?>
 			</li>
 		  </ol>
 		</div>
@@ -23,7 +23,7 @@
 		  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<h5 class="review1-thead">Your Ratings
+				<h5 class="review1-thead"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Ratings')); ?>
 				</h5>
 			  </div>
 			   <?php 
@@ -173,7 +173,7 @@
 			</div>
 		   <div class="row">
 			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<h5 class="review1-thead">Your Feedback
+				<h5 class="review1-thead"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Feedback')); ?>
 				</h5>
 				<div class="clearfix">
 				</div>
@@ -183,7 +183,7 @@
 							'type' => "textarea",
 							'label'=>false,
 							'required' => true,
-							'placeholder' => 'Type your feedback',
+							'placeholder' => $this->requestAction('app/get-translate/'.base64_encode('Type your feedback')),
 							'class'=>'form-control' ]
 						); 
 					?>
@@ -197,7 +197,7 @@
 		 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
 		  <div class="sitter-balance-wrapper">
 			<div class="balace-head">
-			  <h5>You are rating to
+			  <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('You are rating to')); ?>
 			  </h5>
 			</div>
 			<div class="inner-price-wrap">
@@ -211,9 +211,9 @@
 				</div>
 				<h5 class="text-center review1-thead"><?php echo isset($to_user_info['first_name'])?$to_user_info['first_name']." ".@$to_user_info['last_name']:''; ?></h5>
 			</div>
-		    <p class="redem-text">You can change the rating within 48 hours after that rating get freezed and you can't be able to do change.
+		    <p class="redem-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode("You can change the rating within 48 hours after that rating get freezed and you can't be able to do change")); ?>.
 			</p>
-			<p class="read-tanda">Read 
+			<p class="read-tanda"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Read')); ?> 
 			  <a href="<?php echo HTTP_ROOT."terms"; ?>"> Terms &amp; Conditions
 			  </a>
 			</p>

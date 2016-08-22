@@ -1,7 +1,7 @@
 
   <section class="sev-type m75">
     <div class="container">
-      <h4>Sitter Guide - <?php echo $blogs_info['title']; ?>
+      <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?> - <?php echo $blogs_info['title']; ?>
       </h4>
     </div>
   </section>
@@ -107,7 +107,7 @@
 								onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>')">
                             <button class="btn btn-blog-fb">
                               <i class="fa fa-facebook">
-                              </i> Share
+                              </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share')); ?> 
                             </button>
                             </a>
                           </li>

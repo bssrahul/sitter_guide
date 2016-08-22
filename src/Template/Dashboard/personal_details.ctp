@@ -3,9 +3,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<ul class="nav nav-tabs">
 				<li><a  href="<?php echo HTTP_ROOT."dashboard/sitter-account"; ?>"">Dashboard</a></li>
-				<li class="active"><a data-toggle="tab" href="#about">About</a></li>
-				<li><a data-toggle="tab" href="#index">Index</a></li>
-				<li><a data-toggle="tab" href="#calendar">Calendar</a></li>
+				<li class="active"><a data-toggle="tab" href="#about"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About')); ?></a></li>
+				<li><a data-toggle="tab" href="#index"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Index')); ?></a></li>
+				<li><a data-toggle="tab" href="#calendar"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?></a></li>
 			</ul>
 			<div class="tab-content">
 			
@@ -17,12 +17,12 @@
 				     <div class="col-md-3 col-sm-3 col-xs-3">
 					     <img alt="Image not found" style="margin:5px" height="100px"; width="100px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($userInfo->image != ''?$userInfo->image:'prof_photo.png'); ?>"/>
 						<ul class="list-group">
-							   <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/personal-details'; ?>">Personal Details</a></li>
-							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates'; ?>">Service and Rates</a></li>
-							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/basic-profile'; ?>">Basic Profile</a></li>
-							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/extended-profile'; ?>">Extended Profile</a></li>
-							  <li class="list-group-item"><a href="">Photos</a></li>
-							  <li class="list-group-item"><a href="">Settings</a></li>
+							   <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/personal-details'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Personal Details')); ?></a></li>
+							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Service and Rates')); ?></a></li>
+							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/basic-profile'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Profile')); ?></a></li>
+							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/extended-profile'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Profile')); ?></a></li>
+							  <li class="list-group-item"><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photos')); ?></a></li>
+							  <li class="list-group-item"><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Settings')); ?></a></li>
 						</ul>
 					 </div>
 					 <div class="col-md-8 col-sm-8 col-xs-8">    <h2><?php echo $userInfo->  first_name." ".$userInfo->last_name ?>    </h2>
@@ -31,8 +31,8 @@
 					 </div><br>
 					 <div class="col-md-8 col-sm-8 col-xs-8">
 					  
-						  <h4>Contact Information</h4>
-						  <p>Your contact details are not visible to the public. They are shared once a pet minder accepts the booking. It is used for system notifications and emergency situations </p>
+						  <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Information')); ?></h4>
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your contact details are not visible to the public. They are shared once a pet minder accepts the booking. It is used for system notifications and emergency situations')); ?> </p>
 						   <?php echo $this->Form->create(null, [
 									'url' => ['controller' => 'dashboard', 'action' => 'personal-details'],
 									'role'=>'form',
@@ -42,7 +42,7 @@
 									]);?>
 						  <div class="form-group">
 					      <label for="phone">
-						  Mobile*</label>
+						  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Mobile')); ?>*</label>
 					<?php echo $this->Form->input(   'Users[phone]',[
 						      'class'=>'form-control',
 							  'label'=>false,
@@ -53,7 +53,7 @@
 						  </div>
 						  <div class="form-group">
 								<label for="email">
-									   Email*</label>
+									  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?> *</label>
 								  <?php
 								  echo $this->Form->input('Users[email]',[
 								  'class'=>'form-control',
@@ -62,11 +62,11 @@
 								 ]);
 											 ?>
 						  </div>
-						  <h4>Neighbourhood</h4>
-						  <p>Your address details are not visible to the public. It is used so pet owners can find pet minders or so that pet minders know how far they need to travel before accepting a booking</p>
+						  <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Neighbourhood')); ?></h4>
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your address details are not visible to the public. It is used so pet owners can find pet minders or so that pet minders know how far they need to travel before accepting a booking')); ?></p>
 						  <div class="form-group">
 								<label for="address">
-									   Street Address*</label>
+									  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Street Address')); ?> *</label>
 								  <?php
 								  echo $this->Form->input('Users[address]',[
 								  'class'=>'form-control',
@@ -77,7 +77,7 @@
 						  </div>
 						  <div class="form-group">
 								<label for="city">
-									   Suburb*</label>
+									    <?php echo $this->requestAction('app/get-translate/'.base64_encode('Suburb')); ?>*</label>
 								  <?php
 								  echo $this->Form->input('Users[city]',[
 								  'class'=>'form-control',
@@ -88,7 +88,7 @@
 						  </div>
 						  <div class="form-group">
 								<label for="zip">
-									   Postcode*</label>
+									     <?php echo $this->requestAction('app/get-translate/'.base64_encode('Postcode')); ?> *</label>
 								  <?php
 								  echo $this->Form->input('Users[zip]',[
 								  'class'=>'form-control',
@@ -99,7 +99,7 @@
 						  </div>
 						  <div class="form-group">
 								<label for="state">
-									   State*</label>
+									  <?php echo $this->requestAction('app/get-translate/'.base64_encode('State')); ?> *</label>
 								  <?php
 								  echo $this->Form->input('Users[state]',[
 								  'class'=>'form-control',
@@ -108,11 +108,11 @@
 								 ]);
 											 ?>
 						  </div>
-						  <h4>More</h4>
-						  <p>These details are not visible to the public. It is used so we can understand our users better and make sure we build a product that meets your needs.</p>
+						  <h4> <?php echo $this->requestAction('app/get-translate/'.base64_encode('More')); ?></h4>
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('These details are not visible to the public. It is used so we can understand our users better and make sure we build a product that meets your needs')); ?>.</p>
 						  <div class="form-group">
 								<label for="about_user">
-									   About You*</label>
+									   <?php echo $this->requestAction('app/get-translate/'.base64_encode('About You')); ?>*</label>
 								  <?php
 								  echo $this->Form->input('Users[about_user]',[
 								  'class'=>'form-control',
@@ -124,7 +124,7 @@
 						  </div>
 						  <div class="form-group">
 								<label for="address">
-									  oko Birth Date*</label>
+									    <?php echo $this->requestAction('app/get-translate/'.base64_encode('oko Birth Date')); ?>*</label>
 								  <?php
 								  echo $this->Form->input('Users[birth_date]',[
 								  'class'=>'form-control',
@@ -135,7 +135,7 @@
 						  </div>
 						  <div class="form-group">
 								<label for="gender">
-							 Gender*</label>
+							<?php echo $this->requestAction('app/get-translate/'.base64_encode('Gender')); ?> *</label>
 								  <?php
 								  
 								  echo $this->Form->input('Users[gender]',[
@@ -153,11 +153,11 @@
 					 </div>
 				</div><!-- @vik Executive Summary tab  -->	
 				<div id="index" class="tab-pane fade">
-				   index
+				   <?php echo $this->requestAction('app/get-translate/'.base64_encode('index')); ?>
 				</div><!-- @vik Funding Materials tab  -->
                			
 				<div id="calendar" class="tab-pane fade">
-				    calendar
+				      <?php echo $this->requestAction('app/get-translate/'.base64_encode('calendar')); ?>
 				</div>
 				      
 				</div><!-- @vik Funding Materials tab  -->	

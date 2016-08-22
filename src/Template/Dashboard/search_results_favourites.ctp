@@ -1,23 +1,28 @@
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
-    <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
+   <div class="container-fluid">
+    <div class="row">
+    	<div class="db-top-bar-header bg-title">
         <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
-			<h3><img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Favourites</h3>
+			<h3><img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Favourites')); ?></h3>
          </div>
         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
               <ol class="breadcrumb text-right">
                 <li> You are here : </li>
-                <li><a href="<?php echo HTTP_ROOT; ?>">Home</a></li>
-                <li class="active">Favourites</li>
+                <li><a href="<?php echo HTTP_ROOT; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?></a></li>
+                <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Favourites')); ?></li>
               </ol>
         </div>
-	</div>
-    <div class="favourite-wrap ">
+	  </div>
+    </div>
+  </div>    
+    
+<div class="favourite-wrap ">
           
 		<div class="row">
 			
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				
-				<h5 class="review1-thead">Search Results Favourites</h5>
+				<h5 class="review1-thead"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Search Results Favourites')); ?></h5>
 					
 					<div class="row">
 					  
@@ -26,7 +31,7 @@
 						
 							foreach($FavUsersdata as $FavUsers){ 
 						?>	
-						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 
 							<div class="text-center favourites-box"> 
 										

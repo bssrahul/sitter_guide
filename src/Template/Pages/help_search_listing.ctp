@@ -4,7 +4,7 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 						<h2 class="pt22"><?php if(!empty($title)){echo $title;}?></h2>
-						<?php  if(empty($faqsData)){?><div class="col-md-3 col-md-offset-5"><h4><?php echo "Record Not Found";?><h4></div> <?php	 }
+						<?php  if(empty($faqsData)){?><div class="col-md-3 col-md-offset-5"><h4><?php echo $this->requestAction('app/get-translate/'.base64_encode("Record Not Found"));?><h4></div> <?php	 }
 							else{
 									$count=1;
 									foreach($faqsData as $faqs) { ?>

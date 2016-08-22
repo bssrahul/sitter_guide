@@ -1100,7 +1100,7 @@ Function for Front profile dashboard
 							
 						}
 						
-					 echo "Success:Verification code has been sent on your registered  mobile number.";die;
+					 echo "Success:Verification code has been sent on your registered  mobile number."; die;
 				}else{
 				     echo "Error:Network not working, please try again.";die;
 				}

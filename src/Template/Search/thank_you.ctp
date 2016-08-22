@@ -10,14 +10,14 @@
                 <span >
                   <i>
                   </i>
-                </span> Congrats! Your messages were sent 
+                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Congrats! Your messages were sent')); ?> 
               </h1>
               <p class="thankyou-title">
               </p>
               <p class="thankyou-text">
-                <span>What happens now
+                <span><?php echo $this->requestAction('app/get-translate/'.base64_encode('What happens now')); ?>
                 </span>
-                A few tips for enjoying a great stay with Sitter Guide
+               <?php echo $this->requestAction('app/get-translate/'.base64_encode('A few tips for enjoying a great stay with Sitter Guide')); ?> 
               </p>
             </div>
           </div>
@@ -28,9 +28,9 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Sitters will respond soon
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode(' Sitters will respond soon')); ?>
                 </h3>
-                <p>The sitters you've contacted are likely to respond in under half an hour
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("The sitters you've contacted are likely to respond in under half an hour")); ?>
                 </p>
               </div>
             </div>
@@ -40,10 +40,9 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Schedule a Meet & Greet
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Schedule a Meet & Greet')); ?>
                 </h3>
-                <p>After your sitter contacts you, schedule a Meet & Greet. This is a great chance for you, your dog 
-                  and your sitter to all get to know each other
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('After your sitter contacts you, schedule a Meet & Greet. This is a great chance for you, your dog and your sitter to all get to know each other')); ?>
                 </p>
               </div>
             </div>
@@ -53,10 +52,10 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Book Through Rover
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Through Rover')); ?>
                 </h3>
-                <p>Pay for your stay through Rover and your pet will be covered by our 
-                  <a href="#">premium pet insurance
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pay for your stay through Rover and your pet will be covered by our')); ?> 
+                  <a href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('premium pet insurance')); ?>
                   </a>.
                 </p>
               </div>
@@ -67,16 +66,17 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Fill out your dog's profile
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("Fill out your dog's profile")); ?>
                 </h3>
-                <p>Your sitter wants to know all about your amazing dog! The more information your sitter has, the 
-                  better your dog's stay will be.
+                <p>
+					<?php echo $this->requestAction('app/get-translate/'.base64_encode("Your sitter wants to know all about your amazing dog! The more information your sitter has, the 
+                  better your dog's stay will be.")); ?>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT.'search/search-by-location/'; ?>'" >Return to search
+                <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT.'search/search-by-location/'; ?>'" ><?php echo $this->requestAction('app/get-translate/'.base64_encode("Return to search")); ?>
                 </button>
               </div>
               <!--
@@ -92,7 +92,7 @@
         <div class="container">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <h5 class="contact-text">Connect with us for the  Latest News & Update
+              <h5 class="contact-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Connect with us for the  Latest News & Update')); ?>
               </h5>
               <ul class="list-inline text-center thanks-social-icon">
                 <li>

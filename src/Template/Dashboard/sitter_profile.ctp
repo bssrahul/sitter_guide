@@ -3,18 +3,18 @@
 
         <div class="profiletab-section">
           
-  <h3>Sitter Profile</h3>
+  <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
             <ul class="nav nav-pills">
-              <li id="booking-active" class="active"><a data-toggle="pill" href="#home1">Booking For product</a></li>
-              <li id="house-active"><a data-toggle="pill" href="#sitter-guest-house">Sitters House/Guest House</a></li>
-              <li id="property-active"><a data-toggle="pill" href="#menu2">Property</a></li>
-              <li id="professional-active"><a data-toggle="pill" href="#menu3">Professional Accreditation</a></li>
+              <li id="booking-active" class="active"><a data-toggle="pill" href="#home1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking For product')); ?></a></li>
+              <li id="house-active"><a data-toggle="pill" href="#sitter-guest-house"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitters House/Guest House')); ?></a></li>
+              <li id="property-active"><a data-toggle="pill" href="#menu2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Property')); ?></a></li>
+              <li id="professional-active"><a data-toggle="pill" href="#menu3"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Professional Accreditation')); ?></a></li>
 
             </ul>
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
               <div id="home1" class="tab-pane fade in active tab-comm">
-                <h3>Below <span>4 features</span> update the calendar to show how many spaces are availble for booking for each product</h3>
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Below')); ?> <span><?php echo $this->requestAction('app/get-translate/'.base64_encode('4 features')); ?></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('update the calendar to show how many spaces are availble for booking for each product')); ?></h3>
                   <!--<form role="form">-->
                  <?php $session = $this->request->session();
                     $bookingSession = $session->read('bookingProduct');
@@ -28,7 +28,7 @@
 					 'autocomplete'=>'off',
                   ]);?>
                     <div class="form-group col-lg-6">
-                      <label for="">1. Day Care P/day Limit</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('1. Day Care P/day Limit')); ?></label>
                      <!-- <input type="text" class="form-control" id="">-->
 
                      <?php
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">2. Night Care P/day Limit</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('2. Night Care P/day Limit')); ?></label>
                       <!--<input type="text" class="form-control" id="">-->
                         <?php 
                          
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">3. Visits P/day Limit  
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('3. Visits P/day Limit')); ?>  
 </label>
                       <!--<input type="text" class="form-control" id="">-->
                       <?php 
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">4. Hourly Services P/Day Limit </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('4. Hourly Services P/Day Limit')); ?> </label>
                       <!--<input type="text" class="form-control" id="">-->
                         <?php 
                         
@@ -92,7 +92,7 @@
                     if(isset($bookingSession)  && !empty($bookingSession)){
                ?>
               <div id="sitter-guest-house" class="tab-pane fade tab-comm">
-               <h3><span>Sitters House</span></h3>
+               <h3><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitters House')); ?></span></h3>
                  <!-- <form role="form">-->
                    <?php 
                           $house_details = $session->read('house_details');
@@ -104,7 +104,7 @@
                 'id'=>'userHouse','role'=>'form']); ?>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Accepted Pet Sizes</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
                      <?php echo $this->Form->input('Houses.sitter.accepted_pet_size',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -122,7 +122,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 text-italic">
-                      <label for="">Mixed Familes(I look after pets from different families)</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mixed Familes(I look after pets from different families)')); ?></label>
                       <!--<label for="">Mixed Familes</label>-->
                       <!--<input type="text" class="form-control" id="" placeholder="I look after pets from different families">-->
 
@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Preferred Guest Ages</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?></label>
                        <?php echo $this->Form->input('Houses.sitter.preferred_age',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -154,7 +154,7 @@
                           </select>-->
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Cancellation Policy</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancellation Policy')); ?></label>
                        <?php echo $this->Form->input('Houses.sitter.cancellation_policy',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -174,7 +174,7 @@
                     
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept Un-Neutered Pets</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept Un-Neutered Pets')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="SitterHouse.un_neutered_pets">Yes</label>
                     <label class="radio-inline"><input type="radio" name="SitterHouse.un_neutered_pets">No</label>  -->
                     <?php echo $this->Form->radio(
@@ -190,7 +190,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept un-spayed females</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-spayed females')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="SitterHouse.un_spayed_females">Yes</label>
                     <label class="radio-inline"><input type="radio" name="SitterHouse.un_spayed_females">No</label> -->
                      <?php echo $this->Form->radio(
@@ -206,7 +206,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept females on heat</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept females on heat')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="SitterHouse.females_on_heat">Yes</label>
                     <label class="radio-inline"><input type="radio" name="SitterHouse.females_on_heat">No</label>-->
                        <?php echo $this->Form->radio(
@@ -221,7 +221,7 @@
                      </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept un-toilet trained pets </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-toilet trained pets')); ?> </label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="SitterHouse.un_trained_pets">Yes</label>
                     <label class="radio-inline"><input type="radio" name="SitterHouse.un_trained_pets">No</label> -->
                        <?php echo $this->Form->radio(
@@ -236,7 +236,7 @@
                   </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Last Minute Bookings</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Minute Bookings')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="SitterHouse.last_minute_booking">Yes</label>
                     <label class="radio-inline"><input type="radio" name="SitterHouse.last_minute_booking">No</label>-->
                      <?php echo $this->Form->radio(
@@ -251,7 +251,7 @@
                      </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Longer than 1 week stays</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Longer than 1 week stays')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="SitterHouse.longer_than_week">Yes</label>
                     <label class="radio-inline"><input type="radio" name="SitterHouse.longer_than_week">No</label> -->
                      <?php echo $this->Form->radio(
@@ -284,7 +284,7 @@
                           </select>
                     </div>-->
                     <div class="form-group col-lg-6">
-                      <label for="">Toilet Breaks provided - every  </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Toilet Breaks provided - every')); ?>  </label>
                       <?php echo $this->Form->input('Houses.sitter.breaks_provided_every',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -304,11 +304,11 @@
 <!--</form>
 <form role="form" class="menu-2part">-->
 
-                  <h3><span>Guests House</span></h3>
+                  <h3><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Guests House')); ?></span></h3>
              
 
                     <div class="form-group col-lg-6">
-                      <label for="">Accepted Pet Sizes</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet Sizes')); ?></label>
                          <?php echo $this->Form->input('Houses.guest.accepted_pet_size',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -326,7 +326,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 text-italic">
-                      <label for="">Maximum distance travelled to Guest House</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Maximum distance travelled to Guest House')); ?></label>
                       <!--<input type="text" class="form-control" id="" placeholder="I look after pets from different families">-->
                        <?php echo $this->Form->input('Houses.guest.maximum_distance',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -337,7 +337,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Preferred Guest Ages</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Guest Ages')); ?></label>
                         <?php echo $this->Form->input('Houses.guest.preferred_age',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -355,7 +355,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Cancellation Policy On house sitting</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancellation Policy On house sitting')); ?></label>
                           <?php echo $this->Form->input('Houses.guest.cancellation_policy',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -374,7 +374,7 @@
 
                     <div class="form-group col-lg-6 radio-center">
 
-                          <label>Accept Un-Neutered Pets</label>
+                          <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept Un-Neutered Pets')); ?></label>
 
                           <span class="pull-right">
                             <!--<label class="radio-inline">
@@ -395,7 +395,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept un-spayed females</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-spayed females')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="GuestHouse.un_spayed_females">Yes</label>
                     <label class="radio-inline"><input type="radio" name="GuestHouse.un_spayed_females">No</label>-->
                     <?php echo $this->Form->radio(
@@ -411,7 +411,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept females on heat</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept females on heat')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="GuestHouse.females_on_heat">Yes</label>
                     <label class="radio-inline"><input type="radio" name="GuestHouse.females_on_heat">No</label>-->
                     <?php echo $this->Form->radio(
@@ -426,7 +426,7 @@
                      </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Accept un-toilet trained pets </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept un-toilet trained pets')); ?> </label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="GuestHouse.un_trained_pets">Yes</label>
                     <label class="radio-inline"><input type="radio" name="GuestHouse.un_trained_pets">No</label> -->
                      <?php echo $this->Form->radio(
@@ -441,7 +441,7 @@
                   </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Last Minute Bookings</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Minute Bookings')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="GuestHouse.last_minute_booking">Yes</label>
                     <label class="radio-inline"><input type="radio" name="GuestHouse.last_minute_booking">No</label> -->
                      <?php echo $this->Form->radio(
@@ -456,7 +456,7 @@
                   </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Longer than 1 week stays</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Longer than 1 week stays')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="GuestHouse.longer_than_week">Yes</label>
                     <label class="radio-inline"><input type="radio" name="GuestHouse.longer_than_week">No</label>--> 
                     <?php echo $this->Form->radio(
@@ -473,7 +473,7 @@
 
 
                     <div class="form-group col-lg-6">
-                      <label for="">Cancellation Policy On house drop-in visits</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancellation Policy On house drop-in visits')); ?></label>
                       <?php echo $this->Form->input('Houses.guest.cancellation_policy_visits',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -490,7 +490,7 @@
                           </select>-->
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Toilet Breaks provided - every  </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Toilet Breaks provided - every')); ?>  </label>
                            <?php echo $this->Form->input('Houses.guest.breaks_provided_every',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -506,7 +506,7 @@
                             <option>4</option>
                           </select>-->
                     </div>
-                    <p><button type="button" class="btn previous pull-left">Previous</button> <input type="submit" name="house_details" id="house-details-btn" class="btn Continue pull-right" value="Continue"></p>
+                    <p><button type="button" class="btn previous pull-left"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button> <input type="submit" name="house_details" id="house-details-btn" class="btn Continue pull-right" value="Continue"></p>
                   <!--</form>-->
                   <?php echo $this->Form->end(); ?>
               </div>
@@ -517,7 +517,7 @@
               
               ?>
               <div id="menu2" class="tab-pane fade tab-comm">
-               <h3><span>Property</span></h3>
+               <h3><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Property')); ?></span></h3>
                   <!--<form role="form">-->
                 <?php 
                 $sitter_property = $session->read('sitter_property');
@@ -528,7 +528,7 @@
                 ?>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Property Type</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Property Type')); ?></label>
                           <?php echo $this->Form->input('UserProperties.property_type',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -546,7 +546,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Outdoor Area</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Area')); ?></label>
                             <?php echo $this->Form->input('UserProperties.outdoor_area',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -564,7 +564,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Outdoor Area Size</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Area Size')); ?></label>
                           <?php echo $this->Form->input('UserProperties.outdoor_area_size',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -582,7 +582,7 @@
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="">Outing Area (allow multiple)</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outing Area (allow multiple)')); ?></label>
                       <?php echo $this->Form->input('UserProperties.outing_allow_multiple',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -600,7 +600,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Fully Fenced Outdoor Area</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Fully Fenced Outdoor Area')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="fully_fenced">Yes</label>
                     <label class="radio-inline"><input type="radio" name="optradio">No</label> -->
                      <?php echo $this->Form->radio(
@@ -616,7 +616,7 @@
                     </div>
 
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Smokers</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="smokers">Yes</label>
                     <label class="radio-inline"><input type="radio" name="optradio">No</label>-->
                       <?php echo $this->Form->radio(
@@ -631,7 +631,7 @@
                      </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Dogs in home?</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs in home?')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="dogs_in_home">Yes</label>
                     <label class="radio-inline"><input type="radio" name="optradio">No</label>-->
                      <?php echo $this->Form->radio(
@@ -646,7 +646,7 @@
                      </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Cats in home?</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cats in home?')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="cats_in_home">Yes</label>
                     <label class="radio-inline"><input type="radio" name="optradio">No</label>--> 
                    <?php echo $this->Form->radio(
@@ -661,7 +661,7 @@
                   </span> 
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Birds in cages </label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Birds in cages')); ?> </label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="birds_in_cages">Yes</label>
                     <label class="radio-inline"><input type="radio" name="optradio">No</label>-->
                     <?php echo $this->Form->radio(
@@ -681,7 +681,7 @@
 
 
                     <div class="form-group col-lg-6">
-                      <label for="">Children</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Children')); ?></label>
                         <?php echo $this->Form->input('UserProperties.children',[
                         'templates' => ['inputContainer' => '{{content}}'],
                         'label' => false,
@@ -709,9 +709,9 @@
                     </div>-->
                     <!--</form>
                      <form role="form">-->
-                    <h3><span>About Sitter</span></h3>
+                    <h3><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter')); ?></span></h3>
                     <p><div class="form-group col-lg-6">
-                      <label for="">Years of Sitting Experience </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Years of Sitting Experience')); ?> </label>
                           <?php echo $this->Form->input('Users.sitting_experience',['class'=>'form-control', 'templates' => ['inputContainer' => '{{content}}'],
                         'value'=>$sitter_property['Users']['sitting_experience'] !=''?$sitter_property['Users']['sitting_experience']:'']); ?>
                           <!--<select class="form-control" id="sel1">
@@ -722,7 +722,7 @@
                           </select>-->
                     </div></p>
                     <div class="form-group col-lg-6">
-                      <label for="">Why should you take care of their guest?  </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Why should you take care of their guest?')); ?>  </label>
                           <!--<textarea></textarea>-->
                           <?php echo $this->Form->input('Users.take_care_desc',[
                                  'class'=>'form-control',
@@ -732,7 +732,7 @@
                                  ]); ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Describe yourself in 35 characters    </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Describe yourself in 35 characters')); ?>     </label>
                           <!--<textarea></textarea>-->
                           <?php echo $this->Form->input('Users.your_self',[
                                  'class'=>'form-control',
@@ -745,14 +745,14 @@
 <!--</form>
  <form role="form">-->
 
-                    <h3><span>Photo Library</span></h3>
+                    <h3><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo Library')); ?></span></h3>
                     <div class="form-group col-lg-6 upload-section">
                        <p> <img src="<?php echo HTTP_ROOT; ?>img/dm.png">
-                         <span>(Drag & Drop / Browse).<br/> Scale, Trash, Order (???? pixels)</span></p>
-                         <button type="button" class="btn upload-but">Upload Photos</button>
+                         <span><?php echo $this->requestAction('app/get-translate/'.base64_encode('(Drag & Drop / Browse)')); ?>.<br/><?php echo $this->requestAction('app/get-translate/'.base64_encode('Scale, Trash, Order (???? pixels)')); ?> </span></p>
+                         <button type="button" class="btn upload-but"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Photos')); ?></button>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Sitter Guide Carers Package </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide Carers Package')); ?> </label>
                           <!--<textarea>Carer package description...</textarea>-->
                           <?php echo $this->Form->input('Users.carers_description',[
                                  'class'=>'form-control',
@@ -765,7 +765,7 @@
                   
                     
 
-                    <p><button type="button" class="btn previous pull-left">Previous</button> <input type="submit" name="sitter_property" id="property-btn" class="btn Continue pull-right" value="Continue"></p>
+                    <p><button type="button" class="btn previous pull-left"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?></button> <input type="submit" name="sitter_property" id="property-btn" class="btn Continue pull-right" value="Continue"></p>
 <!--</form>-->
                  <?php echo $this->Form->end(); ?>
               </div>
@@ -776,7 +776,7 @@
                     if(isset($sitter_property)  && !empty($sitter_property)){
               ?>
               <div id="menu3" class="tab-pane fade tab-comm">
-                <h3><span>Professional Accreditation</span></h3>
+                <h3><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Professional Accreditation')); ?></span></h3>
                 <!--<form role="form">-->
                   <?php
                    $professional = $session->read('professional_accreditation');
@@ -785,115 +785,115 @@
                         'url' => ['controller' => 'dashboard', 'action' => 'save-sitter-profile'],
                         'id'=>'userProfessionals','role'=>'form']); 
                 ?>
-                  <h4><i>Physician (Pets)</i></h4>
+                  <h4><i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Physician (Pets)')); ?></i></h4>
                  
                     <div class="form-group col-lg-6">
-                     <h5>Government Issued Medical Certificate</h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Government Issued Medical Certificate')); ?></h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                       <?php echo $this->Form->input('UserProfessionals.pets.govt.expert.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_title']:''
                       ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.govt.expert.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.govt.expert.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                               'value'=>$professional['UserProfessionals']['pets']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['expert']['expiry_date']:''
                       ]); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
-                     <h5>Student - Government Issued Medical Certificate</h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Student - Government Issued Medical Certificate')); ?></h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                        <?php echo $this->Form->input('UserProfessionals.pets.govt.student.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['govt']['student']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['student']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.govt.student.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['govt']['student']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['student']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.govt.student.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                               'value'=>$professional['UserProfessionals']['pets']['govt']['student']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['govt']['student']['expiry_date']:''
                       ]); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
-                     <h5>Private Sector Issued Medical Ceritficate</h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Private Sector Issued Medical Ceritficate')); ?></h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                       <?php echo $this->Form->input('UserProfessionals.pets.private.expert.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['private']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['private']['expert']['expiry_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.private.expert.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['private']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['private']['expert']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.private.expert.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                               'value'=>$professional['UserProfessionals']['pets']['private']['expert']['expiry_date'] !=''?$professional['UserProfessionals']['pets']['private']['expert']['expiry_date']:''
                       ]); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
-                     <h5>Student - Private Sector Issued Mediacal Ceritficate   </h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Student - Private Sector Issued Mediacal Ceritficate')); ?>   </h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                        <?php echo $this->Form->input('UserProfessionals.pets.private.student.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['private']['student']['qualification_title'] !=''?$professional['UserProfessionals']['pets']['private']['student']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.private.student.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['pets']['private']['student']['qualification_date'] !=''?$professional['UserProfessionals']['pets']['private']['student']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.pets.private.student.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                              'value'=>$professional['UserProfessionals']['pets']['private']['student']['expiry_date'] !=''?$professional['UserProfessionals']['pets']['private']['student']['expiry_date']:''
                       ]); ?>
@@ -901,115 +901,115 @@
                     </div>
 <!--</form>
 <form role="form">-->
-                     <h4><i>Physician (People)</i></h4>
+                     <h4><i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Physician (People)')); ?></i></h4>
                  
                     <div class="form-group col-lg-6">
-                     <h5>Government Issued Medical Certificate  </h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Government Issued Medical Certificate')); ?>  </h5>
                      <!-- <input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                        <?php echo $this->Form->input('UserProfessionals.people.govt.expert.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                 'value'=>$professional['UserProfessionals']['people']['govt']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['people']['govt']['expert']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.govt.expert.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['govt']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['people']['govt']['expert']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.govt.expert.expiry_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Expiry Date of Certification',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['govt']['expert']['expiry_date'] !=''?$professional['UserProfessionals']['people']['govt']['expert']['expiry_date']:''
                       ]); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
-                     <h5>Student - Government Issued Medical Certificate    </h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Student - Government Issued Medical Certificate')); ?>    </h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                       <?php echo $this->Form->input('UserProfessionals.people.govt.student.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['govt']['student']['qualification_title'] !=''?$professional['UserProfessionals']['people']['govt']['student']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.govt.student.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['govt']['student']['qualification_date'] !=''?$professional['UserProfessionals']['people']['govt']['student']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.govt.student.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                               'value'=>$professional['UserProfessionals']['people']['govt']['student']['expiry_date'] !=''?$professional['UserProfessionals']['people']['govt']['student']['expiry_date']:''
                       ]); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
-                     <h5>Private Sector Issued Medical Ceritficate</h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Private Sector Issued Medical Ceritficate')); ?></h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                        <?php echo $this->Form->input('UserProfessionals.people.private.expert.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['private']['expert']['qualification_title'] !=''?$professional['UserProfessionals']['people']['private']['expert']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.private.expert.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['private']['expert']['qualification_date'] !=''?$professional['UserProfessionals']['people']['private']['expert']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.private.expert.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                              'value'=>$professional['UserProfessionals']['people']['private']['expert']['expiry_date'] !=''?$professional['UserProfessionals']['people']['private']['expert']['expiry_date']:''
                       ]); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
-                     <h5>Student - Private Sector Issued Mediacal Ceritficate   </h5>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Student - Private Sector Issued Mediacal Ceritficate')); ?>   </h5>
                       <!--<input type="text" placeholder="Qualification Title" id="" class="form-control">
                       <input type="text" placeholder="Graduation Date" id="" class="form-control">
                       <input type="text" placeholder="Expiry Date of Certification" id="" class="form-control">-->
                         <?php echo $this->Form->input('UserProfessionals.people.private.student.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['govt']['student']['qualification_title'] !=''?$professional['UserProfessionals']['people']['govt']['student']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.private.student.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['people']['private']['student']['qualification_date'] !=''?$professional['UserProfessionals']['people']['private']['student']['qualification_date']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.people.private.student.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                              'value'=>$professional['UserProfessionals']['people']['private']['student']['expiry_date'] !=''?$professional['UserProfessionals']['people']['private']['student']['expiry_date']:''
                       ]); ?>
@@ -1021,22 +1021,22 @@
                 
                 
                 <form role="form" class="menu-3part">-->
-                     <h4><i>Other Qualifications & Specific Skills</i></h4>
-                     <h5>Please specify</h5>
+                     <h4><i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Other Qualifications & Specific Skills')); ?> </i></h4>
+                     <h5><?php echo $this->requestAction('app/get-translate/'.base64_encode(' Please specify')); ?></h5>
                      <div class="form-group col-lg-6">
                      <!--<input type="text" id="" class="form-control" placeholder="Qualification Title">
                       <input type="text" id="" class="form-control" placeholder="Expiry Date of Certification">-->
                         <?php echo $this->Form->input('UserProfessionals.other.other.other.qualification_title',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Qualification Title',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Qualification Title')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['other']['other']['other']['qualification_title'] !=''?$professional['UserProfessionals']['other']['other']['other']['qualification_title']:''
                           ]); ?>
                       <?php echo $this->Form->input('UserProfessionals.other.other.other.qualification_date',[
                                  'class'=>'form-control',
                                  'templates' => ['inputContainer' => '{{content}}'],
-                                 'placeholder'=>'Graduation Date',
+                                 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Graduation Date')),
                                  'label'=>false,
                                  'value'=>$professional['UserProfessionals']['other']['other']['other']['qualification_date'] !=''?$professional['UserProfessionals']['other']['other']['other']['qualification_date']:''
                           ]); ?>
@@ -1047,19 +1047,19 @@
                         <?php echo $this->Form->input('UserProfessionals.other.other.other.expiry_date',[
                              'class'=>'form-control',
                              'templates' => ['inputContainer' => '{{content}}'],
-                             'placeholder'=>'Expiry Date of Certification',
+                             'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiry Date of Certification')),
                              'label'=>false,
                              'value'=>$professional['UserProfessionals']['other']['other']['other']['expiry_date'] !=''?$professional['UserProfessionals']['other']['other']['other']['expiry_date']:''
                       ]); ?>
                     </div>
                    <div class="add-more-div">
                     <p class="add-more-expand
-                     one">Add More <i class="fa fa-plus-circle pull-right"></i></p>
+                     one"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add More')); ?> <i class="fa fa-plus-circle pull-right"></i></p>
                     <div class="add-more-inner" id="one" style="display:none;">
                     
                     <div class="form-group">
                     <div class="form-group col-lg-6">
-                      <label for="">Do you know First Aid for </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Do you know First Aid for')); ?> </label>
                           <!--<select id="sel1" class="form-control">
                           <option>Adults</option>
                           <option>Children</option>
@@ -1079,7 +1079,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Do you know CPR for </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Do you know CPR for')); ?> </label>
                           <!--<select id="sel1" class="form-control">
                            <option>Adults</option>
                           <option>Children</option>
@@ -1098,7 +1098,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">I can administer Oral Medications</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('I can administer Oral Medications')); ?> </label>
                           <!--<select id="sel1" class="form-control">
                            <option>Adults</option>
                           <option>Children</option>
@@ -1117,7 +1117,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">I canadminister Injected Medications</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('I canadminister Injected Medications')); ?></label>
                           <!--<select id="sel1" class="form-control">
                         <option>Adults</option>
                           <option>Children</option>
@@ -1137,7 +1137,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Familiar with Pet Training Techniques</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Familiar with Pet Training Techniques')); ?></label>
                          <!--<select id="sel1" class="form-control">
                           <option>Dog</option>
                           <option>Cat</option>
@@ -1153,7 +1153,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Experience with Behavioural Problems</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience with Behavioural Problems')); ?></label>
                           <!--<select id="sel1" class="form-control">
                             <option>Adults</option>
                           <option>Children</option>
@@ -1172,7 +1172,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Experience with Rescue Pets </label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience with Rescue Pets')); ?> </label>
                           <!--<select id="sel1" class="form-control">
                           <option>Dog</option>
                           <option>Cat</option>
@@ -1188,7 +1188,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="">Languages</label>
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Languages')); ?></label>
                           <!--<select id="sel1" class="form-control">
                             <option>English</option>
                             <option>Chinese</option>
@@ -1218,7 +1218,7 @@
                       ?>
                     </div>
                     <div class="form-group col-lg-6 radio-center">
-                    <label>Experience as Volunteer with Animal Welfare</label>
+                    <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience as Volunteer with Animal Welfare')); ?></label>
                     <span class="pull-right"><!--<label class="radio-inline"><input type="radio" name="optradio">Yes</label>
                     <label class="radio-inline"><input type="radio" name="optradio">No</label> -->
                     <?php echo $this->Form->radio(

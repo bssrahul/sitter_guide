@@ -57,12 +57,12 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Category Listing')); ?></h2>
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Category Listing')); ?></h2>
 					<h2 style="float:right">
 						<?php 
 						$languageSession = $this->request->session();
 						if($languageSession->read('requestedLanguage')=='en'){ ?>	
-						<a style="float:right" href="<?php echo HTTP_ROOT.'category/add-category'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Category')); ?></button></a>
+						<a style="float:right" href="<?php echo HTTP_ROOT.'category/add-category'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Category')); ?></button></a>
 						<?php } ?>	
 						</h2>
 					<div class="clearfix"></div>
@@ -75,14 +75,14 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Slug')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th> 
-							   <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th class="text-center column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Image')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Title')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Slug')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?></th> 
+							   <th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -118,21 +118,21 @@
 										echo $category_info->description;
 								?></td>
 								
-								 <td><?php echo $category_info->status == 1?'Active':'Blocked';	?></td>
+								 <td><?php echo $category_info->status == 1? $this->requestAction('app/get-translate/'.base64_encode('Active')) :$this->requestAction('app/get-translate/'.base64_encode('Blocked'));	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
 								   <a title="<?php echo($category_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Categories'.'/'.base64_encode(convert_uuencode($category_info->id)).'/'.$target[$category_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($category_info->status ==0?'-o':'') ?>"></span></a>
 								 
-								  <a title="Edit" href="<?php echo HTTP_ROOT."category/edit-category/".base64_encode(convert_uuencode($category_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
+								  <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit')); ?>" href="<?php echo HTTP_ROOT."category/edit-category/".base64_encode(convert_uuencode($category_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								   
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Categories'.'/'.base64_encode(convert_uuencode($category_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Delete')); ?>" href="<?php echo HTTP_ROOT."users/delete-row/".'Categories'.'/'.base64_encode(convert_uuencode($category_info->id));?>" onclick="if(!confirm(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Are you sure to delete this record?')); ?>)){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 							</tr>
 							<?php $i++;
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Record Found')); ?> </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Record Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

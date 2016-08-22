@@ -42,8 +42,8 @@
 										<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
 										<p class="mess-tesxt1"> 
 											<i class="fa fa-clock-o">
-											</i> Stays booked through Sitterguide are covered by free 
-											<a href="<?php echo HTTP_ROOT."insurance"; ?>" class="colorblue">premium insurance.
+											</i>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Stays booked through Sitterguide are covered by free')); ?>  
+											<a href="<?php echo HTTP_ROOT."insurance"; ?>" class="colorblue"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('premium insurance')); ?> .
 											</a>
 										</p>
 									</div>
@@ -62,14 +62,14 @@
                     </div>
                     
                     <div class="text-wrap-bottom">
-                      <p>Sitterguide is committed to a safe community. Stays booked outside of sitterguide are not covered by insurance. For your safety, never share your contact information, and report any requests to pay outside the sitter platform.
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitterguide is committed to a safe community. Stays booked outside of sitterguide are not covered by insurance. For your safety, never share your contact information, and report any requests to pay outside the sitter platform')); ?> .
                       </p>
                     </div>
                     <?php if(!empty(@$userTo)){ ?>
 						<p class="report">
 						  <a href="javascript:void(0)" data-target="#myModal8" data-toggle="modal">
 							<i class=" fa fa-remove">
-							</i> &nbsp; Report this conversation
+							</i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Report this conversation')); ?> 
 						  </a>
 						</p>
                     <?php } ?>
@@ -81,7 +81,7 @@
     <div class="sitter-quike-view">
       <div class="sqv-box">
         <div class="top-close">
-          <p>Report This Profile </p>
+          <p> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Report This Profile')); ?> </p>
           <a href="javascript:void(0)" title="Close" data-target="#myModal8" data-toggle="modal" ><i class="fa fa-times" aria-hidden="true"></i></a> </div>
         
         <!--Additional Services-->
@@ -111,9 +111,9 @@
 		  ?>
           <!--<textarea class="form-control" rows="5"></textarea>-->
            <div class="pull-right bt-pad">
-            <button class="btn btn-default" data-dismiss="modal">cancel</button>
+            <button class="btn btn-default" data-dismiss="modal"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('cancel')); ?> </button>
             &nbsp;
-            <button id="submit-report" type="submit" class="btn btn-success" >Submit</button>
+            <button id="submit-report" type="submit" class="btn btn-success" > <?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?> </button>
           </div>
           <?php $this->Form->end(); ?>
         </div>

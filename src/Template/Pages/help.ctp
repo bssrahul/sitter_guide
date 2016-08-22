@@ -26,7 +26,7 @@
 					<?php  
 					if(empty($guest)){ ?>
 						
-						<div class="col-md-3 col-md-offset-5"><h4><?php echo "Record Not Found";?><h4></div> 
+						<div class="col-md-3 col-md-offset-5"><h4><?php echo $this->requestAction('app/get-translate/'.base64_encode("Record Not Found"));?><h4></div> 
 					<?php	 
 					}else{ //pr($guest);die;?>
 										
@@ -63,7 +63,7 @@
 									
 									
 									<li class="pad-bottom10">
-										<a href="<?php echo HTTP_ROOT."Pages/help-listing/".base64_encode(convert_uuencode(3))."/".base64_encode(convert_uuencode(@$que_value->category_id));?>"><b>See all articles</b></a>
+										<a href="<?php echo HTTP_ROOT."Pages/help-listing/".base64_encode(convert_uuencode(3))."/".base64_encode(convert_uuencode(@$que_value->category_id));?>"><b><?php echo $this->requestAction('app/get-translate/'.base64_encode('See all articles'));?></b></a>
 									</li> 
 								</ul>
 							</div> 
@@ -76,7 +76,7 @@
 					<?php  
 					if(empty($sitter)){
 						?>
-						<div class="col-md-3 col-md-offset-5"><h4><?php echo "Record Not Found";?><h4></div> 
+						<div class="col-md-3 col-md-offset-5"><h4><?php echo $this->requestAction('app/get-translate/'.base64_encode("Record Not Found"));?><h4></div> 
 					<?php	 
 					}else{ ?>
 						<div id="menu3" class="tab-pane fade in">
@@ -135,12 +135,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12  col-sm-12  col-md-12col-lg-12">
-					<h2 class="text-center help-looking-title">Looking for something else ?</h2>
+					<h2 class="text-center help-looking-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Looking for something else ?'));?></h2>
 					<ul class="list-inline center-block text-center">
-						<li><button class="btn help-view-btn">View all Articles</button></li>
-						<li><a href="<?php echo HTTP_ROOT."Pages/contact"; ?>"></a><button class="btn help-contact-btn">Contact Support</button></a></li>
+						<li><button class="btn help-view-btn"><?php echo $this->requestAction('app/get-translate/'.base64_encode('View all Articles'));?></button></li>
+						<li><a href="<?php echo HTTP_ROOT."Pages/contact"; ?>"></a><button class="btn help-contact-btn"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Support'));?></button></a></li>
 					</ul>
-					<h3 class="text-center"><span class="helpqa"><a href="#" class="helpqa">Q & A Community</a></span></h3>
+					<h3 class="text-center"><span class="helpqa"><a href="#" class="helpqa"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Q & A Community'));?></a></span></h3>
 				</div>
 				
 			</div>

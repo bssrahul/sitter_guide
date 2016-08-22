@@ -2,247 +2,143 @@
 /* CSS Document */
 
 a { outline:none !important; text-decoration:none !important;}
+.create-sitter-wrapper { background:#FFAE00; width:100%; height:auto; padding:30px 15px 35px 0; margin:30px 0 0 0; border-radius:4px;} 
 
-.create-sitter-wrapper { background:#FFAE00; width:100%; height:auto; padding:38px 15px 42px 0; margin-top:30px; border-radius:4px;} 
-
-
- .create-sitter-wrapper h1 { color:#fff; font-size:40px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:150px; outline:none; text-decoration:none !important;}
+ .create-sitter-wrapper h1 { color:#fff; font-size:30px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:150px; outline:none; text-decoration:none !important;}
 .create-sitter-wrapper p { color:#fff; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:400; padding-top:5px; padding-left:150px; outline:none; text-decoration:none !important;}
-
-
 .create-sitter-wrapper .s-left span { width:66px; height:66px; background:url(../../img/search-icons.png) no-repeat -528px -50px; margin-left:40px; margin-top:8px; float:left; position:relative; top:0px;}
-
-
 .create-sitter-wrapper1 { background:#59aae1; width:100%; height:auto; padding:38px 15px 42px 0; margin-top:30px; border-radius:4px;} 
-
-
 .create-sitter-wrapper1 h1 { color:#fff; font-size:40px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:150px;}
 .create-sitter-wrapper1 p { color:#fff; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:400; padding-top:5px; padding-left:150px;}
-
-
 .create-sitter-wrapper1 .s-left1 span { width:66px; height:66px; background:url(../../img/search-icons.png) no-repeat -609px -50px; margin-left:40px; margin-top:8px; float:left; position:relative; top:0px;}
-
-.easy-step-wrapper .easy-body  .referafriend { color:#47BEE2; font-size:35px; font-weight:400;  text-shadow: 0px 3px 2px rgba(0,0,0,0.4)
-                ; font-style:italic; font-family: 'Raleway', sans-serif; padding-top:2px;}
-
-
+.easy-step-wrapper .easy-body  .referafriend { color:#47BEE2; font-size:35px; font-weight:400;  text-shadow: 0px 3px 2px rgba(0,0,0,0.4); font-style:italic; font-family: 'Raleway', sans-serif; padding-top:2px;}
 .refer-text { font-size:16px; color:#404040; padding-top:17px}
-
-
-
 .mgb30 { margin-bottom:30px !important;}
-.easy-step-wrapper {
-    border: 1px solid #c7c7c7;
-    margin-bottom: 0px;
-    margin-top: 30px;
-}
-
-
-.easy-step-wrapper .easy-head {
-    background: #efecec none repeat scroll 0 0;
-    border-bottom: 1px solid #c7c7c7;
-    padding: 0 30px;
-}
-
-
-.easy-step-wrapper .easy-head h5 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    padding: 14px 0; font-weight:300;
-}
-
-.easy-step-wrapper .easy-body {
-    background: #f6f6f6 none repeat scroll 0 0;
-    padding: 30px 30px 30px;
-}
-
-
+.easy-step-wrapper { border: 1px solid #c7c7c7; margin:30px 0 0 0;}
+.easy-step-wrapper .easy-head { background: #efecec none repeat scroll 0 0; border-bottom: 1px solid #c7c7c7; padding: 0 25px;}
+.easy-step-wrapper .easy-head h5 {font-family: 'Raleway', sans-serif; font-size: 16px; padding: 14px 0; font-weight:300;}
+.easy-step-wrapper .easy-body {background: #f6f6f6 none repeat scroll 0 0; padding: 30px;}
 .easy-step-wrapper .easy-body .create-easy-step-green { background:#72a105; padding:18px 20px 18px 20px;}
 .easy-step-wrapper .easy-body .create-easy-step-green h3 { color:#fff; font-size:20px; font-weight:300; text-align:center}
 .easy-step-wrapper .easy-body .create-easy-step-green p { color:#fff; font-size:13px; font-weight:300; text-align:center; padding-top:10px;}
-
-
-.easy-step-wrapper .easy-body .create-easy-step-grey { background:#f3f3f3; border:1px solid #e4e4e4; padding:20px 20px 20px 20px; margin-top:30px;}
+.easy-step-wrapper .easy-body .create-easy-step-grey { background:#f3f3f3; border:1px solid #e4e4e4; padding:20px; margin:30px 0 0 0;}
 .easy-step-wrapper .easy-body .create-easy-step-grey h3 { color:#404040; font-size:20px; font-weight:300; text-align:center}
 .easy-step-wrapper .easy-body .create-easy-step-grey h3 a{ color:#404040; font-size:20px; font-weight:300; text-align:center; outline:none; text-decoration:none;}
 .easy-step-wrapper .easy-body .create-easy-step-grey h3 a:hover, .easy-step-wrapper .easy-body .create-easy-step-grey h3 a:focus { color:#404040; font-size:20px; font-weight:300; text-align:center; outline:none; text-decoration:none;}
 
-
 .easy-step-wrapper .easy-body .create-easy-step-grey p { color:#404040; font-size:13px; font-weight:300; text-align:center; padding-top:10px;}
-
-
-
-
-
-.btn-invite12 { background: #72a105; color:#fff !important; font-size:20px; text-align:center; outline:none; padding:10px 50px; text-decoration:none; margin-top:35px; margin-bottom:30px;}
-
+.btn-invite12 { background: #72a105; color:#fff !important; font-size:20px; text-align:center; outline:none; padding:10px 50px; text-decoration:none; margin-:35px 0 30px 0;}
 .icon-right-s {width:20px; height:25px; background:url(../../img/search-icons.png) no-repeat -33px -423px; margin-left:0px; margin-top:0px; float:left; position:relative; top:2px; margin-right:15px;}
-
 .li-pa1 { padding-top:15px;}
 .card-mtop { margin-top:25px;}
 
-
-
-@media (min-width:320px) and (max-width:360px){
-	
-	.icon-right-s {
-   
-    margin: 0 15px 0px 0;
-   
-}
-	
-	}
-
-
-@media (max-width:767px) {
-	
-	.easy-step-wrapper .easy-body .referafriend { text-align:center;
-}
-
-.refer-text { text-align:center;
-}
-	
-	.btn-invite12 {  padding:10px 30px; }
-
-	
-	.easy-step-wrapper .easy-head h5 {
-  
-    line-height: 22px;
-   
-}
-	
-	
-	.create-sitter-wrapper .s-left span {
-  
-    display: block;
-   
-    height: 66px;
-    margin: 0 auto;
-   
-    top: 0;
-    width: 66px;
-	margin:0px auto;
-	float:none;
-	text-align:center;
-}
-
-
-.create-sitter-wrapper h1 {
-   
-    padding-left: 15px; font-size: 28px;
-   
-	text-align:center; padding-top:10px; padding-bottom:10px;
-}
-
-
-.create-sitter-wrapper p { padding-left:15px; text-align:center; text-decoration:none !important;}
-
-	
-	
-	.create-sitter-wrapper1 .s-left1 span {
-  
-    display: block;
-   
-    height: 66px;
-    margin: 0 auto;
-   
-    top: 0;
-    width: 66px;
-	margin:0px auto;
-	float:none;
-	text-align:center;
-}
-
-
-.create-sitter-wrapper1 h1 {
-   
-    padding-left: 15px; font-size: 28px;
-   
-	text-align:center; padding-top:10px; padding-bottom:10px;
-}
-
-
-.create-sitter-wrapper1 p { padding-left:15px; text-align:center; text-decoration:none !important;}
-
-	
-	
-	}
-	
-	
-
 @media (min-width:768px) and (max-width:1199px){
-	
-	.create-sitter-wrapper h1 { color:#fff; font-size:28px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:120px; outline:none; text-decoration:none !important;}
+.create-sitter-wrapper h1 { color:#fff; font-size:28px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:120px; outline:none; text-decoration:none !important;}
 .create-sitter-wrapper p { color:#fff; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:400; padding-top:5px; padding-left:120px; outline:none; text-decoration:none !important;}
 .create-sitter-wrapper .s-left span { width:66px; height:66px; background:url(../../img/search-icons.png) no-repeat -528px -50px; margin-left:30px; margin-top:8px; float:left; position:relative; top:0px;}
-	.create-sitter-wrapper1 h1 { color:#fff; font-size:28px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:120px; outline:none; text-decoration:none !important;}
+.create-sitter-wrapper1 h1 { color:#fff; font-size:28px; font-family: 'Raleway', sans-serif; font-weight:400;  padding-left:120px; outline:none; text-decoration:none !important;}
 .create-sitter-wrapper1 p { color:#fff; font-size:14px; font-family: 'Raleway', sans-serif; font-weight:400; padding-top:5px; padding-left:120px; outline:none; text-decoration:none !important;}
-
-	
 .create-sitter-wrapper1 .s-left1 span { width:66px; height:66px; background:url(../../img/search-icons.png) no-repeat -609px -50px; margin-left:30px; margin-top:8px; float:left; position:relative; top:0px;}
-	}
-
-	
-	
-	
+}
 
 @media (min-width:1200px) and (max-width:1335px){
-
 .wrap-height { min-height:223px !important;}	
-	.refer-text {
-   
-    font-size: 15px;
-   
+.refer-text { font-size: 15px;}
 }
-	}
-
 
 @media (min-width:1200px) and (max-width:1400px){
-	
-	.create-sitter-wrapper h1 { padding-left:105px;  font-size:30px;}
+.create-sitter-wrapper h1 { padding-left:105px;  font-size:30px;}
 .create-sitter-wrapper p { padding-left:105px;}
-
-
 .create-sitter-wrapper .s-left span { margin-left:20px; }
-
-
 .wrap-height { min-height:249px;}
-
-
 .create-sitter-wrapper1 h1 { font-size:29px; padding-left:105px;}
 .create-sitter-wrapper1 p { padding-left:105px;}
-
-
 .create-sitter-wrapper1 .s-left1 span { margin-left:20px; }
-
-	.btn-invite12 {
-   
-    padding: 10px 20px;
-   
+.btn-invite12 {padding: 10px 20px;}
+.easy-step-wrapper .easy-body .referafriend {font-size: 25px;}
 }
-	.easy-step-wrapper .easy-body .referafriend {
-  
-    font-size: 25px;
-  
-}
-	
-	
-	}
-	
-	
-	@media (min-width:1401px) and (max-width:1899px){
-			.btn-invite12 {
-   
-    padding: 10px 20px;
-   
-}
-
-.easy-step-wrapper .easy-body .referafriend {
-  
-    font-size: 25px;
-  
-}
+@media (min-width:1401px) and (max-width:1899px){
+.btn-invite12 { padding: 10px 20px;}
+.easy-step-wrapper .easy-body .referafriend { font-size: 25px;}
 .create-sitter-wrapper h1 {   font-size:32px;}
 .create-sitter-wrapper1 h1 { font-size:32px; }
-		
-		}
+}
+
+
+
+
+@media (min-width:641px) and (max-width:767px){
+.easy-step-wrapper .easy-body .referafriend { text-align:center;}
+.refer-text { text-align:center;}
+.btn-invite12 {  padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:16px; margin:15px 0 0 0;  }
+.easy-step-wrapper .easy-head h5 { font-size:14px; font-weight:bold;}
+.create-sitter-wrapper .s-left span {display: block; height: 66px; margin: 0 auto; top: 0; width: 66px; margin:0px auto; float:none; text-align:center;}
+.create-sitter-wrapper h1 {font-size:16px; font-weight:bold; padding:0px; }
+.create-sitter-wrapper p { padding:0px;  }
+.create-sitter-wrapper1 .s-left1 span { display: block;height: 66px; margin: 0 auto; top: 0; width: 66px; margin:0px auto;float:none; text-align:center;}
+.create-sitter-wrapper1 h1 {  padding-left: 15px; font-size: 28px;text-align:center; padding-top:10px; padding-bottom:10px;}
+.create-sitter-wrapper1 p { padding-left:15px; text-align:center; text-decoration:none !important;}
+.create-sitter-wrapper {padding:38px 15px 42px 0; margin:30px 0 0 0; } 
+.create-sitter-wrapper {padding:15px; margin:15px 0 0 0; } 
+.easy-step-wrapper .easy-body .create-easy-step-green h3 {font-size:16px; font-weight:bold; }
+.easy-step-wrapper .easy-body{ padding:15px;}
+.easy-step-wrapper .easy-body .list-unstyled{ margin:0 0 0 0;}
+.easy-step-wrapper .easy-body .create-easy-step-grey{  padding:15px; margin:15px 0 0 0;}
+.easy-step-wrapper{ margin:15px 0 0 0;}
+.refer-text { font-size:13px; padding:15px 0 0 0; line-height:18px;}
+.li-pa1 { padding:5px 0 0 0;}
+.card-mtop { margin:15px 0 0 0;}
+.mgb30 { margin-bottom:15px !important;}
+}
+
+@media (min-width:481px) and (max-width:640px){
+.easy-step-wrapper .easy-body .referafriend { text-align:center;}
+.refer-text { text-align:center;}
+.btn-invite12 {  padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:16px; margin:15px 0 0 0;  }
+.easy-step-wrapper .easy-head h5 { font-size:14px; font-weight:bold;}
+.create-sitter-wrapper .s-left span {display: block; height: 66px; margin: 0 auto; top: 0; width: 66px; margin:0px auto; float:none; text-align:center;}
+.create-sitter-wrapper h1 {font-size:16px; font-weight:bold; padding:0px; }
+.create-sitter-wrapper p { padding:0px;  }
+.create-sitter-wrapper1 .s-left1 span { display: block;height: 66px; margin: 0 auto; top: 0; width: 66px; margin:0px auto;float:none; text-align:center;}
+.create-sitter-wrapper1 h1 {  padding-left: 15px; font-size: 28px;text-align:center; padding-top:10px; padding-bottom:10px;}
+.create-sitter-wrapper1 p { padding-left:15px; text-align:center; text-decoration:none !important;}
+.create-sitter-wrapper {padding:38px 15px 42px 0; margin:30px 0 0 0; } 
+.create-sitter-wrapper {padding:15px; margin:15px 0 0 0; } 
+.easy-step-wrapper .easy-body .create-easy-step-green h3 {font-size:16px; font-weight:bold; }
+.easy-step-wrapper .easy-body{ padding:15px;}
+.easy-step-wrapper .easy-body .list-unstyled{ margin:0 0 0 0;}
+.easy-step-wrapper .easy-body .create-easy-step-grey{  padding:15px; margin:15px 0 0 0;}
+.easy-step-wrapper{ margin:15px 0 0 0;}
+.refer-text { font-size:13px; padding:15px 0 0 0; line-height:18px;}
+.li-pa1 { padding:5px 0 0 0;}
+.card-mtop { margin:15px 0 0 0;}
+.mgb30 { margin-bottom:15px !important;}
+}
+
+
+@media (min-width:320px) and (max-width:480px){
+
+.easy-step-wrapper .easy-body .referafriend { text-align:center;}
+.refer-text { text-align:center;}
+.btn-invite12 {  padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:16px; margin:15px 0 0 0;  }
+.easy-step-wrapper .easy-head h5 { font-size:14px; font-weight:bold;}
+.create-sitter-wrapper .s-left span {display: block; height: 66px; margin: 0 auto; top: 0; width: 66px; margin:0px auto; float:none; text-align:center;}
+.create-sitter-wrapper h1 {font-size:16px; font-weight:bold; padding:0px; }
+.create-sitter-wrapper p { padding:0px;  }
+.create-sitter-wrapper1 .s-left1 span { display: block;height: 66px; margin: 0 auto; top: 0; width: 66px; margin:0px auto;float:none; text-align:center;}
+.create-sitter-wrapper1 h1 {  padding-left: 15px; font-size: 28px;text-align:center; padding-top:10px; padding-bottom:10px;}
+.create-sitter-wrapper1 p { padding-left:15px; text-align:center; text-decoration:none !important;}
+.create-sitter-wrapper {padding:38px 15px 42px 0; margin:30px 0 0 0; } 
+.create-sitter-wrapper {padding:15px; margin:15px 0 0 0; } 
+.easy-step-wrapper .easy-body .create-easy-step-green h3 {font-size:16px; font-weight:bold; }
+.easy-step-wrapper .easy-body{ padding:15px;}
+.easy-step-wrapper .easy-body .list-unstyled{ margin:0 0 0 0;}
+.easy-step-wrapper .easy-body .create-easy-step-grey{  padding:15px; margin:15px 0 0 0;}
+.easy-step-wrapper{ margin:15px 0 0 0;}
+.refer-text { font-size:13px; padding:15px 0 0 0; line-height:18px;}
+.li-pa1 { padding:5px 0 0 0;}
+.card-mtop { margin:15px 0 0 0;}
+.mgb30 { margin-bottom:15px !important;}
+}
+
+

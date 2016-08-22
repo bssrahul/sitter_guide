@@ -58,7 +58,8 @@
 			?>
 					  
 			<div class="container-fluid main-container <?php echo $bgClass; ?>">
-			   <div class=" main-container-outer">
+            	<div class="row">
+				   <div class=" main-container-outer">
 			      <div class="table-row" id="internalProfile">
                   	<div id="contentHolder">
 	                  <?php 
@@ -67,6 +68,7 @@
                       </div>
 			      </div>
 			  </div>
+                </div>
 			</div>	
 
         <?php echo $this->element('frontElements/common/footer');

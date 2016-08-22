@@ -1,6 +1,6 @@
 
  <section class="news-wrap">
-  <?php  if(empty($blogs_info)){?><div class="col-md-3 col-md-offset-5"><h4><?php echo "Record Not Found";?><h4></div> <?php	 }
+  <?php  if(empty($blogs_info)){?><div class="col-md-3 col-md-offset-5"><h4><?php echo $this->requestAction('app/get-translate/'.base64_encode("Record Not Found"));?><h4></div> <?php	 }
 		else{	
 			 foreach($blogs_info as $blog_info) { ?>
 						<div class="container">

@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#gettingStarted">Getting Started</a></li>
-				<li><a data-toggle="tab" href="#baseProfile">Base Profile</a></li>
-				<li><a data-toggle="tab" href="#extendedProfile">Extended Profile</a></li>
-				<li><a data-toggle="tab" href="#personal">Personal</a></li>
+				<li class="active"><a data-toggle="tab" href="#gettingStarted"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Getting Started')); ?></a></li>
+				<li><a data-toggle="tab" href="#baseProfile"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Base Profile')); ?></a></li>
+				<li><a data-toggle="tab" href="#extendedProfile"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Profile')); ?></a></li>
+				<li><a data-toggle="tab" href="#personal"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Personal')); ?></a></li>
 			</ul>
 			<div class="tab-content">
 			
@@ -40,13 +40,13 @@
 									'enctype'=>'multipart/form-data',
 									 'autocomplete'=>'off',
 									]);?>
-				  <h1>Personal Details</h1>
+				  <h1><?php echo $this->requestAction('app/get-translate/'.base64_encode('Personal Details')); ?></h1>
 				<?php 	  
 				 $personal = $session->read('personal');
 			    ?>
 				  <div class="form-group">
-						<label for="address">
-                       What is your street address? *</label>
+						<label for="address"><?php echo $this->requestAction('app/get-translate/'.base64_encode(' What is your street address?')); ?>
+                       *</label>
 						  <?php
 					
 						  
@@ -61,7 +61,7 @@
 				  </div>
 				  <div class="form-group">
 						<label for="city">
-                               Suburb *</label>
+                             <?php echo $this->requestAction('app/get-translate/'.base64_encode('Suburb')); ?>  *</label>
 						  <?php
 						  echo $this->Form->input('Users[city]',[
 											'class'=>'form-control',
@@ -73,7 +73,7 @@
 				  </div>
 				  <div class="form-group">
 						<label for="city">
-                               State*</label>
+                               <?php echo $this->requestAction('app/get-translate/'.base64_encode('State')); ?> *</label>
 						  <?php
 						  echo $this->Form->input('Users[state]',[
 											'class'=>'form-control',
@@ -85,7 +85,7 @@
 				  </div>
 				  <div class="form-group">
 						<label for="zip">
-                               Postcode*</label>
+                               <?php echo $this->requestAction('app/get-translate/'.base64_encode('Postcode')); ?> *</label>
 						  <?php
 						  echo $this->Form->input('Users[zip]',[
 											'class'=>'form-control',
@@ -97,7 +97,7 @@
 				  </div>
 				  <div class="form-group">
 						<label for="zip">
-                               Phone*</label>
+                              <?php echo $this->requestAction('app/get-translate/'.base64_encode('Phone')); ?> *</label>
 						  <?php
 						  echo $this->Form->input('Users[phone]',[
 											'class'=>'form-control',
@@ -110,7 +110,7 @@
 				       <!--<a data-toggle="tab" href="#personal"><button  class="btn btn-success">Continue</button></a> -->
 					   <input type="submit" class="btn btn-success" id="submitPersonal" value="Continue"/>
 					   
-				       <a data-toggle="tab" href="#extendedProfile"><button  class="btn btn-success">Back</button></a>
+				       <a data-toggle="tab" href="#extendedProfile"><button  class="btn btn-success"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Back')); ?></button></a>
 					<?php 
 					echo $this->form->end();
 					//echo 'Personal';//include('inc_fund_mat.ctp'); ?>

@@ -575,7 +575,9 @@ class GuestsController extends AppController
 							$UsersData->longitude=$sourceLocationLongitude;					
 							// end get latitude and longitude from country and zip start			
 							$UsersData->status = 0;
-							if($UsersModel->save($UsersData))
+							$SaveNewUser=$UsersModel->save($UsersData);
+							$newUserId=$SaveNewUser['id'];
+							if($SaveNewUser)
 							{
 								$getUsersTempId1 = $UsersData->id;
 								$UserBadgedata->user_id= $UsersData->id;
@@ -630,7 +632,9 @@ class GuestsController extends AppController
 										die;
 									}else{
 										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
-										return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou']);			
+										return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou', '?' => array(
+        'newuserid' => $newUserId
+    )]);			
 								//die;
 									}
 							 
@@ -1107,9 +1111,135 @@ class GuestsController extends AppController
 	}
 	public function signThankyou(){
 		$this->viewBuilder()->layout('landing');
+		if(!empty($_GET['newuserid'])){
+				 $newUserID=$_GET['newuserid'];
+		}
 		$SiteModel = TableRegistry::get('SiteConfigurations');
 		$siteConfigurationData=$SiteModel->find('all')->toArray();
 		$this->set('siteConfigurationData',$siteConfigurationData);
+		// for find near by users
+		$UsersModel= TableRegistry::get('Users');
+		$userData=$UsersModel->find('all')->where(['id'=>$newUserID])->toArray();
+				    //$Userratingdata=$userData->user_ratings;
+					//$userFromArr=array();
+					//foreach($Userratingdata as $Userrating){
+					//	$userFromArr[]=$Userrating->user_from;
+					//}
+					$gettingUserData=$UsersModel->find('all')->where(['user_type'=>'Sitter'])->contain(['Users_badge','UserRatings','UserSitterServices'])->toArray();
+					// echo "<pre>"; print_R($gettingUserData);die;
+					 $commentUserData=array();
+					//foreach($gettingUserData as $gettingUser){
+						//	if(in_array($gettingUser->id,$userFromArr)){
+							//	$commentUserData[]=$gettingUser;
+						//	} 
+					//}
+				
+					$sourceLocationLatitude =$userData[0]->latitude;
+					$sourceLocationLongitude =$userData[0]->longitude;
+					if((!empty($sourceLocationLatitude)) && (!empty($sourceLocationLongitude))){
+					$query='SELECT
+									  id, (
+										3959 * acos (
+										  cos ( radians('.$sourceLocationLatitude.') )
+										  * cos( radians( latitude ) )
+										  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+										  + sin ( radians('.$sourceLocationLatitude.') )
+										  * sin( radians( latitude ) )
+										)
+									  ) AS distance
+									FROM users
+									HAVING distance < '.DEFAULT_RADIUS.'
+									ORDER BY distance';
+				$connection = ConnectionManager::get('default');
+				$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+				$finalDistanceArr=array();
+				foreach($results as $result){
+					foreach($gettingUserData as $favData){
+							$selUserData=$favData->id;
+							if(in_array($selUserData,$result)){
+								
+								$finalDistanceArr[]=$result;
+							} 
+				} 
+				}
+				
+				if(!empty($finalDistanceArr)){
+					$idArr = array();
+					$distanceAssociation = array();
+					foreach($finalDistanceArr as $resultsValue){
+							$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+							//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+							$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}}
+				//echo "<pre>"; print_R($distanceAssociation);die;
+				$nearUseridArr=array();	
+				foreach($distanceAssociation as $key=>$diatance){
+						if($diatance != 0){
+								$nearUseridArr[]=$key;
+						}
+				}	
+		
+				$this->set('distanceAssociation',$distanceAssociation);	
+				$bookingRequestModel = TableRegistry :: get("BookingRequests");
+				
+					
+				foreach($gettingUserData as $key=> $gettingUser){
+						if(in_array($gettingUser->id,$nearUseridArr)){
+							@$flag++;
+							if($flag < 5){
+								$getUsersArr[]=$gettingUser;
+								$userIDs=$gettingUser['id'];
+						
+							
+				
+				$getUsersArr[$key]['repeatClient'] = $bookingRequestModel->find('all')
+							->where(['BookingRequests.sitter_id' => $userIDs/*,'BookingRequests.folder_status_guest' => "pending"*//*,'BookingRequests.read_status' => "unread"*/])
+							->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1' )
+							->hydrate(false)->count();
+							
+				
+			//end repeat client
+							}
+							
+						}
+				}
+			
+			$this->set('getUsersArr',$getUsersArr);
+			
+		}
+				//echo "<pre>"; print_R($getUsersArr);die;
+		
+		
+		//end of near by user function
+		
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+			//pr($this->request->data);
+				//echo "<pre>"; print_r($this->request->data); die;
+				$userID=$this->request->data['checkboxG3'];
+				$message=$this->request->data['message'];
+				$newUserData=$UsersModel->find('all')->where(['id'=>$newUserID])->toArray();
+				//echo "<pre>"; print_r($newUserData); die;
+				$name=$newUserData[0]['first_name']." ".$newUserData[0]['last_name'];
+				$email=$newUserData[0]['email'];
+				
+				$Userdata=array();
+				foreach($userID as $user){
+					$Userdata=$UsersModel->find('all')->where(['id'=>$user])->toArray();
+					$full_name=$Userdata[0]['first_name']." ".$Userdata[0]['last_name'];
+					$emailReceive=$Userdata[0]['email'];
+					
+					$replace = array('{full_name}','{name}','{email}','{message}');
+					$with = array($full_name,$name,$email,$message);
+					$this->send_email('',$replace,$with,'contact_request_on_registration',$emailReceive,'');
+				}
+				$this->setSuccessMessage($this->stringTranslate(base64_encode("Your message send to selected Sitters.")));
+			 	//$this->Flash->error(__("You Can't book itself."));
+				return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
+				//echo "<pre>"; print_r($Userdata); die;
+		} 
+		
+		
 	}
 	//For cookie
 	function userCookie(){

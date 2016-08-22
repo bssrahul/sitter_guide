@@ -97,7 +97,7 @@ echo $this->Html->script(['Front/messages.js']); ?>
                       </li>
                        <!--MESSAGE LI START -->
                      <li  class="dropdown">
-						  <a  id="droplog3" href="<?php echo HTTP_ROOT.'Message/get-messages/pending'; ?>" > Message   <!--class="dropdown-toggle" data-toggle="dropdown"--> 
+						  <a  id="droplog3" href="<?php echo HTTP_ROOT.'Message/get-messages/pending'; ?>" > <?php echo $this->requestAction('app/get-translate/'.base64_encode('Message')); ?>   <!--class="dropdown-toggle" data-toggle="dropdown"--> 
 							<span class="badge myNewCount"></span>
 						  </a>
 						</a>

@@ -36,7 +36,6 @@ footer label.error {margin: 6px 0px 0px 2px;font-size: 12px !important;}
 #users-title, #users-hear-from, #users-country {border: 1px solid #aaaaaa; border-radius: 2px; box-shadow: none; height: 40px;}
 
 .dob{width:100% !important;}
-.dobDiv > .text{width:85% !important;width: 80% !important;float: left;}
 
 label.error{margin-top:0px;float:left;}
 .radio label, .checkbox>input{ margin-left:3px !important;}
@@ -238,10 +237,8 @@ promolink {  font-size: 14px;    position: relative;    text-align: right;    to
 
 div.more-sitter img{width:125px;height:125px;}
 .zIndex-1 {  z-index: 0 !important;}
-.foot-wrap .bot-foot .bf-area .bot-social p {	  color: #ffffff;	  font-size: 18px;	  font-weight: 300;	  padding: 0 0 3px;	}
-.foot-wrap .bot-foot .bf-area .bot-social {	  float: left;	  position: relative;	  top: -15px;	  width: 100%;	}
-.foot-wrap .bot-foot .bf-area .bot-social ul li a {	  border: 1px solid #505050; border-radius: 50%;color: #ffffff;	display: block;  height: 30px; line-height: 30px; margin: 0 18px 0 0; text-align: center;width: 30px;	}
 
+.foot-wrap .bot-foot .bf-area .bot-social {	  float: left;	  position: relative;	  	  width: 100%;	}
 /*CSS CODE FOR BOOK IT NOW PAGE START*/
 .radio-inline.pl25 {  padding-left: 25px !important;}
 #payment-box .right-content-wrap .top-box-wrap .night-sitt { text-align: center !important; padding:0px !important; border:none !important;}

@@ -12,7 +12,8 @@
 .favourites-box a p.loc {color: #2d2d2d; font-size: 14px; font-weight: 300; margin: 0;}
 .favourites-box a p.grey { color: #999 !important;  padding-top: 5px; margin:15px;} 
 .starPad {margin-top:5px;    /*margin-left: 100px !important;*/}
-.favourite-wrap .review-pagination {    padding-top: 30px;}
+.favourite-wrap .review-pagination { padding:15px 0; width:100%; float:left; background:#f8f8f8; margin:30px 0 0 0; border:#ebebeb 1px solid; }
+.favourite-wrap   ul.list-inline { margin:0px; padding:0px;}
 
 
 .favourites-box-1 .img-w{ width:120px; height:120px; object-fit:cover; margin:0 0 10px 0;}
@@ -39,3 +40,24 @@
 .favourite-wrap .review-pagination  li { cursor:pointer;}
 .favourite-wrap .review-pagination  li a { color:#fff; outline:none; text-decoration:none; }
 .favourite-wrap .review-pagination  li a:hover,  .review-pagination  li a:focus { color:#fff; outline:none; text-decoration:none; }
+
+
+@media (min-width:768px) and (max-width:991px){
+.favourites-box { margin:15px 0 0 0; }	
+.favourite-wrap .review-pagination { margin:15px 0 0 0;}
+}
+@media (min-width:641px) and (max-width:767px){
+.favourites-box { margin:15px 0 0 0; }	
+.favourite-wrap .review-pagination { margin:15px 0 0 0;}
+}
+@media (min-width:481px) and (max-width:640px){
+.favourites-box { margin:15px 0 0 0; }	
+.favourite-wrap .review-pagination { margin:15px 0 0 0;}
+}
+@media (min-width:320px) and (max-width:480px){
+.favourites-box { margin:15px 0 0 0; min-height:230px; }
+.favourites-box-1 .img-w{ width:80px; height:80px; margin:0 0 5px 0;}
+.favourites-box-1 .fb-name p{ font-size:14px; font-weight:normal;}	
+.favourites-box-1 .fb-loc p{ font-size:12px; }
+.favourite-wrap .review-pagination { margin:15px 0 0 0;}
+}

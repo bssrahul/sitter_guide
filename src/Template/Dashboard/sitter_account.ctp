@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#dashboard">Dashboard</a></li>
-				<li ><a  href="<?php echo HTTP_ROOT."dashboard/personal-details"; ?>">About</a></li>
-				<li><a data-toggle="tab" href="#index">Index</a></li>
-				<li><a data-toggle="tab" href="#calendar">Calendar</a></li>
+				<li class="active"><a data-toggle="tab" href="#dashboard"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dashboard')); ?></a></li>
+				<li ><a  href="<?php echo HTTP_ROOT."dashboard/personal-details"; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About')); ?></a></li>
+				<li><a data-toggle="tab" href="#index"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Index')); ?></a></li>
+				<li><a data-toggle="tab" href="#calendar"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Calendar')); ?></a></li>
 			</ul>
 			<div class="tab-content">
 			
@@ -20,9 +20,9 @@
 						 <h2><?php echo $username != ""?$username:""; ?> </h2>
 					 </div>
 					 <div class="col-md-8 col-sm-8 col-xs-8"> 
-                   <h3>Thank you! Your profile's been submitted for approval.</h3>
+                   <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("Thank you! Your profile's been submitted for approval")); ?>.</h3>
 
-                     <p>We are now reviewing your profile and will get back to you by email shortly	</p>				 
+                     <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('We are now reviewing your profile and will get back to you by email shortly')); ?>	</p>				 
 					 </div>
 				  </div>
 				</div><!-- @vik Overview tab  -->	
@@ -31,11 +31,11 @@
 				     
 				</div><!-- @vik Executive Summary tab  -->	
 				<div id="index" class="tab-pane fade">
-				   index
+				  <?php echo $this->requestAction('app/get-translate/'.base64_encode('index')); ?> 
 				</div><!-- @vik Funding Materials tab  -->
                			
 				<div id="calendar" class="tab-pane fade">
-				    calendar
+				  <?php echo $this->requestAction('app/get-translate/'.base64_encode('calendar')); ?>  
 				</div>
 				      
 				</div><!-- @vik Funding Materials tab  -->	

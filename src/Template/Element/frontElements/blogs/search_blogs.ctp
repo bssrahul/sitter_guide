@@ -1,38 +1,38 @@
-<h4 class="popularpost">Search</h4>
+<h4 class="popularpost"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Search')); ?></h4>
 
 <div class="padtt-20">
-  <input placeholder="Search..." class="form-control">
+  <input placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search')); ?>..." class="form-control">
 </div>
 
 <div class="searchby">
   <div class="media">
 	<div class="media-left mw75">
-	  <small>Search by :
+	  <small><?php echo $this->requestAction('app/get-translate/'.base64_encode('Search by')); ?> :
 	  </small>
 	</div>
 	<div class="media-body">
 	  <ul class="list-inline">
 		<li>
 		  <a href="#"> 
-			<small>post date,
+			<small><?php echo $this->requestAction('app/get-translate/'.base64_encode('post date')); ?>,
 			</small> 
 		  </a>
 		</li>
 		<li> 
 		  <a href="#">
-			<small>topic (category),
+			<small><?php echo $this->requestAction('app/get-translate/'.base64_encode('topic (category)')); ?>,
 			</small>
 		  </a>
 		</li>
 		<li> 
 		  <a href="#">
-			<small>keyword,
+			<small><?php echo $this->requestAction('app/get-translate/'.base64_encode('keyword')); ?>,
 			</small>
 		  </a>
 		</li>
 		<li> 
 		  <a href="#">
-			<small>author
+			<small><?php echo $this->requestAction('app/get-translate/'.base64_encode('author')); ?>
 			</small>
 		  </a>
 		</li>

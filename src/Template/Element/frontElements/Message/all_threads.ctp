@@ -96,7 +96,7 @@
 								<button class="btn  bt-now">
 									<i class="fa fa-star">
 									</i>
-									Rate now
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Rate now')); ?> 
 								</button>
 							</a>
 			<?php } ?>
@@ -105,7 +105,7 @@
 					<a class="trash_thread" href="javascript:void(0)" data-user-type="<?php echo base64_encode(convert_uuencode(strtolower($userActas))); ?>" data-rel="<?php echo base64_encode(convert_uuencode($req_id)); ?>">
 						<button class="btn btn-block bt-now">
 							<i class="fa fa-trash-o" aria-hidden="true"></i></i>
-							Trash 
+							 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Trash')); ?> 
 						</button>
 					</a>
 					<img style="display:none" src="<?php echo HTTP_ROOT; ?>img/ajax_wait.gif" id="move_to_folder" class="img-responsive" alt="message">
@@ -127,7 +127,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="book-now-name">
 				  <p>
-					  No chat found!
+					 <?php echo $this->requestAction('app/get-translate/'.base64_encode('No chat found!')); ?> 
 				  </p>
 				</div>
 			</div>

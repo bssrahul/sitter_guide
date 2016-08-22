@@ -34,7 +34,7 @@
               <h2 class="name-banner text-center">
                 <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> 
               </h2>
-              <h3 class="punch-line">Reliable & Loving Petsitter 
+              <h3 class="punch-line"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reliable & Loving Petsitter')); ?>
               </h3>
               <h4 class="city-banner"> 
                 <?php echo $userData->city.", ".@$userData->state.", ".@$userData->country; ?>
@@ -233,7 +233,7 @@
                                                               <h3 class="rates-detail marginrightminus"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".@$sh_day_rate; ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
                                                               <p class="rates-detail-caption">(Boarding in sitter)
                                                               </p>
@@ -242,7 +242,7 @@
                                                               <h3 class="rates-detail marginleftminus xs-padt10"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".@$gh_day_rate; ?>
-                                                                </span> per day
+                                                                </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
                                                               <p class="rates-detail-caption">(House sitting)
                                                               </p>
@@ -253,7 +253,7 @@
                                                               <h3 class="rates-detail pad-t10 marginrightminus"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".(@$userData->user_sitter_services[0]->gh_drop_in_visit_rate != ''?@$userData->user_sitter_services[0]->gh_drop_in_visit_rate:0); ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
                                                               <p class="rates-detail-caption">(Drop visit home)
                                                               </p>
@@ -262,16 +262,16 @@
                                                               <h3 class="rates-detail pad-t10  marginleftminus"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".(@$sh_day_rate + @$sh_night_rate); ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
-                                                              <p class="rates-detail-caption">(D/Nt. care home)
+                                                              <p class="rates-detail-caption"><?php echo $this->requestAction('app/get-translate/'.base64_encode('(D/Nt. care home)')); ?>
                                                               </p>
                                                             </div>
                                                           </div>
                                                         </div>
                                                       </div>
                                                       <h5 class="additional">
-                                                        <a href="#" data-toggle="modal" data-target="#myModal79"> More Services Available 
+                                                        <a href="#" data-toggle="modal" data-target="#myModal79"><?php echo $this->requestAction('app/get-translate/'.base64_encode('More Services Available')); ?> 
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
@@ -279,14 +279,13 @@
 				                                            if($userloginstatus){ 
 																 if($guests_Info == ""){
 																 ?>
-																 <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#popPetAddNotification">Book Now
+																 <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#popPetAddNotification"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?>
 															  </button>
 																<?php }else{ ?>
-																<button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79">Book Now
-															  </button>
+																<a href="#popup1"><button class="btn btn-cont before-booking-request check-user"  ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?></button></a>
 														  <?php }
                                                           }else{ ?>
-															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin">Book Now
+															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?>
 															  </button>
 													  <?php } ?>
                                                       </div>
@@ -335,18 +334,17 @@
 															  
 															  if($guests_Info == "" ){
 															  ?>
-															   <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#popPetAddNotification">Contact  
-                                                               <?php echo @$userData->first_name; ?>
-                                                               </button> 
+															   <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#popPetAddNotification"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact')); ?>  
+                                                               <?php echo @$userData->first_name; ?></button>
                                                         
 															  <?php }else{ ?>
-                                                        <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#myModal79">Contact  
+                                                         <a href="#popup1"> <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#myModal79"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact')); ?>
                                                           <?php echo @$userData->first_name; ?>
-                                                        </button>
+                                                        </button> </a>
                                                         <?php }
                                                         
                                                          }else{ ?>
-														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin">Contact  
+														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact')); ?>
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
 														<?php } ?>
@@ -369,7 +367,7 @@
                                                   <div>
                                                     <div class="availability">
                                                       <h5>
-                                                        <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> is available this Weekend
+                                                        <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('is available this Weekend')); ?>
                                                       </h5>
                                                     </div>
                                                   </div>
@@ -377,23 +375,23 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                   <div class="recent-act-widget">
                                                     <div class="recent-act"> 
-                                                      <?php echo @$userData->first_name; ?>'s Recent Activity
+                                                      <?php echo @$userData->first_name; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode("'s Recent Activity")); ?>
                                                     </div>
                                                     <ul class="list-unstyled">
                                                       <li>
                                                         <i class="fa fa-reply icon-width30">
-                                                        </i>Response Rate : 
+                                                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Response Rate')); ?> : 
                                                         <b>100%
                                                         </b>
                                                       </li>
                                                       <li>
                                                         <span class="book">
-                                                        </span>Average Response Time : 
-                                                        <b>With in Hour
+                                                        </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Average Response Time')); ?> : 
+                                                        <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('With in Hour')); ?>
                                                         </b>
                                                       </li>
                                                       <li>
-                                                        <i class="fa fa-user icon-width30 icon-p15"></i>Last Activity : 
+                                                        <i class="fa fa-user icon-width30 icon-p15"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Activity')); ?> : 
                                                         <b>
                                                           <?php 
 															if(@$userData->avail_status == 'Login'){
@@ -411,7 +409,7 @@
                                                       </li>
                                                       <li>
                                                         <i class="fa fa-refresh icon-width30 icon-p15">
-                                                        </i>Repeat Guest : 
+                                                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Repeat Guest')); ?> : 
                                                         <b> <?php echo $repeat_client; ?>
                                                         </b>
                                                       </li>
@@ -426,7 +424,7 @@
                                                         <?php }else{ ?>
 														 <i class="fa icon-width30"> <img src="<?php echo HTTP_ROOT. 'img/sms-unverify.png'; ?>" alt="/SMS Unverified" /></i>
 														<?php }?>	
-                                                         SMS Verified
+                                                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('SMS Verified')); ?> 
                                                       </li>
                                                       <li>
 													   <?php if(@$userData->status == 1){ ?>  
@@ -436,16 +434,16 @@
 															<i class="fa fa-times icon-width30 new-font-size20">
                                                         </i>
 													    <?php } ?>
-                                                         Email Verified
+                                                         <?php echo $this->requestAction('app/get-translate/'.base64_encode('Email Verified')); ?>  
                                                       </li>
                                                     </ul>
                                                   </div>
                                                 </div>
                                               </div>
-                                              <h3 class="mid-sec-title border-bot pt30 ">About 
+                                              <h3 class="mid-sec-title border-bot pt30 "> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About ')); ?>
                                                 <?php echo @$userData->first_name; ?>
                                               </h3>
-                                              <h3 class="mid-sec-title1 ">Reliable & Loving Pet Sitter
+                                              <h3 class="mid-sec-title1 "> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Reliable & Loving Pet Sitter')); ?>
                                               </h3>
                                               <p class="detail-text text-justify">
                                                 <?php echo @$userData->user_about_sitter->your_self; ?>
@@ -462,7 +460,7 @@
                                               </div>
                                               <?php if(isset($userData->user_sitter_galleries) && !empty($userData->user_sitter_galleries)){  ?>
                                               <h3 class="mid-sec-title1 pb15 ">
-                                                <?php echo @$userData->first_name; ?>'s profile photos
+                                                <?php echo @$userData->first_name; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode("'s profile photos")); ?>
                                               </h3>
                                               <div class="row">
                                                 <div class="col-xs-12 col-md-12 col-sm-12 c0l-lg-12">
@@ -492,13 +490,13 @@ $i++;
                                                     <a class="left carousel-control" href="#myCarousel5" role="button" data-slide="prev">
                                                       <span class=" fa fa-chevron-circle-left" aria-hidden="true">
                                                       </span>
-                                                      <span class="sr-only">Previous
+                                                      <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
                                                       </span>
                                                     </a>
                                                     <a class="right carousel-control" href="#myCarousel5" role="button" data-slide="next">
                                                       <span class="fa fa-chevron-circle-right" aria-hidden="true">
                                                       </span>
-                                                      <span class="sr-only">Next
+                                                      <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
                                                       </span>
                                                     </a>
                                                   </div>
@@ -524,7 +522,7 @@ $i++;
                                                <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
-                                                <h5 class="small-title">Specified Skills &nbsp;
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Specified Skills')); ?> &nbsp;
                                                   <span>
                                                     <?php if(($userData['users_badge'])!= ""){
 							
@@ -559,7 +557,7 @@ $i++;
 													
                                                     <p class="pt10">
                                                       <span class="speak">
-                                                      </span>Can speak
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Can speak')); ?>
                                                       <?php 
                                                       $selected_langArr = explode(",",@$userData->user_professional_accreditations_details[0]->languages);
                                                     
@@ -589,7 +587,7 @@ $i++;
                                                     <p class="pt10">
                                                       <span class="experience">
                                                       </span>
-                                                      <?php echo @$userData->user_professional_accreditations_details[0]->experience;?> + years of experience
+                                                      <?php echo @$userData->user_professional_accreditations_details[0]->experience;?> + <?php echo $this->requestAction('app/get-translate/'.base64_encode('years of experience')); ?> 
                                                     </p>
                                                   </div>
                                                   <?php } ?>
@@ -601,8 +599,8 @@ $i++;
 												  <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="familar">
-                                                      </span>Familiar with
-                                                      <?php echo @$userData->user_professional_accreditations_details[0]->training_techniques; ?> training techniques 
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Familiar with')); ?>
+                                                      <?php echo @$userData->user_professional_accreditations_details[0]->training_techniques; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('training techniques')); ?> 
                                                     </p>
                                                   </div>
                                                 </div>
@@ -611,7 +609,7 @@ $i++;
                                               <div class="one">
 												<div class="border-bot pt30">
                                                 </div>
-                                                <h5 class="small-title">I have experience with &nbsp;
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('I have experience with')); ?> &nbsp;
                                                   <span>
                                                     
                                                      <?php if(($userData['users_badge'])!= ""){
@@ -643,7 +641,7 @@ $i++;
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="behave">
-                                                      </span>Experience with Behavioural Problems
+                                                      </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience with Behavioural Problems')); ?>
                                                     </p>
                                                   </div>
                                                   <?php } ?>
@@ -651,7 +649,7 @@ $i++;
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="rescue">
-                                                      </span>Rescuing pets
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Rescuing pets')); ?>
                                                     </p>
                                                   </div>
                                                   <?php }
@@ -660,7 +658,7 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="rescue">
-                                                      </span>Sitter have no experience with medications
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter have no experience with medications')); ?>
                                                     </p>
                                                   </div>
                                                   <?php } ?>
@@ -672,7 +670,7 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
 											 ?>
 											 <div class="border-bot pt30">
                                              </div>
-                                                <h5 class="small-title">Benefits &nbsp;
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Benefits')); ?> &nbsp;
                                                   <span>
                                                     
                                                      <?php if(($userData['users_badge'])!= ""){
@@ -705,7 +703,7 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="book">
-                                                      </span>Last minute bookings 
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last minute bookings ')); ?>
                                                     </p>
                                                   </div>
                                                   <?php }
@@ -714,14 +712,14 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="cancel">
-                                                      </span>Moderate cancellation policy
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Moderate cancellation policy')); ?>
                                                     </p>
                                                   </div>
                                                   <?php } 
 												     if((@$userData->user_sitter_services[0]->booking_status !='1') && (@$userData->user_sitter_services[0]->cancellation_policy_status !='1')){ 
 												  ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                                    <p class="pt10">No Benefits
+                                                    <p class="pt10"><?php echo $this->requestAction('app/get-translate/'.base64_encode('No Benefits')); ?>
                                                     </p>
                                                   </div>
                                                   <?php } ?>
@@ -733,8 +731,8 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
-                                                <h5 class="small-title">About 
-                                                  <?php echo $userData->first_name; ?>'s Home&nbsp;
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About ')); ?>
+                                                  <?php echo $userData->first_name; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode("'s Home")); ?>&nbsp;
                                                   <span>
                                                     <i>
                                                       <?php if(($userData['users_badge'])!= ""){
@@ -756,7 +754,7 @@ if((@$userData->user_professional_accreditations_details[0]->ex_behavioural_prob
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="fence">
-                                                      </span>Has a fenced yard
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Has a fenced yard')); ?>
                                                     </p>
                                                   </div>
                                                   <?php } 
@@ -765,7 +763,7 @@ if(@$userData->user_sitter_house->smokers =='no'){
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="smoke">
-                                                      </span>Non-Smoking Household 
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Non-Smoking Household')); ?> 
                                                     </p>
                                                   </div>
                                                   <?php } 
@@ -773,7 +771,7 @@ if(@$userData->user_sitter_house->cats_in_home =='yes'){ ?>
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="onecat">
-                                                      </span>Has One Cat
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Has One Cat')); ?> 
                                                     </p>
                                                   </div>
                                                   <?php } 
@@ -782,7 +780,7 @@ if(@$userData->user_sitter_house->dogs_in_home =='yes'){
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="onedog">
-                                                      </span>Has Two Dogs 
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Has Two Dogs')); ?> 
                                                     </p>
                                                   </div>
                                                   <?php } 
@@ -790,7 +788,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                   <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                                                     <p class="pt10">
                                                       <span class="onedog">
-                                                      </span>No information added on sitter home.
+                                                      </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('No information added on sitter home')); ?>.
                                                     </p>
                                                   </div>
                                                   <?php } ?>
@@ -800,7 +798,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
-                                                <h5 class="small-title">About my home
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About my home')); ?>
                                                 </h5>
                                                 <p class="detail-text text-justify">
                                                   <?php echo @$userData->user_sitter_house->about_home_desc; ?>
@@ -810,7 +808,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
-                                                <h5 class="small-title">Description of places you will have access to
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description of places you will have access to')); ?>
                                                 </h5>
                                                 <p class="detail-text text-justify">
                                                   <?php echo @$userData->user_sitter_house->spaces_access_desc; ?>
@@ -832,7 +830,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                               <div class="one">
                                                 <div class="border-bot pt30">
                                                 </div>
-                                                <h5 class="small-title">My Pets
+                                                <h5 class="small-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('My Pets')); ?>
                                                 </h5>
                                                 <p class="detail-text text-justify">
                                                   <?php echo @$userData->user_sitter_house->home_pets_desc; ?>
@@ -847,9 +845,9 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
 												<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img  src="<?php echo HTTP_ROOT.'img/uploads/'.$single_pet->image; ?>" class="img-responsive responsivept15" alt="client1">
-                                                    <p class="dogname">Jackey
+                                                    <p class="dogname"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Jackey')); ?>
                                                     </p>
-                                                    <p class="dogbreed">Dachshund
+                                                    <p class="dogbreed"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dachshund')); ?>
                                                     </p>
                                                   </div>
                                                 </div>
@@ -877,9 +875,9 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                                   <div class="img-thumbnail"> 
                                                     <img src="<?php echo HTTP_ROOT; ?>img/detail-client3.jpg" class="img-responsive responsivept15" alt="client1">
-                                                    <p class="dogname">Scooby
+                                                    <p class="dogname"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Scooby')); ?>
                                                     </p>
-                                                    <p class="dogbreed">Dachshund
+                                                    <p class="dogbreed"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dachshund')); ?>
                                                     </p>
                                                   </div>
                                                 </div>
@@ -1054,7 +1052,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                                               </ul>
                                                                                             <div class="row">
                                                                                               <div class="col-xs-12 md-sm-3 col-lg-3 col-sm-3">
-                                                                                                <p class="summary">Summary
+                                                                                                <p class="summary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Summary')); ?>
                                                                                                 </p>
                                                                                               </div>
                                                                                               <div class="col-xs-12 md-sm-9 col-lg-8 col-sm-9">
@@ -1062,7 +1060,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                                                   <div class=" col-sm-6 col-md-6 col-xs-12 col-lg-6">
                                                                                                     <div class="rewiw-width100">
                                                                                                       <div class="rewiw-width50">
-                                                                                                        <p>Accuracy
+                                                                                                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accuracy')); ?>
                                                                                                         </p>
                                                                                                       </div>
                                                                                                       <div class="rewiw-width50">
@@ -1183,7 +1181,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                                                                                               </div>
                                                                                                                                             <div class="rewiw-width100">
                                                                                                                                               <div class="rewiw-width50">
-                                                                                                                                                <p>Communication
+                                                                                                                                                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Communication')); ?>
                                                                                                                                                 </p>
                                                                                                                                               </div>
                                                                                                                                               <div class="rewiw-width50">
@@ -1299,7 +1297,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                               </div>
                             <div class="rewiw-width100">
                               <div class="rewiw-width50">
-                                <p>Cleanliness
+                                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cleanliness')); ?>
                                 </p>
                               </div>
                               <div class="rewiw-width50">
@@ -1420,7 +1418,7 @@ if((@$userData->user_sitter_house->fully_fenced =='yes') && (@$userData->user_si
                                                                   <div class=" col-sm-6 col-md-6 col-xs-12 col-lg-6">
                                                                     <div class="rewiw-width100">
                                                                       <div class="rewiw-width50">
-                                                                        <p>Location
+                                                                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Location')); ?>
                                                                         </p>
                                                                       </div>
                                                                       <div class="rewiw-width50">
@@ -1878,14 +1876,14 @@ $check_in=$UserRating->check_in_rating;
 								
                               <!--Service drop-->
                               <div class="s-drop">
-                                <div class="form-group"> Services & Rates 
+                                <div class="form-group"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Services & Rates')); ?>
                                 </div>
                               </div>
                               <!--/Service drop--> 
                               <!--Service list-->
                               <div class="st-area">
                                 <div class="st-list-head">
-                                  <p>Per Session
+                                  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Per Session')); ?>
                                   </p>
                                 </div>
                                 <ul class="care-list">
@@ -1897,13 +1895,13 @@ $check_in=$UserRating->check_in_rating;
 											}
 												
 												
-								  ?>                       <img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> Day Care : 
+								  ?>                       <img src="<?php echo HTTP_ROOT; ?>img/day-care.png" width="18" height="17" alt=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?> : 
 															<span><?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1911,7 +1909,7 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="<?php echo HTTP_ROOT; ?>img/night-care.png" width="18" height="17" alt=""> Night Care : 
+															<img src="<?php echo HTTP_ROOT; ?>img/night-care.png" width="18" height="17" alt=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?>  : 
 															<span>
 															<?php  if(!empty($sitterServiceData->sh_night_rate))
 																		{	
@@ -1934,7 +1932,7 @@ $check_in=$UserRating->check_in_rating;
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1949,7 +1947,7 @@ $check_in=$UserRating->check_in_rating;
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1964,7 +1962,7 @@ $check_in=$UserRating->check_in_rating;
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -1979,7 +1977,7 @@ $check_in=$UserRating->check_in_rating;
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>															
 															  <i class="fa fa-exclamation-circle">
@@ -1987,14 +1985,14 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>-->
 														  <li>
-															<img src="<?php echo HTTP_ROOT; ?>img/grooming.png" width="18" height="17" alt=""> Grooming : 
+															<img src="<?php echo HTTP_ROOT; ?>img/grooming.png" width="18" height="17" alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Grooming')); ?>  : 
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_grooming_rate))
 																		{	
 																				echo "$cuntry_sign_code ".$sitterServiceData->mp_grooming_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -2002,14 +2000,14 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="<?php echo HTTP_ROOT; ?>img/training.png" width="18" height="17" alt=""> Training : 
+															<img src="<?php echo HTTP_ROOT; ?>img/training.png" width="18" height="17" alt=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Training')); ?> : 
 															<span>
 																<?php  if(!empty($sitterServiceData->mp_training_rate))
 																		{	
 																				echo "$cuntry_sign_code ".$sitterServiceData->mp_training_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -2017,14 +2015,14 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="<?php echo HTTP_ROOT; ?>img/drive-upto.png" width="18" height="17" alt=""> Drive(up 10km one way) : 
+															<img src="<?php echo HTTP_ROOT; ?>img/drive-upto.png" width="18" height="17" alt=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drive(up 10km one way)')); ?> : 
 															<span> 
 															<?php  if(!empty($sitterServiceData->mp_driving_rate))
 																		{	
 																				echo "$cuntry_sign_code ".$sitterServiceData->mp_driving_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -2032,14 +2030,14 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="<?php echo HTTP_ROOT; ?>img/visit-perday.png" width="18" height="17" alt=""> House Setting : 
+															<img src="<?php echo HTTP_ROOT; ?>img/visit-perday.png" width="18" height="17" alt=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('House Setting')); ?> : 
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																			echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -2047,14 +2045,14 @@ $check_in=$UserRating->check_in_rating;
 															</span>
 														  </li>
 														  <li>
-															<img src="<?php echo HTTP_ROOT; ?>img/meet-greet.png" width="18" height="17" alt=""> Meet &amp; Greet: 
+															<img src="<?php echo HTTP_ROOT; ?>img/meet-greet.png" width="18" height="17" alt=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Meet')); ?> &amp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Greet')); ?>: 
 															<span> 
 																<?php  if(!empty($sitterServiceData->sh_day_rate))
 																		{	
 																				echo "$cuntry_sign_code ".$sitterServiceData->sh_day_rate;						
 																		}else{
 																			
-																			echo "$cuntry_sign_code --";
+																		echo $this->requestAction('app/get-translate/'.base64_encode("$cuntry_sign_code --"));
 																		}																
 																	?>
 															  <i class="fa fa-exclamation-circle">
@@ -2066,14 +2064,14 @@ $check_in=$UserRating->check_in_rating;
 															 <?php if($userloginstatus){ 
 																 if($guests_Info == ""){
 																 ?>
-																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request">Book Now
+																<a href="javascript:void(0)" data-toggle="modal" data-target="#popPetAddNotification" title="Request Booking" class="r-booking booking-request"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?>
 														     </a> 
 																<?php }else{ ?> 
-														     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal79" title="Request Booking" class="r-booking booking-request">Book Now
-														     </a> 
+														     <a href="#popup1"> <a href="javascript:void(0)"  title="Request Booking" class="r-booking booking-request"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?>
+														     </a> </a>
 														     <?php }
 														     }else{ ?>
-															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request">Book Now
+															    <a href="javascript:void(0)" data-toggle="modal" data-target="#alertUserLogin" title="Request Booking" class="r-booking booking-request"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?>
 														     </a>   	
 															 <?php } ?>
 														</div>
@@ -2089,7 +2087,7 @@ $check_in=$UserRating->check_in_rating;
                       <div class="responsive    -margin">
                         <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <h3 class="mid-sec-title pt30  ">Availability
+                            <h3 class="mid-sec-title pt30  "><?php echo $this->requestAction('app/get-translate/'.base64_encode('Availability')); ?>
                             </h3>
                             <div class="detail-cal-widget"> 
                             <!--  <img src="<?php echo HTTP_ROOT; ?>img/detail-cal-dummy.png" class="img-responsive" alt="calender"> -->
@@ -2108,7 +2106,7 @@ $check_in=$UserRating->check_in_rating;
       ?>
                <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="recent-act mgt35">Hosting Preferences
+                    <div class="recent-act mgt35"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Hosting Preferences')); ?>
                     </div>
                    
                     <div class="row">
@@ -2127,7 +2125,7 @@ $check_in=$UserRating->check_in_rating;
 				    ?>
 				    
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						   <p class="dog-title1">Dogs
+						   <p class="dog-title1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs')); ?>
                           </p>
 						  <ul class="pet-list">
 							 <?php  foreach($petSizesArr as $size_val){
@@ -2138,7 +2136,7 @@ $check_in=$UserRating->check_in_rating;
 									</span>
 									<p class="weight" ><?php echo $size_val; ?>
 									</p>
-									<p class="pound">kg's / lbs
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
 									</p>
 								 </li>
 								<?php } 
@@ -2149,7 +2147,7 @@ $check_in=$UserRating->check_in_rating;
 									</span>
 									<p class="weight" ><?php echo $size_val; ?>
 									</p>
-									<p class="pound">kg's / lbs
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
 									</p>
 								 </li>
 								<?php }
@@ -2160,7 +2158,7 @@ $check_in=$UserRating->check_in_rating;
 									</span>
 									<p class="weight" ><?php echo $size_val; ?>
 									</p>
-									<p class="pound">kg's / lbs
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
 									</p>
 								 </li>
 								<?php }
@@ -2171,7 +2169,7 @@ $check_in=$UserRating->check_in_rating;
 									</span>
 									<p class="weight" ><?php echo $size_val; ?>
 									</p>
-									<p class="pound">kg's / lbs
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
 									</p>
 								 </li>
 								  <?php } 
@@ -2195,7 +2193,7 @@ $check_in=$UserRating->check_in_rating;
                       ?>
                       <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
                         <p class="dog-title1">
-                          <b>Additional prefrences
+                          <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional prefrences')); ?>
                           </b>
                         </p>
                            <ul class="pet-list">
@@ -2207,9 +2205,9 @@ $check_in=$UserRating->check_in_rating;
 								  <li class="pet-5"> 
 									<span data-toggle="tooltip" data-placement="top" title="Cat 15-20 pounds ">
 									</span>
-									<p class="weight">0-15
+									<p class="weight"><?php echo $this->requestAction('app/get-translate/'.base64_encode('0-15')); ?>
 									</p>
-									<p class="pound">kg's / lbs
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
 									</p>
 								  </li>
 								  <?php }
@@ -2218,10 +2216,10 @@ $check_in=$UserRating->check_in_rating;
 								 <li class="pet-6"> 
 										<span data-toggle="tooltip" data-placement="top" title="Rabit 15-20 pounds ">
 										</span>
-										<p class="weight">0-15
-										</p>
-										<p class="pound">kg's / lbs
-										</p>
+										<p class="weight"><?php echo $this->requestAction('app/get-translate/'.base64_encode('0-15')); ?>
+									</p>
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
+									</p>
 								   </li>
 								  <?php }
 								   else if($size_val == 'small_pets'){
@@ -2229,10 +2227,10 @@ $check_in=$UserRating->check_in_rating;
 								  <li class="pet-7"> 
 									    <span data-toggle="tooltip" data-placement="top" title="Bird 15-20 pounds ">
 										</span>
-										<p class="weight">0-15
-										</p>
-										<p class="pound">kg's / lbs
-										</p>
+										<p class="weight"><?php echo $this->requestAction('app/get-translate/'.base64_encode('0-15')); ?>
+									</p>
+									<p class="pound"><?php echo $this->requestAction('app/get-translate/'.base64_encode("kg's / lbs")); ?>
+									</p>
 								  </li>
 									<?php } 
 								  }
@@ -2254,7 +2252,7 @@ $check_in=$UserRating->check_in_rating;
                             <div class="border-bot pt30">
                             </div>
                             <h3 class="mid-sec-title pt30  ">
-                              <?php echo @$userData->first_name; ?> Neighborhood 
+                              <?php echo @$userData->first_name; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Neighborhood')); ?> 
                             </h3>
                             <div class="detail-cal-widget">
                               <div style="width:345;height:400px;" id="map">
@@ -2327,7 +2325,7 @@ $check_in=$UserRating->check_in_rating;
                             </div>
                           </div>
                               <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
-								<p class="report1"><a data-target="#myModal8" data-toggle="modal" href="#"><i class=" fa fa-remove"></i> &nbsp; Report this Profile</a></p>
+								<p class="report1"><a data-target="#myModal8" data-toggle="modal" href="#"><i class=" fa fa-remove"></i> &nbsp;  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Report this Profile')); ?></a></p>
 							  </div>
                         </div>
                        
@@ -2341,14 +2339,14 @@ $check_in=$UserRating->check_in_rating;
                           <div class="insur">
                             <p> 
                               <i> &nbsp;
-                                All stays booked on Sitter Guide receive premium insurance, 24/7 support, and our reservation guarantee. 
+                                <?php echo $this->requestAction('app/get-translate/'.base64_encode('All stays booked on Sitter Guide receive premium insurance, 24/7 support, and our reservation guarantee')); ?>. 
                                 </p>
                           </div>
                           </i>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <h3 class="mid-sec-title pt30 ">More sitters near you &nbsp; 
+                      <h3 class="mid-sec-title pt30 "> <?php echo $this->requestAction('app/get-translate/'.base64_encode('More sitters near you')); ?> &nbsp; 
                       </h3>
                       <div class="detail-full-wrapper">
                         <div class="leading-area">
@@ -2712,13 +2710,17 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
   echo $this->Html->script(['Front/jquery-ui.js']);
 ?>
 
-
-<div class="modal fade" id="myModal79" role="dialog">
-  <div class="modal-dialog">
-    <div class="sitter-quike-view">
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<div  id="myModal79" >
+	<div class="res-ppup">
+    	
+			<div id="popup1" class="overlay">
+	<div class="popup">		
+		<a class="close" href="#">&times;</a>
+		 <div class="sitter-quike-view">
       <div class="sqv-box">
         <div class="top-close">
-          <p>Reservation Request</p>
+          <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reservation Request')); ?></p>
           <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
         <div class="row">
               <?php 
@@ -2736,27 +2738,27 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
      <div class="sr-area-outer">
         <div class="row st-head-txt">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 visible-lg">
-            <p>When you are Away</p>
+            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('When you are Away')); ?></p>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 visible-lg">
-            <p>while you are at Home</p>
+            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('while you are at Home')); ?></p>
           </div>
         </div>
         <div class="sr-area"> 
           <!--top filter tab-->
           <div class="top-filter-tab">
             <ul class="booking-services">
-              <li class="new_active" id="li_boarding"><a class="boarding" data-rel="boarding" href="#boarding" data-toggle="tab" >    <span></span>Boarding<br>
-                  <b>in the sitter home</b> </a>
+              <li class="new_active" id="li_boarding"><a class="boarding" data-rel="boarding" href="#boarding" data-toggle="tab" >    <span></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding')); ?><br>
+                  <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in the sitter home')); ?></b> </a>
               </li>
-              <li id="li_house_sitting"><a class="h-sitting" data-rel="house_sitting" href="#hsitting" data-toggle="tab"><span></span> House Sitting<br>
-                <b>in your home</b></a></li>
-              <li id="li_drop_in_visit" ><a class="d-visit" data-rel="drop_in_visit" href="#dvisit" data-toggle="tab"><span></span> Drop-in Visit<br>
-                <b>in your home</b></a></li>
-              <li id="li_day_night"><a class="dn-care" data-rel="day_nigth_care" href="#dncare" data-toggle="tab"><span></span> Day / Night Care<br>
-                <b>in the sitter’s home</b></a></li>
-              <li id="li_maket_place"><a class="m-place" data-rel="market_place" href="#mplace" data-toggle="tab"><span></span> Market Place<br>
-                <b>exercise, groom, train+</b></a></li>
+              <li id="li_house_sitting"><a class="h-sitting" data-rel="house_sitting" href="#hsitting" data-toggle="tab"><span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('House Sitting')); ?><br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in your home')); ?></b></a></li>
+              <li id="li_drop_in_visit" ><a class="d-visit" data-rel="drop_in_visit" href="#dvisit" data-toggle="tab"><span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-in Visit')); ?><br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in your home')); ?></b></a></li>
+              <li id="li_day_night"><a class="dn-care" data-rel="day_nigth_care" href="#dncare" data-toggle="tab"><span></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day / Night Care')); ?> <br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode("in the sitter’s home")); ?></b></a></li>
+              <li id="li_maket_place"><a class="m-place" data-rel="market_place" href="#mplace" data-toggle="tab"><span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?><br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('exercise, groom, train+')); ?></b></a></li>
             </ul>
                         <!-- Start Required service-->
                         <?php echo $this->Form->input('BookingRequests.required_service',[
@@ -2778,11 +2780,11 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                     <div class="csmc-area">
                       
                       <div class="boardng-rates">
-                      <h1 class="">Boarding Rates</h1>
+                      <h1 class=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding Rates')); ?></h1>
                       <ul class="list-unstyled">
-              <li> <i class="fa fa-angle-right right-gr"></i>$20 one night for one guest</li>
-              <li><i class="fa fa-angle-right right-gr"></i>20% discount for multiple pets </li>
-              <li><i class="fa fa-angle-right right-gr"></i>20% discount for multiple nights (made in some booking) </li>
+              <li> <i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('$20 one night for one guest')); ?></li>
+              <li><i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('20% discount for multiple pets ')); ?></li>
+              <li><i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('20% discount for multiple nights (made in some booking)')); ?> </li>
             
           
               </ul>
@@ -2791,7 +2793,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       
                       <!--Date-->      
                       	<div class="hs-date">
-                        	<h1 class="hsd-head"> Boarding Dates</h1>
+                        	<h1 class="hsd-head"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding Dates')); ?> </h1>
                         	<div class="row">
                             	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                	  <div class="fromto">
@@ -2805,8 +2807,11 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 											'placeholder'=>'YYYY-MM-DD'
                                         ]);
                                       ?>
-                                        <a href="javascript:void(0)" title="Calender" class="display-calender1"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png" width="21" height="21" alt="Calender"></a>
+                                        <a href="javascript:void(0)"  title="Calender" class="display-calender1"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png" width="21" height="21" alt="Calender"></a>
                                         <label class="error" for="bookingrequests-booking-start-date" generated="true"></label>
+                                        
+                                      
+                                        
                                     </div>
                                 </div>
                             	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -2826,12 +2831,12 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                     </div>
                                 </div>                                
                             </div>
-                            <p>For your safety &amp; security, Rover will not expose your phone number until you've booked your stay. Messages from Agatha will come from 858-914-2079, a number owned by sitter guide. </p>
+                            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("For your safety &amp; security, Rover will not expose your phone number until you've booked your stay. Messages from Agatha will come from 858-914-2079, a number owned by sitter guide")); ?>. </p>
                         </div>
                       <!--/Date-->  
                       <!--add dog-->
                       <div class="ad-dog"> 
-                      		<h2>Dogs</h2>   
+                      		<h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs')); ?></h2>   
                             <div class="row">
                             	<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
                                 	<div class="dog-list">
@@ -2856,7 +2861,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                 </div>
                             	<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 	<div class="ad">
-                                    	<a title="Add Dogs" href="<?php echo HTTP_ROOT.'dashboard/about-guest'; ?>"><i aria-hidden="true" class="fa fa-plus-circle"></i> Add Another Dogs</a>
+                                    	<a title="Add Dogs" href="<?php echo HTTP_ROOT.'dashboard/about-guest'; ?>"><i aria-hidden="true" class="fa fa-plus-circle"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Another Dogs')); ?> </a>
                                     </div>
                                 </div>                                                                
                             </div>
@@ -2866,7 +2871,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       <div class="row">
                       
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <div class="include"> <a href="#" data-toggle="collapse" data-target="#bott"><span class="include-addit"></span> &nbsp; Include additional services from Market place?</a></div>
+                      <div class="include"> <a href="#" data-toggle="collapse" data-target="#bott"><span class="include-addit"></span> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Include additional services from Market place?')); ?></a></div>
                       
                       <div id="bott" class="collapse">
                       <!--<ul style="width:100%; float:left">
@@ -2879,20 +2884,20 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       <div class="row">
                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
 						  <input name="additional_services[]" type="checkbox" value="grooming">&nbsp
-                          Grooming 
+                         <?php echo $this->requestAction('app/get-translate/'.base64_encode('Grooming')); ?> 
                       </div>
                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
 						  <input name="additional_services[]" type="checkbox" value="training">&nbsp 
-						  Training 
+						<?php echo $this->requestAction('app/get-translate/'.base64_encode('Training')); ?>   
 					  </div>
                       </div>
                       <div class="row">
                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
-						    <input name="additional_services[]" type="checkbox" value="walking">&nbsp Recreation (Walking) 
+						    <input name="additional_services[]" type="checkbox" value="walking">&nbsp <?php echo $this->requestAction('app/get-translate/'.base64_encode('Recreation (Walking)')); ?>  
 					  </div>
                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
 							<input name="additional_services[]" type="checkbox" value="driver_service" >&nbsp 
-							Driver Service 
+							 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Driver Service')); ?> 
 					 </div>
                      </div>
                       </div></div>
@@ -2900,9 +2905,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       </div>
                       <!--message-->
                       	<div class="msg">
-                            <h3>Message</h3>
-                            <p class="no-bot">Share a little info about your dog and why they'd have a great time with Agatha. </p>
-                             <p>Don't forget if you need to make any changes to your dates you can update these later on.</p>
+                            <h3> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Message')); ?> </h3>
+                            <p class="no-bot"> <?php echo $this->requestAction('app/get-translate/'.base64_encode("Share a little info about your dog and why they'd have a great time with Agatha")); ?>. </p>
+                             <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("Don't forget if you need to make any changes to your dates you can update these later on")); ?>.</p>
                            <!--<textarea class="txtarea"></textarea>-->
                             <?php  
                                 echo $this->Form->input('BookingRequests.message',[               
@@ -2920,9 +2925,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                                 'checked'=>'checked',
                                 'hiddenField'=>false 
                                 ]);
-                              ?> &nbsp I'd like to receive photos of my dog(s) during this stay. </p>
+                              ?> &nbsp <?php echo $this->requestAction('app/get-translate/'.base64_encode("I'd like to receive photos of my dog(s) during this stay")); ?>. </p>
                           
-                            <p>All stays booked through Rover are covered by premium insurance. </p>
+                            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("All stays booked through Rover are covered by premium insurance")); ?>. </p>
                         </div>
                       
                       <!--/message-->
@@ -2930,7 +2935,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                       <div class="row">
                       
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <div class="best-pract1"><p><b>Best Practice :</b> We recommend contacting the sitter before finalizing your reservation.</p></div>
+                      <div class="best-pract1"><p><b><?php echo $this->requestAction('app/get-translate/'.base64_encode("Best Practice")); ?> :</b><?php echo $this->requestAction('app/get-translate/'.base64_encode("We recommend contacting the sitter before finalizing your reservation")); ?> .</p></div>
           </div></div>
         		</div></div>
           
@@ -2970,27 +2975,27 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                 
               </div>
               <div class="booking-summ" id="bookingPetInfo">
-                 <h3>Your  Book Summary</h3>
+                 <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your  Book Summary')); ?></h3>
               </div>
              <!--Start pet info-->
               <div class="pet-info-wrap alert appendService">
                <div class="pet-info-inner">
                 <ul class="list-unstyled">
-                     <li>Boarding for 1 day</li>
+                     <li><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding for 1 day')); ?></li>
                      <li>
 					     <?php echo date("d/m/Y"); ?> to <?php echo date("d/m/Y"); ?>
 					 </li>
-                     <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 day ".@$guest_count." guest @ ".(@$sh_day_rate*@$guest_count)." p/day"; ?>
+                     <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 day ".@$guest_count." guest @ ".(@$sh_day_rate*@$guest_count)." ".$this->requestAction('app/get-translate/'.base64_encode('p/day')); ?>
 					 </li><hr>
-                     <li>Boarding for 1 night</li>
+                     <li><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding for 1 night')); ?></li>
                      <li>
 					     <?php echo date("d/m/Y"); ?> to <?php echo date("d/m/Y"); ?>
 					 </li>
-                     <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 night x ".@$guest_count." guest @ ".(@$sh_night_rate*@$guest_count)." p/night"; ?></li>
+                     <li><?php echo "$cuntry_sign_code ".(@$sh_day_rate)." x 1 night x ".@$guest_count." guest @ ".(@$sh_night_rate*@$guest_count)." ".$this->requestAction('app/get-translate/'.base64_encode('p/night')); ?></li>
                 </ul>
                 </div>
                 <div class="pet-info-bot">
-                  <p>Total  :<span class="pull-right text-right"> <b>
+                  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Total')); ?>  :<span class="pull-right text-right"> <b>
                   <?php echo "$cuntry_sign_code ".@$total_amount = (@$sh_day_rate+@$sh_night_rate)*@$guest_count; ?>
                   </b></span></p>
                 </div>
@@ -3002,36 +3007,36 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
                 <table class="table">
                   <tbody>
                     <tr>
-                      <td class="tbfont">Cancellation Policy</td>
+                      <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancellation Policy')); ?> </td>
                       <td class="tbfont"><?php echo @$userData->user_sitter_services[0]->cancellation_policy_status == 1?'Flexible':'---'; ?></td>
                     </tr>
                     <tr>
                     
-                      <td class="tbfont">Total Amount</td>
+                      <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Total Amount')); ?> </td>
                     
                       <td class="tbfont" id="show-total-amount"><?php echo @$cuntry_currency." ".@$total_amount; ?></td>
                     </tr>
                     
                     <tr>
                     
-                      <td class="tbfont">Booking Fee</td>
+                      <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking Fee')); ?> </td>
                       <td class="tbfont"><?php echo @$userData->user_sitter_services[0]->booking_status == 1?'Free':'---'; ?></td>
                     </tr>
                   </tbody>
                 </table>
-                <button type="submit" class="btn btn-req-bok btn-block">Request Booking</button>
+                <button type="submit" class="btn btn-req-bok btn-block"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Request Booking')); ?> </button>
               </div>
               <?php echo $this->Form->end(); ?>
               
               
               <div class="pay-through">
-              <h6 class="pay-head">Booking through Sitter Guide Covers you for:</h6>
+              <h6 class="pay-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking through Sitter Guide Covers you for')); ?> :</h6>
               <ul class="list-unstyled">
-              <li> <i class="fa fa-angle-right right-gr"></i>Premium Insurance</li>
-              <li><i class="fa fa-angle-right right-gr"></i>100% Satisfection</li>
-              <li><i class="fa fa-angle-right right-gr"></i>Money Back</li>
-              <li><i class="fa fa-angle-right right-gr"></i>24/support</li>
-              <li><i class="fa fa-angle-right right-gr"></i>Daily Photo Update</li>
+              <li> <i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Insurance')); ?> </li>
+              <li><i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('100% Satisfection')); ?> </li>
+              <li><i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Money Back')); ?> </li>
+              <li><i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('24/support')); ?> </li>
+              <li><i class="fa fa-angle-right right-gr"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Daily Photo Update')); ?> </li>
           
               </ul>
               </div>
@@ -3046,9 +3051,15 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
         
         
       </div>
+    </div>    
+	</div>
+
+	</div>
     </div>
-  </div>
 </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 </div>
 
 <!--Report popup starts-->
@@ -3057,7 +3068,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
     <div class="sitter-quike-view">
       <div class="sqv-box">
         <div class="top-close">
-          <p>Report This Profile</p>
+          <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Report This Profile')); ?></p>
           <a href="#" title="Close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></a> </div>
         <!--Additional Services-->
         <div>
@@ -3070,7 +3081,7 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 				'type' =>'hidden',
 				'value'=>@$sitter_id]);
 		?>
-          <p class="reson-pad">Reason for reporting (required):</p>
+          <p class="reson-pad"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reason for reporting (required)')); ?>:</p>
             <?php  
 				echo $this->Form->input('ProfileReport.report_reason',[               
 				'templates' => ['inputContainer' => '{{content}}'],
@@ -3082,9 +3093,9 @@ $rating_sum=($ac+$cm+$cl+$lc+$ch)/5;
 		  ?>
           <!--<textarea class="form-control" rows="5"></textarea>-->
            <div class="pull-right bt-pad">
-            <button class="btn btn-default" data-dismiss="modal">cancel</button>
+            <button class="btn btn-default" data-dismiss="modal"><?php echo $this->requestAction('app/get-translate/'.base64_encode('cancel')); ?></button>
             &nbsp;
-            <button id="submit-report" type="submit" class="btn btn-success" >Submit</button>
+            <button id="submit-report" type="submit" class="btn btn-success" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
           </div>
           <?php $this->Form->end(); ?>
         </div>
@@ -3130,8 +3141,8 @@ echo $this->element('frontElements/Search/notification_check_login');
          $(".display-calender").click(function() {
             $("#bookingrequests-booking-end-date").focus();
 
-        });
-        
+        });		
+		
 		$( "#bookingrequests-booking-start-date" ).datepicker({
 		  defaultDate: "+1",
 		  changeMonth: true,
@@ -3511,5 +3522,42 @@ echo $this->element('frontElements/Search/notification_check_login');
 
 	$(document).ready(function(){
 		$('[data-toggle="popover"]').popover();
+		
 	});
+	function test(){
+		
+			$("#popup1").click();
+		}
+	
 </script>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div class="box">
+	<a class="button" href="#popup1">Let me Pop up</a>
+</div>
+
+
+
+<style type="text/css">
+.box {  width: 40%;  margin: 0 auto;  background: rgba(255,255,255,0.2);  padding: 35px;  border: 2px solid #fff;  border-radius: 20px/50px;  background-clip: padding-box;  text-align: center;}
+.button {  font-size: 1em;  padding: 10px;  color: #fff;  border: 2px solid #06D85F;  border-radius: 20px/50px;  text-decoration: none;  cursor: pointer;  transition: all 0.3s ease-out;}
+.button:hover {  background: #06D85F;}
+.overlay {  position:absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;  background: rgba(0, 0, 0, 0.7);  transition: opacity 500ms;  visibility: hidden;  opacity: 0; z-index:8;}
+.overlay:target {  visibility: visible;  opacity: 1; background:rgba (0, 0, 0, 0.5);}
+.popup {  margin:0px auto;  padding: 20px;  max-width:1280px; width:100%;  position: relative;  transition: all 5s ease-in-out;}
+.popup h2 {  margin-top: 0;  color: #333;  font-family: Tahoma, Arial, sans-serif;}
+.popup .close {  position: absolute;  top: 20px;  right: 30px;  transition: all 200ms;  font-size: 30px;  font-weight: bold;  text-decoration: none;  color: #333;}
+.popup .close:hover {  color: #06D85F;}
+.popup .content {  max-height:;  overflow: auto;}
+body {}
+
+
+@media screen and (max-width: 767px){
+.box{width: 100%;  }
+.popup{ width: 100%;  }
+#myModal79 .sitter-quike-view .sqv-box{ border:0px;}
+}
+</style>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->

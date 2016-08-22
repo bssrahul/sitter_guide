@@ -1,3 +1,3 @@
 <?php
-echo "ok";
+echo  $this->requestAction('app/get-translate/'.base64_encode('ok')); 
 ?>

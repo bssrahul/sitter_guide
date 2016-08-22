@@ -54,7 +54,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Contact Requests')); ?> </h2>
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Requests')); ?> </h2>
 					<div class="clearfix"></div>
 				</div>
 				
@@ -66,15 +66,15 @@
 							<tr class="headings">
 								<th>
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Phone')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Country')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Phone')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?></th>
 								<!--<th class="column-title"><?php echo $this->Paginator->sort('ContactRequests.message', 'Message')?></th>-->
 					
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -100,15 +100,15 @@
 								
 								<td class=" last">
 								
-						           <a title="<?php echo $this->requestAction('users/get-translate/'.base64_encode('View Request')); ?>" href="<?php echo HTTP_ROOT."cmspages/contact-view/".base64_encode(convert_uuencode($contactrequest->id))?>" >
+						           <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('View Request')); ?>" href="<?php echo HTTP_ROOT."cmspages/contact-view/".base64_encode(convert_uuencode($contactrequest->id))?>" >
                                                         <span class="fa fa-fw fa-search"></span>
                                    </a>
 									<?php if($contactrequest->reply_status == 0){ ?>
-								   <a title="Send Reply" href="<?php echo HTTP_ROOT."cmspages/contact-reply/".base64_encode(convert_uuencode($contactrequest->id))?>">
+								   <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Send Reply')); ?>" href="<?php echo HTTP_ROOT."cmspages/contact-reply/".base64_encode(convert_uuencode($contactrequest->id))?>">
 											<span class="fa fa-fw fa-envelope"></span>
 									</a>
 							        <?php } ?>
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'ContactRequests'.'/'.base64_encode(convert_uuencode($contactrequest->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Delete')); ?>" href="<?php echo HTTP_ROOT."users/delete-row/".'ContactRequests'.'/'.base64_encode(convert_uuencode($contactrequest->id));?>" onclick="if(!confirm(<?php echo $this->requestAction('app/get-translate/'.base64_encode('Are you sure to delete this record?')); ?>)){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 					           <!-- <td class=" last"><a href="#"><i class="fa fa-pencil-square"></i> Edit</a></td>-->
 							</tr>
@@ -116,7 +116,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
+									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

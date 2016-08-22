@@ -54,7 +54,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Currencies Listing')); ?></h2>
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Currencies Listing')); ?></h2>
 					<div class="clearfix"></div>
 				</div>
 				<?= $this->element("adminElements/success_msg"); ?>
@@ -75,15 +75,15 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Country Name')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Currency Name')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Locale')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Currency Code')); ?></th> 
-							    <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Price')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
-							    <th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Currency Name')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Locale')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Currency Code')); ?></th> 
+							    <th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Price')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
+							    <th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -115,10 +115,10 @@
 								<td class=" ">
 									  <input type='text'  name='Currencies[<?php echo$currency_info->id; ?>][price][]' value="<?php echo $currency_info->price; ?>" />
 								</td>
-								 <td><?php echo $currency_info->status == 1?'Active':'Blocked';	?></td>
+								 <td><?php echo $currency_info->status == 1? $this->requestAction('app/get-translate/'.base64_encode('Active')): $this->requestAction('app/get-translate/'.base64_encode('Blocked'));	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
-								   <a title="<?php echo($currency_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Currencies'.'/'.base64_encode(convert_uuencode($currency_info->id)).'/'.$target[$currency_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($currency_info->status ==0?'-o':'') ?>"></span></a>
+								   <a title="<?php echo($currency_info->status == 0? $this->requestAction('app/get-translate/'.base64_encode('Activate status')) : $this->requestAction('app/get-translate/'.base64_encode('Deactivate Status'))) ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Currencies'.'/'.base64_encode(convert_uuencode($currency_info->id)).'/'.$target[$currency_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($currency_info->status ==0?'-o':'') ?>"></span></a>
 								 
 								   <!--<a title="Edit" href="<?php echo HTTP_ROOT."category/edit-currency/".base64_encode(convert_uuencode($currency_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>-->
 								   
@@ -129,7 +129,7 @@
 							}
                             }else{ ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?></td>
+									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?></td>
 								</tr>
 							<?php } ?>
 							
@@ -146,7 +146,7 @@
 			
 			<div class="form-group" >
 				<div class="col-md-6 col-md-offset-3">
-					<button  style="float:right" id="submitButton" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
+					<button  style="float:right" id="submitButton" type="submit" class="btn btn-success"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 				</div>
 			</div>
 			

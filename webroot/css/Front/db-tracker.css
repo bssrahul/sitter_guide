@@ -1,140 +1,35 @@
 @charset "utf-8";
 /* CSS Document */
 
+.bg-fff {background-color: #fff !important;}
+.about-track-wrap {}
+.about-track-wrap h1 {font-size: 40px;color: #72a105; font-family: 'Raleway', sans-serif; font-weight: 400; padding-top: 30px; padding-bottom: 30px;}
+.about-track-wrap h3 {font-size: 20px; color: #707070; font-family: 'Raleway', sans-serif; font-weight: 400; padding-bottom: 30px;}
+.about-track-wrap p {font-size: 14px; color: #999; font-family: 'Raleway', sans-serif; font-weight: 400; text-align: justify; line-height: 23px;}
+.createive-wrap {padding-top: 30px;}
+.createive-wrap h4 {color: #707070; font-size: 18px; padding: 15px 0 9px 0; font-weight: 600;}
+.createive-wrap p {font-size: 14px;	color: #999; font-family: 'Raleway', sans-serif; font-weight: 400; text-align: justify; line-height: 23px;}
+.tab-imgp {	padding-top: 20px;}
+.tractive h1 {font-size: 40px; color: #72a105; font-family: 'Raleway', sans-serif; font-weight: 400; padding-top: 30px;	padding-bottom: 30px;}
+.tractive p {font-size: 14px; color: #999; font-family: 'Raleway', sans-serif; font-weight: 400; text-align: justify; line-height: 23px;}
+.track-phone-img {padding: 60px 0;}
+.get-app-wrap {	background: url(../../img/tracke-shadow.png) no-repeat; width: 100%; height: auto; background-size: cover;}
+.get-app-wrap h1 {color: #5aabe3; font-size: 40px; font-family: 'Raleway', sans-serif; font-weight: 500; text-align: center; padding-top: 100px;}
+.get-app-wrap h3 {color: 404040; font-size: 20px; text-align: center; padding-top: 20px;}
+.get-app-wrap .pt20 {padding-top: 20px; padding-bottom: 10px;}
+.hrcol {border-color: #e2e2e2; margin-top: 40px; margin-bottom: 10px;}
 
-.bg-fff {
-	background-color: #fff !important;
-}
-.about-track-wrap {
-}
-.about-track-wrap h1 {
-	font-size: 40px;
-	color: #72a105;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
-.about-track-wrap h3 {
-	font-size: 20px;
-	color: #707070;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	padding-bottom: 30px;
-}
-.about-track-wrap p {
-	font-size: 14px;
-	color: #999;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	text-align: justify;
-	line-height: 23px;
-}
-.createive-wrap {
-	padding-top: 30px;
-}
-.createive-wrap h4 {
-	color: #707070;
-	font-size: 18px;
-	padding: 15px 0 9px 0;
-	font-weight: 600;
-}
-.createive-wrap p {
-	font-size: 14px;
-	color: #999;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	text-align: justify;
-	line-height: 23px;
-}
-.tab-imgp {
-	padding-top: 20px;
-}
-.tractive h1 {
-	font-size: 40px;
-	color: #72a105;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
-.tractive p {
-	font-size: 14px;
-	color: #999;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	text-align: justify;
-	line-height: 23px;
-}
-.track-phone-img {
-	padding: 60px 0;
-}
-.get-app-wrap {
-	background: url(../../img/tracke-shadow.png) no-repeat;
-	width: 100%;
-	height: auto;
-	background-size: cover;
-}
-.get-app-wrap h1 {
-	color: #5aabe3;
-	font-size: 40px;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 500;
-	text-align: center;
-	padding-top: 100px;
-}
-.get-app-wrap h3 {
-	color: 404040;
-	font-size: 20px;
-	text-align: center;
-	padding-top: 20px;
-}
-.get-app-wrap .pt20 {
-	padding-top: 20px;
-	padding-bottom: 10px;
-}
-.hrcol {
-	border-color: #e2e2e2;
-	margin-top: 40px;
-	margin-bottom: 10px;
-}
+.tractive ul {list-style: none; list-style-type::none;}
+.tractive ul li {list-style: none;list-style-type::none;}
+.tractive ul li .font-size20 {color: #72a105;  font-size: 20px;}
+.tractive ul h3 { font-family: "Raleway",sans-serif;  font-size: 20px;  font-weight: 400;  padding-bottom: 10px;  padding-top: 10px;}
+
 
 @media (max-width:767px) {
-.about-track-wrap h1 {
-	font-size: 30px;
-	padding-bottom: 25px;
-}
-.about-track-wrap h3 {
-	padding-bottom: 20px;
-	font-size: 18px;
-}
-.tractive h1 {
-	font-size: 30px;
-	padding-bottom: 20px;
-}
-}
-/*manish css*/
-
-.tractive ul {
-	list-style: none;
- list-style-type::none;
-}
-.tractive ul li {
-	list-style: none;
- list-style-type::none;
+.about-track-wrap h1 {font-size: 30px; padding-bottom: 25px;}
+.about-track-wrap h3 {padding-bottom: 20px; font-size: 18px;}
+.tractive h1 {font-size: 30px; padding-bottom: 20px;}
 }
 
-.tractive ul li .font-size20 {
-  color: #72a105;
-  font-size: 20px;
-}
 
-.tractive ul h3 {
-  font-family: "Raleway",sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
 
-/*manish css*/

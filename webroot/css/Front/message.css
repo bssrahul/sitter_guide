@@ -257,7 +257,7 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .book-now-setion-inner .book-now-name p{ text-align:center; font-size:14px;}
 .book-now-setion-inner .book-now-name span{ display:block; text-align:center;}
 
-.message-full-wrapper{ margin:15px 0 0 0;}
+.message-full-wrapper{ margin:15px 0 15px 0;}
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}
 }
 

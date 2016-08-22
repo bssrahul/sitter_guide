@@ -1,7 +1,7 @@
 
 <div>
     <img class="img-circle" id="avatar-edit-img" height="128" data-src="default.jpg"  data-holder-rendered="true" style="width: 140px; height: 140px;" src="default.jpg"/>
-    <a type="button" class="btn btn-primary" id="change-pic">Change Image</a>
+    <a type="button" class="btn btn-primary" id="change-pic"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Image')); ?></a>
 </div>
 <!--model box -->
 <div id="changePic" class="modal fade">
@@ -9,11 +9,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h3>Change Profile Picture</h3>
+               <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Change Profile Picture')); ?></h3>
             </div>
             <div class="modal-body">
                 <form id="cropimage" method="post" enctype="multipart/form-data" action="profile.php">
-                    Upload your image <input type="file" name="photoimg" id="photoimg" />
+                   <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload your image')); ?>  <input type="file" name="photoimg" id="photoimg" />
                     <input type="hidden" name="hdn-profile-id" id="hdn-profile-id" value="1" />
                     <input type="hidden" name="hdn-x1-axis" id="hdn-x1-axis" value="" />
                     <input type="hidden" name="hdn-y1-axis" id="hdn-y1-axis" value="" />
@@ -30,8 +30,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="btn-crop" class="btn btn-primary">Crop & Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Close')); ?></button>
+                <button type="button" id="btn-crop" class="btn btn-primary"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Crop & Save')); ?></button>
             </div>
         </div>
     </div>

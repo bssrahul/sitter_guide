@@ -2,11 +2,11 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<ul class="nav nav-tabs">
-				<li><a  href="<?php echo HTTP_ROOT."dashboard/sitter-account"; ?>">Dashboard</a></li>
-				<li><a href="<?php echo HTTP_ROOT."dashboard/personal-details"; ?>">About</a></li>
-				<li class="active"><a href="<?php echo HTTP_ROOT."dashboard/services-and-rates"; ?>">Index</a></li>
+				<li><a  href="<?php echo HTTP_ROOT."dashboard/sitter-account"; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Dashboard")); ?></a></li>
+				<li><a href="<?php echo HTTP_ROOT."dashboard/personal-details"; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode("About")); ?></a></li>
+				<li class="active"><a href="<?php echo HTTP_ROOT."dashboard/services-and-rates"; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Index")); ?></a></li>
 				
-				<li><a data-toggle="tab" href="#calendar">Calendar</a></li>
+				<li><a data-toggle="tab" href="#calendar"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Calendar")); ?></a></li>
 			</ul>
 			<div class="tab-content">
 			
@@ -18,12 +18,12 @@
 				     <div class="col-md-3 col-sm-3 col-xs-3">
 					     <img alt="Image not found" style="margin:5px" height="100px"; width="100px"; src="<?php echo HTTP_ROOT.'img/uploads/'.($userInfo->image != ''?$userInfo->image:'prof_photo.png'); ?>"/>
 						<ul class="list-group">
-							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/personal-details'; ?>">Personal Details</a></li>
-							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates'; ?>">Service and Rates</a></li>
-							  <li class="list-group-item"><a href="">Basic Profile</a></li>
-							  <li class="list-group-item"><a href="">Extended Profile</a></li>
-							  <li class="list-group-item"><a href="">Photos</a></li>
-							  <li class="list-group-item"><a href="">Settings</a></li>
+							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/personal-details'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Personal Details")); ?></a></li>
+							  <li class="list-group-item"><a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates'; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Service and Rates")); ?></a></li>
+							  <li class="list-group-item"><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode("Basic Profile")); ?></a></li>
+							  <li class="list-group-item"><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode("Extended Profile")); ?></a></li>
+							  <li class="list-group-item"><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode("Photos")); ?></a></li>
+							  <li class="list-group-item"><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode("Settings")); ?></a></li>
 						</ul>
 					 </div>
 					 <div class="col-md-8 col-sm-8 col-xs-8">    <h2><?php echo $userInfo->first_name." ".$userInfo->last_name ?>    </h2>
@@ -41,8 +41,8 @@
 									'enctype'=>'multipart/form-data',
 									 'autocomplete'=>'off',
 									]);?>
-			 <h4>Accepted Pet Types</h4>					
-			 <label for="pet_type">Select one or more types of pet from below </label>
+			 <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode("Accepted Pet Types")); ?></h4>					
+			 <label for="pet_type"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Select one or more types of pet from below")); ?> </label>
 					<div class="form-group">
 						<?php 
 						if(isset($userInfo->user_accepted_pets)){
@@ -61,8 +61,8 @@
 						'label'=>false
 						]);?>
                     </div>
-			 <h4>Services You Offer</h4>					
-			 <label for="pet_type">Select and modify the service(s) you want to offer here, make sure to Save at the bottom to confirm the changes once you're done!  </label>
+			 <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Services You Offer')); ?></h4>					
+			 <label for="pet_type"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Select and modify the service(s) you want to offer here, make sure to Save at the bottom to confirm the changes once you're done!")); ?>  </label>
 					<div class="form-group">
 						<?php 
 						if(isset($userInfo->user_services)){
@@ -100,8 +100,8 @@
 									]);?>
 						<div class="service-<?php echo $val->service; ?>">
 							<h2><?php echo $val->service; ?></h2>
-							<label for="service_price">Base Rate</label><br>
-							<span>Cost per night for one pet</span>
+							<label for="service_price"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Base Rate')); ?></label><br>
+							<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cost per night for one pet')); ?></span>
 							<div class="form-group">
 								 <?php echo $this->Form->input('service_price[]', 
 									['value' => $val->service_price,
@@ -109,8 +109,8 @@
 									'label'=>false
 									]);?>
 					        </div>
-							<label for="additional_rate">Additional Pet Rates</label><br>
-							<span>Cost per night for each additional pet</span>
+							<label for="additional_rate"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Additional Pet Rates')); ?></label><br>
+							<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cost per night for each additional pet')); ?></span>
 							<div class="form-group">
 								 <?php echo $this->Form->input('additional_rate[]', 
 									[
@@ -119,8 +119,8 @@
 									'label'=>false
 									]);?>
 					        </div>
-							<label for="puppy_pet_rate">Puppy Pet Rates</label><br>
-							<span>Cost per night for one puppy</span>
+							<label for="puppy_pet_rate"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Puppy Pet Rates')); ?></label><br>
+							<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cost per night for one puppy')); ?></span>
 							<div class="form-group">
 								 <?php echo $this->Form->input('puppy_pet_rate[]', 
 								   [
@@ -129,8 +129,8 @@
 									'value' => $singleDetail->puppy_pet_rate,
 									]);?>
 					        </div>
-							<label for="extended_session">Extended Booking Rate</label><br>
-							<span>For bookings longer than:</span>
+							<label for="extended_session"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Booking Rate')); ?></label><br>
+							<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('For bookings longer than')); ?>:</span>
 							<div class="form-group">
 								 <?php echo $this->Form->input('extended_session[]', 
 								[
@@ -140,7 +140,7 @@
 									'value' => $singleDetail->extended_session,
 								]);?>
 					        </div>
-							<span>Offer a discount rate:</span>
+							<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Offer a discount rate')); ?>:</span>
 							<div class="form-group">
 								 <?php echo $this->Form->input('extended_discount[]', 
 								[
@@ -150,8 +150,8 @@
 									'value' => $singleDetail->extended_discount,
 									]);?>
 					        </div>
-							<label for="spaces_available">Space Available</label><br>
-							<span>Maximum number of pets you can take at for this service</span>
+							<label for="spaces_available"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Space Available')); ?></label><br>
+							<span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Maximum number of pets you can take at for this service')); ?></span>
 							<div class="form-group">
 								 <?php echo $this->Form->input('spaces_available[]', 
 								   [
@@ -173,11 +173,11 @@
 					 </div>
 				</div><!-- @vik Executive Summary tab  -->	
 				<div id="index" class="tab-pane fade">
-				   index
+				   <?php echo $this->requestAction('app/get-translate/'.base64_encode('index')); ?>
 				</div><!-- @vik Funding Materials tab  -->
                			
 				<div id="calendar" class="tab-pane fade">
-				    calendar
+				     <?php echo $this->requestAction('app/get-translate/'.base64_encode('calendar')); ?>
 				</div>
 				      
 				</div><!-- @vik Funding Materials tab  -->	

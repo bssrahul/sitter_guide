@@ -24,7 +24,7 @@
 					?>
 					
 					<div>
-						<a class="btn btn-default submit" id="submit">Login</a>
+						<a class="btn btn-default submit" id="submit"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Login')); ?></a>
 						<a class="reset_pass" title="Forgot Password ?" href="<?php echo HTTP_ROOT."Users/forgot-password"; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Lost your password?')); ?></a>
 					</div>
                     <div class="clearfix"></div>

@@ -59,17 +59,17 @@ $(document).ready(function(){
 	</div><?php $action = explode('_', $this->request->action);  $newAction = ''; for($i = 1; $i < count($action); $i++) { if ($i == 1){$newAction = $action[$i];} else {$newAction .= '_'.$action[$i];} } ?>
 
 <form style="z-index:1;position:relative;bottom:20px;float:right; width:40%; text-align:left;" action="<?php echo HTTP_ROOT ?>admin/<?php echo $this->name.'/'.$newAction; ?><?php echo(@$this->request->params['pass'][0]?'/'.$this->request->params['pass'][0]:'') ?><?php echo(@$this->request->params['pass'][1]?'/'.$this->request->params['pass'][1]:'') ?><?php echo $sort.$dir; ?>" id="myLimitForm">
-	<label>Records per page</label>
+	<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Records per page')); ?></label>
 	<select class="pagesize myWebsiteChange" style="float:none !important;">
 		<?php if(@$this->request->params['named']['limit']){ ?>
-			<option value="10" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='10'?'selected="selected"':'') ?>>10 results</option>
+			<option value="10" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='10'?'selected="selected"':'') ?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('10 results')); ?></option>
 		<?php }else{ ?>
-			<option value="10"  selected="selected">10 results</option>
+			<option value="10"  selected="selected"><?php echo $this->requestAction('app/get-translate/'.base64_encode('10 results')); ?></option>
 		<?php } ?>	
-		<option value="20" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='20'?'selected="selected"':'') ?>>20 results</option>
-		<option value="30" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='30'?'selected="selected"':'') ?>>30 results</option>
-		<option value="40" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='40'?'selected="selected"':'') ?>>40 results</option>
-		<option value="1000" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='1000'?'selected="selected"':'') ?>>All</option>
+		<option value="20" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='20'?'selected="selected"':'') ?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('20 results')); ?></option>
+		<option value="30" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='30'?'selected="selected"':'') ?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('30 results')); ?></option>
+		<option value="40" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='40'?'selected="selected"':'') ?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('40 results')); ?></option>
+		<option value="1000" <?php echo(@$this->request->params['named']['limit'] && $this->request->params['named']['limit']=='1000'?'selected="selected"':'') ?>><?php echo $this->requestAction('app/get-translate/'.base64_encode('All')); ?></option>
 	</select>		
 </form>	
 </div>

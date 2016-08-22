@@ -3,7 +3,7 @@
 /* CSS Document */
 
 /* this Stylesheet only use to give universal styling for all webpages */
-@import 'about.css';
+
 @import 'bootstrap.min.css';
 @import 'header.css';
 @import 'content.css';
@@ -21,6 +21,9 @@
 /*@import 'insurance.css';*/
 /*@import 'terms.css';*/
 /*@import 'news.css';*/
+/* @import 'about.css';*/
+/*@import 'services.css';*/
+
 @import 'help.css';
 @import 'sitter-detail.css';
 @import 'search-result.css';
@@ -35,7 +38,6 @@
 @import 'db-communication.css';
 @import 'db-favourites.css';
 @import 'blog.css';
-@import 'services.css';
 @import 'house-rule.css';
 @import 'benefits.css';
 @import 'payments.css';
@@ -45,6 +47,8 @@
 @import 'db-tracker.css';
 @import 'become-sitter.css';
 @import 'partners.css';
+@import 'chosen.css';
+
 
 
 @font-face {

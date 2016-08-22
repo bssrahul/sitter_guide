@@ -2,10 +2,10 @@
 	<div class="row text-center">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#gettingStarted">Getting Started</a></li>
-				<li><a data-toggle="tab" href="#baseProfile">Base Profile</a></li>
-				<li><a data-toggle="tab" href="#extendedProfile">Extended Profile</a></li>
-				<li><a data-toggle="tab" href="#personal">Personal</a></li>
+				<li class="active"><a data-toggle="tab" href="#gettingStarted"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Getting Started')); ?></a></li>
+				<li><a data-toggle="tab" href="#baseProfile"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Base Profile')); ?></a></li>
+				<li><a data-toggle="tab" href="#extendedProfile"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Profile')); ?></a></li>
+				<li><a data-toggle="tab" href="#personal"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Personal')); ?></a></li>
 			</ul>
 			<div class="tab-content">
 			

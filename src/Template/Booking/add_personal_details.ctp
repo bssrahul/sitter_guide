@@ -95,20 +95,20 @@ $statesArray = array_merge($statesArray ,$aussie_states);
     
     <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
       <h3>
-        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">&nbsp Billing Details 
+        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">&nbsp <?php echo $this->requestAction('app/get-translate/'.base64_encode('Billing Details')); ?>  
       </h3>
     </div>
     
     <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
   
       <ol class="breadcrumb text-right">
-        <li> You are here : 
+        <li> <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
         </li>
         <li>
-          <a href="#">Home
+          <a href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?>
           </a>
         </li>
-        <li class="active">Payment Method
+        <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Payment Method')); ?>
         </li>
       </ol>
     </div>
@@ -118,12 +118,12 @@ $statesArray = array_merge($statesArray ,$aussie_states);
   <div class="communication-wrap">
     <div class="row">
       <div class="col-xs-12 col-sm-12 xol-md-12">
-        <h3 class="payment-heading1">Your Payment Methods
+        <h3 class="payment-heading1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Payment Methods')); ?>
         </h3>
-        <p class="payment-text">Select your default method for payments on Sitter Gudie. Sitter Gudie accepts all major credit and debit cards. 
+        <p class="payment-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Select your default method for payments on Sitter Gudie. Sitter Gudie accepts all major credit and debit cards')); ?>. 
         </p>
         <div class="pay-outside-wrap">
-          <h5 class="baddress"> Billing Address
+          <h5 class="baddress"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Billing Address')); ?> 
           </h5>
 			<?php echo $this->Form->create(null, [
 				'url' => ['controller' => 'booking', 'action' => 'add-personal-details'],
@@ -132,7 +132,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
 			]);?>
             
             <div class="form-group">
-              <label>Address Line 1
+              <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address Line 1')); ?> 
               </label>
               <?php 
 				echo $this->Form->input('Booking.address_1',[
@@ -140,7 +140,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Address line 1',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Address line 1')),
 							'value'=>isset($UserCardsData['address_1'])?$UserCardsData['address_1']:'',
 				]);
 				echo '<span class="signup_error">'.@$formError['address_1'][0].'</span>';
@@ -148,7 +148,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
             </div>
            
             <div class="form-group">
-              <label>Address Line 2
+              <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address Line 2')); ?>
               </label>
               <?php 
 				echo $this->Form->input('Booking.address_2',[
@@ -156,7 +156,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Address line 2',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Address line 2')),
 							'value'=>isset($UserCardsData['address_2'])?$UserCardsData['address_2']:'',
 				]);
 				echo '<span class="signup_error">'.@$formError['address_2'][0].'</span>';
@@ -166,7 +166,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
             <div class="row">
               <div class="col-lg-6 col-sm-4 col-md-6 col-xs-12 ">
                 <div class="form-group">
-                  <label>City
+                  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('City')); ?>
                   </label>
                   <?php 
 				echo $this->Form->input('Booking.city',[
@@ -174,7 +174,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'City',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('City')),
 							'value'=>isset($UserCardsData['city'])?$UserCardsData['city']:'',
 				]);
 				echo '<span class="signup_error">'.@$formError['city'][0].'</span>';
@@ -183,7 +183,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
               </div>
               <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 ">
                 <div class="form-group">
-                  <label>State
+                  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('State')); ?>
                   </label>
                   <?php echo $this->Form->input('Booking.state',[
 					'templates' => ['inputContainer' => '{{content}}'],
@@ -200,7 +200,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
               </div>
               <div class="col-lg-2 col-sm-4 col-md-2 col-xs-12 ">
                 <div class="form-group">
-                  <label>Zip Code
+                  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Zip Code')); ?>
                   </label>
                   <?php 
 				echo $this->Form->input('Booking.zip',[
@@ -208,7 +208,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Zip',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Zip')),
 							'value'=>isset($UserCardsData['zip'])?$UserCardsData['zip']:'',
 				]);
 				echo '<span class="signup_error">'.@$formError['zip'][0].'</span>';
@@ -222,7 +222,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
                   <?php 
 				echo $this->Form->input('Booking.save_cards',[
 					'templates' => ['inputContainer' => '{{content}}'],
-					'label' => 'Save address for future use ',
+					'label' => $this->requestAction('app/get-translate/'.base64_encode('Save address for future use')),
 					'type'=>'checkbox',
 					'value'=>isset($UserCardsData['save_cards'])?$UserCardsData['save_cards']:'',
 				]);
@@ -234,7 +234,7 @@ $statesArray = array_merge($statesArray ,$aussie_states);
               <div class="col-xs-12">
                 <div class="pay-tpborder">
                   <ul class="list-inline">
-                    <li>Step 2 of 2
+                    <li><?php echo $this->requestAction('app/get-translate/'.base64_encode('Step 2 of 2')); ?>
                     </li>
                     <li class="pull-right">
                       <input type='submit' class="btn paybtn" value="Save Card" />

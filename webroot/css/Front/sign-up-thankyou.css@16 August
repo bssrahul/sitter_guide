@@ -1,0 +1,350 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+.thankyou-heading {
+	font-size: 50px;
+	color: #404040;
+	font-family: 'Raleway', sans-serif;
+	
+	padding-top: 108px;
+	text-align: center;
+	font-weight: 400;
+}
+.thankyou-wrapper {
+	background: #fff;
+}
+.thankyou-heading span i {
+	width: 53px;
+	height: 59px;
+	background: url(../../img/search-icons.png) no-repeat -154px -457px;
+	display: inline-block;
+}
+.thankyou-wrapper .thankyou-text {
+	color: #2a71a1;
+	font-size: 18px;
+	max-width: 700px;
+	margin: 0px auto;
+	text-align: center;
+	padding-top: 65px;
+	padding-bottom: 85px; font-family: 'Raleway', sans-serif !important;
+	
+}
+.thankyou-wrapper .thankyou-text span {
+	display: block;
+	font-size: 30px;
+}
+.thankyou-wrapper .hr-border {
+	border-color: #ddd;
+}
+.thankyou-wrapper .contact-text {
+	color: #404040;
+	font-family: 'CenturyGothic-Regular';
+	font-size: 16px;
+	padding-top: 35px;
+	text-align: center;
+}
+.thanks-social-icon {
+	padding-top: 40px;
+	padding-bottom: 50px;
+}
+.thanks-facebook-icon {
+	background: #3d5f9c;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-facebook-icon:hover {
+	background: #314f84;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-facebook-icon i {
+	color: #fff;
+	font-size: 22px;
+	padding-top: 14px;
+}
+.thanks-twiter-icon {
+	background: #40ace3;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-twiter-icon:hover {
+	background: #359ace;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-twiter-icon i {
+	color: #fff;
+	font-size: 22px;
+	padding-top: 14px;
+}
+.thanks-gplus-icon {
+	background: #d54e33;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-gplus-icon:hover {
+	background: #bf452c;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-gplus-icon i {
+	color: #fff;
+	font-size: 22px;
+	padding-top: 14px;
+}
+.thanks-linked-icon {
+	background: #2a99c5;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-linked-icon:hover {
+	background: #288cb4;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+.thanks-linked-icon i {
+	color: #fff;
+	font-size: 22px;
+	padding-top: 14px;
+}
+.thanks-social-icon li {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.wrapper-thankyou {
+	max-width: 760px;
+	border: 1px solid #ddd;
+	margin: 0px auto;
+	padding: 17px;
+	margin-bottom: 80px;
+}
+.thankyou1 {
+	background: #f3f3f3;
+	width: 100%;
+	min-height: 105px;
+}
+.wrapper-thankyou .margt20 {
+	margin-top: 20px;
+}
+.thankyou1 .thankyou-icon {
+	width: 14%;
+	float: left;
+}
+.thankyou1 .thankyou-icon-righttext {
+	float: left;
+	width: 86%;
+}
+.thankyou1 .thankyou-icon-righttext h3 {
+	font-size: 18px !important;
+	color: #404040;
+	padding-top: 27px;
+	font-family: 'Raleway', sans-serif;
+}
+.thankyou1 .thankyou-icon-righttext p {
+	font-size: 13px;
+	color: #404040;
+	padding-top: 5px;
+	font-family: 'Raleway', sans-serif;
+}
+.wrapper-thankyou .btn-return {
+	width: 100%;
+	height: 50px;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-top: 20px;
+	background: #72a105;
+	color: #fff;
+	padding-top: 8px;
+}
+.wrapper-thankyou .btn-return:hover {
+	width: 100%;
+	height: 50px;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-top: 20px;
+	background: #699305;
+	color: #fff;
+	padding-top: 8px;
+}
+.wrapper-thankyou .btn-update {
+	width: 100%;
+	height: 50px;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-top: 20px;
+	background: #fff;
+	border: 1px solid #dddddd;
+	color: #404040;
+	padding-top: 8px;
+}
+.wrapper-thankyou .btn-update:hover {
+	width: 100%;
+	height: 50px;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-top: 20px;
+	background: #404040;
+	border: 1px solid #404040;
+	color: #fff;
+	padding-top: 8px;
+}
+.thankyou1 .icon-1 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -536px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 30px;
+	width: 50px;
+}
+.thankyou1 .icon-2 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -587px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 30px;
+	width: 50px;
+}
+.thankyou1 .icon-3 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -640px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 30px;
+	width: 50px;
+}
+.thankyou1 .icon-4 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -696px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 30px;
+	width: 50px;
+}
+
+@media (max-width:767px) {
+.thankyou1 .icon-1 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -536px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 0px;
+	width: 50px;
+}
+.thankyou1 .icon-2 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -587px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 0px;
+	width: 50px;
+}
+.thankyou1 .icon-3 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -640px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 0px;
+	width: 50px;
+}
+.thankyou1 .icon-4 {
+	background: rgba(0, 0, 0, 0) url(../../img/search-icons.png) no-repeat scroll -696px -0px;
+	display: inline-block;
+	height: 50px;
+	margin: 0 10px 0 auto;
+	position: relative;
+	top: 28px;
+	left: 0px;
+	width: 50px;
+}
+.wrapper-thankyou {
+	max-width: 760px;
+	border: 1px solid #ddd;
+	margin: 0px auto;
+	padding: 17px;
+	margin-bottom: 10px;
+}
+.thankyou1 .thankyou-icon {
+	width: 100%;
+	text-align: center;
+	float: none;
+}
+.thankyou1 .thankyou-icon-righttext {
+	width: 100%;
+	text-align: center;
+	float: none;
+}
+.thankyou1 .thankyou-icon-righttext h3 {
+	font-size: 18px !important;
+	color: #404040;
+	padding-top: 27px;
+	font-family: 'Raleway', sans-serif;
+}
+.thankyou1 .thankyou-icon-righttext p {
+	font-size: 13px;
+	color: #404040;
+	padding-top: 5px;
+	font-family: 'Raleway', sans-serif;
+	padding-bottom: 30px;
+}
+.thankyou-wrapper .thankyou-text span {
+	display: block;
+	font-size: 28px;
+}
+.thankyou-heading {
+	font-size: 28px;
+	color: #404040;
+	padding-top: 60px;
+	text-align: center;
+	font-weight: 400;
+}
+.thankyou-heading span i {
+	background: rgba(0, 0, 0, 0) url("../../img/search-icons.png") no-repeat scroll -154px -457px;
+	display: block;
+	height: 59px;
+	margin: 0 auto;
+	width: 53px;
+	margin-bottom: 10px;
+}
+.thankyou-wrapper .thankyou-text {
+	color: #2a71a1;
+	font-size: 18px;
+	max-width: 700px;
+	margin: 0px auto;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 30px;
+
+}
+}

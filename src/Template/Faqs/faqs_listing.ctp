@@ -57,7 +57,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Faqs</h2><h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'faqs/add-faqs'; ?>"><button class="btn btn-success addUser" type="button">Add Faq</button></a></h2>
+					<h2>Faqs</h2><h2 style="float:right"> <a style="float:right" href="<?php echo HTTP_ROOT.'faqs/add-faqs'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Faq')); ?></button></a></h2>
 				<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -68,15 +68,15 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 Sr.No.
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr.No.')); ?> 
 								</th>
 								<th class="text-center column-title"><?php echo $this->Paginator->sort('faqs.faq_type', 'Faq Type')?></th>
-								<th class="column-title"><?php echo $this->Paginator->sort('faqs.category', 'Category')?> </th>
-								<th class="column-title"><?php echo $this->Paginator->sort('faqs.question', 'Question')?> </th>
-								<th class="column-title"><?php echo $this->Paginator->sort('faqs.answer', 'Answer')?></th> 
-							   <th class="column-title"><?php echo $this->Paginator->sort('faqs.status', 'Status')?></th>
-							<!--   <th class="column-title"><?php echo $this->Paginator->sort('faqs.createddate', 'Created Date')?></th> -->
-								<th class="column-title no-link last"><span class="nobr">Action</span>
+								<th class="column-title"><?php echo $this->Paginator->sort('faqs.category', $this->requestAction('app/get-translate/'.base64_encode('Category')))?> </th>
+								<th class="column-title"><?php echo $this->Paginator->sort('faqs.question',$this->requestAction('app/get-translate/'.base64_encode('Question')) )?> </th>
+								<th class="column-title"><?php echo $this->Paginator->sort('faqs.answer', $this->requestAction('app/get-translate/'.base64_encode('Answer')))?></th> 
+							   <th class="column-title"><?php echo $this->Paginator->sort('faqs.status', $this->requestAction('app/get-translate/'.base64_encode('Status')))?></th>
+							<!--   <th class="column-title"><?php echo $this->Paginator->sort('faqs.createddate', $this->requestAction('app/get-translate/'.base64_encode('Created Date')))?></th> -->
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -109,25 +109,25 @@
 										echo $faq_info->answer;
 								?></td>
 								
-								 <td><?php echo $faq_info->status == 1?'Active':'Inactive';	?></td>
+								 <td><?php echo $faq_info->status == 1? $this->requestAction('app/get-translate/'.base64_encode('Active')): $this->requestAction('app/get-translate/'.base64_encode('Inactive'));	?></td>
 								<!-- <td class=" "><?php 
 										echo date("F j, Y", strtotime($faq_info->created_date));
 								?></td>-->
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								
 								<td class=" last">
-								   <a title="<?php echo($faq_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'faqs'.'/'.base64_encode(convert_uuencode($faq_info->id)).'/'.$target[$faq_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($faq_info->status ==0?'-o':'') ?>"></span></a>
+								   <a title="<?php echo($faq_info->status == 0? $this->requestAction('app/get-translate/'.base64_encode('Activate status')): $this->requestAction('app/get-translate/'.base64_encode('Deactivate Status'))) ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'faqs'.'/'.base64_encode(convert_uuencode($faq_info->id)).'/'.$target[$faq_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($faq_info->status ==0?'-o':'') ?>"></span></a>
 								 
-								  <a title="Edit" href="<?php echo HTTP_ROOT."Faqs/edit-faqs/".base64_encode(convert_uuencode($faq_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
+								  <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit')); ?>" href="<?php echo HTTP_ROOT."Faqs/edit-faqs/".base64_encode(convert_uuencode($faq_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								   
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Faqs'.'/'.base64_encode(convert_uuencode($faq_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Delete')); ?>" href="<?php echo HTTP_ROOT."users/delete-row/".'Faqs'.'/'.base64_encode(convert_uuencode($faq_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 							</tr>
 							<?php $i++;
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> No records found </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No records found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

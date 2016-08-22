@@ -162,9 +162,9 @@
 									<?php $target = ['0'=>'1','1'=>'0'];?>
 									<td class=" last">
 									
-									   <a title="<?php echo($user_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Users'.'/'.base64_encode(convert_uuencode($user_info->id)).'/'.$target[$user_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($user_info->status ==0?'-o':'') ?>"></span></a>
+									   <a title="<?php echo($user_info->status == 0?$this->requestAction('app/get-translate/'.base64_encode('Activate status')): $this->requestAction('app/get-translate/'.base64_encode('Deactivate Status'))) ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Users'.'/'.base64_encode(convert_uuencode($user_info->id)).'/'.$target[$user_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($user_info->status ==0?'-o':'') ?>"></span></a>
 									 
-									  <a title="Edit" href="<?php echo HTTP_ROOT."users/edit-user/".base64_encode(convert_uuencode($user_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
+									  <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit')); ?>" href="<?php echo HTTP_ROOT."users/edit-user/".base64_encode(convert_uuencode($user_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
 									   
 									  <!-- <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Users'.'/'.base64_encode(convert_uuencode($user_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 									   
@@ -206,9 +206,9 @@
 												</a>
 												
 											<?php  
-												echo "Driving licence & Police BackGround Check</br></br>"; 
+												echo $this->requestAction('app/get-translate/'.base64_encode('Driving licence & Police BackGround Check')). "</br></br>"; 
 											}else{
-													echo "<em style='color:#1D486E'>DL & Police Background Check documents not uploaded</em><br/>";
+													echo "<em style='color:#1D486E'>".$this->requestAction('app/get-translate/'.base64_encode('DL & Police Background Check documents not uploaded'))."</em><br/>";
 											} ?>
 											
 											<?php 
@@ -217,10 +217,10 @@
 											
 													<a title="<?php echo($user_info['users_badge']->cpr_rescue_badge == 0?'Check Knowledge of CPR & Experience of rescue pets':'Uncheck Knowledge of CPR & Experience of rescue pets') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='cpr_rescue_badge'.'/'.$target[$user_info['users_badge']->cpr_rescue_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->cpr_rescue_badge ==0?'-o':'') ?>"></span></a>
 												
-												<?php echo "Knowledge of CPR & Experience of rescue pets </br></br> "; 
+												<?php echo $this->requestAction('app/get-translate/'.base64_encode('Knowledge of CPR & Experience of rescue pets'))." </br></br> "; 
 											}else{
 											
-												echo "<em style='color:#29ABE2'>Knowledge of CPR and rescue pet fields not set</em><br/>";
+												echo "<em style='color:#29ABE2'>".$this->requestAction('app/get-translate/'.base64_encode('Knowledge of CPR and rescue pet fields not set'))."</em><br/>";
 											
 											}?>
 													
@@ -230,9 +230,9 @@
 													
 													<a title="<?php echo($user_info['users_badge']->oral_injucted_badge == 0?'Check Knowledge of oral &  injected medication':'Uncheck Knowledge of oral & injected medication') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='oral_injucted_badge'.'/'.$target[$user_info['users_badge']->oral_injucted_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->oral_injucted_badge ==0?'-o':'') ?>"></span></a>
 													
-													<?php echo " Knowledge of oral & injected medication </br></br>"; 
+													<?php echo $this->requestAction('app/get-translate/'.base64_encode(' Knowledge of oral & injected medication'))." </br></br>"; 
 											}else{
-													echo "<em style='color:#789E42'>Knowledge of oral & injected medication fields not set</em><br/>";
+													echo "<em style='color:#789E42'>".$this->requestAction('app/get-translate/'.base64_encode('Knowledge of oral & injected medication fields not set'))."</em><br/>";
 											}
 											?>
 											
@@ -242,16 +242,16 @@
 													
 													<a title="<?php echo($user_info['users_badge']->ffo_area_badge == 0?'Check Fully Fence Outdoor Area':'Uncheck  Fully Fence Outdoor Area') ?>" href="<?php echo HTTP_ROOT."users/update-field-status-row/".'UsersBadge'.'/'.base64_encode(convert_uuencode($user_info['users_badge']->id)).'/'.$fieldname='ffo_area_badge'.'/'.$target[$user_info['users_badge']->ffo_area_badge];?>" ><span class="fa fa-fw fa-check-square<?php echo( $user_info['users_badge']->ffo_area_badge ==0?'-o':'') ?>"></span></a>
 													
-											 <?php echo "Fully Fence Outdoor Area</br></br>"; 
+											 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Fully Fence Outdoor Area'))."</br></br>"; 
 											}else{
 											
-												echo "<em style='color:#FC6C2D'>Fully Fence Outdoor Area fields not set</em><br/>";
+												echo "<em style='color:#FC6C2D'>".$this->requestAction('app/get-translate/'.base64_encode('Fully Fence Outdoor Area fields not set'))."</em><br/>";
 											
 											}?>
 										<?php 
 										}else{
 											
-												echo "<em style='color:#F8AC18'>Required fields not set</em><br/>";
+												echo "<em style='color:#F8AC18'>".$this->requestAction('app/get-translate/'.base64_encode('Required fields not set'))."</em><br/>";
 											
 											}?>			 								  
 									</td>

@@ -3,7 +3,6 @@
 
 /*Banner inner pages starts*/
 .banner-area-service { background:url(../../img/service-banner.png) repeat; background-position:center; height:350px;  width:100%; margin-top:75px; }
-
 .banner-area-service h3 {text-align:center; color:#fff; font-size:30px; padding-top:106px;  padding-bottom:35px;}
 .banner-area-service p {text-align:center; color:#fff; font-size:14px; line-height:25px; max-width:700px;  margin:0px auto;}
 
@@ -11,49 +10,24 @@
 
 .sev-type { background:#f4f4f4; border-bottom:1px solid #ddd; border-top: 1px solid #ddd; height:72px;}
 .sev-type h4 { color:#404040; font-size:20px; font-weight:400; padding-top:25px;}
-
-
 .left-side-tabs { padding-top:30px;}
-
 .s-tabs .nav-pills li a  { border:1px solid #e9e7e7; border-radius:0px; height:60px; padding:20px 0px 0px 20px; color:#404040;  }
-
-.s-tabs .nav-stacked > li + li {
-    margin-left: 0;
-    margin-top: 0;
-}
-
+.s-tabs .nav-stacked > li + li { margin-left: 0;  margin-top: 0;}
 
 .s-tabs .nav-pills li.active a  {  background:#f1f5e6; color:#000;  }
 .s-tabs .nav-pills li.active a:hover, .s-tabs .nav-pills li.active a:focus   {  background:#f1f5e6 !important; color:#000;  }
-
 .s-tabs .nav-pills li a:hover, .s-tabs .nav-pills li a:focus   {  background:#f1f5e6 !important; color:#000;  }
-
-
 .right-side-tabs { padding-top:30px;}
-
-
 .right-side-tabs .boarding-heading { font-size:18px; color:#404040; font-weight:600; border-bottom:1px solid #e9e7e7; padding:20px 0 20px 0;}
-
 .right-side-tabs .boarding-text {color:#404040; padding:30px 0 0px 0; text-align:justify;}
-
 .right-side-tabs .boarding-text span { color:#72a105;}
-
 .boarding-heading2 { font-size:14px; color:#404040; font-weight:600; padding-top:25px;}
-
 .boarding-heading2 span { font-size:14px; color:#72a105; padding-right:15px;}
-
 .points-text { padding:15px 0 0 0; color:#404040; text-align:justify; font-weight:300; font-size:13px;}
 
-
 .click-area { }
-
-
 .click-area li { padding-top:30px;}
-
 .click-area .img-thumbnail { padding:10px;}
-
-
-
-.b-points ul li { color:#404040; font-size:13px; font-weight:300; padding-top:20px; text-align:justify; list-style-image:url(../../img/service-bullet.png)}
+.b-points ul li { color:#404040; font-size:13px; font-weight:300; padding-top:20px; text-align:justify; list-style-image:url(../../img/service-bullet.png);}
 
 

@@ -7,7 +7,7 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Review')); ?><small></small></h2>
+                                    <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Review')); ?><small></small></h2>
 									<div class="clearfix"></div>
 							    </div>
 								<div class="x_content">
@@ -24,7 +24,7 @@
 								<?php foreach($reviewData as $reviewInfo){ ?>	
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_to"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Rate To')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_to"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Rate To')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<select name="user_to" id="userto" class='form-control col-md-7 col-xs-12 userto' 'value'=<?php ($reviewInfo->user_to != '' ?$reviewInfo->user_to:'');?> >
@@ -40,7 +40,7 @@
 									</div>
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Booking')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											<select name="booking_id" id="booking" class='form-control col-md-7 col-xs-12'>
@@ -53,7 +53,7 @@
 									</div>
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Comment')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="comment"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Comment')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->input('comment',
@@ -66,7 +66,7 @@
 										</div>
 									</div>
 									<!--<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
@@ -85,7 +85,7 @@
 										</div>
 									</div> -->
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Accuracy Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accuracy Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
@@ -104,7 +104,7 @@
 										</div>
 									</div>
 								<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Communication Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Communication Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
@@ -124,7 +124,7 @@
 									</div>
 									
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cleanliness Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cleanliness Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
@@ -143,7 +143,7 @@
 										</div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Location Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Location Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
@@ -162,7 +162,7 @@
 										</div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Check In Rating')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Check In Rating')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 									
@@ -184,8 +184,8 @@
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
-											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
+											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancel')); ?></button>
+											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 										</div>
 									</div>
 								</div>

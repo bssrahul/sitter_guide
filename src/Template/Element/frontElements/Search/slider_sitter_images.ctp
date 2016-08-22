@@ -76,13 +76,13 @@
 	<a class="left carousel-control" href=".customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
 	  <span class="fa fa-chevron-left" aria-hidden="true">
 	  </span>
-	  <span class="sr-only">Previous
+	  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
 	  </span>
 	</a>
 	<a class="right carousel-control" href=".customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="next">
 	  <span class="fa fa-chevron-right" aria-hidden="true">
 	  </span>
-	  <span class="sr-only">Next
+	  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
 	  </span>
 	</a>
 	</div>               	 

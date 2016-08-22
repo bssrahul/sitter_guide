@@ -4,7 +4,7 @@
       <div class="pay-outside-wrap creditly-wrapper">
 							  
 				<div class="form-group">
-				  <label>Name on Card
+				  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name on Card')); ?>
 				  </label>
 				  
 					<?php 
@@ -14,7 +14,7 @@
 								'type'=>'text',
 								'data-rel'=>'card_holder_name_autofill',
 								'class'=>'billing-address-name form-control collapseTwo',
-								'placeholder'=>'Name on Card',
+								'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Name on Card')),
 								'value'=>isset($UserData['Booking']['card_holder_name'])?$UserData['Booking']['card_holder_name']:'',
 								
 								
@@ -26,7 +26,7 @@
 				<div class="row">
 				  <div class="col-lg-6 col-sm-5 col-md-6 col-xs-12 ">
 					<div class="form-group">
-					  <label>Credit Card No.
+					  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Credit Card No')); ?>.
 					  </label>
 						<?php 
 						echo $this->Form->input('Booking.new_card_number',[
@@ -40,7 +40,7 @@
 									'class'=>'credit-card-number form-control collapseTwo',
 									'maxlength'=>16,
 									'data-rel'=>'card_number_autofill',
-									'placeholder'=>"Card Number",
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Credit Number')),
 									'value'=>isset($UserData['Booking']['new_card_number'])?$UserData['Booking']['new_card_number']:'',
 									
 						]);
@@ -50,7 +50,7 @@
 				  </div>
 				  <div class="col-lg-4 col-sm-3 col-md-4 col-xs-12 ">
 					<div class="form-group">
-					  <label>Expiration
+					  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Expiration')); ?>
 					  </label>
 					  <?php 
 						echo $this->Form->input('Booking.new_expiary_date',[
@@ -59,7 +59,7 @@
 									'type'=>'text',
 									'data-rel'=>'expiry_date_autofill',
 									'class'=>'expiration-month-and-year form-control collapseTwo',
-									'placeholder'=>'MM/YY',
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('MM/YY')),
 									'value'=>isset($UserData['Booking']['new_expiary_date'])?$UserData['Booking']['new_expiary_date']:'',
 									
 						]);
@@ -69,7 +69,7 @@
 				  </div>
 				  <div class="col-lg-2 col-sm-4 col-md-2 col-xs-12 ">
 					<div class="form-group">
-					  <label>CVV
+					  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('CVV')); ?>
 					  </label>
 					  <?php 
 						echo $this->Form->input('Booking.new_cvv_code',[
@@ -78,7 +78,7 @@
 									'type'=>'password',
 									'cvv'=>4,
 									'class'=>'security-code form-control collapseTwo',
-									'placeholder'=>'CVV',
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('CVV')),
 									'value'=>isset($UserData['Booking']['new_cvv_code'])?$UserData['Booking']['new_cvv_code']:'',
 									
 						]);

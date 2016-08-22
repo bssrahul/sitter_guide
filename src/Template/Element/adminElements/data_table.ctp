@@ -11,7 +11,7 @@
 	$(document).ready(function () {
 		var oTable = $('#example').dataTable({
 			"oLanguage": {
-				"sSearch": "<?php echo $this->requestAction('users/get-translate/'.base64_encode('Search All Column')); ?>:"
+				"sSearch": "<?php echo $this->requestAction('app/get-translate/'.base64_encode('Search All Column')); ?>:"
 			},
 			"fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 

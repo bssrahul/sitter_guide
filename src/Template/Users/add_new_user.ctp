@@ -3,7 +3,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Add New User<small></small></h2>
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add New User')); ?><small></small></h2>
 					<div class="clearfix"></div>
 				</div>
 				<?= $this->element('adminElements/error_msg'); ?>
@@ -26,7 +26,7 @@
 						
 					]);?>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><?php echo $this->requestAction('app/get-translate/'.base64_encode('First Name')); ?> <span class="required">*</span>
 						</label>
 						<?php 
 						//echo "<pre>"; print_r($admininfo);
@@ -38,7 +38,7 @@
 						
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Last Name<span class="required"></span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Last Name')); ?><span class="required"></span>
 						</label>
 						<?php 
 						//echo "<pre>"; print_r($admininfo);
@@ -49,7 +49,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						//echo "<pre>"; print_r($admininfo);
@@ -60,7 +60,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Phone')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						//echo "<pre>"; print_r($admininfo);
@@ -71,7 +71,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">Country<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="country"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						echo $this->Form->input('Users.country',[
@@ -81,7 +81,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="city"><?php echo $this->requestAction('app/get-translate/'.base64_encode('City')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						echo $this->Form->input('Users.city',[
@@ -91,7 +91,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="state">State<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="state"><?php echo $this->requestAction('app/get-translate/'.base64_encode('State')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						echo $this->Form->input('Users.state',[
@@ -101,7 +101,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="address"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						echo $this->Form->input('Users.address',[
@@ -111,7 +111,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="zip">Zip<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="zip"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Zip')); ?><span class="required">*</span>
 						</label>
 						<?php 
 						echo $this->Form->input('Users.zip',[
@@ -121,7 +121,7 @@
 						 ?>
 					</div>
 					<div class="item form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Profile Picture<span class="required">*</span>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile Picture')); ?><span class="required">*</span>
 						</label>
 						 <div class="col-md-6 col-sm-6 col-xs-12">
 						   <?php 
@@ -134,8 +134,8 @@
 					<div class="ln_solid"></div>
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-3">
-							<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  >Cancel</button>
-							<button id="send" type="submit" class="btn btn-success">Submit</button>
+							<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancel')); ?></button>
+							<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 						</div>
 					</div>
 					<?php echo $this->form->end(); ?>

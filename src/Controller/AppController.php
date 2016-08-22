@@ -850,7 +850,7 @@ class AppController extends Controller{
 				
 				
 				$client = new \Services_Twilio(TWILIO_SID, TWILIO_AUTHTOKEN); 
-							
+											
 				//SEND MESSAGE VIA TWILIO API CALL
 				try {
 					$output = $client->account->messages->create(array( 
@@ -867,9 +867,7 @@ class AppController extends Controller{
 				  
 			
 			}
-			
-			
-		return true;
+		return $to_mobile_number;
 	}
 	function getUserCommunicationDetails($userId = null){
 		$usersModel = TableRegistry::get('Users');

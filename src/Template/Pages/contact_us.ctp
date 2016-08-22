@@ -2,7 +2,7 @@
 <main id="contact">
 	<section class="our-location">
 		<div class="container">
-			<h3>Our Locations</h3>
+			<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Our Locations'));?> </h3>
 				<div class="row">
     				<div class="col-sm-2"></div>
 						<div class="col-sm-10">

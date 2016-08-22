@@ -39,18 +39,18 @@
                         <ul class="booking-services">
                             <li class="new_active">
                                 <a class="boarding" href="#boarding" data-toggle="tab" data-rel="boarding">
-                                    <span></span> Boarding<br>
-                                    <b>in the sitter home</b> </a>
+                                    <span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding')); ?><br>
+                                    <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in the sitter home')); ?></b> </a>
                             </li>
                             <li class="">
                                 <a class="h-sitting" href="#hsitting" data-toggle="tab" data-rel="house_sitting">
-                                    <span></span> House Sitting<br>
-                                    <b>in your home</b></a>
+                                    <span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('House Sitting')); ?><br>
+                                    <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in your home')); ?></b></a>
                             </li>
                             <li class="">
                                 <a class="d-visit" href="#dvisit" data-toggle="tab" aria-expanded="false" data-rel="drop_in_visit">
-                                    <span></span> Drop-in Visit<br>
-                                    <b>in your home</b></a>
+                                    <span></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-in Visit')); ?> <br>
+                                    <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in your home')); ?></b></a>
                             </li>
                         </ul>
                         <!-- Start Required service-->
@@ -67,7 +67,7 @@
 
                     <!--Date-->
                     <div class="hs-date">
-                        <h1 class="hsd-head">House Boarding Dates</h1>
+                        <h1 class="hsd-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Boarding Dates')); ?></h1>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="fromto">
@@ -78,7 +78,7 @@
                                         'label'=>false,
                                         'readonly'=>true,
                                         'type'=>'text',
-                                        'placeholder'=>'YYYY-MM-DD', 
+                                        'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('YYYY-MM-DD')), 
                                         ]);
                                       ?>
                                     <a href="javascript:void(0)" title="Calender" class="display-calender1"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png" width="21" height="21" alt="Calender"></a>
@@ -94,7 +94,7 @@
                                         'label'=>false,
                                         'type'=>'text',
                                         'readonly'=>true,
-                                        'placeholder'=>'YYYY-MM-DD', 
+                                        'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('YYYY-MM-DD')),
                                         ]);
                                       ?>
                                     <a href="javascript:void(0)" title="Calender" class="display-calender"><img src="<?php echo HTTP_ROOT; ?>img/calender-icon.png" width="21" height="21" alt="Calender"></a>
@@ -102,24 +102,24 @@
                                 </div>
                             </div>
                         </div>
-                        <p>For your safety & security, Rover will not expose your phone number until you've booked your stay. Messages from Agatha will come from 858-914-2079, a number owned by sitter guide. </p>
+                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("For your safety & security, Rover will not expose your phone number until you've booked your stay. Messages from Agatha will come from 858-914-2079, a number owned by sitter guide")); ?>. </p>
                     </div>
                     <!--/Date-->
                     <!--add dog-->
                     <div class="ad-dog">
-                        <h2>Dogs</h2>
+                        <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dogs')); ?></h2>
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <div class="dog-list">
                                     <ul>
-                                        <li><input type="checkbox"> Dog Name</li>
-                                        <li><input type="checkbox"> Dog Name</li>
+                                        <li><input type="checkbox"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Dog Name')); ?></li>
+                                        <li><input type="checkbox"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Dog Name')); ?></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="ad">
-                                    <a href="#" title="Add Dogs"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Another Dogs</a>
+                                    <a href="#" title="Add Dogs"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Another Dogs')); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -131,8 +131,8 @@
                     <!--/add dog-->
                     <!--message-->
                     <div class="msg">
-                        <h3>Message</h3>
-                        <p>Share a little info about your dog and why they'd have a great time with Agatha. </p>
+                        <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Message')); ?></h3>
+                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("Share a little info about your dog and why they'd have a great time with Agatha")); ?>. </p>
                         <!--<textarea class="txtarea"></textarea>-->
                         <?php  
                                 echo $this->Form->input('BookingRequests.message',[               
@@ -151,9 +151,9 @@
                                 'type'=>'checkbox',
                                 'hiddenField'=>false 
                                 ]);
-                              ?> I'd like to receive photos of my dog(s) during this stay. </p>
-                        <button type="submit" class="btn btn-success send-msg">SEND MESSAGE</button>
-                        <p>All stays booked through Rover are covered by premium insurance. </p>
+                              ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode("I'd like to receive photos of my dog(s) during this stay")); ?>. </p>
+                        <button type="submit" class="btn btn-success send-msg"><?php echo $this->requestAction('app/get-translate/'.base64_encode('SEND MESSAGE')); ?></button>
+                        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('All stays booked through Rover are covered by premium insurance')); ?>. </p>
                     </div>
                     <?php echo $this->Form->end(); ?>
                     <!--/message-->

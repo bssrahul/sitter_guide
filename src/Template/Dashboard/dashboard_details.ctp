@@ -7,26 +7,33 @@
 	echo $this->Html->css(['Front/dashboard_chart.css']); 
 	echo $this->Html->script(['Front/prefixfree.min.js']);
 ?>
-<div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
-        <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
+<div class="col-md-9 col-lg-10 col-sm-8 lg-width80">
+		<div class="container-fluid">	
+        <div class="row">
+        <div class="db-top-bar-header bg-title">
 			<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
 				<h3>
-					<img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon">Dashboard
+					<img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Dashboard')); ?>
 				</h3>
 			</div>
 			<div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
 			  <ol class="breadcrumb text-right">
-				<li> You are here : 
+				<li><?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
 				</li>
 				<li>
-				  <a href="<?php echo HTTP_ROOT; ?>">Home
+				  <a href="<?php echo HTTP_ROOT; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?>
 				  </a>
 				</li>
-				<li class="active">Profile
+				<li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile')); ?>
 				</li>
 			  </ol>
 			</div>
 		</div>
+        </div>
+        </div>
+        
+        
+        
         <div class="row">
 			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 col-cust-6">
 				<?php if($userType == "Sitter"){ ?>
@@ -37,12 +44,12 @@
 						  <div class="topbox-text">
 							<h4> <?php echo @$totalEarningThisMonth; ?>
 							</h4>
-							<p>Earning this month
+							<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Earning this month')); ?>
 							</p>
 						  </div>
 						</div>
 						<div class="below-top-box">
-						  <p>Earning this month for (<?php echo @$username; ?>)
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Earning this month for')); ?> (<?php echo @$username; ?>)
 						  </p>
 						</div>
 						<?php  
@@ -83,7 +90,7 @@
 						  <div>
 							<h4 class="text-center cal-caption">
 							  <i class="fa fa-circle-o color-blue">
-							  </i> &nbsp;Earning for year <?php echo date("Y"); ?>
+							  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Earning for year')); ?> <?php echo date("Y"); ?>
 							</h4>
 							<hr />
 							<p class="revenue-month text-center">
@@ -92,8 +99,7 @@
 								echo $ernMonth[$ernCountMonth];?>
 							</p>
 							<div class="revenue-small-text text-center">
-							  <p>Earningsi shown are after Sitter Guide
-								commission and service costs 
+							  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Earningsi shown are after Sitter Guide commission and service costs')); ?> 
 							  </p>
 							</div>
 						  </div>
@@ -109,12 +115,12 @@
 						  <div class="topbox-text">
 							<h4><?php echo @$totalPaidThisMonth; ?>
 							</h4>
-							<p>Paid this month
+							<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Paid this month')); ?>
 							</p>
 						  </div>
 						</div>
 						<div class="below-top-box">
-						  <p>Paid this month for (User Name)
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Paid this month for (User Name)')); ?>
 						  </p>
 						</div>
 						<?php if(!empty($threeMonthPaid)){ ?>
@@ -152,7 +158,7 @@
 						  <div>
 							<h4 class="text-center cal-caption">
 							  <i class="fa fa-circle-o color-blue">
-							  </i> &nbsp;Paid for year <?php echo date("Y"); ?>
+							  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Paid for year')); ?>  <?php echo date("Y"); ?>
 							</h4>
 							<hr />
 							<p class="revenue-month text-center">
@@ -160,8 +166,8 @@
 								 echo $monthArr[$countPaidMonth]; ?>
 							</p>
 							<div class="revenue-small-text text-center">
-							  <p>Paid shown are after Sitter Guide
-								commission and service costs
+							  <p> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Paid shown are after Sitter Guide
+								commission and service costs')); ?> 
 							  </p>
 							</div>
 						  </div>
@@ -181,13 +187,13 @@
 						<h4>
 						  <?php echo @$client_stay_status["new_clients"]; ?>
 						</h4>
-						<p>New clients
+						<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('New clients')); ?> 
 						</p>
 					  </div>
 					</div>
 					<div class="below-top-box">
 					  <p>You have 
-						<?php echo @$client_stay_status["new_clients"]; ?> new clients
+						<?php echo @$client_stay_status["new_clients"]; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('new clients')); ?>
 					  </p>
 					</div>
 				<?php }
@@ -199,19 +205,19 @@
 					<h4>
 					  <?php echo @$client_stay_status["new_sitters"]; ?>
 					</h4>
-					<p>New sitters
+					<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('New sitters')); ?>
 					</p>
 				  </div>
 				</div>
 				<div class="below-top-box">
-				  <p>You have 
-					<?php echo @$client_stay_status["new_sitters"]; ?> new sitters
+				  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('You have')); ?> 
+					<?php echo @$client_stay_status["new_sitters"]; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('new sitters')); ?>
 				  </p>
 				</div>
 				<?php } ?>
 				<div class="second-box-header">
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Clients 
+					<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Clients')); ?>
 					</h5>
 				  </div>
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
@@ -234,20 +240,20 @@
 				<div class="below-second-box collapse in" id="client1" >
 				  <div class="padd-left-15 padd-right-15">
 					<p class="client-text text-justify">
-					  <span class="client-truncate">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem Ipsum is simply dummy text printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy 
+					  <span class="client-truncate"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy Lorem Ipsum is simply dummy text printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy')); ?> 
 					  </span>
 					</p>
 					<div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6">
-						  <p>Boarding Stay
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding Stay')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
 						  <p class="text-right">
 							<?php echo @$client_stay_status['boarding']; ?>% - 
 							<span class="numberclient">
-							  <?php echo $client_stay_status["boarding_clients"]; ?> clients
+							  <?php echo $client_stay_status["boarding_clients"]; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('clients')); ?> 
 							</span>
 						  </p>
 						</div>
@@ -256,7 +262,7 @@
 							<div class="progress-bar overnight-bg" role="progressbar" aria-valuenow="70"
 								 aria-valuemin="0" aria-valuemax="100" style="width:<?php echo @$client_stay_status['boarding']; ?>%"> 
 							  <span class="sr-only">
-								<?php echo @$client_stay_status['boarding']; ?>% Complete
+								<?php echo @$client_stay_status['boarding']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?> 
 							  </span>
 							</div>
 						  </div>
@@ -264,14 +270,14 @@
 					  </div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6">
-						  <p>House Sitting Stay
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Sitting Stay')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
 						  <p class="text-right">
 							<?php echo @$client_stay_status['house_sitting']; ?>% - 
 							<span class="numberclient">
-							  <?php echo $client_stay_status["house_sitting_clients"]; ?> clients
+							  <?php echo $client_stay_status["house_sitting_clients"]; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('clients')); ?>
 							</span>
 						  </p>
 						</div>
@@ -280,7 +286,7 @@
 							<div class="progress-bar daystay-bg" role="progressbar" aria-valuenow="70"
 								 aria-valuemin="0" aria-valuemax="100" style="width:<?php echo  @$client_stay_status['house_sitting']; ?>%"> 
 							  <span class="sr-only">
-								<?php echo  @$client_stay_status['house_sitting']; ?>% Complete
+								<?php echo  @$client_stay_status['house_sitting']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?>
 							  </span> 
 							</div>
 						  </div>
@@ -288,14 +294,14 @@
 					  </div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6">
-						  <p>Drop in visit
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop in visit')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
 						  <p class="text-right">
 							<?php echo @$client_stay_status['drop_in_visit']; ?>% - 
 							<span class="numberclient">
-							  <?php echo $client_stay_status["drop_in_visit_clients"]; ?> clients
+							  <?php echo $client_stay_status["drop_in_visit_clients"]; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('clients')); ?>
 							</span>
 						  </p>
 						</div>
@@ -304,7 +310,7 @@
 							<div class="progress-bar dayboarding-bg" role="progressbar" aria-valuenow="70"
 								 aria-valuemin="0" aria-valuemax="100" style="width:<?php echo @$client_stay_status['drop_in_visit']; ?>%"> 
 							  <span class="sr-only">
-								<?php echo @$client_stay_status['drop_in_visit']; ?>% Complete
+								<?php echo @$client_stay_status['drop_in_visit']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?>
 							  </span> 
 							</div>
 						  </div>
@@ -312,14 +318,14 @@
 					  </div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6">
-						  <p>Day/Night care
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day/Night care')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
 						  <p class="text-right">
 							<?php echo @$client_stay_status['day_nigth_care']; ?>% - 
 							<span class="numberclient">
-							  <?php echo $client_stay_status["day_nigth_care_clients"]; ?> clients
+							  <?php echo $client_stay_status["day_nigth_care_clients"]; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('clients')); ?> 
 							</span>
 						  </p>
 						</div>
@@ -328,7 +334,7 @@
 							<div class="progress-bar coupons-bg" role="progressbar" aria-valuenow="70"
 								 aria-valuemin="0" aria-valuemax="100" style="width:<?php echo @$client_stay_status['day_nigth_care']; ?>%"> 
 							  <span class="sr-only">
-								<?php echo @$client_stay_status['day_nigth_care']; ?>% Complete
+								<?php echo @$client_stay_status['day_nigth_care']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?>
 							  </span> 
 							</div>
 						  </div>
@@ -336,14 +342,14 @@
 					  </div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6">
-						  <p>Market Place
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6">
 						  <p class="text-right">
 							<?php echo @$client_stay_status['market_place']; ?>% - 
 							<span class="numberclient">
-							  <?php echo $client_stay_status["market_place_clients"]; ?> clients
+							  <?php echo $client_stay_status["market_place_clients"]; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('clients')); ?>
 							</span>
 						  </p>
 						</div>
@@ -352,7 +358,7 @@
 							<div class="progress-bar market-bg" role="progressbar" aria-valuenow="70"
 								 aria-valuemin="0" aria-valuemax="100" style="width:<?php echo @$client_stay_status['market_place']; ?>%"> 
 							  <span class="sr-only">
-								<?php echo @$client_stay_status['market_place']; ?>% Complete
+								<?php echo @$client_stay_status['market_place']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?>
 							  </span> 
 							</div>
 						  </div>
@@ -363,31 +369,31 @@
 					  <div class="col-xs-12 col-sm-6">
 						<p >
 						  <i class="fa fa-circle-o color-blue overnight-color">
-						  </i> &nbsp;Boarding Stay
+						  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding Stay')); ?>
 						</p>
 					  </div>
 					  <div class="col-xs-12 col-sm-6">
 						<p>
 						  <i class="fa fa-circle-o color-blue daystay-color">
-						  </i> &nbsp;House Sitting Stay
+						  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('House Sitting Stay')); ?>
 						</p>
 					  </div>
 					  <div class="col-xs-12 col-sm-6">
 						<p>
 						  <i class="fa fa-circle-o color-blue dayboarding-color">
-						  </i> &nbsp;Drop in visit
+						  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop in visit')); ?>
 						</p>
 					  </div>
 					  <div class="col-xs-12 col-sm-6">
 						<p>
 						  <i class="fa fa-circle-o color-blue coupons-color">
-						  </i> &nbsp;Day/Night care
+						  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day/Night care')); ?>
 						</p>
 					  </div>
 					  <div class="col-xs-12 col-sm-6">
 						<p>
 						  <i class="fa fa-circle-o color-blue market-color">
-						  </i> &nbsp;Market Place
+						  </i> &nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?>
 						</p>
 					  </div>
 					</div>
@@ -405,24 +411,22 @@
 					<h4>
 					  <?php echo @$client_stay_status["events"]; ?>
 					</h4>
-					<p>Events
+					<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Events')); ?>
 					</p>
 				  </div>
 				</div>
 				<div class="below-top-box">
-				  <p>You have currently 
-					<?php echo @$client_stay_status["events"]; ?> new events
+				  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('You have currently ')); ?>
+					<?php echo @$client_stay_status["events"]; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('new events')); ?> 
 				  </p>
 				</div>
 				<?php  if($userType == "Sitter"){ ?> 
 				 <div class="second-box-header">
-				 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Booking Request Received
+				 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+					<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking Request Received')); ?>
 					</h5>
 				  </div>
-				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
-					
-				  </div>
+				  
 				</div>
 				
 				<div  id="event1" class="below-second-box" aria-expanded="true">
@@ -466,7 +470,7 @@
 						</div>
 						<div class="btn-paddin">
 						  <button class="btn  btn-green btn-block mtb-15" 
-						     onclick="location.href='<?php echo HTTP_ROOT.'message/get-messages/pending/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'">Accept
+						     onclick="location.href='<?php echo HTTP_ROOT.'message/get-messages/pending/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Accept')); ?>
 						  </button>
 						</div>
 						<div> 
@@ -481,13 +485,13 @@
 					<a class="left carousel-control" href="#myCarousel-detail" role="button" data-slide="prev">
 					  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
 					  </span>
-					  <span class="sr-only">Previous
+					  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
 					  </span>
 					</a>
 					<a class="right carousel-control" href="#myCarousel-detail" role="button" data-slide="next">
 					  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
 					  </span>
-					  <span class="sr-only">Next
+					  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
 					  </span>
 					</a>
 					<?php } ?>
@@ -498,7 +502,7 @@
 					  <div class="col-md-6 col-sm-6 col-xs-12">
 						<h4>
 						  <span>
-						  </span> No Booking Request
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Booking Request')); ?>
 						</h4>
 					  </div>
 					  <div class="col-md-6 col-sm-6 col-xs-6">
@@ -514,13 +518,11 @@
 			
 			 if($userType == "Basic" || ($userType == "Sitter" && $dog_in_home == "yes" )){ ?>
 			 <div class="second-box-header">
-				 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Booking Request Send
+				 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+					<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking Request Send')); ?>
 					</h5>
 				  </div>
-				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
-					
-				  </div>
+				 
 				</div>
 				<div  id="event2" class="below-second-box" aria-expanded="true">
 				  <div class="">
@@ -564,7 +566,7 @@
 						<div class="btn-paddin">
 						  <button class="btn  btn-green btn-block mtb-15" 
 						       onclick="location.href='<?php echo HTTP_ROOT.'message/get-messages/pending/'.base64_encode(convert_uuencode(@$booking_request['id'])); ?>'"
-						  >Book It Now
+						  ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book It Now')); ?>
 						  </button>
 						</div>
 						<div> 
@@ -579,13 +581,13 @@
 					<a class="left carousel-control" href="#myCarousel-detail" role="button" data-slide="prev">
 					  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
 					  </span>
-					  <span class="sr-only">Previous
+					  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>
 					  </span>
 					</a>
 					<a class="right carousel-control" href="#myCarousel-detail" role="button" data-slide="next">
 					  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
 					  </span>
-					  <span class="sr-only">Next
+					  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>
 					  </span>
 					</a>
 					<?php } ?>
@@ -596,7 +598,7 @@
 					  <div class="col-md-6 col-sm-6 col-xs-12">
 						<h4>
 						  <span>
-						  </span> No Booking Request
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Booking Request')); ?>
 						</h4>
 					  </div>
 					  <div class="col-md-6 col-sm-6 col-xs-6">
@@ -628,13 +630,13 @@
 				</div>
 				<div class="below-top-box">
 				  <p>
-					<?php echo $client_stay_status['alerts']; ?> Unread message
+					<?php echo $client_stay_status['alerts']; ?> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Unread message')); ?>
 				  </p>
 				</div>
 				<?php if(!empty($booking_requests_info)){ ?>
 				<div class="second-box-header">
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Message
+					<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Message')); ?>
 					</h5>
 				  </div>
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
@@ -681,13 +683,13 @@
 				<!--Second-widget starts-->
 				<div class="below-top-box">
 				  <p>
-					<?php echo @$client_stay_status['alerts']; ?> Unread message
+					<?php echo @$client_stay_status['alerts']; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('Unread message')); ?> 
 				  </p>
 				</div>
 				<?php } ?>
 				<div class="second-box-header">
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h5>Outstanding Tasks
+					<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('Outstanding Tasks')); ?> 
 					</h5>
 				  </div>
 				  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding-right setting-arrows">
@@ -712,13 +714,13 @@
 					<div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6 col-lg-7">
-						  <p>Main Profile Setup
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Main Profile Setup')); ?> 
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 col-lg-5">
 						  <p class="text-right">
 							<?php echo $profile_percentage['User']; ?> - 
-							<span class="numberclient">Completed
+							<span class="numberclient"><?php echo $this->requestAction('app/get-translate/'.base64_encode(' Completed')); ?>
 							</span>
 						  </p>
 						</div>
@@ -726,7 +728,7 @@
 						  <div class="progress">
 							<div style="width:<?php echo $profile_percentage['User']; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" role="progressbar" class="progress-bar overnight-bg"> 
 							  <span class="sr-only">
-								<?php echo $profile_percentage['User']; ?>% Complete
+								<?php echo $profile_percentage['User']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?>
 							  </span> 
 							</div>
 						  </div>
@@ -734,13 +736,13 @@
 					  </div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6 col-lg-7">
-						  <p>Sitter Profile Setup
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile Setup')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 col-lg-5">
 						  <p class="text-right">
 							<?php echo $profile_percentage['servicesAndRates']; ?>% - 
-							<span class="numberclient">Completed
+							<span class="numberclient"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Completed')); ?>
 							</span>
 						  </p>
 						</div>
@@ -748,7 +750,7 @@
 						  <div class="progress">
 							<div style="width:<?php echo $profile_percentage['servicesAndRates']; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" role="progressbar" class="progress-bar daystay-bg"> 
 							  <span class="sr-only">
-								<?php echo $profile_percentage['servicesAndRates']; ?>% Complete
+								<?php echo $profile_percentage['servicesAndRates']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?>
 							  </span> 
 							</div>
 						  </div>
@@ -756,13 +758,13 @@
 					  </div>
 					  <div class="row progress-section">
 						<div class="col-md-6 col-sm-6 col-xs-6 col-lg-7">
-						  <p>Holiday Calender Setup
+						  <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Holiday Calender Setup')); ?>
 						  </p>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 col-lg-5">
 						  <p class="text-right">
 							<?php echo $profile_percentage['calendar_setup']; ?>% - 
-							<span class="numberclient">Completed
+							<span class="numberclient"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Completed')); ?>
 							</span>
 						  </p>
 						</div>
@@ -770,7 +772,7 @@
 						  <div class="progress">
 							<div style="width:<?php echo $profile_percentage['calendar_setup']; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" role="progressbar" class="progress-bar dayboarding-bg"> 
 							  <span class="sr-only">
-								<?php echo $profile_percentage['calendar_setup']; ?>% Complete
+								<?php echo $profile_percentage['calendar_setup']; ?>% <?php echo $this->requestAction('app/get-translate/'.base64_encode('Complete')); ?> 
 							  </span> 
 							</div>
 						  </div>
@@ -791,7 +793,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		  
 		  <div class="profile-status-wrapper">
-			<h3>Profile Status
+			<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile Status')); ?> 
 			  <i class=" fa fa-question-circle topicon-ques" data-toggle="tooltip" data-placement="bottom" title="Profile @ Sitters">
 			  </i>
 			</h3>
@@ -808,10 +810,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="General Profile">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('General Profile')); ?> ">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['User'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['User'] == 100? $this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>
@@ -829,10 +831,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="Sitter House">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter House')); ?>">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/house'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['House'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/house'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['House'] == 100?$this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>
@@ -850,10 +852,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="About Sitter">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter')); ?>">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['AboutSitter'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['AboutSitter'] == 100?$this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>
@@ -871,10 +873,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="Skills & Accriditation">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Skills & Accriditation')); ?>">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['skillsAndAccreditationDetails'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['skillsAndAccreditationDetails'] == 100?$this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>
@@ -892,11 +894,11 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="Services & Rates">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Services & Rates')); ?>">
 				  </li>
 				  <li class="wid10">
 					<a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates'; ?>"  data-toggle="tooltip" data-placement="bottom" 
-					   title="<?php echo $profile_percentage['servicesAndRates'] == 100?'Edit your profile':'Complete your profile'; ?>
+					   title="<?php echo $profile_percentage['servicesAndRates'] == 100?$this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>
 							  " type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
@@ -919,10 +921,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="General Profile">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('General Profile')); ?>">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['User'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/profile'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['User'] == 100? $this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>
@@ -940,10 +942,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="Sitter House">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter House')); ?>">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/house'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['House'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/house'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['House'] == 100?$this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>
@@ -961,10 +963,10 @@
 					</div>
 				  </li>
 				  <li class="wid80">
-					<input type="text" class="form-control" placeholder="About Sitter">
+					<input type="text" class="form-control" placeholder="<?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter')); ?>">
 				  </li>
 				  <li class="wid10">
-					<a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['AboutSitter'] == 100?'Edit your profile':'Complete your profile'; ?>" type="submit">
+					<a href="<?php echo HTTP_ROOT.'dashboard/about-sitter'; ?>"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $profile_percentage['AboutSitter'] == 100?$this->requestAction('app/get-translate/'.base64_encode('Edit your profile')):$this->requestAction('app/get-translate/'.base64_encode('Complete your profile')); ?>" type="submit">
 					  <div class="question">
 						<i class=" fa fa-question-circle icon-question">
 						</i>

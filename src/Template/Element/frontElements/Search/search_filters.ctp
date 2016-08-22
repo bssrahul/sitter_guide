@@ -4,10 +4,10 @@
       <div class="sr-area-outer">
         <div class="row st-head-txt">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <p>When you are Away</p>
+            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('When you are Away')); ?></p>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 hide-mob">
-            <p>while you are at Home</p>
+            <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('while you are at Home')); ?></p>
           </div>
         </div>
         
@@ -15,16 +15,16 @@
           <!--top filter tab-->
           <div class="top-filter-tab">
             <ul class="service_selected">
-              <li><a data-rel="bording" class="boarding ajaxSearch chooseService active"> <span></span> Boarding<br>
-                <b>in the sitter home</b> </a></li>
-              <li><a data-rel="house_sitting" class="h-sitting ajaxSearch chooseService"><span></span> House Sitting<br>
-                <b>in your home</b></a></li>
-              <li><a data-rel="drop_visit" class="d-visit ajaxSearch chooseService"><span></span> Drop-in Visit<br>
-                <b>in your home</b></a></li>
-              <li><a data-rel="day_night_care" class="dn-care ajaxSearch chooseService"><span></span> Day / Night Care<br>
-                <b>in the sitter’s home</b></a></li>
-              <li ><a data-rel="marketplace" class="m-place ajaxSearch chooseService"><span></span> Market Place<br>
-                <b>exercise, groom, train+</b></a></li>
+              <li><a data-rel="bording" class="boarding ajaxSearch chooseService active"> <span></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Boarding')); ?> <br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in the sitter home')); ?></b> </a></li>
+              <li><a data-rel="house_sitting" class="h-sitting ajaxSearch chooseService"><span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('House Sitting')); ?><br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in your home')); ?></b></a></li>
+              <li><a data-rel="drop_visit" class="d-visit ajaxSearch chooseService"><span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Drop-in Visit')); ?><br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in your home')); ?></b></a></li>
+              <li><a data-rel="day_night_care" class="dn-care ajaxSearch chooseService"><span></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Day / Night Care')); ?><br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('in the sitter’s home')); ?></b></a></li>
+              <li ><a data-rel="marketplace" class="m-place ajaxSearch chooseService"><span></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?> <br>
+                <b><?php echo $this->requestAction('app/get-translate/'.base64_encode('exercise, groom, train+')); ?></b></a></li>
             </ul>
           </div>
           <!--top filter tab--> 
@@ -58,7 +58,7 @@
                   <div class="from-to-area">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 FirstThreeServices">
                       <div class="date-picker">
-                        <label>From</label>
+                        <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('From')); ?></label>
                        
                         <div class="date-box">
                           <!-- Search Field From Date Start-->
@@ -77,7 +77,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 FirstThreeServices">
                       <div class="date-picker">
-                        <label>To</label>
+                        <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('To')); ?></label>
                         <div class="date-box">
                           <!-- Search Field To Date Start-->
                           <?php echo $this->Form->input('Search.to_date',[
@@ -96,17 +96,17 @@
                     
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 FirstThreeServices"> 
                       <div class="dog-list onLoadHide dropInOption">
-                        <label>How many dogs do you have?</label>
+                        <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('How many dogs do you have?')); ?></label>
                         
                         <ul class="pet_count">
                           <li class="dog-in-li ajaxSearch">
-                            <span data-rel="1">1 Dog</span>
+                            <span data-rel="1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('1 Dog')); ?></span>
                           </li>
                           <li class="dog-in-li ajaxSearch">
-                            <span data-rel="2">2 Dogs</span>
+                            <span data-rel="2"><?php echo $this->requestAction('app/get-translate/'.base64_encode('2 Dogs')); ?></span>
                           </li>
                           <li class="dog-in-li ajaxSearch">
-                            <span data-rel="3">3 Dogs</span>
+                            <span data-rel="3"><?php echo $this->requestAction('app/get-translate/'.base64_encode('3 Dogs')); ?></span>
                           </li>
                         </ul>
 						<!-- Search Field PET COUNT Start-->
@@ -120,28 +120,28 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 LastTwoServices onLoadHide">
                       <div class="day-list">
-                        <label>For which days? </label>
+                        <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('For which days?')); ?> </label>
 							<ul class="booking_days">
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="sunday">S</span>
+									<span data-rel="sunday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('S')); ?></span>
 								  </li>
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="monday">M</span>
+									<span data-rel="monday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('M')); ?></span>
 								  </li>
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="tuesday">T</span>
+									<span data-rel="tuesday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('T')); ?></span>
 								  </li>
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="wednessday">W</span>
+									<span data-rel="wednessday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('W')); ?></span>
 								  </li>
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="thursday">T</span>
+									<span data-rel="thursday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('T')); ?></span>
 								  </li>
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="friday">F</span>
+									<span data-rel="friday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('F')); ?></span>
 								  </li>
 								  <li class="dog-in-li ajaxSearch">
-									<span data-rel="saturday">S</span>
+									<span data-rel="saturday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('S')); ?></span>
 								  </li>
 							</ul>
 							<!-- Search Field PET COUNT Start-->
@@ -155,9 +155,9 @@
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 LastTwoServices onLoadHide mPlacesOption">
                       <div class="what-time">
-                        <label>What time?</label>
+                        <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('What time?')); ?></label>
                         <ul>
-                          <li class="day">Day
+                          <li class="day"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Day')); ?>
                              <?php echo $this->Form->input('Search.what_time.day_care',[
 								'label' => false,
 								'templates' => ['inputContainer' => '{{content}}'],
@@ -168,7 +168,7 @@
 								'id'=>'day']);
 							  ?>
                           </li>
-                          <li class="night">Night
+                          <li class="night"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Night')); ?>
                              <?php echo $this->Form->input('Search.what_time.night_care',[
 								'label' => false,
 								'templates' => ['inputContainer' => '{{content}}'],
@@ -185,7 +185,7 @@
 
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                       <div class="price-range">
-                        <label class="prcRangLbl">Rate per Day / Night</label>
+                        <label class="prcRangLbl"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Rate per Day / Night')); ?></label>
                         
                         <div id="slider-range">
                             <?php echo $this->Form->input('Search.start_price',[
@@ -223,7 +223,7 @@
 						 <?php if(isset($guests_Info) && !empty($guests_Info)){
 						 ?> 
                         <div class="your-guest">
-                          <p class="head-txt">Your Guest</p>
+                          <p class="head-txt"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Guest')); ?></p>
                           <ul>
 							  <?php   foreach($guests_Info as $guest_info){  ?>
                              <li>
@@ -243,7 +243,7 @@
                         </div>
                         <?php } ?>
                         <div class="your-guest">
-                          <p class="head-txt">Sitter Info</p>
+                          <p class="head-txt"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Info')); ?></p>
                           <ul>
                             <li>
 								  <?php 
@@ -256,7 +256,7 @@
 									'option'=>["own_pet"],
 									'id'=>'own_pet']);
 								  ?>
-								  <label class="unbold" for="own_pet">Doesn’t own a pet</label>
+								  <label class="unbold" for="own_pet"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Doesn’t own a pet')); ?></label>
                             </li>
                             
                             <li>
@@ -270,7 +270,7 @@
 									'option'=>["no_children"],
 									'id'=>'no_children']);
 								  ?>
-								  <label class="unbold" for="no_children">Has no children</label>
+								  <label class="unbold" for="no_children"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Has no children')); ?></label>
                             </li>
                             <li>
 								<?php 
@@ -283,7 +283,7 @@
 									'option'=>["farm"],
 									'id'=>'farm']);
 								  ?>
-								  <label class="unbold" for="farm">Farm</label>
+								  <label class="unbold" for="farm"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Farm')); ?></label>
                             </li>
                             <li>
 								<?php 
@@ -296,7 +296,7 @@
 									'option'=>["flat"],
 									'id'=>'flat']);
 								  ?>
-								  <label class="unbold" for="flat">Flat</label>
+								  <label class="unbold" for="flat"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Flat')); ?></label>
                             </li>
                             <li>
                               <?php 
@@ -309,11 +309,11 @@
 									'option'=>["house"],
 									'id'=>'house']);
 								  ?>
-								  <label class="unbold" for="house">House</label>
+								  <label class="unbold" for="house"><?php echo $this->requestAction('app/get-translate/'.base64_encode('House')); ?></label>
                           </ul>
                         </div>
                         <div class="your-guest exp">
-                          <p class="head-txt">Experience</p>
+                          <p class="head-txt"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience')); ?></p>
                           <ul>
                             <li>
                                <?php 
@@ -326,7 +326,7 @@
 									'option'=>["experience"],
 									'id'=>'experience']);
 								  ?>
-								  <label class="unbold" for="experience">2+ years sitting</label>
+								  <label class="unbold" for="experience"><?php echo $this->requestAction('app/get-translate/'.base64_encode('2+ years sitting')); ?></label>
                               </li>
                             <li>
 								<?php 
@@ -339,7 +339,7 @@
 									'option'=>["first_aid"],
 									'id'=>'first_aid']);
 								  ?>
-								  <label class="unbold" for="first_aid">First-aid certified</label>
+								  <label class="unbold" for="first_aid"><?php echo $this->requestAction('app/get-translate/'.base64_encode('First-aid certified')); ?></label>
                               
                               </li>
                             <li>
@@ -360,12 +360,12 @@
                       </div>
                       <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
                         <div class="market-place">
-                          <label>Other Market Place Services Offered</label>
+                          <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Other Market Place Services Offered')); ?></label>
                           <ul class="marketplace">
-							<li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="training" data-rel="training" title="Training">Training</a></li>
-                            <li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="recreation" data-rel="recreation" title="Recreation">Recreation</a></li>
-                            <li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="grooming" data-rel="grooming" title="Grooming">Grooming</a></li>
-                            <li class="marketplace_li ajaxSearch"><a  href="javascript:void(0);" class="driver" data-rel="driver" title="Driver">Driver</a></li>
+							<li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="training" data-rel="training" title="Training"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Training')); ?></a></li>
+                            <li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="recreation" data-rel="recreation" title="Recreation"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Recreation')); ?></a></li>
+                            <li class="marketplace_li ajaxSearch"><a href="javascript:void(0);" class="grooming" data-rel="grooming" title="Grooming"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Grooming')); ?></a></li>
+                            <li class="marketplace_li ajaxSearch"><a  href="javascript:void(0);" class="driver" data-rel="driver" title="Driver"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Driver')); ?></a></li>
                           </ul>
                           <!-- Search Field PET COUNT Start-->
 							<?php echo $this->Form->input('Search.marketplace',[
@@ -378,7 +378,7 @@
                       </div>
                     </div>
                     <!--info popup-->
-                    <div class="sitter-info"> <a  data-toggle="modal" class="more-link" data-target="#myModal" href="#" title="Sitter more Info">Sitter More Info</a> 
+                    <div class="sitter-info"> <a  data-toggle="modal" class="more-link" data-target="#myModal" href="#" title="Sitter more Info"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter More Info')); ?></a> 
                     
                       <!--Model Popup-->
                       <div class="modal fade" id="myModal" role="dialog">
@@ -387,7 +387,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">X</button>
-                              <h4 class="modal-title"><span>Sitter Info</span></h4>
+                              <h4 class="modal-title"><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Info')); ?></span></h4>
                             </div>
                             <div class="modal-body">
                               <div class="more-sit-info">
@@ -404,7 +404,7 @@
 											'value'=>isset($data['Search']['sitter_pet_info']['pet_in_home'])?$data['Search']['sitter_pet_info']['pet_in_home']:'',
 											'id'=>'pet_in_home']);
 										?>
-										<label class="unbold" for="pet_in_home">Pet in the Home</label>
+										<label class="unbold" for="pet_in_home"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet in the Home')); ?></label>
                                      </li>
                                   </ul>
                                   <a  data-toggle="collapse" data-target="#demo10"><i class="fa fa-chevron-down" aria-hidden="true"></i></a> </div>
@@ -422,7 +422,7 @@
 											'value'=>isset($data['Search']['sitter_pet_info']['doesnt_own_dog'])?$data['Search']['sitter_pet_info']['doesnt_own_dog']:'',
 											'id'=>'doesnt_own_dog']);
 										?>
-										<label class="unbold" for="doesnt_own_dog">Doesn’t own a dog</label>
+										<label class="unbold" for="doesnt_own_dog"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Doesn’t own a dog')); ?></label>
                                       </li>
                                     <li>
                                       <!-- Search Field PET COUNT Start-->
@@ -436,7 +436,7 @@
 											'value'=>isset($data['Search']['sitter_pet_info']['doesnt_own_caged_dog'])?$data['Search']['sitter_pet_info']['doesnt_own_caged_dog']:'',
 											'id'=>'doesnt_own_caged_dog']);
 										?>
-										<label class="unbold" for="doesnt_own_dog">Doesn’t own caged pet</label>
+										<label class="unbold" for="doesnt_own_dog"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Doesn’t own caged pet')); ?></label>
                                     </li>
                                     <li>
                                        <!-- Search Field PET COUNT Start-->
@@ -450,7 +450,7 @@
 											'value'=>isset($data['Search']['sitter_pet_info']['doesnt_own_cat'])?$data['Search']['sitter_pet_info']['doesnt_own_cat']:'',
 											'id'=>'doesnt_own_cat']);
 										?>
-										<label class="unbold" for="doesnt_own_cat">Doesn’t own cat</label>
+										<label class="unbold" for="doesnt_own_cat"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Doesn’t own cat')); ?></label>
 									</li>	
                                   </ul>
                                 </div>
@@ -470,7 +470,7 @@
 											'value'=>isset($data['Search']['sitter_info']['housing_condition'])?$data['Search']['sitter_info']['housing_condition']:'',
 											'id'=>'housing_condition']);
 										?>
-										<label class="unbold" for="housing_condition">Housing condition</label>
+										<label class="unbold" for="housing_condition"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Housing condition')); ?></label>
 									</li>	
                                   </ul>
                                   <a  data-toggle="collapse" data-target="#demo12"><i class="fa fa-chevron-down" aria-hidden="true"></i></a> </div>
@@ -488,7 +488,7 @@
 											'value'=>isset($data['Search']['sitter_info']['has_house'])?$data['Search']['sitter_info']['has_house']:'',
 											'id'=>'has_house']);
 										?>
-										<label class="unbold" for="has_house">Has house  (excludes apartments)</label>
+										<label class="unbold" for="has_house"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Has house  (excludes apartments)')); ?></label>
 									</li>
                                       
                                     <li>
@@ -503,7 +503,7 @@
 											'value'=>isset($data['Search']['sitter_info']['outdoor_area_balcony'])?$data['Search']['sitter_info']['outdoor_area_balcony']:'',
 											'id'=>'outdoor_area']);
 										?>
-										<label class="unbold" for="outdoor_area"> Outdoor Play Areas - Balcony</label>
+										<label class="unbold" for="outdoor_area"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Play Areas - Balcony')); ?></label>
                                     </li>
                                     
                                      <li>
@@ -518,7 +518,7 @@
 											'value'=>isset($data['Search']['sitter_info']['outdoor_area_backyard'])?$data['Search']['sitter_info']['outdoor_area_backyard']:'',
 											'id'=>'outdoor_play_area']);
 										?>
-										<label class="unbold" for="outdoor_play_area"> Outdoor Play Areas - Backyard</label>
+										<label class="unbold" for="outdoor_play_area"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Outdoor Play Areas - Backyard')); ?></label>
                                     </li>
                                     
                                     <li>
@@ -533,7 +533,7 @@
 											'value'=>isset($data['Search']['sitter_info']['non_smoker'])?$data['Search']['sitter_info']['non_smoker']:'',
 											'id'=>'non_smoker']);
 										?>
-										<label class="unbold" for="non_smoker"> Non- smoker home</label>
+										<label class="unbold" for="non_smoker"><?php echo $this->requestAction('app/get-translate/'.base64_encode(' Non- smoker home')); ?></label>
                                     </li>
                                     
                                     <li>
@@ -548,7 +548,7 @@
 											'value'=>isset($data['Search']['sitter_info']['has_fenced_yard'])?$data['Search']['sitter_info']['has_fenced_yard']:'',
 											'id'=>'has_fenced_yard']);
 										?>
-										<label class="unbold" for="has_fenced_yard"> Has fenced yard</label>
+										<label class="unbold" for="has_fenced_yard"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Has fenced yard')); ?> </label>
                                     </li>
                                     
                                  </ul>
@@ -568,7 +568,7 @@
 											'value'=>isset($data['Search']['sitter_info']['medical_experience'])?$data['Search']['sitter_info']['medical_experience']:'',
 											'id'=>'medical_experience']);
 										?>
-										<label class="unbold" for="medical_experience">  Medical Experience </label>
+										<label class="unbold" for="medical_experience"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Medical Experience')); ?> </label>
                                      </li>
                                   </ul>
                                   <a  data-toggle="collapse" data-target="#demo13"><i class="fa fa-chevron-down" aria-hidden="true"></i></a> </div>
@@ -587,7 +587,7 @@
 											'value'=>isset($data['Search']['sitter_info']['administer_cpr'])?$data['Search']['sitter_info']['administer_cpr']:'',
 											'id'=>'administer_cpr']);
 										?>
-										<label class="unbold" for="administer_cpr"> Can administer CPR</label>
+										<label class="unbold" for="administer_cpr"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Can administer CPR')); ?></label>
                                      </li>
                                      
                                       <li>
@@ -602,7 +602,7 @@
 											'value'=>isset($data['Search']['sitter_info']['pet_training_experience'])?$data['Search']['sitter_info']['pet_training_experience']:'',
 											'id'=>'pet_training_experience']);
 										?>
-										<label class="unbold" for="pet_training_experience"> Pet Training Experience</label>
+										<label class="unbold" for="pet_training_experience"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Training Experience')); ?></label>
                                      </li>
                                      
                                      <li>
@@ -617,7 +617,7 @@
 											'value'=>isset($data['Search']['sitter_info']['administer_injections'])?$data['Search']['sitter_info']['administer_injections']:'',
 											'id'=>'administer_injections']);
 										?>
-										<label class="unbold" for="administer_injections">  Certified to administer injections</label>
+										<label class="unbold" for="administer_injections"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Certified to administer injections')); ?> </label>
                                      </li>
                                   
                                     <li>
@@ -632,7 +632,7 @@
 											'value'=>isset($data['Search']['sitter_info']['begavioural_experience'])?$data['Search']['sitter_info']['begavioural_experience']:'',
 											'id'=>'begavioural_experience']);
 										?>
-										<label class="unbold" for="begavioural_experience"> Experienced with behavioural problems</label>
+										<label class="unbold" for="begavioural_experience"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Experienced with behavioural problems')); ?> </label>
                                      </li>
                                      
                                       <li>
@@ -647,7 +647,7 @@
 											'value'=>isset($data['Search']['sitter_info']['certified_oral_medication'])?$data['Search']['sitter_info']['certified_oral_medication']:'',
 											'id'=>'certified_oral_medication']);
 										?>
-										<label class="unbold" for="certified_oral_medication">  Certified to administer oral medication</label>
+										<label class="unbold" for="certified_oral_medication"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Certified to administer oral medication')); ?>  </label>
                                      </li>
 
                                   </ul>
@@ -655,8 +655,8 @@
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" data-dismiss="modal" class="btn btn-default sitterInfoUncheck" >Cancel</button>
-                              <button type="button" class="btn btn-success ajaxPopUpSearch" data-dismiss="modal">Search</button>
+                              <button type="button" data-dismiss="modal" class="btn btn-default sitterInfoUncheck" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancel')); ?></button>
+                              <button type="button" class="btn btn-success ajaxPopUpSearch" data-dismiss="modal"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Search')); ?></button>
                             </div>
                           </div>
                         </div>
@@ -667,7 +667,7 @@
                     <!--/info popup--> 
                   </div>
                   <!--collapse button area-->
-                  <div class="col-btn-area"> <a data-toggle="collapse" href="#search-col-1" class="col-btn"><i class="fa fa-angle-double-up" aria-hidden="true"></i><b>More Filter</b> <i class="fa fa-angle-double-up" aria-hidden="true"></i></a> </div>
+                  <div class="col-btn-area"> <a data-toggle="collapse" href="#search-col-1" class="col-btn"><i class="fa fa-angle-double-up" aria-hidden="true"></i><b><?php echo $this->requestAction('app/get-translate/'.base64_encode('More Filter')); ?></b> <i class="fa fa-angle-double-up" aria-hidden="true"></i></a> </div>
                   <!--/collapse button area--> 
                 </div>
                 <!--/collapse content--> 

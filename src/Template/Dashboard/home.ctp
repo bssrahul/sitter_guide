@@ -1,6 +1,9 @@
  <?= $this->element("adminElements/success_msg"); ?>
 <div class="col-lg-10 col-md-9  col-sm-8 col-xs-12  lg-width80">
-  <div class="row db-top-bar-header no-padding-left no-padding-right">
+<div class="container-fluid">
+  <div class="row">
+  <div class="db-top-bar-header bg-title">
+
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <h3>
 		  <?php $action = $this->request->params['action']; 
@@ -10,30 +13,32 @@
      
         <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> 
         <?php 
-        echo  ucfirst($profile).' Profile';
+        echo  ucfirst($profile)." ". $this->requestAction('app/get-translate/'.base64_encode('Profile'));
        ?>
       </h3>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
-        <li>  You are here : 
+        <li>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
         </li>
         <li>
-          <a href="<?php echo HTTP_ROOT; ?>">Home
+          <a href="<?php echo HTTP_ROOT; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?> 
           </a>
         </li>
-        <li class="active">Profile
+        <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Profile')); ?>
         </li>
       </ol>              
     </div>
   </div>
+    </div>
+	  </div>
   <div class="row">
 	<?php if($profile == 'Sitter'){ ?>
 	<div class="col-xs-12 col-sm-6 col-md-12 col-lg-7">
       <div class="row stylish-panel">
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/profile"; ?>'" >
-            <h4 class="blue">General Profile
+            <h4 class="blue"><?php echo $this->requestAction('app/get-translate/'.base64_encode('General Profile')); ?>
             </h4>
             <!--<div class="gp-icon">
 </div>-->
@@ -45,14 +50,14 @@
 				 <a href="<?php echo HTTP_ROOT.'dashboard/profile#users-title'; ?>">
 				   <li>
 					  <span class="check-icon">
-					  </span> Basic Detail
+					  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Detail')); ?> 
                    </li>
                  </a>  
 				 <?php }else{ ?>
 					 <a href="<?php echo HTTP_ROOT.'dashboard/profile#users-title'; ?>">
 					  <li>
 						  <span class="cross-icon">
-						  </span> Basic Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Detail')); ?> 
                       </li>
                       </a>
 				<?php } 
@@ -61,26 +66,26 @@
 				 <a href="<?php echo HTTP_ROOT.'dashboard/profile#users-country'; ?>">
 				  <li>
 					  <span class="check-icon">
-					  </span> Contact Detail
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Detail')); ?> 
                   </li></a>
 				 <?php }else{ ?>
 					  <li>
 						  <span class="cross-icon">
-						  </span> Contact Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Detail')); ?> 
                       </li>
 				<?php } 
 				   if($profile_status['User']['emergency_contact_detail'] == 'yes'){ ?>
 				<a href="<?php echo HTTP_ROOT.'dashboard/profile#usersp-re-password'; ?>">
 				  <li>
 					  <span class="check-icon">
-					  </span> Emergency Contact Detail
+					  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contact Detail')); ?>  
                   </li>
                 </a>  
 				 <?php }else{ ?>
 					 <a href="<?php echo HTTP_ROOT.'dashboard/profile#usersp-re-password'; ?>"> 
 					  <li>
 						  <span class="cross-icon">
-						  </span> Emergency Contact Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contact Detail')); ?>
                       </li>
                      </a> 
 				<?php }
@@ -88,14 +93,14 @@
 				 <a href="<?php echo HTTP_ROOT.'dashboard/profile#users-emergency-who'; ?>">
 				  <li>
 					  <span class="check-icon">
-					  </span> Media
+					  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Media')); ?>  
                   </li>
                  </a> 
 				 <?php }else{ ?>
 					  <a href="<?php echo HTTP_ROOT.'dashboard/profile#users-emergency-who'; ?>">
 					  <li>
 						  <span class="cross-icon">
-						  </span> Media
+						  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Media')); ?> 
                       </li>
                       </a>
 				<?php } ?>
@@ -106,7 +111,7 @@
         </div> 
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/house"; ?>'" >
-            <h4 class="orange">Sitter House
+            <h4 class="orange"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter House')); ?>
             </h4>
             <!--<div class="sh-icon">
 </div>-->
@@ -118,14 +123,14 @@
 			 <a href="<?php echo HTTP_ROOT.'dashboard/house#about-property'; ?>">
                 <li>
                   <span class="check-icon">
-                  </span> About Property
+                  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Property')); ?> 
                 </li>
               </a>  
 		      <?php }else{ ?>
 				<a href="<?php echo HTTP_ROOT.'dashboard/house#about-property'; ?>">  
 				   <li>
 					  <span class="cross-icon">
-					  </span> About Property
+					  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Property')); ?> 
                   </li>
                 </a>
 				 <?php } 
@@ -133,14 +138,14 @@
 			  <a href="<?php echo HTTP_ROOT.'dashboard/house#usersitterhouses-dogs-in-home-no'; ?>">		  
                 <li>
                   <span class="check-icon">
-                  </span> Description
+                  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?>  
                 </li>
               </a>
                 <?php }else{?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/house#usersitterhouses-dogs-in-home-no'; ?>">		  	
 					 <li>
 						  <span class="cross-icon">
-						  </span> Description
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?> 
 					 </li>
 				 </a>	 
 				<?php } 
@@ -148,14 +153,14 @@
 				  <a href="<?php echo HTTP_ROOT.'dashboard/house#home_txtarea'; ?>">		 
 					<li>
 					  <span class="check-icon">
-					  </span> Photo
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?> 
 					</li>
 				</a>	
                 <?php }else{ ?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/house#home_txtarea'; ?>">		
 					<li>
 					  <span class="cross-icon">
-					  </span> Photo
+					  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?> 
 					</li>
 				 </a>	
 					<?php } 
@@ -163,14 +168,14 @@
 				  <a href="<?php echo HTTP_ROOT.'dashboard/house#usersitterhouses-breaks-provided-every'; ?>">		 
                   <li>
 					  <span class="check-icon">
-					  </span>  Pet in Home
+					  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet in Home')); ?> 
                   </li>
                  </a> 
                 <?php }else{ ?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/house#usersitterhouses-breaks-provided-every'; ?>">		
                    <li>
 					  <span class="cross-icon">
-					  </span>  Pet in Home
+					  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet in Home')); ?> 
                    </li>
                   </a> 
                 <?php } 
@@ -178,14 +183,14 @@
 				<a href="<?php echo HTTP_ROOT.'dashboard/house#usersitterhouses-outdoor-area-size'; ?>">	 
 					 <li class="border-none">
 					  <span class="check-icon">
-					  </span> Smokers
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?>  
 					</li>
 				 </a>	
 					 <?php }else{ ?>
 					<a href="<?php echo HTTP_ROOT.'dashboard/house#usersitterhouses-outdoor-area-size'; ?>">	 
 						 <li class="border-none">
 							  <span class="cross-icon">
-							  </span> Smokers
+							  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?>  
 						 </li>
 				   </a>		 
 				<?php } ?>	
@@ -196,7 +201,7 @@
         </div> 
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/about-sitter"; ?>'" >
-            <h4 class="green">About Sitter
+            <h4 class="green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Sitter')); ?>
             </h4>
             <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i3.png" alt="General Profile" class=" img-thumbnail">
             <div class="border-top" >
@@ -206,14 +211,14 @@
 			  <a href="<?php echo HTTP_ROOT.'dashboard/about-sitter#yourself-description'; ?>">			 
                 <li>
                   <span class="check-icon">
-                  </span> Description
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?> 
                 </li>
               </a>  
 		      <?php }else{ ?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/about-sitter#yourself-description'; ?>">	 
 					   <li>
 						  <span class="cross-icon">
-						  </span> Description
+						  </span>   <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?>
 					  </li>
                  </a> 
 				 <?php } 
@@ -221,14 +226,14 @@
 			   <a href="<?php echo HTTP_ROOT.'dashboard/about-sitter#client_txtarea'; ?>">	 		  
 					<li>
 					  <span class="check-icon">
-					  </span> Accepted Pet
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet')); ?>
 					</li>
                </a>
                 <?php }else{?>
 				   <a href="<?php echo HTTP_ROOT.'dashboard/about-sitter#client_txtarea'; ?>">		
 					 <li>
 						  <span class="cross-icon">
-						  </span> Accepted Pet
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Accepted Pet')); ?>
 					 </li>
 				   </a>	 
 				<?php } 
@@ -236,14 +241,14 @@
 				   <a href="<?php echo HTTP_ROOT.'dashboard/about-sitter#gh_petbreeds'; ?>">		 
 					<li>
 					  <span class="check-icon">
-					  </span> Preferred Age
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Age')); ?>
 					</li>
 				  </a>	
                 <?php }else{ ?>
 				   <a href="<?php echo HTTP_ROOT.'dashboard/about-sitter#gh_petbreeds'; ?>">			
 					<li>
 					  <span class="cross-icon">
-					  </span> Preferred Age
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Preferred Age')); ?>
 					</li>
 				   </a>	
 					<?php } ?>
@@ -259,7 +264,7 @@
       <div class="row stylish-panel">
         <div class="col-md-4 col-lg-6 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/professional-accreditations"; ?>'" >
-            <h4 class="carrot"> Skills & Accriditations
+            <h4 class="carrot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Skills & Accriditations')); ?> 
             </h4>
             <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i4.png" alt="General Profile" class=" img-thumbnail">
             <div class="border-top" >
@@ -269,14 +274,14 @@
 			  <a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations#sitter-experience'; ?>">			 
                 <li>
                   <span class="check-icon">
-                  </span> Background Check
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Background Check')); ?>
                 </li>
                </a> 
 		      <?php }else{ ?>
 				 <a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations#sitter-experience'; ?>">
 				   <li>
 					  <span class="cross-icon">
-					  </span> Background Check
+					  </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Background Check')); ?>
                   </li>
                  </a>
 				 <?php } 
@@ -284,14 +289,14 @@
 				   <a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations#sitter-experience'; ?>">		  
 						<li>
 						  <span class="check-icon">
-						  </span> Language
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Language')); ?> 
 						</li>
 				   </a> 
                 <?php }else{?>
 					<a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations#sitter-experience'; ?>">
 					   <li>
 						  <span class="cross-icon">
-						  </span> Language
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Language')); ?>
 					   </li>
 					 </a>
 				<?php }
@@ -299,14 +304,14 @@
 			   <a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations#sitter-experience'; ?>">		  
                 <li>
                   <span class="check-icon">
-                  </span> Experience
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience')); ?>
                 </li>
                </a> 
                 <?php }else{?>
 					<a href="<?php echo HTTP_ROOT.'dashboard/professional-accreditations#sitter-experience'; ?>">
 						 <li>
 							  <span class="cross-icon">
-							  </span> Experience
+							  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Experience')); ?>
 						 </li>
 					</a> 
 				<?php } ?>  
@@ -316,7 +321,7 @@
         </div>  
         <div class="col-md-4 col-lg-6 col-sm-12 top-padd20 col-xs-12">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/services-and-rates"; ?>'" >
-            <h4 class="pink">Services & Rates
+            <h4 class="pink">  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Services & Rates')); ?>
             </h4>
             <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i5.png" alt="General Profile" class=" img-thumbnail">
             <div class="border-top" >
@@ -326,14 +331,14 @@
 			   <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#terms'; ?>">		 
                  <li>
 					  <span class="check-icon">
-					  </span> Terms
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms')); ?>
                  </li>
                </a> 
 		      <?php }else{ ?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#terms'; ?>">		
 					   <li>
 						  <span class="cross-icon">
-						  </span> Terms
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Terms')); ?>
 					  </li>
                   </a>
 				 <?php } 
@@ -341,14 +346,14 @@
 			     <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-cancellation-policy-status'; ?>">			  
 					<li>
 					  <span class="check-icon">
-					  </span> Sitter House
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter House')); ?>
 					</li>
 				 </a>	
                 <?php }else{?>
 					<a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-cancellation-policy-status'; ?>">		
 					 <li>
 						  <span class="cross-icon">
-						  </span> Sitter House
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter House')); ?>
 					 </li>
 					</a> 
 				<?php }
@@ -356,40 +361,40 @@
 			<a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-sh-puppy-rate-status'; ?>">				  
                 <li>
                   <span class="check-icon">
-                  </span> Guest House
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Guest House')); ?>
                 </li>
               </a>  
                 <?php }else{?>
 				<a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-sh-puppy-rate-status'; ?>">	   <li>
 						  <span class="cross-icon">
-						  </span> Guest House 
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Guest House')); ?>
 					 </li>
 				 </a>	 
 				<?php }  
 				if($profile_status['servicesAndRates']['market_place_status'] == 'yes'){ ?>
 			 <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-gh-dv-additional-guest-rate'; ?>">		  <li>
                   <span class="check-icon">
-                  </span> Maket Place
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?>
                 </li>
              </a>   
                 <?php }else{?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-gh-dv-additional-guest-rate'; ?>">		
 					 <li>
 						  <span class="cross-icon">
-						  </span> Maket Place
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Market Place')); ?>
 					 </li>
 				 </a>	 
 				<?php } 
 			if($profile_status['servicesAndRates']['calender'] == 'yes'){ ?>
 			 <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-mp-ds-holiday-rate'; ?>">		  <li>
 						  <span class="check-icon">
-						  </span> Calender
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calender')); ?>
                       </li>
              </a>   
                 <?php }else{?>
 				  <a href="<?php echo HTTP_ROOT.'dashboard/services-and-rates#usersitterservices-mp-ds-holiday-rate'; ?>">	  <li>
 						  <span class="cross-icon">
-						  </span> Calender
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Calender')); ?>
 					 </li>
 				 </a>	 
 				<?php } ?> 
@@ -404,7 +409,7 @@
       <div class="row stylish-panel">
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/profile"; ?>'" >
-            <h4 class="blue">General Profile
+            <h4 class="blue"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('General Profile')); ?>
             </h4>
             <!--<div class="gp-icon">
 </div>-->
@@ -415,46 +420,46 @@
 				   if($profile_status['User']['basic_detail'] == 'yes'){ ?>
 				  <li>
 					  <span class="check-icon">
-					  </span> Basic Detail
+					  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Detail')); ?>
                   </li>
 				 <?php }else{ ?>
 					  <li>
 						  <span class="cross-icon">
-						  </span> Basic Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Detail')); ?>
                       </li>
 				<?php } 
 				  if($profile_status['User']['contact_detail'] == 'yes'){ ?>
 				  
 				  <li>
 					  <span class="check-icon">
-					  </span> Contact Detail
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Detail')); ?>
                   </li>
 				 <?php }else{ ?>
 					  <li>
 						  <span class="cross-icon">
-						  </span> Contact Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Detail')); ?>
                       </li>
 				<?php } 
 				   if($profile_status['User']['emergency_contact_detail'] == 'yes'){ ?>
 				  <li>
 					  <span class="check-icon">
-					  </span> Emergency Contact Detail
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contact Detail')); ?>
                   </li>
 				 <?php }else{ ?>
 					  <li>
 						  <span class="cross-icon">
-						  </span> Emergency Contact Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Emergency Contact Detail')); ?>
                       </li>
 				<?php }
 				 if($profile_status['User']['media'] == 'yes'){ ?>
 				  <li>
 					  <span class="check-icon">
-					  </span> Media
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Media')); ?>
                   </li>
 				 <?php }else{ ?>
 					  <li>
 						  <span class="cross-icon">
-						  </span> Media
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Media')); ?>
                       </li>
 				<?php } ?>
               </ul>
@@ -463,7 +468,7 @@
         </div> 
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/house"; ?>'" >
-            <h4 class="orange">Guest House
+            <h4 class="orange"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Guest House')); ?>
             </h4>
             <!--<div class="sh-icon">
 </div>-->
@@ -474,56 +479,56 @@
 				 if($profile_status['House']['about_property'] == 'yes'){ ?>
                 <li>
                   <span class="check-icon">
-                  </span> About Property
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Property')); ?>
                 </li>
 		      <?php }else{ ?>
 				   <li>
 					  <span class="cross-icon">
-					  </span> About Property
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('About Property')); ?>
                   </li>
 				 <?php } 
 				  if($profile_status['House']['house_description'] == 'yes'){ ?>
                 <li>
                   <span class="check-icon">
-                  </span> Description
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?> 
                 </li>
                 <?php }else{?>
 					 <li>
 						  <span class="cross-icon">
-						  </span> Description
+						  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?> 
 					 </li>
 				<?php } 
 				 if($profile_status['House']['profile_gallery_photo'] == 'yes'){ ?>
 					<li>
 					  <span class="check-icon">
-					  </span> Photo
+					  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?>  
 					</li>
                 <?php }else{ ?>
 					<li>
 					  <span class="cross-icon">
-					  </span> Photo
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?> 
 					</li>
 					<?php } 
 				 if($profile_status['House']['pet_in_home'] == 'yes'){ ?>
                   <li>
 					  <span class="check-icon">
-					  </span>  Pet in Home
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet in Home')); ?>  
                   </li>
                 <?php }else{ ?>
                    <li>
 					  <span class="cross-icon">
-					  </span>  Pet in Home
+					  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet in Home')); ?>  
                    </li>
                 <?php } 
 				 if($profile_status['House']['smokers'] == 'yes'){ ?>
 					 <li class="border-none">
 					  <span class="check-icon">
-					  </span> Smokers
+					  </span>  <?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?>  
 					</li>
 					 <?php }else{ ?>
 						 <li class="border-none">
 							  <span class="cross-icon">
-							  </span> Smokers
+							  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Smokers')); ?>
 						 </li>
 				<?php } ?>		 
               </ul>
@@ -532,7 +537,7 @@
         </div> 
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 top-padd20">
           <div class="full-box" onclick="location.href = '<?php echo HTTP_ROOT."dashboard/about-guest"; ?>'" >
-            <h4 class="green">About Guest
+            <h4 class="green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('About Guest')); ?>
             </h4>
             <img src="<?php echo HTTP_ROOT; ?>img/db-profile-i3.png" alt="General Profile" class=" img-thumbnail">
             <div class="border-top" >
@@ -542,14 +547,14 @@
 			  <a href="<?php echo HTTP_ROOT.'dashboard/about-guest#basic-details'; ?>">	
                 <li>
                   <span class="check-icon">
-                  </span> Basic Detail
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Detail')); ?> 
                 </li>
               </a>  
 		        <?php }else{ ?>
 				 <a href="<?php echo HTTP_ROOT.'dashboard/about-guest#basic-details'; ?>">		
 					   <li>
 						  <span class="cross-icon">
-						  </span> Basic Detail
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Basic Detail')); ?> 
 					  </li>
                  </a>
 				 <?php } 
@@ -557,14 +562,14 @@
 			    <a href="<?php echo HTTP_ROOT.'dashboard/about-guest#userpets-guest1-guest-breed'; ?>">			 
 					 <li>
 					  <span class="check-icon">
-					  </span> Description
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?> 
 					</li>
                 </a>
 		        <?php }else{ ?>
 				 <a href="<?php echo HTTP_ROOT.'dashboard/about-guest#userpets-guest1-guest-breed'; ?>">		
 					   <li>
 						  <span class="cross-icon">
-						  </span> Description
+						  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?> 
 					   </li>
                  </a> 
 				 <?php } 
@@ -572,14 +577,14 @@
 			    <a href="<?php echo HTTP_ROOT.'dashboard/about-guest#userpets-guest1-guest-breed'; ?>">			  
 				 <li>
                   <span class="check-icon">
-                  </span> Photo
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?>  
                 </li>
                </a>
 		        <?php }else{ ?>
 				<a href="<?php echo HTTP_ROOT.'dashboard/about-guest#userpets-guest1-guest-breed'; ?>">	
 				   <li>
 					  <span class="cross-icon">
-					  </span> Photo
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo')); ?>  
                   </li>
                 </a>  
 				 <?php } 
@@ -587,14 +592,14 @@
 				<a href="<?php echo HTTP_ROOT.'dashboard/about-guest#userpets-guest1-flea-treated-no'; ?>">		   
                 <li>
                   <span class="check-icon">
-                  </span> Behaviour
+                  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Behaviour')); ?> 
                 </li>
                 </a>
 		        <?php }else{ ?>
 				<a href="<?php echo HTTP_ROOT.'dashboard/about-guest#userpets-guest1-flea-treated-no'; ?>">		
 				   <li>
 					  <span class="cross-icon">
-					  </span>Behaviour
+					  </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Behaviour')); ?> 
                   </li>
                 </a>  
 				 <?php } 

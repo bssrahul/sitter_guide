@@ -21,7 +21,7 @@
           <div class="sqv-box">
             
             <div class="top-close">
-              <p>Reservation Request
+              <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reservation Request')); ?>
               </p>
             </div>
 			<?php echo $this->Form->create(null, [
@@ -44,15 +44,15 @@
                   <div class="best-pract-wrap">
                     
                     <div class="best-pract-head">
-                      <p>Best Practice: We recommend to contact a host before a reservation
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Best Practice: We recommend to contact a host before a reservation')); ?>
                       </p>
                     </div>
                    
-                    <p class="best-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took 
+                    <p class="best-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took")); ?> 
                     </p>
                   
                     <div class="msg-send-text"> 
-                      <a href="<?php echo HTTP_ROOT.'Message/get-messages/pending/'.$bookingID; ?>"> Send a Message to  <?php echo @$get_booking_requests_to_display['user']['first_name']; ?>
+                      <a href="<?php echo HTTP_ROOT.'Message/get-messages/pending/'.$bookingID; ?>"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Send a Message to')); ?>  <?php echo @$get_booking_requests_to_display['user']['first_name']; ?>
                       </a>
                     </div>
                  
@@ -71,14 +71,14 @@
                   <div class="bill-info-wrap">
                     
                     <div class="bill-info-head">
-                      <p>Billing Inofrmation
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Billing Inofrmation')); ?>
                       </p>
                     </div>
                     
                     <div class="bill-info-inner">
 						
                       <div class="form-group">
-                        <label>Full Name
+                        <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Full Name')); ?>
                         </label>
                         <?php 
 							echo $this->Form->input('Booking.full_name',[
@@ -86,7 +86,7 @@
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Full name',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Full name')),
 							'value'=>isset($UserData['Booking']['first_name'])?$UserData['Booking']['first_name']." ".$UserData['Booking']['last_name']:$sessiondata['name']
 							]);
 							echo '<span class="signup_error">'.@$formError['full_name'][0].'</span>';
@@ -96,7 +96,7 @@
                       <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
-                            <label>Address 1
+                            <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address 1')); ?>
                             </label>
                             <?php 
 							echo $this->Form->input('Booking.address_1',[
@@ -104,7 +104,7 @@
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Address line 1',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Address line 1')),
 							'value'=>isset($UserData['Booking']['address'])?$UserData['Booking']['address']:$sessiondata['address1']
 							]);
 							echo '<span class="signup_error">'.@$formError['address_1'][0].'</span>';
@@ -114,7 +114,7 @@
                       
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
-                            <label>Address 2
+                            <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Address 2')); ?>
                             </label>
                             <?php 
 							echo $this->Form->input('Booking.address_2',[
@@ -122,7 +122,7 @@
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Address line 2',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Address line 2')),
 							'value'=>isset($UserData['Booking']['address2'])?$UserData['Booking']['address2']:$sessiondata['address2']
 							]);
 							echo '<span class="signup_error">'.@$formError['address_2'][0].'</span>';
@@ -136,7 +136,7 @@
                           <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <div class="form-group">
-                                <label>City
+                                <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('City')); ?>
                                 </label>
                                 <?php 
 									echo $this->Form->input('Booking.city',[
@@ -144,7 +144,7 @@
 									'label' => false,
 									'type'=>'text',
 									'class'=>'form-control',
-									'placeholder'=>'City',
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('City')),
 									'value'=>isset($UserData['Booking']['city'])?$UserData['Booking']['city']:$sessiondata['city']
 									]);
 									echo '<span class="signup_error">'.@$formError['city'][0].'</span>';
@@ -153,7 +153,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <div class="form-group">
-                                <label>State
+                                <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('State')); ?>
                                 </label>
                                 <?php echo $this->Form->input('Booking.state',[
 								'templates' => ['inputContainer' => '{{content}}'],
@@ -172,7 +172,7 @@
                        
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
-                            <label>Country
+                            <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?>
                             </label>
                             <?php 
 							echo $this->Form->input('Booking.country',[
@@ -180,7 +180,7 @@
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Country',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Country')),
 							'value'=>isset($UserData['Booking']['country'])?$UserData['Booking']['country']:$sessiondata['country']
 							]);
 							echo '<span class="signup_error">'.@$formError['country'][0].'</span>';
@@ -193,7 +193,7 @@
 						  
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
-                            <label>Zip Code
+                            <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Zip Code')); ?>
                             </label>
                             <?php 
 							echo $this->Form->input('Booking.zip',[
@@ -201,7 +201,7 @@
 							'label' => false,
 							'type'=>'text',
 							'class'=>'form-control',
-							'placeholder'=>'Zip',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Zip')),
 							'value'=>isset($UserData['Booking']['zip'])?$UserData['Booking']['zip']:$sessiondata['zip']
 							]);
 							echo '<span class="signup_error">'.@$formError['zip'][0].'</span>';
@@ -218,7 +218,7 @@
                   
                   <div class="payment-info-wrap">
                     <div class="payment-info-head">
-                      <p>Payment
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Payment')); ?>
                       </p>
                     </div>
                     
@@ -227,7 +227,7 @@
 						<?php if(isset($cardData) && !empty($cardData)){ ?>
                         <label class="radio-inline pl25">
                           <input type="radio" checked value="save_cards" name="payment_type" data-rel="save_detail" class="payment_type" >
-                         Faster checkout with saved detail 
+                         <?php echo $this->requestAction('app/get-translate/'.base64_encode('Faster checkout with saved detail')); ?> 
                         
                           <span class="pl20">
                            &nbsp;<br/>
@@ -256,7 +256,7 @@
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="form-group">
-														<label for="cardNumber">CARD NUMBER</label>
+														<label for="cardNumber"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CARD NUMBER')); ?></label>
 														<div class="input-group">
 															 <?php 
 																echo $this->Form->input('Booking.card_number',[
@@ -265,7 +265,7 @@
 																'readonly' => true,
 																'type'=>'text',
 																'class'=>'form-control collapseOne',
-																'placeholder'=>'Card Number',
+																'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Card Number')),
 																'value'=>isset($cardData['last4'])?"XXXX XXXX XXXX ".$cardData['last4']:'',
 																]);
 																echo '<span class="signup_error">'.@$formError['card_number'][0].'</span>';
@@ -278,7 +278,7 @@
 											<div class="row">
 												<div class="col-xs-7 col-md-7">
 													<div class="form-group">
-														<label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+														<label for="cardExpiry"><span class="hidden-xs"><?php echo $this->requestAction('app/get-translate/'.base64_encode('EXPIRATION')); ?></span><span class="visible-xs-inline">EXP</span> DATE</label>
 														<?php 
 																echo $this->Form->input('Booking.expiary_date',[
 																'templates' => ['inputContainer' => '{{content}}'],
@@ -286,7 +286,7 @@
 																'readonly' => true,
 																'type'=>'text',
 																'class'=>'form-control collapseOne',
-																'placeholder'=>'Expiary_date',
+																'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Expiary_date')),
 																'value'=>isset($cardData['exp_month'])?$cardData['exp_month']."/".$cardData['exp_year']:'',
 																]);
 																echo '<span class="signup_error">'.@$formError['expiary_date'][0].'</span>';
@@ -295,14 +295,14 @@
 												</div>
 												<div class="col-xs-5 col-md-5 pull-right">
 													<div class="form-group">
-														<label for="cardCVC">CV CODE</label>
+														<label for="cardCVC"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CV CODE')); ?></label>
 														<?php 
 																echo $this->Form->input('Booking.cvv_code',[
 																'templates' => ['inputContainer' => '{{content}}'],
 																'label' => false,
 																'type'=>'password',
 																'class'=>'security-code form-control collapseOne',
-																'placeholder'=>'CVV Code',
+																'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('CVV Code')),
 																]);
 																echo '<span class="signup_error">'.@$formError['cvv_code'][0].'</span>';
 														?>
@@ -324,7 +324,7 @@
                         
                          <label class="radio-inline pl25">
                           <input type="radio" value="new_cards" data-rel="new_detail"  name="payment_type" class="payment_type">
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debit / Credit Card 
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->requestAction('app/get-translate/'.base64_encode('Debit / Credit Card')); ?> 
                         
                           <span class="pl20">
                            &nbsp;<br/>
@@ -335,7 +335,7 @@
                         <div id="collapseTwo" class="card_form_new_card">
 							  <?php echo $this->element('frontElements/Booking/process_payment');?> 
 							 <input type="checkbox" value="save_my_card" name="save_my_card">
-							 <label for="">Save this card for faster checkout</p>
+							 <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Save this card for faster checkout')); ?></p>
                         </div>
                         
                       </div>
@@ -343,7 +343,7 @@
                   </div>
                   <div class="hello-info-wrap">
                     <div class="hello-info-head">
-                      <p>Initial Message
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Initial Message')); ?>
                       </p>
                     </div>
                     <div class="hello-info-inner">
@@ -357,7 +357,7 @@
                   </div>
                   <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <button type="submit" class="btn btn-mod-pop-1">Book Now</button>
+                        <button type="submit" class="btn btn-mod-pop-1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?></button>
                         </div>
                     </div>
                 </div>
@@ -409,59 +409,59 @@
                     <table class="table">
                       <tbody>
                         <tr>
-                          <td class="tbfont">Number of Pets
+                          <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Number of Pets')); ?>
                           </td>
                           <td class="tbfont">
                             <?php echo @$pets_count != "" ?@$pets_count:"_ _ _";?>
                           </td>
                         </tr>
                         <tr>
-                          <td class="tbfont">Cancellation Policy
+                          <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancellation Policy')); ?>
                           </td>
                           <td class="tbfont">
-                            <?php echo @$services_info->cancellation_policy_status == 1?"Flexible":"_ _ _"; ?>
+                            <?php echo @$services_info->cancellation_policy_status == 1? $this->requestAction('app/get-translate/'.base64_encode('Flexible')):"_ _ _"; ?>
                           </td>
                         </tr>
                         <tr>
-                          <td class="tbfont">Total Amount
+                          <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Total Amount')); ?>
                           </td>
                           <td class="tbfont"> 
                             <?php echo $cuntry_currency." ".$cuntry_sign_code." ".$cuntry_price*@$total; ?>
                           </td>
                         </tr>
                         <tr>
-                          <td class="tbfont">Booking Fee
+                          <td class="tbfont"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking Fee')); ?>
                           </td>
                           <td class="tbfont">
-                            <?php echo @$services_info->booking_status == 1?"Free":"_ _ _"; ?>
+                            <?php echo @$services_info->booking_status == 1?$this->requestAction('app/get-translate/'.base64_encode("Free")):"_ _ _"; ?>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="pay-through">
-                    <h6>Pay through Sitter Guide  for:
+                    <h6><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pay through Sitter Guide  for')); ?>:
                     </h6>
                     <ul class="list-unstyled">
                       <li> 
                         <i class="fa fa-angle-right right-gr">
-                        </i>Premium Insurance
+                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Premium Insurance')); ?>
                       </li>
                       <li>
                         <i class="fa fa-angle-right right-gr">
-                        </i>100% Satisfection
+                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('100% Satisfection')); ?>
                       </li>
                       <li>
                         <i class="fa fa-angle-right right-gr">
-                        </i>Money Back
+                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Money Back')); ?>
                       </li>
                       <li>
                         <i class="fa fa-angle-right right-gr">
-                        </i>24/support
+                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('24/support')); ?>
                       </li>
                       <li>
                         <i class="fa fa-angle-right right-gr">
-                        </i>Daily Photo Update
+                        </i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Daily Photo Update')); ?>
                       </li>
                     </ul>
                   </div>

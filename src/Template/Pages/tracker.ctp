@@ -2,18 +2,18 @@
   <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
     <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
       <h3>
-        <img alt="db-profile-home-icon" src="<?php echo HTTP_ROOT; ?>img/tracker-ticon.png">&nbsp; Tracker 
+        <img alt="db-profile-home-icon" src="<?php echo HTTP_ROOT; ?>img/tracker-ticon.png">&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Tracker ')); ?> 
       </h3>
     </div>
     <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
-        <li> You are here : 
+        <li> <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
         </li>
         <li>
-          <a href="#">Home
+          <a href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?>
           </a>
         </li>
-        <li class="active">Tracker
+        <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tracker')); ?>
         </li>
       </ol>
     </div>

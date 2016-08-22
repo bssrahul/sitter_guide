@@ -5,7 +5,7 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Currency')); ?><small></small></h2>
+                                    <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Currency')); ?><small></small></h2>
 									<div class="clearfix"></div>
 							 </div>
 								<div class="x_content">
@@ -27,7 +27,7 @@
 										
 									]);?>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="country_name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Country Name')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="country_name"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country Name')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										 echo $this->Form->input('Currencies.country_name',[
@@ -37,7 +37,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="curruency_name"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Currency Name')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="curruency_name"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Currency Name')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										 echo $this->Form->input('Currencies.currency_name',[
@@ -47,7 +47,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="locale"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Locale')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="locale"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Locale')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										echo $this->Form->input('Currencies.locale',[
@@ -57,7 +57,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="currency"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Currency')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="currency"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Currency')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										echo $this->Form->input('Currencies.currency',[
@@ -67,7 +67,7 @@
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Price')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Price')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										echo $this->Form->input('Currencies.price',[
@@ -79,8 +79,8 @@
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
-											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?></button>
+											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancel')); ?></button>
+											<button id="send" type="submit" class="btn btn-success"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
 										</div>
 									</div>
                                     <?php echo $this->form->end(); ?>

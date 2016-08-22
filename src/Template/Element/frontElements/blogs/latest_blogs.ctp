@@ -1,6 +1,6 @@
 
 <div class="padtt-20">
-	<h4 class="popularpost">Recent Articles</h4> 
+	<h4 class="popularpost"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Recent Articles')); ?></h4> 
 </div>
         
 <div class="recent-article-wrap">
@@ -49,7 +49,7 @@
 		<li>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 plft0 ">
-					<h5 class="recent-b-head">No Records Found</h5>
+					<h5 class="recent-b-head"><?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?></h5>
 				</div>
 			</div> 
 			

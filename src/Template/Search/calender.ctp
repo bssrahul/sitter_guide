@@ -8,25 +8,25 @@
         <div class="row">
           <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
-              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent"></i>&nbsp; Recent Activities </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span> </div>             
+              <div class="panel-heading title-panel"> <span class="title-panel1"><i><img src="<?php echo HTTP_ROOT."img/i-recent.png" ?>" alt="recent"></i>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Recent Activities')); ?>  </span><span class="pull-right"><a href="#"><img src="<?php echo HTTP_ROOT."img/plus.png" ?>" ></a></span> </div>             
                   <div class="col-xs-12 recent-activity-table">
                   <table class="table table-hover">
                   <thead>
                     <tr class="table-row-heading">
-                      <th>Activity</th>
-                      <th>User Name</th>
-                      <th>User ID</th>
-                      <th>Notes</th>
-                      <th>Time</th>
+                      <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Activity')); ?></th>
+                      <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('User Name')); ?></th>
+                      <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('User ID')); ?></th>
+                      <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Notes')); ?></th>
+                      <th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Time')); ?></th>
                     </tr>
                   </thead>
                   <tbody class="table-row-text">
                     <tr>
-                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green"></span>  Lorem Ipsum </td>
-                      <td>Name </td>
-                      <td>Mr John Deo</td>
-                      <td>Lorem Ipsum  dummy text</td>
-                      <td>15.30  -  06/10/15 </td>
+                      <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-green.png" ?>" width="11" height="11" alt="green"></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Lorem Ipsum')); ?>  </td>
+                      <td><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name')); ?> </td>
+                      <td><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mr John Deo')); ?></td>
+                      <td><?php echo $this->requestAction('app/get-translate/'.base64_encode('Lorem Ipsum  dummy text')); ?></td>
+                      <td><?php echo $this->requestAction('app/get-translate/'.base64_encode('15.30  -  06/10/15')); ?> </td>
                     </tr>
                     <tr>
                       <td scope="row"><span class="table-image-pad"><img src="<?php echo HTTP_ROOT."img/t-red.png" ?>" width="11" height="11" alt="green"></span> Lorem Ipsum </td>
