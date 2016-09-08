@@ -12,15 +12,15 @@
 				]);?>
   
     <div class="form-group">
-	<label for="pet_name">Name<span>*</span></label>
+	<label for="pet_name"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name')); ?>  <span>*</span></label>
      <?php echo $this->Form->input('UserPets.pet_name',[
 						'class'=>'form-control',
-						'placeholder'=>'Name',
+						'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Name')),
 						'label'=>false]);
 				 ?>
     </div>
 	<div class="form-group">
-	<label for="pet_name">Type of Pet<span>*</span></label>
+	<label for="pet_name"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Type of Pet')); ?><span>*</span></label>
     <?php
 	  echo $this->Form->input('UserPets.pet_type',[
 						'class'=>'form-control',
@@ -31,7 +31,7 @@
 				 ?>
 	</div>
 	<div class="form-group">
-    <label for="pet_breed">Breeds<span>*</span></label>
+    <label for="pet_breed"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Breeds')); ?><span>*</span></label>
      <?php echo $this->Form->input('UserPets.pet_breed',[
 						'class'=>'form-control',
 						'label'=>false,
@@ -41,7 +41,7 @@
 				 ?>
 	</div>
 	<div class="form-group">
-    <label for="gender">Gender</label>
+    <label for="gender"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Gender')); ?></label>
     <?php  echo $this->Form->select(
 					'UserPets.gender',
 					['Male'=>'Male','Female'=>'Female'],
@@ -49,42 +49,42 @@
 				);?>
 	</div>
     <div class="form-group">
-	<label for="pet_weight">Weight</label>
+	<label for="pet_weight"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Weight')); ?></label>
       <?php echo $this->Form->input('UserPets.pet_weight',[
 						'class'=>'form-control',
 						'label'=>false]);
 				 ?>
     </div>
 	<div class="form-group">
-	<label for="years">Years</label>
+	<label for="years"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Years')); ?></label>
       <?php echo $this->Form->input('years',[
 						'class'=>'form-control',
 						'label'=>false]);
 	  ?>
     </div>
 	<div class="form-group">
-	<label for="months">Months</label>
+	<label for="months"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Months')); ?></label>
       <?php echo $this->Form->input('months',[
 						'class'=>'form-control',
 						'label'=>false]);
 	  ?>
     </div>
 	<div class="form-group">
-	<label for="pet_description">Description</label>
+	<label for="pet_description"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?></label>
 	<?php echo $this->Form->textarea('UserPets.pet_description',
 		 [
 		 'label'=>false,
 		 'class'=>'form-control']); ?>
 	</div>
 	<div class="form-group">
-	<label for="pet_image">Pet Image</label>
+	<label for="pet_image"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Image')); ?></label>
 			<?php 
 				echo $this->Form->file('pet_image',[
 				  'class'=>'form-control',
 				  'label'=>false]);
 			?>
 	</div>
-    <button type="submitUserPet" class="btn btn-success">Submit</button>
+    <button type="submitUserPet" class="btn btn-success"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?></button>
  <?php echo $this->form->end(); ?>
 </div>
 </div>

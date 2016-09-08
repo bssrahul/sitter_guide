@@ -49,13 +49,13 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Referal Bonus Listing')); ?></h2><h2 style="float:right"> 
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Referal Bonus Listing')); ?></h2><h2 style="float:right"> 
 						<?php 
 					$languageSession = $this->request->session();
 					if($languageSession->read('requestedLanguage')=='en'){ ?>	
 						<!--<form action="<?php echo HTTP_ROOT.'referalbonus/transfer'; ?>" method="post">
 						<input type="checkbox" class="chkbox" checked name="singlecheck[]" value="ghjghjgj" >
-						<a style="float:right" href="<?php echo HTTP_ROOT.'referalbonus/transfer'; ?>"><button class="btn btn-success addUser" id="trans" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Transfer')); ?></button>
+						<a style="float:right" href="<?php echo HTTP_ROOT.'referalbonus/transfer'; ?>"><button class="btn btn-success addUser" id="trans" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Transfer')); ?></button>
 					
 						</a>-->
 						
@@ -78,14 +78,14 @@
 								</th>
 								<th>
 									 <!--<input type="checkbox" class="tableflat">-->
-									<?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Name')); ?></th>
-								<th class="column-title" ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Amount')); ?></th> 
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created Date')); ?></th> 
-								<!--th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>-->
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name')); ?></th>
+								<th class="column-title" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Amount')); ?></th> 
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Created Date')); ?></th> 
+								<!--th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>-->
 								</th>
 							</tr>
 						</thead>
@@ -130,7 +130,7 @@
 							
 							}  } else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="10" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
+									<td class="noRecords" colspan="10" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 							<input type="submit" name="sub" id="sub" value="Transfer" class="btn btn-success addUser" style="float:right">

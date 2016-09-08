@@ -49,7 +49,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Manage Slides')); ?> </h2>
+                    <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Manage Slides')); ?> </h2>
                     <div class="clearfix"></div>
 				</div>
 				
@@ -62,14 +62,14 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th style="text-align:center" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Media')); ?></th>
-								<th style="text-align:left" class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Title')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?></th> 
-							    <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th style="text-align:center" class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Media')); ?></th>
+								<th style="text-align:left" class="text-center column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Title')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?></th> 
+							    <th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -107,19 +107,19 @@
 								<td class=" "><?php 
 										echo $slider_info->date_added;
 								?></td>
-								 <td><?php echo $slider_info->status == 1?'Active':'Blocked';	?></td>
+								 <td><?php echo $slider_info->status == 1? $this->requestAction('app/get-translate/'.base64_encode('Active')): $this->requestAction('app/get-translate/'.base64_encode('Blocked'));	?></td>
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
-								  <a title="<?php echo($slider_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Sliders'.'/'.base64_encode(convert_uuencode($slider_info->id)).'/'.$target[$slider_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($slider_info->status ==0?'-o':'') ?>"></span></a>
+								  <a title="<?php echo($slider_info->status == 0? $this->requestAction('app/get-translate/'.base64_encode('Activate status')): $this->requestAction('app/get-translate/'.base64_encode('Deactivate Status'))) ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Sliders'.'/'.base64_encode(convert_uuencode($slider_info->id)).'/'.$target[$slider_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($slider_info->status ==0?'-o':'') ?>"></span></a>
 								
-								  <a title="Edit" href="<?php echo HTTP_ROOT."slider/edit-slider/".base64_encode(convert_uuencode($slider_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
+								  <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit')); ?>" href="<?php echo HTTP_ROOT."slider/edit-slider/".base64_encode(convert_uuencode($slider_info->id));?>"><span><i class="fa fa-pencil-square"></i></span></a>
 								</td>
 							</tr>
 							<?php $i++;
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
+									<td class="noRecords" colspan="8" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

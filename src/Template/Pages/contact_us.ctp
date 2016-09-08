@@ -1,28 +1,27 @@
 <!--content area Start-->
 <main id="contact">
 	<section class="our-location">
-		<div class="container">
-			<h3>Our Locations</h3>
-				<div class="row">
-    				<div class="col-sm-2"></div>
-						<div class="col-sm-10">
-							<div class="row">
-								<?php echo isset($CmsPageData->pagecontent)?$CmsPageData->pagecontent:__("Content not added yet"); ?>
-							</div>
+    	<div class="sev-type">
+        	<div class="container">
+            		<h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Our Locations'));?> </h4>
+            </div>
+        </div>
+		<div class="container">		
+				<div class="row">    				
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">							
+								<?php echo isset($CmsPageData->pagecontent)?$CmsPageData->pagecontent:__("Content not added yet"); ?>							
      					</div>
 				</div>
     	</div>
-    </section>
-    
-    
-   <section class="maps">
-        <div class="row gmap_canvas_sydney">
-            <div class="col-sm-3 padding-left0px padding-right3px">
-                <div class="map ">
+</section>
+    <!--Maps-->
+<section class="maps">
+   	<ul class="map-list">
+        	<li>  <div class="map">
                     <div class=" embed-responsive embed-responsive-4by3" id="Sydney">
                         <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-							<div style='overflow:hidden;height:400px;width:400px;'>
-								<div id='gmap_canvas_sydney' style='height:400px;width:400px;'></div>
+							<div style='overflow:hidden;height:400px;width:100%;'>
+								<div id='gmap_canvas_sydney' style='height:400px;width:100%;'></div>
 								<style>
 									#gmap_canvas img {
 										max-width: none!important;
@@ -53,14 +52,11 @@
 									google.maps.event.addDomListener(window, 'load', init_map);
 							</script>
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-sm-3 padding-right3px padding-left3px">
-                <div class="map gmap_canvas_auckland">
+                </div></li>
+            <li>  <div class="map gmap_canvas_auckland">
                     <div class="embed-responsive embed-responsive-4by3" id="Auckland">
-                        <div style='overflow:hidden;height:400px;width:400px;'>
-                            <div id='gmap_canvas_auckland' style='height:400px;width:400px;'></div>
+                        <div style='overflow:hidden;height:400px;width:100%;'>
+                            <div id='gmap_canvas_auckland' style='height:400px;width:100%;'></div>
 							<style>
 									#gmap_canvas img { max - width: none!important; background: none!important }
 							</style>
@@ -88,14 +84,11 @@
                             google.maps.event.addDomListener(window, 'load', init_map);
                         </script>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3 padding-right3px padding-left3px">
-                <div class="map gmap_canvas_newyork">
+                </div></li>
+            <li>  <div class="map gmap_canvas_newyork">
                     <div class="embed-responsive embed-responsive-4by3" id="London">
-                         <div style='overflow:hidden;height:400px;width:400px;'>
-                             <div id='gmap_canvas_newyork' style='height:400px;width:400px;'></div>
+                         <div style='overflow:hidden;height:400px;width:100%;'>
+                             <div id='gmap_canvas_newyork' style='height:400px;width:100%;'></div>
                              <style>
                                     #gmap_canvas img { max - width: none!important; background: none!important }
                              </style>
@@ -123,14 +116,11 @@
                                 google.maps.event.addDomListener(window, 'load', init_map);
                             </script>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3 padding-right3px padding-left3px">
-                <div class="map gmap_canvas_london">
+                </div></li>
+            <li>  <div class="map gmap_canvas_london">
                     <div class="embed-responsive embed-responsive-4by3" id="NewYork" >
-                         <div style='overflow:hidden;height:400px;width:400px;'>
-                                <div id='gmap_canvas_london' style='height:400px;width:400px;'></div>
+                         <div style='overflow:hidden;height:400px;width:100%;'>
+                                <div id='gmap_canvas_london' style='height:400px;width:100%;'></div>
                                 <style>
                                     #gmap_canvas img { max - width: none!important; background: none!important }
                                 </style>
@@ -158,10 +148,11 @@
                                 google.maps.event.addDomListener(window, 'load', init_map);
                                 </script>
                     </div>
-                </div>
-            </div>
-		</div>
-	</section>
+                </div></li>
+        </ul>
+    </section>
+    <!--/Maps-->  
+ 
     
     
      <!-- Get in Touch starts-->
@@ -189,7 +180,7 @@
 					<div class="row">
     					<div class="col-sm-12">
 					   		<div class="row">
-								<div class="col-sm-6">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
 					 					<input type="text" name="name" class="form-control" placeholder="<?php echo $this->requestAction('users/get-translate/'.base64_encode('Your Name')); ?>" >
 									</div>
@@ -200,7 +191,7 @@
 										<input  type="text" name="phone_no" class="form-control" placeholder="<?php echo $this->requestAction('users/get-translate/'.base64_encode('phone no.')); ?>" >
 									</div>
 								</div> 
-								<div class="col-sm-6">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
 					 				   <textarea class="form-control" name="message" rows="5" placeholder="<?php echo $this->requestAction('users/get-translate/'.base64_encode('Message')); ?>"></textarea>
 									</div>

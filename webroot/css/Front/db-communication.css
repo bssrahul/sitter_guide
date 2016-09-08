@@ -1,73 +1,55 @@
 @charset "utf-8";
 /* CSS Document */
 
-.communication-wrap { background:#eaeaea; padding:0px 30px 30px 30px; margin-top:30px; margin-bottom:30px; }
-.communication-wrap .comm-text { background:#fff; padding:20px; margin-top:30px;}
+.communication-wrap { width:100%; float:left; }
+.communication-wrap .comm-text { background:#f7f7f7; padding:20px; margin:0px; border:#ebebeb 1px solid;}
 .communication-wrap .comm-text select > option {  padding:2px 15px;}
-
-.communication-wrap .comm-text h5 { color:#828281; font-size:18px;  font-family: 'Raleway', sans-serif; font-weight:400; padding-bottom:15px; }
-
-.communication-wrap .comm-box1 { background:#fff; margin-top:20px; padding:15px 20px;}
-.communication-wrap .comm-box1 h6 { color:#828281; font-size:15px;  font-family: 'Raleway', sans-serif; font-weight:400; line-height:22px; }
-
-.communication-wrap .chek-main-lat .onoffswitch {
-    -moz-user-select: none;
-    bottom: -3px;
-    margin-bottom: 0;
-    position: relative;
-    width: 70px;
-}
-
-.communication-wrap .box-small-text { text-align:right; font-size:11px; font-style:italic; color:#828281; padding-top:10px;}
+.communication-wrap .comm-text h5 { color:#404040; font-size:16px;  font-family: 'Raleway', sans-serif; font-weight:400; padding:0 0 15px 0; }
+.communication-wrap .comm-box1 { background:#fff; margin:30px 0 0 0; padding:20px; border:#ebebeb 1px solid; min-height:110px;}
+.communication-wrap .comm-box1 h6 { color:#404040; font-size:14px;  font-family: 'Raleway', sans-serif; font-weight:400; line-height:20px; }
+.communication-wrap .chek-main-lat .onoffswitch {   -moz-user-select: none;   bottom: -3px;   margin-bottom: 0; position: relative; width: 70px;}
+.communication-wrap .box-small-text { text-align:right; font-size:11px; font-style:italic; color:#828281; padding:10px 0 0 0; color:#404040;}
 .communication-wrap .box-text {  font-size:14px;  color:#828281;}
-
-.communication-wrap select.form-control {
-    -moz-appearance: none;
-    background-image: url("../../img/arw.png");
-    background-position: right 15px center;
-    background-repeat: no-repeat;
-    border: 0px solid #aaaaaa;
-    border-radius: 3px; color:#828281;
-    box-shadow: none; font-size:13px;
-    height: 30px; background-color:#eaeaea;
-}
+.communication-wrap select.form-control { -moz-appearance: none; background-image: url("../../img/arw.png"); background-position: right 15px center; background-repeat: no-repeat; border: 0px solid #aaaaaa;
+border-radius: 3px; color:#828281;box-shadow: none; font-size:13px; height:40px; background-color:#eaeaea; border-radius:2px; background-color:#ffffff; border:#bcbcbc 1px solid;}
 
 .box-padt { padding-top:15px;}
-.btn-comm-save { background:#72a105; color:#fff !important; height:47px; width:150px; outline:none; text-decoration:none; margin-top:30px; border-radius:0px; text-transform:uppercase;}
+.btn-comm-save { background:#72a105; color:#fff !important; height:47px; width:150px; outline:none; text-decoration:none; margin:30px 0 0 0; border-radius:0px; text-transform:uppercase;}
 .btn-comm-save:hover, .btn-comm-save:focus  { background:#6c9905; color:#fff; height:47px; width:150px; outline:none; text-decoration:none; margin-top:30px; border-radius:0px; text-transform:uppercase;}
 
-@media  ( max-width:1600px)
 
+@media (min-width:992px) and (max-width:1024px){
+.communication-wrap { margin:0px;}
+.communication-wrap .comm-text {padding:15px; margin:15px 0 0 0;}
+.communication-wrap .comm-box1 {margin:15px 0 0 0; padding:15px;  min-height:110px;}
+.btn-comm-save { height:47px; width:100%; outline:none; text-decoration:none; margin:15px 0 0 0; }
+}
 
-{
-	.communication-wrap .comm-text h5 {  font-size:14px;}
-	
-	
-	
-	}
-	
-	
-	
-	@media  ( max-width:767px){
-		
-		
-		.communication-wrap { background:#eaeaea; padding:0px 10px 10px 10px; margin-top:30px; margin-bottom:30px; }
-		
-		
-		.communication-wrap .comm-text {
-  
-    margin-top: 10px;
-   
+@media (min-width:768px) and (max-width:991px){
+.communication-wrap { margin:0px;}
+.communication-wrap .comm-text {padding:15px; margin:15px 0 0 0;}
+.communication-wrap .comm-box1 {margin:15px 0 0 0; padding:15px;  min-height:110px;}
+.btn-comm-save { height:47px; width:100%; outline:none; text-decoration:none; margin:15px 0 0 0; }
 }
-	
-	.communication-wrap .comm-box1 {
-    
-    margin-top: 10px;
-    
+
+@media (min-width:641px) and (max-width:767px){
+.communication-wrap { margin:0px;}
+.communication-wrap .comm-text {padding:15px; margin:15px 0 0 0;}
+.communication-wrap .comm-box1 {margin:15px 0 0 0; padding:15px;  min-height:110px;}
+.btn-comm-save { height:47px; width:100%; outline:none; text-decoration:none; margin:15px 0 0 0; }
 }
-	
-	
-	.btn-comm-save { margin-top:10px;}
-	.btn-comm-save:hover, .btn-comm-save:focus  { margin-top:10px;}
-		
-		}
+
+@media (min-width:481px) and (max-width:640px){
+.communication-wrap { margin:0px;}
+.communication-wrap .comm-text {padding:15px; margin:15px 0 0 0;}
+.communication-wrap .comm-box1 {margin:15px 0 0 0; padding:15px;  min-height:110px;}
+.btn-comm-save { height:47px; width:100%; outline:none; text-decoration:none; margin:15px 0 0 0; }
+}
+
+@media (min-width:320px) and (max-width:480px){
+.communication-wrap { margin:0px;}
+.communication-wrap .comm-text {padding:15px; margin:15px 0 0 0;}
+.communication-wrap .comm-box1 {margin:15px 0 0 0; padding:15px;  min-height:110px;}
+.btn-comm-save { height:47px; width:100%; outline:none; text-decoration:none; margin:15px 0 0 0; }
+
+}

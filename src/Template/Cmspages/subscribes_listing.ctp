@@ -54,7 +54,7 @@
 	    <div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2> <?php echo $this->requestAction('users/get-translate/'.base64_encode('Subscribers Listing')); ?></h2><h2 style="float:right"><a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/send-news-letter'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Send News Letter')); ?></button></a></h2>
+					<h2> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Subscribers Listing')); ?></h2><h2 style="float:right"><a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/send-news-letter'; ?>"><button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Send News Letter')); ?></button></a></h2>
 					<div class="clearfix"></div>
 				</div>
                 <?= $this->element("adminElements/success_msg"); ?>
@@ -65,12 +65,12 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Email')); ?></th>
-							    <th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Status')); ?></th>
-								<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>
-								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th class="text-center column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Email')); ?></th>
+							    <th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Status')); ?></th>
+								<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Created')); ?></th>
+								<th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -97,19 +97,19 @@
 								</td>
 								<td class=" "><?php echo ($subscribe_info->email); ?></td>
 								<td><?php echo $subscribe_info->created_date; ?></td>
-								<td><?php echo $subscribe_info->status == 1?'Active':'Blocked';	?></td>
+								<td><?php echo $subscribe_info->status == 1? $this->requestAction('app/get-translate/'.base64_encode('Active')): $this->requestAction('app/get-translate/'.base64_encode('Blocked'));	?></td>
 
 								<?php $target = ['0'=>'1','1'=>'0'];?>
 								<td class=" last">
-								   <a title="<?php echo($subscribe_info->status == 0?'Activate status':'Deactivate Status') ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id)).'/'.$target[$subscribe_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($subscribe_info->status ==0?'-o':'') ?>"></span></a>
-								   <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id));?>" onclick="if(!confirm('Are you sure to delete this record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								   <a title="<?php echo($subscribe_info->status == 0? $this->requestAction('app/get-translate/'.base64_encode('Activate status')): $this->requestAction('app/get-translate/'.base64_encode('Deactivate Status'))) ?>" href="<?php echo HTTP_ROOT."users/update-status-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id)).'/'.$target[$subscribe_info->status];?>" ><span class="fa fa-fw fa-check-square<?php echo($subscribe_info->status ==0?'-o':'') ?>"></span></a>
+								   <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Delete')); ?>" href="<?php echo HTTP_ROOT."users/delete-row/".'Subscribes'.'/'.base64_encode(convert_uuencode($subscribe_info->id));?>" onclick="if(!confirm('<?php echo $this->requestAction('app/get-translate/'.base64_encode('Are you sure to delete this record?')); ?>')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								</td>
 							</tr>
 							<?php $i++;
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?></td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?></td>
 								</tr>
 							<?php } ?>
 						</tbody>

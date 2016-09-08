@@ -26,24 +26,30 @@
 </script>
    <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
 		<div class="row">
-			<div class="profiletab-section">
+        	<div class="container-fluid">
+				<div class="profiletab-section">
+            	<div class="db-top-bar-header bg-title">
+             	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                 <h3>
 					<img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
 					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?>
 				</h3>
+                </div>
+                </div>
 				<?php echo $this->element('frontElements/profile/sitter_nav');?>
 				<div class="tab-sectioninner book-pro">
 					<div class="tab-content">
+                    	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 						<div id="menu3" class="tab-pane fade tab-comm active in">
-							<div class="row">
-							<div class="col-xs-12">
+							
+							<div class="tc-head tc-head-5">
 								<h2 id="sitter-experience">
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Update us on your Skill and Accreditations')); ?>
 								</h2>
-								<h3>
+								<p>
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('We will give you individual badges which increase your search results ranking for each of these updates')); ?>
-								</h3> </div>
-							</div>	
+								</p> 
+								</div>
                             <?php echo $this->Form->create(null, [
 								'url' => ['controller' => 'dashboard', 'action' => 'professional-accreditations'],
 								'role'=>'form',
@@ -655,9 +661,11 @@
               </div>
         
           </div>
+          </div>
         </div>
 
         </div>
+            </div> 
       </div>
 
 	<?php /* echo $this->Form->create(null, [
@@ -701,7 +709,8 @@
 						
 					}
 					
-					
+			
+				
 				}
 			}).submit();
 		});

@@ -3,7 +3,7 @@
 	if($errrVal !=""){ 
  ?>
 		<button class="close show-errors" aria-label="Close" data-dismiss="alert" type="button">
-		<strong>ERROR!</strong>
+		<strong><?php echo $this->requestAction('app/get-translate/'.base64_encode('ERROR!')); ?></strong>
 		<?php
 			@$this->request->session()->read("success");
 			echo  @$this->request->session()->read("error");

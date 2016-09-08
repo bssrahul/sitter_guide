@@ -33,14 +33,14 @@
 					<ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
 						<li>
 							<?php
-								echo $this->Html->link($this->requestAction('users/get-translate/'.base64_encode('View Website')),
+								echo $this->Html->link($this->requestAction('app/get-translate/'.base64_encode('View Website')),
 								HTTP_ROOT
 								);
 							?>
 						</li>
 						<li>
 							<?php
-								echo $this->Html->link($this->requestAction('users/get-translate/'.base64_encode('Profile')),
+								echo $this->Html->link($this->requestAction('app/get-translate/'.base64_encode('Profile')),
 								['controller' => 'users', 'action' => 'admin-edit', '_full' => true]
 							);
 							?>
@@ -48,7 +48,7 @@
 						<li>
 							<?php
 								echo $this->Html->link(
-								$this->requestAction('users/get-translate/'.base64_encode('Change Password')),
+								$this->requestAction('app/get-translate/'.base64_encode('Change Password')),
 								['controller' => 'users', 'action' => 'change-password', '_full' => true],
 								['escape' => false]
 							);
@@ -57,7 +57,7 @@
 						<li>
 							<?php
 								echo $this->Html->link(
-								$this->requestAction('users/get-translate/'.base64_encode('Screen Lock')),
+								$this->requestAction('app/get-translate/'.base64_encode('Screen Lock')),
 								['controller' => 'users', 'action' => 'sleep', '_full' => true],
 								['escape' => false]
 							);
@@ -66,7 +66,7 @@
 						<li>
 							<?php
 								echo $this->Html->link(
-								'<i class="fa fa-sign-out pull-right"></i> '.$this->requestAction('users/get-translate/'.base64_encode('Logout')),
+								'<i class="fa fa-sign-out pull-right"></i> '.$this->requestAction('app/get-translate/'.base64_encode('Logout')),
 								['controller' => 'users', 'action' => 'logout', '_full' => true],
 								['escape' => false]
 							);

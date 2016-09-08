@@ -6,8 +6,8 @@
       <div class="col-sm-12">
       <div class="ibc-outer">
       	<div class="inner-ban-cont">
-        <h3 >Community Directory</h3>
-        <p>Meet some of your friendly neighbourhood partners </p>
+        <h3 ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Community Directory')); ?></h3>
+        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Meet some of your friendly neighbourhood partners')); ?> </p>
         </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     	<div class="row">
         		 <div class="col-xs-12 col-md-12 col-sm-12">
            <div class="head-box">                    	
-                        	<p>We invite you to contact any of our Community Directory partners. <span> They’re here for you.</span> </p>
+                        	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('We invite you to contact any of our Community Directory partners')); ?> .<span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('They’re here for you')); ?> .</span> </p>
                             <span class="head-bot"><b></b></span>
                     </div>
           </div>
@@ -42,16 +42,16 @@
             	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 	<div class="ps-box">
                 	<ul>
-                    	<li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-						<li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
-                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> Pet Shop</li>
+                    	<li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?> </li>
+						<li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
+                        <li><span><img src="<?php echo HTTP_ROOT; ?>img/pet-shop-icon.png"  alt="Pet Shop"/></span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pet Shop')); ?></li>
                     </ul>
                     </div>
                 </div>

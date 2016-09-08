@@ -2,8 +2,8 @@
 
 /* CSS Document */
 
-/* this Stylesheet only use to give universal styling for all webpages */
-@import 'about.css';
+/* this Stylesheet is only use to give universal styling for all webpages */
+
 @import 'bootstrap.min.css';
 @import 'header.css';
 @import 'content.css';
@@ -11,40 +11,50 @@
 @import 'inner.css';
 
 @import 'dashboard.css';
-@import 'signup.css';
+@import 'db-inner.css';
 
-@import 'db-profile.css';
+/*--------------------Front CSS --------------------*/
+
+/*	      @import 'contact.css';        		*/
+/*	      @import 'safety.css';         		*/
+/*	      @import 'privacy.css';        		*/
+/*	      @import 'insurance.css';      		*/
+/*	      @import 'terms.css';          		*/
+/*	      @import 'news.css';           		*/
+/*	      @import 'about.css';          		*/
+/*	      @import 'services.css';       		*/
+/*	      @import 'benefits.css';       		*/
+/*	      @import 'help.css';           		*/
+/*	      @import 'partners.css';       		*/ 
+/*	      @import 'house-rule.css';     		*/
+/*	      @import 'become-sitter.css';  		*/
+/*	      @import 'blog.css';           		*/
+
+/*------------------DASHBOARD CSS ------------------*/
+
+/*   	  @import 'db-front-details.css';		*/
+/*   	  @import 'db-promote.css';				*/
+/*   	  @import 'db-tracker.css';				*/
+/*   	  @import 'message.css';				*/
+/*   	  @import 'db-favourites.css';  		*/
+/*   	  @import 'db-front-dashboard.css';		*/
+/*   	  @import 'payments.css'; 				*/
+/*   	  @import 'db-communication.css';		*/
+/*   	  @import 'db-review.css';				*/
+/*   	  @import 'refer-css.css';				*/
+/*   	  @import 'db-profile.css';				*/
+
+
+@import 'signup.css';
 @import 'profile-view.css';
-/*@import 'contact.css';*/
-/* @import 'safety.css'; */
-/*@import 'privacy.css';*/
-/*@import 'insurance.css';*/
-/*@import 'terms.css';*/
-/*@import 'news.css';*/
-@import 'help.css';
 @import 'sitter-detail.css';
 @import 'search-result.css';
 @import 'sign-up-thankyou.css';
-@import 'message.css';
 @import 'dashboard-profile.css';
-
-@import 'db-front-dashboard.css';
 @import 'calender.css';
-@import 'db-front-details.css';
-@import 'db-review.css';
-@import 'db-communication.css';
-@import 'db-favourites.css';
-@import 'blog.css';
-@import 'services.css';
-@import 'house-rule.css';
-@import 'benefits.css';
-@import 'payments.css';
 @import 'db-transaction.css';
-@import 'db-promote.css';
-@import 'refer-css.css';
-@import 'db-tracker.css';
-@import 'become-sitter.css';
-@import 'partners.css';
+@import 'chosen.css';
+
 
 
 @font-face {

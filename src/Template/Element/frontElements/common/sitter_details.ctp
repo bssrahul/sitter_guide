@@ -34,7 +34,7 @@
               <h2 class="name-banner text-center">
                 <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> 
               </h2>
-              <h3 class="punch-line">Reliable & Loving Petsitter 
+              <h3 class="punch-line"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Reliable & Loving Petsitter ')); ?>
               </h3>
               <h4 class="city-banner"> 
                 <?php echo $userData->city.", ".@$userData->state.", ".@$userData->country; ?>
@@ -239,18 +239,18 @@
                                                               <h3 class="rates-detail marginrightminus"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".@$sh_day_rate; ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
-                                                              <p class="rates-detail-caption">(Boarding in sitter)
+                                                              <p class="rates-detail-caption"><?php echo $this->requestAction('app/get-translate/'.base64_encode('(Boarding in sitter)')); ?>
                                                               </p>
                                                             </div> 
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
                                                               <h3 class="rates-detail marginleftminus xs-padt10"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".@$gh_day_rate; ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
-                                                              <p class="rates-detail-caption">(House sitting)
+                                                              <p class="rates-detail-caption"><?php echo $this->requestAction('app/get-translate/'.base64_encode('(House sitting)')); ?>
                                                               </p>
                                                             </div>
                                                           </div>
@@ -259,25 +259,25 @@
                                                               <h3 class="rates-detail pad-t10 marginrightminus"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".(@$userData->user_sitter_services[0]->gh_drop_in_visit_rate != ''?@$userData->user_sitter_services[0]->gh_drop_in_visit_rate:0); ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
-                                                              <p class="rates-detail-caption">(Drop visit home)
+                                                              <p class="rates-detail-caption"><?php echo $this->requestAction('app/get-translate/'.base64_encode('(Drop visit home)')); ?>
                                                               </p>
                                                             </div> 
                                                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-left0px ">
                                                               <h3 class="rates-detail pad-t10  marginleftminus"> 
                                                                 <span>
                                                                   <?php echo "$cuntry_sign_code ".(@$sh_day_rate + @$sh_night_rate); ?>
-                                                                </span> per day
+                                                                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('per day')); ?>
                                                               </h3>
-                                                              <p class="rates-detail-caption">(D/Nt. care home)
+                                                              <p class="rates-detail-caption"><?php echo $this->requestAction('app/get-translate/'.base64_encode('(D/Nt. care home)')); ?>
                                                               </p>
                                                             </div>
                                                           </div>
                                                         </div>
                                                       </div>
                                                       <h5 class="additional">
-                                                        <a href="#" data-toggle="modal" data-target="#myModal79"> More Services Available 
+                                                        <a href="#" data-toggle="modal" data-target="#myModal79"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('More Services Available')); ?> 
                                                         </a>
                                                       </h5>
                                                       <div class="text-center">
@@ -285,15 +285,15 @@
 				                                            if($userloginstatus){ 
 																 if($guests_Info == ""){
 																 ?>
-																 <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#popPetAddNotification">Book Now
+																 <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#popPetAddNotification"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?> 
 															  </button>
 																<?php }else{ ?>
-																<button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79">Book Now
+																<button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#myModal79"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?> 
 															  </button>
 															  
                                                          <?php }
                                                           }else{ ?>
-															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin">Book Now
+															  <button class="btn btn-cont before-booking-request check-user"    data-toggle="modal" data-target="#alertUserLogin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Book Now')); ?> 
 															  </button>
 														 <?php } ?>
                                                       </div>
@@ -353,7 +353,7 @@
                                                         <?php }
                                                         
                                                          }else{ ?>
-														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin">Contact  
+														  <button class="btn btn-detsil-contact" type="button" data-toggle="modal" data-target="#alertUserLogin"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact')); ?>   
                                                           <?php echo @$userData->first_name; ?>
                                                         </button>
 														<?php } ?>
@@ -376,7 +376,7 @@
                                                   <div>
                                                     <div class="availability">
                                                       <h5>
-                                                        <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?> is available this Weekend
+                                                        <?php echo @$userData->first_name." ".substr((@$userData->last_name)?@$userData->last_name:"",0,1)."."; ?>  is available this Weekend
                                                       </h5>
                                                     </div>
                                                   </div>

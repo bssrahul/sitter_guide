@@ -1,20 +1,19 @@
-
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" >
   <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
     <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
       <h3>
-        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Transaction
+        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Transaction')); ?>
       </h3>
     </div>
     <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
-        <li> You are here : 
+        <li> <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
         </li>
         <li>
-          <a href="#">Home
+          <a href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?>
           </a>
         </li>
-        <li class="active">Transaction
+        <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Transaction')); ?>
         </li>
       </ol>
     </div>
@@ -26,11 +25,11 @@
           
           <ul class="nav nav-pills nav-justified">
             <li >
-              <a href="<?php echo HTTP_ROOT;?>transaction/paid-transaction">Amount Paid</a>
+              <a href="<?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Amount Paid')); ?></a>
             </li>
             
             <li class="active">
-              <a href="<?php echo HTTP_ROOT;?>transaction/recieved-transaction">Amount Recieved</a>
+              <a href="<?php echo HTTP_ROOT;?>transaction/recieved-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Amount Recieved')); ?></a>
             </li>
             
           </ul>
@@ -48,17 +47,17 @@
 						<thead class="cf">
 						  <tr class="title-bg border-bott">
 							
-							<th class="pad-l20">Member</th>
+							<th class="pad-l20"><?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Member')); ?></th>
 							
-							<th class="pad-l20">Amount</th>
+							<th class="pad-l20"><?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Amount')); ?></th>
 																			
-							<th>Description</th>
+							<th><?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?></th>
 							
-							<th>Location</th>
+							<th><?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Location')); ?></th>
 							
-							<th class="numeric">Time</th>
+							<th class="numeric"><?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Time')); ?></th>
 							<th class="numeric"></th>
-							<th> Favourate Clients</th>
+							<th> <?php echo HTTP_ROOT;?>transaction/paid-transaction"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Favourate Clients')); ?></th>
 						  </tr>
 						</thead>
 						
@@ -88,7 +87,7 @@
 							  </span>
 							</td>
 							
-							<td data-title="Description"><?php echo isset($rating['amount'])?ucwords($rating['currency'])." <b>".$rating['amount']."</b>":'0'; ?>
+							<td data-title="Description"><?php echo isset($rating['amount'])?ucwords($rating['currency'])." <b>".($rating['amount']/100)."</b>":'0'; ?>
 							
 							<td data-title="Description"><?php echo isset($rating['description'])?$rating['description']:'Description not added'; ?>
 							</td>
@@ -98,7 +97,7 @@
 							</td>
 						    <td>
 								<button type = "button" class = "btn btn-primary">
-								   withdrawal
+								 <?php echo $this->requestAction('app/get-translate/'.base64_encode('withdrawal')); ?>  
 							    </button>
 						    </td>
 						    <td>
@@ -133,7 +132,7 @@
 				<?php	
 				}else{ ?>
 				<div class="col-md-12 col-lg-12 col-sm-12">
-					<h5>No transaction recieved yet</h5>
+					<h5>	 <?php echo $this->requestAction('app/get-translate/'.base64_encode('No transaction recieved yet')); ?>  </h5>
 				</div>
 				<?php	
 				}

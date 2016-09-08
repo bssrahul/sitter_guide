@@ -50,9 +50,9 @@
                       
                       <li <?php echo $tracker_class; ?>><a href="<?php echo HTTP_ROOT.'tracker'; ?>"><span class="fa fa-question-circle"></span><span class="side-list"><?php echo __('Sitter Guide GPS'); ?></span></a></li>
                       
-                      <li class="panel panel-default <?php if(trim($requestController)=='Message'){echo 'active';}else{echo '';}?>" id="dropdown">
+                      <li class="panel panel-default <?php if(trim($requestController)=='Message'){echo 'active msg-bg-white';}else{echo '';}?>" id="dropdown">
 							<a data-toggle="collapse" href="#dropdown-lvl1">
-								<span class="fa fa-envelope"></span><span class="side-list">Inbox & Bookings </span> <span class="badge myNewCount"></span>
+								<span class="fa fa-envelope"></span><span class="side-list"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox & Bookings')); ?> </span> <span class="badge myNewCount"></span>
 							</a>
 
 						
@@ -61,20 +61,20 @@
 									<ul class="nav navbar-nav">
 										<li>
 											<a href="<?php echo HTTP_ROOT.'Message/get-messages/pending' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='' || @$this->request->params['pass'][0]=='pending'){echo 'active';}else{echo '';}?>">
-											<span class="fa fa-angle-double-right"></span>&nbsp;Pending
+											<span class="fa fa-angle-double-right"></span>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Pending')); ?>
 											</a>
 										</li>
 										
 										<li>
-											<a href="<?php echo HTTP_ROOT.'Message/get-messages/current' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='current'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp;Current</a>
+											<a href="<?php echo HTTP_ROOT.'Message/get-messages/current' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='current'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Current')); ?></a>
 										</li>
 										
 										<li>
-											<a href="<?php echo HTTP_ROOT.'Message/get-messages/past' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='past'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp;Past</a>
+											<a href="<?php echo HTTP_ROOT.'Message/get-messages/past' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='past'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Past')); ?></a>
 										</li>
 										
 										<li >
-											<a href="<?php echo HTTP_ROOT.'Message/get-messages/archieved' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='archieved'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp;Archive</a>
+											<a href="<?php echo HTTP_ROOT.'Message/get-messages/archieved' ?>" class="<?php if(trim(@$this->request->params['pass'][0])=='archieved'){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Archive')); ?></a>
 										</li>
 								
 										
@@ -83,18 +83,18 @@
 							</div>
 						</li>
 						
-						<li class="panel panel-default <?php if((trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')) || (trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients'))){echo 'active';}else{echo '';}?>" id="dropdown">
+						<li class="panel panel-default <?php if((trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')) || (trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients'))){echo 'active msg-bg-white';}else{echo '';}?>" id="dropdown">
 							<a data-toggle="collapse" href="#dropdown-lvl2">
-								<span class="fa fa-thumbs-up"></span><span class="side-list">Favourites </span>
+								<span class="fa fa-thumbs-up"></span><span class="side-list"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Favourites')); ?> </span>
 							</a>
 
 						
 							<div id="dropdown-lvl2" class="panel-collapse <?php if((trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')) || (trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients'))){echo 'in';}else{echo '';}?> collapse">
 								<div class="panel-body">
 									<ul class="nav navbar-nav">
-										<li ><a href="<?php echo HTTP_ROOT.'dashboard/search-results-favourites'?>" class="<?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; Search Results Favourites</a></li>
+										<li ><a href="<?php echo HTTP_ROOT.'dashboard/search-results-favourites'?>" class="<?php if(trim($requestController)=='Dashboard' && (trim($requestAction)=='searchResultsFavourites')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Search Results Favourites')); ?></a></li>
 										
-										<li><a href="<?php echo HTTP_ROOT.'favclient/favourite-clients'?>" class="<?php if(trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; Favourite Clients</a></li>
+										<li><a href="<?php echo HTTP_ROOT.'favclient/favourite-clients'?>" class="<?php if(trim($requestController)=='Favclient' && (trim($requestAction)=='favouriteClients')){echo 'active';}else{echo '';}?>"><span class="fa fa-angle-double-right"></span>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Favourite Clients')); ?> </a></li>
 									</ul>
 								</div>
 							</div>
@@ -174,3 +174,11 @@
           </div>
         </div>
       </div>
+<style>
+.msg-bg-white{background:#fff !important;}
+.msg-bg-white a{color:#75a30b !important;}
+
+.msg-bg-white div.panel-body { background:#fff !important;}
+.msg-bg-white div.panel-body ul li a{background:#fff !important; }
+.msg-bg-white ul li a{color:#404040 !important;}
+</style>

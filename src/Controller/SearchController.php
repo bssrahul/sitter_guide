@@ -1574,11 +1574,16 @@ class SearchController extends AppController
 		$this->viewBuilder()->layout('landing');
 		$sitterId = convert_uudecode(base64_decode($sitterId));
 		$session->write('User.sitterId',$sitterId);
-		
+		  $userId = $session->read('User.id');
+		if($userId == $sitterId){
+			 	$this->setErrorMessage($this->stringTranslate(base64_encode("You Can't book itself.")));
+			 	//$this->Flash->error(__("You Can't book itself."));
+				return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
+		}else{
 		$UserSitterFavouriteModel = TableRegistry::get('UserSitterFavourites');
         $UsersModel = TableRegistry::get('Users');
         
-        $userId = $session->read('User.id');
+      
         $userType = $session->read('User.user_type');
         $userEmail = $session->read('User.email');
         $userName = $session->read('User.name');
@@ -1824,6 +1829,8 @@ class SearchController extends AppController
 				$this->set('guests_Info','');
 			}
 		}
+	}
+
 	}
 	
 	/**

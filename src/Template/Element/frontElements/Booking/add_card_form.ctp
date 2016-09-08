@@ -1,15 +1,26 @@
+<!-- ADD Payment Method -->
 <div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
-      <h3 class="payment-heading1">Your Payment Methods
-      </h3>
-      <p class="payment-text">Select your default method for payments on Sitterguide.  
-      </p>
+    	<div class="ph-wrap">
+        	<div class="row">
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Payment Methods')); ?></h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Select your default method for payments on Sitterguide')); ?>.</p>
+                </div>
+                
+            </div>
+      		
+		    
+        </div> 
     </div>
   </div>
+  
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
-      <div class="pay-outside-wrap creditly-wrapper">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="pay-outside-wrap creditly-wrapper">
 			<?php echo $this->Form->create(null, [
 					'url' => ['controller' => 'booking', 'action' => 'add-card-details'],
 					'id'=>'addCardDetail',
@@ -17,7 +28,7 @@
 				]);?>
 				  
 				<div class="form-group">
-				  <label>Name on Card
+				  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Name on Card')); ?>
 				  </label>
 				  
 					<?php 
@@ -27,7 +38,7 @@
 								'type'=>'text',
 								'data-rel'=>'card_holder_name_autofill',
 								'class'=>'billing-address-name form-control autoFillCard',
-								'placeholder'=>'Name on Card',
+								'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Name on Card')),
 								'value'=>isset($UserCardsData['card_holder_name'])?$UserCardsData['card_holder_name']:'',
 								
 								
@@ -39,7 +50,7 @@
 				<div class="row">
 				  <div class="col-lg-6 col-sm-5 col-md-6 col-xs-12 ">
 					<div class="form-group">
-					  <label>Credit Card No.
+					  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Credit Card No')); ?>.
 					  </label>
 						<?php 
 						echo $this->Form->input('Booking.card_number',[
@@ -53,7 +64,7 @@
 									'class'=>'credit-card-number form-control autoFillCard',
 									'maxlength'=>16,
 									'data-rel'=>'card_number_autofill',
-									'placeholder'=>"Card Number",
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode("Card Number")),
 									'value'=>isset($UserCardsData['card_number'])?chunk_split($UserCardsData['card_number'], 4, ' '):'',
 									
 						]);
@@ -63,7 +74,7 @@
 				  </div>
 				  <div class="col-lg-4 col-sm-3 col-md-4 col-xs-12 ">
 					<div class="form-group">
-					  <label>Expiration
+					  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Expiration')); ?>
 					  </label>
 					  <?php 
 						echo $this->Form->input('Booking.expiary_date',[
@@ -72,7 +83,7 @@
 									'type'=>'text',
 									'data-rel'=>'expiry_date_autofill',
 									'class'=>'expiration-month-and-year form-control autoFillCard',
-									'placeholder'=>'MM/YY',
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('MM/YY')),
 									'value'=>isset($UserCardsData['expiary_date'])?$UserCardsData['expiary_date']:'',
 									
 						]);
@@ -82,7 +93,7 @@
 				  </div>
 				  <div class="col-lg-2 col-sm-4 col-md-2 col-xs-12 ">
 					<div class="form-group">
-					  <label>CVV
+					  <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('CVV')); ?>
 					  </label>
 					  <?php 
 						echo $this->Form->input('Booking.cvv_code',[
@@ -91,7 +102,7 @@
 									'type'=>'password',
 									'cvv'=>4,
 									'class'=>'security-code form-control',
-									'placeholder'=>'CVV',
+									'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('CVV')),
 									'value'=>isset($UserCardsData['cvv_code'])?$UserCardsData['cvv_code']:'',
 									
 						]);
@@ -105,7 +116,7 @@
 					<div class="pay-tpborder">
 					  <i class="card_error"></i>	
 					  <ul class="list-inline">
-						<li>Step 1 of 2
+						<li><?php echo $this->requestAction('app/get-translate/'.base64_encode('Step 1 of 2')); ?>
 						</li>
 						<li class="pull-right">
 						  <input type='button' class="btn paybtnajax paybtn" value="Next" />
@@ -118,8 +129,10 @@
 			<?php echo $this->Form->end(); ?>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
-      <div class="card-credit ">
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+    	<div class="pay-outside-wrap card-img">
+      	  <div class="card-credit ">
         <div class="name-on-card">
           <p class="card_holder_name_autofill"><?php echo isset($UserCardsData['card_holder_name'])?$UserCardsData['card_holder_name']:'Name on Card'; ?></p>
         </div>
@@ -128,12 +141,14 @@
           <!-- <ul class="list-inline"><li>1234</li> <li>1234</li> <li>1234</li><li>1234</li></ul>-->
         </div>
         <div class="valid-up-to">
-          <p>Valid up to 
+          <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Valid up to')); ?> 
             <span class="expiry_date_autofill"><?php echo isset($UserCardsData['expiary_date'])?$UserCardsData['expiary_date']:'MM/YY'; ?>
             </span> 
           </p>
         </div>
       </div>
+      	</div>
     </div>
   </div>
 </div>
+<!-- /ADD Payment Method -->

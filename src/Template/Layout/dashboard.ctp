@@ -18,7 +18,7 @@
 		}
 		echo $this->Html->meta('favicon.ico',"$favUrl",array('type' => 'icon'));
 		?>
-		<title>Sitter Guide</title>
+		<title><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?></title>
 		<link rel=icon href="<?php echo HTTP_ROOT;?>img/create_logo.png" type="image/png">
 
 		<!-- Bootstrap Core CSS -->

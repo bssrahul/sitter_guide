@@ -26,11 +26,11 @@
                 <div class="sr-area-outer">
                   <div class="row st-head-txt">
                     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-                      <p>When you are Away
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('When you are Away')); ?>
                       </p>
                     </div>
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 hide-mob">
-                      <p>while you are at Home
+                      <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('while you are at Home')); ?>
                       </p>
                     </div>
                   </div>
@@ -96,7 +96,7 @@ $(document).ready(function() {
 		<div class="btmControl">
 			<div class="btnPlay btn" title="Play/Pause video"></div>
 			<div class="btnStop btn" title="Stop video"></div>
-			<div class="spdText btn">Speed: </div>
+			<div class="spdText btn"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Speed')); ?>: </div>
 			<div class="btnx1 btn text selected" title="Normal speed">x1</div>
 			<div class="btnx3 btn text" title="Fast forward x3">x3</div>
 			<div class="btnFS btn" title="Switch to full screen"></div>

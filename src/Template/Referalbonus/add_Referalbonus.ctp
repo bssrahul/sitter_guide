@@ -7,7 +7,7 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add Promo Code')); ?><small></small></h2>
+                                    <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Promo Code')); ?><small></small></h2>
 									<div class="clearfix"></div>
 							    </div>
 								<div class="x_content">
@@ -23,7 +23,7 @@
 										
 									]);?>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="promo_code"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Promo Code')); ?> <span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="promo_code"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Promo Code')); ?> <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 										<?php 
@@ -34,7 +34,7 @@
 										 </div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="coupon_type"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Coupon Type')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="coupon_type"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Coupon Type')); ?><span class="required">*</span>
 										</label>
 										<div class='col-md-6 col-sm-6 col-xs-12'>
 										 <?php echo $this->Form->input(
@@ -47,7 +47,7 @@
 										</div>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="discount_rate"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Discount Rate/Fixed')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="discount_rate"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Discount Rate/Fixed')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-11">
 										<?php 
@@ -70,7 +70,7 @@
 									</div>
 									
 									<div class="item form-group dobDiv">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="start_date"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Start Date')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="start_date"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Start Date')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										
@@ -79,13 +79,13 @@
 												'label' => false,
 												'readonly' => true,
 												'type' => "text",
-												'placeholder'=>'YYYY-MM-DD', 
+												'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('YYYY-MM-DD')), 
 												'class'=>'form-control col-md-7 col-xs-12',
 												]);
 										 ?>
 									</div>
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="expire_date"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Expire Date')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="expire_date"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Expire Date')); ?><span class="required">*</span>
 										</label>
 										<?php 
 										
@@ -94,7 +94,7 @@
 												'label' => false,
 												'readonly' => true,
 												'type' => "text",
-												'placeholder'=>'YYYY-MM-DD', 
+												'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('YYYY-MM-DD')), 
 												'class'=>'form-control col-md-7 col-xs-12',
 												]);
 										 ?>
@@ -125,7 +125,7 @@
 									</div>
 									-->
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="description"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?><span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
 											 <?php echo $this->Form->input('PromoCodes.description',
@@ -137,8 +137,8 @@
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('users/get-translate/'.base64_encode('Cancel')); ?></button>
-											<input id="send" type="submit" class="btn btn-success" value="<?php echo $this->requestAction('users/get-translate/'.base64_encode('Submit')); ?>">
+											<button type="button"  class="btn btn-primary" onclick="window.history.go(-1);"  ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Cancel')); ?></button>
+											<input id="send" type="submit" class="btn btn-success" value="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Submit')); ?>">
 										</div>
 									</div>
                                     <?php echo $this->form->end(); ?>

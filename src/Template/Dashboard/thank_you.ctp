@@ -10,14 +10,14 @@
                 <span >
                   <i>
                   </i>
-                </span> Congrats! Your payment has been recieved 
+                </span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Congrats! Your payment has been recieved ')); ?>
               </h1>
               <p class="thankyou-title">
               </p>
               <p class="thankyou-text" >
-                <span>What happens now
+                <span><?php echo $this->requestAction('app/get-translate/'.base64_encode('What happens now')); ?>
                 </span>
-                A few tips for enjoying a great stay with Sitter Guide
+               <?php echo $this->requestAction('app/get-translate/'.base64_encode('A few tips for enjoying a great stay with Sitter Guide')); ?> 
               </p>
             </div>
           </div>
@@ -28,9 +28,9 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Sitters will bound to give his best service to you
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitters will bound to give his best service to you')); ?>
                 </h3>
-                <p>The sitters you've contacted are likely to respond in under half an hour
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("The sitters you've contacted are likely to respond in under half an hour")); ?>
                 </p>
               </div>
             </div>
@@ -41,10 +41,10 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Booking will be  start as per scheduled date
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking will be  start as per scheduled date')); ?>
                 </h3>
-                <p>Your pet will be covered by our 
-                  <a href="<?php echo HTTP_ROOT;?>insurance">premium pet insurance
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your pet will be covered by our')); ?>
+                  <a href="<?php echo HTTP_ROOT;?>insurance"><?php echo $this->requestAction('app/get-translate/'.base64_encode('premium pet insurance')); ?>
                   </a>.
                 </p>
               </div>
@@ -55,15 +55,15 @@
                 </span>
               </div>
               <div class="thankyou-icon-righttext">
-                <h3>Don't forgot to leave your rating along with valudable feedback
+                <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("Don't forgot to leave your rating along with valudable feedback")); ?>
                 </h3>
-                <p>Your sitter wants to know about his services! We also curious to get more information about your booking, for making better your dog's stay will be next deal.
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("Your sitter wants to know about his services! We also curious to get more information about your booking, for making better your dog's stay will be next deal")); ?>.
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
-                <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT; ?>" >Return to home page
+                <button class="btn  btn-block btn-return" onclick="location.href='<?php echo HTTP_ROOT; ?>" ><?php echo $this->requestAction('app/get-translate/'.base64_encode('Return to home page')); ?>
                 </button>
               </div>
             </div>

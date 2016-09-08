@@ -131,108 +131,108 @@
 											$act = $this->request->params['action'];
 										  ?>     
                   <select class="form-control"  id="multiLingual"> 
-                    <option value="">CHOOSE LANGUAGE</option>                 
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/en/'.$cont.'/'.$act;?>">ENGLISH</option>                                          
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/fr/'.$cont.'/'.$act;?>">FRENCH</option> 
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/de/'.$cont.'/'.$act;?>">GERMAN</option>  
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/hu/'.$cont.'/'.$act;?>">HUNGARIAN</option>  
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/it/'.$cont.'/'.$act;?>">ITALIAN</option>  
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/ro/'.$cont.'/'.$act;?>">ROMANIAN</option>  
+                    <option value=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('CHOOSE LANGUAGE')); ?></option>                 
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/en/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('ENGLISH')); ?></option>                                          
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/fr/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('FRENCH')); ?></option> 
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/de/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('GERMAN')); ?></option>  
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/hu/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('HUNGARIAN')); ?></option>  
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/it/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('ITALIAN')); ?>x</option>  
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/ro/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('ROMANIAN')); ?></option>  
                        <!--<option value="<?php echo HTTP_ROOT.'app/setGuestStore/ru/'.$cont.'/'.$act;?>">RUSSIAN</option>  -->
-                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/es/'.$cont.'/'.$act;?>">SPANISH</option>   
+                       <option value="<?php echo HTTP_ROOT.'app/setGuestStore/es/'.$cont.'/'.$act;?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('SPANISH')); ?></option>   
                   </select>              
              </div>                      
          </div>
          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="form-group">
                      <select class="form-control" id="">                                          
-						  <option value="AED">USD</option>
+						  <option value="AED"><?php echo $this->requestAction('app/get-translate/'.base64_encode('USD')); ?></option>
 						
-						  <option value="ARS">ARS</option>
+						  <option value="ARS"><?php echo $this->requestAction('app/get-translate/'.base64_encode('ARS')); ?></option>
 						
-						  <option value="AUD">AUD</option>
+						  <option value="AUD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('AUD')); ?></option>
 						
-						  <option value="BGN">BGN</option>
+						  <option value="BGN"><?php echo $this->requestAction('app/get-translate/'.base64_encode('BGN')); ?></option>
 						
-						  <option value="BRL">BRL</option>
+						  <option value="BRL"><?php echo $this->requestAction('app/get-translate/'.base64_encode('BRL')); ?></option>
 						
-						  <option value="CAD">CAD</option>
+						  <option value="CAD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CAD')); ?></option>
 						
-						  <option value="CHF">CHF</option>
+						  <option value="CHF"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CHF')); ?></option>
 						
-						  <option value="CLP">CLP</option>
+						  <option value="CLP"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CLP')); ?></option>
 						
-						  <option value="CNY">CNY</option>
+						  <option value="CNY"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CNY')); ?></option>
 						
-						  <option value="COP">COP</option>
+						  <option value="COP"><?php echo $this->requestAction('app/get-translate/'.base64_encode('COP')); ?></option>
 						
-						  <option value="CRC">CRC</option>
+						  <option value="CRC"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CRC')); ?></option>
 						
-						  <option value="CZK">CZK</option>
+						  <option value="CZK"><?php echo $this->requestAction('app/get-translate/'.base64_encode('CZK')); ?></option>
 						
-						  <option value="DKK">DKK</option>
+						  <option value="DKK"><?php echo $this->requestAction('app/get-translate/'.base64_encode('DKK')); ?></option>
 						
-						  <option value="EUR">EUR</option>
+						  <option value="EUR"><?php echo $this->requestAction('app/get-translate/'.base64_encode('EUR')); ?></option>
 						
-						  <option value="GBP">GBP</option>
+						  <option value="GBP"><?php echo $this->requestAction('app/get-translate/'.base64_encode('GBP')); ?></option>
 						
-						  <option value="HKD">HKD</option>
+						  <option value="HKD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('HKD')); ?></option>
 						
-						  <option value="HRK">HRK</option>
+						  <option value="HRK"><?php echo $this->requestAction('app/get-translate/'.base64_encode('HRK')); ?></option>
 						
-						  <option value="HUF">HUF</option>
+						  <option value="HUF"><?php echo $this->requestAction('app/get-translate/'.base64_encode('HUF')); ?></option>
 						
-						  <option value="IDR">IDR</option>
+						  <option value="IDR"><?php echo $this->requestAction('app/get-translate/'.base64_encode('IDR')); ?></option>
 						
-						  <option value="ILS">ILS</option>
+						  <option value="ILS"><?php echo $this->requestAction('app/get-translate/'.base64_encode('ILS')); ?></option>
 						
-						  <option value="INR">INR</option>
+						  <option value="INR"><?php echo $this->requestAction('app/get-translate/'.base64_encode('INR')); ?></option>
 						
-						  <option value="JPY">JPY</option>
+						  <option value="JPY"><?php echo $this->requestAction('app/get-translate/'.base64_encode('JPY')); ?></option>
 						
-						  <option value="KRW">KRW</option>
+						  <option value="KRW"><?php echo $this->requestAction('app/get-translate/'.base64_encode('KRW')); ?></option>
 						
-						  <option value="MAD">MAD</option>
+						  <option value="MAD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('MAD')); ?></option>
 						
-						  <option value="MXN">MXN</option>
+						  <option value="MXN"><?php echo $this->requestAction('app/get-translate/'.base64_encode('MXN')); ?></option>
 						
-						  <option value="MYR">MYR</option>
+						  <option value="MYR"><?php echo $this->requestAction('app/get-translate/'.base64_encode('MYR')); ?></option>
 						
-						  <option value="NOK">NOK</option>
+						  <option value="NOK"><?php echo $this->requestAction('app/get-translate/'.base64_encode('NOK')); ?></option>
 						
-						  <option value="NZD">NZD</option>
+						  <option value="NZD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('NZD')); ?></option>
 						
-						  <option value="PEN">PEN</option>
+						  <option value="PEN"><?php echo $this->requestAction('app/get-translate/'.base64_encode('PEN')); ?></option>
 						
-						  <option value="PHP">PHP</option>
+						  <option value="PHP"><?php echo $this->requestAction('app/get-translate/'.base64_encode('PHP')); ?></option>
 						
-						  <option value="PLN">PLN</option>
+						  <option value="PLN"><?php echo $this->requestAction('app/get-translate/'.base64_encode('PLN')); ?></option>
 						
-						  <option value="RON">RON</option>
+						  <option value="RON"><?php echo $this->requestAction('app/get-translate/'.base64_encode('RON')); ?></option>
 						
-						  <option value="RUB">RUB</option>
+						  <option value="RUB"><?php echo $this->requestAction('app/get-translate/'.base64_encode('RUB')); ?></option>
 						
-						  <option value="SAR">SAR</option>
+						  <option value="SAR"><?php echo $this->requestAction('app/get-translate/'.base64_encode('SAR')); ?></option>
 						
-						  <option value="SEK">SEK</option>
+						  <option value="SEK"><?php echo $this->requestAction('app/get-translate/'.base64_encode('SEK')); ?></option>
 						
-						  <option value="SGD">SGD</option>
+						  <option value="SGD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('SGD')); ?></option>
 						
-						  <option value="THB">THB</option>
+						  <option value="THB"><?php echo $this->requestAction('app/get-translate/'.base64_encode('THB')); ?></option>
 						
-						  <option value="TRY">TRY</option>
+						  <option value="TRY"><?php echo $this->requestAction('app/get-translate/'.base64_encode('TRY')); ?></option>
 						
-						  <option value="TWD">TWD</option>
+						  <option value="TWD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('TWD')); ?></option>
 						
-						  <option value="UAH">UAH</option>
+						  <option value="UAH"><?php echo $this->requestAction('app/get-translate/'.base64_encode('UAH')); ?></option>
 						
-						  <option selected="" value="USD">USD</option>
+						  <option selected="" value="USD"><?php echo $this->requestAction('app/get-translate/'.base64_encode('USD')); ?></option>
 						
-						  <option value="UYU">UYU</option>
+						  <option value="UYU"><?php echo $this->requestAction('app/get-translate/'.base64_encode('UYU')); ?></option>
 						
-						  <option value="VND">VND</option>
+						  <option value="VND"><?php echo $this->requestAction('app/get-translate/'.base64_encode('VND')); ?></option>
 						
-						  <option value="ZAR">ZAR</option>
+						  <option value="ZAR"><?php echo $this->requestAction('app/get-translate/'.base64_encode('ZAR')); ?></option>
 						
 					  </select>             
                                           </div> 
@@ -257,7 +257,7 @@ if(!isset($_COOKIE["userCookie"])){
 			<div class="row">
 				<div class="container">
 					<div class="cbw-area">
-						<p>By using our website, you agree to the use of cookies as described in our <a href="<?php echo HTTP_ROOT."privacy"; ?>">Privacy Policy</a>  <b id="hide">X</b></p>
+						<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('By using our website, you agree to the use of cookies as described in our')); ?>x <a href="<?php echo HTTP_ROOT."privacy"; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Privacy Policy')); ?></a>  <b id="hide">X</b></p>
 					</div>
 				</div>
 			</div>

@@ -1,15 +1,22 @@
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
     <div class="row">
-        <div class="profiletab-section">
+    	<div class="container-fluid">
+    	    <div class="profiletab-section">
+        	<div class="db-top-bar-header bg-title">
+             	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
 			<h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
+            </div>
+            </div>
 				<?php echo $this->element('frontElements/profile/sitter_nav');?>
-        </div>
+       
         <div class="tab-sectioninner book-pro">
             <div class="tab-content">
-                <div class="tab-pane fade tab-comm active in" id="menu4">
-                    <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
-					<p class="head-font2 pad-head-foot pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can select and modify your settings in this central control panel')); ?></p>
-								
+            	<div class="col-lg-12 col-ms-12 col-sm-12 col-xs-12">
+                	<div class="tab-pane fade tab-comm active in" id="menu4">
+                    	<div class="tc-head tc-head-6">
+                    <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Which service and rates would you like to offer?')); ?> </h2>
+					<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can select and modify your settings in this central control panel')); ?></p>
+					</div>			
 					<h4 id="terms" ><i><img src="<?php echo HTTP_ROOT; ?>img/calendar-with-a-clock-time-tools.png" width="22" height="22" alt="calender"></i> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Going away on leave?')); ?>  <a href="<?php echo HTTP_ROOT.'dashboard/calendar' ?>" class="color-green"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Click here')); ?></a><?php echo $this->requestAction('app/get-translate/'.base64_encode('  to update your calendar settings')); ?> </h4>
 				  <h3></h3>
 					 <?php 
@@ -2587,9 +2594,13 @@
 						<?php echo $this->Form->end(); ?>
 
 				</div>
+                </div>
+                
 			</div>
 		</div>
 	</div>
+    	</div>
+</div>
 </div>
 
 <?php echo $this->Html->css('Front/dist/jquery.onoff.css');

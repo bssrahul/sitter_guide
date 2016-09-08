@@ -575,7 +575,9 @@ class GuestsController extends AppController
 							$UsersData->longitude=$sourceLocationLongitude;					
 							// end get latitude and longitude from country and zip start			
 							$UsersData->status = 0;
-							if($UsersModel->save($UsersData))
+							$SaveNewUser=$UsersModel->save($UsersData);
+							$newUserId=$SaveNewUser['id'];
+							if($SaveNewUser)
 							{
 								$getUsersTempId1 = $UsersData->id;
 								$UserBadgedata->user_id= $UsersData->id;
@@ -630,7 +632,9 @@ class GuestsController extends AppController
 										die;
 									}else{
 										$this->setSuccessMessage($this->stringTranslate(base64_encode(SIGN_UP)));
-										return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou']);			
+										return $this->redirect(['controller' => 'guests', 'action' => 'sign-thankyou', '?' => array(
+        'newuserid' => $newUserId
+    )]);			
 								//die;
 									}
 							 
@@ -1094,7 +1098,7 @@ class GuestsController extends AppController
 	}
 	
 	public function checkDevice() {
-		
+		/*
 		$this->loadComponent('MobileDetect');
 		
 		// Any mobile device (phones or tablets).
@@ -1102,14 +1106,151 @@ class GuestsController extends AppController
 			$detect= "mobile";	
 		} else {
 			$detect= "desktop";
+		}*/
+		$useragent=$_SERVER['HTTP_USER_AGENT'];
+
+		if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))){
+			
+			$detect= "mobile";
+		}else{
+			$detect= "desktop";
 		}
+
 		$this->set('detect',$detect);
 	}
+	
+	
 	public function signThankyou(){
 		$this->viewBuilder()->layout('landing');
+		if(!empty($_GET['newuserid'])){
+				 $newUserID=$_GET['newuserid'];
+		}
 		$SiteModel = TableRegistry::get('SiteConfigurations');
 		$siteConfigurationData=$SiteModel->find('all')->toArray();
 		$this->set('siteConfigurationData',$siteConfigurationData);
+		// for find near by users
+		$UsersModel= TableRegistry::get('Users');
+		$userData=$UsersModel->find('all')->where(['id'=>$newUserID])->toArray();
+				    //$Userratingdata=$userData->user_ratings;
+					//$userFromArr=array();
+					//foreach($Userratingdata as $Userrating){
+					//	$userFromArr[]=$Userrating->user_from;
+					//}
+					$gettingUserData=$UsersModel->find('all')->where(['user_type'=>'Sitter'])->contain(['Users_badge','UserRatings','UserSitterServices'])->toArray();
+					// echo "<pre>"; print_R($gettingUserData);die;
+					 $commentUserData=array();
+					//foreach($gettingUserData as $gettingUser){
+						//	if(in_array($gettingUser->id,$userFromArr)){
+							//	$commentUserData[]=$gettingUser;
+						//	} 
+					//}
+				
+					$sourceLocationLatitude =$userData[0]->latitude;
+					$sourceLocationLongitude =$userData[0]->longitude;
+					if((!empty($sourceLocationLatitude)) && (!empty($sourceLocationLongitude))){
+					$query='SELECT
+									  id, (
+										3959 * acos (
+										  cos ( radians('.$sourceLocationLatitude.') )
+										  * cos( radians( latitude ) )
+										  * cos( radians( longitude ) - radians('.$sourceLocationLongitude.') )
+										  + sin ( radians('.$sourceLocationLatitude.') )
+										  * sin( radians( latitude ) )
+										)
+									  ) AS distance
+									FROM users
+									HAVING distance < '.DEFAULT_RADIUS.'
+									ORDER BY distance';
+				$connection = ConnectionManager::get('default');
+				$results = $connection->execute($query)->fetchAll('assoc');	//RETURNS ALL USER ID WITH DISTANSE 			
+				$finalDistanceArr=array();
+				foreach($results as $result){
+					foreach($gettingUserData as $favData){
+							$selUserData=$favData->id;
+							if(in_array($selUserData,$result)){
+								
+								$finalDistanceArr[]=$result;
+							} 
+				} 
+				}
+				
+				if(!empty($finalDistanceArr)){
+					$idArr = array();
+					$distanceAssociation = array();
+					foreach($finalDistanceArr as $resultsValue){
+							$idArr[] = $resultsValue['id']; //STORE ALL ID INTO AN ARRAY
+							//STORE ALL DISTANCE ALONG WITH USER ID AS KEY INTO AN ARRAY
+							$distanceAssociation[$resultsValue['id']] = $resultsValue['distance'];
+				}}
+				//echo "<pre>"; print_R($distanceAssociation);die;
+				$nearUseridArr=array();	
+				foreach($distanceAssociation as $key=>$diatance){
+						if($diatance != 0){
+								$nearUseridArr[]=$key;
+						}
+				}	
+		
+				$this->set('distanceAssociation',$distanceAssociation);	
+				$bookingRequestModel = TableRegistry :: get("BookingRequests");
+				
+					
+				foreach($gettingUserData as $key=> $gettingUser){
+						if(in_array($gettingUser->id,$nearUseridArr)){
+							@$flag++;
+							if($flag < 5){
+								$getUsersArr[]=$gettingUser;
+								$userIDs=$gettingUser['id'];
+						
+							
+				
+				$getUsersArr[$key]['repeatClient'] = $bookingRequestModel->find('all')
+							->where(['BookingRequests.sitter_id' => $userIDs/*,'BookingRequests.folder_status_guest' => "pending"*//*,'BookingRequests.read_status' => "unread"*/])
+							->group('BookingRequests.user_id HAVING COUNT(BookingRequests.user_id) != 1' )
+							->hydrate(false)->count();
+							
+				
+			//end repeat client
+							}
+							
+						}
+				}
+			
+			$this->set('getUsersArr',$getUsersArr);
+			
+		}
+				//echo "<pre>"; print_R($getUsersArr);die;
+		
+		
+		//end of near by user function
+		
+		if(isset($this->request->data) && !empty($this->request->data))
+		{
+			//pr($this->request->data);
+				//echo "<pre>"; print_r($this->request->data); die;
+				$userID=$this->request->data['checkboxG3'];
+				$message=$this->request->data['message'];
+				$newUserData=$UsersModel->find('all')->where(['id'=>$newUserID])->toArray();
+				//echo "<pre>"; print_r($newUserData); die;
+				$name=$newUserData[0]['first_name']." ".$newUserData[0]['last_name'];
+				$email=$newUserData[0]['email'];
+				
+				$Userdata=array();
+				foreach($userID as $user){
+					$Userdata=$UsersModel->find('all')->where(['id'=>$user])->toArray();
+					$full_name=$Userdata[0]['first_name']." ".$Userdata[0]['last_name'];
+					$emailReceive=$Userdata[0]['email'];
+					
+					$replace = array('{full_name}','{name}','{email}','{message}');
+					$with = array($full_name,$name,$email,$message);
+					$this->send_email('',$replace,$with,'contact_request_on_registration',$emailReceive,'');
+				}
+				$this->setSuccessMessage($this->stringTranslate(base64_encode("Your message send to selected Sitters.")));
+			 	//$this->Flash->error(__("You Can't book itself."));
+				return $this->redirect(['controller' => 'Guests', 'action' => 'home']);
+				//echo "<pre>"; print_r($Userdata); die;
+		} 
+		
+		
 	}
 	//For cookie
 	function userCookie(){

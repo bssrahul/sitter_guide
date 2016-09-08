@@ -57,14 +57,14 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><?php echo $this->requestAction('users/get-translate/'.base64_encode('Strings Listing')); ?></h2><h2 style="float:right">
+					<h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Strings Listing')); ?></h2><h2 style="float:right">
 						
 					<?php 
 					$languageSession = $this->request->session();
 					if($languageSession->read('requestedLanguage')=='en'){ ?>	
 					<a style="float:right" href="<?php echo HTTP_ROOT.'cmspages/add-string'; ?>">
 					
-					<button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Add String')); ?></button>
+					<button class="btn btn-success addUser" type="button"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add String')); ?></button>
 					</a>
 					<?php } ?>
 					</h2>
@@ -78,13 +78,13 @@
 							<tr class="headings">
 								<th class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
 								<!--<th class="text-center column-title"><?php echo $this->Paginator->sort('StaticStrings.page_name', 'Page Name')?></th>-->
-								<th style="width:300px;"   class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Slug')); ?></th>
-								<th style="width:300px;"   class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Value')); ?></th> 
-								<!--<th class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Created')); ?></th>-->
-							    <th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th style="width:300px;"   class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Slug')); ?></th>
+								<th style="width:300px;"   class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Value')); ?></th> 
+								<!--<th class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Created')); ?></th>-->
+							    <th class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 							</tr>
 						</thead>
@@ -114,8 +114,8 @@
 										echo date("F  j,Y",strtotime($string_info->created_date));
 								?></td>-->
 								<td class=" last">
-								  <a title="Edit" href="<?php echo HTTP_ROOT."cmspages/edit-string/".$string_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
-								 <a title="Delete" href="<?php echo HTTP_ROOT."users/delete-row/".'StaticStrings'.'/'.base64_encode(convert_uuencode($string_info->id));?>" onclick="if(!confirm('Are you sure to delete this Record?')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
+								  <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit')); ?>" href="<?php echo HTTP_ROOT."cmspages/edit-string/".$string_info->id;?>"><span><i class="fa fa-pencil-square"></i></span></a>
+								 <a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Delete')); ?>" href="<?php echo HTTP_ROOT."users/delete-row/".'StaticStrings'.'/'.base64_encode(convert_uuencode($string_info->id));?>" onclick="if(!confirm('<?php echo $this->requestAction('app/get-translate/'.base64_encode('Are you sure to delete this Record?')); ?>')){return false;}" ><span class="fa fa-fw fa-trash-o"></span></a>
 								
 								</td>
 							</tr>
@@ -123,7 +123,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
+									<td class="noRecords" colspan="7" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

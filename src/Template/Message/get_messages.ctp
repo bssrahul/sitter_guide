@@ -3,27 +3,29 @@
 	echo $this->Html->script(['Front/messages.js']); 
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
-  <div class="row  no-padding-left no-padding-right">
-  	<div class="db-top-bar-header">
+<div class="container-fluid">
+  <div class="row">
+  	<div class="db-top-bar-header bg-title">
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <h3>
-        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Inbox
+        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox'));?>
       </h3>
     </div>
 
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
-        <li> You are here : 
+        <li> <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here'));?> : 
         </li>
         <li>
-          <a href="#">Home
+          <a href="#"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home'));?>
           </a>
         </li>
-        <li class="active">Inbox
+        <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox'));?>
         </li>
       </ol>
     </div>
     </div>
+  </div>
   </div>
   <?php if(!empty($get_requests[0]['message'])){ ?>
 	
@@ -40,7 +42,7 @@
                     <span> 
                       <i class="fa fa-inbox">
                       </i>
-                    </span> Inbox
+                    </span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox'));?> 
                   </p>
                 </li>
                            
@@ -70,7 +72,7 @@
               <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 message-pad-left-0">
                   <div class="chat-wrapper">
-                    <div class="chat-title1">To : 
+                    <div class="chat-title1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('To'));?> : 
                       <span> 
                         <b>
 							<?php echo (@$get_booking_requests_to_display['user']['first_name'] !='')? @$get_booking_requests_to_display['user']['first_name'] : ""; ?> 
@@ -124,7 +126,7 @@
 							<span> 
 							  <i class="fa fa-inbox">
 							  </i>
-							</span> Inbox
+							</span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Inbox'));?> 
 						  </p>
 						</li>
 								   
@@ -139,7 +141,7 @@
 				<div class="container-fluid" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 100%; margin-top: -30px; height: 580px; padding: 20px;">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h5>No <?php echo ucwords($display_thread_folder_status); ?> Booking found</h5>
+							<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('No'));?>  <?php echo ucwords($display_thread_folder_status); ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('Booking found'));?> </h5>
 						</div>
 					</div>
 				</div>		

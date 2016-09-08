@@ -3,59 +3,12 @@
 
 
 .nopadright { padding-right:0px;}
-
-.review1-wrap  { background:#eaeaea; padding:0px 20px 30px 20px; margin-top:30px; margin-bottom:30px; }
-
-/*.review1-thead {
-    color: #72a105;
-    font-family: "Century Gothic";
-    font-size: 16px;
-    font-weight: 600; padding-top:20px; padding-bottom:5px;
- 
-}
-*/
-
-.reviw-area { margin-top:20px;}
-
+.review1-wrap  { background:#eaeaea; padding:0px 20px 30px 20px; margin:30px 0; }
+.reviw-area { margin:20px 0 0 0;}
 .reviw-area textarea { max-width:800px;}
-
-
-.review1-thead {
-    border-bottom: 1px solid #d1d1d1;
-    color: #72a105;
-    float: left;
-    font-size: 16px;
-    margin-bottom: 10px;
-    padding-bottom: 15px;
-    position: relative;  padding-top:20px;
-    width: 100%;
-}
-
-.review1-thead::before {
-    border-top: 1px solid #7cab0d;
-    bottom: -1px;
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 10%;
-}
-
-
-
-.rewiw-width60 {
-    float: left;
-    font-family: "Raleway",sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    width: 59%;
-}
-
-.rewiw-width40 {
-    float: left;
-    font-family: "Raleway",sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    width: 41%;
-}
-
+.review1-thead {border-bottom: 1px solid #d1d1d1;color: #72a105; float: left;font-size: 16px; margin:0px; padding-bottom: 15px; position: relative;  padding-top:20px;width: 100%;}
+.review1-thead::before {border-top: 1px solid #7cab0d; bottom: -1px; content: ""; position: absolute; right: 0; width: 10%;}
+.rewiw-width60 { float: left; font-family: "Raleway",sans-serif; font-size: 13px;  font-weight: 600; width: 59%;}
+.rewiw-width40 {  float: left;  font-family: "Raleway",sans-serif; font-size: 13px; font-weight: 800; width: 41%;}
 .rtp { padding-top:10px;}
+

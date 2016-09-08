@@ -3,13 +3,13 @@
 <div class="container">
 <div class="row">
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-7">
-<h3 class="refer-big-text">You've received a $20 gift* from a friend</h3>
-<p class="refer-text-small">Create your free sitterguide account and the $20 credit will be automatically deposited into your account.</p>
+<h3 class="refer-big-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode("You've received a $20 gift* from a friend"));?></h3>
+<p class="refer-text-small"><?php echo $this->requestAction('app/get-translate/'.base64_encode("Create your free sitterguide account and the $20 credit will be automatically deposited into your account"));?>.</p>
 </div>
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
 <div class="referform-outer">
                  <h4 class="claim-top-heading">
-                        Claim My $20
+                       <?php echo $this->requestAction('app/get-translate/'.base64_encode("Claim My $20"));?> 
                     </h4>
                  <div>       
             <?php echo $this->Form->create(@$userData,[
@@ -61,11 +61,11 @@
 			 echo '<em class="signup_error error">'.__(@$error['current_password'][0]).'</em>';
         ?>
       
-      <button class="btn btn-claim btn-block" type="submit">Claim My $20</button>
+      <button class="btn btn-claim btn-block" type="submit"> <?php echo $this->requestAction('app/get-translate/'.base64_encode("Claim My $20"));?></button>
       
     <?php echo $this->Form->end(); ?>
     
-     <p class="prvacy-guranted">100% Privacy Guaranteed.</p>
+     <p class="prvacy-guranted"> <?php echo $this->requestAction('app/get-translate/'.base64_encode("100% Privacy Guaranteed"));?> .</p>
           </div>
 
 </div>
@@ -85,8 +85,8 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 <div class="head-box mar80top">
-          <h3>How it Works?</h3>
-          <p>Find how sitterguide works to meets your expectations.</p>
+          <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("How it Works?"));?></h3>
+          <p><?php echo $this->requestAction('app/get-translate/'.base64_encode("Find how sitterguide works to meets your expectations"));?>.</p>
           <span class="head-bot"><b></b></span> </div>
 
 </div>
@@ -100,8 +100,8 @@
 
 <div class="referhowitworks">
 <i><img src="<?php echo HTTP_ROOT; ?>img/ref1-1.png" class="img-responsive center-block" alt=""/></i>
-<h3>Start Your Search</h3>
-<p>Search by zip code to find pet sitters and dog walkers in your neighborhood.</p>
+<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("Start Your Search"));?></h3>
+<p><?php echo $this->requestAction('app/get-translate/'.base64_encode("Search by zip code to find pet sitters and dog walkers in your neighborhood"));?>.</p>
 
 
 </div>
@@ -111,8 +111,8 @@
 
 <div class="referhowitworks">
 <i><img src="<?php echo HTTP_ROOT; ?>img/ref2-1.png" class="img-responsive center-block" alt=""/></i>
-<h3>Meet In-Person</h3>
-<p>Connect with a dog walker who's a good fit for you, your dog, and your lifestyle.</p>
+<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("Meet In-Person"));?></h3>
+<p><?php echo $this->requestAction('app/get-translate/'.base64_encode("Connect with a dog walker who's a good fit for you, your dog, and your lifestyle"));?>.</p>
 
 
 </div>
@@ -122,8 +122,8 @@
 
 <div class="referhowitworks">
 <i><img src="<?php echo HTTP_ROOT; ?>img/ref3-1.png" class="img-responsive center-block" alt=""/></i>
-<h3>Book and Pay</h3>
-<p>All payments are processed through Rover's secure platform—just like that!</p>
+<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode("Book and Pay"));?></h3>
+<p><?php echo $this->requestAction('app/get-translate/'.base64_encode("All payments are processed through Rover's secure platform—just like that!"));?></p>
 
 
 </div>

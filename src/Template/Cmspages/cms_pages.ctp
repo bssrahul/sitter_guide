@@ -65,14 +65,14 @@
 							<tr class="headings">
 								<th style="width:150px" class="text-center">
 									 <!--<input type="checkbox" class="tableflat">-->
-									 <?php echo $this->requestAction('users/get-translate/'.base64_encode('Sr. No.')); ?>
+									 <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sr. No.')); ?>
 								</th>
-								<th style="width:150px" class="text-center column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Image')); ?></th>
-								<th style="width:200px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Name')); ?></th>
-								<th style="width:200px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('URL')); ?></th>
-								<th style="width:150px" class="column-title"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Page Heading')); ?></th>
+								<th style="width:150px" class="text-center column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Image')); ?></th>
+								<th style="width:200px" class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Page Name')); ?></th>
+								<th style="width:200px" class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('URL')); ?></th>
+								<th style="width:150px" class="column-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Page Heading')); ?></th>
 					
-								<th style="width:150px" class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('users/get-translate/'.base64_encode('Action')); ?></span>
+								<th style="width:150px" class="column-title no-link last"><span class="nobr"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Action')); ?></span>
 								</th>
 								
 							</tr>
@@ -99,9 +99,9 @@
 								<td  style="width:200px" class=" "><?php echo $pages->pageurl; ?></td>
 								<td  style="width:400px" class=" "><?php echo $pages->pageheading;?></td>
 								<td class=" last">
-								<a title="Edit" href="<?php echo HTTP_ROOT.'cmspages/cms-pages-edit/'.base64_encode(convert_uuencode($pages->id)); ?>"><span><i class="fa fa-pencil-square"></i> </span></a>
+								<a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit')); ?>" href="<?php echo HTTP_ROOT.'cmspages/cms-pages-edit/'.base64_encode(convert_uuencode($pages->id)); ?>"><span><i class="fa fa-pencil-square"></i> </span></a>
 								&nbsp;&nbsp;&nbsp;&nbsp;
-									<a title="View Page" href="<?php echo HTTP_ROOT.$pages->pageurl; ?>" target="_blank">
+									<a title="<?php echo $this->requestAction('app/get-translate/'.base64_encode('View Page')); ?>" href="<?php echo HTTP_ROOT.$pages->pageurl; ?>" target="_blank">
 										<span>	
 											<i class="fa fa-eye"></i> 
 										</span>
@@ -113,7 +113,7 @@
 							} 
 							} else { ?>
 								<tr class="even pointer">
-									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('users/get-translate/'.base64_encode('No Records Found')); ?> </td>
+									<td class="noRecords" colspan="3" style=" text-align:center;"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('No Records Found')); ?> </td>
 								</tr>
 							<?php } ?>
 						</tbody>

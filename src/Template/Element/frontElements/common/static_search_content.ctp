@@ -28,11 +28,11 @@
 															<!-- Left and right controls -->
 															<a data-slide="prev" role="button" href=".customCrousal1" class="left carousel-control">
 															  <span aria-hidden="true" class="fa fa-chevron-left"></span>
-															  <span class="sr-only">Previous</span>
+															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous')); ?>   </span>
 															</a>
 															<a data-slide="next" role="button" href=".customCrousal1" class="right carousel-control">
 															  <span aria-hidden="true" class="fa fa-chevron-right"></span>
-															  <span class="sr-only">Next</span>
+															  <span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next')); ?>   </span>
 															</a>                                        
 															
 															
@@ -41,7 +41,7 @@
 												<!--quick view-->
 											
 													<div class="quick-view">
-															<a data-target="#myModal2" data-toggle="modal" class="qvBtn" data-rel="1" href="#"><i aria-hidden="true" class="fa fa-search"></i>Quick View </a>
+															<a data-target="#myModal2" data-toggle="modal" class="qvBtn" data-rel="1" href="#"><i aria-hidden="true" class="fa fa-search"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Quick View')); ?> </a>
 													</div>
 											
 												<!--/quick view-->                       

@@ -3,18 +3,18 @@
   <div class="row db-top-bar-header no-padding-left no-padding-right bg-title">
     <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
       <h3>
-        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> Review
+        <img src="<?php echo HTTP_ROOT; ?>img/db-profile-home-icon.png" alt="db-profile-home-icon"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Review')); ?>
       </h3>
     </div>
     <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
       <ol class="breadcrumb text-right">
-        <li> You are here : 
+        <li> <?php echo $this->requestAction('app/get-translate/'.base64_encode('You are here')); ?> : 
         </li>
         <li>
-          <a href="<?php echo HTTP_ROOT; ?>">Home
+          <a href="<?php echo HTTP_ROOT; ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Home')); ?>
           </a>
         </li>
-        <li class="active">Review
+        <li class="active"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Review')); ?>
         </li>
       </ol>
     </div>
@@ -26,11 +26,11 @@
           
           <ul class="nav nav-pills nav-justified">
             <li >
-              <a href="<?php echo HTTP_ROOT;?>rating/my-rating">Received Ratings</a>
+              <a href="<?php echo HTTP_ROOT;?>rating/my-rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Received Ratings')); ?></a>
             </li>
             
             <li class="active">
-              <a href="<?php echo HTTP_ROOT;?>rating/shared-rating">Shared Rating</a>
+              <a href="<?php echo HTTP_ROOT;?>rating/shared-rating"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Shared Rating')); ?></a>
             </li>
             
           </ul>
@@ -48,15 +48,15 @@
 						<thead class="cf">
 						  <tr class="title-bg border-bott">
 							
-							<th class="pad-l20">Member</th>
+							<th class="pad-l20"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Member')); ?></th>
 							
-							<th class="pad-l20">Rating</th>
+							<th class="pad-l20"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Rating')); ?></th>
 							
-							<th>Description</th>
+							<th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Description')); ?></th>
 							
-							<th>Location</th>
+							<th><?php echo $this->requestAction('app/get-translate/'.base64_encode('Location')); ?></th>
 							
-							<th class="numeric">Time</th>
+							<th class="numeric"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Time')); ?></th>
 						<?php	foreach($ratingsdata as $rating){
 								if($rating['change_to_request']== 1){ ?>
 							<th style="width=50px"></th>	
@@ -224,7 +224,7 @@
 								 <a href="<?php echo HTTP_ROOT.'dashboard/edit-user-review/'.base64_encode(convert_uuencode($rating['booking_id'])).'/'.base64_encode(convert_uuencode($rating['user_to'])).'/'.base64_encode(convert_uuencode($rating['id']))?>">						<button class="btn  bt-now">
 							<i class="fa fa-star">
 									</i>
-									Edit Rating
+									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Edit Rating')); ?>
 								</button>
 								</a>
 							 
@@ -239,7 +239,7 @@
 				<?php	
 				}else{ ?>
 				<div class="col-md-12 col-lg-12 col-sm-12">
-					<h5>No rating recieved yet</h5>
+					<h5><?php echo $this->requestAction('app/get-translate/'.base64_encode('No rating recieved yet')); ?></h5>
 				</div>
 				<?php	
 				}

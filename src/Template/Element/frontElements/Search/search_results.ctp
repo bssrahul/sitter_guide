@@ -632,7 +632,7 @@
 									<div class="sqv-box">
 							
 										<div class="top-close"> 
-											<p>Sitter Quick Details <?php echo @$results->id; ?></p>
+											<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Quick Details ')); ?><?php echo @$results->id; ?></p>
 											<a data-dismiss="modal" title="Close" href="#"><i aria-hidden="true" class="fa fa-times"></i></a>           
 										</div>
 							
@@ -677,13 +677,13 @@
 													<!-- Left and right controls -->
 													<a class="left ajaxSliderPrev carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="prev">
 														<span class="fa fa-chevron-left" aria-hidden="true"></span>
-														<span class="sr-only">Previous</span>
+														<span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Previous ')); ?></span>
 													</a>
 													
 													<a class="right ajaxSliderNext carousel-control" href="#customCrousalNext<?php echo $nextSlider; ?>" role="button" data-slide="next">
 														
 														<span class="fa fa-chevron-right" aria-hidden="true"></span>
-														<span class="sr-only">Next</span>
+														<span class="sr-only"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Next ')); ?></span>
 													</a>
 												</div>               	 
 											
@@ -758,22 +758,22 @@
 														
 														<div class="sqvmr-btn">
 															
-															<a title="Contact Sitter" href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">Contact Sitter</a>
+															<a title="Contact Sitter" href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Sitter')); ?></a>
 															
-															<a title="View Full Profile" href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>">View Full Profile</a>
+															<a title="View Full Profile" href="<?php echo HTTP_ROOT."search/sitter-details/".base64_encode(convert_uuencode($results->id)); ?>"><?php echo $this->requestAction('app/get-translate/'.base64_encode('View Full Profile')); ?></a>
 														</div>
 													
 														<div class="sqvmd-rt-bot">
 															<ul>
-																<li>90% response rate
-																	<span> Sitter responds to most requests within 24 hours</span>
+																<li><?php echo $this->requestAction('app/get-translate/'.base64_encode('90% response rate')); ?>
+																	<span> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter responds to most requests within 24 hours')); ?></span>
 																</li>
 																
-																<li>A few minutes <span>Sitter responds in a few minutes</span></li>
+																<li><?php echo $this->requestAction('app/get-translate/'.base64_encode('A few minutes ')); ?><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter responds in a few minutes')); ?></span></li>
 																
-																<li>30% of stays <span>Sitter rarely sends photos through Rover</span></li>
+																<li><?php echo $this->requestAction('app/get-translate/'.base64_encode('30% of stays ')); ?><span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter rarely sends photos through Rover')); ?></span></li>
 																
-																<li><?php echo $results->repeatClient; ?> repeat clients <span>Sitter had repeat clients</span></li>
+																<li><?php echo $results->repeatClient; ?><?php echo $this->requestAction('app/get-translate/'.base64_encode('repeat clients')); ?>  <span><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter had repeat clients')); ?></span></li>
 																
 															</ul>
 														</div>

@@ -91,7 +91,7 @@
 							   }
                             ?>
                          </div>	
-                         					<div class='form-group'>
+                         <div class='form-group'>
 							<label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Post/Zip Code')); ?> <i class="fa fa-asterisk" aria-hidden="true"></i></label>
 							 <?php  
 								echo $this->Form->input('Users.zip',[
@@ -177,7 +177,7 @@
 								]);
 								?> 
 								<?php echo '<em class="signup_error error">'.__(@$loginerror['birth_date'][0]).'</em>'; ?>
-								<i class="fa fa-calendar"></i>
+								 <div class="cal-box"><i class="fa fa-calendar"></i></div>
 							</div>
                            <div class="form-group pddtop">
 						   <label><?php echo $this->requestAction('app/get-translate/'.base64_encode('Have A Reference Code?')); ?> </label>
@@ -347,4 +347,24 @@ a.signup-color {
 }
 </style>
 
+<?php //echo $this->Html->script(['Front/chosen.jquery.min.js']); ?>
+<!--
+<script>
+$(function(){
+    $('select.ui-datepicker-year').chosen({width: '100%'});    
+    $('ul.chosen-results').css('min-height', '100%');
+    $('ul.chosen-results').css('max-height', '100%');
+
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    $("#users-birth-date").click(function(){
+    $('select.ui-datepicker-year').chosen({width: '100%'});    
+    $('ul.chosen-results').css('min-height', '150px');
+    $('ul.chosen-results').css('max-height', '150px');
+    });
+});
+</script>-->
 

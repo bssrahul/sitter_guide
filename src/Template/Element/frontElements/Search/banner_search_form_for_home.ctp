@@ -151,7 +151,7 @@
 							'templates' => ['inputContainer' => '{{content}}'],
 							'label' => false,
 							'type'=>'text',
-							'placeholder'=>'To',
+							'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('To')),
 							'class'=>'d-input',
 							'readonly'=>true,
 							'id'=>'boardingTo']);
@@ -179,25 +179,25 @@
 					  </label>
 					  <ul class="booking_days">
 						  <li class="dog-in-li ">
-							<span data-rel="sunday">S</span>
+							<span data-rel="sunday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('S')); ?></span>
 						  </li>
 						  <li class="dog-in-li ">
-							<span data-rel="monday">M</span>
+							<span data-rel="monday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('M')); ?></span>
 						  </li>
 						  <li class="dog-in-li ">
-							<span data-rel="tuesday">T</span>
+							<span data-rel="tuesday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('T')); ?></span>
 						  </li>
 						  <li class="dog-in-li ">
-							<span data-rel="wednessday">W</span>
+							<span data-rel="wednessday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('W')); ?></span>
 						  </li>
 						  <li class="dog-in-li ">
-							<span data-rel="thursday">T</span>
+							<span data-rel="thursday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('T')); ?></span>
 						  </li>
 						  <li class="dog-in-li ">
-							<span data-rel="friday">F</span>
+							<span data-rel="friday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('F')); ?></span>
 						  </li>
 						  <li class="dog-in-li ">
-							<span data-rel="saturday">S</span>
+							<span data-rel="saturday"><?php echo $this->requestAction('app/get-translate/'.base64_encode('S')); ?></span>
 						  </li>
 					</ul>
 					<!-- Search Field PET COUNT Start-->

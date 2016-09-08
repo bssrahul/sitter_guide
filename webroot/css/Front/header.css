@@ -2,19 +2,18 @@
 /* CSS Document */
 
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
-header {width: 100%; border-bottom:#72a105 5px solid; height:75px; position:fixed; top:0; left:0;   z-index:20;background-color: #ffffff;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition:
- height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
+header {width: 100%; border-bottom:#72a105 5px solid; height:75px; position:fixed; top:0; left:0;   z-index:20; background-color: #ffffff; }
 .head-wrap{ width:100%; float:left;}
 header .logo-area { width:100%; float:left; width:100%; max-width:252px; border-right:#b7b7b7 1px solid; height:70px; }
-header .desk-logo a{ margin:25px 0 0 7px; float:left; -webkit-transition: all 0.3s;  -moz-transition: all 0.3s;  -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;  } 
+header .desk-logo a{ margin:25px 0 0 7px; float:left; } 
 header .logo-area .mob-logo{ margin:20px 0 0 0; float:left ; display:none; } 
-header .top-search{ width:100%; max-width:500px; float:left; min-height:70px; background:#ffffff; -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
-header .top-search .search-box{ width:100%; max-width:475px; float:left;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
+header .top-search{ width:100%; max-width:500px; float:left; min-height:70px; background:#ffffff;   }
+header .top-search .search-box{ width:100%; max-width:475px; float:left;  }
 header .top-search .search-box .search-input{ width:100%; float:left; background: url(../../img/serach-icon.png) no-repeat center left; height:70px; border:0px; line-height:70px;  color:#666666; padding:0 0 0 44px;
-color:#c0c0c0; font-style:italic; font-size:16px; margin:0 0 0 29px; -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s; }
-header .topnav-area{ width:100%; float:left;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s;}
-header .topnav-area .navbar{ margin-bottom:0px; border-radius:0px; float:right; border:0px;  -webkit-transition: height 0.3s; -moz-transition: height 0.3s; -ms-transition: height 0.3s; -o-transition: height 0.3s;  transition: height 0.3s;  }
-header .topnav-area .navbar li{ padding:18px 9px; -webkit-transition: padding 0.3s; -moz-transition: padding 0.3s; -ms-transition: padding 0.3s; -o-transition: padding 0.3s;  transition: padding 0.3s;}
+color:#c0c0c0; font-style:italic; font-size:16px; margin:0 0 0 29px; }
+header .topnav-area{ width:100%; float:left;   }
+header .topnav-area .navbar{ margin-bottom:0px; border-radius:0px; float:right; border:0px;    }
+header .topnav-area .navbar li{ padding:18px 9px; }
 header .topnav-area .navbar li.dd-country{padding:15.5px 9px;}
 header .topnav-area .navbar li.dd-country a img{ width:18px; height:18px; border-radius:50%;}
 header .topnav-area .navbar li a{ color:#646464; padding:8px 10px; font-size:15px; font-weight:300;  }
@@ -26,7 +25,7 @@ header .topnav-area .navbar li a .badge{ background:#ff0000; margin:-15px 0 0 0;
 header.smaller .topnav-area .navbar li a .badge{ margin:-11px 0 0 0;}
 
 
-.topnav-area .navbar-nav li .currency-drop{padding:10px 15px 0 15px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:250px; float:left; left:auto; right:0px;  }
+.topnav-area .navbar-nav li .currency-drop{padding:10px 15px 0 15px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:200px; float:left; left:auto; right:0px;  }
 .topnav-area .navbar-nav li .drop-profile{ right:0px;}
 .topnav-area .navbar-nav li .currency-drop .cd-box { width:100%; float:left; background:#ffffff; border:#d6d6d6 1px solid; border-radius:2px; overflow:visible !important;  }
 .topnav-area .navbar-nav li .currency-drop .cd-box ul{ margin:0px; padding:0px; list-style-type:none;}
@@ -97,6 +96,37 @@ display:block; margin:10px 0 0 0;}
 .mob-country-drop ul li.last-drop .tab-content ul.c-list li a img{ float:left; margin:5px 12px 0 0; width:18px; height:18px; border-radius:50%;}
 .mob-country-drop ul li.last-drop .tab-content ul.c-list li:last-child{ background:none;}
 
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{ position:absolute;padding:5px 10px; top:46px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:200px; float:left; left:auto; right:0px;}
+.mob-country-drop ul  li.last-drop .country-drop{ position:absolute;padding:5px 10px;top:30px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:200px; float:left; left:auto; right:0px;}
+/* CSS for only currency dropdown in top navigation */
+.mob-top-nav { display:none;}
+
+.new-mob-area{ width:100%; float:left; position:relative;}
+#new-nav{ width:48px;height:46px; float:left; position:absolute; right:0px; display:none; }
+#new-nav img{ width:26px; height:17px; margin:14px 0 0 0; float:right; display:block; cursor:pointer; }
+#nav-inner{ width:100%; float:left; background:#f5f5f5; display:none; border-radius:3px; }
+
+#nav-inner .navbar-nav .open .dropdown-menu{position:relative;}
+#nav-inner .navbar-nav .open .dropdown-menu li{ padding:7px 0;}
+
+#nav-inner ul{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left;}
+#nav-inner ul li{width:100%; background:url(../../img/c-list-bgr-x.png) repeat-x bottom;}
+#nav-inner ul li a{ font-size:13px; padding:5px 0 5px 15px;}
+#nav-inner ul li.last-drop img{ width:18px; height:18px; border-radius:50%;}
+#nav-inner ul li.last-drop ul.c-list{ margin:0px; padding:0px; list-style-type:none;}
+#nav-inner ul li.last-drop ul.c-list li{ padding:4px 0 4px 0px; width:100%;}
+#nav-inner ul li.last-drop ul.c-list li a{ font-size:12px; }
+#nav-inner ul li.last-drop ul.c-list li a img{ margin:0 10px 0 0; width:15px; height:15px;}
+
+
+#nav-inner ul li #loginUser{ padding:5px 15px;}
+#nav-inner ul li #loginUser label{ font-size:13px; padding:5px 0; font-weight:normal;}
+#nav-inner ul li  #log_in_btn{ width:100%; margin:10px 0 0 0;}
+#nav-inner ul li p.forget{ font-size:12px; padding:5px 0 0 15px;}
+#nav-inner ul li p.forget a#droplogForgot{ padding:0px;}
+
+
 /*last drop down*/
 
 .topnav-area .navbar-toggle { background:#72a105; margin-right:0px;}
@@ -107,12 +137,12 @@ display:block; margin:10px 0 0 0;}
 /*Resize css*/
 header.smaller { height:50px ;   }
 header.smaller .logo-area{ height:45px;}
-header.smaller .desk-logo a{ margin:13px 0 0 25px;  -webkit-transition: all 0.3s;  -moz-transition: all 0.3s;  -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}
+header.smaller .desk-logo a{ margin:13px 0 0 25px;}
 header.smaller .top-search{ min-height:45px;}
 header.smaller .top-search .search-box{ height:45px;}
-header.smaller .top-search .search-box .search-input{height:45px; border:0px; line-height:50px;}
+header.smaller .top-search .search-box .search-input{height:45px; border:0px; line-height:50px; font-size:13.5px;}
 header.smaller .topnav-area .navbar li{ padding:5.3px 9px 10.3px 9px;  }
-header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-size:15px;}
+header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 7px; font-size:13px;}
 /*-----------------------------------------------------------New header css-----------------------------------------------------------------------*/
 
 /*========================================================Banner css start=====================================================*/
@@ -224,7 +254,7 @@ header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a b{font-size:14px; display:block; font-weight:500;  }
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li:last-child{ margin-right:0px;}
 
-.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a:hover,.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a:focus{ border:#72a105 3px solid; display:block; padding:3px 0;}
+.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a:hover,.ban-search-area .bs-box .search-bot-area .sb-area ul li .md-size ul li a:focus{/* border:#72a105 1px solid;*/ display:block; color:#72a105; }
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn{ width:100%; height:46px; border:0px; font-size:18px; margin:5px 0 0 0; background:#72A105;}
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn:hover{  background:#699305;}
 .ban-search-area .bs-box .search-bot-area .sb-area ul li .sb-btn:focus{ background:#699305;}
@@ -237,11 +267,11 @@ header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-
 .ban-search-area .bs-box .col-cont .market-place ul li:last-child a{ border-right:#d1d1d1 1px solid;}
 
 .ban-search-area .bs-box .col-cont .market-place ul li a.training{ color:#404040;}
-.ban-search-area .bs-box .col-cont .market-place ul li a.training:hover{ color:#ffffff; background:#404040;}
+/*.ban-search-area .bs-box .col-cont .market-place ul li a.training:hover{ color:#ffffff; background:#404040;}*/
 .ban-search-area .bs-box .col-cont .market-place ul li.active a.training { color:#ffffff; background:#404040;}
 
 .ban-search-area .bs-box .col-cont .market-place ul li a.recreation { color:#404040;}
-.ban-search-area .bs-box .col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#404040; }
+/*.ban-search-area .bs-box .col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#404040; }*/
 .ban-search-area .bs-box .col-cont .market-place ul li.active a.recreation{color:#ffffff;   background:#404040;}
 
 .ban-search-area .bs-box .col-cont .market-place ul li a.grooming  color:#404040;}
@@ -249,19 +279,14 @@ header.smaller .topnav-area .navbar li a{ color:#646464; padding:5px 10px; font-
 .ban-search-area .bs-box .col-cont .market-place ul li.active a.grooming{ color:#ffffff; background:#404040;}
 
 .ban-search-area .bs-box .col-cont .market-place ul li a.driver { color:#404040; border-right:#d1d1d1 1px solid;}
-.ban-search-area .bs-box .col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040; }
+/*.ban-search-area .bs-box .col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040; }*/
 .ban-search-area .bs-box .col-cont .market-place ul li.active a.driver{ color:#ffffff; background:#404040; }
-
 
 .ban-search-area .bs-box .sr-area .top-filter-tab ul li.display-mob{color: #404040;    font-size: 14px;    padding: 0 0 15px;    text-transform: uppercase; border:0px; background:none; font-weight:normal; display:none;}
 
 /*-------------------- New Banner Search CSS Start --------------------- */
 
-
 .standard-green{color:#72A105}
-
-
-
 /*=========================================================Banner css End======================================================*/
 
 
@@ -310,7 +335,7 @@ header{ height:75px;}
 header .logo-area { width:35%; max-width:252px; height:70px;}
 header .top-search{ width:65%; min-height:70px; max-width:100%; }
 header .top-search .search-box{ max-width:100%;}
-header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:16px;}
+header .top-search .search-box .search-input{ height:70px; margin:0 0 0 10px; padding:0 0 0 25px; font-size:13px;}
 header .logo-area .desk-logo{ display:block;}
 header .logo-area .mob-logo{ display: none;}
 header.smaller { height:auto;}
@@ -324,7 +349,6 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:7px 5px 7px 5px;}
 
 .ban-search-area{ margin:0px 0 0 0;}
 .banner-area .ban-txt .hworks{  font-size:16px; margin:25px auto 0;}
-
 
 }
 
@@ -353,9 +377,7 @@ header.smaller .topnav-area .navbar .nav-logout li{ padding:5px 0px 7px 0;}
 
 .ban-search-area .bs-box{ margin:15px 0 0 0px;}
 
-
 }
-
 
 @media (min-width:1025px) and (max-width:1199px){
 /*top head*/	
@@ -525,10 +547,19 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 .topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left;}
 
 /*last drop down*/
-.topnav-area .navbar-nav li.last-drop{ display:none;}
+.topnav-area .navbar-nav li.last-drop{ display:block;}
 .mob-country-drop{ display:block; width:20%; float:right;}
 .mob-country-drop ul{ float:right; margin:15px 0 0 0;}
 .mob-country-drop ul li.last-drop .country-drop ul.nav-tabs{ width:100%;}
+
+.desk-nav{ display:none; }
+#new-nav{ display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{width:100%; left:0px; top:35px;  }
+.mob-top-nav { display:block;}
+
+
 /*last drop down*/
 
 /*top head*/
@@ -590,10 +621,19 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 .topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left;}
 
 /*last drop down*/
-.topnav-area .navbar-nav li.last-drop{ display:none;}
+.topnav-area .navbar-nav li.last-drop{ display:block;}
 .mob-country-drop{ display:block; width:20%; float:right;}
 .mob-country-drop ul{ float:right; margin:15px 0 0 0;}
 .mob-country-drop ul li.last-drop .country-drop ul.nav-tabs{ width:100%;}
+
+.desk-nav{ display:none; }
+#new-nav{ display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{width:100%; left:0px; top:35px;  }
+.mob-top-nav { display:block;}
+
+
 /*last drop down*/
 
 
@@ -655,11 +695,22 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 .topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left; overflow-y:scroll;}
 
 /*last drop down*/
-.topnav-area .navbar-nav li.last-drop{ display:none;}
+.topnav-area .navbar-nav li.last-drop{ display:block;}
 .mob-country-drop{ display:block; width:20%; float:right;}
 .mob-country-drop ul{ float:right; margin:15px 0 0 0;}
 .mob-country-drop ul li.last-drop .country-drop ul.nav-tabs{ width:100%;}
+
+.desk-nav{ display:none; }
+#new-nav{ display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{width:100%; left:0px; top:35px;  }
+.mob-top-nav { display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+
 /*last drop down*/
+
 
 /*--top head---*/
 	

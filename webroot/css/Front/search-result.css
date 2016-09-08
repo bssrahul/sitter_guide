@@ -23,7 +23,8 @@
 .sr-area .top-filter-tab ul li a{ text-align:left; text-decoration:none; color:#404040; text-align:left; font-size:14px; line-height:18px; padding:15px 0 10px 0; display:block;}
 .sr-area .top-filter-tab ul li a span{ width:31px; height:29px; display:block; background:red; float:left; margin:3px 12px 0 35px; }
 .sr-area .top-filter-tab ul li a b{ font-weight:normal; font-size:12px;}
-.sr-area .top-filter-tab ul li a:hover, .sr-area .top-filter-tab ul li a:focus{ cursor:pointer;color:#72a105; background:url(../../img/search-tab-bgr-x.png) repeat-x bottom; }
+.sr-area .top-filter-tab ul li a:hover{ cursor:pointer;color:#72a105;  }
+.sr-area .top-filter-tab ul li a:focus{ cursor:pointer;color:#72a105; background:url(../../img/search-tab-bgr-x.png) repeat-x bottom; }
 .sr-area .top-filter-tab ul li a.boarding span {background:url(../../img/search-icons.png) no-repeat 0px -470px;}
 .sr-area .top-filter-tab ul li a.boarding:hover span, .sr-area .top-filter-tab ul li a.boarding:focus span {background:url(../../img/search-icons.png) no-repeat 0px -500px;}
 .sr-area .top-filter-tab ul li a.h-sitting span {background:url(../../img/search-icons.png) no-repeat -31px -470px;}
@@ -99,19 +100,19 @@
 .col-cont .market-place ul li a:hover, .col-cont .market-place ul li.active a {background:#404040; color:#ffffff;}
 
 .col-cont .market-place ul li a.training{background:url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#404040;}
-.col-cont .market-place ul li a.training:hover{ background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#ffffff;}
+/*.col-cont .market-place ul li a.training:hover{ background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#ffffff;}*/
 .col-cont .market-place ul li.active a.training { background:#404040 url(../../img/training-icon.png) no-repeat ; background-position:top 8px center; color:#ffffff;}
 
 .col-cont .market-place ul li a.recreation {background:url(../../img/recreation-icon.png) no-repeat; background-position:top 5px center; color:#404040;}
-.col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 8px center;}
+/*.col-cont .market-place ul li a.recreation:hover{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 8px center;}*/
 .col-cont .market-place ul li.active a.recreation{color:#ffffff; background:#4c4c4c url(../../img/recreation-icon-hover.png) no-repeat; background-position:top 8px center;}
 
 .col-cont .market-place ul li a.grooming {background:url(../../img/grooming-icon.png) no-repeat; background-position:top 8px center; color:#404040;}
-.col-cont .market-place ul li a.grooming:hover{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 8px center;}
+/*.col-cont .market-place ul li a.grooming:hover{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 8px center;}*/
 .col-cont .market-place ul li.active a.grooming{ color:#ffffff; background:#404040 url(../../img/grooming-icon-hover.png) no-repeat; background-position:top 8px center;}
 
 .col-cont .market-place ul li a.driver {background:url(../../img/driver-icon.png) no-repeat; background-position:top 8px center; color:#404040; border-right:#d1d1d1 1px solid;}
-.col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 8px center;}
+/*.col-cont .market-place ul li a.driver:hover{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 8px center;} */
 .col-cont .market-place ul li.active a.driver{ color:#ffffff; background:#404040 url(../../img/driver-icon-hover.png) no-repeat; background-position:top 8px center;}
 
 .price-range label.prcRangLbl{padding-bottom:20px; }
@@ -328,6 +329,10 @@
 .cont-sitter .cs-mid-cont .csmc-area .msg p{ font-size:13px; padding:0 0 10px 0;}
 .cont-sitter .cs-mid-cont .csmc-area .msg .txtarea{ width:100%; border:#dddddd 1px solid; height:186px; margin:0 0 10px 0;}
 .cont-sitter .cs-mid-cont .csmc-area .msg .send-msg{ width:182px; height:50px; border-radius:3px; text-align:center; margin:15px 0 10px 0; background:#72a105;}
+
+#myModal79 .res-ppup{ width:100%; max-width:1200px; margin:0 auto; overflow-y: hidden;}
+
+
 /*Contact Sitter Css End*/
 
 /*Additional Services*/

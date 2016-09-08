@@ -5,7 +5,10 @@
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
   <div class="row">
-    <div class="profiletab-section">
+  	<div class="container-fluid">
+	    <div class="profiletab-section">
+    <div class="db-top-bar-header bg-title">
+             	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
       <h3>
         <img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"> 
              <?php  $session = $this->request->session();
@@ -17,14 +20,20 @@
 			   }  
 			  ?>
       </h3>
+      </div>
+      </div>
       <?php echo $this->element('frontElements/profile/sitter_nav');?>
       <div class="tab-sectioninner book-pro">
             <div class="tab-content">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div id="menu2" class="tab-pane fade tab-comm active in">
-        <h2 id="basic-details" class="head-font">Now let us know who the sitter will be looking after.
+<div class="tc-head tc-head-3">
+        <h2 id="basic-details"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Now let us know who the sitter will be looking after')); ?>.
         </h2>
-        <p class="head-font2 pad-head-foot pad-22t">Your guest preferences are managed here
+        <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your guest preferences are managed here')); ?>
         </p>
+        </div>
+        
        <?php echo $this->Form->create(null,[
                       'url' => ['controller' => 'dashboard', 'action' => 'about-guest'],
                       'role'=>'form',
@@ -45,7 +54,7 @@
         <div id="ajaxAdd1" class="row ajaxAdd">
            <div class="row">
             <div class="form-group col-lg-4 col-md-6">
-              <label for="">Guest Name
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Guest Name')); ?>
               </label>
               <?php echo $this->Form->input('UserPets.Guest1.guest_name',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -58,7 +67,7 @@
               ?>
             </div>
             <div class="form-group col-lg-4 col-md-6">
-              <label for="">Type
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Type')); ?>
               </label>
               <?php echo $this->Form->input('UserPets.Guest1.guest_type',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -74,7 +83,7 @@
             </div>
             <?php if(@$guest_data['guest_type'] == 'dog'){ ?>
 				 <div class="form-group col-lg-4 col-md-6 showHideBreed1" style="display:block">
-                 <label for="">Breed
+                 <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Breed')); ?>
                  </label>
                <?php echo $this->Form->input('UserPets.Guest1.guest_breed',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -89,7 +98,7 @@
               </div>
 				<?php }else{ ?>
 					 <div class="form-group col-lg-4 col-md-6 showHideBreed1" style="display:none">
-              <label for="">Breed
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Breed')); ?>
               </label>
              <?php echo $this->Form->input('UserPets.Guest1.guest_breed',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -110,7 +119,7 @@
               <div class="row">
 				  <?php if(@$guest_data['guest_type'] == 'dog'){ ?>
 					  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed1" style="display:block">
-						 <label for="">Size
+						 <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Size')); ?>
                         </label>
 					<?php echo $this->Form->input('UserPets.Guest1.guest_weight',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -125,7 +134,7 @@
                 </div>
 					  <?php }else{ ?>
 						 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed1" style="display:none">
-                  <label for="">Size
+                  <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Size')); ?>
                   </label>
                          
                          
@@ -148,7 +157,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label for="">Age
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Age')); ?>
                       </label>
                       <?php echo $this->Form->input('UserPets.Guest1.guest_years',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -180,7 +189,8 @@
             <div class="form-group col-lg-4 col-md-6">
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <label for="">Gender
+                  <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Gender')); ?>
+                      </label>
                   </label>
                   
                     <div class="row">
@@ -218,7 +228,7 @@
           </div>
           <div class="row">
             <div class="form-group col-lg-4 col-md-12">
-              <label  for="">Short Description
+              <label  for=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Short Description')); ?> 
               </label>
               <?php echo $this->Form->input('UserPets.Guest1.guest_description',[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -233,7 +243,7 @@
                           <p class="w-limit" id="userpets-guest1-guest-description_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
             </div>
             <div class="form-group col-lg-4 col-md-6">
-              <label for="">Photo Library
+              <label for=""> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo Library')); ?>  
               </label>
               <div class="row" id="images_preview_1" >
 				<?php 
@@ -255,11 +265,11 @@
               </div>
             </div>
             <div class="form-group col-lg-4 col-md-12">
-              <p class="upload-txt">It is a long established fact that a reader will be by the page when looking at its layout. 
+              <p class="upload-txt"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('It is a long established fact that a reader will be by the page when looking at its layout')); ?>. 
               </p>
               <button type="button" class="btn btn-prof-upload browseImg" data-rel="1"> 
                 <i class="fa fa-upload ">
-                </i> &nbsp;&nbsp; Upload Image
+                </i> &nbsp;&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Image')); ?>
               </button>
               <div class="row" id="show-all-errors_1">
                  
@@ -267,12 +277,12 @@
             </div>
 
           </div>
-          <h3>Extended Profile
+          <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Profile')); ?>
           </h3>
           <div class="extend">  
             <div class="row">
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Microchipped
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Microchipped')); ?>
                 </label>
                 <div class=" m-rights">
                     <?php echo $this->Form->input(
@@ -306,7 +316,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Spayed / Neuted
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Spayed / Neuted')); ?>
                 </label>
                 <div class=" m-rights">
                     <?php echo $this->Form->input(
@@ -340,7 +350,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Flea Treated
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Flea Treated')); ?>
                 </label>
                 <div class=" m-rights">
                      <?php echo $this->Form->input(
@@ -372,7 +382,7 @@
             </div>
             <div class="row">
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Vaccinated
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Vaccinated')); ?>
                 </label>
                 <div class=" m-rights"> 
                   <?php echo $this->Form->input(
@@ -402,7 +412,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">House Trained
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Trained')); ?>
                 </label>
                 <div class=" m-rights">
                   <?php echo $this->Form->input(
@@ -437,7 +447,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Mediacation
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mediacation')); ?>
                 </label>
                 <div class=" m-rights">
                   <?php echo $this->Form->input(
@@ -469,7 +479,7 @@
             </div>
             <div class="row">
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Veterinary Name and Contact Info
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Veterinary Name and Contact Info')); ?>
                 </label>
                 <?php echo $this->Form->input(
                         'UserPets.Guest1.veterinary_name',
@@ -484,7 +494,7 @@
                 ?> 
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Friendly with
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Friendly with')); ?>
                 </label>
                 <div class=" m-rights">
                   <?php echo $this->Form->input(
@@ -525,7 +535,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Add care instructions for "guests name"  
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add care instructions for "guests name"')); ?>  
                 </label>
                 <?php echo $this->Form->input(
                         'UserPets.Guest1.care_instructions',
@@ -555,8 +565,8 @@
            <?php 
             if($o != '1'){ 
 				?> 
-            <h3><strong>Guest Info</strong><button onclick="if(confirm('Are you sure to delete this record?') == true){location.href='<?php echo HTTP_ROOT.'dashboard/delete-guest/'.base64_encode(convert_uuencode(@$guest_data->id)); ?>'}else {return false;}" 
-              data-rel="ajaxAdd<?php $o; ?>" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right">Delete </button></h3>
+            <h3><strong>Guest Info</strong><button onclick="if(confirm('<?php echo $this->requestAction('app/get-translate/'.base64_encode('Are you sure to delete this record?')); ?>  ') == true){location.href='<?php echo HTTP_ROOT.'dashboard/delete-guest/'.base64_encode(convert_uuencode(@$guest_data->id)); ?>'}else {return false;}" 
+              data-rel="ajaxAdd<?php $o; ?>" class="deleteOtherRecord pull-lg-right btn btn-danger" type="button" style="float:right"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Delete')); ?> </button></h3>
               <div class="clearfix"></div>
            <?php }
 				echo $this->Form->input("UserPets.$guest.id",[
@@ -566,7 +576,7 @@
            ?>
            <div class="row">
             <div class="form-group col-lg-4 col-md-6">
-              <label for="">Guest Name
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Guest Name')); ?>
               </label>
               <?php echo $this->Form->input("UserPets.$guest.guest_name",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -579,7 +589,7 @@
               ?>
             </div>
             <div class="form-group col-lg-4 col-md-6">
-              <label for="">Type
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Type')); ?>
               </label>
               <?php echo $this->Form->input("UserPets.$guest.guest_type",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -595,7 +605,7 @@
             </div>
            <?php if($guest_data['guest_type'] == "dog"){ ?>
 			       <div class="form-group col-lg-4 col-md-6 showHideBreed<?php echo $o; ?>" style="display:block">
-              <label for="">Breed
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Breed')); ?>
               </label>
                <?php echo $this->Form->input("UserPets.$guest.guest_breed",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -610,7 +620,7 @@
             </div>
 			<?php }else{ ?>
 				<div class="form-group col-lg-4 col-md-6 showHideBreed<?php echo $o; ?>" style="display:none">
-              <label for="">Breed
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Breed')); ?>
               </label>
               <?php echo $this->Form->input("UserPets.$guest.guest_breed",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -629,7 +639,7 @@
               <div class="row">
 				  <?php if($guest_data['guest_type'] == "dog"){ ?>
 			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed<?php echo $o; ?>" style="display:block">
-                  <label for="">Size
+                  <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Size')); ?>
                   </label>
                   <?php echo $this->Form->input("UserPets.$guest.guest_weight",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -644,7 +654,7 @@
                 </div>
                 <?php }else{?>
 				 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 showHideBreed<?php echo $o; ?>" style="display:none">
-                  <label for="">Size
+                  <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Size')); ?>
                   </label>
                   <?php echo $this->Form->input("UserPets.$guest.guest_weight",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -665,7 +675,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label for="">Age
+                      <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Age')); ?>
                       </label>
                       <?php echo $this->Form->input("UserPets.$guest.guest_years",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -697,7 +707,7 @@
             <div class="form-group col-lg-4 col-md-6">
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <label for="">Gender
+                  <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Gender')); ?>
                   </label>
                   
                     <div class="row">
@@ -735,7 +745,7 @@
           </div>
           <div class="row">
             <div class="form-group col-lg-4 col-md-12">
-              <label  for="">Short Description
+              <label  for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Short Description')); ?>
               </label>
               <?php echo $this->Form->input("UserPets.$guest.guest_description",[
                         'templates' => ['inputContainer' => '{{content}}'],
@@ -751,7 +761,7 @@
                            
             </div>
             <div class="form-group col-lg-4 col-md-6">
-              <label for="">Photo Library
+              <label for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Photo Library')); ?>
               </label>
               <div class="row" id="images_preview_<?php echo $o; ?>" >
                  <?php 
@@ -778,11 +788,11 @@
               </div>
             </div>
             <div class="form-group col-lg-4 col-md-12">
-              <p class="upload-txt">It is a long established fact that a reader will be by the page when looking at its layout. 
+              <p class="upload-txt"><?php echo $this->requestAction('app/get-translate/'.base64_encode('It is a long established fact that a reader will be by the page when looking at its layout')); ?>. 
               </p>
               <button type="button" class="btn btn-prof-upload browseImg" data-rel="<?php echo $o; ?>"> 
                 <i class="fa fa-upload ">
-                </i> &nbsp;&nbsp; Upload Image
+                </i> &nbsp;&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Image')); ?>
               </button>
               <div class="row" id="show-all-errors_<?php echo $o; ?>">
                  
@@ -790,12 +800,12 @@
             </div>
 
           </div>
-          <h3>Extended Profile
+          <h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Extended Profile')); ?>
           </h3>
           <div class="extend">  
             <div class="row">
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Microchipped
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Microchipped')); ?>
                 </label>
                 <div class=" m-rights">
                     <?php echo $this->Form->input(
@@ -831,7 +841,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Spayed / Neuted
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Spayed / Neuted')); ?>
                 </label>
                 <div class=" m-rights">
                     <?php echo $this->Form->input(
@@ -866,7 +876,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Flea Treated
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Flea Treated')); ?>
                 </label>
                 <div class=" m-rights">
                      <?php echo $this->Form->input(
@@ -898,7 +908,7 @@
             </div>
             <div class="row">
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Vaccinated
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Vaccinated')); ?>
                 </label>
                 <div class=" m-rights"> 
                   <?php echo $this->Form->input(
@@ -928,7 +938,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">House Trained
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('House Trained')); ?>
                 </label>
                 <div class=" m-rights">
                   <?php echo $this->Form->input(
@@ -964,7 +974,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Mediacation
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Mediacation')); ?>
                 </label>
                 <div class=" m-rights">
                   <?php echo $this->Form->input(
@@ -996,7 +1006,7 @@
             </div>
             <div class="row">
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Veterinary Name and Contact Info
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Veterinary Name and Contact Info')); ?>
                 </label>
                 <?php echo $this->Form->input(
                         "UserPets.$guest.veterinary_name",
@@ -1011,7 +1021,7 @@
                 ?> 
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Friendly with
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Friendly with')); ?>
                 </label>
                 <div class=" m-rights">
                   <?php echo $this->Form->input(
@@ -1051,7 +1061,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-4 col-md-12">
-                <label class="pp-w" for="">Add care instructions for "guests name"  
+                <label class="pp-w" for=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add care instructions for "guests name"')); ?>  
                 </label>
                 <?php echo $this->Form->input(
                         "UserPets.$guest.care_instructions",
@@ -1079,7 +1089,7 @@
                   <h4>
                     <a href="javascript:void(0)" id="addMultipleGuest">
                       <i class="fa fa-plus-circle font-fa">
-                      </i>&nbsp; Add Multiple Guest
+                      </i>&nbsp; <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add Multiple Guest')); ?>
                     </a>
                   </h4>
                 </div>
@@ -1095,9 +1105,11 @@
           
         <?php echo $this->Form->end(); ?>
       </div>
+</div>
     </div>
   </div>
 </div>
+    </div>
 </div>
 </div>
 <!--Form for upload Photo Library-->

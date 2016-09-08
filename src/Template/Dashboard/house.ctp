@@ -1,12 +1,11 @@
 <?php //echo "<pre>";print_r($houseInfo); die;?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
-
-        <div class="profiletab-section">
-          
-                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
-                
-                
+		<div class="container-fluid">
+      		  <div class="profiletab-section"> 
+        <div class="db-top-bar-header bg-title">
+             	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">         
+                <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"> 
                  <?php  $session = $this->request->session();
 				 $profile = $session->read('profile');
 				   if(strtolower($profile) == 'sitter'){
@@ -16,16 +15,20 @@
 				   } 
 				  ?>
                 </h3>
-
+                </div>
+                </div>
                 <?php echo $this->element('frontElements/profile/sitter_nav');?>
           
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
-
-<div id="menu11" class="tab-pane fade tab-comm active in">
-          <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insight about your home')); ?></h2>
-          <p id="about-property" class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
-          <p  class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div id="menu11" class="tab-pane fade tab-comm active in">
+                <div class="tc-head tc-head-2 ">
+          <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share some insight about your home')); ?></h2>
+          <p id="about-property"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You can set-up your house profile here')); ?></p>
+          <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us know some of the great things about your home and what guests will experience when they stay with you')); ?></p>
+          </div>
+          
                   <!--<form role="form">-->
                   <?php echo $this->Form->create(@$sitterHouseData,[
                       'url' => ['controller' => 'dashboard', 'action' => 'house'],
@@ -212,7 +215,7 @@
                                  'label'=>false,
 								  'id'=>"about_txtarea",
                                  'templates' => ['inputContainer' => '{{content}}'],
-								 'placeholder'=>'Tell us about your home'
+								 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Tell us about your home'))
                             ]); ?>
                            <label class="error" generated="true" for="userhitterhouses-about-home-desc"></label>
 								<?php $max=75; if(!empty($sitterHouseData['about_home_desc'])){ $rem = $max-str_word_count ($sitterHouseData['about_home_desc']);} ?>
@@ -233,7 +236,7 @@
 								 'id'=>"spaces_txtarea",
 								 'maxlength'=>"5000",
                                  'templates' => ['inputContainer' => '{{content}}'],
-								 'placeholder'=>'Describe the spaces your guest will have access to'
+								 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('Describe the spaces your guest will have access to'))
                                  
                             ]); ?>
                           <label class="error" for="usersitterhouses-spaces-access-desc" generated="true"></label>
@@ -256,7 +259,7 @@
 								  'maxlength'=>"5000",
 								  'id'=>'home_txtarea',
                                  'templates' => ['inputContainer' => '{{content}}'],
-								 'placeholder'=>'What are the pets in your home like '
+								 'placeholder'=>$this->requestAction('app/get-translate/'.base64_encode('What are the pets in your home like'))
                             ]); ?>
 					<?php $max=75; if(!empty($sitterHouseData['home_pets_desc'])){ $rem = $max-str_word_count ($sitterHouseData['home_pets_desc']);} ?>
                           <p class="w-limit" id="home_txtarea_text"><?php if(!empty($rem)){echo $rem ;}else{echo "75";} echo $this->requestAction('app/get-translate/'.base64_encode(' words remainings')); ?></p>
@@ -285,6 +288,7 @@
                   
 
               </div>
+            </div>  
 
               <!--Start multiple upload-->
                   <?php echo $this->Form->create(@$sitter_info, [
@@ -308,7 +312,7 @@
         
           </div>
         </div>
-
+</div>
         </div>
 
       </div>

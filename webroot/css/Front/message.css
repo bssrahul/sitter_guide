@@ -16,8 +16,7 @@
 .message-full-wrapper .sort {color:#fff; padding:10px 0px 0px 54px;}
 .message-full-wrapper .sort label {color:#fff; font-size:15px; padding:0px 0px 0px 0px; font-weight:400;}
 .message-full-wrapper select.form-control {  -moz-appearance: none;  background-image: url("../../img/arw.png"); background-position: right 15px center; background-repeat: no-repeat; border: 1px solid #aaaaaa;border-radius: 3px;
-    box-shadow: none; height: 33px;}
-
+ box-shadow: none; height: 33px;}
 .message-full-wrapper select.form-control option {width:165px;}
 .message-full-wrapper .message-inbox {color:#fff; font-size:18px;  padding:12px 0px 0px 54px;}
 .message-full-wrapper .message-inbox span  {color:#fff; font-size:22px; padding-right:10px;}
@@ -30,14 +29,11 @@
 .book-now-setion-wrapper { width:100%; float:left; background:#f5f5f5; }
 .book-now-setion-wrapper .active-book {background:#eaeaea; border:1px solid #d3d3d3;}
 .book-now-setion-inner { padding:15px 10px 13px 10px;; border-bottom:1px solid #d3d3d3; width:100%; }
-
 .book-now-setion-inner .book-now-name p {font-size:12px; color:#404040; font-weight:500; margin-bottom:0px; padding:10px 0 0 0; }
 .book-now-setion-inner .book-now-name p.time { color: #DB6913; font-size: 11px;}
 .book-now-setion-inner .new-badge { background: #db6913 none repeat scroll 0 0; border-radius: 10px; color: #fff; font-size: 10px; font-weight: bold; max-width: 40px; text-align: center;}
-
 .book-now-setion-inner .book-now-name p span {font-size:12px; color:#7d7d7d; display:block;  }
 .book-now-setion-inner .rate-box{ width:100%; float:left; text-align:center;  }
-
 .book-now-img img{ width:50px; height:50px; border-radius:50%;}
 
 .bt-now {font-size:11px; color:#fff; font-weight:600; background:#78bf45; padding:5px 8px; height:26px; margin:7px 0 0 0;}
@@ -46,13 +42,11 @@
 .message-full-wrapper select.form-control.moveto option {width:91px;}
 .mess-pad-top { margin-top:32px;}
 
-
 .border-left1px {border-left:1px solid #d3d3d3;}
 .display-block {display:inherit;}
 
 .job-request-wrapper {background:#555555; border-radius:5px 5px 2px 2px; height:auto; width:100%; margin:15px 0 0 0; color:#fff !important; padding:0px 15px 15px 15px; }
 .job-request-wrapper .job-req {text-align:center; font-size:17px; color:#fff; padding:13px 0 13px 0; margin:0 0 10px 0; font-weight:500; border-bottom:#ffffff 1px solid;}
-
 .job-request-wrapper a { outline:none; text-decoration:none; color:#fff;}
 .job-request-wrapper td { font-weight:500; color:#fff; font-size:13px;}
 .job-request-wrapper .width110 {width:110px !important;}
@@ -102,8 +96,7 @@
 .clgreen { color:#008103;}
 .may-call-wrapper .sitterguide-no { font-size:14px; padding:5px 0 5px 0; font-weight:500; margin:0 0 0px 0; color:#404040;}
 .may-call-wrapper .sitterguide-no1 { font-size:12px; padding-top:10px; font-weight:600; margin-bottom:0px; color:#0ea3bb;}
-..may-call-wrapper .stp { margin-top:10px;}
-
+.may-call-wrapper .stp { margin-top:10px;}
 
 .img-step-pad { width:100%; height:132px; display:table-cell; vertical-align:middle; text-align:center;  }
 .img-step-pad img{ text-align:center;}
@@ -113,12 +106,10 @@
 .step-img-area ul li{ display:inline-block; width:16.66%; text-align:center; float:left;   }
 .step-img-area ul li img{ display:inline;}
 
-
 .chat-wrapper {margin-top:15px;}
 .chat-wrapper .chat-wrapper-inner {  border-right:1px solid #d3d3d3;  height:450px; overflow-y:scroll; overflow-x:hidden; padding:0 0 50px 0; }
 .chat-title1 { background:#efecec ; height:50px; padding:0px 0 0 15px; font-size:14px; color:#404040;  border:1px solid #c7c7c7; border-left:none; line-height:50px;}
 .chat-title1  #refresh_chat{ float:right; margin:5px 5px 0 0;}
-
 
 .message-wrap{ border:1px solid #d3d3d3; background:#f0f0f0; min-height:235px; border-left:none;}
 .camera1 { color:#BEBEBE !important; padding-top:20px; font-size:30px !important;}
@@ -153,39 +144,16 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .positi { position:relative;}
 
 
-@media (max-width:767px){
-.message-full-wrapper .message-pad-right-0 {padding-right:15px;}
-.message-full-wrapper .message-pad-left-0 {padding-left:15px;}
-.display-block {display: block !important;}
-.message-full-wrapper .sort {color:#fff; padding:10px 0px 0px 14px;}
-.message-full-wrapper .sort label {color:#fff; font-size:15px; padding:0px 0px 0px 0px; font-weight:400;}
-.message-full-wrapper .message-inbox {color:#fff; font-size:18px;  padding:0px 0px 0px 14px;}
-.message-full-wrapper .s-top-width {float: right; margin-right: 15px;  margin-top: 13px;  max-width: 100%; padding-bottom: 15px; padding-left: 15px;}
-}
 
-@media (min-width:768px) and (max-width:991px) {
-.message-full-wrapper .message-inbox { color: #fff; font-size: 18px; padding: 12px 0 0 13px;}
-.message-full-wrapper .s-top-width {float: left;  margin-right: 15px; margin-top: 13px; max-width: 100%; padding-left:15px; margin-bottom:15px;}
 
-}
 
-@media (min-width:992px) and (max-width:1199px) {
-.message-full-wrapper .s-top-width {max-width:300px; margin:0px auto; float:none; margin-bottom:15px;}
-.chat-postioning {position:absolute; width:91%;}
-}
-
-@media (min-width:1200px) and (max-width:1460px) {
-.lg-width20 { width:21%;}
-.lg-width80 { width:79%;}
-.book-now-setion-inner .book-now-name p { font-size: 11px;}
-.book-now-setion-inner .book-now-name p span {font-size: 11px;}
-	
-}
 
 @media (min-width:1200px) and (max-width:1280px) {
 .chat-postioning {position:absolute; width:89%; }
 .side-menu .navbar-nav li a { font-size: 12px;}
 }
+
+
 
 
 @media (min-width:1561px) and (max-width:1680px){
@@ -202,15 +170,29 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 @media (min-width:1367px) and (max-width:1440px){
 .step-img-area { padding:10px;}
 .mess-tesxt1 { padding:3px 0 0 35px;}
+.lg-width20 { width:21%;}
+.lg-width80 { width:79%;}
+.book-now-setion-inner .book-now-name p { font-size: 11px;}
+.book-now-setion-inner .book-now-name p span {font-size: 11px;}
+
 }
 @media (min-width:1200px) and (max-width:1366px){
 .step-img-area { padding:10px;}
 .mess-tesxt1{ padding:0px 0 0 43px;}
+
+.lg-width20 { width:21%;}
+.lg-width80 { width:79%;}
+.book-now-setion-inner .book-now-name p { font-size: 11px;}
+.book-now-setion-inner .book-now-name p span {font-size: 11px;}
+
 }
 @media (min-width:1025px) and (max-width:1199px){
-	
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}	
 .step-img-area { padding:10px;}
+
+.message-full-wrapper .s-top-width {max-width:300px; margin:0px auto; float:none; margin-bottom:15px;}
+.chat-postioning {position:absolute; width:91%;}
+
 }
 
 @media (min-width:992px) and (max-width:1024px){
@@ -218,6 +200,9 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .step-img-area ul li{ width:33.33%; margin:0 0 15px 0;}
 
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}
+
+.message-full-wrapper .s-top-width {max-width:300px; margin:0px auto; float:none; margin-bottom:15px;}
+.chat-postioning {position:absolute; width:91%;}
 }
 
 @media (min-width:768px) and (max-width:991px){
@@ -225,6 +210,10 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .step-img-area ul li{ width:33.33%; margin:0 0 15px 0;}
 
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}
+
+.message-full-wrapper .message-inbox { color: #fff; font-size: 18px; padding: 12px 0 0 13px;}
+.message-full-wrapper .s-top-width {float: left;  margin-right: 15px; margin-top: 13px; max-width: 100%; padding-left:15px; margin-bottom:15px;}
+
 }
 
 @media (min-width:641px) and (max-width:767px){
@@ -236,6 +225,15 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 
 .message-full-wrapper{ margin:15px 0 0 0;}
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}
+
+.message-full-wrapper .message-pad-right-0 {padding-right:15px;}
+.message-full-wrapper .message-pad-left-0 {padding-left:15px;}
+.display-block {display: block !important;}
+.message-full-wrapper .sort {color:#fff; padding:10px 0px 0px 14px;}
+.message-full-wrapper .sort label {color:#fff; font-size:15px; padding:0px 0px 0px 0px; font-weight:400;}
+.message-full-wrapper .message-inbox {color:#fff; font-size:18px;  padding:0px 0px 0px 14px;}
+.message-full-wrapper .s-top-width {float: right; margin-right: 15px;  margin-top: 13px;  max-width: 100%; padding-bottom: 15px; padding-left: 15px;}
+
 }
 
 @media (min-width:481px) and (max-width:640px){
@@ -247,6 +245,14 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 
 .message-full-wrapper{ margin:15px 0 0 0;}
 #chat_form .send-msg .bt-now1{ width:100%; text-align:center; margin:0 0 5px 0;}
+
+.message-full-wrapper .message-pad-right-0 {padding-right:15px;}
+.message-full-wrapper .message-pad-left-0 {padding-left:15px;}
+.display-block {display: block !important;}
+.message-full-wrapper .sort {color:#fff; padding:10px 0px 0px 14px;}
+.message-full-wrapper .sort label {color:#fff; font-size:15px; padding:0px 0px 0px 0px; font-weight:400;}
+.message-full-wrapper .message-inbox {color:#fff; font-size:18px;  padding:0px 0px 0px 14px;}
+.message-full-wrapper .s-top-width {float: right; margin-right: 15px;  margin-top: 13px;  max-width: 100%; padding-bottom: 15px; padding-left: 15px;}
 }
 
 @media (min-width:320px) and (max-width:480px){
@@ -257,8 +263,16 @@ a.colorblue { color:#0ea3bb; outline:none; text-decoration:none;}
 .book-now-setion-inner .book-now-name p{ text-align:center; font-size:14px;}
 .book-now-setion-inner .book-now-name span{ display:block; text-align:center;}
 
-.message-full-wrapper{ margin:15px 0 0 0;}
+.message-full-wrapper{ margin:15px 0 15px 0;}
 #chat_form .send-msg .bt-now1{ width:100%;  text-align:center; margin:0 0 5px 0;}
+.message-full-wrapper .message-pad-right-0 {padding-right:15px;}
+.message-full-wrapper .message-pad-left-0 {padding-left:15px;}
+.display-block {display: block !important;}
+.message-full-wrapper .sort {color:#fff; padding:10px 0px 0px 14px;}
+.message-full-wrapper .sort label {color:#fff; font-size:15px; padding:0px 0px 0px 0px; font-weight:400;}
+.message-full-wrapper .message-inbox {color:#fff; font-size:18px;  padding:0px 0px 0px 14px;}
+.message-full-wrapper .s-top-width {float: right; margin-right: 15px;  margin-top: 13px;  max-width: 100%; padding-bottom: 15px; padding-left: 15px;}
+
 }
 
 

@@ -107,7 +107,7 @@ class TransactionController extends AppController
 			}
 			
 		}
-		//pr($transactionData); die;
+		//echo "<pre>"; print_r($transactionData);die;
 		$this->set('transactionData',$transactionData);
 	}
 	

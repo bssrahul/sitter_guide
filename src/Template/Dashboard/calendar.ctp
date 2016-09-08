@@ -87,7 +87,7 @@
                     <ul class="list-unstyled">
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon green-box basic-addon2 " ></span>
-                          <input disabled type="text" class="form-control input-width-calender basic-addon2 " placeholder="Day Care" aria-label="Text input with segmented button dropdown" >
+                          <input disabled type="text" class="form-control input-width-calender basic-addon2 " placeholder="<?php  echo $this->requestAction('app/get-translate/'.base64_encode('Day Care')); ?>" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -95,7 +95,7 @@
                       </li>
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon red-box basic-addon2 " ></span>
-                          <input disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="Night Care" aria-label="Text input with segmented button dropdown" >
+                          <input disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="<?php  echo $this->requestAction('app/get-translate/'.base64_encode('Night Care')); ?>" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -107,7 +107,7 @@
                     <ul class="list-unstyled">
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon orange-box basic-addon2 " ></span>
-                          <input  disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="Drop in visit" aria-label="Text input with segmented button dropdown" >
+                          <input  disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="<?php  echo $this->requestAction('app/get-translate/'.base64_encode('Drop in visit')); ?>" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                            <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>
@@ -115,7 +115,7 @@
                       </li>
                       <li>
                         <div class="input-group group-padd"><span id="" class="input-group-addon yellow-box basic-addon2 " ></span>
-                          <input disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="Hourly Services" aria-label="Text input with segmented button dropdown" >
+                          <input disabled type="text" class="form-control input-width-calender basic-addon2" placeholder="<?php  echo $this->requestAction('app/get-translate/'.base64_encode('Hourly Services')); ?>" aria-label="Text input with segmented button dropdown" >
                           <div class="input-group-btn">
                             <a class="btn btn-default cal-btn" data-toggle="tooltip" data-placement="bottom" title="Sitting @ Sitters" type="submit"><i class=" fa fa-question-circle"></i></a>
                           </div>

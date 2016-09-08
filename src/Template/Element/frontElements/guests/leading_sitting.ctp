@@ -176,7 +176,7 @@
                                     <ul>
                                         <li><a href="" class="night" title="Night"></a></li>
                                         <li><a href="" class="day"></a></li>
-                                        <li><a href="">10</a></li>
+                                        <li><a href=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('10')); ?></a></li>
                                         <li><a href="" class="walking"></a></li>
                                         <li><a href="" class="chat"></a></li>
                                     </ul>
