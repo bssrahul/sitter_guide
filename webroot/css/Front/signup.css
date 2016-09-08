@@ -26,7 +26,7 @@ span.signup-line { border-bottom: 1px solid #cccccc; display: inline-block;  pad
 .f14 {font-size:14px;}
 .f22 {font-size:22px;}
 .mt10 {margin-top:10px;}
-.mb10 { margin-bottom:12px;}
+.mb10 { margin-bottom:12px;}f
 .mb0 {margin-bottom:0px !important;}
 .mb2 {margin-bottom:2px !important;}
 .color-green {color:#72a105 !important;}
@@ -126,15 +126,26 @@ p.cap span {    float: left;    text-align: right;    width: 50%;}
 .profiletab-section ul.six-tab li { width:16.66%; }
 .profiletab-section ul.three-tab li{ width:33.33%; }
 .profiletab-section ul li a {border-radius: 0;  padding:13px 0; color:#fff;font-size:14px;    letter-spacing: 1px;      }
-.profiletab-section ul {  display: table;    width: 100%;  background: #969696 none repeat scroll 0 0; margin-top:20px;}
+.profiletab-section ul {  display: table;    width: 100%;  background: #969696 none repeat scroll 0 0; margin:20px 0 0 0; float:left;}
 
-.tab-sectioninner { background: #fff;   padding-top: 14px;    width: 100%;    float: left;    min-height: 850px;}
+.tab-sectioninner { background: #fff;   padding-top: 14px; width:100%; float: left;    min-height: 850px;}
 .profiletab-section ul.nav li img{margin-right: 10px;}
-.tab-content h3 {    margin-top: 10px;}
-.tab-sectioninner .tab-comm {    padding: 1% 2%;    background: #fff;    width: 100%;    float: left;}
-.tab-sectioninner h3 {    border-bottom: 1px solid #d1d1d1;    color: #404040;    font-size: 18px;    margin-bottom: 20px;    position: relative;    padding-bottom: 15px;    width: 100%;    float: left;}
+.tab-content h3 { margin:10px 0 0 0;}
+.tab-sectioninner .tab-comm { padding:0px; background:#fff; width:100%; float: left;}
+/* Tab Comm heading Start */
+.tab-sectioninner .tab-comm .tc-head{ background:#ebf7ff; width:100%; float:left; padding:15px; margin:15px 0 30px 0; border-radius:3px;}
+.tab-sectioninner .tab-comm .tc-head-2{ background:#fffaf0;}
+.tab-sectioninner .tab-comm .tc-head-3{ background:#edfff3;}
+.tab-sectioninner .tab-comm .tc-head-4{ background:#f7ffe3;}
+.tab-sectioninner .tab-comm .tc-head-5{ background:#ffe7de;}
+.tab-sectioninner .tab-comm .tc-head-6{ background:#ffeff8;}
+.tab-sectioninner .tab-comm .tc-head h2{ font-size:16px; color:#404040; padding:0 0 10px 0;}
+.tab-sectioninner .tab-comm .tc-head p{ font-size:13px; color:#404040; line-height:18px; }
+/* Tab Comm heading End */
+
+.tab-sectioninner h3 {border-bottom: 1px solid #d1d1d1;    color: #404040;    font-size: 18px;    margin-bottom: 20px;    position: relative;    padding-bottom: 15px;    width: 100%;    float: left;}
 .tab-sectioninner h3 span {color:#7cab0d; }
-.tab-sectioninner label {    font-weight: normal;    margin-bottom: 10px;    font-style: 16px;    color: #222d3d;}
+.tab-sectioninner label {font-weight: normal;    margin-bottom: 10px;    font-style: 16px;    color: #222d3d;}
 
 .tab-sectioninner input.form-control {    border-radius: 3px;    box-shadow: none;    height: 40px;    margin-bottom: 0;      border: 1px solid #aaaaaa; background:#ffffff; font-size:13px; color:#404040;}
 .tab-sectioninner select.form-control {    -moz-appearance: none;    background-image: url("../../img/arw.png");background-position: right 15px center; background-repeat: no-repeat; border-radius: 3px; box-shadow: none;   height: 40px;   border: 1px solid #aaaaaa;      background-position-x: 97%; background-position-y: 50%;}
@@ -159,6 +170,13 @@ p.browse-p { font-size: 16px;    font-weight: bold;}
 .btn.upload-but {  background: #72a105;    border-radius: 0;    color: #fff;   margin-top: 12px;    padding: 6px 24px;}
 .tab-sectioninner h4 { color: #434343;    font-size: 18px;    margin-bottom: 20px;}
 .tab-sectioninner h5 {    color: #7cab0d;    font-size: 14px;    margin-bottom: 10px;}
+
+/* Upload Image Area */
+.upload-img-area { width:100%; float:left; border:#dcdcdc 1px solid; padding:15px 0; }
+.upload-img-area  p.browse-p { font-size:14px; font-weight: bold; border-bottom:#dcdcdc 1px solid; padding:0 0 10px 0;}
+
+/* Upload Image Area */
+
 
 
 .profiletab-section .tab-content h3 { color: #222d3d;  font-size: 15px;    margin-top: 0;    text-transform: capitalize;}
@@ -200,7 +218,7 @@ p.browse-p { font-size: 16px;    font-weight: bold;}
 .radio-main input[type="submit"] { background: #f2f2f2 none repeat scroll 0 0; border: 1px solid #cccccc; border-radius: 4px; cursor: pointer; float: left; margin-top: 20px; outline: medium none; padding: 4px 10px;}
 .radio-main input[type="submit"]:hover { background-color: #239fdb;    border-color: #1b7aa9; color: #fff;}
 .tab-sectioninner #menu4 h4 { color: #72a105;  font-size: 14px;}
-.profiletab-section h3 { font-size: 20px;  margin-top: 20px;}
+.profiletab-section h3 { font-size: 20px;  margin:0px 0 30px 0;}
 .captcha img { float: right; width: 50%; margin-top: 10px;}
 .range-c small {  margin-top: 3px;}
 .img-rightsp img {    margin-left: 15px;}

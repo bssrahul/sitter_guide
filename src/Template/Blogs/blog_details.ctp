@@ -1,4 +1,5 @@
 
+<div class="blog-wrap">
   <section class="sev-type m75">
     <div class="container">
       <h4><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Guide')); ?> - <?php echo $blogs_info['title']; ?>
@@ -161,7 +162,7 @@
     
   </section>
   <!-- Get in Touch starts-->
-
+</div>
 <script type="text/javascript">
 function genericSocialShare(url){
     window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');

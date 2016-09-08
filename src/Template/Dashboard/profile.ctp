@@ -6,7 +6,10 @@
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
+        <div class="container-fluid">
         <div class="profiletab-section">
+             <div class="db-top-bar-header bg-title">
+             	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
               <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png">
               <?php  
 				   $session = $this->request->session();
@@ -17,17 +20,20 @@
 						echo $this->requestAction('app/get-translate/'.base64_encode('Guest Profile')); 
 				   }  
 			  ?>
-              </h3>
+              </h3>              
+              </div>
+              </div>
               <?php echo $this->element('frontElements/profile/sitter_nav'); ?>
-          <div class="tab-sectioninner book-pro">
+        			  <div class="tab-sectioninner book-pro">
             <div class="tab-content">
 
-
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<div id="home1" class="tab-pane fade in active tab-comm">
-            <h2 class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?></h2>
-			<p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile')); ?>.</p>
-			<p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode("This page is just about you in general and allowsyou to update your profile photo's, video, password and contact details")); ?></p>
-                
+    	<div class="tc-head">
+            <h2><?php echo $this->requestAction('app/get-translate/'.base64_encode('Tell us a bit about yourself')); ?></h2>
+			<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Let us step you through setting up your Sitter Guide profile')); ?>.</p>
+			<p><?php echo $this->requestAction('app/get-translate/'.base64_encode("This page is just about you in general and allowsyou to update your profile photo's, video, password and contact details")); ?></p>
+            </div>    
                   <!--<form role="form">-->
             <?php echo $this->Form->create(@$userInfo, [
               'url' => ['controller' => 'dashboard', 'action' => 'profile'],
@@ -354,13 +360,12 @@
                 
 				<!-- ROW ONE START -->	
 				<div class="row">
-
-					 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
-						   
+					 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">						   
 						   <div class="row d-m2">
-							
-								 <div class="col-lg-7">
-										
+                           	<div class="container-fluid">	
+                           	<!--Upload image-->
+                           	<!--<div class="upload-img-area">-->
+								 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">										
 										<p class="browse-p"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Photo')); ?></p>
 										<p>
 											<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 400x400 pixels.')); ?>
@@ -372,7 +377,7 @@
 										?>
 								</div>
 								
-								<div class="col-lg-5">
+								<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 								    <?php 
 								   if($user['image'] != ""){
 										 if (file_exists(WEBROOT_PATH.'img/uploads/'.$user['image'])){
@@ -388,17 +393,14 @@
 								   
 									<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal21"><i class="fa fa-upload" aria-hidden="true"></i><?php echo $this->requestAction('app/get-translate/'.base64_encode('Upload Profile Photo')); ?></button>
 								</div>
-
-						</div>
-					
-					</div>
-						  
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
-					
-						<div class="row d-m2">
-					
-							<div class="col-lg-7">
-							
+                            <!--</div>    -->
+                            </div>    
+                             </div>    
+						</div>					
+										  
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">					
+						<div class="row d-m2">					
+							<div class="col-lg-7">							
 								  <p class="browse-p">
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your banner profile photo')); ?>
 								  </p>
@@ -406,12 +408,9 @@
 								  <p  class="min-hh">
 									<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
 									   
-								  </p>
-							
+								  </p>							
 							</div>
-
 							<div class="col-lg-5">
-
 								<?php 
 									if(@$userInfo->profile_banner != ''){
 										  if (file_exists(WEBROOT_PATH.'img/uploads/'.@$userInfo->profile_banner)) {
@@ -437,30 +436,20 @@
 					</div>
 
 				</div>
-				<!-- ROW ONE END -->	
-                  
-                 
+				<!-- ROW ONE END -->                                  
 <!-- ROW TWO Start -->	
 <div class="row">
-
-	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
-		   
-		<div class="row d-m2">
-				
-			<div class="col-lg-7">
-                    
-
+	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">		   
+		<div class="row d-m2">				
+			<div class="col-lg-7">                    
                     <p class="browse-p">
                        <?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile Video')); ?>
                     </p>
                     <p>
                       <?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended size is 10mb.')); ?>
-                    </p>
-                    
-            </div>
-                
-			<div class="col-lg-5">
-					
+                    </p>                    
+            </div>                
+			<div class="col-lg-5">			
 				
                       <?php if(@$userInfo->profile_video != ''){
                           
@@ -481,16 +470,11 @@
                           
                     </button>
                    <?php echo '<br><em class="signup_error error clr addError"></em>'; ?>
-			</div>
-		
-		</div>
-	
+			</div>		
+		</div>	
 	</div>
-
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">
-                       
-		<div class="row d-m2">
-			
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 full-width11">                       
+		<div class="row d-m2">			
 			<div class="col-lg-7">
 				<p class="browse-p">
 					<?php echo $this->requestAction('app/get-translate/'.base64_encode('Add your profile video image')); ?>
@@ -498,8 +482,7 @@
 				
 				<p  class="min-hh">
 					<?php echo $this->requestAction('app/get-translate/'.base64_encode('In your profile photo, we recommend a high-resolution, well-lit photo of your smiling face (without sunglasses). Recommended dimensions are 950x250 pixels.')); ?>
-				</p>
-                
+				</p>      
                 
 
 			</div>
@@ -538,11 +521,11 @@
                     </p>
                   </div>
                   <?php echo $this->Form->end(); ?>
-
               </div>
-             </div>
+               </div>             
+            </div>
           </div>
-        </div>
+        </div>       
 
         </div>
 
@@ -976,20 +959,7 @@ $(document).ready(function(){
 </script>
 
 <style>
-.videoBanner {
-    display: block;
-    float: left !important;
-    height: 20px !important;
-    margin: 0 0 0 22px;
-    opacity: 0.5;
-    position: relative;
-    top: 25px;
-    width: 93% !important;
-    z-index: 10035;
-	text-align:center;
-}
-.padT5{
-padding-top:15px !important;	
-}
+.videoBanner {  display: block; float: left !important; height: 20px !important; margin: 0 0 0 22px;  opacity: 0.5;  position: relative;  top: 25px;  width: 93% !important;  z-index: 10035;text-align:center;}
+.padT5{padding-top:15px !important;	}
 .height125{height:125px !important;width:100% !important;}
 </style>

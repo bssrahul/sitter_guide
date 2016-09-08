@@ -116,12 +116,25 @@ $statesArray = array_merge($statesArray ,$aussie_states);
   </div>
   
   <div class="communication-wrap">
+  <div class="ph-wrap">
+        	<div class="row">
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<h3 class="payment-heading1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Payment Methods')); ?>  </h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<p class="payment-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Select your default method for payments on Sitter Gudie. Sitter Gudie accepts all major credit and debit cards')); ?>.   </p>
+                </div>
+                
+            </div>
+      		
+		    
+        </div>
+  
+  
+  
     <div class="row">
-      <div class="col-xs-12 col-sm-12 xol-md-12">
-        <h3 class="payment-heading1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Payment Methods')); ?>
-        </h3>
-        <p class="payment-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Select your default method for payments on Sitter Gudie. Sitter Gudie accepts all major credit and debit cards')); ?>. 
-        </p>
+      <div class="col-xs-12 col-sm-12 xol-md-12">       
+        
         <div class="pay-outside-wrap">
           <h5 class="baddress"> <?php echo $this->requestAction('app/get-translate/'.base64_encode('Billing Address')); ?> 
           </h5>

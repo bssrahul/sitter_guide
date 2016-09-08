@@ -1,9 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
-
-
 .img-w { max-width:100px; max-height:100px; margin-top:15px;}
-.favourite-wrap { margin-bottom: 30px; margin-top: 0px; padding: 0 0px 30px;}
+.favourite-wrap { margin:0px; margin-top: 0px; padding: 0 0px 30px;}
 .favourites-box { border:1px solid #ccc; margin:30px 0 0 0; }
 .favourites-box:hover { border:1px solid #ccc;}
 .favourites-box-1 { border-top: 5px solid #fff; padding:15px 0;}
@@ -43,18 +41,22 @@
 
 
 @media (min-width:768px) and (max-width:991px){
+.favourite-wrap { padding:0px; margin:0 0 15px 0;}
 .favourites-box { margin:15px 0 0 0; }	
 .favourite-wrap .review-pagination { margin:15px 0 0 0;}
 }
 @media (min-width:641px) and (max-width:767px){
 .favourites-box { margin:15px 0 0 0; }	
 .favourite-wrap .review-pagination { margin:15px 0 0 0;}
+.favourite-wrap { padding:0px; margin:0 0 15px 0;}
 }
 @media (min-width:481px) and (max-width:640px){
 .favourites-box { margin:15px 0 0 0; }	
 .favourite-wrap .review-pagination { margin:15px 0 0 0;}
+.favourite-wrap { padding:0px; margin:0 0 15px 0;}
 }
 @media (min-width:320px) and (max-width:480px){
+.favourite-wrap { padding:0px; margin:0 0 15px 0;}
 .favourites-box { margin:15px 0 0 0; min-height:230px; }
 .favourites-box-1 .img-w{ width:80px; height:80px; margin:0 0 5px 0;}
 .favourites-box-1 .fb-name p{ font-size:14px; font-weight:normal;}	

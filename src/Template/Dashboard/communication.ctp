@@ -221,11 +221,11 @@
         </div>
         <div class="comm-box1">
           <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+            <div class="col-xs-8 col-sm-6 col-md-6 col-lg-6"> 
               <h6><?php echo $this->requestAction('app/get-translate/'.base64_encode('New Booking Request')); ?>	
               </h6>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-4 col-sm-6 col-md-6 col-lg-6">
               <div class="chek-main-lat">
                 <div class="onoffswitch">
                    <?php  echo $this->Form->input('Communication.new_booking_request',[
@@ -453,12 +453,12 @@
         </div>
         <div class="comm-box1">
           <div class="row">
-            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-9"> 
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-9"> 
               <h6><?php echo $this->requestAction('app/get-translate/'.base64_encode("I'd prefer not to have my rates adjusted by Sitter Guide. I understand that by doing so, 
                 I may make less for my services than similarly situated sitters in my area.")); ?>
               </h6>
             </div>
-            <div class="col-xs-6 col-sm-8 col-md-8 col-lg-3">
+            <div class="col-xs-4 col-sm-8 col-md-8 col-lg-3">
               <div class="chek-main-lat">
                 <div class="onoffswitch">
                    <?php  echo $this->Form->input('Communication.in_area',[

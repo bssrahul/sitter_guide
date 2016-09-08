@@ -25,7 +25,7 @@ header .topnav-area .navbar li a .badge{ background:#ff0000; margin:-15px 0 0 0;
 header.smaller .topnav-area .navbar li a .badge{ margin:-11px 0 0 0;}
 
 
-.topnav-area .navbar-nav li .currency-drop{padding:10px 15px 0 15px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:250px; float:left; left:auto; right:0px;  }
+.topnav-area .navbar-nav li .currency-drop{padding:10px 15px 0 15px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:200px; float:left; left:auto; right:0px;  }
 .topnav-area .navbar-nav li .drop-profile{ right:0px;}
 .topnav-area .navbar-nav li .currency-drop .cd-box { width:100%; float:left; background:#ffffff; border:#d6d6d6 1px solid; border-radius:2px; overflow:visible !important;  }
 .topnav-area .navbar-nav li .currency-drop .cd-box ul{ margin:0px; padding:0px; list-style-type:none;}
@@ -95,6 +95,37 @@ display:block; margin:10px 0 0 0;}
 .mob-country-drop ul li.last-drop .tab-content ul.c-list li a:hover, .topnav-area .navbar-nav li .currency-drop ul.c-list li a:focus{ color:#72a105;}
 .mob-country-drop ul li.last-drop .tab-content ul.c-list li a img{ float:left; margin:5px 12px 0 0; width:18px; height:18px; border-radius:50%;}
 .mob-country-drop ul li.last-drop .tab-content ul.c-list li:last-child{ background:none;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{ position:absolute;padding:5px 10px; top:46px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:200px; float:left; left:auto; right:0px;}
+.mob-country-drop ul  li.last-drop .country-drop{ position:absolute;padding:5px 10px;top:30px; background:#efefef; border:0px; border-radius:5px; box-shadow:0px 0px 0px; width:200px; float:left; left:auto; right:0px;}
+/* CSS for only currency dropdown in top navigation */
+.mob-top-nav { display:none;}
+
+.new-mob-area{ width:100%; float:left; position:relative;}
+#new-nav{ width:48px;height:46px; float:left; position:absolute; right:0px; display:none; }
+#new-nav img{ width:26px; height:17px; margin:14px 0 0 0; float:right; display:block; cursor:pointer; }
+#nav-inner{ width:100%; float:left; background:#f5f5f5; display:none; border-radius:3px; }
+
+#nav-inner .navbar-nav .open .dropdown-menu{position:relative;}
+#nav-inner .navbar-nav .open .dropdown-menu li{ padding:7px 0;}
+
+#nav-inner ul{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left;}
+#nav-inner ul li{width:100%; background:url(../../img/c-list-bgr-x.png) repeat-x bottom;}
+#nav-inner ul li a{ font-size:13px; padding:5px 0 5px 15px;}
+#nav-inner ul li.last-drop img{ width:18px; height:18px; border-radius:50%;}
+#nav-inner ul li.last-drop ul.c-list{ margin:0px; padding:0px; list-style-type:none;}
+#nav-inner ul li.last-drop ul.c-list li{ padding:4px 0 4px 0px; width:100%;}
+#nav-inner ul li.last-drop ul.c-list li a{ font-size:12px; }
+#nav-inner ul li.last-drop ul.c-list li a img{ margin:0 10px 0 0; width:15px; height:15px;}
+
+
+#nav-inner ul li #loginUser{ padding:5px 15px;}
+#nav-inner ul li #loginUser label{ font-size:13px; padding:5px 0; font-weight:normal;}
+#nav-inner ul li  #log_in_btn{ width:100%; margin:10px 0 0 0;}
+#nav-inner ul li p.forget{ font-size:12px; padding:5px 0 0 15px;}
+#nav-inner ul li p.forget a#droplogForgot{ padding:0px;}
+
 
 /*last drop down*/
 
@@ -516,10 +547,19 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 .topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left;}
 
 /*last drop down*/
-.topnav-area .navbar-nav li.last-drop{ display:none;}
+.topnav-area .navbar-nav li.last-drop{ display:block;}
 .mob-country-drop{ display:block; width:20%; float:right;}
 .mob-country-drop ul{ float:right; margin:15px 0 0 0;}
 .mob-country-drop ul li.last-drop .country-drop ul.nav-tabs{ width:100%;}
+
+.desk-nav{ display:none; }
+#new-nav{ display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{width:100%; left:0px; top:35px;  }
+.mob-top-nav { display:block;}
+
+
 /*last drop down*/
 
 /*top head*/
@@ -581,10 +621,19 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 .topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left;}
 
 /*last drop down*/
-.topnav-area .navbar-nav li.last-drop{ display:none;}
+.topnav-area .navbar-nav li.last-drop{ display:block;}
 .mob-country-drop{ display:block; width:20%; float:right;}
 .mob-country-drop ul{ float:right; margin:15px 0 0 0;}
 .mob-country-drop ul li.last-drop .country-drop ul.nav-tabs{ width:100%;}
+
+.desk-nav{ display:none; }
+#new-nav{ display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{width:100%; left:0px; top:35px;  }
+.mob-top-nav { display:block;}
+
+
 /*last drop down*/
 
 
@@ -646,11 +695,22 @@ header .topnav-area .navbar{ float:left; width:100%;  border-top:#f0f0f0 1px sol
 .topnav-area .navbar-nav li .dropdown-menu{ margin:0 0 15px 0; float:left; overflow-y:scroll;}
 
 /*last drop down*/
-.topnav-area .navbar-nav li.last-drop{ display:none;}
+.topnav-area .navbar-nav li.last-drop{ display:block;}
 .mob-country-drop{ display:block; width:20%; float:right;}
 .mob-country-drop ul{ float:right; margin:15px 0 0 0;}
 .mob-country-drop ul li.last-drop .country-drop ul.nav-tabs{ width:100%;}
+
+.desk-nav{ display:none; }
+#new-nav{ display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+.topnav-area .navbar-nav li.last-drop .country-drop{width:100%; left:0px; top:35px;  }
+.mob-top-nav { display:block;}
+
+/* CSS for only currency dropdown in top navigation */
+
 /*last drop down*/
+
 
 /*--top head---*/
 	

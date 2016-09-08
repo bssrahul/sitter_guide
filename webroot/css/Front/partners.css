@@ -58,7 +58,7 @@
 }
 
 @media (min-width:641px) and (max-width:767px) {
-.banner-area-partners {  width:100%; margin:100px 0 30px 0;}
+.banner-area-partners {  width:100%; margin:50px 0 30px 0;}
 .inner-ban-cont{height:250px;}
 
 .pet-shop-wrap .ps-area{ margin:0px;}
@@ -71,7 +71,7 @@
 }
 
 @media (min-width:481px) and (max-width:640px) {
-.banner-area-partners {  width:100%; margin:100px 0 30px 0;}
+.banner-area-partners {  width:100%; margin:50px 0 30px 0;}
 .inner-ban-cont{height:200px;}
 
 .pet-shop-wrap .ps-area{ margin:0px;}
@@ -85,7 +85,7 @@
 }
 
 @media (min-width:320px) and (max-width:480px) {
-.banner-area-partners {  width:100%; margin:105px 0 30px 0;}
+.banner-area-partners {  width:100%; margin:50px 0 30px 0;}
 .inner-ban-cont{height:200px;}
 
 .pet-shop-wrap .ps-area{ margin:0px;}

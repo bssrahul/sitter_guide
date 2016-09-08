@@ -1,4 +1,5 @@
 
+
 <section class="sev-type">
 	<div class="container">
 		<h4><?php echo $heading; ?></h4>
@@ -143,5 +144,7 @@
       </div>
     </div>
   </section>
+  
+ 
   <!-- Get in Touch starts-->
   <!-- Get in Touch ends-->

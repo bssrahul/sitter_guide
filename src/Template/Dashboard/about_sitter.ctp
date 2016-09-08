@@ -4,18 +4,24 @@
 ?>
 <div class="col-md-9 col-lg-10 col-sm-8 lg-width80" id="content">
         <div class="row">
-        <div class="profiletab-section">
+        	<div class="container-fluid">        	
+	        	<div class="profiletab-section">
+        <div class="db-top-bar-header bg-title">
+             	<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                 <h3><img src="<?php echo HTTP_ROOT; ?>img/sitter-img.png"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Sitter Profile')); ?></h3>
+                </div>
+                </div>
                 <?php echo $this->element('frontElements/profile/sitter_nav');?>
           <div class="tab-sectioninner book-pro">
             <div class="tab-content">
-
+            	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">	
 
                <div id="menu2" class="tab-pane fade tab-comm active in">
-                <h2 id="yourself-description" class="head-font"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Now let us know why you’re a great sitter')); ?></h2>
-                <p class="head-font2 pad-head-foot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your sitter preferences are managed here')); ?></p>
-                 <p class="head-font2 pad-head-foot-bot"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share with us your sitting style, as well as what you will and wont accept as a sitter.')); ?></p>
-                
+               <div class="tc-head tc-head-4">
+                <h2 id="yourself-description"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Now let us know why you’re a great sitter')); ?></h2>
+                <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your sitter preferences are managed here')); ?></p>
+                 <p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Share with us your sitting style, as well as what you will and wont accept as a sitter.')); ?></p>
+                </div>
                   <?php echo $this->Form->create(@$sitter_info, [
                       'url' => ['controller' => 'dashboard', 'action' => 'about-sitter'],
                       'role'=>'form',
@@ -357,6 +363,7 @@
 
 </form>
               </div>
+              </div>
               <?php echo $this->Form->end(); ?>
 
 
@@ -365,6 +372,7 @@
         
           </div>
         </div>
+            </div>
 
         </div>
       </div>

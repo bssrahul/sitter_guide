@@ -279,7 +279,7 @@
 						</p>
 					  </div>
                       <div class="may-call-wrapper">
-                        <p class="maycall-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You may call jessica's permanent Rover number anytime')); ?>.
+                        <p class="maycall-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('You may call jessica\'s permanent Sitter Guide number anytime')); ?>.
                         </p>
                         <p class="may-call-no">
                           <i class="fa fa-circle clgreen">

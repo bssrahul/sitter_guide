@@ -10,13 +10,14 @@
 			   $act = $this->request->params['action'];
 			?>
            
-          <ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#country"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> </a></li>
+          <!-- <ul class="nav nav-tabs">
+			<li class="active"> <a data-toggle="tab" href="#country"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Country')); ?> </a></li>
 
 			<li><a data-toggle="tab" href="#currency"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Currency')); ?></a></li>
-          </ul>                                        
+          </ul>-->                                        
 		  <div class="tab-content">
-			 <div id="country" class="tab-pane fade in active">
+     
+			 <!--<div id="country" class="tab-pane ">
 				  <ul class="c-list"> 
 					  <li><a href="<?php echo HTTP_ROOT.'app/setGuestStore/fr/'.$cont.'/'.$act.'/'.$prms;?>"><img src="<?php echo HTTP_ROOT.'img/flags/fr.png'?>"  alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('FRENCH')); ?></a></li>
 					  <li><a href="<?php echo HTTP_ROOT.'app/setGuestStore/de/'.$cont.'/'.$act.'/'.$prms;?>"><img src="<?php echo HTTP_ROOT.'img/flags/de.png'; ?>"  alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('GERMAN')); ?></a></li>
@@ -26,8 +27,9 @@
 					  <li><a href="<?php echo HTTP_ROOT.'app/setGuestStore/es/'.$cont.'/'.$act.'/'.$prms;?>"><img src="<?php echo HTTP_ROOT.'img/flags/es.png';?>"  alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('SPANISH')); ?></a></li>
 					  <li><a href="<?php echo HTTP_ROOT.'app/setGuestStore/en/'.$cont.'/'.$act.'/'.$prms;?>"><img src="<?php echo HTTP_ROOT.'img/flags/us.png';?>"  alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('ENGLISH')); ?></a></li>  
 				  </ul>
-			</div>
-			<div id="currency" class="tab-pane fade">
+			</div>-->
+       
+			<div id="currency" class="tab-pane fade fade in active">
 				  <ul class="c-list"> 
 					  <li><a href="<?php echo HTTP_ROOT.'app/setCurrency/fr_FR/'.$cont.'/'.$act.'/'.$prms;?>"><img src="<?php echo HTTP_ROOT.'img/flags/fr.png'?>"  alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('EUR')); ?></a></li>
 					  <li><a href="<?php echo HTTP_ROOT.'app/setCurrency/de_DE/'.$cont.'/'.$act.'/'.$prms;?>"><img src="<?php echo HTTP_ROOT.'img/flags/de.png'; ?>"  alt=""><?php echo $this->requestAction('app/get-translate/'.base64_encode('EUR')); ?></a></li>
@@ -41,4 +43,12 @@
 			</div>                                          
 		  </div>
 
-	</div>
+	</div>   
+   
+   
+   
+   
+   
+   
+   
+   

@@ -1,10 +1,11 @@
 @charset "utf-8";
 
 /* CSS Document */
+.ph-wrap{ width:100%; float:left; background:#efecec ; min-height:50px; border:#d6d6d6 1px solid; text-align:center; margin:30px 0 30px 0; padding:15px 20px;}
+.ph-wrap h3{  font-size:18px; font-weight:bold;}
 
-.payment-heading1 { font-size:26px; padding-top:30px; text-align:center;}
-.payment-text { font-size:14px; padding:15px 0 30px 0; text-align:center;}
-.pay-outside-wrap { border:1px solid #ccc; background:#fff; padding:20px; max-width:650px; margin:0px auto; margin-bottom:30px;  }
+.pay-outside-wrap { border:1px solid #ccc; background:#fff; padding:20px; width:100%; margin:0 0 30px 0; min-height:263px;  }
+.card-img{ background:#f5f5f5; min-height:263px;}
 .pay-outside-wrap label { font-size:13px; font-weight:500; margin-bottom:8px; margin-top:5px; color:#404040;}
 .pay-outside-wrap .form-control { font-size:13px; border-radius:0px; height:34px;}
 .pay-outside-wrap1 { border:1px solid #ccc; background:#fff; padding:30px 30px 30px 30px; width:100%; margin-bottom:30px;  }
@@ -21,7 +22,7 @@
 .selectpicker { background-color:#fff !important; border:1px solid #ccc !important; height:35px !important;  }
 
 .payment-last .checkbox { margin-top:0px;}
-.card-credit { background:url(../../img/card-dummy-1-345.png) no-repeat; width:345px; height:216px;  margin:0px auto; margin-bottom:30px; position:relative; }
+.card-credit { background:url(../../img/card-dummy-1-345.png) no-repeat; width:345px; height:216px;  margin:0px auto; position:relative; }
 .name-on-card { position:absolute; top:75px; right:0px;}
 .name-on-card p { font-size:23px; color:#fff;  text-align:right; padding-right:30px; }
 .credit-card-no {position:absolute; top:138px;}
@@ -32,8 +33,29 @@
 .valid-up-to p { font-size:13px;  color:#fff; padding-left:32px; }
 .valid-up-to p span { font-size:14px;  color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:15px;}
 
+@media (min-width:992px) and (max-width:1024px){
+.ph-wrap{ margin:15px 0 15px 0;}	
+.pay-outside-wrap{ margin:0 0 15px 0;}
+}
+
+@media (min-width:768px) and (max-width:991px){
+.ph-wrap{ margin:15px 0 15px 0;}	
+.pay-outside-wrap{ margin:0 0 15px 0;}
+}
+
+@media (min-width:641px) and (max-width:767px){
+.ph-wrap{ margin:15px 0 15px 0;}	
+.pay-outside-wrap{ margin:0 0 15px 0;}
+}
+
+@media (min-width:481px) and (max-width:640px){
+.ph-wrap{ margin:15px 0 15px 0;}	
+.pay-outside-wrap{ margin:0 0 15px 0;}
+}
 
 @media (min-width:320px) and (max-width:480px) {
+.ph-wrap{ margin:15px 0 15px 0;}	
+.pay-outside-wrap{ margin:0 0 15px 0;}
 .card-credit { background:url(../../img/card-dummy-1-xs.png) no-repeat; width:260px; height:162px;  margin:0px auto; margin-bottom:30px;  position:relative;}
 .name-on-card {position:absolute; top:56px; right:0px; }
 .name-on-card p { font-size:18px; font-weight:500;    padding-right:28px; }
@@ -44,11 +66,6 @@
 .valid-up-to { position:absolute; top:128px;}
 .valid-up-to p { font-size:13px;  color:#fff; padding-left:25px; }
 .valid-up-to p span { font-size:14px;  color:#fff; font-family: 'CenturyGothic-Regular'; padding-left:15px;}
-	
 
-	
-
-	
-
-	}
+}
 

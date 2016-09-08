@@ -1,9 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-.transaction-pills { margin-top:30px;}
-.transaction-pills .transaction-top ul li {  }
-
+.transaction-pills { margin:30px 0 0 0;}
 
 .transaction-pills .transaction-top ul li a {background: rgba(255,255,255,1);
 background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 100%);
@@ -15,66 +13,40 @@ background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(235,235,235,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ebebeb', GradientType=0 ); 
  height:50px; padding-top:15px; color:#404040; font-weight:500; border-radius:4px; border:1px solid  #d8d7d7;  margin-right:10px; }
 
-.transaction-pills .transaction-top ul li a:hover,  .transaction-pills .transaction-top ul li a:focus { background:#222d3d !important; height:50px; padding-top:15px; color:#fff; font-weight:500; border-radius:4px; margin-right:10px; } 
+.transaction-pills .transaction-top ul li a:hover,  .transaction-pills .transaction-top ul li a:focus { background:#222d3d !important;   color:#fff; } 
 
 .transaction-pills .transaction-top ul li.active a  { background:#222d3d ; border-radius:4px; color:#fff; margin-right:10px; } 
-
-
 .no-m-right { margin-right:0px !important;}
-
 .sitter-balance-wrapper { border:1px solid  #d8d7d7;  margin-top:30px; background:#fff; margin-bottom:30px; }
 .sitter-balance-wrapper .balace-head { background:#59AAE1; color:#fff; height:48px; padding-top:15px; padding-left:20px;}
-
 .sitter-balance-wrapper .balace-head h5 { font-size:16px; font-weight:400;}
-
 .sitter-balance-wrapper .inner-price-wrap { padding:15px 15px 0 15px; }
-
-
 .sitter-balance-wrapper .inner-price-wrap1 { border:1px solid  #d8d7d7; background:#F7F7F7; }
-
 .money { font-size:30px; font-weight:500; text-align:center; padding-top:5px;}
-
 .redem { font-size:13px; text-align:center; }
-
 .withdrawmoney { font-size:16px; text-align:center; padding-bottom:10px; }
 .withdrawmoney a { color:#59aae1 !important; outline:none; text-decoration:none;}
-
-
 .pending-wrap { padding:15px;}
-
 .pending-wrap .pending-inner {  background:#222d3d; height:50px;}
 .pending-wrap .pending-inner p { text-align:center; padding-top:15px; font-size:16px; color:#fff; background:#222d3d;}
-
 .redem-text {padding:50px 15px 42px 15px; text-align:center; font-size:13px;}
 .read-tanda {padding:0px 15px 60px 15px; text-align:center; font-size:13px;}
 .read-tanda a { color:#d31c1c !important; outline:none; text-decoration:none;}
 
-
 /*Table css starts*/
-
 .width220 { width:270px;}
-
 #transaction-table .pad-l20 { padding-left:20px;}
-
-
 .c-img { padding-right:20px; padding-left:20px;}
 .c-name { font-size:14px; color:#404040; font-weight:500; }
 .jtitle {  color:#59aae1; font-weight:500; }
-
 #transaction-table .nopad { padding:0 15px;}
-
-#transaction-table { margin-top:20px;}
-
+#transaction-table { margin:20px 0 30px 0;}
+#transaction-table .rating > label:before { margin:0px;}
 .border1 { border:1px solid  #d8d7d7;}
-
 .border-bott { border-bottom:1px solid  #d8d7d7;}
-
 #transaction-table tr th { font-weight:400; }
-
 #transaction-table tbody { background:#f7f7f7; font-size:13px;}
-
 #transaction-table tbody tr {height:75px; border-bottom:1px solid #d8d7d7; }
-
 #transaction-table tr.title-bg { background: rgba(255,255,255,1);
 background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(235,235,235,1)));
@@ -85,14 +57,8 @@ background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(235,235,235,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ebebeb', GradientType=0 ); height:50px;   }
 
 
-@media (max-width:480px) {
-.c-img { padding-right:20px; padding-left:0px; display:block;} 
-}
-
 @media (max-width:991px) {
-
 .transaction-pills .transaction-top ul li.active a  { background:#222d3d ; border-radius:4px; color:#fff; margin-right:0px; }	
-.transaction-pills .transaction-top ul li { display: block; width: 100%;}
 .transaction-pills .transaction-top ul li a { margin-right:0px;}
 .transaction-pills .transaction-top ul li a:hover,  .transaction-pills .transaction-top ul li a:focus { margin-right:0px; } 
 .transaction-pills .transaction-top ul li a.active  { margin-right:0px; } 
@@ -102,55 +68,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .width220 { width:100%;}
 .c-img { padding-right:20px; padding-left:0px;}
 #transaction-table .nopad { padding:0 0px;}
-#transaction-table tbody tr { height:auto; }
+#transaction-table tbody tr { height:auto; border:0px; }
    
-    /* Force table to not be like tables anymore */
-	#transaction-table table, 
-	#transaction-table thead, 
-	#transaction-table tbody, 
-	#transaction-table th, 
-	#transaction-table td, 
-	#transaction-table tr { 
-		display: block; 
-	}
+/* Force table to not be like tables anymore */
+#transaction-table table, 	#transaction-table thead, #transaction-table tbody, #transaction-table th, #transaction-table td, #transaction-table tr { display: block; }
+/* Hide table headers (but not display: none;, for accessibility) */
+#transaction-table thead tr {position: absolute;top: -9999px; left: -9999px;}
+#transaction-table tr { border: 1px solid #ccc; } 
+#transaction-table td { 
+/* Behave  like a "row" */
+border: none;border-bottom: 1px solid #eee; position: relative; padding-left: 50%; white-space: normal; text-align:left; min-height:30px;}
  
-	/* Hide table headers (but not display: none;, for accessibility) */
-	#transaction-table thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
+#transaction-table td:before { 
+/* Now like a table header */
+position: absolute;
+/* Top/left values mimic padding */
+top: 6px;left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; text-align:left; font-weight: bold; color:#404040;}
  
-	#transaction-table tr { border: 1px solid #ccc; }
  
-	#transaction-table td { 
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-		white-space: normal;
-		text-align:left;
-	}
- 
-	#transaction-table td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-		text-align:left;
-		font-weight: bold; color:#404040;
-	}
- 
-	/*
-	Label the data
-	*/
-	#transaction-table td:before { content: attr(data-title); }
+/* Label the data */
+#transaction-table td:before { content: attr(data-title); }
 }
 @media (min-width:1025px) and (max-width:1199px){
 .sitter-balance-wrapper { margin:0px 0 30px 0; }
@@ -160,13 +97,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 @media (min-width:768px) and (max-width:991px){
 .sitter-balance-wrapper { margin:0px 0 15px 0; }
+.transaction-pills { margin:15px 0 0 0;}
+#transaction-table { margin:0px 0 15px 0;}
 }
+
 @media (min-width:641px) and (max-width:767px){
 .sitter-balance-wrapper { margin:0px 0 15px 0; }
+.transaction-pills { margin:15px 0 0 0;}
+.transaction-pills .transaction-top ul li { width:48%; margin:0 0 5px 0; float:left;}
+.transaction-pills .transaction-top ul li:last-child{ float:right;} 
+.transaction-pills .transaction-top ul li a{ font-size:13px; height:40px; padding:0px; line-height:38px;}
+.transaction-top .nav-justified { display:inline-block;}
+.transaction-top .nav-justified li { float:left; margin:0 0 15px 0;}
+.transaction-top .nav-justified li a { margin:0px;}
+#transaction-table { margin:0px 0 15px 0;}
 }
 @media (min-width:481px) and (max-width:640px){
 .sitter-balance-wrapper { margin:0px 0 15px 0; }
+.transaction-pills { margin:15px 0 0 0;}
+.transaction-pills .transaction-top ul li { width:48%; margin:0 0 5px 0; float:left;}
+.transaction-pills .transaction-top ul li:last-child{ float:right;} 
+.transaction-pills .transaction-top ul li a{ font-size:13px; height:40px; padding:0px; line-height:38px;}
+.transaction-top .nav-justified { display:inline-block;}
+.transaction-top .nav-justified li { float:left; margin:0 0 15px 0;}
+.transaction-top .nav-justified li a { margin:0px;}
+#transaction-table { margin:0px 0 15px 0;}
 }
 @media (min-width:320px) and (max-width:480px){
 .sitter-balance-wrapper { margin:0px 0 15px 0; }
+.transaction-pills { margin:15px 0 0 0;}
+.transaction-pills .transaction-top ul li { width:48%; margin:0 0 5px 0; float:left;}
+.transaction-pills .transaction-top ul li:last-child{ float:right;} 
+.transaction-pills .transaction-top ul li a{ font-size:13px; height:40px; padding:0px; line-height:38px;}
+.transaction-top .nav-justified li a { margin:0px;}
+#transaction-table { margin:0px 0 15px 0;}
+.c-img { padding-right:20px; padding-left:0px; display:block;} 
+
 }

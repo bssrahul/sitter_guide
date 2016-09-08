@@ -20,7 +20,8 @@
 			</div>
 			
 			<div class="col-md-9 col-md-offset-1 col-lg-9 col-lg-offset-1 col-sm-9 col-xs-12 mid-section">
-				<div class="tab-content">
+            	<div class="row">
+					<div class="tab-content">
 					
 					<!-- For Show Guide Question-->
 					<?php  
@@ -37,7 +38,8 @@
 							$count=0;
 							?>
 												
-							<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 customHeight">
+							<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                            	<div class="customHeight">
 								<h5 class="pt22">
 									<span><?php if(!empty($guestData)){echo $guestData['title'][0];}?></span>
 								</h5>
@@ -66,6 +68,7 @@
 										<a href="<?php echo HTTP_ROOT."Pages/help-listing/".base64_encode(convert_uuencode(3))."/".base64_encode(convert_uuencode(@$que_value->category_id));?>"><b><?php echo $this->requestAction('app/get-translate/'.base64_encode('See all articles'));?></b></a>
 									</li> 
 								</ul>
+                                </div>
 							</div> 
 								<?php } ?>            
 									</div>
@@ -84,7 +87,8 @@
 							foreach($sitter as $sitterData){
 								$count=0;
 							?>
-								<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 customHeight">
+								<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                                	<div class="customHeight">
 									<h5 class="pt22">
 										<span>
 											<?php 
@@ -119,6 +123,7 @@
 											</a>
 										</li> 
 									</ul>
+                                    </div>
 								</div> 
 								
 							<?php } ?> 
@@ -127,30 +132,27 @@
 				<?php }  ?>
 				
 			</div>
-		
+			   </div>
 		</div>
 		
-		<hr class="hr-pd" />
+
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12  col-sm-12  col-md-12col-lg-12">
+				<div class="col-xs-12  col-sm-12  col-md-12 col-lg-12">
+                	  <div class="help-view-article"> 
 					<h2 class="text-center help-looking-title"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Looking for something else ?'));?></h2>
 					<ul class="list-inline center-block text-center">
 						<li><button class="btn help-view-btn"><?php echo $this->requestAction('app/get-translate/'.base64_encode('View all Articles'));?></button></li>
 						<li><a href="<?php echo HTTP_ROOT."Pages/contact"; ?>"></a><button class="btn help-contact-btn"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Contact Support'));?></button></a></li>
 					</ul>
 					<h3 class="text-center"><span class="helpqa"><a href="#" class="helpqa"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Q & A Community'));?></a></span></h3>
+                    </div>
 				</div>
 				
 			</div>
 		</div>
     </section>
     
-	<style>
-	.customHeight {
-		min-height: 175px;
-	}
-
-	</style>    
+    
     <!-- Get in Touch ends-->

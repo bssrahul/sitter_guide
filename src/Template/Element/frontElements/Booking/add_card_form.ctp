@@ -1,15 +1,26 @@
+<!-- ADD Payment Method -->
 <div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
-      <h3 class="payment-heading1"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Payment Methods')); ?>
-      </h3>
-      <p class="payment-text"><?php echo $this->requestAction('app/get-translate/'.base64_encode('Select your default method for payments on Sitterguide')); ?>.  
-      </p>
+    	<div class="ph-wrap">
+        	<div class="row">
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<h3><?php echo $this->requestAction('app/get-translate/'.base64_encode('Your Payment Methods')); ?></h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<p><?php echo $this->requestAction('app/get-translate/'.base64_encode('Select your default method for payments on Sitterguide')); ?>.</p>
+                </div>
+                
+            </div>
+      		
+		    
+        </div> 
     </div>
   </div>
+  
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
-      <div class="pay-outside-wrap creditly-wrapper">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="pay-outside-wrap creditly-wrapper">
 			<?php echo $this->Form->create(null, [
 					'url' => ['controller' => 'booking', 'action' => 'add-card-details'],
 					'id'=>'addCardDetail',
@@ -118,8 +129,10 @@
 			<?php echo $this->Form->end(); ?>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
-      <div class="card-credit ">
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+    	<div class="pay-outside-wrap card-img">
+      	  <div class="card-credit ">
         <div class="name-on-card">
           <p class="card_holder_name_autofill"><?php echo isset($UserCardsData['card_holder_name'])?$UserCardsData['card_holder_name']:'Name on Card'; ?></p>
         </div>
@@ -134,6 +147,8 @@
           </p>
         </div>
       </div>
+      	</div>
     </div>
   </div>
 </div>
+<!-- /ADD Payment Method -->

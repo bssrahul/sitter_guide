@@ -347,8 +347,8 @@ a.signup-color {
 }
 </style>
 
-<?php echo $this->Html->script(['Front/chosen.jquery.min.js']); ?>
-
+<?php //echo $this->Html->script(['Front/chosen.jquery.min.js']); ?>
+<!--
 <script>
 $(function(){
     $('select.ui-datepicker-year').chosen({width: '100%'});    
@@ -366,5 +366,5 @@ $(document).ready(function(){
     $('ul.chosen-results').css('max-height', '150px');
     });
 });
-</script>
+</script>-->
 
